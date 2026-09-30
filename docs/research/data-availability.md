@@ -40,8 +40,12 @@ Ranked by what each would change in the model.
 4. **Kato *et al.*, *Doppler-Free High Resolution Spectral Atlas of Iodine* (2000).** 526–667 nm at about
    3 MHz (stated σ 0.000054 cm⁻¹), four volumes with CD-ROMs giving the absolute wavenumber of every
    hyperfine component; ISBN 4-89114-000-3. Out of print. The atlas page (http://web1.kcn.jp/kansha-kansha/)
-   says the project leader, H. Katô, still has a few sets (h-kato@kcn.jp). Held by the National Diet Library
-   (call number PA47-A85, also digitised in its Digital Collection) and, per CiNii Books (NCID BA4875724X),
+   says the project leader, H. Katô, still has a few sets (h-kato@kcn.jp). Held by the National Diet Library: the four
+   volumes (PA47-A85; digitised as dl.ndl.go.jp pid 14816947–14816950, about 522 frames each, viewable in
+   the library only) and, separately, the four CD-ROMs (YH21-1412, ISBN 4-89114-001-1; Windows 95/98/NT 4,
+   Mac OS 7.5.1). Registered overseas users can order paper or PDF copies of the printed pages by remote
+   photoduplication, within the copyright limit on the share of a work; CD-ROMs are excluded from that
+   service. Also held, per CiNii Books (NCID BA4875724X),
    by seven Japanese university libraries: Institute of Science Tokyo (Suzukakedai), Kyoto (Yoshida-South),
    Osaka (Science and Engineering; Main), University of Hyogo (Harima), JAIST and Kochi University of
    Technology.
