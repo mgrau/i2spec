@@ -1,7 +1,11 @@
 """Every measured B-state hyperfine parameter we hold, by line: the input to i2spec.hfs_table.
 
-Usage:  uv run python prototypes/hfs_measured_table.py          (about 3 minutes)
-Output: src/i2spec/data/b_state_lines.json
+Usage:  uv run python prototypes/hfs_measured_table.py [--all] [--out=b_state_lines_2026n]
+Output: src/i2spec/data/<out>.json (default b_state_lines, the table of the sets up to i2spec2026m)
+
+Without --all, the 14 sets of the original table, read one by one. With --all, every set in use, through
+observations.load_all (compilations give way to their sources, so each measurement enters once), and
+every line with at least 8 intra-line splittings measured to a median of <= 25 kHz.
 
 Two kinds of source. Chen 2004 publishes fitted parameters directly (data/hyperfine_parameters/
 chen2004a). For every other precise set the parameters come from i2spec's own four-parameter fit to
@@ -16,7 +20,9 @@ from pathlib import Path
 from i2spec import hfs_params as hp
 from i2spec.hyperfine_fit import HyperfineFit
 from i2spec.model import RovibronicModel
-from i2spec.observations import load_dataset, load_hyperfine_parameters
+import sys
+
+from i2spec.observations import load_all, load_dataset, load_hyperfine_parameters
 
 ROOT = Path(__file__).resolve().parents[1]
 PARAMS = ("eqQ", "C", "d", "delta")
@@ -24,7 +30,10 @@ SETS = ("bipm2003a", "bipm2003b", "bipm2003c", "bipm2003d", "bipm2003e", "bipm20
         "reinhardt2007a", "bodermann1998b", "yoshiki2023a", "matsunaga2024a", "kobayashi2016a", "nishiyama2024a")
 
 
-def main():
+def main(argv=()):
+    opts = {a.split("=")[0]: (a.split("=", 1)[1] if "=" in a else True) for a in argv}
+    out_name = opts.get("--out", "b_state_lines")
+    datasets = load_all() if "--all" in opts else [load_dataset(ROOT / "data/observations" / n) for n in SETS]
     model = RovibronicModel("127I2", grids={"B": dict(rmin=2.35, rmax=12.0, h=0.01, order=10, nlev=80)})
 
     def formula(vu, vl, Jp):
@@ -40,8 +49,9 @@ def main():
         rows.append(dict(source="chen2004a", line=f"{L.branch}({L.J_lower}) {L.v_upper}-{L.v_lower}", v=L.v_upper,
                          v_lower=L.v_lower, J=r.J_upper, measured=measured, uncertainty=unc, formula=f,
                          fit_sd_kHz=r.fit_sd_kHz))
-    for name in SETS:
-        h = HyperfineFit(datasets=[load_dataset(ROOT / "data/observations" / name)], max_v_upper=70)
+    for ds in datasets:
+        name = ds.id
+        h = HyperfineFit(datasets=[ds], max_v_upper=70)
         for key in h.lines:
             iso, br, Jl, vu, vl = key
             n = sum(h.line_of(d) == key for d in h.data)
@@ -62,11 +72,12 @@ def main():
         description="Measured B-state hyperfine parameters of 127I2 lines, one row per line. eqQ in MHz; C, d, delta in kHz. "
                     "'formula' is the published BKT02/S06 value at the same (v', J'), so measured - formula is the "
                     "correction the formulae need there.",
-        generated_by="prototypes/hfs_measured_table.py", x_state="held at the published formulae in every fit",
+        generated_by="prototypes/hfs_measured_table.py" + (" --all" if "--all" in opts else ""),
+        x_state="held at the published formulae in every fit",
         rows=sorted(rows, key=lambda r: (r["v"], r["J"])))
-    (ROOT / "src/i2spec/data/b_state_lines.json").write_text(json.dumps(out, indent=1))
+    (ROOT / f"src/i2spec/data/{out_name}.json").write_text(json.dumps(out, indent=1))
     print(f"{len(rows)} lines written")
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])

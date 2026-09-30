@@ -4,6 +4,7 @@ source = "https://doi.org/10.1364/josab.30.000328 (publisher PDF)"
 doi = "10.1364/josab.30.000328"
 retrieved = "2026-09-27"
 unit = "MHz"
+exclude = "Set aside in i2spec2026n (2026-09-30). Its one line, P(28) 24-0, sits +1.13, +1.33 and +1.37 MHz from the model at a1, a10 and a15 (stated 12 kHz), so its own a10-a1 and a15-a1 intervals differ from the hyperfine model by +0.20 and +0.24 MHz; the same model holds the 21 components of hauden2024a at the same v' = 24 (P(49) 24-1) to 0.03 MHz, and hauden2024a, tanabe2022a (J' = 48, 54) and yang2011a (J' = 131) agree with one smooth B v' = 24 correction to 0.1-0.2 MHz, which Hsiao misses by 1.2 MHz. The paper also labels its figures P(28) 20-0 (Table 3 errata). Kept, transcribed, for the record; load_all(include_excluded=True) reads it."
 catalog = "precision.yaml:hsiao2013a"
 
 transcription = """

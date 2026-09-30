@@ -272,6 +272,41 @@ The cross-validation above is the evidence that this predicts held-out J′ at t
 v′ ≥ 55, interpolating between measured v′ is still 20× better than the frozen formula. At unmeasured
 v′ ≤ 53 the formulae remain the best choice. This is not yet implemented.
 
+## The table from every set (i2spec2026n)
+
+The shipped table was built from 14 sets named in the script. The 29 sets transcribed afterwards, many of
+them 532 nm hyperfine studies, were never in it. `prototypes/hfs_measured_table.py --all` now reads every
+set in use through `observations.load_all`, so compilations give way to their sources and each
+measurement enters once. That gives 156 lines at 45 values of v′ from 31 sources, against 124 at 36 from 12.
+The table is named by the parameter set (`"hyperfine_table": "b_state_lines_2026n"` in `i2spec2026n`), so
+earlier sets keep the table they were validated with.
+
+`prototypes/hfs_table_cv.py` predicts every ¹²⁷I₂ intra-line splitting three ways: from the formulae
+alone, and from the old and new tables each rebuilt without the line being predicted
+(`HyperfineTable(rows, exclude=...)`). Lines in neither table use the full tables, as the model does.
+Scored against the stated σ:
+
+| | splittings | formulae | old table | new table |
+|---|---|---|---|---|
+| all, within 1σ / 3σ | 1 446 | 11 / 21 % | 18 / 40 % | **26 / 52 %** |
+| σ ≤ 25 kHz, within 1σ / 3σ | 1 295 | 5 / 13 % | 13 / 34 % | **22 / 47 %** |
+
+| set, held out | old table: within 1σ, rms | new table |
+|---|---|---|
+| simonsen2000a (633 nm, v′ = 6–11) | 4 %, 146 kHz | **37 %, 9.4 kHz** |
+| sakagami2020a (531.5 nm) | 10 %, 21.9 kHz | **38 %, 11.4 kHz** |
+| tanabe2022a (556 nm) | 2 %, 54.6 kHz | **35 %, 30.0 kHz** |
+| edwards1999a (633 nm) | 10 %, 40.0 kHz | **80 %, 7.0 kHz** |
+| arie1994a | 0 %, 23.7 kHz | **20 %, 9.4 kHz** |
+| bipm2003a | 26 %, 69.8 kHz | **49 %, 63.4 kHz** |
+| hong2001a | 41 %, 4.3 kHz | 18 %, 4.3 kHz |
+| hong2000a (within 3σ) | 39 %, 2.9 kHz | 25 %, 3.6 kHz |
+
+Three Hong et al. sets lose a little, at the 1–4 kHz level, where each new line changes the
+correction at its v′. No set gets worse by more than a kHz rms. The sets that stay far out held-out
+(kobayashi2016a 282, matsunaga2024a 334, hong2002a 190 kHz rms) are the v′-to-v′ steps that
+no table can predict at a v′ without its own lines.
+
 ## What is kept
 
 - `MODEL_FLOOR`, the robust loss, the `free` subset, and a true rms instead of `std()` (the first
@@ -284,8 +319,9 @@ v′ ≤ 53 the formulae remain the best choice. This is not yet implemented.
 ## Open
 
 - Resolve P(62) 17-1 between bipm2003c and reinhardt2006a.
-- ~~Per-v′ parameter tables~~ — done, above. Every new precise line extends the table; rerun
-  `prototypes/hfs_measured_table.py` after transcribing one.
+- ~~Per-v′ parameter tables~~ — done, above. Every new precise line extends the table: rerun
+  `prototypes/hfs_measured_table.py --all --out=<new name>`, check it with `prototypes/hfs_table_cv.py`,
+  and name it in a new parameter set.
 - The default B grid stops at v′ = 59 while Chen measures to v′ = 70.
 - A global correction should still ship only when it beats the published formulae on held-out groups
   in every data set, not just in total.

@@ -37,7 +37,7 @@ def reduced_mass(isotopologue: str) -> float:
 
 #: The parameter set the model uses unless told otherwise: the published Hannover potentials plus the
 #: changes i2spec has validated (see the file's "changes" and docs/design/parameter-sets.md).
-DEFAULT_PARAMETERS = "i2spec2026m"
+DEFAULT_PARAMETERS = "i2spec2026n"
 
 #: I(2P3/2) + I(2P1/2) above 2 I(2P3/2), cm⁻¹: the B-state asymptote sits this far above the X-state one.
 ATOMIC_SPLITTING = 7602.9762

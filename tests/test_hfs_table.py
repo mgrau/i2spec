@@ -67,7 +67,21 @@ def test_apply_and_the_model_hook(table):
     _, corrected = m.hyperfine_components(32, 0, 56, "R", table=table)
     moved = max(abs(a.offset - b.offset) for a, b in zip(plain, corrected))
     assert 0.001 < moved < 1.0                                                # MHz: a kHz-scale change
-    _, default = m.hyperfine_components(32, 0, 56, "R")                      # the table is the default
-    assert np.allclose([c.offset for c in corrected], [c.offset for c in default])
+    _, default = m.hyperfine_components(32, 0, 56, "R")                      # the set's table is the default
+    from i2spec.potentials import parameter_set
+    named = default_table(parameter_set(m.parameters).get("hyperfine_table", "b_state_lines"))
+    _, expected = m.hyperfine_components(32, 0, 56, "R", table=named)
+    assert np.allclose([c.offset for c in expected], [c.offset for c in default])
     assert table.correction("C", 32, 150) == table.correction("C", 32, 59)   # clamped beyond the measured J'
 
+
+
+def test_each_parameter_set_uses_the_table_it_names():
+    """i2spec2026n names b_state_lines_2026n (every set in use); earlier sets keep the original table, so a
+    new table never changes what an old parameter set computes."""
+    from i2spec.potentials import parameter_set
+    assert parameter_set("i2spec2026n")["hyperfine_table"] == "b_state_lines_2026n"
+    assert "hyperfine_table" not in parameter_set("i2spec2026m")
+    new, old = default_table("b_state_lines_2026n"), default_table()
+    assert len(new.rows) > len(old.rows) and set(new.measured_v) > set(old.measured_v)
+    assert {"sakagami2020a", "simonsen2000a", "tanabe2022a", "hong2002b"} <= {r["source"] for r in new.rows}

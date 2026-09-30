@@ -351,3 +351,22 @@ by 44 MHz when left out. B v′ = 2 is now set by R(114) 2-11 as well as R(117) 
 15 and 16 together. The held-out figures of X v″ = 15 and 16 rise to 10 and 14 MHz, so the quoted
 uncertainty of lines from v′ ≥ 1 to those levels is conservative. Lines from v′ = 0 take the band
 correction. The band and Partie IV sections were refitted on top, as for 2026l (offset +119.6 MHz).
+
+## i2spec2026n
+
+`i2spec2026m` with two changes:
+
+- **The measured B-state hyperfine table rebuilt from every set in use** (`b_state_lines_2026n`, named by
+  the new `"hyperfine_table"` key, so earlier sets keep `b_state_lines`). It has 156 lines at 45 values
+  of v′ from 31 sources, against 124 at 36 from 12. Each line was held out and predicted from the rest:
+  26 % of the 1 446 ¹²⁷I₂ intra-line splittings fall within 1σ and 52 % within 3σ, against 18 % and
+  40 % for the old table and 11 % and 21 % for the formulae alone. Details are in
+  `docs/design/hyperfine-fit.md`, *The table from every set*.
+- **`hsiao2013a` set aside** (`docs/design/observations.md`). The B v′ = 24 conflict of 2026l–m was one
+  line against three sets. Without it, B v′ = 24 is fitted over J′ = 48–131. `hauden2024a`'s 21
+  components are reproduced to 0.02 MHz (in sample), `tanabe2022a` to 0.17 MHz, and `yang2011a` to
+  0.30 MHz.
+
+`level_corrections_2026m` repeats the 2026m fit on the new table without `hsiao2013a`: 874 rows touching
+corrected levels, leave-one-line-out median 0.54 MHz (2026m: 0.61), the band and Partie IV sections
+refitted on top (offset +119.6 MHz).

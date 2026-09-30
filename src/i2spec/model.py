@@ -182,12 +182,13 @@ class RovibronicModel:
         one C per nucleus. Above v' = 53 the B-state parameters are frozen at that energy.
 
         On top of those formulae, ``table`` adds the measured B-state corrections of hfs_table for
-        ¹²⁷I₂: "default" uses the shipped table, None the bare formulae (what a fit of corrections
+        ¹²⁷I₂: "default" uses the table the parameter set names, None the bare formulae (what a fit of corrections
         to the formulae must see), or pass an hfs_table.HyperfineTable.
         """
         if table == "default":
             from .hfs_table import default_table
-            table = default_table()
+            from .potentials import parameter_set
+            table = default_table(parameter_set(self.parameters).get("hyperfine_table", "b_state_lines"))
         nu0 = self.transition(v_upper, v_lower, J_lower, branch) * MHZ_PER_CM
         J_upper = J_lower + 1 if branch == "R" else J_lower - 1
         a, b = ISOTOPOLOGUES[self.isotopologue]

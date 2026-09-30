@@ -23,7 +23,8 @@ import numpy as np
 from .hyperfine import HyperfineParameters
 
 PARAMS = ("eqQ", "C", "d", "delta")
-TABLE_PATH = Path(__file__).resolve().parent / "data" / "b_state_lines.json"   # shipped with the package
+DATA = Path(__file__).resolve().parent / "data"
+TABLE_PATH = DATA / "b_state_lines.json"   # shipped with the package; the table of sets that name none
 #: Above this v' the published formulae are held at a fixed energy (hfs_params.E_B_MAX_S06), and the
 #: corrections of neighbouring measured v' are interpolated instead of falling back to zero.
 V_FROZEN = 53
@@ -108,6 +109,7 @@ class HyperfineTable:
                                    p.d + self.correction("d", v, J), p.delta + self.correction("delta", v, J))
 
 
-@lru_cache(maxsize=1)
-def default_table() -> HyperfineTable:
-    return HyperfineTable.load()
+@lru_cache(maxsize=4)
+def default_table(name: str = "b_state_lines") -> HyperfineTable:
+    """The table a parameter set names (its "hyperfine_table"; sets before i2spec2026n use b_state_lines)."""
+    return HyperfineTable.load(DATA / f"{name}.json")
