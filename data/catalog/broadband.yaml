@@ -1,4 +1,4 @@
-# pyodine Stage 2a catalog: broadband, Doppler-limited and supporting data for molecular iodine
+# i2spec Stage 2a catalog: broadband, Doppler-limited and supporting data for molecular iodine
 # Companion narrative: docs/research/02a-broadband-data.md (compiled September 2026).
 # One list item per dataset; schema fields in fixed order (id ... notes). Sub-Doppler / hyperfine-resolved /
 # comb-referenced 127I2 B-X frequencies are catalogued separately (Stage 2b) and appear here only as context.
@@ -2515,7 +2515,7 @@
   likely_in_knockel2004: unknown
   priority: low
   verified: true
-  notes: "Content inferred from title; superseded by modern potentials (pyodine will recompute FC factors from its own potentials)."
+  notes: "Content inferred from title; superseded by modern potentials (i2spec will recompute FC factors from its own potentials)."
 - id: koffend1979a
   citation: "J. B. Koffend, R. Bacis, R. W. Field, The electronic transition moment of the B 0u+ - X 1Σg+ system of I2 through gain measurements of an I2 optically pumped laser, J. Chem. Phys. 70, 2366-2372 (1979)"
   doi: "10.1063/1.437744"

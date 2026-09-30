@@ -1,6 +1,6 @@
 # Stage 2b: High-precision I₂ data (sub-Doppler, hyperfine-resolved, absolute frequency)
 
-*Compiled 2026-09-14 for the pyodine project. Machine-readable companion:
+*Compiled 2026-09-14 for the i2spec project. Machine-readable companion:
 [`data/catalog/precision.yaml`](../../data/catalog/precision.yaml).*
 
 Scope: sub-Doppler, hyperfine-resolved and absolute-frequency measurements of the
@@ -308,7 +308,7 @@ measured component to a rovibronic line position.
 and the four-term fit does not reveal the bias. Salumbides 2006 flags an apparent fit
 artefact in Hong 2002 (R(121)35-0, a8/a12).
 
-**Implication for pyodine.** A physically motivated global hyperfine model is needed:
+**Implication for i2spec.** A physically motivated global hyperfine model is needed:
 smooth v, J functions constrained by all four-term constants and raw splittings, with
 explicit perturbation terms for v′ ≳ 55. It should replace the 2002/2006 interpolation
 formulae before new absolute data are reduced to line positions. The alternative is to

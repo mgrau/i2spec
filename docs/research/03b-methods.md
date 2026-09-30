@@ -521,7 +521,7 @@ from crates.io.
   quadrature. It also serves as a unit test of hand-written derivatives.
 - JAX is also the natural host for NumPyro/BlackJAX validation (§2.3), with the forward model wrapped as a
   `custom_jvp` that uses HF gradients.
-- Proposal: a NumPy/SciPy core with JAX as an optional extra (`pyodine[bayes]`). This keeps the base install
+- Proposal: a NumPy/SciPy core with JAX as an optional extra (`i2spec[bayes]`). This keeps the base install
   light and float64-by-default.
 
 ### 3.2 Rust eigensolvers that compile to wasm32-unknown-unknown (faer, nalgebra)
@@ -555,11 +555,11 @@ from crates.io.
   Pyodide-style wheels are within reach. Pyodide specifics were not verified.
 
 **Proposed layout** [Analysis] A Cargo workspace with:
-- `pyodine-core`: pure Rust. Holds potentials, the radial solver, hyperfine Hamiltonian, HF Jacobians,
+- `i2spec-core`: pure Rust. Holds potentials, the radial solver, hyperfine Hamiltonian, HF Jacobians,
   covariance propagation and line-list generation. It has no PyO3 or wasm-bindgen dependencies, uses float64,
   and threading is an optional `parallel` feature.
-- `pyodine-py`: PyO3 + maturin, with numpy arrays at the boundary.
-- `pyodine-wasm`: wasm-bindgen for `wasm32-unknown-unknown`.
+- `i2spec-py`: PyO3 + maturin, with numpy arrays at the boundary.
+- `i2spec-wasm`: wasm-bindgen for `wasm32-unknown-unknown`.
 
 **When to start** [Analysis]
 - The web app needs only the **forward model and uncertainty propagation**, never the fitter.

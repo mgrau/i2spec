@@ -306,14 +306,14 @@ Consistency check: D₀(X) + splitting = 12 440.18 + 7602.977 = 20 043.157 cm⁻
 - **MHz-level data are concentrated at 526–667 nm.** This follows from where IodineSpec quotes < 3 MHz (Reiners 2024). Reiners also saw a ~2 m s⁻¹ (≈3.6 MHz at 550 nm, conversion) long-period residual plus an oscillation that follows the band structure.
 - **Newer near-IR data exist whose v-coverage is not mapped here:** 750–780 nm (JOSA B 2010), 915–985 nm (Nölleke 2018), 1053–1068 nm (2019), and 14 400–14 710 cm⁻¹ (Lefrán Torres 2022/2023, where IodineSpec5 reproduced the lines "very accurately").
 
-#### 4. Recommendation for pyodine
+#### 4. Recommendation for i2spec
 
 **Primary representation:** a damped MLR for both X and B, in one global DPF across all isotopologues.
 - u_LR comes from theory: for B, C₅, C₆, C₈ and possibly C₁₀. For X, u_LR might need to be a long-range matrix eigenvalue if several 0g⁺ curves share the asymptote.
 - Tie the two asymptotes: T_e(B) + D_e(B) = D_e(X) + 7602.977 cm⁻¹. Falke 2008 stress that a common-asymptote constraint like this matters.
 - Add Le Roy-type or Tiemann α(R)/U_ad(R) BO-breakdown functions.
 - Start from RKR or the Hannover potentials.
-- Constrain the inner wall with ab initio results (Brakmane 2026 approach) and with Tellinghuisen 2011, which pyodine will need for continuum cross sections.
+- Constrain the inner wall with ab initio results (Brakmane 2026 approach) and with Tellinghuisen 2011, which i2spec will need for continuum cross sections.
 
 **Secondary forms:**
 - The Tiemann ξ-form, to import the Hannover potentials and reproduce IodineSpec for validation.

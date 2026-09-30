@@ -4,7 +4,7 @@ i2spec is a Python package managed with [uv](https://docs.astral.sh/uv/). The fi
 creates the environment and installs the dependencies.
 
 ```sh
-git clone <repository> && cd pyodine
+git clone https://github.com/mgrau/i2spec.git && cd i2spec
 uv run i2spec tui          # terminal browser (also: uv run i2spec)
 uv run i2spec web          # line explorer and documentation at http://localhost:8777
 ```

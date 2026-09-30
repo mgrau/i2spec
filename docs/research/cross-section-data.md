@@ -183,7 +183,7 @@ Note that the Spietz instrument FWHM was measured on the same CCD, so it already
 2. **Spietz 0.25 nm, 546–575 nm, at N = 6.86 × 10¹⁵ cm⁻² and 1000 mbar N₂.** Compare:
    * the window-mean σ_app, an absolute test at ±4 %;
    * the differential band structure (band-head positions and contrast), which doesn't depend on the absolute scale;
-   * σ_app at the stated N against σ_app as N → 0, to measure how much saturation a pyodine simulation predicts at this resolution.
+   * σ_app at the stated N against σ_app as N → 0, to measure how much saturation an i2spec simulation predicts at this resolution.
 3. **Spietz 0.59 nm, 445–588 nm, at N = 1.42 × 10¹⁶ cm⁻².** Determine the wavelength shift against the model and report it (a λ-only nuisance parameter, expected at about −0.1 to −0.15 nm), then compare absolute σ_app at ±3 %. Treat values below ~485 nm with caution: in the σ(500) experiment, window deposit contributed 3 % at 485 nm and 20 % at 460 nm. The reference spectra are stated to be deposit-corrected.
 4. **Saiz-Lopez, 500–630 nm, at 4 cm⁻¹, N = 3.1 × 10¹⁶ cm⁻², 760 Torr air and 295 K.** This is the highest-resolution absolute data set. Show it both as published and rescaled by the fixed factor 2.186/2.293 = 0.953, which puts it on the Spietz σ(500). Neither version involves a fitted parameter. Expect band-correlated differences: Spietz found ratios of up to 10 % between their grating spectra and this FTS spectrum, with a jump near 560 nm that they attributed to resolution, step size, drift or deposit.
 5. **The red continuum and temperature dependence.** Use Saiz-Lopez at 630–750 nm and Tellinghuisen 2011 at 308 and 337 K (600–850 nm, with s.d.). These can only be compared semi-quantitatively until the Tellinghuisen cell conditions are known.

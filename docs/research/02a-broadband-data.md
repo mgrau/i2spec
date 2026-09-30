@@ -1,6 +1,6 @@
 # Stage 2a: Broadband, Doppler-limited and supporting data for I₂
 
-*pyodine research notes, compiled September 2026. Companion catalog: [`data/catalog/broadband.yaml`](../../data/catalog/broadband.yaml).*
+*i2spec research notes, compiled September 2026. Companion catalog: [`data/catalog/broadband.yaml`](../../data/catalog/broadband.yaml).*
 
 This document covers the non-sub-Doppler I₂ data a global B–X model needs:
 
@@ -112,7 +112,7 @@ Several of these papers are open access on HAL.
    - Nölleke et al. report "excellent agreement" with their reference list at 915–985 nm, whose accuracy they quote as 0.45 pm (≈150 MHz).
 4. **Test of the model rather than the atlas.** Reiners et al. 2024 (§1.6) tested the Knöckel model with a comb-calibrated FTS. Their residual pattern is the first external check at the MHz level across 515–630 nm.
 
-**Recommendation.** Any atlas line used in pyodine should carry a provenance flag for its correction (none, GL1979, or K2004), plus the K2004 odd-J″ shift.
+**Recommendation.** Any atlas line used in i2spec should carry a provenance flag for its correction (none, GL1979, or K2004), plus the K2004 odd-J″ shift.
 
 ### 1.3 The Salami & Ross (2005) digital atlas
 
@@ -125,7 +125,7 @@ Salami & Ross, *J. Mol. Spectrosc.* 233, 157 (2005) (`salami2005`), published a 
 
 The file does not record cell temperature, path length, pressure or calibration. According to the abstract as rendered by a search engine (the full text was not accessible here), the spectrum was taken at 0.02 cm⁻¹ instrumental resolution, is reliable to ±0.003 cm⁻¹, and has its wavenumber scale matched to other calibrated atlases.
 
-Its value for pyodine:
+Its value for i2spec:
 1. It is the only machine-readable broadband B–X absorption spectrum covering most of the GL range.
 2. With cell conditions from the paper, it is an end-to-end test of simulated transmission (positions, intensities, Doppler and instrumental widths).
 3. Profile fitting against a model could re-derive line positions at the ~10⁻³ cm⁻¹ level without digitizing the printed atlas.
@@ -190,7 +190,7 @@ Iodine vapour filters (filtered Rayleigh scattering, Doppler global velocimetry,
 - **Forkey, Lempert & Miles, Appl. Opt. 36, 6729 (1997)** (`forkey1997`). A line-by-line absorption model compared with measured cell profiles over the Nd:YAG-SHG tuning range.
 - **Earlier and applied filter work** (narrative only): Chan et al., Meas. Sci. Technol. 6, 784 (1995); Shibata et al., Jpn. J. Appl. Phys. 48, 032401 (2009).
 
-These are few in number but provide absolute absorption profiles at known temperature and pressure. That makes them useful end-to-end checks of pyodine intensities and line shapes at 532 nm. Metrology cell-purity studies (Hrabina et al.) are in §5.
+These are few in number but provide absolute absorption profiles at known temperature and pressure. That makes them useful end-to-end checks of i2spec intensities and line shapes at 532 nm. Metrology cell-purity studies (Hrabina et al.) are in §5.
 
 ### 1.9 What the forward-citation searches added
 
@@ -357,7 +357,7 @@ The method was double saturation spectroscopy, with a ¹²⁹I₂/¹²⁷I¹²�
   - The data set and potentials are in electronic supplementary material at epj.org (not downloaded, so whether it is machine-readable is unconfirmed).
   - Stated prediction accuracy is about 1.5 MHz within the observed range.
 
-These two papers are the obvious isotopologue backbone for pyodine's global fit. Forward citations (24 and 31) turned up no later dedicated ¹²⁹I₂/¹²⁷I¹²⁹I spectroscopy apart from the Kireev LIF-detection papers.
+These two papers are the obvious isotopologue backbone for i2spec's global fit. Forward citations (24 and 31) turned up no later dedicated ¹²⁹I₂/¹²⁷I¹²⁹I spectroscopy apart from the Kireev LIF-detection papers.
 
 ### Other isotopologue items (low priority)
 
@@ -416,7 +416,7 @@ This category covers everything that sets the **strength and width** of B–X ab
   - Tellinghuisen 2011 [tellinghuisen2011b] is now the precision benchmark within its R range.
 - **Ab initio:** Zaitsevskii et al. 2000 [zaitsevskii2000] computed B–X, A–X and 1ᵤ–X transition intensities. With the relativistic potential calculations of Teichteil & Pelissier 1994 [teichteil1994] and de Jong et al. 1997 [dejong1997], these are the only guides for extrapolating the TDM beyond the measured R range and for the A–X and 1ᵤ–X continua.
 - **Absolute single-line strengths:** Dubé & Trinczek 2004 [dube2004] measured integrated absorption of P(78)1–9, R(86)1–9 and R(113)3–10 near 718 nm. With literature FC factors this gives μₑ = 1.10(3) D at R-centroid 0.293 nm. It is the only modern absolute line-strength measurement on individual B–X lines found in this search. Suwaiyan et al. 1992 [suwaiyan1992] covers a 2 cm⁻¹ window near 588 nm.
-- **FC / intensity factors:** Zare 1964 [zare1964] and Tellinghuisen 1978 [tellinghuisen1978] are historical. pyodine will recompute these from its own potentials.
+- **FC / intensity factors:** Zare 1964 [zare1964] and Tellinghuisen 1978 [tellinghuisen1978] are historical. i2spec will recompute these from its own potentials.
 
 ### 4c. B-state lifetimes, predissociation and natural linewidths
 
@@ -621,7 +621,7 @@ This section combines the category-level gap notes above into one view. The ques
    - Martin et al. 1986: term-value tables.
    - Vigué et al. 1981 (open on HAL): predissociation rates.
    - Tellinghuisen 2011: supplementary data.
-6. **Candidate new measurements**, where pyodine could lead:
+6. **Candidate new measurements**, where i2spec could lead:
    - A comb-referenced FTS or dual-comb survey of a heated cell over 10 000–15 000 cm⁻¹.
    - Comb-referenced lines over 19 000–20 050 cm⁻¹ (v′ = 44–80).
    - An FTS spectrum of an enriched ¹²⁹I₂ cell.
