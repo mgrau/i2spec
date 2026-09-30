@@ -90,6 +90,78 @@ for (const want of ref.uncertainty) {
   check(`${want.label}: marked measured`, d.m.includes(k));
 }
 
+console.log("\nlaser harmonics");
+// 1064 nm doubled is 532 nm exactly in vacuum; 281.63 THz doubled is 563.26 THz
+close("2 × 1064 nm (vacuum)", P.fromWavenumber(P.harmonicWavenumber(1064, "nm", 2), "nm"), 532, 1e-15);
+close("2 × 281.63 THz", P.fromWavenumber(P.harmonicWavenumber(281.63, "THz", 2), "THz"), 563.26, 1e-15);
+close("3 × 1542 nm", P.harmonicWavenumber(1542, "nm", 3), 3e7 / 1542, 1e-15);
+close("4 × 9394 cm⁻¹", P.harmonicWavenumber(9394, "cm-1", 4), 37576, 1e-15);
+close("1 × 1319 nm", P.harmonicWavenumber(1319, "nm", 1), 1e7 / 1319, 1e-15);
+close("2 × 3e8 MHz", P.harmonicWavenumber(3e8, "MHz", 2), 6e8 / P.MHZ_PER_CM, 1e-15);
+// an air wavelength doubles through its frequency: the harmonic of 1064 nm air is not 532 nm air
+const airH = P.fromWavenumber(P.harmonicWavenumber(1064, "nm-air", 2), "nm-air");
+close("2 × 1064 nm air = vac(1064 air)/2 in vacuum", P.fromWavenumber(P.harmonicWavenumber(1064, "nm-air", 2), "nm"),
+  P.airToVac(1064) / 2, 1e-12);
+check("2 × 1064 nm air differs from 532 nm air by the dispersion", Math.abs(airH - 532) > 1e-3, `${airH.toFixed(6)} nm`);
+for (const n of [1, 2, 3, 4]) {
+  const nu = P.harmonicWavenumber(1111.6, "nm", n);
+  close(`fundamental of ${n} × 1111.6 nm`, P.fundamentalOf(nu, n, "nm"), 1111.6, 1e-14);
+}
+const [vlo, vhi] = P.harmonicView(1064.49, "nm", 2, 0.1);
+close("view around 2 × 1064.49 nm: short edge", 1e7 / vhi, 532.145, 1e-13);
+close("view around 2 × 1064.49 nm: long edge", 1e7 / vlo, 532.345, 1e-13);
+let threw = false;
+try { P.harmonicWavenumber(1064, "nm", 0); } catch { threw = true; }
+check("harmonic order 0 is refused", threw);
+
+console.log("\nsub-Doppler spectra, against i2spec.saturation");
+const sd = ref.sub_doppler;
+const comps = sd.components;
+for (const {options, list: want} of sd.resonances) {
+  const opts = {exponent: options.exponent, lambdaWeight: options.lambda_weight, threshold: options.threshold};
+  for (const k of Object.keys(opts)) if (opts[k] === undefined) delete opts[k];
+  const {list: got} = P.resonances(comps, sd.doppler_width, opts);
+  const name = `${sd.line} ${JSON.stringify(options)}`;
+  check(`${name}: ${want.length} resonances (${want.filter(r => r.kind === "crossover").length} crossovers)`,
+    got.length === want.length, `got ${got.length}`);
+  // match by the components each one comes from; the order of equal amplitudes is not significant
+  const key = r => r.components.join(",");
+  const byKey = new Map(got.map(r => [key(r), r]));
+  let worst = 0, same = true;
+  for (const w of want) {
+    const g = byKey.get(key(w));
+    if (!g || g.kind !== w.kind || g.sharing !== w.sharing || Math.abs(g.offset - w.offset) > 1e-9) { same = false; continue; }
+    worst = Math.max(worst, Math.abs(g.amplitude - w.amplitude) / w.amplitude);
+  }
+  check(`${name}: same offsets, kinds and shared levels`, same);
+  check(`${name}: amplitudes to 1e-9 relative`, worst < 1e-9, `worst ${worst.toExponential(1)}`);
+}
+const dipsOnly = P.resonances(comps.map(({offset, strength}) => ({offset, strength})), sd.doppler_width).list;
+check("without level labels: Lamb dips only", dipsOnly.every(r => r.kind === "dip") && dipsOnly.length > 0);
+for (const {fwhm, harmonic, modulation, x, y} of sd.lineshape) {
+  const peak = Math.max(...y.map(Math.abs));
+  let worst = 0;
+  x.forEach((xi, k) => { worst = Math.max(worst, Math.abs(P.lineshape(xi, fwhm, {harmonic, modulation}) - y[k]) / peak); });
+  check(`lineshape Γ = ${fwhm}, n = ${harmonic}, m = ${modulation}: to 1e-12 of its peak`, worst < 1e-12, `worst ${worst.toExponential(1)}`);
+}
+const found = P.resonances(comps, sd.doppler_width).list;
+for (const {fwhm, harmonic, modulation, nu, y} of sd.signal) {
+  const got = P.signal(nu, found, fwhm, {harmonic, modulation});
+  const peak = Math.max(...y.map(Math.abs));
+  let worst = 0, worstRel = 0;
+  y.forEach((v, k) => {
+    worst = Math.max(worst, Math.abs(got[k] - v) / peak);
+    if (Math.abs(v) > 1e-3 * peak) worstRel = Math.max(worstRel, Math.abs(got[k] - v) / Math.abs(v));
+  });
+  check(`signal Γ = ${fwhm}, n = ${harmonic}: to 1e-6 relative (above 1e-3 of the peak)`, worstRel < 1e-6,
+    `worst ${worstRel.toExponential(1)}; ${worst.toExponential(1)} of the peak anywhere`);
+  // the plot's version: the same curve on a pixel grid, from a coarser kernel
+  const x0 = -600, dx = 1200 / 2000, bins = P.addSignal(new Float64Array(2000), x0, dx, found, fwhm, {harmonic, modulation});
+  const at = Array.from(bins, (_, k) => x0 + (k + 0.5) * dx), exact = P.signal(at, found, fwhm, {harmonic, modulation});
+  const dev = Math.max(...Array.from(bins, (b, k) => Math.abs(b - exact[k]))) / Math.max(...Array.from(exact, Math.abs));
+  check(`plot signal Γ = ${fwhm}, n = ${harmonic}: within 1e-3 of the peak`, dev < 1e-3, `${dev.toExponential(1)}`);
+}
+
 console.log("\nexported data is self-consistent");
 for (const [iso, info] of Object.entries(manifest.isotopologues)) {
   const total = info.shards.reduce((a, s) => a + s.n, 0);

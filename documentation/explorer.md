@@ -33,6 +33,69 @@ for every line without the ΔJ = ±2 couplings of the hyperfine Hamiltonian; thi
 offsets by less than 1 MHz (0.9 MHz for R(56) 32–0), which is small compared with the Doppler width.
 The detail panel shows the full calculation, including these couplings, where it is available.
 
+## Sub-Doppler spectra
+
+The **sub-Doppler** button of the y-axis control draws the saturated-absorption spectrum that a
+pump–probe experiment records, using the same model as the Python package (`i2spec.saturation`,
+derived in `docs/research/sub-doppler.md`). It needs the hyperfine patterns, so it is drawn only when
+the view is narrower than 0.1 nm; a wider view shows the cross section with a note to zoom in.
+
+- Every hyperfine component gives a **Lamb dip** of amplitude proportional to S², the weak-saturation
+  (bilinear) limit, where S is the component strength at the cell temperature. Dips of different lines
+  in the view therefore compare as the squares of their strengths. The trace is relative: the largest
+  feature in the view is scaled to 1.
+- Each resonance is a Lorentzian of the **homogeneous width Γ** (default 2 MHz, as in the terminal
+  browser: transit-time and pressure broadening in a typical cell).
+- **Detection**: *signal* is the saturation signal itself; *1f* and *3f* are the in-phase first and
+  third harmonics under sinusoidal frequency modulation of the given peak-to-peak width (default 1 MHz).
+  The BIPM recommended frequencies are defined at the zero crossings of the 3f signal.
+- A resonance narrower than about three screen pixels is drawn at that width (the modulation widened in
+  proportion, so the shape is kept); the note in the plot gives the width drawn. Zoom in until it
+  equals Γ to see the true line shape.
+- **Crossovers are not drawn.** They occur only between components that share a level, and the main
+  (ΔF = ΔJ) components never do; every crossover involves a weak ΔF ≠ ΔJ component and lies 10⁻² to
+  10⁻³ below the dips. The exported patterns do not carry the level quantum numbers that would be
+  needed to find them. The Python package (`saturation.resonances`) and the terminal browser include
+  them.
+
+When a line is selected in sub-Doppler mode, the hyperfine plot in the detail panel shows its
+sub-Doppler spectrum in place of the Doppler-broadened profile. The browser implementation is tested
+against the Python model to 10⁻⁹ in the resonance amplitudes (including crossovers, from a full
+calculation with level labels) and to 10⁻⁶ in the line shape.
+
+## Laser wavelength and harmonics
+
+The **laser fundamental** field takes the wavelength or frequency of a laser (vacuum or air
+wavelength in nm, cm⁻¹, THz or MHz) and a harmonic order n = 1–4, for example 1064.49 nm and ×2 for a
+frequency-doubled Nd:YAG laser, 1542 nm and ×3 or ×4 for a telecom laser, or 1319, 1111 or 1156 nm
+and ×2. Enter (or **Go**) shows ±0.1 nm of vacuum wavelength around the harmonic (±0.04 nm in
+sub-Doppler mode). Harmonic generation multiplies the optical frequency by n, so an air wavelength is
+converted to vacuum at the fundamental before it is multiplied; the harmonic of 1064 nm in air is not
+532 nm in air.
+
+The harmonic is marked in the spectrum by a dotted line labelled *laser ×n*, and the status bar gives
+both values, for example `laser 2 × 281.630263 THz = 563.260526 THz (1064.4895 nm → 532.2447 nm vac)`.
+For the selected line the detail panel adds its fundamental-equivalent wavelength and frequency (÷ n)
+and its distance from the laser harmonic, both at the harmonic and at the fundamental: the tuning the
+fundamental needs to reach the line. Clearing the field removes the laser.
+
+## Export
+
+The **export CSV** buttons download:
+
+- **lines in view**: every line in the current view that the show toggles keep, not only the 500 listed
+  in the table, in the table's order. The columns are the label, isotopologue, vacuum and air
+  wavelength, wavenumber, frequency, line strength at the current temperature, E″, the 1σ position
+  uncertainty, the class (precision, atlas, model only) and the measuring sources. With a laser set,
+  the fundamental-equivalent wavelength and frequency and the distance from the laser harmonic are
+  added; below 0.1 nm, where they are loaded, the ΔJ = 0 hyperfine offsets and strengths of each line.
+- **hyperfine of selected**: the hyperfine components of the selected line as the detail panel shows
+  them, with offsets, absolute frequencies, wavelengths and relative strengths.
+
+Each file starts with comment lines (`#`) giving the model version, parameter set, git revision and
+export date of the data, the download time, isotopologue, temperature, view, laser, and a link that
+reopens the same view.
+
 ## Rendering
 
 Each line profile is averaged over the width of a screen pixel instead of being sampled at the pixel
@@ -61,6 +124,7 @@ differences from the model.
 | click on the spectrum | select the nearest line |
 | ↑ / ↓ | move through the table |
 | `/` | search for a line by its label, e.g. `R(56) 32-0` |
+| `L` | enter a laser fundamental |
 
 On a phone or narrow window the spectrum takes the upper half of the screen and the line table the
 lower half; the settings are in a panel opened with **Options**. On a touch screen, drag with one finger to
@@ -71,8 +135,12 @@ bottom that opens to the full detail when tapped. The vertical axis is labelled 
 round tick values and their power of ten given once above it.
 
 The address bar always contains the current range, isotopologue, temperature and selected line, so
-that a view can be shared as a link.
+that a view can be shared as a link. It also records the y axis (`y=trans` or `y=sub`), the
+sub-Doppler settings (`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz) and
+the laser (`laser`, its unit `lunit` and the harmonic `n`). A link with a laser but no range opens on
+the laser's harmonic.
 
 !!! note "Limitations"
-    The line explorer shows one isotopologue at a time and does not include sub-Doppler spectra or
-    the bound–free continuum. Both are available in the Python package and the terminal browser.
+    The line explorer shows one isotopologue at a time and does not include the bound–free continuum
+    or sub-Doppler crossover resonances. Both are available in the Python package and the terminal
+    browser.

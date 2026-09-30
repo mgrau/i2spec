@@ -42,9 +42,10 @@ def test_measurements_carry_every_row():
         assert intervals >= s["n_intervals"], s["id"]     # an interval to another line counts for both
     # the residual is the published value minus the model's, here minus zero
     r56 = measured["127I2"]["32-0R56"]
-    bipm = next(e for e in r56 if sources[e["s"]]["id"] == "bipm2012a")
-    a10 = next(f for f in bipm["f"] if f[0] == "a10")
-    assert a10[1] == a10[3] == 563260223.513
+    # bipm2012a's a10 defers to its sources (observations.load_all); Jones 2002's 532 nm row carries no correction
+    jones = next(e for e in r56 if sources[e["s"]]["id"] == "jones2002a")
+    a10 = next(f for f in jones["f"] if f[0] == "a10")
+    assert a10[1] == a10[3] == 563260223.5144
     assert any(r is not None for r in calls)             # components are asked for by rank
 
 

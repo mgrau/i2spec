@@ -33,6 +33,9 @@ const state = {
   refs: null,              // the measurement sources: index -> {short, citation, link, ...}
   kinds: new Set(["model", "atlas", "precision"]),   // which kinds of line the plot and table show
   show: "all",             // the same as a key: "all", or the kinds shown, e.g. "atlas,precision"
+  laser: null,             // {value, unit, n, nu}: a fundamental laser and the harmonic of it iodine sees
+  sub: {fwhm: P.SUB_DOPPLER_FWHM, harmonic: 0, modulation: 1.0},   // the sub-Doppler display
+  selectedComps: null,     // the hyperfine components the detail pane shows, for the CSV export
   busy: 0,
 };
 
@@ -335,6 +338,49 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs) {
   return {parts, sticks};
 }
 
+/** The key of a line in the full hyperfine patterns (hfs_<iso>.json). */
+const hfsKey = l => `${l.vu}-${l.vl}${l.branch}${l.J}`;
+
+/**
+ * A line's hyperfine components as {offset (MHz), strength (sums to 1)}: the full calculation when the
+ * detail pane has loaded it, else the ΔJ = 0 pattern of its shard, else the line alone. The export does not
+ * carry the (I, F) levels of the components, so physics.resonances() makes Lamb dips of them and no
+ * crossovers: crossovers need a weak ΔF ≠ ΔJ component, 10⁻² to 10⁻³ below the dips at weak saturation
+ * (docs/research/sub-doppler.md §2).
+ */
+function componentsOf(line) {
+  const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
+  if (full) return full.o.map((o, i) => ({offset: o, strength: full.s[i]}));
+  const h = hfsOf(line);
+  if (h) return h.o.map((o, i) => ({offset: o, strength: h.s[i] / 1000}));
+  return [{offset: 0, strength: 1}];
+}
+
+/**
+ * The saturated-absorption signal on the pixel grid (physics.resonances and physics.addSignal, the model of
+ * i2spec/saturation.py). Each line's components are weighted by its strength at T, so the dips of
+ * different lines compare as S² in the weak-saturation limit. A resonance narrower than about three
+ * pixels is drawn at three pixels (the modulation widened in proportion, keeping the shape) so that it
+ * shows at all; the note on the plot says so.
+ */
+function subDopplerBins(lines, lo, hi, nbins, T, iso) {
+  const {fwhm, harmonic, modulation} = state.sub;
+  const q = partitionAt(iso, T);
+  const dx = (hi - lo) * P.MHZ_PER_CM / nbins, x0 = lo * P.MHZ_PER_CM;
+  const drawn = Math.hypot(fwhm, 3 * dx), widen = drawn / fwhm;
+  const bins = new Float64Array(nbins);
+  let nDips = 0;
+  for (const line of lines) {
+    const S = strengthOf(line, q, T), f0 = line.nu * P.MHZ_PER_CM;
+    const comps = componentsOf(line).map(c => ({offset: c.offset, strength: S * c.strength}));
+    const {list, total} = P.resonances(comps, P.dopplerFWHM(line.nu, T, iso) * P.MHZ_PER_CM);
+    nDips += list.length;
+    P.addSignal(bins, x0, dx, list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude})), drawn,
+      {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total});
+  }
+  return {bins, harmonic, fwhm, fwhmDrawn: drawn, nDips};
+}
+
 /**
  * Per shard and filter: running totals of each kind of line, and the rows of the measured lines, so
  * the counts of any run of rows are two subtractions and its measured lines a slice.
@@ -500,12 +546,28 @@ function drawPlot() {
   const nb = Math.max(2, Math.round(pw * dpr));        // one bin per canvas pixel
   // one binned cross section per kind of line, stacked precision / atlas / model from the baseline
   const withHfs = hyperfineShown();
+  const subOn = state.mode === "sub" && withHfs;
   const {parts, sticks} = binned(lines, lo, hi, nb, T, iso, withHfs);
+  const sub = subOn ? subDopplerBins(lines, lo, hi, nb, T, iso) : null;
   const sigma = new Float64Array(nb);
   for (const p of parts) for (let k = 0; k < nb; k++) sigma[k] += p[k];
 
   let y, ylabel, ticks, top = 1;
-  if (state.mode === "trans") {
+  if (sub) {
+    // relative: the resonances of each line scale with its strength squared (the bilinear limit)
+    let peak = 0;
+    for (const v of sub.bins) peak = Math.max(peak, Math.abs(v));
+    peak = peak || 1;
+    if (sub.harmonic) {
+      y = Array.from(sub.bins, v => 0.5 + 0.5 * v / (peak * 1.08));
+      ticks = [[0.5 - 0.5 / 1.08, "−1"], [0.5, "0"], [0.5 + 0.5 / 1.08, "1"]];
+      ylabel = `${sub.harmonic}f signal (rel.)`;
+    } else {
+      y = Array.from(sub.bins, v => v / (peak * 1.08));
+      ticks = [0, 0.25, 0.5, 0.75, 1].map(v => [v / 1.08, v.toFixed(2)]);
+      ylabel = "sat. signal (rel.)";
+    }
+  } else if (state.mode === "trans") {
     const N = P.numberDensity(Number($("#cold").value) + 273.15, T) * Number($("#path").value);
     y = Array.from(sigma, s => Math.exp(-s * N));
     ylabel = "transmission";
@@ -559,7 +621,17 @@ function drawPlot() {
   g = gt;                      // from here to the marker strip: the trace layer
   const xAt = k => m.l + (k + 0.5) * pw / nb;
   const at = (arr, k) => arr[flip ? nb - 1 - k : k];
-  if (state.mode === "trans") {
+  if (sub) {
+    if (!sub.harmonic) {
+      g.beginPath(); g.moveTo(xAt(0), yPix(0));
+      for (let k = 0; k < nb; k++) g.lineTo(xAt(k), yPix(at(y, k)));
+      g.lineTo(xAt(nb - 1), yPix(0)); g.closePath();
+      g.fillStyle = ink("--trace-fill"); g.fill();
+    }
+    g.beginPath();
+    for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
+    g.strokeStyle = ink("--trace"); g.lineWidth = 1.4; g.lineJoin = "round"; g.stroke();
+  } else if (state.mode === "trans") {
     g.beginPath();
     for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
     g.strokeStyle = ink("--ink-2"); g.lineWidth = 1.6; g.lineJoin = "round"; g.stroke();
@@ -662,6 +734,37 @@ function drawPlot() {
       g.textBaseline = "alphabetic";
     }
   }
+  if (state.laser) {
+    // the harmonic of the laser: dashed, labelled at the foot of the plot so it clears the selected line's label
+    const x = xPix(state.laser.nu);
+    if (x >= m.l && x <= m.l + pw) {
+      g.strokeStyle = ink("--accent"); g.lineWidth = 1.5; g.setLineDash([2, 3]);
+      g.beginPath(); g.moveTo(x, m.t); g.lineTo(x, m.t + ph); g.stroke();
+      g.setLineDash([]);
+      const text = `laser ×${state.laser.n}`;
+      g.font = '500 11px "IBM Plex Mono", ui-monospace, monospace'; g.textBaseline = "bottom";
+      g.textAlign = x > m.l + pw - 80 ? "right" : "left";
+      const tx = x + (g.textAlign === "right" ? -4 : 4);
+      g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
+      g.strokeText(text, tx, m.t + ph - 4);
+      g.fillStyle = ink("--accent"); g.fillText(text, tx, m.t + ph - 4);
+      g.textBaseline = "alphabetic"; g.textAlign = "left";
+    }
+  }
+  if (state.mode === "sub") {
+    // what the sub-Doppler trace is, or why it is not drawn: inside the plot, with a halo; top left, or on a
+    // phone, where the tick labels are inside the plot at the left, top right
+    const note = !sub ? `sub-Doppler: zoom to below ${HFS_SPAN_NM} nm` :
+      `${sub.nDips} Lamb dips · Γ ${sub.fwhm} MHz` + (sub.fwhmDrawn > sub.fwhm * 1.05 ?
+        ` (drawn ${sub.fwhmDrawn < 10 ? sub.fwhmDrawn.toFixed(1) : sub.fwhmDrawn.toFixed(0)} MHz: zoom in)` : "");
+    g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = narrow ? "right" : "left"; g.textBaseline = "top";
+    const nx = narrow ? m.l + pw - 4 : m.l + 8;
+    g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
+    g.strokeText(note, nx, m.t + 6);
+    g.fillStyle = ink(sub ? "--ink-2" : "--warn"); g.fillText(note, nx, m.t + 6);
+    g.textAlign = "left";
+    g.textBaseline = "alphabetic";
+  }
   state.geom = {m, pw, ph, y, flip};
   keepFrame(canvas, {lo, hi, iso, m, pw, ph, W, H, dpr, flip, narrow});
 }
@@ -716,7 +819,7 @@ function renderTable() {
     return th;
   }));
 
-  const cmp = (a, b) => state.sort.dir * ((SORTERS[state.sort.key] || byLam)(a, b) || byLam(a, b));
+  const cmp = tableOrder();
   const pool = shownLines();
   let shown;
   if (state.sort.key === "nu") {
@@ -798,10 +901,19 @@ function renderTable() {
   setStatus(`${fmt(state.lines.length)} line${state.lines.length === 1 ? "" : "s"} in view: ` +
     `${fmt(counts.precision)} precision, ${fmt(counts.atlas)} atlas, ${fmt(counts.model)} model only` +
     (pool.length > 500 ? `; ${state.sort.key === "S" ? "strongest" : "first"} 500 listed` : "") +
-    ` · ${state.manifest.isotopologues[state.iso].label} · ${state.T} K`);
+    ` · ${state.manifest.isotopologues[state.iso].label} · ${state.T} K` + (state.laser ? " · " + laserText() : ""));
+}
+
+/** "laser 2 × 281.630500 THz = 563.261000 THz (1064.4900 nm → 532.2450 nm)": the fundamental and its harmonic. */
+function laserText() {
+  const {n, nu} = state.laser;
+  const thz = v => P.fromWavenumber(v, "THz").toFixed(6), nm = v => (1e7 / v).toFixed(4);
+  return `laser ${n} × ${thz(nu / n)} THz = ${thz(nu)} THz (${nm(nu / n)} nm → ${nm(nu)} nm vac)`;
 }
 
 const byWavelength = () => state.sort.key === "nu";
+/** The table's sort order, as a comparator (the CSV export uses it too). */
+const tableOrder = () => (a, b) => state.sort.dir * ((SORTERS[state.sort.key] || byLam)(a, b) || byLam(a, b));
 
 /**
  * Move the window along the spectrum from the table: towardLonger = +1 continues to longer wavelengths
@@ -877,6 +989,14 @@ function pushURL() {
   });
   if (state.selected) q.set("line", label(state.selected));
   if (state.show !== "all") q.set("show", state.show || "none");
+  if (state.mode !== "sigma") q.set("y", state.mode);
+  if (state.mode === "sub") {
+    if (state.sub.fwhm !== P.SUB_DOPPLER_FWHM) q.set("gamma", String(state.sub.fwhm));
+    if (state.sub.harmonic) { q.set("det", state.sub.harmonic + "f"); q.set("mod", String(state.sub.modulation)); }
+  }
+  if (state.laser) {
+    q.set("laser", String(state.laser.value)); q.set("lunit", state.laser.unit); q.set("n", String(state.laser.n));
+  }
   history.replaceState(null, "", "?" + q);
 }
 
@@ -894,12 +1014,23 @@ function drawHyperfine(canvas, comps, line) {
   const xOf = o => pad + (W - 2 * pad) * (o + span) / (2 * span);
   const smax = Math.max(...comps.s) || 1;
 
-  // the Doppler-broadened blend the components add up to, on the same axis
+  // the Doppler-broadened blend the components add up to, on the same axis, or in sub-Doppler mode the
+  // saturation signal of the same components
   const fwhm = P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM;
   const sigma = fwhm / 2.35482;
-  const prof = new Float64Array(W + 1);
-  let pmax = 0;
-  for (let px = 0; px <= W; px++) {
+  let prof = new Float64Array(W + 1);
+  let pmax = 0, subNote = null;
+  const sub = state.mode === "sub";
+  if (sub) {
+    const {fwhm: gamma, harmonic, modulation} = state.sub;
+    const dx = 2 * span / (W - 2 * pad), drawn = Math.hypot(gamma, 3 * dx);
+    const {list} = P.resonances(comps.o.map((o, i) => ({offset: o, strength: comps.s[i]})), fwhm);
+    P.addSignal(prof, -span - (pad + 0.5) * dx, dx, list, drawn,
+      {harmonic, modulation: harmonic ? modulation * drawn / gamma : 0});
+    for (const v of prof) pmax = Math.max(pmax, Math.abs(v));
+    subNote = `${harmonic ? harmonic + "f" : "sub-Doppler"} · Γ ${drawn > 1.05 * gamma ? "drawn " + drawn.toFixed(0) : gamma} MHz`;
+  }
+  for (let px = 0; px <= W && !sub; px++) {
     const o = -span + 2 * span * (px - pad) / (W - 2 * pad);
     let v = 0;
     for (let i = 0; i < comps.o.length; i++) {
@@ -909,9 +1040,11 @@ function drawHyperfine(canvas, comps, line) {
     prof[px] = v; pmax = Math.max(pmax, v);
   }
   if (pmax > 0) {
+    // a harmonic signal swings both ways: centred on the middle of the box
+    const mid = sub && state.sub.harmonic ? (base + top) / 2 : base, amp = mid === base ? base - top : (base - top) / 2;
     g.beginPath();
-    for (let px = 0; px <= W; px++) g.lineTo(px, base - (base - top) * prof[px] / pmax);
-    g.strokeStyle = ink("--ink-3"); g.lineWidth = 1.5; g.stroke();
+    for (let px = 0; px <= W; px++) g.lineTo(px, mid - amp * prof[px] / pmax);
+    g.strokeStyle = ink(sub ? "--trace" : "--ink-3"); g.lineWidth = sub ? 1.2 : 1.5; g.stroke();
   }
   for (let i = 0; i < comps.o.length; i++) {
     const x = xOf(comps.o[i]), h = (base - top) * comps.s[i] / smax;
@@ -925,11 +1058,21 @@ function drawHyperfine(canvas, comps, line) {
   g.fillStyle = ink("--ink-3"); g.font = '10px "IBM Plex Mono", ui-monospace, monospace';
   g.textAlign = "left"; g.fillText(`−${(span / 1000).toFixed(2)} GHz`, pad, H - 6);
   g.textAlign = "right"; g.fillText(`+${(span / 1000).toFixed(2)} GHz`, W - pad, H - 6);
-  g.textAlign = "center"; g.fillText(`Doppler FWHM ${fwhm.toFixed(0)} MHz`, W / 2, H - 6);
+  g.textAlign = "center"; g.fillText(subNote || `Doppler FWHM ${fwhm.toFixed(0)} MHz`, W / 2, H - 6);
+}
+
+/** The selected line seen from the laser: its fundamental equivalent, and how far the harmonic is from it. */
+function laserRows(line) {
+  const {n, nu} = state.laser, d = (line.nu - nu) * P.MHZ_PER_CM;
+  const signed = v => (v >= 0 ? "+" : "−") + fmt(Math.abs(v), Math.abs(v) < 100 ? 2 : 1);
+  return `<dt>÷ ${n}</dt><dd>${P.fundamentalOf(line.nu, n, "nm").toFixed(6)} nm · ${P.fundamentalOf(line.nu, n, "THz").toFixed(7)} THz</dd>
+    <dt>− laser</dt><dd>${signed(d)} MHz (${signed(d / n)} MHz at the fundamental)</dd>`;
 }
 
 async function select(line) {
   state.selected = line;
+  state.selectedComps = null;
+  $("#csvhfs").disabled = true;
   renderTable(); drawPlot(); pushURL();
   const {value, why, flags} = unc(line);
   const S = P.strengthAt(line, partitionAt(line.iso, state.T), state.T);
@@ -948,6 +1091,7 @@ async function select(line) {
       <dt>S</dt><dd>${S.toExponential(3)} cm at ${state.T} K</dd>
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
+      ${state.laser ? laserRows(line) : ""}
     </dl>
     <p class="note">${sentence(why)}</p>
     ${measurementsHTML(line)}
@@ -972,6 +1116,8 @@ async function select(line) {
       computes any line on demand.</p>`;
     return;
   }
+  state.selectedComps = {comps, approx};
+  $("#csvhfs").disabled = false;
   box.innerHTML = `<h3>Hyperfine structure</h3><canvas id="hfs"></canvas><div id="hfstable"></div>`;
   drawHyperfine($("#hfs"), comps, line);
   const main = comps.l.map((l, i) => [l, comps.o[i], comps.s[i]]).filter(r => r[0]);
@@ -1009,6 +1155,104 @@ function measurementsHTML(line) {
     its DOI; the <a href="docs/references.html">references</a> page lists them all. Frequencies are as published
     (atlas lines are hyperfine-free centres on the atlas's own scale; the Orsay scales are corrected by +23.85 ppb, part I, and +200.8 ppb, Partie IV);
     “obs − model” is against this model's centre or component, ${fmt(f0, 1)} MHz for the centre.</p>`;
+}
+
+// --- CSV export ------------------------------------------------------------------------------------
+
+const csvCell = v => {
+  const t = v === null || v === undefined ? "" : String(v);
+  return /[",\n\r]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t;
+};
+const csvRow = cells => cells.map(csvCell).join(",");
+
+/** Comment lines that say where a file came from: model, parameters, export, download date, T and view. */
+function csvHeader(what) {
+  const m = state.manifest, unit = $("#unit").value, d = P.DIGITS[unit];
+  const a = P.fromWavenumber(state.lo, unit), b = P.fromWavenumber(state.hi, unit);
+  const out = [
+    `# ${what}, from the i2spec line explorer`,
+    `# model: ${m.model.package} ${m.model.version}, parameters ${m.model.parameters}` +
+      `${m.model.git ? ", git " + m.model.git : ""}; data exported ${m.generated}`,
+    `# downloaded ${new Date().toISOString()}; isotopologue ${state.iso}; T = ${state.T} K; ` +
+      `view ${Math.min(a, b).toFixed(d)} to ${Math.max(a, b).toFixed(d)} ${unit}; shown: ${state.show || "none"}`,
+  ];
+  if (state.laser) out.push(`# ${laserText()}`);
+  out.push(`# link: ${location.href}`);
+  return out;
+}
+
+function download(name, lines) {
+  const blob = new Blob([lines.join("\n") + "\n"], {type: "text/csv;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+const fileStem = () => {
+  const unit = $("#unit").value, d = Math.max(0, P.DIGITS[unit] - 2);
+  const a = P.fromWavenumber(state.lo, unit), b = P.fromWavenumber(state.hi, unit);
+  return `i2spec_${state.iso}_${Math.min(a, b).toFixed(d)}-${Math.max(a, b).toFixed(d)}${unit.replace("-", "")}`;
+};
+
+/**
+ * Every line in view that the show toggles keep (not only the 500 the table lists), in the table's order.
+ * The ΔJ = 0 hyperfine offsets are added when their files are loaded, which they are below 0.1 nm.
+ */
+function exportLines() {
+  const pool = [...shownLines()].sort(tableOrder());
+  const q = partitionAt(state.iso, state.T), laser = state.laser;
+  const withHfs = pool.some(l => hfsOf(l));
+  const head = ["line", "isotopologue", "lambda_vac_nm", "lambda_air_nm", "wavenumber_cm-1", "frequency_MHz",
+    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "class", "measured_by"];
+  if (laser) head.push(`fundamental_lambda_vac_nm_div${laser.n}`, `fundamental_MHz_div${laser.n}`, "minus_laser_harmonic_MHz");
+  if (withHfs) head.push("hfs_offsets_MHz_dJ0", "hfs_strengths_permille_dJ0");
+  const rows = pool.map(l => {
+    const lam = 1e7 / l.nu;
+    const cells = [label(l), l.iso, lam.toFixed(7), P.vacToAir(lam).toFixed(7), l.nu.toFixed(6),
+      (l.nu * P.MHZ_PER_CM).toFixed(2), P.strengthAt(l, q, state.T).toExponential(4), l.el.toFixed(2), l.u,
+      KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : ""];
+    if (laser) cells.push(P.fundamentalOf(l.nu, laser.n, "nm").toFixed(7), (l.nu * P.MHZ_PER_CM / laser.n).toFixed(2),
+      ((l.nu - laser.nu) * P.MHZ_PER_CM).toFixed(2));
+    if (withHfs) {
+      const h = hfsOf(l);
+      cells.push(h ? h.o.join(" ") : "", h ? h.s.join(" ") : "");
+    }
+    return csvRow(cells);
+  });
+  download(fileStem() + ".csv", [
+    ...csvHeader(`${fmt(pool.length)} B-X lines`),
+    "# S is the line strength at the cell temperature; u is the model's 1-sigma position uncertainty;" +
+      " class is how the line is known (precision, atlas, model only)",
+    ...(withHfs ? ["# hfs_*: main hyperfine components without the J +- 2 couplings (offsets from the centre, MHz;" +
+      " strengths per mille), space separated"] : []),
+    csvRow(head), ...rows]);
+  setStatus(`saved ${fmt(pool.length)} line${pool.length === 1 ? "" : "s"} to ${fileStem()}.csv`);
+}
+
+/** The hyperfine components of the selected line, as the detail pane shows them. */
+function exportHyperfine() {
+  const line = state.selected, sc = state.selectedComps;
+  if (!line || !sc) return;
+  const {comps, approx} = sc, f0 = line.nu * P.MHZ_PER_CM;
+  const head = ["component", "offset_MHz", "frequency_MHz", "lambda_vac_nm", "wavenumber_cm-1", "relative_strength"];
+  if (state.laser) head.push(`fundamental_MHz_div${state.laser.n}`);
+  const rows = comps.o.map((o, i) => {
+    const f = f0 + o, nu = f / P.MHZ_PER_CM;
+    const cells = [comps.l[i] || "", o.toFixed(3), f.toFixed(3), (1e7 / nu).toFixed(8), nu.toFixed(7), comps.s[i]];
+    if (state.laser) cells.push((f / state.laser.n).toFixed(3));
+    return csvRow(cells);
+  });
+  const name = `i2spec_${line.iso}_${label(line).replace(/[()\s]+/g, "_").replace(/_+$/, "")}_hyperfine.csv`;
+  download(name, [
+    ...csvHeader(`hyperfine components of ${state.manifest.isotopologues[line.iso].label} ${label(line)}`),
+    `# centre (hyperfine-free, not itself observable): ${f0.toFixed(3)} MHz = ${line.nu.toFixed(7)} cm-1; ` +
+      (approx ? "computed without the J +- 2 couplings (offsets good to about 1 MHz)"
+              : "full calculation; components other than the main ones (ΔF = ΔJ) below 2% of the peak omitted"),
+    csvRow(head), ...rows]);
+  setStatus(`saved ${comps.o.length} components to ${name}`);
 }
 
 // --- driving it ----------------------------------------------------------------------------------
@@ -1230,12 +1474,23 @@ function wire() {
   buttons.push(all);
   $("#presets").replaceChildren(...buttons);
 
-  $$("#mode button").forEach(b => b.onclick = () => {
-    state.mode = b.dataset.mode;
-    $$("#mode button").forEach(o => o.setAttribute("aria-pressed", String(o === b)));
-    $$(".cellonly").forEach(el => el.hidden = state.mode !== "trans");
-    drawPlot();
-  });
+  $$("#mode button").forEach(b => b.onclick = () => setMode(b.dataset.mode));
+  const readSub = () => {
+    const g = Number($("#gamma").value), m = Number($("#mod").value);
+    if (g > 0) state.sub.fwhm = g;
+    if (m > 0) state.sub.modulation = m;
+    state.sub.harmonic = Number($("#det").value);
+    $$(".modonly").forEach(el => el.hidden = state.mode !== "sub" || !state.sub.harmonic);
+    redrawAll(); pushURL();
+  };
+  for (const id of ["#gamma", "#mod"]) $(id).oninput = readSub;
+  $("#det").onchange = readSub;
+
+  $("#laser").addEventListener("keydown", e => { if (e.key === "Enter") { applyLaser(); closeOptions(); } });
+  $("#lasergo").onclick = () => { applyLaser(); closeOptions(); };
+  for (const id of ["#lunit", "#harm"]) $(id).onchange = () => { if ($("#laser").value.trim()) applyLaser(); };
+  $("#csv").onclick = exportLines;
+  $("#csvhfs").onclick = exportHyperfine;
 
   $("#theme").onclick = () => {
     const dark = matchMedia("(prefers-color-scheme: dark)").matches;
@@ -1408,6 +1663,7 @@ function wire() {
   addEventListener("keydown", e => {
     if (e.target.matches("input, select")) return;
     if (e.key === "/") { e.preventDefault(); $("#find").focus(); }
+    if (e.key === "l" || e.key === "L") { e.preventDefault(); $("#laser").focus(); $("#laser").select(); }
     if ((e.key === "ArrowDown" || e.key === "ArrowUp") && state.shown && state.shown.length) {
       // not already inside the table: jump into it rather than scrolling the page
       e.preventDefault();
@@ -1427,6 +1683,53 @@ function wire() {
   let pending;
   addEventListener("resize", () => { clearTimeout(pending); pending = setTimeout(redrawAll, 80); });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redrawAll);
+}
+
+/** The y axis: "sigma" (cross section), "trans" (cell transmission) or "sub" (sub-Doppler). */
+function setMode(mode) {
+  state.mode = ["sigma", "trans", "sub"].includes(mode) ? mode : "sigma";
+  $$("#mode button").forEach(o => o.setAttribute("aria-pressed", String(o.dataset.mode === state.mode)));
+  $$(".cellonly").forEach(el => el.hidden = state.mode !== "trans");
+  $$(".subonly").forEach(el => el.hidden = state.mode !== "sub");
+  $$(".modonly").forEach(el => el.hidden = state.mode !== "sub" || !state.sub.harmonic);
+  // sub-Doppler needs the hyperfine patterns, which a wider view has not loaded
+  if (!(state.manifest && state.hi > state.lo)) return;      // before the first view: show() draws it
+  if (state.mode === "sub" && hyperfineShown()) loadHfs(state.iso, state.lo, state.hi).then(redrawAll);
+  else redrawAll();
+  pushURL();
+}
+
+/** ±0.1 nm around a laser's harmonic; ±0.04 nm in sub-Doppler mode, which needs a view below 0.1 nm. */
+const laserHalfSpan = () => state.mode === "sub" ? 0.4 * HFS_SPAN_NM : HFS_SPAN_NM;
+
+/**
+ * The laser fields: a fundamental in its own unit and a harmonic order. Jumps to ±0.1 nm around the
+ * harmonic unless told not to (a shared link keeps its own view), and marks it on the plot. An empty
+ * field forgets the laser.
+ */
+async function applyLaser({jump = true} = {}) {
+  const text = $("#laser").value.trim();
+  if (!text) {
+    state.laser = null;
+    redrawAll(); renderTable(); pushURL();
+    if (state.selected) select(state.selected);
+    return;
+  }
+  const value = Number(text), unit = $("#lunit").value, n = Number($("#harm").value);
+  if (!Number.isFinite(value) || value <= 0) { setStatus(`"${text}" is not a number; give the fundamental in ${unit}`); return; }
+  const nu = P.harmonicWavenumber(value, unit, n);
+  state.laser = {value, unit, n, nu};
+  const info = state.manifest.isotopologues[$("#iso").value];
+  if (nu < info.nu_min || nu > info.nu_max) {
+    renderTable(); drawPlot(); pushURL();
+    setStatus(`${laserText()}: outside the exported range, ${(1e7 / info.nu_max).toFixed(1)}–${(1e7 / info.nu_min).toFixed(1)} nm`);
+    return;
+  }
+  if (jump) {
+    const [lo, hi] = P.harmonicView(value, unit, n, laserHalfSpan());
+    await show(lo, hi);
+  } else { renderTable(); drawPlot(); pushURL(); }
+  if (state.selected) select(state.selected);           // the detail pane shows the line from the laser
 }
 
 function redrawAll() {
@@ -1471,10 +1774,26 @@ async function start() {
     $$("#show button").forEach(o => o.setAttribute("aria-pressed", String(state.kinds.has(o.dataset.kind))));
   }
   if (Number(q.get("T")) >= 200 && Number(q.get("T")) <= 600) $("#temp").value = q.get("T");
+  // sub-Doppler settings and the y axis
+  if (Number(q.get("gamma")) > 0) { state.sub.fwhm = Number(q.get("gamma")); $("#gamma").value = q.get("gamma"); }
+  if (/^[13]f$/.test(q.get("det") || "")) { state.sub.harmonic = Number(q.get("det")[0]); $("#det").value = String(state.sub.harmonic); }
+  if (Number(q.get("mod")) > 0) { state.sub.modulation = Number(q.get("mod")); $("#mod").value = q.get("mod"); }
+  if (q.get("y")) setMode(q.get("y"));
+  // a laser: its fields, and its marker; the view is the link's own when it has one
+  const laser = Number(q.get("laser"));
+  if (laser > 0) {
+    $("#laser").value = q.get("laser");
+    if (P.UNITS.includes(q.get("lunit"))) $("#lunit").value = q.get("lunit");
+    if (["1", "2", "3", "4"].includes(q.get("n"))) $("#harm").value = q.get("n");
+    const n = Number($("#harm").value);
+    state.laser = {value: laser, unit: $("#lunit").value, n, nu: P.harmonicWavenumber(laser, $("#lunit").value, n)};
+  }
   const from = Number(q.get("from")), to = Number(q.get("to"));
   if (Number.isFinite(from) && Number.isFinite(to) && from !== to) {
     const a = P.toWavenumber(from, $("#unit").value), b = P.toWavenumber(to, $("#unit").value);
     await show(Math.min(a, b), Math.max(a, b));
+  } else if (state.laser) {
+    await show(...P.harmonicView(state.laser.value, state.laser.unit, state.laser.n, laserHalfSpan()));
   } else {
     $("#unit").value = q.get("unit") || "nm";
     await show(18787.8, 18789.0);
