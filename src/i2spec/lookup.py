@@ -261,8 +261,10 @@ def uncertainty(line: Line):
         if line.v_lower <= 89:
             return 400.0, ("the extended X potential (mlr_x_2026e) fitted to Martin et al. 1986 at v″ = 76-89, "
                            "174 MHz rms; near the X limit, where the levels crowd")
-        return 5000.0, ("v″ > 89: the extended X potential is extrapolated beyond the last fitted Martin level; "
-                        "a fit reaching v″ = 108 diverged (docs/research/x-levels-martin1986.md)")
+        return 2.1e6, ("v″ > 89: not physical. The extended X potential is fitted to v″ = 89 and dips up to "
+                       "170 cm⁻¹ below its dispersion limit at 7-9 Å; its levels above sit 70 cm⁻¹ rms from Martin "
+                       "et al. 1986, and fits that follow those cost the measured levels below "
+                       "(docs/research/x-levels-martin1986.md)")
     if line.v_upper > 50:
         return 1000.0, ("v′ > 50 outside the J the Orsay atlas Partie IV measured, or v′ = 80-86, which it did not reach: "
                         "the refitted B potential (mlr_b_2026d) alone sits 150-350 MHz from the atlas levels, and the "

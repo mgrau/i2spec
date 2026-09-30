@@ -26,9 +26,28 @@ comb-referenced levels) held to 0(2) mK. Martin's levels enter in stages, v″ �
 | v″ ≤ 89 | 0.42 | 13.3 | 28.0 | 60 | 55 | 73 | 174 | −102 |
 
 (rms, MHz.) The v″ ≤ 89 stage is `mlr_x_2026e`. The v″ ≤ 108 stage diverged: the last levels, within a few
-cm⁻¹ of the asymptote and at J ≤ 20, pulled the whole curve GHz away. Beyond v″ = 89 the potential is an
-extrapolation; the emission and atlas levels, which lose some accuracy in the refit, are restored by their
-level corrections.
+cm⁻¹ of the asymptote and at J ≤ 20, pulled the whole curve GHz away. The emission and atlas levels, which
+lose some accuracy in the refit, are restored by their level corrections.
+
+**Beyond v″ = 89 `mlr_x_2026e` is not physical.** It dips up to 170 cm⁻¹ below its own dispersion limit
+𝔇ₑ − u(R) at 7–9 Å, which gives it 137 bound J = 0 levels in a 120 Å box, 15 more than the 2008 curve,
+and its levels v″ = 91–108 sit 70 cm⁻¹ rms from Martin's. Three ways of adding those levels were tried
+(`--from=89`, 2026-09-30), each continuing from the v″ ≤ 89 stage:
+
+| run | anchor | atlas | emission | 26–47 | 49–60 | 61–75 | 76–89 | 91–108 | offset |
+|---|---|---|---|---|---|---|---|---|---|
+| v″ ≤ 89 (`mlr_x_2026e`) | 0.42 | 13.3 | 28 | 60 | 55 | 73 | 174 | 2.1×10⁶ | −102 |
+| 91–108 at σ = 1 cm⁻¹ (`--soft=1.0`) | 2.85 | 35.7 | 84 | 110 | 95 | 121 | 353 | 34 531 | −215 |
+| then at Martin's σ, 18 β | 3.65 | 59.7 | 190 | 125 | 155 | 272 | 763 | 3 449 | −245 |
+| then 22 β | 9.42 | 83.8 | 103 | 251 | 333 | 278 | 611 | 1 540 | −529 |
+| soft, then σ ≥ 0.05 cm⁻¹ above 89 (`--high=0.05`) | 5.36 | 57.0 | 101 | 168 | 190 | 159 | 426 | 5 584 | −342 |
+
+(rms, MHz.) Every curve that follows the last levels gives up 2–10× on the measured ones below, and drives the
+origin offset 3–9σ from its 0(2) mK prior: a single-channel curve cannot hold both. Martin *et al.* 1983 place
+the X–a′–a interactions that perturb the last X levels near 5 Å. `mlr_x_2026e` is kept, and the lookup
+flags v″ > 89 as not physical (2.1 THz). No B–X line is affected: the highest B level (20 043 cm⁻¹) minus
+X v″ = 90 (≈ 12 390 cm⁻¹) is below 7 700 cm⁻¹, and the line list starts at 9 361 cm⁻¹. The partition
+function is not affected either: those levels lie above 12 300 cm⁻¹.
 
 ## Isotopologues
 

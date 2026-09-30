@@ -40,7 +40,9 @@ class BarePredictor(Predictor):
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "i2spec2026a"          # bare potentials + the V_ad constant; never the default, which may carry corrections
-SIGMA_PRECISE = 0.3           # MHz: lines that may create a correction
+SIGMA_PRECISE = 0.3           # MHz: lines that may create a correction (stated uncertainty)
+SIGMA_ALLOWED = 0.5           # MHz: ... and with any pressure allowance added (hot cells with unmeasured shifts
+                              # of the size of the whole budget, cornish2000a and fan2014a, weigh in but create none)
 SIGMA_PERTURBED = 5.0         # above v' = 50 (the 1g region, GHz errors) any line measured to this creates one
 V_PERTURBED = 50
 X_MIN_V = 11                  # X corrections only from here up (below, the potentials are the reference)
@@ -70,10 +72,14 @@ def main(argv):
     else:
         pred = BarePredictor(base)
     v_max_b, v_max_x = (62, 54) if "--extended" in opts else (V_MAX_B, V_MAX_X)
-    rows = []                 # (set, line, residual MHz, sigma_eff MHz, {level: (state, v, J)} with signs)
-    for ds in load_all():
+    rows = []                 # (set, line, residual MHz, sigma_eff MHz, stated sigma MHz, {level: (state, v, J)})
+    # whether a line may create a correction goes by its stated uncertainty: an allowance for an unmeasured
+    # pressure shift (observations.shift_correction) widens its weight, not its claim to precision
+    sig_full = []             # the uncertainty with any allowance, for the discrepancy term
+    for ds, raw in zip(load_all(), load_all(raw=True)):
+        assert ds.id == raw.id and len(ds) == len(raw), ds.id
         scale = MHZ_PER_CM if ds.unit == "cm-1" else 1.0
-        for o in ds.observations:
+        for o, o_raw in zip(ds.observations, raw.observations):
             ref = o.ref_line or o.line
             if o.line.isotopologue != "127I2" or ref.isotopologue != "127I2":
                 continue
@@ -89,11 +95,12 @@ def main(argv):
                 Ju = line.J_lower + (1 if line.branch == "R" else -1)
                 levels[("B", line.v_upper, Ju)] += sign
                 levels[("X", line.v_lower, line.J_lower)] -= sign
-            rows.append((ds.id, o.line, r, np.hypot(o.uncertainty * scale, floor), o.uncertainty * scale, dict(levels)))
+            rows.append((ds.id, o.line, r, np.hypot(o.uncertainty * scale, floor), o_raw.uncertainty * scale, dict(levels)))
+            sig_full.append(o.uncertainty * scale)
     # which levels get parameters, and of what degree
     precise = defaultdict(list)
-    for _, line, _, _, sig, levels in rows:
-        if sig <= SIGMA_PRECISE or (sig <= SIGMA_PERTURBED and line.v_upper > V_PERTURBED):
+    for (_, line, _, _, sig, levels), sf in zip(rows, sig_full):
+        if (sig <= SIGMA_PRECISE and sf <= SIGMA_ALLOWED) or (sig <= SIGMA_PERTURBED and line.v_upper > V_PERTURBED):
             for (st, v, J), s in levels.items():
                 if s != 0 and ((st == "X" and v >= X_MIN_V) or (st == "B" and v >= 1)):
                     precise[(st, v)].append(J)
@@ -145,6 +152,9 @@ def main(argv):
     for ln in set(lines_[used]):
         m = lines_ == ln
         loo[m] = r[m] - A[m] @ fit(~m)
+    worst = np.argsort(-np.abs(np.where(used, loo, 0)))[:5]
+    print("largest held-out residuals (MHz):", "; ".join(f"{sets[i]} {lines_[i]} {loo[i]:+.2f} (in-sample "
+          f"{r[i] - A[i] @ c_all:+.2f})" for i in worst))
     print(f"\n{'set':16s} {'rows':>4s} {'before':>7s} {'in-sample':>9s} {'leave-one-line-out rms / median':>32s}")
     for s_ in sorted(set(sets)):
         m = (sets == s_) & used
@@ -162,7 +172,7 @@ def main(argv):
         return all((k0 != "X" or k1 <= V_MAX_X) if st == "B" else (k0 != "B" or k1 <= V_MAX_B) for (k0, k1, _), s_ in lv.items() if s_ != 0)
     for (st, v), d in sorted(deg.items()):
         touch = np.array([any(k == (st, v) for (k0, k1, _), s in lv.items() for k in [(k0, k1)] if s != 0) and partner_ok(lv, st) for *_, lv in rows]) \
-            & (sig <= (SIGMA_PERTURBED if (st == "B" and v > V_PERTURBED) else SIGMA_PRECISE))
+            & ((sig <= SIGMA_PERTURBED) if (st == "B" and v > V_PERTURBED) else ((sig <= SIGMA_PRECISE) & (np.asarray(sig_full) <= SIGMA_ALLOWED)))
         Js = precise[(st, v)]
         n_lines = int(len(set(lines_[touch])))
         ids = [idx[(st, v, k)] for k in range(d + 1)]
@@ -173,7 +183,7 @@ def main(argv):
             pv = np.array([sum(sg * (J * (J + 1) / 1e4) ** k * (J * (J + 1) / 1e4) ** l * cov_v[k, l]
                                for (k0, k1, J), sg in lv.items() if (k0, k1) == (st, v) for k in range(d + 1) for l in range(d + 1))
                            for *_, lv in (rows[i] for i in np.flatnonzero(touch))])
-            md = float(np.sqrt(max(rms(loo[touch]) ** 2 - np.mean(sig[touch] ** 2 + np.abs(pv)), 0.0)))
+            md = float(np.sqrt(max(rms(loo[touch]) ** 2 - np.mean(np.asarray(sig_full)[touch] ** 2 + np.abs(pv)), 0.0)))
         else:
             md = None
         per_level[(st, v)] = dict(covariance=cov_v.tolist(), discrepancy=md,

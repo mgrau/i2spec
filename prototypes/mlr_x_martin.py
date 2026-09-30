@@ -166,6 +166,10 @@ def main(argv):
     opts = {a.split("=")[0]: a.split("=", 1)[1] for a in argv if "=" in a}
     n = int(opts.get("--nbeta", len(START["beta"])))
     tg, e00 = targets(n)
+    if "--high" in opts:        # cm-1: sigma floor above v'' = 89, where the X-a'-a interactions near 5 A perturb
+        for t in tg:            # the last levels and a single-channel potential cannot follow Martin's precision
+            if t["kind"] == "martin" and t["v"] > 89:
+                t["s"] = max(t["s"], float(opts["--high"]))
     f = Fit(n, tg)
     kind = np.array([t["kind"] for t in tg])
     v_of = np.array([t["v"] for t in tg])
@@ -186,7 +190,26 @@ def main(argv):
     x0 = x_start(n)
     report(x0, "start (2026d)")
     x = x0
-    for vmax in STAGES:
+    stages = STAGES
+    if "--from" in opts:        # continue from a saved stage, e.g. --from=89 --stages=92,95,98,101,104,108
+        saved = json.load(open(OUT / f"mlr_x_martin_stage{opts['--from']}.json"))
+        x = np.array(saved["x"])
+        if saved["n"] < n:          # more beta: the new ones start at zero
+            x = np.r_[x[:saved["n"]], np.zeros(n - saved["n"]), x[saved["n"]:]]
+        stages = tuple(int(v) for v in opts["--stages"].split(","))
+    soft = float(opts.get("--soft", 0))      # cm-1: first pass with the levels above v'' = 89 at this sigma
+    if soft:
+        hi = [k for k, t in enumerate(tg) if t["kind"] == "martin" and t["v"] > 89]
+        keep = [tg[k]["s"] for k in hi]
+        for k in hi:
+            tg[k]["s"] = soft
+        f.mask = np.ones(len(tg), bool)
+        x = f.run(x)
+        report(x, f"soft {soft} cm-1")
+        for k, s0 in zip(hi, keep):
+            tg[k]["s"] = s0
+        json.dump(dict(n=n, x=list(map(float, x)), stage="soft"), open(OUT / "mlr_x_martin_stage_soft.json", "w"))
+    for vmax in stages:
         f.mask = (kind != "martin") | (v_of <= vmax)
         x = f.run(x)
         report(x, f"stage v''<={vmax}")

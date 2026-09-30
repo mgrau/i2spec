@@ -290,8 +290,9 @@ the data (`docs/research/x-levels-martin1986.md`, `docs/design/observations.md`)
 - **`mlr_x_2026e`**, the X MLR refitted with 18 β to the level constants of Martin *et al.* 1986 at
   v″ = 26–89 (`prototypes/mlr_x_martin.py`, stage v″ ≤ 89), with the atlas levels v″ = 18–25, the emission
   levels and its own v″ ≤ 17 levels: Martin rms 60 MHz (v″ = 26–47), 55 (49–60), 73 (61–75), 174 (76–89),
-  where `mlr_x_2026d` was off by up to 70 cm⁻¹. Adding v″ = 91–108 diverged; beyond v″ = 89 the potential
-  is an extrapolation. X grids reach v″ = 115 (40 Å, graded).
+  where `mlr_x_2026d` was off by up to 70 cm⁻¹. Adding v″ = 91–108 diverged or cost the measured levels 2–10×; beyond v″ = 89 the potential
+  is not physical (it dips below its dispersion limit at 7–9 Å) and is flagged so; no B–X line reaches those
+  levels (docs/research/x-levels-martin1986.md). X grids reach v″ = 115 (40 Å, graded).
 - **`level_corrections_2026k`**: the comb-based corrections refitted on the bare 2026l potentials with the
   64 data sets in use — 29 more than in 2026j, absolute frequencies at zero pressure, power and modulation
   (`[shift_correction]`), the BIPM compilations giving way to their sources (`defer_to`); 1 128 rows, 876
@@ -325,3 +326,28 @@ Yang's more numerous rows; `bodermann1998c`'s rms is one line, P(166) 0-14 a1, a
 refit, `i2spec2026k` predicted the 76 absolute frequencies of the 17 new sets it had never seen with an rms
 normalised residual of 0.76 against its own quoted uncertainty (79 % within 1σ, 97 % within 2σ, all within
 3σ): the uncertainty model held.
+
+## i2spec2026m
+
+`i2spec2026l` with `level_corrections_2026l`: the same potentials, and the comb-based corrections refitted
+with one change to which lines may create a correction (`prototypes/level_corrections_fit.py`). A line had
+to be measured to σ ≤ 0.3 MHz, and since 2026l that σ included the allowance for an unmeasured pressure
+shift (`[shift_correction] allowance_kHz`). `reinhardt2007a`'s three comb lines (0.30 MHz, plus 0.27 MHz for
+53 Pa) then fell out: X v″ = 11 lost its correction and B v′ = 1 its low J, and the lines sat at +1.06,
+−0.91 and −0.62 MHz. Now a line creates a correction if its stated σ ≤ 0.3 MHz and σ with the allowance
+≤ 0.5 MHz. The allowance still sets its weight. The second condition keeps out the hot-cell lines of
+`cornish2000a` and `fan2014a` (allowances 0.64 and 0.86 MHz), which sit 4–5 MHz off; letting them in
+created B v′ = 5 and spread their error to its other lines.
+
+| | 2026l | 2026m |
+|---|---|---|
+| `reinhardt2007a`, in sample / held out (MHz) | 0.88 / 1.90 | 0.35 / 0.65 |
+| `bodermann2000a` | 0.21 / 0.59 | 0.16 / 0.48 |
+| `bodermann1998c`, held out rms / median | 1.38 / 0.39 | 8.66 / 0.32 |
+| all corrected rows, held-out median | 0.62 | 0.61 |
+
+`bodermann1998c`'s held-out rms is one line, R(180) 0-16, the top J of X v″ = 16, which is extrapolated
+by 44 MHz when left out. B v′ = 2 is now set by R(114) 2-11 as well as R(117) 2-15, and so ties X v″ = 11,
+15 and 16 together. The held-out figures of X v″ = 15 and 16 rise to 10 and 14 MHz, so the quoted
+uncertainty of lines from v′ ≥ 1 to those levels is conservative. Lines from v′ = 0 take the band
+correction. The band and Partie IV sections were refitted on top, as for 2026l (offset +119.6 MHz).

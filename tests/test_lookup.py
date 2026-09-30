@@ -193,7 +193,7 @@ def test_high_v_lower_is_flagged_as_unreliable():
     # the extended-range X above v'' = 17 (i2spec2026l): 300 MHz outside the Orsay atlas J at v'' = 18-25, the
     # Martin-fitted potential at v'' = 26-89, 20 MHz at v'' = 48-54 where emission lines were measured, 5 GHz beyond
     # (upper level B v' = 29, which no line corrects, so the lower level's rule decides)
-    for v_lower, expect in ((18, 300.0), (28, 150.0), (47, 150.0), (48, 20.0), (54, 20.0), (60, 150.0), (80, 400.0), (95, 5000.0)):
+    for v_lower, expect in ((18, 300.0), (28, 150.0), (47, 150.0), (48, 20.0), (54, 20.0), (60, 150.0), (80, 400.0), (95, 2.1e6)):
         bad = line(29, v_lower, 10188.0)
         value, why = uncertainty(bad)
         assert value == expect, (v_lower, value)

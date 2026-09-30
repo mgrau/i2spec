@@ -14,7 +14,7 @@ line are determined (Table 1).
 | B v′ = 44–50 | 15 MHz | comparison with Matsunaga (2024) and Yoshiki (2023) |
 | X v″ = 26–75 | 150 MHz | the X potential fitted to the level constants of Martin *et al.* (1986), 55–73 MHz rms |
 | X v″ = 76–89 | 400 MHz | the same, 174 MHz rms |
-| X v″ > 89 | 5 GHz | extrapolation of the X potential |
+| X v″ > 89 | 2.1 THz | not physical: the X potential is fitted to v″ = 89 only (no B–X line in the list reaches these levels) |
 | B v′ = 51–79 within the J range of the Orsay atlas Partie IV | 20–250 MHz | held-out rms of each level |
 | B v′ > 50 otherwise | 1 GHz | the refitted B potential alone, 150–350 MHz from the atlas levels, extrapolated |
 
