@@ -150,3 +150,13 @@ citation of the spectrum it came from, which must accompany any use of them.
 - **Contents:** 17 March 1993, volume `FTS33`, `930317R0.001`–`.013`: iodine cells of the Lick (backup), McDonald #1/#2, Keck (50, 60 and 70 °C), ESO (50 and 70 °C) and 1A–4A radial-velocity programmes, plus one bromine cell. Every file covers 14 952–20 552 cm⁻¹ (5 000–6 300 Å), with a DZE lamp as source. Also `930505R0.015` (Xe lamp, empty cell + I₂ cell, 3 550–6 500 Å).
 - **How found:** by reading the FITS headers of every full-resolution file in volumes FTS32–FTS35 (September 1992 – July 1994). The archive has no text index, and the query tool its README describes is gone. The server refused further requests (HTTP 403) after about 1 500 header reads. Retrieval continued more slowly (one file a minute, one header every 4 s, a 30-minute pause after any refusal), and headers of the other volumes are being read the same way.
 - **Terms:** NSO/NOAO archive data; public, licence not stated.
+
+## `rodriguez_fernandez_marcassa/`
+
+- **Source:** the transmission spectra behind D. Rodríguez Fernández *et al.*, "High resolution laser spectroscopy of iodine molecule in the 14 400–14 600 cm⁻¹ range", *J. Mol. Spectrosc.* (2023), doi:10.1016/j.jms.2023.111789, and M. A. Lefrán Torres *et al.*, "… in the 14 600–14 710 cm⁻¹ range", *J. Mol. Spectrosc.* **387**, 111668 (2022), doi:10.1016/j.jms.2022.111668. Sent by D. Rodríguez Fernández on request, 2026-09-30.
+- **Files:**
+  - `Iodine spectrum 14400-14600 cm-1.txt`: 332 350 points, 14 399.859–14 600.163 cm⁻¹, about 0.0006 cm⁻¹ (18 MHz) steps. The frequency axis is not monotonic in places, so it is several scans joined. Sort before use.
+  - `Iodine spectrum 14600-14710 cm-1.txt`: 141 317 points, 14 600.000–14 710.211 cm⁻¹, 0.0007 cm⁻¹ steps.
+  - Both have two header lines ("Frequency / Transmission", "cm^-1 / arb. units"), a blank line, CRLF line endings, and transmission 0.46–1.03.
+- **First comparison (2026-09-30, i2spec2026m):** a parabola at the transmission minimum of each of the 379 strongest isolated lines lies **+131 MHz** above the model's hyperfine-free centre (median; robust spread 65 MHz): +148, +113 and +138 MHz at 14 400–14 500, 14 500–14 600 and 14 600–14 710 cm⁻¹. The model is known to about 1 MHz here, so this is the spectra's calibration. The papers' calibration method has not been read yet.
+- **Terms:** shared by the authors for this work; not for redistribution.
