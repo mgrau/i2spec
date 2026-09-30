@@ -5,7 +5,8 @@ from __future__ import annotations
 import numpy as np
 
 from . import hfs_params
-from .constants import ISOTOPOLOGUES, MHZ_PER_CM, NUCLEAR_SPIN, REFERENCE_ISOTOPOLOGUE, reduced_mass, DEFAULT_PARAMETERS
+from .constants import (DEFAULT_PARAMETERS, HBAR2_2U, ISOTOPOLOGUES, MHZ_PER_CM, NUCLEAR_SPIN, REFERENCE_ISOTOPOLOGUE,
+                        reduced_mass)
 from .hyperfine import level_structure, line_components
 from .bspline import BSplineSolver
 from .potentials import load_extended, load_potentials, parameter_set
@@ -45,8 +46,31 @@ ADAPTIVE_GRIDS = {
           # the last bound levels (the Orsay atlas Partie IV reaches v' = 79): a 40 A box, graded beyond 5 A
           # where the local wavelength grows; equal to a uniform 0.01 A, 30 A box to < 1e-4 MHz for every
           # level bound by more than 0.3 cm-1 (docs/research/orsay-atlas-19700-20035.md)
-          (90, dict(rmin=2.35, rmax=40.0, h=0.01, order=10, nlev=95, mesh=((5.0, 0.02), (8.0, 0.05), (15.0, 0.1))))],
+          # Above the asymptote the box also holds continuum states outside the centrifugal barrier; nlev is
+          # large enough that the resonances behind it (v' <= 77 at J' <= 96, docs/research/quasibound-b.md)
+          # survive the cut, and _far_levels keeps only the states localised inside the barrier.
+          (90, dict(rmin=2.35, rmax=40.0, h=0.01, order=10, nlev=260, mesh=((5.0, 0.02), (8.0, 0.05), (15.0, 0.1))))],
 }
+
+
+def resonance_ladder(solver, potential, J, mu, mass_ratio, inside=0.9):
+    """The levels of ``solver`` at J with the box states of the continuum removed: every state below the
+    asymptote, and above it those with at least ``inside`` of their probability inside the centrifugal
+    barrier (quasi-bound resonances; their tunnelling widths are < 1e-8 MHz for the levels the Orsay atlas
+    Partie IV measured). v then counts physical levels, whatever the box puts between them."""
+    E, psi = solver.wavefunctions(J)
+    E = np.asarray(E, dtype=float)
+    asymptote = float(potential(np.array([400.0]))[0])
+    R = solver.R
+    veff = potential(R) + potential.adiabatic(R, mass_ratio) + \
+        HBAR2_2U / mu * (1 + potential.nonadiabatic(R, mass_ratio)) * J * (J + 1) / R**2
+    outer = R > 4.5
+    if not outer.any() or veff[outer].max() <= asymptote:
+        return E[E < asymptote]                    # no barrier above the asymptote: all such states are box states
+    Rb = R[outer][int(np.argmax(veff[outer]))]
+    w = solver.W[:, None] * psi**2
+    frac = (w * (R[:, None] < Rb)).sum(axis=0) / w.sum(axis=0)
+    return E[(E < asymptote) | (frac >= inside)]
 
 
 def grid_for(state: str, v_max: int) -> dict:
@@ -133,7 +157,11 @@ class RovibronicModel:
             e = np.array(solver.levels(J), dtype=float)
             if ext is not None:
                 v0 = self.from_v[state]
-                e[v0:] = np.asarray(ext.levels(J), dtype=float)[v0:len(e)]
+                e_ext = np.asarray(ext.levels(J), dtype=float)
+                if "mesh" in grid:                       # the dissociation grid: resonances, not box states
+                    e_ext = resonance_ladder(ext, self.extended_potentials[state], J, self._mu, self._ratio)
+                n = min(len(e), len(e_ext))
+                e = np.r_[e[:v0], e_ext[v0:n]]
             if self.corrections is not None:
                 e = e + self.corrections.shift_levels(state, J, len(e)) / MHZ_PER_CM
             cache[J] = e

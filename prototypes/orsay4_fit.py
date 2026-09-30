@@ -8,8 +8,10 @@ X v'' = 0 and 1 are the published levels, uncorrected and good to MHz. dB(v', J'
 y = J'(J'+1)/1e4, of the degree (0-3) that predicts the level's own lines best when each is left out;
 near dissociation the levels bend with J far more than the X levels of part I. The comb lines at
 v' = 52, 53, 62 and the atlas lines of the same levels fix the offset. Robust (Huber) weights; atlas line
-sigma hypot(eps, FLOOR), comb lines hypot(sigma, 1 MHz). Levels bound by less than 0.3 cm-1 are left
-out (quasi-bound above the asymptote, or too close to it for the bound-state solver).
+sigma hypot(eps, FLOOR), comb lines hypot(sigma, 1 MHz). Since i2spec2026n the 70 lines from levels above
+the asymptote or within 0.3 cm-1 of it are fitted too: they are quasi-bound resonances behind the
+centrifugal barrier, numbered by i2spec.model.resonance_ladder (docs/research/quasibound-b.md);
+--bound-only restores the earlier selection.
 
 Held-out figure per level: the robust spread (1.4826 MAD) of its lines left out one at a time, with the
 atlas's per-line scatter (LINE_SCATTER, the spread of the best-fitting levels) removed in quadrature,
@@ -30,7 +32,7 @@ from mlr_b_dissociation import ASYM, GRID, MU, potential as mlr        # noqa: E
 
 from i2spec.bspline import BSplineSolver
 from i2spec.constants import MHZ_PER_CM
-from i2spec.model import RovibronicModel
+from i2spec.model import RovibronicModel, resonance_ladder
 from i2spec.observations import Predictor, load_all
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -76,13 +78,19 @@ def main(argv):
     d = json.loads(Path(opts["--potential"]).read_text())
     import mlr_b_dissociation as mb
     mb.N = d["n"]
-    B = BSplineSolver(mlr(np.array(d["x"], float)), MU, **GRID, joins=())
+    potB = mlr(np.array(d["x"], float))
+    B = BSplineSolver(potB, MU, **dict(GRID, nlev=260), joins=())
+    ladder = {}
     floor = float(opts.get("--floor", 1.5)) * 1e-3 * MHZ_PER_CM
     model, pred = RovibronicModel(), Predictor()
     rows = []                    # (v', J', residual MHz, sigma MHz, is_atlas)
 
     def base(vu, Ju):
-        return B.levels(Ju)[vu]
+        # the physical levels, with the continuum box states above the asymptote removed, so that the
+        # quasi-bound resonances behind the centrifugal barrier keep their v (i2spec.model.resonance_ladder)
+        if Ju not in ladder:
+            ladder[Ju] = resonance_ladder(B, potB, Ju, MU, 1.0)
+        return ladder[Ju][vu]
 
     with open(ROOT / "data/atlas_lines/orsay1983_part4_assigned.csv", newline="") as f:
         for r in csv.DictReader(f):
@@ -91,8 +99,8 @@ def main(argv):
             vu, vl, J = int(r["v_upper"]), int(r["v_lower"]), int(r["J_lower"])
             Ju = J + (1 if r["branch"] == "R" else -1)
             EX = model.energy("X", vl, J)
-            if float(r["sigma_cm1"]) + EX > ASYM - 0.3:
-                continue
+            if "--bound-only" in argv and float(r["sigma_cm1"]) + EX > ASYM - 0.3:
+                continue                      # the 2026j-m selection: bound by more than 0.3 cm-1
             eps = float(r["eps_mk"]) * 1e-3 * MHZ_PER_CM if r["eps_mk"] else 150.0
             rows.append((vu, Ju, (float(r["sigma_cm1"]) + EX - base(vu, Ju)) * MHZ_PER_CM, np.hypot(eps, floor), True))
     n_atlas = len(rows)

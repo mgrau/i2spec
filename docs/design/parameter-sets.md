@@ -367,6 +367,12 @@ correction. The band and Partie IV sections were refitted on top, as for 2026l (
   components are reproduced to 0.02 MHz (in sample), `tanabe2022a` to 0.17 MHz, and `yang2011a` to
   0.30 MHz.
 
+- **The quasi-bound B levels.** Above the asymptote the model counted continuum box states as levels.
+  That shifted v for four low-J levels (1.1–43 GHz off) and cut off the highest resonances at J′ ≈ 80–96.
+  `model.resonance_ladder` now keeps only states localised inside the centrifugal barrier. The 70
+  Partie IV lines from those levels, left out since 2026j, are fitted: median −6 MHz, robust spread
+  92 MHz (`docs/research/quasibound-b.md`).
+
 `level_corrections_2026m` repeats the 2026m fit on the new table without `hsiao2013a`: 874 rows touching
-corrected levels, leave-one-line-out median 0.54 MHz (2026m: 0.61), the band and Partie IV sections
-refitted on top (offset +119.6 MHz).
+corrected levels, leave-one-line-out median 0.54 MHz (2026m: 0.61). The band section and then the
+Partie IV section, now with all 2 079 lines, are refitted on top (offset +119.5 MHz).

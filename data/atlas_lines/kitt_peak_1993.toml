@@ -1,0 +1,38 @@
+id = "kitt_peak_1993"
+unit = "cm-1"
+isotopologue = "127I2"
+url = "https://nispdata.nso.edu/ftp/FTS_cdrom/"
+kind = "atlas line positions"
+citation = """Kitt Peak McMath-Pierce 1-m FTS, 17 March 1993 (observer Marcy), NSO Digital Library
+volume FTS33, file 930317R0.003: Iodine Cell, Keck Cell, 50.0C, 100mm, 5000 - 6300A. The RV cell templates of Butler et al., PASP 108, 500
+(1996), doi:10.1086/133755."""
+instrument = """McMath-Pierce 1-m FTS, RESOLUTN 0.037 cm-1, 0.01409 cm-1 per point, 10 co-added scans,
+DZE lamp, 8 mm aperture, evacuated tank; vacuum wavenumbers (AIRCORR = No), WAVCORR = 0 (no scale
+correction applied in the archive). Keck cell, 100 mm, 50.0 C; useful band 15 875-20 000 cm-1."""
+calibration = """HeNe-referenced (REFWAVNO 15798.0025 cm-1), uncorrected, and NOT a single scale.
+Against i2spec2026m the lines read -784 MHz (median; robust spread 145 MHz), from
+-1210 ppb at 15 750 cm-1 to -1700 ppb at 19 750 cm-1. A constant scale fits -1453 +/- 16 ppb but
+leaves +/-100 MHz of structure. The scan's scale, obs = model (1 + s(nu)), is
+  s(nu) = c0 + c1 x + c2 x^2 ppb, x = (nu - 17900 cm-1)/1000 cm-1,
+  c0 = -1422.0 +/- 1.6, c1 = -133.5 +/- 1.2, c2 = -14.3 +/- 1.2
+(block bootstrap over 50 cm-1), which leaves 250 cm-1 bin medians within a few MHz. The same curve
+against apo_nist_2009 is c0 = -1388.6, c1 = -135.1, c2 = -13.8 ppb (APO itself reads -18 MHz
+from the model). Divide the values by (1 + s(nu)) to put them on the model's scale. The curve is NOT
+in the per-line uncertainty; a fit using this set needs these three group parameters, not one."""
+extraction = """prototypes/kitt_peak_lines.py: the scan divided by its upper envelope (99.5th percentile
+in 4 cm-1 blocks) and its axis by (1 - 1.33e-6) (restored afterwards, so the 0.01 cm-1 ridge prior
+does not pull against a -700 MHz offset), then fitted by prototypes/atlas_lines.py extract at 323.15 K:
+per-line wavenumber shifts of the i2spec template in 3.2 cm-1 windows (the extractor needs 200 points)
+stepped by 2.4 cm-1; column density, linear baseline, zero offset and Gaussian instrument width per
+window; hyperfine structure in the template; ridge prior 0.01 cm-1. Repeats combined by inverse
+variance. Kept: fit sigma < 30 MHz, window rms < 4% of transmission, line depth >
+0.05, and no other model line within +/-0.02 cm-1 at >= 0.1 of its strength. Assignments are the template's, one line per parameter; blends come out with large
+sigma and fail the cut. Positions are hyperfine-free line centres on the scan's own axis."""
+uncertainty = """sqrt((1.00 sigma_fit)^2 + 6.3^2) MHz, the scaling fitted to the scatter of
+(Kitt Peak - apo_nist_2009), after removing the scale curve, in bins of sigma_fit and after removing
+the APO uncertainty. Excludes the scale curve."""
+scale_ppb_x0_cm-1 = 17900.0
+scale_ppb_coefficients = [-1421.97, -133.49, -14.33]
+scale_ppb_coefficient_uncertainties = [1.59, 1.15, 1.18]
+range_cm-1 = [15876.4, 19640.9]
+n_lines = 5297
