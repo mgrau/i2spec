@@ -183,10 +183,9 @@ def local_nir_covers(line: Line) -> bool:
 @lru_cache(maxsize=1)
 def _corrections():
     """The default parameter set's level corrections, if it names any."""
-    from .potentials import parameter_set
-    from .level_corrections import load_level_corrections
-    name = parameter_set().get("level_corrections")
-    return load_level_corrections(name) if name else None
+    from .constants import DEFAULT_PARAMETERS
+    from .level_corrections import corrections_for
+    return corrections_for(DEFAULT_PARAMETERS)
 
 
 def corrected(line: Line):
@@ -218,6 +217,23 @@ def corrected(line: Line):
     return round(math.sqrt(sum(p * p for p in parts)), 2)
 
 
+def gp_corrected(line: Line):
+    """1σ (MHz) of a line whose B level the Gaussian-process correction fills in, to X v″ <= 5 (reference levels
+    the comb data pin down); None otherwise, or where the region value is smaller. Lines to other
+    X levels keep the X level's rule: their position carries the correction, their uncertainty the X level's."""
+    c = _corrections()
+    if c is None or line.isotopologue != "127I2":
+        return None
+    J_up = line.J_lower + (1 if line.branch == "R" else -1)
+    if not c.gp_covers("B", line.v_upper):
+        return None
+    if line.v_lower > 5:           # beyond v'' = 5 the reference X levels themselves are uncertain by 1-6 MHz
+        return None                # (the bake-off's X surface at v'' = 5-8, J up to 150), so the region rule stays
+    _, sd = c.gp(line.v_upper, J_up)
+    u = math.hypot(sd, 0.5)
+    return round(u, 2) if u < 3.0 else None
+
+
 def uncertainty(line: Line):
     """Estimated 1σ uncertainty (MHz) of the hyperfine-free position, and the evidence for it.
 
@@ -246,6 +262,11 @@ def uncertainty(line: Line):
         return u, ("measured level corrections (i2spec2026d): every comb-referenced line fitted as polynomials in "
                    "J(J+1) per level, 0.02-0.3 MHz in-sample; this line is within 15 in J of the lines that fixed its "
                    "levels, and the value is their held-out rms (1 MHz where a single line fixed a level)")
+    if (g := gp_corrected(line)) is not None:
+        return g, ("Gaussian-process B correction (i2spec2026n): this B level has no correction of its own, so its value "
+                   "is interpolated from the corrected levels around it in v′ and J′ (docs/research/model-bakeoff.md), and the lower level is X v″ <= 5; "
+                   "held out a level at a time, B v′ = 3-35 is predicted to 1.1 MHz rms, against 1.9 MHz uncorrected, "
+                   "82 % of lines within the quoted 1σ (the posterior σ, with a 0.5 MHz floor)")
     if 48 <= line.v_lower <= 54:
         return 20.0, ("v″ = 48-54 comes from the extended-range MLR X potential (i2spec2026l): the emission lines of "
                       "matyugin2012 and nesterenko2019 are reproduced to 7 and 19 MHz, and that residual is the X-state "

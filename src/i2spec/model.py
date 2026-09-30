@@ -10,7 +10,7 @@ from .constants import (DEFAULT_PARAMETERS, HBAR2_2U, ISOTOPOLOGUES, MHZ_PER_CM,
 from .hyperfine import level_structure, line_components
 from .bspline import BSplineSolver
 from .potentials import load_extended, load_potentials, parameter_set
-from .level_corrections import load_level_corrections
+from .level_corrections import corrections_for
 from .solver import RadialSolver
 
 # Grids must start above R = -b Rm (2.27 Å for B), where the BOC functions have a pole.
@@ -106,9 +106,8 @@ class RovibronicModel:
         self._reference = None
         #: Measured level corrections (level_corrections.py), named by the parameter set; ¹²⁷I₂ only, and
         #: not when the potentials are replaced (a new potential form must earn its own).
-        name = parameter_set(parameters).get("level_corrections")
-        self.corrections = (load_level_corrections(name)
-                            if name and isotopologue == REFERENCE_ISOTOPOLOGUE and not potentials else None)
+        self.corrections = (corrections_for(parameters)
+                            if isotopologue == REFERENCE_ISOTOPOLOGUE and not potentials else None)
         #: The set's extended-range potentials (an MLR pair): levels from ``from_v`` up come from them.
         #: Not when a potential is replaced by the caller, which is a study of that potential alone.
         ext, self.from_v = load_extended(parameters) if not potentials else (None, None)

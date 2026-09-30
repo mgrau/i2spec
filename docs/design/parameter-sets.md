@@ -373,6 +373,16 @@ correction. The band and Partie IV sections were refitted on top, as for 2026l (
   Partie IV lines from those levels, left out since 2026j, are fitted: median −6 MHz, robust spread
   92 MHz (`docs/research/quasibound-b.md`).
 
+- **A Gaussian-process correction for B levels without their own** (`gp_b_2026n`, named by the new
+  `"gp_corrections"` key; `src/i2spec/gp_corrections.py`, `prototypes/gp_corrections_fit.py`). The bake-off
+  (`docs/research/model-bakeoff.md`) found that correction surfaces shared between levels predict an
+  unmeasured visible B level far better than leaving it at the published curve. It is fitted here in the
+  gauge of the level corrections (X v″ ≤ 10 and B v′ = 0 fixed at zero), so it adds to the curve exactly as
+  a level correction would, and it fills only the B levels v′ = 3–35 that have no polynomial of their own:
+  v′ = 7, 12, 13, 19, 27 and 29. Held out a level at a time, B v′ = 3–35 is predicted to 1.06 MHz rms
+  against 1.89 MHz uncorrected, with 82 % of rows within 1σ. It stops at v′ = 35 because v′ = 37, 39 and
+  43 are missed by 2.5–15 MHz, in the v′ = 31–43 drift. Lines from those levels to X v″ ≤ 5 are quoted at hypot(σ_GP, 0.5 MHz), 0.5–3 MHz, where they had 3–5 MHz.
+
 `level_corrections_2026m` repeats the 2026m fit on the new table without `hsiao2013a`: 874 rows touching
 corrected levels, leave-one-line-out median 0.54 MHz (2026m: 0.61). The band section and then the
 Partie IV section, now with all 2 079 lines, are refitted on top (offset +119.5 MHz).

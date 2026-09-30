@@ -36,6 +36,12 @@ class LevelCorrections:
     clamp_J: bool = False       # beyond coverage +- J_MARGIN, extrapolate only the linear part (level_corrections_2026h on)
     covariance: dict | None = None   # state -> {v: covariance of the coefficients, MHz^2} (level_corrections_2026k on)
     discrepancy: dict | None = None  # state -> {v: model-discrepancy term, MHz}: held-out scatter the covariance leaves
+    #: a gp_corrections.GPCorrection for the B levels with no coefficients of their own (i2spec2026n on)
+    gp: object | None = None
+
+    def gp_covers(self, state: str, v: int) -> bool:
+        """Is this a level the Gaussian-process correction fills in (a B level without its own polynomial)?"""
+        return self.gp is not None and state == "B" and v not in self.coefficients.get("B", {}) and self.gp.covers(v)
 
     def band_covers(self, v_upper: int, v_lower: int, J_lower: int) -> bool:
         """Is this line one the band correction applies to: in its bands and within J_MARGIN of their data?"""
@@ -60,7 +66,7 @@ class LevelCorrections:
         """Correction in MHz; zero where none was fitted."""
         c = self.coefficients.get(state, {}).get(v)
         if c is None:
-            return 0.0
+            return self.gp.mean(v, J) if self.gp_covers(state, v) else 0.0
         y = J * (J + 1) / 1e4
         if self.clamp_J and len(c) > 2:
             r = self.coverage.get(state, {}).get(v)
@@ -79,6 +85,10 @@ class LevelCorrections:
         for v in self.coefficients.get(state, {}):
             if v < n:
                 out[v] = self.shift(state, v, J)
+        if self.gp is not None and state == "B":
+            for v in range(self.gp.v_min, min(self.gp.v_max + 1, n)):
+                if self.gp_covers(state, v):
+                    out[v] = self.gp.mean(v, J)
         return out
 
     def uncertainty(self, state: str, v: int) -> float | None:
@@ -128,3 +138,20 @@ def load_level_corrections(name: str) -> LevelCorrections:
                             if "covariance_MHz2" in d else None,
                             discrepancy={st: {int(v): float(u) for v, u in d["discrepancy_MHz"].get(st, {}).items()} for st in ("X", "B")}
                             if "discrepancy_MHz" in d else None)
+
+
+@lru_cache(maxsize=None)
+def corrections_for(parameters: str) -> LevelCorrections | None:
+    """The level corrections a parameter set names, with its Gaussian-process B correction attached if it
+    names one ("gp_corrections", i2spec2026n on)."""
+    import dataclasses
+
+    from .gp_corrections import load_gp_correction
+    from .potentials import parameter_set
+    p = parameter_set(parameters)
+    name = p.get("level_corrections")
+    if not name:
+        return None
+    c = load_level_corrections(name)
+    return dataclasses.replace(c, gp=load_gp_correction(p["gp_corrections"])) if p.get("gp_corrections") else c
+

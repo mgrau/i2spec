@@ -216,6 +216,12 @@
    "file": "b_state_lines_2026n.json, level_corrections_2026m.json",
    "why": "see docs/design/parameter-sets.md, i2spec2026n",
    "date": "2026-09-30"
+  },
+  {
+   "what": "a Gaussian-process correction for the B levels v' = 3-35 that have no level correction of their own (v' = 7, 12, 13, 19, 27, 29), interpolated from the corrected levels around them; held out a level at a time, 1.06 MHz rms against 1.89 MHz uncorrected",
+   "file": "gp_b_2026n.npz, gp_b_2026n.json",
+   "why": "docs/research/model-bakeoff.md; docs/design/parameter-sets.md, i2spec2026n",
+   "date": "2026-09-30"
   }
  ],
  "extended": {
@@ -227,5 +233,6 @@
   }
  },
  "level_corrections": "level_corrections_2026m",
- "hyperfine_table": "b_state_lines_2026n"
+ "hyperfine_table": "b_state_lines_2026n",
+ "gp_corrections": "gp_b_2026n"
 }
