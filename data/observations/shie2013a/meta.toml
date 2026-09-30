@@ -30,7 +30,7 @@ and the systematic uncertainties from the servo loop (~10 kHz) and lock-in DC of
 as standard (1 sigma). The servo-loop part is presumably common to all three components.
 """
 
-[conditions]
+[conditions]  # values already at zero pressure (authors)
 method = "Doppler-free saturation spectroscopy, third-harmonic detection, frequency-comb referenced"
 laser = "frequency-doubled 1070 nm Nd:GdVO4"
 cell_length_cm = 6

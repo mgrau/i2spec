@@ -60,3 +60,15 @@ pressure_Pa = 41
 pump_mW = 12.7
 beam_diameter_mm = 1
 modulation_width_MHz_pp = 12
+
+[shift_correction]
+pressure_Pa = 41.0
+pressure_kHz_per_Pa = -1.3
+pressure_kHz_per_Pa_unc = 0.26
+power_mW = 12.7
+power_kHz_per_mW = -3.6
+power_kHz_per_mW_unc = 0.72
+modulation_MHz = 12.0
+modulation_kHz_per_MHz = -2.0
+modulation_kHz_per_MHz_unc = 0.4
+basis = "paper Table 1 slopes; allowance for the uncorrected modulation shift, -2.0 kHz/MHz x 12 MHz (paper) Modulation -2.0 kHz/MHz x 12 MHz corrected (20 % uncertainty)."

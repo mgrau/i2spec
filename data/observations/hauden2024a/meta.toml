@@ -58,7 +58,7 @@ kobayashi2016a -0.11 to -1.17 MHz). After removing the mean, the rms is 20 kHz a
 the scatter is at the level of the model's hyperfine prediction, not of the 5-6 kHz data.
 """
 
-[conditions]
+[conditions]  # values already at zero pressure (authors)
 method = "sub-Doppler pump-probe saturated absorption with offset sideband locking (EOM at 4.675700 GHz, -1 sideband on iodine), third-harmonic lock-in detection, comb referenced to cavity laser and H maser (UTC(OP))"
 laser = "frequency-doubled 1112 nm ECDL with tapered amplifier"
 cell_length_cm = 10

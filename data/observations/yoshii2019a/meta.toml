@@ -54,3 +54,12 @@ beam_diameter_mm = 0.8
 pressure_shift_kHz_per_Pa = -1.5
 power_shift_kHz_per_mW = -0.63
 extrapolated_to_zero = false
+
+[shift_correction]
+pressure_Pa = 2.5
+pressure_kHz_per_Pa = -1.5
+pressure_kHz_per_Pa_unc = 0.3
+power_mW = 3.0
+power_kHz_per_mW = -0.63
+power_kHz_per_mW_unc = 0.126
+basis = "Paper Table 1 (R(38) 32-0 a10): -5 C (2.5 Pa), pump 3.0 mW, -1.5 kHz/Pa, -0.63 kHz/mW; slope unc not printed, 20 % (judgement)."

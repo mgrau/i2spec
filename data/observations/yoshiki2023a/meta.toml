@@ -31,3 +31,8 @@ pressure_Pa = 1.2
 pump_mW = 1.8
 probe_mW = 0.3
 detection = "modulation transfer"
+
+[shift_correction]
+pressure_Pa = 1.2
+allowance_kHz = 6.0
+basis = "Paper not re-read (not available); meta: 1.2 Pa, pump 1.8 mW, no correction or coefficient recorded (same set-up as ikeda2022a). Allowance = |-5 kHz/Pa (typical, 500-600 nm) x 1.2 Pa|."

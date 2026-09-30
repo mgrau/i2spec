@@ -52,3 +52,15 @@ cold_finger_C = 15.0
 modulation_MHz_pp = 6.0
 detection = "3f"
 intracavity_power_mW = 10.0
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "MEP 633 nm, p. 1 (conditions) and p. 2, section 2.2 (coefficients). Recommended value applies at cold finger 15.0 C, wall 25 C, 6.0 MHz p-p modulation, 10 mW one-way intracavity power. Pressure 17.28 Pa from Gillespie & Fraser at 288.15 K. The MEP gives the cold-finger coefficient -15 kHz/C; divided by dP/dT = 1.563 Pa/K (Gillespie & Fraser at 15 C) this is -9.6 kHz/Pa; no uncertainty given, 20 % taken. Power: the MEP bounds |coefficient| <= 1.0 kHz/mW without a sign, entered as 0 +/- 1.0 kHz/mW at 10 mW (10 kHz, no shift). Modulation: -10 kHz/MHz x 6 MHz = -60 kHz, not corrected (no key), folded into allowance_kHz = 60. Wall-temperature coefficient 0.5 kHz/C has no zero point and is not applied. Update: the modulation shift is now corrected with the modulation keys (-10(2) kHz/MHz x 6 MHz), not an allowance."

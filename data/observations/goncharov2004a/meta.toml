@@ -59,3 +59,10 @@ pressure_Pa = 0.12
 probe_mW = 0.8
 pump_mW = 2
 beam_diameter_mm = 6
+
+[shift_correction]
+pressure_Pa = 0.12
+pressure_kHz_per_Pa = -2.5
+pressure_kHz_per_Pa_unc = 0.5
+allowance_kHz = 1.0
+basis = "Paper Sect. 4: 0.12 Pa; linear coefficient -2.5(0.5) kHz/Pa (JILA, used by the paper for its 2.38 Pa extrapolation). Allowance 1.0 kHz for power: a factor-2 change of beam powers gave < 0.5 kHz, doubled for extrapolation to zero. The paper's non-linear model (Fig. 9) would instead put zero pressure ~2 kHz lower; not applied."

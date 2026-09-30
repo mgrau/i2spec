@@ -51,7 +51,7 @@ pressure) is much larger than the per-run error bars; the paper's abstract and c
 results as "better than 40 kHz" / "approximately 30 kHz".
 """
 
-[conditions]
+[conditions]  # values already at zero pressure (authors)
 method = "Doppler-free modulation transfer spectroscopy, frequency-comb referenced (Rb clock, GPS-disciplined)"
 laser = "671 nm grating ECDL, PDH-locked to a Fabry-Perot cavity, injection-locked slave for the comb beat"
 cell_length_cm = 58

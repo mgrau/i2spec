@@ -56,3 +56,8 @@ probe_mW = 0.3
 modulation_kHz = 220
 cell_length_cm = 30
 detection = "modulation transfer"
+
+[shift_correction]
+pressure_Pa = 1.2
+allowance_kHz = 6.0
+basis = "Paper Table 1 note: values directly measured at 1.2 Pa, pump 1.8 mW; no coefficient given (budget from its ref. [14], yoshii2019a, -1.5 kHz/Pa at 531.5 nm). Allowance = |-5 kHz/Pa (typical, 500-600 nm; nishiyama2024a measured -4.8 to -5.2 at 520 nm) x 1.2 Pa|."

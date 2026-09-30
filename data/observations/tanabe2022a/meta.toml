@@ -78,3 +78,12 @@ probe_mW = 0.3
 extrapolated_to_zero_pressure = false
 pressure_shift_kHz_per_Pa = -1.8
 power_shift_kHz_per_mW = -2.6
+
+[shift_correction]
+pressure_Pa = 4.0
+pressure_kHz_per_Pa = -1.8
+pressure_kHz_per_Pa_unc = 0.36
+power_mW = 2.0
+power_kHz_per_mW = -2.6
+power_kHz_per_mW_unc = 0.52
+basis = "Paper Sect. 2.2 and Table 1 (measured on P(49) 24-1 a1, applied to all three lines): -0.2 C (4.0 Pa), pump 2.0 mW, -1.8 kHz/Pa, -2.6 kHz/mW; slope unc not printed, 20 % (judgement)."

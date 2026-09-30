@@ -19,3 +19,8 @@ uncertainty = "Standard (1σ) combined uncertainties, as printed. f(b10): 25 kHz
 cold_point_C = 0.0
 modulation_MHz_pp = 2.0
 cell = "external"
+
+[shift_correction]
+pressure_Pa = 4.12
+allowance_kHz = 20.6
+basis = "MEP 543 nm, p. 1: recommended value applies at cold point 0 C and 2.0 MHz p-p modulation, external cell. Pressure 4.12 Pa from Gillespie & Fraser at 273.15 K. The MEP gives no pressure, power or modulation coefficient, so no shift is applied; allowance = |-5 kHz/Pa (typical slope, 500-600 nm) x 4.12 Pa| = 20.6 kHz. The modulation shift at 2 MHz is not known from the MEP and is not included."

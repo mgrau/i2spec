@@ -64,3 +64,8 @@ beam_diameter_mm = 2.8
 detection = "Doppler-free FM saturation spectroscopy, EOM on the probe, pump chopped at 45 kHz"
 comb = "GPS-disciplined self-referenced Ti:sapphire octave comb, 1 GHz repetition rate; counter gate 0.2 s"
 notes = "Cell from Opthos Inc., degassed three times before filling. The three Table 1 calibration lines sit 102-121 kHz below the five-cell values of Bodermann et al. 2000, an average redshift of 114 kHz that the paper attributes to impurity gas."
+
+[shift_correction]
+pressure_Pa = 27.0
+pressure_kHz_per_Pa = -5.1
+basis = "the same 27 Pa Hannover cells as bodermann2000a/1998c, corrected with the same thesis coefficient -5.1 kHz/Pa (Bodermann 1998, Sec. 4) so the Hannover NIR sets stay consistent; no uncertainty added, since the paper's 200 kHz accuracy is already its allowance for this shift"

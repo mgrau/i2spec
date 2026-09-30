@@ -97,3 +97,12 @@ beam_diameter_mm = 0.8
 pressure_shift_kHz_per_Pa = -1.5
 power_shift_kHz_per_mW = -0.63
 extrapolated_to_zero = false
+
+[shift_correction]
+pressure_Pa = 2.4
+pressure_kHz_per_Pa = -1.5
+pressure_kHz_per_Pa_unc = 0.3
+power_mW = 1.8
+power_kHz_per_mW = -0.63
+power_kHz_per_mW_unc = 0.126
+basis = "Paper: -5 C (2.4 Pa), pump 1.8 mW; slopes from its ref. [27] (yoshii2019a, R(38) 32-0 a10, same apparatus): -1.5 kHz/Pa, -0.63 kHz/mW; unc not printed, 20 % (judgement). Applied to all seven lines."

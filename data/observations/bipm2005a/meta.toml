@@ -4,6 +4,7 @@ source = "https://www.bipm.org/documents/20126/41549496/M-e-P_I2_515.pdf/63b35d2
 retrieved = "2026-09-14"
 catalog = "data/catalog/precision.yaml#bipm2005a"
 unit = "MHz"
+defer_to = ["jones2002a", "goncharov2004a"]   # The recommended P(13) 43-0 a3 is the mean of these two measurements.
 transcription = """
 Page 1: adopted f(a3, P(13) 43-0) = 582 490 603 442 (5) kHz, the CIPM recommended value. Typed by hand.
 

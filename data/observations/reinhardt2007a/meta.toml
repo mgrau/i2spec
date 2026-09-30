@@ -31,3 +31,8 @@ printed, converted to 0.042 MHz.
 method = "frequency-comb referenced saturation spectroscopy; two cells (Mainz and GSI) compared"
 
 notes = "The paper also reports a 237-295 kHz offset between its two cells (Table 1), which is a pressure/temperature systematic rather than a line position, so it is not recorded as an observation. For P(148) 1-14 the paper quotes a literature value of 384 235 614.624(36) MHz; only this paper's own measurement is entered here."
+
+[shift_correction]
+pressure_Pa = 53.1
+allowance_kHz = 266.0
+basis = "Paper not available; meta: cold fingers 28, 25, 20 C (R(114) 2-11, P(42) 1-14, P(148) 1-14), no correction. 53.1 Pa is the highest (28 C, Gillespie & Fraser vapour pressure); allowance = |-5 kHz/Pa x 53.1 Pa| applied to all three rows (NIR value as for bodermann2000a)."

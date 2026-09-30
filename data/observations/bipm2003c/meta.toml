@@ -20,3 +20,8 @@ uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a1): 0.2 MHz
 [conditions]
 cold_finger_C = 6.0
 laser = "dye laser (or frequency-doubled He-Ne), iodine cell inside or outside the laser"
+
+[shift_correction]
+pressure_Pa = 7.45
+allowance_kHz = 37.3
+basis = "MEP 576 nm, p. 1: recommended value applies at cold finger 6 C (cell inside or outside the laser). Pressure 7.45 Pa from Gillespie & Fraser at 279.15 K. The MEP gives no pressure, power or modulation coefficient and no power or modulation condition, so no shift is applied; allowance = |-5 kHz/Pa (typical slope, 500-600 nm) x 7.45 Pa| = 37.3 kHz."

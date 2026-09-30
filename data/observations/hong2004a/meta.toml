@@ -69,3 +69,12 @@ laser = "diode-pumped monolithic Nd:YAG (InnoLight Prometheus-20NE) doubled in s
 pump_mW = 1.0
 probe_mW = 0.6
 averaging = "30-100 x 10 s counter gates per run; ten runs for a1"
+
+[shift_correction]
+pressure_Pa = 1.44
+pressure_kHz_per_Pa = -2.98
+pressure_kHz_per_Pa_unc = 1.49
+power_mW = 1.0
+power_kHz_per_mW = -0.149
+power_kHz_per_mW_unc = 0.075
+basis = "Paper states pump 1.0 mW but no cold-finger temperature or slopes; the group's usual -10 C is assumed (1.44 Pa, Gillespie & Fraser vapour pressure). Slopes transferred from the companion hong2004b (R(56) 32-0 a10, -2.98 kHz/Pa; laser Y3 -149 Hz/mW, Y2 -476 Hz/mW), so 50 % uncertainty (judgement)."

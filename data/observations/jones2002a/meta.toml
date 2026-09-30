@@ -81,3 +81,10 @@ pressure_Pa = 2.38
 pump_mW = [1, 4]
 probe_uW_max = 100
 beam_diameter_mm = 3
+
+[shift_correction]
+pressure_Pa = 2.38
+pressure_kHz_per_Pa = -2.5
+pressure_kHz_per_Pa_unc = 0.5
+basis = "Paper p. 599-600 / Fig. 4 (P(13) 43-0 a3): -5 C (2.38 Pa), linear shift -2.5(0.5) kHz/Pa over 1.4-4.0 Pa; power shifts stated to be below the measurement scatter (no coefficient). Applied to the 515 nm row only (groups); the R(56) 32-0 a10 row has no stated cell conditions."
+groups = ["jones2002a_515"]

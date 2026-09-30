@@ -27,3 +27,8 @@ cell = "wall and cold-finger temperatures printed per row; see notes"
 method = "interferometric measurement against a stabilised reference"
 
 notes = "Wall/cold-finger temperatures as printed: R(26) 5-13 at 650 C wall, 39(3) C cold finger; P(258) 7-11 at 680 C wall, 43(3) C cold finger. These are hot-cell measurements; any pressure or temperature shift is as the authors left it."
+
+[shift_correction]
+pressure_Pa = 127.3
+allowance_kHz = 637.0
+basis = "Paper not available; meta: hot cells, cold finger 39(3) C (R(26) 5-13) and 43(3) C (P(258) 7-11), no correction. 127.3 Pa at 39 C from the Gillespie & Fraser vapour pressure. Allowance = |-5 kHz/Pa x 127.3 Pa|, using the ~-5 kHz/Pa for NIR hot-cell lines (Bodermann thesis -5.1(1.0); Liao 2010 '~5 kHz/Pa')."

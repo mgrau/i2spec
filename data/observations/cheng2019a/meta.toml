@@ -44,7 +44,7 @@ residual component-dependent pressure/power shifts or day-to-day reproducibility
 not evaluate, so these uncertainties may be optimistic.
 """
 
-[conditions]
+[conditions]  # values already at zero pressure (authors)
 method = "Modulation transfer spectroscopy of a frequency-doubled 1068 nm ECDL, comb referenced to an H maser"
 cold_finger_C = -10.0
 pressure_Pa = 1.4

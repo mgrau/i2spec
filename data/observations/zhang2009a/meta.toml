@@ -47,3 +47,8 @@ probe_mW = 0.4
 beam_diameter_mm = 3.6
 cell_length_cm = 10
 detection = "frequency-modulation saturation spectroscopy, 12.5 MHz EOM, chopped pump with lock-in"
+
+[shift_correction]
+pressure_Pa = 13.0
+allowance_kHz = 65.0
+basis = "Paper: 12.00 C cold finger, about 13 Pa; no shift coefficient (38 kHz/Pa is the a10 broadening). Allowance = |-5 kHz/Pa (typical, 500-600 nm) x 13 Pa|."

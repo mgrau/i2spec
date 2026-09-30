@@ -72,3 +72,8 @@ method = "modulation transfer spectroscopy, two frequency-doubled monolithic Nd:
 cell = "45 cm, 4-pass (1.8 m absorption length), cold finger -18 C, 0.54 Pa"
 laser1 = "pump 1.0 mW, probe 0.2 mW, beam 2.5 mm, EOM 277 kHz (the laser measured by the comb)"
 laser2 = "pump 4.1 mW, probe 1.0 mW, beam 4 mm, EOM 250 kHz"
+
+[shift_correction]
+pressure_Pa = 0.54
+allowance_kHz = 2.7
+basis = "Paper: -18 C, 0.54 Pa; no coefficient given. Allowance = |-5 kHz/Pa (typical, 500-600 nm) x 0.54 Pa|."

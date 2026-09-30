@@ -38,3 +38,9 @@ MHz. These are the most precise absolute line positions in the collection.
 method = "diode laser locked to I2 hyperfine components, frequency chain referenced to CH4 and Ca standards"
 
 notes = "v'' = 16 and 17, the top of the X-state well. v'' = 17 had no other data in the collection, and v'' = 16 only two lines."
+
+[shift_correction]
+pressure_Pa = 41.4
+pressure_kHz_per_Pa = -5.1
+pressure_kHz_per_Pa_unc = 1.0
+basis = "Paper not available; the same measurement in Bodermann's thesis (bodermann1998c) Sect. 6.1: cell V at 600(30) C, side arm 25(1) C = 41.4 Pa (Gillespie & Fraser vapour pressure); coefficient -5.1(1.0) kHz/Pa from the thesis budget (Sect. 4, collisions; Table 4.1, cell J5 at 600 C -5.1/-5.0 kHz/Pa)."

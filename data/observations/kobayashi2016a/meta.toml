@@ -29,3 +29,12 @@ pressure_Pa = 3.3
 pump_mW = 4.8
 probe_mW = 0.5
 detection = "modulation transfer"
+
+[shift_correction]
+pressure_Pa = 3.3
+pressure_kHz_per_Pa = -7.7
+pressure_kHz_per_Pa_unc = 1.54
+power_mW = 4.8
+power_kHz_per_mW = -0.8
+power_kHz_per_mW_unc = 0.16
+basis = "Paper Sect. 4 / Table 1 (measured on R(37) 16-1 a1, applied to all four lines): 3.3 Pa (-2 C), pump 4.8 mW, -7.7 kHz/Pa, -0.8 kHz/mW; slope unc not printed, 20 % (judgement)."

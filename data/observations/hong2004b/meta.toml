@@ -57,3 +57,12 @@ modulation = "350 kHz"
 pressure_shift_kHz_per_Pa = -2.98
 power_shift_Hz_per_mW = -149
 averaging = "nine runs of >10 x 100 s counter gates"
+
+[shift_correction]
+pressure_Pa = 1.44
+pressure_kHz_per_Pa = -2.98
+pressure_kHz_per_Pa_unc = 0.6
+power_mW = 2.0
+power_kHz_per_mW = -0.149
+power_kHz_per_mW_unc = 0.03
+basis = "Paper: -10 C cold finger (1.44 Pa from the Gillespie & Fraser vapour pressure; Hong & Ishikawa 2000 say about 1.4 Pa), pump 2.0 mW, Fig. 5 slopes -2.98 kHz/Pa and -149 Hz/mW (laser Y3). Slope uncertainties not printed: 20 % (judgement)."

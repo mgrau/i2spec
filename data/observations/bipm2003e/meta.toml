@@ -21,3 +21,12 @@ uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a9): 0.2 MHz
 cold_finger_C = 16.0
 modulation_MHz_pp = 6.0
 laser = "He-Ne, internal iodine cell"
+
+[shift_correction]
+pressure_Pa = 18.91
+pressure_kHz_per_Pa = -7.8
+pressure_kHz_per_Pa_unc = 1.56
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -7.6
+modulation_kHz_per_MHz_unc = 1.52
+basis = "MEP 640 nm, p. 1 (conditions) and pp. 1-2, sections 2.1-2.3 (coefficients). Recommended value applies at cold finger 16 C and 6 MHz p-p modulation, internal cell. Pressure 18.91 Pa from Gillespie & Fraser at 289.15 K (the MEP itself quotes 18.9 Pa). Pressure dependence -7.8 kHz/Pa as used by the MEP to reduce its source data; no uncertainty given, 20 % taken. Modulation dependence -7.6 kHz/MHz x 6 MHz = -45.6 kHz, not corrected (no key), folded into allowance_kHz. No power coefficient or power condition is given. Update: the modulation shift is now corrected with the modulation keys (-7.6 kHz/MHz x 6 MHz, 20 % uncertainty), not an allowance."

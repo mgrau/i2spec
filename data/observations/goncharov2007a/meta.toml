@@ -16,3 +16,9 @@ entered.
 uncertainty = "Standard (1 sigma): 250 Hz for each absolute component (their combined standard uncertainty); intervals sqrt(2) x 250 Hz."
 partial = "complete"
 notes = "The only sub-kHz absolute anchor at v' = 62, 90 cm-1 below the B dissociation limit. Low-pressure (0.33 Pa) continuously pumped cell, Ar+ laser at 501.7 nm, comb-referenced."
+
+[shift_correction]
+pressure_Pa = 0.33
+power_mW = 0.5
+allowance_kHz = 13.0
+basis = "the paper bounds the pressure shift by -3.8 kHz/Pa at 0.33 Pa, but its ref. [9] (du Burck 2005) gives -38.4 kHz/Pa, which would be 12.7 kHz: allowance 13 kHz, with ~2 kHz for the probe power"

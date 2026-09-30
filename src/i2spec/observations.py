@@ -10,9 +10,10 @@ names the line in the source.
 from __future__ import annotations
 
 import csv
+import math
 import re
 import tomllib
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 import numpy as np
@@ -134,7 +135,48 @@ def write_observations(observations, path):
                              o.ref_component or "", o.group or "", o.note])
 
 
-def load_dataset(path) -> Dataset:
+#: [shift_correction] keys: the cell pressure, pump power and modulation width (peak-to-peak) a set's absolute
+#: frequencies were measured at, and the source's own shift coefficients, which take them to zero pressure,
+#: power and modulation; allowance_kHz is a
+#: type-B term added in quadrature where the source gives no coefficient; groups, if given, limits the
+#: correction to the rows of those groups (one set can hold lines measured in different cells).
+SHIFT_KEYS = ("pressure_Pa", "pressure_kHz_per_Pa", "pressure_kHz_per_Pa_unc", "power_mW", "power_kHz_per_mW",
+              "power_kHz_per_mW_unc", "modulation_MHz", "modulation_kHz_per_MHz", "modulation_kHz_per_MHz_unc",
+              "allowance_kHz", "groups", "basis")
+
+
+def shift_correction(meta):
+    """(shift to add, uncertainty to add in quadrature), in kHz, for the absolute frequencies of a set.
+
+    Pressure and power shifts are negative for I2, so a zero-pressure value is the measured one minus
+    slope x pressure. Intervals within a line are left alone: the shift is common to its components to
+    well under their uncertainty (docs/design/observations.md, "Pressure and power")."""
+    c = meta.get("shift_correction")
+    if not c:
+        return 0.0, 0.0
+    unknown = set(c) - set(SHIFT_KEYS)
+    if unknown:
+        raise ValueError(f"{meta['id']}: unknown shift_correction keys {sorted(unknown)}")
+    terms = [(float(c.get(f"{q}_{u}", 0.0)), float(c.get(f"{q}_kHz_per_{u}", 0.0)), float(c.get(f"{q}_kHz_per_{u}_unc", 0.0)))
+             for q, u in (("pressure", "Pa"), ("power", "mW"), ("modulation", "MHz"))]
+    shift = -sum(x * slope for x, slope, _ in terms)
+    unc = math.sqrt(sum((x * du) ** 2 for x, _, du in terms) + float(c.get("allowance_kHz", 0.0)) ** 2)
+    return shift, unc
+
+
+def _corrected(observations, meta):
+    shift, unc = shift_correction(meta)
+    if not (shift or unc):
+        return observations
+    k = 1e-3 / UNITS[meta["unit"]]                  # kHz in the data set's unit
+    groups = meta["shift_correction"].get("groups")
+    return [replace(o, value=o.value + shift * k, uncertainty=math.hypot(o.uncertainty, unc * k))
+            if o.kind == "frequency" and (groups is None or o.group in groups) else o for o in observations]
+
+
+def load_dataset(path, raw=False) -> Dataset:
+    """A data set with its absolute frequencies taken to zero pressure and power ([shift_correction]);
+    ``raw`` keeps them as printed."""
     path = Path(path)
     meta = tomllib.loads((path / "meta.toml").read_text(encoding="utf-8"))
     missing = [k for k in META_REQUIRED if k not in meta]
@@ -144,13 +186,32 @@ def load_dataset(path) -> Dataset:
         raise ValueError(f"{path / 'meta.toml'}: id {meta['id']!r} differs from the directory name")
     if meta["unit"] not in UNITS:
         raise ValueError(f"{path / 'meta.toml'}: unit must be one of {tuple(UNITS)}")
-    return Dataset(meta["id"], meta, read_observations(path / "data.csv"))
+    observations = read_observations(path / "data.csv")
+    return Dataset(meta["id"], meta, observations if raw else _corrected(observations, meta))
 
 
-def load_all(root=DATA_DIR, include_excluded=False) -> list[Dataset]:
-    """Every data set under ``root``, except those whose meta.toml has an ``exclude`` reason."""
-    datasets = [load_dataset(p) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
-    return [d for d in datasets if include_excluded or "exclude" not in d.meta]
+def _what(o):
+    """What an observation measures, for defer_to: an absolute component, or an interval between two lines
+    (or within one), whatever the components."""
+    if o.kind == "frequency":
+        return ("frequency", o.line, o.component)
+    return ("interval", o.line, o.ref_line or o.line)
+
+
+def load_all(root=DATA_DIR, include_excluded=False, raw=False) -> list[Dataset]:
+    """Every data set under ``root``, except those whose meta.toml has an ``exclude`` reason.
+
+    A set whose meta.toml lists ``defer_to`` (a compilation such as the BIPM tables) loses the rows that one
+    of those sets also measures: the same absolute component, or intervals within the same line or between
+    the same two lines. Each measurement then enters once, from its source."""
+    datasets = [load_dataset(p, raw=raw) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
+    by_id = {d.id: d for d in datasets}
+    for d in datasets:
+        sources = [by_id[i] for i in d.meta.get("defer_to", []) if i in by_id]
+        if sources:
+            held = {_what(o) for src in sources for o in src.observations}
+            d.observations = [o for o in d.observations if _what(o) not in held]
+    return [d for d in datasets if (include_excluded or "exclude" not in d.meta) and d.observations]
 
 
 @dataclass(frozen=True)

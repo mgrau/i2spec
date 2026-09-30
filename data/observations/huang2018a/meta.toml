@@ -49,7 +49,7 @@ mean -689 kHz. The common offset is the model's line-centre error for this v'' =
 a15 - a1 differ from the model by -2 and -30 kHz.
 """
 
-[conditions]
+[conditions]  # values already at zero pressure (authors)
 method = "modulation transfer saturation spectroscopy, fibre frequency comb referenced to a Cs clock"
 laser = "Littrow ECDL, 647 nm (Oclaro HL65014DG at 18 C)"
 cell_length_cm = 58

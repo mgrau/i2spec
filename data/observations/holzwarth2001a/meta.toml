@@ -56,3 +56,12 @@ power_mW = 0.6
 intensity_mW_cm2 = 30.0
 pressure_shift_kHz_per_Pa = -4.2
 power_shift_Hz_per_mW = -340
+
+[shift_correction]
+pressure_Pa = 2.42
+pressure_kHz_per_Pa = -4.2
+pressure_kHz_per_Pa_unc = 0.2
+power_mW = 0.6
+power_kHz_per_mW = -0.34
+power_kHz_per_mW_unc = 0.117
+basis = "Paper p. 271: -5 C cold finger = 2.42 Pa, pressure shift -4.2(0.2) kHz/Pa (their ref. [11]), average power 0.6 mW, power shift -340 Hz/mW with the red shift given as 200(70) Hz (slope unc = 70 Hz / 0.6 mW). Common to all rows."

@@ -61,3 +61,13 @@ modulation_MHz_pp = 2
 saturating_power_uW = 800
 probe_power_uW = 80
 reference = "He-Ne NPL-D on a13 of 127I2 R(127) 11-5"
+
+[shift_correction]
+pressure_Pa = 17.0
+pressure_kHz_per_Pa = -9.5
+pressure_kHz_per_Pa_unc = 1.9
+allowance_kHz = 2.0
+modulation_MHz = 2.0
+modulation_kHz_per_MHz = -10.4
+modulation_kHz_per_MHz_unc = 2.1
+basis = "paper Fig. 5 slope; allowance 21 kHz for the modulation shift (-10.4 kHz/MHz x 2 MHz, paper), with the 2 kHz power allowance Modulation -10.4 kHz/MHz x 2 MHz corrected (20 % uncertainty); 2 kHz allowance for power."

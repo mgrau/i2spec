@@ -13,3 +13,12 @@ PDF text layer, converted kHz -> MHz exactly.
 uncertainty = "Absolute: 8 kHz (their total, Table I). Intervals: the standard deviation of their four-term fit to each line, 3.4 kHz (P(40)52-0) and 6.1 kHz (P(52)53-0), which the text says is set by the laser's repeatability."
 partial = "complete"
 notes = "Comb-referenced modulation-transfer spectroscopy at 507 nm; the P(52)53-0 fit SD is larger, which the authors attribute to overlapping weak lines."
+
+[shift_correction]
+pressure_Pa = 4.0
+pressure_kHz_per_Pa = -1.7
+pressure_kHz_per_Pa_unc = 0.4
+power_mW = 2.0
+power_kHz_per_mW = -4.1
+power_kHz_per_mW_unc = 0.4
+basis = "Accepted manuscript Sects. 3.1, 3.3 and Table I (measured on P(52) 53-0 a1, applied to both lines): 4.0 Pa, pump 2.0 mW, -1.7(0.4) kHz/Pa, -4.1(0.4) kHz/mW; values 'directly measured under the experimental conditions'."

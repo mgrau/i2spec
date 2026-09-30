@@ -66,3 +66,9 @@ rows here involve v' = 1 lines or were not in that 45-value set.
 [conditions]
 cells = "J2 for the wavelength comparisons (+42 kHz applied, thesis Table 4.1); beat measurements alternated which laser and cell sat on which line, and so corrected the cell shift in each measurement (p. 123)"
 detection = "collinear Doppler-free saturation spectroscopy, 3f lock, as bodermann2000a"
+
+[shift_correction]
+pressure_Pa = 27.0
+pressure_kHz_per_Pa = -5.1
+pressure_kHz_per_Pa_unc = 1.0
+basis = "Thesis Sect. 4: absolute measurements at side arm 20 C (27.0 Pa, as bodermann2000a); pressure shift -5.1(1.0) kHz/Pa (budget table; Table 4.1 cell J5 at 600 C -5.1/-5.0 kHz/Pa, linear in P). Applies to the three Table 6.12 frequencies only."

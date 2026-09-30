@@ -97,3 +97,8 @@ pump = "1 mW/mm2, 0.8 mm (1/e) diameter"
 probe = "88 uW/mm2, 0.8 mm (1/e) diameter"
 crossing_angle_mrad = 8
 reference = "He-Ne 633 nm on R(127) 11-5 i (a13), 15 C cold point, 6 MHz p-p, 3f; CIPM 1992 value 473612214705 kHz"
+
+[shift_correction]
+pressure_Pa = 7.45
+allowance_kHz = 37.0
+basis = "Paper: dye-laser cell cold point 6.0(0.3) C, no Pa and no coefficient (Table 1 lists only 1 kHz for pressure changes); 7.45 Pa from the Gillespie & Fraser vapour pressure. Allowance = |-5 kHz/Pa (typical, 500-600 nm) x 7.45 Pa|. The derived P(13) 43-0 row (Ar+ at -5 C) gets the same allowance."

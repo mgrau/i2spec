@@ -73,3 +73,8 @@ probe_mW = 3
 beam_diameter_mm = [0.74, 0.77]
 modulation = "EOM 10.4 MHz phase modulation of probe; pump chopped at 1 kHz"
 linewidth_MHz = 7
+
+[shift_correction]
+pressure_Pa = 29.5
+allowance_kHz = 236.0
+basis = "Paper: 22 C room-temperature cell, 29.5 Pa (authors' estimate); shifts stated to be within the statistical errors, no coefficient. Allowance = |-8 kHz/Pa (typical, 600-700 nm) x 29.5 Pa|."

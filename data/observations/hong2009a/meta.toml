@@ -59,3 +59,12 @@ probe_mW = 0.19
 beam_diameter_mm = 1.5
 modulation = "354 kHz EOM phase modulation; pump shifted 80 MHz by AOM"
 averaging = "1000 x 1 s counter gates"
+
+[shift_correction]
+pressure_Pa = 2.4
+pressure_kHz_per_Pa = -7.7
+pressure_kHz_per_Pa_unc = 1.54
+power_mW = 2.1
+power_kHz_per_mW = -0.8
+power_kHz_per_mW_unc = 0.16
+basis = "Paper Sect. 3.2: 2.4 Pa (-5 C), pump 2.1 mW; it gives no slopes. Slopes from kobayashi2016a (same group, same cell, same line R(37) 16-1 a1): -7.7 kHz/Pa, -0.8 kHz/mW; unc not printed, 20 % (judgement)."

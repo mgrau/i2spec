@@ -79,3 +79,8 @@ pump_mW = 185
 probe_mW = 2
 beam_radius_mm = 1
 linewidth_MHz = 11.2
+
+[shift_correction]
+pressure_Pa = 172.2
+allowance_kHz = 861.0
+basis = "PRA p. 032513-2: cold finger 43 C for R(26) 5-13, oven 650 C; no pressure coefficient (the 50 kHz oven study concerns cell-body temperature). 172.2 Pa from the Gillespie & Fraser vapour pressure. Allowance = |-5 kHz/Pa x 172.2 Pa|, NIR hot-cell value as for cornish2000a."

@@ -155,3 +155,9 @@ rb_2photon_85_d32_uncertainty_kHz = 23.0
 rb_2photon_87_d52_kHz = 385284566348.0
 rb_2photon_87_d52_uncertainty_kHz = 24.0
 rb_2photon_source = "Nez et al. [16] and Felder et al. [30], Fg = 2 - Fe = 4, with a -25(10) kHz AC-Stark correction applied by the authors"
+
+[shift_correction]
+pressure_Pa = 27.0
+pressure_kHz_per_Pa = -5.1
+pressure_kHz_per_Pa_unc = 1.0
+basis = "Paper p. 214: 20(1) C end, 27.0(2.4) Pa, no extrapolation and no coefficient given. Coefficient -5.1(1.0) kHz/Pa from Bodermann's thesis (bodermann1998c, Sect. 4, the same cells and campaign; Table 4.1 cell J5 = I5 at 600 C)."

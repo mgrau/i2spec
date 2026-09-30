@@ -22,7 +22,7 @@ the same construction the group's other papers state explicitly. The fit residua
 """
 notes = "Modulation transfer spectroscopy of a frequency-tripled 1560 nm source, three-pass 20 cm cell, comb-referenced."
 
-[conditions]
+[conditions]  # values already at zero pressure (authors)
 cold_finger_C = -10.0
 pressure_Pa = 1.44
 pump_mW = 3.0

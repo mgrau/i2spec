@@ -45,7 +45,7 @@ and asymmetry parts are common to the three components, hence the one group.
 
 notes = "The paper reports IodineSpec5 predictions about 3.4-3.6 MHz above the measured values."
 
-[conditions]
+[conditions]  # values already at zero pressure (authors)
 method = "modulation transfer spectroscopy of a frequency-doubled, fibre-amplified 1097 nm ECDL, comb-referenced"
 cell_length_cm = 10
 cold_finger_C = 6.5

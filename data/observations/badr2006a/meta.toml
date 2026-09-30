@@ -60,3 +60,8 @@ cold_finger_C = 13
 pressure_Pa = "not stated (about 14 Pa from the 13 C cold point)"
 modulation = "diode current 15.7 kHz, 6 MHz frequency modulation depth"
 diode_temperature_C = 25
+
+[shift_correction]
+pressure_Pa = 14.4
+allowance_kHz = 115.0
+basis = "Paper: cold point 13 C, no Pa and no coefficient given; 14.4 Pa from the Gillespie & Fraser vapour pressure. Allowance = |-8 kHz/Pa (typical, 600-700 nm) x 14.4 Pa|. 6 MHz FM lock offset not included."
