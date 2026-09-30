@@ -30,22 +30,35 @@ Ranked by what each would change in the model.
 2. **The supplement of Salumbides *et al.* (2008).** More than 380 differences between ¹²⁷I₂, ¹²⁹I₂ and
    ¹²⁷I¹²⁹I lines: the only data that constrain the breakdown of the Born–Oppenheimer approximation,
    where the isotope shifts of the model are uncertain by several MHz. Also no longer available from the
-   publisher.
+   publisher. Salumbides' PhD thesis (*Laser precision metrology for probing variation of fundamental
+   constants*, VU Amsterdam, 2009; chapters 10–11 are the 2006 and 2008 papers) reproduces the papers'
+   parameter tables and figures, not the line data. IodineSpec5 cannot recover them either: it holds the
+   model fitted to the data, not the data.
 3. **The supplement of Salumbides *et al.* (2006).** Per-line hyperfine parameters of the minor
    isotopologues, residuals to the formulae in the paper's tables. Not found on the publisher's site,
-   even with institutional access.
+   even with institutional access, and not in the 2009 thesis.
 4. **Kato *et al.*, *Doppler-Free High Resolution Spectral Atlas of Iodine* (2000).** 526–667 nm at about
-   3 MHz, published in print with discs; no digital copy is known.
+   3 MHz (stated σ 0.000054 cm⁻¹), four volumes with CD-ROMs giving the absolute wavenumber of every
+   hyperfine component; ISBN 4-89114-000-3. Out of print. The atlas page (http://web1.kcn.jp/kansha-kansha/)
+   says the project leader, H. Katô, still has a few sets (h-kato@kcn.jp). Held by the National Diet Library
+   (call number PA47-A85, also digitised in its Digital Collection) and, per CiNii Books (NCID BA4875724X),
+   by seven Japanese university libraries: Institute of Science Tokyo (Suzukakedai), Kyoto (Yoshida-South),
+   Osaka (Science and Engineering; Main), University of Hyogo (Harima), JAIST and Kochi University of
+   Technology.
 5. **The comb-referenced Fourier-transform spectrum of Reiners *et al.* (2024).** It reports a
    band-correlated deviation of about 2 m s⁻¹ from the Hannover model over 515–630 nm; the spectrum
    would show whether the deviation lies in the model or the measurement.
-6. **The component absorption bands of Tellinghuisen (2011).** The separate A←X, C←X and B←X bound–free
-   contributions, published as supplementary material on a host that no longer exists. The model
-   reproduces their published sum to 0.5 %.
+6. **The component absorption bands of Tellinghuisen (2011).** *Obtained 2026-09-30*
+   (`data/external/tellinghuisen_2011_supplement/`, Table IIS): the A←X, B←X and C←X contributions at 0 and
+   35 °C, 400–850 nm. The model reproduces their published sum to 0.5 %; the components are not yet compared.
 7. **Fourier-transform spectra of astronomical iodine cells at NIST** (2009–2023) and those of Perdelwitz
-   & Huke (2018) and Debus *et al.* (2023): measured, described in publications, not deposited.
+   & Huke (2018), Debus *et al.* (2023) and the comb-calibrated spectrum of Reiners *et al.* (2024, item 5):
+   measured, described in publications, not deposited. The NIST scan of the Keck HIRES cell (March 2009,
+   R ≥ 500 000) is available on request from the Keck instrument master. The 1993 Kitt Peak scans of the
+   Keck, Lick, McDonald and ESO cells, by contrast, are public (`data/external/kitt_peak_fts/`).
 8. **The line list of Rodríguez Fernández *et al.* (2023)** (1 204 lines at 14 400–14 600 cm⁻¹): described
-   in the paper as supplementary material, but not provided with it.
+   in the paper as supplementary material, but not provided with it. Requested from the publisher
+   2026-09-30.
 9. **Scans of the Gerstenkorn & Luc atlases** once served by the Laboratoire Aimé Cotton. They are no
    longer online and were not archived. The printed volumes remain: the 11 000–14 000 cm⁻¹ volume and
    Partie IV (19 700–20 035 cm⁻¹) were photographed and transcribed here

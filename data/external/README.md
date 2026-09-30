@@ -133,3 +133,20 @@ Line positions extracted from `salami_ross_2005/` and `apo_pyodine_atlas/` by `p
 and `prototypes/atlas_dataset.py` are committed as `data/atlas_lines/*.csv` with their own `.toml`
 provenance. They are measurements derived here, not copies of the source files; each `.toml` carries the
 citation of the spectrum it came from, which must accompany any use of them.
+
+## `tellinghuisen_2011_supplement/`
+
+- **Source:** J. Tellinghuisen, "Least-squares analysis of overlapped bound-free absorption spectra and predissociation data in diatomics: the C(¹Πᵤ) state of I₂", *J. Chem. Phys.* **135**, 054301 (2011), doi:10.1063/1.3614403. Supplementary material from the AIP article page, `054301_1_supplements.zip`, which holds one file, `JT-Supplement-JCP-I2.pdf` (8 pages).
+- **Obtained:** 2026-09-30, by the project's author, with institutional access. `JT-Supplement-JCP-I2.txt` is its `pdftotext -layout` text.
+- **Contents:**
+  - Table IS: the measured molar absorptivity ε and its smoothed σ (l mol⁻¹ cm⁻¹) at 35.4 and 64.0 °C, 400–500 and 600–850 nm, every 2 nm.
+  - Table IIS: the fitted contributions of the A←X, B←X (bound–free) and C←X transitions and their total, at 0 and 35 °C, with LS standard errors at 35 °C, every 5 nm from 400 nm. These are the component bands listed as item 6 in `docs/research/data-availability.md`. The table notes that at 500–650 nm the results are limited by the pseudocontinuum treatment.
+  - The normalised residuals of the recommended fit.
+- **Terms:** AIP supplementary material; licence not stated.
+
+## `kitt_peak_fts/`
+
+- **Source:** the NSO Digital Library archive of the McMath-Pierce 1-m FTS at Kitt Peak, https://nispdata.nso.edu/ftp/FTS_cdrom/, which serves full-resolution transformed spectra as FITS files named `yymmddR0.nnn`.
+- **Contents:** 17 March 1993, volume `FTS33`, `930317R0.001`–`.013`: iodine cells of the Lick (backup), McDonald #1/#2, Keck (50, 60 and 70 °C), ESO (50 and 70 °C) and 1A–4A radial-velocity programmes, plus one bromine cell. Every file covers 14 952–20 552 cm⁻¹ (5 000–6 300 Å), with a DZE lamp as source. Also `930505R0.015` (Xe lamp, empty cell + I₂ cell, 3 550–6 500 Å).
+- **How found:** by reading the FITS headers of every full-resolution file in volumes FTS32–FTS35 (September 1992 – July 1994). The archive has no text index, and the query tool its README describes is gone. The server refused further requests (HTTP 403) after about 1 500 header reads. Retrieval continued more slowly (one file a minute, one header every 4 s, a 30-minute pause after any refusal), and headers of the other volumes are being read the same way.
+- **Terms:** NSO/NOAO archive data; public, licence not stated.
