@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a1,interval,-259.701,0.020,,a2,fang2006a,"Table I (p. 2778), a1-a2; laser on a2, a1 scanned with the -2nd-order AOM beam"
+127I2 R(56) 32-0,a2,interval,-141.789,0.020,,a6,fang2006a,"Table I (p. 2778), a2-a6; laser on a6, a2 scanned (Fig. 2)"
+127I2 R(56) 32-0,a5,interval,-143.990,0.020,,a9,fang2006a,"Table I (p. 2778), a5-a9"
+127I2 R(56) 32-0,a6,interval,-170.066,0.020,,a10,fang2006a,"Table I (p. 2778), a6-a10; laser on a10"
+127I2 R(56) 32-0,a7,interval,-154.547,0.020,,a10,fang2006a,"Table I (p. 2778), a7-a10; laser on a10"
+127I2 R(56) 32-0,a8,interval,-131.930,0.020,,a10,fang2006a,"Table I (p. 2778), a8-a10; laser on a10"
+127I2 R(56) 32-0,a9,interval,-116.202,0.020,,a10,fang2006a,"Table I (p. 2778), a9-a10; laser on a10"
+127I2 R(56) 32-0,a11,interval,126.510,0.020,,a10,fang2006a,"Table I (p. 2778), a10-a11; laser on a10; the text (p. 2778) gives the mean of 15 scans as 126.508 MHz, sd 5 kHz"
+127I2 R(56) 32-0,a12,interval,131.223,0.020,,a10,fang2006a,"Table I (p. 2778), a10-a12; laser on a10"
+127I2 R(56) 32-0,a13,interval,154.503,0.020,,a10,fang2006a,"Table I (p. 2778), a10-a13; laser on a10"
+127I2 R(56) 32-0,a14,interval,160.682,0.020,,a10,fang2006a,"Table I (p. 2778), a10-a14; laser on a10"
+127I2 R(56) 32-0,a15,interval,125.747,0.020,,a14,fang2006a,"Table I (p. 2778), a14-a15"

@@ -4,7 +4,7 @@ source = "https://www.bipm.org/documents/20126/41549514/M-e-P_I2_532.pdf/16c7ddb
 retrieved = "2026-09-14"
 catalog = "data/catalog/precision.yaml#bipm2012a"
 unit = "MHz"
-defer_to = ["ye1999a", "holzwarth2001a", "zhang2001a", "hong2000a", "hong2001a", "hong2001b", "hong2002a", "hong2004a", "arie1994a", "jones2002a", "hong2004b"]   # The MEP 532 nm tables are compiled from these sources (their Source data 2.2 and table references); each measurement enters the fit once, from its source (load_all drops the rows they also hold).
+defer_to = ["ye1999a", "holzwarth2001a", "zhang2001a", "hong2000a", "hong2001a", "hong2001b", "hong2002a", "hong2004a", "arie1994a", "jones2002a", "hong2004b", "hong2002b"]   # The MEP 532 nm tables are compiled from these sources (their Source data 2.2 and table references); each measurement enters the fit once, from its source (load_all drops the rows they also hold).
 transcription = """
 Page 1: recommended f(a10, R(56) 32-0). Pages 2-3: intervals f(a1 or a21 of each line) - f(a10, R(56) 32-0),
 the list of 17 lines (p. 2) and the three 2007 additions (p. 3), converted from kHz to MHz. These were typed

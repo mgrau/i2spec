@@ -38,7 +38,7 @@ def test_extended_range_potentials():
                                                  ("bipm2012a", 0.96, 0.45), ("yoshiki2023a", 30.0, 1.0),
                                                  ("matsunaga2024a", 5000.0, 3.0)])
 def test_nir_sets_reproduced(name, before, after):
-    ds = load_dataset(DATA_DIR / name)
+    ds = load_dataset(DATA_DIR / name, raw=True)     # 2026a/2026d were fitted to the values as printed
     scale = MHZ_PER_CM if ds.unit == "cm-1" else 1.0
     rms = lambda p: float(np.sqrt(np.mean(np.square(residuals(p, ds) * scale))))   # noqa: E731
     assert rms(Predictor("i2spec2026a")) > before * 0.9
@@ -60,7 +60,7 @@ def test_band_correction_is_confined_to_the_nir_bands():
 def test_band_correction_improves_liao_and_leaves_other_sets_alone():
     import numpy as np
     from i2spec.observations import load_dataset, residuals
-    rms = lambda ps, sid: float(np.sqrt(np.mean(residuals(Predictor(ps), load_dataset(f"data/observations/{sid}")) ** 2)))  # noqa: E731
+    rms = lambda ps, sid: float(np.sqrt(np.mean(residuals(Predictor(ps), load_dataset(f"data/observations/{sid}", raw=True)) ** 2)))  # noqa: E731
     assert rms("i2spec2026e", "liao2010a") < 0.16 < 0.3 < rms("i2spec2026d", "liao2010a")
     for sid in ("cornish2000a", "reinhardt2007a", "bipm2003d"):
         assert rms("i2spec2026e", sid) == rms("i2spec2026d", sid)

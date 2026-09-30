@@ -26,7 +26,7 @@ def residuals():
     l10 = load_local_nir("liao2010", trust_printed_digits=True)
     rows = []
     for ds_id, shift in (("liao2010a", PRESSURE_SHIFT_MHz), ("bodermann2000a", 0.0)):
-        for o in load_dataset(DATA_DIR / ds_id).observations:
+        for o in load_dataset(DATA_DIR / ds_id, raw=True).observations:   # the local models were fitted to the printed values
             if o.kind != "frequency":
                 continue
             line, target = o.line, o.value + shift

@@ -67,5 +67,5 @@ notes = "Cell from Opthos Inc., degassed three times before filling. The three T
 
 [shift_correction]
 pressure_Pa = 27.0
-pressure_kHz_per_Pa = -5.1
-basis = "the same 27 Pa Hannover cells as bodermann2000a/1998c, corrected with the same thesis coefficient -5.1 kHz/Pa (Bodermann 1998, Sec. 4) so the Hannover NIR sets stay consistent; no uncertainty added, since the paper's 200 kHz accuracy is already its allowance for this shift"
+pressure_kHz_per_Pa = -4.2222
+basis = "the paper's own cell pressure shift, +114 kHz on every row (Table 2, footnote b; its three calibration lines' shifts scatter over 102-121 kHz), entered as 27 Pa x -4.2222 kHz/Pa; no uncertainty added, since the paper's 200 kHz accuracy already allows for it (the band fit adds 30 kHz for the transition dependence the paper did not study)"

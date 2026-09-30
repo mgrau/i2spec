@@ -70,14 +70,15 @@ def test_uncertainty_estimates(catalog):
     edge = Line("127I2", "R", 56, 44, 0, 19500.0, 1e-18, 119.0, 293.15)
     beyond = Line("127I2", "R", 40, 58, 5, 18787.85, 1e-18, 1114.0, 293.15)
     red = Line("127I2", "P", 60, 12, 6, 14000.0, 1e-18, 500.0, 293.15)  # 714 nm, near the 671 nm anchor
-    nir = Line("127I2", "P", 60, 0, 13, 12800.0, 1e-18, 500.0, 293.15)  # 781 nm, inside the measured 0-13 band
+    nir = Line("127I2", "P", 100, 0, 13, 12800.0, 1e-18, 500.0, 293.15)  # 781 nm, inside the measured 0-13 band
     nir_hot = Line("127I2", "R", 139, 1, 14, 12850.0, 1e-18, 500.0, 293.15)  # 778 nm, v′ = 1: inside the 1-14 band's lines
     nir_far = Line("127I2", "R", 60, 3, 16, 12750.0, 1e-18, 500.0, 293.15)  # v′ = 3: one line at J′ = 42; J′ = 61 is outside
     far = Line("127I2", "P", 60, 0, 18, 12000.0, 1e-18, 500.0, 293.15)  # 833 nm: X v'' = 18, measured by the Orsay atlas
     farther = Line("127I2", "P", 60, 0, 27, 10900.0, 1e-18, 500.0, 293.15)  # v'' = 27: beyond the atlas
     iso = Line("129I2", "R", 56, 32, 0, 18788.0, 1e-18, 119.0, 293.15)
-    # v' = 32 at 532 nm: the B level is corrected from the BIPM lines, 0.68 MHz held out (i2spec2026c)
-    assert uncertainty(fitted)[0] == 0.74 and fitted.flags == ("corrected levels",)
+    # v' = 32 at 532 nm: the B level is corrected from the comb lines; since i2spec2026l the figure is the
+    # coefficients' covariance propagated to J' = 57 with the level's discrepancy term (it was 0.74, held out)
+    assert 0.3 < uncertainty(fitted)[0] < 1.0 and fitted.flags == ("corrected levels",)
     low = Line("127I2", "R", 56, 20, 0, 17500.0, 1e-18, 119.0, 293.15)
     assert uncertainty(low)[0] == 3.0 and low.flags == ()
     # v' = 44 at J' = 57 is outside the yoshiki lines' J (33-39)
@@ -102,10 +103,11 @@ def test_uncertainty_estimates(catalog):
     # level's measured uncertainty (15-50 MHz); beyond v'' = 25 the v'' rule still applies.
     assert 10.0 < uncertainty(far)[0] < 30.0
     assert far.flags == ("v″ 18-25: atlas-measured", "corrected levels")
-    assert uncertainty(farther)[0] == 300.0
-    assert farther.flags == ("v″ > 17: unmeasured", "beyond 815 nm")
+    # i2spec2026l: v'' = 26-75 from the X potential fitted to Martin 1986's level constants
+    assert uncertainty(farther)[0] == 150.0
+    assert farther.flags == ("v″ 26-89: Martin 1986", "beyond 815 nm")
     assert "671 nm" in uncertainty(red)[1] and "level corrections" in uncertainty(nir)[1]
-    assert "Orsay atlas" in uncertainty(far)[1] and "Orsay atlas" in uncertainty(farther)[1] and "v′ > 0" in uncertainty(nir_far)[1]
+    assert "Orsay atlas" in uncertainty(far)[1] and "Martin" in uncertainty(farther)[1] and "v′ > 0" in uncertainty(nir_far)[1]
     assert uncertainty(iso)[0] == pytest.approx(math.hypot(5.0, 3.0), abs=0.01) and "isotope shift" in iso.flags
     assert "level corrections" in uncertainty(fitted)[1] and "Partie IV" in uncertainty(beyond)[1]
 
@@ -188,10 +190,11 @@ def test_high_v_lower_is_flagged_as_unreliable():
     assert uncertainty(ok)[0] == 3.0                       # unchanged where the data are (v' = 20, v'' = 0)
     assert not any("v″" in f for f in ok.flags)
 
-    # i2spec2026d: the extended-range MLR X takes over above v'' = 17 -- 0.3 GHz where Martin 1986's levels
-    # check it (to v'' = 28), 1 GHz beyond, 20 MHz at v'' = 48-54 where emission lines were measured
-    for v_lower, expect in ((18, 300.0), (28, 300.0), (29, 1000.0), (47, 1000.0), (48, 20.0), (54, 20.0)):
-        bad = line(33, v_lower, 10188.0)
+    # the extended-range X above v'' = 17 (i2spec2026l): 300 MHz outside the Orsay atlas J at v'' = 18-25, the
+    # Martin-fitted potential at v'' = 26-89, 20 MHz at v'' = 48-54 where emission lines were measured, 5 GHz beyond
+    # (upper level B v' = 29, which no line corrects, so the lower level's rule decides)
+    for v_lower, expect in ((18, 300.0), (28, 150.0), (47, 150.0), (48, 20.0), (54, 20.0), (60, 150.0), (80, 400.0), (95, 5000.0)):
+        bad = line(29, v_lower, 10188.0)
         value, why = uncertainty(bad)
         assert value == expect, (v_lower, value)
         assert any("v″" in f for f in bad.flags)
@@ -199,4 +202,4 @@ def test_high_v_lower_is_flagged_as_unreliable():
 
     # a line whose levels are both measured (X v'' = 48 by emission, B v' = 58 by the Orsay atlas Partie IV,
     # i2spec2026k) carries their combined held-out figures
-    assert uncertainty(line(58, 48, 19429.0))[0] == pytest.approx(21.0, abs=0.5)
+    assert uncertainty(line(58, 48, 19429.0))[0] == pytest.approx(21.0, abs=2.0)

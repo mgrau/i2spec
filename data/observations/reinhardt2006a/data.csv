@@ -1,5 +1,7 @@
 line,component,kind,value,uncertainty,ref_line,ref_component,group,note
-127I2 P(10) 14-1,a15,frequency,512671028.075,0.070,,,reinhardt2006a_585,frequency-comb value of Table 6
+127I2 P(80) 21-1,a10,frequency,530222434.295,0.070,,,reinhardt2006a_comb,"Sect. 3.3 and conclusion (pp. 288-289); frequency comb, 37 measurements, PTB cells 1/99 and 15/98 (Fig. 7 left, mean 530 222 434 295(2) kHz); as measured at 6 C"
+127I2 P(10) 14-1,a15,frequency,512671028.075,0.070,,,reinhardt2006a_comb,"Sect. 3.3 and Table 6 (p. 288); frequency comb, 7 measurements, PTB cell 15/98 (Fig. 7 right, mean 512 671 028 075(3) kHz); as measured at 6 C"
+127I2 P(10) 14-1,a15,interval,3405.290,0.030,127I2 R(99) 15-1,a13,reinhardt2006a_585,"Sect. 3.2 (p. 287), printed nu_a13-a15 = 3 405 290(30) kHz; heterodyne of two dye lasers via R(30) 12-0 a1, 4 runs of 100 s; P(10) a15 is the higher (sign from Table 6 and Grieser's R(99) a13)"
 127I2 P(80) 21-1,a2,interval,269.767,0.020,,a1,reinhardt2006a_21-1,
 127I2 P(80) 21-1,a5,interval,307.469,0.020,,a1,reinhardt2006a_21-1,
 127I2 P(80) 21-1,a6,interval,413.517,0.020,,a1,reinhardt2006a_21-1,

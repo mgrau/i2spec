@@ -50,7 +50,7 @@ ORSAY_SCALE_PPB = {"orsay1982_part1": 23.85, "orsay1983_part4": 200.8}   # Parti
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
               "v′ > 43: extended model": "warn", "v″ ≥ 48: extended model": "warn", "beyond 815 nm": "warn",
-              "v″ > 17: unmeasured": "bad", "v′ 51-79: atlas-measured": "warn", "v′ > 50: extrapolated": "bad", "isotope shift": "none", "few data": "none"}
+              "v″ > 17: unmeasured": "bad", "v″ 26-89: Martin 1986": "warn", "v′ 51-79: atlas-measured": "warn", "v′ > 50: extrapolated": "bad", "isotope shift": "none", "few data": "none"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
                "orsay": "Gerstenkorn, Vergès & Chevillard"}
 #: Names that the prefix alone gets wrong
@@ -278,9 +278,11 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     catalog = Catalog()
-    masters = {iso: with_dissociation_lines(master_line_list(intensity_model(iso), 11000.0, 20100.0,
-                                                             T_range=(200.0, 600.0), S_min=1e-27), S_min=1e-27)
+    # the lines to the B limit (12 A grid, ~20 min to build) for 127I2, the one isotopologue measured there
+    masters = {iso: master_line_list(intensity_model(iso), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
                for iso in isotopologues}
+    if "127I2" in masters:
+        masters["127I2"] = with_dissociation_lines(masters["127I2"], S_min=1e-27)
     centres = {}
     for iso, master in masters.items():
         centres[iso] = {line_key("R" if b > 0 else "P", int(j), int(u), int(v)): float(nu) * MHZ_PER_CM

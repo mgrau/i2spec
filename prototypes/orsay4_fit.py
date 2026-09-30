@@ -40,7 +40,7 @@ LINE_SCATTER = 25.0            # MHz: atlas residual spread of v' = 54-56 after 
                                # scatter is all that is left
 
 
-def huber(X, r, s, prior=1e4, iters=10, mask=None):
+def huber(X, r, s, prior=1e4, iters=10, mask=None, cov=False):
     mask = np.ones(len(r), bool) if mask is None else mask
     w = 1 / s
     for _ in range(iters):
@@ -48,6 +48,11 @@ def huber(X, r, s, prior=1e4, iters=10, mask=None):
         c = np.linalg.solve(Xw.T @ Xw + np.eye(X.shape[1]) / prior**2, Xw.T @ rw)
         z = np.abs(r - X @ c) / s
         w = np.minimum(1.0, 2.5 / np.maximum(z, 1e-9)) / s
+    if cov:            # covariance at the final robust weights, scaled by the reduced chi^2
+        Xw = X[mask] * w[mask, None]
+        C = np.linalg.inv(Xw.T @ Xw + np.eye(X.shape[1]) / prior**2)
+        chi2 = float(np.sum(((r[mask] - X[mask] @ c) * w[mask]) ** 2)) / max(int(mask.sum()) - X.shape[1], 1)
+        return c, C * max(chi2, 1.0)
     return c
 
 
@@ -91,10 +96,19 @@ def main(argv):
             eps = float(r["eps_mk"]) * 1e-3 * MHZ_PER_CM if r["eps_mk"] else 150.0
             rows.append((vu, Ju, (float(r["sigma_cm1"]) + EX - base(vu, Ju)) * MHZ_PER_CM, np.hypot(eps, floor), True))
     n_atlas = len(rows)
-    for ds in load_all():
+    sets = load_all()
+    # an interval between two lines becomes absolute through its reference component, measured in any set
+    # (a compilation's own reference may have given way to its sources: bipm2005a's P(13) 43-0 a3)
+    absolute = {}
+    for ds in sets:
         scale = MHZ_PER_CM if ds.meta["unit"] == "cm-1" else 1.0
-        absolute = {(o.line, o.component): (o.value * scale, o.uncertainty * scale)
-                    for o in ds.observations if o.kind == "frequency"}
+        for o in ds.observations:
+            if o.kind == "frequency":
+                v = (o.value * scale, o.uncertainty * scale)
+                if (o.line, o.component) not in absolute or v[1] < absolute[(o.line, o.component)][1]:
+                    absolute[(o.line, o.component)] = v
+    for ds in sets:
+        scale = MHZ_PER_CM if ds.meta["unit"] == "cm-1" else 1.0
         for o in ds.observations:
             L = o.line
             if L.isotopologue != "127I2" or L.v_upper < V_MIN or L.v_lower > 17:
@@ -135,7 +149,7 @@ def main(argv):
     c, X, cols, ix = solve_all(vu, Ju, res0, s, atlas, levels, deg)
     keep = np.isin(vu, levels)
     X, res0, s, atlas, vu, Ju = X[keep], res0[keep], s[keep], atlas[keep], vu[keep], Ju[keep]
-    c = huber(X, res0, s)
+    c, C = huber(X, res0, s, cov=True)
     fitted = res0 - X @ c
     offset = c[0]
     print(f"atlas offset {offset:+.1f} MHz (comb - atlas on the three shared lines: +82, +150, +138)")
@@ -147,7 +161,7 @@ def main(argv):
     atlas_scatter = mad(fitted[atlas])
     print(f"atlas residual MAD after the fit {atlas_scatter:.1f} MHz, comb rows rms "
           f"{np.sqrt(np.mean(fitted[~atlas] ** 2)):.2f} MHz")
-    coef, coverage, held = {}, {}, {}
+    coef, coverage, held, covs, disc = {}, {}, {}, {}, {}
     print(f"{'v':>3} {'n':>4} {'deg':>3} {'J′':>9} {'before med':>11} {'after MAD':>10} {'held-out':>9}  dB at J′ = 0 / 40 / 80 (MHz)")
     for v in levels:
         m = vu == v
@@ -156,6 +170,12 @@ def main(argv):
         coverage[v] = [int(Ju[m].min()), int(Ju[m].max())]
         spread = 1.4826 * np.median(np.abs(loo[m]))
         held[v] = max(float(np.sqrt(max(spread ** 2 - LINE_SCATTER ** 2, 0.0))), FLOOR_HELD_OUT)
+        ids = [ix[(v, k)] for k in range(deg[v] + 1)]
+        covs[v] = C[np.ix_(ids, ids)]
+        yv = Ju[m] * (Ju[m] + 1) / 1e4
+        pv = np.mean([np.vander([y], deg[v] + 1, increasing=True)[0] @ covs[v] @ np.vander([y], deg[v] + 1, increasing=True)[0]
+                      for y in yv])
+        disc[v] = float(np.sqrt(max(held[v] ** 2 - pv, 0.0)))     # what the held-out figure has beyond the covariance
         at = [np.polyval(cc[::-1], J * (J + 1) / 1e4) for J in (0, 40, 80)]
         print(f"{v:3d} {m.sum():4d} {deg[v]:3d} {coverage[v][0]:4d}-{coverage[v][1]:<4d} {np.median(res0[m]):+11.0f} "
               f"{mad(fitted[m]):10.1f} {held[v]:9.1f}  " + " / ".join(f"{a:+.0f}" for a in at))
@@ -167,10 +187,15 @@ def main(argv):
             out[st_key] = {k: v for k, v in out[st_key].items() if int(k) < V_MIN}
             out["coverage"][st_key] = {k: v for k, v in out["coverage"][st_key].items() if int(k) < V_MIN}
             out["held_out_MHz"][st_key] = {k: v for k, v in out["held_out_MHz"][st_key].items() if int(k) < V_MIN}
+        for key in ("covariance_MHz2", "discrepancy_MHz"):
+            out.setdefault(key, {"X": {}, "B": {}})
+            out[key]["B"] = {k: v for k, v in out[key].get("B", {}).items() if int(k) < V_MIN}
         for v in levels:
             out["B"][str(v)] = coef[v]
             out["coverage"]["B"][str(v)] = coverage[v]
             out["held_out_MHz"]["B"][str(v)] = held[v]
+            out["covariance_MHz2"]["B"][str(v)] = covs[v].tolist()
+            out["discrepancy_MHz"]["B"][str(v)] = disc[v]
         out["orsay4"] = dict(
             note=(f"B v' = {V_MIN}-79 from the unblended lines of the Orsay atlas Partie IV (Gerstenkorn & Luc 1983) "
                   "and the comb-referenced lines there, on the potential of " + str(opts["--potential"]) +

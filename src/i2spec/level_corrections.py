@@ -34,6 +34,8 @@ class LevelCorrections:
     held_out: dict              # state -> {v: rms (MHz) of the precise lines predicted with the level's own lines left out}
     band: dict | None = None    # the NIR band correction, if any (see the module docstring)
     clamp_J: bool = False       # beyond coverage +- J_MARGIN, extrapolate only the linear part (level_corrections_2026h on)
+    covariance: dict | None = None   # state -> {v: covariance of the coefficients, MHz^2} (level_corrections_2026k on)
+    discrepancy: dict | None = None  # state -> {v: model-discrepancy term, MHz}: held-out scatter the covariance leaves
 
     def band_covers(self, v_upper: int, v_lower: int, J_lower: int) -> bool:
         """Is this line one the band correction applies to: in its bands and within J_MARGIN of their data?"""
@@ -83,6 +85,27 @@ class LevelCorrections:
         """Held-out rms (MHz) of the correction, or None where a single line fixed the level."""
         return self.held_out.get(state, {}).get(v)
 
+    def _basis(self, state, v, J, n):
+        """The polynomial terms of shift() at J, with the same clamping of the curvature terms."""
+        y = J * (J + 1) / 1e4
+        yc = y
+        r = self.coverage.get(state, {}).get(v)
+        if self.clamp_J and n > 2 and r is not None:
+            Jc = min(max(J, max(r[0] - J_MARGIN, 0)), r[1] + J_MARGIN)
+            yc = Jc * (Jc + 1) / 1e4
+        return np.array([y ** k if k < 2 else yc ** k for k in range(n)])
+
+    def uncertainty_at(self, state: str, v: int, J: int) -> float | None:
+        """1-sigma (MHz) of the corrected level at J: the coefficients' covariance propagated to J, with the
+        level's model-discrepancy term in quadrature. None where the set carries no covariance for the level."""
+        cov = (self.covariance or {}).get(state, {}).get(v)
+        if cov is None:
+            return None
+        cov = np.asarray(cov, dtype=float)
+        phi = self._basis(state, v, J, cov.shape[0])
+        md = (self.discrepancy or {}).get(state, {}).get(v) or 0.0
+        return float(np.sqrt(max(phi @ cov @ phi, 0.0) + md * md))
+
     def covers(self, state: str, v: int, J: int) -> bool:
         """Inside (or within J_MARGIN of) the J range the correction was fitted on."""
         r = self.coverage.get(state, {}).get(v)
@@ -100,4 +123,8 @@ def load_level_corrections(name: str) -> LevelCorrections:
                             fit=d.get("fit", {}),
                             held_out={st: {int(v): float(u) for v, u in d.get("held_out_MHz", {}).get(st, {}).items()}
                                       for st in ("X", "B")},
-                            band=d.get("band"), clamp_J=bool(d.get("clamp_J", False)))
+                            band=d.get("band"), clamp_J=bool(d.get("clamp_J", False)),
+                            covariance={st: {int(v): c for v, c in d["covariance_MHz2"].get(st, {}).items()} for st in ("X", "B")}
+                            if "covariance_MHz2" in d else None,
+                            discrepancy={st: {int(v): float(u) for v, u in d["discrepancy_MHz"].get(st, {}).items()} for st in ("X", "B")}
+                            if "discrepancy_MHz" in d else None)

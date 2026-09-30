@@ -4,7 +4,7 @@ source = "https://arxiv.org/abs/2309.05932 (arXiv v1, 12 Sep 2023). The journal 
 doi = "10.1016/j.cjph.2023.12.007"
 retrieved = "2026-09-29"
 unit = "MHz"
-exclude = "All nine printed frequencies disagree with the model and the APO/NIST atlas by 30-840 MHz (see transcription); left out of load_all() until the journal version or the EFTF 2024 companion resolves it."
+exclude = "All nine printed frequencies disagree with the model and the APO/NIST atlas by 30-840 MHz; the residuals fall on a comb-ambiguity pattern (printed - true = +35 or -105 MHz modulo 250 MHz; see transcription) that cannot be undone from the published information. The EFTF 2024 companion (doi:10.1109/eftf61992.2024.10722760) repeats only the R(146) 25-0 a15 value unchanged and does not resolve it."
 catalog = "data/catalog/precision.yaml#chen2023a (also data/catalog/broadband.yaml#chen2024, the pressure-shift entry for the same paper)"
 
 transcription = """
@@ -47,12 +47,54 @@ both disagree with the paper by 30-820 MHz (obs - (atlas centre + model hyperfin
     of the other three, P(160) 26-0 a1 (not a15) would fit at +23 MHz vs model / +44 vs atlas, and
     R(72) 25-1 a15 (not a10) at -6 / +13 MHz, but these single coincidences are weak evidence given the
     ~50 MHz component spacing;
-  - the residuals are not multiples of the 250 MHz comb repetition rate (mod 250 MHz they fall near
-    32-45 and 138-160 MHz), so a simple mode-number error does not explain them, although mode-number
-    plus offset/beat-sign ambiguities (fo = 35 MHz) cannot be excluded.
-The cause is not known. All nine rows are kept exactly as printed (nothing is dropped), but THIS SET SHOULD
-NOT BE USED IN THE FIT until the discrepancy is understood (e.g. from the journal version or the EFTF 2024
-companion paper, doi:10.1109/eftf61992.2024.10722760). All rows share one group, since one comb, maser,
+  - the residuals are not multiples of the 250 MHz comb repetition rate, so a mode-number error alone does
+    not explain them; see the comb-ambiguity analysis below.
+
+COMB-AMBIGUITY PATTERN (analysis 2026-09-29). Sect. 3.2 (p. 6) gives flaser = N fr +/- fo +/- fb with
+fr ~ 250 MHz, fo = 35 MHz, N found by changing fr in a two-step process (no wavemeter); the comb is a
+PCF supercontinuum covering 500-1050 nm (Sect. 2), so the 554 nm light beats directly against comb modes
+of offset fo (not 2fo), and the beat passes a band-pass filter (so fb is similar from line to line). The
+paper prints neither N, fb nor the signs chosen. Taken modulo 250 MHz, the residuals form two tight
+clusters:
+                        obs - i2spec   mod 250   obs - APO/NIST   mod 250
+  R(50) 22-0 a1            +150.9       150.9        +163.3        163.3
+  P(121) 24-0 b1           -100.9       149.1         -85.4        164.6
+  P(69) 25-1 b18            +32.5        32.5         +55.0         55.0
+  R(146) 25-0 a15           +44.5        44.5         +53.9         53.9
+  P(160) 26-0 a15          -839.8       160.2        -818.6        181.4
+  P(102) 26-1 a1           -466.1        33.9        -447.1         52.9
+  R(96) 23-0 a10           -362.0       138.0        -338.5        161.5
+  P(92) 23-0 a15           -362.4       137.6        -338.4        161.6
+  R(72) 25-1 a10           +282.1        32.1        +301.4         51.4
+(APO/NIST column: atlas line centre + i2spec hyperfine offset; atlas 1-sigma 8-10 MHz.) Against the
+atlas, 8 of the 9 lines sit within +/-2 MHz of +53 or +163 MHz (= -87) modulo 250; P(160) 26-0 (the
+weakest atlas line, depth 0.58) is the exception at +181. Against i2spec (which puts the atlas 10-24 MHz
+low in this band) the clusters are +32...+45 and +138...+160. The two clusters are 140 MHz (= 4 fo, or
+2 x a ~70 MHz beat) apart and are centred on about -35 MHz (vs i2spec) / -17 MHz (vs atlas). So the
+data are consistent with printed - true = (+35 or -105 MHz) + k x 250 MHz, k = -3...+1, i.e. a mode-number
+error plus a sign error in the +/-fo +/-fb terms that differs from line to line. Removing the nearest such
+term leaves residuals vs i2spec of +5.9, +4.1, -2.5, +9.5, +15.2, -1.1, -7.0, -7.4, -2.9 MHz (table order),
+so the lines ARE the assigned ones (the labels also match the component spacing in the EFTF Fig. 4
+spectrum of R(146) 25-0: a1 -> a15 spans ~865 MHz, i2spec 863 MHz). But the correction (the choice of k and
+of the cluster) can only be made with the model or atlas, the corrected values would carry the model's
+and atlas's 5-15 MHz errors in place of the paper's claimed ~40 kHz, and the paper gives no way to verify
+it. This is why the set stays excluded; it is not "fixed" here.
+
+EFTF 2024 COMPANION (Y. T. Chen, Y. Zheng, J. W. Zhang, S. N. Miao, W. X. Shi, L. J. Wang, "Hyperfine
+Structure and Absolute Frequency Measurements of 127I2 Transitions at 554 nm and Its Application for Yb+
+Ions Cooling", 2024 EFTF, pp. 254-256, doi:10.1109/eftf61992.2024.10722760; read in full, p. 256 rendered at
+200 dpi). It contains one frequency only: R(146) 25-0 a15 = 540 859 322 747 (48)(31) kHz, type A with k = 2
+and type B, citing the Chin. J. Phys. paper as ref. [18]. The value is identical to Table 2 here; only the
+type-B term is printed as 31 kHz instead of 30 kHz (sqrt(29.4^2 + 5.8^2) = 30.0). No other line, component
+or frequency is given; there is no comb description (no fr, fo, N, fb or sign convention), no pressure or
+power shift coefficients and no statement of corrections. Fig. 4 is an MTS scan of R(146) 25-0 (labels a1,
+a10, a15; "relative frequency" axis 0-1000 MHz, a1 at ~60 MHz, a15 at ~925 MHz), Fig. 5 the Allan deviation
+of the lock to R(146) 25-0 a15 (5e-12 at 1000 s). Setup differences from the preprint: beam diameter
+1.5 mm (preprint 2 mm). So the EFTF paper neither corrects nor explains the discrepancy.
+
+The underlying cause is therefore still not established from the authors' own information. All nine rows are kept exactly as printed (nothing is dropped), but THIS SET SHOULD
+NOT BE USED IN THE FIT unless the authors publish N, fb and the signs, or corrected values (the journal
+version, doi:10.1016/j.cjph.2023.12.007, has not been seen; the EFTF 2024 companion does not help). All rows share one group, since one comb, maser,
 cell and one common shift correction were used.
 """
 
@@ -68,7 +110,7 @@ shift coefficients, which the authors assumed equal to those of P(69) 25-1 b18. 
 uncertainties are four orders of magnitude smaller than the disagreement described in `transcription`.
 """
 
-notes = "Modulation transfer spectroscopy (EOM 3.27 MHz, plus 2 kHz chopper and lock-in) of the 554 nm second harmonic of a 1108 nm DFB fibre laser, comb-referenced to an H-maser. No line overlaps with any other data set held. Status: transcribed, but the values disagree with the model and the APO/NIST atlas by 30-840 MHz; not fit-ready."
+notes = "Modulation transfer spectroscopy (EOM 3.27 MHz, plus 2 kHz chopper and lock-in) of the 554 nm second harmonic of a 1108 nm DFB fibre laser, comb-referenced to an H-maser. No line overlaps with any other data set held. Status: transcribed, but the values disagree with the model and the APO/NIST atlas by 30-840 MHz, in a pattern consistent with comb mode-number and offset/beat sign errors (+35 or -105 MHz mod 250 MHz); the EFTF 2024 companion repeats the R(146) 25-0 a15 value unchanged. Not fit-ready."
 
 [conditions]
 method = "modulation transfer spectroscopy, optical frequency comb (Menlo FC1500-250-ULN, fr ~250 MHz, fo 35 MHz) referenced to an H-maser"

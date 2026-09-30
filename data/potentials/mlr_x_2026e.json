@@ -1,0 +1,41 @@
+{
+ "id": "mlr_x_2026e",
+ "state": "X",
+ "form": "MLR",
+ "citation": "i2spec, mlr_x_2026e: mlr_x_2026d refitted, 18 beta, to the level constants of Martin et al. 1986 Table I at v'' = 26-89 (the paper's precision of recomputed lines, one origin offset held to 0(2) mK), the Orsay-atlas levels v'' = 18-25 and the emission levels v'' = 48, 53, 54 of level_corrections_2026j, anchored on its own levels v'' <= 17 at 3 MHz; priors on De, C6-C10 (Bacis 1986). Stage v'' <= 89 of prototypes/mlr_x_martin.py: Martin rms 60 MHz (v'' 26-47), 55 (49-60), 73 (61-75), 174 (76-89); anchor 0.42, atlas 13.3, emission 28 MHz. Adding v'' = 91-108 (within ~5 cm-1 of the limit) diverged; beyond v'' = 89 this is an extrapolation. Not a published parameter set.",
+ "fitted_to": "mlr_x_2026c refitted to the Orsay-atlas levels v'' = 18-25 (i2spec2026g), anchored on its own levels v'' <= 17 at 3 MHz and the emission levels v'' = 48, 53, 54; prototypes/mlr_x_atlas.py",
+ "De": 12547.337789460988,
+ "Re": 2.6663808017757282,
+ "p": 5,
+ "q": 3,
+ "Rref": null,
+ "C": {
+  "6": 1478606.4408554062,
+  "8": 38596265.13392039,
+  "10": 100321203.22158796
+ },
+ "beta": [
+  -1.2641323601321193,
+  -0.5783082838924719,
+  -0.8948595772514677,
+  2.558372001002305,
+  6.242322599963567,
+  12.74831249170224,
+  5.0462942207408465,
+  20.19678662114863,
+  237.5875029654811,
+  -1719.3843135365964,
+  -874.7492265401895,
+  34918.263820015585,
+  -88369.64355296643,
+  -139377.35274182545,
+  1017923.1195567887,
+  -1893352.6156230278,
+  1565231.3494242816,
+  -497476.4961764789
+ ],
+ "born_oppenheimer": "taken unchanged from hannover2008 X (alpha and V_ad)",
+ "status": "research result (docs/research/x-levels-martin1986.md)",
+ "loo_MHz_note": "leave-one-level-out over v'' = 18-25: 18: 7.2, 19: 11.3, 20: 19.0, 21: 17.4, 22: 22.3, 23: 20.6, 24: 11.8, 25: 38.1",
+ "martin_offset_cm1": -0.0033874080856527915
+}

@@ -1,0 +1,69 @@
+id = "cerny1986_129I2"
+citation = "D. Cerny, R. Bacis and J. Vergès, \"Laser-induced-fluorescence Fourier transform spectrometry of the X0⁺g state of I₂: extensive analysis of the B0⁺u -> X0⁺g fluorescence spectrum of ¹²⁷I¹²⁹I and ¹²⁹I₂\", J. Mol. Spectrosc. 116, 458-498 (1986)"
+source = "https://doi.org/10.1016/0022-2852(86)90140-2 (scanned PDF, papers/Cerny1986_JMS116_458.pdf)"
+doi = "10.1016/0022-2852(86)90140-2"
+retrieved = "2026-09-30"
+unit = "cm-1"
+isotopologue = "129I2"
+state = "X"
+
+transcription = """
+Table IIIb, "Parameters of the 129I2 X0⁺g State (in cm-1)", printed pp. 471-473 (PDF pages 14-16). The
+127I129I table (IIIa) is in data/x_levels/cerny1986_127I129I/, with the same columns; its meta.toml carries
+the full description of the columns and of the italic-digit convention, which applies here unchanged.
+Values read from 300 dpi renders with zoomed crops; the OCR layer is not used.
+
+One row per printed level: 103 levels, v'' = 4-96, 98-104, 106-108. Not in the table: v'' = 0-3 (no
+fluorescence recorded), 97 and 105. v''=103 is perturbed and its constants are effective (footnote c).
+
+Per-level constants from B -> X LIF Fourier-transform lines (0.54-1.3 um; Kr+ 520.8 and Ar+ 501.7 nm
+excitation), fitted in eight groups (Fig. 3b, Appendix Ib: v'' = 4-17, 15-27, 27-39, 39-51, 51-63, 63-76,
+76-88, 89-108) sharing the reference levels v'' = 6 and 73, whose rows are the average of the eight group
+results (footnote b). Constants without an uncertainty were fixed to Hutson-program values from the RKR
+curve; * marks logarithmic extrapolations.
+
+ENERGY ORIGIN. G(v'', 0) above the potential minimum (G(-1/2) = 0, no Y00), fixed by G(6, 0) =
+1357.8841 cm-1 from the isotope relation with rho = 0.992210 and Luc and Gerstenkorn's 127I2 Y_k0 (Appendix
+II; the relation gives 1357.88412). Energies above X(0,0): subtract G_i(0) = 106.27715 cm-1 from the same
+relation. Stated origin error < 2 SD (< 0.004 cm-1); the free constant C'' of the authors' Dunham fit came
+out -0.0029 cm-1 (Appendix IV).
+
+UNCERTAINTIES: two SD, applying to the last UPRIGHT digit; trailing italic digits are beyond the SD (see
+the 127I129I meta.toml). Table VII (p. 482) prints v''=5, 10, 15, 19 rounded to the upright digits
+(e.g. 0.349800 (90), 0.4851 (26) at v''=15), confirming the reading. Parentheses printed with a decimal
+point (D at v''=102, 104, 106, 107; H at v''=92) are absolute, in the column's units.
+
+Columns: as in cerny1986_127I129I. Printed scales: D_exp = 8 for v'' <= 71, 7 above; H_exp = 15 for
+v'' <= 37, 14 for 38-71, 13 above; L_exp = 20 for v'' <= 37, 19 for 38-71, 17 above; M_exp = 25 for
+v'' = 51-71, 23 for 72-88. H was floated at v'' = 54, 56-88 and 92.
+
+Reading notes. v''=47 G is printed 9564.6417; it must be 8564.6417 (between 8422.10 and 8705.17; with 8 the
+level agrees with the model to 0.006 cm-1 like its neighbours). Kept as printed, flagged Gmisprint.
+v''=21 G is printed with three decimals, 4285.525 (25), so +-0.025 as printed. v''=13 B 0.3522602 looks all
+upright, which would make its SD ten times smaller than every neighbour's; italic count set to 1 (flag
+italic?:B). v''=13 D last digit, 31 D third decimal (9), 72 H (the 5 in 0.35054), 74 H (4), 80 H
+(2), 106 D (5) and 107 D (last digit 2) are damaged glyphs read at 6-8x. v''=30, 31 D italic counts
+uncertain; set to 1 like their neighbours. v''=92 H = -38.1 (20.2) e-13 and D = 0.36052 (130) (all upright)
+break the trend, as printed. v''=50 is out of line in G, B and D (the model differs by -0.09 cm-1 and 2e-5
+in B) and v''=48 by -0.023; both were re-read and are as printed.
+"""
+
+notes = """
+Comparison with i2spec (RovibronicModel("129I2"), E(v,J) - E(0,0), minus Cerny's term less
+G_i(0) = 106.27715; 2026-09-30). The X grid holds v'' = 0-69; v'' = 70-108 (37 rows) have no model level.
+  v''= 4-8     J=0: -0.003 to +0.004
+  v''= 9-14    J=0: -0.002 to +0.001; J=100: -0.009 (Cerny's B are ~1.1e-6 cm-1 above the model's in the
+               fit group v''=4-17, about 1 SD; the next group agrees to 2e-7)
+  v''=15-39    J=0-100 within +-0.002, except v''=21 (+0.007, G printed to 3 decimals), 24 (-0.005),
+               25 (+0.005), 29 (+0.016, G +-0.014)
+  v''=40-49    -0.005 to -0.008 (fit group 39-51 sits ~5 mK low), v''=47 misprint (-1000.006 as printed),
+               48 -0.023, 50 -0.093
+  v''=51-58    -0.001 to -0.008
+  v''=59-66    -0.009 to -0.035 (v''=63 lowest)
+  v''=67-69    -0.006, +0.026, +0.082 (J=0); +0.03, +0.08, +0.17 (J=100)
+At equal energy these residuals follow the 127I2 residuals against Martin et al. (the MLR X shape error
+above v'' ~ 55: -0.03 near 10 500 cm-1, +0.1 near 11 000); 129I2 minus 127I2 residual at equal G is within
++-0.002 cm-1 at J=0 for v'' = 15-39 and 51-69. The model's X levels for 129I2 are pure mass scaling
+(X carries no Born-Oppenheimer correction terms in the 2008 potentials; only B does) and get no level
+corrections.
+"""

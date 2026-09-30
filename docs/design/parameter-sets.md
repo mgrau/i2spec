@@ -281,3 +281,47 @@ rms of observed − model (MHz), absolute frequencies:
 Every other set is unchanged to 0.02 MHz. `lookup.uncertainty` quotes each atlas-covered level's
 held-out figure (flag `v′ 51-79: atlas-measured`) and 1 GHz for v′ > 50 outside that coverage, in place
 of the flat 2 GHz of 2026j, which the atlas showed to be wrong by up to 200× above v′ ≈ 58.
+
+## i2spec2026l
+
+`i2spec2026k` with the X state taken to its dissociation limit and every level correction refitted on all
+the data (`docs/research/x-levels-martin1986.md`, `docs/design/observations.md`):
+
+- **`mlr_x_2026e`**, the X MLR refitted with 18 β to the level constants of Martin *et al.* 1986 at
+  v″ = 26–89 (`prototypes/mlr_x_martin.py`, stage v″ ≤ 89), with the atlas levels v″ = 18–25, the emission
+  levels and its own v″ ≤ 17 levels: Martin rms 60 MHz (v″ = 26–47), 55 (49–60), 73 (61–75), 174 (76–89),
+  where `mlr_x_2026d` was off by up to 70 cm⁻¹. Adding v″ = 91–108 diverged; beyond v″ = 89 the potential
+  is an extrapolation. X grids reach v″ = 115 (40 Å, graded).
+- **`level_corrections_2026k`**: the comb-based corrections refitted on the bare 2026l potentials with the
+  64 data sets in use — 29 more than in 2026j, absolute frequencies at zero pressure, power and modulation
+  (`[shift_correction]`), the BIPM compilations giving way to their sources (`defer_to`); 1 128 rows, 876
+  touching 53 corrected levels, 74 coefficients, leave-one-line-out median 0.62 MHz. Each level carries its
+  coefficient covariance and a discrepancy term, so `lookup` quotes an uncertainty that grows away from the
+  data in J. X v″ = 18–25 re-expressed on `mlr_x_2026e` (≤ 3.7 MHz refit misfit); the NIR band correction
+  refitted (held-out median 0.095 MHz; Liao 2010's +114 kHz now from the loader); B v′ = 51–79 from the
+  Orsay atlas Partie IV as before (offset +119.6 MHz), with interval references taken from any set.
+
+rms of observed − model (MHz), absolute frequencies, sets that change by more than 0.1 MHz
+(`prototypes/out/cmp_kl.txt`):
+
+| set | 2026k | 2026l |
+|---|---|---|
+| `reinhardt2006a` | 2.73 | 0.05 |
+| `yang2011a` | 4.93 | 0.36 |
+| `badr2006a` | 2.85 | 0.08 |
+| `manzoor2024a` | 3.90 | 1.02 |
+| `huang2013a` | 2.30 | 0.63 |
+| `grieser1994a` | 1.48 | 0.19 |
+| `hauden2024a` | 0.64 | 0.09 |
+| `tanabe2022a` | 0.87 | 0.21 |
+| `sansonetti1997a` | 1.12 | 0.81 |
+| `hsiao2013a` | 0.11 | 1.28 |
+| `bodermann1998c` | 0.11 | 0.58 |
+| `reinhardt2007a` | 0.27 | 0.88 |
+
+Most of the sets that improve were not in any earlier fit. Those that get worse trade against them: B
+v′ = 24 still admits no single offset for `hsiao2013a` (J′ = 27) and `yang2011a` (J′ = 131), and now follows
+Yang's more numerous rows; `bodermann1998c`'s rms is one line, P(166) 0-14 a1, at −0.94 MHz. Before the
+refit, `i2spec2026k` predicted the 76 absolute frequencies of the 17 new sets it had never seen with an rms
+normalised residual of 0.76 against its own quoted uncertainty (79 % within 1σ, 97 % within 2σ, all within
+3σ): the uncertainty model held.

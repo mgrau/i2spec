@@ -65,10 +65,19 @@ def targets():
     pub = BSplineSolver(B0, MU, **{**GRID, "rmax": 8.0, "mesh": ()})
     out = [(v, J, pub.energy(v, J), 1e-4, "published") for J in (0, 40, 80, 120, 160) for v in range(31)]
     model, pred = RovibronicModel(), Predictor()
-    for ds in load_all():
+    sets = load_all()
+    # an interval between two lines becomes absolute through its reference component, measured in any set
+    # (a compilation's own reference may have given way to its sources: bipm2005a's P(13) 43-0 a3)
+    absolute = {}
+    for ds in sets:
         scale = MHZ_PER_CM if ds.meta["unit"] == "cm-1" else 1.0
-        absolute = {(o.line, o.component): (o.value * scale, o.uncertainty * scale)
-                    for o in ds.observations if o.kind == "frequency"}
+        for o in ds.observations:
+            if o.kind == "frequency":
+                v = (o.value * scale, o.uncertainty * scale)
+                if (o.line, o.component) not in absolute or v[1] < absolute[(o.line, o.component)][1]:
+                    absolute[(o.line, o.component)] = v
+    for ds in sets:
+        scale = MHZ_PER_CM if ds.meta["unit"] == "cm-1" else 1.0
         for o in ds.observations:
             L = o.line
             if L.isotopologue != "127I2" or L.v_lower > 17:

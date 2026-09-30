@@ -46,7 +46,7 @@ ROOT = Path(__file__).resolve().parents[1]
 V_UPPER, V_LOWER = 0, (12, 17)
 CENTRE = 14
 SIGMA_PRECISE = 0.3
-LIAO_SHIFT = 0.114            # MHz, Liao 2010 Table 2 footnote b
+LIAO_SHIFT = 0.0              # MHz: the loader now applies Liao 2010's +114 kHz (Table 2 footnote b) from its [shift_correction]
 LIAO_RESIDUAL_SHIFT = 0.03    # MHz: the three calibration lines' shifts scatter over 102-121 kHz
 
 
@@ -158,7 +158,7 @@ def main(argv):
                      "(prototypes/nir_band_fit.py " + " ".join(a for a in argv if not a.startswith("--write"))
                      + "). Applied only to v' = 0 -> v'' in v_lower lines whose J'' lies within J_MARGIN of the "
                      "coverage at that v''. delta nu (MHz) = sum_k B[k-1] y'^k - sum_lk X[l][k] (v'' - centre)^l y''^k, "
-                     "y = J(J+1)/1e4. liao2010a enters with its +114 kHz pressure shift applied."),
+                     "y = J(J+1)/1e4. liao2010a enters with its +114 kHz pressure shift applied (by the loader, [shift_correction])."),
             "based_on": base_name, "v_upper": V_UPPER, "v_lower": list(V_LOWER), "centre": CENTRE,
             "B": [float(x) for x in c[:KB]],
             "X": [[float(c[KB + l * (K + 1) + k]) for k in range(K + 1)] for l in range(L + 1)],

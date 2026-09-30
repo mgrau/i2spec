@@ -32,7 +32,9 @@ ADAPTIVE_GRIDS = {
           (24, dict(rmin=2.10, rmax=4.0, h=0.01, order=10, nlev=30)),
           (33, dict(rmin=2.10, rmax=4.4, h=0.01, order=10, nlev=40)),
           (54, dict(rmin=2.10, rmax=5.0, h=0.01, order=10, nlev=60)),
-          (69, dict(rmin=2.10, rmax=6.0, h=0.01, order=10, nlev=70))],
+          (69, dict(rmin=2.10, rmax=6.0, h=0.01, order=10, nlev=70)),
+          # to the X dissociation limit (Martin 1986 reaches v'' = 108): a 40 A box graded beyond 5 A, as for B
+          (115, dict(rmin=2.10, rmax=40.0, h=0.01, order=10, nlev=118, mesh=((5.0, 0.02), (8.0, 0.05), (15.0, 0.1))))],
     "B": [(17, dict(rmin=2.35, rmax=4.0, h=0.01, order=10, nlev=26)),
           (33, dict(rmin=2.35, rmax=4.5, h=0.01, order=10, nlev=40)),
           (43, dict(rmin=2.35, rmax=5.5, h=0.01, order=10, nlev=55)),

@@ -4,6 +4,7 @@ source = "https://www.bipm.org/documents/20126/41549542/M-e-P_I2_576.pdf/bd97f28
 retrieved = "2026-09-14"
 catalog = "data/catalog/precision.yaml#bipm2003c"
 unit = "MHz"
+defer_to = ["reinhardt2006a"]   # the hyperfine table of P(62) 17-1 (Barwood 1984 data) gives way to the comb-era measurement of the whole pattern: its a3/a4 differ from reinhardt2006a by +211/-234 kHz at a stated 20 kHz, and the model agrees with Reinhardt (+9/-3 kHz); the recommended a1 absolute is kept
 transcription = """
 Page 1: adopted f(a1, P(62) 17-1) = 520 206 808.4 (2) MHz, the CIPM recommended value. Typed by hand.
 

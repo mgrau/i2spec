@@ -1,0 +1,110 @@
+id = "cerny1986_127I129I"
+citation = "D. Cerny, R. Bacis and J. Vergès, \"Laser-induced-fluorescence Fourier transform spectrometry of the X0⁺g state of I₂: extensive analysis of the B0⁺u -> X0⁺g fluorescence spectrum of ¹²⁷I¹²⁹I and ¹²⁹I₂\", J. Mol. Spectrosc. 116, 458-498 (1986)"
+source = "https://doi.org/10.1016/0022-2852(86)90140-2 (scanned PDF, papers/Cerny1986_JMS116_458.pdf)"
+doi = "10.1016/0022-2852(86)90140-2"
+retrieved = "2026-09-30"
+unit = "cm-1"
+isotopologue = "127I129I"
+state = "X"
+
+transcription = """
+Table IIIa, "Parameters of the 127I129I X0⁺g State (in cm-1)", printed pp. 468-470 (PDF pages 11-13).
+The companion table for 129I2 (Table IIIb, pp. 471-473) is in data/x_levels/cerny1986_129I2/: the paper
+prints the two isotopologues as separate tables with their own origins, fit groups and footnotes, so they
+are kept as two datasets with the same columns. The PDF is a scan and its OCR layer is wrong in many
+digits; every value was read from 300 dpi renders with zoomed crops (up to 8x on damaged glyphs).
+
+One row per printed level: 99 levels, v'' = 5-31, 38-96, 98-110. Not in the table: v'' = 0-4 and 32-37
+(no or almost no fluorescence recorded, Sect. III and Fig. 2a) and v'' = 97.
+
+The values are per-level constants from fits of B -> X LIF Fourier-transform lines (0.5-1.33 um; Ar+
+514.5 and 501.7 nm excitation, Fig. 1, Table I), fitted in five overlapping groups (Fig. 3a, Appendix Ia)
+that share the reference levels v'' = 7 and 72; for those two levels the row is the average of the five
+group results (footnote b). Constants printed without an uncertainty were computed from the RKR curve with
+Hutson's program and held fixed (third iteration, Sect. III). Values flagged * were extrapolated
+logarithmically from the lower levels (footnote *).
+
+ENERGY ORIGIN. G is G(v'', J''=0) measured from the potential minimum, i.e. G(v'' = -1/2) = 0 with no
+Y00 (Appendix II, Appendix IV). It is fixed by G(7, 0) = 1568.1707 cm-1 (footnote a), computed from the
+isotope relation G_i(v) = sum_{k=1..7} rho^k Y_k0 (v+1/2)^k with rho = 0.9961126 and Luc and
+Gerstenkorn's 127I2 Y_k0 (v'' = 0-19, Appendix II: 214.526755, -0.611938186, -0.235606136e-3,
+-0.140816912e-3, 0.943318488e-5, -0.344433981e-6, 0.490779344e-8). This reproduces 1568.17072. To get
+energies above X(0,0) subtract G_i(0) = 106.69457 cm-1 from the same relation (the table has no v'' = 0).
+The authors estimate the error of this common origin at < 2 SD, < 0.004 cm-1 at low v'' (Sect. IV); a
+free constant C'' in their Dunham fit to these G came out -0.0026 cm-1 (Appendix IV).
+
+UNCERTAINTIES are TWO standard deviations, and the footnote defines them in an unusual way: "The number in
+parenthesis is the uncertainty in the last digits typed in upright characters ... The digits given in
+italic characters correspond to a much higher precision than the standard deviation, but due to
+correlation effects they are needed in order to recalculate the measured lines." Most B and D values end in
+one or more italic digits, so the parenthesised number applies to the digit BEFORE them: 0.3644779 (174)
+with the 9 italic is 0.364477(174), +-0.000174 in B x 10, not +-0.0000174. Table VII (p. 482) prints the
+same numbers rounded to the upright digits (v''=5: 0.364478 (174), 0.430 (178)), which confirms this
+reading, and so do the residuals against i2spec (v''=31: G off by 0.12 cm-1 with G = 6083.67|38 (29), i.e.
++-0.29). The *_unc columns hold the converted value; the italic column records how many trailing digits of
+each value were read as italic, so the printed parenthesis can be recovered. Where a parenthesis is printed
+with its own decimal point it is taken as absolute in the column's units.
+
+Columns (values are the printed digits; the printed column scale changes between table blocks, so the
+exponent is carried in its own column):
+  v                v''
+  G                G(v'', 0) in cm-1 above the potential minimum (see ENERGY ORIGIN)
+  G_unc            2 SD, cm-1 (empty for v''=7, the origin)
+  B_x10            B x 10 in cm-1 (header "B x 10"): B = B_x10 / 10
+  B_x10_unc        2 SD in the same scale
+  D_s, D_s_unc     D x 10^D_exp in cm-1, as printed: D = D_s * 10^-D_exp  (D_exp = 8 for v'' <= 76, 7 above)
+  negH_s, _unc     -H x 10^H_exp: H = -negH_s * 10^-H_exp  (H_exp = 15 for v'' <= 43, 14 for 44-76, 13 above)
+  negL_s           -L x 10^L_exp: L = -negL_s * 10^-L_exp  (19 for v'' <= 76, 17 above; empty = not printed)
+  negM_s           -M x 10^M_exp: M = -negM_s * 10^-M_exp  (23; printed for v'' = 65-87 only)
+  italic           trailing italic digits, e.g. "B1 D2" (G, B, D, H); none listed = all upright
+  flags            origin (v''=7); D*, H*, L* (extrapolated value, printed with *); G3dp (G printed with three
+                   decimals only); glyph:X (a damaged glyph, see notes); italic?:X (italic count uncertain)
+  page             printed journal page
+
+Term values E(v, J) = G + B x - D x^2 + H x^3 + L x^4 + M x^5, x = J(J+1), as in paper I (Martin et al.
+1986, data/x_levels/martin1986/). No uncertainty is printed for L or M (always fixed); H was floated only
+at v'' = 80 and 83.
+
+Reading notes. v''=11 D: third decimal is a broken glyph, read as 8 (0.4283; OCR gives 0.4233). v''=84 G is
+printed 12117.966 (17), three decimals, so by the footnote +-0.017; probably a dropped fourth digit (its
+neighbours are +-0.0016-0.0020) but kept as printed. v''=40 G 7550.9218: only the 8 is clearly italic.
+v''=63 B: the italic of the last digit is faint. Italic counts of 2-3 digits (v'' >= 85, D) were checked at
+4.5x zoom; v''=89, 91, 93, 94, 95 D have three italic digits (0.51|288 (11) = 0.51 +- 0.11). v''=88 B
+0.1677432 (120) is all upright, so +-0.0000120, an order below its neighbours; v''=106-108 B are all
+upright too. v''=86 L 0.1603 breaks the trend (85: 0.2034, 87: 0.4903) as printed.
+"""
+
+notes = """
+What else the paper holds (not transcribed): Table I, spectral ranges and resolution of the 5 recordings per
+isotopologue; Tables IIa/IIb, number of lines per (v', v''); Tables IVa/IVb, B-state G, B, D, H, L for the
+excited v' (first row fitted, second from isotope relations of Gerstenkorn and Luc's 127I2 B constants,
+Te = 15 769.078 cm-1, Appendix III); Tables Va/Vb, effective polynomial expansions in (v''+1/2) of G, B, D,
+H, L for each isotopologue (127I129I: 0-87 and 83-109; 129I2: up to 88 and above; no SDs, "effective
+constants"); Tables VIa/VIb, RKR turning points and G for every v'' of each isotopologue; Table VII,
+experiment vs isotope relation at v'' = 5, 10, 15, 19 (agree within 2 SD); Table VIII, dG/dv at v'' = 1-85
+compared with the 127I2 value at the mass-scaled v (agree to < 1 mK); Figs. 6-8, differences of G, B, D from
+isotope-scaled 127I2 and B_v/rho^2 vs reduced v; Tables IX-X, recalculated lines near 514.5, 612 and 633 nm
+compared with hyperfine-resolved absolute measurements; Appendices Ia/Ib, per-group results for the
+reference levels; II, Luc-Gerstenkorn 127I2 X polynomials (v'' = 0-19); III, B-state polynomials; IV, the
+Dunham origin (Y00, Te) bookkeeping. There is no Born-Oppenheimer-breakdown fit: the authors state that the
+correction to the first-order isotope relation is of order m_e/M ~ 4e-6 (~1 mK in Y10, ~1 SD) and that
+only precise low-v'' data of several isotopes could determine it (p. 470-473). Long-range analysis of the
+three isotopes is in paper III (Bacis, Cerny and Martin 1986).
+
+Comparison with i2spec (RovibronicModel("127I129I"), E(v,J) - E(0,0), minus Cerny's term less
+G_i(0) = 106.69457; 2026-09-30). The X grid holds v'' = 0-69; v'' = 70-110 (40 rows) have no model level.
+  v''= 5-8     J=0: -0.006 to +0.003 (G +-0.004-0.040)
+  v''= 9-29    J=0: -0.001 to -0.007; J=50: -0.003 to +0.005; J=100: -0.06 to +0.06 (the fitted D carry
+               +-0.1e-8, i.e. +-0.1 cm-1 at J=100: beyond what the per-level D define)
+  v''=30,31,38,39  +0.014, -0.117, -0.049, +0.011 (poorly defined levels, G +-0.29, 0.29, 0.086, 0.22)
+  v''=40         +0.004 (J=0), G +-0.028
+  v''=41-58    J=0 and 50: -0.002 to -0.012, slowly growing; J=100 -0.019 to +0.007
+  v''=59-65    -0.015 to -0.034 (all J)
+  v''=66       -0.022 / -0.039 / -0.086
+  v''=67-69    -0.006, +0.030, +0.095 (J=0); +0.04, +0.10, +0.20 (J=100)
+At equal energy the same pattern is in the 127I2 comparison with Martin et al. (MLR X shape error above
+v'' ~ 55); minor-isotopologue minus 127I2 residual at equal G is -0.002 to -0.004 cm-1 at J=0 over
+v'' = 41-69, which is within the stated origin error. The model's X has no Born-Oppenheimer correction
+terms (alpha and V_ad are empty for X; only B has them), so its 127I129I levels are pure mass scaling of the
+127I2 curves, with no level corrections (those apply to 127I2 only).
+"""

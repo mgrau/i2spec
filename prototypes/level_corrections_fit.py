@@ -123,17 +123,23 @@ def main(argv):
         return prior
     ridge = np.diag([1 / prior_of(n)**2 for n in names])
 
-    def fit(mask, robust=True):
+    def fit(mask, robust=True, cov=False):
         ww = w.copy()
         for _ in range(8 if robust else 1):
             Aw, rw = A[mask] * ww[mask, None], r[mask] * ww[mask]
             c = np.linalg.solve(Aw.T @ Aw + ridge, Aw.T @ rw)
             z = np.abs((r - A @ c) * w)
             ww = w * np.minimum(1.0, 3.0 / np.maximum(z, 1e-9))
+        if cov:        # the coefficients' covariance at the final robust weights, scaled by the reduced chi^2
+            Aw = A[mask] * ww[mask, None]
+            C = np.linalg.inv(Aw.T @ Aw + ridge)
+            dof = max(int(mask.sum()) - A.shape[1], 1)
+            chi2 = float(np.sum(((r[mask] - A[mask] @ c) * ww[mask]) ** 2)) / dof
+            return c, C * max(chi2, 1.0)
         return c
 
     rms = lambda v: float(np.sqrt(np.mean(np.square(v)))) if len(v) else float("nan")   # noqa: E731
-    c_all = fit(np.ones(len(rows), bool))
+    c_all, C_all = fit(np.ones(len(rows), bool), cov=True)
     lines_ = np.array([str(x[1]) for x in rows])
     loo = r - A @ c_all
     for ln in set(lines_[used]):
@@ -159,7 +165,19 @@ def main(argv):
             & (sig <= (SIGMA_PERTURBED if (st == "B" and v > V_PERTURBED) else SIGMA_PRECISE))
         Js = precise[(st, v)]
         n_lines = int(len(set(lines_[touch])))
-        per_level[(st, v)] = dict(coefficients=[float(c_all[idx[(st, v, k)]]) for k in range(d + 1)],
+        ids = [idx[(st, v, k)] for k in range(d + 1)]
+        cov_v = C_all[np.ix_(ids, ids)]
+        # the part of the lines' held-out scatter that neither their own uncertainty nor the coefficients'
+        # covariance explains: the model-discrepancy term of this level (roadmap item 3)
+        if n_lines >= 2:
+            pv = np.array([sum(sg * (J * (J + 1) / 1e4) ** k * (J * (J + 1) / 1e4) ** l * cov_v[k, l]
+                               for (k0, k1, J), sg in lv.items() if (k0, k1) == (st, v) for k in range(d + 1) for l in range(d + 1))
+                           for *_, lv in (rows[i] for i in np.flatnonzero(touch))])
+            md = float(np.sqrt(max(rms(loo[touch]) ** 2 - np.mean(sig[touch] ** 2 + np.abs(pv)), 0.0)))
+        else:
+            md = None
+        per_level[(st, v)] = dict(covariance=cov_v.tolist(), discrepancy=md,
+                                  coefficients=[float(c_all[idx[(st, v, k)]]) for k in range(d + 1)],
                                   coverage=[int(min(Js)), int(max(Js))], lines=n_lines,
                                   loo_rms_MHz=rms(loo[touch]) if n_lines >= 2 else None,   # one line: no validation
                                   loo_median_MHz=float(np.median(np.abs(loo[touch]))))
@@ -178,6 +196,8 @@ def main(argv):
                "B": {str(v): d["coefficients"] for (st, v), d in per_level.items() if st == "B"},
                "coverage": {st: {str(v): d["coverage"] for (s_, v), d in per_level.items() if s_ == st} for st in ("X", "B")},
                "held_out_MHz": {st: {str(v): d["loo_rms_MHz"] for (s_, v), d in per_level.items() if s_ == st and d["loo_rms_MHz"] is not None} for st in ("X", "B")},
+               "covariance_MHz2": {st: {str(v): d["covariance"] for (s_, v), d in per_level.items() if s_ == st} for st in ("X", "B")},
+               "discrepancy_MHz": {st: {str(v): d["discrepancy"] for (s_, v), d in per_level.items() if s_ == st and d["discrepancy"] is not None} for st in ("X", "B")},
                "fit": {"rows": int(used.sum()), "rms_before_MHz": rms(r[used]), "rms_in_sample_MHz": rms(r[used] - A[used] @ c_all),
                        "leave_one_line_out_rms_MHz": rms(loo[used]), "leave_one_line_out_median_MHz": float(np.median(np.abs(loo[used])))}}
         path = ROOT / "src/i2spec/data" / f"{name}.json"

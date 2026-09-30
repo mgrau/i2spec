@@ -137,12 +137,12 @@ class Line:
     def flags(self):
         out = []
         if self.v_lower > V_LOWER_FITTED:
-            if self.v_lower > 47:
+            if 48 <= self.v_lower <= 54:
                 out.append("v″ ≥ 48: extended model")
             elif self.v_lower <= 25 and corrected(self) is not None:
                 out.append("v″ 18-25: atlas-measured")
             else:
-                out.append("v″ > 17: unmeasured")
+                out.append("v″ > 17: unmeasured" if self.v_lower <= 25 or self.v_lower > 89 else "v″ 26-89: Martin 1986")
         if self.v_upper > V_UPPER_FITTED:
             if self.v_upper <= 50:
                 out.append("v′ > 43: extended model")
@@ -206,10 +206,14 @@ def corrected(line: Line):
     if not (x_ok and b_ok):
         return None
     parts = [0.3]                                   # the floor the corrections were fitted with
-    for state, v in (("X", line.v_lower), ("B", line.v_upper)):
+    for state, v, J in (("X", line.v_lower, line.J_lower), ("B", line.v_upper, J_up)):
         if (state == "X" and v <= 10) or (state == "B" and v == 0):
             continue
-        u = c.uncertainty(state, v)
+        # the covariance propagated to this J where the set carries it (it grows away from the data),
+        # else the level's held-out rms
+        u = c.uncertainty_at(state, v, J)
+        if u is None:
+            u = c.uncertainty(state, v)
         parts.append(1.0 if u is None else u)       # a level fixed by one line: exact there, 1 MHz assumed nearby
     return round(math.sqrt(sum(p * p for p in parts)), 2)
 
@@ -242,16 +246,23 @@ def uncertainty(line: Line):
         return u, ("measured level corrections (i2spec2026d): every comb-referenced line fitted as polynomials in "
                    "J(J+1) per level, 0.02-0.3 MHz in-sample; this line is within 15 in J of the lines that fixed its "
                    "levels, and the value is their held-out rms (1 MHz where a single line fixed a level)")
-    if line.v_lower > 47:
-        return 20.0, ("v″ = 48-54 comes from the extended-range MLR X potential (i2spec2026d): the emission lines of "
+    if 48 <= line.v_lower <= 54:
+        return 20.0, ("v″ = 48-54 comes from the extended-range MLR X potential (i2spec2026l): the emission lines of "
                       "matyugin2012 and nesterenko2019 are reproduced to 7 and 19 MHz, and that residual is the X-state "
                       "hyperfine model there, not the levels")
     if line.v_lower > V_LOWER_FITTED:
-        return (300.0 if line.v_lower <= 28 else 1000.0), (
-            "the extended-range MLR X potential (i2spec2026d) is measured by the Orsay atlas to v″ = 25 (i2spec2026g "
-            "corrects v″ = 18-25 within the J the atlas covers; outside that J, or at v″ = 26-28, this estimate) and "
-            "agrees with Martin 1986's X levels, as IodineSpec5 prints them, to 0.1-0.3 GHz up to v″ = 28 where the "
-            "published curve is 41 GHz off (docs/research/iodinespec5.md); beyond v″ = 28 nothing checks it")
+        if line.v_lower <= 25:
+            return 300.0, ("v″ = 18-25 outside the J the Orsay atlas part I measured: the extended X potential "
+                           "(mlr_x_2026e) alone, which the atlas levels hold to ~15 MHz within their J")
+        if line.v_lower <= 75:
+            return 150.0, ("the extended X potential (mlr_x_2026e, i2spec2026l) fitted to the level constants of "
+                           "Martin et al. 1986: 60 MHz rms at v″ = 26-47, 55 at 49-60, 73 at 61-75 for J ≤ 120, "
+                           "twice that quoted for the constants' own accuracy and J extrapolation")
+        if line.v_lower <= 89:
+            return 400.0, ("the extended X potential (mlr_x_2026e) fitted to Martin et al. 1986 at v″ = 76-89, "
+                           "174 MHz rms; near the X limit, where the levels crowd")
+        return 5000.0, ("v″ > 89: the extended X potential is extrapolated beyond the last fitted Martin level; "
+                        "a fit reaching v″ = 108 diverged (docs/research/x-levels-martin1986.md)")
     if line.v_upper > 50:
         return 1000.0, ("v′ > 50 outside the J the Orsay atlas Partie IV measured, or v′ = 80-86, which it did not reach: "
                         "the refitted B potential (mlr_b_2026d) alone sits 150-350 MHz from the atlas levels, and the "

@@ -1,0 +1,70 @@
+id = "fang2006a"
+citation = "H.-M. Fang, S. C. Wang, L.-C. Liu, W.-Y. Cheng, K.-Y. Wu, J.-T. Shy, \"Measurement of hyperfine splitting of molecular iodine at 532 nm by double-passed acousto optic modulator frequency shifter\", Jpn. J. Appl. Phys. 45, 2776-2779 (2006)"
+source = "https://doi.org/10.1143/jjap.45.2776 (publisher PDF, IOP)"
+doi = "10.1143/jjap.45.2776"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:fang2006a"
+
+transcription = """
+Table I (p. 2778), "Measured" column only: 12 hyperfine splittings of 127I2 R(56) 32-0, in MHz as printed.
+Read from the PDF text layer (pdftotext -layout) and checked digit by digit against a 200 dpi rendering of
+p. 2778 (the text layer loses the minus signs of Table II; the image has them).
+
+Each row is entered as f(scanned component) - f(locked component), as the measurement was made: the laser
+was locked to a10 and a6-a9, a11-a14 were scanned with the AOM shifter; for a1, a2, a5 and a15 the laser was
+locked to a neighbouring component (a2, a6, a9 and a14, from the Table I pairs; the text states the a6/a2
+and a2/a1 cases explicitly). A pair "ax-ay" of Table I is printed as the positive splitting, so e.g.
+"a2-a6 141.789" is entered as a2 relative to a6, -141.789 MHz. Which of each pair was locked only matters
+for the sign, and the model is compared either way.
+
+Left out:
+- "a3, a4-a7" 131.128 MHz: a3 and a4 are unresolved at this resolution (a blend, no CCL value); cannot be
+  represented.
+- Table II (all components relative to a10): derived from Table I by adding the chain (a1 = -(a1-a2 +
+  a2-a6 + a6-a10) etc.; checked, all sums reproduce), so it repeats Table I and is not entered.
+- The CCL and Meas.-CCL columns.
+The a10-a11 row is the Table I value, 126.510 MHz; the text gives the mean of 15 repeated scans as
+126.508 MHz (sd 5 kHz), and quotes "only 5 kHz" from CCL, which fits 126.508. The table value is entered and
+the text value is in the row's note.
+
+No absolute frequency is measured, so there is no [shift_correction]. Both cells (lock and scan) are 10 cm
+long with cold fingers at 0 C (4.1 Pa, as printed; Gillespie & Fraser gives 4.10 Pa). The authors name the
+pressure shift and impurities of the two different cells, and the servo offset between the locked and
+scanned signals, as systematics; a cell-to-cell offset would enter every row relative to its locked
+component. All rows share the group fang2006a.
+
+Labels: a_n ranked by frequency, a1 lowest (R(56) 32-0, even J'', 15 components), as in the CCL table.
+
+Comparison with bipm2012a Table 16 (R(56) 32-0 relative to a10; the CCL values the paper compares with,
+which have 1.5 kHz uncertainty): this set minus BIPM, in the rows' own orientation, kHz: a1/a2 -3, a2/a6 -9,
+a5/a9 -13, a6/a10 -2, a7/a10 +1, a8/a10 -14, a9/a10 -3, a11/a10 -3, a12/a10 +11, a13/a10 +15, a14/a10 +17,
+a15/a14 0. These reproduce the paper's Meas.-CCL column in magnitude (its signs refer to the positive
+splittings as printed). Independent of bipm2012a (different laboratory and method), but far
+less precise.
+"""
+
+uncertainty = """
+20 kHz for every row, a judgement: the paper gives no per-row uncertainty and states the accuracy of the method
+as "better than 20 kHz" (abstract, conclusions), with the laser frequency stability (< 20 kHz, single scan per
+splitting) as the main contribution, plus cell pressure/impurity and servo offsets. Taken as 1 sigma; the
+spread of the differences from CCL (rms 10 kHz) is consistent with that or somewhat smaller.
+"""
+
+notes = """
+Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: -14.6 to +17.1 kHz, rms 9.4 kHz,
+all within the 20 kHz uncertainty. The differences follow the BIPM ones (the model agrees with the BIPM table to
+~1-2 kHz). Five splittings (a5/a9, a8/a10, a12-a14/a10) come out 11-17 kHz too large in magnitude, none too
+small by more than 4 kHz; a7/a10 at a similar AOM frequency (155 MHz) agrees, so it is not a simple AOM
+frequency scale. No row was dropped.
+"""
+
+[conditions]
+method = "Doppler-free saturation spectroscopy, third-harmonic detection (lock-in 30 ms); one laser locked to a component in a first cell, a double-passed AOM frequency shifter scans the second cell"
+laser = "450 mW NPRO Nd:YAG (Lightwave 126), doubled in PPLN (> 8 mW at 532 nm)"
+modulation = "30 kHz, 1.5 MHz width, as printed (applied to the laser PZT)"
+cell_length_cm = 10
+cold_finger_C = 0.0
+pressure_Pa = 4.1
+beam_diameter_mm = [1.3, 2.0]
+aom_shift_MHz = "114-206 (first order), 228-412 (second order)"

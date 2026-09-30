@@ -1,0 +1,65 @@
+id = "hong2002b"
+citation = "F.-L. Hong, Y. Zhang, J. Ishikawa, A. Onae, H. Matsumoto, \"Hyperfine structure and absolute frequency determination of the R(121)35-0 and P(142)37-0 transitions of 127I2 near 532 nm\", Opt. Commun. 212, 89-95 (2002)"
+source = "https://doi.org/10.1016/s0030-4018(02)01997-1 (publisher PDF)"
+doi = "10.1016/s0030-4018(02)01997-1"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:hong2002b"
+
+transcription = """
+Tables 1 and 2 (p. 92), "Observed" column only: hyperfine intervals f(a_n) - f(a1) of
+  Table 1  127I2 R(121) 35-0 (line 1113), a2-a21
+  Table 2  127I2 P(142) 37-0 (line 1112), a2-a15
+and Table 3 (p. 93): the intervals f(a1) - f(a10, R(56) 32-0) of both lines, 27 539 228.6 and
+20 123 511.4 kHz. All values in kHz, converted to MHz exactly. Parsed by script from the pdftotext
+-layout text and checked digit by digit against 200 dpi renderings of pp. 92-93. The Calculated and
+Obs. - Cal. columns, weights and F', I labels are not entered; Observed - Calculated reproduces the
+printed Obs. - Cal. for every row. All 21 and 15 components were measured (laser 1 on R(56) 32-0 a10,
+laser 2 stepped through the components, bridged by the 2 GHz optical frequency comb generator).
+
+The paper prints no absolute frequency: Eq. (3) gives f = 563 260 223 513(5) kHz + f_interval + f_HFS,
+so only the intervals to R(56) a10 are entered. Being intervals, they need no pressure correction here
+(a small difference in pressure shift between the two lines is well under the 1 kHz uncertainty).
+
+R(121) 35-0 a8 and a12: the authors' four-term fit misses them by +40 183.9 and -40 186.7 kHz and gives
+them weight 0 (p. 94; they call R(121) 35-0 the first 532 nm line they cannot fit). They are single
+measured lock points, not blends, and are entered. The i2spec model (i2spec2026k) reproduces both
+to -2.7 and -2.1 kHz, in line with the other components of the line, so they are not anomalous; the
+authors' fit evidently converged to a wrong labelling of the F' levels near a8/a12.
+
+Labels: a_n ranked by frequency, a1 lowest, as in i2spec (21 components for odd J'' = 121, 15 for even
+J'' = 142). No crossovers are listed. Not entered: Table 4 fitted constants (Delta eQq, Delta C, Delta d,
+Delta delta for both lines; P(142) 37-0 also d', delta' with d'' = 1.52 kHz and delta'' = 3.70 kHz held
+at Wallerand 1999) and Eqs. (4)-(7), vibration fits of d' and delta'.
+
+Overlap with bipm2012a (NOT independent): the BIPM 532 nm Tables 18 (P(142) 37-0) and 19 (R(121) 35-0)
+and the two 2007-addition intervals on p. 3 of the MEP are this paper's values, identical to 0.1 kHz
+for all 35 BIPM rows (33 hyperfine intervals + 2 inter-line intervals). BIPM Table 19 prints a13 as
+594 812.8 kHz, repeating a12; this paper gives a13 = 648 394.2 kHz (Obs. - Cal. -0.1 kHz, model -2.1 kHz),
+which confirms the BIPM entry is a misprint. BIPM's title "P(121) 35-0" for Table 19 is also a misprint;
+this paper (title, text and Table 3) has R(121) 35-0.
+"""
+
+uncertainty = """
+The paper gives no per-component uncertainty. It states (p. 93) that the uncertainty of both f_interval and
+f_HFS is below 1 kHz: statistical 20 Hz (R(121)) and 30 Hz (P(142)) per 100 s average, relock repeatability
+about 100 Hz, interval measurement uncertainty about 100 Hz; the P(142) 37-0 fit sd is 1.09 kHz, which
+includes the model's error. Entered as 1 kHz for every row (a judgement, the paper's upper bound), taken as
+1 sigma. The BIPM tables give 2 kHz for the hyperfine intervals and 5 kHz for the intervals to R(56) a10.
+"""
+
+notes = """
+Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: R(121) 35-0 hyperfine
+intervals -3.8 to +0.1 kHz (mean -1.8, i.e. a small scale error of the model at v' = 35, J' = 122);
+P(142) 37-0 -1.3 to +1.5 kHz (rms 0.9). Intervals to R(56) 32-0 a10: R(121) 35-0 a1 +138 kHz,
+P(142) 37-0 a1 -174 kHz (model line-position error at J'' = 121-142, far outside the rows' 1 kHz).
+No row was dropped.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy, heterodyne beat of two I2-stabilized frequency-doubled Nd:YAG lasers bridged by a 2 GHz optical frequency comb generator; laser 1 on a10 of R(56) 32-0"
+laser = "diode-pumped monolithic Nd:YAG (crystal ~22 C, 70-80% pump power), frequency doubled"
+pump_probe_mW_R121 = [0.93, 0.12]
+pump_probe_mW_P142 = [1.52, 0.19]
+conditions_note = "the paper refers to Hong et al., JOSA B 19, 946 (2002) (hong2002a, its ref. 11) for the other conditions, which in turn refers to hong2001a: 30 cm cell, cold finger -10 C (~1.4 Pa). Only intervals are entered, so no shift correction is applied."
+averaging = "100 beat measurements of 1 s gate each per component"

@@ -1,42 +1,95 @@
 id = "reinhardt2006a"
 citation = "S. Reinhardt, G. Saathoff, S. Karpuk, C. Novotny, G. Huber, M. Zimmermann, R. Holzwarth, T. Udem, T. W. Hänsch and G. Gwinner, \"Iodine hyperfine structure and absolute frequency measurements at 565, 576, and 585 nm\", Opt. Commun. 261, 282-290 (2006)"
-source = "https://doi.org/10.1016/j.optcom.2005.12.029 (PDF obtained 2026-09-16)"
+source = "https://doi.org/10.1016/j.optcom.2005.12.029 (publisher PDF, papers/Reinhardt2006_OptCommun261_282.pdf; values re-checked against it on 2026-09-29)"
 doi = "10.1016/j.optcom.2005.12.029"
-retrieved = "2026-09-16"
+retrieved = "2026-09-29"
 unit = "MHz"
 catalog = "precision.yaml:reinhardt2006a"
 
 transcription = """
-Tables 1-5 (hyperfine splittings of five lines) and Table 6 (one absolute frequency), read from the
-text layer of the publisher PDF on 2026-09-16.
+Tables 1-5 (p. 286-287, hyperfine splittings of five lines), the comb absolute frequencies of Sect. 3.3
+(p. 288; also the conclusion and Table 6) and the heterodyne interval of Sect. 3.2 (p. 287). First
+transcribed 2026-09-16 from the text layer; re-checked on 2026-09-29 digit by digit against the text
+layer (pdftotext -layout) and 200 dpi renderings of pp. 286-288. All 56 splittings were correct. That
+check added two rows the first pass had missed: the P(80) 21-1 a10 comb absolute and the heterodyne
+interval R(99) 15-1 a13 - P(10) 14-1 a15.
 
-All splittings are printed in kHz and are converted to MHz here. The reference component of each
-table is printed as zero and is therefore not recorded as an observation.
+Splittings (56 rows): "Measured" column only, kHz converted to MHz. The reference component of each table
+is printed as zero and is not recorded. Tables 1, 2, 3 and 5 are relative to a1; **Table 4 (P(10) 14-1) is
+relative to a3**, which is recorded in ref_component. The "Calculated" and "Measured-calculated" columns
+(the paper's fit) and the "From [14]" (Barwood & Rowley 1984) / "From [15]" (Glaeser 1997) columns of Table
+2 are not entered. Tables 1 and 2 are averages of 4 runs of 100 s, Table 3 of 3 runs, Tables 4-5 of 2 runs
+(P(10) 14-1 and R(15) 14-1 overlap each other and the weak R(30) 12-0, and crossovers are visible, so only
+some components could be measured; the authors attribute P(10) deviations of up to 30 kHz to this).
 
-Reference components differ between tables: Tables 1, 2, 3 and 5 are relative to a1, but **Table 4
-(P(10) 14-1) is relative to a3**, which is recorded in ref_component.
+Absolute frequencies (2 rows, group reinhardt2006a_comb), self-referenced Ti:sapphire comb at MPQ
+(800 MHz repetition rate, Cs clock):
+  P(80) 21-1 a10 = 530 222 434 295 +/- 70 kHz (37 measurements, PTB cells 1/99 and 15/98; Fig. 7 left)
+  P(10) 14-1 a15 = 512 671 028 075 +/- 70 kHz (7 measurements, PTB cell 15/98; Fig. 7 right)
+These are as measured, not extrapolated to zero pressure or power; [shift_correction] takes them there.
 
-Only the "Measured" column is transcribed. The "Calculated" and "Measured-calculated" columns are
-outputs of the paper's own fit, and the "From [14]"/"From [15]" columns in Table 2 are other groups'
-values, so none of them is entered here. (Note that the [14] entry for a3 is printed as "287,050",
-which is inconsistent with its own uncertainty; it is not our value and is not used.)
+Interval (1 row, group reinhardt2006a_585): the two-dye-laser heterodyne measurement of Sect. 3.2,
+printed "nu_a13-a15 = (3 405 290 +/- 30) kHz" between R(99) 15-1 a13 and P(10) 14-1 a15 (4 runs of 100 s,
+bridged through R(30) 12-0 a1 and a 1400 MHz double-pass AOM). P(10) a15 is the higher: with Grieser's
+R(99) a13 = 512 667 622 777(67) kHz it gives the printed 512 671 028 067(73) kHz. Entered as
+f(P(10) 14-1 a15) - f(R(99) 15-1 a13) = +3405.290 MHz. Not entered: that derived absolute (it is
+grieser1994a plus this interval) and the earlier single-laser AOM value 3 405 265(130) kHz (Reinhardt
+diploma thesis, ref. 28; the same quantity, less precise, Table 6 row 1). The interval and the comb value
+of P(10) a15 are independent measurements.
 
-Component labels a1-a21 are ranks by frequency among the main components, consistent with the rest
-of the collection: P(80) 21-1, P(62) 17-1 and P(10) 14-1 have even J'' and 15 main components, while
-R(99) 15-1 and R(15) 14-1 have odd J'' and 21, and the printed labels run to a15 and a21 respectively.
+Component labels a1-a21 are ranks by frequency among the main components, as in the rest of the collection:
+P(80) 21-1, P(62) 17-1 and P(10) 14-1 have even J'' and 15 components, R(99) 15-1 and R(15) 14-1 odd J''
+and 21. The printed F' values agree (e.g. P(10) a15 F' = 9, I = 0).
 
-The absolute frequency is the frequency-comb value of Table 6, 512 671 028 075 +/- 70 kHz for
-P(10) 14-1 a15. The two other methods in that table (AOM 512 671 028 042 +/- 150, heterodyne
-512 671 028 067 +/- 73) are earlier/less precise determinations of the same quantity and are not
-entered, to avoid counting one measurement three times.
+Comparison with bipm2003c (P(62) 17-1 hyperfine table, which matches to 10 kHz rounding the Barwood & Rowley 1984 values of the
+paper's "From [14]" column): this set minus BIPM, kHz: a2 0, a3 +211, a4 -234, a5 -23,
+a6 -4, a7 -17, a8 -19, a9 -38, a10 -8, a15 +6. The model agrees with this set at a3 and a4 (+9.0, -3.2 kHz)
+and so is some 200 kHz from the BIPM a3 and a4, which lie only 5 MHz apart; the paper suggests its higher
+resolution as the reason. Independent sources.
 """
 
 uncertainty = """
-As printed in each table heading: +/- 20 kHz for Tables 1, 2 and 3; +/- 30 kHz for Tables 4 and 5;
-+/- 70 kHz for the comb absolute frequency. Converted to MHz and taken as standard (1 sigma).
+As printed in each table heading: +/- 20 kHz for Tables 1, 2 and 3; +/- 30 kHz for Tables 4 and 5; converted
+to MHz and taken as standard (1 sigma). The comb absolutes: 70 kHz each, dominated by the reproducibility of
+the laser stabilization (EOM modulation 50 kHz and lock-in offset 50 kHz; statistics 2-3 kHz, AC-Stark shift
+< 8 kHz, cell temperature < 1 kHz, laser power 8 kHz, p. 288); common to both rows (same laser, lock and comb),
+hence one group. The heterodyne interval: 30 kHz, "a conservative estimation of the reproducibility".
+"""
+
+notes = """
+Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model, absolutes after the shift
+correction (+52 kHz): P(10) 14-1 a15 +40 kHz; P(80) 21-1 a10 -3.86 MHz; interval P(10) a15 - R(99) a13
++2.45 MHz (grieser1994a's R(99) 15-1 a13 absolute is -2.47 MHz from the model too, so the model's R(99) 15-1
+line position is some 2.4 MHz high; both are measured values, not misprints: Fig. 7's axis offsets
+530 222 434 300 and 512 671 028 040 kHz confirm the two comb values). Splittings: P(80) 21-1, P(62) 17-1,
+R(99) 15-1 within -6 to +12 kHz; P(10) 14-1 -16 to +87 kHz (a12 +87, a15 +36; the paper's own fit sd is
+23.4 kHz and it names overlap with R(15) 14-1 and crossovers); R(15) 14-1 -21 to +72 kHz, mostly positive
+(paper's fit sd 8.8 kHz), so the model's v' = 14, low-J hyperfine pattern is off beyond these data. No row
+was dropped.
+
+P(62) 17-1 is also the BIPM 576 nm reference line (bipm2003c).
 """
 
 [conditions]
-method = "Doppler-free saturation spectroscopy, frequency-comb referenced"
+method = "FM saturation spectroscopy (EOM 1-3 MHz, index < 0.4, chopped pump shifted +80 MHz by an AOM), heterodyne between two dye lasers for splittings, self-referenced frequency comb for absolutes"
+laser = "Coherent 599-21 standing-wave and 699-21 ring dye lasers (Rhodamine 6G, Verdi V10 pumped), linewidths < 1 MHz"
+cells = "PTB 1/99 and 15/98"
+cold_finger_C = 6.0
+pressure_Pa = 7.45
+pressure_note = "absolute measurements only: cell stabilized to 6 +/- 0.1 C (p. 284); pressure from Gillespie & Fraser (not printed)"
+pump_mW = 5.0
+pump_beam_diameter_mm = 1.8
+probe_mW = 0.5
+probe_beam_diameter_mm = 1.4
+eom_MHz = 1.0
+chopping_kHz = 41
+pressure_shift_kHz_per_Pa = -7.0
+ac_stark_kHz_mm2_per_mW = 5.0
 
-notes = "P(62) 17-1 is also the BIPM 576 nm reference line (bipm2003c), so this set provides an independent check on that line at 20 kHz."
+[shift_correction]
+groups = ["reinhardt2006a_comb"]
+pressure_Pa = 7.45
+pressure_kHz_per_Pa = -7.0
+pressure_kHz_per_Pa_unc = 2.0
+allowance_kHz = 8.0
+basis = "Paper p. 284 and 288: cell at 6 C during the comb measurements (7.45 Pa by Gillespie & Fraser; the paper prints no pressure), pressure shift '~ -7 kHz/Pa' (printed without uncertainty; 2 kHz/Pa assumed). No zero-power slope is given (pump 5 mW at 1.8 mm, probe 0.5 mW): 8 kHz allowance, the paper's bound on the AC-Stark and laser-power effects. Shift +52.2 kHz; not applied to the splittings or the heterodyne interval."
