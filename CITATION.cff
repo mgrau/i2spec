@@ -5,6 +5,8 @@ type: software
 authors:
   - family-names: Grau
     given-names: Matt
+    orcid: "https://orcid.org/0000-0002-2684-6923"
+    affiliation: "Department of Physics, Old Dominion University, Norfolk, Virginia 23529, USA"
 license: MIT
 repository-code: "https://github.com/mgrau/i2spec"
 url: "https://mgrau.github.io/i2spec/"
