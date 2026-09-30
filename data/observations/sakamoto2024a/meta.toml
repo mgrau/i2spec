@@ -1,0 +1,15 @@
+id = "sakamoto2024a"
+citation = "Y. Sakamoto, Y. Kawai, D. Akamatsu and F.-L. Hong, \"Precision spectroscopy of iodine absorption lines near the ¹S₀-³P₂ transition of Yb atoms at 507 nm\", Jpn. J. Appl. Phys. 63, 032006 (2024)"
+source = "https://doi.org/10.35848/1347-4065/ad30a1 (YNU repository accepted manuscript, the version read)"
+doi = "10.35848/1347-4065/ad30a1"
+retrieved = "2026-09-26"
+catalog = "data/catalog/precision.yaml#sakamoto2024a"
+unit = "MHz"
+transcription = """
+Table II (accepted manuscript): the a1 absolute frequencies of P(40)52-0 and P(52)53-0, 8 kHz each.
+Table III, "Obs." columns: all 15 hyperfine splittings f(a_n) - f(a1) of each line, kHz. Read from the
+PDF text layer, converted kHz -> MHz exactly.
+"""
+uncertainty = "Absolute: 8 kHz (their total, Table I). Intervals: the standard deviation of their four-term fit to each line, 3.4 kHz (P(40)52-0) and 6.1 kHz (P(52)53-0), which the text says is set by the laser's repeatability."
+partial = "complete"
+notes = "Comb-referenced modulation-transfer spectroscopy at 507 nm; the P(52)53-0 fit SD is larger, which the authors attribute to overlapping weak lines."

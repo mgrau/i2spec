@@ -1,0 +1,10 @@
+p202	N=36-84	value/depth columns offset one row relative to N labels; mapped in order
+p204	N=141-208	value/depth columns offset one row relative to N labels; mapped in order
+p205	N=209-308	value/depth columns offset one row relative to N labels; mapped in order
+p208	N=540-682	N labels for 580-619 on the left crop, values on the right; depth columns offset one row; mapped in order
+p209	N=763-802	depths on the right crop, split from their rows; mapped in order
+p212	N=1133-1172	N labels on the left crop, values on the right; mapped in order; N=1175/1176 both *** (close pair)
+p213	N=1282-1331	N labels on the left crop, values on the right; mapped in order
+p214	N=1503-1552	crop split cut the sigma column: leading '138'/'13' on the left, remainder on the right; joined
+p212	N=1175	corrected 13820.4062 -> 13820.4862 after the part IV overlap disagreed; zoom confirms 8
+p214	N=1590-1592	depths corrected (49,58,48) after the part IV overlap disagreed; a 49 had been dropped

@@ -1,0 +1,29 @@
+id = "matsunaga2024a"
+citation = "S. Matsunaga, Y. Isawa, D. Akamatsu, F.-L. Hong, Optical frequency references at 1542 nm: precision spectroscopy of the R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, and P(71)46-0 lines of 127I2 at 514 nm, Photonics 11, 770 (2024)"
+source = "https://doi.org/10.3390/photonics11080770"
+doi = "10.3390/photonics11080770"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#matsunaga2024a"
+unit = "MHz"
+transcription = """
+Table 1 (p. 3): absolute frequencies of the a1 (b1) component of six lines, kHz, 5.6 kHz each.
+Tables 2-3 (p. 4): hyperfine splittings f(a_n) - f(a1) of R(106)50-0, R(100)49-0, R(84)47-0, P(82)47-0
+(15 components) and R(59)45-0 (b series), P(71)46-0 (21 components), kHz, from the "Obs." columns.
+Parsed by script from the PDF text layer (thousands separators removed), converted kHz -> MHz exactly.
+
+Left out: the five starred values the authors excluded from their fits because the components were too
+close to each other or to other lines (a2 of R(100)49-0; b7, b8 of R(59)45-0; a6, a7 of P(82)47-0).
+97 rows: 6 frequencies, 91 splittings.
+"""
+uncertainty = """
+Absolute frequencies: 5.6 kHz, the authors' combined 1 sigma (0.4 kHz statistical, 5 kHz cell impurity).
+Splittings: 0.6 kHz (sqrt(2) x the 0.4 kHz lock repeatability), as the paper states.
+"""
+notes = "Modulation transfer spectroscopy at 514 nm with a 30 cm cell, 220 kHz modulation, comb-referenced. R(84)47-0 and R(59)45-0 overlap; the fits of R(106)50-0 and R(100)49-0 have larger standard deviations (8.6 and 5.0 kHz) from overlap with weak lines."
+
+[conditions]
+cold_finger_C = -10.0
+pressure_Pa = 1.4
+pump_mW = 1.8
+probe_mW = 0.28
+detection = "modulation transfer"

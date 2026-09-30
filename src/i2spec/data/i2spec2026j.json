@@ -1,0 +1,206 @@
+{
+ "name": "i2spec2026j",
+ "source": "E. J. Salumbides, K. S. E. Eikema, W. Ubachs, U. Hollenstein, H. Kn\u00f6ckel, E. Tiemann, Eur. Phys. J. D 47, 171 (2008), Table 1",
+ "doi": "10.1140/epjd/e2008-00045-y",
+ "units": "cm^-1 and Angstrom; C_n in cm^-1 Angstrom^n",
+ "reference_isotopologue": "127I2",
+ "notes": "Outer branch V = De - sum C_n/R^n - A_O exp(-B_O (R - R_O)) (paper eq. 4). BOC: alpha(R) = (mu_ref/mu) (2Rm/(R+Rm)) sum alpha_i X^i; V_corr = (1 - mu_ref/mu) (2Rm/(R+Rm))^l sum v_i X^i with l = 5. De and C_n from Gerstenkorn, Luc & Le Roy 1991, Gerstenkorn, Luc & Amiot 1985 (B) and Bacis, Cerny & Martin 1986 (X). Turning points covered by data: B 2.650-4.589 A, X 2.427-3.079 A. i2spec2026a: the hannover2008 potentials with the changes listed under 'changes'. The hyperfine table (i2spec.hfs_table) and the MLR trial potentials (data/potentials/) are separate. i2spec2026c carries measured level corrections for the NIR and the visible (see changes).",
+ "states": {
+  "X": {
+   "Rm": 2.66638233,
+   "b": -0.6,
+   "a": [
+    0.0,
+    0.155389,
+    49260.1477,
+    21362.9963,
+    -18173.865,
+    -49468.474,
+    -71353.991,
+    -101109.25,
+    -71561.08,
+    471053.8,
+    -290465.4,
+    -7330064.8,
+    2257811.5,
+    38250822.0
+   ],
+   "inner": {
+    "R": 2.4,
+    "A": 4580.9329,
+    "B": 9.016832
+   },
+   "outer": {
+    "R": 3.3,
+    "A": 1053.614048,
+    "B": 1.259030368,
+    "De": 12547.34,
+    "C": {
+     "6": 1480000.0,
+     "8": 38600000.0,
+     "10": 100000000.0
+    }
+   },
+   "turning_points": [
+    2.427,
+    3.079
+   ]
+  },
+  "B": {
+   "Rm": 3.02669183,
+   "b": -0.75,
+   "a": [
+    15769.067837,
+    8.1393,
+    8502.90979,
+    6956.77594,
+    995.264129,
+    -5563.38644,
+    -10743.89661,
+    -16854.19562,
+    -15331.64369,
+    43150.45697,
+    62510.9611,
+    -389146.304,
+    -432195.53147,
+    2723527.9905,
+    3218680.8611,
+    -12733859.0547,
+    -17275251.4874,
+    42525526.5406,
+    71269573.1657,
+    -91305785.39938,
+    -210868240.3457,
+    92671865.44061,
+    413233055.7779,
+    60853378.64116,
+    -487970338.3624,
+    -305239410.0029,
+    269185586.5112,
+    349460913.6897,
+    27710156.96362,
+    -133371674.8717,
+    -76555079.71445,
+    -13664953.10913
+   ],
+   "inner": {
+    "R": 2.647,
+    "A": 19605.269,
+    "B": 1.3736027
+   },
+   "outer": {
+    "R": 4.9,
+    "A": -8.105289769,
+    "B": 9.347221716,
+    "De": 20150.317,
+    "C": {
+     "5": 316100.0,
+     "6": 1506000.0,
+     "8": 24800000.0,
+     "10": 420000000.0
+    }
+   },
+   "boc": {
+    "alpha": [
+     -0.00023586,
+     2.3445e-05,
+     -0.00043703,
+     -0.0003963,
+     -0.0010191,
+     -0.00016462
+    ],
+    "vad": [
+     -0.188186,
+     -6.68183,
+     1.54676,
+     -2.86898
+    ],
+    "vad_power": 5
+   },
+   "turning_points": [
+    2.65,
+    4.589
+   ]
+  }
+ },
+ "derived_from": "i2spec2026i",
+ "changes": [
+  {
+   "what": "B state adiabatic Born-Oppenheimer correction, constant term",
+   "vad[0]": {
+    "hannover2008": -0.209726,
+    "i2spec2026a": -0.188186
+   },
+   "why": "Every 129I2 line in the BIPM 612 and 633 nm tables sits 7-14 MHz above the published model and 127I129I 4.6 MHz below 129I2, each with sub-MHz scatter inside the line. A constant in V_ad enters the levels as (1 - mu_127/mu) V_ad0: 0.0155 for 129I2, 0.0085 for 127I129I, so one number moves both by the right ratio. Fitted to the 124 isotopologue rows that constrain the potentials (prototypes/bo_refit.py): rms 7.06 -> 2.36 MHz against a data floor of 1.1-1.2 MHz. A slope or an alpha term reaches 1.4 MHz but with degenerate, run-dependent values from seven independent numbers, so only the constant is adopted. R(113) 14-4 stays +5.1 MHz.",
+   "date": "2026-09-18"
+  },
+  {
+   "what": "measured level corrections for 127I2 in the near infrared: X v'' = 11-17 and B v' = 1-3, 5, 7",
+   "file": "level_corrections_2026a.json",
+   "why": "The potentials miss the comb-referenced NIR lines (liao2010a, bodermann2000a, bodermann1998b, reinhardt2007a, cornish2000a; 71 lines, 0.02-0.3 MHz) by 3.0 MHz rms with a shape that is smooth in J within each band. Polynomials in J(J+1) per level, fitted as a robust ridge regression on the residuals (prototypes/nir_corrections.py), bring them to 0.25 MHz in-sample and 0.4 MHz median leave-one-line-out. IodineSpec5 covers the same range with a local Dunham model fitted to the same data. \u03b4B(v'=0) = 0 by convention; the corrections apply to 127I2 only and are trusted within 15 in J of the measured range (lookup.uncertainty).",
+   "date": "2026-09-19"
+  },
+  {
+   "what": "level corrections extended from the near infrared to every comb-referenced 127I2 line with v' <= 43, v'' <= 17",
+   "file": "level_corrections_2026b.json",
+   "why": "The residual structure of the default against the precise sets is level-shaped: nishiyama2024a is a pure +5.57 MHz offset of B v' = 39 (scatter 0.11), bipm2012a a set of per-v' offsets at v' = 32-37 (-2 to +4 MHz), bipm2005a a -1.4 MHz offset of B v' = 43. The same polynomial-per-level fit as the NIR corrections, on all 839 127I2 position rows (605 touching a corrected level), takes the comb-referenced sets to 0.02-0.3 MHz in-sample and 0.1-0.8 MHz leave-one-line-out (prototypes/level_corrections_fit.py). A level's parameters come only from lines measured to <= 0.3 MHz; each level carries its held-out rms into lookup.uncertainty.",
+   "date": "2026-09-19"
+  },
+  {
+   "what": "extended-range potentials: the MLR pair mlr_x_2026c / mlr_b_2026c supplies the X levels from v'' = 18 and the B levels from v' = 44 up",
+   "why": "The published curves are fitted to v'' <= 17 and v' <= 43 and fail beyond: +7.8 cm-1 at v'' = 48, -21 cm-1 at v'' = 54, 2.2 cm-1 against the atlas at v' = 58, 25 GHz on matsunaga2024a. The MLR pair (docs/design/mlr-x.md) is 10^2-10^4 better there and tracks Martin 1986's X levels to 0.1-0.3 GHz through the unmeasured gap (docs/research/iodinespec5.md). Inside the published range the two are equivalent after level corrections (held-out 1.68 vs 1.70 MHz over 605 rows) and the published curves stay, so every level comes from the model that is validated there.",
+   "date": "2026-09-19"
+  },
+  {
+   "what": "level corrections refitted on the hybrid, now reaching v' <= 50 and v'' <= 54",
+   "file": "level_corrections_2026c.json",
+   "why": "Same fit as i2spec2026c's, with the base the hybrid set and the range extended: yoshiki2023a 3.3 -> 0.6 MHz, matsunaga2024a 12.5 -> 2.0; B v' = 44 and 45 validated at 0.7 MHz held out. The v'' = 48-54 sets stay at 6-19 MHz, which is the X hyperfine model there, not the levels.",
+   "date": "2026-09-19"
+  },
+  {
+   "what": "a local correction for the NIR bands v' = 0 -> v'' = 12-17, on top of the unchanged level corrections",
+   "file": "level_corrections_2026d.json",
+   "why": "After the level corrections the comb-referenced NIR lines are R-high / P-low at the same J'' (liao2010a R(106) 0-13 +0.70, R(100) 0-12 +0.59, P(82) 0-13 -0.39 MHz), which needs a J'-dependence of B v' = 0. Put on the levels, that moves 0-9/0-10 by +13 MHz at J = 100 and the v' >= 1 bands to v'' = 11-17 by up to -130 MHz with nothing measured there, so it is applied to the lines of these bands only, within 15 in J'' of the data at each v'' - the confinement IodineSpec5's local NIR model has. Liao 2010 enters with its +114 kHz pressure shift. liao2010a 0.35 -> 0.074 MHz in-sample (0.22 held out); all 60 precise NIR rows 0.27 -> 0.25 held out, worst 0.72 MHz. Nothing outside the bands moves. prototypes/nir_band_fit.py --degree=3,2,3 --floor=0.05",
+   "date": "2026-09-23"
+  },
+  {
+   "what": "Bodermann's 1998 thesis data (bodermann1998c) added: level corrections and NIR band correction refitted",
+   "file": "level_corrections_2026e.json",
+   "why": "Bodermann's thesis (Hannover 1998, bodermann1998c) supplies the difference frequencies behind the Hannover NIR local model: 54 rows, 52 of them beats between lines of 0-12..0-17 and 1-14 at 5-45 kHz, never published. Level corrections refitted with them (bodermann2000a held out 4.99 -> 0.51 MHz, reinhardt2007a 4.53 -> 0.63), then the band correction on top, chosen by the same rule as i2spec2026e over a wider grid: (L,K,KB) = (5,3,4), floor 0.1, prior 50 MHz. liao2010a 0.119 MHz raw (IodineSpec5 0.138), 0.027 with its 114 kHz shift, 0.053 held out; all 108 precise NIR rows 0.326 -> 0.132 held out (median 0.026, worst 0.67). prototypes/nir_band_fit.py --parameters=i2spec2026f --degree=5,3,4 --floor=0.1 --prior=50",
+   "date": "2026-09-24"
+  },
+  {
+   "what": "X v'' = 18-25 corrected from the Orsay atlas part I (Gerstenkorn, Verges & Chevillard 1982, 4 826 lines at 790 C)",
+   "file": "level_corrections_2026f.json",
+   "why": "The first measurement of the X state above v'' = 17 in this project. 3 700 atlas lines assigned against a model list thinned to the atlas's density (4 % expected by chance; 1 349 R/P pairs from shared upper levels agree to 41 MHz median). Fitted with a pure scale calibration, +24 ppb, as the atlas's own page IV prescribes, anchored on v'' <= 17 lines inside the comb-measured J ranges, and a linear J(J+1) correction per level: dX from -16 MHz (v'' = 18) to -57 MHz (v'' = 24), -81 at v'' = 25. v' = 0, 1, 2 sub-samples of a level agree to ~15 MHz; freeing the upper levels' J-dependence changes nothing. Level uncertainty 15-45 MHz, down from 300. prototypes/orsay_assign.py, orsay_fit.py --free=18-25 --maxdeg=1",
+   "date": "2026-09-25"
+  },
+  {
+   "what": "extended-range X refitted to the Orsay-atlas levels (mlr_x_2026d)",
+   "file": "mlr_x_2026d.json, level_corrections_2026g.json",
+   "why": "mlr_x_2026c refitted to the atlas-corrected levels v''=18-25, anchored on its own v''<=17 levels, the emission levels v''=48,53,54 and the long-range priors: atlas levels 33 -> 16.5 MHz rms; leave-one-level-out predicts every v''=18-25 level better than 2026c did and within its uncertainty (7-38 MHz). Moves v''=26-47 by up to -100 MHz (peak v''~34). Corrections re-expressed on the new potential so the covered levels are unchanged. prototypes/mlr_x_atlas.py",
+   "date": "2026-09-26"
+  },
+  {
+   "what": "level-correction curvature terms held at the edge of their measured J range",
+   "file": "level_corrections_2026h.json",
+   "why": "Beyond coverage +- 15 the quadratic and cubic terms of a level correction are fitted scatter, and extrapolated they moved lines by tens of MHz (1-13 +57, 1-14 -35 MHz at J'' = 300). Holding the whole polynomial constant was tried first and is wrong: velchev1998a's B v' = 16 lines at J' = 117-138, beyond the J' <= 78 the correction was fitted on, are -0.2 to -0.9 MHz extrapolated and -2 to -4 MHz clamped. So the constant and J(J+1) terms keep extrapolating and only the curvature is held. No measured data set moves.",
+   "date": "2026-09-26"
+  },
+  {
+   "what": "B level corrections refitted with seven more comb-referenced data sets",
+   "file": "level_corrections_2026i.json",
+   "why": "ikeda2022a (514 nm, v' = 45, 46, 48), cheng2019a (534 nm, v' = 31), shie2013a (535 nm, v' = 30), hsiao2013a (548 nm, v' = 24), zhang2009a (560 nm, v' = 20, 23), yang2011a (561 nm, v' = 22-24) and edwards1999a (633 nm, v' = 6): 174 rows, whose absolute frequencies sat 1-5 MHz from i2spec2026i in the visible and 26 MHz at v' = 48. The same fit and degree rule as level_corrections_2026c-h (prototypes/level_corrections_fit.py --base=i2spec2026d --extended), which reproduces the B section of 2026h to 1e-6 MHz without the new sets; B v' = 20, 23, 24, 30, 31 and 48 are newly corrected, v' = 22, 45, 46 refitted. v' = 24 has two lines, J' = 27 and 131, 7 MHz apart, so its held-out figure is 7 MHz. X, band and Orsay sections unchanged.",
+   "date": "2026-09-27"
+  }
+ ],
+ "extended": {
+  "X": "mlr_x_2026d",
+  "B": "mlr_b_2026c",
+  "from_v": {
+   "X": 18,
+   "B": 44
+  }
+ },
+ "level_corrections": "level_corrections_2026i"
+}

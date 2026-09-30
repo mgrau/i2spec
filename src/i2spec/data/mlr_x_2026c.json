@@ -1,0 +1,33 @@
+{
+ "id": "mlr_x_2026c",
+ "state": "X",
+ "form": "MLR",
+ "citation": "i2spec, Phase C alternating fit, block X (2026-09-18). Not a published parameter set.",
+ "fitted_to": "885 X levels implied by every 127I2 absolute frequency (and interval through its reference) with v' <= 50, B from the interval-fixed B (pass 2), hyperfine offsets frozen; published X levels v'' <= 17 at 3 MHz as shape guidance. prototypes/mlr_x_levels.py.",
+ "De": 12547.340037553322,
+ "Re": 2.66638074656124,
+ "p": 5,
+ "q": 3,
+ "Rref": null,
+ "C": {
+  "6": 1478662.3858332569,
+  "8": 38638478.27800527,
+  "10": 100360303.58527625
+ },
+ "beta": [
+  -1.2641630413849299,
+  -0.5772024359239302,
+  -0.8927070933409639,
+  2.5552252172041827,
+  6.186351029999633,
+  13.62535866465636,
+  8.419063605190289,
+  -37.026069816664034,
+  183.4529999300028,
+  161.18376537116225,
+  -2556.328697094493,
+  2969.038163376289
+ ],
+ "born_oppenheimer": "taken unchanged from hannover2008 X (alpha and V_ad)",
+ "status": "research result; with mlr_b_2026c, within 2-4x of the published model on the precision sets and 10^2-10^4 better beyond them; not the default (docs/design/mlr-x.md, 'The alternating fit')."
+}

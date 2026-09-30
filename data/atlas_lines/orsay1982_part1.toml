@@ -1,0 +1,10 @@
+id = "orsay1982_part1"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "atlas line positions"
+citation = """S. Gerstenkorn, J. Vergès, J. Chevillard, Atlas du spectre d'absorption de la molécule d'iode, 11 000-14 000 cm-1 (Laboratoire Aimé Cotton, CNRS II, Orsay, 1982), part I"""
+url = "https://books.google.com/books/about/Atlas_du_spectre_d_absorption_de_la_mole.html?id=2Qy8QwAACAAJ"
+instrument = """Fourier transform spectrometer, iodine cell at 790 °C; line table of wavenumber, precision (mK) and depth"""
+calibration = """The atlas's own wavenumber scale; the fit that uses these lines (level_corrections_2026f) found a pure scale of +23.85 ppb, which the web app applies before comparing with the model"""
+extraction = """Transcribed by eye from photographs of the printed table, with structural checks (consecutive line numbers, monotonic wavenumbers) and the overlap with parts II-IV; assigned against the model line list thinned to the atlas's line density (prototypes/orsay_assign.py). docs/research/orsay-atlas-11000-14000.md"""
+n_lines = 3700

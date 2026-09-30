@@ -1,0 +1,40 @@
+id = "bodermann1998b"
+citation = "B. Bodermann, M. Klug, H. Knöckel, E. Tiemann, T. Trebst and H. R. Telle, \"Frequency measurement of I₂ lines in the NIR using Ca and CH₄ optical frequency standards\", Appl. Phys. B 67, 95-99 (1998)"
+source = "https://doi.org/10.1007/s003400050480 (PDF obtained 2026-09-16)"
+doi = "10.1007/s003400050480"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:bodermann1998b"
+
+transcription = """
+Absolute frequencies from the results section of the publisher PDF, read 2026-09-16. The paper prints
+them in kHz; they are converted to MHz here.
+
+Three measured line centres:
+  R(180) 0-16 a1   367 614 603 443 +/- 17 kHz
+  R(42)  0-17 b1   367 615 127 628 +/- 14 kHz
+  R(42)  0-17 b10  367 615 714 503 +/- 15 kHz
+and one measured hyperfine splitting, a1 to a10 of R(180) 0-16, of 587 287 +/- 15 kHz.
+
+NOT transcribed: the paper's derived value ν(R(180) 0-16 a10) = 367 615 190 730 +/- 23 kHz. The text
+states it was obtained from the a1 frequency plus the measured a1-a10 splitting, so entering it as
+well would count the same two measurements a second time. The independent pair (the a1 absolute and
+the a1-a10 interval) is recorded instead.
+
+Also not transcribed: the reference-laser frequencies ν(CH4), ν(Ca) and ν(LD2) quoted in the same
+paragraph. Those are the calibration chain, not iodine line positions.
+
+Component labels are as printed; the letter names the line in the source and the number is the rank
+by frequency, as elsewhere in this collection. Both lines have even J'' (180 and 42) and therefore 15
+main components, so a1/b1 are rank 1 and a10/b10 are rank 10.
+"""
+
+uncertainty = """
+As printed, 1 sigma: 14-17 kHz on the absolute frequencies and 15 kHz on the splitting, converted to
+MHz. These are the most precise absolute line positions in the collection.
+"""
+
+[conditions]
+method = "diode laser locked to I2 hyperfine components, frequency chain referenced to CH4 and Ca standards"
+
+notes = "v'' = 16 and 17, the top of the X-state well. v'' = 17 had no other data in the collection, and v'' = 16 only two lines."

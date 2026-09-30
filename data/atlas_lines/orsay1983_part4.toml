@@ -1,0 +1,11 @@
+id = "orsay1983_part4"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "atlas line positions"
+citation = """S. Gerstenkorn, P. Luc, Atlas du spectre d'absorption de la molécule d'iode, Partie IV: 19 700-20 035 cm-1 (Laboratoire Aimé Cotton, CNRS II, Orsay, 1983)"""
+instrument = """Fourier transform spectrometer, 50 cm cell, p ~ 0.25 torr, several interferograms summed; 33 plates, line table of wavenumber, pointing precision (mK, noise only) and depth; 3 613 lines with S/N > 1.5"""
+calibration = """The atlas scale is set by one line, R(26) 62-0, to Pique et al. (Opt. Commun. 36, 356, 1981): 19 926.0009(10) cm-1 against 19 926.0014(16) in the atlas. The authors estimate the absolute accuracy at 0.002 cm-1, and find these wavenumbers 0.0095(10) cm-1 below those of Partie III. Goncharov et al. 2007 (data/observations/goncharov2007a) now fix R(26) 62-0 to 250 Hz."""
+extraction = """Both tables transcribed by eye from photographs (data/external/orsay_19700_20035/): the plates (orsay1983_pages/, N sigma eps I) and the authors' classification (orsay1983_classification/, N sigma_mes I J'' branch v' v'' sigma_cal o-c). Every plate line from N = 7 on is also in the classification, so each line was read twice, independently; 43 disagreements were settled on the photos (orsay1983_pages/resolved.tsv). Assignments are the authors'; every sigma_cal reproduces the Gerstenkorn-Luc 1985 Dunham constants (i2spec.dunham) to 3e-4 cm-1 and every o-c its two wavenumbers. prototypes/orsay4_reconcile.py, prototypes/orsay4_dataset.py; docs/research/orsay-atlas-19700-20035.md."""
+files = ["orsay1983_part4.csv", "orsay1983_part4_assigned.csv"]
+n_lines = 3613
+n_assignments = 4024

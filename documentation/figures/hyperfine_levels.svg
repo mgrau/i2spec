@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 408.96 262.224" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 262.224 
+L 408.96 262.224 
+L 408.96 0 
+L 0 0 
+L 0 262.224 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 100.0224 75.914596 
+L 401.3424 75.914596 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 100.0224 67.324274 
+L 401.3424 67.324274 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 100.0224 65.992739 
+L 401.3424 65.992739 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 100.0224 64.215951 
+L 401.3424 64.215951 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 100.0224 62.840902 
+L 401.3424 62.840902 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 100.0224 54.214581 
+L 401.3424 54.214581 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 100.0224 46.634292 
+L 401.3424 46.634292 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 100.0224 45.986736 
+L 401.3424 45.986736 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 100.0224 40.699264 
+L 401.3424 40.699264 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 100.0224 40.150919 
+L 401.3424 40.150919 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 100.0224 37.578809 
+L 401.3424 37.578809 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 100.0224 34.217413 
+L 401.3424 34.217413 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 100.0224 30.711319 
+L 401.3424 30.711319 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 100.0224 27.435694 
+L 401.3424 27.435694 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 100.0224 10.683375 
+L 401.3424 10.683375 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--pick); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_16">
+    <path d="M 100.0224 235.603032 
+L 401.3424 235.603032 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 100.0224 220.111189 
+L 401.3424 220.111189 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 100.0224 220.022671 
+L 401.3424 220.022671 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 100.0224 218.581814 
+L 401.3424 218.581814 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 100.0224 218.554014 
+L 401.3424 218.554014 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 100.0224 203.01013 
+L 401.3424 203.01013 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_22">
+    <path d="M 100.0224 188.033769 
+L 401.3424 188.033769 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 100.0224 186.824942 
+L 401.3424 186.824942 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_24">
+    <path d="M 100.0224 186.583587 
+L 401.3424 186.583587 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_25">
+    <path d="M 100.0224 185.425664 
+L 401.3424 185.425664 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_26">
+    <path d="M 100.0224 171.081211 
+L 401.3424 171.081211 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_27">
+    <path d="M 100.0224 171.047201 
+L 401.3424 171.047201 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_28">
+    <path d="M 100.0224 169.853501 
+L 401.3424 169.853501 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_29">
+    <path d="M 100.0224 169.849778 
+L 401.3424 169.849778 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_30">
+    <path d="M 100.0224 137.894126 
+L 401.3424 137.894126 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--trace); stroke-linecap: round"/>
+   </g>
+   <g id="line2d_31">
+    <path d="M 81.9432 75.914596 
+L 81.9432 49.35194 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_32">
+    <path d="M 81.9432 235.603032 
+L 81.9432 191.331939 
+" clip-path="url(#p3c01cabc90)" style="fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 112.0752 137.894126 
+Q 112.0752 74.28875 112.0752 11.577802 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 110.6752 14.377802 
+L 112.0752 11.577802 
+L 113.4752 14.377802 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="112.0752" y="247.87911" transform="rotate(-0 112.0752 247.87911)">a1</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 131.876229 169.853501 
+Q 131.876229 103.716155 131.876229 38.473236 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 130.476229 41.273236 
+L 131.876229 38.473236 
+L 133.276229 41.273236 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="131.876229" y="247.87911" transform="rotate(-0 131.876229 247.87911)">a2</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 151.677257 169.849778 
+Q 151.677257 100.280548 151.677257 31.605746 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 150.277257 34.405746 
+L 151.677257 31.605746 
+L 153.077257 34.405746 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="151.677257" y="247.87911" transform="rotate(-0 151.677257 247.87911)">a3</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 171.478286 171.081211 
+Q 171.478286 102.649312 171.478286 35.11184 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 170.078286 37.91184 
+L 171.478286 35.11184 
+L 172.878286 37.91184 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="171.478286" y="247.87911" transform="rotate(-0 171.478286 247.87911)">a4</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 191.279314 171.047201 
+Q 191.279314 99.241447 191.279314 28.330121 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 189.879314 31.130121 
+L 191.279314 28.330121 
+L 192.679314 31.130121 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="191.279314" y="247.87911" transform="rotate(-0 191.279314 247.87911)">a5</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 211.080343 185.425664 
+Q 211.080343 116.029978 211.080343 47.528719 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 209.680343 50.328719 
+L 211.080343 47.528719 
+L 212.480343 50.328719 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="211.080343" y="247.87911" transform="rotate(-0 211.080343 247.87911)">a6</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 230.881371 186.583587 
+Q 230.881371 116.285161 230.881371 46.881163 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 229.481371 49.681163 
+L 230.881371 46.881163 
+L 232.281371 49.681163 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="230.881371" y="247.87911" transform="rotate(-0 230.881371 247.87911)">a7</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 250.6824 186.824942 
+Q 250.6824 113.762103 250.6824 41.593692 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 249.2824 44.393692 
+L 250.6824 41.593692 
+L 252.0824 44.393692 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="250.6824" y="247.87911" transform="rotate(-0 250.6824 247.87911)">a8</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 270.483429 188.033769 
+Q 270.483429 114.092344 270.483429 41.045346 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 269.083429 43.845346 
+L 270.483429 41.045346 
+L 271.883429 43.845346 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="270.483429" y="247.87911" transform="rotate(-0 270.483429 247.87911)">a9</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 290.284457 203.01013 
+Q 290.284457 128.612355 290.284457 55.109008 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 288.884457 57.909008 
+L 290.284457 55.109008 
+L 291.684457 57.909008 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="290.284457" y="247.87911" transform="rotate(-0 290.284457 247.87911)">a10</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 310.085486 218.581814 
+Q 310.085486 142.953044 310.085486 68.218701 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 308.685486 71.018701 
+L 310.085486 68.218701 
+L 311.485486 71.018701 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="310.085486" y="247.87911" transform="rotate(-0 310.085486 247.87911)">a11</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 329.886514 218.554014 
+Q 329.886514 142.273376 329.886514 66.887166 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 328.486514 69.687166 
+L 329.886514 66.887166 
+L 331.286514 69.687166 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="329.886514" y="247.87911" transform="rotate(-0 329.886514 247.87911)">a12</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 349.687543 220.022671 
+Q 349.687543 142.119311 349.687543 65.110378 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 348.287543 67.910378 
+L 349.687543 65.110378 
+L 351.087543 67.910378 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="349.687543" y="247.87911" transform="rotate(-0 349.687543 247.87911)">a13</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 369.488571 220.111189 
+Q 369.488571 141.476046 369.488571 63.735329 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 368.088571 66.535329 
+L 369.488571 63.735329 
+L 370.888571 66.535329 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="369.488571" y="247.87911" transform="rotate(-0 369.488571 247.87911)">a14</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 389.2896 235.603032 
+Q 389.2896 155.758814 389.2896 76.809023 
+" style="fill: none; stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 387.8896 79.609023 
+L 389.2896 76.809023 
+L 390.6896 79.609023 
+z
+" style="fill: var(--ink-2); stroke: var(--ink-2); stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 8px; font-family:var(--body); text-anchor: middle; fill: var(--ink-2)" x="389.2896" y="247.87911" transform="rotate(-0 389.2896 247.87911)">a15</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9.5px; font-family:var(--body); fill: var(--pick)" transform="translate(3.6 18.852076)">B³Π(0u⁺)</text>
+    <text style="font-size: 9.5px; font-family:var(--body); fill: var(--pick)" transform="translate(3.6 30.253932)">v′ = 32, J′ = 57</text>
+    <text style="font-size: 9.5px; font-family:var(--body); fill: var(--pick)" transform="translate(3.6 41.656529)">15 sublevels</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9.5px; font-family:var(--body); fill: var(--trace)" transform="translate(3.6 146.062827)">X¹Σg⁺</text>
+    <text style="font-size: 9.5px; font-family:var(--body); fill: var(--trace)" transform="translate(3.6 157.464683)">v″ = 0, J″ = 56</text>
+    <text style="font-size: 9.5px; font-family:var(--body); fill: var(--trace)" transform="translate(3.6 168.86728)">15 sublevels</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 8.5px; font-family:var(--body); text-anchor: end; fill: var(--ink)" x="77.9256" y="64.841275" transform="rotate(-0 77.9256 64.841275)">100 MHz</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 8.5px; font-family:var(--body); text-anchor: end; fill: var(--ink)" x="77.9256" y="215.675493" transform="rotate(-0 77.9256 215.675493)">500 MHz</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3c01cabc90">
+   <rect x="3.6" y="3.6" width="401.76" height="255.024"/>
+  </clipPath>
+ </defs>
+</svg>

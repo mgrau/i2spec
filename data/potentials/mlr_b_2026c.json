@@ -1,0 +1,37 @@
+{
+ "id": "mlr_b_2026c",
+ "state": "B",
+ "form": "MLR",
+ "citation": "i2spec, Phase C alternating fit, block B, third pass (2026-09-18). Not a published parameter set.",
+ "fitted_to": "850 B levels implied by every 127I2 absolute frequency and inter-line interval with v'' <= 17 (X from mlr_x_2026c, hyperfine offsets frozen) at hypot(sigma, 1 MHz), with a 300 MHz floor above v' = 50 where the 1g perturbation makes a single-channel potential the wrong model; published B levels v' <= 30 at 3 MHz; the 15 atlas bands at 0.005 cm-1. Result: 2.3 MHz rms at v' <= 30, 3.7 at 31-44, 12 at 45-50; atlas 0.029 cm-1. prototypes/mlr_b_levels.py.",
+ "Te": 15769.06672896619,
+ "De": 4381.249471033811,
+ "Re": 3.02633166711223,
+ "p": 6,
+ "q": 4,
+ "Rref_factor": 1.5,
+ "C": {
+  "5": 307864.5950565389,
+  "6": 1431182.1069327367,
+  "8": 25105208.852828838,
+  "10": 419322890.2509198
+ },
+ "beta": [
+  -0.4676513089590373,
+  -0.023550161212728866,
+  -0.29567463014545387,
+  0.25559846185607193,
+  -0.3269842598656217,
+  0.5636535804697117,
+  2.2936274932739793,
+  -3.301986954568604,
+  -27.18604019699961,
+  -40.84902794203937,
+  37.24509276117674,
+  176.87800803819442,
+  188.913416128176,
+  69.11812893397924
+ ],
+ "born_oppenheimer": "taken from i2spec2026a B (alpha and V_ad, including the V_ad constant)",
+ "status": "research result; see mlr_x_2026c."
+}

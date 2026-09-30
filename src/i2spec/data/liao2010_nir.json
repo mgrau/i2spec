@@ -1,0 +1,45 @@
+{
+  "name": "liao2010",
+  "title": "Improved local NIR Dunham model of the I2 B-X bands (0-12) to (0-17)",
+  "source": "C.-C. Liao, K.-Y. Wu, Y.-H. Lien, H. Knoeckel, H.-C. Chui, E. Tiemann and J.-T. Shy, J. Opt. Soc. Am. B 27, 1208 (2010), Table 3 (journal p. 1213)",
+  "doi": "10.1364/JOSAB.27.001208",
+  "units": "cm-1",
+  "form": "nu = sum_k upper[k] * [J'(J'+1)]^k - sum_(l,k) lower[lk] * (v''+1/2)^l * [J''(J''+1)]^k  (Knoeckel 2004 eqs. 1-2, as the paper states in section 4)",
+  "notes": "A refit of the Knoeckel 2004 local Dunham model: the same functional form and the same number of parameters (19), with the 27 new comb-referenced frequencies of the (0-12) and (0-13) bands added, and a few indices changed (S30 and S32 replace S22 and S14). Normalized standard deviation of the fit 0.82. WARNING: Table 3 is printed to 3-9 significant digits, far fewer than the 7-13 of Knoeckel 2004 Table 1, and the parameters are strongly correlated. As printed it cannot reproduce its own fit; see validation below and docs/research/nir-model-2010.md.",
+  "domain": {
+    "v_upper": 0,
+    "v_lower": [12, 17],
+    "J_lower_max": 242,
+    "J_lower_recommended": 140,
+    "wavelength_nm": [755.0, 815.0],
+    "uncertainty_MHz": 0.2,
+    "uncertainty_basis": "abstract and section 5: 'an error limit of the absolute frequency less than 0.2 MHz' over 755-815 nm; Fig. 4 (p. 1212) gives the 1 sigma prediction uncertainty per band, below 100 kHz for most (0-12) and (0-13) lines. Section 4 recommends J'' < 140 for calibration and advises against extrapolating below the (0-12) band."
+  },
+  "upper": {"00": 1.58317777e4, "01": 2.89259903e-2, "02": -6.23313e-9, "03": -2.3460e-15, "04": -3.551e-21},
+  "upper_uncertainty": {"00": 0.95, "01": 0.26e-8, "02": 0.29e-13, "03": 0.0082e-15, "04": 0.071e-21},
+  "lower": {
+    "10": 2.145488e2, "20": -6.1206e-1, "30": -9.57e-4, "40": -1.653e-5,
+    "01": 3.7370903e-2, "11": -1.14546e-4, "21": -2.326e-7, "31": -6.115e-9,
+    "02": -4.52249e-9, "12": -2.7825e-11, "32": -1.9829e-14,
+    "03": -2.658e-16, "13": -4.536e-17,
+    "04": -6.99e-22
+  },
+  "lower_uncertainty": {
+    "10": 0.26e-3, "20": 0.26e-4, "30": 0.12e-4, "40": 0.020e-5,
+    "01": 0.098e-7, "11": 0.21e-8, "21": 0.15e-9, "31": 0.34e-11,
+    "02": 0.52e-13, "12": 0.41e-14, "32": 0.65e-17,
+    "03": 0.82e-18, "13": 0.10e-18,
+    "04": 0.72e-23
+  },
+  "validation": {
+    "reference": "docs/research/nir-model-2010.md",
+    "against": "the paper's own 31 published components (Tables 1 and 2 and the R(141) 0-16 value in section 2), after the +114 kHz pressure correction its own fit applied; and all 55 v' = 0 components we hold inside the claimed 755-815 nm window",
+    "printed_digits_reproduce_the_fit": false,
+    "own_paper_rms_MHz": 37.7,
+    "own_paper_max_MHz": 74.9,
+    "in_window_rms_MHz": 40.8,
+    "in_window_max_MHz": 74.9,
+    "in_window_n": 55,
+    "comment": "The paper claims better than 0.2 MHz over 755-815 nm from a fit with normalized standard deviation 0.82, so this is a defect of the printed digits, not of the model. Table 3 gives 3-9 significant digits where Knoeckel 2004 Table 1 gives 7-13, and the parameters are strongly correlated: rounding the 2004 table to Table 3's digit count moves its predictions by 15-20 MHz, and a Monte Carlo over Table 3's own rounding intervals gives a 23-33 MHz spread, which covers the observed miss. Nudging every parameter within its printed rounding interval brings the residuals to 1.9 MHz rms, so the digits are consistent with a good model that cannot be reconstructed from them. Do not use this parameter set for positions; it ships for the record and for the domain and uncertainty metadata."
+  }
+}

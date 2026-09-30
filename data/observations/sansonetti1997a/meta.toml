@@ -1,0 +1,37 @@
+id = "sansonetti1997a"
+citation = "C. J. Sansonetti, Precise measurements of hyperfine components in the spectrum of molecular iodine, J. Opt. Soc. Am. B 14, 1913 (1997); transcribed from the report version, UCRL-CR-125216 (NIST/LLNL, 1996), which carries the full 102-line table"
+source = "https://www.osti.gov/servlets/purl/464573"
+doi = "10.1364/josab.14.001913"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#sansonetti1997a"
+unit = "cm-1"
+transcription = """
+Table 1 (report pp. 18-25), all 102 lines: the measured wave number of one hyperfine component per
+line, 560-656 nm, v' = 5-22, v'' = 0-5. The report is a scan whose text layer holds only fragments, so
+the table was read from 170 dpi page images and typed; every row was then checked against the model,
+which places each measured component within a few MHz of one, and only one, main hyperfine component
+of the stated line.
+
+Component labels. Sansonetti names components by the Gerstenkorn-Luc letters, with "t" the first
+component met from the low-wavenumber side of a 15-component line and the middle of the first group of
+three in a 21-component line. As in velchev1998a and xu2000a, that is rank 1 (even J'') or rank 2 (odd
+J'') by frequency among the main components, written t1 and t2. Three lines use other letters: i in the
+21-component R(73) 5-5, R(47) 9-2 and R(69) 12-2 is rank 13 and r in P(33) 6-3 is rank 4 (rank = 21 -
+index of the letter, a = 0); i in the 15-component P(26) 19-1 is rank 10, from the model (1.5 MHz off,
+next candidate 114 MHz away). Every rank is confirmed by the model to within 7 MHz.
+
+Three classifications are misprinted in the report and are corrected here, each identified by the model
+placing the printed line cm-1 away and the corrected line the usual ~480 MHz above the t component:
+R40 (9-2) is P40 (9-2), P12 (16-2) is P12 (16-1), R68 (19-0) is P68 (19-0). The printed labels are in
+the note column. The comments column (component count, resolution code, unresolved pairs, overlapping
+lines with offset and strength) is carried in the notes; the atlas wave number of each line as well.
+"""
+uncertainty = """
+The parenthesised figures are 95 percent confidence intervals (2 sigma) in units of 10^-6 cm-1; half of
+each is recorded as the 1 sigma uncertainty, 0.29-0.81 MHz. They combine the scatter of 2-9 independent
+measurements with the calibration of the Fabry-Perot wavemeter.
+"""
+notes = "Fabry-Perot wavemeter against a stabilised He-Ne, FM saturation spectroscopy, dye laser. The line classifications come from Dunham-parameter calculations, not from the atlas."
+
+[conditions]
+detection = "FM saturation spectroscopy"

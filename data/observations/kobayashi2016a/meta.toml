@@ -1,0 +1,31 @@
+id = "kobayashi2016a"
+citation = "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, Absolute frequency measurements and hyperfine structures of the molecular iodine transitions at 578 nm, J. Opt. Soc. Am. B 33, 725 (2016)"
+source = "https://arxiv.org/abs/1603.07416"
+doi = "10.1364/josab.33.000725"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#kobayashi2016a"
+unit = "MHz"
+transcription = """
+From the arXiv version (1603.07416). Table 2: absolute frequencies of the a1 component of R(37)16-1,
+P(33)16-1, R(101)17-1 and P(131)18-1, kHz, 7 kHz each. Tables 3-6: hyperfine splittings f(a_n) - f(a1),
+21 components per line, kHz, from the "Obs." columns. Parsed by script from the PDF text layer,
+converted kHz -> MHz exactly.
+
+Left out: components not observed (a5, a6 of R(101)17-1; a3 of P(131)18-1), and the five the authors
+gave zero weight in their fits because they overlap other components (a9, a10 of P(33)16-1; a15 of
+R(101)17-1, 69 kHz from its calculated position; a5, a6 of P(131)18-1). 76 rows: 4 frequencies, 72
+splittings.
+"""
+uncertainty = """
+Absolute frequencies: 7 kHz, the authors' total 1 sigma (Sect. 5), which allows for systematic effects
+beyond the measured repeatability. Splittings: 2 kHz, the upper end of the 1-2 kHz the paper quotes from
+the repeatability of the stabilized source.
+"""
+notes = "Modulation transfer spectroscopy of a frequency-doubled 1156 nm source, comb-referenced; pressure shift -7.7 kHz/Pa measured."
+
+[conditions]
+cold_finger_C = -2.0
+pressure_Pa = 3.3
+pump_mW = 4.8
+probe_mW = 0.5
+detection = "modulation transfer"

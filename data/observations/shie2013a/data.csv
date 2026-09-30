@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(28) 30-0,a1,frequency,560151411.260,0.011,,,shie2013a,Table 1; zero-pressure extrapolation by the authors
+127I2 P(28) 30-0,a10,frequency,560151982.649,0.011,,,shie2013a,Table 1; zero-pressure extrapolation by the authors
+127I2 P(28) 30-0,a15,frequency,560152269.813,0.011,,,shie2013a,Table 1; zero-pressure extrapolation by the authors

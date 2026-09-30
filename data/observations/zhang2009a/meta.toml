@@ -1,0 +1,49 @@
+id = "zhang2009a"
+citation = "J. Zhang, Z. H. Lu and L. J. Wang, \"Absolute frequency measurement of the molecular iodine hyperfine components near 560 nm with a solid-state laser source\", Appl. Opt. 48(29), 5629-5634 (2009)"
+source = "https://doi.org/10.1364/ao.48.005629 (publisher PDF)"
+doi = "10.1364/ao.48.005629"
+retrieved = "2026-09-27"
+unit = "MHz"
+catalog = "precision.yaml:zhang2009a"
+
+transcription = """
+Table 1 (p. 5632), "Measured" column only: comb-referenced absolute frequencies of R(34) 20-0 a1, a10,
+a15 and P(144) 23-0 a1, printed in kHz and converted to MHz exactly. Read from the PDF text layer and
+checked digit by digit against a 200 dpi rendering of the page. The same four values (with the same
+uncertainties) are printed in the Fig. 2 caption (p. 5631) and in the Conclusion; all three agree.
+The "Calculated" (IodineSpec4) and "Measured-Calculated" columns are not transcribed; the differences
+were recomputed from the printed numbers and agree (-1419, -1262, -1280, +2388 kHz).
+
+No correction applied. The values are the means of ten 300 s sessions at a cold-finger temperature of
+12.00 C (about 13 Pa), pump 7.6 mW, probe 0.4 mW; the paper neither measures nor corrects the pressure
+or power shift of the line centres (the pressure study in section 3 is of the a10 linewidth only).
+
+Labels: the paper's a1, a10, a15 are taken as frequency ranks among the main components (R(34), odd
+J'', 21 components; P(144), even J'', 15 components). No hyperfine intervals are printed, so none are
+entered; intervals between the three R(34) components follow from the rows and would double-count.
+Fig. 5(b) notes that the P(144) 23-0 pattern overlaps R(53) 28-3 b1-b21, but a1 is identified in the
+figure and was chosen by the authors as relatively isolated.
+
+Oddity (not affecting the data): in Fig. 2(a) and 2(b) the red horizontal "mean" line is drawn about
+3 kHz and 15 kHz below the axis offset, although the plotted session points average to the printed
+means within about 1 kHz.
+"""
+
+uncertainty = """
+Table 1 footnote a: "2 sigma standard uncertainty is given for the measured results" (8, 23, 17, 142
+kHz). Halved here to 1 sigma: 4, 11.5, 8.5 and 71 kHz. These are statistical only (session-to-session
+scatter of the ten 300 s means; Fig. 2 shows scatter consistent with them); the paper gives no
+systematic budget (pressure, power, modulation, lock offsets), so the true uncertainty is larger,
+plausibly tens of kHz for the R(34) components. The Cs reference (5e-13, about 0.3 kHz) is negligible.
+"""
+
+notes = "Frequency-modulated saturation spectroscopy with a frequency-quadrupled 1120 nm fiber-amplified MOPA (SHG at 560 nm), 10 cm cell, comb referenced to a Cs clock. First comb measurements of these lines; the P(144) 23-0 line has J'' > 100."
+
+[conditions]
+cold_finger_C = 12.0
+pressure_Pa = 13
+pump_mW = 7.6
+probe_mW = 0.4
+beam_diameter_mm = 3.6
+cell_length_cm = 10
+detection = "frequency-modulation saturation spectroscopy, 12.5 MHz EOM, chopped pump with lock-in"

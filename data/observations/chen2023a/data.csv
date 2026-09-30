@@ -1,0 +1,10 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(50) 22-0,a1,frequency,540844838.191,0.039,,,chen2023a,Table 2 (p. 8); printed (46)(30) kHz
+127I2 P(121) 24-0,b1,frequency,540847867.829,0.040,,,chen2023a,Table 2 (p. 8); printed (54)(30) kHz
+127I2 P(69) 25-1,b18,frequency,540849384.667,0.034,,,chen2023a,Table 2 (p. 8); printed (33)(30) kHz; the line whose shift coefficients were measured
+127I2 R(146) 25-0,a15,frequency,540859322.747,0.039,,,chen2023a,Table 2 (p. 8); printed (48)(30) kHz; Yb+ lock line
+127I2 P(160) 26-0,a15,frequency,540861050.549,0.042,,,chen2023a,Table 2 (p. 8); printed (58)(30) kHz
+127I2 P(102) 26-1,a1,frequency,540864607.341,0.033,,,chen2023a,Table 2 (p. 8); printed (26)(30) kHz
+127I2 R(96) 23-0,a10,frequency,540868830.629,0.039,,,chen2023a,Table 2 (p. 8); printed (47)(30) kHz
+127I2 P(92) 23-0,a15,frequency,540883006.518,0.047,,,chen2023a,Table 2 (p. 8); printed (72)(30) kHz
+127I2 R(72) 25-1,a10,frequency,540886126.160,0.036,,,chen2023a,Table 2 (p. 8); printed (41)(30) kHz

@@ -1,0 +1,8 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(114) 2-11,a1,frequency,407815137.15,0.30,,,reinhardt2007a_735,
+127I2 P(42) 1-14,a1,frequency,388605083.71,0.30,,,reinhardt2007a_772,
+127I2 P(148) 1-14,a1,frequency,384235614.32,0.30,,,reinhardt2007a_780,
+127I2 R(114) 2-11,a10,interval,587.721,0.042,,a1,reinhardt2007a_735,
+127I2 R(114) 2-11,a15,interval,881.690,0.042,,a1,reinhardt2007a_735,
+127I2 P(42) 1-14,a10,interval,587.187,0.042,,a1,reinhardt2007a_772,
+127I2 P(42) 1-14,a15,interval,881.362,0.042,,a1,reinhardt2007a_772,

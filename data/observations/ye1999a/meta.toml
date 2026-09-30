@@ -1,0 +1,69 @@
+id = "ye1999a"
+citation = "J. Ye, L. Robertsson, S. Picard, L.-S. Ma, J. L. Hall, \"Absolute frequency atlas of molecular I2 lines at 532 nm\", IEEE Trans. Instrum. Meas. 48, 544-549 (1999)"
+source = "https://doi.org/10.1109/19.769654 (IEEE Xplore PDF)"
+doi = "10.1109/19.769654"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#ye1999a"
+unit = "MHz"
+transcription = """
+Page 547 of the PDF carries the data, and both items on it are scanned bitmaps (300 dpi CCITT images);
+the text layer has none of the numbers. Every value was typed by hand from the embedded images
+(extracted with pdfimages, read at native resolution and enlarged), and checked against a 200 dpi
+rendering of the page.
+
+Fig. 3 (p. 547): frequency gaps f(component) - f(a10, R(56) 32-0), in MHz as printed (6 decimals),
+for 8 lines: 1104 R(57) 32-0 a1, 1105 P(54) 32-0 a1, 1106 P(119) 35-0 a1, 1107 R(86) 33-0 a1,
+1108 R(106) 34-0 a1, R(134) 36-0 a1 (no line number printed), 1109 P(83) 33-0 a21, 1111 P(53) 32-0 a1.
+Line 1109 is given for a21, not a1, because a1 is contaminated by a nearby resonance (text, p. 546).
+The a10 reference value printed in the figure (563 260 223.471 MHz +/- 40 kHz) is not this paper's
+measurement (it is the earlier JILA value, refs. [3]-[5]) and is not entered. The gaps are the average
+of the two JILA spectrometers (p. 546); the paper does not state the cold-finger temperature for
+them (the spectrometers run at -15 to -20 C; Fig. 1 is at -15 C) and gives no pressure correction.
+
+Table I (p. 547): hyperfine intervals f(a_n) - f(a1) of P(54) 32-0 (line 1105, a2-a15) and R(57)
+32-0 (line 1104, a2-a4, a7-a21), MHz, "observed" column only, East spectrometer only (p. 548). The
+calculated and obs-calc columns and the fitted hyperfine constants are not entered. Digit check: for
+every row, observed - calculated reproduces the printed obs-calc to the last digit, and the RMS of
+obs-calc (a1 row included) reproduces the printed "Fit RMS" of both lines (0.000 384, 0.000 614).
+- R(57) 32-0 a5 and a6 are not resolved in the spectrometers and are absent from the table.
+- P(54) 32-0 a3 and a4 are entered, but the caption says they are closely spaced and "were not used"
+  (in the fit), though they print with weight 1.0000. They are flagged in `note`.
+Labels: the paper's a_n are ranked by frequency, a1 lowest; P(54) (even J'') has 15 components and
+R(57) (odd J'') 21, as in i2spec. Crossover resonances are mentioned but not measured.
+
+No correction or relabelling applied. 40 rows: 8 inter-line gaps and 32 hyperfine intervals.
+
+Overlap with bipm2012a (not independent): the BIPM 532 nm hyperfine tables for R(57) 32-0 (Table 9)
+and P(54) 32-0 (Table 10) are this paper's observed values rounded to 1 kHz (all 32 agree within
+0.5 kHz; BIPM Table 10's duplicated "a8" is confirmed as a7 = 417.667 671 here). The BIPM inter-line
+intervals of these 8 lines (pp. 2-3) are means that include these gaps (with Holzwarth 2001 and Zhang
+2001 for some). Differences ye1999a - bipm2012a, kHz: R(57) a1 +4.30, P(54) a1 +4.62, P(119) a1 +1.55,
+R(86) a1 +1.98, R(106) a1 +1.90, R(134) a1 +1.32, P(83) a21 +1.13, P(53) a1 -0.03. A fit using both
+sets double counts this information and should either drop one or carry the correlation.
+
+Comparison with holzwarth2001a (which remeasured 1104, 1105, 1109): its R(57) and P(54) a1 intervals
+to R(56) a10 are 6.8 and 7.3 kHz below these. Its P(83) 33-0 a1, set against this paper's a21 minus
+the BIPM a21-a1 splitting, is 15.8 kHz higher (possibly the contamination of a1 noted here).
+"""
+uncertainty = """
+The paper prints no uncertainty for the individual numbers.
+Inter-line gaps: 5 kHz entered, a judgement. The paper states that the two JILA setups typically
+agree within 300 Hz, with a 1.4 kHz offset between the spectrometers (p. 548). Holzwarth 2001
+(ref. [12] there) calls its agreement with 1104, 1105 and 1109 "moderate... within a few kHz", and
+finds 7 kHz differences. The BIPM gives 5 kHz for these intervals.
+Hyperfine intervals: 1 kHz, as the BIPM tables give for these two lines. The paper's fit standard
+deviations are 0.448 kHz (P(54)) and 0.691 kHz (R(57)); these include the four-term model's error.
+"""
+
+[conditions]
+detection = "modulation transfer (FM on pump), frequency-doubled Nd:YAG"
+cold_finger_C = [-20.0, -15.0]
+pressure_Pa = [0.436, 0.787]
+cell_length_m = 1.2
+east_modulation_kHz = 350
+west_modulation_kHz = 317
+east_pump_mW = 2.2
+east_probe_mW = 0.5
+west_pump_mW = 1.0
+west_probe_mW = 0.26
+note = "Table I (hyperfine) is East spectrometer only; Fig. 3 gaps are the mean of East and West"

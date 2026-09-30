@@ -1,0 +1,41 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(57) 32-0,a1,interval,-50946.880400,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; line 1104
+127I2 P(54) 32-0,a1,interval,-47588.892482,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; line 1105
+127I2 P(119) 35-0,a1,interval,-36840.161450,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; line 1106
+127I2 R(86) 33-0,a1,interval,-32190.404022,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; line 1107
+127I2 R(106) 34-0,a1,interval,-30434.761496,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; line 1108
+127I2 R(134) 36-0,a1,interval,-17173.680381,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; no line number given
+127I2 P(83) 33-0,a21,interval,-15682.074068,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; line 1109; a21 used because a1 is contaminated by a nearby resonance (text p. 546)
+127I2 P(53) 32-0,a1,interval,2599.707967,0.005,127I2 R(56) 32-0,a10,ye1999a_gaps,Fig. 3; line 1111
+127I2 P(54) 32-0,a2,interval,260.992396,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a3,interval,285.007708,0.001,,a1,,Table I, East spectrometer, observed; caption: a3 and a4 closely spaced and 'not used' (in the fit), although printed with weight 1.0000
+127I2 P(54) 32-0,a4,interval,286.726354,0.001,,a1,,Table I, East spectrometer, observed; caption: a3 and a4 closely spaced and 'not used' (in the fit), although printed with weight 1.0000
+127I2 P(54) 32-0,a5,interval,310.066414,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a6,interval,402.249461,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a7,interval,417.667671,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a8,interval,438.918557,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a9,interval,454.563403,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a10,interval,571.536448,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a11,interval,698.613569,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a12,interval,702.934816,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a13,interval,725.833932,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a14,interval,731.687908,0.001,,a1,,Table I, East spectrometer, observed
+127I2 P(54) 32-0,a15,interval,857.960804,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a2,interval,39.371794,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a3,interval,76.827726,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a4,interval,273.041640,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a7,interval,375.283770,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a8,interval,438.242910,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a9,interval,456.183368,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a10,interval,479.200670,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a11,interval,492.915106,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a12,interval,573.916618,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a13,interval,610.925138,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a14,interval,650.805214,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a15,interval,715.549514,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a16,interval,741.175334,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a17,interval,764.715986,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a18,interval,789.776692,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a19,interval,881.115742,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a20,interval,895.015562,0.001,,a1,,Table I, East spectrometer, observed
+127I2 R(57) 32-0,a21,interval,911.901232,0.001,,a1,,Table I, East spectrometer, observed

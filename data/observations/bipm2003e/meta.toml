@@ -1,0 +1,23 @@
+id = "bipm2003e"
+citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 640 nm), ¹²⁷I₂ a9 component, P(10) 8-5 (MEP 2003)"
+source = "https://www.bipm.org/documents/20126/41549593/M-e-P_I2_640.pdf/89d9d1e5-aa97-3bff-d9d1-49e138f1fc13"
+retrieved = "2026-09-14"
+catalog = "data/catalog/precision.yaml#bipm2003e"
+unit = "MHz"
+transcription = """
+Page 1: adopted f(a9, P(10) 8-5) = 468 218 332.4 (2) MHz, the CIPM recommended value. Typed by hand.
+
+Page 3: two hyperfine tables, parsed from the PDF text layer (pdftotext) by script, not retyped. The text
+layer agrees with the page image, digits and minus signs included:
+  Table 1 127I2 P(10) 8-5: a1-a15, relative to a9
+  Table 2 127I2 R(16) 8-5: b1-b3 only, relative to a9 of P(10) 8-5
+
+Not entered: the source data of section 2, which are wavelength ratios to the 633 nm standard with pressure
+and modulation corrections. They are the inputs of the adopted value.
+"""
+uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a9): 0.2 MHz. Hyperfine intervals: 10 kHz to 1.3 MHz."
+
+[conditions]
+cold_finger_C = 16.0
+modulation_MHz_pp = 6.0
+laser = "He-Ne, internal iodine cell"

@@ -1,0 +1,42 @@
+id = "dube2004a"
+citation = "P. Dubé and M. Trinczek, \"Hyperfine-structure splittings and absorption strengths of molecular-iodine transitions near the trapping transitions of francium and thallium\", J. Opt. Soc. Am. B 21, 1113-1126 (2004)"
+source = "https://doi.org/10.1364/JOSAB.21.001113 (PDF obtained 2026-09-16)"
+doi = "10.1364/JOSAB.21.001113"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:dube2004a"
+
+transcription = """
+Table 1, "Measured Hyperfine-Splitting Frequencies (MHz)", read from the text layer of the publisher
+PDF on 2026-09-16. Four lines are tabulated side by side: P(78) 1-9, R(86) 1-9, R(146) 2-9 and
+R(113) 3-10.
+
+Only the Dnu_obs column of each line is transcribed. The neighbouring "Res." columns are residuals
+against the paper's own fit. Note that the text layer renders a minus sign as the digit 2 (so a
+residual of -0.36 appears as "20.36"); this affects only the residual columns, which are not used,
+because every measured splitting is positive.
+
+a1 is defined as zero in every column and is therefore not recorded; all rows are intervals relative
+to a1. J'' is even for P(78) 1-9, R(86) 1-9 and R(146) 2-9, which accordingly run to a15 (15 main
+components), and odd for R(113) 3-10, which runs to a21 (21). Component labels are ranks by
+frequency, consistent with the rest of the collection.
+
+This set gives no absolute frequency: the paper measures splittings only.
+"""
+
+uncertainty = """
+Per line, from the sigma_data row of Table 1, which the text describes as the standard deviation of
+the measured splittings: 0.31 MHz for P(78) 1-9, 0.34 for R(86) 1-9, 0.36 for R(146) 2-9 and 0.48 for
+R(113) 3-10.
+
+The separate sigma_calib row (0.60, 1.46, 1.50, 1.66 MHz) is NOT used here. The text is explicit that
+it applies to Dnu_hfs, the total span f15-f1 or f21-f1, as the standard deviation of the mean over
+repeated spectra, i.e. it is a scale uncertainty shared by all components of a line rather than a
+per-row error. It is recorded here as a group systematic instead: each line has its own group label.
+"""
+
+[conditions]
+cell = "iodine at 284 mTorr, cell at 680 K (conditions given for the Fig. 2 spectra near 718 nm)"
+method = "saturated absorption, pump 1.24 W/cm2, probe 0.107 W/cm2"
+
+notes = "v'' = 9 and 10, inside the 660-740 nm region where the observation set was otherwise empty. Lines chosen as references near the francium and thallium trapping transitions."

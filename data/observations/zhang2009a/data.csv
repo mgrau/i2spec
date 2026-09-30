@@ -1,0 +1,5 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(34) 20-0,a1,frequency,536038709.689,0.004,,,zhang2009a,Table 1; printed 2 sigma 8 kHz halved; no shift correction
+127I2 R(34) 20-0,a10,frequency,536039286.747,0.0115,,,zhang2009a,Table 1; printed 2 sigma 23 kHz halved; no shift correction
+127I2 R(34) 20-0,a15,frequency,536039576.169,0.0085,,,zhang2009a,Table 1; printed 2 sigma 17 kHz halved; no shift correction
+127I2 P(144) 23-0,a1,frequency,536040895.095,0.071,,,zhang2009a,Table 1; printed 2 sigma 142 kHz halved; no shift correction

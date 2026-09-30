@@ -1,0 +1,33 @@
+id = "huet2013a"
+citation = "N. Huet, S. Krins, P. Dubé and T. Bastin, \"Hyperfine-structure splitting of the 716 nm R(90)3-10 molecular iodine transition\", J. Opt. Soc. Am. B 30, 1317-1322 (2013)"
+source = "https://doi.org/10.1364/JOSAB.30.001317 (PDF obtained 2026-09-16)"
+doi = "10.1364/JOSAB.30.001317"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:huet2013a"
+
+transcription = """
+Table 1, "Hyperfine Splitting Frequencies of the 716 nm R(90) 3-10 Molecular Iodine Transition",
+read from the text layer of the publisher PDF on 2026-09-16. The line label is rendered with ligature
+artefacts in that text layer ("R/.013390/.01343-10"); the title of the paper gives it plainly as
+R(90) 3-10, which is what is used here.
+
+The table lists 15 components a1-a15 with a1 defined as zero, so these are intervals relative to a1
+and a1 itself is not recorded. J'' = 90 is even, so the line has 15 main components and a1..a15 are
+ranks 1..15 by frequency.
+
+Only the measured column is transcribed. The paper's calculated column and its differences are
+outputs of its own fit, not measurements.
+
+This set gives no absolute frequency: the paper measures splittings only.
+"""
+
+uncertainty = """
+As printed, per row, in parentheses, in units of the last digit: 0.28-0.38 MHz. Taken as standard
+(1 sigma) uncertainties.
+"""
+
+[conditions]
+method = "saturated absorption; reference line for Fe laser cooling"
+
+notes = "v'' = 10, inside the 660-740 nm region where the observation set was otherwise empty."

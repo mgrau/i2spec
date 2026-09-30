@@ -1,0 +1,33 @@
+{
+ "id": "mlr_x_2026a",
+ "state": "X",
+ "form": "MLR",
+ "citation": "i2spec, Phase C trial fit (2026-09-17). Not a published parameter set.",
+ "fitted_to": "X levels v''<=17 of hannover2008 (as reference values, 3 MHz each) and the X levels implied by matyugin2012 (v''=48) and nesterenko2019 (v''=53, 54) via the published B levels, 90 MHz each; De, C6, C8 and C10 carry the priors of docs/design/fitting.md and did not move.",
+ "De": 12547.339998496049,
+ "Re": 2.666380802682743,
+ "p": 5,
+ "q": 3,
+ "Rref": null,
+ "C": {
+  "6": 1480056.0166532334,
+  "8": 38618006.989998676,
+  "10": 100019693.72245112
+ },
+ "beta": [
+  -1.2634717437567036,
+  -0.5777643973609765,
+  -0.8936518201078854,
+  2.5796503707280705,
+  6.2539948117470425,
+  11.594320092631516,
+  8.543455309844221,
+  28.33116955865771,
+  50.285595062355775,
+  -405.94057620094344,
+  -345.8567607514987,
+  928.5711545574947
+ ],
+ "born_oppenheimer": "taken unchanged from hannover2008 X (alpha and V_ad)",
+ "status": "research result; the shipped model still uses hannover2008"
+}

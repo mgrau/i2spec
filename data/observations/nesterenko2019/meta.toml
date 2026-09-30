@@ -1,0 +1,42 @@
+id = "nesterenko2019"
+citation = "M. I. Nesterenko, S. M. Ignatovich, S. A. Kuznetsov, Yu. A. Matyugin and M. N. Skvortsov, \"Absolute frequency measurements for emission transitions of molecular iodine in the range 1053-1068 nm\", Quantum Electron. 49, 633-640 (2019)"
+source = "https://doi.org/10.1070/QEL16890 (PDF obtained 2026-09-16)"
+doi = "10.1070/QEL16890"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:nesterenko2019"
+
+transcription = """
+Table 2, "Frequency measurement results for iodine emission transitions", read from the text layer of
+the publisher PDF on 2026-09-16. Printed in kHz; converted to MHz here.
+
+These are B -> X **emission** transitions measured by three-level laser spectroscopy: a frequency
+doubled Nd:YAG laser pumps a 532 nm absorption line, and a diode laser probes the emission from the
+same upper level. The photon energy is E_B(v',J') - E_X(v'',J'') either way, so they enter the model
+exactly like absorption lines.
+
+18 values: bands (32-53) and (32-54), lines P54, R56 and R60, components a1, a10 and a15 of each.
+Table 1 pairs each emission line with the 532 nm pump line sharing its upper level, which fixes the
+assignment: the emission line keeps the pump's J'' label.
+
+The assignment was checked against the wavenumbers printed in Table 1. The model reproduces them with
+a smooth, consistent offset (-14.4 cm-1 at v'' = 53 and -20.9 cm-1 at v'' = 54, the same for P54 and
+R56), which is the published X potential extrapolating: it was fitted to v'' <= 17. A misassignment
+would give erratic differences instead.
+
+Component labels are ranks by frequency. J'' = 54 and 56 are even (15 main components) and J'' = 60
+is even as well, so a1, a10 and a15 are ranks 1, 10 and 15.
+"""
+
+uncertainty = """
+As printed, in parentheses, in units of the last digit of the kHz value: 2 to 235 kHz, converted to
+MHz. The paper states that these bracketed figures are rms deviations which in some cases exceed the
+scatter of a single series by more than an order of magnitude, and that the overall relative accuracy
+is about 8e-10 (roughly 230 kHz here) if judged by the worst case. The printed per-row values are
+used, since they are what the paper gives per datum.
+"""
+
+[conditions]
+method = "three-level laser spectroscopy; frequency-doubled cw Nd:YAG pump, external-cavity diode probe, Ti:sapphire comb"
+
+notes = "v'' = 53 and 54. The observation set otherwise stops at v'' = 17, so these and matyugin2012 are the only constraints on the outer half of the X well."

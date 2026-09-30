@@ -1,0 +1,46 @@
+id = "morinaga1989a"
+citation = "A. Morinaga, K. Sugiyama, N. Ito and J. Helmcke, \"Hyperfine structure of low-lying vibrational levels in the B state of molecular iodine\", J. Opt. Soc. Am. B 6, 1656-1662 (1989)"
+source = "https://doi.org/10.1364/JOSAB.6.001656 (PDF obtained 2026-09-16)"
+doi = "10.1364/JOSAB.6.001656"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:morinaga1989a"
+
+transcription = """
+Table 1, "Frequency Separations of Components of the R(69) Line in the 3-4 Band", read from the text
+layer of the publisher PDF on 2026-09-16. The PDF is a scan with an OCR text layer, so several
+entries are garbled there ("-i32" for -132, "-874 i 1" for -874 +/- 1, and the label "i" dropped
+entirely); each was resolved against the paper's own calculated column, which is printed alongside
+and agrees to better than 3 MHz throughout.
+
+**This table settles the component-labelling convention used across the collection.** It lists all
+21 components by the Gerstenkorn & Luc letters a-u, with a defined as zero and every other component
+at a NEGATIVE separation down to u at -910 MHz. So the letters run from the highest frequency (a)
+down to the lowest (u), which is the reverse of the rank numbering used in data.csv files here
+(rank 1 = lowest frequency). For a 21-component line the mapping is therefore rank = 21 - index(letter),
+giving t = rank 2 and u = rank 1.
+
+That is an independent confirmation of the "t" assignment adopted for velchev1998a and xu2000a, which
+was derived there only from the statement that t lies about 483 MHz below the centre of gravity: for
+odd J'' (21 components) t is the second lowest, and for even J'' u is among the six components that
+are absent, leaving t as the lowest, i.e. rank 1. Both were checked against residuals in those sets.
+
+Transcribed here as intervals relative to component a, which is rank 21 for this line (J'' = 69 is
+odd, so 21 main components). Only the experimental column is used; the calculated column and the
+residuals are outputs of the paper's own fit.
+
+Not transcribed: Table 2 (the same for another line) and Table 3, which lists fitted eqQ_B and C
+values per vibrational level. Table 3 is hyperfine constants, a kind the observation format does not
+yet carry.
+"""
+
+uncertainty = """
+As printed, per row: +/- 1, 2 or 3 MHz. Taken as standard (1 sigma) uncertainties. These are coarse
+by modern standards; the set is included for its v'' = 4 coverage and as a check on the labelling
+convention, not as a precision constraint.
+"""
+
+[conditions]
+method = "saturated absorption spectroscopy"
+
+notes = "Component a is the highest-frequency component, so every interval recorded here is negative."

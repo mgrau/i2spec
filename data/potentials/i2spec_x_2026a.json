@@ -1,0 +1,35 @@
+{
+ "id": "i2spec_x_2026a",
+ "state": "X",
+ "form": "MLR",
+ "citation": "i2spec, our own direct-potential fit (2026-09-21). Start: the Gerstenkorn & Luc 1985 Dunham constants inverted by RKR; long-range coefficients from Bacis, Cerny & Martin 1986 (X) and Gerstenkorn, Luc & Amiot 1985 (B), the X ones refined here within their stated uncertainties. No Hannover parameter was used at any stage.",
+ "fitted_to": "40 578 of our own measured line positions: 39 757 atlas centres (data/atlas_lines, two FTS atlases, each with a fitted offset and scale) and 821 precision positions including the v'' = 48-54 emission lines, whose X levels were bridged across the unmeasured gap by prototypes/x_bridge.py. prototypes/global_fit.py, docs/design/global-fit.md. Converged 2026-09-21 with 200 optimiser evaluations per homotopy stage (the run before it stopped at 30 and was not converged), and a 30 MHz model-error floor on the v'' > 17 rows: without one, 36 rows the model cannot reach at their own kHz spend the 40 000 it can.",
+ "De": 12543.57629100814,
+ "Re": 2.666319542999756,
+ "p": 5,
+ "q": 3,
+ "C": {
+  "6": 1432075.9810236474,
+  "8": 40360007.85124003,
+  "10": 99145912.42810303
+ },
+ "beta": [
+  -0.6576962403407769,
+  1.1021356708116588,
+  2.1802626500600306,
+  -1.250511253034078,
+  0.8099051772182302,
+  132.70469461913066,
+  448.00832592997403,
+  -271.4536548142056,
+  -3854.5017046722483,
+  -4503.769343293238,
+  7893.170648811786,
+  15427.6048361099,
+  -5022.127000614262,
+  -15224.691183498173
+ ],
+ "Rref": 3.3328994287496947,
+ "Te": 0.0,
+ "status": "research result. Better than the published potentials by 130-430x wherever they leave their data (v' > 43, v'' > 17) and 10-20x worse inside it, where a single smooth MLR reaches 18-24 MHz against their 1-5. Calibration fitted alongside: Salami-Ross +4.3 MHz and +33.7 ppb, APO -2.4 MHz and -10.5 ppb."
+}

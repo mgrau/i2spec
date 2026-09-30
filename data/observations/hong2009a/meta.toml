@@ -1,0 +1,61 @@
+id = "hong2009a"
+citation = "F.-L. Hong, H. Inaba, K. Hosaka, M. Yasuda and A. Onae, \"Doppler-free spectroscopy of molecular iodine using a frequency-stable light source at 578 nm\", Opt. Express 17, 1652-1659 (2009)"
+source = "https://arxiv.org/abs/0902.0463 (arXiv PDF, author's final Word manuscript in OE layout)"
+doi = "10.1364/oe.17.001652"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:hong2009a"
+
+transcription = """
+The paper reports a single measured number: the absolute frequency of the a1 component of 127I2
+R(37) 16-1, 518304551833 (2) kHz, converted to MHz exactly. It is printed identically in the abstract
+(p. 1), the introduction (p. 3), Sect. 3.3 (p. 6, without the uncertainty) and the summary (p. 8). Read
+from the pdftotext layer and checked digit by digit against a 200 dpi rendering of p. 1. There are no
+tables. Fig. 4 shows all 21 hyperfine components of R(37) 16-1 but no splittings are given (Sect. 4
+says their measurement is "under way"; it became kobayashi2016a), so nothing else can be entered.
+
+Source file: the arXiv PDF (0902.0463) is the authors' Word manuscript in Optics Express format
+("(C)2008 Optical Society of America" line, no journal page numbers). The same value appears in the
+catalog entry's abstract of the published version and is quoted unchanged, 518 304 551 833(2) kHz, by
+Kobayashi et al. 2016 Sect. 5, so the arXiv and journal numbers agree. The other file supplied with this
+paper, P00021227.pdf, is NOT this paper: it is a CERN-scanned preprint of R. Grieser et al., "Precision
+measurement of two iodine lines at 585 nm and 549 nm" (submitted to Z. Phys. A), and was not used.
+
+Component label: R(37) has odd J'' and 21 main components; a1 is the lowest-frequency one (the
+authors pick it as the component closest to, i.e. below, the Yb clock line), consistent with the
+kobayashi2016a labelling of the same line.
+
+Conditions and corrections: the value is the frequency of the laser locked to a1 at the operating point
+of Sect. 3.2 (cold finger -5 C, 2.4 Pa; pump 2.1 mW, probe 0.19 mW; 1.5 mm beams; 354 kHz modulation
+transfer). It is NOT extrapolated to zero pressure or power, and no correction is applied here.
+
+Overlap with kobayashi2016a (same group, same iodine cell): its Table 2 gives R(37) 16-1 a1 =
+518304551.819 (7) MHz, at 3.3 Pa and 4.8 mW pump, also uncorrected. This value is 14 kHz higher.
+Kobayashi et al. (Sect. 5) use their measured pressure shift (-7.7 kHz/Pa) and power shift
+(-0.8 kHz/mW) to move their result to this paper's conditions, getting 518304551.828 MHz, and state
+that the remaining 5 kHz difference is larger than the pressure/power uncertainties (they attribute it
+to unknown systematics and set their total uncertainty to 7 kHz). Using those slopes, this value at zero
+pressure and power would be about 518304551.833 + 2.4*0.0077 + 2.1*0.0008 = 518304551.852 MHz; the
+uncorrected value is entered, as published, because neither set has been corrected.
+"""
+
+uncertainty = """
+2 kHz as printed, "518304551833 (2) kHz". Sect. 3.3 says it is the lock/unlock reproducibility, the
+main contributor; taken as 1 sigma. It does not include the 5 kHz cell-contamination uncertainty the
+paper mentions (CIPM figure; this cell agreed with others to better than 2 kHz), nor any pressure- or
+power-shift allowance. Kobayashi et al. 2016 later found a 5 kHz inconsistency with this value after
+correcting for conditions, so 2 kHz is probably optimistic; a total of about 5-7 kHz would be more
+realistic. The printed value is kept here.
+"""
+
+[conditions]
+method = "Doppler-free modulation transfer saturation spectroscopy, Ti:sapphire comb referenced to an H-maser"
+laser = "sum-frequency generation of 1319 nm Nd:YAG and 1030 nm Yb fiber laser in a PPLN waveguide"
+cell_length_cm = 45
+cold_finger_C = -5.0
+pressure_Pa = 2.4
+pump_mW = 2.1
+probe_mW = 0.19
+beam_diameter_mm = 1.5
+modulation = "354 kHz EOM phase modulation; pump shifted 80 MHz by AOM"
+averaging = "1000 x 1 s counter gates"

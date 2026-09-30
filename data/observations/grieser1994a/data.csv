@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(99) 15-1,a13,frequency,512667622.777,0.067,,,grieser1994a,"preprint p. 11 (Sect. 3): nu_585 = (512667622777 +/- 67) kHz, the ""i"" component; relative to He-Ne R(127) 11-5 a13 (i) at the CIPM 1992 value"
+127I2 R(85) 25-0,a1,frequency,546462926.790,0.071,,,grieser1994a,"preprint p. 11 (Sect. 3): nu_549 = (546462926790 +/- 71) kHz, the ""w"" component; printed as R(85) 26-0, band corrected to 25-0 (Knoeckel 2004 ref. [33]; model agrees, see meta.toml)"
+127I2 P(13) 43-0,a3,frequency,582490603.431,0.041,,,grieser1994a,"derived here: 473612214705 kHz / (lambda_514/lambda_633 = 0.81308129593 +/- 7e-11), preprint p. 11; the paper prints only the ratio"

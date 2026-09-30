@@ -1,0 +1,55 @@
+id = "cheng2019a"
+citation = "F. Cheng, K. Deng, K. Liu, H. Liu, J. Zhang and Z. Lu, \"Absolute frequency measurement of molecular iodine hyperfine transition at 534 nm\", J. Opt. Soc. Am. B 36(7), 1816-1822 (2019)"
+source = "https://doi.org/10.1364/josab.36.001816 (publisher PDF)"
+doi = "10.1364/josab.36.001816"
+retrieved = "2026-09-27"
+unit = "MHz"
+catalog = "precision.yaml:cheng2019a"
+
+transcription = """
+Table 1 (p. 1820: comb-measured absolute frequencies of 19 hyperfine components of 127I2 R(53) 31-0,
+kHz, "Measured" column only) and Table 3 (p. 1821: the corrected a21 absolute frequency), read from
+the PDF text layer and checked digit by digit against 200 dpi renderings of pp. 1820-1821. The
+"Calculated" (IodineSpec5) and "Deviation" columns are not transcribed.
+
+Table 1 values are raw lock-point frequencies at the working conditions (cold finger -10 C, 1.4 Pa,
+pump 8.5 mW, probe 0.6 mW); the authors correct only a21 for pressure and power shifts. Therefore:
+- a21 is entered once as an absolute frequency, the authors' corrected Table 3 value
+  561 420 951 318(14) kHz. Its Table 1 raw value 561 420 951 343(8) is not entered as a frequency.
+- The other 18 measured components are entered as intervals f(an) - f(a21), formed here from the two
+  Table 1 raw values (both at the same conditions, so the common pressure/power shift largely
+  cancels; any component dependence of those shifts is unmeasured and ignored). Differences
+  computed exactly in kHz and converted to MHz. No correction applied to any interval.
+
+Labels a1-a21 are the paper's; J'' = 53 is odd so there are 21 main components, and the paper's
+Calculated column increases monotonically a1 -> a21, so the labels are ranks by frequency.
+a5 and a6 overlap in the spectrum and were not measured (printed as dashes); nothing is entered for
+them. No crossovers or dF != dJ components appear.
+
+Arithmetic check: Table 2 shifts are +57.4 kHz (pressure, -41 kHz/Pa x 1.4 Pa) and -81.6 kHz (power,
+9.6 kHz/mW x 8.5 mW), net -24.2 kHz; the text says 24 kHz is deducted, 343 - 24 = 319, while Table 3
+prints 318 (rounding of the individual shift terms, presumably). Table 3 is used as printed.
+
+The paper also shows MTS spectra of R(120) 34-0, P(50) 31-0, R(85) 32-0 and R(82) 32-0 (Figs. 2, 4, 5)
+but gives no numbers for them; nothing is transcribed from those.
+"""
+
+uncertainty = """
+a21 absolute: 14 kHz, the paper's total (type A 8 kHz and type B 12 kHz combined, Table 2), taken as
+1 sigma. Intervals: the Table 1 bracket uncertainties are the statistical (type A) standard
+uncertainty of five 1000 s measurements; the interval uncertainty is their quadrature sum with the
+8 kHz of a21, sqrt(s_n^2 + 8^2) kHz = 8.1-17.9 kHz. The a21 term is common to all 18 intervals (they
+share one reference measurement and the group label cheng2019a_table1); no type-B term is added for
+residual component-dependent pressure/power shifts or day-to-day reproducibility, which the paper does
+not evaluate, so these uncertainties may be optimistic.
+"""
+
+[conditions]
+method = "Modulation transfer spectroscopy of a frequency-doubled 1068 nm ECDL, comb referenced to an H maser"
+cold_finger_C = -10.0
+pressure_Pa = 1.4
+pump_mW = 8.5
+probe_mW = 0.6
+cell = "15 cm, multi-pass"
+pressure_shift_kHz_per_Pa = "-41(2), a21"
+power_shift_kHz_per_mW = "9.6(1.1), a21 (pump)"

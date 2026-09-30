@@ -1,0 +1,31 @@
+id = "bipm2003d"
+citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 612 nm), ¹²⁷I₂ a7 component, R(47) 9-2 (MEP 2003)"
+source = "https://www.bipm.org/documents/20126/41549551/M-e-P_I2_612.pdf/e3257540-b5f1-596f-9626-0531add4912a"
+retrieved = "2026-09-14"
+catalog = "data/catalog/precision.yaml#bipm2003d"
+unit = "MHz"
+transcription = """
+Page 1: adopted f(a7, R(47) 9-2) = 489 880 354.93 (15) MHz. Typed by hand. The CIPM recommended value,
+489 880 354.9 MHz, is this value rounded to 0.1 MHz, and is the zero quoted under the tables. The unrounded
+adopted value is entered.
+
+Hyperfine tables (pp. 3-5), parsed from the PDF text layer (pdftotext) by script, not retyped. The text layer
+agrees with the page images, digits and minus signs included:
+  p. 3  Table 1 127I2 R(47) 9-2: a1-a21, relative to a7
+  p. 4  Table 2 127I2 P(48) 11-3: b1-b15, relative to a7 of R(47) 9-2
+        Table 3 127I2 R(48) 15-5: c1-c6, c8, c9, relative to a7 of R(47) 9-2
+  p. 5  Table 4 129I2 P(110) 10-2: a1-a28, relative to a7 of 127I2 R(47) 9-2
+        Table 5 129I2 R(113) 14-4: b19-b36, relative to a7 of 127I2 R(47) 9-2
+Tables 2-5 give the intervals between lines directly; for Tables 4 and 5 these are isotope shifts. In
+Tables 1, 4 and 5, each row's note keeps BIPM's letter for the feature (the x column).
+
+Not entered: the source data of section 2 (pp. 1-2), which are wavelength and frequency ratios to the 633 nm
+standard. They are the inputs of the adopted value, so entering them would count that value twice. The two
+intervals they quote are Table 2 b15 and Table 1 a13: f(b15) - f(a7) = -160 318 (3) kHz, printed as from
+"Table 40", and f(a7) - f(a13) = -249 600 (10) kHz.
+"""
+uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a7): 0.15 MHz. Hyperfine intervals and intervals between lines: 3 kHz to 5 MHz."
+
+[conditions]
+cold_finger_C = -5.0
+laser = "He-Ne, iodine cell inside or outside the laser"

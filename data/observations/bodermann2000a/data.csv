@@ -1,0 +1,33 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(105) 0-15,a14,frequency,377087649.355,0.074,,,rb_d1,Table 2; beat to Rb D1 c' = -18622175.0(3.3) kHz; cell I1
+127I2 R(205) 0-14,a2,frequency,377104695.663,0.075,,,rb_d1,Table 2; beat to Rb D1 c' = -1575867.0(12.0) kHz; cell I1
+127I2 R(113) 0-15,a12,frequency,377117726.169,0.074,,,rb_d1,Table 2; beat to Rb D1 c' = +11454639.0(5.0) kHz; cell I1
+127I2 P(104) 0-15,a10,frequency,377131003.300,0.074,,,rb_d1,Table 2; beat to Rb D1 c' = +24731770.2(4.0) kHz; cell I1
+127I2 P(70) 0-14,a10,frequency,384205192.7886,0.036,,,rb_d2,Table 4; beat to Rb D2 d/f = -22789088.4(11.9) kHz; cell I2
+127I2 R(188) 0-13,a10,frequency,384208473.5014,0.036,,,rb_d2,Table 4; beat to Rb D2 d/f = -19508375.6(11.6) kHz; cell I2
+127I2 R(117) 2-15,b13,frequency,384208927.420,0.052,,,rb_d2,Table 4; beat to Rb D2 d/f = -19054457.0(39.0) kHz; cell I2
+127I2 P(43) 3-16,a2,frequency,384218608.088,0.045,,,rb_d2,Table 4; beat to Rb D2 d/f = -9373789.0(30.0) kHz; cell I2
+127I2 P(243) 0-12,b1,frequency,384218812.773,0.055,,,rb_d2,Table 4; beat to Rb D2 d/f = -9169104.0(44.0) kHz; cell I2
+127I2 R(78) 0-14,a10,frequency,384222471.5179,0.034,,,rb_d2,Table 4; beat to Rb D2 d/f = -5510359.1(4.0) kHz; cell I2
+127I2 P(148) 1-14,a1,frequency,384235614.6238,0.036,,,rb_d2,Table 4; beat to Rb D2 d/f = +7632746.8(11.7) kHz; cell I2
+127I2 P(19) 0-14,a13,frequency,385218524.993,0.038,,,rb_2photon,Table 7; beat to 85Rb 5d 2D3/2 Fg=2-Fe=4 = -23691345(17) kHz; see meta on the Fig. 5 arrow
+127I2 R(26) 0-14,a10,frequency,385233438.181,0.034,,,rb_2photon,Table 7; beat to 85Rb 5d 2D3/2 Fg=2-Fe=4 = -8778157.3(2.5) kHz
+127I2 R(139) 1-14,a13,frequency,385266729.725,0.035,,,rb_2photon,Table 7; mean of the 85Rb beat +24513384.1(6.7) and the 87Rb beat -17836620.1(5.7) kHz
+127I2 R(18) 0-14,a10,frequency,385292072.466,0.035,,,rb_2photon,Table 7; beat to 87Rb 5d 2D5/2 Fg=2-Fe=4 = +7506117.6(8.0) kHz
+127I2 R(16) 0-14,a10,frequency,385302700.705,0.035,,,rb_2photon,Table 7; beat to 87Rb 5d 2D5/2 Fg=2-Fe=4 = +18134356.8(8.5) kHz
+127I2 R(56) 0-14,a10,frequency,384783612.796,0.117,,,fwm,Table 8 FWM column
+127I2 R(56) 0-14,a15,frequency,384783907.243,0.118,,,fwm,Table 8 FWM column
+127I2 P(31) 0-14,a7,frequency,385074236.875,0.144,,,fwm,Table 8 FWM column
+127I2 P(31) 0-14,a4,frequency,385074117.864,0.138,,,fwm,Table 8 FWM column
+127I2 P(19) 0-14,a14,frequency,385218585.638,0.14,,,fwm,Table 8 FWM column
+127I2 P(19) 0-14,a16,frequency,385218641.143,0.14,,,fwm,Table 8 FWM column
+127I2 P(164) 0-13,a1,frequency,385363327.704,0.242,,,fwm,Table 8 FWM column
+127I2 P(164) 0-13,a10,frequency,385363916.052,0.242,,,fwm,Table 8 FWM column
+127I2 P(164) 0-13,a15,frequency,385364210.288,0.243,,,fwm,Table 8 FWM column
+127I2 P(19) 0-14,a14,frequency,385218585.566,0.04,,,rb_2photon_derived,Table 8 2-photon column; not independent of the Table 7 P(19) a13 row
+127I2 P(19) 0-14,a16,frequency,385218641.068,0.04,,,rb_2photon_derived,Table 8 2-photon column; not independent of the Table 7 P(19) a13 row
+127I2 P(164) 0-13,a1,frequency,385363327.783,0.056,,,rb_2photon_derived,Table 8 2-photon column; marked * (measured in more than one step)
+127I2 P(164) 0-13,a10,frequency,385363916.113,0.055,,,rb_2photon_derived,Table 8 2-photon column; marked *; equals the R(16) 0-14 a10 row plus the 61215408(42) kHz chain
+127I2 P(164) 0-13,a10,interval,16324.846,0.027,127I2 R(240) 0-12,a10,fwm_chain,Section 6 chain step 1
+127I2 R(240) 0-12,a10,interval,24845.37,0.03,127I2 R(138) 1-14,a10,fwm_chain,Section 6 chain step 2
+127I2 R(138) 1-14,a10,interval,20045.192,0.012,127I2 R(16) 0-14,a10,fwm_chain,Section 6 chain step 3

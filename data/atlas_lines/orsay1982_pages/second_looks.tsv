@@ -1,0 +1,30 @@
+p006	N=522	eps read 1.3 (faded 3), zoomed
+p006	N=529	eps read 3.0 (faded 3), zoomed
+p010	N=843	step 1.715 cm-1 confirmed: same value in the low-resolution and full-resolution reads
+p014	all	depth I jumps from 5-14 to 7-22 at N=1052: a change of plate scale? the plate margins would tell
+p022	N=1761-1770	depth column small and offset one row down at the page edge; 10 values mapped in order
+p023	N=1838-1847	depth column offset one row at page edge; mapped in order
+p030	all	depth columns of both halves are offset by up to one row in the photo; mapped in order by count
+p035	N=2645-2654, 2665-2671	depth column offset one row up at the page edge; mapped in order; N=2670 depth read 31 (tilted)
+p036	N=2732-2747	depth column offset one row down at page edge; mapped in order
+p037	N=2838-2849	depth column offset one row down at page edge; mapped in order
+p039	N=2922-2929	depth column offset one row down at page edge; mapped in order
+p042	N=3087-3097	depth column offset one row down at page edge; mapped in order
+p043	N=3129	eps printed 8.0 (large but legible)
+p044	N=3276-3279	depth column offset one row down at page edge; mapped in order
+p045	N=3310-3319	depth column offset one row down at page edge; mapped in order
+p048	N=3475-3479	depth column offset one row down at page edge; mapped in order
+p049	N=3544	eps 3.0 confirmed by zoom
+p049	N=3540-3559	depth column offset one row down at page edge; mapped in order
+p050	N=3650-3663	depth column offset one row down at page edge; mapped in order
+p051	N=3724-3733	depth column small at page edge; mapped in order
+p052	N=3764	eps second digit cut by glare: 1.2 or 1.3, entered 1.2
+p053	N=3802-3809	depth column small at page edge; mapped in order
+p054	N=3850-3859	depth column offset one row up at page edge; mapped in order
+p057	N=4090-4102	depth column offset one row down at page edge; mapped in order
+p058	N=4123-4139	depth column offset one row down at page edge; mapped in order
+p062	N=4332-4342	depth column offset one row down at page edge; mapped in order
+p064	N=4457-4516	depth columns at page edge offset one row; mapped in order
+p067	N=4673-4696	depth column offset one row down; mapped in order
+p068	N=4737-4756	depth column offset one row up; mapped in order
+p069	N=4780-4826	depth columns offset one row at page edge; mapped in order

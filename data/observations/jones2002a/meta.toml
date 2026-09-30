@@ -1,0 +1,83 @@
+id = "jones2002a"
+citation = "R. J. Jones, W.-Y. Cheng, K. W. Holman, L. Chen, J. L. Hall and J. Ye, \"Absolute-frequency measurement of the iodine-based length standard at 514.67 nm\", Appl. Phys. B 74, 597-601 (2002)"
+source = "https://doi.org/10.1007/s003400200846 (publisher PDF)"
+doi = "10.1007/s003400200846"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:jones2002a"
+
+transcription = """
+The paper has no tables. Two absolute frequencies are printed, both as offsets from a CIPM value, and
+both are entered. Read from the PDF text layer and checked digit by digit against 200 dpi renderings of
+pp. 599-600.
+
+1. 127I2 P(13) 43-0 a3 (514.67 nm), the paper's result. Text of p. 600 and Sect. 4 (Conclusions):
+   "71.8 +- 1.5 kHz above the recommended value of 582 490 603 370 kHz" (CIPM 1997, Quinn, Metrologia
+   36, 211). Entered as 582 490 603 441.8 kHz = 582 490 603.4418 MHz. Fig. 5 (p. 600) shows the
+   two-week record behind it (three BIPM cells, weighted mean +71.8 +- .3 kHz). Measured at a cold-finger
+   temperature of -5 C, i.e. 2.38 Pa (text p. 599), the CIPM operating condition, and pump power 1-4 mW,
+   3 mm beam. The value is NOT corrected to zero pressure here. The paper's own pressure coefficient
+   (Fig. 4, -2.5(0.5) kHz/Pa, linear over 1.4-4.0 Pa) would put the zero-pressure value 6.0(1.2) kHz
+   higher, 582 490 603 447.8 kHz. Goncharov et al. 2004 (Fig. 9) model the shift as non-linear at low
+   pressure (recoil-doublet asymmetry), so the linear extrapolation to 0 Pa is itself uncertain by a few
+   kHz. Component a3: J'' = 13 (odd), 21 main components; a3 is third lowest, as in BIPM MEP 2005 Table 1
+   (a1, a2 below a3); the model agrees (a1-a3 = -131.8 kHz model vs -131.77 kHz BIPM).
+   The inset of Fig. 5 misprints the reference as "582 490 603 307 +- 150 kHz"; the text (twice) says 370.
+   307 + 71.8 = 378.8 kHz, which is exactly the "as measured" JILA value that BIPM MEP 2005 (Sect. 2)
+   lists for this paper, so the MEP's 378.8 appears to have inherited the Fig. 5 misprint. The MEP's
+   "pressure-corrected" JILA value, 441.8 kHz, is the paper's own value (already at 2.38 Pa).
+
+2. 127I2 R(56) 32-0 a10 (532 nm), the comb check. Fig. 2 inset (p. 599): the JILA Nd:YAG/I2 532 nm
+   standard measured with the 750 MHz comb, "Mean Value: 17.221 kHz, standard deviation 54 Hz", on the
+   axis f1064 - CIPM Frequency, "(CIPM Frequency 281 630 111.74 MHz)". This is at the 1064 nm
+   fundamental; doubled: f(a10) = 2 x (281 630 111.74 MHz + 17.221 kHz) = 563 260 223 514.442 kHz. The text
+   says the last four points (diamonds) are the 750 MHz comb measurements and agree with the earlier
+   100 MHz comb record within 20 Hz. Conditions of the 532 nm cell are not given in this paper.
+
+Not entered:
+- The 100 MHz comb record in the same Fig. 2 inset (17.240 kHz, SD 118 Hz): earlier JILA data (refs
+  [11], [13], Ye, Ma, Hall PRL 87, 270801 (2001)), not a measurement of this paper.
+- The individual points of Figs. 4 and 5 (pressure dependence and daily values): only plotted.
+- The pressure coefficient -2.5(0.5) kHz/Pa: not an observable kind.
+
+Overlap:
+- bipm2005a f(a3, P(13) 43-0) = 582 490 603 442 (5) kHz. It is the rounded unweighted mean of this
+  value (441.8) and Goncharov 2004's value extrapolated to 2.38 Pa (442.6), so it is NOT independent of
+  this row: jones2002a - bipm2005a = -0.2 kHz. Fitting both counts this measurement twice (bipm2005a's
+  5 kHz uncertainty makes the double-counting mild).
+- bipm2012a f(a10, R(56) 32-0) = 563 260 223 513 (5) kHz (CIPM 2007): the 532 nm row here is +1.4 kHz
+  from it. The CIPM 532 nm value draws on many laboratories including JILA's comb measurements
+  (Ye et al. 2001), so it is partly dependent. ye1999a holds intervals referenced to this a10, not an
+  absolute.
+- yoshiki2023a, matsunaga2024a and ikeda2022a (514 nm, v' = 44-50) contain neither line.
+"""
+
+uncertainty = """
+P(13) 43-0 a3: 1.5 kHz, the authors' quoted measurement uncertainty, which they describe as a "5-sigma
+value" of the 0.3 kHz statistical uncertainty (Fig. 5 weighted mean), enlarged "to include other
+unforeseeable effects". Taken as the standard (1 sigma) uncertainty, as BIPM MEP 2005 does
+(u_c/y = 2.6e-12). It does not include the pressure-shift correction (the value is at 2.38 Pa).
+
+R(56) 32-0 a10: 0.108 kHz, the printed standard deviation (54 Hz at 1064 nm) doubled to 532 nm. It is a
+scatter of four daily means, NOT a total uncertainty: the paper gives no systematic budget for the
+532 nm standard (cell purity, pressure, power, modulation), which for Nd:YAG/I2 systems is typically
+a few kHz (CIPM: 5 kHz at 532 nm). Separate group jones2002a_532. Consider inflating it (e.g. to 2-5 kHz)
+before a fit where kHz-level residuals matter.
+"""
+
+notes = """
+Model check (Predictor, DEFAULT_PARAMETERS, 2026-09-29): P(13) 43-0 a3 obs - model = -5.3 kHz, which
+matches the expected pressure shift at 2.38 Pa (-6.0 kHz); goncharov2004a (0.12 Pa) gives +0.2 kHz.
+R(56) 32-0 a10 obs - model = -51.0 kHz; bipm2012a's CIPM value gives -52.4 kHz, so the offset is the
+model's at 532 nm, not a transcription error (the two data values differ by 1.4 kHz).
+"""
+
+[conditions]
+method = "FM saturation spectroscopy (6 MHz modulation, pump chopped), fs-comb (750 MHz) referenced to Cs"
+laser = "frequency-doubled Ti:sapphire (1029 nm), for P(13) 43-0"
+cell = "BIPM cells, 8 cm, Brewster windows; three cells (338S, 337S, one older)"
+cold_finger_C = -5.0
+pressure_Pa = 2.38
+pump_mW = [1, 4]
+probe_uW_max = 100
+beam_diameter_mm = 3

@@ -1,0 +1,9 @@
+p102	N=45-95	depth columns offset one row at page edges; mapped in order
+p106	N=323-437	depth columns offset one row at page edges; mapped in order
+p107	N=438-557	depth columns offset one row at block edges; mapped in order
+p108	N=597-676	value and depth columns offset one row relative to N labels at block starts; mapped in order; N=657-676 depths re-read and corrected after a one-row slip
+p109	N=707-761	value/depth columns offset one row relative to N labels; mapped in order
+p110	N=803,813	digits confirmed by zoom (13298.8303, 13304.3242)
+p110	N=762-829	value/depth columns offset one row relative to N labels; mapped in order
+p111	N=870-974	value/depth columns offset one row relative to N labels; mapped in order
+p112	N=975-1152	value/depth columns offset one row relative to N labels; mapped in order; middle column re-cropped because the split cut it

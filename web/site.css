@@ -1,0 +1,56 @@
+/* Shared by the explorer, the documentation and the references page.
+
+   Iceland: glacial meltwater and black basalt in daylight, basalt and the aurora at night. The
+   trace and the selected line carry the only information colour encodes; measured lines are marked
+   in neutral ink, so they read as a third thing without a third hue. */
+:root {
+  /* Iceland, in daylight: glacial meltwater, black basalt, a glacier-blue trace and volcanic rust
+     for the selected line. The two mark colours are validated for colour-vision deficiency
+     (protan dE 18.8) and every text colour clears 4.5:1 on both surfaces. */
+  --ground: #e9eff3; --surface: #ffffff; --surface-2: #f4f8fa;
+  --ink: #0e1f28; --ink-2: #3c525d; --ink-3: #5c7480;
+  --rule: #cfdde4; --rule-2: #e3ecf0;
+  --accent: #0070a0; --accent-soft: #dceaf2;
+  --trace: #0070a0; --trace-fill: rgba(0, 112, 160, 0.13); --pick: #c0306a; --mark: #2b3f49;
+  /* the three kinds of line: measured to sub-Doppler precision, measured in an FTS atlas, model only.
+     The two measured hues and the selection pass the CVD check (worst ΔE 10, protan); the model-only
+     lines are grey on purpose, the unmeasured background the measurements stand out from. */
+  --cls-precision: #b87400; --cls-atlas: #0070a0; --cls-model: #8a9ba5;
+  --good: #1b6b4a; --good-bg: #dcefe5; --warn: #7a5109; --warn-bg: #f7eed8;
+  --bad: #a63328; --bad-bg: #f8e3e0; --none: #55636b; --none-bg: #e6ecef;
+  --display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  /* Iceland at night: basalt, with the aurora for the marks -- green trace, violet selection.
+     Green against violet separates far better than green against orange under deuteranopia
+     (dE 14.1), which is why the dark palette is not simply the light one inverted. */
+  --ground: #0b1114; --surface: #131c20; --surface-2: #19242a;
+  --ink: #e4eef1; --ink-2: #a7bcc3; --ink-3: #8ba2ab;
+  --rule: #28363d; --rule-2: #1e2a30;
+  --accent: #6fd3ac; --accent-soft: #14312a;
+  --trace: #39a882; --trace-fill: rgba(57, 168, 130, 0.20); --pick: #d9588a; --mark: #d3dee2;
+  --cls-precision: #bd8a1c; --cls-atlas: #3a98cc; --cls-model: #6f8590;
+  --good: #57c795; --good-bg: #123027; --warn: #dfae5b; --warn-bg: #33280f;
+  --bad: #ef8279; --bad-bg: #3a1b1c; --none: #9fb2ba; --none-bg: #232f35;
+} }
+:root[data-theme="dark"] {
+  /* Iceland at night: basalt, with the aurora for the marks -- green trace, violet selection.
+     Green against violet separates far better than green against orange under deuteranopia
+     (dE 14.1), which is why the dark palette is not simply the light one inverted. */
+  --ground: #0b1114; --surface: #131c20; --surface-2: #19242a;
+  --ink: #e4eef1; --ink-2: #a7bcc3; --ink-3: #8ba2ab;
+  --rule: #28363d; --rule-2: #1e2a30;
+  --accent: #6fd3ac; --accent-soft: #14312a;
+  --trace: #39a882; --trace-fill: rgba(57, 168, 130, 0.20); --pick: #d9588a; --mark: #d3dee2;
+  --cls-precision: #bd8a1c; --cls-atlas: #3a98cc; --cls-model: #6f8590;
+  --good: #57c795; --good-bg: #123027; --warn: #dfae5b; --warn-bg: #33280f;
+  --bad: #ef8279; --bad-bg: #3a1b1c; --none: #9fb2ba; --none-bg: #232f35;
+}
+
+/* navigation between the three pages */
+.site-nav { display: flex; gap: 2px; align-items: baseline; }
+.site-nav a { font: 500 13px/1 var(--body); color: var(--ink-2); text-decoration: none; padding: 5px 9px; border-radius: 6px; }
+.site-nav a:hover { color: var(--accent); background: var(--surface-2); }
+.site-nav a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }

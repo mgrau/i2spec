@@ -1,0 +1,33 @@
+id = "yoshiki2023a"
+citation = "M. Yoshiki, S. Matsunaga, K. Ikeda, D. Akamatsu, F.-L. Hong, Rotation dependence of v' = 44 excited-state hyperfine constants obtained via precise measurements of the hyperfine structures of 127I2 lines near 514 nm, Eur. Phys. J. D 77 (2023)"
+source = "https://doi.org/10.1140/epjd/s10053-023-00712-7"
+doi = "10.1140/epjd/s10053-023-00712-7"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#yoshiki2023a"
+unit = "MHz"
+transcription = """
+Table 1 (p. 5-6): absolute frequencies of the a1 (b1) component of seven lines, kHz, 5.6 kHz each.
+Tables 2-3 (pp. 7-9): hyperfine splittings f(a_n) - f(a1) of R(38)44-0, P(36)44-0, R(36)44-0 (15
+components) and R(37)44-0, P(35)44-0 (21 components), kHz, from the "Obs." columns. Parsed by script
+from the PDF text layer, converted kHz -> MHz exactly. The rows were compared with the "Cal." columns
+printed beside them; none differs from its calculated value by more than the paper's fit standard
+deviations (1.2-1.6 kHz) allow.
+
+Left out: components printed "-" (a3, a4 of R(38)44-0 and R(36)44-0; a5, a6 of R(37)44-0), which were not
+resolved; and the four starred values the authors excluded from their fits because the components were
+too close to each other (a3, a4 of P(36)44-0; a5, a6 of P(35)44-0). R(58)45-0 b1 and P(34)44-0 a1 have
+absolute frequencies only. 79 rows: 7 frequencies, 72 splittings.
+"""
+uncertainty = """
+Absolute frequencies: 5.6 kHz, the authors' combined 1 sigma (0.3 kHz statistical; systematic dominated by
+a 5 kHz cell-impurity allowance, the CIPM figure). Splittings: 0.4 kHz (sqrt(2) x the 0.3 kHz lock
+repeatability); the systematic shifts cancel between components of one line.
+"""
+notes = "Modulation transfer spectroscopy, diode laser frequency-doubled to 514 nm, comb-referenced. Atlas line numbers are in the note column of the frequency rows."
+
+[conditions]
+cold_finger_C = -10.0
+pressure_Pa = 1.2
+pump_mW = 1.8
+probe_mW = 0.3
+detection = "modulation transfer"

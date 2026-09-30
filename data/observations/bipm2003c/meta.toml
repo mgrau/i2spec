@@ -1,0 +1,22 @@
+id = "bipm2003c"
+citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 576 nm), ¹²⁷I₂ a1 component, P(62) 17-1 (MEP 2003)"
+source = "https://www.bipm.org/documents/20126/41549542/M-e-P_I2_576.pdf/bd97f28c-f030-c38f-f1be-a380eea5129d"
+retrieved = "2026-09-14"
+catalog = "data/catalog/precision.yaml#bipm2003c"
+unit = "MHz"
+transcription = """
+Page 1: adopted f(a1, P(62) 17-1) = 520 206 808.4 (2) MHz, the CIPM recommended value. Typed by hand.
+
+Page 2: Table 1 127I2 P(62) 17-1: a2-a10 and a15, relative to a1. Parsed from the PDF text layer (pdftotext)
+by script, not retyped. The text layer agrees with the page image. Each row's note keeps BIPM's letter for
+the feature (the x column), copied as printed: lower case for a1-a6 (o ... j), upper case for a7-a10 and
+a15 (I, H, G, F, A).
+
+Not entered: the source data of section 2 (the NBS value and the ratio to the 633 nm standard). They are
+the inputs of the adopted value.
+"""
+uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a1): 0.2 MHz. Hyperfine intervals: 20-30 kHz."
+
+[conditions]
+cold_finger_C = 6.0
+laser = "dye laser (or frequency-doubled He-Ne), iodine cell inside or outside the laser"

@@ -1,0 +1,42 @@
+{
+ "id": "i2spec_b_2026a",
+ "state": "B",
+ "form": "MLR",
+ "citation": "i2spec, our own direct-potential fit (2026-09-21). Start: the Gerstenkorn & Luc 1985 Dunham constants inverted by RKR; long-range coefficients from Bacis, Cerny & Martin 1986 (X) and Gerstenkorn, Luc & Amiot 1985 (B), the X ones refined here within their stated uncertainties. No Hannover parameter was used at any stage.",
+ "fitted_to": "40 578 of our own measured line positions: 39 757 atlas centres (data/atlas_lines, two FTS atlases, each with a fitted offset and scale) and 821 precision positions including the v'' = 48-54 emission lines, whose X levels were bridged across the unmeasured gap by prototypes/x_bridge.py. prototypes/global_fit.py, docs/design/global-fit.md. Converged 2026-09-21 with 200 optimiser evaluations per homotopy stage (the run before it stopped at 30 and was not converged), and a 30 MHz model-error floor on the v'' > 17 rows: without one, 36 rows the model cannot reach at their own kHz spend the 40 000 it can.",
+ "De": 4377.482009894935,
+ "Re": 3.026604339070497,
+ "p": 6,
+ "q": 4,
+ "C": {
+  "5": 316100.0,
+  "6": 1506000.0,
+  "8": 24800000.0,
+  "10": 420000000.0
+ },
+ "beta": [
+  -0.44586462228523055,
+  0.05328442572669745,
+  -0.14657700248291103,
+  0.5636090565227445,
+  0.3282361938336607,
+  -0.5403582983694769,
+  -5.214095409332435,
+  12.692359688869907,
+  59.798948542801725,
+  -135.9906635430786,
+  -472.1514367343822,
+  704.6432578320632,
+  2375.82664408042,
+  -1759.786224853014,
+  -7260.082783196775,
+  916.5646552882387,
+  11758.713925943946,
+  3670.3921002115153,
+  -7347.596514867236,
+  -4317.316242749778
+ ],
+ "Rref": 4.539906508605745,
+ "Te": 15769.070481113205,
+ "status": "research result. Better than the published potentials by 130-430x wherever they leave their data (v' > 43, v'' > 17) and 10-20x worse inside it, where a single smooth MLR reaches 18-24 MHz against their 1-5. Calibration fitted alongside: Salami-Ross +4.3 MHz and +33.7 ppb, APO -2.4 MHz and -10.5 ppb."
+}

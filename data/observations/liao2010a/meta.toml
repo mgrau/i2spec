@@ -1,0 +1,66 @@
+id = "liao2010a"
+citation = "C.-C. Liao, K.-Y. Wu, Y.-H. Lien, H. Knöckel, H.-C. Chui, E. Tiemann and J.-T. Shy, Precise frequency measurements of ¹²⁷I₂ lines in the wavelength region 750-780 nm, J. Opt. Soc. Am. B 27, 1208-1214 (2010)"
+source = "https://doi.org/10.1364/JOSAB.27.001208"
+doi = "10.1364/JOSAB.27.001208"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#liao2010a"
+unit = "MHz"
+transcription = """
+Typed from the PDF text layer and checked digit by digit against 300 dpi renders of the page
+images (journal pp. 1210, 1211). All published values are in kHz; they are entered here in MHz,
+which is exact (division by 1000).
+
+Table 2 (p. 1211), 27 rows: the a1, a10 and a15 components of nine lines of the (0-12) and (0-13)
+bands. Column 3 ("Present Result") is entered. Footnote b: these are "given without taking into
+account the average pressure shift of 114 kHz", so they are the raw cell frequencies; the paper's
+own improved fit (section 4) adds 114 kHz to them. The correction is NOT applied here, because the
+format stores frequencies as the source publishes them; a fit using this set should either add
+114 kHz or let the group nuisance parameter absorb it.
+
+Table 1 (p. 1211), 3 rows: the a10 components of R(26), P(70) and R(78) of the (0-14) band, the
+cell-calibration lines. Same campaign, same cell, same convention.
+
+Section 2 text (p. 1210), 1 row: a2 of R(141) 0-16, "370,007,070.341(10) MHz", the 2007 optical
+frequency comb remeasurement. The same paragraph gives an earlier value for the same component
+from a CH4-referenced difference-frequency measurement, 370,007,070.355(40) MHz (2002); it is not
+entered, being superseded and of lower accuracy, but the two agree within 14 kHz and the paper
+uses that agreement to argue the cell has not aged.
+
+Relabelling:
+- Table 2 prints the seventh line as "P(100) 0-12". It is R(100) 0-12. Our potential model puts
+  P(100) 0-12 at 394 874 166 MHz, 347 GHz from the printed value, while R(100) 0-12 lands 2.6 MHz
+  away, in family with every other row in the table (our residuals run -3.5 to +1.2 MHz). A scan of
+  both branches and both bands over J'' = 40-180 finds no other candidate within 9 GHz. The
+  hyperfine spacings agree with R(100): we compute a10-a1 = 588.686 MHz and a15-a1 = 883.160 MHz
+  against the measured 588.665 and 883.117 MHz (+21 and +43 kHz), and the row also keeps Table 2's
+  monotonic frequency ordering. Entered as R(100) 0-12; the note column flags it.
+- The Table 2 caption cites "[29]" for both model columns. [29] is Bodermann et al. 2000; the text
+  of section 3 makes clear that both predictions come from [16], Knöckel et al. 2004. Not entered,
+  but recorded here because it affects how the table reads.
+
+Uncertainties: the parenthesised numbers in Tables 1 and 2 are measurement uncertainties only (the
+standard deviation of the frequency measurement plus a 5 kHz electronics offset), 8-50 kHz. They
+are kept in the note column. The value entered in the uncertainty column is the 200 kHz the paper
+itself assigns on p. 1211: "Since the pressure shift may depend on the transitions and no
+systematic study on the pressure shift for the measured transitions are made in this work, an
+overall accuracy of 200 kHz is assigned to the transition frequencies in Table 2." The same cell
+and the same unstudied pressure shift limit Table 1 and the R(141) line, so they carry it too.
+
+Not entered: the predicted frequencies in columns 4 and 6 of Table 2 (model output, not data) and
+the improved Dunham parameters of Table 3 (a model; transcribed in
+src/i2spec/data/liao2010_nir.json and analysed in docs/research/nir-model-2010.md).
+"""
+uncertainty = "Standard (1σ), 0.200 MHz for every row: the overall accuracy the paper assigns (p. 1211), dominated by the uncharacterised pressure shift of the cell. The per-row measurement uncertainty as printed is in the note column."
+partial = "complete for the frequencies this paper publishes"
+
+[conditions]
+cold_finger_C = 19.85
+cold_finger_K = 293.0
+vapour_pressure_Pa = 27.0
+cell_body_K = 850.0
+cell_length_cm = 60.0
+pump_power_mW = 40.0
+beam_diameter_mm = 2.8
+detection = "Doppler-free FM saturation spectroscopy, EOM on the probe, pump chopped at 45 kHz"
+comb = "GPS-disciplined self-referenced Ti:sapphire octave comb, 1 GHz repetition rate; counter gate 0.2 s"
+notes = "Cell from Opthos Inc., degassed three times before filling. The three Table 1 calibration lines sit 102-121 kHz below the five-cell values of Bodermann et al. 2000, an average redshift of 114 kHz that the paper attributes to impurity gas."

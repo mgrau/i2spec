@@ -1,0 +1,94 @@
+# The documentation site: `uv run mkdocs serve` while writing, `uv run i2spec web build site` to
+# build it into site/docs/ next to the explorer, as GitHub Pages publishes it.
+site_name: i2spec
+site_description: An open, physics-based model of the molecular iodine B–X spectrum
+docs_dir: documentation
+site_dir: site/docs
+# flat pages, each a plain .html file, so the link back to the explorer is ../index.html everywhere
+use_directory_urls: false
+exclude_docs: |
+  figures/*.py
+  hooks.py
+  __pycache__/
+# ../index.html is the explorer, next to the docs in the built site but outside documentation/
+validation:
+  nav: {not_found: info}
+  links: {not_found: info}
+
+theme:
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  icon:
+    logo: material/sine-wave
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle: {icon: material/weather-night, name: Dark theme}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle: {icon: material/weather-sunny, name: Light theme}
+  features:
+    - navigation.sections
+    - navigation.footer
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - ← Spectrum (line explorer): ../index.html
+  - Home: index.md
+  - Installation and usage: getting-started.md
+  - Model:
+      - Overview of the calculation: calculation.md
+      - Rovibrational levels: levels.md
+      - Line positions: lines.md
+      - Hyperfine structure: hyperfine.md
+      - Line intensities and spectra: spectra.md
+      - Uncertainty estimates: uncertainty.md
+  - Line explorer: explorer.md
+  - References: references.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex: {generic: true}
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+hooks:
+  - documentation/hooks.py
+
+# the logo and site name in the header lead back to the spectrum
+extra:
+  homepage: ../index.html
+  generator: false
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/site.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js

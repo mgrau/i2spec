@@ -1,0 +1,33 @@
+{
+ "id": "mlr_x_2026b",
+ "state": "X",
+ "form": "MLR",
+ "citation": "i2spec, Phase C trial fit refitted to the observations (2026-09-17). Not a published parameter set.",
+ "fitted_to": "the 765 observations that constrain the potentials (every frequency and every interval between different lines, \u00b9\u00b2\u2077I\u2082, v' <= 44), with the B state, the hyperfine constants and each line's hyperfine offset held fixed; De, C6, C8 and C10 carry their published priors and did not move. Started from mlr_x_2026a. See docs/design/mlr-x.md.",
+ "De": 12547.340128108524,
+ "Re": 2.6663809786478447,
+ "p": 5,
+ "q": 3,
+ "Rref": null,
+ "C": {
+  "6": 1478492.0306187894,
+  "8": 38642287.56981414,
+  "10": 100363028.68597275
+ },
+ "beta": [
+  -1.2641794787109144,
+  -0.577209383139865,
+  -0.8933841693792608,
+  2.57776200249053,
+  6.255956679198496,
+  11.591596565167103,
+  8.544284322623458,
+  28.33118164879604,
+  50.285896625035384,
+  -405.9403621803072,
+  -345.8566017552281,
+  928.5712517987567
+ ],
+ "born_oppenheimer": "taken unchanged from hannover2008 X (alpha and V_ad)",
+ "status": "research result; the shipped model still uses hannover2008"
+}

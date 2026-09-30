@@ -1,0 +1,37 @@
+{
+ "id": "mlr_b_2026a",
+ "state": "B",
+ "form": "MLR",
+ "citation": "i2spec, Phase C trial fit (2026-09-18). Not a published parameter set.",
+ "fitted_to": "the published B levels for v'' <= 44 at J = 0, 40, 80, 120, 160, and the 15 levels above v'' = 44 implied by the Salami & Ross atlas band shifts (contrast >= 1.9). C5, C6, C8 and C10 carry their published uncertainties and did not move; Te + De is tied to De(X) + 7602.9762 cm-1, the atomic splitting.",
+ "Te": 15769.062752523274,
+ "De": 4381.253447476727,
+ "Re": 3.026312683283838,
+ "p": 6,
+ "q": 4,
+ "Rref_factor": 1.5,
+ "C": {
+  "5": 315956.4639910942,
+  "6": 1503159.5023707163,
+  "8": 24801232.026660293,
+  "10": 420394316.3469466
+ },
+ "beta": [
+  -0.45412956146722216,
+  0.016321423520733715,
+  -0.24423885600533612,
+  0.3887418235988855,
+  0.30518102675490755,
+  1.0206912750162243,
+  -3.527862587785964,
+  -14.9227597996813,
+  -3.493804813118649,
+  45.99104429853496,
+  62.40924054048213,
+  1.4040020787827108,
+  -44.836971737397064,
+  -21.87066540385659
+ ],
+ "born_oppenheimer": "taken unchanged from hannover2008 B (alpha and V_ad)",
+ "status": "research result; the shipped model still uses hannover2008. Reproduces the published levels below v'' = 45 only to 204 MHz rms, which the joint fit has yet to fix."
+}

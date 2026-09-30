@@ -1,0 +1,32 @@
+id = "bipm2005a"
+citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 515 nm), ¹²⁷I₂ a3 component, P(13) 43-0 (MEP 2005)"
+source = "https://www.bipm.org/documents/20126/41549496/M-e-P_I2_515.pdf/63b35d2c-379d-aa88-8480-7a44395637b5"
+retrieved = "2026-09-14"
+catalog = "data/catalog/precision.yaml#bipm2005a"
+unit = "MHz"
+transcription = """
+Page 1: adopted f(a3, P(13) 43-0) = 582 490 603 442 (5) kHz, the CIPM recommended value. Typed by hand.
+
+Hyperfine tables (pp. 2-3), in kHz, converted to MHz (exact). Parsed from the PDF text layer (pdftotext) by
+script, not retyped. The text layer agrees with the page images, digits and minus signs included:
+  p. 2  Table 1 127I2 P(13) 43-0: a1-a21, relative to a3
+  p. 3  Table 2 127I2 R(15) 43-0: b1-b21, relative to b1 (the title is misprinted as "(R15) 43-0")
+        Table 3 127I2 R(98) 58-1: d1-d15, relative to d6
+Intervals between lines, from the table notes (typed by hand):
+  f(b1, R(15) 43-0) - f(a1, P(13) 43-0) = 283 835 (5000) kHz  (Table 2, ref. [4])
+  f(d6, R(98) 58-1) - f(a3, P(13) 43-0) = -2 100 000 (1 000) kHz  (Table 3, ref. [7])
+These are the only links of R(15) 43-0 and R(98) 58-1 to the recommended component.
+
+Not entered a second time: the Table 2 note f(a1, P(13) 43-0) - f(a3, P(13) 43-0) = -131 770 (1000) kHz. It is
+the same quantity as the a1 entry of Table 1, which gives u_c = 1 kHz. The Table 1 value and u_c are used.
+The source does not say why the note's uncertainty is 1000 times larger.
+Not entered: the source data of section 2 (the JILA and LPL measurements, raw and corrected for pressure).
+They are the inputs of the adopted value.
+"""
+uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a3): 5 kHz. The two intervals between lines: 5 MHz and 1 MHz. Hyperfine intervals: 1-10 kHz, except components printed to 1 MHz (a10, a14, a18, a19; b4, b6, b8, b9; d10, d11), which have u_c = 1 MHz."
+
+[conditions]
+cold_point_C = -5.0
+iodine_pressure_Pa = 2.4
+saturating_intensity_mW_cm2_max = 40.0
+cell = "external"

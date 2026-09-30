@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap");
+/* The explorer's palette (web/site.css) carried into Material, so the documentation and the app read
+   as one site. The figures' colours are these variables too (figures/make_figures.py). */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #0070a0; --md-primary-fg-color--light: #3a98cc; --md-primary-fg-color--dark: #005a80;
+  --md-accent-fg-color: #c0306a; --md-typeset-a-color: #0070a0;
+  --md-default-bg-color: #ffffff;
+  --ink: #0e1f28; --ink-2: #3c525d; --ink-3: #5c7480; --rule: #cfdde4; --surface: #ffffff;
+  --trace: #0070a0; --pick: #c0306a; --mark: #2b3f49;
+  --cls-precision: #b87400; --cls-atlas: #0070a0; --cls-model: #8a9ba5;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #19242a; --md-primary-fg-color--light: #28363d; --md-primary-fg-color--dark: #0b1114;
+  --md-accent-fg-color: #d9588a; --md-typeset-a-color: #6fc0e8;
+  --md-default-bg-color: #131c20; --md-default-bg-color--light: #19242a;
+  --md-hue: 200;
+  --ink: #e4eef1; --ink-2: #a7bcc3; --ink-3: #8ba2ab; --rule: #28363d; --surface: #131c20;
+  --trace: #39a882; --pick: #d9588a; --mark: #d3dee2;
+  --cls-precision: #bd8a1c; --cls-atlas: #3a98cc; --cls-model: #6f8590;
+}
+:root { --body: var(--md-text-font-family, "IBM Plex Sans"), system-ui, sans-serif; }
+
+.md-header__title, .md-typeset h1, .md-typeset h2 { font-family: "Barlow Semi Condensed", var(--md-text-font-family); }
+.md-typeset h1 { font-weight: 600; letter-spacing: 0; color: var(--md-default-fg-color); }
+.md-header__title { font-size: 1.05rem; font-weight: 600; }
+.md-typeset h2 { font-weight: 600; }
+
+/* figures: inlined SVGs, full width, with a caption under them */
+.md-typeset figure.fig { margin: 1.6em 0 2em; max-width: 100%; display: block; }
+.md-typeset figure.fig .svg { min-height: 6em; }
+.md-typeset figure.fig svg { width: 100%; height: auto; display: block; overflow: visible; }
+.md-typeset figure.fig figcaption { max-width: none; margin: .6em 0 0; font-style: normal; text-align: left;
+  font-size: .72rem; line-height: 1.55; color: var(--md-default-fg-color--light); }
+.md-typeset figure.fig figcaption strong { color: var(--md-default-fg-color); }
+
+/* the kinds of line, as the explorer colours them */
+.kind { display: inline-block; width: .7em; height: .7em; border-radius: 2px; vertical-align: -.05em; margin-right: .3em; }
+.kind.precision { background: var(--cls-precision); }
+.kind.atlas { background: var(--cls-atlas); }
+.kind.model { background: var(--cls-model); }
+
+.md-typeset .katex-display { overflow-x: auto; overflow-y: hidden; padding: .2em 0; }
+.md-typeset table:not([class]) td.num, .md-typeset table:not([class]) th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.md-typeset .cite { color: var(--md-default-fg-color--light); font-size: .92em; }
+
+/* the references tables: the citation column takes the width, the numbers stay on one line */
+.md-typeset .refs table:not([class]) { display: table; width: 100%; }
+.md-typeset .refs table:not([class]) td:first-child { width: 100%; }
+.md-typeset .refs table:not([class]) td:not(:first-child) { white-space: nowrap; }
+.md-typeset .cite { display: inline-block; margin-top: .2em; line-height: 1.45; }
+
+/* phones: each source becomes a block, its citation and then its numbers on one labelled line */
+@media (max-width: 600px) {
+  .md-typeset .refs table:not([class]), .md-typeset .refs table:not([class]) tbody,
+  .md-typeset .refs table:not([class]) tr { display: block; width: 100%; }
+  .md-typeset .refs table:not([class]) thead { display: none; }
+  .md-typeset .refs table:not([class]) tr { border-bottom: 1px solid var(--md-typeset-table-color); padding: .6em 0; }
+  .md-typeset .refs table:not([class]) td { display: block; border: 0; padding: 0 .8em; }
+  .md-typeset .refs table:not([class]) td:not(:first-child) { display: inline-block; padding-top: .3em; text-align: left; }
+  .md-typeset .refs table:not([class]) td:nth-child(2)::before { content: "lines "; }
+  .md-typeset .refs table:not([class]) td:nth-child(3)::before { content: "range "; }
+  .md-typeset .refs table:not([class]) td:nth-child(4)::before { content: "median u "; }
+  .md-typeset .refs table:not([class]) td:not(:first-child)::before { color: var(--md-default-fg-color--light); font-size: .85em; }
+  .md-typeset .refs table:not([class]) td:nth-child(3)::after { content: " nm"; }
+}

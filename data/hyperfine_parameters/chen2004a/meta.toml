@@ -1,0 +1,42 @@
+id = "chen2004a"
+citation = "L. Chen, W.-Y. Cheng, J. Ye, Hyperfine interactions and perturbation effects in the B0u+(3Πu) state of ¹²⁷I₂, J. Opt. Soc. Am. B 21, 820-832 (2004), Table 1"
+source = "https://doi.org/10.1364/josab.21.000820"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#chen2004a"
+unit = "MHz"
+kind = "B-state effective hyperfine parameters, one row per rovibrational transition"
+transcription = """
+Table 1 (pp. 824-825), all 74 rows, parsed by script from the PDF text layer, not retyped.
+
+The text layer renders the minus sign as the digit 2 ("-557.119" reads "2557.119"). The minus glyphs are
+drawn from the MathematicalPi-One font and the digits from NewCenturySchlbk-Roman, so each leading "2" was
+classified by its font rather than by guessing: 153 are minus signs, and 12 are the digit 2 (C_B and
+delta_B at v' = 69 and 70, e.g. C_B of R(37) 70-0 = 2.12619 MHz). The parse was checked against a
+200 dpi image of the continued table (p. 825), which also fixes the column order: eqQ_B, C_B, d_B,
+delta_B. The text layer loses the Greek delta, so both spin-spin headers read "dB".
+
+Uncertainties are the printed parenthesised digits, converted to the value's units exactly. The footnote
+marker "d" on the first eqQ_B value is dropped. fit_sd_kHz is the "Standard Deviation (kHz)" column.
+
+Checks. Every value lies in its physical range. Within each v', C_B is smooth enough in J'(J'+1) that
+each line's value is predicted from the other lines at its v' to 0.03-0.15 kHz rms for v' <= 53 and
+5 kHz above (prototypes/hyperfine_chen2004.py), so a misread C_B digit would stand out; none does. At v' = 42-43, inside
+BKT02's range, C_B agrees with the formula to 0.46 kHz rms and eqQ_B to 0.31 MHz. P(13) 43-0 also
+appears in bipm2005a: its C_B here is +0.13 +- 0.08 kHz from BKT02, and a fit to the bipm2005a splittings
+gives +0.066 +- 0.005 kHz (docs/design/hyperfine-fit.md).
+"""
+uncertainty = "1 sigma, estimated from the standard deviation of each line's fit (footnote d). Statistical only."
+notes = """
+What the parameters mean, from the paper's footnotes: a four-term effective Hamiltonian (eqQ, C, d, delta)
+was fitted to the main (Delta F = Delta J) components of each transition. The ground-state eqQ_X and C_X
+were held at eqs. (14) and (10) of Bodermann, Knoeckel & Tiemann 2002 (BKT02), and d_X and delta_X at
+1.524 and 3.705 kHz: the same X-state values i2spec uses, so these B-state values compare directly with
+i2spec's. The basis spans Delta J = 0, +-2, +-4.
+
+The authors left out five transitions whose spectra the effective Hamiltonian cannot describe, because
+of a hyperfine perturbation by a 1g(1Pig) state: P(69) 58-0, R(18) 59-0, P(84) 60-0, P(77) 60-0 and
+P(63) 70-0. They also flag R(65) and R(74) 57-0 and P(17), P(27) and R(28) 59-0 (all in the table) for
+standard deviations too large for experimental causes, from the same perturbation.
+
+All transitions are from v'' = 0 except P(49) 59-1 and R(45) 60-1.
+"""

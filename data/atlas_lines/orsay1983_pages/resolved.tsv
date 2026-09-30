@@ -1,0 +1,44 @@
+N	file	field	old	new	basis
+125	p002.tsv	sigma	19710.9505	19710.9509	plate: last digit prints as 9 (same glyph as the 9s of 19710); class 19710.9509 clear, o-c .2 confirms
+177	p002.tsv	sigma	19715.5056	19715.5096	plate: third decimal is the 9 glyph (like the 9 of 19715 in the same row), last digit a 6 with closed left side; class prints 19715.5095 (o-c -3.7): separately rounded, 1 in last digit
+224	p002.tsv	sigma	19719.4691	19719.4891	plate: second decimal has the closed upper loop of an 8, last digit a clear 1; class prints 19719.4890 on all five rows (o-c 13.2/7.3/.5/-4.4/-9.3): 1 in last digit
+315	p003.tsv	I	26	28	plate: second digit of I has the closed upper loop of an 8; class prints 28 clearly
+338	p003.tsv	I	79	74	plate: second digit of I is the dot-matrix 4 (right stroke ends straight, no tail to the left); class prints 74 clearly on both rows
+467	p005.tsv	sigma	19741.0617	19741.0817	plate: second decimal is an 8 with its left half faint (upper loop closed on the right); class prints 19741.0818 (o-c 2.9): 1 in last digit
+1076	p010.tsv	sigma	19794.4569	19794.4969	plate: second decimal is the S-shaped 9 of this photo (same glyph as the 9 of 19794), last digit likewise 9; class prints 19794.4968 (o-c -7.6): 1 in last digit
+1171	p011.tsv	sigma	19802.6868	19802.6888	plate: right column of the glyphs lost; second and fourth decimals are the 8 shape, third has a closed lower and partly closed upper loop, read 8 (a 6 would make it 19 off the class value); class prints 19802.6887 (o-c -3.4): 1 in last digit
+1174	p011.tsv	sigma	19802.8689	19802.8889	plate: second decimal is an 8 with its right column lost (reads like E), not a 6; class prints 19802.8889 (o-c 1.5)
+1298	p012.tsv	sigma	19814.8576	19814.8976	plate: second decimal is the round-topped S glyph this photo prints for 9 (as in 19814), a 5 has a flat top; class prints 19814.8977 (o-c -8.3): 1 in last digit
+1406	p013.tsv	I	16	18	plate: second digit of I has a closed upper loop (the 6 of eps 1.6 beside it has an open sloped top): 8; class prints 18 clearly
+1471	p013.tsv	I	63	68	plate: second digit of I shows two enclosed holes: 8 (left half faint, looked like 3); class prints 68 clearly
+1514	p014.tsv	sigma	19834.7568	19834.7588	plate: third decimal has a closed (narrower) upper loop, right side faint: 8, not the open-topped 6; class prints 19834.7588 (o-c -6.1)
+1610	p015.tsv	sigma	19844.1765	19844.1769	plate: last digit is the S-shaped 9 of this photo (same glyph as the 9 of 19844); class prints 19844.1770 (o-c .2): 1 in last digit
+1850	c065.tsv	I	53	58	class: second digit has a closed lower loop (left stroke present) and a faint upper-left stroke: an 8, not a 3; plate prints 58 with two clear holes
+1985	p018.tsv	sigma	19877.8862	19877.8882	plate: third decimal has a closed upper loop like the 8s beside it; class prints 19877.8882 (o-c -2.2)
+2056	p019.tsv	sigma	19885.0363	19885.0383	plate: third decimal is the full-bottom-loop glyph with a faint top-left that this photo prints for 8 (its 6s lose the right column and look like a reversed 3); class prints 19885.0383 on both rows (o-c 1.2, -4.4)
+2064	p019.tsv	sigma	19885.6961	19885.6981	plate: third decimal is the same 8-with-faint-top-left glyph (the first decimal is a true 6 with its right column lost, a different shape); class prints 19885.6980 (unassigned): 1 in last digit
+2084	c071.tsv	sigma_mes	19887.5934	19887.5984	class: third decimal is an 8 with its upper-left stroke faint (lower loop closed); plate prints 19887.5983: 1 in last digit
+2150	p019.tsv	sigma	19894.0639	19894.0839	plate: second decimal has a small closed upper loop: 8; class prints 19894.0840 (o-c -.5): 1 in last digit
+2182	p020.tsv	sigma	19897.3064	19897.3084	plate: third decimal has a closed lower loop and ink down the upper right (an 8 with faint top-left), unlike the open-topped 6 of 19897.3611 in the next row; class prints 19897.3083 (o-c -1.5): 1 in last digit
+2558	p023.tsv	sigma	19932.5942	19932.5842	plate: second decimal has a closed upper loop and a faint (dotted) lower loop: an 8 whose bottom faded, not a 9; class prints 19932.5842 (o-c -2.9)
+2611	p024.tsv	sigma	19937.6056	19937.6006	plate: third decimal is a 0 with its right column partly lost (top bar, lower-left stroke present, no 5-style open lower left), like the second decimal; class prints 19937.6006 (o-c -1.2)
+2627	p024.tsv	sigma	19938.9115	19938.9118	plate: last digit has a lower-left stroke that a 5 lacks, with the upper-right column faded: an 8; class prints 19938.9119 (o-c -4.2, s-cal -4.1 so the unrounded value is near .91185): 1 in last digit
+2713	p025.tsv	sigma	19946.8558	19946.8958	plate: second decimal has a rounded top curling down on the right (the 9 of this photo; the 5 after it has a flat, square-cornered top); class prints 19946.8958 (o-c .2)
+2757	p025.tsv	sigma	19951.6836	19951.6806	plate: third decimal is a 0 with its left column lost (top, right side and bottom, no middle bar as a 3 would have); class prints 19951.6807 on both rows (o-c 7.1, -2.4): 1 in last digit
+3030	p028.tsv	sigma	19978.1688	19978.1888	plate: second decimal has a closed upper loop (right column faint), matching the 8s after it, not a 6; class prints 19978.1887 (o-c 2.2): 1 in last digit
+3038	p028.tsv	sigma	19979.0615	19979.0815	plate: second decimal is an 8 with its left column faded (both loops closed on the right); class prints 19979.0815 on all three rows (o-c 6.6, 4.2, -10.3)
+3043	p028.tsv	I	29	28	plate: second digit of I has the upper loop closed and faint dots at the lower left and bottom: an 8 whose lower half faded; class prints 28 clearly
+3072	p028.tsv	sigma	19982.7739	19982.7709	plate: third decimal has top bar, right side and bottom but no middle bar (a 0 with its left column lost, not a 3); class prints 19982.7710 (unassigned): 1 in last digit
+3220	p029.tsv	sigma	19996.6638	19996.6838	plate: second decimal has a small closed upper loop (8), unlike the open hooked top of the first decimal's 6; class prints 19996.6838 (o-c .2)
+3250	p030.tsv	sigma	20000.0657	20000.0857	plate: second decimal has a closed, slanted upper loop: 8; class prints 20000.0857 on both rows (o-c 2.0, -.5)
+3252	p030.tsv	sigma	20000.2456	20000.2458	plate: last digit has a clear lower loop and a faint upper loop with grey on both sides: an 8 whose top faded; class prints 20000.2458 (o-c -3.7)
+3344	p031.tsv	sigma	20008.9216	20008.9218	plate: last digit has a closed lower loop and dotted remnants of the upper loop: an 8 whose top faded; class prints 20008.9219 (o-c 1.5): 1 in last digit
+3354	p031.tsv	sigma	20009.7683	20009.7883	plate: second decimal has a closed lower loop and a hooked top with the right column faint: an 8 with its upper right lost; class prints 20009.7883 (o-c -3.4)
+3421	p031.tsv	I	3	8	plate: I prints as a 3-shape, which is the dot-matrix 8 with its left column lost (the font's commonest failure); class prints 8 clearly
+3462	p032.tsv	I	13	10	plate: second digit of I is a 0 with its left column lost (top, right side, bottom, no middle bar), not a 3; class prints 10 clearly
+87	c004.tsv:14	J	30	80	class: first digit of J has a closed lower loop (left stroke present): 80, not 30; 80 R(57-0) = 19707.6279 (Dunham +0.0000), and R(30) 57-0 is printed at 19841.7129 (c058)
+-	c004.tsv:35	J	43	48	class: second digit of J has both loops closed with the upper-left faint: 48; 48 R(66-1) = 19708.6087 (Dunham +0.0001), and R(43) 66-1 is printed at 19721.5278 (c010)
+-	c007.tsv:15	v_up	63	68	class: prints P(68- 1) clearly; 50 P(68-1) = 19714.5870 (Dunham +0.0001)
+447	c018.tsv:16	J	39	89	class: first digit of J has a faint lower-left stroke closing the lower loop: 89; 89 R(63-0) = 19739.3995 (Dunham +0.0001), and R(39) 63-0 is printed at 19915.3865 (c079)
+1008	c040.tsv:11	J	35	38	class: prints 38 R(55- 0); 38 R(55-0) = 19788.2175 (Dunham +0.0000), and R(35) 55-0 is printed at 19793.3037 (c042)
+-	c047.tsv:26	sigma_cal	19804.9135	19804.9185	class: third decimal of sigma_cal is a clear 8; 56 R(58-0) = 19804.9185 (Dunham +0.0000)

@@ -1,0 +1,45 @@
+{
+  "name": "knockel2004",
+  "title": "Local NIR Dunham model of the I2 B-X bands (0-12) to (0-17)",
+  "source": "H. Knoeckel, B. Bodermann and E. Tiemann, Eur. Phys. J. D 28, 199 (2004), Table 1 (journal p. 201)",
+  "doi": "10.1140/epjd/e2003-00313-4",
+  "units": "cm-1",
+  "form": "nu = sum_k upper[k] * [J'(J'+1)]^k - sum_(l,k) lower[lk] * (v''+1/2)^l * [J''(J''+1)]^k  (eqs. 1-2)",
+  "notes": "The paper writes the upper-state coefficients as S0, S1, ... S4 (eq. 2 folds v' = 0 into them); they are stored here under the (l, k) keys 00...04 used by the 2010 refit. Fit standard deviation 40 kHz. The paper states the digit count is chosen so that round-off stays below a few kHz, which holds inside the fitted range but not in extrapolation (docs/research/nir-model-2010.md).",
+  "domain": {
+    "v_upper": 0,
+    "v_lower": [12, 17],
+    "J_lower_max": 242,
+    "wavelength_nm": [775.0, 815.0],
+    "uncertainty_MHz": 0.2,
+    "uncertainty_basis": "paper p. 201: 'lines within the wavelength range from roughly 775 nm to 815 nm can be predicted with 1 sigma accuracies well below 200 kHz'"
+  },
+  "upper": {"00": 15832.7358035, "01": 0.289260041202e-1, "02": -0.62353693595e-8, "03": -0.22689095e-14, "04": -0.4269941e-20},
+  "upper_uncertainty": {"00": 0.56e-2, "01": 0.42e-8, "02": 0.60e-12, "03": 0.19e-16, "04": 0.16e-21},
+  "lower": {
+    "10": 0.21479058554e3, "20": -0.6349014655, "40": -0.31552791e-4,
+    "01": 0.373816471278e-1, "11": -0.1166181096942e-3, "21": -0.996620979e-7, "31": -0.895649619e-8,
+    "02": -0.4608461804e-8, "12": -0.1196947480e-10, "22": -0.9829624898e-12,
+    "03": -0.36003776e-15, "13": -0.33513423e-16,
+    "04": 0.6778317e-21, "14": -0.1441870e-21
+  },
+  "lower_uncertainty": {
+    "10": 0.95e-3, "20": 0.45e-4, "40": 0.29e-7,
+    "01": 0.16e-6, "11": 0.28e-7, "21": 0.16e-8, "31": 0.31e-10,
+    "02": 0.18e-11, "12": 0.24e-12, "22": 0.78e-14,
+    "03": 0.22e-16, "13": 0.18e-17,
+    "04": 0.20e-21, "14": 0.16e-22
+  },
+  "validation": {
+    "reference": "docs/research/nir-model-2010.md, docs/research/nir-anchor-data-2000.md",
+    "against": "56 comb-referenced v' = 0 hyperfine components at 755-815 nm: data/observations/bodermann2000a (Bodermann et al. 2000) and data/observations/liao2010a (Liao et al. 2010), each combined with our hyperfine offsets",
+    "printed_digits_reproduce_the_fit": true,
+    "in_window_rms_MHz": 0.228,
+    "in_window_max_MHz": 0.724,
+    "in_window_n": 34,
+    "outside_window_rms_MHz": 26.2,
+    "outside_window_max_MHz": 45.1,
+    "outside_window_n": 21,
+    "comment": "Inside the published 775-815 nm window this model is 10x better than the 2008 potentials on the same rows (0.23 MHz rms against 2.31 MHz; on the Bodermann 2000 rows alone 0.060 MHz rms, max 0.124 MHz). Below 775 nm it is extrapolating and fails: +45.1 MHz at R(48) 0-12 (755.6 nm), where the potentials are within 0.13 MHz of the measurement. Removing that failure is what the Liao 2010 refit was for. Liao et al. Table 2 reports the same extrapolation failure with the opposite sign, so their evaluation of this table and ours differ by up to 83 MHz there; both agree to <50 kHz on the (0-14) calibration lines."
+  }
+}

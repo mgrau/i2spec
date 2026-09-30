@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Generated prototype outputs
+prototypes/out/
+
+# Generated web data: rebuild with `uv run i2spec web export`
+web/data/
+
+# Third-party raw data: keep README.md and SHA256SUMS, ignore the files themselves
+data/external/*/
+
+# OS
+.DS_Store
+
+# Built web site: `uv run i2spec web build site`
+site/
+
+# Tool caches
+.ruff_cache/
+.claude/
+
+# The manuscript draft: not published yet
+paper/

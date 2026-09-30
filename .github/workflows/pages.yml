@@ -1,0 +1,57 @@
+# Builds the web app (the explorer, the documentation and the references page) from the current
+# model and publishes it to GitHub Pages. Line lists are cached between runs, keyed on the model
+# code and parameter files, so only a model change pays for rebuilding them.
+name: Web app
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Restore line lists
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/i2spec
+          key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
+          restore-keys: i2spec-
+      - run: uv sync --locked
+      - name: Export the model and build the site
+        run: uv run i2spec web build site
+      - name: Check the browser physics against the Python model
+        run: |
+          uv run python web/make_reference.py > web/reference.json
+          node web/test_physics.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,157 @@
+id = "bodermann2000a"
+citation = "B. Bodermann, M. Klug, U. Winkelhoff, H. Knöckel, E. Tiemann, Precise frequency measurements of I₂ lines in the near infrared by Rb reference lines, Eur. Phys. J. D 11, 213-225 (2000)"
+source = "https://doi.org/10.1007/s100530070086"
+doi = "10.1007/s100530070086"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#bodermann2000a"
+unit = "MHz"
+transcription = """
+Local PDF (13 pages = journal pp. 213-225), typed by hand from the pdftotext text layer and then
+checked digit by digit against 400 dpi page-image crops rendered with pdftoppm. All values are
+printed in kHz and were divided by 1000 to give MHz, which is exact.
+
+What was transcribed, and from where:
+  p. 216  Table 2  4 lines calibrated on the Rb D1 line, component c'
+  p. 219  Table 4  7 lines calibrated on the Rb D2 line, crossover d/f
+  p. 222  Table 7  5 lines calibrated on the Rb 5s-5d two-photon transition
+  p. 223  Table 8  9 rows by four-wave mixing (FWM), 4 of which repeat a two-photon value
+  p. 223  Section 6, the three-step FWM interval chain (3 intervals)
+Every published I2 frequency is entered. The tables print no hyperfine-free line centres: every
+value belongs to a named hyperfine component, so no row has an empty `component`.
+
+What was checked on the page images, not only in the text layer:
+- Every digit of all 25 frequency values and of all 16 beat frequencies, each bracketed uncertainty,
+  and the sign of every negative entry (Table 2 rows 1-2, Table 4 rows 1-6, Table 7 P(19) and
+  R(139)/87Rb, and the -79 / -61 kHz differences in Table 8).
+- The blank cells of Table 7: P(19) and R(26) have only an 85Rb beat, R(18) and R(16) only an 87Rb
+  beat, and R(139) 1-14 alone has both.
+- The Table 8 layout, where `transition` spans several `comp.` rows, and the two `*` footnote marks
+  on the P(164) 0-13 two-photon values.
+- The two Rb two-photon reference values on p. 221 and the Rb D1 / Rb D2 reference values on
+  pp. 216 / 219.
+- Figure 5 (p. 222) and its caption, for the component-labelling convention.
+
+Arithmetic cross-checks, all of which passed and which confirm the digits independently:
+- Rb D1, c' = 377 106 271 488(80) kHz. Table 2 frequency = reference + beat + 42 kHz, exactly, for
+  all four rows.
+- Rb D2, d/f = 384 227 981 877(22) kHz. Table 4 frequency = reference + beat, exactly, for all seven
+  rows, with NO +42 kHz (see "Apparent inconsistencies" below).
+- Two-photon references 385 242 216 338(23) kHz (85Rb, 5d 2D3/2) and 385 284 566 348(24) kHz
+  (87Rb, 5d 2D5/2). Table 7 frequency = reference + beat exactly for the four single-reference rows;
+  for R(139) 1-14 the printed value is the mean of the two determinations (…722.1 and …727.9).
+- The R(139) 1-14 beats reproduce the paper's Rb fine-structure interval 42 350 004.2(88) kHz.
+- The Section 6 chain sums to the printed total 61 215 408 kHz and its uncertainties combine in
+  quadrature to the printed 42 kHz.
+- Table 8's `difference` column equals FWM minus 2-photon for all four rows (+72, +75, -79, -61).
+
+Component labels are used exactly as printed. Figure 5's caption states the convention: components
+are "numbered 1...15 for even J'' and 1...21 for odd J''", in order of increasing frequency (the
+figures' abscissa is ν, increasing to the right), and lettered a, b, c... by rotational line. This is
+i2spec's own convention, so labels are carried over unchanged. Every label is consistent with the
+parity of its J'' (a1-a21 / b1-b13 on odd-J'' lines, a1-a15 on even-J'' lines).
+
+No pressure, power or calibration correction was applied during transcription. The values are as
+printed, including the authors' own cell corrections described under [conditions].
+"""
+uncertainty = """
+As printed, in kHz, converted to MHz. The paper does not attach a coverage factor to the table
+entries; they are treated as standard (1σ) uncertainties, consistent with the paper's own use of
+"(1σ)" for the 26 kHz cell-to-cell reproducibility.
+
+By group: rb_d1 74-75 kHz (dominated by the 80 kHz Rb D1 reference); rb_d2 34-55 kHz; rb_2photon
+34-38 kHz; fwm 117-243 kHz; the Section 6 chain intervals 12-30 kHz. The beat frequencies
+themselves are far more precise (2.5-44 kHz) than the absolute values, because the absolute values
+carry the Rb reference uncertainty.
+"""
+partial = """
+Complete for measured I2 frequencies. Deliberately not entered:
+- The Section 6 total, f(P(164) 0-13 a10) - f(R(16) 0-14 a10) = 61 215 408(42) kHz. It is the sum of
+  the three chain intervals that are entered, so entering it too would double-count.
+- The Rb reference frequencies and the Rb fine-structure interval 42 350 004.2(88) kHz. These are
+  atomic, and the schema has no way to reference a non-I2 line.
+- The beat frequencies of Tables 2, 4 and 7 as separate observations. They are I2 minus Rb, which the
+  schema cannot express, so each is preserved verbatim in its row's `note`.
+- R(96) 0-14 and P(87) 0-14, which appear in Figure 7's linkage scheme. Their frequencies come from
+  ref. [13] (Bodermann 1998, Metrologia 35, 105), not from this paper.
+- Figure 7's axis labels (383.633, 384.205, 384.208, 384.784, 385.074, 385.218, 385.364 THz). They
+  are 6-digit locators for the linkage figure, not measurements.
+"""
+notes = """
+16 distinct lines are calibrated directly against Rb (the abstract's "16 lines"); the FWM section
+adds R(56) 0-14, P(31) 0-14, P(164) 0-13, and, through the chain, R(240) 0-12 and R(138) 1-14, for
+21 distinct lines in all. Bands covered: 0-12, 0-13, 0-14, 0-15, 1-14, 2-15, 3-16, i.e. 777-795 nm.
+
+Groups, which correspond to the paper's four independent calibration routes and should each carry
+their own nuisance offset:
+  rb_d1               Table 2, tied to Barwood et al.'s Rb D1 realisation (80 kHz)
+  rb_d2               Table 4, tied to Ye et al.'s Rb D2 d/f value (22 kHz)
+  rb_2photon          Table 7, tied to the Nez/Felder two-photon values (23-24 kHz)
+  fwm                 Table 8 FWM column, tied to rb_d2 plus the [13] wavelength calibration
+  rb_2photon_derived  Table 8 2-photon column (see "Redundancy")
+  fwm_chain           Section 6 intervals; these are line-to-line and carry no Rb reference
+
+Redundancy, important for the global fit. The four `rb_2photon_derived` rows are NOT independent
+measurements:
+- P(164) 0-13 a10 = 385 363 916 113(55) is exactly the R(16) 0-14 a10 row plus the three chain
+  intervals (385 302 700 705 + 61 215 408), and its uncertainty is 35 kHz and 42 kHz in quadrature.
+- P(164) 0-13 a1 is that value minus an unpublished a10-a1 hyperfine interval of 588 330 kHz.
+- P(19) 0-14 a14 and a16 are the Table 7 a13 row plus unpublished hyperfine intervals of
+  60 573 and 116 075 kHz.
+Dropping the whole `rb_2photon_derived` group leaves an uncorrelated set; keeping it adds only the
+three unpublished intra-line hyperfine intervals. The `fwm` rows for the same components are a
+genuinely different measurement route and are kept.
+
+Apparent inconsistencies in the paper, none of which were "corrected" in the data:
+1. The +42 kHz cell correction. The text says the Table 2 measurements used cell I1 and the Table 4
+   measurements used cell I2, and that "the absolute frequencies are corrected by +42 kHz" in both
+   cases. The arithmetic shows the correction present in Table 2 (frequency = reference + beat + 42,
+   exactly, four times) and absent in Table 4 (frequency = reference + beat, exactly, seven times).
+   Either the Table 4 beat column is already corrected, or the correction was dropped from Table 4.
+   At 42 kHz this is larger than the 34-55 kHz uncertainties of those rows. Entered as printed.
+2. Table 2's uncertainties, 74-75 kHz, are smaller than the 80 kHz uncertainty the same page assigns
+   to the Rb D1 reference on which every one of those values rests (60 ⊕ 15 ⊕ 51 kHz = 80 kHz). The
+   74 kHz could not be reconstructed from any stated combination. Entered as printed; the rb_d1 rows
+   are the least trustworthy in the set.
+3. Figure 5's "calibrated:" arrow for P(19) 0-14 points at a16, while Table 7 tabulates a13 for that
+   line. Both are right: a16 is one of the two P(19) components in Table 8's two-photon column, so
+   the figure marks a Table 8 component rather than the Table 7 one. The model settles the labels -
+   a14 - a13 = 60.557 MHz predicted against 60.573 MHz implied by Tables 7 and 8, and a13 is the only
+   one of the 21 components within 25 MHz of that spacing. No relabelling was needed.
+4. Table 7's caption calls the reference "the Rb 5s 2S1/2-2D two photon transition" without saying
+   which fine-structure component each column uses; the column headers do say, and are used here.
+"""
+
+[conditions]
+iodine_cell = "I5 (80 cm, filled at PTB in 1996) is the reference cell; Table 2 was measured with I1 and Table 4 with I2, both 50 cm and filled in 1994"
+iodine_cell_body_C = 600.0
+iodine_cell_body_C_uncertainty = 30.0
+iodine_cold_end_C = 20.0
+iodine_cold_end_C_uncertainty = 1.0
+iodine_pressure_Pa = 27.0
+iodine_pressure_Pa_uncertainty = 2.4
+detection = "collinear Doppler-free saturation spectroscopy, 3f lock, lock-in phase switched 0/180 deg to cancel electronic offsets"
+linewidth_MHz_fwhm = 10.0
+cell_offset_correction_kHz = 42.0
+cell_offset_correction_note = "cells I1 and I2 were found -42(5) kHz below cell I5; +42 kHz was added to refer them to I5. Applied in Table 2; not visible in Table 4's arithmetic (see notes)."
+cell_reproducibility_kHz = 26.0
+cell_reproducibility_note = "1σ spread over the five cells I1-I5; the paper calls this the floor on absolute accuracy"
+single_cell_reproducibility_kHz = 10.0
+allan_deviation = "5e-12 at τ = 100 s for the I2-stabilised laser"
+pressure_extrapolation = "none. Frequencies are not extrapolated to zero pressure or zero power; they are the values of cell I5 at 27.0(2.4) Pa, with only the fixed +42 kHz cell-to-cell offset applied. Background-gas contamination is stated to red-shift the lines, and I5 was taken as purest because it gave the highest frequencies."
+power_extrapolation = "none for the I2 lines. Power and geometry shifts were characterised only for the Rb references."
+
+[references]
+note = "The Rb values the absolute I2 frequencies rest on, in kHz, as printed. Needed to reproduce the table arithmetic."
+rb_d1_c_prime_kHz = 377106271488.0
+rb_d1_c_prime_uncertainty_kHz = 80.0
+rb_d1_source = "Barwood et al. [18,19], with the uncertainty enlarged from 60 to 80 kHz (60 ⊕ 15 ⊕ 51)"
+rb_d1_residual_doppler_kHz = 100.0
+rb_d1_residual_doppler_note = "a 10.0(5) mrad pump/probe angle shifts the realisation ~100(10) kHz from the true Rb frequency; the same angle as Barwood et al., so it cancels in the transfer but not in the true I2 frequency"
+rb_d2_df_crossover_kHz = 384227981877.0
+rb_d2_df_crossover_uncertainty_kHz = 22.0
+rb_d2_source = "Ye et al. [21]; d/f crossover, Fg = 2 → Fe = 2 / Fe' = 3 of 87Rb"
+rb_2photon_85_d32_kHz = 385242216338.0
+rb_2photon_85_d32_uncertainty_kHz = 23.0
+rb_2photon_87_d52_kHz = 385284566348.0
+rb_2photon_87_d52_uncertainty_kHz = 24.0
+rb_2photon_source = "Nez et al. [16] and Felder et al. [30], Fg = 2 - Fe = 4, with a -25(10) kHz AC-Stark correction applied by the authors"

@@ -1,0 +1,21 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(69) 3-4,b20,interval,-11,2,,a21,morinaga1989a,Gerstenkorn-Luc letter b = rank 20 by frequency
+127I2 R(69) 3-4,c19,interval,-20,2,,a21,morinaga1989a,Gerstenkorn-Luc letter c = rank 19 by frequency
+127I2 R(69) 3-4,d18,interval,-132,1,,a21,morinaga1989a,Gerstenkorn-Luc letter d = rank 18 by frequency
+127I2 R(69) 3-4,e17,interval,-151,1,,a21,morinaga1989a,Gerstenkorn-Luc letter e = rank 17 by frequency
+127I2 R(69) 3-4,f16,interval,-165,1,,a21,morinaga1989a,Gerstenkorn-Luc letter f = rank 16 by frequency
+127I2 R(69) 3-4,g15,interval,-184,1,,a21,morinaga1989a,Gerstenkorn-Luc letter g = rank 15 by frequency
+127I2 R(69) 3-4,h14,interval,-278,1,,a21,morinaga1989a,Gerstenkorn-Luc letter h = rank 14 by frequency
+127I2 R(69) 3-4,i13,interval,-304,1,,a21,morinaga1989a,Gerstenkorn-Luc letter i = rank 13 by frequency
+127I2 R(69) 3-4,j12,interval,-328,1,,a21,morinaga1989a,Gerstenkorn-Luc letter j = rank 12 by frequency
+127I2 R(69) 3-4,k11,interval,-437,1,,a21,morinaga1989a,Gerstenkorn-Luc letter k = rank 11 by frequency
+127I2 R(69) 3-4,l10,interval,-448,2,,a21,morinaga1989a,Gerstenkorn-Luc letter l = rank 10 by frequency
+127I2 R(69) 3-4,m9,interval,-458,2,,a21,morinaga1989a,Gerstenkorn-Luc letter m = rank 9 by frequency
+127I2 R(69) 3-4,n8,interval,-468,2,,a21,morinaga1989a,Gerstenkorn-Luc letter n = rank 8 by frequency
+127I2 R(69) 3-4,o7,interval,-566,1,,a21,morinaga1989a,Gerstenkorn-Luc letter o = rank 7 by frequency
+127I2 R(69) 3-4,p6,interval,-595,2,,a21,morinaga1989a,Gerstenkorn-Luc letter p = rank 6 by frequency
+127I2 R(69) 3-4,q5,interval,-602,3,,a21,morinaga1989a,Gerstenkorn-Luc letter q = rank 5 by frequency
+127I2 R(69) 3-4,r4,interval,-631,1,,a21,morinaga1989a,Gerstenkorn-Luc letter r = rank 4 by frequency
+127I2 R(69) 3-4,s3,interval,-874,1,,a21,morinaga1989a,Gerstenkorn-Luc letter s = rank 3 by frequency
+127I2 R(69) 3-4,t2,interval,-892,1,,a21,morinaga1989a,Gerstenkorn-Luc letter t = rank 2 by frequency
+127I2 R(69) 3-4,u1,interval,-910,1,,a21,morinaga1989a,Gerstenkorn-Luc letter u = rank 1 by frequency

@@ -1,0 +1,20 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(53) 31-0,a21,frequency,561420951.318,0.014,,,cheng2019a_abs,Table 3; zero-pressure zero-power value (Table 1 a21 minus 24 kHz shift correction by the authors); 14 kHz total
+127I2 R(53) 31-0,a1,interval,-910.244,0.0106,,a21,cheng2019a_table1,Table 1 a1 561420041099(7) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a2,interval,-873.129,0.0120,,a21,cheng2019a_table1,Table 1 a2 561420078214(9) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a3,interval,-837.942,0.0082,,a21,cheng2019a_table1,Table 1 a3 561420113401(2) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a4,interval,-638.99,0.0094,,a21,cheng2019a_table1,Table 1 a4 561420312353(5) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a7,interval,-537.363,0.0089,,a21,cheng2019a_table1,Table 1 a7 561420413980(4) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a8,interval,-473.371,0.0089,,a21,cheng2019a_table1,Table 1 a8 561420477972(4) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a9,interval,-454.947,0.0106,,a21,cheng2019a_table1,Table 1 a9 561420496396(7) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a10,interval,-434.31,0.0082,,a21,cheng2019a_table1,Table 1 a10 561420517033(2) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a11,interval,-420.698,0.0085,,a21,cheng2019a_table1,Table 1 a11 561420530645(3) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a12,interval,-337.717,0.0179,,a21,cheng2019a_table1,Table 1 a12 561420613626(16) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a13,interval,-301.26,0.0100,,a21,cheng2019a_table1,Table 1 a13 561420650083(6) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a14,interval,-261.353,0.0085,,a21,cheng2019a_table1,Table 1 a14 561420689990(3) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a15,interval,-197.372,0.0082,,a21,cheng2019a_table1,Table 1 a15 561420753971(2) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a16,interval,-170.906,0.0100,,a21,cheng2019a_table1,Table 1 a16 561420780437(6) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a17,interval,-147.63,0.0082,,a21,cheng2019a_table1,Table 1 a17 561420803713(2) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a18,interval,-121.667,0.0081,,a21,cheng2019a_table1,Table 1 a18 561420829676(1) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a19,interval,-30.995,0.0082,,a21,cheng2019a_table1,Table 1 a19 561420920348(2) minus a21 561420951343(8) kHz
+127I2 R(53) 31-0,a20,interval,-17.166,0.0082,,a21,cheng2019a_table1,Table 1 a20 561420934177(2) minus a21 561420951343(8) kHz

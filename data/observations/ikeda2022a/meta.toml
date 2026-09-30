@@ -1,0 +1,58 @@
+id = "ikeda2022a"
+citation = "K. Ikeda, T. Kobayashi, M. Yoshiki, D. Akamatsu, F.-L. Hong, Hyperfine structure and absolute frequency of 127I2 transitions at 514 nm for wavelength standards at 1542 nm, J. Opt. Soc. Am. B 39, 2264-2271 (2022)"
+source = "https://doi.org/10.1364/josab.465499 (publisher PDF)"
+doi = "10.1364/josab.465499"
+retrieved = "2026-09-27"
+catalog = "data/catalog/precision.yaml#ikeda2022a"
+unit = "MHz"
+transcription = """
+Table 1 (p. 2266): absolute frequencies of P(57)45-0 a1, P(91)48-0 b2 and R(73)46-0 a1, kHz, 5.4 kHz
+each. Tables 2-4 (p. 2268): hyperfine splittings of P(57)45-0 (a series, relative to a1), P(91)48-0
+(b series, relative to b2, not b1) and R(73)46-0 (relative to a1), kHz, from the "Obs." columns only;
+the "Calc.", "Obs.-Calc." and "Weight" columns are the paper's fit and are not entered. Parsed by script
+from the PDF text layer, converted kHz -> MHz exactly, and every row checked by eye against 200 dpi
+renderings of pp. 2266 and 2268 (no differences found). The "Frequency Interval" column of Table 1
+(relative to the acetylene 3 x P(16) value) and the acetylene row itself are not entered.
+
+All three lines have odd J'' (21 main components); the printed labels a1-a21 / b1-b21 are the ranks by
+frequency, as in the rest of the collection.
+
+Left out: P(57)45-0 a20 and P(91)48-0 b1, which are unresolved from each other (blend; the authors give
+them weight 0 and Obs.-Calc. of -80.5 and +270.1 kHz); P(91)48-0 b3 and b4, not measured (unresolved,
+printed "-"). The reference components (printed 0) are not rows. 59 rows: 3 frequencies, 56 splittings.
+
+Misprint noticed (not in a transcribed column): Table 1 gives the P(91)48-0 b2 interval to the acetylene
+reference as -2 669 966 kHz, but its own frequencies give -2 699 965.7 kHz. The frequency is the correct
+one: the a20/b1 blend implies f(b2) - f(a1, P(57)) = 925 441.7 + 152 106.1 = 1 077 547.8 kHz, against
+1 077 549.8 kHz from the Table 1 frequencies. The frequency is transcribed as printed.
+
+No corrections applied. The frequencies are "directly measured values under experimental conditions"
+(1.2 Pa, 1.8/0.3 mW), not extrapolated to zero pressure or power; the paper gives no corrected values.
+The paper's discussion of the earlier R(73)46-0 a1 value (Ikeda 2020, 583 109 956 557(6) kHz, and its
+corrected 575 kHz) concerns a previous, probably servo-offset-shifted measurement and is not entered.
+"""
+uncertainty = """
+Absolute frequencies: 5.4 kHz, the authors' combined 1 sigma (0.3 kHz statistical; systematics 0.36 kHz
+power, 0.34 kHz pressure, 1.2 kHz servo offset, 0.32 kHz modulation phase, 5 kHz cell impurity, 1.5 kHz
+comb reference). Splittings: 0.4 kHz (sqrt(2) x 0.3 kHz lock repeatability) as the paper states; note the
+paper's own four-term fits have standard deviations of 1.6, 3.6 and 2.5 kHz, so 0.4 kHz is optimistic
+relative to the hyperfine model.
+"""
+notes = """
+Modulation transfer spectroscopy at 514 nm (third harmonic of a 1542 nm ECDL), 30 cm cell, AOM pump
+modulation at 220 kHz, Er-fibre comb referenced to an I2-stabilized Nd:YAG laser. Line numbers in the
+note column are from the Gerstenkorn-Luc atlas. Same group and set-up as yoshiki2023a and
+matsunaga2024a (same 1.2 Pa / 1.8 mW / 0.3 mW conditions as yoshiki2023a); none of the three lines here
+(P(57)45-0, P(91)48-0, R(73)46-0) appears in those sets or elsewhere in data/observations, so there are
+no duplicated values to compare. P(91)48-0 is the only v' = 48 line held with an absolute frequency.
+P(57)45-0 and P(91)48-0 overlap each other; R(73)46-0 is fully resolved.
+"""
+
+[conditions]
+cold_finger_C = -10.0
+pressure_Pa = 1.2
+pump_mW = 1.8
+probe_mW = 0.3
+modulation_kHz = 220
+cell_length_cm = 30
+detection = "modulation transfer"

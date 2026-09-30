@@ -1,0 +1,50 @@
+id = "velchev1998a"
+citation = "I. Velchev, R. van Dierendonck, W. Hogervorst and W. Ubachs, \"A Dense Grid of Reference Iodine Lines for Optical Frequency Calibration in the Range 571-596 nm\", J. Mol. Spectrosc. 187, 21-27 (1998)"
+source = "https://research.vu.nl/ws/files/1800731/144648.pdf"
+doi = "10.1006/jmsp.1997.7480"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:velchev1998a"
+
+transcription = """
+Table 1 ("Measured Frequencies in This Study"), page 24 of the journal pagination, transcribed
+2026-09-16 from the VU Research Portal copy of the published version. The table is a scanned image
+in that PDF, not text, so it was read visually from the extracted bitmap at native resolution
+(1470x2690, 1-bit) in six overlapping crops; no OCR engine was used.
+
+115 rows, all of them 127I2, v'' = 1, bands v' = 13-18. Every row is the absolute frequency of the
+"t" hyperfine component with the paper's own estimated accuracy in parentheses, both in MHz.
+
+Component identification. The paper labels components a-u following Gerstenkorn & Luc, as adopted by
+Sansonetti (1997); "t" is the component the authors calibrate. Section 4 states that all "t"
+components are red-shifted by approximately 483 MHz from the centre of gravity. Computing the
+hyperfine structure of four of these lines places that component at -482.9 and -482.3 MHz for odd J''
+(21 main components) and -482.1 and -479.1 MHz for even J'' (15 main components), i.e. rank 2 by
+frequency for odd J'' and rank 1 for even J''. Those are the ranks recorded here, as "t2" and "t1".
+The assignment is confirmed by the residuals: a wrong rank would misplace a line by tens to hundreds
+of MHz, whereas all 115 rows agree with the model to 1.94 MHz rms (max 5.4 MHz), which also rules
+out single-digit misreadings.
+
+One digit is uncertain in the scan: R(74) 14-1, where the first decimal is a damaged glyph, read
+here as 511063381.3. Its residual sits inside the 0.52 MHz rms of the v' = 14 band, so the reading is
+consistent; the stated uncertainty is 1.1 MHz either way.
+
+Not transcribed: the 1584 predicted "t" component positions the abstract refers to. Those were
+published only as supplementary data, which no longer exists (see data-we-cannot-get.md); they are
+predictions of the authors' own parametrisation rather than measurements, so they would not be fit
+data in any case. Also not transcribed: previously published lines the paper included in its
+analysis but deliberately excluded from Table 1 (refs 7, 8, 9, 11, 18, 20).
+"""
+
+uncertainty = """
+As printed, per row, in parentheses: the paper's estimated absolute accuracy in MHz, combining the
+measurement error with the uncertainty of the reference line used. Section 4 gives the ranges: under
+1.0 MHz for lines referenced to Sansonetti, and 1.5-4.5 MHz for lines calibrated for this paper.
+Treated here as standard (1 sigma) uncertainties.
+"""
+
+[conditions]
+cell = "sealed I2 cell at room temperature"
+method = "Doppler-free saturated absorption, etalon-calibrated against previously measured reference lines"
+
+notes = "Absolute frequencies, not intervals; each row is independent apart from the shared reference-line calibration, recorded in the group column."

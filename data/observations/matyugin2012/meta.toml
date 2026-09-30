@@ -1,0 +1,63 @@
+id = "matyugin2012"
+citation = "Yu. A. Matyugin, S. M. Ignatovich, S. A. Kuznetsov, M. I. Nesterenko, M. V. Okhapkin, V. S. Pivtsov, M. N. Skvortsov and S. N. Bagaev, \"Absolute frequency measurement for the emission transitions of ¹²⁷I₂ molecules in the 982-985 nm range\", Quantum Electron. 42, 250-257 (2012)"
+source = "https://doi.org/10.1070/QE2012v042n03ABEH014799 (PDF obtained 2026-09-16)"
+doi = "10.1070/QE2012v042n03ABEH014799"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:matyugin2012"
+
+transcription = """
+Table 1, "Measurement data for iodine transition frequencies", read 2026-09-16. The table is set
+landscape in the PDF, so its text layer interleaves; the values here were read from a 500 dpi render
+of the page, not from the text layer. Printed in kHz, converted to MHz.
+
+B -> X emission transitions measured by three-level laser spectroscopy: a 532 nm line is pumped and
+the emission from the same upper level is probed. All have v'' = 48.
+
+**The labels are emission lines in standard notation, and pairs of them share an upper level.** This
+is confirmed by the authors' own companion paper, Matyugin et al., Quantum Electron. 38, 755 (2008),
+whose abstract states that they study "the hyperfine structure of emission lines at the J' = 57,
+v' = 32 -> J'' = 58, v'' = 48 transition upon excitation at the J'' = 56, v'' = 0 -> J' = 57, v' = 32
+transition". So the pump is R(56) of the 32-0 band, reaching J' = 57, and the emission goes to
+J'' = 58 -- which is the row printed here as "P58 (32-48)". The row printed "R56 (32-48)" is the other
+branch from the same upper level, ending on J'' = 56. Both are entered with those quantum numbers and
+both give consistent residuals (+9.80 and +9.93 cm-1).
+
+The same structure was verified independently for the other shared pair:
+
+  Pump R86(33-0) and pump P88(33-0) both reach B(33, J' = 87), so their emissions must end on
+  J'' = 86 and J'' = 88. The measured difference between them, 317.276 GHz, matches the model's
+  E_X(48,88) - E_X(48,86) = 311.816 GHz to 5.5 GHz -- and the model's own error at v'' = 48 cancels
+  in that difference. Taking the labels as the emission lines directly (R86 -> R(86), P88 -> P(88))
+  then gives O-C of +7.508 and +7.308 cm-1, i.e. consistent.
+
+With that reading the surviving 18 values are mutually consistent, and the residual varies smoothly
+with rotation: +9.93 cm-1 at J'' = 56, +9.80 at J'' = 58, +7.51 at J'' = 86 and +7.31 at J'' = 88,
+about -0.09 cm-1 per unit J. That smoothness is the evidence the assignment is right; the published
+X potential is simply extrapolating at v'' = 48, as it is at 53 and 54 (see nesterenko2019).
+"""
+
+partial = """
+18 of the paper's 20 values.
+
+Excluded: R87 (33-48) a1 and P85 (33-48) a1. Neither branch choice reconciles them. Reading R87 as
+R(87) gives -0.19 cm-1 and as P(89) gives +10.33; reading P85 as P(85) gives +15.04 and as R(83)
+gives +4.99. The smooth J trend of the other rows predicts about +7.4 and +7.6 respectively, and none
+of the four candidates is close. Since every other row agrees to about 0.1 cm-1, these two are left
+out rather than forced.
+
+The paper also has two internal inconsistencies worth noting: fourteen R86 rows are printed
+"(33-48)" and the fifteenth "(32-48)" (the body text says all 15 components belong to R86(33-48), so
+the last is taken as a misprint), and the row the table gives as "P88 (33-48)" appears as
+"R88(33-48)" in the body text. The R86/P88 shared-upper-level check above is what settles the latter.
+"""
+
+uncertainty = """
+As printed, in parentheses, in units of the last digit of the kHz value: 3 to 65 kHz, converted to
+MHz. The text notes an rms deviation of 11-22 kHz within a day and 40 kHz day to day.
+"""
+
+[conditions]
+method = "three-level laser spectroscopy; frequency-doubled cw Nd:YAG pump, external-cavity diode probe"
+
+notes = "v'' = 48. With nesterenko2019 (v'' = 53, 54) these are the only data above v'' = 17."

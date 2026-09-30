@@ -1,0 +1,53 @@
+id = "kobayashi2015a"
+citation = "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, \"Compact iodine-stabilized laser operating at 531 nm with stability at the 10^-12 level and using a coin-sized laser module\", Opt. Express 23, 20749-20756 (2015)"
+source = "https://arxiv.org/abs/1506.06323 (arXiv preprint, not the published Optics Express version; the published numbers could differ)"
+doi = "10.1364/oe.23.020749"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:kobayashi2015a"
+
+transcription = """
+One value: the absolute frequency of the a1 component of 127I2 R(36) 32-0, 564 074 632 419(8) kHz,
+printed in the abstract (p. 1) and at the end of Sect. 3 (p. 9) of the arXiv version. It is the
+weighted mean of the nine comb measurements plotted in Fig. 6 (the individual runs are only plotted,
+not tabulated, and are not entered). Read from the PDF text layer and checked against a 200 dpi
+rendering of p. 9; converted kHz -> MHz exactly.
+
+The value is the frequency of the laser locked to a1 under the stated operating conditions, NOT an
+extrapolation to zero pressure or power: cold finger 25 C (41 Pa), pump 12.7 mW, beam diameter ~1 mm,
+third-harmonic detection with 12 MHz peak-to-peak modulation, 6 cm cell. The measured sensitivities
+(Table 1, Fig. 7) are -1.3 kHz/Pa, -3.6 kHz/mW, -2.0 kHz/MHz (modulation width) and 7.7 kHz/mV (servo
+offset). Taken literally they would put the unperturbed a1 some 50 + 46 + 24 kHz ~ 0.12 MHz above the
+printed value, but the paper does not make that correction (the 8 kHz budget covers only the
+uncertainty of the operating point) and none is applied here. The catalog already flags this. At
+the present model accuracy the difference is immaterial; a kHz-level fit should inflate the
+uncertainty or drop the row.
+
+R(36) has even J'' and 15 main components; a1 is the lowest in frequency (rank 1). No other
+component of this line was measured: the paper states that components near the Doppler centre were
+not observed. No other data set in data/observations holds R(36) 32-0 (bipm2012a has R(56) 32-0 and
+other 532 nm lines, not this one).
+"""
+
+uncertainty = """
+8 kHz, the paper's total ("< 8 kHz", 1.4e-11) from Table 1: pressure < 0.3, power < 4, modulation < 2,
+servo offset < 4, cell impurity 5, statistics 2.1 kHz (already inflated by sqrt(chi2_red) = 2.3).
+Taken as standard (1 sigma) for the operating conditions above; it does not cover the offset from
+the unperturbed transition.
+"""
+notes = """
+Residual against the default Predictor (2026-09-29): +0.99 MHz. This is a line-centre offset of the
+size the model shows for other v' = 32 lines (bipm2012a a1 of P(53)/P(54)/P(55) 32-0: +0.21 to
++0.36 MHz, R(57)/R(58) 32-0: -0.08/-0.17 MHz), not a transcription or labelling problem; only about
+0.12 MHz of it could come from the uncorrected pressure, power and modulation shifts.
+"""
+
+[conditions]
+method = "saturated absorption, third-harmonic detection (93 kHz modulation, 279 kHz demodulation), comb referenced to UTC(NMIJ)"
+laser = "frequency-doubled 1062 nm DFB diode laser in a coin-sized module (PPLN waveguide)"
+cell_length_cm = 6
+cold_finger_C = 25
+pressure_Pa = 41
+pump_mW = 12.7
+beam_diameter_mm = 1
+modulation_width_MHz_pp = 12

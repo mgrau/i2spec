@@ -1,0 +1,73 @@
+id = "fan2014a"
+citation = "I. Fan, C.-Y. Chang, L.-B. Wang, S. L. Cornish, J.-T. Shy and Y.-W. Liu, \"Refined determination of the muonium-deuterium 1S-2S isotope shift through improved frequency calibration of iodine lines\", Phys. Rev. A 89, 032513 (2014)"
+source = "arXiv:1310.1660v1 (7 Oct 2013), \"New Determination of Muonium-Deuterium 1S-2S Isotope Shift\": the preprint, NOT the published PRA version; https://arxiv.org/abs/1310.1660"
+doi = "10.1103/physreva.89.032513"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:fan2014a"
+
+partial = """
+TRANSCRIBED FROM THE arXiv v1 PREPRINT ONLY. The published version (Phys. Rev. A 89, 032513 (2014),
+doi 10.1103/physreva.89.032513) was not available. Its title changed to "Refined determination ...
+through improved frequency calibration of iodine lines", which suggests the iodine calibration itself was
+revised; the numbers, uncertainties and line labels below may differ in the published paper and should
+be checked against it. Also, the second measured value (the deuterium reference, a blended component,
+see transcription) cannot be represented and is not entered.
+"""
+
+transcription = """
+From the text of preprint p. 3 (right column), "The re-calibrated reference values are (taking
+systematic offsets into account)":
+  a15, P(26) 5-13 (Mu) = 409 253 981.6(0.1) MHz
+  a19-21, P(137) 5-12 (D) = 411 121 767.58(07) MHz
+Read from the pdftotext -layout text layer and checked against a 200 dpi rendering of p. 3.
+
+Entered: the first, as 127I2 R(26) 5-13 a15. Relabelled: the preprint prints "P(26) 5-13" (and "P(137)
+5-12"), but this is the same line as Cornish et al. 2000 (cornish2000a), which prints R(26) 5-13 a15 at
+409 253 981.70(14) MHz; the i2spec model puts R(26) 5-13 at 409 253 587 MHz (hyperfine-free) and P(26)
+5-13 at 409 164 191 MHz, 89 GHz away. So "P" is taken as a misprint for "R". (Whether the published PRA
+corrected it is unknown.) a15 of an even-J'' line is rank 15 of 15, the highest, as in cornish2000a.
+
+Left out: a19-21 of (R)137 5-12, 411 121 767.58(07) MHz. It is a blend of three components with no
+single rank; cornish2000a leaves out the same feature for the same reason. The model position of R(137)
+5-12 is 411 121 391.7 MHz (so this too is an R line; P(137) 5-12 would be 460 GHz away). Also not
+entered: the Mu and D 1S-2S frequencies and isotope shift (Tables I, II), which are not iodine data.
+
+How the value was formed (p. 3 and Fig. 3): the comb data give 409 253 981.7 - 0.6(0.1) = 409 253 981.1
+MHz for the lock point (Fig. 3a, mean of 5 data sets); the authors add their estimated systematic offset
+of the lock point from the true hyperfine centre, -520 kHz (-70 kHz servo/PSD offset, -450 kHz lineshape
+asymmetry), giving 981.6. (Likewise D: 766.2 + 1.23 + 0.15 = 767.58.) The printed value is entered
+unchanged. f_measure includes the -f_AOM/2 correction for the AM of the pump.
+
+Overlap with cornish2000a (same line, same component, and possibly the same HEID4 cell, which Fan et al. say was used for the
+ISIS muonium experiment): fan2014a - cornish2000a = 981.6 - 981.70 = -0.10 MHz, with uncertainties
+0.1 and 0.14 MHz: consistent (0.6 sigma combined). Both are hot-cell (650 C wall) values without a
+pressure extrapolation.
+"""
+
+uncertainty = """
+0.1 MHz as printed, "(0.1)"; the abstract gives the relative precision 2.4e-10 (= 0.098 MHz), and Fig. 3
+calls the 0.1 MHz the standard error of a zero-slope fit to the 5 data sets. Taken as 1 sigma. The paper
+does not give an uncertainty for the -520 kHz systematic correction it applies (the correction is
+comparable to the 11.2 MHz linewidth / SNR stability estimate of 270 kHz), so the 0.1 MHz may understate
+the total uncertainty.
+"""
+
+notes = """
+Residual vs the i2spec Predictor (default parameters, dJ=2), 2026-09-29: obs - model = +4.76 MHz for
+R(26) 5-13 a15 (cornish2000a gives +4.86 MHz on the same component). A model error of this size at
+v''=13 is plausible; the row is not an outlier relative to cornish2000a.
+The two lines are weak hot-band lines at 730-733 nm "not reported in the iodine atlas at 13 350-13 920
+cm-1" (Gerstenkorn, Verges, Chevillard 1982). The OFC was checked on R(56) 32-0 a10 (to < 200 kHz).
+"""
+
+[conditions]
+method = "frequency-modulation saturation spectroscopy (10.23 MHz PM on probe, pump AM at 90 kHz by AOM), comb-referenced"
+laser = "Ti:sapphire (Technoscan TIS-SF-07e), 730 nm"
+cell = "HEID4, 54.1 cm quartz cell (University of Heidelberg), the ISIS muonium reference cell"
+oven_temperature_C = 650
+cold_finger_C = 43
+pump_mW = 185
+probe_mW = 2
+beam_radius_mm = 1
+linewidth_MHz = 11.2

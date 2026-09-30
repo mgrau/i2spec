@@ -1,0 +1,18 @@
+id = "goncharov2007a"
+citation = "A. Goncharov, O. Lopez, A. Amy-Klein and F. du Burck, \"Absolute frequency measurements for hyperfine structure determination of the R(26) 62-0 transition at 501.7 nm in molecular iodine\", Metrologia 44, 275-278 (2007)"
+source = "https://doi.org/10.1088/0026-1394/44/5/003 (arXiv 0706.4005, the version read)"
+doi = "10.1088/0026-1394/44/5/003"
+retrieved = "2026-09-26"
+catalog = "data/catalog/precision.yaml#goncharov2007a"
+unit = "MHz"
+transcription = """
+Table 1 (arXiv PDF p. 11), f(a_n) - 597 366 101 477.9 kHz, all 15 components of R(26) 62-0, read from
+the text layer and checked against a 150 dpi render of the page. Entered as the a1 absolute frequency
+(text p. 5: 597 366 101 477.9 kHz) and fourteen intervals from a1, converted kHz -> MHz exactly. Check:
+a1 + 397 176.6 kHz reproduces the separately quoted mean of the eight a7 measurements,
+597 366 498 654.47 kHz, to 0.03 kHz. The table's last column (differences from their ref. [11]) is not
+entered.
+"""
+uncertainty = "Standard (1 sigma): 250 Hz for each absolute component (their combined standard uncertainty); intervals sqrt(2) x 250 Hz."
+partial = "complete"
+notes = "The only sub-kHz absolute anchor at v' = 62, 90 cm-1 below the B dissociation limit. Low-pressure (0.33 Pa) continuously pumped cell, Ar+ laser at 501.7 nm, comb-referenced."

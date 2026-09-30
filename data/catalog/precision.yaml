@@ -1,0 +1,3570 @@
+# pyodine Stage 2b catalog: sub-Doppler, hyperfine-resolved and absolute-frequency
+# measurements of molecular iodine (B-X system unless noted).
+# Compiled 2026-09-14. See docs/research/02b-precision-data.md for the narrative.
+# Conventions:
+#   - uncertainty_MHz is a representative 1-sigma value in MHz (null if not convertible).
+#   - likely_in_knockel2004: true if the source is cited by / used in Knoeckel, Bodermann,
+#     Tiemann, EPJD 28, 199 (2004); false if published after mid-2003 or clearly not used;
+#     "unknown" otherwise.
+#   - verified: true only where the citation was confirmed via DOI resolver, Crossref,
+#     OpenAlex, Semantic Scholar, or the primary document itself.
+#   - Numbers quoted in notes are copied from the source (abstract, BIPM MeP document, or
+#     full text); anything inferred by the compiler is marked "(inferred)".
+
+# ---------------------------------------------------------------------------------------
+# A. BIPM Mise en pratique (MeP) recommended iodine radiations (current list, checked
+#    https://www.bipm.org/en/publications/mises-en-pratique/standard-frequencies on
+#    2026-09-14). Frequencies/uncertainties quoted verbatim from the MeP PDFs.
+# ---------------------------------------------------------------------------------------
+- id: bipm2012a
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 532 nm), 127I2 a10 component, R(56) 32-0 (approved by the CIPM Oct. 2007; file last updated Aug. 2012)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549514/M-e-P_I2_532.pdf/16c7ddb8-4854-9f16-34cc-5bcebe299ce8"
+  year: 2012
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "compilation; frequency-doubled Nd:YAG, external cell, 3f / MTS, comb-referenced source data"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 (recommended); a1 offsets for P(53)32-0, P(83)33-0 (a21), R(134)36-0, R(106)34-0, R(86)33-0, P(119)35-0, P(54)32-0, R(57)32-0, P(132)36-0, R(145)37-0, R(122)35-0, P(84)33-0, P(104)34-0, P(55)32-0, R(58)32-0, R(87)33-0; 2007 additions P(142)37-0, R(121)35-0, R(85)33-0; full hyperfine tables for all 20 lines"
+  n_items: 334
+  uncertainty: "a10: f = 563 260 223 513 (5) kHz, u_c/y = 8.9e-12; inter-line offsets u_c = 5 kHz; hyperfine intervals u_c = 1-22 kHz (mostly 1-2 kHz)"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF (20 tables)"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: high
+  verified: true
+  notes: "likely_in set to unknown because this 2012 compilation mixes the 2001 CIPM data (used in Knoeckel 2004 via Quinn 2003) with the 2007 additions (not used). Conditions: cold finger (-15 +/- 1) C, 1 MHz p-p modulation (3f), 17 +/- 11 mW/cm2. Pressure coefficient -4.2 kHz/Pa (from Nevsky 2001) used to reduce -5 C data. CCL notes the global mean drifted from ...513.2 to ...511.5 kHz since 2001 (sd 2.6 kHz) but kept the value. Sources: Diddams 2000, Ye 2001, Sugiyama 2002 (NMIJ), Holzwarth 2001, Nevsky 2001; intervals Ye 1999, Zhang 2001, Hong 2000-2004, Arie & Byer 1993/94, Eickhoff thesis 1994, Macfarlane 1999, Jungner 1995, Picard 2003, Hong 2001. The PDF labels the 2007 line both 'R(121) 35-0' (p.3) and 'P(121) 35-0' (Table 19); Hong 2002 title says R(121)35-0. The 2001 version of this list (Quinn 2003) was in the Knoeckel fit; the three 2007 additions (R(85)33-0 from Hong 2004) were not all available then."
+
+- id: bipm2003a
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 633 nm), 127I2 a16 (f) component, R(127) 11-5 (MEP 2003)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549560/M-e-P_I2_633.pdf/c4c25f25-ae65-e05d-402a-9bfc84c715c3"
+  year: 2003
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2", "129I2", "127I129I"]
+  system: "B-X"
+  technique: "compilation; He-Ne internal cell, 3f detection; source data comb/harmonic chain"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "127I2 R(127)11-5 a2-a21 (a16=f recommended); 127I2 P(33)6-3 b1-b21; 129I2 P(54)8-4 a2-a28, P(69)12-6 b1-b36, R(60)8-4 d23-d28, P(33)6-3 e1-e17; 127I129I P(33)6-3 m1-m48"
+  n_items: 175
+  uncertainty: "f = 473 612 353 604 (10) kHz, u_c/y = 2.1e-11; hyperfine intervals 5 kHz - 5 MHz"
+  uncertainty_MHz: 0.010
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF (7 tables)"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Conditions: wall 25 +/- 5 C, cold finger 15.0 +/- 0.2 C, 6.0 +/- 0.3 MHz p-p; cold-finger coefficient -15 kHz/C, modulation -10 kHz/MHz, purity allowance 5 kHz. Sources of absolute value: Ye 2000 PRL 85 3797, Yoon 2001 APB 72 221, Bernard 2001 OC 187 211, Sugiyama 2002, Lea 2002 (NPL). Only precise isotopologue anchors in the MeP: f(a28, 129I2 P(54)8-4) - f(a16, 127I2 R(127)11-5) = -42.99(4) MHz; f(e2, 129I2 P(33)6-3) - f(a16) = 849.4(2) MHz. n_items counts listed components (inferred sum: 20+21+27+36+6+17+48). Knoeckel 2004 used P(33)6-3 of 127I129I and several 129I2 lines from this list."
+
+- id: bipm2005a
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 515 nm), 127I2 a3 component, P(13) 43-0 (MEP 2005)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549496/M-e-P_I2_515.pdf/63b35d2c-379d-aa88-8480-7a44395637b5"
+  year: 2005
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "compilation; Ar+ / frequency-doubled lasers, external cell, comb-referenced source data"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.67, 514.68]
+  range_cm1: null
+  transitions: "P(13)43-0 a1-a21 (a3 recommended); R(15)43-0 b1-b21; R(98)58-1 d1-d15"
+  n_items: 57
+  uncertainty: "a3: f = 582 490 603 442 (5) kHz, u_c/y = 8.6e-12; intervals 1-10 kHz (some 1 MHz); R(15)43-0 and R(98)58-1 anchored only to 5 MHz and 1 MHz"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF (3 tables)"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: high
+  verified: true
+  notes: "likely_in set to unknown: the JILA 2002 input was in Knoeckel 2004, the LPL 2004 input and the 2005 revision were not. Conditions: cold point -5 +/- 2 C (2.4 Pa), saturating intensity < 40 mW/cm2. Mean of Jones et al. APB 74, 597 (2002) [JILA, 582 490 603 441.8 kHz after pressure correction] and Goncharov et al. APB 78, 725 (2004) [LPL, 582 490 603 442.6 kHz]. Hyperfine intervals from Hackel 1975, Camy thesis 1979, Borde 1981, Spieweck 1981, Foth & Spieweck 1979. Knoeckel 2004 used the JILA 514 nm data; the 2005 revision (LPL value) postdates it."
+
+- id: bipm2015a
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 531 nm), 127I2 a1 component, R(36) 32-0 (CIPM Recommendation 2 (CI-2015); file updated May 2016)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549505/127I2_531nm_2015.pdf/3f08c121-ed26-3268-89e9-75b9eb9fc663"
+  year: 2015
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency-doubled DFB diode, external cell, 3f"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [531.48, 531.48]
+  range_cm1: null
+  transitions: "R(36)32-0 a1"
+  n_items: 1
+  uncertainty: "f = 564 074 632.42 MHz, u_c/y = 1e-10 (source value 564 074 632 419(8) kHz enlarged x7)"
+  uncertainty_MHz: 0.056
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Single source: Kobayashi et al., Opt. Express 23, 20749 (2015) (NMIJ). Unusually high cold-finger temperature 25 +/- 0.5 C (41 Pa), 12 MHz p-p modulation; large pressure shift likely, so use the primary paper (8 kHz) with its stated conditions rather than the inflated MeP value."
+
+- id: bipm2003b
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 543 nm), 127I2 b10 component, R(106) 28-0 (MEP 2003)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549533/M-e-P_I2_543.pdf/6791a64e-6a7b-bcd9-308a-bf682306ba89"
+  year: 2003
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "compilation; green He-Ne, external cell"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [543.51, 543.52]
+  range_cm1: null
+  transitions: "R(106)28-0 b1-b15 (b10 recommended); R(12)26-0 a1-a15 (relative to b10)"
+  n_items: 30
+  uncertainty: "b10: f = 551 580 162 400 (25) kHz, u_c/y = 4.5e-11; intervals 5-30 kHz"
+  uncertainty_MHz: 0.025
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF (2 tables)"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Conditions: cold point 0 +/- 2 C, 2.0 +/- 0.5 MHz p-p. Source: Ma, Picard, Zucco et al., Rapport BIPM-2004/16 (value 551 580 162 397.1 kHz, 1.3e-11); intervals from Chartier 1986, Glaeser 1987, Chartier 1989, Simonsen 1990, Fredin-Picard & Razet 1990, Lin/Shy 1994, Simonsen 1994. The absolute value (CCL 2003) likely postdates the Knoeckel data set, but older 543 nm intervals may have been used via Quinn 2003."
+
+- id: bipm2003c
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 576 nm), 127I2 a1 component, P(62) 17-1 (MEP 2003)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549542/M-e-P_I2_576.pdf/bd97f28c-f030-c38f-f1be-a380eea5129d"
+  year: 2003
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "compilation; dye laser, cell"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [576.29, 576.30]
+  range_cm1: null
+  transitions: "P(62)17-1 a1 (recommended), a2-a10, a15"
+  n_items: 11
+  uncertainty: "a1: f = 520 206 808.4 (2) MHz, u_c/y = 4e-10; intervals 20-30 kHz"
+  uncertainty_MHz: 0.2
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Cold finger 6 +/- 2 C. Mean of NBS chain value (CCDM/82-30) and Barwood & Rowley, Metrologia 20, 19 (1984) frequency ratio to 633 nm. Superseded in precision by Reinhardt et al. OC 261, 282 (2006) (comb measurement at 576 nm, see reinhardt2006a)."
+
+- id: bipm2003d
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 612 nm), 127I2 a7 component, R(47) 9-2 (MEP 2003)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549551/M-e-P_I2_612.pdf/e3257540-b5f1-596f-9626-0531add4912a"
+  year: 2003
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2", "129I2"]
+  system: "B-X"
+  technique: "compilation; He-Ne 612 nm, internal/external cell, wavelength ratios"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [611.97, 611.97]
+  range_cm1: null
+  transitions: "127I2 R(47)9-2 a1-a21 (a7 recommended), P(48)11-3 b1-b15, R(48)15-5 c1-c9; 129I2 P(110)10-2 a1-a28, R(113)14-4 b19-b36"
+  n_items: 90
+  uncertainty: "a7: f = 489 880 354.9 MHz (source 489 880 354.93(15) MHz), u_c/y = 3e-10; intervals 3 kHz - 5 MHz"
+  uncertainty_MHz: 0.15
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF (5 tables)"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Cold finger -5 +/- 2 C. Five wavelength-ratio determinations (NPL, BIPM, PTB Boensch 1986, Vitushkin 1990, Himbert 1991) referred to the 633 nm i component (473 612 214 712 kHz). Contains the only MeP 129I2 anchors near 612 nm (P(110)10-2, R(113)14-4), used by Knoeckel 2004."
+
+- id: bipm2003e
+  citation: "BIPM/CIPM, Recommended values of standard frequencies: Iodine (lambda ~ 640 nm), 127I2 a9 component, P(10) 8-5 (MEP 2003)"
+  doi: null
+  url: "https://www.bipm.org/documents/20126/41549593/M-e-P_I2_640.pdf/89d9d1e5-aa97-3bff-d9d1-49e138f1fc13"
+  year: 2003
+  group: "BIPM / CCL (compilation)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "compilation; 3He-22Ne laser 640 nm, internal cell"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [640.28, 640.29]
+  range_cm1: null
+  transitions: "P(10)8-5 a1-a15 (a9 recommended); R(16)8-5 b1-b3"
+  n_items: 18
+  uncertainty: "a9: f = 468 218 332.4 (2) MHz, u_c/y = 4.5e-10; intervals 0.01-1.3 MHz"
+  uncertainty_MHz: 0.2
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "BIPM MeP PDF (2 tables)"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Cold finger 16 +/- 1 C, 6 +/- 1 MHz p-p. Pressure coefficient -7.8 kHz/Pa and modulation coefficient -7.6 kHz/MHz quoted (from Zhao et al. 1985). Wavelength-ratio sources from 1984-1992. No comb re-measurement found for this line (as of 2026)."
+
+- id: quinn2003a
+  citation: "T. J. Quinn, Practical realization of the definition of the metre, including recommended radiations of other optical frequency standards (2001), Metrologia 40, 103-133 (2003)"
+  doi: "10.1088/0026-1394/40/2/316"
+  url: "https://doi.org/10.1088/0026-1394/40/2/316"
+  year: 2003
+  group: "BIPM / CCL"
+  isotopologues: ["127I2", "129I2", "127I129I"]
+  system: "B-X"
+  technique: "compilation (MeP 2001 list)"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.6, 640.3]
+  range_cm1: null
+  transitions: "All CIPM 2001 iodine radiations (515, 532, 543, 576, 612, 633, 640 nm) with hyperfine tables, incl. 129I2 and 127I129I at 612/633 nm"
+  n_items: null
+  uncertainty: "as in the individual MeP documents (5 kHz to 0.2 MHz)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [10]: source of the CIPM lines and the isotopologue lines used in the fit. The current BIPM PDFs (entries bipm20xx) replace these tables; use those."
+
+# ---------------------------------------------------------------------------------------
+# B. Baseline model and pre-2003 precision data (mostly used in Knoeckel 2004)
+# ---------------------------------------------------------------------------------------
+- id: knockel2004a
+  citation: "H. Knoeckel, B. Bodermann, E. Tiemann, High precision description of the rovibronic structure of the I2 B-X spectrum, Eur. Phys. J. D 28, 199-209 (2004)"
+  doi: "10.1140/epjd/e2003-00313-4"
+  url: "https://doi.org/10.1140/epjd/e2003-00313-4"
+  year: 2004
+  group: "Hannover (Institut fuer Quantenoptik)"
+  isotopologues: ["127I2", "129I2", "127I129I"]
+  system: "B-X"
+  technique: "global potential fit (X-representation potentials + BOC) to hyperfine-corrected rovibronic frequencies"
+  observable: "term values"
+  range_nm: [514.0, 833.0]
+  range_cm1: null
+  transitions: "about 1500 rovibronic frequencies; v'' 0-17, v' 0-43, J up to ~238; NIR local Dunham fit for bands 0-12 ... 0-17 (778-815 nm)"
+  n_items: 1500
+  uncertainty: "input floor 3 MHz (1 sigma) on every datum; prediction 2 sigma < 3 MHz for 526-667 nm and 776-815 nm, ~30 MHz for 514-526 nm, up to 60 MHz for 667-776 nm; NIR Dunham model 1 sigma < 200 kHz"
+  uncertainty_MHz: 3.0
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "assigned data set in electronic supplementary table ('Online material'; footnote p.199 points to www.edpsciences.org); Springer page requires login, ESM not retrieved here"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Baseline to beat. Read from full text: data 'mostly' from refs [2-23,30-33,36]; Gerstenkorn-Luc atlas recalibrated (Tables 2-3) to fill 667-776 nm and 514-526 nm; ~400 lines from the Kato Doppler-free atlas (a1/a10/a15, 526-667 nm, 3 MHz floor); P(42) and R(45) 39-2 near 532 nm from H. Schnatz (PTB, private communication 2001). Stated gaps: no direct precise link between v'' 0-7 and v'' 12-17; systematic negative residuals up to 5 MHz for moderate J in bands 33-0, 34-0, 35-0; BOC poorly determined because only six 129I2 lines and one 127I129I line were available; more isotopologue data requested. Implemented in IodineSpec (TOPTICA)."
+
+- id: bodermann2002a
+  citation: "B. Bodermann, H. Knoeckel, E. Tiemann, Widely usable interpolation formulae for hyperfine splittings in the 127I2 spectrum, Eur. Phys. J. D 19, 31-44 (2002)"
+  doi: "10.1140/epjd/e20020052"
+  url: "https://doi.org/10.1140/epjd/e20020052"
+  year: 2002
+  group: "Hannover"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "compilation and interpolation of measured hyperfine constants"
+  observable: "hyperfine constants"
+  range_nm: [500.0, 820.0]
+  range_cm1: null
+  transitions: "eQq, C, d, delta for B and X as smooth functions of (v, J), fitted to all hyperfine data available up to ~2001"
+  n_items: null
+  uncertainty: "hyperfine splittings reproduced to a 2 sigma uncertainty of a few 10 kHz (as characterised in Knoeckel 2004)"
+  uncertainty_MHz: 0.02
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "formulae and tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Used to strip hyperfine shifts from all measured components in Knoeckel 2004. The stated validity range is taken from Stage 1 context and still needs checking against the paper. Later work reports failures: Yoshiki 2023 (EPJD 77) at v'=44 near 514 nm (up to ~800 kHz, as reported to me by the theory agent; not yet verified against the Yoshiki full text); near-dissociation data (Chen 2004) lie outside its fitted v' range. A new global hyperfine model is needed."
+
+- id: sansonetti1997a
+  citation: "C. J. Sansonetti, Precise measurements of hyperfine components in the spectrum of molecular iodine, J. Opt. Soc. Am. B 14, 1913 (1997)"
+  doi: "10.1364/josab.14.001913"
+  url: "https://doi.org/10.1364/josab.14.001913"
+  year: 1997
+  group: "NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-free FM spectroscopy, tunable cw laser locked to I2, Fabry-Perot wavemeter"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [560.0, 656.0]
+  range_cm1: null
+  transitions: "102 hyperfine components spread over 560-656 nm, no gaps larger than 50 cm-1"
+  n_items: 102
+  uncertainty: "typical 1 MHz (95% confidence)"
+  uncertainty_MHz: 0.5
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [11]; part of the 560-650 nm 'dense grid'. Wavemeter-based (not comb), so at the MHz level it is now mainly useful for coverage; check against later comb values."
+
+- id: velchev1998a
+  citation: "I. Velchev, R. van Dierendonck, W. Hogervorst, W. Ubachs, A dense grid of reference iodine lines for optical frequency calibration in the range 571-596 nm, J. Mol. Spectrosc. 187, 21-27 (1998)"
+  doi: "10.1006/jmsp.1997.7480"
+  url: "https://doi.org/10.1006/jmsp.1997.7480"
+  year: 1998
+  group: "Vrije Universiteit Amsterdam (Ubachs)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "saturation spectroscopy with cw dye laser, interferometric calibration"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [571.0, 596.0]
+  range_cm1: null
+  transitions: "dense grid of lines (hyperfine components, typically a1/a10-type strong components), 571-596 nm"
+  n_items: null
+  uncertainty: "about 1 MHz (per Knoeckel 2004)"
+  uncertainty_MHz: 1.0
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [12]. Number of lines not checked (no abstract available via APIs). Partly superseded near 576/585 nm by Reinhardt 2006 (comb)."
+
+- id: xu2000a
+  citation: "S. C. Xu, R. van Dierendonck, W. Hogervorst, W. Ubachs, A dense grid of reference iodine lines for optical frequency calibration in the range 595-655 nm, J. Mol. Spectrosc. 201, 256-266 (2000)"
+  doi: "10.1006/jmsp.2000.8085"
+  url: "https://doi.org/10.1006/jmsp.2000.8085"
+  year: 2000
+  group: "Vrije Universiteit Amsterdam (Ubachs)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "saturation spectroscopy with cw dye laser, interferometric calibration"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [595.0, 655.0]
+  range_cm1: null
+  transitions: "dense grid of hyperfine components, 595-655 nm"
+  n_items: null
+  uncertainty: "about 1 MHz (per Knoeckel 2004)"
+  uncertainty_MHz: 1.0
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [13]. Line count not checked."
+
+- id: ye1999a
+  citation: "J. Ye, L. Robertsson, S. Picard, L.-S. Ma, J. L. Hall, Absolute frequency atlas of molecular I2 lines at 532 nm, IEEE Trans. Instrum. Meas. 48, 544-549 (1999)"
+  doi: "10.1109/19.769654"
+  url: "https://doi.org/10.1109/19.769654"
+  year: 1999
+  group: "JILA / NIST / BIPM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "modulation transfer spectroscopy, two I2 spectrometers, beat notes to R(56)32-0 a10"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "nine rovibrational lines within the Nd:YAG doubling range linked to R(56)32-0 a10; first HFS of P(54)32-0 and R(57)32-0"
+  n_items: null
+  uncertainty: "gap measurements at the kHz level (see BIPM 532 nm source column [7])"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper; values folded into BIPM MeP 532 nm"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Knoeckel 2004 ref. [19]."
+
+- id: zhang2001a
+  citation: "Y. Zhang, J. Ishikawa, F.-L. Hong, Accurate frequency atlas of molecular iodine near 532 nm measured by an optical frequency comb generator, Opt. Commun. 200, 209-215 (2001)"
+  doi: "10.1016/s0030-4018(01)01624-8"
+  url: "https://doi.org/10.1016/s0030-4018(01)01624-8"
+  year: 2001
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS; optical frequency comb generator (EO comb) bridging to R(56)32-0 a10"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "a1 offsets of 16 lines relative to R(56)32-0 a10 (P(53)32-0 ... R(87)33-0; column [8] of the BIPM 532 nm source table)"
+  n_items: 16
+  uncertainty: "kHz level"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper; in BIPM MeP"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Knoeckel 2004 ref. [21]. Line count inferred from the BIPM source table."
+
+- id: holzwarth2001a
+  citation: "R. Holzwarth, A. Yu. Nevsky, M. Zimmermann, Th. Udem, T. W. Haensch, J. von Zanthier, H. Walther, J. C. Knight, W. J. Wadsworth, P. St. J. Russell, M. N. Skvortsov, S. N. Bagayev, Absolute frequency measurement of iodine lines with a femtosecond optical synthesizer, Appl. Phys. B 73, 269-271 (2001)"
+  doi: "10.1007/s003400100633"
+  url: "https://doi.org/10.1007/s003400100633"
+  year: 2001
+  group: "MPQ Garching / ILP Novosibirsk"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "femtosecond comb (PCF-broadened)"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 absolute; a1 of P(54)32-0, R(57)32-0, P(55)32-0, R(58)32-0 relative (BIPM source column [4])"
+  n_items: 5
+  uncertainty: "a10 = 563 260 223 508.7 kHz, u_c = 5.2 kHz at cold finger -5 C (quoted in BIPM MeP 532 nm)"
+  uncertainty_MHz: 0.0052
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper; in BIPM MeP"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Knoeckel 2004 ref. [20]. Same cell as Nevsky 2001. Line count inferred from the BIPM source table."
+
+- id: nevsky2001a
+  citation: "A. Yu. Nevsky, R. Holzwarth, J. Reichert, Th. Udem, T. W. Haensch, J. von Zanthier, H. Walther, H. Schnatz, F. Riehle, P. V. Pokasov, M. N. Skvortsov, S. N. Bagayev, Frequency comparison and absolute frequency measurement of I2-stabilized lasers at 532 nm, Opt. Commun. 192, 263-272 (2001)"
+  doi: "10.1016/s0030-4018(01)01190-7"
+  url: "https://doi.org/10.1016/s0030-4018(01)01190-7"
+  year: 2001
+  group: "MPQ / PTB / ILP Novosibirsk"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "laser comparisons + femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 absolute; P(54)32-0 a1 offset; pressure dependence"
+  n_items: 2
+  uncertainty: "a10 = 563 260 223 507.8 kHz, u_c/y = 2.0e-12 at -5 C (quoted in BIPM MeP)"
+  uncertainty_MHz: 0.0011
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; in BIPM MeP"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Source of the -4.2 kHz/Pa pressure coefficient used by the CCL (systematics). Not in the Knoeckel reference list, but its values enter the CIPM 532 nm value used there."
+
+- id: diddams2000a
+  citation: "S. A. Diddams, D. J. Jones, J. Ye, S. T. Cundiff, J. L. Hall, J. K. Ranka, R. S. Windeler, R. Holzwarth, T. Udem, T. W. Haensch, Direct link between microwave and optical frequencies with a 300 THz femtosecond laser comb, Phys. Rev. Lett. 84, 5102-5105 (2000)"
+  doi: "10.1103/physrevlett.84.5102"
+  url: "https://doi.org/10.1103/physrevlett.84.5102"
+  year: 2000
+  group: "JILA / NIST / MPQ"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "octave-spanning femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 (iodine-stabilized Nd:YAG, 282 THz fundamental)"
+  n_items: 1
+  uncertainty: "combined with Ye 2001: 563 260 223 514.5 kHz, u_c/y = 8.9e-12 (BIPM source value [1,2])"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; in BIPM MeP"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "First direct comb measurement of the 532 nm standard; enters the CIPM value."
+
+- id: ye2001a
+  citation: "J. Ye, L.-S. Ma, J. L. Hall, Molecular iodine clock, Phys. Rev. Lett. 87, 270801 (2001)"
+  doi: "10.1103/physrevlett.87.270801"
+  url: "https://doi.org/10.1103/physrevlett.87.270801"
+  year: 2001
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS-stabilized Nd:YAG + femtosecond comb, one-year record"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10"
+  n_items: 1
+  uncertainty: "instability 4.6e-13 over one year; absolute value in BIPM source [1,2] (563 260 223 514.5 kHz, 8.9e-12)"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; in BIPM MeP"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Key long-term reproducibility benchmark for the 532 nm system."
+
+- id: jungner1995a
+  citation: "P. Jungner, S. Swartz, M. Eickhoff, J. Ye, J. L. Hall, S. Waltman, Absolute frequency of the molecular iodine transition R(56)32-0 near 532 nm, IEEE Trans. Instrum. Meas. 44, 151-154 (1995)"
+  doi: "10.1109/19.377796"
+  url: "https://doi.org/10.1109/19.377796"
+  year: 1995
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS; frequency chain via Rb D2 and 633 nm He-Ne"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10"
+  n_items: 1
+  uncertainty: "563 260 223.480 MHz +/- 70 kHz"
+  uncertainty_MHz: 0.07
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Superseded by comb values."
+
+- id: jungner1995b
+  citation: "P. Jungner, M. Eickhoff, S. Swartz, J. Ye, J. L. Hall, S. Waltman, Stability and absolute frequency of molecular iodine transitions near 532 nm, Proc. SPIE 2378, 22 (1995)"
+  doi: "10.1117/12.208229"
+  url: "https://doi.org/10.1117/12.208229"
+  year: 1995
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS; frequency chain"
+  observable: "pressure broadening/shift"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 absolute; pressure and power shifts"
+  n_items: 1
+  uncertainty: "563 260 223.471 MHz +/- 40 kHz; pressure shift -1.3 kHz/Pa (0.4-4.0 Pa); power shift 2.1 kHz/mW"
+  uncertainty_MHz: 0.04
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [5]. Useful for systematics: the MTS pressure shift (-1.3 kHz/Pa) is much smaller than the 3f value (-4.2 kHz/Pa, Nevsky 2001), which shows that the shift depends on the detection technique."
+
+- id: arie1993a
+  citation: "A. Arie, R. L. Byer, Laser heterodyne spectroscopy of 127I2 hyperfine structure near 532 nm, J. Opt. Soc. Am. B 10, 1990 (1993); errata JOSA B 11, 866 (1994)"
+  doi: "10.1364/josab.10.001990"
+  url: "https://doi.org/10.1364/josab.10.001990"
+  year: 1993
+  group: "Stanford"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "heterodyne of two doubled Nd:YAG lasers"
+  observable: "hyperfine splittings"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "eight rovibrational transitions X(v''=0) to B(v'=32-36)"
+  n_items: null
+  uncertainty: "fit standard deviation < 10 kHz"
+  uncertainty_MHz: 0.01
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper (errata DOI 10.1364/josab.11.000866)"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Source for BIPM 532 nm tables; hyperfine differences for v'=32-36."
+
+- id: arie1994a
+  citation: "A. Arie, R. L. Byer, The hyperfine structure of the 127I2 P(119)35-0 transition, Opt. Commun. 111, 253-258 (1994); erratum Opt. Commun. 127, 382 (1996)"
+  doi: "10.1016/0030-4018(94)90461-8"
+  url: "https://doi.org/10.1016/0030-4018(94)90461-8"
+  year: 1994
+  group: "Stanford"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "heterodyne spectroscopy"
+  observable: "hyperfine splittings"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "P(119)35-0 hyperfine components"
+  n_items: null
+  uncertainty: "few kHz (BIPM table uc 2-4 kHz)"
+  uncertainty_MHz: 0.003
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "table in paper; BIPM MeP 532 nm Table 11"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [3]."
+
+- id: eickhoff1995a
+  citation: "M. L. Eickhoff, J. L. Hall, Optical frequency standard at 532 nm, IEEE Trans. Instrum. Meas. 44, 155-158 (1995)"
+  doi: "10.1109/19.377797"
+  url: "https://doi.org/10.1109/19.377797"
+  year: 1995
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "doubled Nd:YAG, MTS"
+  observable: "hyperfine splittings"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "hyperfine intervals of 532 nm lines (BIPM 532 nm refs [15-17]: e.g. R(106)34-0, R(86)33-0, R(134)36-0, P(83)33-0, P(53)32-0)"
+  n_items: null
+  uncertainty: "kHz level"
+  uncertainty_MHz: 0.002
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper (plus Eickhoff PhD thesis, U. Colorado 1994)"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "Enters the BIPM 532 nm hyperfine tables."
+
+- id: macfarlane1999a
+  citation: "G. M. Macfarlane, G. P. Barwood, W. R. C. Rowley, P. Gill, Interferometric frequency measurements of an iodine stabilized Nd:YAG laser, IEEE Trans. Instrum. Meas. 48, 600-603 (1999)"
+  doi: "10.1109/19.769667"
+  url: "https://doi.org/10.1109/19.769667"
+  year: 1999
+  group: "NPL"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "interferometric wavelength comparison; doubled Nd:YAG"
+  observable: "hyperfine splittings"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "P(54)32-0 and R(57)32-0 hyperfine separations; pressure shift"
+  n_items: null
+  uncertainty: "kHz level (BIPM tables uc 1 kHz); pressure shift -10 kHz/Pa"
+  uncertainty_MHz: 0.001
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP 532 nm Tables 9-10"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "Pressure shift -10 kHz/Pa (a different line and detection scheme than R(56) a10) is a useful systematics data point."
+
+- id: hong2000a
+  citation: "F.-L. Hong, J. Ishikawa, Hyperfine structures of the R(122)35-0 and P(84)33-0 transitions of 127I2 near 532 nm, Opt. Commun. 183, 101-108 (2000)"
+  doi: "10.1016/s0030-4018(00)00870-1"
+  url: "https://doi.org/10.1016/s0030-4018(00)00870-1"
+  year: 2000
+  group: "NRLM (now NMIJ/AIST)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS, heterodyne beat of two I2-stabilized lasers"
+  observable: "hyperfine splittings"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "R(122)35-0 a1-a15, P(84)33-0 a1-a15"
+  n_items: 30
+  uncertainty: "~2 kHz (BIPM tables)"
+  uncertainty_MHz: 0.002
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "table in paper; BIPM MeP 532 nm Tables 5-6"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Hyperfine constants for v'=33 and 35."
+
+- id: hong2001a
+  citation: "F.-L. Hong, J. Ishikawa, A. Onae, H. Matsumoto, Rotation dependence of the excited-state electric quadrupole hyperfine interaction by high-resolution laser spectroscopy of 127I2, J. Opt. Soc. Am. B 18, 1416 (2001)"
+  doi: "10.1364/josab.18.001416"
+  url: "https://doi.org/10.1364/josab.18.001416"
+  year: 2001
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "heterodyne of two I2-stabilized lasers; four-term Hamiltonian fit"
+  observable: "hyperfine constants"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "R(58)32-0, P(55)32-0, P(104)34-0 hyperfine structures"
+  n_items: 49
+  uncertainty: "fit accuracy ~600 Hz; eQq'(J) = -544.049(14) - 0.0002110(43) J(J+1) MHz for v'=32"
+  uncertainty_MHz: 0.0006
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper; BIPM MeP 532 nm Tables 2-4"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "B-state eQq J dependence. n_items inferred from BIPM tables (15+19+15)."
+
+- id: hong2001b
+  citation: "F.-L. Hong, J. Ye, L.-S. Ma, S. Picard, C. J. Borde, J. L. Hall, Rotation dependence of electric quadrupole hyperfine interaction in the ground state of molecular iodine by high-resolution laser spectroscopy, J. Opt. Soc. Am. B 18, 379 (2001)"
+  doi: "10.1364/josab.18.000379"
+  url: "https://doi.org/10.1364/josab.18.000379"
+  year: 2001
+  group: "JILA / NIST / BIPM / NRLM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "heterodyne of two I2-stabilized Nd:YAG lasers incl. crossover lines; four-term fit"
+  observable: "hyperfine constants"
+  range_nm: [532.2, 532.3]
+  range_cm1: null
+  transitions: "R(56)32-0 and P(54)32-0 main and crossover components"
+  n_items: null
+  uncertainty: "average fit deviation ~1 kHz; eQq''(J) = -2452.556(2) - 0.000164(5) J(J+1) - 0.000000005(2) J^2(J+1)^2 MHz (v''=0)"
+  uncertainty_MHz: 0.001
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: high
+  verified: true
+  notes: "Absolute (not just difference) eQq for X and B via crossover lines. This is the reference X-state eQq(J) law."
+
+- id: hong2002a
+  citation: "F.-L. Hong, Y. Zhang, J. Ishikawa, A. Onae, H. Matsumoto, Vibration dependence of the tensor spin-spin and scalar spin-spin hyperfine interactions by precision measurement of hyperfine structures of 127I2 near 532 nm, J. Opt. Soc. Am. B 19, 946 (2002)"
+  doi: "10.1364/josab.19.000946"
+  url: "https://doi.org/10.1364/josab.19.000946"
+  year: 2002
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "heterodyne of two I2-stabilized lasers bridged by EO comb; four-term fit"
+  observable: "hyperfine constants"
+  range_nm: [532.0, 532.3]
+  range_cm1: null
+  transitions: "R(87)33-0, R(145)37-0, P(132)36-0 hyperfine structures"
+  n_items: 57
+  uncertainty: "fit accuracy ~720 Hz"
+  uncertainty_MHz: 0.0007
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper; BIPM MeP 532 nm Tables 1, 7, 8"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [23]. First vibration dependence of d and delta. n_items inferred from BIPM tables (21+21+15)."
+
+- id: hong2002b
+  citation: "F.-L. Hong, Y. Zhang, J. Ishikawa, A. Onae, H. Matsumoto, Hyperfine structure and absolute frequency determination of the R(121)35-0 and P(142)37-0 transitions of 127I2 near 532 nm, Opt. Commun. 212, 89-95 (2002)"
+  doi: "10.1016/s0030-4018(02)01997-1"
+  url: "https://doi.org/10.1016/s0030-4018(02)01997-1"
+  year: 2002
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS + EO comb to R(56)32-0 a10"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [531.9, 532.0]
+  range_cm1: null
+  transitions: "R(121)35-0 a1-a21, P(142)37-0 a1-a15"
+  n_items: 36
+  uncertainty: "offsets to R(56) a10 u = 5 kHz (BIPM); hyperfine intervals 2 kHz"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper; BIPM MeP 532 nm Tables 18-19 (CI-2007)"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [22]."
+
+- id: jones2002a
+  citation: "R. J. Jones, W.-Y. Cheng, K. W. Holman, L. Chen, J. L. Hall, J. Ye, Absolute-frequency measurement of the iodine-based length standard at 514.67 nm, Appl. Phys. B 74, 597-601 (2002)"
+  doi: "10.1007/s003400200846"
+  url: "https://doi.org/10.1007/s003400200846"
+  year: 2002
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ar+ / doubled laser locked to I2, femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.67, 514.68]
+  range_cm1: null
+  transitions: "P(13)43-0 a3 at 515 nm; R(56)32-0 a10 comb check at 532 nm"
+  n_items: null
+  uncertainty: "a3 = 582 490 603 441.8(1.5) kHz as measured at -5 C (2.38 Pa); the 378.8 kHz 'as measured' in BIPM MeP 515 nm is a misprint carried from the Fig. 5 inset (307 for 370)"
+  uncertainty_MHz: 0.0015
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP 515 nm"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Knoeckel 2004 ref. [36]: 'the lines at 514 nm... are fully reproduced'. Transcribed as data/observations/jones2002a; there is no 63 kHz pressure correction (see uncertainty)."
+
+- id: bodermann1998a
+  citation: "B. Bodermann, G. Boensch, H. Knoeckel, A. Nicolaus, E. Tiemann, Wavelength measurements of three iodine lines between 780 nm and 795 nm, Metrologia 35, 105-113 (1998)"
+  doi: "10.1088/0026-1394/35/2/5"
+  url: "https://doi.org/10.1088/0026-1394/35/2/5"
+  year: 1998
+  group: "Hannover / PTB"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "interferometric wavelength comparison against 633 nm He-Ne/I2 and Ca 657 nm"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [781.4, 793.6]
+  range_cm1: null
+  transitions: "R(96)0-14 a10 = 781.488 441 03(10) nm; R(96)0-15 a10 = 793.527 910 44(10) nm; P(166)0-14 a = 790.109 812 76(10) nm"
+  n_items: 3
+  uncertainty: "relative 1.3e-10 (about 50 kHz)"
+  uncertainty_MHz: 0.05
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "values in abstract and paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [14]. Hot-band (v''=14,15) NIR anchors."
+
+- id: bodermann1998b
+  citation: "B. Bodermann, M. Klug, H. Knoeckel, E. Tiemann, T. Trebst, H. R. Telle, Frequency measurement of I2 lines in the NIR using Ca and CH4 optical frequency standards, Appl. Phys. B 67, 95-99 (1998)"
+  doi: "10.1007/s003400050480"
+  url: "https://doi.org/10.1007/s003400050480"
+  year: 1998
+  group: "Hannover / PTB"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency measurement against Ca and CH4 standards"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [778.0, 815.0]
+  range_cm1: null
+  transitions: "NIR hyperfine components of bands 0-12 ... 0-17 (details not checked)"
+  n_items: null
+  uncertainty: "mostly much smaller than 80 kHz (Knoeckel 2004 summary of refs [14,15,17])"
+  uncertainty_MHz: 0.08
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [15]. The range is the overall NIR campaign range (inferred)."
+
+- id: bodermann1998c
+  citation: "B. Bodermann, Untersuchung zur Realisierung eines durchstimmbaren, hochpraezisen Frequenzstandards im NIR und zur Erweiterung des Spektralbereiches mit Hilfe des 127I2-Molekuels, Dissertation, Universitaet Hannover (1998)"
+  doi: null
+  url: "TIB Hannover, PPN 25410990X"
+  year: 1998
+  group: "Hannover"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "beat frequencies between I2-stabilised diode lasers; interferometric wavelength comparison"
+  observable: "absolute hyperfine component frequencies and difference frequencies"
+  range_nm: [778.0, 816.0]
+  range_cm1: null
+  transitions: "Table 6.12: 5 absolute components (R(96)0-15, P(228)1-14, P(166)0-14, R(19)0-15, R(96)0-14); Table 7.1: 55 difference frequencies in bands 0-12 to 0-17 and 1-14"
+  n_items: 60
+  uncertainty: "absolute 48-80 kHz; differences 4.5-45 kHz (statistical)"
+  uncertainty_MHz: 0.05
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in thesis"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "The unpublished difference frequencies behind the Hannover NIR local model. Entered as data/observations/bodermann1998c (54 rows; three duplicates of bodermann2000a, three inconsistent rows and one relabel documented there)."
+
+- id: bodermann2000a
+  citation: "B. Bodermann, M. Klug, U. Winkelhoff, H. Knoeckel, E. Tiemann, Precise frequency measurements of I2 lines in the near infrared by Rb reference lines, Eur. Phys. J. D 11, 213-225 (2000)"
+  doi: "10.1007/s100530070086"
+  url: "https://doi.org/10.1007/s100530070086"
+  year: 2000
+  group: "Hannover"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-free spectroscopy referenced to Rb D-line / two-photon references"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [777.9, 795.1]
+  range_cm1: null
+  transitions: "hyperfine components of 21 lines in the bands 0-12, 0-13, 0-14, 0-15, 1-14, 2-15 and 3-16, plus a four-wave-mixing chain of 3 intervals"
+  n_items: 32
+  uncertainty: "34-243 kHz as printed, per component"
+  uncertainty_MHz: 0.1
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper; transcribed to data/observations/bodermann2000a, see docs/research/nir-anchor-data-2000.md"
+  machine_readable: true
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [17]. Combined with difference frequencies (<50 kHz) from Bodermann PhD thesis (Hannover 1998) to build the NIR local model (fit sd 40 kHz)."
+
+- id: knockel1996a
+  citation: "H. Knoeckel, S. Kremser, B. Bodermann, E. Tiemann, High precision measurements of hyperfine structures near 790 nm of I2, Z. Phys. D 37, 43-48 (1996)"
+  doi: "10.1007/s004600050007"
+  url: "https://doi.org/10.1007/s004600050007"
+  year: 1996
+  group: "Hannover"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "diode-laser saturation spectroscopy, heterodyne"
+  observable: "hyperfine splittings"
+  range_nm: [785.0, 795.0]
+  range_cm1: null
+  transitions: "hyperfine structures of NIR hot-band lines near 790 nm (0-14 / 0-15 bands, details not checked)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Input to Bodermann 2002 hyperfine formulae (X-state high v''). Range approximate (inferred from title)."
+
+- id: kremser1994a
+  citation: "S. Kremser, B. Bodermann, H. Knoeckel, E. Tiemann, Frequency stabilization of diode lasers to hyperfine transitions of the iodine molecule, Opt. Commun. 110, 708-716 (1994)"
+  doi: "10.1016/0030-4018(94)90273-9"
+  url: "https://doi.org/10.1016/0030-4018(94)90273-9"
+  year: 1994
+  group: "Hannover"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "diode-laser saturation spectroscopy"
+  observable: "hyperfine splittings"
+  range_nm: null
+  range_cm1: null
+  transitions: "not checked (NIR diode-laser region)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [4]. No abstract available through the APIs; contents not checked."
+
+- id: cornish2000a
+  citation: "S. L. Cornish, Y.-W. Liu, I. C. Lane, P. E. G. Baird, G. P. Barwood, P. Taylor, W. R. C. Rowley, Interferometric measurements of 127I2 reference frequencies for 1S-2S spectroscopy in muonium, hydrogen, and deuterium, J. Opt. Soc. Am. B 17, 6 (2000)"
+  doi: "10.1364/josab.17.000006"
+  url: "https://doi.org/10.1364/josab.17.000006"
+  year: 2000
+  group: "Oxford / NPL"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-free absorption, interferometric comparison with 633 nm He-Ne/I2"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [730.0, 733.0]
+  range_cm1: null
+  transitions: "three lines near 730 nm incl. R(26)5-13 a15 = 409 253 981.70(0.14) MHz"
+  n_items: 3
+  uncertainty: "0.14 MHz"
+  uncertainty_MHz: 0.14
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [16] ('two calibrations at 730 nm'). One of very few anchors in the 667-776 nm gap. Re-measured with a comb by Fan et al. PRA 89, 032513 (2014) (fan2014a)."
+
+- id: rakowsky1989a
+  citation: "S. Rakowsky, D. Zimmermann, W. E. Ernst, Accurate determination of wavenumbers for iodine molecular lines in the red spectral region, Appl. Phys. B 48, 463-466 (1989)"
+  doi: "10.1007/bf00694680"
+  url: "https://doi.org/10.1007/bf00694680"
+  year: 1989
+  group: "TU / FU Berlin"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-free spectroscopy, wavemeter"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: null
+  range_cm1: null
+  transitions: "hyperfine-resolved lines in the red/NIR (details not checked)"
+  n_items: null
+  uncertainty: "~30 MHz (Knoeckel 2004)"
+  uncertainty_MHz: 30.0
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [31]."
+
+- id: rong1993a
+  citation: "H. Rong, S. Grafstroem, J. Kowalski, G. zu Putlitz, W. Jastrzebski, R. Neumann, A heterodyne laser spectrometer for precision measurements of large line splittings, Opt. Commun. 100, 268-277 (1993)"
+  doi: "10.1016/0030-4018(93)90589-w"
+  url: "https://doi.org/10.1016/0030-4018(93)90589-w"
+  year: 1993
+  group: "Heidelberg"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "heterodyne measurement of large (GHz) splittings between I2 lines"
+  observable: "hyperfine splittings"
+  range_nm: [540.0, 590.0]
+  range_cm1: null
+  transitions: "difference frequencies between lines of bands 24-0, 25-0, 26-0, 27-1, 28-1 (per Knoeckel 2004)"
+  n_items: 16
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [32]: combined with the Grieser 1994 wavelength comparison to give 16 absolute lines. Range is a rough inference from the band assignments (these bands lie near 545-585 nm)."
+
+- id: grieser1994a
+  citation: "R. Grieser, G. Boensch, S. Dickopf, G. Huber, R. Klein, P. Merz, A. Nicolaus, H. Schnatz, Precision measurement of two iodine lines at 585 nm and 549 nm, Z. Phys. A 348, 147-150 (1994) (preprint CERN-PPE/93-215)"
+  doi: "10.1007/bf01289603"
+  url: "https://doi.org/10.1007/bf01289603"
+  year: 1994
+  group: "Univ. Mainz / PTB"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "I2-stabilized dye laser (saturation spectroscopy), Michelson wavelength comparison with 633/515/612 nm standards"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [548.5, 585.0]
+  range_cm1: null
+  transitions: "R(99)15-1 a13 ('i', 585 nm); R(85)25-0 a1 ('w', 549 nm; printed 26-0 by the authors)"
+  n_items: 2
+  uncertainty: "relative standard uncertainty 1.3e-10 (laser budget 54 kHz, 1 sigma)"
+  uncertainty_MHz: 0.07
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "values in paper (preprint)"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [33] states the 549 nm line's band assignment in this paper is erroneous (band 25-0, not 26-0); re-assign before use. Cell cold point 6 C. Reference lines for the Li+ TSR special-relativity test (7Li+ 3S1-3P2 at 548.5 nm). Reinhardt 2006 measured the R(99) 15-1 hyperfine intervals with a comb, but its absolute is a different line (P(10) 14-1). Transcribed as data/observations/grieser1994a; the PDF on file is the CERN preprint."
+
+- id: morinaga1989a
+  citation: "A. Morinaga, K. Sugiyama, N. Ito, J. Helmcke, Hyperfine structure of low-lying vibrational levels in the B electronic state of molecular iodine, J. Opt. Soc. Am. B 6, 1656 (1989)"
+  doi: "10.1364/josab.6.001656"
+  url: "https://doi.org/10.1364/josab.6.001656"
+  year: 1989
+  group: "PTB / NRLM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "FM saturation spectroscopy"
+  observable: "hyperfine constants"
+  range_nm: [657.0, 657.5]
+  range_cm1: null
+  transitions: "R(69)3-4 and P(84)5-5 hyperfine structures"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Knoeckel 2004 ref. [2]. Low-v' B-state hyperfine: eQq_B(MHz) = -0.01721 G(v_B)(cm-1) - 484.89; Delta C nearly constant for v_B < 6. See also Fang 2006 (P(84)5-5, Ca 657 nm reference)."
+
+- id: shiner1993a
+  citation: "D. Shiner, J. M. Gilligan, B. M. Cook, W. Lichten, H2, D2, and HD ionization potentials by accurate calibration of several iodine lines, Phys. Rev. A 47, 4042-4045 (1993)"
+  doi: "10.1103/physreva.47.4042"
+  url: "https://doi.org/10.1103/physreva.47.4042"
+  year: 1993
+  group: "Yale"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "interferometric comparison with 633 nm He-Ne/I2"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: null
+  range_cm1: null
+  transitions: "seven iodine transitions used as references for H2/HD/D2 EF-X spectroscopy"
+  n_items: 7
+  uncertainty: "250 kHz (5e-10)"
+  uncertainty_MHz: 0.25
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [30]. Wavelength region not checked (range null)."
+
+- id: riis1994a
+  citation: "E. Riis, A. G. Sinclair, O. Poulsen, G. W. F. Drake, W. R. C. Rowley, A. P. Levick, Lamb shifts and hyperfine structure in 6Li+ and 7Li+: theory and experiment, Phys. Rev. A 49, 207 (1994); see also E. Riis et al., Phys. Rev. A 33, 3023 (1986)"
+  doi: "10.1103/physreva.49.207"
+  url: "https://doi.org/10.1103/physreva.49.207"
+  year: 1994
+  group: "Aarhus / NPL / Windsor"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "I2 reference lines calibrated interferometrically for Li+ fast-beam spectroscopy"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: null
+  range_cm1: null
+  transitions: "iodine reference lines near the Li+ 2 3S-2 3P lines (details not checked)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 refs [8,9] (the 1986 paper is doi:10.1103/physreva.33.3023). I did not check the iodine content; the wavelength is probably near 548 nm (inferred from the Li+ transition)."
+
+- id: acef1993a
+  citation: "O. Acef, J.-J. Zondy, M. Abed, D. G. Rovera, A. H. Gerard, A. Clairon, Ph. Laurent, Y. Millerioux, P. Juncar, A CO2 to visible optical frequency synthesis chain: accurate measurement of the 473 THz HeNe/I2 laser, Opt. Commun. 97, 29-34 (1993)"
+  doi: "10.1016/0030-4018(93)90612-9"
+  url: "https://doi.org/10.1016/0030-4018(93)90612-9"
+  year: 1993
+  group: "LPTF / BNM-INM (Paris)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "harmonic frequency chain from CO2 lasers"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 (He-Ne/I2 633 nm)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [7]. Historical; superseded by comb values (BIPM 633 nm)."
+
+- id: edwards1999a
+  citation: "C. S. Edwards, G. P. Barwood, P. Gill, W. R. C. Rowley, A 633 nm iodine-stabilized diode-laser frequency standard, Metrologia 36, 41-45 (1999)"
+  doi: "10.1088/0026-1394/36/1/7"
+  url: "https://doi.org/10.1088/0026-1394/36/1/7"
+  year: 1999
+  group: "NPL"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "ECDL saturation spectroscopy, comparison with He-Ne/I2"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "P(33)6-3 complete hyperfine interval sets; absolute b21"
+  n_items: 21
+  uncertainty: "b21 reproducibility 7 kHz (1.5e-11); modulation-, pressure- and power-dependence studied"
+  uncertainty_MHz: 0.007
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Knoeckel 2004 ref. [6]. Also systematics (pressure, modulation, power)."
+
+- id: simonsen2000a
+  citation: "H. R. Simonsen, F. Rose, Absolute measurement of the hyperfine splittings of six molecular 127I2 lines around the He-Ne/I2 wavelength at 633 nm, Metrologia 37, 651-658 (2000)"
+  doi: "10.1088/0026-1394/37/6/2"
+  url: "https://doi.org/10.1088/0026-1394/37/6/2"
+  year: 2000
+  group: "DFM (Denmark)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "two diode-laser spectrometers, 3f detection, beat notes linked to He-Ne/I2 up to 16 GHz"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.9, 633.1]
+  range_cm1: null
+  transitions: "R(60)8-4, R(125)9-4, P(54)8-4 (-12 GHz), P(33)6-3 (-1 GHz), R(39)6-3 (+3.4 GHz; printed P(39) in the abstract), R(59)8-4, P(53)8-4 (+19 GHz), relative to R(127)11-5"
+  n_items: null
+  uncertainty: "typically below 5 kHz (<1e-11)"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Knoeckel 2004 ref. [18]. Seven lines are measured (the title says six); the abstract's P(39) is R(39) 6-3. Transcribed as data/observations/simonsen2000a. kHz-level anchors for v'=6,8,9 and v''=3,4 near 633 nm."
+
+- id: razet1993a
+  citation: "A. Razet, J. Gagniere, P. Juncar, Hyperfine structure analysis of the 33P(6-3) line of 127I2 at 633 nm using a continuous-wave tunable dye laser, Metrologia 30, 61-65 (1993)"
+  doi: "10.1088/0026-1394/30/2/002"
+  url: "https://doi.org/10.1088/0026-1394/30/2/002"
+  year: 1993
+  group: "INM/CNAM (Paris)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "cw dye laser saturation spectroscopy"
+  observable: "hyperfine splittings"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "P(33)6-3 hyperfine components; differences of four hyperfine constants"
+  n_items: 21
+  uncertainty: "few kHz"
+  uncertainty_MHz: 0.005
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP 633 nm Table 2"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "Also the source of the P(33)6-3 to R(127)11-5 offset in the MeP (-532.42(2) MHz)."
+
+- id: ye2000a
+  citation: "J. Ye, T. H. Yoon, J. L. Hall, A. A. Madej, J. E. Bernard, K. J. Siemsen, L. Marmet, J.-M. Chartier, A. Chartier, Accuracy comparison of absolute optical frequency measurement between harmonic-generation synthesis and a frequency-division femtosecond comb, Phys. Rev. Lett. 85, 3797-3800 (2000)"
+  doi: "10.1103/physrevlett.85.3797"
+  url: "https://doi.org/10.1103/physrevlett.85.3797"
+  year: 2000
+  group: "JILA / NIST / NRC / BIPM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "harmonic chain vs femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 f (a16)"
+  n_items: 1
+  uncertainty: "473 612 353 604.8 +/- 1.2 kHz (preliminary)"
+  uncertainty_MHz: 0.0012
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP 633 nm"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: medium
+  verified: true
+  notes: "Source [1] of the 2001 CIPM 633 nm value."
+
+- id: yoon2001a
+  citation: "T. H. Yoon, J. Ye, J. L. Hall, J.-M. Chartier, Absolute frequency measurement of the iodine-stabilized He-Ne laser at 633 nm, Appl. Phys. B 72, 221-226 (2001)"
+  doi: "10.1007/s003400000473"
+  url: "https://doi.org/10.1007/s003400000473"
+  year: 2001
+  group: "JILA / BIPM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "femtosecond comb / chain"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 components (d-g/f)"
+  n_items: null
+  uncertainty: "kHz level (BIPM source [1,2]: 4.0e-12)"
+  uncertainty_MHz: 0.002
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Enters the CIPM 633 nm value."
+
+- id: bernard2001a
+  citation: "J. E. Bernard, A. A. Madej, K. J. Siemsen, L. Marmet, Absolute frequency measurement of the HeNe/I2 standard at 633 nm, Opt. Commun. 187, 211-218 (2001)"
+  doi: "10.1016/s0030-4018(00)01085-3"
+  url: "https://doi.org/10.1016/s0030-4018(00)01085-3"
+  year: 2001
+  group: "NRC Canada"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency chain"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 (f component)"
+  n_items: null
+  uncertainty: "BIPM source [1,3]: 3.0e-12"
+  uncertainty_MHz: 0.0015
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: low
+  verified: true
+  notes: "Enters the CIPM 633 nm value."
+
+- id: rovera2002a
+  citation: "G. D. Rovera, F. Ducos, J.-J. Zondy, O. Acef, J.-P. Wallerand, J. C. Knight, P. St. J. Russell, Absolute frequency measurement of an I2 stabilized Nd:YAG optical frequency standard, Meas. Sci. Technol. 13, 918-922 (2002)"
+  doi: "10.1088/0957-0233/13/6/313"
+  url: "https://doi.org/10.1088/0957-0233/13/6/313"
+  year: 2002
+  group: "BNM-SYRTE / BNM-INM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "femtosecond comb vs H maser"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 (BNM-INM national standard)"
+  n_items: 1
+  uncertainty: "value not in abstract; instability 2.5e-13 tau^-1/2"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Not in Knoeckel's reference list; covered by the MeP value."
+
+- id: robertsson2001a
+  citation: "L. Robertsson, S. Picard, F.-L. Hong, Y. Millerioux, P. Juncar, L.-S. Ma, International comparison of 127I2-stabilized frequency-doubled Nd:YAG lasers between the BIPM, the NRLM and the BNM-INM, October 2000, Metrologia 38, 567-572 (2001)"
+  doi: "10.1088/0026-1394/38/6/12"
+  url: "https://doi.org/10.1088/0026-1394/38/6/12"
+  year: 2001
+  group: "BIPM / NRLM / BNM-INM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "laser intercomparison (3f and MTS)"
+  observable: "pressure broadening/shift"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10; pressure and modulation shifts"
+  n_items: null
+  uncertainty: "dispersion 1.5 kHz (2.6e-12), reproducibility 250 Hz"
+  uncertainty_MHz: 0.0015
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Systematics: pressure- and modulation-induced shifts of 532 nm standards."
+
+- id: cheng2001a
+  citation: "W.-Y. Cheng, J.-T. Shy, Wavelength standard at 543 nm and the corresponding 127I2 hyperfine transitions, J. Opt. Soc. Am. B 18, 363 (2001)"
+  doi: "10.1364/josab.18.000363"
+  url: "https://doi.org/10.1364/josab.18.000363"
+  year: 2001
+  group: "NTHU (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "internal/compact I2-stabilized 543 nm He-Ne lasers"
+  observable: "hyperfine constants"
+  range_nm: [543.5, 543.52]
+  range_cm1: null
+  transitions: "R(106)28-0 (b components) and neighbouring 543 nm lines; hyperfine intervals and constants"
+  n_items: null
+  uncertainty: "resettability < 2 kHz"
+  uncertainty_MHz: 0.002
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "Line list inferred from the MeP 543 nm context; check the full text."
+
+- id: cheng2002a
+  citation: "W.-Y. Cheng, L. Chen, T. H. Yoon, J. L. Hall, J. Ye, Sub-Doppler molecular-iodine transitions near the dissociation limit (523-498 nm), Opt. Lett. 27, 571 (2002)"
+  doi: "10.1364/ol.27.000571"
+  url: "https://doi.org/10.1364/ol.27.000571"
+  year: 2002
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency-doubled Ti:sapphire, MTS, wide survey"
+  observable: "hyperfine splittings"
+  range_nm: [498.0, 523.0]
+  range_cm1: null
+  transitions: "survey of sub-Doppler lines 523-498 nm; linewidth vs wavelength (narrowest ~4 kHz near 508 nm); hyperfine patterns strongly modified toward the dissociation limit"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "figures; little tabulated (Optics Letters)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Not in Knoeckel's reference list. Precursor to Chen 2003/2004 (quantitative hyperfine parameters 500-517 nm). Useful for linewidths and predissociation near the limit."
+
+- id: kato2000a
+  citation: "H. Kato et al., Doppler-Free High Resolution Spectral Atlas of Iodine Molecule 15,000 to 19,000 cm-1 (Japan Society for the Promotion of Science, Tokyo, 2000), 4 volumes + CD-ROMs"
+  doi: null
+  url: "https://search.worldcat.org/title/Doppler-free-high-resolution-spectral-atlas-of-iodine-molecule-15-000-to-19-000-cm/oclc/49336015"
+  year: 2000
+  group: "Kobe University (H. Kato et al.)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-free (polarization / saturation) laser spectroscopy with calibrated marker spectrum"
+  observable: "line positions"
+  range_nm: [526.0, 667.0]
+  range_cm1: [15000.0, 19000.0]
+  transitions: "entire 15000-19000 cm-1 region; hyperfine patterns recorded; Knoeckel 2004 extracted ~400 lines (a1, a10, a15 of single, unblended, mostly even-J lines)"
+  n_items: 400
+  uncertainty: "authors quote better than +/-3 MHz for derived lines (Knoeckel 2004); a catalogue description quotes < 0.00015 cm-1"
+  uncertainty_MHz: 3.0
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "printed atlas (4 vols) + 4 computer discs (JSPS 2000); no DOI; OpenAlex W199898518"
+  machine_readable: false
+  likely_in_knockel2004: true
+  priority: high
+  verified: true
+  notes: "Knoeckel 2004 ref. [24]; its ~400 lines provide the 3 MHz coverage of 526-667 nm. Knoeckel suspects Kato-derived data near 19000 cm-1 cause the J/v-correlated residuals in bands 33-0 to 35-0. Getting the digital atlas (CD-ROM) would let us re-extract many more lines with a modern hyperfine model: high value. Exact technique and calibration still to be checked."
+
+- id: broyer1978a
+  citation: "M. Broyer, J. Vigue, J.-C. Lehmann, Effective hyperfine Hamiltonian in homonuclear diatomic molecules. Application to the B state of molecular iodine, J. Phys. (Paris) 39, 591-609 (1978)"
+  doi: "10.1051/jphys:01978003906059100"
+  url: "https://doi.org/10.1051/jphys:01978003906059100"
+  year: 1978
+  group: "ENS Paris (Lehmann)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "theory + analysis of B-state hyperfine data"
+  observable: "hyperfine constants"
+  range_nm: null
+  range_cm1: null
+  transitions: "B-state effective hyperfine Hamiltonian (eQq, C, d, delta) and second-order contributions"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Theoretical framework used by Bodermann 2002 and Chen 2004/2005 for the v,J dependence of the B-state hyperfine constants. Companion: Vigue, Broyer, Lehmann, J. Phys. 42, 937/949/961 (1981) (hyperfine and magnetic predissociation)."
+
+- id: yokozeki1980a
+  citation: "A. Yokozeki, J. S. Muenter, Laser fluorescence state selected and detected molecular beam magnetic resonance in I2, J. Chem. Phys. 72, 3796-3804 (1980)"
+  doi: "10.1063/1.439594"
+  url: "https://doi.org/10.1063/1.439594"
+  year: 1980
+  group: "Univ. Rochester"
+  isotopologues: ["127I2"]
+  system: "X"
+  technique: "molecular beam magnetic resonance with laser state selection"
+  observable: "hyperfine constants"
+  range_nm: null
+  range_cm1: null
+  transitions: "X-state rovibrational levels: eQq'', C'', spin-spin constants"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Direct X-state hyperfine constants, independent of optical data. Details not checked."
+
+# ---------------------------------------------------------------------------------------
+# C. Post-2003 data, 498-535 nm: near-dissociation, 514-520 nm (1542-nm tripling), 531-535 nm
+# ---------------------------------------------------------------------------------------
+- id: chen2003a
+  citation: "L. Chen, J. Ye, Extensive, high-resolution measurement of hyperfine interactions: precise investigations of molecular potentials and wave functions, Chem. Phys. Lett. 381, 777-783 (2003)"
+  doi: "10.1016/j.cplett.2003.10.052"
+  url: "https://doi.org/10.1016/j.cplett.2003.10.052"
+  year: 2003
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency-doubled Ti:sapphire, MTS, comb-assisted hyperfine measurements"
+  observable: "hyperfine constants"
+  range_nm: [500.0, 517.0]
+  range_cm1: null
+  transitions: "79 B-X lines, v' = 42-70 (the 74 of Chen 2004 plus 5 perturbed by the 1g state); figures only"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "figures only; the numbers are in Chen 2004 (chen2004a)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Letter summary of Chen 2004 (its ref. [16]); four figures, no tables, nothing to transcribe (checked 2026-09-29). Published Dec 2003, after the Knoeckel fit."
+
+- id: chen2004a
+  citation: "L. Chen, W.-Y. Cheng, J. Ye, Hyperfine interactions and perturbation effects in the B0u+(3Pi_u) state of 127I2, J. Opt. Soc. Am. B 21, 820 (2004); see also L. Chen, J. Ye, CPEM 2004 Digest pp. 217-218 (doi:10.1109/cpem.2004.305539)"
+  doi: "10.1364/josab.21.000820"
+  url: "https://doi.org/10.1364/josab.21.000820"
+  year: 2004
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency-doubled Ti:sapphire, MTS, heterodyne/comb; four-term hyperfine fits"
+  observable: "hyperfine constants"
+  range_nm: [500.0, 517.0]
+  range_cm1: null
+  transitions: "eqQ_B, C_B, d_B, delta_B for an extensive set of rovibrational levels 42 <= v' <= 70 (v''=0 lines); perturbation by 1g(1Pi_g) near v' = 57-60; strong u-g mixing in P(84)60-0"
+  n_items: null
+  uncertainty: "kHz-level hyperfine constants (not quoted in abstract)"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "The key dataset for B-state hyperfine near the dissociation limit (v' up to 70), well outside the v' range where Bodermann 2002 was fitted. It gives hyperfine structure only, no absolute anchors, but it is essential for reducing near-dissociation line positions and for testing a new hyperfine model. Lisheng Chen's PhD thesis (JILA, c. 2005, 'High-precision spectroscopy of molecular iodine: from optical frequency standards to global descriptions of hyperfine interactions', listed in Semantic Scholar) probably holds the full tables; I have not checked it."
+
+- id: chen2005a
+  citation: "L. Chen, W. A. de Jong, J. Ye, Characterization of the molecular iodine electronic wave functions and potential energy curves through hyperfine interactions in the B0u+(3Pi_u) state, J. Opt. Soc. Am. B 22, 951 (2005)"
+  doi: "10.1364/josab.22.000951"
+  url: "https://doi.org/10.1364/josab.22.000951"
+  year: 2005
+  group: "JILA / NIST / PNNL"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "ab initio / separated-atom-basis calculation of B-state hyperfine parameters vs. high-precision data"
+  observable: "hyperfine constants"
+  range_nm: null
+  range_cm1: null
+  transitions: "C_B, delta_B, d_B, eqQ_B from contributions of the six electronic states sharing the B-state dissociation limit"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "figures only; theory, no new measurements"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Theory rather than new data; gives a physical model for the v,J dependence of B-state hyperfine parameters that could replace purely empirical interpolation."
+
+- id: goncharov2004a
+  citation: "A. Goncharov, A. Amy-Klein, O. Lopez, F. du Burck, C. Chardonnet, Absolute frequency measurement of the iodine-stabilized Ar+ laser at 514.6 nm using a femtosecond optical frequency comb, Appl. Phys. B 78, 725-731 (2004)"
+  doi: "10.1007/s00340-004-1487-5"
+  url: "https://doi.org/10.1007/s00340-004-1487-5"
+  year: 2004
+  group: "LPL (Univ. Paris 13) / LNE"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ar+ laser, saturation spectroscopy, femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.67, 514.68]
+  range_cm1: null
+  transitions: "P(13)43-0 a3 (and other components, not checked)"
+  n_items: null
+  uncertainty: "a3 = 582 490 603 447.3 kHz, u_c/y = 1.3e-12 as measured; 582 490 603 442.6 kHz after pressure correction (BIPM MeP 515 nm)"
+  uncertainty_MHz: 0.0008
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP 515 nm"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Co-source of the MEP 2005 515 nm value."
+
+- id: wallerand2006a
+  citation: "J.-P. Wallerand, L. Robertsson, L.-S. Ma, M. Zucco, Absolute frequency measurement of molecular iodine lines at 514.7 nm, interrogated by a frequency-doubled Yb-doped fibre laser, Metrologia 43, 294-298 (2006)"
+  doi: "10.1088/0026-1394/43/3/012"
+  url: "https://doi.org/10.1088/0026-1394/43/3/012"
+  year: 2006
+  group: "BIPM / LNE-INM (CNAM) / ECNU"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency-doubled DFB Yb fibre laser, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.6, 514.7]
+  range_cm1: null
+  transitions: "several hyperfine components at 514.67 nm incl. P(13)43-0 a3"
+  n_items: null
+  uncertainty: "consistent with other measurements within 1.5 kHz once collisional shift is accounted for"
+  uncertainty_MHz: 0.0015
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Independent confirmation of the 515 nm MeP value; collisional-shift handling documented."
+
+- id: duburck2005a
+  citation: "F. du Burck, C. Daussy, A. Amy-Klein, A. N. Goncharov, O. Lopez, C. Chardonnet, J.-P. Wallerand, Frequency measurement of an Ar+ laser stabilized on narrow lines of molecular iodine at 501.7 nm, IEEE Trans. Instrum. Meas. 54, 754-758 (2005)"
+  doi: "10.1109/tim.2005.843579"
+  url: "https://doi.org/10.1109/tim.2005.843579"
+  year: 2005
+  group: "LPL / LNE-INM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ar+ 501.7 nm, saturation spectroscopy in pumped low-pressure cell; comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [501.7, 501.72]
+  range_cm1: null
+  transitions: "R(26)62-0 hyperfine component (first absolute measurement)"
+  n_items: 1
+  uncertainty: "not in abstract; linewidths ~30 kHz HWHM"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Superseded by Goncharov 2007 (all components, 250 Hz)."
+
+- id: goncharov2007a
+  citation: "A. Goncharov, O. Lopez, A. Amy-Klein, F. du Burck, Absolute frequency measurements for hyperfine structure determination of the R(26) 62-0 transition at 501.7 nm in molecular iodine, Metrologia 44, 275-278 (2007)"
+  doi: "10.1088/0026-1394/44/5/003"
+  url: "https://doi.org/10.1088/0026-1394/44/5/003"
+  year: 2007
+  group: "LPL (Univ. Paris 13) / ILP Novosibirsk"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ar+ laser locked to I2 in continuously pumped 0.33 Pa cell; femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [501.7, 501.72]
+  range_cm1: null
+  transitions: "R(26)62-0, hyperfine components (all resolved components; count not checked)"
+  n_items: null
+  uncertainty: "250 Hz; linewidth 45 kHz HWHM"
+  uncertainty_MHz: 0.00025
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "The only sub-kHz absolute anchor with v' = 62, close to the dissociation limit. Highest priority for the near-dissociation region, where Knoeckel 2004 has essentially no precision data (Gerstenkorn-Luc only, ~30 MHz)."
+
+- id: ikeda2020a
+  citation: "K. Ikeda, S. Okubo, M. Wada, K. Kashiwagi, K. Yoshii, H. Inaba, F.-L. Hong, Iodine-stabilized laser at telecom wavelength using dual-pitch periodically poled lithium niobate waveguide, Opt. Express 28, 2166 (2020)"
+  doi: "10.1364/oe.381961"
+  url: "https://doi.org/10.1364/oe.381961"
+  year: 2020
+  group: "AIST/NMIJ / Yokohama National Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "third-harmonic of 1542 nm laser (514 nm), saturation spectroscopy, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.0, 514.1]
+  range_cm1: null
+  transitions: "514 nm iodine line used for 1542 nm stabilization (line not named in abstract)"
+  n_items: null
+  uncertainty: "uncertainty evaluation and absolute frequency measurement performed (value not in abstract)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Superseded or extended by Ikeda 2022, Yoshiki 2023 and Matsunaga 2024."
+
+- id: ikeda2022a
+  citation: "K. Ikeda, T. Kobayashi, M. Yoshiki, D. Akamatsu, F.-L. Hong, Hyperfine structure and absolute frequency of 127I2 transitions at 514 nm for wavelength standards at 1542 nm, J. Opt. Soc. Am. B 39, 2264 (2022)"
+  doi: "10.1364/josab.465499"
+  url: "https://doi.org/10.1364/josab.465499"
+  year: 2022
+  group: "Yokohama National Univ. / AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "third harmonic of 1542 nm ECDL, Doppler-free spectroscopy, fibre comb; four-term fits"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.0, 514.2]
+  range_cm1: null
+  transitions: "P(57)45-0, P(91)48-0, R(73)46-0: all hyperfine components"
+  n_items: 59
+  uncertainty: "5.4 kHz (9.3e-12); hyperfine constants to a few kHz"
+  uncertainty_MHz: 0.0054
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "New comb anchors for v' = 45, 46, 48, in the 514-526 nm region where Knoeckel 2004 is only good to ~30 MHz."
+
+- id: matsunaga2024a
+  citation: "S. Matsunaga, Y. Isawa, D. Akamatsu, F.-L. Hong, Optical frequency references at 1542 nm: precision spectroscopy of the R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, and P(71)46-0 lines of 127I2 at 514 nm, Photonics 11, 770 (2024)"
+  doi: "10.3390/photonics11080770"
+  url: "https://doi.org/10.3390/photonics11080770"
+  year: 2024
+  group: "Yokohama National Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS with tripled 1542 nm laser; comb; four-term fits"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.0, 514.2]
+  range_cm1: null
+  transitions: "R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, P(71)46-0: all hyperfine components"
+  n_items: 97
+  uncertainty: "5.6 kHz (9.6e-12); systematic 5 kHz from cell impurity"
+  uncertainty_MHz: 0.0056
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper (open access, MDPI)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Open access. Covers v' = 45-50 and high J (up to 106) at 514 nm, which fills the 514-526 nm weakness of Knoeckel 2004."
+
+- id: nishiyama2024a
+  citation: "A. Nishiyama, S. Okubo, T. Kobayashi, A. Kawasaki, H. Inaba, Measurement of transition frequencies and hyperfine constants of molecular iodine at 520.2 nm, J. Opt. Soc. Am. B 41, 2290 (2024) (arXiv:2409.16522)"
+  doi: "10.1364/josab.531115"
+  url: "https://arxiv.org/abs/2409.16522"
+  year: 2024
+  group: "AIST/NMIJ"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "1560.6 nm ECDL tripled in dual-pitch PPLN; saturation spectroscopy; comb vs H maser"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [520.1, 520.3]
+  range_cm1: null
+  transitions: "P(34)39-0, R(36)39-0, P(33)39-0, R(35)39-0: hyperfine components; a1 absolute"
+  n_items: null
+  uncertainty: "a1 relative 1e-11 (~6 kHz), limited by 5 kHz cell-impurity allowance"
+  uncertainty_MHz: 0.006
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper and arXiv"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Measured systematics from the arXiv full text: pressure shift of a1 -4.80 to -5.23 kHz/Pa (per line); power shift +0.44 to +0.96 kHz/mW; pressure range from 1.44 Pa upward; frequencies corrected to zero pressure and power. Gives the rotation dependence of v'=39 hyperfine constants."
+
+- id: sakamoto2024a
+  citation: "Y. Sakamoto, Y. Kawai, D. Akamatsu, F.-L. Hong, Precision spectroscopy of iodine absorption lines near the 1S0-3P2 transition of Yb atoms at 507 nm, Jpn. J. Appl. Phys. 63, 032006 (2024)"
+  doi: "10.35848/1347-4065/ad30a1"
+  url: "https://doi.org/10.35848/1347-4065/ad30a1"
+  year: 2024
+  group: "Yokohama National Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "ECDL (507 nm), Doppler-free spectroscopy, comb; four-term fits"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [507.0, 507.5]
+  range_cm1: null
+  transitions: "P(40)52-0 and P(52)53-0: hyperfine components"
+  n_items: 30
+  uncertainty: "8 kHz (1.4e-11)"
+  uncertainty_MHz: 0.008
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Comb anchors for v' = 52-53 near the Yb 1S0-3P2 line; part of the near-dissociation region (v' > 43) not covered by the Knoeckel fit."
+
+- id: sakagami2020a
+  citation: "H. Sakagami, K. Yoshii, T. Kobayashi, F.-L. Hong, Absolute frequency and hyperfine structure of 127I2 transitions at 531.5 nm by precision spectroscopy using a narrow-linewidth diode laser, J. Opt. Soc. Am. B 37, 1027 (2020)"
+  doi: "10.1364/josab.385779"
+  url: "https://doi.org/10.1364/josab.385779"
+  year: 2020
+  group: "Yokohama National Univ. / AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "planar-waveguide ECDL (1063 nm, doubled), Doppler-free spectroscopy, comb; four-term fits"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [531.4, 531.6]
+  range_cm1: null
+  transitions: "P(98)34-0, R(38)32-0, P(35)32-0, P(112)35-0, R(75)33-0, R(37)32-0, P(34)32-0: hyperfine components"
+  n_items: null
+  uncertainty: "absolute 5.7 kHz; hyperfine splittings < 1 kHz; constants ~1 kHz"
+  uncertainty_MHz: 0.0057
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Seven lines in bands 32-0 to 35-0: exactly the bands where Knoeckel 2004 reports systematic residuals of up to 5 MHz. Critical test data."
+
+- id: yoshii2019a
+  citation: "K. Yoshii, H. Sakagami, H. Yamamoto, S. Okubo, H. Inaba, F.-L. Hong, High-resolution spectroscopy and laser frequency stabilization using a narrow-linewidth planar-waveguide external cavity diode laser at 1063 nm, Opt. Lett. 45, 129 (2020)"
+  doi: "10.1364/ol.45.000129"
+  url: "https://doi.org/10.1364/ol.45.000129"
+  year: 2019
+  group: "Yokohama National Univ. / AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "PW-ECDL doubled to 531.5 nm; saturation spectroscopy; comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [531.5, 531.6]
+  range_cm1: null
+  transitions: "R(38)32-0 a10 (hyperfine components observed)"
+  n_items: 1
+  uncertainty: "a10 = 564 010 092 161(6) kHz"
+  uncertainty_MHz: 0.006
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "value in abstract"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "OpenAlex lists 2019 (online); journal issue 2020."
+
+- id: kobayashi2015a
+  citation: "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, Compact iodine-stabilized laser operating at 531 nm with stability at the 10^-12 level and using a coin-sized laser module, Opt. Express 23, 20749 (2015)"
+  doi: "10.1364/oe.23.020749"
+  url: "https://doi.org/10.1364/oe.23.020749"
+  year: 2015
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "coin-sized 1062 nm DFB + SHG module; saturated absorption; comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [531.47, 531.48]
+  range_cm1: null
+  transitions: "R(36)32-0 a1"
+  n_items: 1
+  uncertainty: "564 074 632 419(8) kHz (1.4e-11)"
+  uncertainty_MHz: 0.008
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "value in abstract; BIPM MeP 531 nm"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Basis of CI-2015 531 nm radiation. Cold finger 25 C (41 Pa) per MeP, so a large pressure correction is implicit."
+
+- id: yoshii2021a
+  citation: "K. Yoshii, C. Chen, H. Sakagami, F.-L. Hong, Hyperfine structure of molecular iodine measured using a light source with a laser linewidth at the megahertz level, OSA Continuum 4, 1452 (2021)"
+  doi: "10.1364/osac.420628"
+  url: "https://doi.org/10.1364/osac.420628"
+  year: 2021
+  group: "Yokohama National Univ. / Tokushima Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "coin-sized (MHz linewidth) laser, saturation spectroscopy"
+  observable: "other"
+  range_nm: [531.0, 531.6]
+  range_cm1: null
+  transitions: "531 nm hyperfine structures measured with MHz-linewidth vs narrow-linewidth sources"
+  n_items: null
+  uncertainty: "splittings systematically smaller with MHz-linewidth light"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Systematics warning: with MHz-level laser linewidths the measured splittings are biased, and a good four-term fit does not reveal the bias. Weight data by source linewidth."
+
+- id: nomura2019a
+  citation: "J. Nomura, K. Yoshii, Y. Hisai, F.-L. Hong, Precision spectroscopy and frequency stabilization using coin-sized laser modules, J. Opt. Soc. Am. B 36, 631 (2019)"
+  doi: "10.1364/josab.36.000631"
+  url: "https://doi.org/10.1364/josab.36.000631"
+  year: 2019
+  group: "Yokohama National Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "coin-sized laser modules, saturation spectroscopy"
+  observable: "hyperfine splittings"
+  range_nm: [531.0, 594.0]
+  range_cm1: null
+  transitions: "R(36)32-0 (531 nm), P(64)20-0 (561 nm), P(69)12-1 (594 nm) hyperfine components"
+  n_items: null
+  uncertainty: "not stated in abstract"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Mainly technical. Includes a 594 nm line, P(69)12-1, the only 594 nm item found in this survey. Linewidth caveat of Yoshii 2021 applies."
+
+- id: cheng2019a
+  citation: "F. Cheng, K. Deng, K. Liu, H. Liu, J. Zhang, Z. H. Lu, Absolute frequency measurement of molecular iodine hyperfine transition at 534 nm, J. Opt. Soc. Am. B 36, 1816 (2019)"
+  doi: "10.1364/josab.36.001816"
+  url: "https://doi.org/10.1364/josab.36.001816"
+  year: 2019
+  group: "Huazhong Univ. of Science and Technology (HUST)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "1068 nm ECDL doubled, MTS, comb; pressure/power shifts measured"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [533.9, 534.1]
+  range_cm1: null
+  transitions: "R(53)31-0: 19 hyperfine components"
+  n_items: 19
+  uncertainty: "a21 = 561 420 951 318 +/- 8 (type A) +/- 12 (type B) kHz"
+  uncertainty_MHz: 0.014
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "New band 31-0 anchor near 534 nm (Al+ 267 nm subharmonic)."
+
+- id: shie2013a
+  citation: "N.-C. Shie, S.-E. Chen, C.-Y. Chang, W.-F. Hsieh, J.-T. Shy, Absolute frequency measurements of the molecular iodine hyperfine transitions at 535 nm, J. Opt. Soc. Am. B 30, 2022 (2013)"
+  doi: "10.1364/josab.30.002022"
+  url: "https://doi.org/10.1364/josab.30.002022"
+  year: 2013
+  group: "NTHU / NCTU (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "doubled 1070 nm Nd:GdVO4, 3f detection, comb; zero-pressure extrapolation"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [535.0, 535.1]
+  range_cm1: null
+  transitions: "P(28)30-0 a1, a10, a15"
+  n_items: 3
+  uncertainty: "not stated in abstract (stability 3e-12 at 10 s)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Band 30-0 anchor (Tl parity-nonconservation laser). Gives zero-pressure values and pressure/power broadening of a10."
+
+- id: hrabina2014b
+  citation: "J. Hrabina, O. Acef, F. du Burck, N. Chiodo, Y. Candela, M. Sarbort, M. Hola, J. Lazar, Comparison of molecular iodine spectral properties at 514.7 and 532 nm wavelengths, Meas. Sci. Rev. 14, 213-218 (2014)"
+  doi: "10.2478/msr-2014-0029"
+  url: "https://doi.org/10.2478/msr-2014-0029"
+  year: 2014
+  group: "ISI Brno / LNE-SYRTE / LPL"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "frequency-doubled Yb fibre laser, Doppler-free spectroscopy"
+  observable: "other"
+  range_nm: [514.5, 514.8]
+  range_cm1: null
+  transitions: "eight Doppler-broadened lines near 514.7 nm surveyed; three studied in detail (linewidths, S/N) vs 532 nm lines"
+  n_items: 8
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper (open access)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Linewidth data at 514.7 nm (predissociation/pressure broadening). No absolute frequencies."
+
+- id: philippe2016a
+  citation: "C. Philippe, R. Le Targat, D. Holleville, M. Lours, T. Minh-Pham, J. Hrabina, F. du Burck, P. Wolf, O. Acef, Frequency tripled 1.5 um telecom laser diode stabilized to iodine hyperfine line in the 10^-15 range, 2016 European Frequency and Time Forum (EFTF), pp. 1-3"
+  doi: "10.1109/eftf.2016.7477827"
+  url: "https://doi.org/10.1109/eftf.2016.7477827"
+  year: 2016
+  group: "LNE-SYRTE / LPL / ISI Brno"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "tripled 1542 nm diode, MTS"
+  observable: "other"
+  range_nm: [514.0, 514.1]
+  range_cm1: null
+  transitions: "R(35)44-0 a1"
+  n_items: 1
+  uncertainty: "stability 4.8e-14 tau^-1/2, 6e-15 at 50 s (no absolute value in abstract)"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Stability demonstration; see also Philippe et al., ICSO 2016 (doi:10.1117/12.2296121). The LNE-SYRTE 1.5 um/I2 program (Acef) covers 510-521 nm."
+
+- id: barbarat2019a
+  citation: "J. Barbarat, J. Gillot, H. Alvarez-Martinez, R. Le Targat, P.-E. Pottie, J. Hrabina, M.-T. Pham, P. Tuckey, O. Acef, Linear Zeeman effect on iodine-based frequency stabilized laser, 2019 Joint Conf. IEEE IFCS/EFTF, pp. 1-3"
+  doi: "10.1109/fcs.2019.8856044"
+  url: "https://doi.org/10.1109/fcs.2019.8856044"
+  year: 2019
+  group: "LNE-SYRTE / ISI Brno"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "tripled 1542.1 nm diode, MTS, controlled longitudinal B field"
+  observable: "other"
+  range_nm: [514.0, 514.03]
+  range_cm1: null
+  transitions: "R(34)44-0 all 15 hyperfine components at 514.017 nm"
+  n_items: 15
+  uncertainty: "linear Zeeman shift 1.8e-12 per gauss (~1 kHz/G)"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Systematics: the magnetic sensitivity of hyperfine components; relevant to unshielded cells."
+
+# ---------------------------------------------------------------------------------------
+# D1. Post-2003 data, 540-600 nm (reference lines near Li+, Yb, Yb+, Al+, Ca; 560-585 nm)
+# ---------------------------------------------------------------------------------------
+- id: hsiao2013a
+  citation: "Y.-C. Hsiao, C.-Y. Kao, H.-C. Chen, S.-E. Chen, J.-L. Peng, L.-B. Wang, Absolute frequency measurement of the molecular iodine hyperfine transitions at 548 nm, J. Opt. Soc. Am. B 30, 328 (2013)"
+  doi: "10.1364/josab.30.000328"
+  url: "https://doi.org/10.1364/josab.30.000328"
+  year: 2013
+  group: "NTHU / ITRI (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "doubled fibre-amplified ECDL, MTS, comb; pressure shift/broadening studied"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [548.0, 548.6]
+  range_cm1: null
+  transitions: "P(28)24-0 a1, a10, a15"
+  n_items: 3
+  uncertainty: "line centres determined to better than 20 kHz"
+  uncertainty_MHz: 0.02
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Reference for Li+ spectroscopy (548 nm). Band 24-0 anchor."
+
+- id: ko2012a
+  citation: "K.-H. Ko, K. H. Lee, H. Park, J. Han, Y.-H. Cha, G. Lim, T.-S. Kim, D.-Y. Jeong, Frequency stabilization of the frequency doubled DOFA to the 127I2 line for calcium spectroscopy, Chin. Opt. Lett. 10, S21903 (2012)"
+  doi: "10.3788/col201210.s21903"
+  url: "https://doi.org/10.3788/col201210.s21903"
+  year: 2012
+  group: "KAERI (Korea)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "doubled diode + fibre amplifier (544 nm), saturated absorption"
+  observable: "other"
+  range_nm: [543.9, 544.1]
+  range_cm1: null
+  transitions: "I2 hyperfine line near 544 nm used for the 48Ca transition at 272 nm (line not identified in abstract)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Lead only; no absolute frequency in abstract."
+
+- id: chen2023a
+  citation: "Y. T. Chen, N. C. Xin, H. R. Qin, S. N. Miao, Y. H. Zheng, J. W. Zhang, L. J. Wang, Absolute frequency measurement of molecular iodine hyperfine transitions at 554 nm and its application to stabilize a 369 nm laser for Yb+ ions cooling, Chin. J. Phys. 88, 485-492 (2024) (arXiv:2309.05932)"
+  doi: "10.1016/j.cjph.2023.12.007"
+  url: "https://arxiv.org/abs/2309.05932"
+  year: 2023
+  group: "Tsinghua University (J. W. Zhang, L. J. Wang)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "tripled/doubled laser (1108 nm -> 554 nm), MTS, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [554.0, 554.5]
+  range_cm1: null
+  transitions: "13 lines: R(50)22-0, P(46)22-0, P(121)24-0, P(69)25-1, R(146)25-0, R(147)28-1, P(160)26-0, P(102)26-1, R(96)23-0, R(49)22-0, P(45)22-0, P(92)23-0, R(72)25-1 (hyperfine structures; lock line R(146)25-0 a15)"
+  n_items: null
+  uncertainty: "not stated in arXiv abstract"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper/arXiv (to be checked)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Many lines, including very high J (up to 160) and v''=1 hot-band lines. EFTF 2024 companion: doi:10.1109/eftf61992.2024.10722760. Journal volume year 2024, online Dec 2023."
+
+- id: tanabe2022a
+  citation: "Y. Tanabe, Y. Sakamoto, T. Kohno, D. Akamatsu, F.-L. Hong, Frequency references based on molecular iodine for the study of Yb atoms using the 1S0-3P1 intercombination transition at 556 nm, Opt. Express 30, 46487 (2022)"
+  doi: "10.1364/oe.478917"
+  url: "https://doi.org/10.1364/oe.478917"
+  year: 2022
+  group: "Yokohama National Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-free spectroscopy, comb; four-term fits"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [555.7, 556.0]
+  range_cm1: null
+  transitions: "R(53)24-1, P(49)24-1, R(95)25-1: hyperfine components"
+  n_items: 63
+  uncertainty: "7 kHz (1.3e-11); hyperfine constants ~1 kHz"
+  uncertainty_MHz: 0.007
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper (open access)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "v''=1 hot-band anchors near the Yb 556 nm line. Open access."
+
+- id: hauden2024a
+  citation: "M. Hauden, J. Millo, M. Matusko, F. Ponciano Ojeda, Y. Kersale, M. Delehaye, Offset sideband locking to iodine for laser cooling on the 1S0 -> 3P1 transition of 171Yb, Opt. Express 33, 12519 (2025)"
+  doi: "10.1364/oe.547123"
+  url: "https://doi.org/10.1364/oe.547123"
+  year: 2024
+  group: "FEMTO-ST / Univ. Franche-Comte"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "offset sideband locking (dual-tone EOM), comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [555.7, 556.0]
+  range_cm1: null
+  transitions: "P(49)24-1 (component(s) not named in abstract)"
+  n_items: null
+  uncertainty: "systematic fractional uncertainty 9e-12 (~5 kHz)"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Independent check of Tanabe 2022 P(49)24-1 values. OpenAlex year 2024; journal 2025."
+
+- id: demelo2024a
+  citation: "A. M. Galvao de Melo, H. Letellier, A. Apoorva, A. Glicenstein, R. Kaiser, Laser frequency stabilization by modulation transfer spectroscopy and balanced detection of molecular iodine for laser cooling of 174Yb, Opt. Express 32, 6204 (2024)"
+  doi: "10.1364/oe.512281"
+  url: "https://doi.org/10.1364/oe.512281"
+  year: 2024
+  group: "INPHYNI Nice"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS with balanced detection"
+  observable: "other"
+  range_nm: [555.7, 556.0]
+  range_cm1: null
+  transitions: "weak hyperfine transition of R(158)25-0"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Identifies a very high-J line (J=158) near 174Yb 556 nm; no absolute frequency in abstract."
+
+- id: zhang2009a
+  citation: "J. Zhang, Z. H. Lu, L. J. Wang, Absolute frequency measurement of the molecular iodine hyperfine components near 560 nm with a solid-state laser source, Appl. Opt. 48, 5629 (2009)"
+  doi: "10.1364/ao.48.005629"
+  url: "https://doi.org/10.1364/ao.48.005629"
+  year: 2009
+  group: "MPL Erlangen / Univ. Erlangen-Nuernberg"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "all-solid-state frequency-quadrupled source, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [559.9, 560.2]
+  range_cm1: null
+  transitions: "R(34)20-0 a1, a10, a15; P(144)23-0 a1"
+  n_items: 4
+  uncertainty: "not stated in abstract (stability 4e-12 at 100 s)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Band 20-0 and a very high-J (144) 23-0 line; pressure and power broadening of R(34)20-0 a10. Likely for Mg+ (280 nm = 560/2) spectroscopy (inferred)."
+
+- id: yang2011a
+  citation: "T. Yang, F. Meng, Y. Zhao, P. Yu, Y. Li, J. Cao, C. Gao, Z. Fang, E. Zang, Hyperfine structure and absolute frequency measurements of 127I2 transitions with monolithic Nd:YAG 561-nm lasers, Appl. Phys. B 106, 613-618 (2012)"
+  doi: "10.1007/s00340-011-4750-6"
+  url: "https://doi.org/10.1007/s00340-011-4750-6"
+  year: 2011
+  group: "NIM China / Tsinghua / BIT"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "doubled monolithic Nd:YAG (1123 nm), MTS, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [561.0, 561.5]
+  range_cm1: null
+  transitions: "561 nm lines incl. P(58)22-1 (hyperfine structure and absolute frequencies; details not checked)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper (not checked)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "No abstract available through the APIs; the P(58)22-1 assignment comes from the companion paper yang2011b. Online 2011, issue 2012."
+
+- id: yang2011b
+  citation: "T. Yang, Y. Li, Y. Zhao, P. Yu, J. Cao, Z. Fang, C. Gao, E. Zang, Modulation transfer spectroscopy of 127I2 hyperfine structure at 561 nm, IEEE Trans. Instrum. Meas. 60, 2517-2521 (2011)"
+  doi: "10.1109/tim.2011.2108555"
+  url: "https://doi.org/10.1109/tim.2011.2108555"
+  year: 2011
+  group: "NIM China / Tsinghua / BIT"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS, two lasers locked to P(58)22-1 a15, heterodyne"
+  observable: "pressure broadening/shift"
+  range_nm: [561.0, 561.5]
+  range_cm1: null
+  transitions: "P(58)22-1 a15; lines assigned from B-X calculation"
+  n_items: null
+  uncertainty: "stability 1e-13 at 1 s; pressure and power shifts measured (values not in abstract)"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Systematics at 561 nm."
+
+- id: reinhardt2006a
+  citation: "S. Reinhardt, G. Saathoff, S. Karpuk, C. Novotny, G. Huber, M. Zimmermann, R. Holzwarth, T. Udem, T. W. Haensch, G. Gwinner, Iodine hyperfine structure and absolute frequency measurements at 565, 576, and 585 nm, Opt. Commun. 261, 282-290 (2006)"
+  doi: "10.1016/j.optcom.2005.12.029"
+  url: "https://doi.org/10.1016/j.optcom.2005.12.029"
+  year: 2006
+  group: "Univ. Mainz / MPIK Heidelberg / MPQ / Univ. Manitoba"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "dye-laser saturation spectroscopy, heterodyne, self-referenced femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [565.0, 585.0]
+  range_cm1: null
+  transitions: "lines at 565, 576 and 585 nm for the Li+ Ives-Stilwell experiment at the TSR; per Salumbides 2008 these include P(80)21-1 (564 nm) and P(10)14-1 (585 nm); full list not checked"
+  n_items: null
+  uncertainty: "not verified (a search-engine snippet mentions < 70 kHz; unconfirmed)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper (not checked)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "No abstract available through the APIs; ScienceDirect blocked. Cites Knoeckel 2004 and Bodermann 2002 and probably compares with them. Re-measures the 585 nm standard of Grieser 1994 and the 576 nm MeP region."
+
+- id: hong2009a
+  citation: "F.-L. Hong, H. Inaba, K. Hosaka, M. Yasuda, A. Onae, Doppler-free spectroscopy of molecular iodine using a frequency-stable light source at 578 nm, Opt. Express 17, 1652 (2009) (arXiv:0902.0463)"
+  doi: "10.1364/oe.17.001652"
+  url: "https://doi.org/10.1364/oe.17.001652"
+  year: 2009
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "sum-frequency-generation source, saturation spectroscopy, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [578.4, 578.5]
+  range_cm1: null
+  transitions: "R(37)16-1 a1 (hyperfine components observed)"
+  n_items: 1
+  uncertainty: "a1 = 518 304 551 833 (2) kHz"
+  uncertainty_MHz: 0.002
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "value in abstract; full text on arXiv (0902.0463)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Reference for the Yb 1S0-3P0 clock laser at 578 nm. v''=1 hot band."
+
+- id: kobayashi2016a
+  citation: "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, Absolute frequency measurements and hyperfine structures of the molecular iodine transitions at 578 nm, J. Opt. Soc. Am. B 33, 725 (2016) (arXiv:1603.07416)"
+  doi: "10.1364/josab.33.000725"
+  url: "https://arxiv.org/abs/1603.07416"
+  year: 2016
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "SHG of 1156 nm ECDL, saturation spectroscopy, fibre comb; four-term fits"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [578.3, 578.5]
+  range_cm1: null
+  transitions: "four rovibrational transitions near 578 nm, 81 hyperfine components (line list: see arXiv)"
+  n_items: 81
+  uncertainty: "typical relative 1.4e-11 (~7 kHz)"
+  uncertainty_MHz: 0.007
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper and arXiv"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Open preprint. Near the Yb clock transition."
+
+- id: yoshiki2023a
+  citation: "M. Yoshiki, S. Matsunaga, K. Ikeda, D. Akamatsu, F.-L. Hong, Rotation dependence of v' = 44 excited-state hyperfine constants obtained via precise measurements of the hyperfine structures of 127I2 lines near 514 nm, Eur. Phys. J. D 77 (2023)"
+  doi: "10.1140/epjd/s10053-023-00712-7"
+  url: "https://ynu.repo.nii.ac.jp/records/2001411"
+  year: 2023
+  group: "Yokohama National Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "tripled 1542 nm laser, MTS, comb; four-term fits; empirical J-dependence for v'=44"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [514.1, 514.2]
+  range_cm1: null
+  transitions: "R(38)44-0, P(36)44-0, R(37)44-0, P(35)44-0, R(36)44-0, P(34)44-0, R(58)45-0; e.g. R(38)44-0 a1 = 583 075 471 946.2(5.6) kHz, P(34)44-0 a1 = 583 161 470 615.8(5.6) kHz, R(58)45-0 b1 = 583 161 394 939.6(5.6) kHz"
+  n_items: 103
+  uncertainty: "5.6 kHz (9.6e-12) absolute; hyperfine fits ~1-2 kHz; eQq' to ~4 kHz"
+  uncertainty_MHz: 0.0056
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper; accepted manuscript open at YNU repository"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "From the accepted manuscript (Table 8): the Bodermann 2002 interpolation formulae mispredict the R(58)45-0 hyperfine splittings with SD 386.7 kHz, max |obs-pred| 802.8 kHz (b5); for P(34)44-0 the SD is 78.2 kHz. The a5 of P(34)44-0 and b7 of R(58)45-0 are blended (167 kHz pull). This is direct evidence that the 2002 hyperfine model fails at v' >= 44 and high J. Gives an empirical v'=44 J-dependence of eQq', C', d', delta'."
+
+# ---------------------------------------------------------------------------------------
+# D2. Post-2003 data, 600-680 nm, and post-2003 re-measurements of the 532/543/633 nm standards
+# ---------------------------------------------------------------------------------------
+- id: manzoor2024a
+  citation: "S. Manzoor, M. Chiarotti, S. A. Meek, G. Santambrogio, N. Poli, Precision spectroscopy and frequency determination of the hyperfine components of the P(63) 4-4 transition of molecular iodine near 652 nm, Opt. Express 32, 44683 (2024) (arXiv:2410.03305)"
+  doi: "10.1364/oe.539192"
+  url: "https://iris.inrim.it/bitstream/11696/82439/1/Manzoor_OpticsExpress32p44683_2024.pdf"
+  year: 2024
+  group: "INRIM / CNR-INO / Univ. Florence (LENS)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "FM saturated absorption, comb-referenced"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [652.39, 652.41]
+  range_cm1: null
+  transitions: "P(63)4-4, all 21 hyperfine components (weak hot-band line)"
+  n_items: 21
+  uncertainty: "centre of gravity 459 524 036.90(12) MHz; Delta eQq = 1957.67(71) MHz; Delta C = 20.37(60) kHz; linewidth ~7 MHz"
+  uncertainty_MHz: 0.12
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper (open access)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "The measured centre of gravity lies ~20 MHz below the literature (atlas-derived) 459 524 056(30) MHz. That is an example of the remaining MHz-level errors in weak hot bands. Near the Cd 1S0-3P1 line (326.2 nm = half of 652.4 nm). Open access."
+
+- id: huang2018a
+  citation: "Y.-C. Huang, Y.-C. Guan, T.-H. Suen, J.-T. Shy, L.-B. Wang, Absolute frequency measurement of molecular iodine hyperfine transitions at 647 nm, Appl. Opt. 57, 2102 (2018)"
+  doi: "10.1364/ao.57.002102"
+  url: "https://doi.org/10.1364/ao.57.002102"
+  year: 2018
+  group: "NTHU (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Littrow ECDL, saturation spectroscopy, fibre comb; pressure shift"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [646.9, 647.1]
+  range_cm1: null
+  transitions: "P(46)5-4 a1, a10, a15"
+  n_items: 3
+  uncertainty: "line centres to 21 kHz; pressure shift -8.3(7) kHz/Pa"
+  uncertainty_MHz: 0.021
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Reference for Li 2S-3P (323 nm = 647/2). v''=4 hot band."
+
+- id: huang2013a
+  citation: "Y.-C. Huang, H.-C. Chen, S.-E. Chen, J.-T. Shy, L.-B. Wang, Precise frequency measurements of iodine hyperfine transitions at 671 nm, Appl. Opt. 52, 1448 (2013)"
+  doi: "10.1364/ao.52.001448"
+  url: "https://doi.org/10.1364/ao.52.001448"
+  year: 2013
+  group: "NTHU (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "ECDL, MTS, comb; zero-pressure extrapolation"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [670.9, 671.1]
+  range_cm1: null
+  transitions: "R(78)4-6 a1, a10, a15"
+  n_items: 3
+  uncertainty: "line centres to better than 40 kHz (zero pressure)"
+  uncertainty_MHz: 0.04
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Reference for the Li D lines. v''=6 hot band at 671 nm, inside the poorly constrained 667-776 nm region of Knoeckel 2004: high value."
+
+- id: fang2006b
+  citation: "H.-M. Fang, S.-C. Wang, J.-T. Shy, Frequency stabilization of an external cavity diode laser to molecular iodine at 657.483 nm, Appl. Opt. 45, 3173 (2006)"
+  doi: "10.1364/ao.45.003173"
+  url: "https://doi.org/10.1364/ao.45.003173"
+  year: 2006
+  group: "NTHU / NCTU (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "ECDL, current modulation, 3f detection"
+  observable: "other"
+  range_nm: [657.48, 657.49]
+  range_cm1: null
+  transitions: "P(84)5-5 (component o used for locking)"
+  n_items: null
+  uncertainty: "stability < 10 kHz (2.2e-11); no absolute value in abstract"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Near the Ca 657 nm intercombination line; same line as Morinaga 1989."
+
+- id: guo2004a
+  citation: "R. Guo, F.-L. Hong, A. Onae, Z.-Y. Bi, H. Matsumoto, K. Nakagawa, Frequency stabilization of a 1319-nm Nd:YAG laser by saturation spectroscopy of molecular iodine, Opt. Lett. 29, 1733 (2004); companion: F.-L. Hong et al., CPEM 2002 Digest pp. 572-573 (doi:10.1109/cpem.2002.1034976)"
+  doi: "10.1364/ol.29.001733"
+  url: "https://doi.org/10.1364/ol.29.001733"
+  year: 2004
+  group: "NMIJ/AIST / UEC"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "doubled 1319 nm Nd:YAG (659.5 nm), saturation spectroscopy; comb (CPEM 2002)"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [659.4, 659.6]
+  range_cm1: null
+  transitions: "hyperfine transitions near 659.5 nm (lines not identified in abstracts)"
+  n_items: null
+  uncertainty: "stability 6e-12 at 1.5 s; absolute frequency measured per CPEM 2002 digest (value not checked)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper (not checked)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Another red anchor; needs the full text to extract lines and values."
+
+- id: wolf2009a
+  citation: "E. Wolf, Pressure broadening and pressure shift of diatomic iodine at 675 nm, arXiv:0910.5053 (2009); related: J. A. Eng, J. L. Hardwick, J. A. Raasch, E. N. Wolf, Spectrochim. Acta A 60, 3413 (2004), doi:10.1016/j.saa.2003.11.044"
+  doi: "10.48550/arxiv.0910.5053"
+  url: "https://arxiv.org/abs/0910.5053"
+  year: 2009
+  group: "Univ. Oregon"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-limited diode-laser absorption with buffer gases"
+  observable: "pressure broadening/shift"
+  range_nm: [674.5, 675.5]
+  range_cm1: null
+  transitions: "B-X lines near 675 nm (buffer-gas broadening and shift coefficients)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "in arXiv preprint"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Foreign-gas broadening and shifts (relevant to cell impurities); Doppler-limited. Belongs partly to the Stage 2a line-shape catalog."
+
+- id: hong2004a
+  citation: "F.-L. Hong, S. Diddams, R. Guo, Z.-Y. Bi, A. Onae, H. Inaba, J. Ishikawa, K. Okumura, D. Katsuragi, J. Hirata, T. Shimizu, T. Kurosu, Y. Koga, H. Matsumoto, Frequency measurements and hyperfine structure of the R(85)33-0 transition of molecular iodine with a femtosecond optical comb, J. Opt. Soc. Am. B 21, 88 (2004)"
+  doi: "10.1364/josab.21.000088"
+  url: "https://doi.org/10.1364/josab.21.000088"
+  year: 2004
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "doubled Nd:YAG / Nd:YVO4, high-resolution spectroscopy, Ti:sapphire comb; four-term fit"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [531.9, 532.0]
+  range_cm1: null
+  transitions: "R(85)33-0 a1-a21"
+  n_items: 21
+  uncertainty: "offset to R(56)32-0 a10 = 46 496 559.1(5.0) kHz; intervals 2 kHz (BIPM MeP 532 nm Table 20)"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper; BIPM MeP 532 nm (CI-2007)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Blue end of the Nd:YAG tuning range; band 33-0, where Knoeckel 2004 shows residuals."
+
+- id: hong2004b
+  citation: "F.-L. Hong, J. Ishikawa, Y. Zhang, R. Guo, A. Onae, H. Matsumoto, Frequency reproducibility of an iodine-stabilized Nd:YAG laser at 532 nm, Opt. Commun. 235, 377-385 (2004)"
+  doi: "10.1016/j.optcom.2004.02.044"
+  url: "https://doi.org/10.1016/j.optcom.2004.02.044"
+  year: 2004
+  group: "NMIJ/AIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Nd:YAG/I2 systematics study"
+  observable: "pressure broadening/shift"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 (systematic shifts; details not checked)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Systematics reference (pressure, power, modulation). No abstract via APIs."
+
+- id: picard2003a
+  citation: "S. Picard, L. Robertsson, L.-S. Ma, K. Nyholm, M. Merimaa, T. E. Ahola, P. Balling, P. Kren, J.-P. Wallerand, Comparison of 127I2-stabilized frequency-doubled Nd:YAG lasers at the Bureau International des Poids et Mesures, Appl. Opt. 42, 1019 (2003); see also Picard et al., IEEE Trans. Instrum. Meas. 52, 236 (2003), doi:10.1109/tim.2003.810459"
+  doi: "10.1364/ao.42.001019"
+  url: "https://doi.org/10.1364/ao.42.001019"
+  year: 2003
+  group: "BIPM / MIKES / CMI / BNM-INM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "laser intercomparison"
+  observable: "pressure broadening/shift"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10; pressure-, modulation- and power-induced shifts"
+  n_items: null
+  uncertainty: "dispersion 3.5 kHz (6.2e-12), reproducibility ~0.4 kHz"
+  uncertainty_MHz: 0.0035
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper; source [21] of BIPM MeP 532 nm"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "The 3.5 kHz spread across national standards is a realistic floor for cell-to-cell differences at 532 nm."
+
+- id: cheng2020a
+  citation: "F. Cheng, N. Jin, F. Zhang, H. Li, Y. Du, J. Zhang, K. Deng, Z. H. Lu, A 532 nm molecular iodine optical frequency standard based on modulation transfer spectroscopy, Chin. Phys. B 30, 050603 (2021)"
+  doi: "10.1088/1674-1056/abd754"
+  url: "https://doi.org/10.1088/1674-1056/abd754"
+  year: 2020
+  group: "HUST (Wuhan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS, RAM analysis, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 (component as in paper)"
+  n_items: 1
+  uncertainty: "5.3 kHz (9.4e-12); corrected value within 2 kHz of the BIPM value"
+  uncertainty_MHz: 0.0053
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Useful for the MTS residual-amplitude-modulation shift model."
+
+- id: fang2007a
+  citation: "Z. Fang, Q. Wang, M. Wang, F. Meng, B. Lin, T. Li, Femtosecond frequency comb and optical frequency measurement of 532 nm Nd:YAG laser, Acta Phys. Sin. 56, 5684 (2007)"
+  doi: "10.7498/aps.56.5684"
+  url: "https://doi.org/10.7498/aps.56.5684"
+  year: 2007
+  group: "NIM China"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ti:sapphire comb referenced to Cs"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10 (abstract has a typo '32-10')"
+  n_items: 1
+  uncertainty: "563 260 223 512 991 +/- 20 Hz as stated (relative 3.6e-14, statistical only as far as the abstract shows)"
+  uncertainty_MHz: 0.005
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper (Chinese)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "I set uncertainty_MHz to the 5 kHz MeP level because the 20 Hz figure appears to be statistical only."
+
+- id: balling2007a
+  citation: "P. Balling, P. Kren, Absolute frequency measurements of wavelength standards 532 nm, 543 nm, 633 nm and 1540 nm, Eur. Phys. J. D 48, 3-10 (2008)"
+  doi: "10.1140/epjd/e2007-00325-0"
+  url: "https://doi.org/10.1140/epjd/e2007-00325-0"
+  year: 2007
+  group: "CMI (Czech Metrology Institute)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "comb measurements of national standards"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.0, 633.0]
+  range_cm1: null
+  transitions: "532 nm, 543 nm and 633 nm iodine standards (components not checked)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Possibly the only comb measurement of the 543 nm standard besides the BIPM report. No abstract via APIs."
+
+- id: merimaa2008a
+  citation: "M. Merimaa, V. Ahtee, K. Nyholm, Absolute frequency measurement of an iodine-stabilized 543-nm He-Ne laser with modulation-synchronized phase-locked loop for improved frequency counting, CPEM 2008 Digest pp. 312-313"
+  doi: "10.1109/cpem.2008.4574778"
+  url: "https://doi.org/10.1109/cpem.2008.4574778"
+  year: 2008
+  group: "MIKES (Finland)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "slave laser phase-locked to 543 nm He-Ne, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [543.51, 543.52]
+  range_cm1: null
+  transitions: "R(106)28-0 (component as in paper; likely b10)"
+  n_items: null
+  uncertainty: "agrees with the CIPM value (number not in abstract)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "not tabulated (conference digest)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "543 nm check."
+
+- id: lea2003a
+  citation: "S. N. Lea, W. R. C. Rowley, H. S. Margolis, G. P. Barwood, G. Huang, P. Gill, J.-M. Chartier, R. S. Windeler, Absolute frequency measurements of 633 nm iodine-stabilized helium-neon lasers, Metrologia 40, 84-88 (2003)"
+  doi: "10.1088/0026-1394/40/2/313"
+  url: "https://doi.org/10.1088/0026-1394/40/2/313"
+  year: 2003
+  group: "NPL / BIPM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ti:sapphire comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 f (a16)"
+  n_items: 1
+  uncertainty: "0.6 kHz; BIPM-4 f = 473 612 353 608.1(0.7) kHz"
+  uncertainty_MHz: 0.0007
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper; BIPM MeP 633 nm source [5]"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "633 nm standard; the value depends on the laser (the MeP condition set)."
+
+- id: madej2004a
+  citation: "A. A. Madej, J. E. Bernard, L. Robertsson, L.-S. Ma, M. Zucco, R. S. Windeler, Long-term absolute frequency measurements of 633 nm iodine-stabilized laser standards at NRC and demonstration of high reproducibility of such devices in international frequency measurements, Metrologia 41, 152-160 (2004)"
+  doi: "10.1088/0026-1394/41/3/007"
+  url: "https://doi.org/10.1088/0026-1394/41/3/007"
+  year: 2004
+  group: "NRC / BIPM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "comb, long-term"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 components"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Reproducibility of 633 nm standards."
+
+- id: hamid2005a
+  citation: "R. Hamid, E. Sahin, M. Celik, G. Ozen, M. Zucco, L. Robertsson, L.-S. Ma, 10^-12 level reproducibility of an iodine-stabilized He-Ne laser endorsed by absolute frequency measurements in the BIPM and UME, Metrologia 43, 106-108 (2006)"
+  doi: "10.1088/0026-1394/43/1/015"
+  url: "https://doi.org/10.1088/0026-1394/43/1/015"
+  year: 2005
+  group: "UME (Turkey) / BIPM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "comb (BIPM and UME)"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 f"
+  n_items: 1
+  uncertainty: "473 612 353 602.0 +/- 1.1 kHz (BIPM comb, 2003); 473 612 353 600.6 +/- 1.1 kHz (UME comb, 2005)"
+  uncertainty_MHz: 0.0011
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "values in abstract"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Laser-specific values (power and modulation shifts apply)."
+
+- id: smith2007a
+  citation: "R. P. Smith, P. A. Roos, J. K. Wahlstrand, J. A. Pipis, M. Belmonte Rivas, S. T. Cundiff, Optical frequency metrology of an iodine-stabilized He-Ne laser using the frequency comb of a quantum-interference-stabilized mode-locked laser, J. Res. NIST 112, 289 (2007)"
+  doi: "10.6028/jres.112.022"
+  url: "https://doi.org/10.6028/jres.112.022"
+  year: 2007
+  group: "JILA / NIST"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "QI-stabilized Ti:sapphire comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 i component"
+  n_items: 1
+  uncertainty: "473 612 214 712.96 +/- 0.66 kHz"
+  uncertainty_MHz: 0.00066
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "value in abstract (open access)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "i component, not f."
+
+- id: samoudi2012a
+  citation: "B. Samoudi, M. M. Perez, S. Ferreira-Barragans, E. Prieto, Absolute optical frequency measurements of iodine-stabilized He-Ne laser at 633 nm by using a femtosecond laser frequency comb, Int. J. Metrol. Qual. Eng. 3, 101-106 (2012)"
+  doi: "10.1051/ijmqe/2012012"
+  url: "https://doi.org/10.1051/ijmqe/2012012"
+  year: 2012
+  group: "CEM (Spain)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Menlo FC1500 comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [632.99, 632.99]
+  range_cm1: null
+  transitions: "R(127)11-5 d, e, f, g, h, i"
+  n_items: 6
+  uncertainty: "mean difference from CCL values 6.557 kHz (uncertainty not in abstract)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Laser-specific offsets; low value for molecular constants."
+
+- id: badr2006a
+  citation: "T. Badr, M. D. Plimmer, P. Juncar, M. E. Himbert, Y. Louyer, D. J. E. Knight, Observation by two-photon laser spectroscopy of the 4d10 5s 2S1/2 -> 4d9 5s2 2D5/2 clock transition in atomic silver, Phys. Rev. A 74, 062509 (2006)"
+  doi: "10.1103/physreva.74.062509"
+  url: "https://doi.org/10.1103/physreva.74.062509"
+  year: 2006
+  group: "LNE-INM / CNAM (Paris)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ag two-photon spectroscopy calibrated by heterodyne with an I2-stabilized laser at 661 nm"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [661.1, 661.4]
+  range_cm1: null
+  transitions: "P(62)4-5 a1"
+  n_items: 1
+  uncertainty: "I2 value not in abstract (Ag centre of gravity quoted to 0.19 MHz at 906 THz)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Salumbides 2008 used it as an absolute measurement of P(62)4-5. It was found via Salumbides 2008, not via searches of iodine titles: many such atomic-physics papers contain an I2 calibration."
+
+# ---------------------------------------------------------------------------------------
+# E1. Post-2003 data, 667-1070 nm (red / near-IR hot bands, emission lines to high v'')
+# ---------------------------------------------------------------------------------------
+- id: dube2004a
+  citation: "P. Dube, M. Trinczek, Hyperfine-structure splittings and absorption strengths of molecular-iodine transitions near the trapping frequencies of francium, J. Opt. Soc. Am. B 21, 1113 (2004)"
+  doi: "10.1364/josab.21.001113"
+  url: "https://doi.org/10.1364/josab.21.001113"
+  year: 2004
+  group: "NRC Canada / TRIUMF"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "saturated-absorption spectroscopy; Doppler-profile analysis"
+  observable: "hyperfine splittings"
+  range_nm: [717.5, 718.5]
+  range_cm1: null
+  transitions: "P(78)1-9, R(86)1-9, R(146)2-9, R(113)3-10: hyperfine splittings, Delta eQq and Delta C; absorption strengths"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Hyperfine data for X v''=9-10 (inside the 667-776 nm gap). Also gives transition dipole moment 1.10(3) D at R-centroid 0.293 nm (useful for intensities)."
+
+- id: huet2013a
+  citation: "N. Huet, S. Krins, P. Dube, T. Bastin, Hyperfine-structure splitting of the 716 nm R(90)3-10 molecular iodine transition, J. Opt. Soc. Am. B 30, 1317 (2013)"
+  doi: "10.1364/josab.30.001317"
+  url: "https://doi.org/10.1364/josab.30.001317"
+  year: 2013
+  group: "Univ. Liege / NRC Canada"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "saturated absorption, Ti:sapphire"
+  observable: "hyperfine splittings"
+  range_nm: [715.8, 716.2]
+  range_cm1: null
+  transitions: "R(90)3-10: hyperfine splittings, Delta eQq, Delta C"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Reference line for Fe laser cooling. Another X v''=10 hyperfine data point."
+
+- id: fan2014a
+  citation: "I. Fan, C.-Y. Chang, L.-B. Wang, S. L. Cornish, J.-T. Shy, Y.-W. Liu, Refined determination of the muonium-deuterium 1S-2S isotope shift through improved frequency calibration of iodine lines, Phys. Rev. A 89, 032513 (2014)"
+  doi: "10.1103/physreva.89.032513"
+  url: "https://doi.org/10.1103/physreva.89.032513"
+  year: 2014
+  group: "NTHU (Taiwan) / Durham"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "comb recalibration of I2 reference lines"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [729.0, 733.0]
+  range_cm1: null
+  transitions: "I2 reference lines for Mu and D 1S-2S (Mu line presumably R(26)5-13 a15 of Cornish 2000 - inferred)"
+  n_items: 2
+  uncertainty: "relative 2.4e-10 (Mu reference) and 1.7e-10 (D reference), i.e. ~0.1 MHz"
+  uncertainty_MHz: 0.1
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Comb anchors in the 667-776 nm gap (v''~13). Wavelength range inferred from the 244 nm = 3 x 732 nm scheme of Cornish 2000."
+
+- id: reinhardt2007a
+  citation: "S. Reinhardt, B. Bernhardt, C. Geppert, R. Holzwarth, G. Huber, S. Karpuk, N. Miski-Oglu, W. Noertershaeuser, C. Novotny, Th. Udem, Absolute frequency measurements and comparisons in iodine at 735 nm and 772 nm, Opt. Commun. 274, 354-360 (2007)"
+  doi: "10.1016/j.optcom.2007.02.050"
+  url: "https://doi.org/10.1016/j.optcom.2007.02.050"
+  year: 2007
+  group: "Univ. Mainz / MPQ / GSI"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "I2-stabilized Ti:sapphire/diode lasers, femtosecond comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [735.0, 772.0]
+  range_cm1: null
+  transitions: "per Salumbides 2008: P(42)1-14 and R(114)2-11 (both quoted 'at 735 nm'); 772 nm line(s) not identified here"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper (not checked)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "No abstract via APIs. Anchors in the 667-776 nm gap for the Li+ Ives-Stilwell experiment at ESR/GSI (inferred context). Included in the Salumbides 2008 refit."
+
+- id: liao2010a
+  citation: "C.-C. Liao, K.-Y. Wu, Y.-H. Lien, H. Knoeckel, H.-C. Chui, E. Tiemann, J.-T. Shy, Precise frequency measurements of 127I2 lines in the wavelength region 750-780 nm, J. Opt. Soc. Am. B 27, 1208 (2010)"
+  doi: "10.1364/josab.27.001208"
+  url: "https://doi.org/10.1364/josab.27.001208"
+  year: 2010
+  group: "NTHU (Taiwan) / Hannover"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Ti:sapphire, Doppler-free FM spectroscopy, comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [750.0, 780.0]
+  range_cm1: null
+  transitions: "27 hyperfine transitions in bands 0-12 and 0-13"
+  n_items: 27
+  uncertainty: "relative a few 1e-10 (~0.1 MHz), limited by laser instability"
+  uncertainty_MHz: 0.1
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "tables in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Knoeckel and Tiemann are co-authors. The frequencies deviate from the Knoeckel 2004 predictions by more than expected, and an improved local model (755-815 nm) is given with absolute error < 0.2 MHz. Cited as 'to be published' in Salumbides 2008."
+
+- id: sharma2023a
+  citation: "L. Sharma, A. Roy, S. Panja, S. De, Stabilizing frequency of a diode laser to a reference transition of molecular iodine through modulation transfer spectroscopy, Atoms 11, 83 (2023)"
+  doi: "10.3390/atoms11050083"
+  url: "https://doi.org/10.3390/atoms11050083"
+  year: 2023
+  group: "CSIR-NPL India / IUCAA"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS in a 450 C cell"
+  observable: "other"
+  range_nm: [739.0, 739.1]
+  range_cm1: null
+  transitions: "R(78)1-11 hot band at 13 531.18 cm-1 (739.03382 nm)"
+  n_items: null
+  uncertainty: "lock linewidth ~0.5-0.75 MHz; no absolute frequency"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Yb+ 369.5 nm (x2 = 739 nm) reference. Shows sub-Doppler signals are possible for v''=11 hot bands with a heated cell."
+
+- id: powel2021a
+  citation: "R. Powel, M. Koble, J. Palmes, N. Everett, P. Imgram, K. Koenig, J. Lantis, K. Minamisono, W. Noertershaeuser, R. H. Parker, S. Pineda, F. Sommer et al., Improved wavelength meter calibration in near infrared region via Doppler-free spectroscopy of molecular iodine, Appl. Phys. B 127 (2021)"
+  doi: "10.1007/s00340-021-07650-5"
+  url: "https://doi.org/10.1007/s00340-021-07650-5"
+  year: 2021
+  group: "Augustana Univ. / MSU (FRIB) / TU Darmstadt"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Doppler-free I2 spectroscopy for wavemeter calibration"
+  observable: "line positions"
+  range_nm: null
+  range_cm1: null
+  transitions: "NIR iodine lines (details not checked)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper (not checked)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Cites Knoeckel 2004 and Bodermann 2002; may contain comb-referenced NIR line positions. Full text needed."
+
+- id: matyugin2012a
+  citation: "Yu. A. Matyugin, S. M. Ignatovich, S. A. Kuznetsov, M. I. Nesterenko, M. V. Okhapkin, V. S. Pivtsov, M. N. Skvortsov, S. N. Bagayev, Absolute frequency measurement for the emission transitions of molecular iodine in the 982-985 nm range, Quantum Electron. 42, 250-257 (2012)"
+  doi: "10.1070/qe2012v042n03abeh014799"
+  url: "https://doi.org/10.1070/qe2012v042n03abeh014799"
+  year: 2012
+  group: "ILP Novosibirsk"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "three-level (pump 532 nm / probe ECDL) emission spectroscopy, Ti:sapphire comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [982.0, 985.0]
+  range_cm1: null
+  transitions: "B->X emission to v''=48: R56(32-48) a1, P58(32-48) a1, P85(33-48) a1, R87(33-48) a1, R88(33-48) a10 and all 15 components of R86(33-48)"
+  n_items: 20
+  uncertainty: "relative 7e-10 (~0.2 MHz), set by diode-laser instability"
+  uncertainty_MHz: 0.21
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Unique precision data on X-state levels v''=48, far above the v''<=17 range of Knoeckel 2004. Combined with the known B v'=32/33 levels (532 nm system) they give X term values near the dissociation limit."
+
+- id: nesterenko2019a
+  citation: "M. I. Nesterenko, S. M. Ignatovich, S. A. Kuznetsov, Yu. A. Matyugin, M. N. Skvortsov, Absolute frequency measurements for emission transitions of molecular iodine in the range of 1053-1068 nm, Quantum Electron. 49, 633-640 (2019)"
+  doi: "10.1070/qel16890"
+  url: "https://doi.org/10.1070/qel16890"
+  year: 2019
+  group: "ILP Novosibirsk"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "three-level emission spectroscopy (Nd:YAG SHG pump, ECDL probe), Ti:sapphire comb"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [1053.0, 1068.0]
+  range_cm1: null
+  transitions: "18 hyperfine components of six emission lines in bands 32-53 and 32-54"
+  n_items: 18
+  uncertainty: "relative 8e-10 (~0.23 MHz)"
+  uncertainty_MHz: 0.23
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "table in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "X-state v''=53-54, close to the ground-state dissociation limit. Complements Matyugin 2012."
+
+- id: nolleke2018a
+  citation: "C. Noelleke, C. Raab, R. Neuhaus, S. Falke, Absolute frequency atlas from 915 nm to 985 nm based on laser absorption spectroscopy of iodine, J. Mol. Spectrosc. 346, 19-22 (2018)"
+  doi: "10.1016/j.jms.2017.12.013"
+  url: "https://doi.org/10.1016/j.jms.2017.12.013"
+  year: 2018
+  group: "TOPTICA Photonics"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "mode-hop-free ECDL scanned with calibrated wavelength meter, Doppler-limited absorption in hot cell"
+  observable: "line positions"
+  range_nm: [915.0, 985.0]
+  range_cm1: null
+  transitions: "almost 10,000 hot-band absorption lines"
+  n_items: 10000
+  uncertainty: "50 MHz"
+  uncertainty_MHz: 50.0
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "supplementary line list (per J. Mol. Spectrosc. practice; not checked)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Not sub-Doppler; listed here because it is the only dense NIR atlas beyond 900 nm and constrains high-v'' levels. Primary home is the Stage 2a catalog."
+
+# ---------------------------------------------------------------------------------------
+# E2. Isotopologues (129I2, 127I129I)
+# ---------------------------------------------------------------------------------------
+- id: salumbides2006a
+  citation: "E. J. Salumbides, K. S. E. Eikema, W. Ubachs, U. Hollenstein, H. Knoeckel, E. Tiemann, The hyperfine structure of 129I2 and 127I129I in the B3Pi(0u+)-X1Sigma(g+) band system, Mol. Phys. 104, 2641-2652 (2006)"
+  doi: "10.1080/00268970600747696"
+  url: "https://research.vu.nl/en/publications/10b68ee0-6dd0-48ba-a0f9-b898a544b992"
+  year: 2006
+  group: "VU Amsterdam / ETH Zurich / Hannover"
+  isotopologues: ["127I2", "129I2", "127I129I"]
+  system: "B-X"
+  technique: "double saturation spectroscopy with one cw dye laser (isotopologue cell + 127I2 reference cell), etalon markers"
+  observable: "hyperfine constants"
+  range_nm: [573.0, 633.0]
+  range_cm1: null
+  transitions: "lines at 573-583 nm, 610-615 nm and near 633 nm with v'' 0-5; >120 eqQ_B (127I2), >200 (129I2), >170 (127I129I) and as many C_B values"
+  n_items: 490
+  uncertainty: "typical eqQ 2 MHz, C 2 kHz; line frequencies ~1 MHz (1 sigma) vs 127I2 references"
+  uncertainty_MHz: 1.0
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "hyperfine parameter tables in electronic supplement (parts 1 and 2); publisher PDF open at VU research portal"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Refits the Hannover hyperfine formulas (update of Bodermann 2002): valid for 0 <= v'' <= 17 and 0 <= v' <= 53, with two extra B-state spin-spin parameters and corrected formulas (12)-(13) of the 2002 paper. It also points out an apparent fitting artefact in Hong 2002 (R(121)35-0 a8/a12). n_items is a lower bound (inferred: 120+200+170). The corrected hyperfine model is in effect the Hannover baseline after 2006."
+
+- id: salumbides2008a
+  citation: "E. J. Salumbides, K. S. E. Eikema, W. Ubachs, U. Hollenstein, H. Knoeckel, E. Tiemann, Improved potentials and Born-Oppenheimer corrections by new measurements of transitions of 129I2 and 127I129I in the B3Pi(0u+)-X1Sigma(g+) band system, Eur. Phys. J. D 47, 171-179 (2008)"
+  doi: "10.1140/epjd/e2008-00045-y"
+  url: "https://research.vu.nl/en/publications/793e0a65-fa3b-467f-8fe3-1f34d7c1d382"
+  year: 2008
+  group: "VU Amsterdam / ETH Zurich / Hannover"
+  isotopologues: ["127I2", "129I2", "127I129I"]
+  system: "B-X"
+  technique: "double saturation spectroscopy (as salumbides2006a); global direct-potential fit with effective BOC"
+  observable: "line positions"
+  range_nm: [573.0, 633.0]
+  range_cm1: null
+  transitions: "more than 380 frequency differences between 127I2 and 129I2 / 127I129I lines (573-583, 610-615, ~633 nm); combined data base > 1900 frequencies or differences, ~290 of them for 129I2"
+  n_items: 380
+  uncertainty: "differences weighted 2.1 MHz; absolute data floor 3 MHz (as in Knoeckel 2004); fit residual histogram width 0.431"
+  uncertainty_MHz: 2.1
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "data set and B/X potential parameters in electronic form at www.epj.org (ESM); publisher PDF open at VU research portal"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "The post-2004 successor of Knoeckel 2004: new B and X potentials and effective BOC valid for all three isotopologues. Added absolute 127I2 data: Badr 2006 (P(62)4-5, 661 nm), Reinhardt 2006 (P(80)21-1 at 564 nm, P(10)14-1 at 585 nm), Reinhardt 2007 (P(42)1-14 and R(114)2-11, quoted at 735 nm), high-J (0-15) lines measured with a comb in Amsterdam (unpublished) and Liao et al. (then unpublished, = liao2010a). Hyperfine shifts removed with the Salumbides 2006 model (< 60 kHz error). The ESM data set should be retrieved: it is the best available starting point for our global fit."
+
+# ---------------------------------------------------------------------------------------
+# E3. Systematics: cell purity, pressure/power broadening, other technical effects
+# ---------------------------------------------------------------------------------------
+- id: lazar2009a
+  citation: "J. Lazar, J. Hrabina, P. Jedlicka, O. Cip, Absolute frequency shifts of iodine cells for laser stabilization, Metrologia 46, 450-456 (2009)"
+  doi: "10.1088/0026-1394/46/5/008"
+  url: "https://doi.org/10.1088/0026-1394/46/5/008"
+  year: 2009
+  group: "ISI Brno (Czech Academy of Sciences)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "LIF Stern-Volmer purity test + comb-measured absolute shifts of Nd:YAG/I2 lasers"
+  observable: "pressure broadening/shift"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 (532 nm standard)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Links impurity level to absolute frequency shift; basis for a cell-purity uncertainty term. See also Lazar et al. IFCS 2007 (doi:10.1109/freq.2007.4319044) and SPIE 2007 (doi:10.1117/12.735420)."
+
+- id: hrabina2008a
+  citation: "J. Hrabina, P. Jedlicka, J. Lazar, Methods for measurement and verification of purity of iodine cells for laser frequency stabilization, Meas. Sci. Rev. 8 (2008)"
+  doi: "10.2478/v10048-008-0025-8"
+  url: "https://doi.org/10.2478/v10048-008-0025-8"
+  year: 2008
+  group: "ISI Brno"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "LIF with Ar+ 502 nm excitation, compensated; comparison with Nd:YAG/I2 frequency shifts"
+  observable: "other"
+  range_nm: null
+  range_cm1: null
+  transitions: "cell purity vs 532 nm frequency shift"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "in paper (open access)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Method paper."
+
+- id: hrabina2014a
+  citation: "J. Hrabina, M. Sarbort, O. Acef, F. du Burck, N. Chiodo, M. Hola, O. Cip, J. Lazar, Spectral properties of molecular iodine in absorption cells filled to specified saturation pressure, Appl. Opt. 53, 7435 (2014)"
+  doi: "10.1364/ao.53.007435"
+  url: "https://doi.org/10.1364/ao.53.007435"
+  year: 2014
+  group: "ISI Brno / LNE-SYRTE / LPL"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "hyperfine linewidth measurements in borosilicate vs fused-silica cells"
+  observable: "pressure broadening/shift"
+  range_nm: null
+  range_cm1: null
+  transitions: "hyperfine linewidths (532/514 nm lines; details not checked)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Proposes hyperfine linewidth as a purity metric; long-term purity of unsaturated (specified-pressure) cells."
+
+- id: hrabina2017a
+  citation: "J. Hrabina, M. Zucco, C. Philippe, T. Pham Minh, M. Hola, O. Acef, J. Lazar, O. Cip, Iodine absorption cells purity testing, Sensors 17, 102 (2017)"
+  doi: "10.3390/s17010102"
+  url: "https://doi.org/10.3390/s17010102"
+  year: 2017
+  group: "ISI Brno / INRIM / LNE-SYRTE"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "LIF (two systems) and hyperfine linewidth methods compared"
+  observable: "other"
+  range_nm: null
+  range_cm1: null
+  transitions: "cell purity"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper (open access)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Review of cell-technology trends and purity tests."
+
+- id: zucco2013a
+  citation: "M. Zucco, L. Robertsson, J.-P. Wallerand, Laser-induced fluorescence as a tool to verify the reproducibility of iodine-based laser standards: a study of 96 iodine cells, Metrologia 50, 402-408 (2013)"
+  doi: "10.1088/0026-1394/50/4/402"
+  url: "https://doi.org/10.1088/0026-1394/50/4/402"
+  year: 2013
+  group: "BIPM / INRIM / LNE-CNAM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "LIF Stern-Volmer parameter K_o vs measured absolute frequency"
+  observable: "other"
+  range_nm: [514.0, 633.0]
+  range_cm1: null
+  transitions: "cells used at 515, 532 and 633 nm standards"
+  n_items: 96
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Large cell-to-cell spread in purity that correlates with frequency; the main justification for a few-kHz 'cell' uncertainty floor on every absolute datum."
+
+- id: fang2005a
+  citation: "H.-M. Fang, S.-C. Wang, J.-T. Shy, Pressure and power broadening of the a10 component of R(56) 32-0 transition of molecular iodine at 532 nm, Opt. Commun. 257, 76-83 (2006)"
+  doi: "10.1016/j.optcom.2005.07.016"
+  url: "https://doi.org/10.1016/j.optcom.2005.07.016"
+  year: 2005
+  group: "NTHU / NCTU (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "saturation spectroscopy linewidth vs pressure and power"
+  observable: "pressure broadening/shift"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a10"
+  n_items: 1
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Self-broadening coefficient of a sub-Doppler component (value not extracted)."
+
+- id: fang2006a
+  citation: "H.-M. Fang, S. C. Wang, L. Y. Liu, W.-Y. Cheng, K.-Y. Wu, J.-T. Shy, Measurement of hyperfine splitting of molecular iodine at 532 nm by double-passed acousto optic modulator frequency shifter, Jpn. J. Appl. Phys. 45, 2776 (2006)"
+  doi: "10.1143/jjap.45.2776"
+  url: "https://doi.org/10.1143/jjap.45.2776"
+  year: 2006
+  group: "NTHU / NCTU / NDHU (Taiwan)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "double-pass AOM frequency shifter"
+  observable: "hyperfine splittings"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 hyperfine splittings"
+  n_items: null
+  uncertainty: "better than 20 kHz"
+  uncertainty_MHz: 0.02
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Redundant with MeP tables; cross-check only."
+
+- id: matsunaga2024b
+  citation: "S. Matsunaga, R. Kato, M. Yoshiki, D. Akamatsu, F.-L. Hong, Analysis of the interaction-length dependence of frequency stability in an iodine-stabilized Nd:YAG laser, Appl. Opt. 63, 2078 (2024)"
+  doi: "10.1364/ao.515683"
+  url: "https://doi.org/10.1364/ao.515683"
+  year: 2024
+  group: "Yokohama National Univ."
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "saturation-spectroscopy model + MTS with 45 cm and 2 m cells"
+  observable: "other"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "532 nm MTS linewidth and S/N vs interaction length"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Line-shape modelling of saturated absorption (transit-time broadening etc.)."
+
+# ---------------------------------------------------------------------------------------
+# E4. Transportable / space iodine references (stability-focused; few new line data)
+# ---------------------------------------------------------------------------------------
+- id: schuldt2017a
+  citation: "T. Schuldt, K. Doeringshoff, E. V. Kovalchuk, A. Keetman, J. Pahl, A. Peters, C. Braxmaier, Development of a compact optical absolute frequency reference for space with 10^-15 instability, Appl. Opt. 56, 1101 (2017)"
+  doi: "10.1364/ao.56.001101"
+  url: "https://doi.org/10.1364/ao.56.001101"
+  year: 2017
+  group: "DLR / HU Berlin / HTWG Konstanz / ZARM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS, 30 cm triple-pass cell, RAM control"
+  observable: "other"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "532 nm (R(56)32-0 region)"
+  n_items: null
+  uncertainty: "instability 6e-15 at 1 s, flicker floor < 3e-15"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Space iodine program (LISA/GRACE-type). No new line data."
+
+- id: doeringshoff2017a
+  citation: "K. Doeringshoff, T. Schuldt, E. V. Kovalchuk, J. Stuehler, C. Braxmaier, A. Peters, A flight-like absolute optical frequency reference based on iodine for laser systems at 1064 nm, Appl. Phys. B 123 (2017)"
+  doi: "10.1007/s00340-017-6756-1"
+  url: "https://doi.org/10.1007/s00340-017-6756-1"
+  year: 2017
+  group: "HU Berlin / DLR / ZARM"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS, flight-like design"
+  observable: "other"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "532 nm"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Technical."
+
+- id: schkolnik2017a
+  citation: "V. Schkolnik, K. Doeringshoff, F. B. Gutsch, M. Oswald, T. Schuldt, C. Braxmaier, M. Lezius, R. Holzwarth, C. Kuerbis, A. Bawamia, M. Krutzik, A. Peters, JOKARUS - design of a compact optical iodine frequency reference for a sounding rocket mission, EPJ Quantum Technol. 4 (2017)"
+  doi: "10.1140/epjqt/s40507-017-0063-y"
+  url: "https://doi.org/10.1140/epjqt/s40507-017-0063-y"
+  year: 2017
+  group: "HU Berlin / FBH / DLR / ZARM / Menlo"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "micro-integrated ECDL + SHG, MTS"
+  observable: "other"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "532 nm"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Design paper for JOKARUS."
+
+- id: doeringshoff2019a
+  citation: "K. Doeringshoff, F. B. Gutsch, V. Schkolnik, C. Kuerbis, M. Oswald, B. Proebster, E. V. Kovalchuk, A. Bawamia, R. Smol, T. Schuldt, M. Lezius, R. Holzwarth et al., Iodine frequency reference on a sounding rocket, Phys. Rev. Applied 11, 054068 (2019)"
+  doi: "10.1103/physrevapplied.11.054068"
+  url: "https://doi.org/10.1103/physrevapplied.11.054068"
+  year: 2019
+  group: "HU Berlin / FBH / DLR / ZARM / Menlo"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "I2 reference + dual comb on sounding rocket (TEXUS 54)"
+  observable: "absolute hyperfine component frequencies"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "532 nm iodine line (component as in paper)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: true
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "In-flight optical frequency measurement against a comb; not a spectroscopic dataset."
+
+- id: kuschewski2023a
+  citation: "F. Kuschewski, J. Wuest, M. Oswald, T. Blomberg, M. Gohlke, J. Bischof, A. Boac, T. Alam, A. Bussmeier, K. Abich, N. Roeder, K. Doeringshoff et al., COMPASSO mission and its iodine clock: outline of the clock design, GPS Solutions 28 (2023)"
+  doi: "10.1007/s10291-023-01551-0"
+  url: "https://doi.org/10.1007/s10291-023-01551-0"
+  year: 2023
+  group: "DLR / HU Berlin / FBH / ISI Brno and others"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "space iodine clock design (ISS)"
+  observable: "other"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "532 nm"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Context for space iodine references."
+
+- id: zhang2023a
+  citation: "Z. Zhang, Z. Wang, H. Liu, W. Yuan, W. You, J. Zhang, K. Deng, Z. Lu, An ultra-stable laser based on molecular iodine with a short-term instability of 3.3 x 10^-15 for space based gravity missions, Class. Quantum Grav. 40, 225001 (2023)"
+  doi: "10.1088/1361-6382/acfec2"
+  url: "https://doi.org/10.1088/1361-6382/acfec2"
+  year: 2023
+  group: "HUST (Wuhan; TianQin-related)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "MTS on R(56)32-0 a1, ULE-glued optics"
+  observable: "other"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "R(56)32-0 a1"
+  n_items: null
+  uncertainty: "instability 3.3e-15 at 2-4 s"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Chinese space-GW iodine program; see also Zhang et al. RSI 95 (2024), doi:10.1063/5.0210784 (unsaturated cell, 1.7e-15 at 1e4 s)."
+
+- id: roslund2024a
+  citation: "J. Roslund, A. Cingoz, W. Lunden, G. B. Partridge, A. S. Kowligy, F. Roller, D. Sheredy, G. E. Skulason, J. P. Song, J. R. Abo-Shaeer, M. M. Boyd, Optical clocks at sea, Nature 628, 736-740 (2024)"
+  doi: "10.1038/s41586-024-07225-2"
+  url: "https://doi.org/10.1038/s41586-024-07225-2"
+  year: 2024
+  group: "Vector Atomic"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "iodine spectrometer + fibre comb clock"
+  observable: "other"
+  range_nm: [532.24, 532.25]
+  range_cm1: null
+  transitions: "532 nm iodine line"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Commercial iodine clocks; context only."
+
+- id: riehle2018a
+  citation: "F. Riehle, P. Gill, F. Arias, L. Robertsson, The CIPM list of recommended frequency standard values: guidelines and procedures, Metrologia 55, 188-200 (2018)"
+  doi: "10.1088/1681-7575/aaa302"
+  url: "https://doi.org/10.1088/1681-7575/aaa302"
+  year: 2018
+  group: "CCL-CCTF Working Group on Frequency Standards"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "procedures for the CIPM list of frequencies"
+  observable: "other"
+  range_nm: null
+  range_cm1: null
+  transitions: "procedures governing the MeP iodine entries"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "in paper"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Explains how MeP values and uncertainties (often deliberately enlarged) are set; relevant when weighting MeP entries."
+
+
+
+

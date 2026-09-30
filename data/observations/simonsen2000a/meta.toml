@@ -1,0 +1,100 @@
+id = "simonsen2000a"
+citation = "H. R. Simonsen and F. Rose, \"Absolute measurement of the hyperfine splittings of six molecular 127I2 lines around the He-Ne/I2 wavelength at λ ≈ 633 nm\", Metrologia 37, 651-658 (2000)"
+source = "https://doi.org/10.1088/0026-1394/37/6/2 (IOPscience PDF, downloaded 2026-09-29 per its cover page)"
+doi = "10.1088/0026-1394/37/6/2"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:simonsen2000a"
+
+transcription = """
+All numbers are frequency intervals, in kHz, converted to MHz exactly; the paper gives no frequency in Hz
+(its "absolute" means beat-note-counted intervals linked to the He-Ne/I2 standard). Sources:
+  Table 2 (p. 655)  127I2 P(33) 6-3: b1-b20 relative to b21 ("Measured f_ECL" column)
+  Table 3 (p. 655)  127I2 R(60) 8-4: a2-a15 relative to a1
+  Table 4 (p. 656)  127I2 R(125) 9-4: b1-b21 relative to a1 of R(60) 8-4
+  Table 5 (p. 656)  127I2 P(54) 8-4: c1-c15 relative to a1 of R(60) 8-4
+  Table 6 (p. 657)  127I2 R(39) 6-3: a2-a21 relative to a1
+  Table 7 (p. 657)  127I2 R(59) 8-4: b2-b21 relative to b1
+  Table 8 (p. 657)  127I2 P(53) 8-4: c1-c21 relative to b1 of R(59) 8-4
+  Links between lines (Section 3.2 p. 657, table headers, and Table 9 p. 658):
+    f(a15, R(60) 8-4) - f(b13, P(33) 6-3) = -11 299 019(5) kHz
+    f(a12, R(39) 6-3) - f(b13, P(33) 6-3) =  +4 204 706(6) kHz
+    f(b1, R(59) 8-4)  - f(a12, R(39) 6-3) = +15 162 213(6) kHz
+  Table 9 prints the spacings unsigned; the signs are from the text and table headers, and agree with the
+  model (R(60) lies 11.3 GHz below P(33); R(39) 4.2 GHz and R(59) 19.4 GHz above it).
+Values were typed from the pdftotext -layout text layer, checked by script that every typed value(unc)
+string occurs in the text layer, and checked digit by digit against 200 dpi renderings of pp. 655-658.
+The "MP-97" and "Theory [12]" (Picard, calculated) columns and the Difference columns are not entered.
+The header entries f(a15) - f(a1) = 877 092(3) kHz (Table 3) and f(a12) - f(a1) = 576 508(2) kHz (Table 6)
+repeat table rows and are entered once.
+
+Line names. Table 6 and Table 1 call the line at 632.987 nm R(39) 6-3; the abstract calls it P(39) 6-3.
+R(39) 6-3 is correct: the model puts it 3.30 GHz above R(127) 11-5 (Table 1: 3.41 GHz) and gives
+f(a12, R(39)) - f(b13, P(33)) = 4204.58 MHz against the measured 4204.706 MHz, while P(39) 6-3 lies
+129 GHz away. Table 1 also misprints P(33) 6-3 as "R(33) 6-3". Table 1's P(32) 6-3 and R(69) 10-5 are
+shown only as spectra (Figs. 6, 7, 10); no numbers are given for them. So seven lines are measured,
+despite the title's "six".
+
+Component labels are the paper's: a, b, c name the line within a group (as in Fig. 4), the number is the
+rank by frequency within the line, 1 lowest, 21 components for odd J'' and 15 for even J''. Every table is
+in increasing frequency order and the model's ΔF = ΔJ ranking gives the same order (checked: the model's
+a11/a12 and a13/a14 means reproduce the blended values below to 0.4 MHz, and R(125) b8, which the paper's
+calculation missed by 35.6 MHz, fits the model like its neighbours). P(33) 6-3 b1-b21 is the BIPM
+labelling (bipm2003a x = u ... a). The He-Ne reference component "d" of R(127) 11-5 is a18 in bipm2003a.
+No crossovers are reported.
+
+Left out (14 table entries, all blends; the value is the centre of an unresolved peak, not the frequency
+of either component, and the split is 1.2-2.7 MHz, far beyond the 2-370 kHz uncertainty):
+  R(60) 8-4 a11, a12: one value, 721 950(8) kHz (footnote a, "measured as one hyperfine component")
+  R(60) 8-4 a13, a14: one value, 739 340(370) kHz (footnote b)
+  R(125) 9-4 b5, b6: one value, 669 200(20) kHz (footnote a)
+  R(125) 9-4 b18 and P(54) 8-4 c6: one peak, 1128 530(20) kHz, printed in both tables ("the transition
+    coincides with ..."). Placed from the measured c1 and b1, the model puts c6 at 1128.50 MHz and b18 2.7 MHz lower, so the peak is mostly
+    c6 of the stronger P(54) line; both are left out.
+  P(54) 8-4 c11, c12: one value, 1428 528(5) kHz printed for both with no footnote. The model splits them
+    by 1.21 MHz and their mean fits the printed value to 30 kHz, so this is an unmarked blend like a11/a12.
+  P(54) 8-4 c13, c14: one value, 1446 800(130) kHz (footnote b)
+Also left out: f(a15, R(60) 8-4) - f(d, R(127) 11-5) = -12 167 966(25) kHz (Section 3.2, Table 9). The text
+says it is obtained from the a15-b13 link "using" the MP-97 recommended values: it is -11 299 019 kHz minus
+the MP-97 interval f(d) - f(b13) = 868 946(23) kHz, to 1 kHz. That MP-97 information is already held in
+bipm2003a (f(b21) - f(a16) and the R(127) and P(33) tables), so the row would count it twice.
+
+Overlap. P(33) 6-3 is also in bipm2003a (Table 2, weighted means) and edwards1999a (Table 1, NPL,
+2 MHz modulation). Simonsen - bipm2003a: -17 to +4 kHz, mean -6.4, rms 8.1 kHz; these are exactly the
+paper's printed "Difference (f_ECL - f_MP-97)" column, i.e. the MEP 2003 P(33) table is the MP-97 table and
+does not include this paper. Simonsen - edwards1999a: -11 to +4 kHz, mean -2.9, rms 4.9 kHz (largest
+largest at b6, b8, b9). No other set holds R(60) 8-4, R(125) 9-4, P(54) 8-4, R(39) 6-3, R(59) 8-4 or
+P(53) 8-4 of 127I2 (bipm2003a has R(60) 8-4 and P(54) 8-4 of 129I2 only).
+"""
+
+uncertainty = """
+Standard (1 sigma) uncertainties as printed in parentheses; the table captions say "experimental
+standard uncertainty (k = 1)". They are from the repeatability of at least three repeated interval
+measurements with the two spectrometers interchanged (Section 3.1), 1-10 kHz for resolved components,
+20-370 kHz for blends. The links between lines are 5-6 kHz. No type-B allowance for the 6 MHz modulation
+width or pressure is included; all data were taken at the same conditions, so such shifts are common to
+the set. The paper notes an unexplained ~40 kHz disagreement of its R(60)-to-He-Ne link with a parallel
+BNM-INM measurement (ref. [13]).
+"""
+
+notes = """
+Residuals against the current model (Predictor(), obs - model), 122 rows: P(33) 6-3 intervals -19 to
++6 kHz (mean -7 kHz); R(39) 6-3 intervals -8 to +40 kHz (rms 14 kHz, largest a7); R(60) 8-4 -161 to
++166 kHz; R(59) 8-4 -443 to -43 kHz and P(53) 8-4 (to R(59) b1) -526 to -110 kHz; P(54) 8-4 (to R(60) a1)
+-231 to +64 kHz; R(125) 9-4 (to R(60) a1) -1.59 to -0.76 MHz, i.e. a line-centre offset of about -1.3 MHz
+plus +-0.4 MHz hyperfine scatter. Links: R(60) a15 - P(33) b13 +594 kHz, R(39) a12 - P(33) b13 +131 kHz,
+R(59) b1 - R(39) a12 +693 kHz. The v' = 6 lines fit to the paper's own level; the v' = 8 and 9 lines show
+the model's hyperfine and line-centre errors there, with the same pattern as the paper's Theory [12]
+comparison. No row was dropped for its residual.
+"""
+
+[conditions]
+method = "saturation spectroscopy, third-harmonic detection, beat notes between two ECDL spectrometers counted up to 16 GHz"
+laser = "two AR-coated diode lasers in Littman extended cavities (ECL1, ECL5), 633 nm"
+cell_length_cm = [50, 30]
+cold_finger_C = 15.0
+modulation_MHz_pp = 6.0
+modulation_Hz = 2777
+detection = "3f"
+saturating_power = "a few mW, one way"
+reference = "He-Ne DK3 on d (a18) of 127I2 R(127) 11-5, MP-97 conditions"

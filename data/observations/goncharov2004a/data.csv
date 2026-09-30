@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(13) 43-0,a3,frequency,582490603.4473,0.00075,,,goncharov2004a,"p. 730 text: <nu_meas> = 582 490 603 447.3(0.24) kHz at 0.12 Pa; 0.75 kHz is the authors' 3-sigma reproducibility (abstract 67.3(0.75)); not pressure-corrected"

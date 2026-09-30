@@ -1,0 +1,34 @@
+{
+ "id": "mlr_x_2026d",
+ "state": "X",
+ "form": "MLR",
+ "citation": "i2spec, mlr_x_2026d: mlr_x_2026c refitted to the Orsay-atlas levels v'' = 18-25 (i2spec2026g), anchored on its own levels v'' <= 17 at 3 MHz and the emission levels v'' = 48, 53, 54; prototypes/mlr_x_atlas.py. Not a published parameter set.",
+ "fitted_to": "mlr_x_2026c refitted to the Orsay-atlas levels v'' = 18-25 (i2spec2026g), anchored on its own levels v'' <= 17 at 3 MHz and the emission levels v'' = 48, 53, 54; prototypes/mlr_x_atlas.py",
+ "De": 12547.340052861457,
+ "Re": 2.666380863303869,
+ "p": 5,
+ "q": 3,
+ "Rref": null,
+ "C": {
+  "6": 1478768.8671730284,
+  "8": 38634045.84484236,
+  "10": 100352940.54602453
+ },
+ "beta": [
+  -1.2641434957978246,
+  -0.5772180541161877,
+  -0.892856514720665,
+  2.5472260610902637,
+  6.203295059146669,
+  14.005737596664705,
+  7.133765952137527,
+  -43.472797023315984,
+  213.23443118845333,
+  179.13716582295302,
+  -2763.680660538669,
+  3195.7326133954134
+ ],
+ "born_oppenheimer": "taken unchanged from hannover2008 X (alpha and V_ad)",
+ "status": "research result (docs/research/orsay-atlas-11000-14000.md, 'The potential refitted')",
+ "loo_MHz_note": "leave-one-level-out over v'' = 18-25: 18: 7.2, 19: 11.3, 20: 19.0, 21: 17.4, 22: 22.3, 23: 20.6, 24: 11.8, 25: 38.1"
+}

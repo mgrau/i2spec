@@ -1,0 +1,21 @@
+id = "bipm2003b"
+citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 543 nm), ¹²⁷I₂ b10 component, R(106) 28-0 (MEP 2003)"
+source = "https://www.bipm.org/documents/20126/41549533/M-e-P_I2_543.pdf/6791a64e-6a7b-bcd9-308a-bf682306ba89"
+retrieved = "2026-09-14"
+catalog = "data/catalog/precision.yaml#bipm2003b"
+unit = "MHz"
+transcription = """
+Page 1: adopted f(b10, R(106) 28-0) = 551 580 162 400 (25) kHz, the CIPM recommended value. Typed by hand.
+
+Page 2: two hyperfine tables, parsed from the PDF text layer (pdftotext) by script, not retyped. The text
+layer agrees with the page image, digits and minus signs included (b9 is printed with a hyphen: -114.575):
+  Table 1 127I2 R(12) 26-0: a1-a15, relative to b10 of R(106) 28-0
+  Table 2 127I2 R(106) 28-0: b1-b15, relative to b10
+Table 1 gives the intervals between the two lines directly. The document has no other intervals.
+"""
+uncertainty = "Standard (1σ) combined uncertainties, as printed. f(b10): 25 kHz. Hyperfine intervals: 5-30 kHz."
+
+[conditions]
+cold_point_C = 0.0
+modulation_MHz_pp = 2.0
+cell = "external"

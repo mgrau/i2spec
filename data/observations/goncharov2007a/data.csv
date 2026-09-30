@@ -1,0 +1,16 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(26) 62-0,a1,frequency,597366101.4779,0.00025,,,goncharov2007,Table 1 and text: f(a1) = 597 366 101 477.9 kHz, 250 Hz combined standard uncertainty
+127I2 R(26) 62-0,a2,interval,166.2535,0.00035,,a1,goncharov2007,Table 1: f(a2) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a3,interval,265.9340,0.00035,,a1,goncharov2007,Table 1: f(a3) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a4,interval,295.2339,0.00035,,a1,goncharov2007,Table 1: f(a4) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a5,interval,317.9382,0.00035,,a1,goncharov2007,Table 1: f(a5) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a6,interval,364.4995,0.00035,,a1,goncharov2007,Table 1: f(a6) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a7,interval,397.1766,0.00035,,a1,goncharov2007,Table 1: f(a7) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a8,interval,474.0391,0.00035,,a1,goncharov2007,Table 1: f(a8) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a9,interval,523.5482,0.00035,,a1,goncharov2007,Table 1: f(a9) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a10,interval,560.0314,0.00035,,a1,goncharov2007,Table 1: f(a10) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a11,interval,637.0541,0.00035,,a1,goncharov2007,Table 1: f(a11) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a12,interval,660.2627,0.00035,,a1,goncharov2007,Table 1: f(a12) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a13,interval,739.9655,0.00035,,a1,goncharov2007,Table 1: f(a13) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a14,interval,769.7472,0.00035,,a1,goncharov2007,Table 1: f(a14) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz
+127I2 R(26) 62-0,a15,interval,842.2443,0.00035,,a1,goncharov2007,Table 1: f(a15) - f(a1); each absolute at 250 Hz, so sqrt(2) x 250 Hz

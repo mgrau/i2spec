@@ -1,0 +1,5 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(180) 0-16,a1,frequency,367614603.443,0.017,,,bodermann1998b,
+127I2 R(42) 0-17,b1,frequency,367615127.628,0.014,,,bodermann1998b,
+127I2 R(42) 0-17,b10,frequency,367615714.503,0.015,,,bodermann1998b,
+127I2 R(180) 0-16,a10,interval,587.287,0.015,,a1,bodermann1998b,

@@ -1,0 +1,33 @@
+id = "reinhardt2007a"
+citation_note = "author list from Crossref (ten authors, last Th. Udem); the earlier entry ended with G. Saathoff; check against the PDF"
+citation = "S. Reinhardt, B. Bernhardt, C. Geppert, R. Holzwarth, G. Huber, S. Karpuk, N. Miski-Oglu, W. Nörtershäuser, C. Novotny and Th. Udem, \"Absolute frequency measurements and comparisons in iodine at 735 nm and 772 nm\", Opt. Commun. 274, 354-360 (2007)"
+source = "https://doi.org/10.1016/j.optcom.2007.02.050 (PDF obtained 2026-09-16)"
+doi = "10.1016/j.optcom.2007.02.050"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:reinhardt2007a"
+
+transcription = """
+Table 2 (absolute frequencies of the a1 component) and Table 3 (hyperfine splittings relative to a1),
+read from the text layer of the publisher PDF on 2026-09-16. Frequency-comb referenced.
+
+Table 3 is printed in kHz and is converted to MHz here; a1 is the reference and is therefore not
+recorded as an interval.
+
+All three lines have even J'', hence 15 main components, so a1 is rank 1 and a10, a15 are ranks 10
+and 15 by frequency.
+
+The absolute frequencies are printed with the cold-finger temperature used for each: R(114) 2-11 at
+28 C, P(42) 1-14 at 25 C, P(148) 1-14 at 20 C. No pressure-shift correction was applied here; the
+values are as published.
+"""
+
+uncertainty = """
+Absolute frequencies: 0.30 MHz as printed, standard (1 sigma). Hyperfine splittings: 42 kHz as
+printed, converted to 0.042 MHz.
+"""
+
+[conditions]
+method = "frequency-comb referenced saturation spectroscopy; two cells (Mainz and GSI) compared"
+
+notes = "The paper also reports a 237-295 kHz offset between its two cells (Table 1), which is a pressure/temperature systematic rather than a line position, so it is not recorded as an observation. For P(148) 1-14 the paper quotes a literature value of 384 235 614.624(36) MHz; only this paper's own measurement is entered here."

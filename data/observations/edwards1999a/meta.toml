@@ -1,0 +1,63 @@
+id = "edwards1999a"
+citation = "C. S. Edwards, G. P. Barwood, P. Gill and W. R. C. Rowley, \"A 633 nm iodine-stabilized diode-laser frequency standard\", Metrologia 36, 41-45 (1999)"
+source = "https://doi.org/10.1088/0026-1394/36/1/7 (IOPscience PDF, downloaded 2015-08-19 per its cover page)"
+doi = "10.1088/0026-1394/36/1/7"
+retrieved = "2026-09-27"
+unit = "MHz"
+catalog = "precision.yaml:edwards1999a"
+
+transcription = """
+Table 1 (p. 44, 2 MHz modulation depth) and Table 2 (p. 45, 6 MHz modulation depth), both f(bn - b21) of
+127I2 P(33) 6-3 for b1-b20, and the absolute frequency of b21 from Section 5 (p. 44). Numbers were parsed
+by script from the pdftotext text layer and checked against 200 dpi page images of both table pages: every
+digit, minus sign and uncertainty agrees. As a further check, the printed "Offset" columns were recomputed
+(Table 1: NPL - BNM-INM exp.; Table 2: NPL - CIPM) and agree for all 40 rows.
+
+Values are printed in kHz and converted to MHz exactly. b21 is the reference of both tables and is not
+entered as an interval. Only the NPL column of each table is transcribed. The BNM-INM exp./calc. columns
+(Razet et al., Metrologia 30, 61 (1993)), the CIPM column (Quinn 1993/94) and the DFM column (Simonsen 1997)
+are other sources or calculations; the Offset columns are derived.
+
+Only Table 1 (2 MHz) is entered, as group edwards1999a_2MHz. Table 2 (6 MHz) remeasures the same
+intervals of the same line with the same setup and cell, so entering both would count one measurement twice;
+at 6 MHz the poorly resolved pair b9/b10 is also pulled together by 50 kHz (see notes). Modulation shifts
+differ between components (the paper gives -10.4 kHz/MHz for b21 and -11.8 kHz/MHz for b17); no modulation
+correction is applied, and the paper applies none to the tables.
+
+Absolute frequency: one value only, f(b21) = 473 611 821 170 (17) kHz at 2 MHz modulation depth (Section 5,
+also in the Table 1 caption). The 6 MHz value, 473 611 821 128 (15) kHz (default conditions, Table 2
+caption), is the same quantity measured with a larger modulation shift; the difference, 42 kHz, is what the
+stated -10.4 kHz/MHz slope predicts over 4 MHz. The 2 MHz value is chosen because it has the smaller
+modulation shift and is the one the paper compares with the previous (dye-laser) determination. It is placed
+in group edwards1999a_2MHz with the Table 1 intervals. Neither value is corrected to zero modulation.
+
+Components b1-b21 are the 21 main components of P(33) (odd J'', 21 components), labelled by rank in frequency
+as in the paper; no crossovers are reported in the tables.
+"""
+
+uncertainty = """
+Standard (1 sigma) uncertainties, as printed in parentheses; the table captions say so explicitly.
+Intervals: 5-14 kHz (Table 1). f(b21) at 2 MHz: 17 kHz, the quadrature sum of the
+12 kHz He-Ne reference (NPL-D, a13 of R(127) 11-5, CIPM value), 11 kHz ECDL reproducibility at this
+modulation depth and 5 kHz cell shift (Type B).
+"""
+
+notes = """
+Same line as bipm2003a Table 2 (b1-b20 relative to b21), which is a weighted mean of sources that may
+include this paper, so the two are not fully independent. Table 1 (2 MHz) agrees with bipm2003a to within
+14 kHz for every component (rms about 6 kHz). Table 2 (6 MHz, not entered) agrees to within 14 kHz except the poorly
+resolved pair b9 (-51 kHz) and b10 (+50 kHz); the paper itself singles these out as poorly resolved, and
+at 6 MHz modulation they pull toward each other. bipm2003a gives f(b21) = f(a16, R(127) 11-5) - 532.42 MHz
+= 473 611 821 184 (22) kHz; the 2 MHz value here is 14 kHz lower, within the combined uncertainty.
+"""
+
+[conditions]
+laser = "extended-cavity diode laser, 633 nm, PZT modulation at 530 Hz, third-harmonic detection"
+cell_length_mm = 100
+cold_finger_C = 15.0
+iodine_pressure_Pa = 17
+cell_wall_C = 20.5
+modulation_MHz_pp = 2
+saturating_power_uW = 800
+probe_power_uW = 80
+reference = "He-Ne NPL-D on a13 of 127I2 R(127) 11-5"

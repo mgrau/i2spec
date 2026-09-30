@@ -1,0 +1,118 @@
+photo	page	rotation	N_first	N_last	note
+PXL_20260929_131017468.jpg	1	0	7	26	printed page 1; first classification page (N 1-6 lie below 19700 and are not classified)
+PXL_20260929_131019753.MP.jpg	2	0	27	51	printed page 2; 50 rows
+PXL_20260929_131029716.jpg	3	0	52	80	printed page 3; page 2 (N 27-51) is PXL_20260929_131019753.MP.jpg, not read in the pilot
+PXL_20260929_131033637.jpg	4	0	80	108	printed page 4; 50 rows; N 80 is a blend continued from page 3 (c003 has its first assignment, c004 its second)
+PXL_20260929_131039289.jpg	5	0	109	134	printed page 5; 50 rows
+PXL_20260929_131042977.jpg	6	0	135	158	printed page 6; 50 rows
+PXL_20260929_131054643.MP.jpg	7	0	159	184	printed page 7; 50 rows
+PXL_20260929_131056612.MP.jpg	8	0	185	205	printed page 8; 50 rows
+PXL_20260929_131059540.jpg	9	0	205	227	printed page 9; 50 rows; N 205 is a blend continued from page 8 (c008 has 22 R(62-1), c009 has 10 R(51-0))
+PXL_20260929_131101577.MP.jpg	10	0	228	251	printed page 10; 50 rows
+PXL_20260929_131105582.jpg	11	0	252	278	printed page 11; 50 rows
+PXL_20260929_131108233.jpg	12	0	279	307	printed page 12; 50 rows
+PXL_20260929_131117025.jpg	13	0	308	332	printed page 13; 50 rows
+PXL_20260929_131119642.jpg	14	0	333	356	printed page 14; 50 rows
+PXL_20260929_131124594.jpg	15	0	357	384	printed page 15; 50 rows
+PXL_20260929_131127360.jpg	16	0	385	412	printed page 16; 50 rows
+PXL_20260929_131132632.jpg	17	0	413	438	printed page 17; 50 rows
+PXL_20260929_131135538.MP.jpg	18	0	439	467	printed page 18; 50 rows
+PXL_20260929_131140617.jpg	19	0	467	486	printed page 19; 50 rows; N 467 continues from page 18 (blend split across the page break)
+PXL_20260929_131143628.MP.jpg	20	0	487	512	printed page 20; 50 rows
+PXL_20260929_131148442.jpg	21	0	513	533	printed page 21; 50 rows
+PXL_20260929_131151214.MP.jpg	22	0	534	561	printed page 22; 50 rows; last row 83 R(61-0) 19749.3054 calc-only, page 23 opens with 87 R(63-0) at the same 19749.3054
+PXL_20260929_131155620.jpg	23	0	562	585	printed page 23; 50 rows; first row 87 R(63-0) 19749.3054 calc-only has the same printed sigma_cal as the last row of page 22 (83 R(61-0)); both genuine (model 19749.30534 / .30544)
+PXL_20260929_131158431.MP.jpg	24	0	586	609	printed page 24; 50 rows
+PXL_20260929_131203444.jpg	25	0	610	633	printed page 25; 50 rows
+PXL_20260929_131206160.jpg	26	0	633	661	printed page 26; 50 rows; N 633 continued from page 25 (43 R(73-1) there, 52 P(55-0) here); N 649 has two assignments with equal printed sigma_cal 19757.3833
+PXL_20260929_131210796.jpg	27	0	661	687	printed page 27; 50 rows; N 661 continued from page 26 (35 P(69-1) there, three more here)
+PXL_20260929_131213190.jpg	28	0	688	713	printed page 28; 50 rows; N 711 has two assignments with equal printed sigma_cal 19763.0422
+PXL_20260929_131217241.MP.jpg	29	0	714	736	printed page 29; 50 rows
+PXL_20260929_131219930.MP.jpg	30	0	737	765	printed page 30; 50 rows
+PXL_20260929_131224622.jpg	31	0	766	795	printed page 31; 50 rows; photo tilted, read from a crop deskewed by 3 degrees
+PXL_20260929_131227089.MP.jpg	32	0	795	820	printed page 32; 50 rows; N 795 continued from page 31 (82 P(63-0) there, 32 P(70-1) here); N 820 continues on page 33
+PXL_20260929_131231911.jpg	33	0	820	840	page 33 (photo order 75; page number from photo order, N continuous with c032/c043); 50 rows; N 820 continues a blend from c032
+PXL_20260929_131234783.MP.jpg	34	0	841	864	page 34 (photo order 76; page number from photo order, N continuous with c032/c043); 50 rows
+PXL_20260929_131239384.jpg	35	0	865	892	page 35 (photo order 77; page number from photo order, N continuous with c032/c043); 50 rows
+PXL_20260929_131241876.MP.jpg	36	0	893	920	page 36 (photo order 78; page number from photo order, N continuous with c032/c043); 50 rows
+PXL_20260929_131247303.MP.jpg	37	0	921	947	page 37 (photo order 79; page number from photo order, N continuous with c032/c043); 50 rows
+PXL_20260929_131250456.MP.jpg	38	0	948	978	page 38 (photo order 80; page number from photo order, N continuous with c032/c043); 50 rows
+PXL_20260929_131258127.MP.jpg	39	0	979	1003	page 39 (photo order 81; page number from photo order, N continuous with c032/c043); 50 rows
+PXL_20260929_131301466.MP.jpg	40	0	1004	1028	page 40 (photo order 82; page number from photo order, N continuous with c032/c043); 50 rows; N 1028 blend continues on page 41 (one assignment here, two there)
+PXL_20260929_131306268.MP.jpg	41	0	1028	1053	page 41 (photo order 83; page number from photo order, N continuous with c032/c043); 50 rows; N 1028 continued from page 40
+PXL_20260929_131308998.MP.jpg	42	0	1054	1077	page 42 (photo order 84; page number from photo order, N continuous with c032/c043); 50 rows; N 1077 blend continues on page 43
+PXL_20260929_131313913.jpg	43	0	1077	1096	printed page 43; 50 rows; N 1077 is a triple blend: 1 row at the foot of page 42, 2 rows here
+PXL_20260929_131319256.jpg	44	0	1097	1119	printed page 44; 50 rows
+PXL_20260929_131326519.jpg	45	0	1120	1150	printed page 45; 50 rows
+PXL_20260929_131332136.jpg	46	0	1151	1179	printed page 46; 50 rows
+PXL_20260929_131338228.jpg	47	0	1180	1207	printed page 47; 50 rows; last row N 1207 continues on page 48
+PXL_20260929_131343233.jpg	48	0	1207	1231	printed page 48; 50 rows; N 1207 is split: 1 row at the foot of page 47, 1 row at the head of page 48
+PXL_20260929_131349421.MP.jpg	49	0	1232	1260	printed page 49; 50 rows
+PXL_20260929_131353074.MP.jpg	50	0	1261	1292	printed page 50; 50 rows
+PXL_20260929_131400413.MP.jpg	51	0	1293	1328	printed page 51; 50 rows
+PXL_20260929_131404052.jpg	52	0	1329	1368	printed page 52; 50 rows
+PXL_20260929_131414601.jpg	53	0	1369	1403	printed page 53; 50 rows; opens with calculated-only 50 R(58-0), N 1369 follows c052's 1368
+PXL_20260929_131419497.MP.jpg	54	90	1404	1448	printed page 54; 50 rows
+PXL_20260929_131426151.jpg	55	90	1448	1488	printed page 55; 50 rows; N 1448 blend continued from page 54
+PXL_20260929_131430685.jpg	56	90	1489	1528	printed page 56; 50 rows
+PXL_20260929_131437574.jpg	57	90	1529	1567	printed page 57; 50 rows
+PXL_20260929_131442003.jpg	58	90	1568	1598	printed page 58; 50 rows
+PXL_20260929_131447964.MP.jpg	59	90	1598	1639	printed page 59; 50 rows; N 1598 blend continued from page 58
+PXL_20260929_131451258.MP.jpg	60	90	1640	1678	printed page 60; 50 rows
+PXL_20260929_131457209.jpg	61	90	1678	1720	printed page 61; 50 rows; N 1678 blend continued from page 60
+PXL_20260929_131501127.jpg	62	90	1721	1759	printed page 62; 50 rows; N 1760 starts page 63
+PXL_20260929_131506818.MP.jpg	63	90	1760	1799	printed page 63; 50 rows
+PXL_20260929_131510499.jpg	64	90	1800	1834	printed page 64; 50 rows
+PXL_20260929_131516856.MP.jpg	65	90	1835	1872	printed page 65; 50 rows
+PXL_20260929_131519921.MP.jpg	66	90	1872	1911	printed page 66; 50 rows
+PXL_20260929_131526241.jpg	67	90	1912	1952	printed page 67; 50 rows
+PXL_20260929_131529492.MP.jpg	68	90	1952	1993	printed page 68; 50 rows
+PXL_20260929_131535010.jpg	69	90	1994	2023	printed page 69; 50 rows
+PXL_20260929_131538055.MP.jpg	70	90	2023	2058	printed page 70; 50 rows
+PXL_20260929_131544723.LONG_EXPOSURE.jpg	71	90	2059	2095	printed page 71; 50 rows
+PXL_20260929_131548646.LONG_EXPOSURE.jpg	72	90	2095	2136	printed page 72; 50 rows
+PXL_20260929_131554174.LONG_EXPOSURE.jpg	73	90	2137	2173	printed page 73; 50 rows; continuous with page 72 and 74
+PXL_20260929_131557927.LONG_EXPOSURE.jpg	74	90	2174	2202	printed page 74; 50 rows; continuous with page 73 and 75
+PXL_20260929_131624838.jpg	75	90	2203	2240	printed page 75; 50 rows; continuous with page 74 and 76
+PXL_20260929_131628170.MP.jpg	76	90	2241	2285	printed page 76; 50 rows; continuous with page 75 and 77
+PXL_20260929_131632582.jpg	77	90	2286	2325	printed page 77; 50 rows; continuous with page 76 and 78
+PXL_20260929_131635731.MP.jpg	78	90	2326	2360	printed page 78; 50 rows; continuous with page 77 and 79
+PXL_20260929_131640726.MP.jpg	79	90	2361	2390	printed page 79; 50 rows; continuous with page 78 and 80
+PXL_20260929_131643991.MP.jpg	80	90	2391	2424	printed page 80; 50 rows; continuous with page 79 and 81
+PXL_20260929_131650060.jpg	81	90	2425	2463	printed page 81; 50 rows; continuous with page 80 and 82
+PXL_20260929_131652797.jpg	82	90	2464	2497	printed page 82; 50 rows; continuous with page 81 and 83
+PXL_20260929_131657630.MP.jpg	83	90	2498	2533	page 83 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131700603.MP.jpg	84	90	2533	2571	page 84 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131704867.jpg	85	90	2572	2612	page 85 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131707721.jpg	86	90	2612	2649	page 86 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131712317.jpg	87	90	2650	2678	page 87 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131715072.jpg	88	90	2679	2715	page 88 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131719090.jpg	89	90	2716	2752	page 89 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131721853.jpg	90	90	2752	2786	page 90 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131727314.MP.jpg	91	90	2786	2815	page 91 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131730615.MP.jpg	92	90	2816	2852	page 92 = photo order - 42 (page number not read); N continuous with neighbours; 50 rows
+PXL_20260929_131734558.MP.jpg	93	90	2853	2887	page 93 = photo order - 42 (printed page number cut off); N continuous with c092; 50 rows
+PXL_20260929_131737589.MP.jpg	94	90	2888	2920	printed page 94; 50 rows; N 2920 is a blend continued on page 95
+PXL_20260929_131742329.jpg	95	90	2920	2960	printed page 95; 50 rows
+PXL_20260929_131746994.MP.jpg	96	90	2961	2992	printed page 96; 50 rows
+PXL_20260929_131752782.jpg	97	90	2993	3025	printed page 97; 50 rows
+PXL_20260929_131755628.jpg	98	90	3026	3058	printed page 98; 50 rows
+PXL_20260929_131800268.jpg	99	90	3059	3095	page 99 = photo order - 42; 50 rows
+PXL_20260929_131803149.MP.jpg	100	90	3096	3128	page 100 = photo order - 42; 50 rows
+PXL_20260929_131807637.jpg	101	90	3129	3165	page 101 = photo order - 42; 50 rows; N 3165 is a blend continued on page 102
+PXL_20260929_131811620.jpg	102	90	3165	3194	page 102 = photo order - 42; 50 rows; N continuous with c103
+PXL_20260929_131815985.jpg	103	90	3195	3226	page 103 (photo order - 42, N continuous with neighbours); 50 rows
+PXL_20260929_131820778.jpg	104	90	3227	3260	page 104 (photo order - 42, N continuous with neighbours); 50 rows
+PXL_20260929_131826235.MP.jpg	105	90	3261	3293	page 105 (photo order - 42, N continuous with neighbours); 50 rows
+PXL_20260929_131829468.jpg	106	90	3294	3331	page 106 (photo order - 42, N continuous with neighbours); 50 rows
+PXL_20260929_131835629.jpg	107	90	3332	3358	page 107 (photo order - 42, N continuous with neighbours); 50 rows
+PXL_20260929_131838649.jpg	108	90	3359	3390	page 108 (photo order - 42, N continuous with neighbours); 50 rows
+PXL_20260929_131846952.jpg	109	90	3391	3422	page 109 (photo order - 42, N continuous with neighbours); 50 rows
+PXL_20260929_131851172.MP.jpg	110	90	3423	3454	page 110 (photo order - 42, N continuous with neighbours); 50 rows; N=3454 continues onto page 111
+PXL_20260929_131855686.jpg	111	90	3454	3483	page 111 (photo order - 42, N continuous with neighbours); 50 rows; N=3483 continues onto page 112
+PXL_20260929_131858552.MP.jpg	112	90	3483	3509	page 112 (photo order - 42, N continuous with neighbours); 50 rows; photo framed further left than the others (N column near the edge), fully legible
+PXL_20260929_131904102.jpg	113	90	3510	3536	printed page 113; 50 rows
+PXL_20260929_131906873.jpg	114	90	3537	3566	printed page 114; 50 rows
+PXL_20260929_131914922.jpg	115	90	3567	3591	printed page 115; 50 rows
+PXL_20260929_131918464.MP.jpg	116	90	3592	3612	printed page 116; 50 rows
+PXL_20260929_131923963.jpg	117	90	3613	3614	printed page 117; last page of the table (6 rows), rest of the page blank

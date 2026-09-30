@@ -1,0 +1,54 @@
+id = "hsiao2013a"
+citation = "Y.-C. Hsiao, C.-Y. Kao, H.-C. Chen, S.-E. Chen, J.-L. Peng and L.-B. Wang, \"Absolute frequency measurement of the molecular iodine hyperfine transitions at 548 nm\", J. Opt. Soc. Am. B 30(2), 328-332 (2013)"
+source = "https://doi.org/10.1364/josab.30.000328 (publisher PDF)"
+doi = "10.1364/josab.30.000328"
+retrieved = "2026-09-27"
+unit = "MHz"
+catalog = "precision.yaml:hsiao2013a"
+
+transcription = """
+Table 2 (p. 331), "Measured" column, read from the PDF text layer and checked digit by digit
+against a 200 dpi render of the page. The same three values are repeated in the Conclusion
+(p. 332). kHz converted to MHz exactly.
+
+Three rows, all kind = frequency, 127I2 P(28) 24-0 components a1, a10, a15. The labels are the
+paper's own and are ranks among the 15 main components of an even-J'' P line, as in the rest of
+the collection.
+
+The Table 2 values are the authors' zero-pressure results: the Fig. 5 raw means at 7.8 Pa
+(546 437 908 757, 546 438 483 314, 546 438 771 915 kHz) plus the +69 kHz pressure-shift correction
+of Table 1 (-8.9(1.2) kHz/Pa x 7.8 Pa). The corrected values are what the paper gives as its
+result, so they are used; no correction is applied here. The consistency 757+69 = 826 etc. was
+checked for all three.
+
+Left out:
+- The two splittings a15 - a10 = 288 601(17) kHz and a10 - a1 = 574 557(17) kHz in Table 2. They
+  are exactly the differences of the three absolute values (checked), so entering them would count
+  the same measurements twice. The common systematic of the three absolutes is carried by the
+  shared group label instead.
+- The "Calculated" (IodineSpec5) and "Measured-Calculated" columns, which are not measurements.
+
+Oddities in the paper (no effect on the numbers): the text on p. 330 and the captions of Figs. 2,
+4 and 6 call the line "P(28) 20-0", while the abstract, Sec. 3, the Conclusion and the captions of
+Figs. 7-8 say P(28) 24-0; 548 nm and the model residuals confirm 24-0. Figs. 7-8 mention an "a11"
+component, which is not among the measured ones. The text says 766 kHz/Pa and 596 kHz/mW in the
+text layer; the rendered page reads 76(6) kHz/Pa and 59(6) kHz/mW (a text-layer artefact; neither
+number is used here).
+"""
+
+uncertainty = """
+12 kHz for each absolute frequency, as printed in Table 2: the authors' combined error of the
+Fig. 5 statistical value (1-3 kHz) and the Table 1 systematics (pressure shift 9, error-signal
+offset 2, error-signal asymmetry 8 kHz; total 12). Taken as standard (1 sigma). The pressure-shift
+and asymmetry parts are common to the three components, hence the one group.
+"""
+
+notes = "The paper reports IodineSpec5 predictions about 3.4-3.6 MHz above the measured values."
+
+[conditions]
+method = "modulation transfer spectroscopy of a frequency-doubled, fibre-amplified 1097 nm ECDL, comb-referenced"
+cell_length_cm = 10
+cold_finger_C = 6.5
+pressure_Pa = 7.8
+pump_mW = 2.5
+probe_mW = 0.1

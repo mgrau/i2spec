@@ -1,0 +1,64 @@
+c005	N=125	sigma_mes 19710.9509 (o-c .2 against 19710.9507 confirms); plate p002 has 19710.9505: plate reading to recheck
+c007	N=177	sigma_mes 19715.5095 (o-c -3.7 against 19715.5132 confirms); plate p002 has 19715.5056: plate reading to recheck
+c009	N=224	sigma_mes 19719.4890 (five o-c values 13.2 7.3 .5 -4.4 -9.3 confirm); plate p002 has 19719.4691: plate reading to recheck
+c012	N=281	o-c printed 4.2 while 19725.0708-19725.0667 = 4.1 (separately rounded values; within the 1e-4 tolerance)
+c013/p003	N=315	I: classification prints 28 clearly (both photos read 28); plate p003 has 26. Plate reading probably wrong (8/6 confusion)
+c014/p003	N=338	I: classification prints 74 on both blend rows, clearly; plate p003 has 79 (4/9 confusion). Recheck plate
+c018/p005	N=467	sigma: classification prints 19741.0818 on pages 18 and 19; o-c confirms (0789 +2.9, 0928 -11.0); plate p005 has 19741.0617. Recheck plate
+c016	N=409	both assignments 89 P(63-0) and 32 R(65-1) print sigma_cal 19736.1223 and o-c -3.7 (checked at zoom): a genuine tie, flagged by ccheck as "sigma_cal not increasing"
+c018	N=444	75 P(58-0) and 35 R(66-1) both print sigma_cal 19739.1831, o-c -1.2: genuine tie, flagged by ccheck
+c022/c023	-	c022 ends with 83 R(61-0) 19749.3054 (clear at zoom); c023 opens with 87 R(63-0) 19749.3054. Two calculated lines at the same sigma, or a printing repeat; both kept. ccheck flags c023:1
+c022	N=554	sigma_cal of 62 P(56-0) read 19748.6628 (the 8 prints like 3); o-c 1.0 requires 6628
+c026	N=649	sigma_cal 19757.3833 printed for both 26 P(53-0) and 16 R(65-1), both o-c -2.4; both assignments agree with the Dunham model to 1e-4, so the equal values are real (ccheck flags sigma_cal not increasing)
+c028	N=711	sigma_cal 19763.0422 printed for both 77 R(60-0) and 40 P(73-1), both o-c -5.6; both agree with the Dunham model to 1e-4 (ccheck flags sigma_cal not increasing)
+c042	N=1076	sigma_mes 19794.4968 (o-c -7.6 against 19794.5044 confirms); plate p010 has 19794.4569: plate reading to recheck
+c033,c037	N=840,924,930	two assignments print identical sigma_cal and o-c (19773.3755 6.1; 19780.7756 -.2; 19781.0850 -4.4), rechecked on zoomed crops: genuine, ccheck flags them as sigma_cal not increasing
+c044	N=1104	I read 38 (second digit has closed left loops, so 8 not 3); the plate page for N 1104 was not available to cross-check
+c046	N=1171	classification sigma_mes 19802.6887 (clear, and o-c -3.4 against 19802.6921 confirms it); plate p011 has 19802.6868: plate misreading likely
+c046	N=1174	classification sigma_mes 19802.8889 (o-c 1.5 against 19802.8875 confirms it); plate p011 has 19802.8689 (first decimal 6 vs 8): plate misreading likely
+c051	N=1298	classification sigma_mes 19814.8977 (o-c -8.3 against 19814.9060 confirms it); plate p012 has 19814.8576: plate misreading likely
+c051	N=1309	o-c of 16 R(55-0) 19815.7246 printed -8.8 or -8.3 (last digit ambiguous in the photo); -8.8 taken from the identity 19815.7158-19815.7246
+c052	N=1338	two assignments, 50 P(58-0) and 56 P(59-0), both print sigma_cal 19818.1064 (read clearly); the checker flags sigma_cal not strictly increasing, which is genuine
+c053	N=1373	calculated-only 4 P(55-0) and 74 P(65-0) print the same sigma_cal 19820.9717 (read clearly); checker flags sigma_cal not strictly increasing: genuine tie
+c059	N=1599	blend rows 1 R(56-0) and 29 R(57-0) both print sigma_cal 19843.1318 and o-c -1.0 (read clearly): genuine tie
+c054	N=1406	I 18 read clearly in the classification; plate p013 has 16: plate reading to recheck
+c055	N=1471	I 68 read clearly in the classification; plate p013 has 63: plate reading to recheck
+c056	N=1514	sigma_mes 19834.7588 (o-c -6.1 against 19834.7649 confirms); plate p014 has 19834.7568: plate reading to recheck
+c059	N=1610	sigma_mes 19844.1770 (o-c .2 against 19844.1768 confirms); plate p015 has 19844.1765: plate reading to recheck
+c065	N=1850	I prints 53 (zoomed); the plate file has 58 for this N. 3/8 dot-matrix confusion; one of the two readings is wrong. Kept 53 as printed here
+c070	N=2031	I of the second blend row prints like 53 (first row 58; zoomed, the 3 looks like a broken 8); written 58 on both rows since blends repeat I
+c070	N=2056	sigma_mes of the first blend row reads 19885.0333, second row 19885.0383; written .0383 on both (o-c 1.2 and -4.4 agree only with .0383). The plate file has 19885.0363, which the o-c identity does not support
+c068	N=1985	sigma_mes 19877.8882 here (o-c -2.2 against 19877.8904 confirms it); the plate file has 19877.8862
+c071	N=2064	sigma_mes 19885.6980 reads clearly here (no assignment, so no o-c check); the plate file has 19885.6961
+c071	N=2084	sigma_mes 19887.5934 reads clearly here (no assignment); the plate file has 19887.5983
+c064	N=1821	two calculated-only rows (3 P(57-0), 61 P(64-0)) both print sigma_cal 19862.8833: a genuine tie, which ccheck reports as "sigma_cal not increasing"
+c071	N=2087	both blend rows (32 P(60-0), 59 R(66-0)) print sigma_cal 19887.8848 and o-c -2.7: a genuine tie, which ccheck reports as "sigma_cal not increasing"
+c074	N=2187	sigma_cal of 7 P(59-0) read 19897.7788: the last digit prints like 3, but o-c 6.1 requires 8 (3/8 confusion)
+c080	calc-only 20 R(61-0)	sigma_cal read 19919.8806: first decimal prints like 3 but sigma_cal order (between .6533 and .9077) requires 8
+c073	N=2150	classification sigma_mes 19894.0840 (o-c -0.5 against sigma_cal 19894.0845 confirms it); the plate transcription (p019 or p020) has 19894.0639, probably a plate misreading (8/6, 4/3)
+c074	N=2182	classification sigma_mes 19897.3083 (o-c -1.5 against sigma_cal 19897.3098 confirms it); the plate transcription (p019 or p020) has 19897.3064, probably a plate misreading (8/6, 3/4)
+c084	N=2541	I read 45: second digit prints with its left stroke faded (3 or 5); plate p023 has 45 unambiguously
+c084	N=2558	classification sigma_mes 19932.5842 (clear; o-c -2.9 against 19932.5872 confirms it); plate p023 has 19932.5942: plate misreading likely
+c085	N=2611	classification sigma_mes 19937.6006 (clear; o-c -1.2 against 19937.6018 confirms it); plate p024 has 19937.6056: plate misreading likely
+c086	N=2627	classification sigma_mes 19938.9119 (clear; o-c -4.2 against 19938.9160 fits .9118/.9119); plate p024 has 19938.9115 (4 in last digit): plate misreading likely
+c091	N=2798	sigma_cal 19955.7649 printed for both 20 P(64-0) and 40 R(68-0), both o-c .0: genuine coincidence, flagged by the checker as not strictly increasing
+c091	N=2786	calculated-only 47 R(72-0) sigma_cal read 19954.8457 (first decimal clear 8 in zoom; order between .6060 and .8787 requires 6-8)
+c094	N=2913-2920	photo strongly curved at the page foot: J labels sit about one row below their sigma_cal by eye; J and sigma_cal paired by column order and confirmed by R(J)-P(J)=B'(4J+2) for the 64-0 band (P(4) 19966.9253, R(4) 19967.1099, P(1) 19967.4739)
+c095	39 R(70-0)	sigma_cal read 19968.8435: first decimal prints like 3; order (between 19968.8186 and 19968.9661) requires 8 or 9, read 8
+c097	35 P(70-0)	sigma_cal read 19976.8408: first decimal prints like 3; order (between 19976.8086 and 19976.8501) requires 8
+c098	N=3043	I 28 in the classification (clear); plate has 29
+c098	N=3030	classification sigma_mes 19978.1887 (o-c 2.2 against 19978.1865 confirms it); plate has 19978.1688: plate misreading likely
+c098	N=3038	classification sigma_mes 19979.0815 (o-c 6.6, 4.2, -10.3 against three sigma_cal confirm it); plate has 19979.0615: plate misreading likely
+c099	34 R(71-0)	sigma_cal read 19984.3884: third decimal prints like 3; o-c -1.2 against sigma_mes 19984.3872 and order after 19984.3879 require 8
+c099	N=3072	observed-only line read 19982.7710 I 3 (clear); plate has 19982.7739 (eps 4.0); no o-c to decide
+c100	N=3114	observed-only line: third decimal prints like 3, read 19986.2981 (left half of an 8 faded); plate has 19986.2982
+c101	15 R(67-0)	branch letter faint (right leg faded, looks like P); R required, since P(15) of 67-0 is at 19988.2805 and R(15)-P(15) fits B'(67) from neighbouring J
+c102	N=3186-3194	page foot curved: J labels one row below their sigma_cal by eye; paired by column order, confirmed by R(J)-P(J) for the 67-0 and 68-0 bands
+c103-c112	N=3195-3509	photos tilted, so J labels sit up to one row off their sigma_cal: labels paired with sigma_cal in print order within each tile, each assignment paired to its line by the o-c identity, and every (v_up, J) checked by the ground-state combination difference R(J-1)-P(J+1) (all 0.07460-0.07466 per (2J+1)) and a smooth R(J)-P(J) spacing per v_up
+c103	N=3203	sigma_cal 19995.1038 printed twice (3 R(67-0) and 28 P(71-0)), both with o-c -.2: a genuine coincidence, so the checker's "sigma_cal not increasing" at c103:13 is expected
+c108	N=3370,3378	sigma_cal 20011.3267 printed for both 27 P(76-0) and 28 R(77-0) (o-c 10.3 each), and 20012.5923 for both 9 R(70-0) and 19 P(72-0) (o-c 1.0 each): genuine coincidences (checker flags c108:14, c108:29)
+c109	N=3421	I read 8 (clear in the classification print); plate p031 has 3. sigma 20016.7026 here vs plate 20016.7027 (last-digit rounding)
+c111	N=3462	I read 10 (clear); plate p032 has 13
+c103,c104,c107	N=3220,3250,3252,3344,3354	classification sigma_mes 19996.6838, 20000.0857, 20000.2458, 20008.9219, 20009.7883 each confirmed by the o-c identity; the plate files have 19996.6638, 20000.0657, 20000.2456, 20008.9216, 20009.7683 (plate digits likely misread: 8/6, 9/6)
+c110,c111,c112	N=3454,3483	a blended line split across a page break: its rows appear on both pages, with the same sigma_mes and I
+c113-c117	N=3510-3614	all v_lo = 0 and v_up 73-79; photos tilted strongly, so J labels sit up to one row off their sigma_cal: each assignment paired to its line by the o-c identity and checked by R-P spacing within (v_up, J); the relative print order of an observed-only row and an adjacent calculated-only row is taken from sigma ordering

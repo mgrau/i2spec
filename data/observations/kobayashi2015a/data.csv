@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(36) 32-0,a1,frequency,564074632.419,0.008,,,kobayashi2015a,"abstract and Sect. 3 (p. 9); at 41 Pa, 12.7 mW pump, 12 MHz p-p modulation; not extrapolated to zero pressure or power"

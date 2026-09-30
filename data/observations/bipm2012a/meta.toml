@@ -1,0 +1,52 @@
+id = "bipm2012a"
+citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 532 nm), ¹²⁷I₂ a10 component, R(56) 32-0 (approved by the CIPM in October 2007; file last updated August 2012)"
+source = "https://www.bipm.org/documents/20126/41549514/M-e-P_I2_532.pdf/16c7ddb8-4854-9f16-34cc-5bcebe299ce8"
+retrieved = "2026-09-14"
+catalog = "data/catalog/precision.yaml#bipm2012a"
+unit = "MHz"
+transcription = """
+Page 1: recommended f(a10, R(56) 32-0). Pages 2-3: intervals f(a1 or a21 of each line) - f(a10, R(56) 32-0),
+the list of 17 lines (p. 2) and the three 2007 additions (p. 3), converted from kHz to MHz. These were typed
+by hand from the PDF text layer (pdftotext) and checked against the page images.
+
+Hyperfine tables, all 20 (pp. 5-15), one per line. Values are relative to a1 of the same line, except in
+Table 16 (R(56) 32-0), where they are relative to a10:
+  p. 5   Table 1 R(87) 33-0, Table 2 R(58) 32-0
+  p. 6   Table 3 P(55) 32-0, Table 4 P(104) 34-0
+  p. 7   Table 5 P(84) 33-0, Table 6 R(122) 35-0
+  p. 8   Table 7 R(145) 37-0, Table 8 P(132) 36-0
+  p. 9   Table 9 R(57) 32-0, Table 10 P(54) 32-0
+  p. 10  Table 11 P(119) 35-0, Table 12 R(86) 33-0
+  p. 11  Table 13 R(106) 34-0, Table 14 R(134) 36-0
+  p. 12  Table 15 P(83) 33-0, Table 16 R(56) 32-0
+  p. 13  Table 17 P(53) 32-0
+  p. 14  Table 18 P(142) 37-0, Table 19 R(121) 35-0 (printed as P(121) 35-0)
+  p. 15  Table 20 R(85) 33-0
+Tables 1 and 16 were typed by hand, as in tests/test_bipm_532.py. The other 18 tables were parsed from
+the text layer by script, not retyped. The text layer agrees with page images of every table page,
+digits and minus signs included. The parsed labels of each table were checked against its page image.
+Tables 1-17 are in MHz. Tables 18-20 are in kHz and were converted to MHz, which is exact. A component
+that a table does not list is absent from the source (for example, Table 2 has no a3 or a4).
+
+Corrections and relabelling:
+- Table 10 (P(54) 32-0) prints a8 twice and no a7. The first a8 (417.668 MHz) lies between a6 and a8, so it
+  is entered as a7. The model puts a7 at 417.684 MHz.
+- Table 19 (R(121) 35-0): a13 is left out. It is printed as 594 812.8 kHz, the same value as a12. The model
+  puts a13 at 648.49 MHz, 53.7 MHz away, while a12 agrees to 0.04 MHz. The a13 entry repeats a12.
+- Table 19 is titled P(121) 35-0, but the list on p. 3 says R(121) 35-0, as does the title of Hong et al.
+  2002. The model puts R(121) 35-0 a1 at +27 541.2 MHz from R(56) a10 (printed: +27 539.2 MHz). P(121) 35-0
+  would lie 275 GHz lower. Entered as R(121) 35-0.
+- The notes under Tables 18 and 19 give the 2007 intervals as f(a21) - f(a10, R(56) 32-0), while the list on
+  p. 3 gives a1. P(142) 37-0 has only 15 components. For R(121) 35-0 the model puts a1 at the printed
+  interval; a21 would be at +28 493.9 MHz. So a1 is used.
+- Under each table a note restates its line's interval to R(56) a10, rounded to 1 kHz. These notes are not
+  entered again; the values from pp. 2-3 are used.
+- Table 4 has a stray u_c entry (0.0020) below a15 with no component. It is ignored.
+"""
+uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a10) and each inter-line interval: 5 kHz. Hyperfine intervals: 1-22 kHz, per component as each table gives it (1.5 kHz for R(56) 32-0, 1 kHz for R(57) and P(54) 32-0, 2 kHz for most lines, up to 22 kHz for R(134) 36-0 a3)."
+
+[conditions]
+cold_finger_C = -15.0
+modulation_MHz_pp = 1.0
+detection = "3f"
+saturating_intensity_mW_cm2 = 17.0

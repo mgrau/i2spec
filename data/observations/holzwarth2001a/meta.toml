@@ -1,0 +1,58 @@
+id = "holzwarth2001a"
+citation = "R. Holzwarth, A. Yu. Nevsky, M. Zimmermann, Th. Udem, T. W. Haensch, J. von Zanthier, H. Walther, J. C. Knight, W. J. Wadsworth, P. St. J. Russell, M. N. Skvortsov, S. N. Bagayev, \"Absolute frequency measurement of iodine lines with a femtosecond optical synthesizer\", Appl. Phys. B 73, 269-271 (2001)"
+source = "https://doi.org/10.1007/s003400100633 (publisher PDF)"
+doi = "10.1007/s003400100633"
+retrieved = "2026-09-15"
+catalog = "data/catalog/precision.yaml#holzwarth2001a"
+unit = "MHz"
+transcription = """
+Table 1 (p. 271): absolute frequencies of 17 hyperfine components of 16 lines, kHz, converted to MHz
+exactly: a1 of 16 lines and a10 of R(56) 32-0 (line 1110). The PDF has a text layer. Values were read
+from it (pdftotext -layout) and checked digit by digit against a 400 dpi rendering of p. 271. The
+assignments are printed as "R61,32-0" etc.; line numbers follow Gerstenkorn and Luc. The caption says
+"16 lines"; there are 17 rows because 1110 has two components.
+
+The values are as measured at a cold-finger temperature of -5 C (2.42 Pa), 0.6 mW (caption, p. 271).
+No correction is applied here. The paper gives the shift to the -20 C (0.46 Pa) conditions of the CIPM
+value as +9.4 +/- 0.4 kHz (pressure 8.2 kHz from -4.2 kHz/Pa, power 0.2 kHz, iodine impurities 1.0
+kHz), common to all lines. The extrapolation to zero pressure would be about +10.2 kHz for pressure
+plus +0.2 +/- 0.07 kHz for power (lines are red-shifted by 200 +/- 70 Hz). All rows share the group
+`holzwarth2001a` so a fit can carry this common offset.
+
+Correction (one row): line 1123, P(51) 32-0 a1, is printed as 563 536 360 675.1 kHz. That is 176 GHz
+above every other line, outside the Nd:YAG tuning range the paper covers. With the digit groups 360 and
+536 swapped it reads 563 360 536 675.1 kHz, which is 0.44 MHz from the model and continues the smooth
+P-branch residual trend of the other lines (P(58) ... P(52): -0.08, 0.00, +0.07, +0.15, +0.23, +0.37
+MHz). The swapped value is entered, and the note on the row says so.
+
+Labels: a1 is the lowest-frequency component, a10 as in the CIPM definition. No intervals are entered;
+the 0.2 kHz power shift and the impurity shift are common, and the paper's 2.1 kHz relative
+uncertainty belongs to differences of these rows.
+
+Overlap with bipm2012a (not independent): this paper is the source of column [4] of the BIPM 532 nm
+list. Differences, kHz, taking this paper's values as printed (at -5 C): f(a10, R(56) 32-0) - BIPM
+563 260 223.513 MHz = -4.3. Intervals to R(56) a10 minus the BIPM intervals: R(58) 32-0 a1 -0.8,
+P(55) 32-0 a1 -0.9, R(57) 32-0 a1 -2.5, P(54) 32-0 a1 -2.7. R(56) a1 - a10 = -571.5432 MHz, BIPM
+-571.542. A fit using both sets double counts this information.
+
+Comparison with ye1999a: the R(57) and P(54) a1 intervals to R(56) a10 are 6.8 and 7.3 kHz below
+Ye's. P(83) 33-0 a1 (here) against Ye's a21 minus the BIPM a21-a1 splitting: +15.8 kHz. Ye notes that
+a1 of this line is contaminated by a nearby resonance.
+"""
+uncertainty = """
+5.2 kHz for every row, as printed (caption and p. 271): the combined standard uncertainty of 140 Hz
+(synthesizer), 50 Hz (statistics), 1.5 kHz (spectroscopy setup) and a 5 kHz allowance for cell
+impurities. The 5 kHz impurity term is common to all lines; the paper gives 2.1 kHz for the relative
+distance between lines (twice the spectrometer uncertainty). Taken as 1 sigma.
+"""
+
+[conditions]
+method = "third-harmonic saturated absorption (fluorescence detection, 455 Hz probe modulation), fs comb referenced to a GPS-disciplined Cs clock"
+laser = "diode-pumped Nd:YAG with intracavity doubling"
+cell = "PTB 13/97"
+cold_finger_C = -5.0
+pressure_Pa = 2.42
+power_mW = 0.6
+intensity_mW_cm2 = 30.0
+pressure_shift_kHz_per_Pa = -4.2
+power_shift_Hz_per_mW = -340

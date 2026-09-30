@@ -1,0 +1,91 @@
+id = "chen2023a"
+citation = "Y. T. Chen, N. C. Xin, H. R. Qin, S. N. Miao, Y. Zheng, J. W. Zhang, L. J. Wang, \"Absolute frequency measurement of molecular iodine hyperfine transitions at 554 nm and its application to stabilize a 369 nm laser for Yb+ ions cooling\", Chin. J. Phys. 88, 485-492 (2024)"
+source = "https://arxiv.org/abs/2309.05932 (arXiv v1, 12 Sep 2023). The journal version (doi:10.1016/j.cjph.2023.12.007) is paywalled and was not seen; its numbers could differ from the preprint."
+doi = "10.1016/j.cjph.2023.12.007"
+retrieved = "2026-09-29"
+unit = "MHz"
+exclude = "All nine printed frequencies disagree with the model and the APO/NIST atlas by 30-840 MHz (see transcription); left out of load_all() until the journal version or the EFTF 2024 companion resolves it."
+catalog = "data/catalog/precision.yaml#chen2023a (also data/catalog/broadband.yaml#chen2024, the pressure-shift entry for the same paper)"
+
+transcription = """
+From the arXiv preprint (2309.05932v1), Table 2 (p. 8), "Measured" column: absolute frequencies of one
+hyperfine component of each of nine 127I2 lines, in kHz, converted to MHz exactly. These are frequencies of
+the 554 nm light (540.84-540.89 THz; the 369 nm light is 1.5x this). Read from the PDF text layer
+(pdftotext -layout) and checked digit by digit against a 200 dpi rendering of p. 8. The paper prints no
+calculated (IodineSpec) column. No hyperfine intervals are given: the other lines named in the abstract
+(P(46) 22-0, R(147) 28-1, R(49) 22-0, P(45) 22-0) appear only as wavemeter-scanned spectra in Fig. 2
+(p. 5), with detuning axes from a 1 MHz-resolution wavemeter; those are not measurements and are not
+digitized. No crossover resonances are reported.
+
+Component labels: the paper uses a/b/c only to tell apart the lines shown in one Fig. 2 panel; the number
+is the rank by frequency (15 components for even J'', 21 for odd J''). Fig. 2 shows a1 at the low-detuning
+end and a15 / b15 / b21 at the high end, which agrees with the i2spec convention, so the labels are
+entered as printed (b1, b18 for the odd-J'' lines P(121) 24-0 and P(69) 25-1).
+
+Corrections already in the printed values (Sect. 3.2, Table 1, p. 6-7): the authors measured pressure and
+power shifts only on P(69) 25-1 b18, at 7.2 mW pump, 8.0 mW probe, 2.8 Pa (cold finger 10 C): pressure
+shift -78.2 +/- 8.8 kHz/Pa (2.6-3.9 Pa), power shift +17.9 +/- 0.9 kHz/mW (5.0-7.2 mW pump). Table 1 lists
+the corrections as +219.0 (29.4) kHz (pressure) and -128.9 (5.8) kHz (power), net +90 kHz, and the text says
+this 90 kHz was added to all the measured frequencies as a "rough correction" (the same coefficients are
+assumed for every line). No further correction is applied here. The -78 kHz/Pa coefficient is about ten
+times the usual I2 self-shift (-1 to -8 kHz/Pa; see data/catalog/broadband.yaml#chen2024 and
+docs/research/02a-broadband-data.md); if it is wrong the correction could be off by ~0.2 MHz, which is
+negligible next to the discrepancies below.
+
+WARNING - THE PRINTED FREQUENCIES DO NOT AGREE WITH THE MODEL OR THE ATLAS. Observed - i2spec (default
+parameters) is +151, -101, +32, +44, -840, -466, -362, -362, +282 MHz for the rows in table order, i.e.
+10^3-10^4 sigma. The i2spec model is good to 0.02-7 MHz for neighbouring precision data (zhang2009a
+P(144) 23-0 +0.02 MHz, hsiao2013a P(28) 24-0 -0.2 MHz, yang2011a R(130) 24-1 +7 MHz, bipm2003b R(106) 28-0
+0.0 MHz), and the independent APO/NIST 2009 FTS atlas (data/atlas_lines/apo_nist_2009.csv) puts every one
+of these nine line centres 10-24 MHz below i2spec, i.e. the atlas and the model agree with each other and
+both disagree with the paper by 30-820 MHz (obs - (atlas centre + model hyperfine offset) = +163, -85, +55,
++54, -819, -447, -339, -338, +301 MHz). Checks made:
+  - the digits are as printed (text layer and rendering agree);
+  - no other component of the same line fits consistently (nearest components are still 13-450 MHz off,
+    with no common relabelling);
+  - no other 127I2 B-X line (v'' = 0-3, J'' <= 220) has a component within 40 MHz of six of the nine values;
+    of the other three, P(160) 26-0 a1 (not a15) would fit at +23 MHz vs model / +44 vs atlas, and
+    R(72) 25-1 a15 (not a10) at -6 / +13 MHz, but these single coincidences are weak evidence given the
+    ~50 MHz component spacing;
+  - the residuals are not multiples of the 250 MHz comb repetition rate (mod 250 MHz they fall near
+    32-45 and 138-160 MHz), so a simple mode-number error does not explain them, although mode-number
+    plus offset/beat-sign ambiguities (fo = 35 MHz) cannot be excluded.
+The cause is not known. All nine rows are kept exactly as printed (nothing is dropped), but THIS SET SHOULD
+NOT BE USED IN THE FIT until the discrepancy is understood (e.g. from the journal version or the EFTF 2024
+companion paper, doi:10.1109/eftf61992.2024.10722760). All rows share one group, since one comb, maser,
+cell and one common shift correction were used.
+"""
+
+uncertainty = """
+Table 2 prints two uncertainties per value: type A with coverage factor k = 2 (first parentheses, 26-72 kHz)
+and type B (second, 30 kHz for every line). The type-B value comes from Table 1 (pressure-shift 29.4 kHz and
+power-shift 5.8 kHz in quadrature), evaluated on P(69) 25-1 b18 only; since it is built from 1-sigma fit
+errors of the shift coefficients it is taken as 1 sigma. The standard uncertainty entered is
+sqrt((A/2)^2 + B^2), 33-47 kHz. Note that Table 1 combines the k = 2 type-A value (33 kHz) with the type-B
+30 kHz directly to a "total" of 44 kHz, so the paper's own coverage factors are inconsistent; using A
+instead of A/2 would give 40-78 kHz. The type-B term does not include line-to-line differences of the
+shift coefficients, which the authors assumed equal to those of P(69) 25-1 b18. Either way the stated
+uncertainties are four orders of magnitude smaller than the disagreement described in `transcription`.
+"""
+
+notes = "Modulation transfer spectroscopy (EOM 3.27 MHz, plus 2 kHz chopper and lock-in) of the 554 nm second harmonic of a 1108 nm DFB fibre laser, comb-referenced to an H-maser. No line overlaps with any other data set held. Status: transcribed, but the values disagree with the model and the APO/NIST atlas by 30-840 MHz; not fit-ready."
+
+[conditions]
+method = "modulation transfer spectroscopy, optical frequency comb (Menlo FC1500-250-ULN, fr ~250 MHz, fo 35 MHz) referenced to an H-maser"
+laser = "frequency-doubled 1108 nm DFB fibre laser (PreciLasers tripled system; 554 nm output)"
+cell_length_cm = 10
+cell_diameter_mm = 30
+cold_finger_C = 10.0
+pressure_Pa = 2.8
+pressure_formula = "log10(P/Pa) = -3512.830/T - 2.013 log10(T) + 18.37971 (Gillespie & Fraser 1936), as printed"
+pump_mW = 7.2
+probe_mW = 8.0
+beam_diameter_mm = 2
+modulation = "EOM 3.27 MHz on the pump; chopper 2 kHz with lock-in"
+pressure_shift_kHz_per_Pa = -78.2
+pressure_shift_unc_kHz_per_Pa = 8.8
+pressure_shift_range_Pa = [2.6, 3.9]
+power_shift_kHz_per_mW = 17.9
+power_shift_unc_kHz_per_mW = 0.9
+power_shift_range_pump_mW = [5.0, 7.2]
+shift_coefficients_measured_on = "127I2 P(69) 25-1 b18 only; applied to all lines as a net +90 kHz correction"

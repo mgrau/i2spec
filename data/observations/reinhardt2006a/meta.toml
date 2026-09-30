@@ -1,0 +1,42 @@
+id = "reinhardt2006a"
+citation = "S. Reinhardt, G. Saathoff, S. Karpuk, C. Novotny, G. Huber, M. Zimmermann, R. Holzwarth, T. Udem, T. W. Hänsch and G. Gwinner, \"Iodine hyperfine structure and absolute frequency measurements at 565, 576, and 585 nm\", Opt. Commun. 261, 282-290 (2006)"
+source = "https://doi.org/10.1016/j.optcom.2005.12.029 (PDF obtained 2026-09-16)"
+doi = "10.1016/j.optcom.2005.12.029"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:reinhardt2006a"
+
+transcription = """
+Tables 1-5 (hyperfine splittings of five lines) and Table 6 (one absolute frequency), read from the
+text layer of the publisher PDF on 2026-09-16.
+
+All splittings are printed in kHz and are converted to MHz here. The reference component of each
+table is printed as zero and is therefore not recorded as an observation.
+
+Reference components differ between tables: Tables 1, 2, 3 and 5 are relative to a1, but **Table 4
+(P(10) 14-1) is relative to a3**, which is recorded in ref_component.
+
+Only the "Measured" column is transcribed. The "Calculated" and "Measured-calculated" columns are
+outputs of the paper's own fit, and the "From [14]"/"From [15]" columns in Table 2 are other groups'
+values, so none of them is entered here. (Note that the [14] entry for a3 is printed as "287,050",
+which is inconsistent with its own uncertainty; it is not our value and is not used.)
+
+Component labels a1-a21 are ranks by frequency among the main components, consistent with the rest
+of the collection: P(80) 21-1, P(62) 17-1 and P(10) 14-1 have even J'' and 15 main components, while
+R(99) 15-1 and R(15) 14-1 have odd J'' and 21, and the printed labels run to a15 and a21 respectively.
+
+The absolute frequency is the frequency-comb value of Table 6, 512 671 028 075 +/- 70 kHz for
+P(10) 14-1 a15. The two other methods in that table (AOM 512 671 028 042 +/- 150, heterodyne
+512 671 028 067 +/- 73) are earlier/less precise determinations of the same quantity and are not
+entered, to avoid counting one measurement three times.
+"""
+
+uncertainty = """
+As printed in each table heading: +/- 20 kHz for Tables 1, 2 and 3; +/- 30 kHz for Tables 4 and 5;
++/- 70 kHz for the comb absolute frequency. Converted to MHz and taken as standard (1 sigma).
+"""
+
+[conditions]
+method = "Doppler-free saturation spectroscopy, frequency-comb referenced"
+
+notes = "P(62) 17-1 is also the BIPM 576 nm reference line (bipm2003c), so this set provides an independent check on that line at 20 kHz."

@@ -1,0 +1,31 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(40) 52-0,a1,frequency,590901303.762,0.008,,,sakamoto2024,Table II
+127I2 P(52) 53-0,a1,frequency,590903990.563,0.008,,,sakamoto2024,Table II
+127I2 P(40) 52-0,a2,interval,209.0290,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a3,interval,272.7685,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a4,interval,290.1791,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a5,interval,352.2261,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a6,interval,357.2130,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a7,interval,387.4671,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a8,interval,454.9875,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a9,interval,485.3090,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a10,interval,562.6655,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a11,interval,663.5181,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a12,interval,678.2787,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a13,interval,728.1864,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a14,interval,746.2892,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(40) 52-0,a15,interval,845.6178,0.0034,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a2,interval,182.4633,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a3,interval,263.9125,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a4,interval,298.7915,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a5,interval,339.5996,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a6,interval,373.8654,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a7,interval,378.7360,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a8,interval,468.8533,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a9,interval,502.8115,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a10,interval,562.5978,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a11,interval,651.0598,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a12,interval,673.1567,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a13,interval,733.1374,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a14,interval,757.8610,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD
+127I2 P(52) 53-0,a15,interval,845.3248,0.0061,,a1,sakamoto2024,Table III Obs.; uncertainty the fit SD

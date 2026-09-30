@@ -1,0 +1,37 @@
+{
+ "id": "mlr_b_2026b",
+ "state": "B",
+ "form": "MLR",
+ "citation": "i2spec, Phase C: B MLR fitted to measured B levels with X held at mlr_x_2026b (2026-09-18). Not a published parameter set.",
+ "fitted_to": "787 B levels implied by every 127I2 absolute frequency with v'' <= 17 (X level from mlr_x_2026b, hyperfine offset frozen) at hypot(sigma_obs, 1 MHz); the published B levels for v' <= 30 at 3 MHz as shape guidance; the 15 atlas bands above v' = 44 at 0.005 cm-1. C5, C6, C8, C10 carry their published priors; Te + De is tied to De(X) + 7602.9762 cm-1. Result: measured levels 1.7 MHz rms at v' <= 30, 6.7 at 31-44, 17 at 45-50; atlas 0.029 cm-1. prototypes/mlr_b_levels.py.",
+ "Te": 15769.066640779556,
+ "De": 4381.249559220445,
+ "Re": 3.0263316662123425,
+ "p": 6,
+ "q": 4,
+ "Rref_factor": 1.5,
+ "C": {
+  "5": 314691.9928103721,
+  "6": 1500828.898298893,
+  "8": 25013659.328928817,
+  "10": 419628845.11327803
+ },
+ "beta": [
+  -0.45478598509742785,
+  0.016852186044152055,
+  -0.2356357169438127,
+  0.3246850848349483,
+  -0.23482437575059562,
+  0.8907570352785594,
+  2.974250832268808,
+  -4.187489673304866,
+  -32.77408707659702,
+  -45.99812810381595,
+  46.51565399554644,
+  200.38668589565114,
+  207.53208964406943,
+  74.3519362814794
+ ],
+ "born_oppenheimer": "taken from i2spec2026a B (alpha and V_ad, including the V_ad constant)",
+ "status": "research result; the shipped model still uses i2spec2026a. With mlr_x_2026b it matches the published model on the precision sets to within about 2x and beats it by 10^2-10^4 above v' = 44 and v'' = 47; the BIPM 532 nm inter-line intervals regress from 3.9 to 26.6 MHz because intervals were not among the fitted levels."
+}

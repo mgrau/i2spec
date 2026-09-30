@@ -1,0 +1,54 @@
+id = "bipm2003a"
+citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 633 nm), ¹²⁷I₂ a16 or f component, R(127) 11-5 (MEP 2003)"
+source = "https://www.bipm.org/documents/20126/41549560/M-e-P_I2_633.pdf/c4c25f25-ae65-e05d-402a-9bfc84c715c3"
+retrieved = "2026-09-14"
+catalog = "data/catalog/precision.yaml#bipm2003a"
+unit = "MHz"
+transcription = """
+Page 1: adopted f(a16, R(127) 11-5) = 473 612 353 604 (10) kHz, the CIPM recommended value. Typed by hand.
+
+Hyperfine tables (pp. 3-7), parsed from the PDF text layer (pdftotext) by script, not retyped. The text layer
+agrees with page images of every table page, digits and minus signs included:
+  p. 3  Table 1 127I2 R(127) 11-5: a2-a21, relative to a16
+  p. 4  Table 2 127I2 P(33) 6-3: b1-b21, relative to b21
+        Table 3 129I2 P(54) 8-4: a2-a28, relative to a28
+  p. 5  Table 4 129I2 P(69) 12-6: b1-b17 and b21-b36, relative to a28 of 129I2 P(54) 8-4
+        Table 5 129I2 R(60) 8-4: d23-d28, relative to a28 of 129I2 P(54) 8-4
+  p. 6  Table 6 129I2 P(33) 6-3: e1-e17, relative to e2
+  p. 7  Table 7 127I129I P(33) 6-3: m1-m48, relative to a28 of 129I2 P(54) 8-4
+Intervals between lines, from the table notes (typed by hand):
+  f(b21, 127I2 P(33) 6-3) - f(a16, R(127) 11-5) = -532.42 (2) MHz  (Table 2)
+  f(a28, 129I2 P(54) 8-4) - f(a16, 127I2 R(127) 11-5) = -42.99 (4) MHz  (Tables 3, 4, 5 and 7)
+  f(e2, 129I2 P(33) 6-3) - f(a16, 127I2 R(127) 11-5) = 849.4 (2) MHz  (Table 6)
+Labels keep BIPM's letters (a, b, d, e, m); the number is the component's rank. Each row's note keeps BIPM's
+letter for the observed feature (the x column).
+
+Not entered: the source data of section 2 (comparisons with the BIPM4 laser). They are the inputs of the
+adopted value, so entering them would count that value twice.
+
+Blends left out (14 entries). In the spectrum of the mixed 129I2 / 127I129I cell, some features carry the same
+x letter in a 129I2 table and in the 127I129I table, at the same position within the printed uncertainties.
+Such a feature is one observed peak assigned to both isotopologues, so its position is not an independent
+measurement of either. The letters run in two sequences, one around 129I2 P(54) 8-4 (z′ ... a′, then p ... a)
+and one around P(69) 12-6 (b‴ ... a′). The same letter therefore also appears at unrelated positions (x′ at
+-434 and at +431 MHz, for example); those entries are kept. Left out:
+  n   129I2 P(54) a24, a25 (n2, n1; -55.6) and 127I129I m8 (-56); the table prints "see"
+  j′  129I2 P(54) a15 (-206.1 ± 0.2) and 127I129I m4 (-207 ± 2)
+  r″  129I2 P(69) b5 and 127I129I m28 (256.90); the table prints "see"
+  q″  129I2 P(69) b6 and 127I129I m29 (264.84); the table prints "see"
+  k″  129I2 P(69) b8 (337.75) and 127I129I m34, m35 (k2″, k1″; 337.7)
+  d″  129I2 P(69) b12 (387.24 ± 0.05) and 127I129I m40 (385 ± 4)
+j′ is not in the list in docs/research/bipm-hyperfine-tables.md, but it meets the same criterion as d″.
+Some pairs are printed with one value and a bracket: 129I2 P(69) b9/b10, R(60) d24/d25 and d26/d27, and
+127I129I m24/m25. Each is one unresolved peak within a single line. Both components are entered with the
+printed value, and the note says so.
+"""
+uncertainty = "Standard (1σ) combined uncertainties, as printed. f(a16): 10 kHz. The three intervals between lines: 20 kHz, 40 kHz and 0.2 MHz. Hyperfine intervals: 5 kHz to 6 MHz, per component as each table gives it. The table values are weighted means of the cited sources."
+
+[conditions]
+laser = "He-Ne, internal iodine cell, third-harmonic detection"
+cell_wall_C = 25.0
+cold_finger_C = 15.0
+modulation_MHz_pp = 6.0
+detection = "3f"
+intracavity_power_mW = 10.0

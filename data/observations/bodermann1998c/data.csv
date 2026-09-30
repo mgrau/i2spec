@@ -1,0 +1,55 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(96) 0-15,a10,frequency,377796992.463,0.048,,,bodermann1998c,"Table 6.12, wavelength comparison"
+127I2 P(166) 0-14,a1,frequency,379431381.762,0.048,,,bodermann1998c,"Table 6.12, wavelength comparison"
+127I2 R(96) 0-14,a10,frequency,383617264.515,0.049,,,bodermann1998c,"Table 6.12, wavelength comparison"
+127I2 P(228) 1-14,b10,interval,-546.041,0.064,127I2 R(96) 0-15,a10,bodermann1998c,Table 6.12 absolute values differenced: the thesis calibrated this line by a beat against the line of ref_line; uncertainty sqrt(u^2 - u_ref^2)
+127I2 R(19) 0-15,b2,interval,159.564,0.039,127I2 P(166) 0-14,a1,bodermann1998c,Table 6.12 absolute values differenced: the thesis calibrated this line by a beat against the line of ref_line; uncertainty sqrt(u^2 - u_ref^2)
+127I2 R(180) 0-16,a1,interval,15270.1343,0.0309,127I2 P(34) 0-17,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(180) 0-16,a1,interval,14976.0193,0.0309,127I2 P(34) 0-17,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(180) 0-16,a1,interval,7759.6646,0.0450,127I2 P(239) 0-15,a2,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(180) 0-16,a1,interval,7172.4660,0.0400,127I2 P(239) 0-15,a13,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(34) 0-17,a10,interval,13233.5677,0.0343,127I2 R(44) 0-17,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(34) 0-17,a15,interval,13233.6865,0.0312,127I2 R(44) 0-17,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(44) 0-17,a10,interval,20997.2235,0.0413,127I2 P(172) 0-16,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(44) 0-17,a15,interval,20997.4882,0.0303,127I2 P(172) 0-16,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(171) 0-16,a14,interval,19594.8820,0.0300,127I2 R(180) 0-16,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(36) 0-16,c1,interval,114.9917,0.0156,127I2 R(45) 0-16,b20,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(36) 0-16,c10,interval,701.9587,0.0153,127I2 R(45) 0-16,b20,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(36) 0-16,c1,interval,370.8906,0.0160,127I2 R(45) 0-16,b14,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(36) 0-16,c1,interval,420.4580,0.0197,127I2 P(171) 0-15,a20,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(36) 0-16,c1,interval,847.5104,0.0083,127I2 P(171) 0-15,a11,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(45) 0-16,b20,interval,732.5280,0.0146,127I2 P(171) 0-15,a11,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(45) 0-16,b14,interval,930.9893,0.0224,127I2 P(171) 0-15,a2,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(171) 0-15,a2,interval,15217.0838,0.0264,127I2 R(46) 0-16,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(171) 0-15,a2,interval,14922.9489,0.0268,127I2 R(46) 0-16,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(96) 0-15,a10,interval,26006.4520,0.0159,127I2 P(88) 0-15,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(96) 0-15,a1,interval,25418.4925,0.0117,127I2 P(88) 0-15,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(54) 0-15,a10,interval,5766.7403,0.0176,127I2 R(63) 0-15,a13,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(54) 0-15,a1,interval,5178.9627,0.0243,127I2 R(63) 0-15,a13,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(54) 0-15,a1,interval,5766.8205,0.0190,127I2 R(63) 0-15,a2,bodermann1998c,"Table 7.1 beat frequency; sign from the order of the two lines; RELABELLED: printed R(63) 0-15 a01, entered as a02 (see meta.toml)"
+127I2 R(62) 0-15,a10,interval,23206.9575,0.0259,127I2 R(63) 0-15,a13,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(62) 0-15,a1,interval,22619.1147,0.0255,127I2 R(63) 0-15,a13,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(63) 0-15,a13,interval,23604.1958,0.0251,127I2 R(64) 0-15,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(63) 0-15,a13,interval,24192.0577,0.0329,127I2 R(64) 0-15,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(55) 0-15,a13,interval,5884.6110,0.0387,127I2 R(64) 0-15,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(55) 0-15,a2,interval,5296.8148,0.0416,127I2 R(64) 0-15,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(64) 0-15,a10,interval,17997.9706,0.0203,127I2 P(56) 0-15,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(64) 0-15,a10,interval,18585.7893,0.0145,127I2 P(56) 0-15,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(64) 0-15,a10,interval,24001.4865,0.0156,127I2 R(65) 0-15,a13,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(64) 0-15,a10,interval,24589.3603,0.0161,127I2 R(65) 0-15,a2,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(10) 0-15,a9,interval,5630.4384,0.0300,127I2 R(12) 0-15,a9,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(12) 0-15,a9,interval,21069.9128,0.0248,127I2 R(17) 0-15,a8,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(17) 0-15,a8,interval,22288.1027,0.0305,127I2 P(12) 0-15,a9,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(174) 0-14,a1,interval,11537.9206,0.0202,127I2 R(16) 0-15,a9,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(16) 0-15,a9,interval,15955.9601,0.0354,127I2 R(19) 0-15,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(16) 0-15,a9,interval,16622.7288,0.0297,127I2 R(19) 0-15,a2,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(16) 0-15,a9,interval,15900.1169,0.0274,127I2 P(166) 0-14,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(16) 0-15,a9,interval,16782.2927,0.0280,127I2 P(166) 0-14,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(87) 0-14,a2,interval,15976.6284,0.0045,127I2 R(96) 0-14,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(138) 1-14,a10,interval,20628.6253,0.0119,127I2 R(16) 0-14,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(138) 1-14,a15,interval,20043.4211,0.0130,127I2 R(16) 0-14,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 R(240) 0-12,a1,interval,24257.2558,0.0300,127I2 R(138) 1-14,a10,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(164) 0-13,a10,interval,16912.9598,0.0307,127I2 R(240) 0-12,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(164) 0-13,a10,interval,16030.7211,0.0307,127I2 R(240) 0-12,a15,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(129) 1-14,b3,interval,504.1546,0.0235,127I2 P(164) 0-13,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines
+127I2 P(129) 1-14,b18,interval,1237.2865,0.0193,127I2 P(164) 0-13,a1,bodermann1998c,Table 7.1 beat frequency; sign from the order of the two lines

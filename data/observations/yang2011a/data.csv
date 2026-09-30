@@ -1,0 +1,66 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(58) 22-1,a15,frequency,533974000.250,0.004,,,yang2011a_comb,§3/Fig. 5: 'about 533 974 000 250 kHz'; s.d. of 10 daily means 4.0 kHz; no pressure/power correction
+127I2 R(130) 24-1,a1,frequency,533978765.860,0.012,,,yang2011a_comb,§3: 533 978 765 860 +/- 12 kHz (plotted in the panel captioned Fig. 7, whose caption names R(103)23-1; captions of Figs. 6 and 7 are swapped); no pressure/power correction
+127I2 P(58) 22-1,a1,interval,110.240,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 2; paper's a'1
+127I2 R(62) 22-1,a2,interval,270.589,0.006,,a1,yang2011a_22-1,Table 1 seq. 3
+127I2 R(62) 22-1,a3,interval,286.669,0.006,,a1,yang2011a_22-1,Table 1 seq. 4
+127I2 R(62) 22-1,a4,interval,290.258,0.006,,a1,yang2011a_22-1,Table 1 seq. 5
+127I2 R(62) 22-1,a5,interval,305.957,0.006,,a1,yang2011a_22-1,Table 1 seq. 6
+127I2 P(58) 22-1,a2,interval,381.707,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 7; paper's a'2
+127I2 P(58) 22-1,a3,interval,396.319,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 8; paper's a'3
+127I2 P(58) 22-1,a4,interval,401.088,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 9; paper's a'4
+127I2 R(62) 22-1,a6,interval,412.303,0.006,,a1,yang2011a_22-1,Table 1 seq. 10
+127I2 P(58) 22-1,a5,interval,415.296,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 11; paper's a'5
+127I2 R(62) 22-1,a7,interval,424.950,0.006,,a1,yang2011a_22-1,Table 1 seq. 12
+127I2 R(62) 22-1,a8,interval,439.685,0.006,,a1,yang2011a_22-1,Table 1 seq. 13
+127I2 R(62) 22-1,a9,interval,452.077,0.006,,a1,yang2011a_22-1,Table 1 seq. 14; 0.47-0.51 MHz below both the paper's own fit and i2spec - kept as printed
+127I2 P(58) 22-1,a6,interval,522.787,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 15; paper's a'6
+127I2 P(58) 22-1,a7,interval,535.680,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 16; paper's a'7
+127I2 P(58) 22-1,a8,interval,549.352,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 17; paper's a'8
+127I2 P(58) 22-1,a9,interval,562.547,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 18; paper's a'9
+127I2 R(62) 22-1,a10,interval,576.758,0.006,,a1,yang2011a_22-1,Table 1 seq. 19
+127I2 P(58) 22-1,a10,interval,686.974,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 20; paper's a'10
+127I2 R(62) 22-1,a11,interval,708.842,0.006,,a1,yang2011a_22-1,Table 1 seq. 21
+127I2 R(62) 22-1,a12,interval,711.784,0.006,,a1,yang2011a_22-1,Table 1 seq. 22
+127I2 R(62) 22-1,a13,interval,730.070,0.006,,a1,yang2011a_22-1,Table 1 seq. 23
+127I2 R(62) 22-1,a14,interval,734.126,0.006,,a1,yang2011a_22-1,Table 1 seq. 24
+127I2 P(58) 22-1,a11,interval,819.324,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 25; paper's a'11
+127I2 P(58) 22-1,a12,interval,821.939,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 26; paper's a'12
+127I2 P(58) 22-1,a13,interval,840.336,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 27; paper's a'13
+127I2 P(58) 22-1,a14,interval,844.167,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 28; paper's a'14
+127I2 R(62) 22-1,a15,interval,865.569,0.006,,a1,yang2011a_22-1,Table 1 seq. 29
+127I2 P(58) 22-1,a15,interval,975.812,0.006,127I2 R(62) 22-1,a1,yang2011a_22-1,Table 1 seq. 30; paper's a'15
+127I2 R(103) 23-1,a2,interval,34.780,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a3,interval,69.481,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a4,interval,283.734,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a5,interval,320.600,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a6,interval,325.705,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a7,interval,362.089,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a8,interval,443.499,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a9,interval,455.509,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a10,interval,478.932,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a11,interval,489.735,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a12,interval,582.423,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a13,interval,611.453,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a14,interval,641.551,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a15,interval,729.133,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a16,interval,746.185,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a17,interval,764.547,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a18,interval,781.267,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a19,interval,888.425,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a20,interval,899.149,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(103) 23-1,a21,interval,911.043,0.008,,a1,yang2011a_23-1,Table 2
+127I2 R(130) 24-1,a2,interval,255.273,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a3,interval,282.793,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a4,interval,293.135,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a5,interval,320.372,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a6,interval,404.095,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a7,interval,416.258,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a8,interval,447.392,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a9,interval,459.478,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a10,interval,575.914,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a11,interval,702.029,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a12,interval,709.480,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a13,interval,730.264,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a14,interval,738.201,0.017,,a1,yang2011a_24-1,Table 3
+127I2 R(130) 24-1,a15,interval,864.150,0.017,,a1,yang2011a_24-1,Table 3

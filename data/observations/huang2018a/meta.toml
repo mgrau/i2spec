@@ -1,0 +1,56 @@
+id = "huang2018a"
+citation = "Y.-C. Huang, Y.-C. Guan, T.-H. Suen, J.-T. Shy and L.-B. Wang, \"Absolute frequency measurement of molecular iodine hyperfine transitions at 647 nm\", Appl. Opt. 57, 2102 (2018)"
+source = "https://arxiv.org/abs/1710.09533 (arXiv preprint v2, 8 Feb 2018, not the published Appl. Opt. version; numbers could differ from the published paper)"
+doi = "10.1364/ao.57.002102"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:huang2018a"
+
+transcription = """
+From the arXiv preprint (1710.09533v2), not the Appl. Opt. version, which was not checked. Table 2
+(p. 4), "Measured" column: absolute frequencies of the a1, a10 and a15 components of 127I2 P(46) 5-4,
+in kHz, converted to MHz exactly. Typed from the pdftotext -layout text layer and checked digit by digit
+against a 200 dpi rendering of p. 4.
+
+These are the authors' zero-pressure values. Each is the Fig. 7 caption value at 20 C cold finger
+(a1 463 556 678 341(6), a10 463 557 264 325(7), a15 463 557 557 826(6) kHz) plus the 224 kHz pressure
+correction of Table 1 (-8.3(7) kHz/Pa at about 27 Pa, Eq. (1)); the sums reproduce Table 2 exactly. No
+further correction is applied here. The Fig. 7 values are not entered separately.
+
+Not entered: the Table 2 splittings a10 - a1 = 585 984(30) kHz and a15 - a10 = 293 501(30) kHz. They are
+differences of the three absolute values (checked: exact), so entering them would count the data twice.
+The "Calculated" (IodineSpec5) and "Deviation" columns are not entered.
+
+P(46) has even J'' and 15 main components; a1, a10, a15 are ranks by frequency (a15 highest), as the
+paper states (Section 3 and Fig. 4: a1, a2-5, a6-9, a10, a11-14, a15), and as in the rest of the
+collection. No crossovers are reported. No other set holds P(46) 5-4.
+"""
+
+uncertainty = """
+21 kHz for each component, as printed in Table 2: footnote a calls it the combined error of the Fig. 7
+value and the Table 1 uncertainties, i.e. the quadrature sum of statistics (6, 7, 6 kHz), the pressure-shift
+correction (19 kHz) and a locking effect (5 kHz). Taken as standard (1 sigma); the paper does not say, but
+the Fig. 7 error bars are standard errors of the mean. The 19 kHz pressure part and the 5 kHz locking part
+are common to all three components, so the rows share one group; the intervals between them are known to
+about 10 kHz, not 30 kHz.
+"""
+
+notes = """
+Residuals against the current model (Predictor(), obs - model): a1 -678 kHz, a10 -680 kHz, a15 -708 kHz,
+mean -689 kHz. The common offset is the model's line-centre error for this v'' = 4 hot band (the paper finds
+-0.88 to -0.93 MHz against IodineSpec5, quoted at +-3 MHz 2 sigma); the implied splittings a10 - a1 and
+a15 - a1 differ from the model by -2 and -30 kHz.
+"""
+
+[conditions]
+method = "modulation transfer saturation spectroscopy, fibre frequency comb referenced to a Cs clock"
+laser = "Littrow ECDL, 647 nm (Oclaro HL65014DG at 18 C)"
+cell_length_cm = 58
+cell_body_C = 223
+cold_finger_C = 20.0
+pressure_range_Pa = [20, 65]
+pump_mW = 15.2
+probe_mW = 1.6
+beam_diameter_mm = 2.5
+modulation = "EOM 4.5 MHz; AOM 40 MHz chopped at 19.6 kHz"
+pressure_shift_kHz_per_Pa = -8.3

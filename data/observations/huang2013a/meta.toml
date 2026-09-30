@@ -1,0 +1,66 @@
+id = "huang2013a"
+citation = "Y.-C. Huang, H.-C. Chen, S.-E. Chen, J.-T. Shy and L.-B. Wang, \"Precise frequency measurements of iodine hyperfine transitions at 671 nm\", Appl. Opt. 52, 1448-1452 (2013)"
+source = "https://doi.org/10.1364/ao.52.001448 (publisher PDF)"
+doi = "10.1364/ao.52.001448"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:huang2013a"
+
+transcription = """
+Table 2 (p. 1451), "Measured" column only: absolute frequencies of the a1, a10 and a15 components of
+127I2 R(78) 4-6 (671 nm), in kHz, converted to MHz exactly. Read from the PDF text layer and checked
+digit by digit against a 200 dpi rendering of p. 1451. This is the only line the paper measures.
+
+The values are the authors' zero-pressure frequencies. They are the Fig. 5 caption values at 26.9 Pa
+(446,806,191,649(23), 446,806,778,709(33), 446,807,072,397(22) kHz, p. 1451; the Fig. 5 axis offsets on
+p. 1451 match them) plus the Table 1 pressure-shift correction of +241 kHz (-8.95(39) kHz/Pa x 26.9 Pa,
+fitted on a1 over 25-65 Pa and applied to all three). 649+241 = 890, 709+241 = 950, 397+241 = 638, as
+printed. No further correction (power shift, lock offset) is applied here.
+
+Not entered: the "Calculated" (IodineSpec5) and "Measured - Calculated" columns, and the three printed
+splittings a15-a1 = 880,748(35), a15-a10 = 293,688(42), a10-a1 = 587,060(43) kHz, which are exact
+differences of the three absolute values (checked) and would only restate them. As a check,
+Measured - Calculated reproduces the printed -2679, -2576, -2628 kHz. (In the text layer the a15-a10
+difference reads "-5242"; the image shows -52(42).)
+
+R(78) has even J'' and 15 main components; a1, a10, a15 are ranks by frequency, a15 the highest, which
+agrees with the rest of the collection (a10-a1 = 587 MHz and a15-a1 = 881 MHz match the model's rank-10
+and rank-15 offsets to within 0.1 MHz). All three rows share one group (same comb, servo and cell), so a
+common offset can be carried by the fit.
+
+Overlap: no other precision set in data/observations/ measures R(78) 4-6 or any line within 667-716 nm.
+The only other source is the Salami & Ross 2005 FTS atlas (data/atlas_lines/salami_ross_2005.csv),
+hyperfine-free centre 14903.865259(890) cm-1 = 446,806,640 MHz, about 44 MHz below the model centre and
+so about 41 MHz below the centre implied here (within its 27 MHz stated uncertainty x 1.6).
+
+Model check (i2spec default parameters, 2026-09-29): obs - model = -2.35, -2.26, -2.29 MHz for a1, a10,
+a15, i.e. a common -2.3 MHz offset of the line centre (the paper finds -2.6 to -2.7 MHz against
+IodineSpec5); the implied splitting residuals are +82 kHz (a10-a1), +52 kHz (a15-a1) and -30 kHz
+(a15-a10), comparable to the paper's 103(43), 51(35), -52(42) kHz against IodineSpec5.
+"""
+
+uncertainty = """
+25, 35 and 24 kHz for a1, a10, a15, as printed in Table 2. Footnote a calls each the combined error of
+the Fig. 5 value (the standard error over ten 600-sample runs at 26.9 Pa: 23, 33, 22 kHz) and the
+Table 1 uncertainties (pressure shift 11 kHz; system stability, i.e. DC drift of the error signal and
+PI-loop pulling, 11 kHz). Note the printed totals are what sqrt(stat^2 + 11^2) gives (25.5, 34.8, 24.6),
+not the quadrature sum with both 11 kHz terms (27.8, 36.5, 26.9); the printed values are kept as they
+stand. Taken as standard (1 sigma). The pressure-shift and system-stability parts are presumably common
+to all three components. The run-to-run scatter in Fig. 5 (up to ~200 kHz between runs at the same
+pressure) is much larger than the per-run error bars; the paper's abstract and conclusion quote the
+results as "better than 40 kHz" / "approximately 30 kHz".
+"""
+
+[conditions]
+method = "Doppler-free modulation transfer spectroscopy, frequency-comb referenced (Rb clock, GPS-disciplined)"
+laser = "671 nm grating ECDL, PDH-locked to a Fabry-Perot cavity, injection-locked slave for the comb beat"
+cell_length_cm = 58
+cell_body_C = 220
+cold_finger_C = 20
+pressure_Pa = 26.9
+pressure_range_Pa = [25, 65]
+pressure_shift_kHz_per_Pa = -8.95
+pump_mW = 1.54
+probe_mW = 0.40
+beam_radius_mm = 1
+modulation = "EOM 4.5 MHz, 0.8 rad depth; AOM +85 MHz, chopped at 10.47 kHz"

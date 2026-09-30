@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(78) 4-6,a1,frequency,446806191.890,0.025,,,huang2013a,Table 2 Measured; zero-pressure value (+241 kHz pressure correction applied by the authors)
+127I2 R(78) 4-6,a10,frequency,446806778.950,0.035,,,huang2013a,Table 2 Measured; zero-pressure value (+241 kHz pressure correction applied by the authors)
+127I2 R(78) 4-6,a15,frequency,446807072.638,0.024,,,huang2013a,Table 2 Measured; zero-pressure value (+241 kHz pressure correction applied by the authors)

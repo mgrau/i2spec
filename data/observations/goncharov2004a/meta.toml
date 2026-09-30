@@ -1,0 +1,61 @@
+id = "goncharov2004a"
+citation = "A. Goncharov, A. Amy-Klein, O. Lopez, F. du Burck and C. Chardonnet, \"Absolute frequency measurement of the iodine-stabilized Ar+ laser at 514.6 nm using a femtosecond optical frequency comb\", Appl. Phys. B 78, 725-731 (2004)"
+source = "https://doi.org/10.1007/s00340-004-1487-5 (publisher PDF)"
+doi = "10.1007/s00340-004-1487-5"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:goncharov2004a"
+
+transcription = """
+The paper has no tables and measures one frequency. Read from the PDF text layer and checked digit by
+digit against 200 dpi renderings of p. 725 (abstract) and p. 730 (Sect. 4).
+
+127I2 P(13) 43-0 a3, Sect. 4, p. 730: "The mean frequency over all the measurements was found to be
+<nu_meas> = 582 490 603 447.3(0.24) kHz", entered as 582 490 603.4473 MHz. It is the mean over four days
+(Fig. 8, 10-15 April 2003) at an iodine pressure of 0.12 Pa in a 4 m unsealed cell. The abstract and
+text give the same number as 67.3 kHz above the CIPM 2003 value 582 490 603.38(15) MHz. The value is
+entered as measured, NOT pressure-corrected; at 0.12 Pa it is the closest of the paper's numbers to the
+unperturbed frequency.
+
+Component a3: J'' = 13 (odd), 21 main components; a3 is third lowest, as in BIPM MEP 2005 Table 1; the
+model agrees.
+
+Not entered (derived from the row above, would double count):
+- Delta = 62.6(0.7) kHz, i.e. 582 490 603 442.6 kHz: the value extrapolated to 2.38 Pa (-5 C) with the
+  authors' calculated non-linear pressure shift (Eq. 5, Fig. 9: a -4.7 kHz correction between 0.12 and
+  2.38 Pa). Per Fig. 9 the calculated shift at 0.12 Pa is itself about +2 kHz (recoil-doublet
+  asymmetry), rising to about +2.6 kHz at 0 Pa, so on that model the unperturbed a3 would lie roughly
+  2 kHz below the entered value; the model is the authors' calculation, not a measurement, so no
+  correction is applied here.
+- Delta = 61.7(1.3) kHz: the same extrapolation with the JILA linear coefficient -2.5(0.5) kHz/Pa.
+- The daily means of Fig. 8: only plotted.
+
+Overlap:
+- bipm2005a f(a3, P(13) 43-0) = 582 490 603 442 (5) kHz. BIPM MEP 2005 Sect. 2 lists this paper's
+  447.3 kHz "as measured" and 442.6 kHz "corrected for pressure", and adopts the rounded unweighted mean
+  of 442.6 and the JILA 441.8 (jones2002a). bipm2005a is therefore NOT independent of this row;
+  goncharov2004a - bipm2005a = +5.3 kHz, of which about 4.7 kHz is the pressure shift the CIPM value
+  includes (it applies at 2.4 Pa).
+- jones2002a (same component, at 2.38 Pa): goncharov2004a - jones2002a = +5.5 kHz; after the authors'
+  extrapolation to 2.38 Pa the two agree to 0.8 kHz (the paper's own conclusion).
+- yoshiki2023a, matsunaga2024a and ikeda2022a (514 nm, v' = 44-50) do not contain P(13) 43-0.
+"""
+
+uncertainty = """
+0.75 kHz, taken as the standard (1 sigma) uncertainty. The paper gives 0.24 kHz as "the pure statistical
+1 sigma" of the mean, then "a conservative uncertainty of 3 sigma for the reproducibility", printed as
+67.3(0.75) kHz in the abstract and 67.3(0.7) kHz in Sect. 4; the abstract figure is used. BIPM MEP 2005
+uses u_c/y = 1.3e-12 (0.76 kHz). It excludes any pressure-shift allowance; a factor-of-two change of the
+beam powers and modulation amplitude gave no shift above 0.5 kHz.
+"""
+
+notes = "Model check (Predictor, DEFAULT_PARAMETERS, 2026-09-29): obs - model = +0.2 kHz; jones2002a (2.38 Pa) gives -5.3 kHz and bipm2005a -5.1 kHz."
+
+[conditions]
+method = "saturated absorption, probe frequency-modulated at 2.5 MHz by AOM, pump amplitude-modulated at 5 kHz; fs comb (1 GHz Ti:Sa) as transfer oscillator, referenced to the BNM-SYRTE H-maser via 43 km fibre link"
+laser = "single-mode Ar+ laser (Spectra Physics 2020-5), 514.6 nm, pre-stabilized to a Fabry-Perot cavity"
+cell = "4 m, unsealed (pumped)"
+pressure_Pa = 0.12
+probe_mW = 0.8
+pump_mW = 2
+beam_diameter_mm = 6

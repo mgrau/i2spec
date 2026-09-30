@@ -1,0 +1,138 @@
+{
+ "name": "i2spec2026a",
+ "source": "E. J. Salumbides, K. S. E. Eikema, W. Ubachs, U. Hollenstein, H. Kn\u00f6ckel, E. Tiemann, Eur. Phys. J. D 47, 171 (2008), Table 1",
+ "doi": "10.1140/epjd/e2008-00045-y",
+ "units": "cm^-1 and Angstrom; C_n in cm^-1 Angstrom^n",
+ "reference_isotopologue": "127I2",
+ "notes": "Outer branch V = De - sum C_n/R^n - A_O exp(-B_O (R - R_O)) (paper eq. 4). BOC: alpha(R) = (mu_ref/mu) (2Rm/(R+Rm)) sum alpha_i X^i; V_corr = (1 - mu_ref/mu) (2Rm/(R+Rm))^l sum v_i X^i with l = 5. De and C_n from Gerstenkorn, Luc & Le Roy 1991, Gerstenkorn, Luc & Amiot 1985 (B) and Bacis, Cerny & Martin 1986 (X). Turning points covered by data: B 2.650-4.589 A, X 2.427-3.079 A. i2spec2026a: the hannover2008 potentials with the changes listed under 'changes'. The hyperfine table (i2spec.hfs_table) and the MLR trial potentials (data/potentials/) are separate.",
+ "states": {
+  "X": {
+   "Rm": 2.66638233,
+   "b": -0.6,
+   "a": [
+    0.0,
+    0.155389,
+    49260.1477,
+    21362.9963,
+    -18173.865,
+    -49468.474,
+    -71353.991,
+    -101109.25,
+    -71561.08,
+    471053.8,
+    -290465.4,
+    -7330064.8,
+    2257811.5,
+    38250822.0
+   ],
+   "inner": {
+    "R": 2.4,
+    "A": 4580.9329,
+    "B": 9.016832
+   },
+   "outer": {
+    "R": 3.3,
+    "A": 1053.614048,
+    "B": 1.259030368,
+    "De": 12547.34,
+    "C": {
+     "6": 1480000.0,
+     "8": 38600000.0,
+     "10": 100000000.0
+    }
+   },
+   "turning_points": [
+    2.427,
+    3.079
+   ]
+  },
+  "B": {
+   "Rm": 3.02669183,
+   "b": -0.75,
+   "a": [
+    15769.067837,
+    8.1393,
+    8502.90979,
+    6956.77594,
+    995.264129,
+    -5563.38644,
+    -10743.89661,
+    -16854.19562,
+    -15331.64369,
+    43150.45697,
+    62510.9611,
+    -389146.304,
+    -432195.53147,
+    2723527.9905,
+    3218680.8611,
+    -12733859.0547,
+    -17275251.4874,
+    42525526.5406,
+    71269573.1657,
+    -91305785.39938,
+    -210868240.3457,
+    92671865.44061,
+    413233055.7779,
+    60853378.64116,
+    -487970338.3624,
+    -305239410.0029,
+    269185586.5112,
+    349460913.6897,
+    27710156.96362,
+    -133371674.8717,
+    -76555079.71445,
+    -13664953.10913
+   ],
+   "inner": {
+    "R": 2.647,
+    "A": 19605.269,
+    "B": 1.3736027
+   },
+   "outer": {
+    "R": 4.9,
+    "A": -8.105289769,
+    "B": 9.347221716,
+    "De": 20150.317,
+    "C": {
+     "5": 316100.0,
+     "6": 1506000.0,
+     "8": 24800000.0,
+     "10": 420000000.0
+    }
+   },
+   "boc": {
+    "alpha": [
+     -0.00023586,
+     2.3445e-05,
+     -0.00043703,
+     -0.0003963,
+     -0.0010191,
+     -0.00016462
+    ],
+    "vad": [
+     -0.188186,
+     -6.68183,
+     1.54676,
+     -2.86898
+    ],
+    "vad_power": 5
+   },
+   "turning_points": [
+    2.65,
+    4.589
+   ]
+  }
+ },
+ "derived_from": "hannover2008",
+ "changes": [
+  {
+   "what": "B state adiabatic Born-Oppenheimer correction, constant term",
+   "vad[0]": {
+    "hannover2008": -0.209726,
+    "i2spec2026a": -0.188186
+   },
+   "why": "Every 129I2 line in the BIPM 612 and 633 nm tables sits 7-14 MHz above the published model and 127I129I 4.6 MHz below 129I2, each with sub-MHz scatter inside the line. A constant in V_ad enters the levels as (1 - mu_127/mu) V_ad0: 0.0155 for 129I2, 0.0085 for 127I129I, so one number moves both by the right ratio. Fitted to the 124 isotopologue rows that constrain the potentials (prototypes/bo_refit.py): rms 7.06 -> 2.36 MHz against a data floor of 1.1-1.2 MHz. A slope or an alpha term reaches 1.4 MHz but with degenerate, run-dependent values from seven independent numbers, so only the constant is adopted. R(113) 14-4 stays +5.1 MHz.",
+   "date": "2026-09-18"
+  }
+ ]
+}

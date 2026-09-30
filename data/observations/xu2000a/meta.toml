@@ -1,0 +1,60 @@
+id = "xu2000a"
+citation = "S. C. Xu, R. van Dierendonck, W. Hogervorst and W. Ubachs, \"A Dense Grid of Reference Iodine Lines for Optical Frequency Calibration in the Range 595-655 nm\", J. Mol. Spectrosc. 201, 256-266 (2000)"
+source = "https://research.vu.nl/ws/files/2465453/224367.pdf"
+doi = "10.1006/jmsp.2000.8085"
+retrieved = "2026-09-16"
+unit = "MHz"
+catalog = "precision.yaml:xu2000a"
+
+transcription = """
+Tables 1-15, one per vibrational band, transcribed 2026-09-16 from the VU Research Portal copy of the
+published version. The tables are scanned images in that PDF, not text. They were extracted as
+bitmaps at native resolution, upscaled 3x and read with tesseract (--psm 6); every row was then
+checked against the model, and the rows that failed were re-read visually from the bitmap.
+
+Each row gives the absolute frequency of the "t" hyperfine component in MHz, a calculated hyperfine
+shift from the centre of gravity, and the deviation of the centre of gravity from the paper's own
+fit. Only the line assignment and the frequency are transcribed here; the other two columns are
+derived quantities of the paper's analysis, not measurements.
+
+Band assignment. The table images carry no band header, so rather than rely on where each table
+begins, every row's band was identified by asking which of the 15 published bands puts the model
+within 60 MHz of the measured value. All 477 recovered rows matched exactly one band, none matched
+two, and all 15 bands are represented, with the counts consistent with the printed tables. The
+residuals confirm the assignment: a wrong band would be wrong by GHz.
+
+Component identification: "t" is the same component as in velchev1998a (same group, same convention),
+i.e. rank 2 by frequency among the main components for odd J'' and rank 1 for even J'', recorded here
+as "t2" and "t1". Xu's own hyperfine-shift column is 485-488 MHz throughout, matching the -483 MHz
+that identified the component in velchev1998a.
+
+Quality: the 473 rows kept agree with the model at 0.93 MHz rms, and 472 of 473 are within 3 MHz.
+The exception is R(110) 10-3 at -5.5 MHz, whose OCR was re-checked against the bitmap and is correct,
+so that is a real deviation of the published model rather than a transcription error.
+"""
+
+partial = """
+473 of the paper's 481 t components are here.
+
+Excluded (4): rows carrying footnote b, "From Ref. (8); various components used" - taken from Shiner
+et al. (1993) and not necessarily the t component. R(79) 11-2 proves the point: its printed hyperfine
+shift is 507.5 MHz rather than the 486 MHz of its neighbours, and it sits 21.9 MHz from the model as
+a t component. The others are R(40) 11-2, R(80) 11-2 and P(114) 12-2.
+
+Not recovered (about 4): rows whose line label or frequency was too damaged in the scan for the OCR,
+and which therefore matched no band. They are not guessed at.
+
+Footnotes c (Quinn 1993) and d (Edwards 1996, "r"-component measured) appear in the printed tables
+but no row carrying them survived parsing, so none is included.
+"""
+
+uncertainty = """
+1.0 MHz (1 sigma) for every row. The paper states: "Uncertainties in the frequency positions are not
+listed separately but they are all within 1 MHz (1 sigma)." No per-row uncertainties are printed.
+"""
+
+[conditions]
+cell = "I2 cell, Doppler-free saturated absorption"
+laser = "cw ring dye laser, 1 MHz bandwidth"
+
+notes = "Rows marked with footnote a are from Sansonetti 1997 (ref. 11) rather than measured here; they carry group = sansonetti1997a so a fit can avoid double-counting them against a future Sansonetti data set."

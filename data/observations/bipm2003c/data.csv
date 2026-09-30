@@ -1,0 +1,12 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(62) 17-1,a1,frequency,520206808.4,0.2,,,,CIPM recommended value (adopted 520 206 808.4 (2) MHz)
+127I2 P(62) 17-1,a2,interval,275.03,0.02,,a1,,x = n
+127I2 P(62) 17-1,a3,interval,287.05,0.02,,a1,,x = m
+127I2 P(62) 17-1,a4,interval,292.57,0.02,,a1,,x = l
+127I2 P(62) 17-1,a5,interval,304.26,0.02,,a1,,x = k
+127I2 P(62) 17-1,a6,interval,416.67,0.02,,a1,,x = j
+127I2 P(62) 17-1,a7,interval,428.51,0.02,,a1,,x = I
+127I2 P(62) 17-1,a8,interval,440.17,0.02,,a1,,x = H
+127I2 P(62) 17-1,a9,interval,452.3,0.02,,a1,,x = G
+127I2 P(62) 17-1,a10,interval,579.43,0.03,,a1,,x = F
+127I2 P(62) 17-1,a15,interval,869.53,0.03,,a1,,x = A

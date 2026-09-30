@@ -1,0 +1,32 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(176) 0-13,a1,frequency,384494408.214,0.2,,,liao2010,Table 2; printed measurement uncertainty 20 kHz
+127I2 P(176) 0-13,a10,frequency,384494996.509,0.2,,,liao2010,Table 2; printed measurement uncertainty 21 kHz
+127I2 P(176) 0-13,a15,frequency,384495290.718,0.2,,,liao2010,Table 2; printed measurement uncertainty 21 kHz
+127I2 P(152) 0-13,a1,frequency,386171334.557,0.2,,,liao2010,Table 2; printed measurement uncertainty 20 kHz
+127I2 P(152) 0-13,a10,frequency,386171922.920,0.2,,,liao2010,Table 2; printed measurement uncertainty 21 kHz
+127I2 P(152) 0-13,a15,frequency,386172217.111,0.2,,,liao2010,Table 2; printed measurement uncertainty 24 kHz
+127I2 R(106) 0-13,a1,frequency,389076805.543,0.2,,,liao2010,Table 2; printed measurement uncertainty 30 kHz
+127I2 R(106) 0-13,a10,frequency,389077393.936,0.2,,,liao2010,Table 2; printed measurement uncertainty 19 kHz
+127I2 R(106) 0-13,a15,frequency,389077688.286,0.2,,,liao2010,Table 2; printed measurement uncertainty 18 kHz
+127I2 P(92) 0-13,a1,frequency,389306731.793,0.2,,,liao2010,Table 2; printed measurement uncertainty 20 kHz
+127I2 P(92) 0-13,a10,frequency,389307320.276,0.2,,,liao2010,Table 2; printed measurement uncertainty 19 kHz
+127I2 P(92) 0-13,a15,frequency,389307614.669,0.2,,,liao2010,Table 2; printed measurement uncertainty 18 kHz
+127I2 P(82) 0-13,a1,frequency,389683863.049,0.2,,,liao2010,Table 2; printed measurement uncertainty 16 kHz
+127I2 P(82) 0-13,a10,frequency,389684451.442,0.2,,,liao2010,Table 2; printed measurement uncertainty 21 kHz
+127I2 P(82) 0-13,a15,frequency,389684745.903,0.2,,,liao2010,Table 2; printed measurement uncertainty 18 kHz
+127I2 P(126) 0-12,a1,frequency,393590751.059,0.2,,,liao2010,Table 2; printed measurement uncertainty 25 kHz
+127I2 P(126) 0-12,a10,frequency,393591339.738,0.2,,,liao2010,Table 2; printed measurement uncertainty 24 kHz
+127I2 P(126) 0-12,a15,frequency,393591634.180,0.2,,,liao2010,Table 2; printed measurement uncertainty 29 kHz
+127I2 R(100) 0-12,a1,frequency,395220756.623,0.2,,,liao2010,Table 2 prints this line as P(100) 0-12; it is R(100) (see meta.toml). Printed measurement uncertainty 36 kHz
+127I2 R(100) 0-12,a10,frequency,395221345.288,0.2,,,liao2010,Table 2 prints this line as P(100) 0-12; it is R(100) (see meta.toml). Printed measurement uncertainty 33 kHz
+127I2 R(100) 0-12,a15,frequency,395221639.740,0.2,,,liao2010,Table 2 prints this line as P(100) 0-12; it is R(100) (see meta.toml). Printed measurement uncertainty 32 kHz
+127I2 P(80) 0-12,a1,frequency,395666265.779,0.2,,,liao2010,Table 2; printed measurement uncertainty 28 kHz
+127I2 P(80) 0-12,a10,frequency,395666854.420,0.2,,,liao2010,Table 2; printed measurement uncertainty 30 kHz
+127I2 P(80) 0-12,a15,frequency,395667148.961,0.2,,,liao2010,Table 2; printed measurement uncertainty 39 kHz
+127I2 R(48) 0-12,a1,frequency,396752906.602,0.2,,,liao2010,Table 2; printed measurement uncertainty 40 kHz
+127I2 R(48) 0-12,a10,frequency,396753494.903,0.2,,,liao2010,Table 2; printed measurement uncertainty 44 kHz
+127I2 R(48) 0-12,a15,frequency,396753789.532,0.2,,,liao2010,Table 2; printed measurement uncertainty 50 kHz
+127I2 R(26) 0-14,a10,frequency,385233438.060,0.2,,,liao2010,Table 1 cell-calibration line; printed measurement uncertainty 22 kHz; Bodermann et al. 2000 give 385233438.181(35)
+127I2 P(70) 0-14,a10,frequency,384205192.670,0.2,,,liao2010,Table 1 cell-calibration line; printed measurement uncertainty 9 kHz; Bodermann et al. 2000 give 384205192.789(36)
+127I2 R(78) 0-14,a10,frequency,384222471.416,0.2,,,liao2010,Table 1 cell-calibration line; printed measurement uncertainty 8 kHz; Bodermann et al. 2000 give 384222471.518(34)
+127I2 R(141) 0-16,a2,frequency,370007070.341,0.2,,,liao2010,Section 2 text (p. 1210); 2007 comb remeasurement; printed measurement uncertainty 10 kHz

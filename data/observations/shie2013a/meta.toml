@@ -1,0 +1,41 @@
+id = "shie2013a"
+citation = "N.-C. Shie, S.-E. Chen, C.-Y. Chang, W.-F. Hsieh and J.-T. Shy, \"Absolute frequency measurements of the molecular iodine hyperfine transitions at 535 nm\", J. Opt. Soc. Am. B 30, 2022-2026 (2013)"
+source = "https://doi.org/10.1364/josab.30.002022 (publisher PDF)"
+doi = "10.1364/josab.30.002022"
+retrieved = "2026-09-27"
+unit = "MHz"
+catalog = "precision.yaml:shie2013a"
+
+transcription = """
+Table 1 (p. 2025), "Measured" column only: absolute frequencies of the a1, a10 and a15 components of
+127I2 P(28) 30-0, in kHz, converted to MHz exactly. Read from the PDF text layer and checked digit by
+digit against a 200 dpi rendering of p. 2025. The same three values (with statistical-only
+uncertainties 2, 1, 1 kHz) are quoted in the text of p. 2024 as the zero-pressure extrapolations, and
+the Fig. 4 axis offsets on p. 2024 match them. The "Calculated" (IodineSpec5) and
+"Measured-Calculated" columns are not entered; as a check, Measured - Calculated reproduces the printed
+5735, 5743 and 5741 kHz.
+
+The values are the authors' zero-pressure extrapolations (linear fit over 4.2-26.9 Pa, slopes -5.28,
+-5.23, -5.12 kHz/Pa); no further correction (power shift etc.) is applied here.
+
+P(28) has even J'' and 15 main components; a1, a10, a15 are ranks by frequency, a15 the highest, which
+agrees with the rest of the collection. No intervals are entered: the a10-a1 and a15-a1 differences
+would only restate the three absolute values. All three rows share one group (same comb, servo and
+cell), so a common offset can be carried by the fit.
+"""
+
+uncertainty = """
+11 kHz for each component, as printed in Table 1: footnote a calls it the combined statistical error
+and the systematic uncertainties from the servo loop (~10 kHz) and lock-in DC offset (~2 kHz). Taken
+as standard (1 sigma). The servo-loop part is presumably common to all three components.
+"""
+
+[conditions]
+method = "Doppler-free saturation spectroscopy, third-harmonic detection, frequency-comb referenced"
+laser = "frequency-doubled 1070 nm Nd:GdVO4"
+cell_length_cm = 6
+pressure_range_Pa = [4.2, 26.9]
+pump_mW = 22.9
+probe_mW = 0.39
+beam_diameter_mm = 8.4
+modulation = "13.9 kHz, 5.2 MHz width"
