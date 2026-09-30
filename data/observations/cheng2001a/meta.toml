@@ -1,0 +1,61 @@
+id = "cheng2001a"
+citation = "W.-Y. Cheng and J.-T. Shy, \"Wavelength standard at 543 nm and the corresponding 127I2 hyperfine transitions\", J. Opt. Soc. Am. B 18, 363-369 (2001)"
+source = "https://doi.org/10.1364/josab.18.000363 (publisher PDF with text layer)"
+doi = "10.1364/josab.18.000363"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:cheng2001a"
+
+transcription = """
+Table 1 (p. 366), "This Work" column only: hyperfine intervals of 127I2 R(12) 26-0 (a9-a15) and R(106) 28-0
+(b1-b15) relative to b10 of R(106) 28-0, in MHz, with the standard uncertainty in the last digits. Read from
+the text layer and checked digit by digit against a 300 dpi rendering of p. 366. The "Fitted" column and the
+six comparison columns (DFM1, PTB [ref. 13], Lin et al. [12], Brand [11], Rayman et al. [26], Chartier et al.
+[9]) are other papers' or derived values and are not entered. Components a3-a8 of R(12) were not measured.
+
+Correction: R(12) 26-0 a12 is printed "-746.3475(6)". It is entered as -476.3475: the Fitted column gives
+-476.3495, all six other columns -476.348 to -476.402, and -746.35 would put a12 below a9 (the table is in
+increasing frequency order). The digits "47" were transposed.
+
+Labels: a (R(12), even J'', 15 components) and b (R(106), even J'', 15) name the lines; the numbers are ranks
+by frequency (Table 1 is monotonic), as in bipm2003b and i2spec. No crossovers are entered (they are in
+ref. 14, not here). Table 2 (fitted Delta eqQ, Delta C, Delta d, Delta delta for both lines, X state from
+Yokozeki & Muenter) and Tables 3-4 (linewidths, b10 properties) are not entered.
+
+Overlap with bipm2003b (MEP 2003, same components, relative to b10). cheng2001a - bipm2003b (kHz): R(12)
+a9 +0.4, a10 +26.7, a11 -6.4, a12 +2.5, a13 +8.2, a14 -6.9, a15 +6.3; R(106) b1 -23.9, b2 +4.7, b3 -2.8,
+b4 +8.4, b5 +3.4, b6 +3.8, b7 -0.4, b8 +7.3, b9 -1.9, b11 -2.6, b12 +5.9, b13 +4.8, b14 +6.8, b15 +0.6;
+mean +2.1, rms 9.2 kHz. a10 and b1 disagree by 24-27 kHz with the BIPM value and with every other column of
+Table 1 (a10: -596.121 to -596.133 elsewhere, except Chartier -596.170; b1: -573.759 to -573.774 elsewhere,
+except Chartier -573.812), far beyond the printed 0.9 and 1.8 kHz; they are as printed, not a
+transcription error (checked against the image). The MEP 2003 543 nm values are not these (a10, b1 differ),
+so bipm2003b does not appear to include this paper; it may include refs. 11 and 13.
+"""
+
+uncertainty = """
+As printed in parentheses in Table 1, "the standard uncertainty", 0.5-1.8 kHz (average 0.9 kHz, p. 365),
+taken as 1 sigma. These are evidently statistical (repeatability) only: the authors' own hyperfine fit has a
+standard deviation of 8.1 kHz (R(12)) and 6.8 kHz (R(106)) (Table 2), the two lasers show a 7 kHz offset on
+b10, and the rms difference from bipm2003b is 9 kHz. A fit using these rows should add a type-B allowance
+(several kHz); none is added here.
+"""
+
+notes = """
+Residuals against the default Predictor (2026-09-29), obs - model: R(106) 28-0 -25.2 (b1) to +7.5 kHz,
+rms 7.5 kHz, rms 3.3 kHz without b1; R(12) 26-0 +0.3 (a9) to +41.7 kHz (a14), with a10 +27.5, a12 +24.2,
+a14 +41.7, a15 +39.4. bipm2003b shows the same R(12) pattern against the model (a12 +22, a14 +49,
+a15 +33 kHz; a10 +1), so apart from a10 the R(12) residuals are the model's; a10 and b1 are this paper's
+outliers (see transcription). No row was dropped for its residual.
+"""
+
+[conditions]
+method = "third-harmonic saturation spectroscopy inside compact internal-mirror He-Ne lasers with external I2 cells; beat between two lasers (80 MHz AOM when on the same component)"
+laser = "two iodine-stabilized 543 nm He-Ne lasers (Melles Griot 05-LGR323)"
+modulation = "~23 kHz, 3 MHz depth"
+cold_finger_C = 0.0
+pressure_Pa = 4.12
+intensity_mW_mm2 = 0.6
+absorption_length_m = 0.095
+pressure_shift_kHz_per_Pa = -4.3
+pressure_shift_note = "measured on b10 (Fig. 4), +-0.4 kHz/Pa; the intervals are not corrected or extrapolated to zero pressure"
+extrapolated_to_zero_pressure = false

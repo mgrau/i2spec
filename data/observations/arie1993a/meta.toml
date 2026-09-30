@@ -1,0 +1,97 @@
+id = "arie1993a"
+citation = "A. Arie and R. L. Byer, \"Laser heterodyne spectroscopy of 127I2 hyperfine structure near 532 nm\", J. Opt. Soc. Am. B 10, 1990-1997 (1993); errata J. Opt. Soc. Am. B 11, 866 (1994)"
+source = "https://doi.org/10.1364/josab.10.001990 (publisher PDF, scanned with an OCR text layer; the errata were not available)"
+doi = "10.1364/josab.10.001990"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:arie1993a"
+partial = "The errata (JOSA B 11, 866, 1994) were not seen; they may correct numbers entered here."
+
+transcription = """
+All numbers are beat-note intervals in MHz, as printed; the paper measures no absolute frequency. The PDF
+is a scan with an OCR text layer; every value was read from 300 dpi renderings of pp. 1993-1995 (the text
+layer is unreliable: it drops subscripts and misreads footnotes), and cross-checked against the text layer
+and against the printed Calc - Meas column (Calculated - Measured reproduces it for every entered row).
+
+Table 2 (p. 1993), "a1 Spacing" column: f(a1 of each line) - f(a1, R(56) 32-0), 7 lines, printed as
++-0.2 MHz for the column (footnote a: beat frequency between the a1 lines, measured with a 22 GHz light-wave
+analyzer at 1064 nm; the printed values are at 532 nm). The "Line-Center Spacing" (derived from the a1
+spacings with Eqs. 2a/2b), "Calculated" (Gerstenkorn-Luc constants) and Delta columns are not entered.
+Footnote d: the measured a1-a21 beat of P(119) 35-0 is 949.286 MHz; entered as one interval (the line was
+not fitted here; Arie & Byer 1994, arie1994a, remeasured it as 949.2886 MHz).
+P(103) 34-0 (line 1111, 2956.0 MHz) is held by no other data set. Its hyperfine components were
+"measured" but not tabulated (p. 1995).
+
+Tables 3-8 (pp. 1994-1995), "Measured" column: hyperfine intervals relative to a1 (Table 5, P(83) 33-0:
+relative to a2, as printed; entered with ref_component a2):
+  Table 3 P(53) 32-0  a2, a4, a13, a14, a16, a18-a21 (the other components were not measured)
+  Table 4 R(56) 32-0  a2, a5-a15
+  Table 5 P(83) 33-0  a3, a5-a21 relative to a2
+  Table 6 R(134) 36-0 a3-a9, a12-a14 (a2, a10, a11, a15 not measured)
+  Table 7 R(106) 34-0 a2-a15
+  Table 8 R(86) 33-0  a2-a15
+The Calculated and Calc - Meas columns, F - J, I and the fitted constants (table footnotes, Table 9) are not
+entered; the constants are fits to these same intervals.
+
+Left out (4 table entries):
+  P(53) 32-0 a3, 72.812 MHz (footnote b): unresolved from b4 of P(103) 34-0, a blend with another line;
+    260 kHz below the authors' calculation and 248 kHz below bipm2012a (73.060).
+  R(56) 32-0 a3/a4: one value, 285.862 MHz, printed between the two rows (footnote b "Unresolved lines").
+  P(83) 33-0 a1 (-48.848 MHz from a2) and a4 (232.568): footnote b says they were measured but not fitted,
+    because they lie close to a10 and a15 of R(134) 36-0 (the text layer misreads this as "a1 and a19"),
+    which shifted them; with Table 2, P(83) a1 lies about 1.2 MHz from R(134) a10. Left out as the authors
+    did; against bipm2012a they are off by -59 and +14 kHz.
+Kept but flagged: R(56) 32-0 a11 and a12 (footnote c: 4.7 MHz apart with 4 MHz modulation; +-14 kHz from
+the authors' fit).
+
+Line names: the text of Fig. 8 says "R(86)35-0" and Table 9 prints "P(106)34-0" and "R(134)32-0"; these are
+misprints for R(86) 33-0, R(106) 34-0 and R(134) 36-0 (Tables 1, 2, 6-8). No component relabelling: the
+paper uses "a_i ... the ith hyperfine line in an increasing frequency order" (p. 1991), which is the rank
+convention here (15 components for even J'', 21 for odd J'').
+
+Overlap. All six tabulated lines are in bipm2012a (Tables 11-17 of the 532 nm MEP), and the Table 2 lines
+in bipm2012a and ye1999a. Differences arie1993a - bipm2012a, hyperfine intervals (kHz):
+  R(56) 32-0 (12, via the BIPM a10-relative table)  -10 to +20, mean +2, rms 7.5 (a11 -10, a12 +20)
+  P(53) 32-0 (7)   0 to +17, mean +13; a16-a21 are +11 to +17
+  P(83) 33-0 (17, relative to a2)  -2 to +19, mean +9; grows with frequency
+  R(86) 33-0 (14)  -10 to +4, mean -4, rms 5.6
+  R(106) 34-0 (14) -14 to +12, mean -5, rms 8.8
+  R(134) 36-0 (10) -28 to +18, rms 18
+  P(119) 35-0 a21 (footnote d) -2
+The BIPM values are not rounded copies of these, and the BIPM tables are more recent (u = 1.5-22 kHz); no
+evidence was found that bipm2012a is derived from this paper, but the catalog calls it a "source for BIPM
+532 nm tables", so some dependence cannot be ruled out. Table 2 gaps minus bipm2012a (using BIPM
+R(56) a10 - a1 = 571.542 MHz): P(119) +0.22, R(86) +0.06, R(106) 34-0 +0.12, R(134) +0.04, P(83) -0.09,
+P(53) -0.05 MHz, all within the printed 0.2 MHz (ye1999a agrees with bipm2012a to 5 kHz here).
+"""
+
+uncertainty = """
+The paper prints no per-component uncertainty for the hyperfine intervals. Each is the mean of 30 successive
+4 s beat measurements (p. 1993). Entered: the standard deviation of the authors' four-constant fit to each
+line (Tables 3-8, Table 9): P(53) 6.5, R(56) 6.9, P(83) 4.5, R(134) 9.8, R(106) 34-0 7.1, R(86) 2.3 kHz,
+taken as 1 sigma (a judgement; it includes the four-term model's error, and the Allan deviation shows the
+lock itself is at the 0.1 kHz level). The comparisons with bipm2012a (rms 6-18 kHz, systematic trends on
+P(53) and P(83)) suggest these are, if anything, optimistic. Table 2 gaps: +-0.2 MHz as printed under the
+column, taken as 1 sigma. P(119) a21 (footnote d): 10 kHz, a judgement (the paper's "better than 10 kHz").
+Nothing is said about pressure or power corrections; none is applied (intervals, same cell and conditions).
+"""
+
+notes = """
+Residuals against the default Predictor (2026-09-29), obs - model: hyperfine intervals R(56) 32-0 -11 to
++19 kHz (rms 7), R(86) 33-0 -8 to +5 kHz, R(106) 34-0 -14 to +12 kHz (rms 9), P(83) 33-0 +3 to +21 kHz
+(rising with frequency), P(53) 32-0 +1 to +26 kHz, R(134) 36-0 -28 to +15 kHz (rms 16), P(119) a21 -1 kHz;
+the pattern is the same as arie1993a - bipm2012a, i.e. it is the paper's disagreement with the BIPM tables
+that the model follows. Table 2 gaps: P(119) -220, R(86) -44, R(106) 34-0 +131, R(134) +502, P(83) +170,
+P(103) 34-0 -27, P(53) +308 kHz; all within 1.1 sigma of 0.2 MHz except R(134) and P(53), which are
+within 2.5 sigma. P(103) 34-0 at -27 kHz confirms its assignment. No row was dropped for its residual.
+"""
+
+[conditions]
+method = "FM saturation spectroscopy (EOM 4 MHz on the scanned system, 10.9 MHz on the reference), heterodyne between two independently locked frequency-doubled Nd:YAG lasers"
+laser = "two diode-pumped monolithic Nd:YAG (1064 nm), externally doubled in MgO:LiNbO3 resonators"
+cell = "calibrated 8.5 cm cell (BIPM, J. M. Chartier) for the splittings; 15 cm cell for spectra"
+cold_finger_C = 0.0
+beam = "elliptic, ~1 mm x 2 mm"
+linewidth_MHz_FWHM = 1.3
+pressure_shift = "~ -1 MHz/Torr quoted from Glaser 1986 (ref. 11); not applied"
+extrapolated_to_zero_pressure = false

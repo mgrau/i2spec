@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use i2spec, please cite it as below."
+title: "i2spec: an open, physics-based model of the molecular iodine B–X spectrum"
+type: software
+authors:
+  - family-names: Grau
+    given-names: Matt
+license: MIT
+repository-code: "https://github.com/mgrau/i2spec"
+url: "https://mgrau.github.io/i2spec/"
+keywords:
+  - molecular iodine
+  - spectroscopy
+  - frequency standards
+  - hyperfine structure
+  - potential energy curves

@@ -1,16 +1,15 @@
 id = "huang2018a"
 citation = "Y.-C. Huang, Y.-C. Guan, T.-H. Suen, J.-T. Shy and L.-B. Wang, \"Absolute frequency measurement of molecular iodine hyperfine transitions at 647 nm\", Appl. Opt. 57, 2102 (2018)"
-source = "https://arxiv.org/abs/1710.09533 (arXiv preprint v2, 8 Feb 2018, not the published Appl. Opt. version; numbers could differ from the published paper)"
+source = "Appl. Opt. 57(9), 2102-2106 (2018), published 14 March 2018; https://doi.org/10.1364/AO.57.002102 (checked against the earlier arXiv:1710.09533v2 preprint, from which the set was first typed)"
 doi = "10.1364/ao.57.002102"
 retrieved = "2026-09-29"
 unit = "MHz"
 catalog = "precision.yaml:huang2018a"
 
 transcription = """
-From the arXiv preprint (1710.09533v2), not the Appl. Opt. version, which was not checked. Table 2
-(p. 4), "Measured" column: absolute frequencies of the a1, a10 and a15 components of 127I2 P(46) 5-4,
+From the published Appl. Opt. version, Table 2 (p. 2105), "Measured" column: absolute frequencies of the a1, a10 and a15 components of 127I2 P(46) 5-4,
 in kHz, converted to MHz exactly. Typed from the pdftotext -layout text layer and checked digit by digit
-against a 200 dpi rendering of p. 4.
+against a 200 dpi rendering of p. 2105 (Tables 1-2 and the Fig. 7 caption).
 
 These are the authors' zero-pressure values. Each is the Fig. 7 caption value at 20 C cold finger
 (a1 463 556 678 341(6), a10 463 557 264 325(7), a15 463 557 557 826(6) kHz) plus the 224 kHz pressure
@@ -20,6 +19,14 @@ further correction is applied here. The Fig. 7 values are not entered separately
 Not entered: the Table 2 splittings a10 - a1 = 585 984(30) kHz and a15 - a10 = 293 501(30) kHz. They are
 differences of the three absolute values (checked: exact), so entering them would count the data twice.
 The "Calculated" (IodineSpec5) and "Deviation" columns are not entered.
+
+Differences from the arXiv v2 preprint: none in the data. Table 1 (224 kHz correction; 19, 5, 6/7/6 kHz),
+Table 2 (all five measured values, calculated values and deviations), the Fig. 7 values and the
+conditions are identical. One editorial difference: the published abstract and conclusion print the
+pressure shift as "-8.37 kHz/Pa", where the preprint has "-8.3(7) kHz/Pa"; the published body text
+("-8.3 +- 0.7 kHz/Pa", p. 2104) and the Fig. 6 caption ("8.3(7) kHz/Pa") keep the preprint value, and
+the 224 kHz correction in Table 1 is unchanged, so "-8.37" is taken as a typesetting slip for -8.3(7);
+the coefficient is recorded as -8.3 kHz/Pa.
 
 P(46) has even J'' and 15 main components; a1, a10, a15 are ranks by frequency (a15 highest), as the
 paper states (Section 3 and Fig. 4: a1, a2-5, a6-9, a10, a11-14, a15), and as in the rest of the

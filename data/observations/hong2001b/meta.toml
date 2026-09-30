@@ -1,0 +1,56 @@
+id = "hong2001b"
+citation = "F.-L. Hong, J. Ye, L.-S. Ma, S. Picard, C. J. Bordé, J. L. Hall, \"Rotation dependence of electric quadrupole hyperfine interaction in the ground state of molecular iodine by high-resolution laser spectroscopy\", J. Opt. Soc. Am. B 18, 379-387 (2001)"
+source = "https://doi.org/10.1364/josab.18.000379 (publisher PDF)"
+doi = "10.1364/josab.18.000379"
+retrieved = "2026-09-29"
+catalog = "data/catalog/precision.yaml#hong2001b"
+unit = "MHz"
+partial = "Crossover resonances (15 of R(56) 32-0, 8 of P(54) 32-0) cannot be represented and are left out; the P(54) 32-0 main-line intervals are a reprint of ye1999a and are left out (see transcription)."
+transcription = """
+Table 1 (p. 381), "Observed" column, "Main" rows: hyperfine intervals f(a_n) - f(a1) of 127I2 R(56) 32-0 for
+a2, a5-a15, printed in kHz and converted to MHz exactly. Read from the PDF text layer and checked digit by
+digit against a 200 dpi rendering of p. 381. The Calculated and Obs.-Cal. columns are not entered (Obs.-Cal.
+is kept in `note`); as a check, Observed - Calculated reproduces every printed Obs.-Cal. to the last digit.
+Table 1 lists no a3 or a4 (also absent from the BIPM R(56) 32-0 table); the paper does not say why
+(presumably unresolved from each other). The beat notes were measured at 1064 nm and doubled by the authors
+(p. 381) to give 532 nm intervals.
+
+Labels: a_n ranked by frequency, a1 lowest; J'' = 56 is even, 15 main components, as in i2spec. The F and I
+columns of Table 1 agree with that assignment (a1: F = 57, I = 2; a15: F = 57, I = 0).
+
+Left out:
+- Crossover resonances c1a-c15a (Table 1) and c1a-c8a (Table 2), measured with weight 1 at ~1 kHz beat noise:
+  i2spec cannot represent crossovers (as in simonsen2000a). Their "common level" (upper/lower) is printed.
+- Table 2 main lines of P(54) 32-0 (a2-a15): footnote b says they "were published in Ref. 13", i.e. Ye et al.
+  1999 = ye1999a, which already holds them to 1 Hz. The Table 2 values are those rounded to 0.1 kHz (all 14
+  agree within 0.05 kHz). Entering them would count one measurement twice.
+- Table 3 fitted hyperfine constants: in data/hyperfine_parameters/hong2001b/.
+
+Conditions: Table 1/2 main lines were measured with pump 2.0 mW, probe 0.4 mW (p. 383) to reduce power
+broadening and shift; the crossovers at pump 7.6 mW. Cold finger -15 C, 0.787 Pa (p. 381, stated for Fig. 2).
+No pressure or power extrapolation and no pressure-shift coefficient are given; none is applied here.
+
+Overlap with bipm2012a: its Table 16 (R(56) 32-0, relative to a10, 1.5 kHz) has the same 12 components (a3, a4
+missing). Converted to a10 as reference, this paper minus BIPM is, in kHz: a1 +0.2, a2 -0.4, a5 +1.0, a6 -0.3,
+a7 -0.7, a8 +0.7, a9 +0.4, a11 -0.6, a12 +0.3, a13 +0.7, a14 +0.3, a15 -0.1 (rms 0.56). BIPM does not name its
+source; the agreement at the 1 kHz rounding level and the identical missing components suggest that the JILA
+measurements (this paper and its companions) are at least a source of it, so the two sets are probably not
+independent. A fit that uses both should keep only one.
+"""
+uncertainty = """
+0.3 kHz for every interval: the paper states the uncertainty of the measured main hyperfine lines, including
+all differences between the two spectrometers, as "typically +-300 Hz" (p. 383), taken here as 1 sigma. It is
+not given per component. The four-term fit to the main lines alone has a standard deviation of ~0.5 kHz
+(p. 383), which includes the model's error. The BIPM gives 1.5 kHz for the same intervals.
+"""
+
+[conditions]
+detection = "modulation transfer (FM on pump), frequency-doubled Nd:YAG, heterodyne of two I2-stabilized lasers"
+cold_finger_C = -15.0
+pressure_Pa = 0.787
+cell_length_m = 1.2
+modulation_kHz = 350
+modulation_index = 0.9
+main_line_pump_mW = 2.0
+main_line_probe_mW = 0.4
+note = "main-line powers from p. 383; -15 C / 0.787 Pa stated for the Fig. 2 run; values not extrapolated to zero pressure or power"

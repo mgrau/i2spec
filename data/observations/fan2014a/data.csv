@@ -1,2 +1,2 @@
 line,component,kind,value,uncertainty,ref_line,ref_component,group,note
-127I2 R(26) 5-13,a15,frequency,409253981.6,0.1,,,fan2014a,"p. 3 text (arXiv v1); printed as P(26) 5-13, entered as R(26) 5-13 (see meta.toml); includes the authors' +520 kHz lineshape/servo offset correction"
+127I2 R(26) 5-13,a15,frequency,409253981.6,0.1,,,fan2014a,"PRA p. 032513-3 text; printed R(26) 5-13 (the arXiv preprint had P(26)); includes the authors' +520 kHz lineshape/servo offset correction"

@@ -117,20 +117,40 @@ Errors name the file and the row. `write_observations` writes the CSV back, and 
 | `jones2002a` | Jones 2002 (515/532 nm): P(13) 43-0 a3 absolute at 2.38 Pa (not pressure-corrected), 1.5 kHz; R(56) 32-0 a10 from the 750 MHz comb check (Fig. 2), repeatability only | 2 | complete; the "378.8 kHz as measured" in BIPM MEP 2005 is a misprint of Fig. 5, the value is 441.8 kHz; **a source of `bipm2005a`** |
 | `goncharov2004a` | Goncharov 2004 (515 nm): P(13) 43-0 a3 absolute at 0.12 Pa (as measured), 0.75 kHz | 1 | complete; the paper's extrapolations to 2.38 Pa are derived and not entered; **a source of `bipm2005a`** |
 | `simonsen2000a` | Simonsen 2000 (633 nm): hyperfine intervals of ¹²⁷I₂ P(33) 6-3, R(60) 8-4, R(125) 9-4, P(54) 8-4, R(39) 6-3, R(59) 8-4, P(53) 8-4 at 1–10 kHz, and 3 links between lines across ±20 GHz at 5–6 kHz | 122 | complete; 14 blended entries and the MP-97-derived link to R(127) left out; the abstract's "P(39)" is R(39) 6-3 |
-| `huang2018a` | Huang 2018 (647 nm, arXiv version): a1, a10, a15 absolute frequencies of P(46) 5-4 at 21 kHz (zero-pressure values) | 3 | complete; the two printed splittings are differences of these and are not entered |
-| `manzoor2024a` | Manzoor 2024 (652 nm, arXiv version): 9 comb-referenced absolute frequencies of components of P(63) 4-4 (a1–a4, a7, a12–a14, a18) at 0.19–1.3 MHz | 9 | complete; the fitted centre of gravity and ΔeqQ/ΔC (Table 2) are derived and not entered |
-| `fan2014a` | Fan 2014 (730 nm, arXiv v1 preprint): R(26) 5-13 a15 absolute at 0.1 MHz (printed "P(26)", relabelled) | 1 | 1 of 2; the R(137) 5-12 a19–21 reference is a blend; **published PRA not checked** |
-| `kobayashi2015a` | Kobayashi 2015 (531 nm, arXiv version): R(36) 32-0 a1 absolute at 8 kHz, at 41 Pa and 12.7 mW, not extrapolated to zero pressure | 1 | complete |
-| `hauden2024a` | Hauden 2025 (556 nm, arXiv version): all 21 components of P(49) 24-1 at 5–6 kHz, corrected to zero pressure and asymmetry by the authors | 21 | complete; Table 3 hyperfine constants not entered |
-| `grieser1994a` | Grieser 1994 (549/585 nm, CERN preprint): absolute R(99) 15-1 a13 and R(85) 25-0 a1 at 67–71 kHz via wavelength ratios to the 633 nm He-Ne standard, plus P(13) 43-0 a3 computed from the printed λ514/λ633 ratio | 3 | complete; the 549 nm line is printed as 26-0 and re-assigned to 25-0 (as in Knöckel 2004); CIPM 1992 He-Ne basis, not rescaled (+8 kHz) |
+| `huang2018a` | Huang 2018 (647 nm): a1, a10, a15 absolute frequencies of P(46) 5-4 at 21 kHz (zero-pressure values) | 3 | complete; the two printed splittings are differences of these and are not entered |
+| `manzoor2024a` | Manzoor 2024 (652 nm): 9 comb-referenced absolute frequencies of components of P(63) 4-4 (a1–a4, a7, a12–a14, a18) at 0.19–1.3 MHz | 9 | complete; the fitted centre of gravity and ΔeqQ/ΔC (Table 2) are derived and not entered |
+| `fan2014a` | Fan 2014 (730 nm, PRA): R(26) 5-13 a15 absolute at 0.1 MHz | 1 | 1 of 2; the R(137) 5-12 a19–21 reference is a blend |
+| `kobayashi2015a` | Kobayashi 2015 (531 nm): R(36) 32-0 a1 absolute at 8 kHz, at 41 Pa and 12.7 mW, not extrapolated to zero pressure | 1 | complete |
+| `hauden2024a` | Hauden 2025 (556 nm): all 21 components of P(49) 24-1 at 5–6 kHz, corrected to zero pressure and asymmetry by the authors | 21 | complete; Table 3 hyperfine constants not entered |
+| `grieser1994a` | Grieser 1994 (549/585 nm): absolute R(99) 15-1 a13 and R(85) 25-0 a1 at 67–71 kHz via wavelength ratios to the 633 nm He-Ne standard, plus P(13) 43-0 a3 computed from the printed λ514/λ633 ratio | 3 | complete; the 549 nm line is printed as 26-0 and re-assigned to 25-0 (as in Knöckel 2004); CIPM 1992 He-Ne basis, not rescaled (+8 kHz) |
+| `badr2006a` | Badr 2006 (661 nm, Ag two-photon paper): P(62) 4-5 a1 absolute from the BIPM comb calibration of the reference laser, 15 kHz (authors' enlarged value; 6 MHz FM lock at a 13 °C cold point, not corrected to zero pressure) | 1 | complete; the only v″ = 5 precision line |
+| `hong2001b` | Hong 2001b (532 nm): hyperfine intervals of R(56) 32-0 (a2, a5–a15) to a1 at 0.3 kHz (Table 1, main lines) | 12 | complete for main lines; 23 crossovers not representable; P(54) 32-0 main lines (Table 2) are a reprint of `ye1999a` and are left out; probably **a source of `bipm2012a`** Table 16 (agrees to 0.56 kHz rms) |
+| `sakagami2020a` | Sakagami 2020 (531.5 nm): a1/b1 absolute frequencies of 7 lines, bands 32-0 to 35-0 (J″ = 34–112), at 5.7 kHz (2.4 Pa, not extrapolated) and 114 splittings at 1 kHz | 121 | complete; R(75) 33-0 a18 and R(37) 32-0 b2 not measured; a11–a14 of R(38)/P(34) 32-0 kept at 10 kHz; abstract's "P(98)34-0" is R(98)34-0 |
+| `yoshii2019a` | Yoshii 2019/2020 (531.5 nm): R(38) 32-0 a10 absolute at 6 kHz (2.5 Pa, 3.0 mW, not extrapolated) | 1 | complete; **not independent of `sakagami2020a`** (same apparatus and budget), agrees within 1 kHz |
+| `tanabe2022a` | Tanabe 2022 (556 nm): a1 absolute frequencies of R(53) 24-1, P(49) 24-1, R(95) 25-1 at 7 kHz (4.0 Pa, 2 mW, not extrapolated) and 60 splittings at 2 kHz | 63 | complete; Table 4 hyperfine constants not entered; independent of `hauden2024a`, which it matches at a1 to 3 kHz and on average to −8 kHz |
+| `sharma2023a` | Sharma 2023 (739 nm): wavelength-meter frequencies of R(78) 1-11 a1, a10, a15 at 60 MHz | 3 | **excluded**: inconsistent with the known hyperfine gaps and with the paper's own Fig. 3; 3 blended peaks left out |
+| `yoshii2021a` | Yoshii 2021 (531 nm, Negative Results): R(36) 32-0 a1 absolute at 9.9 kHz and 20 P(35) 32-0 splittings at 10 kHz, from a ~1 MHz-linewidth laser | 21 | **excluded**: the authors show the splittings are compressed (up to −50 kHz); the a1 absolute is 239 kHz above `kobayashi2015a` |
+| `arie1993a` | Arie & Byer 1993 (532 nm): a1 gaps of 7 lines to R(56) 32-0 a1 at 0.2 MHz (incl. P(103) 34-0, held by no other set); hyperfine intervals of P(53)/R(56) 32-0, P(83)/R(86) 33-0, R(106) 34-0, R(134) 36-0 at the per-line fit sd (2.3–9.8 kHz); P(119) 35-0 a21−a1 | 85 | 4 blended/shifted entries left out; errata (JOSA B 11, 866) not seen |
+| `arie1994a` | Arie & Byer 1994 (532 nm): P(119) 35-0 a2–a21 relative to a1, 3.7 kHz (fit sd) | 20 | complete; erratum (Opt. Commun. 127, 382) not seen; **probably a source of `bipm2012a`** Table 11 |
+| `cheng2001a` | Cheng & Shy 2001 (543 nm): R(12) 26-0 a9–a15 and R(106) 28-0 b1–b15 relative to b10, printed 0.5–1.8 kHz (statistical only) | 21 | complete; a12 misprint (−746.3475 → −476.3475) corrected |
+| `zhang2001a` | Zhang 2001 (532 nm): gaps from R(56) 32-0 a10 to 16 lines (a1 of 15, a21 of P(83) 33-0), comb generator, 1 kHz, at −15 °C | 16 | complete; **a source of `bipm2012a`** (column [8]; the BIPM intervals of six lines are these values alone) |
+| `hong2001a` | Hong 2001a (532 nm): hyperfine intervals to a1 of R(58) 32-0, P(55) 32-0 and P(104) 34-0, 1–2 kHz | 44 | complete; R(58) a3/a4 and P(55) a5/a6 not measured; **the source of the `bipm2012a` Tables 2–4** |
+| `hong2002a` | Hong 2002a (532 nm): hyperfine intervals to a1 of R(87) 33-0, R(145) 37-0 and P(132) 36-0, 1–2 kHz | 54 | complete; **the source of the `bipm2012a` Tables 1, 7, 8**; BIPM R(145) a5 is a misprint (−50 kHz) |
+| `hong2000a` | Hong & Ishikawa 2000 (532 nm): hyperfine intervals a2–a15 of R(122) 35-0 and P(84) 33-0 relative to a1, 0.85 and 0.12 kHz (from relock reproducibility; none printed) | 28 | complete; **source of `bipm2012a` Tables 5–6**, whose R(122) a7 (398.2113 MHz) is a misprint of 398.2213 |
+| `hong2004a` | Hong 2004a (532 nm): R(85) 33-0 a1 absolute (comb, uncorrected, 0.52 kHz), its interval to R(56) 32-0 a10, and a2–a21 relative to a1 at 0.1 kHz | 22 | complete; Table 2 Δ constants not entered; **source of `bipm2012a` Table 20 and the CI-2007 interval** |
+| `hong2004b` | Hong 2004b (532 nm): R(56) 32-0 a10 absolute of laser Y3 at −10 °C, uncorrected, 0.52 kHz | 1 | complete; laser-to-laser offsets and shift slopes not entered |
 | `chen2023a` | Chen 2023/2024 (554 nm, arXiv version): one absolute component of each of 9 lines, v′ = 22–26, v″ = 0–1, at 33–47 kHz | 9 | **excluded** (`exclude` in `meta.toml`): all 9 disagree with the model and the NIST/APO atlas by 30–840 MHz, and no relabelling explains it |
 
 Two sources were checked and hold nothing to transcribe: Chen & Ye 2003 (Chem. Phys. Lett. 381, 777) is a
 figures-only summary of `chen2004a`, and Chen, de Jong & Ye 2005 (JOSA B 22, 951) is theory.
 
-**Overlapping sources.** `bipm2012a` is built partly from `ye1999a` and `holzwarth2001a`, and `bipm2005a`'s
-a3 is the mean of `jones2002a` and `goncharov2004a`. A fit that uses both sides counts those measurements
-twice; the group labels do not yet express this.
+**Overlapping sources.** `bipm2012a` is built from primary papers that are also here: `ye1999a`,
+`holzwarth2001a` and `zhang2001a` (the intervals to R(56) a10), `hong2001a` (its Tables 2–4), `hong2002a`
+(Tables 1, 7, 8), `hong2000a` (Tables 5–6), `hong2004a` (Table 20 and the 2007 interval), and probably
+`arie1994a` (Table 11) and `hong2001b` (Table 16). `bipm2005a`'s a3 is the mean of `jones2002a` and
+`goncharov2004a`, and `yoshii2019a` shares its apparatus with `sakagami2020a`. A fit that uses both sides
+counts those measurements twice; the group labels do not yet express this. Transcribing the sources found
+two misprints in the MEP 532 nm tables, corrected in `bipm2012a` (R(122) 35-0 a7, R(145) 37-0 a5).
 
 ## matyugin2012: how the assignment was settled
 
@@ -151,6 +171,14 @@ this assignment (`data/observations/matyugin2012/meta.toml`).
 - Correlations between observations beyond the `group` label, e.g. a shared reference frequency.
 - A MARVEL-style network check of hyperfine-free line centres (combination differences through shared levels).
 - A declaration of each group's nuisance model (offset, scale) in `meta.toml`.
+
+## Level constants: `data/x_levels/`
+
+Sources that publish per-level constants rather than lines. `martin1986/` holds Table I of Martin *et al.*,
+J. Mol. Spectrosc. 116, 71 (1986): G, B, D, H, L (and M) of 93 X levels, v″ = 8–108, from 14 820 B→X
+fluorescence lines, relative to X(0,0) through Luc's G(9) (column definitions in its `meta.toml`). The model
+agrees with it to 15–170 MHz at v″ = 26–47 (J ≤ 120), where nothing else measures the X state; above
+v″ ≈ 60 the extended X potential of i2spec2026k is off by up to 70 cm⁻¹. Not yet used by any fit.
 
 ## Derived hyperfine parameters: `data/hyperfine_parameters/`
 
@@ -173,3 +201,4 @@ for s in load_all_hyperfine_parameters():
 | id | Content | Rows | Status |
 |---|---|---|---|
 | `chen2004a` | Chen 2004 (500–517 nm): eqQ_B, C_B, d_B, δ_B of 74 lines, v′ = 42–70 with 1–7 J′ per v′ (J′ ≈ 9–112); X state held at BKT02, as in i2spec | 74 | complete for Table 1; the authors left out five lines perturbed by a 1g state |
+| `hong2001b` | Hong 2001b (532 nm): eqQ′, C′, d′, δ′ of R(56) and P(54) 32-0 from main + crossover fits; X eqQ″, C″ fitted (in `note`), d″/δ″ held at 1.524/3.705 kHz | 2 | complete for Table 3 |

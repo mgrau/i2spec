@@ -7,7 +7,7 @@ measured, fit the difference (measured - formula) as a low-order polynomial in y
 apply it; at unmeasured v' keep the formula, except above v' = 53, where the formula is frozen and
 interpolating the corrections of the neighbouring measured v' beats it twenty-fold (Chen 2004 test).
 
-The table itself is data/hyperfine_parameters/b_state_lines.json, built by
+The table itself is src/i2spec/data/b_state_lines.json (shipped with the package), built by
 prototypes/hfs_measured_table.py from Chen 2004 and per-line fits of every precise set we hold.
 """
 
@@ -23,7 +23,7 @@ import numpy as np
 from .hyperfine import HyperfineParameters
 
 PARAMS = ("eqQ", "C", "d", "delta")
-TABLE_PATH = Path(__file__).resolve().parents[2] / "data" / "hyperfine_parameters" / "b_state_lines.json"
+TABLE_PATH = Path(__file__).resolve().parent / "data" / "b_state_lines.json"   # shipped with the package
 #: Above this v' the published formulae are held at a fixed energy (hfs_params.E_B_MAX_S06), and the
 #: corrections of neighbouring measured v' are interpolated instead of falling back to zero.
 V_FROZEN = 53

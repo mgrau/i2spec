@@ -46,9 +46,11 @@ Ranked by what each would change in the model.
    & Huke (2018) and Debus *et al.* (2023): measured, described in publications, not deposited.
 8. **The line list of Rodríguez Fernández *et al.* (2023)** (1 204 lines at 14 400–14 600 cm⁻¹): described
    in the paper as supplementary material, but not provided with it.
-9. **Scans of the Gerstenkorn & Luc atlases** once served by the Laboratoire Aimé Cotton, including the
-   19 700–20 035 cm⁻¹ volume and the assignment tables of the 14 800–20 000 cm⁻¹ atlas. They are no
-   longer online and were not archived; the printed volumes remain.
+9. **Scans of the Gerstenkorn & Luc atlases** once served by the Laboratoire Aimé Cotton. They are no
+   longer online and were not archived. The printed volumes remain: the 11 000–14 000 cm⁻¹ volume and
+   Partie IV (19 700–20 035 cm⁻¹) were photographed and transcribed here
+   (`docs/research/orsay-atlas-11000-14000.md`, `orsay-atlas-19700-20035.md`); the assignment tables of
+   the 14 800–20 000 cm⁻¹ atlas are still only in print.
 10. **IodineSpec line lists.** No output of the program has been published as a data set
     (`docs/research/iodinespec5.md`).
 
@@ -60,7 +62,8 @@ Ranked by what each would change in the model.
   measurement exists; the Orsay atlas provides Doppler-limited positions to 909 nm.
 - **X v″ = 26–47.** No measurement; the levels there are an interpolation of the Morse/long-range
   potential between the atlas levels (v″ ≤ 25) and the emission levels (v″ = 48–54).
-- **B v′ > 50.** Few absolute measurements, in the region where a 1g state perturbs the B state.
+- **B v′ > 50.** Three comb-referenced lines (v′ = 52, 53, 62) and the Orsay atlas Partie IV (v′ = 51–79,
+  30–100 MHz per line); nothing precise at v′ = 63–79, and the levels above the asymptote are unmeasured.
 - **Isotope shifts.** No comb-referenced measurements of ¹²⁹I₂ or ¹²⁷I¹²⁹I beyond the BIPM tables.
 - **The absolute cross-section scale.** Spietz *et al.* (2006) and Tellinghuisen (2011) differ by 3 % at
   500 nm, and Saiz-Lopez *et al.* (2004) by 4.7 %; no independent modern measurement exists.

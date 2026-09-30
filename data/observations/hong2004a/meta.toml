@@ -1,0 +1,71 @@
+id = "hong2004a"
+citation = "F.-L. Hong, S. Diddams, R. Guo, Z.-Y. Bi, A. Onae, H. Inaba, J. Ishikawa, K. Okumura, D. Katsuragi, J. Hirata, T. Shimizu, T. Kurosu, Y. Koga and H. Matsumoto, \"Frequency measurements and hyperfine structure of the R(85)33-0 transition of molecular iodine with a femtosecond optical comb\", J. Opt. Soc. Am. B 21, 88-95 (2004)"
+source = "https://doi.org/10.1364/josab.21.000088 (publisher PDF)"
+doi = "10.1364/josab.21.000088"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:hong2004a"
+
+transcription = """
+Three sources in the paper, kHz converted to MHz exactly:
+  Sect. 3B (p. 91): f(a1, R(85) 33-0) = 563 306 720 064.94 (6) kHz, mean of ten comb measurements
+    (Fig. 6) over several days.
+  Table 3 (p. 93): f(a1, R(85) 33-0) - f(a10, R(56) 32-0) = 46 496 559.1 kHz, both lines measured
+    absolutely with the same laser and comb "under the same operation conditions" (p. 93).
+  Table 1 (p. 92), "Observed" column: a2-a21 of R(85) 33-0 relative to a1, each from an absolute comb
+    measurement of that component.
+Read from the pdftotext -layout text layer and checked digit by digit against 200 dpi renderings of
+pp. 91-93. The "Calculated" and "Observed Less Calculated" columns are not entered (Observed -
+Calculated reproduces the printed column). Table 2 (Delta eqQ = 1906.832(1) MHz, Delta C = 94.9180(5) kHz,
+Delta d = -48.78(8) kHz, Delta delta = -10.19(6) kHz; B - X differences with eqQ'' from Hong et al. 2001
+and C'', d'', delta'' from Borde et al. 2002) and the v' = 33 averages of eqs. (4)-(5) are fitted
+constants and are not entered.
+
+The absolute a1 and the Table 3 interval are both kept: the paper does not print its own R(56) a10
+value, so the interval is not a restatement of the absolute. Together they imply this laser's
+f(a10, R(56) 32-0) = 563 260 223 505.8 kHz, 7.2 kHz below the CIPM value (and 2.1 kHz below hong2004b's
+Y3 laser at -10 C). Eq. (6) instead builds absolute frequencies from the CIPM value plus the interval;
+that combination is not entered.
+
+Component labels: R(85) has odd J'' and 21 main components, all resolved (p. 91); a1 lowest, a21
+highest. Table order is increasing frequency, and the model's ranking gives the same order.
+
+Conditions: laser is an InnoLight Prometheus-20NE Nd:YAG (presumably Y4 of hong2004b: 30 cm NEO cell, 350 kHz
+modulation transfer), pump 1.0 mW, probe 0.6 mW in this experiment; the cold-finger temperature is not
+stated here ("other conditions are given elsewhere", ref. 13; the group's usual setting is -10 C, about
+1.4 Pa). Values are as measured, NOT extrapolated to zero pressure or power; no correction is applied.
+The group's measured slopes for R(56) a10 (hong2004b) are -2.98 kHz/Pa and -149 Hz/mW (Y3).
+
+Overlap with bipm2012a (not independent): BIPM MeP 532 nm Table 20 and the CI-2007 list (p. 3) cite
+this paper (ref. [27]). Every Table 1 interval and the Table 3 interval agree with bipm2012a exactly
+(0.0 kHz); BIPM rounds nothing here but assigns 2 kHz (hyperfine) and 5 kHz (interval). A fit using both
+counts these 21 rows twice. The absolute a1 value is not in bipm2012a.
+"""
+
+uncertainty = """
+Hyperfine intervals (Table 1): 0.1 kHz, the Table 1 footnote's "measurement uncertainty of the
+observed hyperfine splittings is 100 Hz", taken as 1 sigma (lock repeatability 60-100 Hz, p. 92).
+Absolute a1: the printed (6) = 60 Hz is only the standard deviation of the ten runs (repeatability). No
+systematic budget is given in this paper; the companion hong2004b (same group, same ensemble of lasers)
+estimates 520 Hz for pressure, power, modulation-phase and alignment effects, which is used here:
+sqrt(0.06^2 + 0.52^2) = 0.52 kHz. It does not include any cell-impurity allowance (the CCL uses 5 kHz
+for the R(56) a10 value).
+Interval to R(56) a10 (Table 3): no uncertainty printed; the text (p. 93) says such intervals are
+"typically approximately 100 Hz", limited by laser repeatability. Entered as 0.5 kHz, because the two
+lines' pressure and power shifts need not cancel (their slopes are not measured) and the same 520 Hz
+technical budget applies; BIPM assigns 5 kHz. All rows share group hong2004a (same laser, cell, comb).
+"""
+
+notes = """
+Residuals against the current model (Predictor(), obs - model): absolute a1 -85.5 kHz; interval to
+R(56) a10 -25.9 kHz; hyperfine intervals a2-a21 -3.8 to -1.7 kHz (mean -2.8, rms 2.9 kHz): a nearly
+uniform offset of all components from a1, i.e. the model's a1 sits about 3 kHz too low relative to the
+rest of the pattern, not a scatter. No row dropped.
+"""
+
+[conditions]
+method = "Doppler-free modulation transfer spectroscopy; Ti:sapphire comb (1 GHz, PCF-broadened) phase locked to an H maser"
+laser = "diode-pumped monolithic Nd:YAG (InnoLight Prometheus-20NE) doubled in single-pass PPKTP, at the blue end of its tuning range"
+pump_mW = 1.0
+probe_mW = 0.6
+averaging = "30-100 x 10 s counter gates per run; ten runs for a1"

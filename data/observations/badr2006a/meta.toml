@@ -1,0 +1,62 @@
+id = "badr2006a"
+citation = "T. Badr, M. D. Plimmer, P. Juncar, M. E. Himbert, Y. Louyer and D. J. E. Knight, \"Observation by two-photon laser spectroscopy of the 4d10 5s 2S1/2 -> 4d9 5s2 2D5/2 clock transition in atomic silver\", Phys. Rev. A 74, 062509 (2006)"
+source = "https://doi.org/10.1103/physreva.74.062509 (publisher PDF)"
+doi = "10.1103/physreva.74.062509"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:badr2006a"
+
+transcription = """
+The paper is about two-photon spectroscopy of atomic silver; its only iodine number is the calibration of
+the reference laser, Sect. V.A (p. 062509-5, left column, below Table III): "The frequency of the ECL
+locked to a1 has been measured to be nu_a1 = 453 325 363 771(1) kHz", the a1 component of the "62P(4-5)"
+line of 127I2 (i.e. P(62) 4-5, near 661.3 nm; Sect. III.C and Fig. 3). Entered in MHz exactly. Read from
+the pdftotext -layout text layer and checked digit by digit against a 200 dpi rendering of p. 062509-5.
+
+The measurement was made at BIPM with a femtosecond comb referenced to a hydrogen maser (their ref. [19],
+Ma et al., Opt. Lett. 29, 641 (2004), which describes the comb, not this laser); no date is given. It is
+the frequency of the ECL as locked, with the same settings used for the silver work: diode current
+modulation at 15.7 kHz, frequency modulation depth 6 MHz, third-derivative detection (Fig. 3), diode
+temperature 25 C, 20 cm glass cell with its cold point at 13 C. The paper gives no pressure in Pa, no
+pressure or power shift coefficient, and makes no extrapolation to zero pressure or modulation; no
+correction is applied here. (For scale only, not applied: 13 C is about 14 Pa of I2, cf. 17 Pa at 15 C in
+guo2004a; with the -8.95 kHz/Pa of huang2013a at 671 nm the pressure shift would be about -0.1 MHz, so
+the unperturbed a1 would lie roughly +0.1 MHz above the printed value. A 6 MHz modulation depth, wide
+compared with the linewidth, can add a lock offset of similar size.)
+
+Component label: P(62) has even J'', so 15 main components; a1 is the lowest-frequency one, as in the rest
+of the collection (i2spec rank 1, model offset -489 MHz from the line centre).
+
+Nothing else in the paper is an iodine measurement: the Ag frequencies (Tables I, II), isotope shift and
+hyperfine constants are silver results.
+
+Overlap: no other precision set in data/observations/ holds P(62) 4-5 or any v''=5 line of v'=4. The
+Salami & Ross 2005 FTS atlas (data/atlas_lines/salami_ross_2005.csv) gives the hyperfine-free centre
+15121.321833(659) cm-1 = 453 325 824(20) MHz; with the model a1 offset (-489.4 MHz) the centre implied by
+this row is 453 325 853.2 MHz, so the atlas is 29 MHz low (1.5 sigma of its uncertainty), the same sign
+and size as for huang2013a at 671 nm.
+
+Model check (i2spec default parameters, 2026-09-29): obs - model = -2.85 MHz, i.e. the model centre of
+P(62) 4-5 is 2.8 MHz high. This matches the pattern of the other 640-680 nm sets: manzoor2024a P(63) 4-4
+(652 nm) -3.9 MHz, huang2013a R(78) 4-6 (671 nm) -2.3 MHz, both also v'=4. The estimated pressure
+shift (+0.1 MHz if corrected) does not change this. Not an outlier by misreading: the 12-digit value
+reads the same in text layer and image, and the line assignment is stated twice in the paper.
+"""
+
+uncertainty = """
+15 kHz. The BIPM measurement is printed as (1) kHz; the authors enlarged the uncertainty of the reference
+laser frequency to 15 kHz because transport between the laboratories may have perturbed the laser (Sect.
+V.A); Table III lists the same term as "Reference laser lock point" 30 kHz at twice the laser frequency.
+The 15 kHz is taken as standard (1 sigma). It does not include any estimate of the pressure or
+modulation shift of the lock point relative to the unperturbed transition (see transcription), which may
+be ~0.1 MHz; a fit that weights this row at the 15 kHz level should allow for that.
+"""
+
+[conditions]
+method = "saturated absorption, third-derivative (3f) lock of an extended-cavity diode laser; absolute frequency measured with the BIPM femtosecond comb (H maser)"
+laser = "661 nm Littrow extended-cavity diode laser"
+cell_length_cm = 20
+cold_finger_C = 13
+pressure_Pa = "not stated (about 14 Pa from the 13 C cold point)"
+modulation = "diode current 15.7 kHz, 6 MHz frequency modulation depth"
+diode_temperature_C = 25

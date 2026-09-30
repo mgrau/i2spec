@@ -1,0 +1,75 @@
+id = "yoshii2021a"
+citation = "K. Yoshii, C. Chen, H. Sakagami, F.-L. Hong, \"Hyperfine structure of molecular iodine measured using a light source with a laser linewidth at the megahertz level\", OSA Continuum 4, 1452-1460 (2021) (Negative Results article)"
+source = "https://doi.org/10.1364/osac.420628 (publisher PDF, open access)"
+doi = "10.1364/osac.420628"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:yoshii2021a"
+
+exclude = """
+The paper's own conclusion is that these measurements are biased: with a MHz-linewidth coin-sized
+laser, a large (800 kHz) modulation frequency and strong linear absorption, the lock point is pulled
+toward the line centre and the measured hyperfine structure shrinks (up to -50 kHz at a20 relative to
+the narrow-linewidth PWECDL values of Sakagami et al. 2020, JOSA B 37, 1027), while a four-term fit
+still looks good (SD 16 kHz). The a1 absolute was taken with the same laser and lock and is subject to
+the same lock-point bias; it also lies 239 kHz above kobayashi2015a (same line, same group, 8 kHz),
+far outside the combined uncertainty. Kept for the record, not for the fit.
+"""
+
+transcription = """
+Two things are entered, both measured with the coin-sized laser (CSL):
+1. The absolute frequency of the a1 component of 127I2 R(36) 32-0, 564 074 632 658 kHz, the mean of
+   13 measurements over several days (Sect. 2 text, p. 1455; Fig. 2(f)), total 9.9 kHz (Table 1).
+2. The 20 CSL hyperfine splittings f(a_n) - f(a1) of 127I2 P(35) 32-0 (Table 2, p. 1457, "CSL Obs."
+   column), kHz, converted to MHz exactly.
+Typed from the pdftotext -layout text and checked digit by digit against 200 dpi renderings of
+pp. 1455 and 1457. 21 rows.
+
+Not entered: Table 2 "CSL Cal." (fit); Table 2 "PWECDL Obs./Cal." columns, which are quoted from
+Sakagami et al. 2020 (catalog sakagami2020a, a separate data set; not yet transcribed); the Table 3
+fitted constants (the authors call the Delta eQq values incorrect; X-state C'', d'', delta'' were
+held at 3.154, 1.524, 3.705 kHz and eQq'' from their Ref. 21). The splittings of the other five lines
+(P(32), P(33), R(35), R(36), R(41) 32-0) were measured but are not printed.
+
+CSL - PWECDL for P(35) 32-0, kHz, a2..a21: +1.8, +18.5, +27.3, +38.3, -8.4, +5.6, -14.5, +14.4,
++4.2, +2.0, +3.5, -2.3, -7.7, -31.0, -22.3, -19.7, -29.3, -37.2, -50.5, -44.3: the CSL structure is
+compressed, as the paper says (Fig. 3a).
+
+Comparison of the absolute: kobayashi2015a gives R(36) 32-0 a1 = 564 074 632 419(8) kHz at 41 Pa,
+12.7 mW. yoshii2021a - kobayashi2015a = +239 kHz. Moving kobayashi2015a to 4.0 Pa and 5.2 mW with its
+own coefficients (-1.3 kHz/Pa, -3.6 kHz/mW) gives about +75 kHz, leaving about +164 kHz. Neither
+paper comments on the other.
+
+Conditions: cold finger 0 C (4.0 Pa), cell body 23 C; pump/probe 5.2/0.14 mW (R(36)) and 4.8/0.12 mW
+(P(35)); beam diameters 1.4/1.3 mm; 800 kHz modulation. Not extrapolated to zero pressure or power.
+Shift coefficients on R(36) 32-0 a1 (Table 1): pressure -2.1 kHz/Pa, pump power -0.40 kHz/mW,
+servo offset -8.1 kHz/mV, alignment 15 (vertical) and 5.2 (horizontal) kHz/mrad. No correction
+applied.
+
+Components: P(35) has odd J'' and 21 components a1-a21 by rising frequency; R(36) has even J'', a1 is
+the lowest of 15. Same convention as i2spec.
+"""
+
+uncertainty = """
+Absolute: 9.9 kHz, the paper's total (Table 1: statistics 7.2, cell impurity 5, servo offset < 4,
+alignment < 2, comb reference 1.5 kHz), taken as 1 sigma; it does not include the linewidth-induced
+lock-point bias the paper reports. Splittings: 10 kHz, the repeatability the paper states as the limit
+of the splitting measurements (p. 1456); again without the systematic compression.
+"""
+
+notes = """
+Residuals against the default Predictor (2026-09-29): R(36) 32-0 a1 +1.230 MHz (kobayashi2015a on
+the same component: +0.991 MHz). P(35) 32-0 splittings -29 to +80 kHz, with the high-numbered ones
+(a15-a21) negative, as expected from the compression.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy (800 kHz), comb referenced"
+laser = "coin-sized DFB laser module at 1063 nm with SOA and PPLN (QDLaser QLD0593-3220), SHG at 531 nm, linewidth ~1 MHz"
+cold_finger_C = 0
+pressure_Pa = 4.0
+pump_mW = 5.2
+probe_mW = 0.14
+extrapolated_to_zero_pressure = false
+pressure_shift_kHz_per_Pa = -2.1
+power_shift_kHz_per_mW = -0.40

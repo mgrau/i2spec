@@ -1,22 +1,29 @@
 id = "hauden2024a"
-citation = "M. Hauden, J. Millo, M. Matusko, F. Ponciano Ojeda, Y. Kersale, M. Delehaye, \"Offset sideband locking to iodine for laser cooling on the 1S0 -> 3P1 transition of 171Yb\", Opt. Express 33, 12519 (2025)"
-source = "https://arxiv.org/abs/2503.12895 (arXiv preprint, not the published Optics Express version; the published numbers could differ)"
+citation = "M. Hauden, J. Millo, M. Matusko, F. Ponciano Ojeda, Y. Kersale, M. Delehaye, \"Offset sideband locking to iodine for laser cooling on the 1S0 -> 3P1 transition of 171Yb\", Opt. Express 33, 12519-12529 (2025)"
+source = "Opt. Express 33(6), 12519-12529 (2025), published 11 Mar 2025; https://doi.org/10.1364/OE.547123 (checked against the earlier arXiv:2503.12895 preprint, from which the set was first typed; the id keeps the preprint catalog year)"
 doi = "10.1364/oe.547123"
 retrieved = "2026-09-29"
 unit = "MHz"
 catalog = "precision.yaml:hauden2024a"
 
 transcription = """
-Table 2 (p. 9 of the arXiv version): absolute frequencies of all 21 hyperfine components a1-a21 of
+Table 2 (p. 12526 of the published Optics Express version): absolute frequencies of all 21 hyperfine components a1-a21 of
 127I2 P(49) 24-1 near 556 nm, taken from the column "f_measured - f_c - f_EOM (kHz)", which the caption
 calls the absolute iodine frequency. kHz converted to MHz exactly. Parsed by script from the
-pdftotext -layout text and checked digit by digit against a 200 dpi rendering of p. 9.
+pdftotext -layout text and checked digit by digit against a 200 dpi rendering of p. 12526.
 
 Not entered: f_measured (the frequency of the laser carrier, 4.6757 GHz above the -1 sideband that
 is locked to iodine), f_c (the correction) and "Delta f with [17]" (difference from Tanabe et al.,
 Opt. Express 30, 46487 (2022)), which are derived or belong to another data set. As a check, for all
 21 rows f_measured - f_c - 4 675 700 kHz reproduces the printed iodine frequency exactly, and the
 values increase monotonically from a1 to a21.
+
+Differences from the arXiv preprint: none. All 84 numbers of Table 2 (f_measured, f_c, the iodine
+frequency and Delta f, with their uncertainties) were compared by script between the two text layers
+and are identical; so are Table 1 (p. 12523), Table 3 (p. 12527), the 10.1 C cell temperature and the
+1 sigma statement (Sect. 3.3, p. 12527). Both versions print the pressure-shift coefficient as
+(-7.58 +- 0.07) kHz/Pa in Table 1 but -7.58 +- 0.02 kHz/Pa in the text (p. 12524); the difference only
+affects the 0.4 kHz budget entry.
 
 f_c (-69 to -94 kHz) combines the Table 1 corrections: pressure shift (-7.58 kHz/Pa, measured on
 a12 over 1.3-20 Pa; cell at 10.1 C), asymmetry shift (-224 kHz x a, a fitted per lock cycle),
@@ -25,10 +32,10 @@ entered values are therefore the authors' estimates of the unperturbed transitio
 further correction is applied here.
 
 P(49) has odd J'' and 21 main components; the paper labels them a1-a21 from low to high frequency
-(Fig. 2), which is the rank convention used here. No crossovers are reported. No other data set in
-data/observations holds P(49) 24-1; the paper's own comparison with Tanabe 2022 (catalog
-tanabe2022a, not yet transcribed) gives a mean difference of -8 kHz, range -24 to +1 kHz, each
-at 9 kHz.
+(Fig. 2), which is the rank convention used here. No crossovers are reported. The same line is in
+data/observations/tanabe2022a (Tanabe 2022, transcribed separately); the paper's own comparison with
+it gives a mean difference of -8 kHz, range -24 to +1 kHz, each at 9 kHz (Table 2, last column). Check
+against the tanabe2022a files: a1 differs by -3.0 kHz, as printed.
 
 Also not entered: Table 3, the paper's fitted hyperfine constants (Delta eQq = 1 921 374(11) kHz,
 Delta C = 53.195(9) kHz, Delta d = -25.12(64) kHz, Delta delta = -7.29(53) kHz; fit sd 7 kHz). These

@@ -19,7 +19,7 @@ def test_chen2004_transcription(chen):
     The text layer renders the minus sign as "2"; the 12 values at v' = 69-70 that really begin with 2
     are positive, and 153 printed values are negative.
     """
-    assert [s.id for s in load_all_hyperfine_parameters()] == ["chen2004a"]
+    assert "chen2004a" in [s.id for s in load_all_hyperfine_parameters()]
     assert len(chen.rows) == 74
     by = {str(r.line): r for r in chen.rows}
     r = by["127I2 P(53) 61-0"]

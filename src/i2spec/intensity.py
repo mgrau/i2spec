@@ -433,6 +433,33 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
     return master
 
 
+#: Where the default list hands over to the 12 A one: below, both hold the same bound levels; above, the
+#: default box has lost the levels near the limit (v' >= ~62 on the 7 A grid).
+NEAR_FROM = 19600.0
+
+
+def with_dissociation_lines(master: MasterLineList, T_range=(200.0, 600.0), S_min=1e-27, nu_max=20100.0,
+                            mu=mu_tellinghuisen2011) -> MasterLineList:
+    """``master`` (a default-grid list) plus the lines above NEAR_FROM that only the 12 A box holds.
+
+    The 12 A list (intensity_model(grid=NEAR_DISSOCIATION)) reaches every B level bound by more than
+    0.3 cm-1, to v' = 73 (docs/design/near-dissociation.md). Its lines that the default list also has are
+    dropped, so the default list's values stay as they were; the rest are added. Each J' then has levels
+    up to the higher of the two cuts, which the continuum must start above.
+    """
+    near = master_line_list(intensity_model(master.isotopologue, grid=NEAR_DISSOCIATION, nlev_b=95), NEAR_FROM,
+                            nu_max, T_range=T_range, S_min=S_min, mu=mu)
+    have = set(zip(master.branch.tolist(), master.J_lower.tolist(), master.v_upper.tolist(), master.v_lower.tolist()))
+    add = np.array([k not in have for k in zip(near.branch.tolist(), near.J_lower.tolist(), near.v_upper.tolist(),
+                                               near.v_lower.tolist())], dtype=bool)
+    n = max(len(master.upper_cut), len(near.upper_cut))
+    pad = lambda a: np.r_[a, np.full(n - len(a), np.nan)]                     # noqa: E731
+    cut = np.fmax(pad(master.upper_cut), pad(near.upper_cut))
+    cat = lambda f: np.concatenate([getattr(master, f), getattr(near, f)[add]])   # noqa: E731
+    return MasterLineList(cat("nu"), cat("strength0"), cat("v_upper"), cat("v_lower"), cat("J_lower"), cat("branch"),
+                          cat("E_lower"), master.x_levels, cut, master.isotopologue)
+
+
 def line_list(model, T, nu_min, nu_max, S_min=1e-26, mu=mu_tellinghuisen2011) -> LineList:
     """Lines with nu_min <= ν <= nu_max and S >= S_min at temperature T (not cached; see master_line_list)."""
     return master_line_list(model, nu_min, nu_max, (T, T), S_min, mu, cache=False).at(T, nu_min, nu_max, S_min)

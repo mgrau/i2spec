@@ -1,0 +1,86 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(119) 35-0,a1,interval,-36268.4,0.2,127I2 R(56) 32-0,a1,arie1993a_gaps,Table 2 (p. 1993) a1 spacing; +-0.2 MHz as printed
+127I2 R(86) 33-0,a1,interval,-31618.8,0.2,127I2 R(56) 32-0,a1,arie1993a_gaps,Table 2 (p. 1993) a1 spacing; +-0.2 MHz as printed
+127I2 R(106) 34-0,a1,interval,-29863.1,0.2,127I2 R(56) 32-0,a1,arie1993a_gaps,Table 2 (p. 1993) a1 spacing; +-0.2 MHz as printed
+127I2 R(134) 36-0,a1,interval,-16602.1,0.2,127I2 R(56) 32-0,a1,arie1993a_gaps,Table 2 (p. 1993) a1 spacing; +-0.2 MHz as printed
+127I2 P(83) 33-0,a1,interval,-16031.1,0.2,127I2 R(56) 32-0,a1,arie1993a_gaps,Table 2 (p. 1993) a1 spacing; +-0.2 MHz as printed
+127I2 P(103) 34-0,a1,interval,2956.0,0.2,127I2 R(56) 32-0,a1,arie1993a_gaps,Table 2 (p. 1993) a1 spacing; +-0.2 MHz as printed; line 1111 shared with P(53) 32-0; no other data set holds P(103) 34-0
+127I2 P(53) 32-0,a1,interval,3171.2,0.2,127I2 R(56) 32-0,a1,arie1993a_gaps,Table 2 (p. 1993) a1 spacing; +-0.2 MHz as printed
+127I2 P(119) 35-0,a21,interval,949.286,0.010,,a1,,Table 2 footnote d (p. 1993); uncertainty a judgement (no fit made to this line)
+127I2 P(53) 32-0,a2,interval,37.530,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a4,interval,271.341,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a13,interval,609.054,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a14,interval,648.974,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a16,interval,739.285,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a18,interval,788.448,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a19,interval,879.126,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a20,interval,892.968,0.0065,,a1,,Table 3 (p. 1994)
+127I2 P(53) 32-0,a21,interval,910.110,0.0065,,a1,,Table 3 (p. 1994)
+127I2 R(56) 32-0,a2,interval,259.698,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a5,interval,311.360,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a6,interval,401.480,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a7,interval,416.998,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a8,interval,439.626,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a9,interval,455.341,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a10,interval,571.548,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a11,interval,698.045,0.0069,,a1,,"Table 4 (p. 1994); footnote c: a11/a12 4.7 MHz apart with 4 MHz modulation, 14 kHz from the authors' fit"
+127I2 R(56) 32-0,a12,interval,702.774,0.0069,,a1,,"Table 4 (p. 1994); footnote c: a11/a12 4.7 MHz apart with 4 MHz modulation, 14 kHz from the authors' fit"
+127I2 R(56) 32-0,a13,interval,726.031,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a14,interval,732.211,0.0069,,a1,,Table 4 (p. 1994)
+127I2 R(56) 32-0,a15,interval,857.960,0.0069,,a1,,Table 4 (p. 1994)
+127I2 P(83) 33-0,a3,interval,47.048,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a5,interval,281.444,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a6,interval,289.888,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a7,interval,337.046,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a8,interval,395.587,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a9,interval,411.720,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a10,interval,444.760,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a11,interval,458.760,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a12,interval,532.457,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a13,interval,571.287,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a14,interval,611.150,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a15,interval,679.287,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a16,interval,701.347,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a17,interval,726.022,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a18,interval,747.344,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a19,interval,841.936,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a20,interval,855.941,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 P(83) 33-0,a21,interval,871.705,0.0045,,a2,,"Table 5 (p. 1994), relative to a2 as printed"
+127I2 R(134) 36-0,a3,interval,269.647,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a4,interval,300.075,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a5,interval,356.780,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a6,interval,369.626,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a7,interval,391.664,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a8,interval,462.596,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a9,interval,484.314,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a12,interval,691.949,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a13,interval,732.420,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(134) 36-0,a14,interval,750.452,0.0098,,a1,,Table 6 (p. 1994)
+127I2 R(106) 34-0,a2,interval,236.870,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a3,interval,276.953,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a4,interval,293.871,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a5,interval,333.343,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a6,interval,387.631,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a7,interval,404.629,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a8,interval,451.167,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a9,interval,467.977,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a10,interval,570.790,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a11,interval,687.525,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a12,interval,698.652,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a13,interval,728.254,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a14,interval,740.179,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(106) 34-0,a15,interval,856.663,0.0071,,a1,,Table 7 (p. 1995)
+127I2 R(86) 33-0,a2,interval,248.204,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a3,interval,280.800,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a4,interval,290.505,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a5,interval,322.528,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a6,interval,395.382,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a7,interval,410.695,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a8,interval,445.755,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a9,interval,460.968,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a10,interval,571.257,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a11,interval,693.196,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a12,interval,701.367,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a13,interval,726.702,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a14,interval,735.789,0.0023,,a1,,Table 8 (p. 1995)
+127I2 R(86) 33-0,a15,interval,857.376,0.0023,,a1,,Table 8 (p. 1995)

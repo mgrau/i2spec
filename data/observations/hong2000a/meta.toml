@@ -1,0 +1,67 @@
+id = "hong2000a"
+citation = "F.-L. Hong and J. Ishikawa, \"Hyperfine structures of the R(122)35-0 and P(84)33-0 transitions of 127I2 near 532 nm\", Opt. Commun. 183, 101-108 (2000)"
+source = "https://doi.org/10.1016/s0030-4018(00)00870-1 (publisher PDF)"
+doi = "10.1016/s0030-4018(00)00870-1"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:hong2000a"
+
+transcription = """
+Tables 2 and 3 (p. 105), "Observed" column only: hyperfine intervals a2-a15 relative to a1 of 127I2
+R(122) 35-0 (Table 2) and P(84) 33-0 (Table 3), in kHz, converted to MHz exactly. Typed by script from
+the pdftotext -layout text layer and checked digit by digit against a 200 dpi rendering of p. 105. The
+"Calculated" and "Obs.-Cal." columns are not entered (as a check, Observed - Calculated reproduces the
+printed Obs.-Cal. for every row). The a1 rows (0 by definition) are not entered.
+
+Table 1 (p. 102) is not entered: its frequencies are quoted from Ye et al. 1999 (ref. [9], held as
+ye1999a / bipm2012a) and, for these two lines, the Doppler-limited atlas centres (563169.68 and 563164.72
+GHz, Gerstenkorn & Luc). Table 4 (fitted Delta eqQ, Delta C, Delta d, Delta delta; the column heading
+"R(84)33-0" is a misprint for P(84)33-0) and the derived eqQ' values of p. 108 (-547.071 MHz for P(84),
+-552.385 MHz for R(122)) are fitted constants, not entered; they are B - X differences with eqQ'' from
+Hong et al. 2001 and C'', d'', delta'' from Wallerand et al. 1999, not the BKT02 X state i2spec uses, so
+they do not fit data/hyperfine_parameters/ without conversion. Table 5 collects Delta eqQ of other
+papers and is not entered (its v' = 28 row repeats the v' = 34 row's G(v') and F(J'), a misprint).
+
+Component labels: both lines have even J'' and 15 main components, a1 lowest and a15 highest, all
+resolved (p. 104). Table order is increasing frequency, and the model's Delta F = Delta J ranking gives the
+same order (all residuals below 5 kHz). No crossovers are reported.
+
+Conditions (p. 103): the intervals are beat notes between two Nd:YAG lasers, one locked to a1 and the
+other stepped through all components; 30 cm cell, cold finger -10 C ("about 1.4 Pa"), pump 2.0 mW,
+probe 0.3 mW, 2 mm beams, 660 kHz modulation transfer, pump shifted 87 MHz by an AOM. No pressure or
+power corrections (common-mode for intervals within a line).
+
+Overlap with bipm2012a (not independent): BIPM MeP 532 nm Tables 5 (P(84) 33-0) and 6 (R(122) 35-0)
+cite this paper (ref. [12]) and reproduce all 28 intervals exactly, except R(122) 35-0 a7, which BIPM
+prints as 398.2113 MHz against 398221.3 kHz here (checked in the BIPM PDF text layer and in this paper's
+page image, where Calculated = 398221.6 kHz). The model puts a7 at 398.2206 MHz: this paper's value is
++0.7 kHz from it, BIPM's -9.3 kHz. So the BIPM Table 6 a7 value is a misprint (digit 2 -> 1), and
+bipm2012a currently holds it. A fit using both sets counts these 28 intervals twice. The BIPM a1
+intervals to R(56) a10 for these lines come from ref. [9], not from this paper.
+"""
+
+uncertainty = """
+The paper prints no per-component uncertainty. Taken from Sect. 2 (p. 105): relocking both lasers after
+the ~2 h run reproduced the starting component to about 80 Hz per laser for P(84) 33-0 and about 600 Hz
+per laser for R(122) 35-0 (three times weaker line). Interval uncertainty = sqrt(2) x per-laser value:
+0.12 kHz for P(84) 33-0, 0.85 kHz for R(122) 35-0, taken as 1 sigma, statistical/reproducibility only.
+For comparison, the beat-note standard deviations were 130 and 400 Hz, the fit standard deviations 580
+and 730 Hz, and BIPM assigns 2 kHz to every interval of both tables.
+"""
+
+notes = """
+Residuals against the current model (Predictor(), obs - model), 28 rows: R(122) 35-0 -1.4 to +2.3 kHz
+(mean +0.6, rms 1.0 kHz); P(84) 33-0 -1.7 to +4.6 kHz (mean +0.5, rms 1.7 kHz; largest a2). No row dropped.
+"""
+
+[conditions]
+method = "Doppler-free modulation transfer spectroscopy; heterodyne beat between two I2-stabilized lasers, counted at 1064 nm"
+laser = "two frequency-doubled diode-pumped monolithic Nd:YAG lasers"
+cell_length_cm = 30
+cold_finger_C = -10.0
+pressure_Pa = 1.4
+pump_mW = 2.0
+probe_mW = 0.3
+beam_diameter_mm = 2.0
+modulation = "660 kHz EOM phase modulation; pump shifted 87 MHz by AOM"
+averaging = "100 x 1 s counter gates per component"

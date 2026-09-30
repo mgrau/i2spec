@@ -963,10 +963,10 @@ V is the off-diagonal rotational (gyroscopic) operator, −(ħ²/2μR²)[J₊(L�
 | Level | eqQ | C | d | δ | Source |
 |---|---|---|---|---|---|
 | X v″=0, J″=13 | −2452.5837(16) | 3.162(8) | 1.58(5) | 3.66(3) | Yokozeki & Muenter 1980 (molecular-beam magnetic resonance) |
-| X v″=0, J dependence | −2452.556(2) − 1.64(5)×10⁻⁴ J(J+1) − 5(2)×10⁻⁹ J²(J+1)² | | | | Hong et al. 2001a |
+| X v″=0, J dependence | −2452.556(2) − 1.64(5)×10⁻⁴ J(J+1) − 5(2)×10⁻⁹ J²(J+1)² | | | | Hong et al. 2001b (JOSA B 18, 379) |
 | X values held fixed in modern fits | from formula | 3.154 | 1.524 | 3.705 | Bodermann 2002, as used by Yoshiki 2023 and Chen 2004 |
 | B v′=11 | — | C_E 28.8(1.4) | d_E −25.6(2.8) | −11.7(1.6) | Landsberg 1976, via Broyer 1978 Table VI |
-| B v′=32 | −544.049(14) − 2.110(43)×10⁻⁴ J′(J′+1) | | | | Hong et al. 2001b |
+| B v′=32 | −544.049(14) − 2.110(43)×10⁻⁴ J′(J′+1) | | | | Hong et al. 2001a (JOSA B 18, 1416) |
 | B v′=43, J′=12 | −558.669(8) | 190.13(12) | −100.2(7) | 0.2(4) | Yokozeki & Muenter 1980 (reanalysis of Hackel 1975) |
 | B P(13) 43–0 | −558.613(18) | 190.361(78) | −98.99(62) | −0.83(56) | Chen 2004 Table 1 |
 | B v′=44, J′-dependent | −559.680(10) − 2.03(7)×10⁻⁴ J′(J′+1) | 205.39(2) + 2.290(13)×10⁻³ J′(J′+1) | −108.7(2) − 1.69(15)×10⁻³ J′(J′+1) | 2.06(6) + 6.3(4)×10⁻⁴ J′(J′+1) | Yoshiki 2023 |

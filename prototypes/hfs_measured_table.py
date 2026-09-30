@@ -1,7 +1,7 @@
 """Every measured B-state hyperfine parameter we hold, by line: the input to i2spec.hfs_table.
 
 Usage:  uv run python prototypes/hfs_measured_table.py          (about 3 minutes)
-Output: data/hyperfine_parameters/b_state_lines.json
+Output: src/i2spec/data/b_state_lines.json
 
 Two kinds of source. Chen 2004 publishes fitted parameters directly (data/hyperfine_parameters/
 chen2004a). For every other precise set the parameters come from i2spec's own four-parameter fit to
@@ -64,7 +64,7 @@ def main():
                     "correction the formulae need there.",
         generated_by="prototypes/hfs_measured_table.py", x_state="held at the published formulae in every fit",
         rows=sorted(rows, key=lambda r: (r["v"], r["J"])))
-    (ROOT / "data/hyperfine_parameters/b_state_lines.json").write_text(json.dumps(out, indent=1))
+    (ROOT / "src/i2spec/data/b_state_lines.json").write_text(json.dumps(out, indent=1))
     print(f"{len(rows)} lines written")
 
 

@@ -1,20 +1,24 @@
 id = "manzoor2024a"
 citation = "S. Manzoor, M. Chiarotti, S. A. Meek, G. Santambrogio and N. Poli, \"Precision spectroscopy and frequency determination of the hyperfine components of the P(63) 4-4 transition of molecular iodine near 652 nm\", Opt. Express 32, 44683 (2024)"
-source = "arXiv:2410.03305v1 (4 Oct 2024), the preprint, not the published Opt. Express version; https://arxiv.org/abs/2410.03305"
+source = "Opt. Express 32(25), 44683-44693 (2024), published 22 Nov 2024; https://doi.org/10.1364/OE.539192 (checked against the earlier arXiv:2410.03305v1 preprint, from which the set was first typed)"
 doi = "10.1364/oe.539192"
 retrieved = "2026-09-29"
 unit = "MHz"
 catalog = "precision.yaml:manzoor2024a"
 
 transcription = """
-Table 1 (preprint p. 8), column "Absolute Frequency (This Work)" only: nine comb-measured absolute
+Table 1 (published p. 44690, PDF p. 8), column "Absolute Frequency (This Work)" only: nine comb-measured absolute
 frequencies of hyperfine components of 127I2 P(63) 4-4 (a1, a2, a3, a4, a7, a12, a13, a14, a18), in MHz.
-Read from the pdftotext -layout text layer and checked digit by digit against a 200 dpi rendering of p. 8.
+Read from the pdftotext -layout text layer and checked digit by digit against a 200 dpi rendering of p. 44690.
 Not entered: the "PGOPHER Fit" column (their model), the "Residuals" column, the "Literature values"
 column (calculated from Gerstenkorn & Luc 1985 constants + Bodermann 2002 hyperfine formulae) and Delta.
 As checks, Measured - Fit reproduces all nine printed residuals, and Literature - Fit the Delta column.
 
-Also not entered (derived, not measured): Table 2 f(C.G.) = 459 524 036.90(12) MHz, the hyperfine-free
+Differences from the arXiv v1 preprint: none. Every value and uncertainty of Tables 1 and 2, the (F', I)
+labels, the conditions (22 C, 29.5 Pa, 10/3 mW) and the fixed constants are identical in the published
+version (checked by a digit diff of the two text layers and on the rendered table).
+
+Also not entered (derived, not measured): Table 2 (p. 44691) f(C.G.) = 459 524 036.90(12) MHz, the hyperfine-free
 centre from their PGOPHER fit to these nine rows, with Delta eQq and Delta C fitted and Delta d, Delta
 delta, eQq'', C'' held at the Bodermann 2002 formula values; and the v'=4 "origin" 486 021 343.15(12) MHz.
 The C.G. restates the nine rows through their model; entering it would double count. Delta eQq =

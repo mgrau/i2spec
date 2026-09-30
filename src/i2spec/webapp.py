@@ -271,14 +271,15 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     A line weaker than ``s_min`` (cm, at 300 K) is left out unless it has been measured: every measured
     line the model has is exported, so the app can show all of them.
     """
-    from .intensity import C2, intensity_model, master_line_list, nuclear_spin_weight
+    from .intensity import C2, intensity_model, master_line_list, nuclear_spin_weight, with_dissociation_lines
     from .lookup import Catalog, Line
     from . import __version__
 
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     catalog = Catalog()
-    masters = {iso: master_line_list(intensity_model(iso), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
+    masters = {iso: with_dissociation_lines(master_line_list(intensity_model(iso), 11000.0, 20100.0,
+                                                             T_range=(200.0, 600.0), S_min=1e-27), S_min=1e-27)
                for iso in isotopologues}
     centres = {}
     for iso, master in masters.items():

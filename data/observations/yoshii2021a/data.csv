@@ -1,0 +1,22 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(36) 32-0,a1,frequency,564074632.658,0.0099,,,yoshii2021a,"Sect. 2 text and Table 1 (p. 1455); mean of 13 measurements; at 4.0 Pa and 5.2 mW pump, not extrapolated"
+127I2 P(35) 32-0,a2,interval,37.058,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a3,interval,71.373,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a4,interval,259.870,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a5,interval,317.429,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a6,interval,328.214,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a7,interval,382.155,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a8,interval,430.479,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a9,interval,456.310,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a10,interval,472.784,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a11,interval,488.287,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a12,interval,566.667,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a13,interval,608.006,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a14,interval,657.453,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a15,interval,699.551,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a16,interval,734.573,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a17,interval,762.464,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a18,interval,797.357,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a19,interval,873.872,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a20,interval,889.671,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors
+127I2 P(35) 32-0,a21,interval,912.223,0.010,,a1,yoshii2021a_csl_hfs,Table 2 (p. 1457) CSL Obs.; biased (shrunk) per the authors

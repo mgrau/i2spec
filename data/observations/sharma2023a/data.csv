@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(78) 1-11,a1,frequency,405654189,60,,,sharma2023a,Table 1 (p. 6) peak 1 from Experiment column; WS7 wavelength meter
+127I2 R(78) 1-11,a10,frequency,405654584,60,,,sharma2023a,Table 1 (p. 6) peak 4 from Experiment column; WS7 wavelength meter
+127I2 R(78) 1-11,a15,frequency,405654923,60,,,sharma2023a,Table 1 (p. 6) peak 6 from Experiment column; WS7 wavelength meter

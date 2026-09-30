@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(62) 4-5,a1,frequency,453325363.771,0.015,,,badr2006a,"Sect. V.A (p. 062509-5); ECL lock point measured with the BIPM comb; 6 MHz FM, 3f, cold point 13 C; not corrected to zero pressure or modulation; printed (1) kHz enlarged to 15 kHz by the authors"

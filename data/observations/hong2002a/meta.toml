@@ -1,0 +1,67 @@
+id = "hong2002a"
+citation = "F.-L. Hong, Y. Zhang, J. Ishikawa, A. Onae, H. Matsumoto, \"Vibration dependence of the tensor spin-spin and scalar spin-spin hyperfine interactions by precision measurement of hyperfine structures of 127I2 near 532 nm\", J. Opt. Soc. Am. B 19, 946-953 (2002)"
+source = "https://doi.org/10.1364/josab.19.000946 (publisher PDF)"
+doi = "10.1364/josab.19.000946"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:hong2002a"
+
+transcription = """
+Tables 2 and 3 (p. 949) and Table 4 (p. 950), "Observed" column only: hyperfine intervals f(a_n) - f(a1) of
+  Table 2  127I2 R(87) 33-0 (line 1097), a2-a21
+  Table 3  127I2 R(145) 37-0, a2-a21
+  Table 4  127I2 P(132) 36-0 (line 1103), a2-a15
+kHz converted to MHz exactly. Parsed by script from the pdftotext -layout text and checked digit by digit
+against 200 dpi renderings of pp. 949-950. The Calculated and Obs. - Cal. columns, weights and F', I labels
+are not entered; as a check, Observed - Calculated reproduces the printed Obs. - Cal. for every row (R(87)
+a18 differs by 0.1 kHz, rounding). All components of all three lines were measured.
+
+The intervals were measured with laser 1 on a1 of R(57) 32-0 and laser 2 stepped through the components of
+the line, bridged by the optical frequency comb generator (p. 950); the tables give them relative to a1 of
+the same line, and so are they entered. Components given weight 0 in the authors' fit are entered, with the
+reason in `note`: R(87) a4, a7, a9 (|obs-calc| > 1.5 kHz, a7 with twice the measurement uncertainty);
+R(145) a8/a9 and a11/a12 (pairwise very close), a3 and a14 (obs-calc -16.0 and -5.1 kHz, attributed to weak
+lines of other transitions). These are single measured lock points, not blends, so they are kept.
+
+Misprints: the introduction (p. 947) calls the line "R(147)37-0" twice; everywhere else, including the
+title of Table 3 and Table 1, it is R(145) 37-0. Table 6 lists "R(132)36-0 (Present paper)"; it is
+P(132) 36-0 (Table 5). Eq. (2) prints eQq'0 = -544.49(14) MHz; the source (hong2001a, Eq. 9) has
+-544.049(14). Labels: a_n ranked by frequency, a1 lowest, as in i2spec. No crossovers are measured.
+
+Not entered: Table 1 (the inter-line intervals, taken from Zhang 2001, ref. 20: see zhang2001a); Table 5
+fitted constants Delta eQq, Delta C, Delta d, Delta delta and eQq', eQq'' (X state: eQq'' from the Hong 2001
+JOSA B 18, 379 formula; C'', d'' = 1.52 kHz, delta'' = 3.70 kHz fixed to Wallerand 1999); Tables 6-7 and
+Eqs. (6)-(7), compilations and vibration fits of Delta d, Delta delta over v' = 32-43. These are B - X
+differences derived from the intervals, not B-state values.
+
+Overlap with bipm2012a (NOT independent): the BIPM 532 nm hyperfine tables of R(87) 33-0 (Table 1),
+R(145) 37-0 (Table 7) and P(132) 36-0 (Table 8) are this paper's observed values, identical to 0.1 kHz for
+53 of the 54 rows. The exception is R(145) 37-0 a5: this paper prints 376 994.5 kHz (Obs. - Cal. -1.4 kHz
+confirms it), the BIPM document prints 376.9445 MHz (checked in the BIPM PDF text, p. 11), 50 kHz lower.
+The model agrees with this paper (+6.9 kHz, against -43 kHz for the BIPM value), so the BIPM entry is a
+misprint (9 -> 4 in the fourth decimal) and bipm2012a carries it.
+"""
+
+uncertainty = """
+The paper gives no per-component uncertainty. Entered, as a judgement: 1 kHz for R(87) 33-0 and P(132) 36-0
+(fit standard deviations 680 and 790 Hz, including the model's error; statistical 10 and 50 Hz per 100 s
+point; relock repeatability 130-1000 Hz), 2 kHz for R(145) 37-0 (beat-frequency sd 1500 Hz, 15 times that
+of R(87); statistical ~150 Hz; weak lines of other transitions in the spectrum). R(87) a7, for which the
+authors state twice the measurement uncertainty, is entered at 2 kHz. The BIPM tables give 2 kHz for all
+three lines. Taken as 1 sigma.
+"""
+
+notes = """
+Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: R(87) 33-0 -1.5 to +1.2 kHz
+(rms 0.8); P(132) 36-0 -0.9 to +1.1 kHz (rms 0.6); R(145) 37-0 -7.3 to +14.9 kHz (rms 5.1; largest a2 +14.9,
+a6 +10.6, a3 -7.3, a5 and a10 +6.9), i.e. the model's hyperfine pattern at v' = 37, J' = 146 is off by more
+than the data. No row was dropped.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy, heterodyne beat of two I2-stabilized frequency-doubled Nd:YAG lasers bridged by a 2 GHz optical frequency comb generator; laser 1 on a1 of R(57) 32-0"
+laser = "diode-pumped monolithic Nd:YAG, frequency doubled"
+conditions_note = "the paper refers to hong2001a (its ref. 17) for experimental conditions: 30 cm cell, cold finger -10 C (~1.4 Pa), pump 2.0 mW, probe 0.3 mW, 660 kHz modulation"
+cold_finger_C = -10.0
+pressure_Pa = 1.4
+averaging = "100 beat measurements of 1 s gate each per component"

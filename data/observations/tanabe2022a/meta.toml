@@ -1,0 +1,80 @@
+id = "tanabe2022a"
+citation = "Y. Tanabe, Y. Sakamoto, T. Kohno, D. Akamatsu, F.-L. Hong, \"Frequency references based on molecular iodine for the study of Yb atoms using the 1S0-3P1 intercombination transition at 556 nm\", Opt. Express 30, 46487-46500 (2022)"
+source = "https://doi.org/10.1364/oe.478917 (publisher PDF, open access)"
+doi = "10.1364/oe.478917"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:tanabe2022a"
+
+transcription = """
+Table 2 (p. 46493): absolute frequencies of the a1 component of 127I2 R(53) 24-1, P(49) 24-1 and
+R(95) 25-1, kHz, 7 kHz each. Table 3 (p. 46494): hyperfine splittings f(a_n) - f(a1), n = 2-21, of the
+same three lines, kHz, from the "Obs." columns. Parsed by script from the pdftotext -layout text,
+converted kHz -> MHz exactly, and checked digit by digit against 200 dpi renderings of pp. 46493-46494.
+As a check, Obs. - Cal. reproduces the printed "Obs. - Cal." column to within 0.1 kHz rounding for
+all 63 cells, and the splittings increase monotonically from a2 to a21 in every line. 63 rows: 3
+frequencies, 60 splittings.
+
+Not entered: the "Cal." columns of Table 3 (four-term fit), the "Frequency interval" column of
+Table 2 (differences from the 174Yb 1S0-3P1 frequency, which is itself quoted from McFerran / Salter
+et al.), and the Table 4 hyperfine constants (Delta eQq, Delta C, Delta d, Delta delta for the three
+lines, SD 1.5-1.8 kHz; the other rows of Table 4 are literature values). The P(49) 24-1 a1 value of
+Table 2 (539 385 032 239 kHz) is the rounded mean of the eight Fig. 5 measurements
+(539 385 032 239.1 kHz, SD 1.4 kHz); R(53) and R(95) a1 are single 600 s averages.
+
+Conditions: all values are as measured at cold finger -0.2 C (4.0 Pa), pump 2.0 mW, probe 0.3 mW
+(Sect. 2.2, 2.4: "directly measured under the experimental conditions described in Section 2.2").
+They are NOT extrapolated to zero pressure or power. The paper's shift coefficients, measured on
+P(49) 24-1 a1 (Table 1, Fig. 6): pressure -1.8 kHz/Pa, pump power -2.6 kHz/mW, demodulation phase
+-0.15 kHz/deg, servo offset -19.7 kHz/mV. Linear extrapolation to zero pressure and power would move
+a1 by about +7 and +5 kHz; no correction is applied here.
+
+Components: all three lines have odd J'' and 21 main components, labelled a1-a21 from low to high
+frequency (Fig. 3), the rank convention used here. All 21 are resolved. A weak b1 feature of
+R(158) 25-0 between a18 and a19 of P(49) 24-1 is noted in the text; it has no frequency and is not
+entered. No crossovers are reported.
+
+Overlap with hauden2024a (P(49) 24-1, all 21 components, zero pressure and asymmetry corrected):
+hauden2024a - tanabe2022a, with tanabe components formed as f(a1) + splitting, in kHz,
+a1..a21 = -3.0, -0.5, -24.3, -4.2, -18.2, -1.6, -4.2, +0.4, -6.2, -3.6, -10.0, -1.1, -5.2, -20.0,
+-3.3, -6.0, -5.8, -8.5, -2.1, -21.3, -22.0; mean -8.1 kHz, range -24.3 to +0.4 kHz. This reproduces
+Hauden's quoted mean of -8 kHz and range of -24 to +1 kHz (their "Delta f with [17]" column).
+The a1 values agree to 3 kHz. tanabe2022a is at 4.0 Pa and 2 mW while hauden2024a is corrected to
+zero pressure; by Tanabe's own coefficients the tanabe values sit about 12 kHz below zero pressure and
+power, so correcting them would widen the mean difference to about -20 kHz rather than remove it. The component-by-component scatter (up to 24 kHz)
+is well beyond the ~2 kHz splitting precision claimed here and the 5-6 kHz of hauden2024a; the
+largest differences (a3, a5, a14, a20, a21) show no simple pattern. Both are independent
+measurements (different groups, cells and combs). No BIPM value exists for these lines.
+"""
+
+uncertainty = """
+Absolute a1 frequencies: 7 kHz, the paper's total standard uncertainty (Table 1: alignment 3.7,
+cell impurity 5, comb reference 1.5, statistics 1.4 kHz, plus phase, offset, power, pressure
+terms), taken as 1 sigma. The budget was evaluated on P(49) 24-1 a1 and applied to all three lines.
+Splittings: 2 kHz, a judgement. The paper gives no per-splitting uncertainty; it states (Sect. 2.5)
+that the splittings are limited by the repeatability of the stabilized laser (1.4 kHz SD, Sect. 2.4),
+and the four-term fits have SD 1.5, 1.8 and 1.5 kHz. The same 2 kHz is used for kobayashi2016a (same
+group and method). The three absolutes share one group; the splittings carry no group.
+"""
+
+notes = """
+Residuals against the default Predictor (2026-09-29). a1 absolutes: R(53) 24-1 -0.443 MHz,
+P(49) 24-1 -0.672 MHz (hauden2024a a1: -0.675 MHz), R(95) 25-1 -1.303 MHz, line-centre offsets of the
+size seen for other v'' = 1 lines. Splittings: all 60 between -1 and +94 kHz, means +55, +48, +46 kHz
+(rms 60, 52, 52 kHz) for R(53), P(49), R(95). The pattern is the same in all three lines (a3, a7, a11,
+a14 about +70-95 kHz; a4, a8, a15 about 0-25 kHz), and matches hauden2024a's P(49) pattern, so it is
+the model's hyperfine prediction for v' = 24-25, v'' = 1 (its a1 sits ~50 kHz too high relative to
+the rest), not a transcription error.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy (350 kHz EOM on the pump, 80 MHz AOM), comb referenced (OFS-based Er comb on an I2-stabilized Nd:YAG; GPS-based comb as a check)"
+laser = "frequency-doubled 1112 nm ECDL with SOA and PPLN waveguide"
+cell_length_cm = 45
+cold_finger_C = -0.2
+pressure_Pa = 4.0
+pump_mW = 2.0
+probe_mW = 0.3
+extrapolated_to_zero_pressure = false
+pressure_shift_kHz_per_Pa = -1.8
+power_shift_kHz_per_mW = -2.6

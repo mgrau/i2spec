@@ -1,0 +1,46 @@
+id = "arie1994a"
+citation = "A. Arie and R. L. Byer, \"The hyperfine structure of the 127I2 P(119)35-0 transition\", Opt. Commun. 111, 253-258 (1994); erratum Opt. Commun. 127, 382 (1996)"
+source = "https://doi.org/10.1016/0030-4018(94)90461-8 (publisher PDF, scanned with an OCR text layer; the 1996 erratum was not available)"
+doi = "10.1016/0030-4018(94)90461-8"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:arie1994a"
+partial = "The erratum (Opt. Commun. 127, 382, 1996) was not seen; it may correct numbers entered here."
+
+transcription = """
+Table 1 (p. 256), "Measured" column: hyperfine intervals a2-a21 of 127I2 P(119) 35-0 relative to a1, in MHz
+(4 decimals, as printed). Read from the text layer and checked digit by digit against a 300 dpi rendering of
+p. 256; for every row Calculated - Measured reproduces the printed Calc. - Meas. column, except a16, where the
+Calculated value is misprinted 772.2013 (it must be 771.2013 to give +0.0015); the Measured 771.1998 is
+consistent with bipm2012a (771.197) and the model, so only the unentered Calculated column is affected.
+The Calculated column, F - J', I, the fitted constants (Delta eQq = 1903.9004(7) MHz, Delta C =
+114.958(47) kHz, Delta a = -9.92(4.53) kHz, Delta d = -58.86(2.7) kHz, X state held at Yokozeki & Muenter
+v''=0, J''=13) and the empirical formulas and constants of Table 2 (compiled from other papers) are not
+entered.
+
+Labels a1-a21 are ranks by frequency, 21 components for odd J'', as in i2spec. No crossovers are reported.
+
+Overlap. bipm2012a Table 11 (P(119) 35-0; the catalog names this paper as its source) holds a2-a6, a9-a11,
+a13-a21 at 2-4 kHz. arie1994a - bipm2012a: -4.2 (a3) to +2.8 kHz, mean +0.7, rms 1.7 kHz (17 rows). The
+BIPM values are not these rounded (a3 148.6968 vs 148.701), so the BIPM table is probably a mean including
+this paper: **not independent of bipm2012a**. a7, a8 and a12 are in no other set. arie1993a footnote d gives
+the earlier a21-a1 = 949.286 MHz (-2.6 kHz from this).
+"""
+
+uncertainty = """
+No per-component uncertainty is printed. Each interval is the average of 30 4-s beat measurements with a
+typical standard deviation of 800 Hz (p. 255); the standard deviation of the four-constant fit is 3.65 kHz.
+Entered: 3.7 kHz for every row, the fit standard deviation, taken as 1 sigma (a judgement; it is consistent
+with the 1.7 kHz rms difference from bipm2012a). No pressure or power correction is given or applied.
+"""
+
+notes = """
+Residuals against the default Predictor (2026-09-29), obs - model: -4.3 (a3) to +4.0 kHz (a17), rms 2.0 kHz.
+"""
+
+[conditions]
+method = "FM saturation spectroscopy (EOM 3 and 3.5 MHz), heterodyne between two frequency-doubled Nd:YAG lasers each locked to its own cell"
+laser = "two diode-pumped monolithic Nd:YAG (1064 nm), doubled in MgO:LiNbO3 ring resonators"
+cold_finger_C = 0.0
+pressure = "~30 mTorr (4 Pa)"
+extrapolated_to_zero_pressure = false

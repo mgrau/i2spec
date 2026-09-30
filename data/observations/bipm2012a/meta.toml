@@ -31,6 +31,12 @@ that a table does not list is absent from the source (for example, Table 2 has n
 Corrections and relabelling:
 - Table 10 (P(54) 32-0) prints a8 twice and no a7. The first a8 (417.668 MHz) lies between a6 and a8, so it
   is entered as a7. The model puts a7 at 417.684 MHz.
+- Table 6 (R(122) 35-0): a7 is printed 398.2113 MHz; its source, Hong & Ishikawa, Opt. Commun. 183, 101 (2000)
+  (hong2000a), prints 398 221.3 kHz (calculated 398 221.6), and the model is +0.7 kHz from 398.2213 against
+  -9.3 kHz from the printed value. Entered as 398.2213.
+- Table 7 (R(145) 37-0): a5 is printed 376.9445 MHz; its source, Hong et al., JOSA B 19, 946 (2002)
+  (hong2002a), prints 376 994.5 kHz with obs - calc -1.4 kHz, and the model is +6.9 kHz from 376.9945 against
+  -43 kHz from the printed value. Entered as 376.9945 (a transposed digit in the MEP).
 - Table 19 (R(121) 35-0): a13 is left out. It is printed as 594 812.8 kHz, the same value as a12. The model
   puts a13 at 648.49 MHz, 53.7 MHz away, while a12 agrees to 0.04 MHz. The a13 entry repeats a12.
 - Table 19 is titled P(121) 35-0, but the list on p. 3 says R(121) 35-0, as does the title of Hong et al.

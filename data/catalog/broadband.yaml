@@ -3139,7 +3139,7 @@
   likely_in_knockel2004: unknown
   priority: medium
   verified: true
-  notes: "Stated: wavelength dependence of hyperfine linewidth mapped; narrowest ~4 kHz near 508 nm. Observable is linewidth (natural + transit + pressure). Errata DOI 10.1364/OL.27.001076. Line positions/hfs are in the sub-Doppler agent's scope."
+  notes: "Stated: wavelength dependence of hyperfine linewidth mapped; narrowest ~4 kHz near 508 nm. Observable is linewidth (natural + transit + pressure). Errata DOI 10.1364/OL.27.001076. Line positions/hfs are in the sub-Doppler agent's scope. Same paper as precision.yaml cheng2002a; linewidths only."
 - id: baxter1907
   citation: "G. P. Baxter, C. H. Hickey, W. C. Holmes, The vapor pressure of iodine, J. Am. Chem. Soc. 29, 127-136 (1907)"
   doi: "10.1021/ja01956a004"

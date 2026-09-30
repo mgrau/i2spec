@@ -1,0 +1,49 @@
+# The test suite on every push and pull request. Line lists are cached as in pages.yml, keyed on the
+# model code and parameter files, so only a model change pays for rebuilding them.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Restore line lists
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/i2spec
+          key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
+          restore-keys: i2spec-
+      - run: uv sync --locked
+      - run: uv run python -m pytest -q
+
+  wheel:
+    # the installed package, away from the checkout: it must carry everything it needs
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv build
+      - name: Install the wheel into a clean environment and use it
+        run: |
+          uv venv /tmp/clean
+          VIRTUAL_ENV=/tmp/clean uv pip install dist/*.whl
+          cd /tmp
+          /tmp/clean/bin/python -c "from i2spec.model import RovibronicModel; m = RovibronicModel(); print(m.transition(32, 0, 56, 'R')); print(len(m.hyperfine_components(32, 0, 56, 'R')[1]))"

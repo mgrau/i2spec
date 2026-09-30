@@ -1,0 +1,99 @@
+id = "sakagami2020a"
+citation = "H. Sakagami, K. Yoshii, T. Kobayashi and F.-L. Hong, \"Absolute frequency and hyperfine structure of 127I2 transitions at 531.5 nm by precision spectroscopy using a narrow-linewidth diode laser\", J. Opt. Soc. Am. B 37, 1027-1034 (2020)"
+source = "https://doi.org/10.1364/josab.385779 (publisher PDF)"
+doi = "10.1364/josab.385779"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:sakagami2020a"
+
+transcription = """
+Sources, all "Obs." (measured) values; kHz converted to MHz exactly:
+  Table 1 (p. 1029)  absolute frequencies of a1 (b1 for R(37) 32-0) of the seven lines, 5.7 kHz each
+  Table 2 (p. 1030)  even J'': a2-a15 relative to a1 of R(98) 34-0, R(38) 32-0, P(112) 35-0, P(34) 32-0
+  Table 3 (p. 1030)  odd J'':  a2-a21 relative to a1 of P(35) 32-0 and R(75) 33-0, b3-b21 relative to b1
+                     of R(37) 32-0
+Typed from the pdftotext -layout text layer, checked by script that every typed string occurs in the text
+layer, and checked digit by digit against 200 dpi renderings of pp. 1029-1030. The "Cal." columns (the
+authors' four-term fit), the Table 4 fitted constants (Delta eqQ, Delta C, Delta d, Delta delta per line)
+and the Table 5 v' = 32 rotation-dependence coefficients are derived and not entered.
+
+Line names. The abstract and Sect. 2 print the lines as "P(98)34-0 ... P(112)35-0", while Tables 1 and 2
+say R(98)34-0 and P(112)35-0, and one sentence of Sect. 2 says "R(98)34-0, P(35)32-0, and R(112)35-0".
+The tables are right: the model puts R(98) 34-0 a1 4.5 kHz from the measured value (P(98) 34-0 is
+252 GHz away) and P(112) 35-0 a1 -1.16 MHz from it (R(112) 35-0 is 282 GHz away). The catalog's
+"P(98)34-0" follows the abstract and should read R(98)34-0. The paper says the Gerstenkorn-Luc atlas
+assignments are wrong for its lines 1205 and 1206 (text, p. 1029) or 1206 and 1207 (Table 1 footnote a,
+which marks those two rows; the two statements disagree); the R(75) 33-0 and R(37)
+32-0 assignments used here fit the model at +0.72 and +1.14 MHz, like their neighbours, so they stand.
+
+Component labels are the paper's: a = the line, except in the overlapping R(75) 33-0 (a) / R(37) 32-0 (b)
+pair, where b names R(37) 32-0. The number is the rank by frequency within the line, 1 lowest, 15
+components for even J'' and 21 for odd J''; all tables are in increasing order and match the model's
+Delta F = Delta J ranking (every residual below is < 62 kHz on splittings up to 919 MHz, so no two
+components are swapped). R(37) b1 lies between R(75) a16 and a17. No crossovers are reported.
+
+Left out: R(75) 33-0 a18 and R(37) 32-0 b2 (Table 3 footnote b: "not measured because of spectral
+overlapping"; printed "-"). Kept but flagged: a11-a14 of R(38) 32-0 and P(34) 32-0 (Table 2 footnote b,
+"excluded from the fit" because a11/a12 and a13/a14 are close together, 2-5 MHz apart with a 1.7 MHz
+linewidth); the authors' own Obs - Cal for these is up to 9 kHz (P(34) a12), against <= 3 kHz for
+resolved components, so they carry 10 kHz here (see uncertainty). 121 rows: 7 frequencies and 114
+intervals.
+
+Conditions (not corrected here). The values are the lock points at cold finger -5 C (about 2.4 Pa),
+pump 1.8 mW, probe 0.5 mW, beam diameter about 0.8 mm; they are NOT extrapolated to zero pressure or
+power. The companion paper (yoshii2019a, ref. [27]) measured on R(38) 32-0 a10 a pressure shift of
+-1.5 kHz/Pa and a pump power shift of -0.63 kHz/mW, so the unperturbed frequencies would be some
+3.6 + 1.1 ~ 5 kHz higher (if those coefficients hold for all components); no correction is applied.
+The 30 cm cell length is from ref. [27] ("other experimental conditions can be found in [27]").
+Splittings are taken at identical conditions and the authors state they are not affected by these
+shifts.
+
+Overlap. No other data set holds any of these seven lines. yoshii2019a holds R(38) 32-0 a10 from the same
+laser, cell, comb and uncertainty budget: f(a1) from Table 1 plus f(a10) - f(a1) from Table 2 gives
+564 010 092 162.0 kHz, against yoshii2019a's 564 010 092 161(6) kHz (+1.0 kHz; 3.0 vs 1.8 mW pump would predict -0.8 kHz for
+yoshii2019a); the two are not independent (shared cell impurity 5 kHz and comb reference 1.5 kHz, the
+dominant systematics). kobayashi2015a has the neighbouring R(36) 32-0 a1 (same group, other laser and
+cell, 41 Pa). bipm2012a has no line in common; its closest are the J'' = 53-58 lines of 32-0.
+"""
+
+uncertainty = """
+Absolute frequencies: 5.7 kHz, the paper's total standard uncertainty (Sect. 2, from the ref. [27]
+budget): statistics 0.3 kHz (repeatability), power 0.063, pressure 0.29, servo offset 1.2, EOM phase
+1.8, beam alignment 0.5, cell impurity 5, comb reference 1.5 kHz. Taken as 1 sigma for the stated
+operating point; it does not cover the offset from zero pressure/power. Cell impurity and comb
+reference are common to all seven rows (one group).
+Splittings: the paper says "< 1 kHz", limited by the ~300 Hz repeatability; the four-term fits have
+SD 0.7-1.4 kHz. Entered at 1 kHz (judgement). The eight footnote-b components of R(38) 32-0 and P(34)
+32-0 (a11-a14) are entered at 10 kHz (judgement): their mutual line pulling is not in the budget, and
+the authors' Obs - Cal reaches 9 kHz.
+"""
+
+notes = """
+Residuals against the default Predictor (i2spec2026k), obs - model, 2026-09-29.
+Absolute a1/b1: R(38) 32-0 +1.12 MHz, P(35) 32-0 +1.31, R(37) 32-0 +1.14, P(34) 32-0 +1.37 MHz (v' = 32,
+J'' = 34-38); R(75) 33-0 +0.72 MHz; R(98) 34-0 +0.004 MHz; P(112) 35-0 -1.16 MHz. So in bands 33-0 to
+35-0 the model is off by at most 1.2 MHz here, not the ~5 MHz reported for the Knoeckel 2004 fit. The
+low-J v' = 32 lines sit consistently +1.1 to +1.4 MHz high, with kobayashi2015a R(36) 32-0 (+0.99 MHz)
+on the same trend, while the model fits the bipm2012a J'' = 53-58 32-0 lines to -0.17..+0.36 MHz: a
+J-dependent line-centre error at low J in v' = 32 that these rows will constrain.
+Intervals: even J'' lines rms 8.8 (R(98) 34-0), 6.3 (P(112) 35-0), 12.9 (R(38) 32-0), 15.0 kHz (P(34)
+32-0), means ~0, largest -21/+30 kHz at a2 and a5 of P(34). Odd J'' lines P(35) 32-0, R(75) 33-0,
+R(37) 32-0: all positive, +0.3 to +61 kHz, mean +22 to +27 kHz, the same pattern in all three (largest
+at a3, a7, a11, a14). The authors' own four-term fits reproduce the same numbers to 0.7-1.4 kHz, so
+this is the model's B-state hyperfine at low J (J' = 33-39, far from the J ~ 55 lines it fits to
+1-2 kHz), not a transcription error; the paper itself finds the Bodermann 2002 eqQ' formula ~20 kHz off.
+No row was dropped for its residual.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy, frequency-comb referenced (Er fiber comb locked to an I2-stabilized Nd:YAG, R(56) 32-0 a10)"
+laser = "frequency-doubled 1063 nm planar-waveguide external cavity diode laser (PPLN waveguide)"
+cell_length_cm = 30
+cold_finger_C = -5.0
+pressure_Pa = 2.4
+pump_mW = 1.8
+probe_mW = 0.5
+beam_diameter_mm = 0.8
+pressure_shift_kHz_per_Pa = -1.5
+power_shift_kHz_per_mW = -0.63
+extrapolated_to_zero = false

@@ -1,0 +1,22 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(12) 26-0,a9,interval,-679.4196,0.0007,127I2 R(106) 28-0,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(12) 26-0,a10,interval,-596.1073,0.0009,127I2 R(106) 28-0,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(12) 26-0,a11,interval,-485.6164,0.0008,127I2 R(106) 28-0,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(12) 26-0,a12,interval,-476.3475,0.0006,127I2 R(106) 28-0,b10,cheng2001a,"Table 1 (p. 366) This Work; printed -746.3475, digits transposed, corrected (see meta.toml)"
+127I2 R(12) 26-0,a13,interval,-423.2218,0.0009,127I2 R(106) 28-0,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(12) 26-0,a14,interval,-410.0169,0.0006,127I2 R(106) 28-0,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(12) 26-0,a15,interval,-305.9037,0.0007,127I2 R(106) 28-0,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b1,interval,-573.7889,0.0018,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b2,interval,-320.4573,0.0006,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b3,interval,-291.5928,0.0006,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b4,interval,-282.1346,0.0006,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b5,interval,-253.6716,0.0009,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b6,interval,-172.6892,0.0007,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b7,interval,-159.4284,0.0005,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b8,interval,-127.7527,0.0007,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b9,interval,-114.5769,0.0008,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b11,interval,124.8274,0.0009,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b12,interval,132.3159,0.0012,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b13,interval,154.5148,0.0011,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b14,interval,162.6568,0.0010,,b10,cheng2001a,Table 1 (p. 366) This Work
+127I2 R(106) 28-0,b15,interval,287.2406,0.0012,,b10,cheng2001a,Table 1 (p. 366) This Work

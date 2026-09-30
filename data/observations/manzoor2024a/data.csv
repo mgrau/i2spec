@@ -1,10 +1,10 @@
 line,component,kind,value,uncertainty,ref_line,ref_component,group,note
-127I2 P(63) 4-4,a1,frequency,459523528.17,0.51,,,manzoor2024a,Table 1 (p. 8); F'=57 I=5
-127I2 P(63) 4-4,a2,frequency,459523547.48,0.35,,,manzoor2024a,Table 1 (p. 8); F'=62 I=1
-127I2 P(63) 4-4,a3,frequency,459523566.3,1.3,,,manzoor2024a,Table 1 (p. 8); F'=67 I=5
-127I2 P(63) 4-4,a4,frequency,459523807.23,0.22,,,manzoor2024a,Table 1 (p. 8); F'=58 I=5
-127I2 P(63) 4-4,a7,frequency,459523874.78,0.95,,,manzoor2024a,Table 1 (p. 8); F'=66 I=5
-127I2 P(63) 4-4,a12,frequency,459524110.43,0.19,,,manzoor2024a,Table 1 (p. 8); F'=59 I=3
-127I2 P(63) 4-4,a13,frequency,459524133.95,0.80,,,manzoor2024a,Table 1 (p. 8); F'=62 I=3
-127I2 P(63) 4-4,a14,frequency,459524160.77,0.97,,,manzoor2024a,Table 1 (p. 8); F'=65 I=5
-127I2 P(63) 4-4,a18,frequency,459524307.77,0.34,,,manzoor2024a,Table 1 (p. 8); F'=64 I=5
+127I2 P(63) 4-4,a1,frequency,459523528.17,0.51,,,manzoor2024a,Table 1 (p. 44690); F'=57 I=5
+127I2 P(63) 4-4,a2,frequency,459523547.48,0.35,,,manzoor2024a,Table 1 (p. 44690); F'=62 I=1
+127I2 P(63) 4-4,a3,frequency,459523566.3,1.3,,,manzoor2024a,Table 1 (p. 44690); F'=67 I=5
+127I2 P(63) 4-4,a4,frequency,459523807.23,0.22,,,manzoor2024a,Table 1 (p. 44690); F'=58 I=5
+127I2 P(63) 4-4,a7,frequency,459523874.78,0.95,,,manzoor2024a,Table 1 (p. 44690); F'=66 I=5
+127I2 P(63) 4-4,a12,frequency,459524110.43,0.19,,,manzoor2024a,Table 1 (p. 44690); F'=59 I=3
+127I2 P(63) 4-4,a13,frequency,459524133.95,0.80,,,manzoor2024a,Table 1 (p. 44690); F'=62 I=3
+127I2 P(63) 4-4,a14,frequency,459524160.77,0.97,,,manzoor2024a,Table 1 (p. 44690); F'=65 I=5
+127I2 P(63) 4-4,a18,frequency,459524307.77,0.34,,,manzoor2024a,Table 1 (p. 44690); F'=64 I=5

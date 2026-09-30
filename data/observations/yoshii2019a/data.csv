@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(38) 32-0,a10,frequency,564010092.161,0.006,,,yoshii2019a,"abstract, p. 130 and p. 132; mean of 8 runs (Fig. 5) at 2.5 Pa, 3.0 mW pump; not extrapolated to zero pressure or power"

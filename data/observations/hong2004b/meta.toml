@@ -1,0 +1,59 @@
+id = "hong2004b"
+citation = "F.-L. Hong, J. Ishikawa, Y. Zhang, R. Guo, A. Onae and H. Matsumoto, \"Frequency reproducibility of an iodine-stabilized Nd:YAG laser at 532 nm\", Opt. Commun. 235, 377-385 (2004)"
+source = "https://doi.org/10.1016/j.optcom.2004.02.044 (publisher PDF)"
+doi = "10.1016/j.optcom.2004.02.044"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:hong2004b"
+
+transcription = """
+The paper reports one absolute frequency: f(a10, R(56) 32-0) = 563 260 223 507 897 (58) Hz for laser Y3
+at a cold-finger temperature of -10 C, converted to MHz exactly. Printed identically in the abstract
+(p. 377), Sect. 3.4 (p. 383, without uncertainty) and the Fig. 6 legend; read from the text layer and
+checked against 200 dpi renderings of pp. 377 and 383.
+
+Not entered: the laser-to-laser offsets (Y3 - Y2 = 169(59) Hz, Y4 - Y2 = 658(51) Hz, Y1 - Y2 = 1011(87)
+Hz, Fig. 3) are differences between realisations of the same component, not spectroscopic quantities;
+the pressure-shift (-2.98 kHz/Pa, Fig. 5a, Y1, "basically the same for all four lasers"), power-shift
+(-149 Hz/mW for Y3, -476 Hz/mW for Y2) and modulation-phase (-35 Hz/degree) slopes are systematics and
+are recorded in [conditions] only.
+
+Conditions and corrections: Y3 has a 45 cm cell (NRLM6), 350 kHz modulation transfer, pump 2.0 mW,
+probe 0.3 mW, 3.8 mm beams (Table 1). The pressure at -10 C is not stated in this paper (Hong & Ishikawa
+2000, same group, give "about 1.4 Pa"). The value is NOT extrapolated to zero pressure or power and no
+correction is applied here. With the paper's slopes and 1.4 Pa, zero pressure and power would be about
++4.2 + 0.3 = +4.5 kHz higher (563 260 223.5124 MHz); this is indicative only.
+
+Overlap with bipm2012a: not a source of it (the CIPM 2001 value 563 260 223 513 kHz predates this paper,
+and the 2007/2012 BIPM file does not cite it). This value minus the CIPM value: -5.1 kHz, at -10 C
+against the CIPM -15 C (0.83 Pa); correcting only for the pressure difference (about 0.6 Pa at -2.98
+kHz/Pa, +1.7 kHz) leaves -3.4 kHz, within the CIPM 5 kHz uncertainty. The BIPM file notes that the global
+mean moved to ...511.5 kHz after 2001. hong2004a's laser (presumably Y4) gives an implied 563 260 223 505.8 kHz.
+Other R(56) a10 absolutes held: holzwarth2001a (-5 C, uncorrected) and jones2002a.
+"""
+
+uncertainty = """
+The printed (58) Hz is the standard deviation of nine runs (repeatability). Table 2 gives a technical
+budget of <520 Hz (pressure 240, power 60, EOM phase 350, beam alignment 300 Hz); the entered
+uncertainty is sqrt(0.058^2 + 0.52^2) = 0.52 kHz, 1 sigma. It excludes cell impurity (the paper argues
+it is not dominant for its ensemble, dispersion 0.5 kHz; the CCL assigns 5 kHz).
+"""
+
+notes = """
+Residual against the current model (Predictor(), obs - model): -57.5 kHz, the model's absolute offset at
+R(56) 32-0 a10 (bipm2012a's CIPM value gives -52.4 kHz on the same line).
+"""
+
+[conditions]
+method = "Doppler-free modulation transfer spectroscopy; Ti:sapphire comb phase locked to an H maser"
+laser = "Y3: InnoLight Mephisto 1000 Nd:YAG doubled in single-pass PPKTP"
+cell = "NRLM6"
+cell_length_cm = 45
+cold_finger_C = -10.0
+pump_mW = 2.0
+probe_mW = 0.3
+beam_diameter_mm = 3.8
+modulation = "350 kHz"
+pressure_shift_kHz_per_Pa = -2.98
+power_shift_Hz_per_mW = -149
+averaging = "nine runs of >10 x 100 s counter gates"

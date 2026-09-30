@@ -17,7 +17,7 @@ from functools import lru_cache
 import numpy as np
 
 from .constants import ATOMIC_MASS, ISOTOPOLOGUES, MHZ_PER_CM
-from .intensity import C2, intensity_model, master_line_list
+from .intensity import C2, NEAR_FROM, intensity_model, master_line_list, with_dissociation_lines
 from .model import RovibronicModel
 from .spectrum import air_to_vacuum, doppler_fwhm, vacuum_to_air
 
@@ -334,12 +334,19 @@ class Catalog:
         self.temperature = float(temperature)
         self._masters = dict(masters or {})
         self._models = dict(models or {})
+        #: isotopologues whose list reaches the B limit; an injected list counts as complete
+        self._extended = set(self._masters)
 
-    def master(self, isotopologue="127I2"):
+    def master(self, isotopologue="127I2", near_dissociation=False):
+        """The master line list; with ``near_dissociation``, extended to the B limit (a further build, once)."""
         if isotopologue not in self._masters:
             model = intensity_model(isotopologue)
             self._masters[isotopologue] = master_line_list(model, *self.nu_range, T_range=(200.0, 600.0),
                                                            S_min=self.s_min)
+        if near_dissociation and self.nu_range[1] > NEAR_FROM and isotopologue not in self._extended:
+            self._masters[isotopologue] = with_dissociation_lines(self._masters[isotopologue], S_min=self.s_min,
+                                                                  nu_max=self.nu_range[1])
+            self._extended.add(isotopologue)
         return self._masters[isotopologue]
 
     def model(self, isotopologue="127I2"):
@@ -355,7 +362,7 @@ class Catalog:
             raise ValueError(f"unknown isotopologue {isotopologue!r}; choose from {sorted(ISOTOPOLOGUES)}")
         T = float(temperature if temperature is not None else self.temperature)
         nu_lo, nu_hi = sorted(to_wavenumber(v, unit) for v in (low, high))
-        lines = self.master(isotopologue).at(T, nu_lo, nu_hi, S_min=min_strength)
+        lines = self.master(isotopologue, near_dissociation=nu_hi > NEAR_FROM).at(T, nu_lo, nu_hi, S_min=min_strength)
         order = np.argsort(lines.nu if sort == "nu" else -lines.S)
         keep = order[:limit] if limit else order
         found = [Line(isotopologue, "R" if lines.branch[k] > 0 else "P", int(lines.J_lower[k]), int(lines.v_upper[k]),
@@ -369,7 +376,7 @@ class Catalog:
         T = float(temperature if temperature is not None else self.temperature)
         model = self.model(isotopologue)
         nu = model.transition(v_upper, v_lower, J, branch)
-        master = self.master(isotopologue)
+        master = self.master(isotopologue, near_dissociation=v_upper > 60)
         sel = ((master.v_upper == v_upper) & (master.v_lower == v_lower) & (master.J_lower == J)
                & (master.branch == (1 if branch == "R" else -1)))
         if not sel.any():

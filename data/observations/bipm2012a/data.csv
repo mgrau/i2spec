@@ -114,7 +114,7 @@ line,component,kind,value,uncertainty,ref_line,ref_component,group,note
 127I2 R(122) 35-0,a4,interval,297.0396,0.002,,a1,,
 127I2 R(122) 35-0,a5,interval,344.9343,0.002,,a1,,
 127I2 R(122) 35-0,a6,interval,378.8637,0.002,,a1,,
-127I2 R(122) 35-0,a7,interval,398.2113,0.002,,a1,,
+127I2 R(122) 35-0,a7,interval,398.2213,0.002,,a1,,printed 398.2113 in the MEP (Table 6); corrected from its source Hong & Ishikawa 2000 (hong2000a)
 127I2 R(122) 35-0,a8,interval,456.8479,0.002,,a1,,
 127I2 R(122) 35-0,a9,interval,475.9553,0.002,,a1,,
 127I2 R(122) 35-0,a10,interval,570.3004,0.002,,a1,,
@@ -126,7 +126,7 @@ line,component,kind,value,uncertainty,ref_line,ref_component,group,note
 127I2 R(145) 37-0,a2,interval,111.3681,0.002,,a1,,
 127I2 R(145) 37-0,a3,interval,220.5695,0.002,,a1,,
 127I2 R(145) 37-0,a4,interval,298.7582,0.002,,a1,,
-127I2 R(145) 37-0,a5,interval,376.9445,0.002,,a1,,
+127I2 R(145) 37-0,a5,interval,376.9945,0.002,,a1,,printed 376.9445 in the MEP (Table 7); corrected from its source Hong 2002a (hong2002a)
 127I2 R(145) 37-0,a6,interval,414.9517,0.002,,a1,,
 127I2 R(145) 37-0,a7,interval,469.8127,0.002,,a1,,
 127I2 R(145) 37-0,a8,interval,491.2288,0.002,,a1,,

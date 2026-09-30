@@ -1,6 +1,6 @@
 id = "kobayashi2015a"
-citation = "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, \"Compact iodine-stabilized laser operating at 531 nm with stability at the 10^-12 level and using a coin-sized laser module\", Opt. Express 23, 20749-20756 (2015)"
-source = "https://arxiv.org/abs/1506.06323 (arXiv preprint, not the published Optics Express version; the published numbers could differ)"
+citation = "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, \"Compact iodine-stabilized laser operating at 531 nm with stability at the 10^-12 level and using a coin-sized laser module\", Opt. Express 23, 20749-20759 (2015)"
+source = "Opt. Express 23(16), 20749-20759 (2015), published 30 Jul 2015; https://doi.org/10.1364/OE.23.020749 (checked against the earlier arXiv:1506.06323 preprint, from which the set was first typed)"
 doi = "10.1364/oe.23.020749"
 retrieved = "2026-09-29"
 unit = "MHz"
@@ -8,10 +8,19 @@ catalog = "precision.yaml:kobayashi2015a"
 
 transcription = """
 One value: the absolute frequency of the a1 component of 127I2 R(36) 32-0, 564 074 632 419(8) kHz,
-printed in the abstract (p. 1) and at the end of Sect. 3 (p. 9) of the arXiv version. It is the
-weighted mean of the nine comb measurements plotted in Fig. 6 (the individual runs are only plotted,
-not tabulated, and are not entered). Read from the PDF text layer and checked against a 200 dpi
-rendering of p. 9; converted kHz -> MHz exactly.
+printed in the abstract (p. 20749), in Sect. 3 (p. 20756, "The weighted mean of the nine measured
+frequencies in Fig. 6 was 564 074 632 419 kHz") and at the end of Sect. 3 (p. 20757) of the published
+Optics Express version. It is the weighted mean of the nine comb measurements plotted in Fig. 6 (the
+individual runs are only plotted, not tabulated, and are not entered). Read from the PDF text layer and
+checked against a 200 dpi rendering of p. 20756; converted kHz -> MHz exactly.
+
+Differences from the arXiv preprint: the value, its 8 kHz uncertainty, the Table 1 budget, the Fig. 7
+slopes and the operating conditions are identical. The published version adds to the Fig. 6 caption
+(p. 20755) that the uncertainty of the weighted mean is 0.91 kHz and the reduced chi-square is 5.3, and
+states (p. 20757) that the 2.1 kHz statistical term is 0.91 kHz x sqrt(5.3) = 0.91 x 2.3. The preprint
+had printed "chi2_reduced = 2.3" for what is sqrt(chi2_reduced); the published text corrects this.
+Nothing else measured was added. The atlas comparison value, 564 074 634(3) MHz (Doppler-free atlas,
+ref. [25]), is unchanged and not entered.
 
 The value is the frequency of the laser locked to a1 under the stated operating conditions, NOT an
 extrapolation to zero pressure or power: cold finger 25 C (41 Pa), pump 12.7 mW, beam diameter ~1 mm,
@@ -31,7 +40,7 @@ other 532 nm lines, not this one).
 
 uncertainty = """
 8 kHz, the paper's total ("< 8 kHz", 1.4e-11) from Table 1: pressure < 0.3, power < 4, modulation < 2,
-servo offset < 4, cell impurity 5, statistics 2.1 kHz (already inflated by sqrt(chi2_red) = 2.3).
+servo offset < 4, cell impurity 5, statistics 2.1 kHz (the 0.91 kHz weighted-mean uncertainty inflated by sqrt(chi2_red) = sqrt(5.3) = 2.3).
 Taken as standard (1 sigma) for the operating conditions above; it does not cover the offset from
 the unperturbed transition.
 """

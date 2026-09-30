@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a2,interval,259.6974,0.0003,,a1,,Table 1 main line; printed 259697.4 kHz; paper obs-calc +0.8 kHz
+127I2 R(56) 32-0,a5,interval,311.3668,0.0003,,a1,,Table 1 main line; printed 311366.8 kHz; paper obs-calc +0.2 kHz
+127I2 R(56) 32-0,a6,interval,401.4775,0.0003,,a1,,Table 1 main line; printed 401477.5 kHz; paper obs-calc -0.7 kHz
+127I2 R(56) 32-0,a7,interval,416.9931,0.0003,,a1,,Table 1 main line; printed 416993.1 kHz; paper obs-calc -0.9 kHz
+127I2 R(56) 32-0,a8,interval,439.6265,0.0003,,a1,,Table 1 main line; printed 439626.5 kHz; paper obs-calc -0.2 kHz
+127I2 R(56) 32-0,a9,interval,455.3432,0.0003,,a1,,Table 1 main line; printed 455343.2 kHz; paper obs-calc -0.6 kHz
+127I2 R(56) 32-0,a10,interval,571.5418,0.0003,,a1,,Table 1 main line; printed 571541.8 kHz; paper obs-calc +0.5 kHz
+127I2 R(56) 32-0,a11,interval,698.0542,0.0003,,a1,,Table 1 main line; printed 698054.2 kHz; paper obs-calc -0.4 kHz
+127I2 R(56) 32-0,a12,interval,702.7541,0.0003,,a1,,Table 1 main line; printed 702754.1 kHz; paper obs-calc +0.9 kHz
+127I2 R(56) 32-0,a13,interval,726.0305,0.0003,,a1,,Table 1 main line; printed 726030.5 kHz; paper obs-calc +0.6 kHz
+127I2 R(56) 32-0,a14,interval,732.2071,0.0003,,a1,,Table 1 main line; printed 732207.1 kHz; paper obs-calc -0.2 kHz
+127I2 R(56) 32-0,a15,interval,857.9537,0.0003,,a1,,Table 1 main line; printed 857953.7 kHz; paper obs-calc -0.1 kHz

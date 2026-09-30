@@ -1,0 +1,53 @@
+id = "sharma2023a"
+citation = "L. Sharma, A. Roy, S. Panja, S. De, \"Stabilizing frequency of a diode laser to a reference transition of molecular iodine through modulation transfer spectroscopy\", Atoms 11, 83 (2023)"
+source = "https://doi.org/10.3390/atoms11050083 (publisher PDF, open access)"
+doi = "10.3390/atoms11050083"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:sharma2023a"
+
+exclude = """
+Wavelength-meter values at 60 MHz that carry no information beyond the model (which agrees with the
+paper's IodineSpec5 column to 3 MHz), and are internally inconsistent: the a1-a10 and a10-a15 gaps
+(395 and 339 MHz) differ from the well-known hyperfine gaps (588 and 295 MHz) by -193 and +44 MHz,
+and the paper's own Fig. 3(b) shows the observed peaks on top of the IodineSpec5 ones, which the
+Table 1 "Experiment" column contradicts (a1 at +189 MHz there vs about +75 MHz in the figure).
+The frequency axis (wavemeter read during a current scan) is not reliable at the stated level.
+"""
+
+transcription = """
+Table 1 (p. 6), column "Frequency (MHz) (from Experiment)", offset +405 654 000 MHz: the three
+Doppler-free features that are single components of 127I2 R(78) 1-11 (peak 1 = a1, peak 4 = a10,
+peak 6 = a15), as fundamental (739 nm) laser frequencies read with a HighFinesse WS7 wavelength meter.
+Typed and checked against a 200 dpi rendering of p. 6. 3 rows.
+
+Left out: peaks 2, 3 and 5, which are unresolved blends of a2-a5, a6-a9 and a11-a14 and cannot be
+given a rank; the IodineSpec5 column (calculated); the FWHM columns. The paper measures no intervals
+with a comb and no absolute frequency beyond the wavemeter.
+
+Assignment: R(78) has even J'' and 15 components; the paper labels them a1-a15 by rising frequency,
+the i2spec convention. The model places R(78) 1-11 a1, a10, a15 at +72, +660, +954 MHz on this offset
+(IodineSpec5: +74, +662, +957), and no other 127I2 line lies within 500 MHz, so the line assignment is
+sound.
+
+Conditions: cell body heated to 450 C (needed to populate v'' = 11); pump 10 mW, probe 1 mW,
+circular polarization; pump double-passed through an 80 MHz AOM and frequency modulated at 60 kHz.
+Whether the wavemeter readings were corrected for the AOM offset (MTS resonance with a shifted pump
+occurs half the shift away from line centre) is not stated. No pressure or power shifts given.
+"""
+
+uncertainty = """
+60 MHz, as printed in parentheses in Table 1 for every experimental frequency; not defined in the
+text, presumably the WS7 absolute accuracy. Taken as 1 sigma but see `exclude`.
+"""
+
+notes = """
+Residuals against the default Predictor (2026-09-29): a1 +117 MHz, a10 -76 MHz, a15 -31 MHz.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy, wavelength-meter readout (HighFinesse WS7)"
+laser = "ECDL at 739 nm (Toptica TA-SHG pro fundamental)"
+cell_temperature_C = 450
+pump_mW = 10
+probe_mW = 1

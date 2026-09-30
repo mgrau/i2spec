@@ -1,0 +1,73 @@
+id = "zhang2001a"
+citation = "Y. Zhang, J. Ishikawa, F.-L. Hong, \"Accurate frequency atlas of molecular iodine near 532 nm measured by an optical frequency comb generator\", Opt. Commun. 200, 209-215 (2001)"
+source = "https://doi.org/10.1016/s0030-4018(01)01624-8 (publisher PDF)"
+doi = "10.1016/s0030-4018(01)01624-8"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:zhang2001a"
+
+transcription = """
+Table 1 (p. 213, a rotated full-page table), column "Measured frequency interval (Delta f_Exp) (kHz)"
+only: intervals f(component) - f(a10, R(56) 32-0) of 16 lines, a1 of each except P(83) 33-0, for which
+a21 was measured because a1 lies very close to another transition (p. 212). kHz converted to MHz exactly.
+Parsed by script from the pdftotext -layout text and checked digit by digit against a 200 dpi rendering
+of p. 213 (the text layer prints the minus sign as ")"). The R(56) 32-0 a10 row (0.0 by definition) is not
+entered. The comparison columns (Delta f_Ref2 = Ye et al. 1999, Delta f_Ref27 = Holzwarth et al. 2001,
+Delta f_Ref19 = Nevsky et al. 2001) and their difference columns are not entered; as a check, every
+printed difference column entry is reproduced from the printed intervals to 0.1 kHz.
+
+Misprints: Table 1 prints line 1104 as "R(57)32-90"; it is R(57) 32-0 (entered so; the note says so).
+The text (p. 214) says "Delta f_Exp and Delta f_Ref27 agree to within 0.2 kHz"; from the table this is
+Delta f_Ref19 (Nevsky 2001, one line, -0.2 kHz), the Ref27 differences are 0.8-1.9 kHz as stated on p. 212.
+Line numbers (Gerstenkorn and Luc) are copied into `note` as printed here; they differ from the BIPM list
+for three lines (Zhang: 1101 = R(122) 35-0, 1099 = P(55) 32-0, R(145) 37-0 and P(104) 34-0 unnumbered;
+BIPM: 1101 = R(145) 37-0, 1099 = P(104) 34-0). The numbers are not used by i2spec.
+
+Labels: a1 is the lowest-frequency component, a21 the highest of the odd-J'' P(83) 33-0, a10 as in the
+CIPM definition. No crossovers.
+
+Conditions. The paper does not state the cell conditions for these measurements; it refers to its refs.
+[12, 13, 25] (NMIJ lasers) and gives Eq. (2), f = 563 260 223 514(5) kHz + Delta f_Exp, as valid "when the
+cold-finger temperature of the I2 cell is set to -15 C". BIPM MEP 2007/2012 (Source data 2.2) lists
+these values as obtained at -15 C (0.83 Pa). They are intervals between lines measured with one laser on
+R(56) a10 and the other on the line of interest, both under the same conditions, so pressure and power
+shifts largely cancel; no correction is applied. All rows share one group (common reference laser and
+lock point on R(56) a10).
+
+Overlap with bipm2012a (NOT independent): this paper is column [8] of the BIPM 532 nm Source data 2.2,
+and the recommended intervals (p. 2) are unweighted means of the columns available per line.
+zhang2001a - bipm2012a, kHz:
+  P(132) 36-0, R(145) 37-0, R(122) 35-0, P(84) 33-0, P(104) 34-0, R(87) 33-0, P(53) 32-0: 0.0 (the BIPM
+    value is this paper alone for the first six; P(53) agrees with Ye exactly)
+  P(55) 32-0 +1.0, R(58) 32-0 +0.8 (BIPM = mean with Holzwarth 2001)
+  P(83) 33-0 a21 -1.0, R(134) 36-0 -1.2, R(106) 34-0 -1.8, R(86) 33-0 -2.0, P(119) 35-0 -1.4 (BIPM = mean
+    with Ye 1999); P(54) 32-0 -1.1 (mean with Ye, Holzwarth, Nevsky); R(57) 32-0 -1.7 (mean with Ye, Holzwarth).
+zhang2001a - ye1999a (Fig. 3 gaps): -2.1 to -6.0 kHz (P(53) 0.0), i.e. Zhang's intervals are systematically
+smaller in magnitude, as the paper notes (up to 6.0 kHz at R(57)).
+zhang2001a - holzwarth2001a (a1 minus R(56) a10, both from that set, at -5 C): P(54) +1.6, R(57) +0.8,
+P(55) +1.9, R(58) +1.6 kHz, as the paper's own Ref27 column.
+A fit using zhang2001a together with bipm2012a counts these intervals twice (for six lines entirely).
+"""
+
+uncertainty = """
+1 kHz for every interval, the paper's own estimate (p. 212): "it is reasonable to set an uncertainty for
+the measured frequency interval at about 1 kHz", allowing for residual Doppler effects that vary between
+set-ups and the ~1 kHz differences in hyperfine splittings seen between laser systems. Taken as 1 sigma.
+The statistical part (100 x 1 s averages) is 8-100 Hz, the relock repeatability 240 Hz (abstract). The
+BIPM assigns 5 kHz to its recommended intervals. The paper's scatter against Ye 1999 (up to 6 kHz) is larger
+than 1 kHz, so the 1 kHz is optimistic as a between-laboratory figure.
+"""
+
+notes = """
+Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: -456 kHz (P(132) 36-0) to
++462 kHz (R(134) 36-0), rms 271 kHz; these are the model's line-centre errors at v' = 32-37 (bipm2012a,
+which holds nearly the same numbers, shows the same pattern). No row was dropped.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy; two I2-stabilized frequency-doubled Nd:YAG lasers, interval bridged by a 2 GHz electro-optic optical frequency comb generator at 1064 nm (706 GHz span), rf referenced to Cs clocks"
+laser = "diode-pumped monolithic Nd:YAG, frequency doubled to 532 nm"
+cold_finger_C = -15.0
+cold_finger_note = "from the text of Eq. (2) and BIPM Source data 2.2; not otherwise stated in the paper"
+reference = "a10 of 127I2 R(56) 32-0"
+averaging = "100 beat measurements of 1 s gate each per interval"

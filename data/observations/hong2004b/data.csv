@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.507897,0.00052,,,hong2004b,"Abstract, Sect. 3.4 and Fig. 6; laser Y3, cold finger -10 C; not corrected to zero pressure or power"

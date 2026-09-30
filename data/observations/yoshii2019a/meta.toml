@@ -1,0 +1,56 @@
+id = "yoshii2019a"
+citation = "K. Yoshii, H. Sakagami, H. Yamamoto, S. Okubo, H. Inaba and F.-L. Hong, \"High-resolution spectroscopy and laser frequency stabilization using a narrow-linewidth planar-waveguide external cavity diode laser at 1063 nm\", Opt. Lett. 45, 129-132 (2020)"
+source = "https://doi.org/10.1364/ol.45.000129 (publisher PDF)"
+doi = "10.1364/ol.45.000129"
+retrieved = "2026-09-29"
+unit = "MHz"
+catalog = "precision.yaml:yoshii2019a"
+
+transcription = """
+One value: the absolute frequency of the a10 component of 127I2 R(38) 32-0, 564 010 092 161(6) kHz,
+printed identically in the abstract (p. 129), p. 130 and p. 132. It is the mean of eight runs over
+several days (Fig. 5, plotted only, standard deviation 0.33 kHz; the runs are not entered). Read from
+the PDF text layer and checked against a 200 dpi rendering of p. 132; converted kHz -> MHz exactly.
+Published online December 2019 (catalog year 2019), issue dated 1 January 2020.
+
+The value is the lock point at the stated conditions, NOT extrapolated to zero pressure or power:
+cold finger -5 C (2.5 Pa), pump 3.0 mW, probe 0.5 mW, beams 0.8 mm, 30 cm cell. Table 1 gives the
+measured sensitivities: pressure -1.5 kHz/Pa, pump power -0.63 kHz/mW, servo offset -2.3 kHz/mV, EOM
+phase -0.18 kHz/deg, beam alignment 5.0 kHz/mrad. Taken literally, pressure and power would put the
+unperturbed a10 about 3.8 + 1.9 ~ 6 kHz higher; the paper makes no such correction and none is applied.
+
+R(38) has even J'' and 15 main components (a1-a15, rank by frequency, a10 near the Doppler centre); the
+paper says all 15 were observed (Fig. 3) but gives numbers only for a10. The companion paper
+sakagami2020a has the full R(38) 32-0 structure.
+
+Overlap and non-independence. sakagami2020a (same group, same PW-ECL, cell, comb and Nd:YAG reference,
+whose uncertainty budget it takes from this paper) gives f(a1) + [f(a10) - f(a1)] = 564 010 092 162.0
+kHz at 2.4 Pa and 1.8 mW pump: 1.0 kHz above this value (the -0.63 kHz/mW power shift would predict
+0.8 kHz). The two share the 5 kHz cell-impurity and 1.5 kHz comb-reference terms, so they are strongly
+correlated; the separate group labels do not express this. No other set holds R(38) 32-0.
+"""
+
+uncertainty = """
+6 kHz as printed (Table 1 total 5.7 kHz, 1.0e-11): statistics 0.33, power < 0.063, pressure < 0.29,
+servo offset < 1.2, EOM phase < 1.8, alignment < 0.5, cell impurity 5, comb reference 1.5 kHz. Taken as
+1 sigma for the stated operating point; it does not cover the offset from zero pressure/power.
+"""
+
+notes = """
+Residual against the default Predictor (i2spec2026k), 2026-09-29: +1.114 MHz, the same as the
+sakagami2020a R(38) 32-0 a1 residual (+1.116 MHz), i.e. a line-centre error of the model at low J in
+v' = 32, not a labelling problem.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy (EOM 350 kHz, AOM 80 MHz on the pump), frequency-comb referenced (Er fiber comb locked to an I2-stabilized Nd:YAG, R(56) 32-0 a10)"
+laser = "frequency-doubled 1063 nm planar-waveguide external cavity diode laser (PPLN waveguide)"
+cell_length_cm = 30
+cold_finger_C = -5.0
+pressure_Pa = 2.5
+pump_mW = 3.0
+probe_mW = 0.5
+beam_diameter_mm = 0.8
+pressure_shift_kHz_per_Pa = -1.5
+power_shift_kHz_per_mW = -0.63
+extrapolated_to_zero = false

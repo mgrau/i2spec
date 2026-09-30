@@ -1,21 +1,22 @@
 id = "grieser1994a"
 citation = "R. Grieser, G. Bönsch, S. Dickopf, G. Huber, R. Klein, P. Merz, A. Nicolaus and H. Schnatz, \"Precision measurement of two iodine lines at 585 nm and 549 nm\", Z. Phys. A 348, 147-150 (1994)"
-source = "CERN preprint CERN-PPE/93-215 (dated November 12, 1993; scanned, image-only PDF), file papers/Grieser1994_ZPhysA348_147_CERN_preprint.pdf. The published Z. Phys. A version (https://doi.org/10.1007/bf01289603) was NOT seen; its numbers could differ from the preprint's."
+source = "Z. Phys. A 348, 147-150 (1994), received 8 November 1993, revised 3 February 1994; https://doi.org/10.1007/BF01289603 (file papers/Grieser1994_ZPhysA348_147.pdf, scanned). Checked against the earlier CERN preprint CERN-PPE/93-215 (12 November 1993), from which the set was first typed."
 doi = "10.1007/bf01289603"
 retrieved = "2026-09-29"
 unit = "MHz"
 catalog = "precision.yaml:grieser1994a"
 
 transcription = """
-Typed from 250 dpi renderings of all 14 preprint pages, the numbers re-read from 500 dpi crops of
-p. 11 (PDF page numbering; the paper has no printed page numbers). The OCR text layer is unusable
-and was not used. All numbers are in Sect. 3 "Results and discussion", p. 11; the paper has no
-table of results (its Table 1, p. 6, is the laser's uncertainty budget).
+Read from 250 dpi renderings of the four pages of the published paper (pp. 147-150); the OCR text layer
+is poor and was used only to locate passages. The results are in Sect. 3 "Results and discussion":
+the three wavelength ratios at the foot of p. 149 (right column) and the top of p. 150 (left column),
+nu_633 and the two frequencies on p. 150 (left column). The paper has no table of results (its
+Table 1, p. 148, is the laser's uncertainty budget).
 
-Printed on p. 11:
-  lambda_549/lambda_633 = 0,86668681714 +/- 13e-11
-  lambda_585/lambda_633 = 0,92381924206 +/- 13e-11
-  lambda_514/lambda_633 = 0,81308129593 +/- 7e-11
+Printed (pp. 149-150):
+  lambda_549/lambda_633 = 0.86668681714 +/- 13e-11
+  lambda_585/lambda_633 = 0.92381924206 +/- 13e-11
+  lambda_514/lambda_633 = 0.81308129593 +/- 7e-11
   nu_633 = (473612214705 +/- 14) kHz [11 = CIPM 1992, Recommendation 3]
   nu_549 = (546462926790 +/- 71) kHz
   nu_585 = (512667622777 +/- 67) kHz
@@ -23,15 +24,20 @@ Arithmetic check: nu_633 / ratio gives 546462926790.4 kHz (549) and 512667622779
 latter differs from the printed ...777 by 2.7 kHz, which is within the rounding of the printed
 11-digit ratio (0.5e-11 relative = 2.6 kHz), so both printed frequencies are taken as they stand.
 
+Differences from the CERN preprint (CERN-PPE/93-215, p. 11 there): none in the numbers. The three
+ratios, nu_633, nu_549, nu_585, all uncertainties, the Table 1 budget (43, 30, 7.5, 1, 5, 5, 1; total
+54 kHz), the component letters of Figs. 3-4 and the line labels (including the misassigned "R(85)26-0")
+are identical; the published text only uses a decimal point instead of the preprint's decimal comma.
+
 Rows:
-1. R(99) 15-1 "i" component = a13. The letter convention is read from Figs. 3 and 4 (pp. 9-10):
+1. R(99) 15-1 "i" component = a13. The letter convention is read from Figs. 3 and 4 (p. 150):
    letters run from a at the HIGHEST frequency down to w at the lowest, skipping s and t, i.e.
    (low -> high) w v u | r q p o | n m l k | j i h | g f e d | c b a = 21 components (odd J'').
    So i is rank 13 and w is rank 1. Check: in Fig. 3 (detuning relative to i) w sits at about
    -606 MHz, matching Reinhardt 2006's R(99) 15-1 a13 - a1 = 606.076 MHz; and the unresolved "q,p"
    pair of the caption is a5/a6, which Reinhardt 2006 also did not list.
 2. R(85) "w" component = a1 (lowest; Fig. 4 has w at detuning 0 and all others above it).
-   The paper assigns this line to R(85) 26-0. Knöckel et al. 2004 (their ref. [33]) state the band
+   The paper (also the published version) assigns this line to R(85) 26-0. Knöckel et al. 2004 (their ref. [33]) state the band
    is wrong and should be 25-0. The model confirms it: R(85) 25-0 a1 is -0.69 MHz from the measured
    value, R(85) 26-0 is 2.3 THz (78 cm-1) away. Entered as 127I2 R(85) 25-0.
 3. P(13) 43-0 a3 (the Ar+ 515 nm reference laser, BIPM a3). The paper prints only the measured
@@ -59,7 +65,7 @@ a measured line frequency. No crossover resonances are involved.
 """
 
 uncertainty = """
-The paper states all uncertainties are one relative standard uncertainty (1 sigma), p. 11.
+The paper states all uncertainties are one relative standard uncertainty (1 sigma), p. 150.
 Rows 1-2: the printed +/- 67 and +/- 71 kHz, equal to 13e-11 times the frequency, i.e. the ratio
 uncertainty; this total includes the laser budget (Table 1, 54 kHz: residual Doppler background 43,
 input-filter detuning 30, electronic offsets 7.5, power 5, cell impurities 5, pressure 1, recoil

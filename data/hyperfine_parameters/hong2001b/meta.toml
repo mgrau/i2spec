@@ -1,0 +1,48 @@
+id = "hong2001b"
+citation = "F.-L. Hong, J. Ye, L.-S. Ma, S. Picard, C. J. Bordé, J. L. Hall, \"Rotation dependence of electric quadrupole hyperfine interaction in the ground state of molecular iodine by high-resolution laser spectroscopy\", J. Opt. Soc. Am. B 18, 379-387 (2001), Table 3"
+source = "https://doi.org/10.1364/josab.18.000379 (publisher PDF)"
+doi = "10.1364/josab.18.000379"
+retrieved = "2026-09-29"
+catalog = "data/catalog/precision.yaml#hong2001b"
+unit = "MHz"
+kind = "B-state (v' = 32) absolute hyperfine parameters, one row per rovibrational transition; the X-state eqQ'' and C'' were fitted too, not held fixed"
+transcription = """
+Table 3 (p. 382), columns R(56)32-0 and P(54)32-0, B-state rows eqQ', C', d', delta'. Read from the PDF
+text layer and checked digit by digit against a 200 dpi rendering of p. 382. C', d', delta' are printed in
+kHz and converted to MHz exactly; uncertainties are the printed parenthesised digits. fit_sd_kHz is the
+standard deviation of the fit including main and crossover lines (Table 1 footnote: 0.95 kHz; Table 2
+footnote: 1.13 kHz). The Table 3 columns R(15)43-0 and P(13)43-0 are X-state values quoted from Wallerand
+et al. 1999 (ref. 21) and Bordé (ref. 22), not fitted here, and are not entered.
+
+The other Table 3 entries are in `note` only (the format has no X-state columns):
+  R(56) 32-0 (J'' = 56): eqQ'' = -2453.132(11) MHz, C'' = 3.306(21) kHz, DeltaeqQ = 1908.381(1) MHz,
+    DeltaC = 86.350, Deltad = -44.225, Deltadelta = -10.647 kHz.
+  P(54) 32-0 (J'' = 54): eqQ'' = -2453.088(24) MHz, C'' = 2.904(40) kHz, DeltaeqQ = 1908.432(1) MHz,
+    DeltaC = 86.100, Deltad = -44.064, Deltadelta = -10.744 kHz.
+Footnote c: the Delta values are much better determined than the absolute ones (DeltaeqQ to ~1 kHz from the
+main lines alone, the absolute eqQ' and eqQ'' to 11 kHz), because the absolute values rest on the crossover
+lines. Printed Delta values without uncertainty carry none here. Check: eqQ' - eqQ'' reproduces DeltaeqQ
+exactly for both lines, and C' - C'' reproduces DeltaC (86.350, 86.100 kHz). d' - d'' reproduces Deltad
+exactly, and delta' - delta'' reproduces Deltadelta to 0.001 kHz (rounding).
+
+Table 4 (p. 385) repeats eqQ' of J' = 53 and 57 and adds -544.772 MHz for J' = 58 (R(57) 32-0), which is
+computed from the paper's eqQ''(J) law and the DeltaeqQ of Ye et al. 1999, not fitted; not entered.
+
+The paper's ground-state law, eqs. (4)-(7), fitted to eqQ''(J'' = 13, 15, 54, 56):
+  eqQ''(J) = -2452.556(2) - 0.000164(5) J(J+1) - 5(2)e-9 J^2(J+1)^2 MHz (v'' = 0).
+"""
+uncertainty = "1 sigma as printed (the paper states the convention: standard uncertainty in the last digits, p. 380). From the least-squares fit; statistical only. The recoil shift is not included, and the paper says (p. 385) including it changes C'' by 2-5 times its fit uncertainty; eqQ'' negligibly."
+notes = """
+Model choices. Four-term effective Hamiltonian (eqQ, C, d, delta) diagonalised with Delta J up to +-4
+(Bordé et al. 1981 procedure), rotational energies from Gerstenkorn & Luc 1985. Fitted to the main
+components (weight 10) and the crossover resonances (weight 1): 15 crossovers for R(56), 8 for P(54).
+Varied: eqQ'', eqQ', C'', C', d', delta'. Held fixed: d'' = 1.524 kHz and delta'' = 3.705 kHz (Wallerand et
+al. 1999 / Bordé), the same X spin-spin values i2spec uses (hfs_params.D_X, DELTA_X).
+
+Unlike chen2004a, the X-state eqQ'' and C'' were NOT held at BKT02 but fitted; so the absolute B-state
+values here are on this paper's own X-state scale. At J'' = 54 and 56 BKT02 (hfs_params.eqq_x) gives
+eqQ'' = -2453.113 and -2453.155 MHz, 25 and 23 kHz more negative than the fitted values (1.0 and 2.1 sigma);
+BKT02's C_X(v'' = 0) = 3.155 kHz against the fitted 3.306(21) and 2.904(40). For comparison with i2spec's
+B-state parameters, eqQ'' + DeltaeqQ (i.e. BKT02 eqQ'' plus the printed DeltaeqQ) is the better-determined
+combination.
+"""
