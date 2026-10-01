@@ -1,6 +1,8 @@
 # Builds the web app (the explorer, the documentation and the references page) from the current
-# model and publishes it to GitHub Pages. Line lists are cached between runs, keyed on the model
-# code and parameter files, so only a model change pays for rebuilding them.
+# model and publishes it to GitHub Pages. Line lists and the explorer's exported data are cached
+# between runs, keyed on everything the export reads (the package, its parameter files, the atlas and
+# observation files, the locked dependencies): a push that changes none of them, such as a change to
+# the documentation or the app's JavaScript, reuses the data and only rebuilds the site (a few minutes).
 name: Web app
 
 on:
@@ -35,8 +37,15 @@ jobs:
           path: ~/.cache/i2spec
           key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
           restore-keys: i2spec-
+      - name: Restore the explorer's data
+        # an exact key only: `i2spec web build` re-exports when web/data/ is absent, and a stale copy
+        # restored from an older key would be published as it is
+        uses: actions/cache@v4
+        with:
+          path: web/data
+          key: web-data-${{ hashFiles('src/i2spec/**', 'data/atlas_lines/**', 'data/observations/**', 'pyproject.toml', 'uv.lock') }}
       - run: uv sync --locked
-      - name: Export the model and build the site
+      - name: Export the model (only if it changed) and build the site
         run: uv run i2spec web build site
       - name: Check the browser physics against the Python model
         run: |
