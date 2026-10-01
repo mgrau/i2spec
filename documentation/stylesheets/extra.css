@@ -63,3 +63,11 @@
   .md-typeset .refs table:not([class]) td:not(:first-child)::before { color: var(--md-default-fg-color--light); font-size: .85em; }
   .md-typeset .refs table:not([class]) td:nth-child(3)::after { content: " nm"; }
 }
+
+/* On a phone, command and code lines wrap instead of scrolling sideways (the wrapped part keeps its indent). */
+@media (max-width: 600px) {
+  .md-typeset pre > code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
