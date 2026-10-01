@@ -15,7 +15,7 @@ Notes: docs/research/kitt-peak-and-rodriguez-spectra.md.
 
 usage: rodriguez_lines.py --tscan                      the cell temperature, from window rms
        rodriguez_lines.py [--T=...] [--workers=2]       window fits -> prototypes/out/atlas_lines_rodriguez.txt
-       rodriguez_lines.py --dataset                     data/atlas_lines/rodriguez_fernandez_2023.{csv,toml}
+       rodriguez_lines.py --dataset                     data/external/rodriguez_fernandez_marcassa/rodriguez_fernandez_2023.{csv,toml} (private)
 """
 from __future__ import annotations
 
@@ -195,13 +195,13 @@ def write(lines, K, floor, offset, offset_err, med, spread, extra, floor_sr):
         """The file, and in the first file the segment between backward steps of its axis (one or more
         0.5 cm-1 scans sharing a wavemeter offset), so a fit can give each segment its own offset."""
         return f"file 1 segment {int(np.searchsorted(edges, nu))}" if nu < 14600.0 else "file 2"
-    with open(ATLAS / f"{name}.csv", "w") as f:
+    with open(RAW / f"{name}.csv", "w") as f:          # private: fitted to spectra the authors shared
         f.write("line,component,kind,value,uncertainty,ref_line,ref_component,group,note\n")
         for k, r in sorted(lines.items(), key=lambda kv: (kv[1]["vu"], kv[1]["vl"], kv[0])):
             f.write(f"{k},,frequency,{r['nu']:.6f},{r['sigma']:.6f},,,{name},"
                     f"depth {r['depth']:.2f}; {r['n']} window{'s' if r['n'] > 1 else ''}; {where(r['nu'])}\n")
     nus = [r["nu"] for r in lines.values()]
-    (ATLAS / f"{name}.toml").write_text(
+    (RAW / f"{name}.toml").write_text(
         f'id = "{name}"\nunit = "cm-1"\nisotopologue = "127I2"\ndoi = "10.1016/j.jms.2023.111789"\n'
         f'kind = "atlas line positions"\n'
         f'citation = """Transmission spectra behind D. Rodriguez Fernandez et al., J. Mol. Spectrosc. 395, 111789\n'

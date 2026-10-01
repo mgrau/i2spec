@@ -2,7 +2,8 @@
 
 *2026-09-30. `prototypes/kitt_peak_lines.py`, `prototypes/rodriguez_lines.py` (both reuse
 `prototypes/atlas_lines.py`). Products: `data/atlas_lines/kitt_peak_1993.{csv,toml}` (5 297 lines) and
-`data/atlas_lines/rodriguez_fernandez_2023.{csv,toml}` (825 lines). Model: i2spec2026m.*
+`data/external/rodriguez_fernandez_marcassa/rodriguez_fernandez_2023.{csv,toml}` (825 lines; kept out of the
+public repository, since the spectra were shared privately by their authors). Model: i2spec2026m.*
 
 ## The data
 
@@ -146,7 +147,8 @@ our only other atlas and scatters 33 MHz about the model.
 
 ## Recommendation
 
-- **`rodriguez_fernandez_2023`: worth adding to the fit and the explorer**, with one group offset
+- **`rodriguez_fernandez_2023`: worth adding to the fit and the explorer if the authors agree**
+  (it stays private until then, and is used only for the comparison above), with one group offset
   (+113 MHz), or one per first-file segment if the fit can carry them. It is better than Salami &
   Ross in this range (18 against 33 MHz about the model), has one clean calibration, and adds 347
   lines in hot bands (v″ = 6–8) that no other data set here measures.

@@ -45,7 +45,7 @@ PER_SHARD_HFS = 80
 #: the other two are in the observations format. Each Orsay scale is the one its fit found: part I in
 #: level_corrections_2026f, Partie IV in level_corrections_2026j (prototypes/orsay4_fit.py). Partie IV shows
 #: its unblended lines only: a blend's one position belongs to none of its assignments.
-ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4", "rodriguez_fernandez_2023")
+ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
 ORSAY_SCALE_PPB = {"orsay1982_part1": 23.85, "orsay1983_part4": 200.8}   # Partie IV: +119.6 MHz at 19 870 cm-1
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
@@ -54,7 +54,7 @@ FLAG_CLASS = {"corrected levels": "good", "local NIR model": "good", "v″ 18-25
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
                "orsay": "Gerstenkorn, Vergès & Chevillard"}
 #: Names that the prefix alone gets wrong
-SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983", "rodriguez_fernandez_2023": "Rodríguez Fernández 2023"}
+SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983"}
 
 
 # --- sources and measurements -----------------------------------------------------------------------

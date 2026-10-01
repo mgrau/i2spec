@@ -63,8 +63,8 @@ Ranked by what each would change in the model.
 8. **The line list of Rodríguez Fernández *et al.* (2023)** (1 204 lines at 14 400–14 600 cm⁻¹): described
    in the paper as supplementary material, but not provided with it. *Obtained 2026-09-30* from the authors,
    with the 14 600–14 710 cm⁻¹ spectrum of their 2022 paper (`data/external/rodriguez_fernandez_marcassa/`):
-   Doppler-limited laser transmission scans, +131 MHz from the model on its strongest lines (robust
-   spread 65 MHz).
+   Doppler-limited laser transmission scans; line centres fitted to them, +113 MHz from the model
+   (robust spread 18 MHz), are kept private with the spectra until the authors agree to their release.
 9. **Scans of the Gerstenkorn & Luc atlases** once served by the Laboratoire Aimé Cotton. They are no
    longer online and were not archived. The printed volumes remain: the 11 000–14 000 cm⁻¹ volume and
    Partie IV (19 700–20 035 cm⁻¹) were photographed and transcribed here
