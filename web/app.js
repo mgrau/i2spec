@@ -121,6 +121,18 @@ function kindOf(l) {
 const showKey = () => state.kinds.size === 3 ? "all" : [...state.kinds].sort().join(",");
 const keepLine = () => (state.kinds.size === 3 ? () => true : l => state.kinds.has(kindOf(l)));
 let shownCache = {lines: null, show: null, out: null};
+/** Lines whose centre lies within this margin (cm⁻¹) outside the view still draw there: their hyperfine
+ * components (up to ~1 GHz from the centre) and Doppler wings reach in. About 1.5 GHz. */
+const PLOT_PAD_CM = 0.05;
+let plotCache = {lines: null, show: null, out: null};
+/** The lines the plot draws: the view's, plus those just outside it (state.plotLines), filtered as shown. */
+const plotLines = () => {
+  const all = state.plotLines || state.lines;
+  if (state.show === "all") return all;
+  if (plotCache.lines !== all || plotCache.show !== state.show)
+    plotCache = {lines: all, show: state.show, out: all.filter(keepLine())};
+  return plotCache.out;
+};
 const shownLines = () => {
   if (state.show === "all") return state.lines;
   if (shownCache.lines !== state.lines || shownCache.show !== state.show)
@@ -542,7 +554,7 @@ function drawPlot() {
   const gt = tc.getContext("2d");
   gt.setTransform(dpr, 0, 0, dpr, 0, 0);
   gt.clearRect(0, 0, W, H);
-  const lines = shownLines();
+  const lines = plotLines();
   const nb = Math.max(2, Math.round(pw * dpr));        // one bin per canvas pixel
   // one binned cross section per kind of line, stacked precision / atlas / model from the baseline
   const withHfs = hyperfineShown();
@@ -751,6 +763,25 @@ function drawPlot() {
       g.textBaseline = "alphabetic"; g.textAlign = "left";
     }
   }
+  // lines whose strength was not computed (emission lines, X v'' >= 48): a dashed mark at each position, and
+  // a note when nothing in view absorbs, so the view is not an empty plot
+  const silent = lines.filter(l => !(l.s0 > 0));
+  if (silent.length) {
+    g.save(); g.setLineDash([3, 3]); g.strokeStyle = ink("--cls-precision"); g.globalAlpha = 0.8; g.lineWidth = 1;
+    for (const l of silent) {
+      const x = xPix(l.nu);
+      if (x < m.l || x > m.l + pw) continue;
+      g.beginPath(); g.moveTo(x, yPix(0)); g.lineTo(x, yPix(0.85)); g.stroke();
+    }
+    g.restore();
+    if (silent.length === lines.length) {
+      const text = "no thermal absorption here: emission lines (X v″ ≥ 48), marked at their positions";
+      g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = "left"; g.textBaseline = "top";
+      g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
+      g.strokeText(text, m.l + 8, m.t + 24); g.fillStyle = ink("--ink-2"); g.fillText(text, m.l + 8, m.t + 24);
+      g.textBaseline = "alphabetic";
+    }
+  }
   if (state.mode === "sub") {
     // what the sub-Doppler trace is, or why it is not drawn: inside the plot, with a halo; top left, or on a
     // phone, where the tick labels are inside the plot at the left, top right
@@ -776,7 +807,8 @@ const COLUMNS = [
   {key: "nu", name: "λ vac (nm)", cell: l => (1e7 / l.nu).toFixed(6)},
   {key: "cm", name: "ν (cm⁻¹)", cell: l => l.nu.toFixed(6)},
   {key: "f", name: "f (MHz)", cell: l => fmt(l.nu * P.MHZ_PER_CM, 1)},
-  {key: "S", name: "S (cm)", cell: l => P.strengthAt(l, partitionAt(l.iso, state.T), state.T).toExponential(2)},
+  // s0 = 0: a measured line outside the computed list (emission to X v'' >= 48), whose strength was not computed
+  {key: "S", name: "S (cm)", cell: l => l.s0 > 0 ? P.strengthAt(l, partitionAt(l.iso, state.T), state.T).toExponential(2) : "—"},
   {key: "u", name: "u (MHz)", cell: l => fmtU(unc(l).value)},
   {key: "meas", name: "measured by", html: l => measuredCell(l)},
 ];
@@ -1088,7 +1120,7 @@ async function select(line) {
       <dt>ν</dt><dd>${line.nu.toFixed(6)} cm⁻¹</dd>
       <dt>f</dt><dd>${fmt(line.nu * P.MHZ_PER_CM, 1)} MHz</dd>
       <dt>u (1σ)</dt><dd>± ${fmtU(value)} MHz</dd>
-      <dt>S</dt><dd>${S.toExponential(3)} cm at ${state.T} K</dd>
+      <dt>S</dt><dd>${line.s0 > 0 ? `${S.toExponential(3)} cm at ${state.T} K` : "not computed: no thermal absorption (measured in emission)"}</dd>
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
       ${state.laser ? laserRows(line) : ""}
@@ -1312,12 +1344,14 @@ async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
   try {
     await getJSON(state.manifest.isotopologues[state.iso].partition, state.partitions, state.iso);
     const lines = await linesIn(state.iso, state.lo, state.hi, {loadedOnly: deferTable});
+    const padded = await linesIn(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM, {loadedOnly: deferTable});
     // a wide view: fetch the rest of the list in the background, so zooming out finds it loaded
     if (state.hi - state.lo > 0.2 * (info.nu_max - info.nu_min)) loadInBackground(state.iso, info.shards);
     if (token !== state.busy) return;                    // a newer view won
-    if (hyperfineShown()) await loadHfs(state.iso, state.lo, state.hi);
+    if (hyperfineShown()) await loadHfs(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM);
     if (token !== state.busy) return;
     state.lines = lines;
+    state.plotLines = padded;
     if (state.selected && (state.selected.iso !== state.iso ||
         state.selected.nu < state.lo || state.selected.nu > state.hi)) {
       state.selected = null;
@@ -1694,7 +1728,7 @@ function setMode(mode) {
   $$(".modonly").forEach(el => el.hidden = state.mode !== "sub" || !state.sub.harmonic);
   // sub-Doppler needs the hyperfine patterns, which a wider view has not loaded
   if (!(state.manifest && state.hi > state.lo)) return;      // before the first view: show() draws it
-  if (state.mode === "sub" && hyperfineShown()) loadHfs(state.iso, state.lo, state.hi).then(redrawAll);
+  if (state.mode === "sub" && hyperfineShown()) loadHfs(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM).then(redrawAll);
   else redrawAll();
   pushURL();
 }
