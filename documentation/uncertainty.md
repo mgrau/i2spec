@@ -23,7 +23,7 @@ line are determined (Table 1).
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/uncertainty_map.svg" role="img" aria-label="Map of position uncertainty over upper and lower vibrational quantum numbers"></div>
-<figcaption markdown="span">**Figure 1.** Uncertainty of the R(50) line of each band v′–v″. Below v″ = 17 and v′ = 43 the 2008 potentials and the level corrections give a few MHz or better; the darkest rows are levels with direct frequency-comb measurements. At v″ = 18–25 the Orsay atlas determines the levels to 15–50 MHz where it observed them, and v″ = 48–54 are determined by emission measurements. Elsewhere the positions are extrapolations of the potentials.</figcaption>
+<figcaption markdown="span">**Figure 1.** Uncertainty of the R(50) line of each band v′–v″. Below v″ = 17 and v′ = 43 the 2008 potentials and the level corrections give a few MHz or better; the ≤ 1 MHz rows are levels with direct frequency-comb measurements. At v″ = 18–25 the Orsay atlas determines the levels to 15–50 MHz where it observed them, and v″ = 48–54 are determined by emission measurements. Elsewhere the positions are extrapolations of the potentials.</figcaption>
 </figure>
 
 The uncertainty of the hyperfine offsets is given on the [Hyperfine structure](hyperfine.md) page.

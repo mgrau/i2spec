@@ -8,6 +8,8 @@
   --ink: #0e1f28; --ink-2: #3c525d; --ink-3: #5c7480; --rule: #cfdde4; --surface: #ffffff;
   --trace: #0070a0; --pick: #c0306a; --mark: #2b3f49;
   --cls-precision: #b87400; --cls-atlas: #0070a0; --cls-model: #8a9ba5;
+  /* uncertainty classes, best to worst (figures/uncertainty_map.svg) */
+  --unc-1: #0b5aa6; --unc-2: #1a9468; --unc-3: #c08a00; --unc-4: #b8336a; --unc-5: #dde3e6;
 }
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: #19242a; --md-primary-fg-color--light: #28363d; --md-primary-fg-color--dark: #0b1114;
@@ -17,6 +19,7 @@
   --ink: #e4eef1; --ink-2: #a7bcc3; --ink-3: #8ba2ab; --rule: #28363d; --surface: #131c20;
   --trace: #39a882; --pick: #d9588a; --mark: #d3dee2;
   --cls-precision: #bd8a1c; --cls-atlas: #3a98cc; --cls-model: #6f8590;
+  --unc-1: #3d8fd6; --unc-2: #2fa676; --unc-3: #b0850e; --unc-4: #d65a8e; --unc-5: #26343a;
 }
 :root { --body: var(--md-text-font-family, "IBM Plex Sans"), system-ui, sans-serif; }
 

@@ -28,8 +28,8 @@ from i2spec.spectrum import cross_section, number_density, transmission
 OUT = Path(__file__).resolve().parent
 # placeholder colours -> the site's tokens (web/site.css)
 C = dict(ink="#010101", ink2="#020202", ink3="#030303", rule="#040404", trace="#050505", pick="#060606",
-         mark="#070707", surface="#080808")
-TOKENS = {C["ink"]: "var(--ink)", C["ink2"]: "var(--ink-2)", C["ink3"]: "var(--ink-3)", C["rule"]: "var(--rule)",
+         mark="#070707", surface="#080808", u1="#0a0a01", u2="#0a0a02", u3="#0a0a03", u4="#0a0a04", u5="#0a0a05")
+TOKENS = {**{C[f"u{k}"]: f"var(--unc-{k})" for k in range(1, 6)},C["ink"]: "var(--ink)", C["ink2"]: "var(--ink-2)", C["ink3"]: "var(--ink-3)", C["rule"]: "var(--rule)",
           C["trace"]: "var(--trace)", C["pick"]: "var(--pick)", C["mark"]: "var(--mark)", C["surface"]: "var(--surface)"}
 
 plt.rcParams.update({
@@ -236,8 +236,8 @@ save(fig, "spectrum")
 
 # --- 7. how well each band is known ------------------------------------------------------------------
 VU, VL = 60, 54
-classes = [(1, "≤ 1 MHz", 1.0), (10, "1–10 MHz", 0.62), (100, "10–100 MHz", 0.36), (1000, "0.1–1 GHz", 0.17),
-           (np.inf, "> 1 GHz", 0.06)]
+classes = [(1, "≤ 1 MHz", C["u1"]), (10, "1–10 MHz", C["u2"]), (100, "10–100 MHz", C["u3"]),
+           (1000, "0.1–1 GHz", C["u4"]), (np.inf, "> 1 GHz", C["u5"])]
 cells = {k: [] for k in range(len(classes))}
 for vu in range(VU):
     for vl in range(VL + 1):
@@ -255,7 +255,7 @@ for k, pts in cells.items():
     for x, y in pts:
         verts += [(x - 0.5, y - 0.5), (x + 0.5, y - 0.5), (x + 0.5, y + 0.5), (x - 0.5, y + 0.5), (0, 0)]
         codes += [MPath.MOVETO, MPath.LINETO, MPath.LINETO, MPath.LINETO, MPath.CLOSEPOLY]
-    ax.add_patch(PathPatch(MPath(verts, codes), facecolor=C["trace"], alpha=classes[k][2], lw=0))
+    ax.add_patch(PathPatch(MPath(verts, codes), facecolor=classes[k][2], lw=0))
 ax.axvline(17.5, color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
 ax.axhline(43.5, color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
 ax.text(17.8, VU - 1.5, "v″ > 17: beyond the 2008 fit", fontsize=8.5, color=C["ink2"], va="top")
@@ -264,7 +264,7 @@ ax.set_xlim(-0.5, VL + 0.5)
 ax.set_ylim(-0.5, VU - 0.5)
 ax.set_xlabel("v″ (X)")
 ax.set_ylabel("v′ (B)")
-ax.legend(handles=[Patch(facecolor=C["trace"], alpha=a, label=l) for _, l, a in classes], loc="upper left",
+ax.legend(handles=[Patch(facecolor=col, label=l) for k, (_, l, col) in enumerate(classes) if cells[k]], loc="upper left",
           bbox_to_anchor=(1.01, 1.0), fontsize=9, title="1σ at J″ = 50", title_fontsize=9)
 save(fig, "uncertainty_map")
 
