@@ -386,3 +386,29 @@ correction. The band and Partie IV sections were refitted on top, as for 2026l (
 `level_corrections_2026m` repeats the 2026m fit on the new table without `hsiao2013a`: 874 rows touching
 corrected levels, leave-one-line-out median 0.54 MHz (2026m: 0.61). The band section and then the
 Partie IV section, now with all 2 079 lines, are refitted on top (offset +119.5 MHz).
+
+## i2spec2026o
+
+`i2spec2026n` with `level_corrections_2026n`: the same potentials, hyperfine table and Gaussian process.
+The comb-based corrections are refitted with each level's polynomial degree chosen by held-out
+prediction (`prototypes/level_corrections_fit.py --degree=loo`), not by the span of its J values.
+
+The span rule gave a level a J-dependent term only if its lines spanned at least 40 in J. B v′ = 32,
+the upper level of the 532 nm standard, has lines at J′ = 33–62: a span of 29, so it got a constant.
+Its data carry a 1.8 MHz trend across that range, seen in the 5 kHz lines of `holzwarth2001a` alone.
+The constant compromised between the 531.5 nm sets at low J (`sakagami2020a`, `yoshii2019a`,
+`kobayashi2015a`, left at +0.9 to +1.1 MHz) and the high-J lines. That put R(56) 32-0, the CIPM
+reference, 280 kHz off, from 2026l on.
+
+For each level, the selection tries degrees 0 to min(3, distinct J − 1), holding the others, and keeps the one
+that best predicts the level's own precise lines left out one at a time. It judges a level only by lines
+whose other level lies in the well-determined region, as the per-level held-out figure does. A higher
+degree must lower the held-out rms by 5 %. 17 levels change. B v′ = 32 goes from a constant to a linear
+term (held out 0.51 → 0.30 MHz), and in sample:
+
+| set | 2026n | 2026o |
+|---|---|---|
+| `holzwarth2001a` (B v′ = 32, J′ = 50–62) | 0.3 MHz | 0.02 MHz |
+| `hong2004b` (R(56) 32-0 a10) | 0.28 | 0.01 |
+| `sakagami2020a` (J′ = 33–39) | 0.9 | 0.03 |
+| all corrected rows, held-out median | 0.54 | 0.47 |

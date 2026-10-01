@@ -96,7 +96,8 @@ def test_uncertainty_estimates(catalog):
     assert 0.5 < uncertainty(nir)[0] < 2.0 and nir.flags == ("corrected levels",)
     # i2spec2026f: Bodermann's thesis adds beats between 1-14 and 0-12..0-14 lines, and B v' = 1 / X v'' = 14 drop
     # from several MHz held out to under 2 (the 1-14 band is no longer the worst-known part of the NIR)
-    assert 1.0 < uncertainty(nir_hot)[0] < 3.0 and nir_hot.flags == ("corrected levels",)
+    # 3.1 MHz since i2spec2026o (held-out degrees): v′ = 1 is the least-known part of the near infrared
+    assert 1.0 < uncertainty(nir_hot)[0] < 4.0 and nir_hot.flags == ("corrected levels",)
     assert uncertainty(nir_far)[0] == 8.0 and nir_far.flags == ("few data",)
     # Reaching 833 nm requires v'' > 17: no B level lies low enough to get there from v'' <= 17.
     # i2spec2026g: the Orsay atlas part I measures X v'' = 18-25, so inside its J range such a line carries its

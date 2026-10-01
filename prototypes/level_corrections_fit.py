@@ -7,7 +7,7 @@ parameters. Conventions: δX = 0 for v'' <= 10 and δB(v' = 0) = 0, so B carries
 error and X the NIR's. Robust ridge regression on the residuals against BASE, leave-one-line-out
 validation, and a held-out rms per level that lookup.uncertainty uses.
 
-usage: level_corrections_fit.py [--floor=0.3] [--prior=5] [--base=i2spec2026a|pair] [--extended]
+usage: level_corrections_fit.py [--floor=0.3] [--prior=5] [--base=i2spec2026a|pair] [--extended] [--degree=loo]
                                 [--write=level_corrections_2026b]
 --base=pair puts the corrections on the MLR pair of data/potentials/*_2026c.json instead of the published
 potentials; --extended lets the fit reach v' <= 62 and v'' <= 54 (only sensible on the pair).
@@ -61,6 +61,68 @@ def degree(Js):
     return 3
 
 
+def select_degrees(deg, precise, rows, sig_full, r, w, design, floor, prior):
+    """Choose each level's degree by leave-one-line-out over the precise lines that touch it."""
+    lines_ = np.array([str(x[1]) for x in rows])
+    sig = np.array([x[4] for x in rows])
+    good = (sig <= SIGMA_PRECISE) & (np.asarray(sig_full) <= SIGMA_ALLOWED)
+
+    def held_out(deg_try, level):
+        names, idx, A = design(deg_try)
+        ridge = np.diag([1 / (1e5 if (n[0] == "B" and n[1] > V_PERTURBED) else prior) ** 2 for n in names])
+        # as for the per-level held-out figure: judge a B level only by lines whose X level is in the well-determined
+        # region (the emission lines to X v'' = 48-54 carry tens of MHz of X-state hyperfine model error), and an X
+        # level only by lines whose B level is
+        def partner_ok(lv):
+            st = level[0]
+            return all((k0 != "X" or k1 <= V_MAX_X) if st == "B" else (k0 != "B" or k1 <= V_MAX_B)
+                       for (k0, k1, _), s_ in lv.items() if s_ != 0)
+        touch = np.array([any((k0, k1) == level and s != 0 for (k0, k1, _), s in lv.items()) and partner_ok(lv)
+                          for *_, lv in rows]) & good
+        if touch.sum() < 2:
+            return None
+
+        def fit(mask):
+            ww = w.copy()
+            for _ in range(8):
+                Aw, rw = A[mask] * ww[mask, None], r[mask] * ww[mask]
+                c = np.linalg.solve(Aw.T @ Aw + ridge, Aw.T @ rw)
+                z = np.abs((r - A @ c) * w)
+                ww = w * np.minimum(1.0, 3.0 / np.maximum(z, 1e-9))
+            return c
+        res = []
+        for ln in set(lines_[touch]):
+            m = lines_ == ln
+            c = fit(~m)
+            res.extend((r[m & touch] - A[m & touch] @ c).tolist())
+        return float(np.sqrt(np.mean(np.square(res))))
+
+    out = dict(deg)
+    for level in sorted(deg, key=str):
+        if level[0] == "B" and level[1] > V_PERTURBED:
+            continue
+        kmax = min(3, len(set(precise[level])) - 1)
+        if kmax < 1:
+            continue
+        scores = {}
+        for k in range(kmax + 1):
+            trial = dict(out); trial[level] = k
+            h = held_out(trial, level)
+            if h is not None:
+                scores[k] = h
+        if not scores:
+            continue
+        best = min(scores)                       # start from the lowest degree
+        for k in sorted(scores):
+            if scores[k] < 0.95 * scores[best]:
+                best = k
+        if best != out[level]:
+            print(f"  degree {level[0]} {level[1]}: {out[level]} -> {best}  held-out "
+                  + ", ".join(f"K={k} {v:.3f}" for k, v in sorted(scores.items())), flush=True)
+        out[level] = best
+    return out
+
+
 def main(argv):
     opts = {a.split("=")[0]: a.split("=", 1)[1] if "=" in a else True for a in argv}
     floor, prior = float(opts.get("--floor", 0.3)), float(opts.get("--prior", 5.0))
@@ -105,16 +167,27 @@ def main(argv):
                 if s != 0 and ((st == "X" and v >= X_MIN_V) or (st == "B" and v >= 1)):
                     precise[(st, v)].append(J)
     deg = {k: degree(Js) for k, Js in precise.items()}
-    names = sorted({(st, v, k) for (st, v), d in deg.items() for k in range(d + 1)}, key=str)
-    idx = {n: i for i, n in enumerate(names)}
-    A = np.zeros((len(rows), len(names)))
-    for i, (_, _, _, _, _, levels) in enumerate(rows):
-        for (st, v, J), s in levels.items():
-            if (st, v) in deg:
-                y = J * (J + 1) / 1e4
-                for k in range(deg[(st, v)] + 1):
-                    A[i, idx[(st, v, k)]] += s * y**k
     r = np.array([x[2] for x in rows]); w = 1 / np.array([x[3] for x in rows]); sets = np.array([x[0] for x in rows])
+
+    def design(deg):
+        names = sorted({(st, v, k) for (st, v), d in deg.items() for k in range(d + 1)}, key=str)
+        idx = {n: i for i, n in enumerate(names)}
+        A = np.zeros((len(rows), len(names)))
+        for i, (_, _, _, _, _, levels) in enumerate(rows):
+            for (st, v, J), s in levels.items():
+                if (st, v) in deg:
+                    y = J * (J + 1) / 1e4
+                    for k in range(deg[(st, v)] + 1):
+                        A[i, idx[(st, v, k)]] += s * y**k
+        return names, idx, A
+
+    if opts.get("--degree") == "loo":
+        # each level's degree by the held-out prediction of its own precise lines: the J-span rule above
+        # gave B v' = 32 (J' 33-62, a 1.8 MHz trend in 5 kHz data) a constant, which left the 532 nm standard
+        # R(56) 32-0 280 kHz off. Candidates 0..min(3, distinct J - 1); a higher degree must cut the
+        # held-out rms by 5 %.
+        deg = select_degrees(deg, precise, rows, sig_full, r, w, design, floor, prior)
+    names, idx, A = design(deg)
     used = A.any(axis=1)
     print(f"{len(rows)} rows, {used.sum()} touch a corrected level; {len(deg)} levels, {len(names)} coefficients; "
           f"floor {floor} MHz, prior {prior} MHz")
