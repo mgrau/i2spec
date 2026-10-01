@@ -763,19 +763,12 @@ function drawPlot() {
       g.textBaseline = "alphabetic"; g.textAlign = "left";
     }
   }
-  // lines whose strength was not computed (emission lines, X v'' >= 48): a dashed mark at each position, and
-  // a note when nothing in view absorbs, so the view is not an empty plot
+  // lines whose strength was not computed (emission lines, X v'' >= 48) draw nothing; when they are all the
+  // view holds, a note says why the plot is empty (the measured-line diamonds below still mark them)
   const silent = lines.filter(l => !(l.s0 > 0));
   if (silent.length) {
-    g.save(); g.setLineDash([3, 3]); g.strokeStyle = ink("--cls-precision"); g.globalAlpha = 0.8; g.lineWidth = 1;
-    for (const l of silent) {
-      const x = xPix(l.nu);
-      if (x < m.l || x > m.l + pw) continue;
-      g.beginPath(); g.moveTo(x, yPix(0)); g.lineTo(x, yPix(0.85)); g.stroke();
-    }
-    g.restore();
     if (silent.length === lines.length) {
-      const text = "no thermal absorption here: emission lines (X v″ ≥ 48), marked at their positions";
+      const text = "no thermal absorption here: emission lines (X v″ ≥ 48), marked below the plot";
       g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = "left"; g.textBaseline = "top";
       g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
       g.strokeText(text, m.l + 8, m.t + 24); g.fillStyle = ink("--ink-2"); g.fillText(text, m.l + 8, m.t + 24);
