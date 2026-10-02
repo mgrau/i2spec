@@ -1,5 +1,7 @@
 # The test suite on every push and pull request. Line lists are cached as in pages.yml, keyed on the
-# model code and parameter files, so only a model change pays for rebuilding them.
+# model code and parameter files, so only a model change pays for rebuilding them. A change that touches
+# only the documentation, the explorer's static files or other workflows runs just the site tests
+# (tests/test_webapp.py, seconds) instead of the whole suite (~17 min).
 name: Tests
 
 on:
@@ -16,7 +18,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      model: ${{ steps.diff.outputs.model }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: diff
+        name: Does the change reach the model?
+        env:
+          BEFORE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          # a manual run, a new branch or a force-push without a usable base: test everything
+          if [ "${{ github.event_name }}" = workflow_dispatch ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            echo "model=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          files=$(git diff --name-only "$BEFORE" "$GITHUB_SHA")
+          echo "$files"
+          other=$(echo "$files" | grep -vE '^(documentation/|docs/|web/|notebooks/|mkdocs\.yml$|[^/]+\.md$|CITATION\.cff$|LICENSE$|\.github/workflows/(pages|release)\.yml$)' || true)
+          if [ -n "$other" ]; then echo "model=true" >> "$GITHUB_OUTPUT"; else echo "model=false" >> "$GITHUB_OUTPUT"; fi
+
   pytest:
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
@@ -25,16 +50,24 @@ jobs:
         with:
           enable-cache: true
       - name: Restore line lists
+        if: needs.changes.outputs.model == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/i2spec
           key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
           restore-keys: i2spec-
       - run: uv sync --locked
-      - run: uv run python -m pytest -q
+      - name: The whole suite
+        if: needs.changes.outputs.model == 'true'
+        run: uv run python -m pytest -q
+      - name: The site tests only (documentation and explorer files changed)
+        if: needs.changes.outputs.model != 'true'
+        run: uv run python -m pytest -q tests/test_webapp.py
 
   wheel:
     # the installed package, away from the checkout: it must carry everything it needs
+    needs: changes
+    if: needs.changes.outputs.model == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
