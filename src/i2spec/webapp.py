@@ -207,8 +207,37 @@ def _hfs_init(iso):
     _HFS_MODEL = RovibronicModel(iso)
 
 
+#: Weak (ΔF ≠ ΔJ) components kept for crossovers, as a fraction of the line's main components: a crossover
+#: with a main component is then 2 x 1e-4 / (1/15), 0.3% of a Lamb dip, at weak saturation
+WEAK_FRACTION = 1e-4
+
+
+def weak_links(comps, main, total):
+    """The weak components of a line that can make crossovers: [offset (MHz), strength / total, upper, lower].
+
+    upper and lower number the hyperfine eigenstates: main component k joins upper level k and lower level k
+    (main components never share a level), and a level no main component uses gets the next number after
+    them. Together with that rule for the main components, the numbers identify every level the kept
+    components share, so the explorer finds the same crossovers as saturation.resonances (physics.resonances).
+    """
+    level = lambda c, side: (getattr(c, f"{side}_level", None) if getattr(c, f"{side}_level", None) is not None  # noqa: E731
+                             else (getattr(c, f"I_{side}"), getattr(c, f"F_{side}")))
+    number = {side: {level(c, side): k for k, c in enumerate(main)} for side in ("upper", "lower")}
+    chosen = {id(c) for c in main}
+    offset = lambda c: c.offset if hasattr(c, "offset") else c.offset_MHz   # noqa: E731 (model or lookup)
+    out = []
+    for c in sorted(comps, key=offset):
+        if id(c) in chosen or c.strength < WEAK_FRACTION * total:
+            continue
+        ids = [number[side].setdefault(level(c, side), max(number[side].values(), default=-1) + 1)
+               for side in ("upper", "lower")]
+        out.append([round(float(offset(c)), 1), round(float(c.strength / total), 6), *ids])
+    return out
+
+
 def _hfs_chunk(items):
-    """Main components of each line, ΔJ = 0: offsets (0.1 MHz) and strengths (per mille), by frequency."""
+    """Main components of each line, ΔJ = 0: offsets (0.1 MHz) and strengths (per mille), by frequency, and
+    the weak components that share a level with one of them (weak_links), or None when there are none."""
     out = []
     for branch, J, vu, vl in items:
         try:
@@ -218,7 +247,8 @@ def _hfs_chunk(items):
             continue
         main = sorted((c for c in comps if c.label), key=lambda c: c.offset)
         total = sum(c.strength for c in main) or 1.0
-        out.append(([round(c.offset, 1) for c in main], [round(1000 * c.strength / total) for c in main]))
+        out.append(([round(c.offset, 1) for c in main], [round(1000 * c.strength / total) for c in main],
+                    weak_links(comps, main, total) or None))
     return out
 
 
@@ -427,8 +457,9 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         name = f"{len(shards):03d}.json"
         (folder / name).write_text(json.dumps(payload, separators=(",", ":"), ensure_ascii=False))
         # the same rows' hyperfine patterns, in a file of their own: only a narrow view loads it
-        hfs_rows = [patterns[g] or [[], []] for g in sel]
-        (hfs_folder / name).write_text(json.dumps({"o": [p[0] for p in hfs_rows], "s": [p[1] for p in hfs_rows]},
+        hfs_rows = [patterns[g] or [[], [], None] for g in sel]
+        (hfs_folder / name).write_text(json.dumps({"o": [p[0] for p in hfs_rows], "s": [p[1] for p in hfs_rows],
+                                                   "x": [p[2] for p in hfs_rows]},
                                                   separators=(",", ":")))
         shards.append({"file": f"lines/{iso}/{name}", "hfs": f"hfs/{iso}/{name}", "nu0": round(float(edges[k]), 4),
                        "nu1": round(float(edges[k + 1]), 4), "n": int(sel.size), "n_measured": len(rows)})
@@ -462,9 +493,15 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         # No ΔF ≠ ΔJ component does in practice, so this drops two thirds of the file for nothing visible.
         peak = max(c.strength for c in comps)
         kept = [c for c in comps if c.label or c.strength >= 0.02 * peak]
+        total = sum(c.strength for c in kept) or 1.0
         hfs[keys[k]] = {"o": [round(c.offset_MHz, 3) for c in kept],      # 1 kHz, finer than the model is right to
                         "s": [round(c.strength, 5) for c in kept],
                         "l": [c.label or "" for c in kept]}
+        # the weaker ones that share a level with a kept component, for the crossovers (strengths on the
+        # same scale as "s")
+        weak = weak_links(comps, kept, total)
+        if weak:
+            hfs[keys[k]]["x"] = [[o, round(f * total, 7), iu, il] for o, f, iu, il in weak]
         if n % 200 == 0:
             print(f"    {iso} hyperfine {n}/{len(wanted)} ({time.time() - t0:.0f} s)", flush=True)
     (out / f"hfs_{iso}.json").write_text(json.dumps(hfs, separators=(",", ":")))

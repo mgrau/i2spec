@@ -93,7 +93,7 @@ const rowAt = (d, i, iso) => {
 function hfsOf(line) {
   const h = line.hfsFile && state.hfsShards.get(line.hfsFile);
   if (!h || !h.o[line.row] || !h.o[line.row].length) return null;
-  return {o: h.o[line.row], s: h.s[line.row]};
+  return {o: h.o[line.row], s: h.s[line.row], x: h.x ? h.x[line.row] : null};
 }
 
 //: Below this width of the view (nm) the spectrum is drawn component by component.
@@ -354,17 +354,28 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs) {
 const hfsKey = l => `${l.vu}-${l.vl}${l.branch}${l.J}`;
 
 /**
- * A line's hyperfine components as {offset (MHz), strength (sums to 1)}: the full calculation when the
- * detail pane has loaded it, else the ΔJ = 0 pattern of its shard, else the line alone. The export does not
- * carry the (I, F) levels of the components, so physics.resonances() makes Lamb dips of them and no
- * crossovers: crossovers need a weak ΔF ≠ ΔJ component, 10⁻² to 10⁻³ below the dips at weak saturation
- * (docs/research/sub-doppler.md §2).
+ * Components with the level identities physics.resonances() compares: main component k joins upper and
+ * lower level k (no two share a level), and each weak one [offset, strength, upper, lower] of the export
+ * carries the numbers of its levels on the same scheme (webapp.weak_links). `scale` puts the main
+ * strengths on the weak ones' scale (1/1000 for the per-mille shard patterns).
+ */
+function withLevels(o, s, x, scale = 1) {
+  const comps = o.map((offset, k) => ({offset, strength: s[k] * scale, upper: k, lower: k}));
+  for (const [offset, strength, upper, lower] of x || []) comps.push({offset, strength, upper, lower});
+  return comps;
+}
+
+/**
+ * A line's hyperfine components as {offset (MHz), strength, upper, lower}: the full calculation when the
+ * detail pane has loaded it, else the ΔJ = 0 pattern of its shard, else the line alone. Each carries the
+ * weak ΔF ≠ ΔJ components that share a level with a main one (10⁻² to 10⁻⁴ of the line), so
+ * physics.resonances() finds the crossovers as well as the Lamb dips (docs/research/sub-doppler.md §2).
  */
 function componentsOf(line) {
   const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
-  if (full) return full.o.map((o, i) => ({offset: o, strength: full.s[i]}));
+  if (full) return withLevels(full.o, full.s, full.x);
   const h = hfsOf(line);
-  if (h) return h.o.map((o, i) => ({offset: o, strength: h.s[i] / 1000}));
+  if (h) return withLevels(h.o, h.s, h.x, 1 / 1000);
   return [{offset: 0, strength: 1}];
 }
 
@@ -381,16 +392,16 @@ function subDopplerBins(lines, lo, hi, nbins, T, iso) {
   const dx = (hi - lo) * P.MHZ_PER_CM / nbins, x0 = lo * P.MHZ_PER_CM;
   const drawn = Math.hypot(fwhm, 3 * dx), widen = drawn / fwhm;
   const bins = new Float64Array(nbins);
-  let nDips = 0;
+  let nDips = 0, nCross = 0;
   for (const line of lines) {
     const S = strengthOf(line, q, T), f0 = line.nu * P.MHZ_PER_CM;
-    const comps = componentsOf(line).map(c => ({offset: c.offset, strength: S * c.strength}));
+    const comps = componentsOf(line).map(c => ({...c, strength: S * c.strength}));
     const {list, total} = P.resonances(comps, P.dopplerFWHM(line.nu, T, iso) * P.MHZ_PER_CM);
-    nDips += list.length;
+    for (const r of list) if (r.kind === "crossover") nCross++; else nDips++;
     P.addSignal(bins, x0, dx, list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude})), drawn,
       {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total});
   }
-  return {bins, harmonic, fwhm, fwhmDrawn: drawn, nDips};
+  return {bins, harmonic, fwhm, fwhmDrawn: drawn, nDips, nCross};
 }
 
 /**
@@ -779,7 +790,7 @@ function drawPlot() {
     // what the sub-Doppler trace is, or why it is not drawn: inside the plot, with a halo; top left, or on a
     // phone, where the tick labels are inside the plot at the left, top right
     const note = !sub ? `sub-Doppler: zoom to below ${HFS_SPAN_NM} nm` :
-      `${sub.nDips} Lamb dips · Γ ${sub.fwhm} MHz` + (sub.fwhmDrawn > sub.fwhm * 1.05 ?
+      `${sub.nDips} Lamb dips${sub.nCross ? `, ${sub.nCross} crossovers` : ""} · Γ ${sub.fwhm} MHz` + (sub.fwhmDrawn > sub.fwhm * 1.05 ?
         ` (drawn ${sub.fwhmDrawn < 10 ? sub.fwhmDrawn.toFixed(1) : sub.fwhmDrawn.toFixed(0)} MHz: zoom in)` : "");
     g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = narrow ? "right" : "left"; g.textBaseline = "top";
     const nx = narrow ? m.l + pw - 4 : m.l + 8;
@@ -1049,7 +1060,7 @@ function drawHyperfine(canvas, comps, line) {
   if (sub) {
     const {fwhm: gamma, harmonic, modulation} = state.sub;
     const dx = 2 * span / (W - 2 * pad), drawn = Math.hypot(gamma, 3 * dx);
-    const {list} = P.resonances(comps.o.map((o, i) => ({offset: o, strength: comps.s[i]})), fwhm);
+    const {list} = P.resonances(withLevels(comps.o, comps.s, comps.x), fwhm);
     P.addSignal(prof, -span - (pad + 0.5) * dx, dx, list, drawn,
       {harmonic, modulation: harmonic ? modulation * drawn / gamma : 0});
     for (const v of prof) pmax = Math.max(pmax, Math.abs(v));
@@ -1130,7 +1141,7 @@ async function select(line) {
     try { await getJSON(line.hfsFile, state.hfsShards); } catch {}
     if (state.selected !== line) return;
     const h = hfsOf(line);
-    if (h) { comps = {o: h.o, s: h.s.map(v => v / 1000), l: h.o.map((_, i) => `a${i + 1}`)}; approx = true; }
+    if (h) { comps = {o: h.o, s: h.s.map(v => v / 1000), l: h.o.map((_, i) => `a${i + 1}`), x: h.x}; approx = true; }
   }
   const box = $("#hfsbox");
   if (!comps) {
@@ -1766,7 +1777,7 @@ function redrawAll() {
     let comps = (state.hfs.get(state.selected.iso) || {})[
       `${state.selected.vu}-${state.selected.vl}${state.selected.branch}${state.selected.J}`];
     const h = !comps && hfsOf(state.selected);
-    if (h) comps = {o: h.o, s: h.s.map(v => v / 1000), l: h.o.map((_, i) => `a${i + 1}`)};
+    if (h) comps = {o: h.o, s: h.s.map(v => v / 1000), l: h.o.map((_, i) => `a${i + 1}`), x: h.x};
     if (comps) drawHyperfine(c, comps, state.selected);
   }
 }

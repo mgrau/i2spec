@@ -33,7 +33,7 @@ crossover(ij) = 2 · w_ij · (S_i · S_j)**(p/2) · exp(−ln2 · Δ_ij² / Δν
 | # | Assumption | Consequence if wrong |
 |---|---|---|
 | A1 | Two-level rate equations, weak saturation, no coherent (recoil, Dicke, crossover-dip interference) effects | Amplitudes only; positions are unaffected |
-| A2 | Levels are identified by (I, F), with I the **dominant** nuclear spin from `HyperfineLevel` | At high J the quadrupole mixes I; two levels of one F with similar I content could be merged or split wrongly, creating or missing a crossover |
+| A2 | Levels are identified by their hyperfine eigenstate (`Component.upper_level`, `lower_level`); (I, F), with I the dominant nuclear spin, only for components built without one | (I, F) is not unique: at P(10) 43–0 two upper levels both carry (I, F) = (2, 9), which merged them and created crossovers that do not exist. Fixed 2026-10-01 |
 | A3 | V-type (shared lower) and Λ-type (shared upper) get the same weight, `lambda_weight=1` | Λ-type should in fact be weaker: it works through population accumulated in the B state, which lives about 1 µs, against a ground-state hole that survives the transit time, about 5 µs for a millimetre beam at 300 K. A weight near 0.2 is the physical expectation; it is **not** applied by default, because it is an estimate, not a measurement |
 | A4 | No optical pumping between hyperfine levels: a molecule that absorbs is lost from its ground level, and the B state fluoresces to many v″ | Holds for I₂, unlike alkalis, where optical pumping inverts some crossovers |
 | A5 | One homogeneous width for every resonance, supplied by the caller | Crossover widths are the mean of the two component widths, which is the same number here |

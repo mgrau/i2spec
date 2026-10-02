@@ -37,14 +37,15 @@ for label in ("R(56) 32-0", "P(13) 43-0", "P(82) 0-13", "P(119) 1-24", "P(52) 53
     line = catalog.line(label)
     out["uncertainty"].append({"label": label, "nu": line.nu, "u": uncertainty(line)[0], "flags": list(line.flags)})
 
-# sub-Doppler: the full hyperfine calculation of R(56) 32-0, with the (I, F) levels the crossovers need, and
+# sub-Doppler: the full hyperfine calculation of R(56) 32-0, with the levels the crossovers need (eigenstate
+# numbers, as saturation.shared_level uses them and as the export gives them: webapp.weak_links), and
 # what saturation.py makes of it, for the browser's copy of the same model to reproduce
 nu0, comps = RovibronicModel("127I2").hyperfine_components(32, 0, 56, "R")
 width = saturation.doppler_width("127I2", nu0, 300.0)
 out["sub_doppler"] = {
     "line": "R(56) 32-0", "doppler_width": width,
-    "components": [{"offset": c.offset, "strength": c.strength, "lower": f"{c.I_lower},{c.F_lower}",
-                    "upper": f"{c.I_upper},{c.F_upper}"} for c in comps],
+    "components": [{"offset": c.offset, "strength": c.strength, "lower": c.lower_level,
+                    "upper": c.upper_level} for c in comps],
     "resonances": [], "lineshape": [], "signal": [],
 }
 for options in ({}, {"exponent": 1.0}, {"lambda_weight": 0.2, "threshold": 1e-3}):

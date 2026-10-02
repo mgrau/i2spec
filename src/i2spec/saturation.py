@@ -57,12 +57,18 @@ class Resonance:
 def shared_level(a, b):
     """"lower", "upper" or None: which level two hyperfine components have in common.
 
-    Levels are identified by (I, F). I is the dominant total nuclear spin, which the quadrupole
-    coupling mixes at high J, so this labelling can fail where two levels of one F have nearly
-    equal I content (docs/research/sub-doppler.md).
+    Levels are identified by the eigenstate index the components carry (hyperfine.Component.upper_level
+    and lower_level), or by (I, F) for components without one. (I, F) alone is not unique: I is the
+    dominant total nuclear spin, which the quadrupole coupling mixes, and two levels of one F can carry
+    the same I (docs/research/sub-doppler.md).
     """
-    lower = (a.I_lower, a.F_lower) == (b.I_lower, b.F_lower)
-    upper = (a.I_upper, a.F_upper) == (b.I_upper, b.F_upper)
+    def same(side):
+        ka, kb = getattr(a, f"{side}_level", None), getattr(b, f"{side}_level", None)
+        if ka is not None and kb is not None:
+            return ka == kb
+        return (getattr(a, f"I_{side}"), getattr(a, f"F_{side}")) == (getattr(b, f"I_{side}"), getattr(b, f"F_{side}"))
+
+    lower, upper = same("lower"), same("upper")
     if lower and upper:
         return None  # the same transition twice
     return "lower" if lower else "upper" if upper else None

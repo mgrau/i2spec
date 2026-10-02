@@ -329,6 +329,10 @@ class Component:
     F_upper: int
     F_lower: int
     frequency_MHz: float
+    I_upper: int | None = None  # total nuclear spin of each level (approximately good at high J)
+    I_lower: int | None = None
+    upper_level: int | None = None  # hyperfine eigenstate indices (hyperfine.Component)
+    lower_level: int | None = None
 
     @property
     def name(self):
@@ -425,6 +429,7 @@ class Catalog:
         """Hyperfine components of a line, with absolute frequencies."""
         model = self.model(line.isotopologue)
         nu0, comps = model.hyperfine_components(line.v_upper, line.v_lower, line.J_lower, line.branch, dJ=dJ)
-        out = [Component(c.label, c.offset, c.strength, c.F_upper, c.F_lower, nu0 + c.offset)
+        out = [Component(c.label, c.offset, c.strength, c.F_upper, c.F_lower, nu0 + c.offset, c.I_upper, c.I_lower,
+                         c.upper_level, c.lower_level)
                for c in comps if c.label or not main_only]
         return sorted(out, key=lambda c: c.offset_MHz)

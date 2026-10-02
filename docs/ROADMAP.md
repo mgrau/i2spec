@@ -42,8 +42,7 @@ compares the two.
 6. **A compiled forward model** shared by the Python package and the web explorer (Rust, compiled to
    WebAssembly), once the model form is stable.
 7. **Explorer features:** sub-Doppler spectra, export of line lists, and a search by laser wavelength
-   (including harmonics of a fundamental). Done (`documentation/explorer.md`). Left: crossover
-   resonances in the explorer, which need the (I, F) level labels of the weak components in the export.
+   (including harmonics of a fundamental), with crossover resonances. Done (`documentation/explorer.md`).
 
 ## Decisions
 

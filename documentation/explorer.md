@@ -52,11 +52,12 @@ the view is narrower than 0.1 nm; a wider view shows the cross section with a no
 - A resonance narrower than about three screen pixels is drawn at that width (the modulation widened in
   proportion, so the shape is kept); the note in the plot gives the width drawn. Zoom in until it
   equals Γ to see the true line shape.
-- **Crossovers are not drawn.** They occur only between components that share a level, and the main
-  (ΔF = ΔJ) components never do; every crossover involves a weak ΔF ≠ ΔJ component and lies 10⁻² to
-  10⁻³ below the dips. The exported patterns do not carry the level quantum numbers that would be
-  needed to find them. The Python package (`saturation.resonances`) and the terminal browser include
-  them.
+- **Crossovers** appear halfway between two components that share a level. The main (ΔF = ΔJ)
+  components never share one, so every crossover involves a weak ΔF ≠ ΔJ component. They are large at
+  low J (the strongest is 40% of the strongest dip at J = 2, 5% at J = 10) and fade to 0.3% by J ≈ 55.
+  The export carries every weak component above 10⁻⁴ of its line with the numbers of its levels, so
+  the explorer draws the same crossovers as the Python package (`saturation.resonances`) except those
+  below about 0.3% of a dip, which it leaves out.
 
 When a line is selected in sub-Doppler mode, the hyperfine plot in the detail panel shows its
 sub-Doppler spectrum in place of the Doppler-broadened profile. The browser implementation is tested
@@ -141,6 +142,5 @@ the laser (`laser`, its unit `lunit` and the harmonic `n`). A link with a laser 
 the laser's harmonic.
 
 !!! note "Limitations"
-    The line explorer shows one isotopologue at a time and does not include the bound–free continuum
-    or sub-Doppler crossover resonances. Both are available in the Python package and the terminal
-    browser.
+    The line explorer shows one isotopologue at a time and does not include the bound–free continuum,
+    which the Python package has. Its crossovers stop at weak components of 10⁻⁴ of the line.

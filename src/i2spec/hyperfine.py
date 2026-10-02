@@ -177,6 +177,8 @@ class Component:
     I_upper: int  # dominant total nuclear spin of the upper level
     I_lower: int
     label: str | None = None  # a1, a2, ... for main components (ΔF = ΔJ, same I), by increasing frequency
+    upper_level: int | None = None  # which hyperfine eigenstate of the upper (lower) level: unlike (I, F),
+    lower_level: int | None = None  # unique, since I is only approximately good at high J
 
 
 def dipole_reduced(Jp, Fp, J, F, I):
@@ -202,7 +204,8 @@ def line_components(upper, lower, J_upper, J_lower, threshold=1e-10):
                     if Ia == Ib and abs(Ja - Jb) == 1:
                         amplitude += u.vector[a] * low.vector[b] * dipole_reduced(Ja, u.F, Jb, low.F, Ia)
             if amplitude**2 > threshold:
-                found.append((iu, il, Component(u.energy - low.energy, amplitude**2, u.F, low.F, u.I, low.I)))
+                found.append((iu, il, Component(u.energy - low.energy, amplitude**2, u.F, low.F, u.I, low.I,
+                                                upper_level=iu, lower_level=il)))
     total = sum(c.strength for _, _, c in found)
     for _, _, c in found:
         c.strength /= total

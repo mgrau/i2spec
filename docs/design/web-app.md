@@ -189,8 +189,10 @@ this off, since "past the end" means nothing there.
 
 ## Deliberate limits
 
-- **No sub-Doppler.** Lamb dips and crossovers need the (I, F) labels of the shared levels, which are
-  not exported. The TUI has it (`docs/research/sub-doppler.md`); the app does not.
+- **Sub-Doppler crossovers to 10⁻⁴.** Each line's export carries its weak ΔF ≠ ΔJ components above
+  10⁻⁴ of the line, each with the index of the main component sharing its upper level and of the one
+  sharing its lower level (`webapp.weak_links`); main components never share a level, so that is enough
+  to find every crossover with a main component. Weaker ones are left out to keep the patterns small.
 - **No continuum.** The plot is the bound–bound line list only, so it understates the absorption
   below about 500 nm. `i2spec.continuum` has it.
 - **No blends across isotopologues.** One isotopologue is plotted at a time, as in the TUI.
