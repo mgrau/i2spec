@@ -31,6 +31,7 @@ tests/test_hyperfine.py checks both against brute-force constructions.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from math import sqrt
 
 import numpy as np
@@ -122,20 +123,66 @@ def _mean(a: HyperfineParameters, b: HyperfineParameters) -> HyperfineParameters
     return HyperfineParameters((a.eqQ + b.eqQ) / 2, (a.C + b.C) / 2, (a.d + b.d) / 2, (a.delta + b.delta) / 2)
 
 
+def _coefficient_terms(Jp, Ip, J, I, F, i1, i2, eqQ_ratio, C_ratio):
+    """matrix_element split by parameter: the factors multiplying C, delta, eqQ and d (MHz per unit)."""
+    c = dl = q = t = 0.0
+    if Jp == J and Ip == I:
+        c += 1e-3 * (F * (F + 1) - I * (I + 1) - J * (J + 1)) / 2
+        dl += 1e-3 * (I * (I + 1) - i1 * (i1 + 1) - i2 * (i2 + 1)) / 2
+    if Jp == J and C_ratio != 1.0:
+        c += (1e-3 * (C_ratio - 1.0) * _sign(J + Ip + F) * w6j(F, Ip, J, 1, J, I) * _vec_reduced(J)
+              * _one_nucleus(2, Ip, I, i1, i2, 1, _vec_reduced(i2)))
+    rot = rot_reduced(Jp, J, 2)
+    if rot != 0.0:
+        geometry = _sign(J + Ip + F) * w6j(F, Ip, Jp, 2, J, I) * rot
+        quad = sum(ratio * sqrt(6) / (4 * i * (2 * i - 1)) * _one_nucleus(n, Ip, I, i1, i2, 2, _quad_reduced(i))
+                   for n, (i, ratio) in enumerate(((i1, 1.0), (i2, eqQ_ratio)), start=1))
+        q = geometry * K_Q * quad
+        t = geometry * K_T * 1e-3 * _spin_spin_reduced(Ip, I, i1, i2)
+    return c, dl, q, t
+
+
+@lru_cache(maxsize=8192)
+def _block_coefficients(J_values, i1, i2, symmetry, eqQ_ratio, C_ratio):
+    """{F: (basis, J of each basis state, coefficient matrices of C, delta, eqQ, d)} for build_blocks.
+
+    The Hamiltonian is linear in the four parameters, and the factors depend on the angular momenta
+    alone, so they are computed once per set of rotational levels and reused for every vibrational level.
+    """
+    states = [(J, I) for J in J_values for I in allowed_spins(J, i1, i2, symmetry)]
+    out = {}
+    for F in sorted({F for J, I in states for F in range(abs(J - I), J + I + 1)}):
+        basis = [(J, I) for J, I in states if abs(J - I) <= F <= J + I]
+        terms = np.array([[_coefficient_terms(Ja, Ia, Jb, Ib, F, i1, i2, eqQ_ratio, C_ratio) for Jb, Ib in basis]
+                          for Ja, Ia in basis])                     # (n, n, 4)
+        coef = np.ascontiguousarray(np.moveaxis(terms, -1, 0))
+        if not np.allclose(coef, np.swapaxes(coef, 1, 2), atol=1e-12):
+            raise RuntimeError(f"hyperfine block F={F} is not symmetric")
+        for a in coef:
+            a.flags.writeable = False
+        out[F] = (basis, np.array([J for J, _ in basis]), coef)
+    return out
+
+
 def build_blocks(J_values, params, rot_energy, i1=2.5, i2=2.5, symmetry="g", eqQ_ratio=1.0, C_ratio=1.0):
     """Hamiltonian blocks {F: (basis, H)} spanning the rotational levels J_values.
 
-    params(J) -> HyperfineParameters; rot_energy(J) -> rotational energy in MHz.
+    params(J) -> HyperfineParameters; rot_energy(J) -> rotational energy in MHz. Between two rotational
+    levels the parameters are the mean of the two levels' ones.
     """
-    states = [(J, I) for J in J_values for I in allowed_spins(J, i1, i2, symmetry)]
+    J_values = tuple(int(J) for J in J_values)
+    coefficients = _block_coefficients(J_values, i1, i2, symmetry, float(eqQ_ratio), float(C_ratio))
+    index = {J: k for k, J in enumerate(J_values)}
+    p = np.array([[pj.C, pj.delta, pj.eqQ, pj.d] for pj in map(params, J_values)])        # (nJ, 4)
+    pairs = (p[:, None, :] + p[None, :, :]) / 2                                           # the mean off the diagonal
+    pairs[np.arange(len(J_values)), np.arange(len(J_values))] = p
+    rot = np.array([rot_energy(J) for J in J_values], dtype=float)
     blocks = {}
-    for F in sorted({F for J, I in states for F in range(abs(J - I), J + I + 1)}):
-        basis = [(J, I) for J, I in states if abs(J - I) <= F <= J + I]
-        H = np.array([[matrix_element(Ja, Ia, Jb, Ib, F, params(Ja) if Ja == Jb else _mean(params(Ja), params(Jb)),
-                                      i1, i2, eqQ_ratio, C_ratio) for Jb, Ib in basis] for Ja, Ia in basis])
-        if not np.allclose(H, H.T, atol=1e-9):
-            raise RuntimeError(f"hyperfine block F={F} is not symmetric")
-        H += np.diag([rot_energy(J) for J, _ in basis])
+    for F, (basis, Js, coef) in coefficients.items():
+        k = np.array([index[J] for J in Js])
+        P = pairs[k[:, None], k[None, :]]                                                  # (n, n, 4)
+        H = np.einsum("knm,nmk->nm", coef, P)
+        H += np.diag(rot[k])
         blocks[F] = (basis, H)
     return blocks
 
@@ -154,18 +201,64 @@ def level_structure(J, params, rot_energy, *, i1=2.5, i2=2.5, symmetry="g", eqQ_
 
     rot_energy(J) is in MHz; only differences to rot_energy(J) matter.
     """
-    E0 = rot_energy(J)
     J_values = [Jn for Jn in range(J - dJ, J + dJ + 1, 2) if Jn >= 0]
     levels = []
-    blocks = build_blocks(J_values, params, lambda Jn: rot_energy(Jn) - E0, i1, i2, symmetry, eqQ_ratio, C_ratio)
+    if len(J_values) == 1:          # J alone: its rotational energy is the zero, and need not be known
+        relative = lambda Jn: 0.0   # noqa: E731
+    else:
+        E0 = rot_energy(J)
+        relative = lambda Jn: rot_energy(Jn) - E0   # noqa: E731
+    blocks = build_blocks(J_values, params, relative, i1, i2, symmetry, eqQ_ratio, C_ratio)
     for F, (basis, H) in blocks.items():
         energies, vectors = np.linalg.eigh(H)
         central = np.array([Jb == J for Jb, _ in basis])
-        for k, energy in enumerate(energies):
-            weights = np.where(central, vectors[:, k] ** 2, 0.0)
-            if weights.sum() > 0.5:
-                levels.append(HyperfineLevel(F, basis[int(np.argmax(weights))][1], float(energy), basis, vectors[:, k]))
-    return sorted(levels, key=lambda level: level.energy)
+        weights = np.where(central[:, None], vectors ** 2, 0.0)
+        for k in np.flatnonzero(weights.sum(axis=0) > 0.5):
+            levels.append(HyperfineLevel(F, basis[int(np.argmax(weights[:, k]))][1], float(energies[k]), basis,
+                                         vectors[:, k]))
+    return HyperfineLevels(sorted(levels, key=lambda level: level.energy))
+
+
+class HyperfineLevels(list):
+    """The hyperfine levels of one rotational level, by energy (a list), keeping the matrix of their
+    eigenvectors that line_components uses, so that the lines sharing a level build it once."""
+
+    _embedding = None
+
+
+def _embedding(levels):
+    """(blocks, U): the F blocks of ``levels`` as ((F, basis), ...) and the eigenvectors as the columns of U,
+    each in the rows of its own block, so that every amplitude of a line is one matrix product."""
+    cached = getattr(levels, "_embedding", None)
+    if cached is not None:
+        return cached
+    order, start = {}, 0
+    for level in levels:
+        if level.F not in order:
+            order[level.F] = (start, tuple(level.basis))
+            start += len(level.basis)
+    U = np.zeros((start, len(levels)))
+    for k, level in enumerate(levels):
+        a = order[level.F][0]
+        U[a:a + len(level.basis), k] = level.vector
+    result = (tuple((F, basis) for F, (_, basis) in order.items()), U)
+    if isinstance(levels, HyperfineLevels):
+        levels._embedding = result
+    return result
+
+
+@lru_cache(maxsize=16384)
+def _dipole_operator(blocks_upper, blocks_lower):
+    """dipole_reduced between every basis state of the upper and of the lower blocks (as from _embedding)."""
+    sizes = lambda blocks: np.cumsum([0] + [len(b) for _, b in blocks])   # noqa: E731
+    su, sl = sizes(blocks_upper), sizes(blocks_lower)
+    D = np.zeros((su[-1], sl[-1]))
+    for m, (Fu, bu) in enumerate(blocks_upper):
+        for n, (Fl, bl) in enumerate(blocks_lower):
+            if abs(Fu - Fl) <= 1:
+                D[su[m]:su[m + 1], sl[n]:sl[n + 1]] = _dipole_matrix(bu, Fu, bl, Fl)
+    D.flags.writeable = False
+    return D
 
 
 @dataclass
@@ -186,6 +279,18 @@ def dipole_reduced(Jp, Fp, J, F, I):
     return _sign(Jp + I + F + 1) * sqrt((2 * F + 1) * (2 * Fp + 1)) * w6j(Jp, Fp, I, F, J, 1) * rot_reduced(Jp, J, 1)
 
 
+@lru_cache(maxsize=65536)
+def _dipole_matrix(basis_upper, F_upper, basis_lower, F_lower):
+    """dipole_reduced between the coupled basis states of an upper and a lower F block (rows: upper)."""
+    D = np.zeros((len(basis_upper), len(basis_lower)))
+    for a, (Ja, Ia) in enumerate(basis_upper):
+        for b, (Jb, Ib) in enumerate(basis_lower):
+            if Ia == Ib and abs(Ja - Jb) == 1:
+                D[a, b] = dipole_reduced(Ja, F_upper, Jb, F_lower, Ia)
+    D.flags.writeable = False
+    return D
+
+
 def line_components(upper, lower, J_upper, J_lower, threshold=1e-10):
     """Components of one rovibronic line from the hyperfine levels of its upper and lower levels.
 
@@ -193,19 +298,15 @@ def line_components(upper, lower, J_upper, J_lower, threshold=1e-10):
     strongest-first matching, one per upper and lower level, because I is not a good quantum
     number at high J: the quadrupole coupling mixes the degenerate I states.
     """
+    blocks_u, U = _embedding(upper)
+    blocks_l, L = _embedding(lower)
+    amplitudes = U.T @ _dipole_operator(blocks_u, blocks_l) @ L     # zero unless |F' - F| <= 1
     found = []
-    for iu, u in enumerate(upper):
-        for il, low in enumerate(lower):
-            if abs(u.F - low.F) > 1:
-                continue
-            amplitude = 0.0
-            for a, (Ja, Ia) in enumerate(u.basis):
-                for b, (Jb, Ib) in enumerate(low.basis):
-                    if Ia == Ib and abs(Ja - Jb) == 1:
-                        amplitude += u.vector[a] * low.vector[b] * dipole_reduced(Ja, u.F, Jb, low.F, Ia)
-            if amplitude**2 > threshold:
-                found.append((iu, il, Component(u.energy - low.energy, amplitude**2, u.F, low.F, u.I, low.I,
-                                                upper_level=iu, lower_level=il)))
+    for iu, il in zip(*np.nonzero(amplitudes ** 2 > threshold)):
+        iu, il = int(iu), int(il)
+        u, low = upper[iu], lower[il]
+        found.append((iu, il, Component(u.energy - low.energy, float(amplitudes[iu, il]) ** 2, u.F, low.F, u.I, low.I,
+                                        upper_level=iu, lower_level=il)))
     total = sum(c.strength for _, _, c in found)
     for _, _, c in found:
         c.strength /= total

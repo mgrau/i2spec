@@ -241,7 +241,7 @@ def _hfs_chunk(items):
     out = []
     for branch, J, vu, vl in items:
         try:
-            _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0)
+            _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0, position=False)
         except Exception:                 # a level beyond every validated grid
             out.append(None)
             continue
