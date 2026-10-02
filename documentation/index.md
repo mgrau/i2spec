@@ -37,16 +37,20 @@ corrections are fitted, and to estimate the uncertainty of each predicted positi
 
 </div>
 
-## Current parameter set
+## The model
 
-The default parameter set is `i2spec2026k`. It combines:
+The model combines:
 
 - the X and B potentials of Salumbides *et al.* (2008), a collaboration of the Amsterdam (VU) and
   Hannover groups, referred to here as the 2008 potentials, within the range of their fit
   (X v″ ≤ 17, B v′ ≤ 43);
 - Morse/long-range potentials fitted in this work for the levels outside that range;
 - empirical corrections to individual levels, fitted to all frequency-comb-referenced measurements, and
-  near the B dissociation limit (v′ = 51–79) to the Orsay atlas of Gerstenkorn & Luc (1983).
+  near the B dissociation limit (v′ = 51–79) to the Orsay atlas of Gerstenkorn & Luc (1983);
+- a Gaussian process that corrects the B levels without data of their own (v′ = 3–35) from the corrected
+  levels around them;
+- the published hyperfine parameter formulae, with a table of measured corrections to the B-state
+  parameters.
 
 With these, the precision data sets are reproduced to 0.02–0.3 MHz. The uncertainty of positions
 elsewhere ranges from below 1 MHz to several GHz, depending on the available data; see

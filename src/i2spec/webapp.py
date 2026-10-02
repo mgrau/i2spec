@@ -28,7 +28,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .constants import DEFAULT_PARAMETERS, MHZ_PER_CM
+from .constants import MHZ_PER_CM
 
 ROOT = Path(__file__).resolve().parents[2]
 WEB = ROOT / "web"
@@ -348,7 +348,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
 
     manifest = {
         "generated": date.today().isoformat(),
-        "model": {"package": "i2spec", "version": __version__, "parameters": DEFAULT_PARAMETERS, "git": _git_revision(),
+        "model": {"package": "i2spec", "version": __version__, "git": _git_revision(),
                   "note": "Regenerate with `uv run i2spec web export` after a model change."},
         "constants": {"c2": C2, "mhz_per_cm": MHZ_PER_CM},
         "cutoff_cm_at_300K": s_min,

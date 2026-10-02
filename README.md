@@ -5,11 +5,11 @@ line. It computes level energies from potential-energy curves, line positions, h
 from an effective nuclear-spin Hamiltonian, line strengths, absorption spectra and cell transmission,
 for ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I from the dissociation limit near 499 nm into the near infrared.
 
-The current parameter set, `i2spec2026k`, keeps the potentials of Salumbides et al. (2008) where they were
-fitted (X v″ ≤ 17, B v′ ≤ 43), uses Morse/long-range curves fitted here beyond them, and adds measured
-level corrections from every comb-referenced line; it reproduces the precision data sets to
-0.02–0.3 MHz where they exist. `docs/design/parameter-sets.md` records how it got there, and the web
-app's "How it works" page summarises the physics.
+The model keeps the potentials of Salumbides et al. (2008) where they were fitted (X v″ ≤ 17,
+B v′ ≤ 43), uses Morse/long-range curves fitted here beyond them, and adds measured level corrections
+from every comb-referenced line, with a Gaussian process for the B levels that have no data of their
+own; it reproduces the precision data sets to 0.02–0.3 MHz where they exist. The web app's
+"How it works" page summarises the physics.
 
 ## Quick start
 
@@ -82,7 +82,7 @@ print(nu0 + a10.offset)             # ≈ 563 260 223.57 MHz (CIPM value: 563 26
 | path | what |
 |---|---|
 | `src/i2spec/` | the package: potentials, radial solvers, level corrections, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
-| `src/i2spec/data/` | parameter sets (`i2spec2026*.json`), potentials, level corrections |
+| `src/i2spec/data/` | the model parameters: potentials, level corrections, hyperfine tables |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
 | `data/catalog/` | the literature catalog: every data source found, with DOIs |

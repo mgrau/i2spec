@@ -1207,7 +1207,7 @@ function csvHeader(what) {
   const a = P.fromWavenumber(state.lo, unit), b = P.fromWavenumber(state.hi, unit);
   const out = [
     `# ${what}, from the i2spec line explorer`,
-    `# model: ${m.model.package} ${m.model.version}, parameters ${m.model.parameters}` +
+    `# model: ${m.model.package} ${m.model.version}` +
       `${m.model.git ? ", git " + m.model.git : ""}; data exported ${m.generated}`,
     `# downloaded ${new Date().toISOString()}; isotopologue ${state.iso}; T = ${state.T} K; ` +
       `view ${Math.min(a, b).toFixed(d)} to ${Math.max(a, b).toFixed(d)} ${unit}; shown: ${state.show || "none"}`,
@@ -1794,7 +1794,7 @@ async function start() {
   }));
   $("#iso").value = "127I2";
   $("#prov").innerHTML =
-    `${m.model.package} ${m.model.version} · ${m.model.parameters}${m.model.git ? " · " + m.model.git : ""}` +
+    `${m.model.package} ${m.model.version}${m.model.git ? " · " + m.model.git : ""}` +
     `<br>exported ${m.generated} · lines above ${m.cutoff_cm_at_300K.toExponential(0)} cm at 300 K`;
   $("#prov").title = m.model.note;
   $("#detail").innerHTML = EMPTY_DETAIL;

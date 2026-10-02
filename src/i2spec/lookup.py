@@ -244,43 +244,43 @@ def uncertainty(line: Line):
     c = _corrections()
     if (line.isotopologue == "127I2" and c is not None and c.band_covers(line.v_upper, line.v_lower, line.J_lower)):
         return corrected(line), (
-            "NIR band correction (i2spec2026f): the v′ = 0 → v″ = 12-17 lines on top of the level corrections, "
+            "NIR band correction: the v′ = 0 → v″ = 12-17 lines on top of the level corrections, "
             "fitted to 108 comb- and beat-referenced rows of Liao 2010, Bodermann 1998/2000 and Bodermann's thesis "
             "(liao2010a 0.027 MHz in-sample with its 114 kHz pressure shift, 0.053 held out); this line is within "
             "15 in J″ of the data at its v″, and the value is the held-out rms of all 108 rows")
     if (u := corrected(line)) is not None and 18 <= line.v_lower <= 25:
-        return u, ("X v″ = 18-25 measured (i2spec2026g): 3 700 lines of the Orsay atlas part I (Gerstenkorn, Vergès & "
+        return u, ("X v″ = 18-25 measured: 3 700 lines of the Orsay atlas part I (Gerstenkorn, Vergès & "
                    "Chevillard 1982, cell at 790 °C) assigned and fitted with the atlas's own scale calibration; this line "
                    "is within 15 in J of the atlas lines that fixed its lower level, and the value is that level's "
                    "held-out uncertainty with the atlas's per-line scatter removed")
     if u is not None and line.v_upper > 50:
-        return u, ("B v′ = 51-79 measured (i2spec2026k): 2 009 unblended lines of the Orsay atlas Partie IV (Gerstenkorn "
+        return u, ("B v′ = 51-79 measured: 2 009 unblended lines of the Orsay atlas Partie IV (Gerstenkorn "
                    "& Luc 1983), on the scale of the three atlas lines also measured against a comb, fitted level by level "
                    "on the refitted B potential; this line is within 15 in J′ of the atlas lines of its upper level, and "
                    "the value is that level's held-out uncertainty with the atlas's per-line scatter removed")
     if u is not None:
-        return u, ("measured level corrections (i2spec2026d): every comb-referenced line fitted as polynomials in "
+        return u, ("measured level corrections: every comb-referenced line fitted as polynomials in "
                    "J(J+1) per level, 0.02-0.3 MHz in-sample; this line is within 15 in J of the lines that fixed its "
                    "levels, and the value is their held-out rms (1 MHz where a single line fixed a level)")
     if (g := gp_corrected(line)) is not None:
-        return g, ("Gaussian-process B correction (i2spec2026n): this B level has no correction of its own, so its value "
+        return g, ("Gaussian-process B correction: this B level has no correction of its own, so its value "
                    "is interpolated from the corrected levels around it in v′ and J′ (docs/research/model-bakeoff.md), and the lower level is X v″ <= 5; "
                    "held out a level at a time, B v′ = 3-35 is predicted to 1.1 MHz rms, against 1.9 MHz uncorrected, "
                    "82 % of lines within the quoted 1σ (the posterior σ, with a 0.5 MHz floor)")
     if 48 <= line.v_lower <= 54:
-        return 20.0, ("v″ = 48-54 comes from the extended-range MLR X potential (i2spec2026l): the emission lines of "
+        return 20.0, ("v″ = 48-54 comes from the extended-range MLR X potential: the emission lines of "
                       "matyugin2012 and nesterenko2019 are reproduced to 7 and 19 MHz, and that residual is the X-state "
                       "hyperfine model there, not the levels")
     if line.v_lower > V_LOWER_FITTED:
         if line.v_lower <= 25:
             return 300.0, ("v″ = 18-25 outside the J the Orsay atlas part I measured: the extended X potential "
-                           "(mlr_x_2026e) alone, which the atlas levels hold to ~15 MHz within their J")
+                           "alone, which the atlas levels hold to ~15 MHz within their J")
         if line.v_lower <= 75:
-            return 150.0, ("the extended X potential (mlr_x_2026e, i2spec2026l) fitted to the level constants of "
+            return 150.0, ("the extended X potential fitted to the level constants of "
                            "Martin et al. 1986: 60 MHz rms at v″ = 26-47, 55 at 49-60, 73 at 61-75 for J ≤ 120, "
                            "twice that quoted for the constants' own accuracy and J extrapolation")
         if line.v_lower <= 89:
-            return 400.0, ("the extended X potential (mlr_x_2026e) fitted to Martin et al. 1986 at v″ = 76-89, "
+            return 400.0, ("the extended X potential fitted to Martin et al. 1986 at v″ = 76-89, "
                            "174 MHz rms; near the X limit, where the levels crowd")
         return 2.1e6, ("v″ > 89: not physical. The extended X potential is fitted to v″ = 89 and dips up to "
                        "170 cm⁻¹ below its dispersion limit at 7-9 Å; its levels above sit 70 cm⁻¹ rms from Martin "
@@ -288,10 +288,10 @@ def uncertainty(line: Line):
                        "(docs/research/x-levels-martin1986.md)")
     if line.v_upper > 50:
         return 1000.0, ("v′ > 50 outside the J the Orsay atlas Partie IV measured, or v′ = 80-86, which it did not reach: "
-                        "the refitted B potential (mlr_b_2026d) alone sits 150-350 MHz from the atlas levels, and the "
+                        "the refitted B potential alone sits 150-350 MHz from the atlas levels, and the "
                         "level corrections carry that over only in their constant and J(J+1) terms")
     if line.v_upper > V_UPPER_FITTED:
-        return 15.0, ("v′ = 44-50 comes from the extended-range MLR B potential (i2spec2026d): 12.5 MHz rms on the six "
+        return 15.0, ("v′ = 44-50 comes from the extended-range MLR B potential: 12.5 MHz rms on the six "
                       "matsunaga2024a lines and 3.3 on yoshiki2023a before their corrections")
     if line.nu >= NU_PRECISION and line.v_upper >= V_UPPER_DRIFT:
         value, why = 5.0, ("the B levels drift across v′ = 31-43: the BIPM 532 nm intervals put v′ = 33-37 at −6 to "
@@ -314,8 +314,8 @@ def uncertainty(line: Line):
         value, why = 50.0, ("beyond 815 nm nothing has been measured absolutely, both published local NIR models (Knöckel 2004, Liao 2010) stop, "
                             "and the potentials are unchecked")
     if line.isotopologue != "127I2":
-        return math.hypot(value, 3.0), why + ("; with the V_ad constant of i2spec2026a the ¹²⁹I₂ lines are 3.4 MHz rms "
-                                              "and ¹²⁷I¹²⁹I 0.3 MHz against BIPM (isotope shifts, docs/design/parameter-sets.md)")
+        return math.hypot(value, 3.0), why + ("; with the model's adiabatic correction the ¹²⁹I₂ lines are 3.4 MHz rms "
+                                              "and ¹²⁷I¹²⁹I 0.3 MHz against BIPM (isotope shifts)")
     return value, why
 
 

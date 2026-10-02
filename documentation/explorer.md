@@ -93,7 +93,7 @@ The **export CSV** buttons download:
 - **hyperfine of selected**: the hyperfine components of the selected line as the detail panel shows
   them, with offsets, absolute frequencies, wavelengths and relative strengths.
 
-Each file starts with comment lines (`#`) giving the model version, parameter set, git revision and
+Each file starts with comment lines (`#`) giving the model version, git revision and
 export date of the data, the download time, isotopologue, temperature, view, laser, and a link that
 reopens the same view.
 
