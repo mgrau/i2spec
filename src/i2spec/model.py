@@ -115,6 +115,8 @@ class RovibronicModel:
         self.extended = ({s: SOLVERS[solver](ext[s], mu, mass_ratio=ratio, **self.grids[s]) for s in ("X", "B")}
                          if ext else None)
         self._levels: dict[tuple[str, int], np.ndarray] = {}
+        self._hfs_levels: dict[tuple, list] = {}
+        self._hfs_table = None
 
     def levels(self, state: str, J: int) -> np.ndarray:
         """Term values (cm⁻¹) of v = 0, 1, ... at J, with the parameter set's level corrections applied."""
@@ -198,7 +200,7 @@ class RovibronicModel:
         return nu
 
     def hyperfine_components(self, v_upper: int, v_lower: int, J_lower: int, branch: str, dJ: int = 2,
-                             corrections=None, table="default"):
+                             corrections=None, table="default", position=True):
         """Hyperfine components of one B-X line.
 
         Returns (nu0, components): the hyperfine-free line frequency in MHz, and the components,
@@ -211,12 +213,14 @@ class RovibronicModel:
         On top of those formulae, ``table`` adds the measured B-state corrections of hfs_table for
         ¹²⁷I₂: "default" uses the table the parameter set names, None the bare formulae (what a fit of corrections
         to the formulae must see), or pass an hfs_table.HyperfineTable.
+
+        position=False skips the line frequency (nu0 is None). With dJ = 0 the components then need no
+        rotational level energies, only the J = 0 term values the parameters depend on, which is what makes a
+        pattern for every line of a list cheap.
         """
         if table == "default":
-            from .hfs_table import default_table
-            from .potentials import parameter_set
-            table = default_table(parameter_set(self.parameters).get("hyperfine_table", "b_state_lines"))
-        nu0 = self.transition(v_upper, v_lower, J_lower, branch) * MHZ_PER_CM
+            table = self._default_hfs_table()
+        nu0 = self.transition(v_upper, v_lower, J_lower, branch) * MHZ_PER_CM if position else None
         J_upper = J_lower + 1 if branch == "R" else J_lower - 1
         a, b = ISOTOPOLOGUES[self.isotopologue]
         x_params, b_params = hfs_params.line_states(self.isotopologue, v_upper, v_lower,
@@ -224,8 +228,30 @@ class RovibronicModel:
                                                     self._reference_term("X", v_lower), corrections, table)
         eqQ_ratio, C_ratio = hfs_params.nucleus_ratios(self.isotopologue)
         spins = dict(i1=NUCLEAR_SPIN[a], i2=NUCLEAR_SPIN[b], eqQ_ratio=eqQ_ratio, C_ratio=C_ratio, dJ=dJ)
-        lower = level_structure(J_lower, x_params, lambda J: self.energy("X", v_lower, J) * MHZ_PER_CM,
-                                symmetry="g" if a == b else None, **spins)
-        upper = level_structure(J_upper, b_params, lambda J: self.energy("B", v_upper, J) * MHZ_PER_CM,
-                                symmetry="u" if a == b else None, **spins)
+        lower = self._hyperfine_levels("X", v_lower, J_lower, x_params, "g" if a == b else None, spins,
+                                       memo=corrections is None)
+        upper = self._hyperfine_levels("B", v_upper, J_upper, b_params, "u" if a == b else None, spins,
+                                       memo=corrections is None)
         return nu0, line_components(upper, lower, J_upper, J_lower)
+
+    def _hyperfine_levels(self, state, v, J, params, symmetry, spins, memo=True):
+        """hyperfine.level_structure of (state, v, J), kept for the other lines that share the level (the P
+        and R lines of a band, and every band from or to it). The key holds the parameters themselves, so
+        a level is reused only where it would come out the same; not at all when ``memo`` is False (a fit,
+        whose corrections change every call)."""
+        energy = lambda Jn: self.energy(state, v, Jn) * MHZ_PER_CM          # noqa: E731
+        if not memo:
+            return level_structure(J, params, energy, symmetry=symmetry, **spins)
+        key = (state, v, J, symmetry, tuple(sorted(spins.items())),
+               tuple(params(Jn) for Jn in range(J - spins["dJ"], J + spins["dJ"] + 1, 2) if Jn >= 0))
+        if key not in self._hfs_levels:
+            self._hfs_levels[key] = level_structure(J, params, energy, symmetry=symmetry, **spins)
+        return self._hfs_levels[key]
+
+    def _default_hfs_table(self):
+        """The hyperfine table the parameter set names (hfs_table.default_table), looked up once."""
+        if self._hfs_table is None:
+            from .hfs_table import default_table
+            from .potentials import parameter_set
+            self._hfs_table = default_table(parameter_set(self.parameters).get("hyperfine_table", "b_state_lines"))
+        return self._hfs_table

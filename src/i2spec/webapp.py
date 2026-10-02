@@ -226,9 +226,9 @@ def weak_links(comps, main, total):
     chosen = {id(c) for c in main}
     offset = lambda c: c.offset if hasattr(c, "offset") else c.offset_MHz   # noqa: E731 (model or lookup)
     out = []
-    for c in sorted(comps, key=offset):
-        if id(c) in chosen or c.strength < WEAK_FRACTION * total:
-            continue
+    floor = WEAK_FRACTION * total
+    weak = [c for c in comps if not (c.strength < floor or id(c) in chosen)]
+    for c in sorted(weak, key=offset):
         ids = [number[side].setdefault(level(c, side), max(number[side].values(), default=-1) + 1)
                for side in ("upper", "lower")]
         out.append([round(float(offset(c)), 1), round(float(c.strength / total), 6), *ids])
@@ -241,7 +241,7 @@ def _hfs_chunk(items):
     out = []
     for branch, J, vu, vl in items:
         try:
-            _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0)
+            _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0, position=False)
         except Exception:                 # a level beyond every validated grid
             out.append(None)
             continue

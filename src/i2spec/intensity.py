@@ -44,6 +44,10 @@ SHARED_GRID = dict(rmin=2.33, rmax=7.0, step=0.005)
 #: those levels by 51 MHz at v'' = 25, 1.6 GHz at 30 and up to 86 GHz. B wavefunctions vanish below
 #: 2.33 Å, so the overlaps only need the shared points.
 X_RMIN = 2.10
+#: ... and its eigenvectors are solved on the points up to X_RMAX only, even when B's box reaches further
+#: (NEAR_DISSOCIATION). The X levels used (v'' < 40) carry < 1e-6 of their probability beyond 6.5 Å, so the
+#: wider box changes them only at the level of rounding, while costing 8x as much to solve at 12 Å.
+X_RMAX = 7.0
 #: Line positions and lower-level energies come from the B-spline solver, which converges to under
 #: 1 kHz, not from the sinc-DVR, which is off by 0.24 MHz at R(56) 32-0 and by up to ~3 MHz elsewhere.
 #: The DVR eigenvectors are still used for the intensities. The boxes match the DVR's, so that
@@ -249,11 +253,16 @@ class _Build:
                     for st in ("X", "B")}
         self.nu_min, self.nu_max, self.temps, self.S_min = nu_min, nu_max, np.asarray(temps), S_min
         self.mu_R = mu(self.B.R)
+        self.x_points = int(np.searchsorted(self.X.R, X_RMAX + 1e-9))
 
     def x_levels(self, J):
         """X term values of the physical levels at J (above X(0,0)), and which matched a B-spline level."""
-        e_matched, ok = match_levels(self.X.levels(J), self.exact.levels("X", J),
-                                     n_index=physical_prefix(self.top["X"], J))
+        exact = self.exact.levels("X", J)
+        n_phys = physical_prefix(self.top["X"], J)
+        if min(n_phys, len(exact)) >= self.X.nlev:
+            # every DVR level matches its B-spline level by index (match_levels), so its own energy is not needed
+            return exact[:self.X.nlev] - self.e00, np.ones(self.X.nlev, dtype=bool)
+        e_matched, ok = match_levels(self.X.levels(J), exact, n_index=n_phys)
         return e_matched - self.e00, ok
 
     def lines(self, Js, levels, x_matched, Q):
@@ -261,12 +270,12 @@ class _Build:
         cols = {k: [] for k in ("nu", "strength0", "v_upper", "v_lower", "J_lower", "branch", "E_lower")}
         upper, cuts, unmatched = {}, {}, 0
         for J in Js:
-            _, c_x = self.X.states(J)
+            _, c_x = self.X.states(J, self.x_points)
             E = levels[J]
             e_x = E + self.e00
             boltz = (np.exp(-C2 * E[None, :] / self.temps[:, None]) / Q[:, None]).max(axis=0)
             weighted = self.mu_R[:, None] * c_x[self.k0:]
-            ok_x = bound(c_x, self.X.R)
+            ok_x = bound(c_x[:self.x_points], self.X.R[:self.x_points])
             g = nuclear_spin_weight(J, self.iso)
             for branch, J_up, s in ((+1, J + 1, J + 1), (-1, J - 1, J)):
                 if J_up < 0:
