@@ -1,4 +1,4 @@
-"""Command line for i2spec: ``i2spec lines``, ``i2spec line``, ``i2spec hitran``, ``i2spec tui`` and ``i2spec web``."""
+"""Command line for i2spec: ``i2spec lines``, ``i2spec line``, ``i2spec tui`` and ``i2spec web``."""
 
 from __future__ import annotations
 
@@ -53,25 +53,6 @@ def cmd_lines(args):
     print(_table(result))
     if result.truncated:
         print(f"... {result.total - len(result)} more; raise --limit or --min-strength")
-
-
-def cmd_hitran(args):
-    from . import hitran
-    from .lookup import to_wavenumber
-
-    low, unit = parse_quantity(args.low, args.unit)
-    high, _ = parse_quantity(args.high, unit)
-    nu_lo, nu_hi = sorted(to_wavenumber(v, unit) for v in (low, high))
-    isos = sorted(ISOTOPOLOGUES, key=hitran.ISOTOPOLOGUE_IDS.get) if args.all_isotopologues else [args.isotopologue]
-    stem = args.out or f"i2_{nu_lo:.0f}-{nu_hi:.0f}"
-    n = hitran.write(stem, _catalog(args), isos, nu_lo, nu_hi, S_min=args.min_strength,
-                     hyperfine=not args.no_hyperfine, dJ=args.dJ, molecule=args.molecule,
-                     gamma_air=args.gamma_air, gamma_self=args.gamma_self, n_air=args.n_air, delta_air=args.delta_air)
-    print(f"{n} {'hyperfine components' if not args.no_hyperfine else 'lines'} of {', '.join(isos)} "
-          f"({nu_lo:.3f}-{nu_hi:.3f} cm-1, S >= {args.min_strength:g} at 296 K) to {stem}.par; "
-          f"partition functions to {stem}_q_<isotopologue>.txt")
-    print(f"molecule {args.molecule}, isotopologues " + ", ".join(f"{i} = {hitran.ISOTOPOLOGUE_IDS[i]}" for i in isos)
-          + " (I2 is not a HITRAN molecule; see the documentation for HAPI and RADIS)")
 
 
 def cmd_line(args):
@@ -153,23 +134,6 @@ def build_parser():
     p.add_argument("--all", action="store_true", help="include the weak ΔF ≠ ΔJ components")
     p.add_argument("--dJ", type=int, default=2, choices=(0, 2), help="rotational mixing in the hyperfine matrix")
     p.set_defaults(func=cmd_line)
-
-    p = _common(sub.add_parser("hitran", help="write a range of lines in the HITRAN .par format, with partition functions"),
-                suppress=True)
-    p.add_argument("low")
-    p.add_argument("high")
-    p.add_argument("--unit", "-u", default="nm", choices=UNITS, help="unit of low/high when they carry none")
-    p.add_argument("--all-isotopologues", action="store_true", help="all three isotopologues in one file")
-    p.add_argument("--min-strength", type=float, default=1e-27, help="weakest line to write, cm at 296 K")
-    p.add_argument("--no-hyperfine", action="store_true", help="one record per line instead of per hyperfine component")
-    p.add_argument("--dJ", type=int, default=0, choices=(0, 2), help="rotational mixing in the hyperfine matrix")
-    p.add_argument("--molecule", type=int, default=0, help="molecule number to write (I2 has none in HITRAN)")
-    p.add_argument("--gamma-air", type=float, default=0.0, help="air-broadened HWHM, cm-1/atm, for every line")
-    p.add_argument("--gamma-self", type=float, default=0.0, help="self-broadened HWHM, cm-1/atm, for every line")
-    p.add_argument("--n-air", type=float, default=0.0, help="temperature exponent of gamma-air")
-    p.add_argument("--delta-air", type=float, default=0.0, help="air pressure shift, cm-1/atm")
-    p.add_argument("--out", "-o", default=None, help="file stem (default i2_<low>-<high>)")
-    p.set_defaults(func=cmd_hitran)
 
     p = _common(sub.add_parser("tui", help="interactive line browser (needs Textual)"), suppress=True)
     p.add_argument("--low", default=None)

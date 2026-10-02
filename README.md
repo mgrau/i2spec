@@ -30,7 +30,6 @@ in `~/.cache/i2spec`. The first `i2spec web` also exports the model for the app 
 ```sh
 uv run i2spec lines 18788 18789 --unit cm-1 --sort strength --limit 10
 uv run i2spec lines 632.9 633.0 -i 129I2 --json  # any isotopologue; JSON for scripting
-uv run i2spec hitran 532.0 532.5 --out i2_532    # HITRAN .par file and partition function, for HAPI or RADIS
 ```
 
 In the terminal browser the top panel is the absorption spectrum of the whole search range: `+`/`-`

@@ -86,59 +86,6 @@ print(nu0 + a10.offset)
 `i2spec.lookup.Catalog` returns line lists at any temperature, `i2spec.spectrum` computes cross
 sections and cell transmission, and `i2spec.continuum` computes the bound–free absorption.
 
-## HITRAN format, for HAPI and RADIS
-
-`i2spec hitran` writes a range of lines in the HITRAN 160-character format (`.par`), one record per
-hyperfine component (or per line, with `--no-hyperfine`), and the partition function as a table, so the
-line list can be used by line-by-line codes such as HAPI and RADIS.
-
-```bash
-# 532.0-532.5 nm: writes i2_532.par and i2_532_q_127I2.txt
-i2spec hitran 532.0 532.5 --out i2_532
-# all three isotopologues, one record per line, weaker lines too
-i2spec hitran 500 520 --all-isotopologues --no-hyperfine \
-  --min-strength 1e-30 --out i2_500-520
-```
-
-The conventions are HITRAN's, with three things to know:
-
-- **I₂ is not a HITRAN molecule.** The molecule number is 0 unless `--molecule` sets another, and the
-  isotopologues are numbered locally: 1 = ¹²⁷I₂, 2 = ¹²⁷I¹²⁹I, 3 = ¹²⁹I₂. A program must be told their
-  masses and partition functions (below).
-- **Abundance 1.** Line strengths S (cm⁻¹/(molecule cm⁻²) at 296 K) are per molecule of each
-  isotopologue. ¹²⁷I is all of natural iodine; ¹²⁹I is not natural, so its lines must be scaled by the
-  abundance in the sample.
-- **No pressure broadening.** The model has none, so γ_air, γ_self, n_air and δ_air are zero unless set
-  with `--gamma-air`, `--gamma-self`, `--n-air` and `--delta-air`. Zero is right for a cell of pure iodine
-  at its vapour pressure, where the lines are Doppler-broadened.
-
-The partition function includes the nuclear-spin degeneracy, and so do the statistical weights: g = (2J+1)
-g_ns for a whole line, 2F+1 for a hyperfine component. The first uncertainty code is the HITRAN decade code
-of the model's 1σ position uncertainty.
-
-With HAPI, copy the `.par` file to `I2.data`; the table then needs a header and the isotopologue registering:
-
-```python
-import json
-import hapi
-import numpy as np
-
-# the .par file as a HAPI table: I2.data, with a HITRAN header
-rows = sum(1 for _ in open("I2.data"))
-hdr = dict(hapi.HITRAN_DEFAULT_HEADER, table_name="I2", number_of_rows=rows)
-json.dump(hdr, open("I2.header", "w"))
-hapi.db_begin(".")
-# molecule 0, isotopologue 1: abundance, mass (u), partition function
-hapi.ISO[(0, 1)] = [9001, "127I2", 1.0, 253.808946, "I2"]
-T, Q = np.loadtxt("i2_532_q_127I2.txt", unpack=True)
-nu, k = hapi.absorptionCoefficient_Doppler(
-    SourceTables="I2", Environment={"T": 296.0, "p": 1.0}, HITRAN_units=True,
-    partitionFunction=lambda M, I, t: float(np.interp(t, T, Q)))
-```
-
-The cross section HAPI computes this way agrees with `i2spec.spectrum.cross_section` to 5 × 10⁻⁴ of its
-peak, and its integral to 2 × 10⁻⁶.
-
 ## Tests
 
 ```sh
