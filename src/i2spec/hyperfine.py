@@ -301,21 +301,28 @@ def line_components(upper, lower, J_upper, J_lower, threshold=1e-10):
     blocks_u, U = _embedding(upper)
     blocks_l, L = _embedding(lower)
     amplitudes = U.T @ _dipole_operator(blocks_u, blocks_l) @ L     # zero unless |F' - F| <= 1
-    found = []
-    for iu, il in zip(*np.nonzero(amplitudes ** 2 > threshold)):
-        iu, il = int(iu), int(il)
-        u, low = upper[iu], lower[il]
-        found.append((iu, il, Component(u.energy - low.energy, float(amplitudes[iu, il]) ** 2, u.F, low.F, u.I, low.I,
-                                        upper_level=iu, lower_level=il)))
-    total = sum(c.strength for _, _, c in found)
-    for _, _, c in found:
-        c.strength /= total
+    squared = amplitudes ** 2
+    iu, il = np.nonzero(squared > threshold)                          # the components, upper level by upper level
+    if not iu.size:
+        return []
+    F_u, F_l = np.array([u.F for u in upper])[iu], np.array([low.F for low in lower])[il]
+    offset = np.array([u.energy for u in upper])[iu] - np.array([low.energy for low in lower])[il]
+    strength = squared[iu, il]
+    strength = strength / np.cumsum(strength)[-1]                     # summed in order, as sum() would
+    # main components: strongest first (a stable sort, so ties keep the order above), one per level
     used_upper, used_lower, main = set(), set(), []
-    for iu, il, c in sorted(found, key=lambda t: -t[2].strength):
-        if c.F_upper - c.F_lower == J_upper - J_lower and iu not in used_upper and il not in used_lower:
-            used_upper.add(iu)
-            used_lower.add(il)
-            main.append(c)
-    for n, c in enumerate(sorted(main, key=lambda c: c.offset), start=1):
-        c.label = f"a{n}"
-    return sorted((c for _, _, c in found), key=lambda c: c.offset)
+    candidates = np.argsort(-strength, kind="stable")
+    up, low = iu.tolist(), il.tolist()
+    for k in candidates[(F_u - F_l)[candidates] == J_upper - J_lower].tolist():
+        if up[k] not in used_upper and low[k] not in used_lower:
+            used_upper.add(up[k])
+            used_lower.add(low[k])
+            main.append(k)
+    labels = [None] * iu.size
+    for n, k in enumerate(sorted(main, key=lambda k: offset[k]), start=1):
+        labels[k] = f"a{n}"
+    I_u, I_l = [u.I for u in upper], [low.I for low in lower]
+    rows = zip(offset.tolist(), strength.tolist(), F_u.tolist(), F_l.tolist(), iu.tolist(), il.tolist(), labels)
+    found = [Component(o, s, fu, fl, I_u[u], I_l[low], lab, upper_level=u, lower_level=low)
+             for o, s, fu, fl, u, low, lab in rows]
+    return [found[k] for k in np.argsort(offset, kind="stable").tolist()]
