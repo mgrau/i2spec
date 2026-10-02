@@ -161,3 +161,79 @@ our only other atlas and scatters 33 MHz about the model.
 *Caveat: the model comparisons used i2spec2026m as it stood on 2026-09-30. Other work was changing
 `src/i2spec/model.py` and `level_corrections_2026m.json` at the same time, so the model residuals may
 move by a few MHz. The line centres themselves do not depend on that, beyond the template start.*
+
+## The archive catalogue: every iodine spectrum at Kitt Peak (2026-10-01)
+
+To close out the archive, the header of every full-resolution spectrum in the NSO FTS archive
+(`https://nispdata.nso.edu/ftp/FTS_cdrom/`, volumes FTS01–57) was read. NSO describes the archive as not
+searchable and the old Digital Library query tool is gone, so the headers were taken from the files:
+volumes FTS01–54 by streaming the archive's one tar file (`FTS_01_55.tar`, 31.8 GB, which despite its name
+ends at FTS54) once and keeping only the first 5 760 bytes of each member, and FTS55–57 one header per
+request, 15 s apart. 24 431 full-resolution spectra in all; none was refused.
+
+136 headers mention iodine. Removing quartz–iodine lamp calibrations, solar and hollow-cathode runs with an
+I₂ cell in the beam, and runs outside 11 000–20 100 cm⁻¹ leaves the 1993 scans used above and the 41
+laboratory iodine-cell spectra below. All are in `data/external/kitt_peak_fts/` (97 MB with the 1993 scans,
+not redistributed). Ranges in cm⁻¹ and resolution (RESOLUTN, cm⁻¹) are from the headers; the ID is the
+observer's.
+
+| file | volume | range | resolution | ID |
+|---|---|---|---|---|
+| `770611R0.003` | FTS01 | 14432–18473 | — | CALIBRATION RUN - KR 86 + I2 CELL NEAR 6300A |
+| `770309R0.004` | FTS01 | 15874–22117 | — | IODINE 18000.-19000. |
+| `810326R0.012` | FTS05 | 18933–27026 | 0.0283 | I2 CELL NO. 1, 18O2 FOR IO IN BLUE |
+| `810914R0.016` | FTS06 | 15269–21273 | — | I2 CELL WITH 5000-6000A INTEGRATED LITE |
+| `820620R0.052` | FTS07 | 15422–20426 | 0.0089 | INTEGRATED LITE, I2 CELL |
+| `820619R0.009` | FTS07 | 15422–20426 | 0.0089 | INTEGRATED LITE, IODINE CELL |
+| `840611R0.002` | FTS12 | 13786–20612 | 0.0138 | IODINE 1.5 INCH CELL, 5050-6650A |
+| `840531R0.001` | FTS12 | 13786–20612 | 0.0182 | IODINE 1.5 INCH CELL, 5050-6650A |
+| `840531R0.002` | FTS12 | 13786–20612 | 0.0182 | IODINE 1.5 INCH CELL, 5050-6650A |
+| `840629R0.001` | FTS12 | 8918–17802 | 0.0200 | IODINE, ARGON-ION LASER, 5145 A, 3.2 WATTS |
+| `841018R0.006` | FTS13 | 15511–23085 | 0.0772 | IODINE ABSORPTION, 2 INCH CELL,DZE AT 150 WATTS |
+| `841018R0.007` | FTS13 | 15511–23085 | 0.1554 | IODINE ABSORPTION, 2 INCH CELL,DZE AT 150W, LOW RES. |
+| `881012R0.002` | FTS20 | 13991–20945 | 0.0098 | I2 CELL AT 23.6 C, 15000-20400 CM-1 |
+| `881012R0.003` | FTS21 | 13991–20945 | 0.0098 | I2 CELL, 25CM., 3.6-4.3 C 15000-20400 CM-1 |
+| `881015R0.018` | FTS21 | 15191–16309 | 0.0098 | I2 CELL 25 CM,. 23.9 C, 15750-15850 CM-1 |
+| `881015R0.017` | FTS21 | 16882–17618 | 0.0098 | I2 25 CM. CELL, 23.9 C, 17180-17380 CM-1 |
+| `881012R0.004` | FTS21 | 17482–19718 | 0.0098 | I2 CELL, 3.5-3.8 C, NARROW BAND18400-18900 CM-1 |
+| `881014R0.012` | FTS21 | 16500–17127 | 0.0098 | I2 25 CM CELL, 16.1-16.4 C, 16700 - 16900 CM-1 |
+| `881015R0.014` | FTS21 | 16500–17127 | 0.0098 | I2 CELL, 25 CM., 23.9 C, 16700-16900 CM-1 |
+| `881013R0.006` | FTS21 | 16678–17823 | 0.0098 | I2 CELL 13.9-14.2 C, 17180-17380 CM-1 FOR STD RUN |
+| `881015R0.015` | FTS21 | 16145–17754 | 0.0098 | I2 CELL, 25 CM., 23.9 C, 16890-17100 CM-1 |
+| `881014R0.008` | FTS21 | 16145–17754 | 0.0098 | I2 CELL 7.8-8.0 C, 16890-17100 CM-1 |
+| `881014R0.009` | FTS21 | 16500–17127 | 0.0098 | I2 25 CM CELL, 7.8-8.0 C, 16700- 16900 CM-1 |
+| `881014R0.007` | FTS21 | 16800–17727 | 0.0098 | I2 CELL 7.8-8.0 C, 17180-17380 CM-1 |
+| `881014R0.013` | FTS21 | 16145–17754 | 0.0098 | I2 25 CM CELL, 16.1-16.4 C, 16890-17100 CM-1 |
+| `881014R0.011` | FTS21 | 15682–16827 | 0.0098 | I2 25 CM CELL, 16.1-16.4 C, 16250-16450 CM-1 |
+| `881014R0.010` | FTS21 | 17700–19527 | 0.0098 | I2 25 CM CELL, 7.7-7.9 C, 18550-18800 CM-1 |
+| `881015R0.016` | FTS21 | 15682–16827 | 0.0098 | I2 25 CM CELL, 23.9 C, 16250-16450 CM-1 |
+| `901126R0.002` | FTS27 | 14952–21014 | 0.0370 | IODINE CELL 10CM .01 TORR 50C, 5000 - 6200 A |
+| `901126R0.001` | FTS27 | 14952–21014 | 0.0370 | IODINE CELL 10CM .01 TORR 50C, 5000 - 6200 A |
+| `951009R0.001` | FTS38 | 13760–20639 | 0.0204 | Lick I2 10cm cell 50C 5000 - 6300A |
+| `951009R0.002` | FTS38 | 13760–20639 | 0.0204 | Lick I2 10cm cell 50C 5000 - 6300A |
+| `950626R0.001` | FTS38 | 15191–20611 | 0.0204 | Optronics Lamp @ 15Amps long I2 cell, 500-600nm 2x8mm |
+| `950626R0.002` | FTS38 | 15191–20611 | 0.0204 | Optronics Lamp @ 15Amps short I2 Cell 500-600 nm 2x8mm |
+| `950626R0.003` | FTS38 | 15191–20611 | 0.0204 | Optronics Lamp @ 15Amps no cell 500-600nm 2x8mmm 2x8mm |
+| `960405R0.022` | FTS40 | 8355–19833 | 0.0300 | O2 299torr 21.1C 2.4m, I2 10cm, 9000 - 19000 cm-1 |
+| `960405R0.017` | FTS40 | 8355–19833 | 0.0351 | O2 572torr 21.4C 2.4m, I2 10cm, 9000 - 19000 cm-1 |
+| `960405R0.016` | FTS40 | 8355–19833 | 0.0351 | O2 404.6torr 20.3C 2.4m, I2 10cm, 9000 - 19000 cm-1 |
+| `010712R0.027` | FTS52 | 14995–29991 | 0.0499 | Empty 4.01M JPL NO2 cooled cell 17000 - 26000 cm-1 + Iodine cell |
+| `010713R0.044` | FTS52 | 14995–29991 | 0.0499 | Empty 4.01M JPL NO2 cooled cell 17000 - 26000 cm-1 I2 spectrum |
+| `010713R0.054` | FTS52 | 14995–29991 | 0.0499 | 4.01M,0.05T NO2 + air: 100 T, T=-57 C; 17000-26000 cm-1 + I2 Spec. |
+
+The 1993 scans (`930317R0.001`–`.013`, FTS33) are described in the sections above.
+
+**What they could add.**
+
+- **The October 1988 series (FTS20/21, 16 spectra).** One 25 cm cell at 3.6, 7.9, 14.1, 16.2 and 23.9 °C,
+  a broadband scan (15 000–20 400 cm⁻¹) and narrow windows, all at 0.0098 cm⁻¹. With a known path and
+  several temperatures this is the one set in the archive that can test the line strengths and their
+  temperature dependence (`bx-band-strength.md`), which no other data set has tested.
+- **The 1995 Lick cell (FTS38).** 10 cm at 50 °C at 0.020 cm⁻¹, with long and short cells and a scan without
+  a cell for the baseline: a second epoch of the radial-velocity cells, at better resolution than 1993.
+- **The 1984–1990 cells (FTS12, FTS13, FTS27)** at 0.014–0.077 cm⁻¹: more of the same band, useful mainly as
+  checks on the scale.
+- The rest are lamp or calibration runs, or iodine scanned alongside other gas cells (O₂, NO₂), with little
+  to add.
+
+None has been fitted yet.
