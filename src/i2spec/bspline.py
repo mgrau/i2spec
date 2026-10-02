@@ -57,15 +57,17 @@ class BSplineSolver:
         a, b = bp[:-1, None], bp[1:, None]
         self.R = (0.5 * (b - a) * xg + 0.5 * (a + b)).ravel()
         self.W = (0.5 * (b - a) * wg).ravel()
-        values, slopes = [], []
+        values, slopes = np.zeros((2, n_basis - 2, self.R.size))      # one row per basis function
         for i in range(1, n_basis - 1):  # dropping the end functions enforces ψ = 0 at rmin and rmax
             c = np.zeros(n_basis)
             c[i] = 1.0
             spline = BSpline(t, c, order - 1, extrapolate=False)
-            values.append(np.nan_to_num(spline(self.R)))
-            slopes.append(np.nan_to_num(spline.derivative()(self.R)))
-        self._B = np.array(values).T
-        dB = np.array(slopes).T
+            # B_i vanishes outside [t_i, t_(i+order)], so it is evaluated only there (the same values)
+            lo, hi = np.searchsorted(self.R, (t[i], t[i + order]))
+            values[i - 1, lo:hi] = np.nan_to_num(spline(self.R[lo:hi]))
+            slopes[i - 1, lo:hi] = np.nan_to_num(spline.derivative()(self.R[lo:hi]))
+        self._B = values.T
+        dB = slopes.T
         W = self.W[:, None]
         self.S = self._B.T @ (W * self._B)
         self._T = HBAR2_2U / mu * (dB.T @ (W * dB))
