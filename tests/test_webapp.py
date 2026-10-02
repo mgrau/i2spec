@@ -46,7 +46,13 @@ def test_measurements_carry_every_row():
     jones = next(e for e in r56 if sources[e["s"]]["id"] == "jones2002a")
     a10 = next(f for f in jones["f"] if f[0] == "a10")
     assert a10[1] == a10[3] == 563260223.5144
+    assert a10[4] is None                                # no published model given
     assert any(r is not None for r in calls)             # components are asked for by rank
+    # with the published 2008 model, a second residual against it
+    both = webapp.measurements(model, lambda iso, branch, J, vu, vl, rank: 1.0)
+    jones = next(e for e in both["127I2"]["32-0R56"] if sources[e["s"]]["id"] == "jones2002a")
+    a10 = next(f for f in jones["f"] if f[0] == "a10")
+    assert a10[4] == round(a10[1] - 1.0, 4)
 
 
 def test_every_dataset_has_a_doi_or_a_document():

@@ -28,7 +28,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .constants import MHZ_PER_CM
+from .constants import MHZ_PER_CM, PUBLISHED_PARAMETERS
 
 ROOT = Path(__file__).resolve().parents[2]
 WEB = ROOT / "web"
@@ -154,13 +154,14 @@ def line_key(branch, J, v_upper, v_lower):
     return f"{v_upper}-{v_lower}{branch}{J}"
 
 
-def measurements(model_frequency):
+def measurements(model_frequency, published_frequency=None):
     """Every measurement of every line, grouped by isotopologue and line.
 
     ``model_frequency(iso, branch, J, v', v'', component)`` gives the model's value in MHz (component None
     for the hyperfine-free line centre, else a rank) or None when it cannot, so each measurement carries
-    its residual. Returns {iso: {key: [{"s": source index, "f": [[component, value, u, obs - model], ...],
-    "i": number of hyperfine intervals}, ...]}}.
+    its residual; ``published_frequency``, with the same signature, gives the published 2008 model's, for a
+    second residual. Returns {iso: {key: [{"s": source index, "f": [[component, value, u, obs - model,
+    obs - 2008 model], ...], "i": number of hyperfine intervals}, ...]}}.
     """
     from .observations import UNITS, component_rank, load_all
 
@@ -183,16 +184,21 @@ def measurements(model_frequency):
                 continue
             value = o.value * scale
             rank = component_rank(o.component) if o.component else None
-            model = model_frequency(ln.isotopologue, ln.branch, ln.J_lower, ln.v_upper, ln.v_lower, rank)
+            args = (ln.isotopologue, ln.branch, ln.J_lower, ln.v_upper, ln.v_lower, rank)
+            model = model_frequency(*args)
+            published = published_frequency(*args) if published_frequency else None
             e["f"].append([o.component or "", round(value, 4), round(o.uncertainty * scale, 4),
-                           None if model is None else round(value - model, 4)])
+                           None if model is None else round(value - model, 4),
+                           None if published is None else round(value - published, 4)])
     for name in ATLASES:
         src = index[name]
         for branch, J, vu, vl, nu, u in _atlas_rows(name):
             model = model_frequency("127I2", branch, J, vu, vl, None)
+            published = published_frequency("127I2", branch, J, vu, vl, None) if published_frequency else None
             value = nu * MHZ_PER_CM
             entry("127I2", line_key(branch, J, vu, vl), src)["f"].append(
-                ["", round(value, 1), round(u, 1), None if model is None else round(value - model, 1)])
+                ["", round(value, 1), round(u, 1), None if model is None else round(value - model, 1),
+                 None if published is None else round(value - published, 1)])
     return {iso: {key: list(by_source.values()) for key, by_source in lines.items()} for iso, lines in out.items()}
 
 
@@ -338,8 +344,31 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
         except Exception:            # a level beyond every validated grid
             return None
 
+    # the published 2008 model, computed here from its potentials and the hyperfine formulae alone (no
+    # table of measured corrections), so every line and measurement can be compared with it
+    from .model import RovibronicModel
+    published_models = {}
+
+    def published(iso):
+        if iso not in published_models:
+            published_models[iso] = RovibronicModel(iso, PUBLISHED_PARAMETERS)
+        return published_models[iso]
+
+    @functools.lru_cache(maxsize=None)
+    def published_components(iso, branch, J, vu, vl):
+        nu0, comps = published(iso).hyperfine_components(vu, vl, J, branch, table=None)
+        return {int(c.label[1:]): nu0 + c.offset for c in comps if c.label}
+
+    def published_frequency(iso, branch, J, vu, vl, rank):
+        try:
+            if rank is not None:
+                return published_components(iso, branch, J, vu, vl).get(rank)
+            return published(iso).transition(vu, vl, J, branch) * MHZ_PER_CM
+        except Exception:
+            return None
+
     print("  measurements and their residuals ...", flush=True)
-    measured = measurements(model_frequency)
+    measured = measurements(model_frequency, published_frequency)
     refs = sources()
     missing = {iso: sorted(set(lines) - set(centres.get(iso, {}))) for iso, lines in measured.items()}
     (out / "references.json").write_text(json.dumps(
@@ -420,6 +449,15 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]), 0.0, 0.0, 300.0)
         u_line[k], why = uncertainty(line)
         w_line[k] = reasons.setdefault((why, line.flags), len(reasons))
+    # the published 2008 model's position of every line, as its difference from this model's (MHz)
+    from .model import RovibronicModel
+    published = RovibronicModel(iso, PUBLISHED_PARAMETERS)
+    d08 = np.full(len(nu), np.nan)
+    for k in range(len(nu)):
+        try:
+            d08[k] = (published.transition(int(vu[k]), int(vl[k]), int(jl[k]), "R" if br[k] > 0 else "P") - nu[k]) * MHZ_PER_CM
+        except Exception:            # a level the published curves do not hold
+            pass
 
     # ΔJ = 0 hyperfine patterns for every line, shown by the explorer once the view is narrow enough
     t0 = time.time()
@@ -451,6 +489,7 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
             "j": [int(j) * (1 if b > 0 else -1) for j, b in zip(jl[sel], br[sel])],  # sign carries the branch
             "u": [float(f"{v:.3g}") for v in u_line[sel]],                         # 1σ position, MHz
             "w": [int(v) for v in w_line[sel]],                                  # ... and why: manifest.reasons
+            "d08": [None if not np.isfinite(v) else round(float(v), 1) for v in d08[sel]],  # 2008 - this, MHz
             "m": rows,                                                            # rows with measurements
             "ms": [measured[keys[sel[i]]] for i in rows],                        # ... and what they are
         }

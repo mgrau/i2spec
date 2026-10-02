@@ -85,6 +85,7 @@ const rowAt = (d, i, iso) => {
   return {
     iso, nu: d.nu[i], s0: d.s0[i], el: d.el[i], vu: d.vu[i], vl: d.vl[i],
     J: Math.abs(d.j[i]), branch: d.j[i] > 0 ? "R" : "P", meas, measured: meas !== null, u: d.u[i], w: d.w[i],
+    d08: d.d08 ? d.d08[i] : null,          // the published 2008 model's position minus this one, MHz
     hfsFile: d._hfsFile, row: i,           // where this line's ΔJ = 0 hyperfine pattern is
   };
 };
@@ -1097,6 +1098,19 @@ function drawHyperfine(canvas, comps, line) {
   g.textAlign = "center"; g.fillText(subNote || `Doppler FWHM ${fwhm.toFixed(0)} MHz`, W / 2, H - 6);
 }
 
+/** The published 2008 model (Salumbides et al.) was fitted to these levels; beyond them it extrapolates. */
+const inside2008 = l => l.vu <= 43 && l.vl <= 17;
+/** A signed frequency difference in MHz, or GHz once it is large. */
+const signedMHz = v => {
+  const a = Math.abs(v), s = v >= 0 ? "+" : "−";
+  return a >= 1e4 ? `${s}${fmt(a / 1000, a >= 1e6 ? 0 : 1)} GHz` : `${s}${fmt(a, a < 10 ? 2 : 1)} MHz`;
+};
+function published2008Row(line) {
+  if (line.d08 === null || line.d08 === undefined) return "";
+  const where = inside2008(line) ? "inside its fitted range" : "outside its fitted range (v′ ≤ 43, v″ ≤ 17): extrapolated";
+  return `<dt>2008 model</dt><dd>${signedMHz(line.d08)} from this model <span class="n">· ${where}</span></dd>`;
+}
+
 /** The selected line seen from the laser: its fundamental equivalent, and how far the harmonic is from it. */
 function laserRows(line) {
   const {n, nu} = state.laser, d = (line.nu - nu) * P.MHZ_PER_CM;
@@ -1127,6 +1141,7 @@ async function select(line) {
       <dt>S</dt><dd>${line.s0 > 0 ? `${S.toExponential(3)} cm at ${state.T} K` : "not computed: no thermal absorption (measured in emission)"}</dd>
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
+      ${published2008Row(line)}
       ${state.laser ? laserRows(line) : ""}
     </dl>
     <p class="note">${sentence(why)}</p>
@@ -1176,21 +1191,24 @@ function measurementsHTML(line) {
   const signed = r => r === null ? "–" : (r >= 0 ? "+" : "−") + Math.abs(r).toFixed(Math.abs(r) < 1 ? 3 : 1);
   for (const e of line.meas) {
     // one heading row per source, carrying its link, then its values
-    rows.push(`<tr class="srcrow"><td colspan="4">${sourceLink(e.s)}${e.i ?
+    rows.push(`<tr class="srcrow"><td colspan="5">${sourceLink(e.s)}${e.i ?
       ` <span class="n">· ${e.i} hyperfine interval${e.i === 1 ? "" : "s"}</span>` : ""}</td></tr>`);
-    for (const [comp, value, u, res] of e.f) {
+    for (const [comp, value, u, res, res08] of e.f) {
       rows.push(`<tr><td>${comp || "centre"}</td><td>${fmt(value, u < 0.1 ? 4 : u < 10 ? 2 : 1)}</td>
-        <td>${u < 0.1 ? u.toFixed(4) : u.toFixed(u < 10 ? 2 : 1)}</td><td>${signed(res)}</td></tr>`);
+        <td>${u < 0.1 ? u.toFixed(4) : u.toFixed(u < 10 ? 2 : 1)}</td><td>${signed(res)}</td>
+        <td>${res08 === undefined || res08 === null ? "–" : Math.abs(res08) >= 1e4 ? signedMHz(res08).replace(" GHz", "&nbsp;G") : signed(res08)}</td></tr>`);
     }
   }
   const shown = rows.slice(0, 60);
   return `<h3>Measurements</h3>
-    <div class="measwrap"><table class="sub meas"><thead><tr><th>comp</th><th>f (MHz)</th><th>u (MHz)</th><th>obs − model (MHz)</th></tr></thead>
+    <div class="measwrap"><table class="sub meas"><thead><tr><th>comp</th><th>f (MHz)</th><th>u (MHz)</th><th>− model</th><th>− 2008</th></tr></thead>
     <tbody>${shown.join("")}</tbody></table></div>
     <p class="note">${rows.length > shown.length ? `First ${shown.length} of ${rows.length} rows. ` : ""}Each source links to
     its DOI; the <a href="docs/references.html">references</a> page lists them all. Frequencies are as published
     (atlas lines are hyperfine-free centres on the atlas's own scale; the Orsay scales are corrected by +23.85 ppb, part I, and +200.8 ppb, Partie IV);
-    “obs − model” is against this model's centre or component, ${fmt(f0, 1)} MHz for the centre.</p>`;
+    “− model” is the measured value minus this model's centre or component (MHz), ${fmt(f0, 1)} MHz for the centre;
+    “− 2008” minus the published model of Salumbides <i>et al.</i> (2008), computed here from its potentials and
+    the published hyperfine formulae (MHz; G: GHz).</p>`;
 }
 
 // --- CSV export ------------------------------------------------------------------------------------
@@ -1242,14 +1260,15 @@ function exportLines() {
   const q = partitionAt(state.iso, state.T), laser = state.laser;
   const withHfs = pool.some(l => hfsOf(l));
   const head = ["line", "isotopologue", "lambda_vac_nm", "lambda_air_nm", "wavenumber_cm-1", "frequency_MHz",
-    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "class", "measured_by"];
+    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "class", "measured_by", "published_2008_minus_model_MHz"];
   if (laser) head.push(`fundamental_lambda_vac_nm_div${laser.n}`, `fundamental_MHz_div${laser.n}`, "minus_laser_harmonic_MHz");
   if (withHfs) head.push("hfs_offsets_MHz_dJ0", "hfs_strengths_permille_dJ0");
   const rows = pool.map(l => {
     const lam = 1e7 / l.nu;
     const cells = [label(l), l.iso, lam.toFixed(7), P.vacToAir(lam).toFixed(7), l.nu.toFixed(6),
       (l.nu * P.MHZ_PER_CM).toFixed(2), P.strengthAt(l, q, state.T).toExponential(4), l.el.toFixed(2), l.u,
-      KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : ""];
+      KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : "",
+      l.d08 === null || l.d08 === undefined ? "" : l.d08];
     if (laser) cells.push(P.fundamentalOf(l.nu, laser.n, "nm").toFixed(7), (l.nu * P.MHZ_PER_CM / laser.n).toFixed(2),
       ((l.nu - laser.nu) * P.MHZ_PER_CM).toFixed(2));
     if (withHfs) {
@@ -1261,7 +1280,8 @@ function exportLines() {
   download(fileStem() + ".csv", [
     ...csvHeader(`${fmt(pool.length)} B-X lines`),
     "# S is the line strength at the cell temperature; u is the model's 1-sigma position uncertainty;" +
-      " class is how the line is known (precision, atlas, model only)",
+      " class is how the line is known (precision, atlas, model only); published_2008_minus_model is the" +
+      " position of the published model of Salumbides et al. (2008), computed from its potentials, minus this model's",
     ...(withHfs ? ["# hfs_*: main hyperfine components without the J +- 2 couplings (offsets from the centre, MHz;" +
       " strengths per mille), space separated"] : []),
     csvRow(head), ...rows]);

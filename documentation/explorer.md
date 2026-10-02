@@ -113,6 +113,17 @@ to shorter wavelengths. For measured lines the table gives the sources, each lin
 detail panel lists all measurements of the selected line with their uncertainties and their
 differences from the model.
 
+## Comparison with the 2008 model
+
+For every line the detail panel also gives the position of the published model of Salumbides *et al.*
+(2008), whose potentials are those of the program IodineSpec, as its difference from this model.
+It is computed here from the published potentials and Born–Oppenheimer corrections, and the measured
+components are compared with the published hyperfine formulae alone, so the measurements table has a
+second residual column, *obs − 2008*. Inside the range the 2008 potentials were fitted to (X v″ ≤ 17,
+B v′ ≤ 43) the two models agree to a few MHz; outside it the 2008 curves are extrapolations, and the
+detail panel says so: there the difference reaches tens of GHz. The line-list CSV export carries the same
+difference as a column.
+
 ## Controls
 
 | action | effect |
