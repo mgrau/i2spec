@@ -103,3 +103,17 @@ def test_web_command_defaults():
     assert (args.action, args.port, args.no_browser) == ("serve", 8777, False)
     args = build_parser().parse_args(["web", "build", "out"])
     assert (args.action, args.dest) == ("build", "out")
+
+
+def test_reference_generator_is_safe_to_import_in_spawned_workers(monkeypatch, capsys):
+    import runpy
+    from i2spec import intensity, lookup
+
+    def unexpected_calculation(*args, **kwargs):
+        raise AssertionError("Importing the reference generator must not calculate a spectrum")
+
+    monkeypatch.setattr(intensity, "intensity_model", unexpected_calculation)
+    monkeypatch.setattr(lookup, "Catalog", unexpected_calculation)
+    module = runpy.run_path(str(webapp.WEB / "make_reference.py"), run_name="__mp_main__")
+    assert callable(module["make_reference"]) and callable(module["main"])
+    assert capsys.readouterr().out == ""
