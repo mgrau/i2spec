@@ -14,6 +14,7 @@ const fmt = (v, d = 0) => {
 };
 const fmtU = v => fmt(v, v < 1 ? 2 : v < 10 ? 1 : 0);        // an uncertainty, to two figures or so
 const sentence = t => t ? t.charAt(0).toUpperCase() + t.slice(1) + (/[.)]$/.test(t) ? "" : ".") : "";
+const DEFAULT_VIEW = {line: "P(53) 32-0", near: 18788.44, halfSpan: 2};   // cm⁻¹; resolve the exact centre from the export
 
 const state = {
   manifest: null,
@@ -22,7 +23,7 @@ const state = {
   lo: 0, hi: 0,            // the view, in cm-1
   lines: [],               // lines inside the view
   selected: null,
-  mode: "sigma",
+  mode: "sub",
   sort: {key: "nu", dir: 1},  // by wavelength, shortest first
   shards: new Map(),       // file -> parsed shard
   partitions: new Map(),   // iso -> table
@@ -97,10 +98,13 @@ function hfsOf(line) {
   return {o: h.o[line.row], s: h.s[line.row], x: h.x ? h.x[line.row] : null};
 }
 
-//: Below this width of the view (nm) the spectrum is drawn component by component.
+// Doppler profiles resolve components below 0.1 nm. Sub-Doppler views allow 5 cm⁻¹,
+// including the initial ±2 cm⁻¹ window around P(53) 32-0 (~0.113 nm wide).
 const HFS_SPAN_NM = 0.1;
+const SUB_DOPPLER_SPAN_CM = 5;
 const viewSpanNm = () => 1e7 / state.lo - 1e7 / state.hi;
-const hyperfineShown = () => viewSpanNm() < HFS_SPAN_NM * (1 - 1e-6);   // a view of exactly 0.1 nm is not "below"
+const hyperfineShown = () => state.mode === "sub" ? state.hi - state.lo <= SUB_DOPPLER_SPAN_CM :
+  viewSpanNm() < HFS_SPAN_NM * (1 - 1e-6);   // a Doppler view of exactly 0.1 nm is not "below"
 
 const source = k => (state.refs && state.refs.sources[k]) || {short: `source ${k}`, link: null};
 const escapeHTML = t => String(t).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
@@ -790,7 +794,7 @@ function drawPlot() {
   if (state.mode === "sub") {
     // what the sub-Doppler trace is, or why it is not drawn: inside the plot, with a halo; top left, or on a
     // phone, where the tick labels are inside the plot at the left, top right
-    const note = !sub ? `sub-Doppler: zoom to below ${HFS_SPAN_NM} nm` :
+    const note = !sub ? `sub-Doppler: zoom to a span of ${SUB_DOPPLER_SPAN_CM} cm⁻¹ or less` :
       `${sub.nDips} Lamb dips${sub.nCross ? `, ${sub.nCross} crossovers` : ""} · Γ ${sub.fwhm} MHz` + (sub.fwhmDrawn > sub.fwhm * 1.05 ?
         ` (drawn ${sub.fwhmDrawn < 10 ? sub.fwhmDrawn.toFixed(1) : sub.fwhmDrawn.toFixed(0)} MHz: zoom in)` : "");
     g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = narrow ? "right" : "left"; g.textBaseline = "top";
@@ -1026,7 +1030,7 @@ function pushURL() {
   });
   if (state.selected) q.set("line", label(state.selected));
   if (state.show !== "all") q.set("show", state.show || "none");
-  if (state.mode !== "sigma") q.set("y", state.mode);
+  q.set("y", state.mode);
   if (state.mode === "sub") {
     if (state.sub.fwhm !== P.SUB_DOPPLER_FWHM) q.set("gamma", String(state.sub.fwhm));
     if (state.sub.harmonic) { q.set("det", state.sub.harmonic + "f"); q.set("mod", String(state.sub.modulation)); }
@@ -1745,7 +1749,7 @@ function wire() {
 
 /** The y axis: "sigma" (cross section), "trans" (cell transmission) or "sub" (sub-Doppler). */
 function setMode(mode) {
-  state.mode = ["sigma", "trans", "sub"].includes(mode) ? mode : "sigma";
+  state.mode = ["sigma", "trans", "sub"].includes(mode) ? mode : "sub";
   $$("#mode button").forEach(o => o.setAttribute("aria-pressed", String(o.dataset.mode === state.mode)));
   $$(".cellonly").forEach(el => el.hidden = state.mode !== "trans");
   $$(".subonly").forEach(el => el.hidden = state.mode !== "sub");
@@ -1757,7 +1761,7 @@ function setMode(mode) {
   pushURL();
 }
 
-/** ±0.1 nm around a laser's harmonic; ±0.04 nm in sub-Doppler mode, which needs a view below 0.1 nm. */
+/** ±0.1 nm around a laser's harmonic; ±0.04 nm for a closer sub-Doppler view. */
 const laserHalfSpan = () => state.mode === "sub" ? 0.4 * HFS_SPAN_NM : HFS_SPAN_NM;
 
 /**
@@ -1836,7 +1840,7 @@ async function start() {
   if (Number(q.get("gamma")) > 0) { state.sub.fwhm = Number(q.get("gamma")); $("#gamma").value = q.get("gamma"); }
   if (/^[13]f$/.test(q.get("det") || "")) { state.sub.harmonic = Number(q.get("det")[0]); $("#det").value = String(state.sub.harmonic); }
   if (Number(q.get("mod")) > 0) { state.sub.modulation = Number(q.get("mod")); $("#mod").value = q.get("mod"); }
-  if (q.get("y")) setMode(q.get("y"));
+  setMode(q.get("y") || state.mode);
   // a laser: its fields, and its marker; the view is the link's own when it has one
   const laser = Number(q.get("laser"));
   if (laser > 0) {
@@ -1847,16 +1851,23 @@ async function start() {
     state.laser = {value: laser, unit: $("#lunit").value, n, nu: P.harmonicWavenumber(laser, $("#lunit").value, n)};
   }
   const from = Number(q.get("from")), to = Number(q.get("to"));
+  let initialLine = null;
   if (Number.isFinite(from) && Number.isFinite(to) && from !== to) {
     const a = P.toWavenumber(from, $("#unit").value), b = P.toWavenumber(to, $("#unit").value);
     await show(Math.min(a, b), Math.max(a, b));
   } else if (state.laser) {
     await show(...P.harmonicView(state.laser.value, state.laser.unit, state.laser.n, laserHalfSpan()));
   } else {
-    $("#unit").value = q.get("unit") || "nm";
-    await show(18787.8, 18789.0);
+    // Usually one shard contains the target. Resolve its actual model position
+    // without indexing the whole list; other isotopes can use the label index.
+    const iso = $("#iso").value, {line, near, halfSpan} = DEFAULT_VIEW;
+    const nearby = await linesIn(iso, near - halfSpan, near + halfSpan);
+    initialLine = nearby.find(l => label(l) === line) || (await buildIndex(iso)).get(line);
+    const centre = initialLine ? initialLine.nu : near;
+    await show(centre - halfSpan, centre + halfSpan);
   }
   if (q.get("line")) await findLine(q.get("line"), {keepView: true});
+  else if (initialLine) await select(initialLine);
   else if (state.lines.length) {
     // open on the strongest line in view, so the hyperfine pane shows what this tool is for
     await select(state.lines.reduce((a, b) =>

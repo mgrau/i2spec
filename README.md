@@ -83,6 +83,7 @@ print(nu0 + a10.offset)             # ≈ 563 260 223.57 MHz (CIPM value: 563 26
 |---|---|
 | `src/i2spec/` | the package: potentials, radial solvers, level corrections, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
 | `src/i2spec/data/` | the model parameters: potentials, level corrections, hyperfine tables |
+| [`models/research-20261008/`](models/research-20261008/README.md) | frozen research candidate with the lowest current absolute RMS, coefficients, provenance and a standalone evaluator |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
 | `data/catalog/` | the literature catalog: every data source found, with DOIs |

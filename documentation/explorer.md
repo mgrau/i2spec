@@ -7,6 +7,10 @@ measurements with their sources. The page computes line strengths, Doppler profi
 transmission for the chosen temperature and cell. These calculations are tested against the Python
 model (partition function to 10⁻⁶, line strengths to 0.2 %).
 
+The explorer opens in **sub-Doppler** mode, centered on **¹²⁷I₂ P(53) 32–0** with a
+range of **±2 cm⁻¹**. That line is selected in the detail panel. A shared link's
+explicit range, display mode and line selection take precedence.
+
 ## Classification of lines
 
 Each line belongs to one of three classes, shown in the same colour in the spectrum and in the
@@ -38,7 +42,7 @@ The detail panel shows the full calculation, including these couplings, where it
 The **sub-Doppler** button of the y-axis control draws the saturated-absorption spectrum that a
 pump–probe experiment records, using the same model as the Python package (`i2spec.saturation`,
 derived in `docs/research/sub-doppler.md`). It needs the hyperfine patterns, so it is drawn only when
-the view is narrower than 0.1 nm; a wider view shows the cross section with a note to zoom in.
+the view spans at most 5 cm⁻¹; a wider view shows the cross section with a note to zoom in.
 
 - Every hyperfine component gives a **Lamb dip** of amplitude proportional to S², the weak-saturation
   (bilinear) limit, where S is the component strength at the cell temperature. Dips of different lines
@@ -147,7 +151,7 @@ bottom that opens to the full detail when tapped. The vertical axis is labelled 
 round tick values and their power of ten given once above it.
 
 The address bar always contains the current range, isotopologue, temperature and selected line, so
-that a view can be shared as a link. It also records the y axis (`y=trans` or `y=sub`), the
+that a view can be shared as a link. It also records the y axis (`y=sigma`, `y=trans` or `y=sub`), the
 sub-Doppler settings (`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz) and
 the laser (`laser`, its unit `lunit` and the harmonic `n`). A link with a laser but no range opens on
 the laser's harmonic.

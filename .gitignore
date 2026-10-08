@@ -28,3 +28,42 @@ site/
 
 # The manuscript draft: not published yet
 paper/
+
+# Local research files and remote handoff (retained on disk)
+/AGENTS.md
+/docs/figures/candidate-reference-comparison.pdf
+/docs/figures/candidate-reference-comparison.png
+/docs/figures/complete-spectral-frontier.pdf
+/docs/figures/complete-spectral-frontier.png
+/docs/figures/formula-only-model-frontier.pdf
+/docs/figures/formula-only-model-frontier.png
+/docs/figures/p13-controlled-ablation.pdf
+/docs/figures/p13-controlled-ablation.png
+/docs/figures/p13-omitted-focused-models.pdf
+/docs/figures/p13-omitted-focused-models.png
+/docs/figures/p13-potential-order-grid.pdf
+/docs/figures/p13-potential-order-grid.png
+/docs/figures/p13-search-update-20261007T180046Z.pdf
+/docs/figures/p13-search-update-20261007T180046Z.png
+/docs/figures/p13-search-update-20261008T015532Z.pdf
+/docs/figures/p13-search-update-20261008T015532Z.png
+/docs/figures/p13-search-update-20261008T054100Z-validation.pdf
+/docs/figures/p13-search-update-20261008T054100Z-validation.png
+/docs/figures/p13-search-update-20261008T054100Z.pdf
+/docs/figures/p13-search-update-20261008T054100Z.png
+/docs/figures/physical-model-search.pdf
+/docs/figures/physical-model-search.png
+/docs/figures/radial-hyperfine-search.pdf
+/docs/figures/radial-hyperfine-search.png
+/docs/figures/structural-model-alternatives.png
+/docs/research/candidate-reference-comparison.md
+/docs/research/physical-model-search.md
+/docs/research/structural-model-alternatives.md
+/handoff/
+/prototypes/b1g_residuals.py
+/prototypes/benchmark/
+/prototypes/explore/
+/prototypes/near_dissociation_box_check.py
+/prototypes/near_dissociation_quasibound_lines.py
+/prototypes/potential_covariance.py
+/prototypes/x_level_sharing.py

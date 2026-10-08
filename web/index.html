@@ -221,8 +221,8 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
 </header>
 
 <div class="controls" id="controls">
-  <div class="field"><label for="lo">from</label><input id="lo" value="532.20"></div>
-  <div class="field"><label for="hi">to</label><input id="hi" value="532.30"></div>
+  <div class="field"><label for="lo">from</label><input id="lo"></div>
+  <div class="field"><label for="hi">to</label><input id="hi"></div>
   <div class="field"><label for="unit">unit</label><select id="unit">
     <option value="nm">nm vacuum</option><option value="nm-air">nm air</option>
     <option value="cm-1">cm⁻¹</option><option value="THz">THz</option><option value="MHz">MHz</option>
@@ -240,14 +240,14 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   <div class="field"><label for="iso">isotopologue</label><select id="iso"></select></div>
   <div class="field"><label for="temp">cell T (K)</label><input id="temp" type="number" value="293.15" step="5" min="200" max="600"></div>
   <div class="field"><label for="mode">y axis</label><span class="seg" id="mode">
-    <button data-mode="sigma" aria-pressed="true">cross section</button>
+    <button data-mode="sigma" aria-pressed="false">cross section</button>
     <button data-mode="trans" aria-pressed="false">transmission</button>
-    <button data-mode="sub" aria-pressed="false" title="saturated absorption: Lamb dips of the hyperfine components; needs a view narrower than 0.1 nm">sub-Doppler</button></span></div>
+    <button data-mode="sub" aria-pressed="true" title="saturated absorption: Lamb dips of the hyperfine components; shown for spans up to 5 cm⁻¹">sub-Doppler</button></span></div>
   <div class="field cellonly" hidden><label for="cold">cold finger (°C)</label><input id="cold" type="number" value="20" step="5" min="-40" max="120"></div>
   <div class="field cellonly" hidden><label for="path">path (cm)</label><input id="path" type="number" value="10" step="1" min="0.1"></div>
-  <div class="field subonly" hidden><label for="gamma">Γ hom. (MHz)</label><input id="gamma" type="number" value="2" step="0.5" min="0.01"
+  <div class="field subonly"><label for="gamma">Γ hom. (MHz)</label><input id="gamma" type="number" value="2" step="0.5" min="0.01"
     title="homogeneous FWHM of each resonance: natural, transit-time, pressure and power broadening together"></div>
-  <div class="field subonly" hidden><label for="det">detection</label><select id="det">
+  <div class="field subonly"><label for="det">detection</label><select id="det">
     <option value="0">signal</option><option value="1">1f</option><option value="3">3f</option></select></div>
   <div class="field subonly modonly" hidden><label for="mod">mod. p-p (MHz)</label><input id="mod" type="number" value="1" step="0.5" min="0.01"
     title="peak-to-peak frequency modulation for the harmonic (1f, 3f) signals"></div>

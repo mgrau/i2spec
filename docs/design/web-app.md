@@ -103,6 +103,13 @@ the exported data for self-consistency. Agreement is 10⁻¹² for the closed-fo
 
 ## Interaction
 
+The initial view is sub-Doppler, ±2 cm⁻¹ around the exported position of
+¹²⁷I₂ P(53) 32–0, with that line selected. The app first looks in its nearby
+shard so startup need not index the full line list. Explicit shared-link ranges,
+modes, laser settings and line selections retain their precedence. Sub-Doppler
+rendering loads hyperfine patterns for spans up to 5 cm⁻¹, enough for the initial
+4 cm⁻¹ window; Doppler profiles retain the 0.1 nm component-resolution threshold.
+
 The plot behaves the way a spectrum viewer should rather than the way a map does:
 
 - **drag** pans: the spectrum follows the pointer;

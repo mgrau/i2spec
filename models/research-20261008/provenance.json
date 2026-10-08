@@ -1,0 +1,19 @@
+{
+  "base_git_commit": "b9c6a9bc4f86718510ef9d3ad51e6b550fefd5ce",
+  "source_sha256": {
+    "prototypes/out/explore/physical_search/p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_potential/fit.npz": "38a8dac2d91004f47e1ad2afe4793d1a86990a19bb87991556f1030ced21e28a",
+    "prototypes/out/explore/physical_search/p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_hyperfine/fit.npz": "273c790cc1c75aa2e6f7ce1e594f20fb0746330261a27e6e6c070b32dfcdb957",
+    "prototypes/out/explore/physical_search/p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_potential/request.json": "684e1ba5143a62b9b6db1da32eabb4f9edcdc7fb8a13a6e475f9c16dc9858efc",
+    "prototypes/out/explore/physical_search/p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_hyperfine/request.json": "4b029bd7d154f2e4f76b21e7c85b17de1b17bf412d89b87cbc14b56b7de19129",
+    "prototypes/out/explore/physical_search/p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_after/hyperfine_raw_radial_predictions.npz": "90fc6ca38b62e96ca254a197e04ad9effd4e0adacaed649e0761d98fc14158ce",
+    "prototypes/out/explore/physical_search/p13_model_exploration_hf_v1/comparison.json": "d2a78b070fba47cd3e932ecc52147406fe0ce55657bb5b23c19ff950e6c116c9",
+    "prototypes/out/explore/physical_search/p13_model_exploration_v1/comparison.json": "10724e3b3fef37ef798e62626a876d7718eb03d03bdd9dcc4d669bb80b5adc90",
+    "prototypes/out/explore/physical_search/p13_potential_grid_comparison.json": "3ce980826f0c17e1740eaac2c0ecf868317c67ac789fe1e48978040ad4eeb207",
+    "prototypes/explore/physical_search/curves.py": "ff74317bc511f10678ef9d0777b3483fb622df7beb3279d78a262bb92a79c026",
+    "prototypes/explore/physical_search/radial_hyperfine.py": "13df5e7354b491f66f8e7ac570a7d887a0ef373b72b7f662b66feb438cd26cc6",
+    "prototypes/explore/physical_search/fast_engine.py": "21c6f77dd6795e53cb961c74f8072f50f4a2079eb91386759f97832c961c73c1",
+    "src/i2spec/bspline.py": "1772a05021a6025bba74779d1d60627d2d76b00296fb33bdc256982f93fc4ee8",
+    "src/i2spec/hyperfine.py": "c4003ce812eed691108fbcb8a58c9240e66db8b92cfa24e3d11d426aa2242a1a",
+    "src/i2spec/constants.py": "fe243c658ee5a1887cca32cae29323c3c3c1bb36003b758edd71422b43c33860"
+  }
+}

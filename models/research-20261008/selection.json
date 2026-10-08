@@ -1,0 +1,884 @@
+{
+  "frozen_utc": "2026-10-08T08:19:33.993688+00:00",
+  "criterion": "Lowest absolute-component RMS among training-selected, completed, accepted candidates in the current two campaigns and potential-grid controls.",
+  "caveats": [
+    "Architecture comparisons reuse the exploratory benchmark; this is not a blind test.",
+    "This candidate has not completed the seven band/source holdouts. The 80-inventory reference has completed them.",
+    "Intraline RMS is higher than for the 80-inventory reference. No model wins every accuracy/count metric.",
+    "Shared radial functions only; no line or vibrational-level shifts. No production default is changed."
+  ],
+  "selected": {
+    "phase": "complete",
+    "cell": {
+      "id": "x14_b20_anchored_x_3_1_4_5_2_1",
+      "group": "x14_b20_anchored_x",
+      "config": {
+        "family": "mlr",
+        "nx": 14,
+        "nb": 20,
+        "alpha_x": 2,
+        "alpha_b": 6,
+        "adiabatic_b": 0,
+        "px": 5,
+        "pb": 6,
+        "qx": 3,
+        "qb": 4,
+        "ref_x": 1.0,
+        "ref_b": 1.5,
+        "damping": false,
+        "free_lr": false,
+        "fit_reference": false,
+        "mapped_x": true,
+        "mapped_alpha": true,
+        "correct_b_c10": false,
+        "positive_rotation": false,
+        "family_x": null,
+        "family_b": null,
+        "denominator_x": 0,
+        "denominator_b": 0,
+        "rmin_x": 1.5,
+        "rmin_b": 1.5
+      },
+      "hyperfine": {
+        "orders": "3,1,4,5,2,1",
+        "fixed_x": false,
+        "anchor_x": true,
+        "inherited": 4
+      },
+      "free": 61,
+      "inherited": 11,
+      "calibration": 4,
+      "n_line_specific": 0
+    },
+    "fold": "future",
+    "suffix": "complete_s0",
+    "method": "gn",
+    "source": "p13_potential_grid_x14_b20_s30_i1_potential",
+    "hyperfine": "p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_conditional_hyperfine",
+    "conditional_profile": "p13_model_exploration_hf_v1_x14_b20_anchored_x",
+    "conditional_initializer": "prototypes/out/explore/physical_search/p13_model_exploration_hf_v1_x14_b20_anchored_x_exact/best_n14.npz",
+    "tag": "p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0",
+    "started_utc": "2026-10-07T18:02:54.562458+00:00",
+    "accepted": true,
+    "last": {
+      "potential": "p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_potential",
+      "hyperfine": "p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_hyperfine",
+      "export": "p13_model_exploration_hf_v1_x14_b20_anchored_x_3_1_4_5_2_1_future_complete_s0_consistent_i1_after",
+      "potential_training_cost": 5175.185756110057,
+      "hyperfine_training_cost": 3975.884421935789,
+      "maximum_training_center_change_MHz": 1.9341707229614258e-05,
+      "free": 61,
+      "inherited": 11,
+      "optimizer_termination": {
+        "success": false,
+        "message": "No improving damped step found",
+        "nfev": 41,
+        "optimality": 2.555674726685931e-06,
+        "bound_hits": []
+      },
+      "separation_audit": {
+        "fold": "future",
+        "n_training": 41788,
+        "n_held_out": 81,
+        "training_sha256": "0e04b3d6272e41795d58d09ee427c1a6782921015e0a55c3430be521ceb0e355",
+        "held_out_sha256": "c32f9e986a5631e6d837be2d68b0991e5902bc63a32bb84a1144dfd1d306975f",
+        "hyperfine_training": 559,
+        "hyperfine_held_out": 592,
+        "exclusion_verified": true,
+        "training_only_calibration": {
+          "atlas_sr": {
+            "offset_MHz": 8.833453866397234,
+            "offset_unc_MHz": 0.8243578592174631,
+            "slope_MHz_per_1000cm": 3.2680764728453076,
+            "slope_unc": 1.031520769782351,
+            "n_shared": 480,
+            "n_used": 470,
+            "rms_z": 1.155538449149736,
+            "nu_range_cm": [
+              15233.364107999998,
+              19224.266718
+            ],
+            "max_change_from_cached_MHz": 3.552495837211609
+          },
+          "atlas_apo": {
+            "offset_MHz": -18.149433175622896,
+            "offset_unc_MHz": 0.4783717786909497,
+            "slope_MHz_per_1000cm": 1.1125507647147777,
+            "slope_unc": 0.7381992735349652,
+            "n_shared": 500,
+            "n_used": 495,
+            "rms_z": 0.5849261414932858,
+            "nu_range_cm": [
+              15517.382463999998,
+              19224.26637
+            ],
+            "max_change_from_cached_MHz": 0.19845223426818848
+          }
+        }
+      },
+      "numerical_audit": {
+        "maximum_radial_mesh_difference_Hz": 50.469301618977624,
+        "maximum_actual_J_difference_Hz": 856.9993078708649
+      },
+      "score": {
+        "unique_absolute_comb": {
+          "n": 60,
+          "rms_MHz": 0.15592939233708722,
+          "maximum_absolute_error_MHz": 0.6277341842651367,
+          "all_repeats_within_MHz": {
+            "0.1": 24,
+            "0.3": 57,
+            "1": 60,
+            "3": 60,
+            "10": 60
+          },
+          "records": [
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=112, v_upper=35, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "sakagami2020a:3"
+              ],
+              "error_to_median_observation_MHz": 0.6277341842651367,
+              "maximum_absolute_error_MHz": 0.6277341842651367
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=34, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "sakagami2020a:6"
+              ],
+              "error_to_median_observation_MHz": -0.03844785690307617,
+              "maximum_absolute_error_MHz": 0.03844785690307617
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=35, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "sakagami2020a:2"
+              ],
+              "error_to_median_observation_MHz": -0.10817873477935791,
+              "maximum_absolute_error_MHz": 0.10817873477935791
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=46, v_upper=5, v_lower=4), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "huang2018a:0"
+              ],
+              "error_to_median_observation_MHz": -0.1927366852760315,
+              "maximum_absolute_error_MHz": 0.1927366852760315
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=46, v_upper=5, v_lower=4), 'a10', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "huang2018a:1"
+              ],
+              "error_to_median_observation_MHz": -0.18774181604385376,
+              "maximum_absolute_error_MHz": 0.18774181604385376
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=46, v_upper=5, v_lower=4), 'a15', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "huang2018a:2"
+              ],
+              "error_to_median_observation_MHz": -0.0947466492652893,
+              "maximum_absolute_error_MHz": 0.0947466492652893
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a1', None, None)",
+              "n_observations": 2,
+              "ids": [
+                "hauden2024a:0",
+                "tanabe2022a:1"
+              ],
+              "error_to_median_observation_MHz": -0.15738248825073242,
+              "maximum_absolute_error_MHz": 0.16508245468139648
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a10', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:9"
+              ],
+              "error_to_median_observation_MHz": -0.10954546928405762,
+              "maximum_absolute_error_MHz": 0.10954546928405762
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a11', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:10"
+              ],
+              "error_to_median_observation_MHz": -0.11450004577636719,
+              "maximum_absolute_error_MHz": 0.11450004577636719
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a12', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:11"
+              ],
+              "error_to_median_observation_MHz": -0.16266357898712158,
+              "maximum_absolute_error_MHz": 0.16266357898712158
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a13', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:12"
+              ],
+              "error_to_median_observation_MHz": -0.1208803653717041,
+              "maximum_absolute_error_MHz": 0.1208803653717041
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a14', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:13"
+              ],
+              "error_to_median_observation_MHz": -0.12741076946258545,
+              "maximum_absolute_error_MHz": 0.12741076946258545
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a15', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:14"
+              ],
+              "error_to_median_observation_MHz": -0.16438257694244385,
+              "maximum_absolute_error_MHz": 0.16438257694244385
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a16', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:15"
+              ],
+              "error_to_median_observation_MHz": -0.14744973182678223,
+              "maximum_absolute_error_MHz": 0.14744973182678223
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a17', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:16"
+              ],
+              "error_to_median_observation_MHz": -0.13374686241149902,
+              "maximum_absolute_error_MHz": 0.13374686241149902
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a18', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:17"
+              ],
+              "error_to_median_observation_MHz": -0.14969873428344727,
+              "maximum_absolute_error_MHz": 0.14969873428344727
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a19', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:18"
+              ],
+              "error_to_median_observation_MHz": -0.16457068920135498,
+              "maximum_absolute_error_MHz": 0.16457068920135498
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a2', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:1"
+              ],
+              "error_to_median_observation_MHz": -0.0547938346862793,
+              "maximum_absolute_error_MHz": 0.0547938346862793
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a20', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:19"
+              ],
+              "error_to_median_observation_MHz": -0.14466547966003418,
+              "maximum_absolute_error_MHz": 0.14466547966003418
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a21', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:20"
+              ],
+              "error_to_median_observation_MHz": -0.139776349067688,
+              "maximum_absolute_error_MHz": 0.139776349067688
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a3', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:2"
+              ],
+              "error_to_median_observation_MHz": -0.09213852882385254,
+              "maximum_absolute_error_MHz": 0.09213852882385254
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a4', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:3"
+              ],
+              "error_to_median_observation_MHz": -0.14968550205230713,
+              "maximum_absolute_error_MHz": 0.14968550205230713
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a5', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:4"
+              ],
+              "error_to_median_observation_MHz": -0.07151198387145996,
+              "maximum_absolute_error_MHz": 0.07151198387145996
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a6', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:5"
+              ],
+              "error_to_median_observation_MHz": -0.0960700511932373,
+              "maximum_absolute_error_MHz": 0.0960700511932373
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a7', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:6"
+              ],
+              "error_to_median_observation_MHz": -0.13020789623260498,
+              "maximum_absolute_error_MHz": 0.13020789623260498
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a8', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:7"
+              ],
+              "error_to_median_observation_MHz": -0.14895689487457275,
+              "maximum_absolute_error_MHz": 0.14895689487457275
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a9', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hauden2024a:8"
+              ],
+              "error_to_median_observation_MHz": -0.12387228012084961,
+              "maximum_absolute_error_MHz": 0.12387228012084961
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=51, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:16"
+              ],
+              "error_to_median_observation_MHz": -0.07885801792144775,
+              "maximum_absolute_error_MHz": 0.07885801792144775
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=52, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:14"
+              ],
+              "error_to_median_observation_MHz": 0.007027029991149902,
+              "maximum_absolute_error_MHz": 0.007027029991149902
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=54, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:9"
+              ],
+              "error_to_median_observation_MHz": 0.01231086254119873,
+              "maximum_absolute_error_MHz": 0.01231086254119873
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=55, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:7"
+              ],
+              "error_to_median_observation_MHz": -0.06967055797576904,
+              "maximum_absolute_error_MHz": 0.06967055797576904
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=56, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:5"
+              ],
+              "error_to_median_observation_MHz": 0.015631914138793945,
+              "maximum_absolute_error_MHz": 0.015631914138793945
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=57, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:3"
+              ],
+              "error_to_median_observation_MHz": -0.06797385215759277,
+              "maximum_absolute_error_MHz": 0.06797385215759277
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=58, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:1"
+              ],
+              "error_to_median_observation_MHz": 0.016410350799560547,
+              "maximum_absolute_error_MHz": 0.016410350799560547
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=62, v_upper=4, v_lower=5), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "badr2006a:0"
+              ],
+              "error_to_median_observation_MHz": 0.1621760129928589,
+              "maximum_absolute_error_MHz": 0.1621760129928589
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='P', J_lower=83, v_upper=33, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:10"
+              ],
+              "error_to_median_observation_MHz": -0.08713662624359131,
+              "maximum_absolute_error_MHz": 0.08713662624359131
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=36, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "kobayashi2015a:0"
+              ],
+              "error_to_median_observation_MHz": 0.03759884834289551,
+              "maximum_absolute_error_MHz": 0.03759884834289551
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=37, v_upper=16, v_lower=1), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hong2009a:0"
+              ],
+              "error_to_median_observation_MHz": -0.32125431299209595,
+              "maximum_absolute_error_MHz": 0.32125431299209595
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=37, v_upper=32, v_lower=0), 'b1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "sakagami2020a:5"
+              ],
+              "error_to_median_observation_MHz": -0.13732671737670898,
+              "maximum_absolute_error_MHz": 0.13732671737670898
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=38, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "sakagami2020a:1"
+              ],
+              "error_to_median_observation_MHz": -0.062033653259277344,
+              "maximum_absolute_error_MHz": 0.062033653259277344
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=38, v_upper=32, v_lower=0), 'a10', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "yoshii2019a:0"
+              ],
+              "error_to_median_observation_MHz": -0.1739656925201416,
+              "maximum_absolute_error_MHz": 0.1739656925201416
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=53, v_upper=24, v_lower=1), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "tanabe2022a:0"
+              ],
+              "error_to_median_observation_MHz": -0.18095004558563232,
+              "maximum_absolute_error_MHz": 0.18095004558563232
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=54, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:15"
+              ],
+              "error_to_median_observation_MHz": -0.045342087745666504,
+              "maximum_absolute_error_MHz": 0.045342087745666504
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=55, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:13"
+              ],
+              "error_to_median_observation_MHz": -0.12816190719604492,
+              "maximum_absolute_error_MHz": 0.12816190719604492
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=56, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:12"
+              ],
+              "error_to_median_observation_MHz": -0.042536377906799316,
+              "maximum_absolute_error_MHz": 0.042536377906799316
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=56, v_upper=32, v_lower=0), 'a10', None, None)",
+              "n_observations": 3,
+              "ids": [
+                "holzwarth2001a:11",
+                "hong2004b:0",
+                "jones2002a:1"
+              ],
+              "error_to_median_observation_MHz": -0.14031410217285156,
+              "maximum_absolute_error_MHz": 0.14494013786315918
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=57, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:8"
+              ],
+              "error_to_median_observation_MHz": -0.12712466716766357,
+              "maximum_absolute_error_MHz": 0.12712466716766357
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=58, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:6"
+              ],
+              "error_to_median_observation_MHz": -0.042095303535461426,
+              "maximum_absolute_error_MHz": 0.042095303535461426
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=59, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:4"
+              ],
+              "error_to_median_observation_MHz": -0.12726378440856934,
+              "maximum_absolute_error_MHz": 0.12726378440856934
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=60, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:2"
+              ],
+              "error_to_median_observation_MHz": -0.04303789138793945,
+              "maximum_absolute_error_MHz": 0.04303789138793945
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=61, v_upper=32, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "holzwarth2001a:0"
+              ],
+              "error_to_median_observation_MHz": -0.13063466548919678,
+              "maximum_absolute_error_MHz": 0.13063466548919678
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=75, v_upper=33, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "sakagami2020a:4"
+              ],
+              "error_to_median_observation_MHz": -0.11525535583496094,
+              "maximum_absolute_error_MHz": 0.11525535583496094
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=78, v_upper=4, v_lower=6), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "huang2013a:0"
+              ],
+              "error_to_median_observation_MHz": 0.10061681270599365,
+              "maximum_absolute_error_MHz": 0.10061681270599365
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=78, v_upper=4, v_lower=6), 'a10', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "huang2013a:1"
+              ],
+              "error_to_median_observation_MHz": -0.06511056423187256,
+              "maximum_absolute_error_MHz": 0.06511056423187256
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=78, v_upper=4, v_lower=6), 'a15', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "huang2013a:2"
+              ],
+              "error_to_median_observation_MHz": 0.0012832283973693848,
+              "maximum_absolute_error_MHz": 0.0012832283973693848
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=85, v_upper=25, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "grieser1994a:1"
+              ],
+              "error_to_median_observation_MHz": 0.154618501663208,
+              "maximum_absolute_error_MHz": 0.154618501663208
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=85, v_upper=33, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "hong2004a:0"
+              ],
+              "error_to_median_observation_MHz": -0.17957806587219238,
+              "maximum_absolute_error_MHz": 0.17957806587219238
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=95, v_upper=25, v_lower=1), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "tanabe2022a:2"
+              ],
+              "error_to_median_observation_MHz": 0.06859266757965088,
+              "maximum_absolute_error_MHz": 0.06859266757965088
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=98, v_upper=34, v_lower=0), 'a1', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "sakagami2020a:0"
+              ],
+              "error_to_median_observation_MHz": 0.09934258460998535,
+              "maximum_absolute_error_MHz": 0.09934258460998535
+            },
+            {
+              "identity": "(Line(isotopologue='127I2', branch='R', J_lower=99, v_upper=15, v_lower=1), 'a13', None, None)",
+              "n_observations": 1,
+              "ids": [
+                "grieser1994a:0"
+              ],
+              "error_to_median_observation_MHz": -0.41433995962142944,
+              "maximum_absolute_error_MHz": 0.41433995962142944
+            }
+          ],
+          "observed_rovibrational_groups": {
+            "n": 34,
+            "all_observed_components_within_MHz": {
+              "0.1": 15,
+              "0.3": 31,
+              "1": 34,
+              "3": 34,
+              "10": 34
+            },
+            "records": [
+              {
+                "line": "127I2 P(112) 35-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.6277341842651367
+              },
+              {
+                "line": "127I2 P(34) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.03844785690307617
+              },
+              {
+                "line": "127I2 P(35) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.10817873477935791
+              },
+              {
+                "line": "127I2 P(46) 5-4",
+                "n_observed_components": 3,
+                "maximum_absolute_error_MHz": 0.1927366852760315
+              },
+              {
+                "line": "127I2 P(49) 24-1",
+                "n_observed_components": 21,
+                "maximum_absolute_error_MHz": 0.16508245468139648
+              },
+              {
+                "line": "127I2 P(51) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.07885801792144775
+              },
+              {
+                "line": "127I2 P(52) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.007027029991149902
+              },
+              {
+                "line": "127I2 P(54) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.01231086254119873
+              },
+              {
+                "line": "127I2 P(55) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.06967055797576904
+              },
+              {
+                "line": "127I2 P(56) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.015631914138793945
+              },
+              {
+                "line": "127I2 P(57) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.06797385215759277
+              },
+              {
+                "line": "127I2 P(58) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.016410350799560547
+              },
+              {
+                "line": "127I2 P(62) 4-5",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.1621760129928589
+              },
+              {
+                "line": "127I2 P(83) 33-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.08713662624359131
+              },
+              {
+                "line": "127I2 R(36) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.03759884834289551
+              },
+              {
+                "line": "127I2 R(37) 16-1",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.32125431299209595
+              },
+              {
+                "line": "127I2 R(37) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.13732671737670898
+              },
+              {
+                "line": "127I2 R(38) 32-0",
+                "n_observed_components": 2,
+                "maximum_absolute_error_MHz": 0.1739656925201416
+              },
+              {
+                "line": "127I2 R(53) 24-1",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.18095004558563232
+              },
+              {
+                "line": "127I2 R(54) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.045342087745666504
+              },
+              {
+                "line": "127I2 R(55) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.12816190719604492
+              },
+              {
+                "line": "127I2 R(56) 32-0",
+                "n_observed_components": 2,
+                "maximum_absolute_error_MHz": 0.14494013786315918
+              },
+              {
+                "line": "127I2 R(57) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.12712466716766357
+              },
+              {
+                "line": "127I2 R(58) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.042095303535461426
+              },
+              {
+                "line": "127I2 R(59) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.12726378440856934
+              },
+              {
+                "line": "127I2 R(60) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.04303789138793945
+              },
+              {
+                "line": "127I2 R(61) 32-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.13063466548919678
+              },
+              {
+                "line": "127I2 R(75) 33-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.11525535583496094
+              },
+              {
+                "line": "127I2 R(78) 4-6",
+                "n_observed_components": 3,
+                "maximum_absolute_error_MHz": 0.10061681270599365
+              },
+              {
+                "line": "127I2 R(85) 25-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.154618501663208
+              },
+              {
+                "line": "127I2 R(85) 33-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.17957806587219238
+              },
+              {
+                "line": "127I2 R(95) 25-1",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.06859266757965088
+              },
+              {
+                "line": "127I2 R(98) 34-0",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.09934258460998535
+              },
+              {
+                "line": "127I2 R(99) 15-1",
+                "n_observed_components": 1,
+                "maximum_absolute_error_MHz": 0.41433995962142944
+              }
+            ],
+            "convention": "Group by isotope, upper/lower vibration, branch and lower J. Require every observed component and repeat to satisfy tolerance. Unobserved components receive no credit."
+          }
+        }
+      },
+      "hyperfine_held_out": {
+        "n": 592,
+        "rms_MHz": 0.10800306968466333,
+        "median_abs_MHz": 0.055707846180972354,
+        "within_MHz": {
+          "0.01": 74,
+          "0.03": 200,
+          "0.1": 447,
+          "0.3": 578,
+          "1": 592,
+          "3": 592,
+          "10": 592
+        }
+      }
+    },
+    "finished_utc": "2026-10-07T18:04:52.415068+00:00"
+  },
+  "absolute_rms_MHz": 0.15592939233708722,
+  "intraline_rms_MHz": 0.10800306968466333
+}
