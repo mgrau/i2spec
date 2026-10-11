@@ -542,6 +542,13 @@ function drawPlot() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const W = wrap.clientWidth, H = wrap.clientHeight;
   if (W < 40 || H < 40) return;
+  const narrow = W < 700;
+  // on a phone the vertical axis is labelled inside the plot, so the spectrum gets the full width
+  const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 42, b: 50};
+  const pw = W - m.l - m.r, ph = H - m.t - m.b;
+  // no room for a plot (a phone with the options panel open): drawing anyway would turn it upside
+  // down, so keep the last picture until the plot is resized and redrawn (see wire)
+  if (pw < 20 || ph < 20) return;
   // resizing a canvas reallocates its pixels, so only when the size has actually changed
   if (canvas.width !== Math.round(W * dpr) || canvas.height !== Math.round(H * dpr)) {
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
@@ -551,11 +558,6 @@ function drawPlot() {
   gb.setTransform(dpr, 0, 0, dpr, 0, 0);
   gb.clearRect(0, 0, W, H);
   let g = gb;                  // the axes, grid and labels; the trace itself goes on its own layer (gt)
-
-  const narrow = W < 700;
-  // on a phone the vertical axis is labelled inside the plot, so the spectrum gets the full width
-  const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 42, b: 50};
-  const pw = W - m.l - m.r, ph = H - m.t - m.b;
   m.ph = ph;
   const {lo, hi, T, iso} = state;
   // The trace layer: a canvas the size of the plot, inside a box clipped to the plot area. A zoom or
@@ -1743,7 +1745,10 @@ function wire() {
   });
 
   let pending;
-  addEventListener("resize", () => { clearTimeout(pending); pending = setTimeout(redrawAll, 80); });
+  const later = () => { clearTimeout(pending); pending = setTimeout(redrawAll, 80); };
+  addEventListener("resize", later);
+  // the plot also changes size without the window doing so, e.g. as the options panel opens and closes
+  new ResizeObserver(later).observe($("#plotwrap"));
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redrawAll);
 }
 
