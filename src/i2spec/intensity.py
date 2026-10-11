@@ -17,6 +17,8 @@ from __future__ import annotations
 import hashlib
 import os
 from dataclasses import dataclass, fields
+from functools import lru_cache
+from importlib import resources
 from math import pi
 from pathlib import Path
 
@@ -231,10 +233,30 @@ def cache_dir() -> Path:
     return Path(os.environ.get("I2SPEC_CACHE", Path.home() / ".cache" / "i2spec"))
 
 
+@lru_cache(maxsize=None)
+def _parameter_files_digest(name):
+    """Hash of the bytes of a parameter set's file and of every file it uses, so that editing any of them in
+    place (a refitted level-correction file, say) gives cached line lists a new key."""
+    from .potentials import parameter_set
+    p = parameter_set(name)
+    extended = p.get("extended", {})
+    used = [name, *(extended[st] for st in ("X", "B") if st in extended)]
+    used += [p[k] for k in ("level_corrections", "gp_corrections", "hyperfine_table") if p.get(k)]
+    data = resources.files("i2spec").joinpath("data")
+    h = hashlib.sha1()
+    for stem in used:
+        for suffix in (".json", ".npz"):
+            f = data.joinpath(stem + suffix)
+            if f.is_file():
+                h.update(f"{stem}{suffix}\0".encode())
+                h.update(f.read_bytes())
+    return h.hexdigest()
+
+
 def _cache_key(model, *args):
-    text = repr((_CACHE_VERSION, model.parameters, model.isotopologue, model.solver, sorted(model.grids["X"].items()),
-                 sorted(model.grids["B"].items()), sorted((k, sorted(v.items())) for k, v in POSITION_GRIDS.items()),
-                 MATCH_TOLERANCE, args))
+    text = repr((_CACHE_VERSION, model.parameters, _parameter_files_digest(model.parameters), model.isotopologue,
+                 model.solver, sorted(model.grids["X"].items()), sorted(model.grids["B"].items()),
+                 sorted((k, sorted(v.items())) for k, v in POSITION_GRIDS.items()), MATCH_TOLERANCE, args))
     return hashlib.sha1(text.encode()).hexdigest()[:16]
 
 

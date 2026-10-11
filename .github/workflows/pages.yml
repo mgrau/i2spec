@@ -3,10 +3,15 @@
 # between runs, keyed on everything the export reads (the package, its parameter files, the atlas and
 # observation files, the locked dependencies): a push that changes none of them, such as a change to
 # the documentation or the app's JavaScript, reuses the data and only rebuilds the site (a few minutes).
+#
+# It runs after the test suite passes on a push to main, never on its own push, so a change that fails
+# the tests is not published.
 name: Web app
 
 on:
-  push:
+  workflow_run:
+    workflows: [Tests]
+    types: [completed]
     branches: [main]
   workflow_dispatch:
 
@@ -15,16 +20,21 @@ permissions:
   pages: write
   id-token: write
 
+# a deploy in progress is left to finish; a newer run waits, and replaces any that was already waiting
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
     timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
+        with:
+          # the commit the tests passed on (a manual run builds the branch it was started from)
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true

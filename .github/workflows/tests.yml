@@ -44,11 +44,18 @@ jobs:
     needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        # the oldest Python pyproject.toml allows, and the newest
+        python: ["3.11", "3.14"]
+    name: pytest (Python ${{ matrix.python }})
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
+          python-version: ${{ matrix.python }}
       - name: Restore line lists
         if: needs.changes.outputs.model == 'true'
         uses: actions/cache@v4

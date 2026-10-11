@@ -11,7 +11,26 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    # the whole suite on the released commit: nothing reaches PyPI that fails it
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Restore line lists
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/i2spec
+          key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
+          restore-keys: i2spec-
+      - run: uv sync --locked
+      - run: uv run python -m pytest -q
+
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
