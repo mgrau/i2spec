@@ -188,12 +188,7 @@ class RovibronicModel:
 
     def transition(self, v_upper: int, v_lower: int, J_lower: int, branch: str) -> float:
         """Wavenumber (cm⁻¹) of the P or R line (v'-v'') with lower-state J''."""
-        if branch == "R":
-            J_upper = J_lower + 1
-        elif branch == "P":
-            J_upper = J_lower - 1
-        else:
-            raise ValueError("branch must be 'P' or 'R' (Q lines are forbidden for 0u+ - 0g+)")
+        J_upper = _upper_J(J_lower, branch)
         nu = self.energy("B", v_upper, J_upper) - self.energy("X", v_lower, J_lower)
         if self.corrections is not None and self.corrections.band is not None:
             nu += self.corrections.band_shift(v_upper, v_lower, J_lower, branch) / MHZ_PER_CM
@@ -220,8 +215,8 @@ class RovibronicModel:
         """
         if table == "default":
             table = self._default_hfs_table()
+        J_upper = _upper_J(J_lower, branch)
         nu0 = self.transition(v_upper, v_lower, J_lower, branch) * MHZ_PER_CM if position else None
-        J_upper = J_lower + 1 if branch == "R" else J_lower - 1
         a, b = ISOTOPOLOGUES[self.isotopologue]
         x_params, b_params = hfs_params.line_states(self.isotopologue, v_upper, v_lower,
                                                     self._reference_term("B", v_upper),
@@ -255,3 +250,13 @@ class RovibronicModel:
             from .potentials import parameter_set
             self._hfs_table = default_table(parameter_set(self.parameters).get("hyperfine_table", "b_state_lines"))
         return self._hfs_table
+
+
+def _upper_J(J_lower: int, branch: str) -> int:
+    """J' of the P or R line from J''; P(0) and negative J'' have no upper level."""
+    if branch not in ("P", "R"):
+        raise ValueError("branch must be 'P' or 'R' (Q lines are forbidden for 0u+ - 0g+)")
+    J_upper = J_lower + 1 if branch == "R" else J_lower - 1
+    if J_lower < 0 or J_upper < 0:
+        raise ValueError(f"{branch}({J_lower}) has no upper level")
+    return J_upper

@@ -117,3 +117,47 @@ def test_reference_generator_is_safe_to_import_in_spawned_workers(monkeypatch, c
     module = runpy.run_path(str(webapp.WEB / "make_reference.py"), run_name="__mp_main__")
     assert callable(module["make_reference"]) and callable(module["main"])
     assert capsys.readouterr().out == ""
+
+
+def test_web_commands_need_a_checkout_and_say_so_at_once(monkeypatch, tmp_path, capsys):
+    import pytest
+
+    from i2spec import cli
+
+    webapp.check_checkout()                          # this is a checkout
+    monkeypatch.setattr(webapp, "OBSERVATIONS_DIR", tmp_path / "data" / "observations")
+    monkeypatch.setattr(webapp, "export", lambda **kw: (_ for _ in ()).throw(AssertionError("exported")))
+    for action in ("build", "export", "serve"):      # as from an installed wheel: no data/ beside the package
+        assert cli.main(["web", action, "--no-browser"]) == 2, action
+        assert "needs a source checkout" in capsys.readouterr().err
+    monkeypatch.undo()
+    monkeypatch.setattr(webapp, "MKDOCS", tmp_path / "mkdocs.yml")
+    with pytest.raises(FileNotFoundError, match="mkdocs.yml"):
+        webapp.build(tmp_path / "site", data=tmp_path)
+
+
+def test_web_build_warns_when_s_min_differs_from_the_export(monkeypatch, capsys):
+    from i2spec import cli
+
+    monkeypatch.setattr(webapp, "has_data", lambda data=None: True)
+    monkeypatch.setattr(webapp, "data_cutoff", lambda data=None: 1e-24)
+    monkeypatch.setattr(webapp, "build", lambda dest, **kw: dest)
+    assert cli.main(["web", "build", "out"]) == 0
+    assert "--s-min" not in capsys.readouterr().err
+    assert cli.main(["web", "build", "out", "--s-min", "1e-26"]) == 0
+    assert "--s-min 1e-24, not 1e-26" in capsys.readouterr().err
+
+
+def test_manifest_and_shard_bounds(tmp_path):
+    import http.server
+
+    assert not webapp.has_data(tmp_path) and webapp.data_cutoff(tmp_path) is None
+    webapp._write_atomic(tmp_path / "manifest.json", json.dumps({"cutoff_cm_at_300K": 1e-25}))
+    assert webapp.has_data(tmp_path) and webapp.data_cutoff(tmp_path) == 1e-25
+    assert [p.name for p in tmp_path.iterdir()] == ["manifest.json"]   # no temporary file left behind
+    # shard bounds are rounded outward, so a line stored to 1e-6 cm-1 near an edge stays inside its shard
+    assert webapp._floor4(18788.123456) == 18788.1234 <= round(18788.123456, 6)
+    assert webapp._ceil4(18788.123449) == 18788.1235 >= round(18788.123449, 6)
+    assert webapp._floor4(18788.1234) <= 18788.1234 <= webapp._ceil4(18788.1234)
+    # the server logs nothing per request
+    assert webapp._QuietHandler.log_message is not http.server.SimpleHTTPRequestHandler.log_message

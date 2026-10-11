@@ -130,6 +130,18 @@ class HyperfineFit:
         self.lines = sorted({(d.isotopologue, d.branch, d.J_lower, d.v_upper, d.v_lower)
                              for d in self.data})
         self.x0 = np.zeros(len(self.free))
+        # a component beyond those the model resolves has nothing to compare with; the count is set by
+        # the spins and J, not by the corrections, so it is decided here once
+        n_main = {key: len(a) for key, a in self.offsets(self.x0).items()}
+        keep = []
+        for d in self.data:
+            n = n_main[self.line_of(d)]
+            if max(d.rank, d.ref_rank) > n:
+                self.skipped.append((d.key, f"component beyond the {n} main components"))
+            else:
+                keep.append(d)
+        self.data = keep
+        self.lines = sorted({self.line_of(d) for d in self.data})
         self.prior = np.array([PRIORS[n] for n in self.free])
         self.weight = np.array([d.weight for d in self.data])
         self.sigma = np.array([d.uncertainty for d in self.data])
@@ -159,9 +171,6 @@ class HyperfineFit:
         out = np.empty(len(self.data))
         for i, d in enumerate(self.data):
             a = off[(d.isotopologue, d.branch, d.J_lower, d.v_upper, d.v_lower)]
-            if max(d.rank, d.ref_rank) > len(a):
-                out[i] = 0.0                       # component beyond those the model resolves
-                continue
             out[i] = (a[d.rank - 1] - a[d.ref_rank - 1]) - d.value
         return out
 
@@ -227,8 +236,7 @@ class HyperfineFit:
             c = Corrections(**dict(zip(terms, map(float, u * step))))
             _, comps = model.hyperfine_components(vu, vl, J, br, corrections=c, table=None)
             a = np.array(sorted(q.offset for q in comps if q.label))
-            return np.array([(a[d.rank - 1] - a[d.ref_rank - 1]) - d.value
-                             if max(d.rank, d.ref_rank) <= len(a) else 0.0 for d in D])
+            return np.array([(a[d.rank - 1] - a[d.ref_rank - 1]) - d.value for d in D])
 
         res = least_squares(lambda u: dev(u) / sig, np.zeros(len(terms)), diff_step=1e-3, max_nfev=max_nfev)
         scale = max(np.sum(res.fun ** 2) / max(len(D) - len(terms), 1), 1.0)

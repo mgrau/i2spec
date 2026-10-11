@@ -17,6 +17,8 @@ import csv
 import functools
 import http.server
 import json
+import math
+import os
 import re
 import shutil
 import subprocess
@@ -296,6 +298,52 @@ def hyperfine_patterns(iso, lines, workers=None):
 
 # --- the export --------------------------------------------------------------------------------------
 
+def check_checkout(export=True, site=True, docs=True):
+    """Fail at once, rather than after a long export, when the files ``i2spec web`` reads are missing.
+
+    They live in the source checkout (web/, data/, mkdocs.yml), not in the installed package.
+    """
+    needed = []
+    if export or docs:                      # the references page is written from the data too
+        needed += [OBSERVATIONS_DIR, ATLAS_DIR]
+    if site:
+        needed += [WEB / name for name in SITE_FILES]
+    if docs:
+        needed.append(MKDOCS)
+    missing = [str(p) for p in needed if not p.exists()]
+    if missing:
+        raise FileNotFoundError(
+            f"`i2spec web` needs a source checkout of i2spec (git clone it and run `uv run i2spec web` there); "
+            f"not found: {missing[0]}{f' and {len(missing) - 1} more' if len(missing) > 1 else ''}")
+
+
+def _write_atomic(path, text):
+    """Write ``text`` to ``path`` so that an interrupted write leaves the old file or none, never half of one."""
+    path = Path(path)
+    tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    try:
+        tmp.write_text(text)
+        os.replace(tmp, path)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
+def data_cutoff(data=DATA):
+    """The strength cutoff (cm at 300 K) the exported data in ``data`` was written with, or None."""
+    try:
+        return json.loads((Path(data) / "manifest.json").read_text())["cutoff_cm_at_300K"]
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def _floor4(x):
+    return round(math.floor(float(x) * 1e4) / 1e4, 4)
+
+
+def _ceil4(x):
+    return round(math.ceil(float(x) * 1e4) / 1e4, 4)
+
+
 def _git_revision():
     try:
         return subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"],
@@ -314,8 +362,12 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     from .lookup import Catalog, Line
     from . import __version__
 
+    check_checkout(site=False, docs=False)
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
+    # The shards are rewritten in place and the manifest last: without one, has_data() is False until the
+    # export completes, so an interrupted export is redone rather than served half old and half new.
+    (out / "manifest.json").unlink(missing_ok=True)
     catalog = Catalog()
     # the lines to the B limit (12 A grid, ~20 min to build) for 127I2, the one isotopologue measured there
     masters = {iso: master_line_list(intensity_model(iso), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
@@ -392,7 +444,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     # each line's `w` indexes this list: why its uncertainty is what it is, and the flags that go with it
     manifest["reasons"] = [{"why": why, "flags": [[f, FLAG_CLASS.get(f, "none")] for f in flags]}
                            for why, flags in reasons]
-    (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
+    _write_atomic(out / "manifest.json", json.dumps(manifest, indent=1))
     total = sum(f.stat().st_size for f in out.rglob("*.json"))
     print(f"wrote {len(list(out.rglob('*.json')))} files, {total / 1e6:.1f} MB, to {out}")
     for iso, keys in missing.items():
@@ -500,8 +552,9 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         (hfs_folder / name).write_text(json.dumps({"o": [p[0] for p in hfs_rows], "s": [p[1] for p in hfs_rows],
                                                    "x": [p[2] for p in hfs_rows]},
                                                   separators=(",", ":")))
-        shards.append({"file": f"lines/{iso}/{name}", "hfs": f"hfs/{iso}/{name}", "nu0": round(float(edges[k]), 4),
-                       "nu1": round(float(edges[k + 1]), 4), "n": int(sel.size), "n_measured": len(rows)})
+        # the bounds are rounded outward, so they hold every line in the shard at its stored 1e-6 cm-1
+        shards.append({"file": f"lines/{iso}/{name}", "hfs": f"hfs/{iso}/{name}", "nu0": _floor4(edges[k]),
+                       "nu1": _ceil4(edges[k + 1]), "n": int(sel.size), "n_measured": len(rows)})
 
     # the partition function needs the X term values and their nuclear-spin weights
     J = np.arange(master.x_levels.shape[0])
@@ -548,7 +601,7 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     print(f"  {iso}: {len(nu):,} lines ({int(is_measured.sum()):,} measured) in {len(shards)} shards, "
           f"{len(hfs)} hyperfine patterns")
     return {"label": LABELS[iso], "n_lines": int(len(nu)), "n_measured": int(is_measured.sum()),
-            "nu_min": round(float(nu.min()), 4), "nu_max": round(float(nu.max()), 4), "shards": shards,
+            "nu_min": _floor4(nu.min()), "nu_max": _ceil4(nu.max()), "shards": shards,
             "order": "wavelength",           # rows and shards run from short to long wavelength
             "partition": f"partition_{iso}.json", "hfs": f"hfs_{iso}.json"}
 
@@ -571,6 +624,7 @@ def build_docs(dest):
 def build(dest, data=DATA, docs=True):
     """The explorer and its data at ``dest``, the documentation at ``dest/docs``: the static site."""
     dest = Path(dest)
+    check_checkout(export=False, docs=docs)
     if not has_data(data):
         raise FileNotFoundError(f"no exported data in {data}; run `i2spec web export` first")
     dest.mkdir(parents=True, exist_ok=True)
@@ -596,10 +650,16 @@ def _lan_address():
         return None
 
 
+class _QuietHandler(http.server.SimpleHTTPRequestHandler):
+    """Serves files without logging every request to the terminal."""
+
+    def log_message(self, format, *args):
+        pass
+
+
 def serve(port=8777, open_browser=True, directory=ROOT / "site", host="127.0.0.1"):
     """Serve the site until interrupted: on this machine only by default, on the network with host="0.0.0.0"."""
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(directory))
-    handler.log_message = lambda *args: None
+    handler = functools.partial(_QuietHandler, directory=str(directory))
     for p in range(port, port + 20):
         try:
             server = http.server.ThreadingHTTPServer((host, p), handler)

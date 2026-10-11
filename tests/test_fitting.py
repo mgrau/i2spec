@@ -166,3 +166,42 @@ def test_prior_makes_the_problem_full_rank(fit):
     data_only = fit.jacobian(fit.x0) * fit.scale
     sv_data = np.linalg.svd(data_only, compute_uv=False)
     assert np.sum(sv_data > sv_data[0] * 1e-12) < fit.n_parameters
+
+
+def test_residuals_and_jacobian_reuse_the_solvers_without_changing_them(fit):
+    x = fit.x0 + 1e-9 * np.maximum(np.abs(fit.x0), 1.0)
+    fit._solver_cache = {}
+    J_first = fit.jacobian(x)
+    r_after = fit.residuals(x)                       # the Jacobian's solvers, reused
+    fit._solver_cache = {}
+    r_fresh = fit.residuals(x)
+    J_after = fit.jacobian(x)
+    assert np.array_equal(r_after, r_fresh) and np.array_equal(J_first, J_after)
+    solvers, _ = fit._solvers(x)
+    assert fit._solvers(x)[0] is solvers and fit._solvers(fit.x0)[0] is not solvers
+
+
+def test_reported_rms_includes_the_calibration_offsets(fit):
+    """rms is the root mean square, not the scatter, and the fitted offsets are part of the model."""
+    assert fit.n_offsets == 1
+    x = fit.x0.copy()
+    x[fit.n_knobs] = 5.0                              # MHz on the velchev1998a group
+    group = np.array([d.group == fit.offset_groups[0] for d in fit.data])
+    dev = fit.deviations(x)
+    assert np.allclose(dev[group] - fit.deviations(fit.x0)[group], 5.0, atol=1e-9)
+    rms = fit.rms_by_dataset(x)
+    for name in rms:
+        sel = np.array([d.dataset == name for d in fit.data])
+        assert rms[name] == pytest.approx(np.sqrt(np.mean(dev[sel] ** 2)))
+    assert rms["velchev1998a"] != pytest.approx(fit.rms_by_dataset(fit.x0)["velchev1998a"])
+
+
+def test_covariance_is_in_physical_units():
+    g = GlobalFit(datasets=[load_dataset("data/observations/velchev1998a"),
+                            load_dataset("data/observations/bodermann1998b")])
+    result = g.run(stages=((1e4, 1),), verbose=0)
+    assert result.covariance.shape == (g.n_parameters, g.n_parameters)
+    # the calibration offset, in MHz: its prior bounds it above, the group's own data below
+    i = g.n_knobs
+    sig = np.array([d.uncertainty for d in g.data if d.group == g.offset_groups[0]])
+    assert 1 / np.sqrt(np.sum(sig ** -2)) <= np.sqrt(result.covariance[i, i]) <= g.calibration_sigma

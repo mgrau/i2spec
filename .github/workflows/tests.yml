@@ -87,3 +87,9 @@ jobs:
           VIRTUAL_ENV=/tmp/clean uv pip install dist/*.whl
           cd /tmp
           /tmp/clean/bin/python -c "from i2spec.model import RovibronicModel; m = RovibronicModel(); print(m.transition(32, 0, 56, 'R')); print(len(m.hyperfine_components(32, 0, 56, 'R')[1]))"
+          /tmp/clean/bin/i2spec --help
+          # builds the default line list from an empty cache: about a minute
+          /tmp/clean/bin/i2spec lines 532.24 532.25 --limit 3
+          # `i2spec web` needs the checkout's web/ and data/: it must say so at once, not after a long export
+          if /tmp/clean/bin/i2spec web build out 2> web.err; then echo "i2spec web build ran without a checkout"; exit 1; fi
+          grep "needs a source checkout" web.err

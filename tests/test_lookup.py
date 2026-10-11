@@ -26,7 +26,7 @@ def catalog():
 
 
 def test_units_round_trip():
-    for unit in ("nm", "nm-air", "cm-1", "MHz", "THz"):
+    for unit in ("nm", "nm-air", "cm-1", "MHz", "GHz", "THz"):
         nu = to_wavenumber(from_wavenumber(18788.3356, unit), unit)
         assert nu == pytest.approx(18788.3356, rel=1e-10)
     # the same number read as an air wavelength means a longer vacuum wavelength, so a smaller wavenumber
@@ -37,13 +37,18 @@ def test_units_round_trip():
 def test_parse():
     assert parse_quantity("532.245 nm") == (532.245, "nm")
     assert parse_quantity("18788.3cm-1") == (18788.3, "cm-1")
-    assert parse_quantity("563260.2 GHz") == (563260200.0, "MHz")
+    assert parse_quantity("563260.2 GHz") == (563260.2, "GHz")
     assert parse_quantity("532.1", "nm-air") == (532.1, "nm-air")
     assert parse_label("R(56) 32-0") == ("R", 56, 32, 0)
     assert parse_label("p12 5-3") == ("P", 12, 5, 3)
     for bad in ("532 furlongs", "R56"):
         with pytest.raises(ValueError):
             parse_quantity(bad) if " " in bad else parse_label(bad)
+    for bad in ("0", "-532 nm", "0 MHz"):  # no wavelength or frequency is zero or negative
+        with pytest.raises(ValueError, match="positive"):
+            parse_quantity(bad)
+    with pytest.raises(ValueError, match="positive"):
+        to_wavenumber(0.0, "nm")
 
 
 def test_parse_range():
@@ -55,6 +60,7 @@ def test_parse_range():
     assert parse_range("532.2 to 532.3 nm-air") == (532.2, 532.3, "nm-air")
     assert parse_range("532.2..532.3") == (532.2, 532.3, "nm")
     assert parse_range("18788 18789", "cm-1") == (18788.0, 18789.0, "cm-1")
+    assert parse_range("563260-563261 GHz") == (563260.0, 563261.0, "GHz")
     for bad in ("532.2", "532.2-532.3-532.4", "532 nm - 18790 cm-1", "532.2-532.3 furlongs"):
         with pytest.raises(ValueError):
             parse_range(bad)
@@ -154,9 +160,27 @@ def test_cli_table_and_parser(catalog, capsys):
     assert "i2spec:" in capsys.readouterr().err
 
 
+def test_cli_range_units_and_errors(catalog, monkeypatch, capsys):
+    import json
+
+    monkeypatch.setattr(cli, "_catalog", lambda args: catalog)
+    # a bare upper bound takes the lower bound's unit: 563 255-563 262 GHz, not 563 255 GHz down to 563 262 MHz
+    for argv in (["563255GHz", "563262"], ["563255", "563262", "-u", "GHz"], ["563255 GHz", "563262000 MHz"]):
+        assert cli.main(["lines", *argv, "--json"]) == 0, argv
+        assert [d["line"] for d in json.loads(capsys.readouterr().out)] == ["R(56) 32-0"], argv
+    assert cli.main(["lines", "0", "500"]) == 2  # was a ZeroDivisionError traceback
+    assert "positive" in capsys.readouterr().err
+
+    def missing(args):
+        raise FileNotFoundError("no such file: data/observations")
+    monkeypatch.setattr(cli, "_catalog", missing)
+    assert cli.main(["lines", "532", "533"]) == 2
+    assert "i2spec: no such file" in capsys.readouterr().err
+
+
 def test_tui_starts_and_shows_lines(catalog):
     pytest.importorskip("textual")
-    from i2spec.tui import LineBrowser
+    from i2spec.tui import PLOT_MODES, LineBrowser
 
     async def go():
         app = LineBrowser(catalog=catalog)  # the default range, "532.2-532.3 nm", read from the search box
@@ -170,7 +194,7 @@ def test_tui_starts_and_shows_lines(catalog):
             assert app.query_one("#components").row_count >= 15
             assert "2 of 2 lines" in app.status_text
             assert app.current.label == "R(56) 32-0"  # opens on the strongest line, not the first row
-            for mode in ("line", "sub-Doppler", "window"):  # every plot mode produces a curve and draws it
+            for mode in PLOT_MODES:  # every plot mode produces a curve and draws it
                 app.plot_mode = mode
                 curve, title, left, right = app.plot_data()
                 assert curve.max() > 0 and title and left and right, mode

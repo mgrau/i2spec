@@ -170,6 +170,13 @@ function loadInBackground(iso, shards) {
   });
 }
 
+/** A shard's decoded rows, built once and shared by the view and the label index, so a line is one object. */
+function rowsOf(d, s, iso) {
+  d._hfsFile = s.hfs;                            // before the rows: each row keeps it
+  if (!d._rows) d._rows = Array.from(d.nu, (_, i) => rowAt(d, i, iso));
+  return d._rows;
+}
+
 async function linesIn(iso, nuLo, nuHi, {loadedOnly = false} = {}) {
   const info = state.manifest.isotopologues[iso];
   let need = info.shards.filter(s => s.nu1 >= nuLo && s.nu0 <= nuHi);
@@ -188,8 +195,7 @@ async function linesIn(iso, nuLo, nuHi, {loadedOnly = false} = {}) {
   out.slices = [];                               // which rows of which shard: for per-shard summaries
   for (const s of need) {
     const d = state.shards.get(s.file);
-    d._hfsFile = s.hfs;
-    if (!d._rows) d._rows = Array.from(d.nu, (_, i) => rowAt(d, i, iso));
+    rowsOf(d, s, iso);
     const a = firstBelow(d.nu, nuHi), b = firstBelow(d.nu, nuLo, true);
     for (let i = a; i < b; i++) out.push(d._rows[i]);
     out.slices.push({d, s, a, b});
@@ -221,13 +227,7 @@ async function buildIndex(iso) {
   const info = state.manifest.isotopologues[iso];
   await loadShards(iso, info.shards.map(s => s.file), "indexing every line");
   const index = new Map();
-  for (const s of info.shards) {
-    const d = state.shards.get(s.file);
-    for (let i = 0; i < d.nu.length; i++) {
-      const line = rowAt(d, i, iso);
-      index.set(label(line), line);
-    }
-  }
+  for (const s of info.shards) for (const line of rowsOf(state.shards.get(s.file), s, iso)) index.set(label(line), line);
   state.index.set(iso, index);
   return index;
 }
@@ -299,22 +299,19 @@ function histogramOf(d, s, T, iso) {
     if (!keep(line)) continue;
     const x = (line.nu - lo) / w - 0.5, k = Math.floor(x), f = x - k;
     const kind = kindOf(line), S = strengthOf(line, q, T), bins = parts[KIND_INDEX[kind]];
-    if (k >= 0) bins[k] += S * (1 - f);                          // split between the two nearest bins
-    if (k + 1 < HIST_BINS) bins[k + 1] += S * f;
+    // split between the two nearest bins; in the outer half of an edge bin both shares stay in it
+    bins[Math.min(Math.max(k, 0), HIST_BINS - 1)] += S * (1 - f);
+    bins[Math.min(Math.max(k + 1, 0), HIST_BINS - 1)] += S * f;
     const km = Math.min(HIST_BINS - 1, Math.max(0, Math.round(x)));
     if (kind === "precision") marks[km] = 2; else if (kind === "atlas" && !marks[km]) marks[km] = 1;
   }
   return (d._hist = {key, lo, w, parts, marks});
 }
 
-function binnedFromHistograms(lo, hi, nbins, T, iso) {
-  const parts = KINDS.map(() => new Float64Array(nbins));
-  const dnu = (hi - lo) / nbins;
-  const info = state.manifest.isotopologues[iso];
-  for (const s of info.shards) {
-    if (s.nu1 < lo || s.nu0 > hi) continue;
-    const d = state.shards.get(s.file);
-    if (!d || !d._rows) continue;
+/** Add the histograms of these shards (slices of a view) to the pixel bins. */
+function addHistograms(parts, slices, lo, dnu, T, iso) {
+  const nbins = parts[0].length;
+  for (const {d, s} of slices) {
     const h = histogramOf(d, s, T, iso);
     for (let p = 0; p < 3; p++) {
       const src = h.parts[p], dst = parts[p];
@@ -327,15 +324,21 @@ function binnedFromHistograms(lo, hi, nbins, T, iso) {
       }
     }
   }
-  return {parts, sticks: []};
 }
 
-function binned(lines, lo, hi, nbins, T, iso, withHfs) {
+/** slices: which rows of which shard the lines are (linesIn), so each shard can be drawn from its histogram. */
+function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || []) {
   const dnu = (hi - lo) / nbins;
-  const s0 = state.manifest.isotopologues[iso].shards[0];
-  if (!withHfs && dnu >= HIST_MIN_RATIO * (s0.nu1 - s0.nu0) / HIST_BINS) return binnedFromHistograms(lo, hi, nbins, T, iso);
   const parts = KINDS.map(() => new Float64Array(nbins));
   const sticks = [];
+  // each shard decides for itself: the last 127I2 shard, stretched to take in the emission rows, has bins
+  // about 12 times wider than the rest, too coarse for pixels its neighbours' histograms already suit
+  const fromHist = withHfs ? [] : slices.filter(({s}) => dnu >= HIST_MIN_RATIO * (s.nu1 - s.nu0) / HIST_BINS);
+  if (fromHist.length) {
+    addHistograms(parts, fromHist, lo, dnu, T, iso);
+    const keep = keepLine();
+    lines = slices.filter(sl => !fromHist.includes(sl)).flatMap(({d, a, b}) => d._rows.slice(a, b).filter(keep));
+  }
   const q = partitionAt(iso, T);
   const root2pi = Math.sqrt(2 * Math.PI);
   for (const line of lines) {
@@ -512,8 +515,9 @@ let lastFrame = null;
 function keepFrame(canvas, meta) { lastFrame = meta; }
 function drawPreview(lo, hi) {
   const f = lastFrame, canvas = $("#plot");
-  if (!f || f.iso !== state.iso || f.W !== $("#plotwrap").clientWidth) return false;
-  const {m, pw, ph, H, dpr, flip, narrow} = f;
+  const {m, pw, ph, H, dpr, flip, narrow} = f || {};
+  if (!f || f.iso !== state.iso || f.W !== $("#plotwrap").clientWidth || H !== $("#plotwrap").clientHeight ||
+      dpr !== Math.min(window.devicePixelRatio || 1, 2)) return false;
   // where a wavenumber was drawn, and where it belongs now: x' = m.l + (x - m.l) sx + tx
   const sx = (f.hi - f.lo) / (hi - lo);
   const tx = pw * (flip ? (hi - f.hi) : (f.lo - lo)) / (hi - lo);
@@ -534,6 +538,8 @@ const ink = name => {
 };
 
 function drawPlot() {
+  // nothing to draw before the first view and its partition table (a resize can come first)
+  if (!(state.hi > state.lo) || !state.partitions.has(state.iso)) return;
   inkCache = null;
   const kindInk = Object.fromEntries(KINDS.map(k => [k, ink(`--cls-${k}`)]));
   const canvas = $("#plot"), wrap = $("#plotwrap");
@@ -577,7 +583,7 @@ function drawPlot() {
   // one binned cross section per kind of line, stacked precision / atlas / model from the baseline
   const withHfs = hyperfineShown();
   const subOn = state.mode === "sub" && withHfs;
-  const {parts, sticks} = binned(lines, lo, hi, nb, T, iso, withHfs);
+  const {parts, sticks} = binned(lines, lo, hi, nb, T, iso, withHfs, (state.plotLines || state.lines).slices);
   const sub = subOn ? subDopplerBins(lines, lo, hi, nb, T, iso) : null;
   const sigma = new Float64Array(nb);
   for (const p of parts) for (let k = 0; k < nb; k++) sigma[k] += p[k];
@@ -807,7 +813,7 @@ function drawPlot() {
     g.textAlign = "left";
     g.textBaseline = "alphabetic";
   }
-  state.geom = {m, pw, ph, y, flip};
+  state.geom = {m, pw, ph, y, flip, lo, hi};      // the view as drawn: the pointer maps onto it, not state's
   keepFrame(canvas, {lo, hi, iso, m, pw, ph, W, H, dpr, flip, narrow});
 }
 
@@ -819,7 +825,7 @@ const COLUMNS = [
   {key: "cm", name: "ν (cm⁻¹)", cell: l => l.nu.toFixed(6)},
   {key: "f", name: "f (MHz)", cell: l => fmt(l.nu * P.MHZ_PER_CM, 1)},
   // s0 = 0: a measured line outside the computed list (emission to X v'' >= 48), whose strength was not computed
-  {key: "S", name: "S (cm)", cell: l => l.s0 > 0 ? P.strengthAt(l, partitionAt(l.iso, state.T), state.T).toExponential(2) : "—"},
+  {key: "S", name: "S (cm)", cell: l => l.s0 > 0 ? strengthOf(l, partitionAt(l.iso, state.T), state.T).toExponential(2) : "—"},
   {key: "u", name: "u (MHz)", cell: l => fmtU(unc(l).value)},
   {key: "meas", name: "measured by", html: l => measuredCell(l)},
 ];
@@ -840,7 +846,6 @@ const SORTERS = {
   nu: byLam,
   cm: (a, b) => a.nu - b.nu,
   f: (a, b) => a.nu - b.nu,
-  S: (a, b) => P.strengthAt(a, partitionAt(a.iso, state.T), state.T) - P.strengthAt(b, partitionAt(b.iso, state.T), state.T),
   u: (a, b) => unc(a).value - unc(b).value,
   label: (a, b) => a.vu - b.vu || a.vl - b.vl || a.J - b.J,
   meas: (a, b) => KINDS.indexOf(kindOf(a)) - KINDS.indexOf(kindOf(b)) || (bestU(a) - bestU(b)),
@@ -956,7 +961,15 @@ function laserText() {
 
 const byWavelength = () => state.sort.key === "nu";
 /** The table's sort order, as a comparator (the CSV export uses it too). */
-const tableOrder = () => (a, b) => state.sort.dir * ((SORTERS[state.sort.key] || byLam)(a, b) || byLam(a, b));
+const tableOrder = () => {
+  const by = state.sort.key === "S" ? byS() : SORTERS[state.sort.key] || byLam;
+  return (a, b) => state.sort.dir * (by(a, b) || byLam(a, b));
+};
+/** By strength at the current T: Q looked up once per sort, S kept on each line (strengthOf). */
+const byS = () => {
+  const T = state.T, q = partitionAt(state.iso, T);
+  return (a, b) => strengthOf(a, q, T) - strengthOf(b, q, T);
+};
 
 /**
  * Move the window along the spectrum from the table: towardLonger = +1 continues to longer wavelengths
@@ -1154,7 +1167,9 @@ async function select(line) {
     ${measurementsHTML(line)}
     <div id="hfsbox"><p class="note">loading hyperfine structure…</p></div>`;
 
-  const patterns = await getJSON(state.manifest.isotopologues[line.iso].hfs, state.hfs, line.iso);
+  let patterns = {};
+  try { patterns = await getJSON(state.manifest.isotopologues[line.iso].hfs, state.hfs, line.iso); }
+  catch { /* the full patterns did not load: the ΔJ = 0 one below, if there is one */ }
   if (state.selected !== line) return;                       // the user moved on while we fetched
   let comps = patterns[`${line.vu}-${line.vl}${line.branch}${line.J}`], approx = false;
   if (!comps && line.hfsFile) {
@@ -1366,7 +1381,8 @@ async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
   const info = state.manifest.isotopologues[state.iso];
   [nuLo, nuHi] = clampView(nuLo, nuHi);
   state.lo = nuLo; state.hi = nuHi;
-  state.T = Number($("#temp").value);
+  const T = Number($("#temp").value);
+  if (validT(T)) state.T = T; else $("#temp").value = state.T;   // empty, NaN or out of range: keep the last
   state.unitFlips = $("#unit").value.startsWith("nm");
   if (!keepInputs) syncInputs();
   const token = ++state.busy;
@@ -1396,6 +1412,9 @@ async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
     setStatus("could not load the line data: " + err.message);
   }
 }
+
+/** A cell temperature the explorer accepts, K: the field's own range, and a link's. */
+const validT = T => Number.isFinite(T) && T >= 200 && T <= 600;
 
 const EMPTY_DETAIL = `<h2>No line selected</h2>
   <p class="note">Click a row in the table, or click near a line in the spectrum, to see its
@@ -1476,11 +1495,11 @@ function closeOptions() {
 }
 
 function nuAtClientX(clientX) {
-  const {m, pw, flip} = state.geom;
+  const {m, pw, flip, lo, hi} = state.geom;
   const rect = $("#plot").getBoundingClientRect();
   let f = Math.min(Math.max((clientX - rect.left - m.l) / pw, 0), 1);
   if (flip) f = 1 - f;
-  return state.lo + (state.hi - state.lo) * f;
+  return lo + (hi - lo) * f;
 }
 
 function wire() {
@@ -1498,7 +1517,10 @@ function wire() {
   for (const id of ["#lo", "#hi"]) $(id).addEventListener("keydown", e => { if (e.key === "Enter") refresh(); });
   $("#unit").onchange = () => { syncInputs(); state.unitFlips = $("#unit").value.startsWith("nm"); drawPlot(); };
   $("#iso").onchange = () => show(state.lo, state.hi);
-  $("#temp").onchange = () => show(state.lo, state.hi);
+  $("#temp").onchange = async () => {
+    await show(state.lo, state.hi);
+    if (state.selected) select(state.selected);          // the detail pane: S, Doppler width and hyperfine at the new T
+  };
   for (const id of ["#cold", "#path"]) $(id).oninput = drawPlot;
   $("#find").addEventListener("keydown", e => { if (e.key === "Enter") findLine(e.target.value); });
   $$("#show button").forEach(b => b.onclick = () => {
@@ -1584,7 +1606,7 @@ function wire() {
   plot.addEventListener("mouseleave", () => { $("#crosshair").hidden = true; $("#readout").textContent = ""; });
   plot.addEventListener("click", e => {
     const pool = shownLines();
-    if (!pool.length || dragged) return;
+    if (!pool.length || dragged || !state.geom) return;
     const nu = nuAtClientX(e.clientX);
     let best = pool[0];
     for (const l of pool) if (Math.abs(l.nu - nu) < Math.abs(best.nu - nu)) best = l;
@@ -1725,7 +1747,7 @@ function wire() {
   });
 
   addEventListener("keydown", e => {
-    if (e.target.matches("input, select")) return;
+    if (e.defaultPrevented || e.target.matches("input, select")) return;   // a table row has handled it
     if (e.key === "/") { e.preventDefault(); $("#find").focus(); }
     if (e.key === "l" || e.key === "L") { e.preventDefault(); $("#laser").focus(); $("#laser").select(); }
     if ((e.key === "ArrowDown" || e.key === "ArrowUp") && state.shown && state.shown.length) {
@@ -1840,7 +1862,7 @@ async function start() {
     state.show = showKey();
     $$("#show button").forEach(o => o.setAttribute("aria-pressed", String(state.kinds.has(o.dataset.kind))));
   }
-  if (Number(q.get("T")) >= 200 && Number(q.get("T")) <= 600) $("#temp").value = q.get("T");
+  if (validT(Number(q.get("T")))) $("#temp").value = q.get("T");
   // sub-Doppler settings and the y axis
   if (Number(q.get("gamma")) > 0) { state.sub.fwhm = Number(q.get("gamma")); $("#gamma").value = q.get("gamma"); }
   if (/^[13]f$/.test(q.get("det") || "")) { state.sub.harmonic = Number(q.get("det")[0]); $("#det").value = String(state.sub.harmonic); }
@@ -1875,8 +1897,8 @@ async function start() {
   else if (initialLine) await select(initialLine);
   else if (state.lines.length) {
     // open on the strongest line in view, so the hyperfine pane shows what this tool is for
-    await select(state.lines.reduce((a, b) =>
-      P.strengthAt(a, partitionAt(a.iso, state.T), state.T) >= P.strengthAt(b, partitionAt(b.iso, state.T), state.T) ? a : b));
+    const q = partitionAt(state.iso, state.T), S = l => strengthOf(l, q, state.T);
+    await select(state.lines.reduce((a, b) => S(a) >= S(b) ? a : b));
   }
 }
 

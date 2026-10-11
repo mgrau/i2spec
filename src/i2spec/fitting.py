@@ -182,7 +182,7 @@ class GlobalFit:
         self.grids = {**DEFAULT_GRIDS["bspline"], **(grids or {})}
         self.potentials = load_potentials(parameters)
         self._models: dict[str, RovibronicModel] = {}
-        self._solver_cache: dict = {}
+        self._solver_cache: dict = {}            # the solvers (and level derivatives) at the last x
 
         # the fitted parameters, as an explicit list of (state, knob) pairs
         self.fixed = tuple(fixed or ())
@@ -275,7 +275,7 @@ class GlobalFit:
                             terms = []
                         else:
                             terms = list(self._line_terms(o.line, +1)) + list(self._line_terms(ref, -1))
-                except Exception as exc:  # noqa: BLE001 - record and skip rather than abort the build
+                except (LookupError, ValueError) as exc:  # no such line, component or level: record and skip
                     self.skipped.append((f"{o.line} {o.component or ''}".strip(), str(exc)))
                     continue
                 self.data.append(Datum(
@@ -340,14 +340,22 @@ class GlobalFit:
         return self._box_map
 
     def _solvers(self, x):
-        pots = self._potentials(x)
+        """Solvers and potentials at x. The last x's are kept: least_squares asks for the residuals and
+        then the Jacobian at the same point, and the second call reuses the solvers' eigenvalues."""
+        x = np.asarray(x, float)
         groups, _ = self._boxes()
+        tag = x.tobytes()
+        cache = self._solver_cache
+        if cache.get("x") == tag and cache["groups"] is groups:
+            return cache["solvers"], cache["pots"]
+        pots = self._potentials(x)
         out = {}
         for key, (grid, _Js) in groups.items():
             iso, state = key[0], key[1]
             mu = reduced_mass(iso)
             ratio = reduced_mass(REFERENCE_ISOTOPOLOGUE) / mu
             out[key] = BSplineSolver(pots[state], mu, mass_ratio=ratio, **grid)
+        self._solver_cache = {"x": tag, "groups": groups, "solvers": out, "pots": pots}
         return out, pots
 
     def energies(self, x):
@@ -375,6 +383,9 @@ class GlobalFit:
     def _level_derivatives(self, x):
         """dE/d(knob) for every level the residuals need, by Hellmann-Feynman."""
         solvers, pots = self._solvers(x)
+        cache = self._solver_cache
+        if "dE" in cache:
+            return cache["dE"], cache["dV"], solvers, pots
         x = np.asarray(x, float)
         dV = {}
         for key, solver in solvers.items():
@@ -393,12 +404,14 @@ class GlobalFit:
         for (iso, state, J), vmax in self.levels_needed.items():
             key = which[(iso, state, J)]
             solver = solvers[key]
+            solver.levels(J)      # the eigenvalues-only solve, so energies() comes out the same either way
             _, psi = solver.wavefunctions(J)
             if state in self.fit_states:
                 dE[(iso, state, J)] = np.einsum("g,gk,gv->vk", solver.W, dV[key],
                                                 psi[:, :vmax + 1] ** 2)
             else:
                 dE[(iso, state, J)] = np.zeros((vmax + 1, self.n_knobs))
+        cache.update(dE=dE, dV=dV)
         return dE, dV, solvers, pots
 
     def jacobian(self, x):
@@ -485,22 +498,21 @@ class GlobalFit:
 
     # ---------------------------------------------------------------- reporting and running
 
+    def deviations(self, x):
+        """model - observed in MHz, calibration offsets included."""
+        return self.residuals(x) * np.array([d.uncertainty for d in self.data])
+
     def rms_by_dataset(self, x):
         """Weighted-free rms of (model - observed) in MHz, per data set."""
-        E = self.energies(x)
-        out = {}
-        for name in sorted({d.dataset for d in self.data}):
-            d_of = [d for d in self.data if d.dataset == name]
-            resid = np.array([d.model(E) - d.value for d in d_of])
-            out[name] = float(np.sqrt(np.mean(resid ** 2)))
-        return out
+        resid = self.deviations(x)
+        dataset = np.array([d.dataset for d in self.data])
+        return {name: float(np.sqrt(np.mean(resid[dataset == name] ** 2))) for name in sorted(set(dataset))}
 
     def report(self, x, label=""):
-        E = self.energies(x)
-        resid = np.array([d.model(E) - d.value for d in self.data])
+        resid = self.deviations(x)
         sig = np.array([d.uncertainty for d in self.data])
         chi2 = float(np.mean((resid / sig) ** 2))
-        print(f"{label:<10} n={len(resid)}  rms {resid.std():9.4f} MHz  "
+        print(f"{label:<10} n={len(resid)}  rms {np.sqrt(np.mean(resid ** 2)):9.4f} MHz  "
               f"max |{np.abs(resid).max():9.3f}|  chi2/n {chi2:11.2f}")
         return resid
 
@@ -575,11 +587,10 @@ class GlobalFit:
             u = res.x
             if verbose:
                 x = self.to_x(u)
-                r = self.residuals(x)
-                mhz = r * np.array([d.uncertainty for d in self.data])
+                mhz = self.deviations(x)
                 ok = np.abs(mhz) < 100
-                print(f"  [stage f_scale={f_scale:g}] bulk rms {mhz[ok].std():.4f} MHz over {ok.sum()} "
-                      f"data; worst {np.abs(mhz).max():.0f} MHz", flush=True)
+                print(f"  [stage f_scale={f_scale:g}] bulk rms {np.sqrt(np.mean(mhz[ok] ** 2)):.4f} MHz "
+                      f"over {ok.sum()} data; worst {np.abs(mhz).max():.0f} MHz", flush=True)
         x = self.to_x(u)
         after = self.rms_by_dataset(x)
         cov = None
@@ -587,7 +598,7 @@ class GlobalFit:
             j = self.scaled_jacobian(u)
             _, sv, VT = np.linalg.svd(j, full_matrices=False)
             keep = sv > sv[0] * 1e-12
-            cov = (VT[keep].T / sv[keep] ** 2) @ VT[keep]
+            cov = (VT[keep].T / sv[keep] ** 2) @ VT[keep] * np.outer(scale, scale)   # u -> physical x
         except Exception:  # noqa: BLE001
             pass
         pots = self._potentials(x)
