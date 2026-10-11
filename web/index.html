@@ -66,7 +66,8 @@ main {
   grid-template-rows: minmax(190px, 42%) minmax(0, 1fr);
 }
 section { background: var(--surface); min-width: 0; min-height: 0; display: flex; flex-direction: column; }
-#plotwrap { position: relative; grid-area: 1 / 1; }
+/* clipped: while a phone's options panel squeezes the plot, the canvases keep their last size */
+#plotwrap { position: relative; grid-area: 1 / 1; overflow: hidden; }
 .tablewrap { grid-area: 2 / 1; }
 #detail { grid-area: 1 / 2 / 3 / 3; }
 #plot { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }

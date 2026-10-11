@@ -43,6 +43,9 @@ NU_NIR = 13250.0
 NU_NIR_ANCHORS = 12270.0
 _LABEL = re.compile(r"^([PR])\(?(\d+)\)?\s+(\d+)\s*-\s*(\d+)$", re.IGNORECASE)
 _QUANTITY = re.compile(r"^\s*([-+0-9.eE]+)\s*([A-Za-z0-9/^-]*)\s*$")
+#: One end of a range: a number and, optionally, its unit. A unit starts with a letter, so the "-" between
+#: two numbers is not read as part of one; units such as "cm-1" and "nm-air" keep theirs.
+_RANGE_END = re.compile(r"(\d+\.?\d*(?:[eE][-+]?\d+)?|\.\d+(?:[eE][-+]?\d+)?)\s*([A-Za-z]+(?:\^?-1|-air)?)?")
 
 
 def to_wavenumber(value, unit="nm"):
@@ -89,6 +92,21 @@ def parse_quantity(text, default_unit="nm"):
     if unit not in UNITS:
         raise ValueError(f"unknown unit {unit!r}; choose from {UNITS}")
     return float(m[1]), unit
+
+
+def parse_range(text, default_unit="nm"):
+    """("532.2-532.3 nm") -> (532.2, 532.3, "nm"). A unit written once applies to both ends; the ends
+    may be separated by "-", "to", ".." or a space."""
+    text = re.sub(r"\bto\b|\.\.", " ", str(text))
+    ends = list(_RANGE_END.finditer(text))
+    if len(ends) != 2 or re.sub(_RANGE_END, "", text).strip(" -"):
+        raise ValueError(f"cannot read {text.strip()!r} as a range; write it like '532.2-532.3 nm'")
+    units = {m[2] for m in ends if m[2]}
+    if len(units) > 1:
+        raise ValueError(f"give both ends of the range in the same unit, not {' and '.join(sorted(units))}")
+    unit = units.pop() if units else default_unit
+    (low, unit_out), (high, _) = (parse_quantity(m[1] + unit) for m in ends)
+    return low, high, unit_out
 
 
 def parse_label(text):

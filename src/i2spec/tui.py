@@ -11,7 +11,7 @@ from textual.widgets import DataTable, Footer, Header, Input, Select, Static
 
 from . import saturation
 from .constants import ISOTOPOLOGUES
-from .lookup import Catalog, Component, parse_quantity, to_wavenumber, uncertainty
+from .lookup import Catalog, Component, parse_range, to_wavenumber, uncertainty
 from .spectrum import cross_section, doppler_fwhm
 
 RESULT_COLUMNS = ("λ vac (nm)", "ν (cm⁻¹)", "f (THz)", "line", "S (cm)", "u (MHz)", "notes")
@@ -122,11 +122,7 @@ class LineBrowser(App):
     def action_search(self):
         text = self.query_one("#range", Input).value
         try:
-            parts = [p for p in text.replace("to", " ").replace("..", " ").replace("-", " ").split() if p]
-            if len(parts) < 2:
-                raise ValueError("give two values, for example '532.2-532.3 nm'")
-            low, unit = parse_quantity(" ".join(parts[:2]) if len(parts) == 3 else parts[0], self.unit)
-            high, _ = parse_quantity(parts[-1], unit)
+            low, high, unit = parse_range(text, self.unit)
             self.unit = unit
             self.temperature = float(self.query_one("#temperature", Input).value)
         except ValueError as e:

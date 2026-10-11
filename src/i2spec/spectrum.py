@@ -61,7 +61,7 @@ def hyperfine_patterns(model, lines, dJ=0, j_step=None):
             J = J_ref + 1 if (J_ref - J) % 2 else J_ref
         key = (int(lines.v_upper[k]), int(lines.v_lower[k]), J, "R" if lines.branch[k] > 0 else "P")
         if key not in cache:
-            _, comps = model.hyperfine_components(*key, dJ=dJ)
+            _, comps = model.hyperfine_components(*key, dJ=dJ, position=False)   # the line list has the centre
             cache[key] = (np.array([c.offset for c in comps]) / MHZ_PER_CM, np.array([c.strength for c in comps]))
         return cache[key]
 
@@ -153,4 +153,7 @@ def apparent_cross_section(nu_out, lines, T, column_density, ils=("gauss", 0.1),
     if continuum is not None:
         sigma = sigma + continuum(grid)
     transmitted = fftconvolve(np.exp(-sigma * column_density), kernel, mode="same")
-    return -np.log(np.interp(nu_out, grid, transmitted)) / column_density
+    # a saturated core convolves to zero or, through round-off or a sinc's negative lobes, just below it:
+    # floor it so the log stays finite there
+    transmitted = np.clip(np.interp(nu_out, grid, transmitted), np.finfo(float).tiny, None)
+    return -np.log(transmitted) / column_density

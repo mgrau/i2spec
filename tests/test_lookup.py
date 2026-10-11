@@ -8,7 +8,8 @@ import pytest
 
 from i2spec import cli
 from i2spec.intensity import MasterLineList
-from i2spec.lookup import Catalog, Line, from_wavenumber, parse_label, parse_quantity, to_wavenumber, uncertainty
+from i2spec.lookup import (Catalog, Line, from_wavenumber, parse_label, parse_quantity, parse_range, to_wavenumber,
+                           uncertainty)
 
 
 @pytest.fixture(scope="module")
@@ -43,6 +44,20 @@ def test_parse():
     for bad in ("532 furlongs", "R56"):
         with pytest.raises(ValueError):
             parse_quantity(bad) if " " in bad else parse_label(bad)
+
+
+def test_parse_range():
+    # a unit written once applies to both ends, and the "-" in "cm-1" is not a separator
+    assert parse_range("532.2-532.3 nm") == (532.2, 532.3, "nm")
+    assert parse_range("18788-18789 cm-1") == (18788.0, 18789.0, "cm-1")
+    assert parse_range("18788cm-1-18789cm-1") == (18788.0, 18789.0, "cm-1")
+    assert parse_range("532.2nm - 532.3nm") == (532.2, 532.3, "nm")
+    assert parse_range("532.2 to 532.3 nm-air") == (532.2, 532.3, "nm-air")
+    assert parse_range("532.2..532.3") == (532.2, 532.3, "nm")
+    assert parse_range("18788 18789", "cm-1") == (18788.0, 18789.0, "cm-1")
+    for bad in ("532.2", "532.2-532.3-532.4", "532 nm - 18790 cm-1", "532.2-532.3 furlongs"):
+        with pytest.raises(ValueError):
+            parse_range(bad)
 
 
 def test_search_range_sort_and_limit(catalog):
@@ -144,7 +159,7 @@ def test_tui_starts_and_shows_lines(catalog):
     from i2spec.tui import LineBrowser
 
     async def go():
-        app = LineBrowser(catalog=catalog, low="532.2", high="532.3")
+        app = LineBrowser(catalog=catalog)  # the default range, "532.2-532.3 nm", read from the search box
         async with app.run_test() as pilot:
             await pilot.pause()
             for _ in range(50):  # the search and the hyperfine patterns run in worker threads

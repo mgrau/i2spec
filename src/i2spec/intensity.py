@@ -257,8 +257,9 @@ class _Build:
 
     def x_levels(self, J):
         """X term values of the physical levels at J (above X(0,0)), and which matched a B-spline level."""
-        exact = self.exact.levels("X", J)
+        # physical_prefix first: its eigensolve also fills the solver's level cache, which levels() then reads
         n_phys = physical_prefix(self.top["X"], J)
+        exact = self.exact.levels("X", J)
         if min(n_phys, len(exact)) >= self.X.nlev:
             # every DVR level matches its B-spline level by index (match_levels), so its own energy is not needed
             return exact[:self.X.nlev] - self.e00, np.ones(self.X.nlev, dtype=bool)

@@ -105,3 +105,12 @@ def test_apparent_cross_section_thin_limit_and_saturation(master):
     thick = apparent_cross_section(nu, lines, 300.0, 3e17, ils=("gauss", 0.5))
     assert np.all(thick <= thin_b * (1 + 1e-9))
     assert thick.mean() < 0.9 * thin_b.mean()  # unresolved strong lines saturate
+
+
+def test_apparent_cross_section_stays_finite_when_saturated(master):
+    # a sinc's negative lobes, and round-off in a black core, take the convolved transmission to zero or below
+    lines = master.at(300.0, 18781.0, 18799.0, S_min=1e-24)
+    nu = np.linspace(18785.0, 18795.0, 2001)
+    with np.errstate(invalid="raise", divide="raise"):
+        sigma = apparent_cross_section(nu, lines, 300.0, 1e18, ils=("sinc", 0.01))
+    assert np.all(np.isfinite(sigma))   # (a sinc also overshoots: negative values are its ringing, not an error)
