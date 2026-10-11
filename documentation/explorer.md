@@ -20,9 +20,20 @@ table:
 - <span class="kind atlas"></span>**atlas**: measured only in a Fourier-transform atlas (Doppler-limited line centre);
 - <span class="kind model"></span>**model only**: not measured; the position is the model prediction.
 
-A line measured in both kinds of data set is shown as a precision line. In the cross-section display
-the contributions of the three classes are shown as stacked areas. The three **show** toggles (model,
-atlas, precision) switch each class on or off in both the spectrum and the table.
+A line measured in both kinds of data set is shown as a precision line.
+
+In the cross-section display the filled **model** area is the cross section the model predicts from
+every line, measured or not. Over it, the atlas and precision lines are each drawn in their own colour
+as their share of that cross section, and every measured line is marked by a diamond below the
+trace. The three **show** toggles act on this:
+
+- **model** includes every line, so the model area and the table cover all of them;
+- **atlas** and **precision** pick out their measured lines in colour in the spectrum. With one of them
+  off, its lines are still part of the model area and the table, but are not coloured or marked in the
+  spectrum.
+
+With **model** off, the spectrum and the table keep only the measured lines of the kinds switched on.
+The legend gives the number of lines in view for each toggle that is on.
 
 The spectrum has two horizontal axes: the chosen unit (normally vacuum wavelength) below, and
 wavenumber above (or vacuum wavelength, when the chosen unit is wavenumber). Both carry round tick

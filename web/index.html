@@ -253,9 +253,9 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   <div class="field subonly modonly" hidden><label for="mod">mod. p-p (MHz)</label><input id="mod" type="number" value="1" step="0.5" min="0.01"
     title="peak-to-peak frequency modulation for the harmonic (1f, 3f) signals"></div>
   <div class="field"><span class="grouplabel">show</span><span class="seg" id="show">
-    <button data-kind="model" aria-pressed="true"><i class="sw k-model"></i>model</button>
-    <button data-kind="atlas" aria-pressed="true"><i class="sw k-atlas"></i>atlas</button>
-    <button data-kind="precision" aria-pressed="true"><i class="sw k-precision"></i>precision</button></span></div>
+    <button data-kind="model" aria-pressed="true" title="every line the model predicts, measured or not"><i class="sw k-model"></i>model</button>
+    <button data-kind="atlas" aria-pressed="true" title="pick out the lines measured in a Fourier-transform atlas"><i class="sw k-atlas"></i>atlas</button>
+    <button data-kind="precision" aria-pressed="true" title="pick out the lines measured to sub-Doppler or comb precision"><i class="sw k-precision"></i>precision</button></span></div>
   <div class="field"><span class="grouplabel">jump to</span><span id="presets"></span></div>
   <div class="field"><span class="grouplabel">export CSV</span><span class="exports">
     <button id="csv" title="every line in view that the show toggles keep, in the table's order">lines in view</button>

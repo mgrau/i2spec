@@ -14,7 +14,6 @@ matplotlib.use("svg")
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
-from matplotlib.path import Path as MPath
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -100,33 +99,13 @@ for k, (num, title, sub) in enumerate(STEPS):
     if k in INPUTS:
         fig.text(x + CARD_W / 2, y - 0.014, INPUTS[k], fontsize=7, color=C["ink2"], ha="center", va="top",
                  linespacing=1.15, style="italic")
-# arrows: along each row, and from the end of the first row to the start of the second
+# arrows along each row; the reader carries on from the end of the first row to the start of the second
 for row in (0, 1):
     for i in (0, 1):
         y = YS[row] + CARD_H / 2
         fig.patches.append(FancyArrowPatch((XS[i] + CARD_W + 0.004, y), (XS[i + 1] - 0.004, y),
                                            transform=fig.transFigure, arrowstyle="-|>", mutation_scale=9,
                                            color=C["ink2"], lw=1.0))
-# from the right side of step 3, round the gap between the rows, into the left side of step 4: straight runs
-# with rounded right-angle bends, drawn in inches so the bends are circular
-def elbow(points, r=0.09):
-    verts, codes = [points[0]], [MPath.MOVETO]
-    for a, b, c in zip(points, points[1:], points[2:]):
-        a, b, c = map(np.asarray, (a, b, c))
-        u, w = (a - b) / np.linalg.norm(a - b), (c - b) / np.linalg.norm(c - b)
-        verts += [tuple(b + r * u), tuple(b), tuple(b + r * w)]
-        codes += [MPath.LINETO, MPath.CURVE3, MPath.CURVE3]
-    verts.append(points[-1]); codes.append(MPath.LINETO)
-    return MPath(verts, codes)
-
-
-x_out, x_in = (XS[2] + CARD_W + 0.013) * W, (XS[0] - 0.013) * W
-y_top, y_gap, y_bot = (YS[0] + CARD_H / 2) * H, (YS[1] + CARD_H + 0.025) * H, (YS[1] + CARD_H / 2) * H
-fig.patches.append(FancyArrowPatch(path=elbow([((XS[2] + CARD_W + 0.004) * W, y_top), (x_out, y_top),
-                                               (x_out, y_gap), (x_in, y_gap), (x_in, y_bot),
-                                               ((XS[0] - 0.004) * W, y_bot)]),
-                                   transform=fig.dpi_scale_trans, arrowstyle="-|>", mutation_scale=9,
-                                   color=C["ink2"], lw=1.0))
 fig.text(0.5, 0.985, "computed once per isotopologue, independent of temperature: steps 1–5", ha="center",
          va="top", fontsize=8, color=C["ink3"])
 
