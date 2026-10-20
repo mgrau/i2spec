@@ -58,6 +58,8 @@ RAW_KP = ROOT / "data" / "external" / "kitt_peak_fts"
 OUT = ROOT / "prototypes" / "out" / "condense"
 CALIBRATION = OUT / "calibration"          # one <id>.json per source, so calibrations can run in parallel
 DEST = Path(os.environ.get("I2SPEC_DATA", ROOT.parent / "i2spec_data")) / "lines"
+#: sources whose terms allow it (public=True) go to the repository itself instead
+PUBLIC = ROOT / "data" / "atlas_lines"
 CUTS = dict(sigma=30.0, rms=0.04, depth=0.03, sigma_eta=0.25)
 #: kept from the published extraction, where a source has too few lines in common with any reference
 K_DEFAULT, FLOOR_DEFAULT = 1.55, 7.5
@@ -233,10 +235,42 @@ HENE_GAP = (15720.0, 15876.0)
 source("debus_2023", kind="debus", title="IAG Göttingen FTS, January 2023: Thorlabs iodine cell (Debus et al. 2023)",
        T=None, blend=None, drop_blends=True, url="https://doi.org/10.25625/PONFBL", cuts=dict(CUTS, depth=0.05),
        band_threshold=0.05,      # the halogen lamp falls smoothly by 10x to the blue, no filter edge; the co-add holds up
+       public=True,
        citation="M. Debus, S. Schäfer, A. Reiners, Toward 10 cm/s radial velocity accuracy on the Sun using a Fourier "
                 "transform spectrometer, J. Astron. Telesc. Instrum. Syst. 9, 045003 (2023), doi:10.1117/1.JATIS.9.4.045003; "
                 "replication data on GRO.data, doi:10.25625/PONFBL (FP_iodine_spectra.7z)",
        terms="CC0 1.0 (GRO.data): no restriction on use or redistribution; cite the paper and the data set")
+
+
+#: The two FTS iodine-cell spectra distributed with the pyodine radial-velocity code (gitlab.com/Heeren/pyodine,
+#: iodine_atlas/, MIT licence): continuum-normalised transmission against vacuum wavenumber. Their scale was
+#: resampled for RV use (about -2e-7 against Salami & Ross), which --calibrate measures and the fits take out.
+RAW_PYODINE = ROOT / "data" / "external" / "heeren_pyodine_atlas"
+PYODINE = {
+    "pyodine_song_65c": ("song_iodine_cell_01_65C.h5", 338.15, "SONG iodine cell at 65 C",
+                         "the SONG telescope's (Teide) iodine cell, 65 C"),
+    "pyodine_fischer_2022": ("Fischer_Cell_May2022_downsampled3.h5", None, "D. Fischer's iodine cell, May 2022",
+                             "D. Fischer's (Lick/Yale) iodine cell, scanned May 2022, downsampled 3x by the pyodine authors"),
+}
+for _id, (_file, _T, _title, _desc) in PYODINE.items():
+    source(_id, kind="pyodine", file=_file, T=_T, title=f"{_title} (pyodine FTS atlas)", description=_desc, public=True,
+           blend=(0.01, 0.1), drop_blends=True, cuts=dict(CUTS, depth=0.05), url="https://gitlab.com/Heeren/pyodine",
+           citation="FTS iodine-cell spectrum distributed in iodine_atlas/ of the pyodine code, https://gitlab.com/Heeren/pyodine "
+                    "(file " + _file + "); P. Heeren, R. J. Tronsgaard, F. Grundahl, S. Reffert, A. Quirrenbach, T. Marquart, "
+                    "Astron. Astrophys. 674, A164 (2023), doi:10.1051/0004-6361/202244441",
+           instrument="Fourier transform spectrum of the cell, continuum-normalised by the pyodine authors; instrument and "
+                      "resolution are not recorded in the file",
+           terms="MIT (the pyodine repository's licence); cite Heeren et al. 2023")
+
+
+def pyodine_read(name):
+    """(ascending vacuum wavenumber, normalised transmission, raw flux) of a pyodine atlas file."""
+    import h5py
+    with h5py.File(RAW_PYODINE / name) as h:
+        nu, fl, raw = h["wavenumber"][...], h["flux_normalized"][...].astype(float), h["flux"][...].astype(float)
+    o = np.argsort(nu)
+    ok = np.isfinite(nu[o]) & np.isfinite(fl[o])
+    return nu[o][ok], fl[o][ok], raw[o][ok]
 
 
 def debus_files():
@@ -297,6 +331,18 @@ def settings(src):
             lo, hi = s["band"]
             s["jobs"] = (lambda lo=lo, hi=hi, w=s["width"], st=s["step"], T=s["T"]:
                          [(float(c), w, T) for c in np.arange(np.ceil(lo) + w / 2, hi - w / 2, st)])
+    elif s["kind"] == "pyodine":
+        nu, fl, raw = pyodine_read(s["file"])
+        step = (nu[-1] - nu[0]) / (len(nu) - 1)
+        s["resolution"] = 0.0
+        s["band"] = strong_band(nu, raw, max(nu[0] + 2, 15400.0), min(nu[-1] - 2, 20050.0), 0.1)
+        s["width"] = max(2.4, round(230 * step, 1))
+        s["step"] = round(0.8 * s["width"], 1)
+        s.update(calibration().get(s["id"], {}))
+        if s.get("T") is not None:
+            lo, hi = s["band"]
+            s["jobs"] = (lambda lo=lo, hi=hi, w=s["width"], st=s["step"], T=s["T"]:
+                         [(float(c), w, T) for c in np.arange(np.ceil(lo) + w / 2, hi - w / 2, st)])
     elif s["kind"] == "debus":
         d, _ = debus_params()
         nu, y = d["nu"], d["y"]
@@ -333,6 +379,12 @@ def load(s):
         m = (nu >= lo) & (nu <= hi) & ~((nu > HENE_GAP[0]) & (nu < HENE_GAP[1]))
         nu, y = nu[m], y[m]
         return np.column_stack([nu, 100.0 * y / envelope(nu, y)])
+    if s["kind"] == "pyodine":
+        nu, fl, _ = pyodine_read(s["file"])
+        nu = nu / (1 + s["prescale_ppb"] * 1e-9)
+        lo, hi = s["band"]
+        m = (nu >= lo) & (nu <= hi)
+        return np.column_stack([nu[m], 100.0 * fl[m]])
     if s["kind"] == "rodriguez":
         import rodriguez_lines
         return rodriguez_lines.load(s["preshift_mhz"])
@@ -627,16 +679,19 @@ def debus_meta(s):
 def scale_fields(s, scale_curve):
     """calibration and scale_ppb for a spectrum whose scale was fitted against the model (--calibrate):
     observed = true (1 + scale_ppb 1e-9). The explorer divides it out (webapp._atlas_rows)."""
-    if s["kind"] not in ("kitt_peak", "debus"):
+    if s["kind"] not in ("kitt_peak", "debus", "pyodine"):
         return ""
     ref = (f"; {scale_curve[0][-1]:+.1f} ppb against {s['reference']}" if scale_curve is not None else "")
-    return (f'calibration = """HeNe-referenced FTS scale, not comb-calibrated: {s["prescale_ppb"]:+.1f} ppb against the '
+    what = ("the FTS scale as resampled by the pyodine authors for radial-velocity use, not comb-calibrated"
+            if s["kind"] == "pyodine" else "HeNe-referenced FTS scale, not comb-calibrated")
+    return (f'calibration = """{what[0].upper() + what[1:]}: {s["prescale_ppb"]:+.1f} ppb against the '
             f'i2spec model (scale_ppb{ref}).\nNot in the per-line uncertainty; the explorer divides it out."""\n'
             f'scale_ppb = {s["prescale_ppb"]:.1f}\n')
 
 
 def write(s, lines, intens, K, floor, how, scale_curve, raw):
     sid = s["id"]
+    DEST = PUBLIC if s.get("public") else globals()["DEST"]
     DEST.mkdir(parents=True, exist_ok=True)
     order = sorted(lines, key=lambda k: (lines[k]["vu"], lines[k]["vl"], k))
     with open(DEST / f"{sid}.csv", "w") as f:
@@ -653,6 +708,11 @@ def write(s, lines, intens, K, floor, how, scale_curve, raw):
         citation, instrument, conditions = kp_meta(s)
     elif s["kind"] == "debus":
         citation, instrument, conditions = debus_meta(s)
+    elif s["kind"] == "pyodine":
+        citation, instrument = s["citation"], s["instrument"]
+        conditions = (f"{s['description']}. The template is at {s['T']:.2f} K"
+                      + (" (fitted: the lowest mean window rms)" if s.get("T_fitted") else " (the cell temperature)")
+                      + f"; band used {s['band'][0]:.0f}-{s['band'][1]:.0f} cm-1")
     else:
         citation, instrument, conditions = s["citation"], s["instrument"], s["conditions"]
     cuts = s["cuts"]
@@ -760,7 +820,7 @@ def main(argv):
     ids = expand(args[1:])
     if args[0] == "--calibrate":
         for sid in ids:
-            if SOURCES[sid]["kind"] in ("kitt_peak", "debus"):
+            if SOURCES[sid]["kind"] in ("kitt_peak", "debus", "pyodine"):
                 calibrate(sid)
     elif args[0] in ("--fit", "--build"):
         for sid in ids:                  # one failure must not stop the others; it is reported at the end

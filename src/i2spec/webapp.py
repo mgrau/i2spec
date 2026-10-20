@@ -47,10 +47,11 @@ PER_SHARD_HFS = 80
 #: the others are in the observations format. An atlas whose .toml gives scale_ppb, how its wavenumbers read
 #: against the model (observed = true (1 + scale_ppb 1e-9)), is shown with that scale divided out: Orsay part I
 #: from its level fit (level_corrections_2026f), parts II-IV fitted at assignment (prototypes/orsay_assign_parts.py),
-#: Partie IV from its own fit (prototypes/orsay4_fit.py), Debus et al. 2023 from its calibration. Partie IV
+#: Partie IV from its own fit (prototypes/orsay4_fit.py), Debus et al. 2023 and the pyodine cells from their
+#: calibration (prototypes/condense_spectra.py). Partie IV
 #: shows its unblended lines only: a blend's one position belongs to none of its assignments.
-ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "orsay1982_part1", "orsay1982_part2", "orsay1982_part3",
-           "orsay1982_part4", "orsay1983_part4")
+ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c", "pyodine_fischer_2022",
+           "orsay1982_part1", "orsay1982_part2", "orsay1982_part3", "orsay1982_part4", "orsay1983_part4")
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
               "v′ > 43: extended model": "warn", "v″ ≥ 48: extended model": "warn", "beyond 815 nm": "warn",
@@ -59,6 +60,7 @@ SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST
                "orsay": "Gerstenkorn, Vergès & Chevillard"}
 #: Names that the prefix alone gets wrong; the four parts of the 1982 atlas are told apart by their numbers
 SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983",
+             "pyodine_song_65c": "SONG cell (pyodine) 2023", "pyodine_fischer_2022": "Fischer cell (pyodine) 2022",
              **{f"orsay1982_part{k}": f"Gerstenkorn, Vergès & Chevillard 1982 ({n})" for k, n in
                 ((1, "I"), (2, "II"), (3, "III"), (4, "IV"))}}
 

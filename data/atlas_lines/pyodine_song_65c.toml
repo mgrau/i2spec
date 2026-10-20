@@ -1,0 +1,37 @@
+id = "pyodine_song_65c"
+unit = "cm-1"
+isotopologue = "127I2"
+url = "https://gitlab.com/Heeren/pyodine"
+kind = "line positions and intensities condensed from a spectrum"
+title = "SONG iodine cell at 65 C (pyodine FTS atlas)"
+citation = """FTS iodine-cell spectrum distributed in iodine_atlas/ of the pyodine code, https://gitlab.com/Heeren/pyodine (file song_iodine_cell_01_65C.h5); P. Heeren, R. J. Tronsgaard, F. Grundahl, S. Reffert, A. Quirrenbach, T. Marquart, Astron. Astrophys. 674, A164 (2023), doi:10.1051/0004-6361/202244441"""
+instrument = """Fourier transform spectrum of the cell, continuum-normalised by the pyodine authors; instrument and resolution are not recorded in the file"""
+conditions = """the SONG telescope's (Teide) iodine cell, 65 C. The template is at 338.15 K (the cell temperature); band used 15400-19840 cm-1"""
+terms = """MIT (the pyodine repository's licence); cite Heeren et al. 2023. The spectrum is not in this repository; these are our fits to it."""
+extraction = """prototypes/condense_spectra.py (i2spec e91698c with uncommitted changes, 2026-10-20): prototypes/atlas_lines.py
+extract with amplitudes on, 2336 windows. Every model line whose own absorption exceeds
+0.02 at line centre gets a wavenumber shift (ridge prior 0.01 cm-1) and a strength factor
+exp(eta) (ridge prior 0.5 on eta) on the i2spec template: hyperfine structure, Doppler width at the
+template temperature, a Gaussian instrument width, column density, linear baseline and zero offset per window.
+The fit axis was divided by 1 + s, s = -198.1 ppb, and shifted by -0.0 MHz so that the
+shift prior does not pull against the calibration; the positions here are back on the spectrum's own axis."""
+positions = """pyodine_song_65c.csv: hyperfine-free line centres (cm-1) on the spectrum's own wavenumber scale, in the
+observations format. Repeats combined by inverse variance, sigma inflated by sqrt(chi2/dof). Kept: fit sigma
+< 30 MHz, window rms < 4% of transmission, depth > 0.05; no other model line within +/-0.010 cm-1 at >= 0.1 of its strength.
+The scale carries a calibration offset (and here possibly a curve) that belongs in a fit as a group
+parameter and is NOT in the per-line uncertainty. Against the reference the scale is sum_j c_j x^j ppb, x = (nu - 17900)/1000 cm-1: c2 = +1.0 +/- 0.1, c1 = -8.9 +/- 0.1, c0 = -170.7 +/- 0.1 (bootstrap over 50 cm-1 blocks). """
+uncertainty = """sqrt((1.00 sigma_fit)^2 + 7.5^2) MHz, fitted to the scatter of the positions about apo_nist_2009 (15138 common lines), after a degree-2 scale curve, in bins of sigma_fit (K = 1.00, floor = 1.0 MHz); the floor is raised to 7.5 MHz, the published extraction's (checked against precision measurements), because template errors common to both spectra cancel here."""
+intensities = """pyodine_song_65c.intensities.csv: per line and template temperature, A = N S (cm-1), the integrated
+optical depth of the line (column density times line strength: the area under -ln(transmission) before the
+instrument function), and its uncertainty from the window fits (statistical: it does not include what the
+template's line shape or a blend's split gets wrong; the blend column flags lines with a model neighbour within
++/-0.010 cm-1 at >= 0.1 of their strength). N_window_cm-2 is the window's fitted column
+density, on the scale of the template's strengths, so A / N_window is a strength in cm/molecule on that scale;
+with an independent column density (path times number density) A gives absolute strengths. Kept: window rms
+< 4%, depth > 0.05, sigma(ln A) < 0.25. Repeats combined in ln A."""
+calibration = """The FTS scale as resampled by the pyodine authors for radial-velocity use, not comb-calibrated: -198.1 ppb against the i2spec model (scale_ppb; -170.7 ppb against apo_nist_2009).
+Not in the per-line uncertainty; the explorer divides it out."""
+scale_ppb = -198.1
+range_cm-1 = [15400.1, 19637.5]
+n_lines = 16477
+n_intensities = 37192
