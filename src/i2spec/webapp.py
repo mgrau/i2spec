@@ -44,20 +44,23 @@ LABELS = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I�
 #: Hyperfine patterns kept per wavenumber shard, on top of the globally strongest ones
 PER_SHARD_HFS = 80
 #: Atlas line lists we hold with assignments. The Orsay tables carry their own columns (<name>_assigned.csv);
-#: the others are in the observations format. Each Orsay scale is the one its fit found: part I in
-#: level_corrections_2026f, Partie IV in level_corrections_2026j (prototypes/orsay4_fit.py). Partie IV shows
-#: its unblended lines only: a blend's one position belongs to none of its assignments. An atlas in the
-#: observations format whose .toml gives scale_ppb (Debus et al. 2023) is shown with that scale divided out.
-ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "orsay1982_part1", "orsay1983_part4")
-ORSAY_SCALE_PPB = {"orsay1982_part1": 23.85, "orsay1983_part4": 200.8}   # Partie IV: +119.6 MHz at 19 870 cm-1
+#: the others are in the observations format. An atlas whose .toml gives scale_ppb, how its wavenumbers read
+#: against the model (observed = true (1 + scale_ppb 1e-9)), is shown with that scale divided out: Orsay part I
+#: from its level fit (level_corrections_2026f), parts II-IV fitted at assignment (prototypes/orsay_assign_parts.py),
+#: Partie IV from its own fit (prototypes/orsay4_fit.py), Debus et al. 2023 from its calibration. Partie IV
+#: shows its unblended lines only: a blend's one position belongs to none of its assignments.
+ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "orsay1982_part1", "orsay1982_part2", "orsay1982_part3",
+           "orsay1982_part4", "orsay1983_part4")
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
               "v′ > 43: extended model": "warn", "v″ ≥ 48: extended model": "warn", "beyond 815 nm": "warn",
               "v″ > 17: unmeasured": "bad", "v″ 26-89: Martin 1986": "warn", "v′ 51-79: atlas-measured": "warn", "v′ > 50: extrapolated": "bad", "isotope shift": "none", "few data": "none"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
                "orsay": "Gerstenkorn, Vergès & Chevillard"}
-#: Names that the prefix alone gets wrong
-SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983"}
+#: Names that the prefix alone gets wrong; the four parts of the 1982 atlas are told apart by their numbers
+SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983",
+             **{f"orsay1982_part{k}": f"Gerstenkorn, Vergès & Chevillard 1982 ({n})" for k, n in
+                ((1, "I"), (2, "II"), (3, "III"), (4, "IV"))}}
 
 
 # --- sources and measurements -----------------------------------------------------------------------
@@ -140,7 +143,8 @@ def _atlas_rows(name):
     from .observations import read_observations
 
     if name.startswith("orsay"):
-        scale = 1 + ORSAY_SCALE_PPB[name] * 1e-9
+        meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
+        scale = 1 / (1 + float(meta.get("scale_ppb", 0.0)) * 1e-9)
         with open(ATLAS_DIR / f"{name}_assigned.csv", newline="", encoding="utf-8") as f:
             return tuple((r["branch"], int(r["J_lower"]), int(r["v_upper"]), int(r["v_lower"]),
                           float(r["sigma_cm1"]) * scale, (float(r["eps_mk"]) * 1e-3 * MHZ_PER_CM if r["eps_mk"] else 150.0))

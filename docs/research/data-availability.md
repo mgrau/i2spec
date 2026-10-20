@@ -8,7 +8,7 @@ that are known to exist but are not publicly available, and the gaps in the publ
 | directory | content | origin |
 |---|---|---|
 | `data/observations/` | precision line positions and hyperfine intervals, one directory per source | transcribed from the published tables, the BIPM *mises en pratique* and one doctoral thesis; each `meta.toml` gives the source, DOI and transcription notes |
-| `data/atlas_lines/` | assigned line positions from Fourier-transform atlases, and for one of them line intensities | Salami & Ross (2005) and the NIST/APO cell spectrum: positions fitted in this work to the published spectra; Debus *et al.* (2023, IAG Göttingen, CC0): positions and integrated optical depths fitted in this work to the 222 co-added spectra of their deposit (`debus_2023`); Orsay atlas (1982): line tables transcribed from the printed volume |
+| `data/atlas_lines/` | assigned line positions from Fourier-transform atlases, and for one of them line intensities | Salami & Ross (2005) and the NIST/APO cell spectrum: positions fitted in this work to the published spectra; Debus *et al.* (2023, IAG Göttingen, CC0): positions and integrated optical depths fitted in this work to the 222 co-added spectra of their deposit (`debus_2023`); Orsay atlas (1982): line tables transcribed from the printed volume, all four parts assigned |
 | `data/catalog/` | a bibliography of I₂ data (about 300 entries), with DOIs and the quantity each measures | compiled from the literature |
 | `data/external/` | third-party raw files (spectra, supplements) used in fits and tests | **not in the repository**; `data/external/README.md` lists each file, where it comes from and its licence |
 
