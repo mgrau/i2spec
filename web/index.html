@@ -63,6 +63,15 @@ button:hover { border-color: var(--accent); }
 .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
 #presets { display: flex; gap: 5px; flex-wrap: wrap; }
 #presets button { padding: 5px 9px; font-size: 12.5px; color: var(--ink-2); }
+/* every control in the panel the same height: text boxes, menus, buttons and the segmented groups (whose
+   buttons fill them); the text centres itself, so only the side padding is kept */
+.controls { --ctl-h: 32px; }
+.controls input, .controls select, .controls button, .controls .seg { box-sizing: border-box; height: var(--ctl-h); }
+.controls input, .controls select, .controls button { padding-top: 0; padding-bottom: 0; }
+.controls .seg button { height: 100%; }
+/* and the header's buttons one height between them */
+#theme, #optbtn, #repo { box-sizing: border-box; height: 28px; }
+#repo { padding: 0 6px; align-items: center; }
 
 main {
   flex: 1; min-height: 0; display: grid; gap: 1px; background: var(--rule);
