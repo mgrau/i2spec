@@ -28,10 +28,14 @@ from i2spec.spectrum import cross_section, hyperfine_patterns, number_density   
 
 MIN_DEPTH = 0.02          # a line gets a shift parameter if its own absorption exceeds this at line centre
 PRIOR = 0.01              # cm-1, ridge prior on every shift
+ETA_PRIOR = 0.5           # ridge prior on every ln(strength / model strength), with amplitudes on
 EPS = 0.001               # cm-1, finite-difference step for the Jacobian
 OUT = Path(__file__).resolve().parent / "out" / "atlas_lines_salami_ross.txt"
 HEADER = ("nu_model_cm-1 delta_cm-1 sigma_cm-1 depth S_cm v_upper v_lower J_lower branch T_K centre_cm-1 "
           "window_rms")
+#: with amplitudes on, each row also has eta = ln(strength / model strength), its sigma, and the window's
+#: log10 column density (cm-2): the line's integrated optical depth is 10**log10_N * exp(eta) * S_cm
+HEADER_AMPLITUDES = HEADER + " eta sigma_eta log10_N_cm-2"
 
 
 ATLASES = {
@@ -39,7 +43,7 @@ ATLASES = {
     "salami_ross": (None, SEGMENTS, "atlas_lines_salami_ross.txt"),
     "apo": ("apo", ((15380.0, 20085.0, None),), "atlas_lines_apo.txt"),        # T fitted (see --temperature)
 }
-_atlas = {"name": "salami_ross", "T": None}
+_atlas = {"name": "salami_ross", "T": None, "amplitudes": False}
 
 
 def load_apo():
@@ -56,12 +60,13 @@ def load_apo():
     return np.column_stack([nu[order], 100.0 * flux[order]])          # the scan code expects per cent
 
 
-def init(atlas="salami_ross", T=None):
+def init(atlas="salami_ross", T=None, amplitudes=False):
     """The scan's state plus a B-spline model for the hyperfine patterns: its levels are cached per J
-    across lines and windows, where the DVR intensity model re-diagonalises for every line."""
+    across lines and windows, where the DVR intensity model re-diagonalises for every line. With
+    amplitudes, every strong line also gets a strength factor (extract)."""
     _init()
     _state["hfs"] = RovibronicModel("127I2", grids={"B": dict(rmin=2.35, rmax=8.0, h=0.01, order=10, nlev=70)})   # v' to 62
-    _atlas.update(name=atlas, T=T)
+    _atlas.update(name=atlas, T=T, amplitudes=amplitudes)
     if atlas == "apo":
         _state["data"] = load_apo()
 
@@ -95,36 +100,50 @@ def extract(job):
     def shifted(k, d):
         return np.interp(grid - d, grid, sig_line[k], left=0.0, right=0.0) if d != 0.0 else sig_line[k]
 
-    def model(delta):
+    def model(delta, eta):
         sig = sig_total.copy()
-        for k, d in zip(strong, delta):
-            sig += shifted(k, d) - sig_line[k]
+        for k, d, a in zip(strong, delta, np.exp(eta)):
+            sig += a * shifted(k, d) - sig_line[k]
         e = np.exp(-N * sig)
         return base * np.interp(nu_obs, grid, convolve(grid, e, "gauss", w)) + c0, e
 
-    delta = np.zeros(len(strong))
-    for _ in range(2):
-        t0, e = model(delta)
-        # dT/d(delta_k) = base * ILS (x) [N sigma_k'(nu - delta_k) exp(-N sigma)]: one convolution per line
-        J = np.empty((len(nu_obs), len(strong)))
+    # parameters: a shift delta_k per strong line, and with amplitudes also eta_k = ln(strength / model
+    # strength), so the line's cross section is exp(eta_k) sigma_k(nu - delta_k); N stays at the window fit
+    amp = _atlas.get("amplitudes", False)
+    n = len(strong)
+    delta, eta = np.zeros(n), np.zeros(n)
+    prior = np.concatenate([np.full(n, PRIOR), np.full(n, ETA_PRIOR)]) if amp else np.full(n, PRIOR)
+    for _ in range(3 if amp else 2):
+        t0, e = model(delta, eta)
+        # dT/d(delta_k) = base * ILS (x) [N a_k sigma_k'(nu - delta_k) exp(-N sigma)]: one convolution per line
+        # dT/d(eta_k) = -base * ILS (x) [N a_k sigma_k(nu - delta_k) exp(-N sigma)]
+        J = np.empty((len(nu_obs), len(prior)))
         for i, k in enumerate(strong):
-            g = np.gradient(shifted(k, delta[i]), grid)
-            J[:, i] = base * np.interp(nu_obs, grid, convolve(grid, N * g * e, "gauss", w))
+            a, s_k = np.exp(eta[i]), shifted(k, delta[i])
+            J[:, i] = base * np.interp(nu_obs, grid, convolve(grid, N * a * np.gradient(s_k, grid) * e, "gauss", w))
+            if amp:
+                J[:, n + i] = -base * np.interp(nu_obs, grid, convolve(grid, N * a * s_k * e, "gauss", w))
         r = t_obs - t0
         noise = max(np.std(np.diff(t_obs, 2)) / np.sqrt(6), 1e-4)
         A = J / noise
-        M = A.T @ A + np.eye(len(strong)) / PRIOR**2
-        step = np.linalg.solve(M, A.T @ (r / noise) - delta / PRIOR**2)
-        delta = delta + step
-    t0, _ = model(delta)
+        p = np.concatenate([delta, eta]) if amp else delta
+        M = A.T @ A + np.diag(1 / prior**2)
+        step = np.linalg.solve(M, A.T @ (r / noise) - p / prior**2)
+        if amp:
+            step[n:] = np.clip(step[n:], -1.0, 1.0)          # eta enters through exp: keep each step linear
+            delta, eta = delta + step[:n], eta + step[n:]
+        else:
+            delta = delta + step
+    t0, _ = model(delta, eta)
     r = t_obs - t0
     scale = max(1.0, np.sqrt(np.mean((r / noise) ** 2)))
     cov = np.linalg.inv(M) * scale**2
     rows = []
     for i, k in enumerate(strong):
-        depth = 1 - np.exp(-N * peak[k])
-        rows.append((lines.nu[k], delta[i], np.sqrt(cov[i, i]), depth, lines.S[k], lines.v_upper[k], lines.v_lower[k],
-                     lines.J_lower[k], lines.branch[k], T, centre, np.std(r)))
+        depth = 1 - np.exp(-N * np.exp(eta[i]) * peak[k])
+        row = (lines.nu[k], delta[i], np.sqrt(cov[i, i]), depth, lines.S[k], lines.v_upper[k], lines.v_lower[k],
+               lines.J_lower[k], lines.branch[k], T, centre, np.std(r))
+        rows.append(row + (eta[i], np.sqrt(cov[n + i, n + i]), log_n) if amp else row)
     return rows
 
 

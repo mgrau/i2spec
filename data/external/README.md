@@ -134,6 +134,18 @@ and `prototypes/atlas_dataset.py` are committed as `data/atlas_lines/*.csv` with
 provenance. They are measurements derived here, not copies of the source files; each `.toml` carries the
 citation of the spectrum it came from, which must accompany any use of them.
 
+`data/atlas_lines/debus_2023.{csv,intensities.csv,toml}`: positions and intensities from `debus2023/` (CC0), by
+`prototypes/condense_spectra.py`. That spectrum is public, so they are in this repository, not in `i2spec_data`.
+
+## Derived: the private companion repository `i2spec_data`
+
+Line positions **and intensities** condensed from the files here whose terms are unclear or restrictive are
+kept in a separate private repository, `i2spec_data`. Clone it next to this one (`../i2spec_data`) or set
+`I2SPEC_DATA`. It covers `salami_ross_2005/`, `apo_pyodine_atlas/`, `rodriguez_fernandez_marcassa/`,
+32 of the `kitt_peak_fts/` scans, and the IodineSpec5 output (`iodinespec5/`). The files were made by
+`prototypes/condense_spectra.py` and `prototypes/condense_iodinespec5.py`. Nothing from it goes into this
+repository until the source's terms allow.
+
 ## `tellinghuisen_2011_supplement/`
 
 - **Source:** J. Tellinghuisen, "Least-squares analysis of overlapped bound-free absorption spectra and predissociation data in diatomics: the C(¹Πᵤ) state of I₂", *J. Chem. Phys.* **135**, 054301 (2011), doi:10.1063/1.3614403. Supplementary material from the AIP article page, `054301_1_supplements.zip`, which holds one file, `JT-Supplement-JCP-I2.pdf` (8 pages).
@@ -161,3 +173,19 @@ citation of the spectrum it came from, which must accompany any use of them.
 - **First comparison (2026-09-30, i2spec2026m):** a parabola at the transmission minimum of each of the 379 strongest isolated lines lies **+131 MHz** above the model's hyperfine-free centre (median; robust spread 65 MHz): +148, +113 and +138 MHz at 14 400–14 500, 14 500–14 600 and 14 600–14 710 cm⁻¹. The model is known to about 1 MHz here, so this is the spectra's calibration, and the papers say as much: a HighFinesse WS7 wavemeter, calibrated to a diode laser locked to ⁸⁵Rb 5S₁/₂ F = 3 → 5P₃/₂ F′ = 4 at 780 nm, with a stated absolute uncertainty of 0.002 cm⁻¹ (60 MHz); 0.5 cm⁻¹ scans in 0.001 cm⁻¹ (30 MHz) steps; a line uncertainty of about 3 × 10⁻³ cm⁻¹. Against Gerstenkorn & Luc and Salami & Ross the authors find their own lines higher by about 5 × 10⁻³ cm⁻¹ (≈150 MHz) in the 2023 paper and ≈105 MHz in the 2022 paper, the same sign and size as here. Mean FWHM 29 × 10⁻³ cm⁻¹, more than twice the Doppler width (unresolved hyperfine structure).
 - **`rodriguez_fernandez_2023.csv`, `.toml`:** our line centres fitted to these spectra (`prototypes/rodriguez_lines.py --dataset`): 825 lines, offset +113.0 ± 2.0 MHz, robust spread 18 MHz. Kept here, not in `data/atlas_lines/`, until the authors agree to their release.
 - **Terms:** shared by the authors for this work; not for redistribution.
+
+## `debus2023/` (on the lab workstation only)
+
+- **Source:** M. Debus, S. Schäfer, A. Reiners, "Toward 10 cm s⁻¹ radial velocity accuracy on the Sun using a Fourier transform spectrometer", *J. Astron. Telesc. Instrum. Syst.* **9**, 045003 (2023), doi:10.1117/1.JATIS.9.4.045003. Replication data on GRO.data: "Replication Data for: Towards 10 cm/s radial velocity accuracy using a Fourier transform spectrometer", doi:10.25625/PONFBL, released 2023-08-11.
+- **Downloaded:** 2026-10-19, all 22 files (11.5 GB). Each matched the repository's MD5, kept in `MD5SUMS`.
+- **Location:** this copy is only on the lab workstation, in the same folder of its i2spec checkout; it was not copied to the laptop.
+- **Contents:**
+  - `RVs/FP_iodine_spectra.7z.001`–`.005`: the split archive.
+  - `spectra/FTS_Spectra/`: the extracted archive, 222 Bruker OPUS files of 70 MB each. The file names run `20230120T173502_Debus_0.02_40kHz_10scans_0000001.0_0_IodineCell_Halogen_FP_LED.0` to `…0000222…`.
+  - Each OPUS file holds a sample interferogram, the phase and a single-channel spectrum. The spectrum has 1 858 471 points over 10 000–24 000 cm⁻¹ at 0.00753 cm⁻¹ spacing.
+  - Instrument: RES 0.02 cm⁻¹, Norton–Beer medium apodization, zero filling 2, 10 scans per file, quartz VIS beamsplitter, Si diode detector, 1 mm aperture, LWN 15798.0068.
+  - The spectra run from 2023-01-20 17:35 to 2023-01-24 11:54 (GMT+1).
+  - `RVs/SERVAL*`, `Temperature/`: the authors' RV results, scripts and temperature logs. The logs cover the etalon housing and the lab, not the iodine cell.
+- **Cell:** a Thorlabs GC19100-I in a GCH25-75 heater, lit by a halogen lamp. A Fabry–Pérot etalon at 813–990 nm is in the same spectrum. The iodine channel is 498–659 nm, less ±3 nm about the 633 nm HeNe artifact.
+- **Read with:** `prototypes/opus.py`. The co-added spectrum and the condensed line list come from `prototypes/condense_spectra.py --coadd`, then `--calibrate`, `--fit` and `--build debus_2023`. The window fits put the template at 313 K; the scale is −150 ppb against the model and −114 ppb against APO.
+- **Terms:** **CC0 1.0.** Redistribution and modification are allowed. Cite the paper and the data set.
