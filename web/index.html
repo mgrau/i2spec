@@ -148,6 +148,7 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
 .sw.k-model { --k: var(--cls-model); }
 /* a highlighted vibrational band: its P and R branches, in the plot and the table */
 .sw.band-P { --k: var(--band-p); } .sw.band-R { --k: var(--band-r); }
+.sw.k-band { --k: var(--band-p); background: linear-gradient(90deg, var(--band-p) 50%, var(--band-r) 50%); }
 .bandfield { display: flex; align-items: center; gap: 8px; }
 #band { width: 6.5em; }
 .bandkey { display: inline-flex; align-items: center; font: 500 11px var(--mono); color: var(--ink-3); }
@@ -282,7 +283,8 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   <div class="field"><span class="grouplabel">show</span><span class="seg" id="show">
     <button data-kind="model" aria-pressed="true" title="every line the model predicts, measured or not"><i class="sw k-model"></i>model</button>
     <button data-kind="atlas" aria-pressed="true" title="pick out the lines measured in a Fourier-transform atlas"><i class="sw k-atlas"></i>atlas</button>
-    <button data-kind="precision" aria-pressed="true" title="pick out the lines measured to sub-Doppler or comb precision"><i class="sw k-precision"></i>precision</button></span></div>
+    <button data-kind="precision" aria-pressed="true" title="pick out the lines measured to sub-Doppler or comb precision"><i class="sw k-precision"></i>precision</button>
+    <button data-kind="band" aria-pressed="true" hidden title="pick out the highlighted band's P and R branches in two reds; with model off, its lines are kept, measured or not"><i class="sw k-band"></i>band</button></span></div>
   <div class="field"><span class="grouplabel">jump to</span><span id="presets"></span></div>
   <div class="field"><span class="grouplabel">export CSV</span><span class="exports">
     <button id="csv" title="every line in view that the show toggles keep, in the table's order">lines in view</button>

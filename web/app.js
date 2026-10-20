@@ -32,8 +32,9 @@ const state = {
   hfsShards: new Map(),    // hyperfine file -> ΔJ = 0 patterns of every row of one shard
   index: new Map(),        // iso -> label -> line, built only when someone searches by label
   refs: null,              // the measurement sources: index -> {short, citation, link, ...}
-  kinds: new Set(["model", "atlas", "precision"]),   // which kinds of line the plot and table show
-  show: "all",             // the same as a key: "all", or the kinds shown, e.g. "atlas,precision"
+  kinds: new Set(["model", "atlas", "precision", "band"]),   // the show toggles: kinds of line, and the band
+  show: "all",             // the same as a key: "all", or the toggles on, e.g. "atlas,precision"
+  filter: "all",           // what the toggles keep, a key for the caches: state.show, and the band when it counts
   laser: null,             // {value, unit, n, nu}: a fundamental laser and the harmonic of it iodine sees
   sub: {fwhm: P.SUB_DOPPLER_FWHM, harmonic: 0, modulation: 1.0},   // the sub-Doppler display
   band: null,              // {vu, vl}: a vibrational band whose P and R branches the plot picks out
@@ -123,10 +124,30 @@ function kindOf(l) {
   const kinds = l.meas.map(e => source(e.s).kind);
   return (l._kind = kinds.includes("precision") ? "precision" : kinds.includes("atlas") ? "atlas" : "model");
 }
-/** Which kinds of line are shown: three independent toggles. state.show is a key for caches. "model" is
- * every line the model predicts, measured or not; "atlas" and "precision" pick out the measured ones. */
-const showKey = () => state.kinds.size === 3 ? "all" : [...state.kinds].sort().join(",");
-const keepLine = () => (state.kinds.has("model") ? () => true : l => state.kinds.has(kindOf(l)));
+/** Which lines are shown: independent toggles. "model" is every line the model predicts, measured or not;
+ * "atlas" and "precision" pick out the measured ones; "band", while a band is set, picks out its lines. So
+ * with model off, a band can be shown alone or with the measured lines. The band toggle counts in the key
+ * only while there is a band. */
+const showKey = () => {
+  const on = [...state.kinds].filter(k => k !== "band" || state.band);
+  return on.length === (state.band ? 4 : 3) ? "all" : on.sort().join(",");
+};
+const bandOn = () => state.band !== null && state.kinds.has("band");
+/** After a toggle or the band changes: the keys of what is shown and of what is kept (state.filter, for the
+ * caches: with model off, the kept lines depend on which band it is). */
+function syncShow() {
+  state.show = showKey();
+  state.filter = state.kinds.has("model") || !bandOn() ? state.show : `${state.show}|${state.band.vu}-${state.band.vl}`;
+  $$("#show button").forEach(b => b.setAttribute("aria-pressed", String(state.kinds.has(b.dataset.kind))));
+  const b = $('#show button[data-kind="band"]');
+  b.hidden = !state.band;
+  if (state.band) b.lastChild.textContent = `band ${bandText(state.band)}`;
+}
+const keepLine = () => {
+  if (state.kinds.has("model")) return () => true;
+  const band = bandOn();
+  return l => state.kinds.has(kindOf(l)) || (band && inBand(l));
+};
 /** Whether a kind of measured line is picked out in its own colour. */
 const highlighted = k => k !== "model" && state.kinds.has(k);
 let shownCache = {lines: null, show: null, out: null};
@@ -137,15 +158,15 @@ let plotCache = {lines: null, show: null, out: null};
 /** The lines the plot draws: the view's, plus those just outside it (state.plotLines), filtered as shown. */
 const plotLines = () => {
   const all = state.plotLines || state.lines;
-  if (state.show === "all") return all;
-  if (plotCache.lines !== all || plotCache.show !== state.show)
-    plotCache = {lines: all, show: state.show, out: all.filter(keepLine())};
+  if (state.kinds.has("model")) return all;
+  if (plotCache.lines !== all || plotCache.show !== state.filter)
+    plotCache = {lines: all, show: state.filter, out: all.filter(keepLine())};
   return plotCache.out;
 };
 const shownLines = () => {
-  if (state.show === "all") return state.lines;
-  if (shownCache.lines !== state.lines || shownCache.show !== state.show)
-    shownCache = {lines: state.lines, show: state.show, out: state.lines.filter(keepLine())};
+  if (state.kinds.has("model")) return state.lines;
+  if (shownCache.lines !== state.lines || shownCache.show !== state.filter)
+    shownCache = {lines: state.lines, show: state.filter, out: state.lines.filter(keepLine())};
   return shownCache.out;
 };
 const KIND_LABEL = {precision: "precision", atlas: "atlas", model: "model only"};
@@ -165,6 +186,8 @@ const parseBand = text => {
 };
 const bandText = b => `${b.vu}–${b.vl}`;
 const inBand = l => state.band !== null && l.vu === state.band.vu && l.vl === state.band.vl;
+/** Whether a line is drawn in its band's colours: in the band, with the band toggle on. */
+const inShownBand = l => bandOn() && inBand(l);
 const BRANCHES = ["P", "R"];
 
 async function loadShards(iso, files, note) {
@@ -303,7 +326,7 @@ const HIST_BINS = 2048, HIST_MIN_RATIO = 4;
  * simply absent, as their lines would be.
  */
 function histogramOf(d, s, T, iso) {
-  const key = `${T}|${state.show}`;
+  const key = `${T}|${state.filter}`;
   if (d._hist && d._hist.key === key) return d._hist;
   const lo = s.nu0, hi = s.nu1, w = (hi - lo) / HIST_BINS;
   const parts = KINDS.map(() => new Float64Array(HIST_BINS));    // area per bin
@@ -323,20 +346,23 @@ function histogramOf(d, s, T, iso) {
   return (d._hist = {key, lo, w, parts, marks});
 }
 
+/** Add the area A of a histogram bin centred at nu to the pixel bins, split between the two nearest. */
+function addBinArea(bins, lo, dnu, nu, A) {
+  const x = (nu - lo) / dnu - 0.5, k = Math.floor(x), f = x - k;
+  if (k >= 0 && k < bins.length) bins[k] += A * (1 - f) / dnu;
+  if (k + 1 >= 0 && k + 1 < bins.length) bins[k + 1] += A * f / dnu;
+}
+
+/** Whether binned() draws a shard of the view from its histogram: when the pixels are wide enough for it. */
+const drawnFromHist = (s, dnu, withHfs) => !withHfs && dnu >= HIST_MIN_RATIO * (s.nu1 - s.nu0) / HIST_BINS;
+
 /** Add the histograms of these shards (slices of a view) to the pixel bins. */
 function addHistograms(parts, slices, lo, dnu, T, iso) {
-  const nbins = parts[0].length;
   for (const {d, s} of slices) {
     const h = histogramOf(d, s, T, iso);
     for (let p = 0; p < 3; p++) {
       const src = h.parts[p], dst = parts[p];
-      for (let j = 0; j < HIST_BINS; j++) {
-        const A = src[j];
-        if (!A) continue;
-        const x = (h.lo + (j + 0.5) * h.w - lo) / dnu - 0.5, k = Math.floor(x), f = x - k;
-        if (k >= 0 && k < nbins) dst[k] += A * (1 - f) / dnu;
-        if (k + 1 >= 0 && k + 1 < nbins) dst[k + 1] += A * f / dnu;
-      }
+      for (let j = 0; j < HIST_BINS; j++) if (src[j]) addBinArea(dst, lo, dnu, h.lo + (j + 0.5) * h.w, src[j]);
     }
   }
 }
@@ -348,7 +374,7 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || 
   const sticks = [];
   // each shard decides for itself: the last 127I2 shard, stretched to take in the emission rows, has bins
   // about 12 times wider than the rest, too coarse for pixels its neighbours' histograms already suit
-  const fromHist = withHfs ? [] : slices.filter(({s}) => dnu >= HIST_MIN_RATIO * (s.nu1 - s.nu0) / HIST_BINS);
+  const fromHist = slices.filter(({s}) => drawnFromHist(s, dnu, withHfs));
   if (fromHist.length) {
     addHistograms(parts, fromHist, lo, dnu, T, iso);
     const keep = keepLine();
@@ -367,7 +393,7 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || 
     for (let c = 0; c < h.o.length; c++) {
       const nuC = line.nu + h.o[c] / P.MHZ_PER_CM, Sc = S * h.s[c] / 1000;
       addGaussian(bins, lo, dnu, nuC, sig, Sc);
-      sticks.push({nu: nuC, peak: Sc / (sigma * root2pi), kind, band: inBand(line) ? line.branch : null});
+      sticks.push({nu: nuC, peak: Sc / (sigma * root2pi), kind, band: inShownBand(line) ? line.branch : null});
     }
   }
   return {parts, sticks};
@@ -376,18 +402,27 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || 
 /**
  * The highlighted band's lines on the pixel grid, by branch, and how many of each lie in the view. Read from
  * every row in view, not the per-shard histograms (which do not know bands), so a whole band shows however
- * wide the view; with the hyperfine components where the plot shows them.
+ * wide the view; with the hyperfine components where the plot shows them. Each shard's lines are binned
+ * as binned() bins the rest: where it draws a shard from its histogram, through that histogram's grid, so a
+ * band's peaks match the same lines in the model's trace (and the trace of the band alone, with model off).
  */
 function bandBins(lo, hi, nbins, T, iso, withHfs) {
   const out = {P: new Float64Array(nbins), R: new Float64Array(nbins), n: {P: 0, R: 0}};
-  if (!state.band) return out;
-  const dnu = (hi - lo) / nbins, keep = keepLine(), q = partitionAt(iso, T);
-  for (const {d, a, b} of ((state.plotLines || state.lines).slices || [])) {
+  if (!bandOn()) return out;
+  const dnu = (hi - lo) / nbins, q = partitionAt(iso, T);
+  for (const {d, s, a, b} of ((state.plotLines || state.lines).slices || [])) {
+    const fromHist = drawnFromHist(s, dnu, withHfs), w = (s.nu1 - s.nu0) / HIST_BINS;
+    const histNu = j => s.nu0 + (Math.min(Math.max(j, 0), HIST_BINS - 1) + 0.5) * w;   // as histogramOf()
     for (let i = a; i < b; i++) {
       const line = d._rows[i];
-      if (line.vu !== state.band.vu || line.vl !== state.band.vl || !keep(line)) continue;
+      if (line.vu !== state.band.vu || line.vl !== state.band.vl) continue;
       if (line.nu >= lo && line.nu <= hi) out.n[line.branch]++;
       const bins = out[line.branch], S = strengthOf(line, q, T);
+      if (fromHist) {
+        const x = (line.nu - s.nu0) / w - 0.5, k = Math.floor(x), f = x - k;
+        addBinArea(bins, lo, dnu, histNu(k), S * (1 - f)); addBinArea(bins, lo, dnu, histNu(k + 1), S * f);
+        continue;
+      }
       const sigma = P.dopplerFWHM(line.nu, T, iso) / 2.35482, sig = Math.hypot(sigma, dnu);
       const h = withHfs ? hfsOf(line) : null;
       if (!h) { addGaussian(bins, lo, dnu, line.nu, sig, S); continue; }
@@ -450,7 +485,7 @@ function subDopplerBins(lines, lo, hi, nbins, T, iso) {
     const res = list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude}));
     const opts = {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total};
     P.addSignal(parts[KIND_INDEX[kindOf(line)]], x0, dx, res, drawn, opts);
-    if (inBand(line)) {
+    if (inShownBand(line)) {
       P.addSignal(band[line.branch], x0, dx, res, drawn, opts);
       if (line.nu >= lo && line.nu <= hi) band.n[line.branch]++;
     }
@@ -465,7 +500,7 @@ function subDopplerBins(lines, lo, hi, nbins, T, iso) {
  * the counts of any run of rows are two subtractions and its measured lines a slice.
  */
 function shardTotals(d) {
-  if (d._tot && d._tot.show === state.show) return d._tot;
+  if (d._tot && d._tot.show === state.filter) return d._tot;
   const n = d._rows.length, keep = keepLine();
   const cum = KINDS.map(() => new Int32Array(n + 1)), meas = [];
   for (let i = 0; i < n; i++) {
@@ -473,14 +508,14 @@ function shardTotals(d) {
     for (let p = 0; p < 3; p++) cum[p][i + 1] = cum[p][i] + (p === k ? 1 : 0);
     if (k >= 0 && highlighted(kindOf(l))) meas.push(i);
   }
-  return (d._tot = {show: state.show, cum, meas});
+  return (d._tot = {show: state.filter, cum, meas});
 }
 
 /** Counts by kind of the lines shown, and their measured lines, for the current view. */
 let summaryCache = {lines: null, show: null};
 function viewSummary() {
   const lines = state.lines;
-  if (summaryCache.lines === lines && summaryCache.show === state.show) return summaryCache;
+  if (summaryCache.lines === lines && summaryCache.show === state.filter) return summaryCache;
   const counts = {precision: 0, atlas: 0, model: 0};
   let nMarked = 0;
   const slices = lines.slices || [];
@@ -498,7 +533,7 @@ function viewSummary() {
       for (let j = lowerIndex(t.meas, a); j < t.meas.length && t.meas[j] < b; j++) marked.push(d._rows[t.meas[j]]);
     }
   }
-  return (summaryCache = {lines, show: state.show, counts, nMarked, marked});
+  return (summaryCache = {lines, show: state.filter, counts, nMarked, marked});
 }
 function lowerIndex(arr, x) {                     // first index with arr[i] >= x, arr ascending
   let lo = 0, hi = arr.length;
@@ -634,7 +669,7 @@ function drawPlot() {
   const {parts, sticks} = binned(lines, lo, hi, nb, T, iso, withHfs, (state.plotLines || state.lines).slices);
   const sub = subOn ? subDopplerBins(lines, lo, hi, nb, T, iso) : null;
   // the highlighted band, by branch: drawn over the kinds in the cross section and sub-Doppler views
-  const band = !state.band || state.mode === "trans" ? null : sub ? sub.band : bandBins(lo, hi, nb, T, iso, withHfs);
+  const band = !bandOn() || state.mode === "trans" ? null : sub ? sub.band : bandBins(lo, hi, nb, T, iso, withHfs);
   const bandInk = {P: ink("--band-p"), R: ink("--band-r")};
   const sigma = new Float64Array(nb);
   for (const p of parts) for (let k = 0; k < nb; k++) sigma[k] += p[k];
@@ -980,7 +1015,7 @@ function renderTable() {
   const body = $("#rows");
   body.replaceChildren(...shown.map((line, i) => {
     const tr = document.createElement("tr");
-    tr.className = `k-${kindOf(line)}` + (inBand(line) ? ` band-${line.branch}` : "");
+    tr.className = `k-${kindOf(line)}` + (inShownBand(line) ? ` band-${line.branch}` : "");
     tr.line = line;
     const isSelected = state.selected && state.selected.nu === line.nu;
     if (isSelected) {
@@ -1352,7 +1387,8 @@ function csvHeader(what) {
     `# model: ${m.model.package} ${m.model.version}` +
       `${m.model.git ? ", git " + m.model.git : ""}; data exported ${m.generated}`,
     `# downloaded ${new Date().toISOString()}; isotopologue ${state.iso}; T = ${state.T} K; ` +
-      `view ${Math.min(a, b).toFixed(d)} to ${Math.max(a, b).toFixed(d)} ${unit}; shown: ${state.show || "none"}`,
+      `view ${Math.min(a, b).toFixed(d)} to ${Math.max(a, b).toFixed(d)} ${unit}; shown: ${state.show || "none"}` +
+      (bandOn() ? ` (band ${state.band.vu}-${state.band.vl})` : ""),
   ];
   if (state.laser) out.push(`# ${laserText()}`);
   out.push(`# link: ${location.href}`);
@@ -1453,7 +1489,7 @@ function syncSummary() {
   const u = unit === "cm-1" ? "cm⁻¹" : unit === "nm-air" ? "nm (air)" : unit;
   $("#summary").textContent = `${Math.min(a, b).toFixed(Math.max(0, d - 2))}–${Math.max(a, b).toFixed(Math.max(0, d - 2))} ${u}` +
     ` · ${state.manifest.isotopologues[state.iso].label} · ${state.T} K` +
-    (state.show !== "all" ? ` · ${state.show ? state.show.replace(",", " + ") : "nothing"} shown` : "");
+    (state.show !== "all" ? ` · ${state.show ? state.show.replaceAll(",", " + ") : "nothing"} shown` : "");
 }
 
 //: Never zoom tighter than this (cm-1), about 0.3 MHz: below it the view is empty of structure.
@@ -1605,10 +1641,13 @@ function nuAtClientX(clientX) {
   return lo + (hi - lo) * f;
 }
 
-/** Highlight a vibrational band (null clears it): the box, the plot, the table, the address and the button. */
+/** Highlight a vibrational band (null clears it): the box, the toggle (on: a band entered is one to see), the
+ * plot, the table, the address and the button. */
 function setBand(band) {
   state.band = band;
+  if (band) state.kinds.add("band");
   $("#band").value = band ? bandText(band) : "";
+  syncShow(); syncSummary();
   drawPlot(); renderTable(); pushURL();
   if (state.selected) bandButton(state.selected);
 }
@@ -1617,7 +1656,7 @@ function setBand(band) {
 function bandButton(line) {
   const btn = $("#bandbtn");
   if (!btn) return;
-  const own = inBand(line);
+  const own = inShownBand(line);
   btn.textContent = own ? `clear band ${line.vu}–${line.vl}` : `highlight band ${line.vu}–${line.vl}`;
   btn.setAttribute("aria-pressed", String(own));
   btn.onclick = () => setBand(own ? null : {vu: line.vu, vl: line.vl});
@@ -1647,7 +1686,7 @@ function wire() {
   const applyBand = () => {
     const text = $("#band").value.trim(), band = parseBand(text);
     if (text && !band) { setStatus(`"${text}" is not a band: write v′–v″, e.g. 32-0`); return; }
-    if ((band && inBand({vu: band.vu, vl: band.vl})) || (!band && !state.band)) return;   // no change
+    if ((band && inShownBand({vu: band.vu, vl: band.vl})) || (!band && !state.band)) return;   // no change
     setBand(band);
   };
   $("#band").addEventListener("keydown", e => { if (e.key === "Enter") { applyBand(); e.target.blur(); } });
@@ -1655,9 +1694,9 @@ function wire() {
   $$("#show button").forEach(b => b.onclick = () => {
     const k = b.dataset.kind;
     state.kinds.has(k) ? state.kinds.delete(k) : state.kinds.add(k);
-    b.setAttribute("aria-pressed", String(state.kinds.has(k)));
-    state.show = showKey();
+    syncShow(); syncSummary();
     renderTable(); drawPlot(); pushURL();
+    if (k === "band" && state.selected) bandButton(state.selected);
   });
 
   // scrolling on past either end of the table moves the window along the spectrum
@@ -1986,11 +2025,9 @@ async function start() {
   if (P.UNITS.includes(q.get("unit"))) $("#unit").value = q.get("unit");
   if (m.isotopologues[q.get("iso")]) $("#iso").value = q.get("iso");
   if (q.get("show")) {
-    // "atlas,precision", or the older single filters: measured, precision, atlas
+    // "atlas,precision" or "band", or the older single filters: measured, precision, atlas
     const v = q.get("show"), legacy = {measured: "atlas,precision"};
-    state.kinds = new Set((legacy[v] || v).split(",").filter(k => KINDS.includes(k)));
-    state.show = showKey();
-    $$("#show button").forEach(o => o.setAttribute("aria-pressed", String(state.kinds.has(o.dataset.kind))));
+    state.kinds = new Set((legacy[v] || v).split(",").filter(k => KINDS.includes(k) || k === "band"));
   }
   if (validT(Number(q.get("T")))) $("#temp").value = q.get("T");
   // sub-Doppler settings and the y axis
@@ -2000,6 +2037,7 @@ async function start() {
   setMode(q.get("y") || state.mode);
   const band = parseBand(q.get("band"));
   if (band) { state.band = band; $("#band").value = bandText(band); }
+  syncShow();
   // a laser: its fields, and its marker; the view is the link's own when it has one
   const laser = Number(q.get("laser"));
   if (laser > 0) {

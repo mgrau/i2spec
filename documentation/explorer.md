@@ -33,7 +33,8 @@ trace. The three **show** toggles act on this:
   spectrum.
 
 With **model** off, the spectrum and the table keep only the measured lines of the kinds switched on.
-The legend gives the number of lines in view for each toggle that is on.
+The legend gives the number of lines in view for each toggle that is on. While a band is highlighted
+(see below), a fourth toggle, **band**, joins them.
 
 The spectrum has two horizontal axes: the chosen unit (normally vacuum wavelength) below, and
 wavenumber above (or vacuum wavelength, when the chosen unit is wavenumber). Both carry round tick
@@ -87,6 +88,11 @@ system is 0u⁺ ← 0g⁺, so it has no Q branch. This works in the cross sectio
 at any span, and the legend counts each branch's lines in view. The band's rows in the table are tinted
 to match. The detail panel of a selected line has a button that highlights its band, or clears it. To
 remove the highlight, clear the field.
+
+The **band** show toggle turns the highlight off and on without clearing the field. With **model** off,
+it keeps the band's lines, measured or not: switch off model, atlas and precision to see the band alone,
+in the spectrum and the table, or keep atlas or precision on to see the band against those measured
+lines. Entering a band switches the toggle on.
 
 ## Laser wavelength and harmonics
 
