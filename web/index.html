@@ -137,6 +137,16 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
 .sw.k-precision, #rows tr.k-precision td:first-child { --k: var(--cls-precision); }
 .sw.k-atlas, #rows tr.k-atlas td:first-child { --k: var(--cls-atlas); }
 .sw.k-model { --k: var(--cls-model); }
+/* a highlighted vibrational band: its P and R branches, in the plot and the table */
+.sw.band-P { --k: var(--band-p); } .sw.band-R { --k: var(--band-r); }
+.bandfield { display: flex; align-items: center; gap: 8px; }
+#band { width: 6.5em; }
+.bandkey { display: inline-flex; align-items: center; font: 500 11px var(--mono); color: var(--ink-3); }
+.bandkey .sw { margin: 0 3px 0 6px; }
+#rows tr.band-P:not([aria-selected="true"]) td { background: color-mix(in srgb, var(--band-p) 9%, transparent); }
+#rows tr.band-R:not([aria-selected="true"]) td { background: color-mix(in srgb, var(--band-r) 12%, transparent); }
+.bandrow { margin: 6px 0 2px; }
+#bandbtn[aria-pressed="true"] { border-color: var(--band-p); color: var(--band-p); }
 #show button[aria-pressed="false"] { color: var(--ink-3); background: transparent; font-weight: 400; }
 #show button[aria-pressed="false"] .sw { background: transparent; box-shadow: inset 0 0 0 1.5px var(--k); }
 #rows tr.k-model td:first-child { --k: var(--cls-model); }
@@ -235,6 +245,9 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   </select></div>
   <div class="field"><label for="go">&nbsp;</label><button id="go">Show</button></div>
   <div class="field"><label for="find">find a line ( / )</label><input id="find" placeholder="R(56) 32-0"></div>
+  <div class="field"><label for="band">highlight band ( B )</label><span class="bandfield">
+    <input id="band" placeholder="32-0" title="a vibrational band v′–v″: its P and R branches are drawn in two reds (B–X has no Q branch); empty to clear">
+    <span class="bandkey" aria-hidden="true"><i class="sw band-P"></i>P<i class="sw band-R"></i>R</span></span></div>
   <div class="field"><label for="laser">laser fundamental ( L )</label><span class="laser">
     <input id="laser" placeholder="1064.49" title="a fundamental laser wavelength or frequency; Enter jumps to its harmonic">
     <select id="lunit" aria-label="unit of the fundamental">

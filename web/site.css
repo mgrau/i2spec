@@ -16,6 +16,8 @@
      The two measured hues and the selection pass the CVD check (worst ΔE 10, protan); the model-only
      lines are grey on purpose, the unmeasured background the measurements stand out from. */
   --cls-precision: #b87400; --cls-atlas: #0070a0; --cls-model: #8a9ba5;
+  /* a highlighted band: a deep red for the P branch, a light one for R (clear of the crimson selection) */
+  --band-p: #9e1b1b; --band-r: #e8706a;
   --good: #1b6b4a; --good-bg: #dcefe5; --warn: #7a5109; --warn-bg: #f7eed8;
   --bad: #a63328; --bad-bg: #f8e3e0; --none: #55636b; --none-bg: #e6ecef;
   --display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
@@ -32,6 +34,7 @@
   --accent: #6fd3ac; --accent-soft: #14312a;
   --trace: #39a882; --trace-fill: rgba(57, 168, 130, 0.20); --pick: #d9588a; --mark: #d3dee2;
   --cls-precision: #bd8a1c; --cls-atlas: #3a98cc; --cls-model: #6f8590;
+  --band-p: #ff6464; --band-r: #ffb0a5;
   --good: #57c795; --good-bg: #123027; --warn: #dfae5b; --warn-bg: #33280f;
   --bad: #ef8279; --bad-bg: #3a1b1c; --none: #9fb2ba; --none-bg: #232f35;
 } }
@@ -45,6 +48,7 @@
   --accent: #6fd3ac; --accent-soft: #14312a;
   --trace: #39a882; --trace-fill: rgba(57, 168, 130, 0.20); --pick: #d9588a; --mark: #d3dee2;
   --cls-precision: #bd8a1c; --cls-atlas: #3a98cc; --cls-model: #6f8590;
+  --band-p: #ff6464; --band-r: #ffb0a5;
   --good: #57c795; --good-bg: #123027; --warn: #dfae5b; --warn-bg: #33280f;
   --bad: #ef8279; --bad-bg: #3a1b1c; --none: #9fb2ba; --none-bg: #232f35;
 }

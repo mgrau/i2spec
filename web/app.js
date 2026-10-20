@@ -36,6 +36,7 @@ const state = {
   show: "all",             // the same as a key: "all", or the kinds shown, e.g. "atlas,precision"
   laser: null,             // {value, unit, n, nu}: a fundamental laser and the harmonic of it iodine sees
   sub: {fwhm: P.SUB_DOPPLER_FWHM, harmonic: 0, modulation: 1.0},   // the sub-Doppler display
+  band: null,              // {vu, vl}: a vibrational band whose P and R branches the plot picks out
   selectedComps: null,     // the hyperfine components the detail pane shows, for the CSV export
   busy: 0,
 };
@@ -155,6 +156,16 @@ const KIND_INDEX = {precision: 0, atlas: 1, model: 2};
 const bestU = l => l.meas ? Math.min(...l.meas.flatMap(e => e.f.map(f => f[2])), Infinity) : Infinity;
 
 const label = l => `${l.branch}(${l.J}) ${l.vu}-${l.vl}`;
+
+/** A vibrational band v′–v″ from text such as "32-0", "32–0" or "32 0"; null for anything else. B–X is
+ * 0u+ ← 0g+, so ΔJ = ±1: a band has a P and an R branch and no Q branch. */
+const parseBand = text => {
+  const m = /^\s*(\d+)\s*[-–—,/ ]\s*(\d+)\s*$/.exec(text || "");
+  return m ? {vu: Number(m[1]), vl: Number(m[2])} : null;
+};
+const bandText = b => `${b.vu}–${b.vl}`;
+const inBand = l => state.band !== null && l.vu === state.band.vu && l.vl === state.band.vl;
+const BRANCHES = ["P", "R"];
 
 async function loadShards(iso, files, note) {
   const missing = files.filter(f => !state.shards.has(f));
@@ -356,10 +367,34 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || 
     for (let c = 0; c < h.o.length; c++) {
       const nuC = line.nu + h.o[c] / P.MHZ_PER_CM, Sc = S * h.s[c] / 1000;
       addGaussian(bins, lo, dnu, nuC, sig, Sc);
-      sticks.push({nu: nuC, peak: Sc / (sigma * root2pi), kind});
+      sticks.push({nu: nuC, peak: Sc / (sigma * root2pi), kind, band: inBand(line) ? line.branch : null});
     }
   }
   return {parts, sticks};
+}
+
+/**
+ * The highlighted band's lines on the pixel grid, by branch, and how many of each lie in the view. Read from
+ * every row in view, not the per-shard histograms (which do not know bands), so a whole band shows however
+ * wide the view; with the hyperfine components where the plot shows them.
+ */
+function bandBins(lo, hi, nbins, T, iso, withHfs) {
+  const out = {P: new Float64Array(nbins), R: new Float64Array(nbins), n: {P: 0, R: 0}};
+  if (!state.band) return out;
+  const dnu = (hi - lo) / nbins, keep = keepLine(), q = partitionAt(iso, T);
+  for (const {d, a, b} of ((state.plotLines || state.lines).slices || [])) {
+    for (let i = a; i < b; i++) {
+      const line = d._rows[i];
+      if (line.vu !== state.band.vu || line.vl !== state.band.vl || !keep(line)) continue;
+      if (line.nu >= lo && line.nu <= hi) out.n[line.branch]++;
+      const bins = out[line.branch], S = strengthOf(line, q, T);
+      const sigma = P.dopplerFWHM(line.nu, T, iso) / 2.35482, sig = Math.hypot(sigma, dnu);
+      const h = withHfs ? hfsOf(line) : null;
+      if (!h) { addGaussian(bins, lo, dnu, line.nu, sig, S); continue; }
+      for (let c = 0; c < h.o.length; c++) addGaussian(bins, lo, dnu, line.nu + h.o[c] / P.MHZ_PER_CM, sig, S * h.s[c] / 1000);
+    }
+  }
+  return out;
 }
 
 /** The key of a line in the full hyperfine patterns (hfs_<iso>.json). */
@@ -405,18 +440,24 @@ function subDopplerBins(lines, lo, hi, nbins, T, iso) {
   const dx = (hi - lo) * P.MHZ_PER_CM / nbins, x0 = lo * P.MHZ_PER_CM;
   const drawn = Math.hypot(fwhm, 3 * dx), widen = drawn / fwhm;
   const parts = KINDS.map(() => new Float64Array(nbins));
+  const band = {P: new Float64Array(nbins), R: new Float64Array(nbins), n: {P: 0, R: 0}};
   let nDips = 0, nCross = 0;
   for (const line of lines) {
     const S = strengthOf(line, q, T), f0 = line.nu * P.MHZ_PER_CM;
     const comps = componentsOf(line).map(c => ({...c, strength: S * c.strength}));
     const {list, total} = P.resonances(comps, P.dopplerFWHM(line.nu, T, iso) * P.MHZ_PER_CM);
     for (const r of list) if (r.kind === "crossover") nCross++; else nDips++;
-    P.addSignal(parts[KIND_INDEX[kindOf(line)]], x0, dx, list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude})),
-      drawn, {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total});
+    const res = list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude}));
+    const opts = {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total};
+    P.addSignal(parts[KIND_INDEX[kindOf(line)]], x0, dx, res, drawn, opts);
+    if (inBand(line)) {
+      P.addSignal(band[line.branch], x0, dx, res, drawn, opts);
+      if (line.nu >= lo && line.nu <= hi) band.n[line.branch]++;
+    }
   }
   const bins = new Float64Array(nbins);
   for (const p of parts) for (let k = 0; k < nbins; k++) bins[k] += p[k];
-  return {bins, parts, harmonic, fwhm, fwhmDrawn: drawn, nDips, nCross};
+  return {bins, parts, band, harmonic, fwhm, fwhmDrawn: drawn, nDips, nCross};
 }
 
 /**
@@ -592,6 +633,9 @@ function drawPlot() {
   const subOn = state.mode === "sub" && withHfs;
   const {parts, sticks} = binned(lines, lo, hi, nb, T, iso, withHfs, (state.plotLines || state.lines).slices);
   const sub = subOn ? subDopplerBins(lines, lo, hi, nb, T, iso) : null;
+  // the highlighted band, by branch: drawn over the kinds in the cross section and sub-Doppler views
+  const band = !state.band || state.mode === "trans" ? null : sub ? sub.band : bandBins(lo, hi, nb, T, iso, withHfs);
+  const bandInk = {P: ink("--band-p"), R: ink("--band-r")};
   const sigma = new Float64Array(nb);
   for (const p of parts) for (let k = 0; k < nb; k++) sigma[k] += p[k];
 
@@ -687,6 +731,13 @@ function drawPlot() {
       g.fillStyle = kindInk[kind]; g.globalAlpha = 0.35; g.fill(); g.globalAlpha = 1;
       curve(part); g.strokeStyle = kindInk[kind]; g.lineWidth = 1.4; g.stroke();
     }
+    for (const br of BRANCHES) {
+      const part = band && band[br];
+      if (!part || !part.some(v => v !== 0)) continue;
+      curve(part); toBase();
+      g.fillStyle = bandInk[br]; g.globalAlpha = 0.4; g.fill(); g.globalAlpha = 1;
+      curve(part); g.strokeStyle = bandInk[br]; g.lineWidth = 1.6; g.stroke();
+    }
   } else if (state.mode === "trans") {
     g.beginPath();
     for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
@@ -711,6 +762,13 @@ function drawPlot() {
       g.fillStyle = kindInk[kind]; g.globalAlpha = 0.35; g.fill(); g.globalAlpha = 1;
       curve(part); g.strokeStyle = kindInk[kind]; g.lineWidth = 1.4; g.stroke();
     }
+    for (const br of BRANCHES) {
+      const part = band && band[br];
+      if (!part || !part.some(v => v > 0)) continue;
+      curve(part); g.lineTo(xAt(nb - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
+      g.fillStyle = bandInk[br]; g.globalAlpha = 0.4; g.fill(); g.globalAlpha = 1;
+      curve(part); g.strokeStyle = bandInk[br]; g.lineWidth = 1.6; g.stroke();
+    }
     // hyperfine components: a stick at each, as tall as that component's own Doppler profile
     if (sticks.length && sticks.length < 6000) {
       g.lineWidth = 1;
@@ -718,8 +776,8 @@ function drawPlot() {
         const x = xPix(st.nu);
         if (x < m.l || x > m.l + pw) continue;
         const kind = highlighted(st.kind) ? st.kind : "model";
-        g.strokeStyle = kindInk[kind];
-        g.globalAlpha = kind === "model" ? 0.7 : 0.95;
+        g.strokeStyle = st.band ? bandInk[st.band] : kindInk[kind];
+        g.globalAlpha = kind === "model" && !st.band ? 0.7 : 0.95;
         g.beginPath(); g.moveTo(x, yPix(0)); g.lineTo(x, yPix(Math.min(st.peak / top, 1))); g.stroke();
       }
       g.globalAlpha = 1;
@@ -769,6 +827,20 @@ function drawPlot() {
     g.fillStyle = ink("--ink-2");
     g.fillText(text, lx + 14, 10.5);
     lx += 14 + g.measureText(text).width + 14;
+  }
+  if (band) {
+    // the band: its name, then each branch with its swatch and the number of its lines in view
+    const name = `band ${bandText(state.band)}`;
+    if (lx + g.measureText(name).width + 8 <= W - 4) {
+      g.fillStyle = ink("--ink-2"); g.fillText(name, lx, 10.5); lx += g.measureText(name).width + 8;
+      for (const br of BRANCHES) {
+        const text = `${br} ${fmt(band.n[br])}`;
+        if (lx + 14 + g.measureText(text).width > W - 4) break;
+        g.fillStyle = bandInk[br]; g.fillRect(lx, 5, 10, 10);
+        g.fillStyle = ink("--ink-2"); g.fillText(text, lx + 14, 10.5);
+        lx += 14 + g.measureText(text).width + 14;
+      }
+    }
   }
   if (nMeasured && lx + 14 + g.measureText("measured").width <= W - 4) {
     // the diamonds under the trace
@@ -908,7 +980,7 @@ function renderTable() {
   const body = $("#rows");
   body.replaceChildren(...shown.map((line, i) => {
     const tr = document.createElement("tr");
-    tr.className = `k-${kindOf(line)}`;
+    tr.className = `k-${kindOf(line)}` + (inBand(line) ? ` band-${line.branch}` : "");
     tr.line = line;
     const isSelected = state.selected && state.selected.nu === line.nu;
     if (isSelected) {
@@ -1079,6 +1151,7 @@ function pushURL() {
   if (state.laser) {
     q.set("laser", String(state.laser.value)); q.set("lunit", state.laser.unit); q.set("n", String(state.laser.n));
   }
+  if (state.band) q.set("band", `${state.band.vu}-${state.band.vl}`);
   history.replaceState(null, "", "?" + q);
 }
 
@@ -1192,8 +1265,10 @@ async function select(line) {
       ${state.laser ? laserRows(line) : ""}
     </dl>
     <p class="note">${sentence(why)}</p>
+    <p class="bandrow"><button id="bandbtn" type="button"></button></p>
     ${measurementsHTML(line)}
     <div id="hfsbox"><p class="note">loading hyperfine structure…</p></div>`;
+  bandButton(line);
 
   let patterns = {};
   try { patterns = await getJSON(state.manifest.isotopologues[line.iso].hfs, state.hfs, line.iso); }
@@ -1530,6 +1605,24 @@ function nuAtClientX(clientX) {
   return lo + (hi - lo) * f;
 }
 
+/** Highlight a vibrational band (null clears it): the box, the plot, the table, the address and the button. */
+function setBand(band) {
+  state.band = band;
+  $("#band").value = band ? bandText(band) : "";
+  drawPlot(); renderTable(); pushURL();
+  if (state.selected) bandButton(state.selected);
+}
+
+/** The detail pane's band button: highlight the selected line's band, or clear it if it is the one shown. */
+function bandButton(line) {
+  const btn = $("#bandbtn");
+  if (!btn) return;
+  const own = inBand(line);
+  btn.textContent = own ? `clear band ${line.vu}–${line.vl}` : `highlight band ${line.vu}–${line.vl}`;
+  btn.setAttribute("aria-pressed", String(own));
+  btn.onclick = () => setBand(own ? null : {vu: line.vu, vl: line.vl});
+}
+
 function wire() {
   $("#go").onclick = () => { refresh(); closeOptions(); };
   // on a phone the detail pane is a bottom sheet: its heading opens and closes it
@@ -1551,6 +1644,14 @@ function wire() {
   };
   for (const id of ["#cold", "#path"]) $(id).oninput = drawPlot;
   $("#find").addEventListener("keydown", e => { if (e.key === "Enter") findLine(e.target.value); });
+  const applyBand = () => {
+    const text = $("#band").value.trim(), band = parseBand(text);
+    if (text && !band) { setStatus(`"${text}" is not a band: write v′–v″, e.g. 32-0`); return; }
+    if ((band && inBand({vu: band.vu, vl: band.vl})) || (!band && !state.band)) return;   // no change
+    setBand(band);
+  };
+  $("#band").addEventListener("keydown", e => { if (e.key === "Enter") { applyBand(); e.target.blur(); } });
+  $("#band").addEventListener("change", applyBand);
   $$("#show button").forEach(b => b.onclick = () => {
     const k = b.dataset.kind;
     state.kinds.has(k) ? state.kinds.delete(k) : state.kinds.add(k);
@@ -1778,6 +1879,7 @@ function wire() {
     if (e.defaultPrevented || e.target.matches("input, select")) return;   // a table row has handled it
     if (e.key === "/") { e.preventDefault(); $("#find").focus(); }
     if (e.key === "l" || e.key === "L") { e.preventDefault(); $("#laser").focus(); $("#laser").select(); }
+    if (e.key === "b" || e.key === "B") { e.preventDefault(); $("#band").focus(); $("#band").select(); }
     if ((e.key === "ArrowDown" || e.key === "ArrowUp") && state.shown && state.shown.length) {
       // not already inside the table: jump into it rather than scrolling the page
       e.preventDefault();
@@ -1896,6 +1998,8 @@ async function start() {
   if (/^[13]f$/.test(q.get("det") || "")) { state.sub.harmonic = Number(q.get("det")[0]); $("#det").value = String(state.sub.harmonic); }
   if (Number(q.get("mod")) > 0) { state.sub.modulation = Number(q.get("mod")); $("#mod").value = q.get("mod"); }
   setMode(q.get("y") || state.mode);
+  const band = parseBand(q.get("band"));
+  if (band) { state.band = band; $("#band").value = bandText(band); }
   // a laser: its fields, and its marker; the view is the link's own when it has one
   const laser = Number(q.get("laser"));
   if (laser > 0) {

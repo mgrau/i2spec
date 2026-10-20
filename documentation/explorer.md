@@ -79,6 +79,15 @@ sub-Doppler spectrum in place of the Doppler-broadened profile. The browser impl
 against the Python model to 10⁻⁹ in the resonance amplitudes (including crossovers, from a full
 calculation with level labels) and to 10⁻⁶ in the line shape.
 
+## Highlighting a band
+
+The **highlight band** field takes a vibrational band v′–v″, for example `32-0`. Its lines are then
+drawn over the rest in two reds: the P branch (ΔJ = −1) dark, the R branch (ΔJ = +1) light. The B–X
+system is 0u⁺ ← 0g⁺, so it has no Q branch. This works in the cross section and the sub-Doppler views,
+at any span, and the legend counts each branch's lines in view. The band's rows in the table are tinted
+to match. The detail panel of a selected line has a button that highlights its band, or clears it. To
+remove the highlight, clear the field.
+
 ## Laser wavelength and harmonics
 
 The **laser fundamental** field takes the wavelength or frequency of a laser (vacuum or air
@@ -152,6 +161,7 @@ difference as a column.
 | ↑ / ↓ | move through the table |
 | `/` | search for a line by its label, e.g. `R(56) 32-0` |
 | `L` | enter a laser fundamental |
+| `B` | enter a band to highlight, e.g. `32-0` |
 
 On a phone or narrow window the spectrum takes the upper half of the screen and the line table the
 lower half; the settings are in a panel opened with **Options**. On a touch screen, drag with one finger to
@@ -164,8 +174,8 @@ round tick values and their power of ten given once above it.
 The address bar always contains the current range, isotopologue, temperature and selected line, so
 that a view can be shared as a link. It also records the y axis (`y=sigma`, `y=trans` or `y=sub`), the
 sub-Doppler settings (`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz) and
-the laser (`laser`, its unit `lunit` and the harmonic `n`). A link with a laser but no range opens on
-the laser's harmonic.
+the laser (`laser`, its unit `lunit` and the harmonic `n`), and a highlighted band (`band=32-0`). A link
+with a laser but no range opens on the laser's harmonic.
 
 !!! note "Limitations"
     The line explorer shows one isotopologue at a time and does not include the bound–free continuum,
