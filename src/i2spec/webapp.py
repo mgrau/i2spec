@@ -44,10 +44,11 @@ LABELS = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I�
 #: Hyperfine patterns kept per wavenumber shard, on top of the globally strongest ones
 PER_SHARD_HFS = 80
 #: Atlas line lists we hold with assignments. The Orsay tables carry their own columns (<name>_assigned.csv);
-#: the other two are in the observations format. Each Orsay scale is the one its fit found: part I in
+#: the others are in the observations format. Each Orsay scale is the one its fit found: part I in
 #: level_corrections_2026f, Partie IV in level_corrections_2026j (prototypes/orsay4_fit.py). Partie IV shows
-#: its unblended lines only: a blend's one position belongs to none of its assignments.
-ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
+#: its unblended lines only: a blend's one position belongs to none of its assignments. An atlas in the
+#: observations format whose .toml gives scale_ppb (Debus et al. 2023) is shown with that scale divided out.
+ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "orsay1982_part1", "orsay1983_part4")
 ORSAY_SCALE_PPB = {"orsay1982_part1": 23.85, "orsay1983_part4": 200.8}   # Partie IV: +119.6 MHz at 19 870 cm-1
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
@@ -144,10 +145,12 @@ def _atlas_rows(name):
             return tuple((r["branch"], int(r["J_lower"]), int(r["v_upper"]), int(r["v_lower"]),
                           float(r["sigma_cm1"]) * scale, (float(r["eps_mk"]) * 1e-3 * MHZ_PER_CM if r["eps_mk"] else 150.0))
                          for r in csv.DictReader(f) if r.get("n_assignments", "1") == "1")
-    # an atlas on a wavemeter scale carries its fitted offset (offset_mhz in its .toml), subtracted here
+    # an atlas on a wavemeter scale carries its fitted offset (offset_mhz in its .toml), subtracted here; one
+    # whose scale was fitted against the model (scale_ppb: observed = true (1 + scale_ppb 1e-9)) has it divided out
     meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
     shift = float(meta.get("offset_mhz", 0.0)) / MHZ_PER_CM
-    return tuple((o.line.branch, o.line.J_lower, o.line.v_upper, o.line.v_lower, o.value - shift,
+    scale = 1 + float(meta.get("scale_ppb", 0.0)) * 1e-9
+    return tuple((o.line.branch, o.line.J_lower, o.line.v_upper, o.line.v_lower, o.value / scale - shift,
                   o.uncertainty * MHZ_PER_CM) for o in read_observations(ATLAS_DIR / f"{name}.csv"))
 
 

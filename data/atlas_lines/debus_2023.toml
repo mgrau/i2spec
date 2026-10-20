@@ -29,6 +29,9 @@ template's line shape or a blend's split gets wrong; the blend column flags line
 density, on the scale of the template's strengths, so A / N_window is a strength in cm/molecule on that scale;
 with an independent column density (path times number density) A gives absolute strengths. Kept: window rms
 < 4%, depth > 0.05, sigma(ln A) < 0.25. Repeats combined in ln A."""
+calibration = """HeNe-referenced FTS scale, not comb-calibrated: -150.1 ppb against the i2spec model (scale_ppb;
+-114.3 ppb against apo_nist_2009). Not in the per-line uncertainty; the explorer divides it out."""
+scale_ppb = -150.1
 range_cm-1 = [15184.9, 19844.8]
 n_lines = 15928
 n_intensities = 33759

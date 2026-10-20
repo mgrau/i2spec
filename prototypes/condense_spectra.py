@@ -624,6 +624,17 @@ def debus_meta(s):
     return s["citation"], instrument, conditions
 
 
+def scale_fields(s, scale_curve):
+    """calibration and scale_ppb for a spectrum whose scale was fitted against the model (--calibrate):
+    observed = true (1 + scale_ppb 1e-9). The explorer divides it out (webapp._atlas_rows)."""
+    if s["kind"] not in ("kitt_peak", "debus"):
+        return ""
+    ref = (f"; {scale_curve[0][-1]:+.1f} ppb against {s['reference']}" if scale_curve is not None else "")
+    return (f'calibration = """HeNe-referenced FTS scale, not comb-calibrated: {s["prescale_ppb"]:+.1f} ppb against the '
+            f'i2spec model (scale_ppb{ref}).\nNot in the per-line uncertainty; the explorer divides it out."""\n'
+            f'scale_ppb = {s["prescale_ppb"]:.1f}\n')
+
+
 def write(s, lines, intens, K, floor, how, scale_curve, raw):
     sid = s["id"]
     DEST.mkdir(parents=True, exist_ok=True)
@@ -685,7 +696,7 @@ template's line shape or a blend's split gets wrong; the blend column flags line
 density, on the scale of the template's strengths, so A / N_window is a strength in cm/molecule on that scale;
 with an independent column density (path times number density) A gives absolute strengths. Kept: window rms
 < {100 * cuts['rms']:.0f}%, depth > {cuts['depth']:.2f}, sigma(ln A) < {cuts['sigma_eta']}. Repeats combined in ln A.{(" " + s["intensity_note"] + ".") if s.get("intensity_note") else ""}"""
-range_cm-1 = [{min(nus):.1f}, {max(nus):.1f}]
+{scale_fields(s, scale_curve)}range_cm-1 = [{min(nus):.1f}, {max(nus):.1f}]
 n_lines = {len(lines)}
 n_intensities = {len(intens)}
 '''
