@@ -169,9 +169,12 @@ for (const [iso, info] of Object.entries(manifest.isotopologues)) {
   check(`${iso}: rows carry u, w and their measurements`, d0.u.length === d0.nu.length && d0.w.length === d0.nu.length &&
     d0.ms.length === d0.m.length && d0.w.every(w => w >= 0 && w < manifest.reasons.length));
   check(`${iso}: shard counts sum to n_lines`, total === info.n_lines, `${total} = ${info.n_lines}`);
-  // stored in increasing wavelength: shards, and the rows within each, run to lower wavenumber
+  // stored in increasing wavelength: shards, and the rows within each, run to lower wavenumber. The export
+  // rounds each shard's bounds outward to 1e-4 cm-1 (so they hold every line at its stored precision), so
+  // neighbours may overlap by up to that much at their shared edge
   check(`${iso}: shards are contiguous and in wavelength order`,
-    info.shards.every((s, i) => s.nu0 < s.nu1 && (i === 0 || s.nu1 <= info.shards[i - 1].nu0 + 1e-6)));
+    info.shards.every((s, i) => s.nu0 < s.nu1 && (i === 0 ||
+      (s.nu0 < info.shards[i - 1].nu0 && s.nu1 <= info.shards[i - 1].nu0 + 1e-4 + 1e-9))));
   check(`${iso}: every shard has a ΔJ = 0 hyperfine file with one pattern per row`,
     info.shards.slice(0, 6).every(s => {
       const d = read("data/" + s.file), h = read("data/" + s.hfs);
