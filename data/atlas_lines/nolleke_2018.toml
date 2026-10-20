@@ -1,0 +1,20 @@
+id = "nolleke_2018"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "unassigned atlas line positions and absorptions"
+citation = """C. Nölleke, C. Raab, R. Neuhaus, S. Falke, Absolute frequency atlas from 915 nm to 985 nm based on laser absorption spectroscopy of iodine, J. Mol. Spectrosc. 346, 19-22 (2018), doi:10.1016/j.jms.2017.12.013. Data: C. Nölleke et al., Laser absorption spectroscopy of iodine between 915 and 985 nm, Mendeley Data, V1 (2017), doi:10.17632/cvr6vv2zps.1"""
+doi = "10.1016/j.jms.2017.12.013"
+url = "https://doi.org/10.17632/cvr6vv2zps.1"
+licence = "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): cite the paper and the data set"
+instrument = """Doppler-limited absorption of a mode-hop-free tunable diode laser, wavemeter referenced; 225 cm path, cell body at
+300 °C, cold finger 39 °C (127 Pa)"""
+calibration = """Absolute, stated to 50 MHz by the authors"""
+extraction = """The authors' line list (iodine_atlas.csv of the data set) with the columns renamed and nu_cm1 = 1e7 / lambda_vac_nm
+added (prototypes/publish_nolleke.py). Nothing else is changed. The 192 lines with a water_line entry lie near an
+atmospheric H2O line in the open beam and may be blended with it; reference_lambda_vac_nm is the authors' comparison line
+from their reference [1] where they give one (3664 lines). The raw scans, transmission against vacuum wavelength, are in
+data/spectra/nolleke_2018_scans.csv.gz (the authors' scan_data.csv, gzipped). The lines are not assigned: two attempts
+against the model failed (docs/research/atlas-line-positions.md), because they come from X v'' = 24-45, the levels the
+assignment would measure."""
+range_cm-1 = [10152.4, 10928.8]
+n_lines = 10162
