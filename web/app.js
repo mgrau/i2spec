@@ -122,9 +122,12 @@ function kindOf(l) {
   const kinds = l.meas.map(e => source(e.s).kind);
   return (l._kind = kinds.includes("precision") ? "precision" : kinds.includes("atlas") ? "atlas" : "model");
 }
-/** Which kinds of line are shown: three independent toggles. state.show is a key for caches. */
+/** Which kinds of line are shown: three independent toggles. state.show is a key for caches. "model" is
+ * every line the model predicts, measured or not; "atlas" and "precision" pick out the measured ones. */
 const showKey = () => state.kinds.size === 3 ? "all" : [...state.kinds].sort().join(",");
-const keepLine = () => (state.kinds.size === 3 ? () => true : l => state.kinds.has(kindOf(l)));
+const keepLine = () => (state.kinds.has("model") ? () => true : l => state.kinds.has(kindOf(l)));
+/** Whether a kind of measured line is picked out in its own colour. */
+const highlighted = k => k !== "model" && state.kinds.has(k);
 let shownCache = {lines: null, show: null, out: null};
 /** Lines whose centre lies within this margin (cm⁻¹) outside the view still draw there: their hyperfine
  * components (up to ~1 GHz from the centre) and Doppler wings reach in. About 1.5 GHz. */
@@ -303,6 +306,7 @@ function histogramOf(d, s, T, iso) {
     bins[Math.min(Math.max(k, 0), HIST_BINS - 1)] += S * (1 - f);
     bins[Math.min(Math.max(k + 1, 0), HIST_BINS - 1)] += S * f;
     const km = Math.min(HIST_BINS - 1, Math.max(0, Math.round(x)));
+    if (!highlighted(kind)) continue;
     if (kind === "precision") marks[km] = 2; else if (kind === "atlas" && !marks[km]) marks[km] = 1;
   }
   return (d._hist = {key, lo, w, parts, marks});
@@ -423,7 +427,7 @@ function shardTotals(d) {
   for (let i = 0; i < n; i++) {
     const l = d._rows[i], k = keep(l) ? KIND_INDEX[kindOf(l)] : -1;
     for (let p = 0; p < 3; p++) cum[p][i + 1] = cum[p][i] + (p === k ? 1 : 0);
-    if (k >= 0 && l.measured) meas.push(i);
+    if (k >= 0 && highlighted(kindOf(l))) meas.push(i);
   }
   return (d._tot = {show: state.show, cum, meas});
 }
@@ -580,7 +584,7 @@ function drawPlot() {
   gt.clearRect(0, 0, W, H);
   const lines = plotLines();
   const nb = Math.max(2, Math.round(pw * dpr));        // one bin per canvas pixel
-  // one binned cross section per kind of line, stacked precision / atlas / model from the baseline
+  // one binned cross section per kind of line: their sum is the model, the measured kinds are drawn over it
   const withHfs = hyperfineShown();
   const subOn = state.mode === "sub" && withHfs;
   const {parts, sticks} = binned(lines, lo, hi, nb, T, iso, withHfs, (state.plotLines || state.lines).slices);
@@ -672,31 +676,34 @@ function drawPlot() {
     for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
     g.strokeStyle = ink("--ink-2"); g.lineWidth = 1.6; g.lineJoin = "round"; g.stroke();
   } else {
-    // stacked areas, each kind's share of the cross section in its own colour, then the total on top
-    let base = new Float64Array(nb);
-    for (let p = 0; p < KINDS.length; p++) {
-      const upper = base.map((b, k) => b + parts[p][k]);
-      if (upper.some((u, k) => u > base[k])) {
-        g.beginPath();
-        for (let k = 0; k < nb; k++) g.lineTo(xAt(k), yPix(at(upper, k) / top));
-        for (let k = nb - 1; k >= 0; k--) g.lineTo(xAt(k), yPix(at(base, k) / top));
-        g.closePath();
-        g.fillStyle = ink(`--cls-${KINDS[p]}`); g.globalAlpha = KINDS[p] === "model" ? 0.45 : 0.8; g.fill();
-        g.globalAlpha = 1;
-      }
-      base = upper;
+    // the model's cross section, every line in it, filled; then each highlighted kind of measured line's
+    // own share of it, drawn from the baseline over the model in its colour
+    const curve = vals => {
+      g.beginPath();
+      for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(vals, k) / top)) : g.lineTo(xAt(k), yPix(at(vals, k) / top));
+    };
+    if (state.kinds.has("model")) {
+      curve(sigma); g.lineTo(xAt(nb - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
+      g.fillStyle = ink("--cls-model"); g.globalAlpha = 0.45; g.fill(); g.globalAlpha = 1;
     }
-    g.beginPath();
-    for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
+    curve(sigma);
     g.strokeStyle = ink("--ink-2"); g.lineWidth = 1; g.lineJoin = "round"; g.stroke();
+    for (const kind of ["atlas", "precision"]) {
+      const part = parts[KIND_INDEX[kind]];
+      if (!highlighted(kind) || !part.some(v => v > 0)) continue;
+      curve(part); g.lineTo(xAt(nb - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
+      g.fillStyle = kindInk[kind]; g.globalAlpha = 0.35; g.fill(); g.globalAlpha = 1;
+      curve(part); g.strokeStyle = kindInk[kind]; g.lineWidth = 1.4; g.stroke();
+    }
     // hyperfine components: a stick at each, as tall as that component's own Doppler profile
     if (sticks.length && sticks.length < 6000) {
       g.lineWidth = 1;
       for (const st of sticks) {
         const x = xPix(st.nu);
         if (x < m.l || x > m.l + pw) continue;
-        g.strokeStyle = kindInk[st.kind];
-        g.globalAlpha = st.kind === "model" ? 0.7 : 0.95;
+        const kind = highlighted(st.kind) ? st.kind : "model";
+        g.strokeStyle = kindInk[kind];
+        g.globalAlpha = kind === "model" ? 0.7 : 0.95;
         g.beginPath(); g.moveTo(x, yPix(0)); g.lineTo(x, yPix(Math.min(st.peak / top, 1))); g.stroke();
       }
       g.globalAlpha = 1;
@@ -734,9 +741,12 @@ function drawPlot() {
   // legend, top left: what the colours mean and how many of each are in view
   g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = "left"; g.textBaseline = "middle";
   let lx = m.l + 10;
+  // "model" counts every line it draws; atlas and precision those of their kind it picks out
+  const legend = {model: state.kinds.has("model") ? counts.precision + counts.atlas + counts.model : 0,
+                  atlas: highlighted("atlas") ? counts.atlas : 0, precision: highlighted("precision") ? counts.precision : 0};
   for (const k of KINDS) {
-    if (!counts[k]) continue;
-    const text = narrow ? `${k === "model" ? "model" : KIND_LABEL[k]} ${fmt(counts[k])}` : `${KIND_LABEL[k]} ${fmt(counts[k])}`;
+    if (!legend[k]) continue;
+    const text = `${k === "model" ? "model" : KIND_LABEL[k]} ${fmt(legend[k])}`;
     if (lx + 14 + g.measureText(text).width > W - 4) break;      // no room: leave the rest out
     g.fillStyle = ink(`--cls-${k}`); g.globalAlpha = k === "model" ? 0.6 : 0.9;
     g.fillRect(lx, 5, 10, 10); g.globalAlpha = 1;
