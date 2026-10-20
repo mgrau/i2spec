@@ -396,24 +396,27 @@ function componentsOf(line) {
  * i2spec/saturation.py). Each line's components are weighted by its strength at T, so the dips of
  * different lines compare as S² in the weak-saturation limit. A resonance narrower than about three
  * pixels is drawn at three pixels (the modulation widened in proportion, keeping the shape) so that it
- * shows at all; the note on the plot says so.
+ * shows at all; the note on the plot says so. The signal is a sum over lines, so it is kept per kind of
+ * line as well (parts, in KINDS order), for the plot to pick out the measured ones as the cross section does.
  */
 function subDopplerBins(lines, lo, hi, nbins, T, iso) {
   const {fwhm, harmonic, modulation} = state.sub;
   const q = partitionAt(iso, T);
   const dx = (hi - lo) * P.MHZ_PER_CM / nbins, x0 = lo * P.MHZ_PER_CM;
   const drawn = Math.hypot(fwhm, 3 * dx), widen = drawn / fwhm;
-  const bins = new Float64Array(nbins);
+  const parts = KINDS.map(() => new Float64Array(nbins));
   let nDips = 0, nCross = 0;
   for (const line of lines) {
     const S = strengthOf(line, q, T), f0 = line.nu * P.MHZ_PER_CM;
     const comps = componentsOf(line).map(c => ({...c, strength: S * c.strength}));
     const {list, total} = P.resonances(comps, P.dopplerFWHM(line.nu, T, iso) * P.MHZ_PER_CM);
     for (const r of list) if (r.kind === "crossover") nCross++; else nDips++;
-    P.addSignal(bins, x0, dx, list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude})), drawn,
-      {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total});
+    P.addSignal(parts[KIND_INDEX[kindOf(line)]], x0, dx, list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude})),
+      drawn, {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total});
   }
-  return {bins, harmonic, fwhm, fwhmDrawn: drawn, nDips, nCross};
+  const bins = new Float64Array(nbins);
+  for (const p of parts) for (let k = 0; k < nbins; k++) bins[k] += p[k];
+  return {bins, parts, harmonic, fwhm, fwhmDrawn: drawn, nDips, nCross};
 }
 
 /**
@@ -592,12 +595,13 @@ function drawPlot() {
   const sigma = new Float64Array(nb);
   for (const p of parts) for (let k = 0; k < nb; k++) sigma[k] += p[k];
 
-  let y, ylabel, ticks, top = 1;
+  let y, ylabel, ticks, top = 1, subY = null;
   if (sub) {
     // relative: the resonances of each line scale with its strength squared (the bilinear limit)
     let peak = 0;
     for (const v of sub.bins) peak = Math.max(peak, Math.abs(v));
     peak = peak || 1;
+    subY = sub.harmonic ? v => 0.5 + 0.5 * v / (peak * 1.08) : v => v / (peak * 1.08);
     if (sub.harmonic) {
       y = Array.from(sub.bins, v => 0.5 + 0.5 * v / (peak * 1.08));
       ticks = [[0.5 - 0.5 / 1.08, "−1"], [0.5, "0"], [0.5 + 0.5 / 1.08, "1"]];
@@ -662,15 +666,27 @@ function drawPlot() {
   const xAt = k => m.l + (k + 0.5) * pw / nb;
   const at = (arr, k) => arr[flip ? nb - 1 - k : k];
   if (sub) {
-    if (!sub.harmonic) {
-      g.beginPath(); g.moveTo(xAt(0), yPix(0));
-      for (let k = 0; k < nb; k++) g.lineTo(xAt(k), yPix(at(y, k)));
-      g.lineTo(xAt(nb - 1), yPix(0)); g.closePath();
-      g.fillStyle = ink("--trace-fill"); g.fill();
+    // as the cross section: the model's signal, every line in it, filled; then each highlighted kind of measured
+    // line's own share of it, in its colour. A derivative (harmonic) signal is signed, so it fills to its zero.
+    const base = subY(0);
+    const curve = vals => {
+      g.beginPath();
+      for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(subY(at(vals, k)))) : g.lineTo(xAt(k), yPix(subY(at(vals, k))));
+    };
+    const toBase = () => { g.lineTo(xAt(nb - 1), yPix(base)); g.lineTo(xAt(0), yPix(base)); g.closePath(); };
+    if (state.kinds.has("model")) {
+      curve(sub.bins); toBase();
+      g.fillStyle = ink("--cls-model"); g.globalAlpha = 0.45; g.fill(); g.globalAlpha = 1;
     }
-    g.beginPath();
-    for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
-    g.strokeStyle = ink("--trace"); g.lineWidth = 1.4; g.lineJoin = "round"; g.stroke();
+    curve(sub.bins);
+    g.strokeStyle = ink("--ink-2"); g.lineWidth = 1; g.lineJoin = "round"; g.stroke();
+    for (const kind of ["atlas", "precision"]) {
+      const part = sub.parts[KIND_INDEX[kind]];
+      if (!highlighted(kind) || !part.some(v => v !== 0)) continue;
+      curve(part); toBase();
+      g.fillStyle = kindInk[kind]; g.globalAlpha = 0.35; g.fill(); g.globalAlpha = 1;
+      curve(part); g.strokeStyle = kindInk[kind]; g.lineWidth = 1.4; g.stroke();
+    }
   } else if (state.mode === "trans") {
     g.beginPath();
     for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
@@ -1105,16 +1121,18 @@ function drawHyperfine(canvas, comps, line) {
     }
     prof[px] = v; pmax = Math.max(pmax, v);
   }
+  // in the colour of the line's kind, as the main plot draws it (model, atlas or precision)
+  const kind = highlighted(kindOf(line)) ? kindOf(line) : "model", kindInk = ink(`--cls-${kind}`);
   if (pmax > 0) {
     // a harmonic signal swings both ways: centred on the middle of the box
     const mid = sub && state.sub.harmonic ? (base + top) / 2 : base, amp = mid === base ? base - top : (base - top) / 2;
     g.beginPath();
     for (let px = 0; px <= W; px++) g.lineTo(px, mid - amp * prof[px] / pmax);
-    g.strokeStyle = ink(sub ? "--trace" : "--ink-3"); g.lineWidth = sub ? 1.2 : 1.5; g.stroke();
+    g.strokeStyle = sub ? kindInk : ink("--ink-3"); g.lineWidth = sub ? 1.2 : 1.5; g.stroke();
   }
   for (let i = 0; i < comps.o.length; i++) {
     const x = xOf(comps.o[i]), h = (base - top) * comps.s[i] / smax;
-    g.strokeStyle = comps.l[i] ? ink("--trace") : ink("--rule");
+    g.strokeStyle = comps.l[i] ? kindInk : ink("--rule");
     g.lineWidth = comps.l[i] ? 2 : 1;
     g.beginPath(); g.moveTo(x, base); g.lineTo(x, base - h); g.stroke();
   }
