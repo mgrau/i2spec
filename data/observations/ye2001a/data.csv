@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.51448,0.000236,,,ye2001a,"Fig. 5: mean f1064 - 281 630 111.74 MHz = 17.240 kHz over more than a year, SD 118 Hz; doubled to 532 nm"

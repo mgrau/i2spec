@@ -1,0 +1,1022 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18T12:30:43.956870+00:00",
+  "full_package_tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q",
+    "passed": 304,
+    "expected_failures": 1,
+    "unexpected_failures": 0,
+    "duration_seconds": 156.96
+  },
+  "installed_layout": {
+    "passed": true,
+    "isolated_python": true,
+    "research_workspace_imports": false,
+    "registry_forecasts": 192,
+    "pending_targets": 48,
+    "comparable_literature_outcomes": 0,
+    "checked_prediction_lines": [
+      "P(53) 32-0",
+      "R(161) 25-0"
+    ]
+  },
+  "prospective_numerical_audit": {
+    "finished_utc": "2026-10-18T12:27:44.376208+00:00",
+    "status": "finished",
+    "n_jobs": 8,
+    "expected_jobs": 8,
+    "n_line_evaluations": 128,
+    "expected_line_evaluations": 128,
+    "n_component_comparisons": 384,
+    "expected_component_comparisons": 384,
+    "maximum_difference_Hz": {
+      "mesh_h005": 18.715858459472656,
+      "expanded_box": 0.8344650268554688
+    },
+    "tolerance_Hz": 1000.0,
+    "maximum_wavefunction_normalization_error": 1.0547118733938987e-14,
+    "frozen_inputs_unchanged": true,
+    "all_assignments_consistent": true,
+    "assignment_checks": [
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_lowJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_lowJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_lowJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_lowJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_lowJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_lowJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_midJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_midJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_midJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_midJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_midJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "routine_32_midJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_ground_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_ground_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_ground_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_ground_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_ground_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_ground_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_hot_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_hot_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_hot_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_hot_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_hot_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "B39_hot_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_first_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_first_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_first_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_first_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_first_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_first_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_second_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_second_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_second_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_second_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_second_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "highJ_25_second_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "X4_hot_band_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "X4_hot_band_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "X4_hot_band_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "X4_hot_band_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "X4_hot_band_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "X4_hot_band_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "low_B1_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "low_B1_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "low_B1_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "low_B1_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "low_B1_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-balanced",
+        "target_id": "low_B1_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_lowJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_lowJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_lowJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_lowJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_lowJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_lowJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_midJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_midJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_midJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_midJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_midJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "routine_32_midJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_ground_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_ground_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_ground_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_ground_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_ground_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_ground_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_hot_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_hot_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_hot_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_hot_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_hot_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "B39_hot_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_first_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_first_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_first_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_first_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_first_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_first_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_second_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_second_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_second_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_second_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_second_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "highJ_25_second_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "X4_hot_band_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "X4_hot_band_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "X4_hot_band_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "X4_hot_band_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "X4_hot_band_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "X4_hot_band_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "low_B1_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "low_B1_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "low_B1_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "low_B1_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "low_B1_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-compact",
+        "target_id": "low_B1_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_lowJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_lowJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_lowJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_lowJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_lowJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_lowJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_midJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_midJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_midJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_midJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_midJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "routine_32_midJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_ground_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_ground_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_ground_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_ground_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_ground_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_ground_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_hot_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_hot_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_hot_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_hot_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_hot_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "B39_hot_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_first_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_first_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_first_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_first_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_first_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_first_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_second_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_second_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_second_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_second_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_second_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "highJ_25_second_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "X4_hot_band_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "X4_hot_band_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "X4_hot_band_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "X4_hot_band_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "X4_hot_band_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "X4_hot_band_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "low_B1_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "low_B1_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "low_B1_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "low_B1_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "low_B1_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-absolute",
+        "target_id": "low_B1_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_lowJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_lowJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_lowJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_lowJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_lowJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_lowJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_midJ_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_midJ_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_midJ_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_midJ_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_midJ_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "routine_32_midJ_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_ground_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_ground_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_ground_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_ground_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_ground_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_ground_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_hot_X_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_hot_X_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_hot_X_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_hot_X_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_hot_X_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "B39_hot_X_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_first_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_first_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_first_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_first_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_first_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_first_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_second_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_second_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_second_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_second_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_second_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "highJ_25_second_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "X4_hot_band_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "X4_hot_band_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "X4_hot_band_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "X4_hot_band_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "X4_hot_band_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "X4_hot_band_R_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "low_B1_P_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "low_B1_P_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "low_B1_P_a10",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "low_B1_R_a1",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "low_B1_R_a3",
+        "consistent": true
+      },
+      {
+        "model": "research-20261018-precision",
+        "target_id": "low_B1_R_a10",
+        "consistent": true
+      }
+    ],
+    "failures": [],
+    "passed": true,
+    "interpretation": "Numerical/assignment feasibility of frozen points only. No evidence about predictive accuracy, measurement accessibility or calibrated coverage. Relative component strengths are normalized inside each line; electronic/vibrational intensity, temperature/population, blends and lab laser access are not assessed."
+  },
+  "calibration_provenance_verified": true,
+  "registry_bytes_unchanged": true,
+  "source_sha256": {
+    "src/i2spec/validation.py": "fa772786c6e054c8e20eb74bf6e93e3442234a251ab06c776c84fe55f0334d6b",
+    "src/i2spec/research.py": "60f220ee164be1d78339758b22a668cf080265bdbfecdb5b68733e97505557bd",
+    "src/i2spec/research_progress.py": "bad3a40a6f4b5379e2b90c67851fec01d35d7c451162c516fb6432f9d4831923",
+    "src/i2spec/progress_tui.py": "21ce5bdb934db967f6d7d6b7931b34dae9f7e9492637bebcf23e259702debdd5",
+    "tests/test_validation.py": "aed685a71115a80ec764f740faa15f0cc7eb54196a5332fb5833643ae058b6ea",
+    "src/i2spec/data/research/20261018/integration_verification.json": "d73d98eba18bce4ba3cc1d756ac50845b923f8786959c02b933f1bc5706c3e3e"
+  },
+  "limitations": [
+    "No new laboratory measurements available",
+    "No comparable new literature results scored",
+    "No full joint covariance or calibrated probability coverage",
+    "Research package selection is explicit; production remains i2spec2026o"
+  ]
+}

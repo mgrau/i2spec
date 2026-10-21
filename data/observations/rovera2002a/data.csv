@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.511857,0.001004,,,rovera2002a,"Eq. (1): nu_green = 563 260 223 511 857(88) Hz, BNM-INM Nd:YAG standard, mean of three sessions over a month; 88 Hz statistical with the 1 kHz reproducibility added in quadrature (see meta.toml)"

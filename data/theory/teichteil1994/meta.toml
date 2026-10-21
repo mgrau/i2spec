@@ -1,0 +1,23 @@
+id = "teichteil1994"
+citation = "C. Teichteil and M. Pelissier, \"Relativistic calculations of excited states of molecular iodine\", Chem. Phys. 180, 1-18 (1994), Table 2"
+source = "https://doi.org/10.1016/0301-0104(93)E0395-C (publisher PDF, papers/Teichteil1994_ChemPhys180_1.pdf)"
+doi = "10.1016/0301-0104(93)E0395-C"
+retrieved = "2026-10-20"
+unit = "De in eV, re in A, we, wexe and Te in cm-1"
+kind = "spectroscopic constants of the six experimentally known states: ab initio, shifted ab initio, experiment"
+
+transcription = """
+Table 2 (p. 8), all rows, read from a 200 dpi render and the PDF text layer. kind: "ab initio" = row (a),
+"shifted" = row (b) (excited curves re-referenced to an RKR ground state, Sec. 3.3), "exp. [n]" = the
+experimental row with the paper's reference numbers. Empty rows are printed "unbound" (ab initio A, a, a')
+or "empirical curve" (X shifted).
+"""
+
+notes = """
+Relativistic effective-core-potential MCSCF + spin-orbit CI over all 23 states of the three lowest limits.
+The paper gives curves only as figures (Figs. 3-5) and constants only for the states in this table, none
+of the nine perturbers of B at 2P3/2 + 2P1/2. Kept as the independent calculation behind the de Jong et al.
+1997 curves (data/theory/dejong1997), which those authors say closely resemble these. Text results worth
+keeping: B''1u(1Piu) is the only 1u state crossing B and (2)0u- the only 0u- state (Sec. 3.4); a'(2)0g+ is
+69% 3Pig at re(X) but 59% 3Sigmag- where it crosses B at 3.27 A (Table 5).
+"""

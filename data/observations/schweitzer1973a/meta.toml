@@ -1,0 +1,49 @@
+id = "schweitzer1973a"
+citation = "W. G. Schweitzer, Jr., E. G. Kessler, Jr., R. D. Deslattes, H. P. Layer and J. R. Whetstone, \"Description, performance, and wavelengths of iodine stabilized lasers\", Appl. Opt. 12, 2927-2938 (1973)"
+source = "https://doi.org/10.1364/AO.12.002927 (publisher PDF via ODU; Matt's library copy papers/Schweitzer1973_Appl_Opt_12_2927.pdf)"
+doi = "10.1364/AO.12.002927"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the pages (abstract; pp. 2935-2936). NBS He-Ne lasers with internal
+129I2 or 127I2 cells, third-derivative locking:
+- The vacuum wavelength of the 3He-20Ne laser on the 129I2 "k" peak, measured against the 86Kr standard (centre of
+  gravity of the Kr profile): 632 991.2670 +- 0.0009 pm. Entered as a frequency, c / lambda = 473 612 312.885 MHz.
+- Beat of a 3He-20Ne:127I2 laser on the "i" peak against the 129I2 "k" laser: 96.0399 +- 0.0098 MHz, "with the k
+  peak having the higher frequency" (the paper derives i = 632 991.3954 +- 0.0009 pm from it).
+- Beat of a 3He-22Ne:129I2 laser on the "B" peak against the k laser: 892.467 +- 0.083 MHz, the k peak the lower
+  frequency (the letter is lost in the text layer; the printed wavelengths, B 632 990.0742 pm and k 632 991.2670
+  pm, put B 892.47 MHz above k).
+
+Assignments, made here from later data, not in the paper:
+- 127I2 "i" is R(127) 11-5 a13 (bipm2003a, yoon2001a).
+- 129I2 "k" is 129I2 P(54) 8-4 a28: with f - i = 138.891 MHz (yoon2001a), k lies 42.85 MHz below 127I2 a16; the MEP
+  puts 129I2 P(54) 8-4 a28 at -42.99(4) MHz (bipm2003a), and no other 129I2 component is within 3 MHz.
+- 129I2 "B" is 129I2 P(33) 6-3 e2: the MEP puts e2 849.4(2) MHz above 127I2 a16, i.e. 892.39 MHz above 129I2 a28,
+  against 892.467(83) MHz here.
+
+Not entered: the wavelengths derived from the beats (i and B), which are these rows combined; the comparison
+values from NRC, BIPM and NPL quoted in the text; the pressure broadening (13 MHz/Torr) and shift (about
+2e-9 nu/Torr) estimates; Table I (Fabry-Perot order numbers).
+"""
+
+uncertainty = """
+Beats: as printed (taken as 1 sigma), 9.8 kHz and 83 kHz, the scatter of ten readings with the lasers relocked;
+the lasers' operating conditions (internal cells, power, modulation) are not corrected.
+Absolute: the printed 0.0009 pm is 0.67 MHz, the measurement against the Kr lamp only. The 86Kr definition was
+realizable to about 4e-9 (the asymmetry of the Kr line), 1.9 MHz here, and the derived 127I2 i value lies 2.1 MHz
+above today's (yoon2001a), so 2.0 MHz (both in quadrature) is entered.
+"""
+
+notes = """
+Residuals against i2spec2026o (Predictor(), obs - model): a28 - 127I2 a13 +0.82 MHz and e2 - a28 +0.83 MHz, where
+bipm2003a's rows for the same links give +0.69 MHz (a28 - a16) and +0.75 MHz (e2 - a28): the shipped model's
+129I2 isotope shift is about 0.7 MHz off, and these beats agree with the MEP to 0.13 and 0.08 MHz, which confirms
+the assignments. The absolute is +2.6 MHz (the same 0.7 MHz and the Kr scale's 2 MHz). Checked with the shipped
+model only.
+"""
+
+[conditions]
+method = "3He-20Ne and 3He-22Ne lasers with internal 129I2 or 127I2 absorption cells, third-derivative locking; Fabry-Perot comparison with the 86Kr standard at its triple-point lamp"

@@ -1,0 +1,44 @@
+id = "landsberg1976a"
+citation = "B. M. Landsberg, \"Nuclear hyperfine splittings in the B-X electronic band system of 127I2\", Chem. Phys. Lett. 43, 102-103 (1976)"
+source = "https://doi.org/10.1016/0009-2614(76)80766-X (PDF supplied by Matt; library copy papers/Landsberg1976_CPL_43_102.pdf)"
+doi = "10.1016/0009-2614(76)80766-X"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from a 220 dpi page image of p. 103 (the OCR text layer misreads several labels). A refit of two older data
+sets, which the paper prints whole in its "Experiment" columns; neither original paper is held, so the rows are
+entered here.
+- Table 1: eleven separations between the components d, e, f, g, h, i, j of R(127) 11-5 (the 633 nm He-Ne line),
+  "the data of ref. [1]": G. R. Hanes, K. M. Baird and J. DeRemigis, Appl. Opt. 12, 1600 (1973). The text calls
+  the line "R(127) of the 11-6 band", a slip for 11-5. The seventh row is f-h (f - h = f - g + g - h checks), the
+  OCR's "i-h". The separations are redundant (d - g = d - e + e - f + f - g to 7 kHz) and each is entered, as
+  printed, positive: the letters run down in frequency (a the highest), so d - e = a18 - a17, with
+  d, e, f, g, h, i, j = a18, a17, a16, a15, a14, a13, a12 (as in the MEP; f = a16, i = a13).
+- Table 2: 15 components of P(13) 43-0 relative to o, "the data of ref. [3]" (Hackel, Casleton, Kukolich and
+  Ezekiel, Phys. Rev. Lett. 35, 568 (1975)), with "a" the highest frequency: a, b, e, f, g, j, k, m, n, p-u are
+  a21, a20, a17, a16, a15, a12, a11, a9, a8, a6-a1, and o is a7. The third row prints "c-o"; its value is
+  hackel1980a's a17 (405.908), and e is a17, so it is read as e-o.
+Not entered: the Obs-calc columns (kept in the notes) and the fitted constants (eQq', eQq'', C_I, d', a').
+"""
+
+uncertainty = """
+Table 1: Hanes et al. measured "to an estimated accuracy of less than 40 kHz (but with a reproducibility having a
+standard deviation of 13 kHz)"; Landsberg's fit leaves 17.3 kHz. 20 kHz is entered as 1 sigma.
+Table 2: the fit's standard deviation, 6.25 kHz, entered as 6.3 kHz (hackel1980a, the same data refitted, uses
+its own fit's 5.4 kHz).
+"""
+
+notes = """
+Table 2 is Hackel et al. 1975's measurement, which hackel1980a also prints (declared "same" below); they agree to
+the kHz except s - o = a3 - a7, -254.996 here and -254.994 there. Table 1 is the only copy of the Hanes 1973
+separations held. Residuals against i2spec2026o (obs - model): Table 1 rms 29 kHz (mean -18 kHz, largest -46 kHz
+at f - h), Table 2 rms 10 kHz (-27 kHz at a21 - a7). Checked with the shipped model only.
+"""
+
+[overlaps]
+hackel1980a = { relation = "same", lines = ["127I2 P(13) 43-0"] }
+
+[conditions]
+method = "Table 1: beats between He-Ne/I2 lasers at 633 nm locked to different components (Hanes et al. 1973); Table 2: saturated absorption at 514.5 nm (Hackel et al. 1975)"

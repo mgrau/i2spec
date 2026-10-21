@@ -1,0 +1,50 @@
+id = "macfarlane1999a"
+citation = "G. M. Macfarlane, G. P. Barwood, W. R. C. Rowley and P. Gill, \"Interferometric frequency measurement of iodine stabilized Nd:YAG lasers\", IEEE Trans. Instrum. Meas. 48, 600-603 (1999)"
+source = "https://doi.org/10.1109/19.769667 (IEEE Xplore via ODU; Matt's library copy papers/MacFarlane1999_IEEE_TIM_48_600.pdf)"
+doi = "10.1109/19.769667"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Tables I-III (p. 602) are images; read from a 230 dpi page image and typed.
+- Table I: absolute frequencies of P(54) 32-0 a10 and R(57) 32-0 a21 from the NPL interferometric comparison with
+  the 633 nm and 3.39 um standards, with type A, type B and combined uncertainties.
+- Table II: hyperfine component separations from a1 for P(54) 32-0 (a2-a15) and R(57) 32-0 (a2-a21, a11 not
+  measured), heterodyne between the two NPL Nd:YAG/I2 lasers. R(57) a8 is printed "456.1980493", with seven
+  decimals, and is entered as printed.
+Labels: P(54) has even J'' (15 components), R(57) odd (21); a_k is rank k, except three R(57) rows relabelled:
+the table leaves a11 blank and prints a8 = 456.198, a9 = 479.206, a10 = 492.935 MHz, which are the MEP's (ye1999a's)
+a9 = 456.183, a10 = 479.201 and a11 = 492.915 MHz; the MEP's a8 (438.243 MHz) was not measured. They are entered as
+a9, a10 and a11, with the printed label in the note (as printed they sit 14-23 MHz from the model; relabelled,
+within 30 kHz).
+
+Not entered:
+- The blended pairs: P(54) a3/a4 (Table I 563 212 920.489 MHz; Table II 285.901 600 MHz) and R(57) a5/a6
+  (563 209 601.819 MHz; 325.231 418 MHz). One row holds one component rank.
+- Table III, NPL column: the a1 frequencies, which are Table I minus Table II (P(54): 563 213 206.143 - 571.555 138
+  = 563 212 634.587 862 MHz, as printed), not further measurements.
+- Table III, NIST/JILA column (a1 of P(54) and R(57), +-40 kHz), from J. L. Hall, "Frequency gaps of I2 lines at
+  532 nm", Doc. CCDM/97-3b (1997): JILA's gap measurements to R(56) 32-0 a10 added to the JILA a10 value
+  (jungner1995a). The gaps themselves are not printed, so the column cannot be split from that a10.
+- The pressure shift of P(54) a10 (Fig. 4, -10 kHz/Pa; abstract).
+- R(57) a14, printed 650.088 492 MHz: 0.717 MHz below the MEP's 650.805 MHz and 0.717 MHz from the model, where
+  every other R(57) row is within 45 kHz of both. A misprint by every check (bipm2012a leaves out its own R(121)
+  35-0 misprint the same way); the true digits cannot be recovered.
+"""
+
+uncertainty = "Absolute frequencies: the printed combined uncertainties, 68 and 60 kHz (1 sigma). Separations: 0.634 kHz, the table's \"average standard deviation of the measurements\", for every row. One pair of lasers and cells, so one group."
+
+notes = """
+Overlap: bipm2012a's P(54) 32-0 and R(57) 32-0 tables come from ye1999a (by its meta), not from these; no overlap
+is declared.
+
+Against ye1999a (the MEP tables) the separations differ by far more than their 0.634 kHz: R(57) a2-a18 by -13 to
+-43 kHz, a19-a21 by +4 to +13 kHz; P(54) a2-a10 by -17 to +66 kHz, and a11-a15 by -242, +280, -118, +86 and
++61 kHz (a11 and a12, 4.3 MHz apart, are pushed apart, as by mutual line pulling). The shipped model agrees with
+ye1999a to a few kHz on both lines. The 0.634 kHz is the repeatability; the accuracy of these separations is tens
+of kHz, and of the P(54) a11-a15 rows hundreds. A fit should not take the printed figure as it stands.
+"""
+
+[conditions]
+method = "two frequency-doubled Nd:YAG lasers stabilized by modulation transfer; absolute frequency by interferometric comparison with 633 nm He-Ne/I2 and 3.39 um He-Ne/CH4 standards"

@@ -1,0 +1,31 @@
+id = "knox1971a"
+citation = "J. D. Knox and Y.-H. Pao, \"High-resolution saturation spectra of the iodine isotope I2-129 in the 633-nm wavelength region\", Appl. Phys. Lett. 18, 360-362 (1971)"
+source = "https://doi.org/10.1063/1.1653696 (PDF supplied by Matt; library copy papers/Knox1971_APL_18_360.pdf)"
+doi = "10.1063/1.1653696"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table I (p. 361), typed from the text layer and checked against the page: 37 separations between 38 adjacent
+inverted Lamb dips a, b, ..., p, a', ..., v' of a 129I2 cell (with its 127I129I content) in a He-Ne laser at 633 nm,
+the letters running down in frequency ("wavelength increases to the right", Fig. 2). Pairs marked * were measured
+by heterodyning two stabilized lasers, the others "by scaling of spectrum analyzer displays".
+Assignments, made here: the letters are those the MEP 633 nm tables (bipm2003a, which cite this paper as ref.
+[39]) and magyar1980a use. Chained from k, Knox's positions follow Magyar's letter for letter (the a-k spacings
+are about 10 % larger, the primed ones within 0.3-1 MHz), and the MEP's 129I2 P(54) 8-4 a6-a14 (n'-v', 1 MHz)
+are Knox's spacings to 0.1 MHz. So k = 129I2 P(54) 8-4 a28; a'-i' and n'-v' are its a23, a22-a16 and a14-a6
+except b' (127I129I m5); a-f, h-j, l, o, p, k', l', m' are 127I129I P(33) 6-3 m20-m15, m12-m10, m9, m7, m6,
+m3, m2, m1.
+Signs: each row is f(lower letter) - f(upper letter) = -separation.
+Not entered: the pairs touching g (127I129I m13/m14, resolved by Magyar), m (129I2 P(54) a26/a27), n (the MEP's
+blend of P(54) a24/a25 and 127I129I m8) and j' (P(54) a15 with 127I129I m4): f-g, g-h, l-m, m-n* (14.006 and
+14.007 MHz on two series, the stability test), n-o, i'-j'*, j'-k'.
+"""
+
+uncertainty = "None printed. Against magyar1980a the heterodyne pairs differ by up to 1 MHz (a'-b' 20.54 against 19.58) and the scaled ones are about 10 % large in a-k; 0.5 MHz is entered for heterodyne pairs and 1.5 MHz for scaled ones. Groups: heterodyne and scaled."
+
+notes = "The MEP 633 nm Table 3 (129I2 P(54) 8-4) cites this paper (ref. [39]); declared there as \"mean\", although these rows reach none of that table's intervals to a28 (the chain is broken at the blends). Residuals against i2spec2026o (obs - model): rms 0.65 MHz over the 30 rows, -1.7 to +0.8 MHz. Checked with the shipped model only."
+
+[conditions]
+method = "two 3He-20Ne lasers with 129I2 absorption cells (12.5 and 8 cm) inside the cavity, saturated absorption (inverted Lamb dips); 129I2 at 6 C (0.06 Torr)"

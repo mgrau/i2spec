@@ -1,0 +1,28 @@
+id = "rovera2002a"
+citation = "G. D. Rovera, F. Ducos, J.-J. Zondy, O. Acef, J.-P. Wallerand, J. C. Knight and P. St. J. Russell, \"Absolute frequency measurement of an I2 stabilized Nd:YAG optical frequency standard\", Meas. Sci. Technol. 13, 918-922 (2002)"
+source = "https://doi.org/10.1088/0957-0233/13/6/313 (PDF supplied by Matt; library copy papers/Rovera2002_Meas_Sci_Technol_13_918.pdf)"
+doi = "10.1088/0957-0233/13/6/313"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Eq. (1), p. 921, typed from the text layer and checked against the page: the frequency of the BNM-INM
+I2-stabilized Nd:YAG standard measured with a Ti:sapphire comb (840 MHz) referenced to a hydrogen maser,
+averaged over three sessions in a month: nu_green = 563 260 223 511 857(88) Hz. The paper does not name the
+component; the laser is the French national standard for the mise en pratique, i.e. the CIPM radiation
+R(56) 32-0 a10, and the value is 1.1 kHz below the CIPM 2001 value (563 260 223 513 kHz), so a10 is entered.
+Conditions: cold finger -15.00(2) C (the CIPM condition), 40 cm cell, 1 mW, modulation 1 MHz at 5.5 kHz,
+probe from the retro-reflected saturating beam. Not corrected for pressure or power.
+Not entered: the stability results; the comparison with JILA and MPQ in the text.
+"""
+
+uncertainty = "The printed 88 Hz is statistical only (\"without accounting for the reproducibility of the standard after transportation or complete realignment ... No attempt was made to evaluate systematic frequency shifts\"); the authors \"assume 1 kHz as reproducibility\" (BIPM comparison, May 2001). Entered: both in quadrature, 1.004 kHz."
+
+notes = "picard2003a (the BIPM comparisons) and bipm2012a do not use this value as such; no overlap declared. Residual against i2spec2026o (obs - model): -10.1 kHz, as for the CIPM value (-9 kHz). Checked with the shipped model only."
+
+[conditions]
+cold_finger_C = -15.0
+cell_length_cm = 40
+modulation_MHz = 1.0
+method = "frequency-doubled NPRO Nd:YAG, saturated absorption (modulation 1 MHz at 5.5 kHz), 40 cm cell; Ti:sapphire comb broadened in a photonic-crystal fibre, H maser reference"

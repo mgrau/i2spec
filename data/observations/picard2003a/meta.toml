@@ -1,0 +1,40 @@
+id = "picard2003a"
+citation = "S. Picard, L. Robertsson, L.-S. Ma, K. Nyholm, M. Merimaa, T. E. Ahola, P. Balling, P. Křen and J.-P. Wallerand, \"Comparison of 127I2-stabilized frequency-doubled Nd:YAG lasers at the Bureau International des Poids et Mesures\", Appl. Opt. 42, 1019-1028 (2003)"
+source = "https://doi.org/10.1364/AO.42.001019 (publisher PDF via ODU, Matt's library copy papers/Picard2003_Appl_Opt_42_1019.pdf)"
+doi = "10.1364/AO.42.001019"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 5 (p. 1026), "Compilation of relative frequency measurements of the complete hyperfine structure of the
+R(56) 32-0 transition in 127I2", [f(a_n) - f(a10)] in MHz, typed from the text layer and checked against the
+page. Components 1, 2, 5-9 and 11-15 (a3 and a4 are not given). One group per column:
+- MIKES, BNM-INM and CMI: the lasers MIKESY1, INMY2 and CMIY1, measured in this comparison at the BIPM in May
+  2001 (third-harmonic locking, conditions in Table 1). This paper's own measurements.
+- BIPM: the BIPM A laser, credited to Robertsson, Ma and Picard, Proc. SPIE 4269, 268 (2001) (ref. 19), which is
+  not held; entered here, so it cites this paper until that one is transcribed.
+- JILA-NIST 2: Hong et al., JOSA B 18, 379 (2001) (ref. 34), which is hong2001b re-referenced to a10, exact to
+  0.1 kHz. Declared "same" below.
+- A&B: Arie and Byer 1993 with its 1994 erratum (refs. 37, 38), which is arie1993a re-referenced to a10, exact.
+  Declared "same" below.
+- JILA-NIST 1: "the early measurements by the Hall group" (text, ref. 39: M. L. Eickhoff, Ph.D. thesis, University
+  of Colorado, 1994; the table's reference row prints 38, the erratum, one place off). Not held; entered here.
+Labels: R(56) has even J'' and 15 main components; a_n is rank n.
+
+Not entered: the CIPM 1997 column (the 1997 recommended list, an older compilation of the A&B and JILA-NIST 1
+measurements, replaced by bipm2012a); Table 4 (laser-to-laser beat differences, not iodine intervals); Tables 2
+and 3 (shift coefficients); Table 6 (upper-state hyperfine constants fitted to these rows).
+"""
+
+uncertainty = "No uncertainty is printed per component. The standard deviation s of each column's four-constant hyperfine fit (bottom row of Table 5: 0.40, 0.45, 0.38, 0.60, 0.66, 6.6 and 1.3 kHz) is taken as the 1 sigma of every interval in that column."
+
+notes = "The three new lasers agree with the comb-era values (BIPM, JILA-NIST 2) to about 1 kHz on every component."
+
+[conditions]
+method = "frequency-doubled Nd:YAG lasers stabilized by third-harmonic locking (MIKES, CMI, BNM-INM) and modulation transfer (BIPM A); intervals from heterodyne beats"
+
+[overlaps]
+hong2001b = { relation = "same", groups = ["picard2003a_jilanist2"] }   # the JILA-NIST 2 column
+arie1993a = { relation = "same", groups = ["picard2003a_arie"] }        # the A&B column
+jungner1995b = { relation = "same", groups = ["picard2003a_jilanist1"] }   # the JILA-NIST 1 column (Eickhoff thesis), first printed in Proc. SPIE 2378

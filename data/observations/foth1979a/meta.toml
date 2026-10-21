@@ -1,0 +1,38 @@
+id = "foth1979a"
+citation = "H.-J. Foth and F. Spieweck, \"Hyperfine structure of the R(98), 58-1 line of 127I2 at 514.5 nm\", Chem. Phys. Lett. 65, 347-352 (1979)"
+source = "https://doi.org/10.1016/0009-2614(79)87079-7 (PDF supplied by Matt; library copy papers/Foth1979_CPL_65_347.pdf)"
+doi = "10.1016/0009-2614(79)87079-7"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 350): the "Experiment" column, splittings of the 15 hyperfine lines of 127I2 R(98) 58-1 at 514.5 nm
+measured by heterodyning two argon-ion lasers locked (third derivative) to different lines, relative to the line
+I = 2, F - J = 1. The publisher PDF is an OCR'd scan with many digit errors, read at 220-400 dpi and repaired
+row by row with the printed Calculation and Obs - calc columns (each repair is in the row's note):
+-413.493 (sign lost), 225.973 (printed 275973), 314.122 (Calculation printed 313.152, Obs - calc -0.030, so the
+calculated value is 314.152), 426.698 (printed 126.698), and the last row's I, printed 3, is 2 (J'' = 98 is even,
+so I = 0, 2, 4: 1 + 5 + 9 = 15 lines). Decimal points lost in the scan (-359551, 481578, 5 10252) are restored.
+Every value then agrees with its Calculation to within the printed Obs - calc.
+Labels: the rows are in increasing frequency, so they are a1-a15; the zero (I = 2, F - J = 1) is a6.
+Footnote a: the distance from the line I = 2, F - J = 2 of R(98) 58-1 (a15) to the line I = 5, F - J = -5 of
+P(13) 43-0 (its lowest, a1) is "1458 MHz" (the text layer reads "I-258"; the page image is clear). R(98) lies
+below P(13) (Sect. 1: the weak line is "shifted against these lines ... towards lower frequencies"), so
+a15 - P(13) a1 = -1458 MHz.
+
+Not entered: lines 10 and 11 (I = 4, F - J = 4 and -1), printed with one measured value 253.672 MHz for the
+unresolved pair (calculated 902 kHz apart); the Table 2 constants; the fluorescence assignment (Fig. 3).
+"""
+
+uncertainty = "Splittings: \"determined with an accuracy of 30 kHz\" by the heterodyne technique (the fit leaves 15.2 kHz); 30 kHz entered as 1 sigma. Footnote link: printed to the MHz, 0.5 MHz assigned here."
+
+notes = """
+The P(13) 43-0 link row falls under the standing exclusion of that line from the fits. bipm2005a and borde1981a
+also hold R(98) 58-1; the MEP does not name this paper among its sources, so no overlap is declared.
+Residuals against i2spec2026o (obs - model): the 12 splittings rms 21 kHz (largest -45 kHz at a12), and the link
+-0.04 MHz. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "two single-mode argon-ion lasers at 514.5 nm, third-derivative locked to extracavity I2 cells; beat counted directly"

@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a16,frequency,473612353.60563,0.0011,,,thang2012a_vmi,"Table 1: f, 80 uW, cold finger 14.98 C, 5.9 MHz: 473 612 353.605 63 MHz (the operating point of the Table 2 budget, 1.1 kHz)"
+127I2 R(127) 11-5,a16,frequency,473612353.60457,0.0011,,,thang2012a_vmi,"Table 1: f, 70 uW, 14.98 C, 5.9 MHz: 473 612 353.604 57 MHz"
+127I2 R(127) 11-5,a16,frequency,473612353.5998,0.0011,,,thang2012a_vmi,"Table 1: f, 135 uW, 15.00 C, 6.0 MHz: 473 612 353.599 80 MHz"

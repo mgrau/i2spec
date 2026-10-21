@@ -1,0 +1,7826 @@
+[
+  {
+    "id": "sakagami2020a:3",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=112, v_upper=35, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 564026686.7772698
+  },
+  {
+    "id": "sakagami2020a:6",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=34, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 564044119.3308336
+  },
+  {
+    "id": "sakagami2020a:2",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=35, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 564011138.6213869
+  },
+  {
+    "id": "huang2018a:0",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=46, v_upper=5, v_lower=4), 'a1', None, None)",
+    "line": [
+      "P",
+      46,
+      5,
+      4
+    ],
+    "component": "a1",
+    "predicted_MHz": 463556678.37241006
+  },
+  {
+    "id": "huang2018a:1",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=46, v_upper=5, v_lower=4), 'a10', None, None)",
+    "line": [
+      "P",
+      46,
+      5,
+      4
+    ],
+    "component": "a10",
+    "predicted_MHz": 463557264.3614049
+  },
+  {
+    "id": "huang2018a:2",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=46, v_upper=5, v_lower=4), 'a15', None, None)",
+    "line": [
+      "P",
+      46,
+      5,
+      4
+    ],
+    "component": "a15",
+    "predicted_MHz": 463557557.9554
+  },
+  {
+    "id": "hauden2024a:0",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a1', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a1",
+    "predicted_MHz": 539385032.0851259
+  },
+  {
+    "id": "hauden2024a:9",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a10', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a10",
+    "predicted_MHz": 539385499.0292631
+  },
+  {
+    "id": "hauden2024a:10",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a11', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a11",
+    "predicted_MHz": 539385511.4153086
+  },
+  {
+    "id": "hauden2024a:11",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a12', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a12",
+    "predicted_MHz": 539385603.946145
+  },
+  {
+    "id": "hauden2024a:12",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a13', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a13",
+    "predicted_MHz": 539385636.5019283
+  },
+  {
+    "id": "hauden2024a:13",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a14', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a14",
+    "predicted_MHz": 539385673.1823978
+  },
+  {
+    "id": "hauden2024a:14",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a15', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a15",
+    "predicted_MHz": 539385742.719426
+  },
+  {
+    "id": "hauden2024a:15",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a16', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a16",
+    "predicted_MHz": 539385768.850359
+  },
+  {
+    "id": "hauden2024a:16",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a17', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a17",
+    "predicted_MHz": 539385789.6040618
+  },
+  {
+    "id": "hauden2024a:17",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a18', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a18",
+    "predicted_MHz": 539385815.51011
+  },
+  {
+    "id": "hauden2024a:18",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a19', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a19",
+    "predicted_MHz": 539385909.4822379
+  },
+  {
+    "id": "hauden2024a:1",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a2', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a2",
+    "predicted_MHz": 539385061.0300146
+  },
+  {
+    "id": "hauden2024a:19",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a20', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a20",
+    "predicted_MHz": 539385922.2241433
+  },
+  {
+    "id": "hauden2024a:20",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a21', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a21",
+    "predicted_MHz": 539385938.5240324
+  },
+  {
+    "id": "hauden2024a:2",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a3', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a3",
+    "predicted_MHz": 539385088.28967
+  },
+  {
+    "id": "hauden2024a:3",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a4', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a4",
+    "predicted_MHz": 539385301.7811232
+  },
+  {
+    "id": "hauden2024a:4",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a5', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a5",
+    "predicted_MHz": 539385345.4262965
+  },
+  {
+    "id": "hauden2024a:5",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a6', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a6",
+    "predicted_MHz": 539385352.3797386
+  },
+  {
+    "id": "hauden2024a:6",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a7', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a7",
+    "predicted_MHz": 539385393.9386008
+  },
+  {
+    "id": "hauden2024a:7",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a8', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a8",
+    "predicted_MHz": 539385467.6328517
+  },
+  {
+    "id": "hauden2024a:8",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=49, v_upper=24, v_lower=1), 'a9', None, None)",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a9",
+    "predicted_MHz": 539385485.4569364
+  },
+  {
+    "id": "holzwarth2001a:16",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=51, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      51,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563360536.6146837
+  },
+  {
+    "id": "holzwarth2001a:14",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=52, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      52,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563312173.709569
+  },
+  {
+    "id": "holzwarth2001a:9",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=54, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563212634.6396599
+  },
+  {
+    "id": "holzwarth2001a:7",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=55, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563161456.8655849
+  },
+  {
+    "id": "holzwarth2001a:5",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=56, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      56,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563109440.9273963
+  },
+  {
+    "id": "holzwarth2001a:3",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=57, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      57,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563056434.0044008
+  },
+  {
+    "id": "holzwarth2001a:1",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=58, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      58,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563002588.7699987
+  },
+  {
+    "id": "badr2006a:0",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=62, v_upper=4, v_lower=5), 'a1', None, None)",
+    "line": [
+      "P",
+      62,
+      4,
+      5
+    ],
+    "component": "a1",
+    "predicted_MHz": 453325363.93345577
+  },
+  {
+    "id": "holzwarth2001a:10",
+    "identity": "(Line(isotopologue='127I2', branch='P', J_lower=83, v_upper=33, v_lower=0), 'a1', None, None)",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563243620.9119825
+  },
+  {
+    "id": "kobayashi2015a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=36, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      36,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 564074632.5876664
+  },
+  {
+    "id": "hong2009a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=37, v_upper=16, v_lower=1), 'a1', None, None)",
+    "line": [
+      "R",
+      37,
+      16,
+      1
+    ],
+    "component": "a1",
+    "predicted_MHz": 518304551.5316302
+  },
+  {
+    "id": "sakagami2020a:5",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=37, v_upper=32, v_lower=0), 'b1', None, None)",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b1",
+    "predicted_MHz": 564042492.7703371
+  },
+  {
+    "id": "sakagami2020a:1",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=38, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 564009521.0335131
+  },
+  {
+    "id": "yoshii2019a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=38, v_upper=32, v_lower=0), 'a10', None, None)",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a10",
+    "predicted_MHz": 564010092.0006865
+  },
+  {
+    "id": "tanabe2022a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=53, v_upper=24, v_lower=1), 'a1', None, None)",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a1",
+    "predicted_MHz": 539376443.7595274
+  },
+  {
+    "id": "holzwarth2001a:15",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=54, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      54,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563357576.4665334
+  },
+  {
+    "id": "holzwarth2001a:13",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=55, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      55,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563309032.8873217
+  },
+  {
+    "id": "holzwarth2001a:12",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=56, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563259651.9412581
+  },
+  {
+    "id": "holzwarth2001a:11",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=56, v_upper=32, v_lower=0), 'a10', None, None)",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a10",
+    "predicted_MHz": 563260223.3820541
+  },
+  {
+    "id": "holzwarth2001a:8",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=57, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563209276.5126832
+  },
+  {
+    "id": "holzwarth2001a:6",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=58, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563158063.5059286
+  },
+  {
+    "id": "holzwarth2001a:4",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=59, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      59,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563105854.1266781
+  },
+  {
+    "id": "holzwarth2001a:2",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=60, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      60,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563052806.9948264
+  },
+  {
+    "id": "holzwarth2001a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=61, v_upper=32, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      61,
+      32,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 562998761.4882544
+  },
+  {
+    "id": "sakagami2020a:4",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=75, v_upper=33, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 564041736.3172047
+  },
+  {
+    "id": "huang2013a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=78, v_upper=4, v_lower=6), 'a1', None, None)",
+    "line": [
+      "R",
+      78,
+      4,
+      6
+    ],
+    "component": "a1",
+    "predicted_MHz": 446806191.9903173
+  },
+  {
+    "id": "huang2013a:1",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=78, v_upper=4, v_lower=6), 'a10', None, None)",
+    "line": [
+      "R",
+      78,
+      4,
+      6
+    ],
+    "component": "a10",
+    "predicted_MHz": 446806778.88459
+  },
+  {
+    "id": "huang2013a:2",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=78, v_upper=4, v_lower=6), 'a15', None, None)",
+    "line": [
+      "R",
+      78,
+      4,
+      6
+    ],
+    "component": "a15",
+    "predicted_MHz": 446807072.6389839
+  },
+  {
+    "id": "grieser1994a:1",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=85, v_upper=25, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      85,
+      25,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 546462926.9376098
+  },
+  {
+    "id": "hong2004a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=85, v_upper=33, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 563306719.9033542
+  },
+  {
+    "id": "tanabe2022a:2",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=95, v_upper=25, v_lower=1), 'a1', None, None)",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a1",
+    "predicted_MHz": 539391895.7881013
+  },
+  {
+    "id": "sakagami2020a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=98, v_upper=34, v_lower=0), 'a1', None, None)",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a1",
+    "predicted_MHz": 564002391.2989482
+  },
+  {
+    "id": "grieser1994a:0",
+    "identity": "(Line(isotopologue='127I2', branch='R', J_lower=99, v_upper=15, v_lower=1), 'a13', None, None)",
+    "line": [
+      "R",
+      99,
+      15,
+      1
+    ],
+    "component": "a13",
+    "predicted_MHz": 512667622.36195546
+  },
+  {
+    "id": "arie1993a:7",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 949.3827129740705
+  },
+  {
+    "id": "arie1993a:8",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 37.6115284320332
+  },
+  {
+    "id": "arie1993a:9",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 271.32064679558357
+  },
+  {
+    "id": "arie1993a:10",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 609.0304796446088
+  },
+  {
+    "id": "arie1993a:11",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 648.9531573458243
+  },
+  {
+    "id": "arie1993a:12",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 739.2239934935905
+  },
+  {
+    "id": "arie1993a:13",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 788.3992514379779
+  },
+  {
+    "id": "arie1993a:14",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 879.0256714077794
+  },
+  {
+    "id": "arie1993a:15",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 892.8930636961586
+  },
+  {
+    "id": "arie1993a:16",
+    "line": [
+      "P",
+      53,
+      32,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 910.0258225473965
+  },
+  {
+    "id": "arie1993a:17",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 259.5800740545028
+  },
+  {
+    "id": "arie1993a:18",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 311.2941466579458
+  },
+  {
+    "id": "arie1993a:19",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 401.36648633717937
+  },
+  {
+    "id": "arie1993a:20",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 416.89820117474
+  },
+  {
+    "id": "arie1993a:21",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 439.5541188126434
+  },
+  {
+    "id": "arie1993a:22",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 455.26543817334885
+  },
+  {
+    "id": "arie1993a:23",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 571.4407959734433
+  },
+  {
+    "id": "arie1993a:24",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 697.8941920940382
+  },
+  {
+    "id": "arie1993a:25",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 702.6198714717161
+  },
+  {
+    "id": "arie1993a:26",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 725.9076800558503
+  },
+  {
+    "id": "arie1993a:27",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 732.0696707748968
+  },
+  {
+    "id": "arie1993a:28",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.7866031996841
+  },
+  {
+    "id": "arie1993a:29",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a2",
+    "predicted_MHz": 47.00823299431579
+  },
+  {
+    "id": "arie1993a:30",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a2",
+    "predicted_MHz": 281.4076505654612
+  },
+  {
+    "id": "arie1993a:31",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a2",
+    "predicted_MHz": 289.85833349827493
+  },
+  {
+    "id": "arie1993a:32",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a2",
+    "predicted_MHz": 336.9983589526505
+  },
+  {
+    "id": "arie1993a:33",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a2",
+    "predicted_MHz": 395.5076893352143
+  },
+  {
+    "id": "arie1993a:34",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a2",
+    "predicted_MHz": 411.65908662251286
+  },
+  {
+    "id": "arie1993a:35",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a2",
+    "predicted_MHz": 444.7017595208918
+  },
+  {
+    "id": "arie1993a:36",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a2",
+    "predicted_MHz": 458.69071758323565
+  },
+  {
+    "id": "arie1993a:37",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a2",
+    "predicted_MHz": 532.3590215158972
+  },
+  {
+    "id": "arie1993a:38",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a2",
+    "predicted_MHz": 571.2203863736594
+  },
+  {
+    "id": "arie1993a:39",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a2",
+    "predicted_MHz": 611.0765805084177
+  },
+  {
+    "id": "arie1993a:40",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a2",
+    "predicted_MHz": 679.2071867329676
+  },
+  {
+    "id": "arie1993a:41",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a2",
+    "predicted_MHz": 701.2661942716709
+  },
+  {
+    "id": "arie1993a:42",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a2",
+    "predicted_MHz": 725.9434968206158
+  },
+  {
+    "id": "arie1993a:43",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a2",
+    "predicted_MHz": 747.2744272863652
+  },
+  {
+    "id": "arie1993a:44",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a2",
+    "predicted_MHz": 841.8275775429711
+  },
+  {
+    "id": "arie1993a:45",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a2",
+    "predicted_MHz": 855.8511293032556
+  },
+  {
+    "id": "arie1993a:46",
+    "line": [
+      "P",
+      83,
+      33,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a2",
+    "predicted_MHz": 871.6029656979609
+  },
+  {
+    "id": "arie1993a:47",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 269.7324446638421
+  },
+  {
+    "id": "arie1993a:48",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 300.1506303179427
+  },
+  {
+    "id": "arie1993a:49",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 356.8113863919423
+  },
+  {
+    "id": "arie1993a:50",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 369.7691055098095
+  },
+  {
+    "id": "arie1993a:51",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 391.80516973850337
+  },
+  {
+    "id": "arie1993a:52",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 462.6791761534545
+  },
+  {
+    "id": "arie1993a:53",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 484.40571222453667
+  },
+  {
+    "id": "arie1993a:54",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 692.1373779671937
+  },
+  {
+    "id": "arie1993a:55",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 732.5747910604344
+  },
+  {
+    "id": "arie1993a:56",
+    "line": [
+      "R",
+      134,
+      36,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 750.5938610734695
+  },
+  {
+    "id": "arie1993a:57",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 236.84109283980774
+  },
+  {
+    "id": "arie1993a:58",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 276.940765181087
+  },
+  {
+    "id": "arie1993a:59",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 293.8521396479154
+  },
+  {
+    "id": "arie1993a:60",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 333.2917557671791
+  },
+  {
+    "id": "arie1993a:61",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 387.6251050347418
+  },
+  {
+    "id": "arie1993a:62",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 404.6307850281184
+  },
+  {
+    "id": "arie1993a:63",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 451.1551052658791
+  },
+  {
+    "id": "arie1993a:64",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 467.9509762115567
+  },
+  {
+    "id": "arie1993a:65",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 570.7939289530336
+  },
+  {
+    "id": "arie1993a:66",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 687.5219065051248
+  },
+  {
+    "id": "arie1993a:67",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 698.6588214023728
+  },
+  {
+    "id": "arie1993a:68",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 728.2501664208644
+  },
+  {
+    "id": "arie1993a:69",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 740.154263506731
+  },
+  {
+    "id": "arie1993a:70",
+    "line": [
+      "R",
+      106,
+      34,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 856.6564209046952
+  },
+  {
+    "id": "arie1993a:71",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 248.12199024723287
+  },
+  {
+    "id": "arie1993a:72",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 280.7670942634201
+  },
+  {
+    "id": "arie1993a:73",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 290.4725696516095
+  },
+  {
+    "id": "arie1993a:74",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 322.45810807339456
+  },
+  {
+    "id": "arie1993a:75",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 395.31498745102095
+  },
+  {
+    "id": "arie1993a:76",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 410.6375618859872
+  },
+  {
+    "id": "arie1993a:77",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 445.7088453247819
+  },
+  {
+    "id": "arie1993a:78",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 460.91405587656936
+  },
+  {
+    "id": "arie1993a:79",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 571.2010654685599
+  },
+  {
+    "id": "arie1993a:80",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 693.1017923405547
+  },
+  {
+    "id": "arie1993a:81",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 701.2963183195227
+  },
+  {
+    "id": "arie1993a:82",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 726.6338055140216
+  },
+  {
+    "id": "arie1993a:83",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 735.7014773385353
+  },
+  {
+    "id": "arie1993a:84",
+    "line": [
+      "R",
+      86,
+      33,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.2786042044511
+  },
+  {
+    "id": "arie1994a:0",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 75.2870434784009
+  },
+  {
+    "id": "arie1994a:1",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 148.634103129248
+  },
+  {
+    "id": "arie1994a:2",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 290.4190612794134
+  },
+  {
+    "id": "arie1994a:3",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 349.3583490673791
+  },
+  {
+    "id": "arie1994a:4",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 371.59862400994433
+  },
+  {
+    "id": "arie1994a:5",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 428.76528180198966
+  },
+  {
+    "id": "arie1994a:6",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 455.71211184283504
+  },
+  {
+    "id": "arie1994a:7",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 475.0189651171446
+  },
+  {
+    "id": "arie1994a:8",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 530.7633259896437
+  },
+  {
+    "id": "arie1994a:9",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 548.8077124778066
+  },
+  {
+    "id": "arie1994a:10",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 593.7232879632068
+  },
+  {
+    "id": "arie1994a:11",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 645.6894793834472
+  },
+  {
+    "id": "arie1994a:12",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 697.7611458095422
+  },
+  {
+    "id": "arie1994a:13",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 747.486640007155
+  },
+  {
+    "id": "arie1994a:14",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 771.2887830647365
+  },
+  {
+    "id": "arie1994a:15",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 804.8458126730741
+  },
+  {
+    "id": "arie1994a:16",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 827.7140515497445
+  },
+  {
+    "id": "arie1994a:17",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 912.2317811815119
+  },
+  {
+    "id": "arie1994a:18",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 930.1611030794447
+  },
+  {
+    "id": "arie1994a:19",
+    "line": [
+      "P",
+      119,
+      35,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 949.3827129740705
+  },
+  {
+    "id": "cheng2001a:7",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b1",
+    "ref_component": "b10",
+    "predicted_MHz": -573.6847556470282
+  },
+  {
+    "id": "cheng2001a:8",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b2",
+    "ref_component": "b10",
+    "predicted_MHz": -320.487062436708
+  },
+  {
+    "id": "cheng2001a:9",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b3",
+    "ref_component": "b10",
+    "predicted_MHz": -291.56124249330605
+  },
+  {
+    "id": "cheng2001a:10",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b4",
+    "ref_component": "b10",
+    "predicted_MHz": -282.10624906944884
+  },
+  {
+    "id": "cheng2001a:11",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b5",
+    "ref_component": "b10",
+    "predicted_MHz": -253.70086159638606
+  },
+  {
+    "id": "cheng2001a:12",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b6",
+    "ref_component": "b10",
+    "predicted_MHz": -172.70303687050315
+  },
+  {
+    "id": "cheng2001a:13",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b7",
+    "ref_component": "b10",
+    "predicted_MHz": -159.42474927114674
+  },
+  {
+    "id": "cheng2001a:14",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b8",
+    "ref_component": "b10",
+    "predicted_MHz": -127.75198817199245
+  },
+  {
+    "id": "cheng2001a:15",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b9",
+    "ref_component": "b10",
+    "predicted_MHz": -114.59288901244275
+  },
+  {
+    "id": "cheng2001a:16",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b11",
+    "ref_component": "b10",
+    "predicted_MHz": 124.78796480437046
+  },
+  {
+    "id": "cheng2001a:17",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b12",
+    "ref_component": "b10",
+    "predicted_MHz": 132.2924900853082
+  },
+  {
+    "id": "cheng2001a:18",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b13",
+    "ref_component": "b10",
+    "predicted_MHz": 154.49346398958807
+  },
+  {
+    "id": "cheng2001a:19",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b14",
+    "ref_component": "b10",
+    "predicted_MHz": 162.61539682423557
+  },
+  {
+    "id": "cheng2001a:20",
+    "line": [
+      "R",
+      106,
+      28,
+      0
+    ],
+    "component": "b15",
+    "ref_component": "b10",
+    "predicted_MHz": 287.19427604288
+  },
+  {
+    "id": "fang2006a:0",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a1",
+    "ref_component": "a2",
+    "predicted_MHz": -259.5800740545028
+  },
+  {
+    "id": "fang2006a:1",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a6",
+    "predicted_MHz": -141.7864122826766
+  },
+  {
+    "id": "fang2006a:2",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a9",
+    "predicted_MHz": -143.97129151540307
+  },
+  {
+    "id": "fang2006a:3",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a10",
+    "predicted_MHz": -170.07430963626388
+  },
+  {
+    "id": "fang2006a:4",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a10",
+    "predicted_MHz": -154.54259479870325
+  },
+  {
+    "id": "fang2006a:5",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a10",
+    "predicted_MHz": -131.88667716079982
+  },
+  {
+    "id": "fang2006a:6",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a10",
+    "predicted_MHz": -116.1753578000944
+  },
+  {
+    "id": "fang2006a:7",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a10",
+    "predicted_MHz": 126.45339612059495
+  },
+  {
+    "id": "fang2006a:8",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a10",
+    "predicted_MHz": 131.17907549827282
+  },
+  {
+    "id": "fang2006a:9",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a10",
+    "predicted_MHz": 154.46688408240703
+  },
+  {
+    "id": "fang2006a:10",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a10",
+    "predicted_MHz": 160.6288748014536
+  },
+  {
+    "id": "fang2006a:11",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a14",
+    "predicted_MHz": 125.71693242478725
+  },
+  {
+    "id": "hong2000a:0",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 224.76512160537166
+  },
+  {
+    "id": "hong2000a:1",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 273.279239611243
+  },
+  {
+    "id": "hong2000a:2",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 297.0595744327991
+  },
+  {
+    "id": "hong2000a:3",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 344.8997378910562
+  },
+  {
+    "id": "hong2000a:4",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 378.9218680147233
+  },
+  {
+    "id": "hong2000a:5",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 398.2792453155896
+  },
+  {
+    "id": "hong2000a:6",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 456.87072746865607
+  },
+  {
+    "id": "hong2000a:7",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 475.96101107582433
+  },
+  {
+    "id": "hong2000a:8",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 570.3612701075435
+  },
+  {
+    "id": "hong2000a:9",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 681.33986351588
+  },
+  {
+    "id": "hong2000a:10",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 695.5152960772248
+  },
+  {
+    "id": "hong2000a:11",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 730.3073400675175
+  },
+  {
+    "id": "hong2000a:12",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 745.2341495030419
+  },
+  {
+    "id": "hong2000a:13",
+    "line": [
+      "R",
+      122,
+      35,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 856.0254765650745
+  },
+  {
+    "id": "hong2000a:14",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 249.7595845834663
+  },
+  {
+    "id": "hong2000a:15",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 281.2632286493174
+  },
+  {
+    "id": "hong2000a:16",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 290.00467679470245
+  },
+  {
+    "id": "hong2000a:17",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 320.8473495270126
+  },
+  {
+    "id": "hong2000a:18",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 396.46960676021143
+  },
+  {
+    "id": "hong2000a:19",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 411.4831064191415
+  },
+  {
+    "id": "hong2000a:20",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 444.89390667668886
+  },
+  {
+    "id": "hong2000a:21",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 459.79825431031486
+  },
+  {
+    "id": "hong2000a:22",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 571.2255993515372
+  },
+  {
+    "id": "hong2000a:23",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 693.9046631728229
+  },
+  {
+    "id": "hong2000a:24",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 701.6758798387723
+  },
+  {
+    "id": "hong2000a:25",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 726.3155908429626
+  },
+  {
+    "id": "hong2000a:26",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 734.9731556626889
+  },
+  {
+    "id": "hong2000a:27",
+    "line": [
+      "P",
+      84,
+      33,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.3183235448417
+  },
+  {
+    "id": "hong2001a:0",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 259.07575943932153
+  },
+  {
+    "id": "hong2001a:1",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 311.82319435637913
+  },
+  {
+    "id": "hong2001a:2",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 401.2586360539699
+  },
+  {
+    "id": "hong2001a:3",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 416.6223117146361
+  },
+  {
+    "id": "hong2001a:4",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 439.9025142500655
+  },
+  {
+    "id": "hong2001a:5",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 455.41316150332983
+  },
+  {
+    "id": "hong2001a:6",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 571.4680896937093
+  },
+  {
+    "id": "hong2001a:7",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 697.7770150076245
+  },
+  {
+    "id": "hong2001a:8",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 702.7027641383434
+  },
+  {
+    "id": "hong2001a:9",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 725.8936756205205
+  },
+  {
+    "id": "hong2001a:10",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 732.1856628333153
+  },
+  {
+    "id": "hong2001a:11",
+    "line": [
+      "R",
+      58,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.8071355345114
+  },
+  {
+    "id": "hong2001a:12",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 37.98231162578418
+  },
+  {
+    "id": "hong2001a:13",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 73.91059723171986
+  },
+  {
+    "id": "hong2001a:14",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 272.1998592778039
+  },
+  {
+    "id": "hong2001a:15",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 373.15656991527027
+  },
+  {
+    "id": "hong2001a:16",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 437.39148337607185
+  },
+  {
+    "id": "hong2001a:17",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 455.375423887613
+  },
+  {
+    "id": "hong2001a:18",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 477.03494649681215
+  },
+  {
+    "id": "hong2001a:19",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 490.5642335007684
+  },
+  {
+    "id": "hong2001a:20",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 572.9839249801743
+  },
+  {
+    "id": "hong2001a:21",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 609.4335206977554
+  },
+  {
+    "id": "hong2001a:22",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 648.8920442540023
+  },
+  {
+    "id": "hong2001a:23",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 714.0270148989289
+  },
+  {
+    "id": "hong2001a:24",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 739.7899228845839
+  },
+  {
+    "id": "hong2001a:25",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 762.9707639400585
+  },
+  {
+    "id": "hong2001a:26",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 788.2002862534384
+  },
+  {
+    "id": "hong2001a:27",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 879.6621595975735
+  },
+  {
+    "id": "hong2001a:28",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 893.418825439283
+  },
+  {
+    "id": "hong2001a:29",
+    "line": [
+      "P",
+      55,
+      32,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 910.2508063239384
+  },
+  {
+    "id": "hong2001a:30",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 238.7865353411716
+  },
+  {
+    "id": "hong2001a:31",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 277.490822976766
+  },
+  {
+    "id": "hong2001a:32",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 293.3392370794535
+  },
+  {
+    "id": "hong2001a:33",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 331.3840141331076
+  },
+  {
+    "id": "hong2001a:34",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 389.0433099622714
+  },
+  {
+    "id": "hong2001a:35",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 405.6310123949502
+  },
+  {
+    "id": "hong2001a:36",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 450.2048439094071
+  },
+  {
+    "id": "hong2001a:37",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 466.58807886230943
+  },
+  {
+    "id": "hong2001a:38",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 570.8289196761459
+  },
+  {
+    "id": "hong2001a:39",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 688.501030045064
+  },
+  {
+    "id": "hong2001a:40",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 699.1468162968351
+  },
+  {
+    "id": "hong2001a:41",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 727.8498773942983
+  },
+  {
+    "id": "hong2001a:42",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 739.2678719292878
+  },
+  {
+    "id": "hong2001a:43",
+    "line": [
+      "P",
+      104,
+      34,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 856.709033321162
+  },
+  {
+    "id": "hong2001b:0",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 259.5800740545028
+  },
+  {
+    "id": "hong2001b:1",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 311.2941466579458
+  },
+  {
+    "id": "hong2001b:2",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 401.36648633717937
+  },
+  {
+    "id": "hong2001b:3",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 416.89820117474
+  },
+  {
+    "id": "hong2001b:4",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 439.5541188126434
+  },
+  {
+    "id": "hong2001b:5",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 455.26543817334885
+  },
+  {
+    "id": "hong2001b:6",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 571.4407959734433
+  },
+  {
+    "id": "hong2001b:7",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 697.8941920940382
+  },
+  {
+    "id": "hong2001b:8",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 702.6198714717161
+  },
+  {
+    "id": "hong2001b:9",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 725.9076800558503
+  },
+  {
+    "id": "hong2001b:10",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 732.0696707748968
+  },
+  {
+    "id": "hong2001b:11",
+    "line": [
+      "R",
+      56,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.7866031996841
+  },
+  {
+    "id": "hong2002a:0",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 51.64621005798642
+  },
+  {
+    "id": "hong2002a:1",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 101.46334414403373
+  },
+  {
+    "id": "hong2002a:2",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 282.4373017783545
+  },
+  {
+    "id": "hong2002a:3",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 332.2690898270828
+  },
+  {
+    "id": "hong2002a:4",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 342.26423025450356
+  },
+  {
+    "id": "hong2002a:5",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 390.33958957989
+  },
+  {
+    "id": "hong2002a:6",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 445.65775431504835
+  },
+  {
+    "id": "hong2002a:7",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 462.07655637281067
+  },
+  {
+    "id": "hong2002a:8",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 497.5680675165067
+  },
+  {
+    "id": "hong2002a:9",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 511.9654857639402
+  },
+  {
+    "id": "hong2002a:10",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 582.6556988227377
+  },
+  {
+    "id": "hong2002a:11",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 622.8503086322537
+  },
+  {
+    "id": "hong2002a:12",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 663.9146388165419
+  },
+  {
+    "id": "hong2002a:13",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 730.3201667174928
+  },
+  {
+    "id": "hong2002a:14",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 752.4740058657993
+  },
+  {
+    "id": "hong2002a:15",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 778.0485075839438
+  },
+  {
+    "id": "hong2002a:16",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 799.4612093420949
+  },
+  {
+    "id": "hong2002a:17",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 893.1002322746491
+  },
+  {
+    "id": "hong2002a:18",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 907.5194791752775
+  },
+  {
+    "id": "hong2002a:19",
+    "line": [
+      "R",
+      87,
+      33,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 923.5849198125879
+  },
+  {
+    "id": "hong2002a:20",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 111.33908950864316
+  },
+  {
+    "id": "hong2002a:21",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 220.50936576439926
+  },
+  {
+    "id": "hong2002a:22",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 298.8488925747965
+  },
+  {
+    "id": "hong2002a:23",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 377.08142573668067
+  },
+  {
+    "id": "hong2002a:24",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 415.0189591505778
+  },
+  {
+    "id": "hong2002a:25",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 469.9606707251304
+  },
+  {
+    "id": "hong2002a:26",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 491.27071530233445
+  },
+  {
+    "id": "hong2002a:27",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 495.66396316545485
+  },
+  {
+    "id": "hong2002a:28",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 580.814266742813
+  },
+  {
+    "id": "hong2002a:29",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 605.4939114837538
+  },
+  {
+    "id": "hong2002a:30",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 608.4163581215543
+  },
+  {
+    "id": "hong2002a:31",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 680.808789281415
+  },
+  {
+    "id": "hong2002a:32",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 752.9585225578564
+  },
+  {
+    "id": "hong2002a:33",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 769.7667078119326
+  },
+  {
+    "id": "hong2002a:34",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 799.3820586304344
+  },
+  {
+    "id": "hong2002a:35",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 846.6424128209875
+  },
+  {
+    "id": "hong2002a:36",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 875.0838483482673
+  },
+  {
+    "id": "hong2002a:37",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 940.3554858113789
+  },
+  {
+    "id": "hong2002a:38",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 964.8065439351933
+  },
+  {
+    "id": "hong2002a:39",
+    "line": [
+      "R",
+      145,
+      37,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 990.568915735498
+  },
+  {
+    "id": "hong2002a:40",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 215.10102940457358
+  },
+  {
+    "id": "hong2002a:41",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 270.4619461355083
+  },
+  {
+    "id": "hong2002a:42",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 299.47145934712717
+  },
+  {
+    "id": "hong2002a:43",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 354.14418513627203
+  },
+  {
+    "id": "hong2002a:44",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 371.7940170120634
+  },
+  {
+    "id": "hong2002a:45",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 393.1959651945575
+  },
+  {
+    "id": "hong2002a:46",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 461.36186189210434
+  },
+  {
+    "id": "hong2002a:47",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 482.45861247228447
+  },
+  {
+    "id": "hong2002a:48",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 569.9681894383511
+  },
+  {
+    "id": "hong2002a:49",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 676.285673680087
+  },
+  {
+    "id": "hong2002a:50",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 692.8487292657746
+  },
+  {
+    "id": "hong2002a:51",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 731.9862916295788
+  },
+  {
+    "id": "hong2002a:52",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 749.3265738818607
+  },
+  {
+    "id": "hong2002a:53",
+    "line": [
+      "P",
+      132,
+      36,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 855.4664143166258
+  },
+  {
+    "id": "hong2002b:2",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 78.09536298885462
+  },
+  {
+    "id": "hong2002b:3",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 154.24367834442512
+  },
+  {
+    "id": "hong2002b:4",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 291.0744826116735
+  },
+  {
+    "id": "hong2002b:5",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 351.53925176055986
+  },
+  {
+    "id": "hong2002b:6",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 374.99048217113375
+  },
+  {
+    "id": "hong2002b:7",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 433.6781090505097
+  },
+  {
+    "id": "hong2002b:8",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 456.8408459243522
+  },
+  {
+    "id": "hong2002b:9",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 476.652444170737
+  },
+  {
+    "id": "hong2002b:10",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 534.6841671528093
+  },
+  {
+    "id": "hong2002b:11",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 553.2527353610851
+  },
+  {
+    "id": "hong2002b:12",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 594.8828170207452
+  },
+  {
+    "id": "hong2002b:13",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 648.4555754165516
+  },
+  {
+    "id": "hong2002b:14",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 702.1118076946926
+  },
+  {
+    "id": "hong2002b:15",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 749.2435841300554
+  },
+  {
+    "id": "hong2002b:16",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 773.5113493824766
+  },
+  {
+    "id": "hong2002b:17",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 808.1433189085762
+  },
+  {
+    "id": "hong2002b:18",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 831.4688827100122
+  },
+  {
+    "id": "hong2002b:19",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 914.4599470058497
+  },
+  {
+    "id": "hong2002b:20",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 932.9101924693246
+  },
+  {
+    "id": "hong2002b:21",
+    "line": [
+      "R",
+      121,
+      35,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 952.6455815235105
+  },
+  {
+    "id": "hong2002b:22",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 201.9944675392212
+  },
+  {
+    "id": "hong2002b:23",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 266.8131414722338
+  },
+  {
+    "id": "hong2002b:24",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 302.66709726698525
+  },
+  {
+    "id": "hong2002b:25",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 362.0093297060058
+  },
+  {
+    "id": "hong2002b:26",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 366.78420682304886
+  },
+  {
+    "id": "hong2002b:27",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 386.3741118871395
+  },
+  {
+    "id": "hong2002b:28",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 467.51174514634636
+  },
+  {
+    "id": "hong2002b:29",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 491.5338200773059
+  },
+  {
+    "id": "hong2002b:30",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 569.5260172169567
+  },
+  {
+    "id": "hong2002b:31",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 669.4442141964523
+  },
+  {
+    "id": "hong2002b:32",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 689.2293936302713
+  },
+  {
+    "id": "hong2002b:33",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 734.494218956004
+  },
+  {
+    "id": "hong2002b:34",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 755.1080414050782
+  },
+  {
+    "id": "hong2002b:35",
+    "line": [
+      "P",
+      142,
+      37,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 854.846624537611
+  },
+  {
+    "id": "hong2004a:2",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 50.80302097447242
+  },
+  {
+    "id": "hong2004a:3",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 99.76881063877676
+  },
+  {
+    "id": "hong2004a:4",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 281.9484968551986
+  },
+  {
+    "id": "hong2004a:5",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 331.7147774114643
+  },
+  {
+    "id": "hong2004a:6",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 341.12948088731514
+  },
+  {
+    "id": "hong2004a:7",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 389.1224530466174
+  },
+  {
+    "id": "hong2004a:8",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 445.20530387743065
+  },
+  {
+    "id": "hong2004a:9",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 461.62110457444527
+  },
+  {
+    "id": "hong2004a:10",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 496.31668754320947
+  },
+  {
+    "id": "hong2004a:11",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 510.6308149424867
+  },
+  {
+    "id": "hong2004a:12",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 582.1127877503188
+  },
+  {
+    "id": "hong2004a:13",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 621.999522794307
+  },
+  {
+    "id": "hong2004a:14",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 662.8259659988976
+  },
+  {
+    "id": "hong2004a:15",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 729.4579156535981
+  },
+  {
+    "id": "hong2004a:16",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 751.7102237970732
+  },
+  {
+    "id": "hong2004a:17",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 777.0725523004066
+  },
+  {
+    "id": "hong2004a:18",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 798.5896342204558
+  },
+  {
+    "id": "hong2004a:19",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 892.2938642998837
+  },
+  {
+    "id": "hong2004a:20",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 906.6381199564469
+  },
+  {
+    "id": "hong2004a:21",
+    "line": [
+      "R",
+      85,
+      33,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 922.6757292885648
+  },
+  {
+    "id": "sakagami2020a:7",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 240.43779023280186
+  },
+  {
+    "id": "sakagami2020a:8",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 278.1321275105032
+  },
+  {
+    "id": "sakagami2020a:9",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 292.65650471786444
+  },
+  {
+    "id": "sakagami2020a:10",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 329.6851413653382
+  },
+  {
+    "id": "sakagami2020a:11",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 389.99174029867913
+  },
+  {
+    "id": "sakagami2020a:12",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 406.4782712988318
+  },
+  {
+    "id": "sakagami2020a:13",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 449.2632172705651
+  },
+  {
+    "id": "sakagami2020a:14",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 465.56571246197655
+  },
+  {
+    "id": "sakagami2020a:15",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 570.77759445526
+  },
+  {
+    "id": "sakagami2020a:16",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 689.1452602824972
+  },
+  {
+    "id": "sakagami2020a:17",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 699.3159195591273
+  },
+  {
+    "id": "sakagami2020a:18",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 727.5523347370856
+  },
+  {
+    "id": "sakagami2020a:19",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 738.533954268608
+  },
+  {
+    "id": "sakagami2020a:20",
+    "line": [
+      "R",
+      98,
+      34,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 856.6422315264986
+  },
+  {
+    "id": "sakagami2020a:21",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 262.9242675950401
+  },
+  {
+    "id": "sakagami2020a:22",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 281.2769430109016
+  },
+  {
+    "id": "sakagami2020a:23",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 290.1523719998531
+  },
+  {
+    "id": "sakagami2020a:24",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 307.5139487640453
+  },
+  {
+    "id": "sakagami2020a:25",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 400.1267730273708
+  },
+  {
+    "id": "sakagami2020a:26",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 418.77349481992513
+  },
+  {
+    "id": "sakagami2020a:27",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 436.42148856750015
+  },
+  {
+    "id": "sakagami2020a:28",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 455.8074155045261
+  },
+  {
+    "id": "sakagami2020a:29",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 570.9671735172441
+  },
+  {
+    "id": "sakagami2020a:30",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 697.7549099864904
+  },
+  {
+    "id": "sakagami2020a:31",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 700.4822398882116
+  },
+  {
+    "id": "sakagami2020a:32",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 726.8515180983375
+  },
+  {
+    "id": "sakagami2020a:33",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 732.2276051777104
+  },
+  {
+    "id": "sakagami2020a:34",
+    "line": [
+      "R",
+      38,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.4332221481791
+  },
+  {
+    "id": "sakagami2020a:35",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 231.30713861374247
+  },
+  {
+    "id": "sakagami2020a:36",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 275.1922452688933
+  },
+  {
+    "id": "sakagami2020a:37",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 295.1880671896254
+  },
+  {
+    "id": "sakagami2020a:38",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 338.3985725668576
+  },
+  {
+    "id": "sakagami2020a:39",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 383.5521278006188
+  },
+  {
+    "id": "sakagami2020a:40",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 401.6190455222629
+  },
+  {
+    "id": "sakagami2020a:41",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 453.56527108934324
+  },
+  {
+    "id": "sakagami2020a:42",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 471.3885817175091
+  },
+  {
+    "id": "sakagami2020a:43",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 570.3927377562924
+  },
+  {
+    "id": "sakagami2020a:44",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 684.4931963681197
+  },
+  {
+    "id": "sakagami2020a:45",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 696.9865704549027
+  },
+  {
+    "id": "sakagami2020a:46",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 728.9155925830548
+  },
+  {
+    "id": "sakagami2020a:47",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 742.1861430473334
+  },
+  {
+    "id": "sakagami2020a:48",
+    "line": [
+      "P",
+      112,
+      35,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 856.0750057486389
+  },
+  {
+    "id": "sakagami2020a:49",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 264.07061314917087
+  },
+  {
+    "id": "sakagami2020a:50",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 279.94716014062186
+  },
+  {
+    "id": "sakagami2020a:51",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 291.4173764132837
+  },
+  {
+    "id": "sakagami2020a:52",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 306.2059426913963
+  },
+  {
+    "id": "sakagami2020a:53",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 399.82207938579944
+  },
+  {
+    "id": "sakagami2020a:54",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 419.3701340417065
+  },
+  {
+    "id": "sakagami2020a:55",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 435.3511840997346
+  },
+  {
+    "id": "sakagami2020a:56",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 455.85565987487877
+  },
+  {
+    "id": "sakagami2020a:57",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 570.7949355249327
+  },
+  {
+    "id": "sakagami2020a:58",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 697.791178199982
+  },
+  {
+    "id": "sakagami2020a:59",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 699.8235503058493
+  },
+  {
+    "id": "sakagami2020a:60",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 727.0758751804516
+  },
+  {
+    "id": "sakagami2020a:61",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 732.2232489253761
+  },
+  {
+    "id": "sakagami2020a:62",
+    "line": [
+      "P",
+      34,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.3118692228195
+  },
+  {
+    "id": "sakagami2020a:63",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 37.12900267745704
+  },
+  {
+    "id": "sakagami2020a:64",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 71.39552251278258
+  },
+  {
+    "id": "sakagami2020a:65",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 259.8226175813952
+  },
+  {
+    "id": "sakagami2020a:66",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 317.4130894130127
+  },
+  {
+    "id": "sakagami2020a:67",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 328.23160977951704
+  },
+  {
+    "id": "sakagami2020a:68",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 382.1554230153088
+  },
+  {
+    "id": "sakagami2020a:69",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 430.46082890569284
+  },
+  {
+    "id": "sakagami2020a:70",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 456.2686957953441
+  },
+  {
+    "id": "sakagami2020a:71",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 472.7734673332836
+  },
+  {
+    "id": "sakagami2020a:72",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 488.2642328753884
+  },
+  {
+    "id": "sakagami2020a:73",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 566.5906301067395
+  },
+  {
+    "id": "sakagami2020a:74",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 607.9703031345194
+  },
+  {
+    "id": "sakagami2020a:75",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 657.4177625714061
+  },
+  {
+    "id": "sakagami2020a:76",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 699.5181277167958
+  },
+  {
+    "id": "sakagami2020a:77",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 734.5268746775357
+  },
+  {
+    "id": "sakagami2020a:78",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 762.4157930105557
+  },
+  {
+    "id": "sakagami2020a:79",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 797.3315561854704
+  },
+  {
+    "id": "sakagami2020a:80",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 873.8113855603558
+  },
+  {
+    "id": "sakagami2020a:81",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 889.6463070508071
+  },
+  {
+    "id": "sakagami2020a:82",
+    "line": [
+      "P",
+      35,
+      32,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 912.1778825780244
+  },
+  {
+    "id": "sakagami2020a:83",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 46.8588852196915
+  },
+  {
+    "id": "sakagami2020a:84",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 91.82460306385963
+  },
+  {
+    "id": "sakagami2020a:85",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 279.29960986003357
+  },
+  {
+    "id": "sakagami2020a:86",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 329.2561662677687
+  },
+  {
+    "id": "sakagami2020a:87",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 335.68186346045195
+  },
+  {
+    "id": "sakagami2020a:88",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 383.7551978783586
+  },
+  {
+    "id": "sakagami2020a:89",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 442.93273587301235
+  },
+  {
+    "id": "sakagami2020a:90",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 459.54193642414407
+  },
+  {
+    "id": "sakagami2020a:91",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 490.377185759385
+  },
+  {
+    "id": "sakagami2020a:92",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 504.3819189413463
+  },
+  {
+    "id": "sakagami2020a:93",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 579.3613325395539
+  },
+  {
+    "id": "sakagami2020a:94",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 618.0068786275167
+  },
+  {
+    "id": "sakagami2020a:95",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 658.0280340305001
+  },
+  {
+    "id": "sakagami2020a:96",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 725.0149147163548
+  },
+  {
+    "id": "sakagami2020a:97",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 748.0227026889056
+  },
+  {
+    "id": "sakagami2020a:98",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 772.5352154995492
+  },
+  {
+    "id": "sakagami2020a:99",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 888.3693899520783
+  },
+  {
+    "id": "sakagami2020a:100",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 902.4525951202147
+  },
+  {
+    "id": "sakagami2020a:101",
+    "line": [
+      "R",
+      75,
+      33,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 918.5266132344889
+  },
+  {
+    "id": "sakagami2020a:102",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b3",
+    "ref_component": "b1",
+    "predicted_MHz": 73.29537713915704
+  },
+  {
+    "id": "sakagami2020a:103",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b4",
+    "ref_component": "b1",
+    "predicted_MHz": 261.31992794236066
+  },
+  {
+    "id": "sakagami2020a:104",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b5",
+    "ref_component": "b1",
+    "predicted_MHz": 318.9973075416716
+  },
+  {
+    "id": "sakagami2020a:105",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b6",
+    "ref_component": "b1",
+    "predicted_MHz": 328.4649471010924
+  },
+  {
+    "id": "sakagami2020a:106",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b7",
+    "ref_component": "b1",
+    "predicted_MHz": 382.6530783574268
+  },
+  {
+    "id": "sakagami2020a:107",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b8",
+    "ref_component": "b1",
+    "predicted_MHz": 431.63491502105717
+  },
+  {
+    "id": "sakagami2020a:108",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b9",
+    "ref_component": "b1",
+    "predicted_MHz": 456.67437778915
+  },
+  {
+    "id": "sakagami2020a:109",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b10",
+    "ref_component": "b1",
+    "predicted_MHz": 474.36813033070166
+  },
+  {
+    "id": "sakagami2020a:110",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b11",
+    "ref_component": "b1",
+    "predicted_MHz": 489.83836282994355
+  },
+  {
+    "id": "sakagami2020a:111",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b12",
+    "ref_component": "b1",
+    "predicted_MHz": 567.5143254315304
+  },
+  {
+    "id": "sakagami2020a:112",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b13",
+    "ref_component": "b1",
+    "predicted_MHz": 608.9356268567125
+  },
+  {
+    "id": "sakagami2020a:113",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b14",
+    "ref_component": "b1",
+    "predicted_MHz": 657.7727032395404
+  },
+  {
+    "id": "sakagami2020a:114",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b15",
+    "ref_component": "b1",
+    "predicted_MHz": 701.5747643256177
+  },
+  {
+    "id": "sakagami2020a:115",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b16",
+    "ref_component": "b1",
+    "predicted_MHz": 735.7909402390205
+  },
+  {
+    "id": "sakagami2020a:116",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b17",
+    "ref_component": "b1",
+    "predicted_MHz": 763.4580544274362
+  },
+  {
+    "id": "sakagami2020a:117",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b18",
+    "ref_component": "b1",
+    "predicted_MHz": 797.5099557797058
+  },
+  {
+    "id": "sakagami2020a:118",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b19",
+    "ref_component": "b1",
+    "predicted_MHz": 875.071598751314
+  },
+  {
+    "id": "sakagami2020a:119",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b20",
+    "ref_component": "b1",
+    "predicted_MHz": 890.904098642068
+  },
+  {
+    "id": "sakagami2020a:120",
+    "line": [
+      "R",
+      37,
+      32,
+      0
+    ],
+    "component": "b21",
+    "ref_component": "b1",
+    "predicted_MHz": 912.9594805784263
+  },
+  {
+    "id": "simonsen2000a:3",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b1",
+    "ref_component": "b21",
+    "predicted_MHz": -922.3063620598945
+  },
+  {
+    "id": "simonsen2000a:4",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b2",
+    "ref_component": "b21",
+    "predicted_MHz": -895.1382564722131
+  },
+  {
+    "id": "simonsen2000a:5",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b3",
+    "ref_component": "b21",
+    "predicted_MHz": -869.7161534748466
+  },
+  {
+    "id": "simonsen2000a:6",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b4",
+    "ref_component": "b21",
+    "predicted_MHz": -660.3189286240952
+  },
+  {
+    "id": "simonsen2000a:7",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b5",
+    "ref_component": "b21",
+    "predicted_MHz": -610.7633649629936
+  },
+  {
+    "id": "simonsen2000a:8",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b6",
+    "ref_component": "b21",
+    "predicted_MHz": -593.9877880962769
+  },
+  {
+    "id": "simonsen2000a:9",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b7",
+    "ref_component": "b21",
+    "predicted_MHz": -547.4812511439592
+  },
+  {
+    "id": "simonsen2000a:10",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b8",
+    "ref_component": "b21",
+    "predicted_MHz": -486.9441740403548
+  },
+  {
+    "id": "simonsen2000a:11",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b9",
+    "ref_component": "b21",
+    "predicted_MHz": -461.21030053210046
+  },
+  {
+    "id": "simonsen2000a:12",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b10",
+    "ref_component": "b21",
+    "predicted_MHz": -453.2724961366129
+  },
+  {
+    "id": "simonsen2000a:13",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b11",
+    "ref_component": "b21",
+    "predicted_MHz": -439.0480940635491
+  },
+  {
+    "id": "simonsen2000a:14",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b12",
+    "ref_component": "b21",
+    "predicted_MHz": -347.1754417107397
+  },
+  {
+    "id": "simonsen2000a:15",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b13",
+    "ref_component": "b21",
+    "predicted_MHz": -310.3026900941333
+  },
+  {
+    "id": "simonsen2000a:16",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b14",
+    "ref_component": "b21",
+    "predicted_MHz": -263.64123420672735
+  },
+  {
+    "id": "simonsen2000a:17",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b15",
+    "ref_component": "b21",
+    "predicted_MHz": -214.45404984827215
+  },
+  {
+    "id": "simonsen2000a:18",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b16",
+    "ref_component": "b21",
+    "predicted_MHz": -179.26740042262026
+  },
+  {
+    "id": "simonsen2000a:19",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b17",
+    "ref_component": "b21",
+    "predicted_MHz": -153.94391350894878
+  },
+  {
+    "id": "simonsen2000a:20",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b18",
+    "ref_component": "b21",
+    "predicted_MHz": -118.29606049699703
+  },
+  {
+    "id": "simonsen2000a:21",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b19",
+    "ref_component": "b21",
+    "predicted_MHz": -36.63118312563529
+  },
+  {
+    "id": "simonsen2000a:22",
+    "line": [
+      "P",
+      33,
+      6,
+      3
+    ],
+    "component": "b20",
+    "ref_component": "b21",
+    "predicted_MHz": -21.982838673481922
+  },
+  {
+    "id": "simonsen2000a:23",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 280.68397743785874
+  },
+  {
+    "id": "simonsen2000a:24",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 288.7759579147334
+  },
+  {
+    "id": "simonsen2000a:25",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 295.9929447176005
+  },
+  {
+    "id": "simonsen2000a:26",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 303.93019553798274
+  },
+  {
+    "id": "simonsen2000a:27",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 422.471207160012
+  },
+  {
+    "id": "simonsen2000a:28",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 433.93530648947376
+  },
+  {
+    "id": "simonsen2000a:29",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 442.4533054381911
+  },
+  {
+    "id": "simonsen2000a:30",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 454.2969074258748
+  },
+  {
+    "id": "simonsen2000a:31",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 584.5629945773107
+  },
+  {
+    "id": "simonsen2000a:32",
+    "line": [
+      "R",
+      60,
+      8,
+      4
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 877.2684984952881
+  },
+  {
+    "id": "simonsen2000a:61",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 24.66332625102541
+  },
+  {
+    "id": "simonsen2000a:62",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 47.997528290625155
+  },
+  {
+    "id": "simonsen2000a:63",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 266.6957325978093
+  },
+  {
+    "id": "simonsen2000a:64",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 310.54698379407466
+  },
+  {
+    "id": "simonsen2000a:65",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 324.42118830501806
+  },
+  {
+    "id": "simonsen2000a:66",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 365.94613237952996
+  },
+  {
+    "id": "simonsen2000a:67",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 437.5494743662213
+  },
+  {
+    "id": "simonsen2000a:68",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 459.0767162704966
+  },
+  {
+    "id": "simonsen2000a:69",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 466.8870115418249
+  },
+  {
+    "id": "simonsen2000a:70",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 479.8535380126786
+  },
+  {
+    "id": "simonsen2000a:71",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 576.3989164717508
+  },
+  {
+    "id": "simonsen2000a:72",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 609.7977277203157
+  },
+  {
+    "id": "simonsen2000a:73",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 650.4341118469861
+  },
+  {
+    "id": "simonsen2000a:74",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 712.3743997466057
+  },
+  {
+    "id": "simonsen2000a:75",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 743.1908567793668
+  },
+  {
+    "id": "simonsen2000a:76",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 765.2773662396302
+  },
+  {
+    "id": "simonsen2000a:77",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 796.3093150894653
+  },
+  {
+    "id": "simonsen2000a:78",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 885.8732802199889
+  },
+  {
+    "id": "simonsen2000a:79",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 899.2892344602451
+  },
+  {
+    "id": "simonsen2000a:80",
+    "line": [
+      "R",
+      39,
+      6,
+      3
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 918.1830889329942
+  },
+  {
+    "id": "simonsen2000a:81",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b2",
+    "ref_component": "b1",
+    "predicted_MHz": 20.612685565994525
+  },
+  {
+    "id": "simonsen2000a:82",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b3",
+    "ref_component": "b1",
+    "predicted_MHz": 40.48523024077247
+  },
+  {
+    "id": "simonsen2000a:83",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b4",
+    "ref_component": "b1",
+    "predicted_MHz": 276.0753432246279
+  },
+  {
+    "id": "simonsen2000a:84",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b5",
+    "ref_component": "b1",
+    "predicted_MHz": 309.27588109427006
+  },
+  {
+    "id": "simonsen2000a:85",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b6",
+    "ref_component": "b1",
+    "predicted_MHz": 316.71329491724174
+  },
+  {
+    "id": "simonsen2000a:86",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b7",
+    "ref_component": "b1",
+    "predicted_MHz": 348.70216160096373
+  },
+  {
+    "id": "simonsen2000a:87",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b8",
+    "ref_component": "b1",
+    "predicted_MHz": 440.56809196737936
+  },
+  {
+    "id": "simonsen2000a:88",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b9",
+    "ref_component": "b1",
+    "predicted_MHz": 454.5180060037906
+  },
+  {
+    "id": "simonsen2000a:89",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b10",
+    "ref_component": "b1",
+    "predicted_MHz": 463.05081601343414
+  },
+  {
+    "id": "simonsen2000a:90",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b11",
+    "ref_component": "b1",
+    "predicted_MHz": 473.1954997808651
+  },
+  {
+    "id": "simonsen2000a:91",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b12",
+    "ref_component": "b1",
+    "predicted_MHz": 579.3133596350469
+  },
+  {
+    "id": "simonsen2000a:92",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b13",
+    "ref_component": "b1",
+    "predicted_MHz": 605.161825997846
+  },
+  {
+    "id": "simonsen2000a:93",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b14",
+    "ref_component": "b1",
+    "predicted_MHz": 634.1274720894673
+  },
+  {
+    "id": "simonsen2000a:94",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b15",
+    "ref_component": "b1",
+    "predicted_MHz": 720.8628565771735
+  },
+  {
+    "id": "simonsen2000a:95",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b16",
+    "ref_component": "b1",
+    "predicted_MHz": 742.4404521337381
+  },
+  {
+    "id": "simonsen2000a:96",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b17",
+    "ref_component": "b1",
+    "predicted_MHz": 758.5457367058847
+  },
+  {
+    "id": "simonsen2000a:97",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b18",
+    "ref_component": "b1",
+    "predicted_MHz": 780.0082484178994
+  },
+  {
+    "id": "simonsen2000a:98",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b19",
+    "ref_component": "b1",
+    "predicted_MHz": 885.576875252119
+  },
+  {
+    "id": "simonsen2000a:99",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b20",
+    "ref_component": "b1",
+    "predicted_MHz": 895.9941942716341
+  },
+  {
+    "id": "simonsen2000a:100",
+    "line": [
+      "R",
+      59,
+      8,
+      4
+    ],
+    "component": "b21",
+    "ref_component": "b1",
+    "predicted_MHz": 908.9651108230057
+  },
+  {
+    "id": "tanabe2022a:3",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 29.578769237251947
+  },
+  {
+    "id": "tanabe2022a:4",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 57.56018186024147
+  },
+  {
+    "id": "tanabe2022a:5",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 271.4017033056826
+  },
+  {
+    "id": "tanabe2022a:6",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 314.70628607009473
+  },
+  {
+    "id": "tanabe2022a:7",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 320.2062753979189
+  },
+  {
+    "id": "tanabe2022a:8",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 361.57980169243626
+  },
+  {
+    "id": "tanabe2022a:9",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 436.55588155243953
+  },
+  {
+    "id": "tanabe2022a:10",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 453.5325970724537
+  },
+  {
+    "id": "tanabe2022a:11",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 468.20577051577374
+  },
+  {
+    "id": "tanabe2022a:12",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 480.39892800026007
+  },
+  {
+    "id": "tanabe2022a:13",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 572.9623107000638
+  },
+  {
+    "id": "tanabe2022a:14",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 605.0992265463702
+  },
+  {
+    "id": "tanabe2022a:15",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 640.7980408778209
+  },
+  {
+    "id": "tanabe2022a:16",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 712.8018304517547
+  },
+  {
+    "id": "tanabe2022a:17",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 737.7981278034921
+  },
+  {
+    "id": "tanabe2022a:18",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 758.1619630852374
+  },
+  {
+    "id": "tanabe2022a:19",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 782.8893995122527
+  },
+  {
+    "id": "tanabe2022a:20",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 878.5501191197146
+  },
+  {
+    "id": "tanabe2022a:21",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 891.0708486506747
+  },
+  {
+    "id": "tanabe2022a:22",
+    "line": [
+      "R",
+      53,
+      24,
+      1
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 906.7489372910736
+  },
+  {
+    "id": "tanabe2022a:23",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 28.9448886230781
+  },
+  {
+    "id": "tanabe2022a:24",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 56.204544007220534
+  },
+  {
+    "id": "tanabe2022a:25",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 269.6959971572559
+  },
+  {
+    "id": "tanabe2022a:26",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 313.3411705553041
+  },
+  {
+    "id": "tanabe2022a:27",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 320.29461259154857
+  },
+  {
+    "id": "tanabe2022a:28",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 361.85347479629974
+  },
+  {
+    "id": "tanabe2022a:29",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 435.54772573911265
+  },
+  {
+    "id": "tanabe2022a:30",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 453.3718103986807
+  },
+  {
+    "id": "tanabe2022a:31",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 466.94413712417395
+  },
+  {
+    "id": "tanabe2022a:32",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 479.3301826210588
+  },
+  {
+    "id": "tanabe2022a:33",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 571.8610190526166
+  },
+  {
+    "id": "tanabe2022a:34",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 604.4168023089545
+  },
+  {
+    "id": "tanabe2022a:35",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 641.0972719171984
+  },
+  {
+    "id": "tanabe2022a:36",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 710.6343000909972
+  },
+  {
+    "id": "tanabe2022a:37",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 736.7652329877296
+  },
+  {
+    "id": "tanabe2022a:38",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 757.5189358741839
+  },
+  {
+    "id": "tanabe2022a:39",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 783.4249840471346
+  },
+  {
+    "id": "tanabe2022a:40",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 877.39711200854
+  },
+  {
+    "id": "tanabe2022a:41",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 890.1390173430223
+  },
+  {
+    "id": "tanabe2022a:42",
+    "line": [
+      "P",
+      49,
+      24,
+      1
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 906.438906381497
+  },
+  {
+    "id": "tanabe2022a:43",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 36.60616017743632
+  },
+  {
+    "id": "tanabe2022a:44",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 71.95884871447367
+  },
+  {
+    "id": "tanabe2022a:45",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 282.5490401832185
+  },
+  {
+    "id": "tanabe2022a:46",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 321.82981840714
+  },
+  {
+    "id": "tanabe2022a:47",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 326.7170271125643
+  },
+  {
+    "id": "tanabe2022a:48",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 364.7607011262834
+  },
+  {
+    "id": "tanabe2022a:49",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 443.0209390741356
+  },
+  {
+    "id": "tanabe2022a:50",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 455.87237770573654
+  },
+  {
+    "id": "tanabe2022a:51",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 479.94130718374413
+  },
+  {
+    "id": "tanabe2022a:52",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 491.14436353346423
+  },
+  {
+    "id": "tanabe2022a:53",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 581.3035954842445
+  },
+  {
+    "id": "tanabe2022a:54",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 611.8979965616846
+  },
+  {
+    "id": "tanabe2022a:55",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 643.3308912096054
+  },
+  {
+    "id": "tanabe2022a:56",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 727.596710257673
+  },
+  {
+    "id": "tanabe2022a:57",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 745.7792895589489
+  },
+  {
+    "id": "tanabe2022a:58",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 765.013952156721
+  },
+  {
+    "id": "tanabe2022a:59",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 782.7203709454607
+  },
+  {
+    "id": "tanabe2022a:60",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 887.5473054770215
+  },
+  {
+    "id": "tanabe2022a:61",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 898.8201248976807
+  },
+  {
+    "id": "tanabe2022a:62",
+    "line": [
+      "R",
+      95,
+      25,
+      1
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 911.3681493919239
+  },
+  {
+    "id": "ye1999a:8",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 260.8767249350872
+  },
+  {
+    "id": "ye1999a:9",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 284.9647534465563
+  },
+  {
+    "id": "ye1999a:10",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 286.66812418847394
+  },
+  {
+    "id": "ye1999a:11",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a5",
+    "ref_component": "a1",
+    "predicted_MHz": 309.9970132319429
+  },
+  {
+    "id": "ye1999a:12",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a6",
+    "ref_component": "a1",
+    "predicted_MHz": 402.1406846669567
+  },
+  {
+    "id": "ye1999a:13",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 417.57441835930524
+  },
+  {
+    "id": "ye1999a:14",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 438.84868470372
+  },
+  {
+    "id": "ye1999a:15",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 454.48849600316106
+  },
+  {
+    "id": "ye1999a:16",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 571.4383734068895
+  },
+  {
+    "id": "ye1999a:17",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 698.4566211124991
+  },
+  {
+    "id": "ye1999a:18",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 702.805131477637
+  },
+  {
+    "id": "ye1999a:19",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 725.7156781346143
+  },
+  {
+    "id": "ye1999a:20",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 731.5547250527911
+  },
+  {
+    "id": "ye1999a:21",
+    "line": [
+      "P",
+      54,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 857.7981650669191
+  },
+  {
+    "id": "ye1999a:22",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a2",
+    "ref_component": "a1",
+    "predicted_MHz": 39.45635014615323
+  },
+  {
+    "id": "ye1999a:23",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a3",
+    "ref_component": "a1",
+    "predicted_MHz": 76.88348664054274
+  },
+  {
+    "id": "ye1999a:24",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a4",
+    "ref_component": "a1",
+    "predicted_MHz": 273.0276791504591
+  },
+  {
+    "id": "ye1999a:25",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a7",
+    "ref_component": "a1",
+    "predicted_MHz": 375.3111153358838
+  },
+  {
+    "id": "ye1999a:26",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a8",
+    "ref_component": "a1",
+    "predicted_MHz": 438.21866194317346
+  },
+  {
+    "id": "ye1999a:27",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a9",
+    "ref_component": "a1",
+    "predicted_MHz": 456.1725635692494
+  },
+  {
+    "id": "ye1999a:28",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a10",
+    "ref_component": "a1",
+    "predicted_MHz": 479.2133918329698
+  },
+  {
+    "id": "ye1999a:29",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a11",
+    "ref_component": "a1",
+    "predicted_MHz": 492.91789954486615
+  },
+  {
+    "id": "ye1999a:30",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a12",
+    "ref_component": "a1",
+    "predicted_MHz": 573.8609627941474
+  },
+  {
+    "id": "ye1999a:31",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a13",
+    "ref_component": "a1",
+    "predicted_MHz": 610.9087656697989
+  },
+  {
+    "id": "ye1999a:32",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a14",
+    "ref_component": "a1",
+    "predicted_MHz": 650.7871344843654
+  },
+  {
+    "id": "ye1999a:33",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a15",
+    "ref_component": "a1",
+    "predicted_MHz": 715.5030013584594
+  },
+  {
+    "id": "ye1999a:34",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a16",
+    "ref_component": "a1",
+    "predicted_MHz": 741.1273410541277
+  },
+  {
+    "id": "ye1999a:35",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a17",
+    "ref_component": "a1",
+    "predicted_MHz": 764.675153733121
+  },
+  {
+    "id": "ye1999a:36",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a18",
+    "ref_component": "a1",
+    "predicted_MHz": 789.7497849478489
+  },
+  {
+    "id": "ye1999a:37",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a19",
+    "ref_component": "a1",
+    "predicted_MHz": 881.0404411437305
+  },
+  {
+    "id": "ye1999a:38",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a20",
+    "ref_component": "a1",
+    "predicted_MHz": 894.9647741130055
+  },
+  {
+    "id": "ye1999a:39",
+    "line": [
+      "R",
+      57,
+      32,
+      0
+    ],
+    "component": "a21",
+    "ref_component": "a1",
+    "predicted_MHz": 911.8395207375522
+  }
+]

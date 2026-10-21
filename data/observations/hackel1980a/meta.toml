@@ -1,0 +1,36 @@
+id = "hackel1980a"
+citation = "R. P. Hackel, L. A. Hackel and S. Ezekiel, \"Re-evaluation of the hyperfine coupling constants for B-X transitions in I2\", Phys. Rev. A 21, 1342-1343 (1980)"
+source = "https://doi.org/10.1103/PhysRevA.21.1342 (publisher PDF, Matt's library copy papers/Hackel1980_PRA21_1342.pdf)"
+doi = "10.1103/PhysRevA.21.1342"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table I (p. 1342), read from a 250 dpi page image (the text layer scrambles the table) and typed: measured
+hyperfine line positions of 127I2 B-X (43,0), in kHz, "with respect to a7 and b13 for the P(13) and R(15)
+transitions, respectively", with the meas. - calc. residual of the authors' fit (kept in the note):
+- R(15) 43-0: 13 components, b1-b3, b5, b7, b12, b14, b15, b17-b21, relative to b13; the paper's new measurement
+  (argon-ion laser at 514.5 nm, the method of Ref. 1).
+- P(13) 43-0: 15 components, a1-a6, a8, a9, a11, a12, a15-a17, a20, a21, relative to a7. These are the data of
+  Ref. 1 (L. A. Hackel, K. H. Casleton, S. G. Kukolich and S. Ezekiel, Phys. Rev. Lett. 35, 568 (1975)), printed
+  again with the new fit; that paper is not held, so they are entered here and cite this paper only.
+Labels: "the notation is the same as in Ref. 1"; the letters rise with frequency in both columns and both lines
+have odd J'' (21 main components), so a_k and b_k are rank k.
+
+The handoff's standing exclusion applies: "127I2 P(13) 43-0" is left out of the potential and hyperfine fits
+(validation.EXCLUSION). Its rows are kept here as part of the archive.
+
+Not entered: Table II (upper-minus-lower hyperfine constants from the fits), which derives from these rows.
+"""
+
+uncertainty = "No uncertainty is printed per line. The fits' standard deviations, 5.4 kHz (P(13)) and 2.6 kHz (R(15)), are taken as the 1 sigma of every interval of that line. One group per line: each table shares its reference component."
+
+notes = """
+Overlap: bipm2005a's R(15) 43-0 table (relative to b1) and borde1981a hold the same line; Hackel's b13 - b1 is
+630.766 MHz against the MEP's 630.782 MHz. Neither is declared: the MEP's 515 nm hyperfine tables are not traced
+to their sources here, and borde1981a is an independent measurement.
+"""
+
+[conditions]
+method = "saturated absorption with an argon-ion laser at 514.5 nm, as in Hackel et al. 1975"

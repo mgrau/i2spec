@@ -8,13 +8,13 @@ in a sixth step.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/pipeline.svg" role="img" aria-label="The six steps of the calculation, each with a small plot from the model, and the inputs each step takes"></div>
-<figcaption markdown="span">**Figure 1.** The calculation in six steps, each drawn from the model; the inputs of each step are listed beneath it. (1) Levels of X and B, every sixth v at J = 0. (2) Corrections to the B levels at J′ = 40: per-level fits to comb data (points, 1σ) and the Gaussian process that fills levels without their own data (line and band, v′ = 3–35). (3) The 32–0 band as a Fortrat diagram. (4) The 15 strong hyperfine components of R(56) 32–0 under a 300 K Doppler profile. (5) Band strengths at 300 K for v″ = 0, 1 and 2. (6) The cross section near 532 nm and the transmission of a 10 cm cell at 20 °C.</figcaption>
+<figcaption markdown="span">**Figure 1.** The calculation in six steps, each drawn from the model (¹²⁷I₂, balanced-expanded); the inputs of each step are listed beneath it. (1) Levels of X and B, every sixth v at J = 0. (2) The 1σ uncertainty of the R(20) lines of the progressions v′–0 and 5–v″: below 1 MHz in the core, growing beyond it as the data thin out. (3) The 32–0 band as a Fortrat diagram. (4) The 15 strong hyperfine components of R(56) 32–0 under a 300 K Doppler profile. (5) Band strengths at 300 K for v″ = 0, 1 and 2. (6) The cross section near 532 nm and the transmission of a 10 cm cell at 20 °C.</figcaption>
 </figure>
 
 | step | quantity | section |
 |---|---|---|
 | 1 | level energies E(v, J) of X and B | [Rovibrational levels](levels.md) |
-| 2 | empirical corrections to individual levels | [Rovibrational levels](levels.md#empirical-level-corrections) |
+| 2 | the uncertainty of every level and line | [Uncertainty estimates](uncertainty.md) |
 | 3 | positions of all allowed P and R lines | [Line positions](lines.md) |
 | 4 | hyperfine components of each line | [Hyperfine structure](hyperfine.md) |
 | 5 | temperature-independent line strengths | [Line intensities and spectra](spectra.md) |
@@ -22,7 +22,7 @@ in a sixth step.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/potentials.svg" role="img" aria-label="Potential-energy curves of the X and B states with vibrational levels and the 532 nm transition"></div>
-<figcaption markdown="span">**Figure 2.** Potential-energy curves of X¹Σg⁺ and B³Π(0u⁺) with their J = 0 vibrational levels, drawn between the classical turning points (all levels of X up to v″ = 17, every second level of B up to v′ = 43, then every third level). Levels outside the range of the 2008 fit (Salumbides et al.) are drawn faint. The arrow marks R(56) 32–0 at 532 nm. X dissociates to two ground-state atoms, I(²P3/2) + I(²P3/2); B dissociates to I(²P3/2) + I(²P1/2).</figcaption>
+<figcaption markdown="span">**Figure 2.** Potential-energy curves of X¹Σg⁺ and B³Π(0u⁺) (balanced-expanded) with their J = 0 vibrational levels, drawn between the classical turning points: every level of X up to v″ = 17 and every second level of B up to v′ = 43, then every third level of each up to the dissociation limits. Levels beyond the core fit are drawn faint. The arrow marks R(56) 32–0 at 532 nm. X dissociates to two ground-state atoms, I(²P3/2) + I(²P3/2); B dissociates to I(²P3/2) + I(²P1/2).</figcaption>
 </figure>
 
 ## Notation and units

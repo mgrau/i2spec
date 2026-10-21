@@ -1,0 +1,37 @@
+id = "samoudi2012a"
+citation = "B. Samoudi, M. M. Pérez, S. Ferreira-Barragáns and E. Prieto, \"Absolute optical frequency measurements of iodine-stabilized He-Ne laser at 633 nm by using a femtosecond laser frequency comb\", Int. J. Metrol. Qual. Eng. 3, 101-106 (2012)"
+source = "https://doi.org/10.1051/ijmqe/2012012 (PDF supplied by Matt; library copy papers/Samoudi2012_IJMQE.pdf)"
+doi = "10.1051/ijmqe/2012012"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Sect. 4 and Table 1 (pp. 104-105), typed from the text layer and checked against the page: the CEM (Spain)
+He-Ne/I2 laser CEM2 on R(127) 11-5.
+- With the BEV fibre comb: f = 473 612 353 611.6 +- 0.1 kHz, "uncorrected to specified operating conditions".
+- With the CEM comb, Table 1: components d, e, f, g, h, i (a18, a17, a16, a15, a14, a13) printed as deviations from
+  the MeP values (12.983, 5.914, 4.708, 2.671, 5.517, 7.549 kHz, each +- 4.378 kHz), at the recommended conditions;
+  entered as MeP + deviation.
+One laser, one group.
+Not entered: the 2006 BIPM measurement quoted only as "within 5.1 kHz" of the CIPM value; the comb diagnostics.
+"""
+
+uncertainty = "The paper's uncertainties are expanded (k = 2), \"the uncertainty of the femtosecond comb combined with the repeatability of the laser\"; halved: 0.05 kHz (BEV) and 2.189 kHz (CEM, the same 4.378 kHz for every component). The BEV value's 0.1 kHz excludes the laser's reproducibility and its operating-condition offsets."
+
+notes = "At or near the mise en pratique conditions, so bipm2003a's coefficients are applied as for the MeP value. Residuals against i2spec2026o (obs - model, after the shift correction): -103 to -117 kHz, against -116.8 kHz for the CIPM value. Checked with the shipped model only."
+
+[conditions]
+method = "He-Ne/I2 laser CEM2 (internal cell, third harmonic); BEV fibre comb and CEM Ti:sapphire comb"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "The values are at (or corrected to) the CIPM standard operating conditions, so bipm2003a's coefficients take them to zero pressure, power and modulation exactly as for the MeP value: 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at 10 mW."

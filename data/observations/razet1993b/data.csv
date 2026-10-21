@@ -1,0 +1,11 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(62) 17-1,a2,interval,275.027,0.022,,a1,razet1993b,"Table 1 (i): n 2, 275027 (22) kHz from a1; Barwood & Rowley 1984's measurement"
+127I2 P(62) 17-1,a3,interval,287.05,0.25,,a1,razet1993b,"Table 1 (i): m 3, 287050 (22) kHz from a1; Barwood & Rowley 1984's measurement; not fully resolved, ""the error in their measured separation could be greater than indicated"" (left out of the paper's fit, which misses them by about 220 kHz): 0.25 MHz entered for the printed 22 kHz"
+127I2 P(62) 17-1,a4,interval,292.574,0.25,,a1,razet1993b,"Table 1 (i): l 4, 292574 (22) kHz from a1; Barwood & Rowley 1984's measurement; not fully resolved, ""the error in their measured separation could be greater than indicated"" (left out of the paper's fit, which misses them by about 220 kHz): 0.25 MHz entered for the printed 22 kHz"
+127I2 P(62) 17-1,a5,interval,304.262,0.022,,a1,razet1993b,"Table 1 (i): k 5, 304262 (22) kHz from a1; Barwood & Rowley 1984's measurement"
+127I2 P(62) 17-1,a6,interval,416.673,0.023,,a1,razet1993b,"Table 1 (i): j 6, 416673 (23) kHz from a1; Barwood & Rowley 1984's measurement"
+127I2 P(62) 17-1,a7,interval,428.513,0.023,,a1,razet1993b,"Table 1 (i): i 7, 428513 (23) kHz from a1; Barwood & Rowley 1984's measurement"
+127I2 P(62) 17-1,a8,interval,440.169,0.023,,a1,razet1993b,"Table 1 (i): h 8, 440169 (23) kHz from a1; Barwood & Rowley 1984's measurement"
+127I2 P(62) 17-1,a9,interval,452.295,0.024,,a1,razet1993b,"Table 1 (i): g 9, 452295 (24) kHz from a1; Barwood & Rowley 1984's measurement"
+127I2 P(62) 17-1,a10,interval,579.43,0.025,,a1,razet1993b,"Table 1 (i): f 10, 579430 (25) kHz from a1; Barwood & Rowley 1984's measurement"
+127I2 P(62) 17-1,a15,interval,869.534,0.028,,a1,razet1993b,"Table 1 (i): a 15, 869534 (28) kHz from a1; Barwood & Rowley 1984's measurement"

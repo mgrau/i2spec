@@ -1,0 +1,37 @@
+id = "thang2012a"
+citation = "Le Huu Thang, Bui Quoc Thu, Vu Khanh Xuan, Ho Suhng Suh and Pham Van Hoi, \"Precision frequency measurement for He-Ne/I2 laser emission with kHz-accuracy\", Communications in Physics 22, 161-166 (2012)"
+source = "https://doi.org/10.15625/0868-3166/22/2/1615 (library copy papers/Thang2012_CommunPhys22_161.pdf)"
+doi = "10.15625/0868-3166/22/2/1615"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 163), typed from the text layer and checked against the page: three femtosecond-comb (KRISS,
+H-maser/UTC reference) measurements of the Vietnam Metrology Institute He-Ne/I2 laser on f (a16) of
+R(127) 11-5, as operated, at output powers of 80, 70 and 135 uW. One laser, one group.
+Not entered: the uncertainty budget's sensitivity coefficients (power -0.106 kHz/uW, modulation
+-8.39 kHz/MHz, cold-finger temperature -11.747 kHz/C); the beat measurement against the reference laser
+(f - f = 6 kHz) and the wavelength-meter comparisons of Sect. II.2.
+"""
+
+uncertainty = "Table 2: 1.1 kHz combined (k = 1) at the 80 uW operating point; applied to all three rows."
+
+notes = "Residuals against i2spec2026o (obs - model, after the shift correction): -116.1, -117.2 and -122.0 kHz, against -116.8 kHz for the CIPM value and -118.8/-120.2 kHz for hamid2006a. Checked with the shipped model only."
+
+[conditions]
+cold_finger_C = 14.98
+modulation_MHz_pp = 5.9
+method = "He-Ne/I2 laser (VMI), beat with the KRISS femtosecond comb referenced to a hydrogen maser linked to UTC(KRIS)"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 5.9
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "Operated at the CIPM conditions (cold finger 15 C, 5.9-6.0 MHz), so bipm2003a's coefficients take the values to zero pressure, power and modulation as for the MeP value: 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 5.9 MHz p-p at -10(2) kHz/MHz (the 135 uW row was at 6.0 MHz, 1 kHz more); power 0 +- 1 kHz/mW at 10 mW."

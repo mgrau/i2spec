@@ -1,10 +1,11 @@
-"""Line lookup: the query layer behind the command line and the TUI.
+"""Line lookup: the query layer behind the command line, the TUI and the explorer's export.
 
-Positions and strengths come from the cached master line list (``i2spec.intensity``) and the
-hyperfine patterns from ``RovibronicModel``. This module adds units, filtering, and the position
-uncertainties that the Phase A model supports. The uncertainties are estimates from the validation
-in ``docs/research/spectra-validation.md`` and ``docs/research/bipm-hyperfine-tables.md``, not the
-output of a fit; the Phase B refit replaces them with values from its covariance.
+Strengths come from the cached master line list (``i2spec.intensity``). Positions, hyperfine components and
+uncertainties come from the preferred model (``i2spec.preferred``): balanced-expanded for 127I2 lines inside its
+domain, with the uncertainty of ``ResearchModel.uncertainty``; elsewhere (other isotopologues, 127I2 beyond that
+domain, or with ``I2SPEC_MODEL=i2spec2026o``) from i2spec2026o's ``RovibronicModel``, with the estimated
+uncertainties of ``uncertainty_2026o`` (validation in ``docs/research/spectra-validation.md`` and
+``docs/research/bipm-hyperfine-tables.md``). Each line says which model gave it (``Line.source``).
 """
 
 from __future__ import annotations
@@ -46,6 +47,11 @@ _QUANTITY = re.compile(r"^\s*([-+0-9.eE]+)\s*([A-Za-z0-9/^-]*)\s*$")
 #: One end of a range: a number and, optionally, its unit. A unit starts with a letter, so the "-" between
 #: two numbers is not read as part of one; units such as "cm-1" and "nm-air" keep theirs.
 _RANGE_END = re.compile(r"(\d+\.?\d*(?:[eE][-+]?\d+)?|\.\d+(?:[eE][-+]?\d+)?)\s*([A-Za-z]+(?:\^?-1|-air)?)?")
+
+
+def format_mhz(value):
+    """An uncertainty in MHz to two figures or so: 0.42, 4.2, 42, 1,203."""
+    return f"{value:.2f}" if value < 1 else f"{value:.1f}" if value < 10 else f"{value:,.0f}"
 
 
 def to_wavenumber(value, unit="nm"):
@@ -152,31 +158,62 @@ class Line:
         return uncertainty(self)[0]
 
     @property
+    def source(self):
+        """The model that gives this line's position: balanced-expanded or i2spec2026o (i2spec.preferred)."""
+        from .preferred import FALLBACK, LABEL
+        return LABEL if _preferred(self) is not None else FALLBACK
+
+    @property
     def flags(self):
-        out = []
-        if self.v_lower > V_LOWER_FITTED:
-            if 48 <= self.v_lower <= 54:
-                out.append("v″ ≥ 48: extended model")
-            elif self.v_lower <= 25 and corrected(self) is not None:
-                out.append("v″ 18-25: atlas-measured")
-            else:
-                out.append("v″ > 17: unmeasured" if self.v_lower <= 25 or self.v_lower > 89 else "v″ 26-89: Martin 1986")
-        if self.v_upper > V_UPPER_FITTED:
-            if self.v_upper <= 50:
-                out.append("v′ > 43: extended model")
-            else:
-                out.append("v′ 51-79: atlas-measured" if corrected(self) is not None else "v′ > 50: extrapolated")
-        if self.isotopologue != "127I2":
-            out.append("isotope shift")
-        if corrected(self) is not None:
-            out.append("corrected levels")
-        elif self.nu < NU_NIR_ANCHORS:
-            out.append("beyond 815 nm")
-        elif self.nu < NU_NIR:
-            out.append("local NIR model" if local_nir_covers(self) else "few data")
-        elif self.nu < NU_PRECISION:
-            out.append("few data")
-        return tuple(out)
+        p = _preferred(self)
+        if p is not None:
+            from .preferred import flags
+            return flags(p[1], p[2])
+        return flags_2026o(self)
+
+
+def _preferred(line):
+    """(sigma_center MHz, status code, class code) where the preferred model gives this line, else None."""
+    from . import preferred as pf
+    if line.isotopologue != "127I2" or not pf.active():
+        return None
+    sigma, status, cls = pf.preferred().uncertainties([line.branch], [line.J_lower], [line.v_upper], [line.v_lower])
+    return None if status[0] < 0 else (float(sigma[0]), int(status[0]), int(cls[0]))
+
+
+def flags_2026o(line):
+    """i2spec2026o's flags of a line: where its levels come from (the fallback model's regions)."""
+    out = []
+    if line.v_lower > V_LOWER_FITTED:
+        if 48 <= line.v_lower <= 54:
+            out.append("v″ ≥ 48: extended model")
+        elif line.v_lower <= 25 and corrected(line) is not None:
+            out.append("v″ 18-25: atlas-measured")
+        else:
+            out.append("v″ > 17: unmeasured" if line.v_lower <= 25 or line.v_lower > 89 else "v″ 26-89: Martin 1986")
+    if line.v_upper > V_UPPER_FITTED:
+        if line.v_upper <= 50:
+            out.append("v′ > 43: extended model")
+        else:
+            out.append("v′ 51-79: atlas-measured" if corrected(line) is not None else "v′ > 50: extrapolated")
+    if line.isotopologue != "127I2":
+        out.append("isotope shift")
+    if corrected(line) is not None:
+        out.append("corrected levels")
+    elif line.nu < NU_NIR_ANCHORS:
+        out.append("beyond 815 nm")
+    elif line.nu < NU_NIR:
+        out.append("local NIR model" if local_nir_covers(line) else "few data")
+    elif line.nu < NU_PRECISION:
+        out.append("few data")
+    if _preferred_active():
+        out.append("i2spec2026o: outside balanced-expanded" if line.isotopologue == "127I2" else "i2spec2026o")
+    return tuple(out)
+
+
+def _preferred_active():
+    from . import preferred as pf
+    return pf.active()
 
 
 @lru_cache(maxsize=1)
@@ -253,7 +290,17 @@ def gp_corrected(line: Line):
 
 
 def uncertainty(line: Line):
-    """Estimated 1σ uncertainty (MHz) of the hyperfine-free position, and the evidence for it.
+    """1σ uncertainty (MHz) of the hyperfine-free position, and the evidence for it: the preferred model's
+    (``ResearchModel.uncertainty``) where it gives the line, else ``uncertainty_2026o``."""
+    p = _preferred(line)
+    if p is not None:
+        from .preferred import basis
+        return round(p[0], 3), basis(p[1], p[2])
+    return uncertainty_2026o(line)
+
+
+def uncertainty_2026o(line: Line):
+    """i2spec2026o's estimated 1σ uncertainty (MHz) of the hyperfine-free position, and the evidence for it.
 
     This is the uncertainty of the position i2spec reports, which always comes from the potentials.
     Where ``local_nir_covers`` is true, ``i2spec.local_nir`` predicts the same line an order of
@@ -351,6 +398,7 @@ class Component:
     I_lower: int | None = None
     upper_level: int | None = None  # hyperfine eigenstate indices (hyperfine.Component)
     lower_level: int | None = None
+    uncertainty_MHz: float | None = None  # 1σ of frequency_MHz, where the preferred model gives the line
 
     @property
     def name(self):
@@ -403,7 +451,7 @@ class Catalog:
             self._masters[isotopologue] = with_dissociation_lines(self._masters[isotopologue], S_min=self.s_min,
                                                                   nu_max=self.nu_range[1])
             self._extended.add(isotopologue)
-        return self._masters[isotopologue]
+        return preferred_positions(self._masters[isotopologue])
 
     def model(self, isotopologue="127I2"):
         """The B-spline model used for hyperfine structure (more accurate than the intensity grid)."""
@@ -430,8 +478,7 @@ class Catalog:
         """The line named "R(56) 32-0", found in the list by its assignment."""
         branch, J, v_upper, v_lower = parse_label(label)
         T = float(temperature if temperature is not None else self.temperature)
-        model = self.model(isotopologue)
-        nu = model.transition(v_upper, v_lower, J, branch)
+        nu = self.transition(isotopologue, branch, J, v_upper, v_lower)
         master = self.master(isotopologue, near_dissociation=v_upper > 60)
         sel = ((master.v_upper == v_upper) & (master.v_lower == v_lower) & (master.J_lower == J)
                & (master.branch == (1 if branch == "R" else -1)))
@@ -443,11 +490,44 @@ class Catalog:
         return Line(isotopologue, branch, J, v_upper, v_lower, float(master.nu[k]), float(strength),
                     float(master.E_lower[k]), T)
 
+    def transition(self, isotopologue, branch, J, v_upper, v_lower):
+        """Hyperfine-free wavenumber (cm⁻¹): the preferred model's where it gives the line, else i2spec2026o's."""
+        line = Line(isotopologue, branch, J, v_upper, v_lower, 0.0, 0.0, 0.0, self.temperature)
+        if _preferred(line) is not None:
+            from .preferred import preferred
+            return float(preferred().positions([branch], [J], [v_upper], [v_lower])[0])
+        return self.model(isotopologue).transition(v_upper, v_lower, J, branch)
+
     def components(self, line: Line, dJ=2, main_only=False) -> list[Component]:
-        """Hyperfine components of a line, with absolute frequencies."""
+        """Hyperfine components of a line, with absolute frequencies. The preferred model always includes the
+        J ± 2 couplings (``dJ`` applies to i2spec2026o's lines) and gives each component its 1σ."""
+        p = _preferred(line)
+        if p is not None:
+            from .preferred import components, sigma_component
+            nu0, comps = components(line.branch, line.J_lower, line.v_upper, line.v_lower)
+            out = [Component(c.label, c.offset, c.strength, c.F_upper, c.F_lower, nu0 + c.offset, c.I_upper,
+                             c.I_lower, c.upper_level, c.lower_level,
+                             sigma_component(p[0], line.branch, line.J_lower, line.v_upper, line.v_lower, c.offset))
+                   for c in comps if c.label or not main_only]
+            return sorted(out, key=lambda c: c.offset_MHz)
         model = self.model(line.isotopologue)
         nu0, comps = model.hyperfine_components(line.v_upper, line.v_lower, line.J_lower, line.branch, dJ=dJ)
         out = [Component(c.label, c.offset, c.strength, c.F_upper, c.F_lower, nu0 + c.offset, c.I_upper, c.I_lower,
                          c.upper_level, c.lower_level)
                for c in comps if c.label or not main_only]
         return sorted(out, key=lambda c: c.offset_MHz)
+
+
+def preferred_positions(master):
+    """A 127I2 master line list with the preferred model's positions where it gives the line (the strengths stay
+    i2spec2026o's); unchanged for other isotopologues or with I2SPEC_MODEL=i2spec2026o."""
+    from dataclasses import replace
+    from . import preferred as pf
+    if master.isotopologue != "127I2" or not pf.active() or getattr(master, "_preferred", False):
+        return master
+    nu = pf.preferred().positions(np.where(master.branch > 0, "R", "P"), master.J_lower, master.v_upper,
+                                  master.v_lower)
+    out = replace(master, nu=np.where(np.isfinite(nu), nu, master.nu))
+    out._preferred = True
+    out.nu_2026o = master.nu
+    return out

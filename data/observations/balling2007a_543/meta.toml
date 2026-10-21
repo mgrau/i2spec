@@ -1,0 +1,54 @@
+id = "balling2007a_543"
+citation = "P. Balling and P. Křen, \"Absolute frequency measurements of wavelength standards 532 nm, 543 nm, 633 nm and 1540 nm\", Eur. Phys. J. D 48, 3-10 (2008)"
+source = "Eur. Phys. J. D 48, 3-10 (2008), published online 5 December 2007; https://doi.org/10.1140/epjd/e2007-00325-0 (publisher PDF, Matt's library copy papers/Balling2007_EPJD48_3.pdf)"
+doi = "10.1140/epjd/e2007-00325-0"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "precision.yaml:balling2007a"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+The 543 nm part of Balling & Křen (one paper, three sets: balling2007a_633, balling2007a_543, balling2007a_532).
+
+Table 2 (journal p. 6, PDF p. 4): 22 components of the CMI PLG2 He-Ne laser (internal-mirror tube, 50 cm external
+iodine cell, third-harmonic locking), 127I2 R(106) 28-0 (b1-b10) and R(12) 26-0 (a2-a12, a15), measured with
+the CMI fs comb. The table prints the CCL (MeP 2003) frequency and the PLG2 deviation from it in kHz; each row
+here is CCL + deviation, converted to MHz exactly. Read from the pdftotext -layout text layer and checked digit
+by digit against a 220 dpi rendering. Labels are the MeP labels, as in bipm2003b (b for R(106) 28-0, a for
+R(12) 26-0; ranks by frequency, both lines even J'' with 15 main components).
+
+Misprint corrected: the CCL frequency of R(12) 26-0 a15 is printed 551 579 858 490 kHz. Every other CCL value
+equals bipm2003b's b10 value plus its interval, to the kHz; for a15 that gives 551 579 856 490 kHz (interval
+-305.91 MHz; cheng2001a measures -305.9037 MHz), exactly 2 000 kHz lower. The printed "858" is taken as a
+misprint of "856", and the PLG2 deviation (-1.2 kHz) is applied to 551 579 856 490 kHz.
+
+Not entered: the long-term average f(PLG2@b10) = 551 580 162 398 +- 2 kHz (k = 2) of Sect. 3.2; it is the same
+measurement history as the Table 2 b10 row (-2.0 kHz).
+"""
+
+uncertainty = """
+Sect. 3: expanded (k = 2) uncertainties of the comb measurement combined with the laser's mid-term
+repeatability, not the laser's total uncertainty as a standard. Entered as the printed value halved: 1.0-3.85 kHz
+for most components, 8.8 kHz for a2 and a3. b10 and a9 (the current and former reference components) were
+measured longest (2.0 kHz printed). One laser and cell, so one group: its offset is common to all rows.
+"""
+
+notes = """
+The paper does not state the cell conditions for Table 2. It gives the recommended iodine pressure for 543 nm as
+4.2 Pa (cold finger 0 C) and says only the linewidth study (Sect. 3.4) used 0.85 Pa, so the frequencies are
+taken to be at the recommended conditions, and [shift_correction] repeats bipm2003b's allowance.
+a3 is +30.1 +- 17.6 kHz from the MeP value, the only deviation beyond 8 kHz.
+
+Residuals against i2spec2026o (Predictor(), obs - model): mean +0.5 kHz, sd 12.9 kHz over the 22 rows
+(R(106) 28-0 +1 to +12 kHz; R(12) 26-0 -26 to +32 kHz). The corrected a15 reads +32 kHz; the printed CCL
+value would put it 2.03 MHz off. bipm2003b's b10 reads +7.1 kHz. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "He-Ne laser, 50 cm external iodine cell (ISI Brno, Stern-Volmer 1.04-1.24 Pa^-1), third-harmonic locking; Menlo FC8004 comb referenced to a GPS-disciplined Rb oscillator"
+laser = "CMI PLG2 (built 1996-2001)"
+
+[shift_correction]
+pressure_Pa = 4.12
+allowance_kHz = 20.6
+basis = "As bipm2003b: MeP 543 nm recommended conditions (cold point 0 C = 4.12 Pa, 2 MHz p-p) assumed; the MeP gives no coefficients, so no shift is applied and allowance = |-5 kHz/Pa x 4.12 Pa| = 20.6 kHz."

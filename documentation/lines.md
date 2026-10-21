@@ -18,13 +18,21 @@ hyperfine-free position is the centre of gravity of the hyperfine components (se
 <figcaption markdown="span">**Figure 1.** P and R lines of the 32–0 band near the band origin, plotted against J″ (Fortrat diagram). The rotational constant of the upper level, B′ ≈ 0.022 cm⁻¹, is smaller than that of the lower level, B″ ≈ 0.037 cm⁻¹, because the equilibrium distance of B is larger. The R branch therefore reaches a band head at J″ ≈ 1 and then turns towards lower wavenumber. R(56), the 532 nm reference line, lies 46 cm⁻¹ below the band origin.</figcaption>
 </figure>
 
-## Correction for the near-infrared bands
+## Which model gives a line
 
-The bands v′ = 0 → v″ = 12–17 (755–815 nm) require a J′ dependence of the level B v′ = 0 that cannot
-be applied to the level without also changing bands for which no measurements exist. For these bands
-a correction of the same form as the level corrections is applied to the line positions directly, and
-only within the J″ range of the measurements at each v″. It reproduces the 108 frequency-comb and
-beat-note measurements in this region with a held-out rms deviation of 0.13 MHz.
+¹²⁷I₂ lines with J″ ≤ 200, B v′ ≤ 80 and X v″ ≤ 108, whose levels are both bound (or held behind their
+centrifugal barrier), come from balanced-expanded. This is every ¹²⁷I₂ line of practical interest. The
+following come from the earlier model, i2spec2026o, and carry the flag *i2spec2026o*:
+
+- the lines of ¹²⁹I₂ and ¹²⁷I¹²⁹I;
+- the ¹²⁷I₂ lines beyond that domain.
+
+Where both models give a line, the explorer also shows i2spec2026o's position as a difference.
+
+In i2spec2026o the bands v′ = 0 → v″ = 12–17 (755–815 nm) carry a correction to the line positions
+themselves, fitted to the 108 frequency-comb and beat-note measurements there (held-out rms 0.13 MHz).
+balanced-expanded needs no such correction: those measurements are among the data its potentials were fitted
+to.
 
 ## Units
 

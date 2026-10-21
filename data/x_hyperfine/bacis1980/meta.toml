@@ -1,0 +1,50 @@
+id = "bacis1980"
+citation = "R. Bacis, M. Broyer, S. Churassy, J. Vergès and J. Vigué, \"eQq measurements in the X, 1g, 0g+ and B state of I2: A test of the electronic molecular eigenfunctions\", J. Chem. Phys. 73, 2641-2650 (1980), Tables II-IV"
+source = "https://doi.org/10.1063/1.440477 (publisher PDF, papers/Bacis1980_JCP73_2641.pdf)"
+doi = "10.1063/1.440477"
+retrieved = "2026-10-20"
+unit = "eqQ in MHz; ED_minus_Ev (the paper's E_Dis - E_v) in cm-1"
+isotopologue = "127I2"
+state = "X"
+
+transcription = """
+Tables II (p. 2643, 514.5 nm excitation), III and IV (p. 2644, 501.7 and 530.8 nm), every row, read from a
+200 dpi render and checked against the PDF text layer (which garbles "-1701 +- 15", "5286.45" and the decimal
+commas of Tables III and IV). One row per printed value: Table II's "other results" column is a separate row
+(source = "other results, Ref. n", the paper's reference numbers: 13 Koffend thesis, 14 and 17 the v'' = 0
+value, 15, 16); its v'' = 42 value carries no reference marker. eqQ_unc empty = none printed. Table II's
+r1, r2, P2 and eqQ(r2) columns are the paper's two-turning-point model, not data, and are not entered.
+"""
+
+uncertainty = """
+Tables II and IV: "an estimate of the standard deviation", from temperature, apparatus function and signal
+to noise (Sec. V A 1). Table III: the rms deviation of 8 measurements (R(10), P(12) from B v' = 61 and R(26),
+P(28) from v' = 62).
+"""
+
+notes = """
+Method. Doppler-limited laser-induced-fluorescence Fourier-transform line shapes (resolution 0.006-0.0072
+cm-1): the width and asymmetry of each B -> X line depend on DeltaeqQ = eqQ_B - eqQ_X and the cell
+temperature (T = 579 +- 11 K for the 514.5 nm records), with C_X neglected. So every X value rests on an
+assumed eqQ_B: -558.6 MHz (v' = 43) for Table II, -569 MHz (v' = 61, 62) for Table III, -533 MHz (v' = 32)
+for Table IV. A different eqQ_B shifts eqQ_X by the same amount. The method is blind for
+-900 < eqQ_X < -100 MHz (|DeltaeqQ| below ~300-400 MHz).
+
+Perturbed levels. The authors trust only v'' <= 88; for 89 <= v'' <= 107 the values are effective, polluted by
+mixing with a 1g (eqQ_1g ~ 0) and by the large C'' that mixing induces, which their fit held at zero
+(Sec. V A 1, "very preliminary"). Table III's v'' = 87 value, -1148 +- 60, is printed so but lies far off its
+neighbours (-1473 at 86, -1405 at 88); the extrapolation below used 81 <= v'' <= 87 all the same.
+
+Results not entered as rows:
+  (eqQ_X) at the dissociation limit = -1170 +- 40 MHz, weighted linear extrapolation over 81 <= v'' <= 87;
+    separated-atom theory -1146 MHz (Table I, -eQq of the 2P3/2 atom), LCAO -2293 MHz.
+  a' 0g+ (v = 1, 2): eqQ = +1030 +- 190 MHz (separated-atom theory +1146).
+  a 1g (v = 0, 1, 3, 4): eqQ = -30 +- 70 MHz and (eqQ_perp) = 0 +- 150 MHz (theory 0 and 0).
+  B v' = 71, J' = 55: C' = 3.41 +- 0.29 MHz.
+  Table V: eqQ_B for v' = 6-62 compiled from other papers' DeltaeqQ (superseded by direct measurements);
+    extrapolated eqQ_B = -574 +- 3 MHz at the limit and -505 +- 15 MHz at the bottom of the well.
+
+Use. The only X-state eqQ data above v'' = 17 apart from the four precise values of Refs. 13 and 15
+(v'' = 62, 79, 81, 83). They bound the X hyperfine model where i2spec's eqQ_X (BKT02 polynomial) and C_X
+(BKT02 pole near v'' = 97) are extrapolations.
+"""

@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(118) 2-8,a10,frequency,425624126.7,0.42,,,powel2021a,"Table 2 (p. 7), Frequency comb meas.; 425 624 126.7 (0.3) [0.3] MHz, zero-pressure value"
+127I2 R(54) 3-9,a1,frequency,425631844.4,0.36,,,powel2021a,"Table 2 (p. 7), Frequency comb meas.; 425 631 844.4 (0.2) [0.3] MHz, zero-pressure value"
+127I2 P(48) 3-9,a15,frequency,425601735.5,0.36,,,powel2021a,"Table 2 (p. 7), Frequency comb meas.; 425 601 735.5 (0.2) [0.3] MHz, zero-pressure value; a side peak from R(148) 6-10 a1 was fitted with it (Figs. 3-4)"

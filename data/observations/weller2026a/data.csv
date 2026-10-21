@@ -1,0 +1,21 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(41) 51-0,a2,interval,99.2757,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a3,interval,193.4718,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a4,interval,272.8234,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a5,interval,372.2911,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a6,interval,389.5628,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a7,interval,452.0895,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a8,interval,483.6732,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a9,interval,487.1873,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a10,interval,554.3268,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a11,interval,581.0744,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a12,interval,586.1555,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a13,interval,662.2933,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a14,interval,731.9820,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a15,interval,743.4513,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a16,interval,776.1415,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a17,interval,826.5789,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a18,interval,868.9092,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a19,interval,913.7695,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a20,interval,940.2400,0.0005,,a1,weller2026a,Table 1: offset from a1
+127I2 R(41) 51-0,a21,interval,973.0917,0.0005,,a1,weller2026a,Table 1: offset from a1

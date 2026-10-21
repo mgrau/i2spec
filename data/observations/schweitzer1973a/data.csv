@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+129I2 P(54) 8-4,a28,frequency,473612312.885,2.0,,,schweitzer1973a_kr,"abstract: 3He-20Ne:129I2 k peak, vacuum wavelength 632 991.2670 +- 0.0009 pm against 86Kr; c / lambda; k = a28 assigned here (see meta.toml)"
+129I2 P(54) 8-4,a28,interval,96.0399,0.0098,127I2 R(127) 11-5,a13,schweitzer1973a_beat,"p. 2936: beat 127I2 i against 129I2 k, 96.0399 +- 0.0098 MHz, k higher"
+129I2 P(33) 6-3,e2,interval,892.467,0.083,129I2 P(54) 8-4,a28,schweitzer1973a_beat,"p. 2936: beat 3He-22Ne:129I2 B against 3He-20Ne:129I2 k, 892.467 +- 0.083 MHz, B higher; B = e2 assigned here (see meta.toml)"

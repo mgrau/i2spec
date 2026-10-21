@@ -1,0 +1,3266 @@
+[
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_lowJ_P_a1",
+    "predicted_MHz": 563262823.1728973,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262822.5728973,
+        "upper_MHz": 563262823.7728974,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262810.1728973,
+        "upper_MHz": 563262836.1728973,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_lowJ_P_a3",
+    "predicted_MHz": 563262896.3402555,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262895.7402555,
+        "upper_MHz": 563262896.9402555,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262883.3402555,
+        "upper_MHz": 563262909.3402555,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_lowJ_P_a10",
+    "predicted_MHz": 563263299.4700915,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563263298.8700914,
+        "upper_MHz": 563263300.0700915,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563263286.4700915,
+        "upper_MHz": 563263312.4700915,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_lowJ_R_a1",
+    "predicted_MHz": 563497563.7922958,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497563.1922958,
+        "upper_MHz": 563497564.3922958,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497550.7922958,
+        "upper_MHz": 563497576.7922958,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_lowJ_R_a3",
+    "predicted_MHz": 563497638.4139735,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497637.8139734,
+        "upper_MHz": 563497639.0139735,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497625.4139735,
+        "upper_MHz": 563497651.4139735,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_lowJ_R_a10",
+    "predicted_MHz": 563498040.8704053,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563498040.2704053,
+        "upper_MHz": 563498041.4704053,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563498027.8704053,
+        "upper_MHz": 563498053.8704053,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_midJ_P_a1",
+    "predicted_MHz": 562835402.9372796,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835402.3372796,
+        "upper_MHz": 562835403.5372796,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835389.9372796,
+        "upper_MHz": 562835415.9372796,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_midJ_P_a3",
+    "predicted_MHz": 562835479.6790476,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835479.0790476,
+        "upper_MHz": 562835480.2790476,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835466.6790476,
+        "upper_MHz": 562835492.6790476,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_midJ_P_a10",
+    "predicted_MHz": 562835882.3273909,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835881.7273909,
+        "upper_MHz": 562835882.9273909,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835869.3273909,
+        "upper_MHz": 562835895.3273909,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_midJ_R_a1",
+    "predicted_MHz": 563105854.1359894,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105853.5359894,
+        "upper_MHz": 563105854.7359895,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105841.1359894,
+        "upper_MHz": 563105867.1359894,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_midJ_R_a3",
+    "predicted_MHz": 563105931.9880265,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105931.3880265,
+        "upper_MHz": 563105932.5880265,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105918.9880265,
+        "upper_MHz": 563105944.9880265,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "routine_32_midJ_R_a10",
+    "predicted_MHz": 563106334.1225418,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563106333.5225418,
+        "upper_MHz": 563106334.7225418,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563106321.1225418,
+        "upper_MHz": 563106347.1225418,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_ground_X_P_a1",
+    "predicted_MHz": 575392242.75431,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392242.15431,
+        "upper_MHz": 575392243.35431,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392229.75431,
+        "upper_MHz": 575392255.75431,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_ground_X_P_a3",
+    "predicted_MHz": 575392344.4521105,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392343.8521105,
+        "upper_MHz": 575392345.0521106,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392331.4521105,
+        "upper_MHz": 575392357.4521105,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_ground_X_P_a10",
+    "predicted_MHz": 575392737.0379803,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392736.4379803,
+        "upper_MHz": 575392737.6379803,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392724.0379803,
+        "upper_MHz": 575392750.0379803,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_ground_X_R_a1",
+    "predicted_MHz": 575626983.3737085,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575626982.7737085,
+        "upper_MHz": 575626983.9737085,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575626970.3737085,
+        "upper_MHz": 575626996.3737085,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_ground_X_R_a3",
+    "predicted_MHz": 575627086.5258282,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627085.9258282,
+        "upper_MHz": 575627087.1258283,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627073.5258282,
+        "upper_MHz": 575627099.5258282,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_ground_X_R_a10",
+    "predicted_MHz": 575627478.438294,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627477.838294,
+        "upper_MHz": 575627479.0382941,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627465.438294,
+        "upper_MHz": 575627491.438294,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_hot_X_P_a1",
+    "predicted_MHz": 567189003.465061,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189002.8650609,
+        "upper_MHz": 567189004.065061,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567188990.465061,
+        "upper_MHz": 567189016.465061,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_hot_X_P_a3",
+    "predicted_MHz": 567189136.1532117,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189135.5532117,
+        "upper_MHz": 567189136.7532117,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189123.1532117,
+        "upper_MHz": 567189149.1532117,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_hot_X_P_a10",
+    "predicted_MHz": 567189520.9944823,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189520.3944823,
+        "upper_MHz": 567189521.5944823,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189507.9944823,
+        "upper_MHz": 567189533.9944823,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_hot_X_R_a1",
+    "predicted_MHz": 567538624.6783552,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538624.0783552,
+        "upper_MHz": 567538625.2783552,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538611.6783552,
+        "upper_MHz": 567538637.6783552,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_hot_X_R_a3",
+    "predicted_MHz": 567538758.0521008,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538757.4521008,
+        "upper_MHz": 567538758.6521008,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538745.0521008,
+        "upper_MHz": 567538771.0521008,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "B39_hot_X_R_a10",
+    "predicted_MHz": 567539142.5749567,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567539141.9749566,
+        "upper_MHz": 567539143.1749567,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567539129.5749567,
+        "upper_MHz": 567539155.5749567,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_first_P_a1",
+    "predicted_MHz": 538808459.772653,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808459.172653,
+        "upper_MHz": 538808460.372653,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808446.772653,
+        "upper_MHz": 538808472.772653,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_first_P_a3",
+    "predicted_MHz": 538808568.6515218,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808568.0515218,
+        "upper_MHz": 538808569.2515218,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808555.6515218,
+        "upper_MHz": 538808581.6515218,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_first_P_a10",
+    "predicted_MHz": 538808966.4519929,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808965.8519928,
+        "upper_MHz": 538808967.0519929,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808953.4519929,
+        "upper_MHz": 538808979.4519929,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_first_R_a1",
+    "predicted_MHz": 539513270.1095859,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513269.5095859,
+        "upper_MHz": 539513270.7095859,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513257.1095859,
+        "upper_MHz": 539513283.1095859,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_first_R_a3",
+    "predicted_MHz": 539513379.2036875,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513378.6036875,
+        "upper_MHz": 539513379.8036876,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513366.2036875,
+        "upper_MHz": 539513392.2036875,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_first_R_a10",
+    "predicted_MHz": 539513776.8888713,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513776.2888713,
+        "upper_MHz": 539513777.4888713,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513763.8888713,
+        "upper_MHz": 539513789.8888713,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_second_P_a1",
+    "predicted_MHz": 538275676.2508996,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275675.6508995,
+        "upper_MHz": 538275676.8508996,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275663.2508996,
+        "upper_MHz": 538275689.2508996,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_second_P_a3",
+    "predicted_MHz": 538275788.0751985,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275787.4751985,
+        "upper_MHz": 538275788.6751986,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275775.0751985,
+        "upper_MHz": 538275801.0751985,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_second_P_a10",
+    "predicted_MHz": 538276185.0269438,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538276184.4269438,
+        "upper_MHz": 538276185.6269438,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538276172.0269438,
+        "upper_MHz": 538276198.0269438,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_second_R_a1",
+    "predicted_MHz": 538998044.0010377,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998043.4010377,
+        "upper_MHz": 538998044.6010377,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998031.0010377,
+        "upper_MHz": 538998057.0010377,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_second_R_a3",
+    "predicted_MHz": 538998156.0331538,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998155.4331537,
+        "upper_MHz": 538998156.6331538,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998143.0331538,
+        "upper_MHz": 538998169.0331538,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "highJ_25_second_R_a10",
+    "predicted_MHz": 538998552.8723302,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998552.2723302,
+        "upper_MHz": 538998553.4723302,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998539.8723302,
+        "upper_MHz": 538998565.8723302,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "X4_hot_band_P_a1",
+    "predicted_MHz": 539331813.7902563,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331813.1902562,
+        "upper_MHz": 539331814.3902563,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331800.7902563,
+        "upper_MHz": 539331826.7902563,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "X4_hot_band_P_a3",
+    "predicted_MHz": 539331895.2170447,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331894.6170447,
+        "upper_MHz": 539331895.8170447,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331882.2170447,
+        "upper_MHz": 539331908.2170447,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "X4_hot_band_P_a10",
+    "predicted_MHz": 539332296.5287623,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539332295.9287623,
+        "upper_MHz": 539332297.1287624,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539332283.5287623,
+        "upper_MHz": 539332309.5287623,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "X4_hot_band_R_a1",
+    "predicted_MHz": 539607721.431541,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607720.831541,
+        "upper_MHz": 539607722.031541,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607708.431541,
+        "upper_MHz": 539607734.431541,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "X4_hot_band_R_a3",
+    "predicted_MHz": 539607803.9065033,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607803.3065033,
+        "upper_MHz": 539607804.5065033,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607790.9065033,
+        "upper_MHz": 539607816.9065033,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "X4_hot_band_R_a10",
+    "predicted_MHz": 539608204.7350615,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539608204.1350615,
+        "upper_MHz": 539608205.3350616,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539608191.7350615,
+        "upper_MHz": 539608217.7350615,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "low_B1_P_a1",
+    "predicted_MHz": 474788681.7742338,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788681.1742338,
+        "upper_MHz": 474788682.37423384,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788668.7742338,
+        "upper_MHz": 474788694.7742338,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "low_B1_P_a3",
+    "predicted_MHz": 474788733.04278624,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788732.4427862,
+        "upper_MHz": 474788733.64278626,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788720.04278624,
+        "upper_MHz": 474788746.04278624,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "low_B1_P_a10",
+    "predicted_MHz": 474789151.8523769,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474789151.25237685,
+        "upper_MHz": 474789152.4523769,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474789138.8523769,
+        "upper_MHz": 474789164.8523769,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "low_B1_R_a1",
+    "predicted_MHz": 474934056.2076186,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934055.6076186,
+        "upper_MHz": 474934056.8076186,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934043.2076186,
+        "upper_MHz": 474934069.2076186,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "low_B1_R_a3",
+    "predicted_MHz": 474934111.1784329,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934110.57843286,
+        "upper_MHz": 474934111.7784329,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934098.1784329,
+        "upper_MHz": 474934124.1784329,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-balanced",
+    "target_id": "low_B1_R_a10",
+    "predicted_MHz": 474934528.26083386,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934527.66083384,
+        "upper_MHz": 474934528.8608339,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934515.26083386,
+        "upper_MHz": 474934541.26083386,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_lowJ_P_a1",
+    "predicted_MHz": 563262823.2380666,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262822.6380665,
+        "upper_MHz": 563262823.8380666,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262810.2380666,
+        "upper_MHz": 563262836.2380666,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_lowJ_P_a3",
+    "predicted_MHz": 563262896.3660271,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262895.7660271,
+        "upper_MHz": 563262896.9660271,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262883.3660271,
+        "upper_MHz": 563262909.3660271,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_lowJ_P_a10",
+    "predicted_MHz": 563263299.561754,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563263298.961754,
+        "upper_MHz": 563263300.161754,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563263286.561754,
+        "upper_MHz": 563263312.561754,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_lowJ_R_a1",
+    "predicted_MHz": 563497563.8122987,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497563.2122986,
+        "upper_MHz": 563497564.4122987,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497550.8122987,
+        "upper_MHz": 563497576.8122987,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_lowJ_R_a3",
+    "predicted_MHz": 563497638.3945785,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497637.7945784,
+        "upper_MHz": 563497638.9945785,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497625.3945785,
+        "upper_MHz": 563497651.3945785,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_lowJ_R_a10",
+    "predicted_MHz": 563498040.9169012,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563498040.3169012,
+        "upper_MHz": 563498041.5169013,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563498027.9169012,
+        "upper_MHz": 563498053.9169012,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_midJ_P_a1",
+    "predicted_MHz": 562835402.9978181,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835402.3978181,
+        "upper_MHz": 562835403.5978181,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835389.9978181,
+        "upper_MHz": 562835415.9978181,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_midJ_P_a3",
+    "predicted_MHz": 562835479.6933168,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835479.0933168,
+        "upper_MHz": 562835480.2933168,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835466.6933168,
+        "upper_MHz": 562835492.6933168,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_midJ_P_a10",
+    "predicted_MHz": 562835882.4096545,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835881.8096545,
+        "upper_MHz": 562835883.0096545,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835869.4096545,
+        "upper_MHz": 562835895.4096545,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_midJ_R_a1",
+    "predicted_MHz": 563105854.1503321,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105853.5503321,
+        "upper_MHz": 563105854.7503321,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105841.1503321,
+        "upper_MHz": 563105867.1503321,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_midJ_R_a3",
+    "predicted_MHz": 563105931.9561,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105931.3561,
+        "upper_MHz": 563105932.5561,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105918.9561,
+        "upper_MHz": 563105944.9561,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "routine_32_midJ_R_a10",
+    "predicted_MHz": 563106334.1586096,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563106333.5586096,
+        "upper_MHz": 563106334.7586097,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563106321.1586096,
+        "upper_MHz": 563106347.1586096,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_ground_X_P_a1",
+    "predicted_MHz": 575392242.6528112,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392242.0528111,
+        "upper_MHz": 575392243.2528112,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392229.6528112,
+        "upper_MHz": 575392255.6528112,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_ground_X_P_a3",
+    "predicted_MHz": 575392344.4225951,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392343.8225951,
+        "upper_MHz": 575392345.0225952,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392331.4225951,
+        "upper_MHz": 575392357.4225951,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_ground_X_P_a10",
+    "predicted_MHz": 575392736.9579508,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392736.3579508,
+        "upper_MHz": 575392737.5579509,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392723.9579508,
+        "upper_MHz": 575392749.9579508,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_ground_X_R_a1",
+    "predicted_MHz": 575626983.227043,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575626982.627043,
+        "upper_MHz": 575626983.827043,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575626970.227043,
+        "upper_MHz": 575626996.227043,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_ground_X_R_a3",
+    "predicted_MHz": 575627086.4511464,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627085.8511463,
+        "upper_MHz": 575627087.0511464,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627073.4511464,
+        "upper_MHz": 575627099.4511464,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_ground_X_R_a10",
+    "predicted_MHz": 575627478.3130981,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627477.713098,
+        "upper_MHz": 575627478.9130981,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627465.3130981,
+        "upper_MHz": 575627491.3130981,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_hot_X_P_a1",
+    "predicted_MHz": 567189003.03417,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189002.43417,
+        "upper_MHz": 567189003.63417,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567188990.03417,
+        "upper_MHz": 567189016.03417,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_hot_X_P_a3",
+    "predicted_MHz": 567189135.8501607,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189135.2501607,
+        "upper_MHz": 567189136.4501607,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189122.8501607,
+        "upper_MHz": 567189148.8501607,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_hot_X_P_a10",
+    "predicted_MHz": 567189520.6197175,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189520.0197175,
+        "upper_MHz": 567189521.2197175,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189507.6197175,
+        "upper_MHz": 567189533.6197175,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_hot_X_R_a1",
+    "predicted_MHz": 567538624.2146006,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538623.6146005,
+        "upper_MHz": 567538624.8146006,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538611.2146006,
+        "upper_MHz": 567538637.2146006,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_hot_X_R_a3",
+    "predicted_MHz": 567538757.7161862,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538757.1161861,
+        "upper_MHz": 567538758.3161862,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538744.7161862,
+        "upper_MHz": 567538770.7161862,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "B39_hot_X_R_a10",
+    "predicted_MHz": 567539142.1673282,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567539141.5673282,
+        "upper_MHz": 567539142.7673283,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567539129.1673282,
+        "upper_MHz": 567539155.1673282,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_first_P_a1",
+    "predicted_MHz": 538808459.9158775,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808459.3158774,
+        "upper_MHz": 538808460.5158775,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808446.9158775,
+        "upper_MHz": 538808472.9158775,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_first_P_a3",
+    "predicted_MHz": 538808568.6268508,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808568.0268508,
+        "upper_MHz": 538808569.2268509,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808555.6268508,
+        "upper_MHz": 538808581.6268508,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_first_P_a10",
+    "predicted_MHz": 538808966.564977,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808965.964977,
+        "upper_MHz": 538808967.1649771,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808953.564977,
+        "upper_MHz": 538808979.564977,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_first_R_a1",
+    "predicted_MHz": 539513270.4870678,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513269.8870678,
+        "upper_MHz": 539513271.0870678,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513257.4870678,
+        "upper_MHz": 539513283.4870678,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_first_R_a3",
+    "predicted_MHz": 539513379.4132739,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513378.8132739,
+        "upper_MHz": 539513380.013274,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513366.4132739,
+        "upper_MHz": 539513392.4132739,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_first_R_a10",
+    "predicted_MHz": 539513777.2361128,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513776.6361128,
+        "upper_MHz": 539513777.8361129,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513764.2361128,
+        "upper_MHz": 539513790.2361128,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_second_P_a1",
+    "predicted_MHz": 538275676.3861283,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275675.7861283,
+        "upper_MHz": 538275676.9861283,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275663.3861283,
+        "upper_MHz": 538275689.3861283,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_second_P_a3",
+    "predicted_MHz": 538275788.034849,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275787.434849,
+        "upper_MHz": 538275788.6348491,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275775.034849,
+        "upper_MHz": 538275801.034849,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_second_P_a10",
+    "predicted_MHz": 538276185.1277311,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538276184.5277311,
+        "upper_MHz": 538276185.7277311,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538276172.1277311,
+        "upper_MHz": 538276198.1277311,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_second_R_a1",
+    "predicted_MHz": 538998044.3976785,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998043.7976785,
+        "upper_MHz": 538998044.9976785,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998031.3976785,
+        "upper_MHz": 538998057.3976785,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_second_R_a3",
+    "predicted_MHz": 538998156.2542164,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998155.6542164,
+        "upper_MHz": 538998156.8542165,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998143.2542164,
+        "upper_MHz": 538998169.2542164,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "highJ_25_second_R_a10",
+    "predicted_MHz": 538998553.2345296,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998552.6345296,
+        "upper_MHz": 538998553.8345296,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998540.2345296,
+        "upper_MHz": 538998566.2345296,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "X4_hot_band_P_a1",
+    "predicted_MHz": 539331814.0771965,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331813.4771965,
+        "upper_MHz": 539331814.6771965,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331801.0771965,
+        "upper_MHz": 539331827.0771965,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "X4_hot_band_P_a3",
+    "predicted_MHz": 539331895.4620315,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331894.8620315,
+        "upper_MHz": 539331896.0620315,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331882.4620315,
+        "upper_MHz": 539331908.4620315,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "X4_hot_band_P_a10",
+    "predicted_MHz": 539332296.8330613,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539332296.2330613,
+        "upper_MHz": 539332297.4330614,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539332283.8330613,
+        "upper_MHz": 539332309.8330613,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "X4_hot_band_R_a1",
+    "predicted_MHz": 539607721.6761223,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607721.0761223,
+        "upper_MHz": 539607722.2761223,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607708.6761223,
+        "upper_MHz": 539607734.6761223,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "X4_hot_band_R_a3",
+    "predicted_MHz": 539607804.1091313,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607803.5091313,
+        "upper_MHz": 539607804.7091314,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607791.1091313,
+        "upper_MHz": 539607817.1091313,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "X4_hot_band_R_a10",
+    "predicted_MHz": 539608204.9970016,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539608204.3970016,
+        "upper_MHz": 539608205.5970017,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539608191.9970016,
+        "upper_MHz": 539608217.9970016,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "low_B1_P_a1",
+    "predicted_MHz": 474788681.3395347,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788680.7395347,
+        "upper_MHz": 474788681.9395347,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788668.3395347,
+        "upper_MHz": 474788694.3395347,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "low_B1_P_a3",
+    "predicted_MHz": 474788732.583187,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788731.98318696,
+        "upper_MHz": 474788733.183187,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788719.583187,
+        "upper_MHz": 474788745.583187,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "low_B1_P_a10",
+    "predicted_MHz": 474789151.18294007,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474789150.58294004,
+        "upper_MHz": 474789151.7829401,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474789138.18294007,
+        "upper_MHz": 474789164.18294007,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "low_B1_R_a1",
+    "predicted_MHz": 474934055.7390312,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934055.1390312,
+        "upper_MHz": 474934056.3390312,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934042.7390312,
+        "upper_MHz": 474934068.7390312,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "low_B1_R_a3",
+    "predicted_MHz": 474934110.68494534,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934110.0849453,
+        "upper_MHz": 474934111.28494537,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934097.68494534,
+        "upper_MHz": 474934123.68494534,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-compact",
+    "target_id": "low_B1_R_a10",
+    "predicted_MHz": 474934527.5575088,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934526.9575088,
+        "upper_MHz": 474934528.15750885,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934514.5575088,
+        "upper_MHz": 474934540.5575088,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_lowJ_P_a1",
+    "predicted_MHz": 563262823.1616935,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262822.5616934,
+        "upper_MHz": 563262823.7616935,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262810.1616935,
+        "upper_MHz": 563262836.1616935,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_lowJ_P_a3",
+    "predicted_MHz": 563262896.2888453,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262895.6888453,
+        "upper_MHz": 563262896.8888453,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262883.2888453,
+        "upper_MHz": 563262909.2888453,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_lowJ_P_a10",
+    "predicted_MHz": 563263299.4835724,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563263298.8835723,
+        "upper_MHz": 563263300.0835724,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563263286.4835724,
+        "upper_MHz": 563263312.4835724,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_lowJ_R_a1",
+    "predicted_MHz": 563497563.7817928,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497563.1817927,
+        "upper_MHz": 563497564.3817928,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497550.7817928,
+        "upper_MHz": 563497576.7817928,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_lowJ_R_a3",
+    "predicted_MHz": 563497638.3630909,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497637.7630908,
+        "upper_MHz": 563497638.9630909,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497625.3630909,
+        "upper_MHz": 563497651.3630909,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_lowJ_R_a10",
+    "predicted_MHz": 563498040.8794444,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563498040.2794443,
+        "upper_MHz": 563498041.4794444,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563498027.8794444,
+        "upper_MHz": 563498053.8794444,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_midJ_P_a1",
+    "predicted_MHz": 562835402.9266595,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835402.3266594,
+        "upper_MHz": 562835403.5266595,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835389.9266595,
+        "upper_MHz": 562835415.9266595,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_midJ_P_a3",
+    "predicted_MHz": 562835479.6211059,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835479.0211059,
+        "upper_MHz": 562835480.2211059,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835466.6211059,
+        "upper_MHz": 562835492.6211059,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_midJ_P_a10",
+    "predicted_MHz": 562835882.3391105,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835881.7391105,
+        "upper_MHz": 562835882.9391105,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835869.3391105,
+        "upper_MHz": 562835895.3391105,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_midJ_R_a1",
+    "predicted_MHz": 563105854.1266787,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105853.5266787,
+        "upper_MHz": 563105854.7266787,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105841.1266787,
+        "upper_MHz": 563105867.1266787,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_midJ_R_a3",
+    "predicted_MHz": 563105931.9312216,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105931.3312216,
+        "upper_MHz": 563105932.5312216,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105918.9312216,
+        "upper_MHz": 563105944.9312216,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "routine_32_midJ_R_a10",
+    "predicted_MHz": 563106334.1296687,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563106333.5296687,
+        "upper_MHz": 563106334.7296687,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563106321.1296687,
+        "upper_MHz": 563106347.1296687,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_ground_X_P_a1",
+    "predicted_MHz": 575392242.7451695,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392242.1451695,
+        "upper_MHz": 575392243.3451695,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392229.7451695,
+        "upper_MHz": 575392255.7451695,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_ground_X_P_a3",
+    "predicted_MHz": 575392344.5184871,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392343.9184871,
+        "upper_MHz": 575392345.1184871,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392331.5184871,
+        "upper_MHz": 575392357.5184871,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_ground_X_P_a10",
+    "predicted_MHz": 575392737.0585734,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392736.4585733,
+        "upper_MHz": 575392737.6585734,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392724.0585734,
+        "upper_MHz": 575392750.0585734,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_ground_X_R_a1",
+    "predicted_MHz": 575626983.3652687,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575626982.7652687,
+        "upper_MHz": 575626983.9652687,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575626970.3652687,
+        "upper_MHz": 575626996.3652687,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_ground_X_R_a3",
+    "predicted_MHz": 575627086.5927327,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627085.9927326,
+        "upper_MHz": 575627087.1927327,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627073.5927327,
+        "upper_MHz": 575627099.5927327,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_ground_X_R_a10",
+    "predicted_MHz": 575627478.4544455,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627477.8544455,
+        "upper_MHz": 575627479.0544455,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627465.4544455,
+        "upper_MHz": 575627491.4544455,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_hot_X_P_a1",
+    "predicted_MHz": 567189003.4146638,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189002.8146638,
+        "upper_MHz": 567189004.0146638,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567188990.4146638,
+        "upper_MHz": 567189016.4146638,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_hot_X_P_a3",
+    "predicted_MHz": 567189136.2645954,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189135.6645954,
+        "upper_MHz": 567189136.8645954,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189123.2645954,
+        "upper_MHz": 567189149.2645954,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_hot_X_P_a10",
+    "predicted_MHz": 567189521.0206325,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189520.4206325,
+        "upper_MHz": 567189521.6206325,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189508.0206325,
+        "upper_MHz": 567189534.0206325,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_hot_X_R_a1",
+    "predicted_MHz": 567538624.6322306,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538624.0322306,
+        "upper_MHz": 567538625.2322307,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538611.6322306,
+        "upper_MHz": 567538637.6322306,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_hot_X_R_a3",
+    "predicted_MHz": 567538758.1668391,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538757.5668391,
+        "upper_MHz": 567538758.7668391,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538745.1668391,
+        "upper_MHz": 567538771.1668391,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "B39_hot_X_R_a10",
+    "predicted_MHz": 567539142.5970801,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567539141.9970801,
+        "upper_MHz": 567539143.1970801,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567539129.5970801,
+        "upper_MHz": 567539155.5970801,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_first_P_a1",
+    "predicted_MHz": 538808459.7274349,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808459.1274348,
+        "upper_MHz": 538808460.3274349,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808446.7274349,
+        "upper_MHz": 538808472.7274349,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_first_P_a3",
+    "predicted_MHz": 538808568.4322683,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808567.8322682,
+        "upper_MHz": 538808569.0322683,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808555.4322683,
+        "upper_MHz": 538808581.4322683,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_first_P_a10",
+    "predicted_MHz": 538808966.3928668,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808965.7928668,
+        "upper_MHz": 538808966.9928669,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808953.3928668,
+        "upper_MHz": 538808979.3928668,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_first_R_a1",
+    "predicted_MHz": 539513270.0995296,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513269.4995296,
+        "upper_MHz": 539513270.6995296,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513257.0995296,
+        "upper_MHz": 539513283.0995296,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_first_R_a3",
+    "predicted_MHz": 539513379.019433,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513378.419433,
+        "upper_MHz": 539513379.619433,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513366.019433,
+        "upper_MHz": 539513392.019433,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_first_R_a10",
+    "predicted_MHz": 539513776.8501998,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513776.2501998,
+        "upper_MHz": 539513777.4501998,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513763.8501998,
+        "upper_MHz": 539513789.8501998,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_second_P_a1",
+    "predicted_MHz": 538275676.2059145,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275675.6059145,
+        "upper_MHz": 538275676.8059145,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275663.2059145,
+        "upper_MHz": 538275689.2059145,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_second_P_a3",
+    "predicted_MHz": 538275787.8476881,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275787.247688,
+        "upper_MHz": 538275788.4476881,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275774.8476881,
+        "upper_MHz": 538275800.8476881,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_second_P_a10",
+    "predicted_MHz": 538276184.96408,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538276184.36408,
+        "upper_MHz": 538276185.56408,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538276171.96408,
+        "upper_MHz": 538276197.96408,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_second_R_a1",
+    "predicted_MHz": 538998043.9940445,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998043.3940445,
+        "upper_MHz": 538998044.5940446,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998030.9940445,
+        "upper_MHz": 538998056.9940445,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_second_R_a3",
+    "predicted_MHz": 538998155.8434732,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998155.2434732,
+        "upper_MHz": 538998156.4434732,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998142.8434732,
+        "upper_MHz": 538998168.8434732,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "highJ_25_second_R_a10",
+    "predicted_MHz": 538998552.83242,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998552.23242,
+        "upper_MHz": 538998553.43242,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998539.83242,
+        "upper_MHz": 538998565.83242,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "X4_hot_band_P_a1",
+    "predicted_MHz": 539331813.792265,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331813.192265,
+        "upper_MHz": 539331814.3922651,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331800.792265,
+        "upper_MHz": 539331826.792265,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "X4_hot_band_P_a3",
+    "predicted_MHz": 539331895.2614739,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331894.6614739,
+        "upper_MHz": 539331895.8614739,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331882.2614739,
+        "upper_MHz": 539331908.2614739,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "X4_hot_band_P_a10",
+    "predicted_MHz": 539332296.5197976,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539332295.9197975,
+        "upper_MHz": 539332297.1197976,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539332283.5197976,
+        "upper_MHz": 539332309.5197976,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "X4_hot_band_R_a1",
+    "predicted_MHz": 539607721.4372317,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607720.8372316,
+        "upper_MHz": 539607722.0372317,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607708.4372317,
+        "upper_MHz": 539607734.4372317,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "X4_hot_band_R_a3",
+    "predicted_MHz": 539607803.9513565,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607803.3513565,
+        "upper_MHz": 539607804.5513566,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607790.9513565,
+        "upper_MHz": 539607816.9513565,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "X4_hot_band_R_a10",
+    "predicted_MHz": 539608204.7209861,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539608204.1209861,
+        "upper_MHz": 539608205.3209862,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539608191.7209861,
+        "upper_MHz": 539608217.7209861,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "low_B1_P_a1",
+    "predicted_MHz": 474788682.1139993,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788681.5139993,
+        "upper_MHz": 474788682.71399933,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788669.1139993,
+        "upper_MHz": 474788695.1139993,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "low_B1_P_a3",
+    "predicted_MHz": 474788733.2723925,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788732.6723925,
+        "upper_MHz": 474788733.87239254,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788720.2723925,
+        "upper_MHz": 474788746.2723925,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "low_B1_P_a10",
+    "predicted_MHz": 474789151.93141764,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474789151.3314176,
+        "upper_MHz": 474789152.53141767,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474789138.93141764,
+        "upper_MHz": 474789164.93141764,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "low_B1_R_a1",
+    "predicted_MHz": 474934056.5473307,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934055.94733065,
+        "upper_MHz": 474934057.1473307,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934043.5473307,
+        "upper_MHz": 474934069.5473307,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "low_B1_R_a3",
+    "predicted_MHz": 474934111.4078122,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934110.80781215,
+        "upper_MHz": 474934112.0078122,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934098.4078122,
+        "upper_MHz": 474934124.4078122,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-absolute",
+    "target_id": "low_B1_R_a10",
+    "predicted_MHz": 474934528.33659226,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934527.73659223,
+        "upper_MHz": 474934528.9365923,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934515.33659226,
+        "upper_MHz": 474934541.33659226,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_lowJ_P_a1",
+    "predicted_MHz": 563262823.2511417,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262822.6511416,
+        "upper_MHz": 563262823.8511417,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262810.2511417,
+        "upper_MHz": 563262836.2511417,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_lowJ_P_a3",
+    "predicted_MHz": 563262896.3666948,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563262895.7666948,
+        "upper_MHz": 563262896.9666948,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563262883.3666948,
+        "upper_MHz": 563262909.3666948,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_lowJ_P_a10",
+    "predicted_MHz": 563263299.5496916,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563263298.9496915,
+        "upper_MHz": 563263300.1496916,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563263286.5496916,
+        "upper_MHz": 563263312.5496916,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_lowJ_R_a1",
+    "predicted_MHz": 563497563.8443795,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497563.2443795,
+        "upper_MHz": 563497564.4443796,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497550.8443795,
+        "upper_MHz": 563497576.8443795,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_lowJ_R_a3",
+    "predicted_MHz": 563497638.4159182,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563497637.8159182,
+        "upper_MHz": 563497639.0159183,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563497625.4159182,
+        "upper_MHz": 563497651.4159182,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_lowJ_R_a10",
+    "predicted_MHz": 563498040.9250824,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563498040.3250824,
+        "upper_MHz": 563498041.5250825,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563498027.9250824,
+        "upper_MHz": 563498053.9250824,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_midJ_P_a1",
+    "predicted_MHz": 562835403.0103672,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835402.4103671,
+        "upper_MHz": 562835403.6103672,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835390.0103672,
+        "upper_MHz": 562835416.0103672,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_midJ_P_a3",
+    "predicted_MHz": 562835479.6952262,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835479.0952262,
+        "upper_MHz": 562835480.2952262,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835466.6952262,
+        "upper_MHz": 562835492.6952262,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_midJ_P_a10",
+    "predicted_MHz": 562835882.3946807,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 562835881.7946807,
+        "upper_MHz": 562835882.9946808,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 562835869.3946807,
+        "upper_MHz": 562835895.3946807,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_midJ_R_a1",
+    "predicted_MHz": 563105854.1829627,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105853.5829626,
+        "upper_MHz": 563105854.7829627,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105841.1829627,
+        "upper_MHz": 563105867.1829627,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_midJ_R_a3",
+    "predicted_MHz": 563105931.9803036,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563105931.3803036,
+        "upper_MHz": 563105932.5803037,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563105918.9803036,
+        "upper_MHz": 563105944.9803036,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "routine_32_midJ_R_a10",
+    "predicted_MHz": 563106334.165354,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 563106333.565354,
+        "upper_MHz": 563106334.765354,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 563106321.165354,
+        "upper_MHz": 563106347.165354,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_ground_X_P_a1",
+    "predicted_MHz": 575392242.6277348,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392242.0277348,
+        "upper_MHz": 575392243.2277348,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392229.6277348,
+        "upper_MHz": 575392255.6277348,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_ground_X_P_a3",
+    "predicted_MHz": 575392344.3657416,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392343.7657416,
+        "upper_MHz": 575392344.9657416,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392331.3657416,
+        "upper_MHz": 575392357.3657416,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_ground_X_P_a10",
+    "predicted_MHz": 575392736.9140488,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575392736.3140488,
+        "upper_MHz": 575392737.5140488,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575392723.9140488,
+        "upper_MHz": 575392749.9140488,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_ground_X_R_a1",
+    "predicted_MHz": 575626983.2209727,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575626982.6209726,
+        "upper_MHz": 575626983.8209727,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575626970.2209727,
+        "upper_MHz": 575626996.2209727,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_ground_X_R_a3",
+    "predicted_MHz": 575627086.4149649,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627085.8149649,
+        "upper_MHz": 575627087.0149649,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627073.4149649,
+        "upper_MHz": 575627099.4149649,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_ground_X_R_a10",
+    "predicted_MHz": 575627478.2894397,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 575627477.6894397,
+        "upper_MHz": 575627478.8894397,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 575627465.2894397,
+        "upper_MHz": 575627491.2894397,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_hot_X_P_a1",
+    "predicted_MHz": 567189003.077778,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189002.477778,
+        "upper_MHz": 567189003.677778,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567188990.077778,
+        "upper_MHz": 567189016.077778,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_hot_X_P_a3",
+    "predicted_MHz": 567189135.7540461,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189135.154046,
+        "upper_MHz": 567189136.3540461,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189122.7540461,
+        "upper_MHz": 567189148.7540461,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_hot_X_P_a10",
+    "predicted_MHz": 567189520.5405804,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567189519.9405804,
+        "upper_MHz": 567189521.1405804,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567189507.5405804,
+        "upper_MHz": 567189533.5405804,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_hot_X_R_a1",
+    "predicted_MHz": 567538624.2761481,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538623.676148,
+        "upper_MHz": 567538624.8761481,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538611.2761481,
+        "upper_MHz": 567538637.2761481,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_hot_X_R_a3",
+    "predicted_MHz": 567538757.6441437,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567538757.0441437,
+        "upper_MHz": 567538758.2441437,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567538744.6441437,
+        "upper_MHz": 567538770.6441437,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "B39_hot_X_R_a10",
+    "predicted_MHz": 567539142.1103466,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 567539141.5103465,
+        "upper_MHz": 567539142.7103466,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 567539129.1103466,
+        "upper_MHz": 567539155.1103466,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_first_P_a1",
+    "predicted_MHz": 538808459.865617,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808459.265617,
+        "upper_MHz": 538808460.4656171,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808446.865617,
+        "upper_MHz": 538808472.865617,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_first_P_a3",
+    "predicted_MHz": 538808569.0914999,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808568.4914999,
+        "upper_MHz": 538808569.6915,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808556.0914999,
+        "upper_MHz": 538808582.0914999,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_first_P_a10",
+    "predicted_MHz": 538808966.7412909,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538808966.1412909,
+        "upper_MHz": 538808967.341291,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538808953.7412909,
+        "upper_MHz": 538808979.7412909,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_first_R_a1",
+    "predicted_MHz": 539513270.3821952,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513269.7821952,
+        "upper_MHz": 539513270.9821953,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513257.3821952,
+        "upper_MHz": 539513283.3821952,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_first_R_a3",
+    "predicted_MHz": 539513379.8386475,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513379.2386475,
+        "upper_MHz": 539513380.4386475,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513366.8386475,
+        "upper_MHz": 539513392.8386475,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_first_R_a10",
+    "predicted_MHz": 539513777.3691204,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539513776.7691203,
+        "upper_MHz": 539513777.9691204,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539513764.3691204,
+        "upper_MHz": 539513790.3691204,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_second_P_a1",
+    "predicted_MHz": 538275676.3365402,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275675.7365402,
+        "upper_MHz": 538275676.9365402,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275663.3365402,
+        "upper_MHz": 538275689.3365402,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_second_P_a3",
+    "predicted_MHz": 538275788.5312548,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538275787.9312547,
+        "upper_MHz": 538275789.1312548,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538275775.5312548,
+        "upper_MHz": 538275801.5312548,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_second_P_a10",
+    "predicted_MHz": 538276185.319699,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538276184.719699,
+        "upper_MHz": 538276185.9196991,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538276172.319699,
+        "upper_MHz": 538276198.319699,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_second_R_a1",
+    "predicted_MHz": 538998044.2857136,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998043.6857135,
+        "upper_MHz": 538998044.8857136,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998031.2857136,
+        "upper_MHz": 538998057.2857136,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_second_R_a3",
+    "predicted_MHz": 538998156.704376,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998156.104376,
+        "upper_MHz": 538998157.304376,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998143.704376,
+        "upper_MHz": 538998169.704376,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "highJ_25_second_R_a10",
+    "predicted_MHz": 538998553.3760184,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 538998552.7760184,
+        "upper_MHz": 538998553.9760184,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 538998540.3760184,
+        "upper_MHz": 538998566.3760184,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "X4_hot_band_P_a1",
+    "predicted_MHz": 539331814.2505776,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331813.6505775,
+        "upper_MHz": 539331814.8505776,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331801.2505776,
+        "upper_MHz": 539331827.2505776,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "X4_hot_band_P_a3",
+    "predicted_MHz": 539331895.3026947,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539331894.7026947,
+        "upper_MHz": 539331895.9026947,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539331882.3026947,
+        "upper_MHz": 539331908.3026947,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "X4_hot_band_P_a10",
+    "predicted_MHz": 539332296.6925725,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539332296.0925725,
+        "upper_MHz": 539332297.2925725,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539332283.6925725,
+        "upper_MHz": 539332309.6925725,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "X4_hot_band_R_a1",
+    "predicted_MHz": 539607721.8620762,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607721.2620761,
+        "upper_MHz": 539607722.4620762,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607708.8620762,
+        "upper_MHz": 539607734.8620762,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "X4_hot_band_R_a3",
+    "predicted_MHz": 539607803.9743396,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539607803.3743396,
+        "upper_MHz": 539607804.5743396,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539607790.9743396,
+        "upper_MHz": 539607816.9743396,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "X4_hot_band_R_a10",
+    "predicted_MHz": 539608204.8769315,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 539608204.2769315,
+        "upper_MHz": 539608205.4769316,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 539608191.8769315,
+        "upper_MHz": 539608217.8769315,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "low_B1_P_a1",
+    "predicted_MHz": 474788680.6168964,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788680.01689637,
+        "upper_MHz": 474788681.2168964,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788667.6168964,
+        "upper_MHz": 474788693.6168964,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "low_B1_P_a3",
+    "predicted_MHz": 474788732.5303643,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474788731.93036425,
+        "upper_MHz": 474788733.1303643,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474788719.5303643,
+        "upper_MHz": 474788745.5303643,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "low_B1_P_a10",
+    "predicted_MHz": 474789151.32783604,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474789150.727836,
+        "upper_MHz": 474789151.92783606,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474789138.32783604,
+        "upper_MHz": 474789164.32783604,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "low_B1_R_a1",
+    "predicted_MHz": 474934055.03004736,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934054.43004733,
+        "upper_MHz": 474934055.6300474,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934042.03004736,
+        "upper_MHz": 474934068.03004736,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "low_B1_R_a3",
+    "predicted_MHz": 474934110.6464166,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934110.0464166,
+        "upper_MHz": 474934111.2464166,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934097.6464166,
+        "upper_MHz": 474934123.6464166,
+        "nominal_probability": null
+      }
+    }
+  },
+  {
+    "model": "research-20261018-precision",
+    "target_id": "low_B1_R_a10",
+    "predicted_MHz": 474934527.7165457,
+    "envelopes": {
+      "routine": {
+        "lower_MHz": 474934527.1165457,
+        "upper_MHz": 474934528.3165457,
+        "nominal_probability": null
+      },
+      "stress": {
+        "lower_MHz": 474934514.7165457,
+        "upper_MHz": 474934540.7165457,
+        "nominal_probability": null
+      }
+    }
+  }
+]

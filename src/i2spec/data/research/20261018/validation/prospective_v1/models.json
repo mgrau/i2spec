@@ -1,0 +1,126 @@
+[
+  {
+    "id": "research-20261018-balanced",
+    "info": {
+      "id": "research-20261018-balanced",
+      "role": "balanced",
+      "title": "Balanced accuracy",
+      "architecture": "x14_b20_fixed_x_0_0_5_5_3_1__exact_J",
+      "inventory": {
+        "fitted_molecular": 61,
+        "inherited_molecular": 18,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "isotopologue": "127I2",
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_lower_max": 200
+      },
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.15636335726412082,
+      "intraline_rms_MHz": 0.058557271279601524,
+      "validated_folds": 7,
+      "verification_max_absolute_Hz": 0.5960464477539062,
+      "verification_max_intraline_Hz": 0.1070412167791801,
+      "training_fold": "future",
+      "validation_scope": "Reused exploratory benchmark and seven overlapping physical holdouts"
+    },
+    "coefficient_sha256": "566847d1ac423d9d84c2bdb588b9791fcd2052b1930de723a8b475746cf22a2a"
+  },
+  {
+    "id": "research-20261018-compact",
+    "info": {
+      "id": "research-20261018-compact",
+      "role": "compact_value",
+      "title": "Compact value",
+      "architecture": "x10_b20_fixed_x_0_0_5_5_2_1__exact_J",
+      "inventory": {
+        "fitted_molecular": 56,
+        "inherited_molecular": 18,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "isotopologue": "127I2",
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_lower_max": 200
+      },
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.19073698049917062,
+      "intraline_rms_MHz": 0.08587890572012952,
+      "validated_folds": 7,
+      "verification_max_absolute_Hz": 0.476837158203125,
+      "verification_max_intraline_Hz": 0.11818428902188316,
+      "training_fold": "future",
+      "validation_scope": "Reused exploratory benchmark and seven overlapping physical holdouts"
+    },
+    "coefficient_sha256": "f0cea776bc81911f1bd6c6f0725d4e4ea78277646a0d22c0f6de99f38be6cad3"
+  },
+  {
+    "id": "research-20261018-absolute",
+    "info": {
+      "id": "research-20261018-absolute",
+      "role": "absolute_accuracy",
+      "title": "Absolute accuracy",
+      "architecture": "x14_b20_anchored_x_3_1_4_5_2_1__exact_J",
+      "inventory": {
+        "fitted_molecular": 61,
+        "inherited_molecular": 11,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "isotopologue": "127I2",
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_lower_max": 200
+      },
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.15553662941349616,
+      "intraline_rms_MHz": 0.10800327659957658,
+      "validated_folds": 7,
+      "verification_max_absolute_Hz": 0.7152557373046875,
+      "verification_max_intraline_Hz": 0.11584762660277192,
+      "training_fold": "future",
+      "validation_scope": "Reused exploratory benchmark and seven overlapping physical holdouts"
+    },
+    "coefficient_sha256": "7c3dde9343a8cfe674ebf4fc60455788a390ff852881383627944094a129742a"
+  },
+  {
+    "id": "research-20261018-precision",
+    "info": {
+      "id": "research-20261018-precision",
+      "role": "interval_precision",
+      "title": "Hyperfine precision",
+      "architecture": "x10_b20_anchored_x_4_2_6_8_3_4__exact_J",
+      "inventory": {
+        "fitted_molecular": 68,
+        "inherited_molecular": 11,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "isotopologue": "127I2",
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_lower_max": 200
+      },
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.19610646691108435,
+      "intraline_rms_MHz": 0.029752468159544975,
+      "validated_folds": 7,
+      "verification_max_absolute_Hz": 0.476837158203125,
+      "verification_max_intraline_Hz": 0.11714681136254512,
+      "training_fold": "future",
+      "validation_scope": "Reused exploratory benchmark and seven overlapping physical holdouts"
+    },
+    "coefficient_sha256": "fc6e380790750d0ea478e7f451ff26bcd58e29e25e145b4e2b5f56bfd946d77e"
+  }
+]

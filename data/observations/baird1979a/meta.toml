@@ -1,0 +1,26 @@
+id = "baird1979a"
+citation = "K. M. Baird, K. M. Evenson, G. R. Hanes, D. A. Jennings and F. R. Petersen, \"Extension of absolute-frequency measurements to the visible: frequencies of ten hyperfine components of iodine\", Opt. Lett. 4, 263-264 (1979)"
+source = "https://doi.org/10.1364/OL.4.000263 (publisher PDF via ODU; Matt's library copy papers/Baird1979_Opt_Lett_4_263.pdf)"
+doi = "10.1364/OL.4.000263"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Read from a 250 dpi page image and the text layer (p. 264): the first absolute frequency measurement in the
+visible. The NRC composite He-Ne laser, doubled from 260 to 520 THz and locked (2 MHz modulation, 4 Pa) to ten
+hyperfine components f-o of 127I2 P(62) 17-1, was beaten at 260 THz against the NBS Lamb-dip 20Ne laser
+(f_Ne = 260 103 264 +- 30 MHz). Table 1 gives f_alpha - 2 f_Ne for each component; the text gives f_o =
+520 206 837 +- 60 MHz.
+Entered: f_o as an absolute frequency, and the other nine as intervals to o, the printed differences minus
+o's 308.6 MHz, which removes the 60 MHz common to all ten.
+Labels: "Fifteen hyperfine components (labeled a to o in order of decreasing frequency)", so o is a1 and f is a10.
+
+Not entered: the preliminary wavelength value of o, 576 294 758 +- 6 fm (f = 520 206 811 +- 6 MHz), quoted from
+another measurement (their ref. 4).
+"""
+
+uncertainty = "Each beat between f_alpha/2 and f_Ne is good to 0.5 MHz, so 1.0 MHz at 520 THz for every printed value (as printed for o); the intervals to o take 1.4 MHz (two values in quadrature). The absolute: 60 MHz, from the 30 MHz of f_Ne."
+
+[conditions]
+method = "composite-cavity He-Ne laser at 1.15 um, intracavity LiNbO3 doubling to 520 THz, first-harmonic locking with 2 MHz modulation on saturated absorption (4 Pa); beat against the NBS Lamb-dip 20Ne laser"

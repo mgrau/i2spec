@@ -1,0 +1,167 @@
+{
+  "created_utc": "2026-10-18T06:22:42.201580+00:00",
+  "candidate": {
+    "model": "x10_b20_fixed_x_0_0_5_5_2_1__exact_J",
+    "free": 56,
+    "inherited": 18,
+    "calibration": 4,
+    "n_line_specific": 0,
+    "n_level_specific": 0,
+    "absolute_rms_MHz": 0.19073698049917062,
+    "intraline_rms_MHz": 0.08587890572012952,
+    "maximum_absolute_error_MHz": 1.0379507541656494,
+    "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_future_exact_screen_s0",
+    "potential": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_future_exact_screen_s0_consistent_i1_potential",
+    "hyperfine": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_future_exact_screen_s0_consistent_i1_hyperfine",
+    "export": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_future_exact_screen_s0_consistent_i1_after",
+    "training_potential_cost": 5168.205909978024,
+    "training_hyperfine_cost": 3561.1481039303812,
+    "eligible": true,
+    "validated_folds": 7,
+    "fold_results": {
+      "physical_level:B:1": {
+        "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_physical_level_B_1_validation_s2",
+        "training_potential_cost": 5244.3301678803855,
+        "training_hyperfine_cost": 6500.390042828569,
+        "absolute_rms_MHz": 0.5640767269949494,
+        "intraline_rms_MHz": 1.1747384009664166,
+        "accepted_audited_starts": 2,
+        "original_seed_attempts": [
+          0,
+          2
+        ],
+        "original_failed_starts": 0,
+        "accepted_start_absolute_rms_range_MHz": [
+          0.5640767269949494,
+          1.1028420602347822
+        ]
+      },
+      "physical_level:B:16": {
+        "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_physical_level_B_16_validation_s0",
+        "training_potential_cost": 5279.973118997566,
+        "training_hyperfine_cost": 6593.395422702865,
+        "absolute_rms_MHz": 0.11251520893739494,
+        "intraline_rms_MHz": 0.08655412422222392,
+        "accepted_audited_starts": 2,
+        "original_seed_attempts": [
+          0,
+          2
+        ],
+        "original_failed_starts": 0,
+        "accepted_start_absolute_rms_range_MHz": [
+          0.041237300698055035,
+          0.11251520893739494
+        ]
+      },
+      "physical_level:B:33": {
+        "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_physical_level_B_33_validation_s2",
+        "training_potential_cost": 5221.669861358122,
+        "training_hyperfine_cost": 6734.984916551186,
+        "absolute_rms_MHz": 0.16779905395464692,
+        "intraline_rms_MHz": 0.03346966079792712,
+        "accepted_audited_starts": 2,
+        "original_seed_attempts": [
+          0,
+          2
+        ],
+        "original_failed_starts": 0,
+        "accepted_start_absolute_rms_range_MHz": [
+          0.16779905395464692,
+          0.1925878995491465
+        ]
+      },
+      "physical_level:B:39": {
+        "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_physical_level_B_39_validation_s0",
+        "training_potential_cost": 5206.841761707791,
+        "training_hyperfine_cost": 6242.880329139107,
+        "absolute_rms_MHz": 3.482417986261227,
+        "intraline_rms_MHz": 0.0986366642446332,
+        "accepted_audited_starts": 2,
+        "original_seed_attempts": [
+          0,
+          2
+        ],
+        "original_failed_starts": 0,
+        "accepted_start_absolute_rms_range_MHz": [
+          2.5297388104769145,
+          3.482417986261227
+        ]
+      },
+      "physical_level:X:4": {
+        "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_physical_level_X_4_validation_s2",
+        "training_potential_cost": 5107.790456656009,
+        "training_hyperfine_cost": 6252.627434569978,
+        "absolute_rms_MHz": 0.45379186144043,
+        "intraline_rms_MHz": 0.6942265420722117,
+        "accepted_audited_starts": 2,
+        "original_seed_attempts": [
+          0,
+          2
+        ],
+        "original_failed_starts": 0,
+        "accepted_start_absolute_rms_range_MHz": [
+          0.4157467275423221,
+          0.45379186144043
+        ]
+      },
+      "physical_source:kobayashi2016a": {
+        "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_physical_source_kobayashi2016a_validation_s2",
+        "training_potential_cost": 5227.03657839239,
+        "training_hyperfine_cost": 6300.589124386516,
+        "absolute_rms_MHz": 0.4411664247145737,
+        "intraline_rms_MHz": 0.09252264269502426,
+        "accepted_audited_starts": 2,
+        "original_seed_attempts": [
+          0,
+          2
+        ],
+        "original_failed_starts": 0,
+        "accepted_start_absolute_rms_range_MHz": [
+          0.4411664247145737,
+          4.937935968134451
+        ]
+      },
+      "physical_source:sakagami2020a": {
+        "tag": "p13_finalization_atlas_exact_v1_x10_b20_fixed_x_0_0_5_5_2_1__exact_J_physical_source_sakagami2020a_validation_s0",
+        "training_potential_cost": 5214.00759705411,
+        "training_hyperfine_cost": 6788.10111459443,
+        "absolute_rms_MHz": 0.128455366041284,
+        "intraline_rms_MHz": 0.030426197950783936,
+        "accepted_audited_starts": 2,
+        "original_seed_attempts": [
+          0,
+          2
+        ],
+        "original_failed_starts": 0,
+        "accepted_start_absolute_rms_range_MHz": [
+          0.128455366041284,
+          0.17466882393241345
+        ]
+      }
+    },
+    "retained_atlas_exact_J": true,
+    "original_finalist": false,
+    "selection": "Training objectives choose coefficients within architecture/fold; exploratory accuracy compares architectures"
+  },
+  "recommendation_rules": {
+    "absolute": "Lowest absolute RMS among architectures with complete audited seven-fold evidence",
+    "compact": "Fewest fitted coefficients within 25% of the absolute leader RMS; tie by absolute RMS then inherited count",
+    "balanced": "Lowest hyperfine RMS within 5% of the absolute leader RMS and no more fitted coefficients than that leader; ties by fitted count then absolute RMS",
+    "precision": "Fewest fitted coefficients within 1% of the best hyperfine RMS; tie by absolute RMS then inherited count",
+    "coefficient_start": "Lexicographic minimum potential training cost, then hyperfine training cost, among accepted audited starts within the same architecture/fold",
+    "interpretation": "Declared representative rules, not a unique utility function or a global-optimum certificate"
+  },
+  "all_tracks_terminal": true,
+  "caveats": [
+    "Absolute benchmark and seven overlapping named folds have been reused; scores are exploratory, not blind or nested validation.",
+    "Coefficient starts are selected by training objectives and physical/numerical acceptance, never withheld prediction error.",
+    "Fitted, inherited, calibration and structural choices remain separate; there are no independent line or vibrational-level shifts.",
+    "Whole-band B39 prediction remains a separate weakness; its four absolute components share one source, confounding band and source effects.",
+    "Accepted numerical evidence is read from saved audits; standalone snapshot prediction replay is a separate pending check.",
+    "Joint raw-data pilots cannot be recommended without convergence, covariance assessment, independent starts and complete seven-fold refits.",
+    "A broader retained-atlas audit found a pre-existing interpolation discrepancy up to 260.7 MHz in the original balanced training model. The separate exact-J track refits the four original finalists and repeats all seven folds; original approximate fits remain historical references.",
+    "This finite search cannot prove a globally optimal model or minimum."
+  ],
+  "coefficient_selection": "Within-architecture minimum accepted training objective; no held-out start selection",
+  "packaging_status": "staged_pending_independent_prediction_replay"
+}

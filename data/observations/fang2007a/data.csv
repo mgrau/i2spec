@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.512991,0.000025,,,fang2007a,"abstract and p. 5688: 563 260 223 512 991 +- 20 Hz, one 32 min comb measurement of the NIM Nd:YAG/I2 standard; measurement uncertainty only (see meta.toml)"

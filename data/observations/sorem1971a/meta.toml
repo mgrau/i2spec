@@ -1,0 +1,24 @@
+id = "sorem1971a"
+citation = "M. S. Sorem, M. D. Levenson and A. L. Schawlow, \"Saturation spectroscopy of molecular iodine using the 5017 A argon laser line\", Phys. Lett. A 37, 33-34 (1971)"
+source = "https://doi.org/10.1016/0375-9601(71)90318-5 (library copy papers/Sorem1971_Phys_Lett_A_37_33.pdf)"
+doi = "10.1016/0375-9601(71)90318-5"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 33), typed from a 300 dpi page image: the experimental frequencies of the 15 hyperfine components a-o
+of 127I2 R(26) 62-0 at 501.7 nm relative to component h, from saturated absorption with an argon-ion laser and a
+1.2 m confocal interferometer scale (third-order interpolation), averaged over several measurements. The letters
+rise with frequency (a = -472.4 MHz), so they are ranks 1-15 and h is a8.
+Not entered: the "Splittings" column (nearest-neighbour separations from the same recordings: a second reading of
+the same spectra, which differs from the differences of the frequency column by up to 2.8 MHz, f - g), the theory
+columns and the constants (eQq'' = -2900 MHz, Delta eQq = 1878(10) MHz, Delta C_I = 944(60) kHz).
+"""
+
+uncertainty = "\"All experimental frequencies and their differences have an estimated error of 2%\": 2 % of each value, at least 0.5 MHz (one-twentieth of the 10 MHz linewidth)."
+
+notes = "borde1981a and goncharov2007a measure the same line to 10 kHz. Residuals against i2spec2026o (obs - model): rms 1.16 MHz, within the 2 % estimate. Checked with the shipped model only."
+
+[conditions]
+method = "single-mode argon-ion laser at 501.7 nm, saturated absorption, iodine at 150(20) mTorr (20 Pa); 1.2 m confocal interferometer frequency scale"

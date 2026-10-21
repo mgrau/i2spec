@@ -1,0 +1,42 @@
+id = "nevsky2001a"
+citation = "A. Yu. Nevsky, R. Holzwarth, J. Reichert, Th. Udem, T. W. Hänsch, J. von Zanthier, H. Walther, H. Schnatz, F. Riehle, P. V. Pokasov, M. N. Skvortsov and S. N. Bagayev, \"Frequency comparison and absolute frequency measurement of I2-stabilized lasers at 532 nm\", Opt. Commun. 192, 263-272 (2001)"
+source = "https://doi.org/10.1016/S0030-4018(01)01190-7 (library copy papers/Nevsky2001_Opt_Commun_192_263.pdf)"
+doi = "10.1016/S0030-4018(01)01190-7"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Sect. 4, eqs. (1)-(8), typed from the text layer and checked against the pages. MPQ harmonic chain and comb
+(CH4/He-Ne standard calibrated against a Cs fountain) with the ILP (Novosibirsk) Nd:YAG/I2 laser:
+- R(56) 32-0 a10: 563 260 223 507.8 +- 1.1 kHz as measured (cell 13/97PTB, -5 C, 2.42 Pa, 1.7 mW, 80 mW/cm2), and
+  563 260 223 517.7 +- 1.2 kHz "extrapolated to cell 16/89PTB and to an iodine pressure at -20 C (0.46 Pa)" with the
+  measured -4.2(2) kHz/Pa; the extrapolated value is entered, so that it sits with the P(54) values below.
+- P(54) 32-0 a1, a10, a15: given only extrapolated to cell 16/89PTB and 0.46 Pa, 1.2 kHz.
+- eqs. (6)-(8): the gaps from R(56) a10 to P(54) a1, a10, a15, measured by beating two ILP lasers (one locked to
+  R(56) a10, the other alternately to the P(54) components, after removing the cells' offset on R(56) a10):
+  47 588 898, 47 017 360, 46 730 937 kHz, +- 2 kHz; confirmed at PTB with two Innolight lasers to 0.3 kHz.
+Not entered: the as-measured R(56) a10 (the same measurement as the extrapolated one); the PTB-ILP laser comparison
+(laser offsets); the stability data.
+"""
+
+uncertainty = "As printed: 1.2 kHz for the extrapolated absolutes (spectrometer reproducibility 1.1 kHz, CH4 standard 80 Hz, Cs 15 Hz; the cell offset 16/89 vs others is excluded, as the paper stresses), 2 kHz for the gaps."
+
+notes = """
+[shift_correction]: the extrapolated absolutes are at 0.46 Pa; the paper's coefficient takes them to zero pressure
+(+1.9 kHz). The gaps are left alone. The value is cell-specific (16/89PTB was found 2.6(2.8) kHz from the BIPM4
+reference cell). holzwarth2001a is the same MPQ chain with a different laser; not declared. Residuals against
+i2spec2026o (obs - model, after the shift correction): R(56) a10 -2.3 kHz; P(54) a1, a10, a15 -8.5 kHz; the three
+gaps -3.7 to -5.0 kHz. Checked with the shipped model only.
+"""
+
+[conditions]
+pressure_Pa = 0.46
+method = "frequency-doubled Nd:YAG (ILP) with modulation-transfer spectrometer; MPQ phase-coherent chain from a CH4-stabilized He-Ne laser at 3.39 um via a femtosecond comb and an optical frequency interval divider"
+
+[shift_correction]
+pressure_Pa = 0.46
+pressure_kHz_per_Pa = -4.2
+pressure_kHz_per_Pa_unc = 0.2
+groups = ["nevsky2001a_abs"]
+basis = "The absolutes are given extrapolated to 0.46 Pa (-20 C); the paper's pressure shift, 4.2(2) kHz/Pa (frequency falling with pressure), measured on the ILP system between 0 and 20 C."

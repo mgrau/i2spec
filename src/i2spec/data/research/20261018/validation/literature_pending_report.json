@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18T12:24:56.112957+00:00",
+  "registry_sha256": "851c162ac2558c3b1482bbafc450f1b58d9d316a9bf72a7524559c42494655c3",
+  "measurements_sha256": "4d182d4e1248aef4ceb3416f0e9c9ca0e472ea74d41a7d9ee833e7ed4a2745e3",
+  "primary_model": "balanced",
+  "outcome_phase": "external_published",
+  "registered_targets": 2,
+  "scored_unique_targets": 0,
+  "missing_target_ids": [
+    "kondo2025:R158_25_0_a10",
+    "pgmf2025:R56_32_0_a10"
+  ],
+  "rows": [],
+  "summaries": {
+    "absolute_accuracy": {
+      "n": 0,
+      "bias_MHz": null,
+      "rms_MHz": null,
+      "maximum_abs_error_MHz": null,
+      "thresholds": {},
+      "empirical_envelopes": {},
+      "n_measurements": 0,
+      "n_lines": 0,
+      "n_sources": 0,
+      "n_line_source_connected_blocks": 0,
+      "per_stratum": {},
+      "line_block_thresholds": {
+        "0.1": {
+          "within": 0,
+          "total": 0
+        },
+        "0.3": {
+          "within": 0,
+          "total": 0
+        },
+        "1.0": {
+          "within": 0,
+          "total": 0
+        }
+      },
+      "maximum_repeat_error_MHz": null,
+      "derived_intraline_intervals": {
+        "rows": [],
+        "metrics": {
+          "n": 0,
+          "bias_MHz": null,
+          "rms_MHz": null,
+          "maximum_abs_error_MHz": null,
+          "thresholds": {},
+          "empirical_envelopes": {}
+        },
+        "interpretation": "Differences of median component observations sharing the lowest measured rank; correlated, with no independence or measurement-uncertainty propagation assumed"
+      }
+    },
+    "balanced": {
+      "n": 0,
+      "bias_MHz": null,
+      "rms_MHz": null,
+      "maximum_abs_error_MHz": null,
+      "thresholds": {},
+      "empirical_envelopes": {},
+      "n_measurements": 0,
+      "n_lines": 0,
+      "n_sources": 0,
+      "n_line_source_connected_blocks": 0,
+      "per_stratum": {},
+      "line_block_thresholds": {
+        "0.1": {
+          "within": 0,
+          "total": 0
+        },
+        "0.3": {
+          "within": 0,
+          "total": 0
+        },
+        "1.0": {
+          "within": 0,
+          "total": 0
+        }
+      },
+      "maximum_repeat_error_MHz": null,
+      "derived_intraline_intervals": {
+        "rows": [],
+        "metrics": {
+          "n": 0,
+          "bias_MHz": null,
+          "rms_MHz": null,
+          "maximum_abs_error_MHz": null,
+          "thresholds": {},
+          "empirical_envelopes": {}
+        },
+        "interpretation": "Differences of median component observations sharing the lowest measured rank; correlated, with no independence or measurement-uncertainty propagation assumed"
+      }
+    },
+    "compact_value": {
+      "n": 0,
+      "bias_MHz": null,
+      "rms_MHz": null,
+      "maximum_abs_error_MHz": null,
+      "thresholds": {},
+      "empirical_envelopes": {},
+      "n_measurements": 0,
+      "n_lines": 0,
+      "n_sources": 0,
+      "n_line_source_connected_blocks": 0,
+      "per_stratum": {},
+      "line_block_thresholds": {
+        "0.1": {
+          "within": 0,
+          "total": 0
+        },
+        "0.3": {
+          "within": 0,
+          "total": 0
+        },
+        "1.0": {
+          "within": 0,
+          "total": 0
+        }
+      },
+      "maximum_repeat_error_MHz": null,
+      "derived_intraline_intervals": {
+        "rows": [],
+        "metrics": {
+          "n": 0,
+          "bias_MHz": null,
+          "rms_MHz": null,
+          "maximum_abs_error_MHz": null,
+          "thresholds": {},
+          "empirical_envelopes": {}
+        },
+        "interpretation": "Differences of median component observations sharing the lowest measured rank; correlated, with no independence or measurement-uncertainty propagation assumed"
+      }
+    },
+    "interval_precision": {
+      "n": 0,
+      "bias_MHz": null,
+      "rms_MHz": null,
+      "maximum_abs_error_MHz": null,
+      "thresholds": {},
+      "empirical_envelopes": {},
+      "n_measurements": 0,
+      "n_lines": 0,
+      "n_sources": 0,
+      "n_line_source_connected_blocks": 0,
+      "per_stratum": {},
+      "line_block_thresholds": {
+        "0.1": {
+          "within": 0,
+          "total": 0
+        },
+        "0.3": {
+          "within": 0,
+          "total": 0
+        },
+        "1.0": {
+          "within": 0,
+          "total": 0
+        }
+      },
+      "maximum_repeat_error_MHz": null,
+      "derived_intraline_intervals": {
+        "rows": [],
+        "metrics": {
+          "n": 0,
+          "bias_MHz": null,
+          "rms_MHz": null,
+          "maximum_abs_error_MHz": null,
+          "thresholds": {},
+          "empirical_envelopes": {}
+        },
+        "interpretation": "Differences of median component observations sharing the lowest measured rank; correlated, with no independence or measurement-uncertainty propagation assumed"
+      }
+    }
+  },
+  "pending_measurements": [
+    {
+      "source_id": "kondo2025_candidate",
+      "publication_year": 2025,
+      "doi": "10.35848/1347-4065/ae0225",
+      "line": "127I2 R(158) 25-0",
+      "component": "a10",
+      "kind": "frequency",
+      "value_MHz": null,
+      "reported_total_uncertainty_MHz": 0.009,
+      "standard_uncertainty_MHz": null,
+      "expanded_uncertainty_MHz": null,
+      "coverage_factor_k": null,
+      "uncertainty_definition": "Author abstract describes approximately9kHz; exact value and standard/expanded convention not available.",
+      "conditions": {
+        "pressure_Pa": null,
+        "pump_power_mW": null,
+        "modulation_MHz": null,
+        "frequency_correction_convention": null,
+        "reference": "Optical frequency comb according to author abstract; complete traceability/conditions require paper."
+      },
+      "source_url": "https://doi.org/10.35848/1347-4065/ae0225",
+      "primary_publication_confirmation_url": "https://hong-lab.ynu.ac.jp/publications.html",
+      "consulted_abstract_url": "https://www.researchgate.net/publication/395209949_Frequency_measurement_of_hyperfine_transitions_of_the_R15825-0_iodine_line_near_the_S0-P1_transition_of_Yb",
+      "source_location": "Official author-lab publication list confirms citation; author abstract only; publisher full text and author repository inaccessible through available tools.",
+      "exposure_status": "2025 numeric outcome remains uninspected/unavailable after frozen point/protocol/envelope registry. Different2024 approximate result surfaced earlier and is not substituted for2025 outcome.",
+      "comparable_for_confirmatory_score": false,
+      "missing_for_scoring": [
+        "actual2025 measured frequency and complete component table",
+        "primary methods defining pressure/power/AOM corrections and reference convention",
+        "exact combined uncertainty and coverage-factor convention"
+      ],
+      "correction_applied_MHz": null,
+      "eligibility": "No matching resolved line/component rows in archived observations or hyperfine-parameter datasets. Unresolved center already present in both fitted atlases; new independent resolved measurement on a previously observed transition, not unseen-line generalization.",
+      "id": "kondo2025_candidate",
+      "target_id": "kondo2025:R158_25_0_a10",
+      "comparable": false,
+      "frequency_basis": null
+    }
+  ],
+  "noncomparable_measurements": [
+    {
+      "source_id": "zhang2025_pgmf_candidate",
+      "publication_year": 2025,
+      "doi": "10.1088/2631-8695/ada487",
+      "line": "127I2 R(56) 32-0",
+      "component": "a10",
+      "kind": "frequency",
+      "value_MHz": 563260223.515,
+      "reported_value_unit": "kHz",
+      "reported_total_uncertainty_MHz": 0.0051,
+      "standard_uncertainty_MHz": null,
+      "expanded_uncertainty_MHz": null,
+      "coverage_factor_k": null,
+      "uncertainty_definition": "Author abstract says total uncertainty; standard vs expanded and k not verified.",
+      "conditions": {
+        "pressure_Pa": null,
+        "pump_power_mW": null,
+        "modulation_MHz": null,
+        "frequency_correction_convention": null,
+        "reference": "Optical frequency comb referenced to hydrogen maser calibrated through local UTC-traceable time scale; independent acetylene reference comparison described in author abstract."
+      },
+      "source_url": "https://doi.org/10.1088/2631-8695/ada487",
+      "consulted_primary_excerpt_url": "https://www.researchgate.net/publication/387592455_Development_and_evaluation_of_a_532_nm_iodine-stabilized_laser_frequency_standard_at_PGMF",
+      "source_location": "Published-paper first-page abstract excerpt; full methods/tables unavailable in this session.",
+      "exposure_status": "Frequency value surfaced automatically in a broad search snippet BEFORE point/envelope freezing; retrospective exposed-outcome check only.",
+      "comparable_for_confirmatory_score": false,
+      "missing_for_scoring": [
+        "primary methods defining pressure/power/AOM corrections and reference convention",
+        "standard or expanded uncertainty definition and coverage factor"
+      ],
+      "correction_applied_MHz": null,
+      "eligibility": "Identity is already extensively represented in archived precision observations and atlases; independent remeasurement, not unseen-line validation.",
+      "id": "zhang2025_pgmf_candidate",
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "comparable": false,
+      "frequency_basis": null
+    }
+  ],
+  "refitted": false,
+  "model_selected_using_outcomes": false,
+  "interpretation": "Descriptive external errors and empirical-envelope inclusion; no nominal confidence coverage inferred",
+  "prospective_measurement_plan_complete": false,
+  "model_adequacy": "Requires scientific review of residuals, strata, conditions and tolerances; collecting all targets alone does not validate the model"
+}

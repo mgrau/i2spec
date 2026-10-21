@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.515,0.0051,,,zhang2024a,"abstract and Sect. 3.4: a10 = 563 260 223 515.0 kHz, total uncertainty 5.1 kHz: the measured 563 260 223 505.27(6) kHz (ten comb runs, Table 4) minus the shifts of Table 3 (RAM -3.6, iodine impurity -5.0, pump power -1.1 kHz); cold finger -15.00 C, pressure not corrected"

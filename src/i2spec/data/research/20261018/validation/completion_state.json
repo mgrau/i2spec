@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18T12:26:19.600818+00:00",
+  "status": "computational_release_ready_awaiting_new_measurements",
+  "computational_release_ready": true,
+  "scientific_validation_complete": false,
+  "new_measurements_available": false,
+  "primary_model": "research-20261018-balanced",
+  "prospective_registry_sha256": "e0cdfbaba8fc4758a1700edfeceff9b92b0af76a56b737b081a9a56dfa9a32f4",
+  "n_models": 4,
+  "n_prospective_targets": 48,
+  "n_prospective_lines": 16,
+  "n_new_comparable_measurements": 0,
+  "n_literature_comparable_measurements": 0,
+  "exclusion": "127I2 P(13) 43-0",
+  "gates": [
+    {
+      "id": "finite_search",
+      "label": "Finite model search and seven-fold refits",
+      "status": "complete",
+      "detail": "All planned original and follow-up attempts are terminal; training-selected exact-J representatives passed numerical acceptance. Finite protocol does not prove a global optimum."
+    },
+    {
+      "id": "runtime",
+      "label": "Selectable research model package",
+      "status": "complete",
+      "detail": "Four frozen models explicitly selectable; all 2,608 reference values replay within 1 Hz. Production remains i2spec2026o."
+    },
+    {
+      "id": "uncertainty_audit",
+      "label": "Error and sensitivity audit",
+      "status": "complete",
+      "detail": "32 selected cohorts and 64 accepted starts reconciled. Balanced routine RMS 156.36 kHz, worst 576.20 kHz; withheld B(39) RMS 3.44 MHz. Folds overlap."
+    },
+    {
+      "id": "prospective_freeze",
+      "label": "Prospective predictions and scoring",
+      "status": "complete",
+      "detail": "192 forecasts for 48 components on 16 lines / 8 pairs, immutable coefficients/primary/thresholds/envelopes; input templates and scoring prepared. All 384 mesh/box comparisons pass; maximum change 18.72 Hz."
+    },
+    {
+      "id": "new_measurements",
+      "label": "Fresh laboratory validation",
+      "status": "awaiting_measurements",
+      "detail": "User reports no new measurements. All 48 prospective targets remain pending; laser/assignment feasibility and traceability require laboratory review."
+    },
+    {
+      "id": "literature",
+      "label": "Published external comparison",
+      "status": "requires_primary_source",
+      "detail": "Two 2025 candidate papers retained. Kondo exact result unavailable; experimental correction and uncertainty conventions unverified for both. Zero comparable outcomes scored."
+    },
+    {
+      "id": "nominal_coverage",
+      "label": "Calibrated prediction probability",
+      "status": "not_established",
+      "detail": "Empirical half-widths 0.6 / 13 MHz carry no assigned probability. Full covariance and independent coverage calibration are unavailable; no 95% interval or universal accuracy claim."
+    }
+  ],
+  "prospective_numerical_audit": {
+    "passed": true,
+    "n_component_comparisons": 384,
+    "maximum_difference_Hz": {
+      "mesh_h005": 18.715858459472656,
+      "expanded_box": 0.8344650268554688
+    },
+    "tolerance_Hz": 1000.0,
+    "frozen_inputs_unchanged": true,
+    "all_assignments_consistent": true
+  }
+}

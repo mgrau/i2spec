@@ -1,0 +1,48 @@
+id = "wallerand2006a"
+citation = "J.-P. Wallerand, L. Robertsson, L.-S. Ma and M. Zucco, \"Absolute frequency measurement of molecular iodine lines at 514.7 nm, interrogated by a frequency-doubled Yb-doped fibre laser\", Metrologia 43, 294-298 (2006)"
+source = "https://doi.org/10.1088/0026-1394/43/3/012 (PDF supplied by Matt; library copy papers/Wallerand2006_Metrologia_43_294.pdf)"
+doi = "10.1088/0026-1394/43/3/012"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the page (Table 1 and Sect. 3.2, p. 296): BIPM comb (H maser)
+absolute frequencies with a frequency-doubled Yb fibre DFB laser and third-harmonic saturated absorption in a
+50 cm cell:
+- Table 1: all 21 components a1-a21 of 127I2 P(49) 44-0, as f - 582 427 000 MHz, at cold finger -11.48(3) C,
+  1 MHz p-p modulation, 3.7-4 mW, not corrected for pressure.
+- Sect. 3.2: P(13) 43-0 a3 = 582 490 603 443.3 +- 1.5 kHz at -10.56 C (1.3 Pa), "without pressure correction".
+  The standing exclusion of P(13) 43-0 from every fit applies; the row is archive and diagnostic only.
+Labels: a_n is rank n (P(49) has odd J'', 21 components), except at the low end. Table 1 prints a1 = 88.5794 and
+a2 = 234.0598 MHz (above 582 427 000 MHz), but Fig. 2 shows the peaks labelled 1, 2, 3 evenly spaced, 1 and 2
+about 128 and 62 MHz below 3 (364.659), i.e. near 236 and 302 MHz, with nothing near 89 MHz; the model puts
+a1 at 233.9 and a2 at 301.05. So the printed a2 is the lowest component and is entered as a1, and the printed a1
+is left out: the value of the second component (near 301 MHz) is not available from this paper.
+Not entered: the printed a1 (88.5794 MHz, see above); the a5-a6 spacing "4.2 MHz" of the Fig. 2 caption (the
+table gives 8.268 MHz and the model 8.30) and the 350 kHz widths.
+"""
+
+uncertainty = "1.5 kHz for every row, as printed: \"twice the deviation obtained in the two campaigns ... separated by one year\" (700 Hz), the long-term reproducibility; the comb statistics are about 100 Hz."
+
+notes = """
+[shift_correction] takes the P(49) 44-0 group to zero pressure with the 515 nm coefficient of jones2002a and
+goncharov2004a (-2.5(5) kHz/Pa, JILA, P(13) 43-0) at 1.22 Pa (Tellinghuisen 2011 vapour pressure at -11.48 C),
+with a 2 kHz allowance for the unknown power shift. The P(13) a3 row is left as measured. Residuals against
+i2spec2026o (obs - model): P(49) 44-0 +0.097 MHz on average (rms 0.103 over the 20 rows: the model's position of the
+line; the pattern itself within about 50 kHz); P(13) 43-0 a3 -0.6 kHz. Checked with the shipped model only.
+"""
+
+[conditions]
+cold_finger_C = -11.48
+modulation_MHz_pp = 1.0
+power_mW = 3.85
+method = "Yb-doped fibre DFB laser at 1029 nm doubled in MgO:PPLN, third-harmonic saturated absorption in a 50 cm cell (ISI Brno); BIPM Ti:sapphire comb referenced to an H maser"
+
+[shift_correction]
+pressure_Pa = 1.22
+pressure_kHz_per_Pa = -2.5
+pressure_kHz_per_Pa_unc = 0.5
+allowance_kHz = 2.0
+groups = ["wallerand2006a_p49"]
+basis = "P(49) 44-0 at -11.48 C = 1.22 Pa (Tellinghuisen 2011); no coefficient in the paper, so the 515 nm P(13) 43-0 value -2.5(5) kHz/Pa (as for jones2002a and goncharov2004a); 2 kHz allowance for power (2-4 mW gave no measurable change, Sect. 3.2). The P(13) a3 row (1.3 Pa) is not corrected."

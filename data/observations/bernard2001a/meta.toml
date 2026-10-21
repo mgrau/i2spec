@@ -1,0 +1,45 @@
+id = "bernard2001a"
+citation = "J. E. Bernard, A. A. Madej, K. J. Siemsen and L. Marmet, \"Absolute frequency measurement of the HeNe/I2 standard at 633 nm\", Opt. Commun. 187, 211-218 (2001)"
+source = "https://doi.org/10.1016/S0030-4018(00)01085-3 (library copy papers/Bernard2001_Opt_Commun_187_211.pdf)"
+doi = "10.1016/S0030-4018(00)01085-3"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Abstract, Sects. 3-4 (pp. 214-217), typed from the text layer and checked against the pages: the f (= a16)
+component of R(127) 11-5 for the NRC He-Ne/I2 laser INMS-3, measured on three days (February-April 2000) against
+the NRC 88Sr+ 445 THz single-ion standard through a CO2 laser and the NRC Cs-referenced infrared chain:
+473 612 353 595 100 +- 230 Hz as operated (cold finger 15.03 C, 6.09 MHz p-p, 13.6 mW intracavity), and
+473 612 353 600 180 +- 720 Hz corrected to the exact mise en pratique conditions (15.00 C, 6.00 MHz, 10.0 mW)
+with the paper's coefficients for f (-13.4(5) kHz/K, -9.4(5) kHz/MHz, -1.06(15) kHz/mW). The corrected value is
+entered, so bipm2003a's [shift_correction] applies to it as to the MeP value.
+Not entered: the BIPM 4 value inferred through the BIPM P3 laser (473 612 353 604.4(1.4) kHz; a laser comparison)
+and the INMS-3/JILA-145 intercomparison (it gives ye2000a's NRC-chain value).
+"""
+
+uncertainty = "As printed: 720 Hz for the corrected value (the 230 Hz statistical and day-to-day uncertainty of the as-operated value with the corrections' uncertainties)."
+
+notes = """
+This measurement is the NRC chain of the April 2000 JILA/NRC/BIPM comparison on which the CIPM 2001 f(a16) rests
+(bipm2003a, declared there as \"mean\"); ye2000a's NRC-chain row for JILA-145 is this value carried over by the
+INMS-3/JILA-145 beat. Residual against i2spec2026o (obs - model, after the shift correction): -120.6 kHz, against -116.8 kHz for the CIPM value. Checked with the shipped model only.
+"""
+
+[conditions]
+cold_finger_C = 15.03
+modulation_MHz_pp = 6.09
+intracavity_power_mW = 13.6
+method = "He-Ne/I2 laser INMS-3 (internal cell, third harmonic); 88Sr+ 445 THz ion standard bridged by a CO2/OsO4 laser and difference-frequency generation in AgGaS2; NRC Cs-referenced infrared chain"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "The values are at (or corrected to) the CIPM standard operating conditions, so bipm2003a's coefficients take them to zero pressure, power and modulation exactly as for the MeP value: 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at 10 mW."

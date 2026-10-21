@@ -1,0 +1,53 @@
+id = "diddams2000a"
+citation = "S. A. Diddams, D. J. Jones, J. Ye, S. T. Cundiff, J. L. Hall, J. K. Ranka, R. S. Windeler, R. Holzwarth, Th. Udem and T. W. Hänsch, \"Direct link between microwave and optical frequencies with a 300 THz femtosecond laser comb\", Phys. Rev. Lett. 84, 5102-5105 (2000)"
+source = "Phys. Rev. Lett. 84, 5102 (2000); https://doi.org/10.1103/physrevlett.84.5102 (publisher PDF, Matt's library copy papers/Diddams2000_PRL84_5102.pdf)"
+doi = "10.1103/physrevlett.84.5102"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "precision.yaml:diddams2000a"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Two absolute frequencies from p. 5104 (PDF p. 3), typed from the text layer and checked against the page:
+- 127I2 R(56) 32-0 a10: "we report a measured frequency of 563 260 223 514 +- 5 kHz", the JILA West
+  Nd:YAG/I2 standard, with the uncertainty enlarged for the 22 kHz (infrared) offset between the two JILA
+  systems. The mean of all measurements of one-half the a10 frequency is 17.2 kHz above the CIPM 1997 value
+  of 281 630 111 740 kHz (Fig. 4); the reported value is the a10 frequency itself.
+- 127I2 R(127) 11-5 a13 (peak "i"): "473 612 214 714.2 +- 2.1 kHz" for the JILA reference He-Ne/I2 laser
+  SN-126 under the CIPM prescribed conditions, measured with the same comb against the Nd:YAG/I2 laser.
+Labels: a13 is the MeP letter i of R(127) 11-5 (bipm2003a: i = f - 138 892 kHz, rank 13 of 21, as the paper
+also writes "a13").
+
+Not entered: the 778 nm Rb two-photon result and the SN-145 offsets.
+
+Overlap: the a10 value is a source of the CIPM 532 nm value (bipm2012a's source list names Diddams 2000).
+bipm2012a's [overlaps] names this set as "mean", so once admitted its a10 is cited to this paper first, then
+to bipm2012a; the CIPM value is already a mean of other held measurements and out of the fit. The 633 nm value
+belongs to the measurements behind the MeP 633 nm value of bipm2003a, but that value is for a16, so no row
+of bipm2003a is this one.
+"""
+
+uncertainty = "As printed, read as 1 sigma (5 kHz and 2.1 kHz). The two rows are separate groups: different lasers, cells and conditions."
+
+notes = """
+Residuals against i2spec2026o (Predictor(), obs - model): R(56) 32-0 a10 -8.0 kHz (holzwarth2001a and the
+balling2007a_532 YAG1 laser read -4 to -8 kHz); R(127) 11-5 a13 -335.2 kHz as measured, -109.4 kHz after the
+shift correction (yoon2001a -337.9 / -112.0; bipm2003a a16 -342.7 / -116.8). Checked with the shipped model only.
+"""
+
+[conditions]
+method = "Ti:sapphire comb broadened in microstructure fibre, referenced to a GPS-calibrated Rb standard (NIST Cs)"
+lasers = "JILA West Nd:YAG/I2 (532 nm); He-Ne/I2 SN-126 (633 nm, CIPM prescribed conditions)"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+groups = ["diddams2000a_633"]
+basis = "The 633 nm row is for SN-126 under the CIPM prescribed conditions, so bipm2003a's coefficients apply (15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at 10 mW). The 532 nm row has no stated cell conditions and is left as measured (as jones2002a's a10 row)."

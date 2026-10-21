@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.5149,0.0053,,,cheng2021a,"conclusion and Table 2: 563 260 223 514.9 kHz +- 5.3 kHz, the 11-day average 505.8(2) kHz corrected for RAM (-3.6), iodine impurity (-5.0) and comb (-0.5 kHz); -15 C, 2.0 mW"

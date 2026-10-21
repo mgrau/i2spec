@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a16,frequency,473612353.60018,0.00072,,,bernard2001a,"abstract and Sect. 4: NRC laser INMS-3 on f, 473 612 353 600 180 +- 720 Hz at the exact mise en pratique conditions (corrected from 473 612 353 595 100 +- 230 Hz as operated: 15.03 C, 6.09 MHz p-p, 13.6 mW, with the paper's coefficients -13.4(5) kHz/K, -9.4(5) kHz/MHz, -1.06(15) kHz/mW)"

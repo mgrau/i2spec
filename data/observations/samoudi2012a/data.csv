@@ -1,0 +1,8 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a16,frequency,473612353.6116,5e-05,,,samoudi2012a_cem2,"Sect. 4: CEM2 on f with the BEV fibre comb (CCL-K11 protocol), 473 612 353 611.6 +- 0.1 kHz (k = 2), uncorrected to the specified operating conditions"
+127I2 R(127) 11-5,a18,frequency,473612379.840983,0.002189,,,samoudi2012a_cem2,"Table 1: d, CEM comb, MeP 473 612 379 828 kHz + deviation 12.983 +- 4.378 kHz (k = 2), at the recommended conditions"
+127I2 R(127) 11-5,a17,frequency,473612366.972914,0.002189,,,samoudi2012a_cem2,"Table 1: e, CEM comb, MeP 473 612 366 967 kHz + deviation 5.914 +- 4.378 kHz (k = 2), at the recommended conditions"
+127I2 R(127) 11-5,a16,frequency,473612353.608708,0.002189,,,samoudi2012a_cem2,"Table 1: f, CEM comb, MeP 473 612 353 604 kHz + deviation 4.708 +- 4.378 kHz (k = 2), at the recommended conditions"
+127I2 R(127) 11-5,a15,frequency,473612340.408671,0.002189,,,samoudi2012a_cem2,"Table 1: g, CEM comb, MeP 473 612 340 406 kHz + deviation 2.671 +- 4.378 kHz (k = 2), at the recommended conditions"
+127I2 R(127) 11-5,a14,frequency,473612236.656517,0.002189,,,samoudi2012a_cem2,"Table 1: h, CEM comb, MeP 473 612 236 651 kHz + deviation 5.517 +- 4.378 kHz (k = 2), at the recommended conditions"
+127I2 R(127) 11-5,a13,frequency,473612214.719549,0.002189,,,samoudi2012a_cem2,"Table 1: i, CEM comb, MeP 473 612 214 712 kHz + deviation 7.549 +- 4.378 kHz (k = 2), at the recommended conditions"

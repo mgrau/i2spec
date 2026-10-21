@@ -1,0 +1,25 @@
+id = "chen2000a"
+citation = "Chen Xuzong and Wang Yiqiu, \"Measurement of hyperfine spectra of iodine molecule available to diode laser frequency standard at 630-640 nm\", Proc. SPIE 4220, 59-63 (2000)"
+source = "https://doi.org/10.1117/12.401669 (PDF supplied by Matt; library copy papers/Chen2000_SPIE_4220_59.pdf)"
+doi = "10.1117/12.401669"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "record only: chart-recorder intervals whose scale was set by the calculated a - o (o is printed equal to the calculation in every column), 2-21 MHz from the shipped model; kept for the archive and left out of every fit, benchmark and the explorer"
+
+transcription = """
+Table 2 (p. 60), typed from the text layer and checked against the page: measured intervals from component a of
+the 15 components a-o of P(94) 8-4, R(80) 8-4 and P(74) 8-4 near 634-635 nm (third-derivative saturated absorption
+with an extended-cavity diode laser; chart recorder with Fabry-Perot fringes, FSR 300 MHz). The table heads the
+second column "P(80)8-4"; the text and Table 1 call it R(80) 8-4, which is entered. The letters run down in
+frequency (a highest, o lowest; 15 components for even J''), so a is rank 15 and o rank 1.
+Not entered: o in every column (printed equal to the calculated value: the frequency scale was fixed to it);
+pairs printed with one value (b/c and d/e of P(94) and R(80), c/d of P(74), l/m of all three: unresolved);
+the calculated columns; Table 1 (calculated wavenumbers and intensities).
+"""
+
+uncertainty = "None stated. 5 MHz is assigned: against the shipped model the P(94) column is 2-4 MHz off, R(80) 8-18 MHz and P(74) up to 21 MHz (f), so these are record only."
+
+notes = "Residuals against i2spec2026o (obs - model): P(94) 8-4 +0.6 to +4.3 MHz, R(80) 8-4 +8 to +18 MHz, P(74) 8-4 -21 (f) to +5 MHz. No other set holds these three lines. Checked with the shipped model only."
+
+[conditions]
+method = "New Focus 6210 extended-cavity diode laser, third-derivative saturated absorption in an external cell (cold finger 15 C, 6 MHz p-p, 1.8 mW one way); chart recording with Fabry-Perot fringes"

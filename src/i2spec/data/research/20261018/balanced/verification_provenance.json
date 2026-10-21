@@ -1,0 +1,33 @@
+{
+  "role": "balanced",
+  "started_utc": "2026-10-18T06:22:59.546214+00:00",
+  "finished_utc": "2026-10-18T06:23:00.767721+00:00",
+  "passed": true,
+  "returncode": 0,
+  "snapshot_sha256": {
+    "predict.py": "ffd8acbc0cfeb2ccdfbe7eec4d253a7acf1c5e48c80bd8ef76b01e2ad982c096",
+    "model.json": "5bc1a18086112dacd65feab460b90a9f72bf5286685beb4ad9bcbcab2dcef29d",
+    "reference_predictions.json": "08112814a366fc6b3f7e66f4490db3f73f4171552a5617951d7bfc9fff09f5af",
+    "frozen_curves.py": "64e990df6d0c8ac6733555424fe2834c2fe8b6339e84b2c80bba5ae5175fa742",
+    "frozen_alternative_functions.py": "d2d83f1f15e5779382fca30bd2189d730cc4fc5ccaaad7c3755371d2cd78473d",
+    "selection.json": "2c49189afcc0e243c9c12faf8e02766829d43cb32b8446414c313eb3e3f95765"
+  },
+  "result": {
+    "counts": {
+      "absolute": 60,
+      "intraline": 592
+    },
+    "maximum_difference_Hz": {
+      "absolute": 0.5960464477539062,
+      "intraline": 0.1070412167791801
+    },
+    "tolerance_Hz": 100.0,
+    "passed": true,
+    "scope": "Numerical reproduction of saved predictions; not independent predictive validation"
+  },
+  "verification_sha256": "9f5e9e2dece2fb4b813fd040917446cfe7ce44e72ff9edae79f2b74f0c851da4",
+  "maximum_tolerance_Hz": 100.0,
+  "workers": 1,
+  "production_default_unchanged": true,
+  "scope": "Frozen prediction reproduction; exploratory validation is reviewed separately"
+}

@@ -1,0 +1,47 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I129I P(33) 6-3,m39,interval,380.35,0.03,129I2 P(54) 8-4,a28,magyar1980a,"Table 1: e″ printed 388.35 MHz from k, read as 380.35 (see meta.toml)"
+129I2 P(69) 12-6,b11,interval,373.77,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: f″ 373.77 MHz from k
+127I129I P(33) 6-3,m38,interval,369.79,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: g″ 369.79 MHz from k
+127I129I P(33) 6-3,m37,interval,362.21,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: h″ 362.21 MHz from k
+127I129I P(33) 6-3,m36,interval,345.07,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: j″ 345.07 MHz from k
+127I129I P(33) 6-3,m33,interval,333.14,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: l″ 333.14 MHz from k
+127I129I P(33) 6-3,m32,interval,324.54,0.03,129I2 P(54) 8-4,a28,magyar1980a,"Table 1: m″ 324.54 MHz from k (printed 342.54, out of order between l″ 333.14 and n″ 312.46; the MEP has 324.52)"
+127I129I P(33) 6-3,m31,interval,312.46,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: n″ 312.46 MHz from k
+127I129I P(33) 6-3,m30,interval,299.25,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: o″ 299.25 MHz from k
+129I2 P(69) 12-6,b7,interval,288.06,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: p″ 288.06 MHz from k
+129I2 P(69) 12-6,b4,interval,234.55,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: s″ 234.55 MHz from k
+127I129I P(33) 6-3,m27,interval,219.46,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: t″ 219.46 MHz from k
+127I129I P(33) 6-3,m26,interval,212.85,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: u″ 212.85 MHz from k
+127I129I P(33) 6-3,m23,interval,205.08,0.1,129I2 P(54) 8-4,a28,magyar1980a,Table 1: w″ 205.08 MHz from k
+127I129I P(33) 6-3,m22,interval,199.52,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: x″ 199.52 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m21,interval,160.75,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: y″ 160.75 MHz from k; assigned to 127I129I (alpha)
+129I2 P(69) 12-6,b3,interval,132.02,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: z″ 132.02 MHz from k; assigned to 129I2 (beta)
+129I2 P(69) 12-6,b2,interval,116.05,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: a‴ 116.05 MHz from k; assigned to 129I2 (beta)
+129I2 P(69) 12-6,b1,interval,99.09,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: b‴ 99.09 MHz from k; assigned to 129I2 (beta)
+127I129I P(33) 6-3,m20,interval,95.01,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: a 95.01 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m19,interval,80.0,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: b 80.00 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m18,interval,75.08,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: c 75.08 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m17,interval,69.34,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: d 69.34 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m16,interval,54.06,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: e 54.06 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m15,interval,50.74,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: f 50.74 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m14,interval,41.35,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: g1 41.35 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m13,interval,39.73,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: g2 39.73 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m12,interval,33.16,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: h 33.16 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m11,interval,15.59,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: i 15.59 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m10,interval,12.06,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: j 12.06 MHz from k; assigned to 127I129I (alpha)
+127I129I P(33) 6-3,m9,interval,-17.57,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: l -17.57 MHz from k; assigned to 127I129I (alpha)
+129I2 P(54) 8-4,a27,interval,-41.21,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: m1 -41.21 MHz from k; assigned to 129I2 (beta)
+129I2 P(54) 8-4,a26,interval,-43.07,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: m2 -43.07 MHz from k; assigned to 129I2 (beta)
+127I129I P(33) 6-3,m6,interval,-87.83,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: p -87.83 MHz from k; assigned to 127I129I (alpha)
+129I2 P(54) 8-4,a23,interval,-98.21,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: a′ -98.21 MHz from k; assigned to 129I2 (beta)
+127I129I P(33) 6-3,m5,interval,-117.79,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: b′ -117.79 MHz from k; assigned to 127I129I (alpha)
+129I2 P(54) 8-4,a22,interval,-130.46,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: c′ -130.46 MHz from k; assigned to 129I2 (beta)
+129I2 P(54) 8-4,a21,interval,-138.66,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: d′ -138.66 MHz from k; assigned to 129I2 (beta)
+129I2 P(54) 8-4,a20,interval,-155.72,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: e′ -155.72 MHz from k; assigned to 129I2 (beta)
+129I2 P(54) 8-4,a19,interval,-162.61,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: f′ -162.61 MHz from k; assigned to 129I2 (beta)
+129I2 P(54) 8-4,a18,interval,-182.74,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: g′ -182.74 MHz from k; assigned to 129I2 (beta)
+129I2 P(54) 8-4,a17,interval,-193.23,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: h′ -193.23 MHz from k; assigned to 129I2 (beta)
+129I2 P(54) 8-4,a16,interval,-197.73,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: i′ -197.73 MHz from k; assigned to 129I2 (beta)
+127I129I P(33) 6-3,m3,interval,-226.14,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: k′ -226.14 MHz from k
+127I129I P(33) 6-3,m2,interval,-233.71,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: l′ -233.71 MHz from k
+127I129I P(33) 6-3,m7,interval,-77.69,0.03,129I2 P(54) 8-4,a28,magyar1980a,Table 1: o -77.69 MHz from k; assigned to 127I129I (alpha) (the MEP prints o at -78.2(5))

@@ -1,0 +1,8 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a16,frequency,473612353.60285,0.00057,,,madej2004a_inms3,"Sect. 4, Fig. 8: INMS 3 on f, ff = 473 612 353 602 850 +- 570 Hz, the mean of the comb runs of May 2002-October 2003 (as operated 473 612 353 595 400 +- 500 Hz) and the April 2000 chain run (595 370 +- 250 Hz), each corrected to the mise en pratique conditions with -13.4(5) kHz/K, -9.4(5) kHz/MHz and -2.8(5) kHz/mW (-1.9(1) kHz/mW for 2000)"
+127I2 R(127) 11-5,a17,frequency,473612366.968133,0.000102,,,madej2004a_inms2,"Table 3: INMS 2 on e, 6,7 March 2003 (NRC), f_mise = 473 612 366 968 133 +- 102 Hz (as measured 473 612 366 969 416 +- 70 Hz)"
+127I2 R(127) 11-5,a17,frequency,473612366.96815,0.0002,,,madej2004a_inms2,"Table 3: INMS 2 on e, 14 March 2003 (BIPM), f_mise = 473 612 366 968 150 +- 200 Hz (as measured 473 612 366 969 800 +- 100 Hz)"
+127I2 R(127) 11-5,a17,frequency,473612366.968135,0.00014,,,madej2004a_inms2,"Table 3: INMS 2 on e, 24-25 March 2003 (NRC), f_mise = 473 612 366 968 135 +- 140 Hz (as measured 473 612 366 969 450 +- 80 Hz)"
+127I2 R(127) 11-5,a16,frequency,473612353.605659,0.0004,,,madej2004a_inms2,"Table 4: INMS 2 on f, 6,7 March 2003 (NRC), f_mise = 473 612 353 605 659 +- 400 Hz (as measured 473 612 353 607 244 +- 90 Hz)"
+127I2 R(127) 11-5,a16,frequency,473612353.6053,0.0002,,,madej2004a_inms2,"Table 4: INMS 2 on f, 14 March 2003 (BIPM), f_mise = 473 612 353 605 300 +- 200 Hz (as measured 473 612 353 607 300 +- 100 Hz)"
+127I2 R(127) 11-5,a16,frequency,473612353.60532,0.00013,,,madej2004a_inms2,"Table 4: INMS 2 on f, 24-25 March 2003 (NRC), f_mise = 473 612 353 605 320 +- 130 Hz (as measured 473 612 353 606 865 +- 100 Hz)"

@@ -1,0 +1,8 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.5177,0.0012,,,nevsky2001a_abs,"eq. (2): 563 260 223 517.7 +- 1.2 kHz, the ILP laser's 563 260 223 507.8 +- 1.1 kHz (eq. (1): cell 13/97PTB at 2.42 Pa, 1.7 mW) extrapolated by the authors to cell 16/89PTB and 0.46 Pa"
+127I2 P(54) 32-0,a1,frequency,563212634.6186,0.0012,,,nevsky2001a_abs,"eq. (3): 563 212 634 618.6 +- 1.2 kHz, extrapolated to cell 16/89PTB and 0.46 Pa"
+127I2 P(54) 32-0,a10,frequency,563213206.1553,0.0012,,,nevsky2001a_abs,"eq. (4): 563 213 206 155.3 +- 1.2 kHz, extrapolated to cell 16/89PTB and 0.46 Pa"
+127I2 P(54) 32-0,a15,frequency,563213492.5792,0.0012,,,nevsky2001a_abs,"eq. (5): 563 213 492 579.2 +- 1.2 kHz, extrapolated to cell 16/89PTB and 0.46 Pa"
+127I2 P(54) 32-0,a1,interval,-47588.898,0.002,127I2 R(56) 32-0,a10,nevsky2001a_gap,"eq. (6): f(R(56) a10) - f(P(54) a1) = 47 588 898 +- 2 kHz, beat between two ILP lasers (cell offsets cancelled)"
+127I2 P(54) 32-0,a10,interval,-47017.36,0.002,127I2 R(56) 32-0,a10,nevsky2001a_gap,eq. (7): f(R(56) a10) - f(P(54) a10) = 47 017 360 +- 2 kHz
+127I2 P(54) 32-0,a15,interval,-46730.937,0.002,127I2 R(56) 32-0,a10,nevsky2001a_gap,eq. (8): f(R(56) a10) - f(P(54) a15) = 46 730 937 +- 2 kHz

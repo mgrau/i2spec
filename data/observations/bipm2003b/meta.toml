@@ -24,3 +24,10 @@ cell = "external"
 pressure_Pa = 4.12
 allowance_kHz = 20.6
 basis = "MEP 543 nm, p. 1: recommended value applies at cold point 0 C and 2.0 MHz p-p modulation, external cell. Pressure 4.12 Pa from Gillespie & Fraser at 273.15 K. The MEP gives no pressure, power or modulation coefficient, so no shift is applied; allowance = |-5 kHz/Pa (typical slope, 500-600 nm) x 4.12 Pa| = 20.6 kHz. The modulation shift at 2 MHz is not known from the MEP and is not included."
+
+# The tables are weighted means of refs. [3-9] (MEP 543 nm, p. 2), among them Chartier et al. 1989 [5] (printed in
+# fredinpicard1990a), Fredin-Picard and Razet 1990 [7], Lin et al. 1994 [8] and Gläser's PTB report [4] (printed in
+# lin1994a). cheng2001a (2001) is later and independent; ma2006a and balling2007a_543 are absolute measurements.
+[overlaps]
+fredinpicard1990a = "mean"   # pending until admitted
+lin1994a = "mean"            # pending until admitted

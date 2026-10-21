@@ -1,0 +1,5 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(98) 58-1,,frequency,19429.73,0.002,,,gill1979a,"Table 2: measured wavenumber [NPL], 515 nm (Table 3: stabilized to d, 514.67504 nm, 19429.736 cm-1)"
+127I2 P(108) 49-1,,frequency,19194.691,0.002,,,gill1979a,"Table 2: measured wavenumber [NPL], 521 nm, set 2 (probable assignment; Table 3: component 20, 520.97783 nm, 19194.675 cm-1)"
+127I2 R(98) 43-2,,frequency,18831.876,0.002,,,gill1979a,"Table 2: measured wavenumber [NPL], 531 nm (Table 3: component 1, 531.01463 nm, 18831.873 cm-1)"
+127I2 P(133) 27-3,,frequency,17594.848,0.002,,,gill1979a,"Table 2: measured wavenumber [NPL], 568 nm (Table 3: component o, 568.34836 nm, 17594.843 cm-1)"

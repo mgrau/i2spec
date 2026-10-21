@@ -34,3 +34,13 @@ laser = "He-Ne, iodine cell inside or outside the laser"
 pressure_Pa = 2.46
 allowance_kHz = 19.7
 basis = "MEP 612 nm, p. 1: recommended value applies at cold finger -5 C (cell inside or outside the laser). Pressure 2.46 Pa from Gillespie & Fraser at 268.15 K. The MEP gives no pressure, power or modulation coefficient and no power or modulation condition, so no shift is applied; allowance = |-8 kHz/Pa (typical slope, 600-700 nm) x 2.46 Pa| = 19.7 kHz."
+
+# Measurements this compilation prints that other sets hold (docs/design/observations.md, "One record per
+# measurement"): its hyperfine tables combine razet1991a (127I2 R(47) 9-2, P(48) 11-3, R(48) 15-5; within 1-7 kHz)
+# and dschao1980a (127I2 R(47) 9-2 and 129I2 P(110) 10-2; some rows equal to the printed digit) with other data.
+[overlaps]
+razet1991a = "mean"    # pending until admitted
+dschao1980a = "mean"   # pending until admitted
+glaser1987a = { relation = "mean", lines = ["127I2 R(47) 9-2", "127I2 P(48) 11-3"] }   # pending until admitted; Tables 1-2 ref. [12]
+ciddor1980a = { relation = "mean", lines = ["129I2 P(110) 10-2", "129I2 R(113) 14-4"] }   # pending until admitted; Tables 4-5 ref. [17]
+glaser1981a = { relation = "mean", lines = ["129I2 P(110) 10-2", "129I2 R(113) 14-4"] }   # pending until admitted; Tables 4-5 ref. [18]

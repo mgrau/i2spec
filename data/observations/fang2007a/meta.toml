@@ -1,0 +1,31 @@
+id = "fang2007a"
+citation = "Fang Zhan-Jun, Wang Qiang, Wang Min-Ming, Meng Fei, Lin Bai-Ke and Li Tian-Chu, \"Measurement of the frequency of an iodine-stabilized 532 nm Nd:YAG laser with a femtosecond optical frequency comb\" (in Chinese), Acta Phys. Sin. 56, 5684-5690 (2007)"
+source = "https://doi.org/10.7498/aps.56.5684 (publisher PDF; Matt's library copy papers/Fang2007_ActaPhysSin56_5684.pdf)"
+doi = "10.7498/aps.56.5684"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+The PDF's text layer is unreadable (embedded CJK fonts); read from 130-200 dpi page images and typed. Abstract
+(p. 5684) and Sect. 4, eq. after (7) (p. 5688): the NIM iodine-stabilized 532 nm Nd:YAG laser standard (built by
+Zang Er-Jun's group, modulation transfer, locked to 127I2 R(56)32-0 a10, printed "R(56)32-10"), measured with the
+NIM Ti:sapphire comb against a hydrogen maser in one 32 min run (1912 points, 1 s gate):
+f532 = n f_r - f_b - f_0 + f_AOM + f_m = 563 260 223 512 991 +- 20 Hz.
+The text then gives the uncertainty budget (p. 5689): type A of the comb-laser beat 2.8e-14, type B of the maser
+reference 2.2e-14, the comb's tracking 1e-16 (neglected); "combined standard uncertainty 3.6e-14, absolute value
++-25 Hz". The value agrees with the CIPM recommended value (bipm2012a) within its 8.9e-12.
+
+Not entered: the comb parameters of the run (f_r = 761 054 400 Hz, n = 740 105, f_b = 176 800 636 Hz,
+f_m = 354.9 Hz), from which the value is computed.
+"""
+
+uncertainty = """
+0.025 kHz, the printed combined standard uncertainty of the measurement (p. 5689; the abstract's +-20 Hz is the
+same 3.6e-14 rounded differently). It covers the beat count and the maser only, not the iodine lock: no pressure,
+power, modulation or cell-purity budget is given, and the cell conditions are not stated. A fit should add the
+laser's realization uncertainty (several kHz for this kind of standard; the CIPM value carries 5 kHz).
+"""
+
+[conditions]
+method = "frequency-doubled monolithic Nd:YAG (PPKTP), modulation transfer on R(56) 32-0 a10; Ti:sapphire comb referenced to an H-maser"

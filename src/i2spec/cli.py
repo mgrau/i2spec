@@ -1,22 +1,24 @@
-"""Command line for i2spec: ``i2spec lines``, ``i2spec line``, ``i2spec tui`` and ``i2spec web``."""
+"""Command line for i2spec: line lookup, terminal tools and the web app."""
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
+from pathlib import Path
 import sys
 
-from .constants import ISOTOPOLOGUES
-from .lookup import UNITS, Catalog, parse_quantity, uncertainty
+from .constants import DEFAULT_PARAMETERS, ISOTOPOLOGUES
+from .lookup import UNITS, Catalog, format_mhz, parse_quantity, uncertainty
 
 COLUMNS = (("λ vac (nm)", 12, "{:.5f}"), ("λ air (nm)", 12, "{:.5f}"), ("ν (cm⁻¹)", 12, "{:.5f}"),
            ("f (THz)", 11, "{:.7f}"), ("line", 14, "{}"), ("S (cm)", 10, "{:.2e}"),
-           ("E″ (cm⁻¹)", 10, "{:.2f}"), ("u (MHz)", 9, "{:.0f}"), ("notes", 0, "{}"))
+           ("E″ (cm⁻¹)", 10, "{:.2f}"), ("u (MHz)", 9, "{}"), ("notes", 0, "{}"))
 
 
 def _row(line):
     return [line.position("nm"), line.position("nm-air"), line.nu, line.position("THz"), line.label, line.strength,
-            line.E_lower, line.uncertainty_MHz, ", ".join(line.flags)]
+            line.E_lower, format_mhz(line.uncertainty_MHz), ", ".join(line.flags)]
 
 
 def _table(lines):
@@ -33,7 +35,7 @@ def _as_dict(line):
                 wavelength_air_nm=line.position("nm-air"), wavenumber_cm1=line.nu, frequency_MHz=line.position("MHz"),
                 strength_cm=line.strength, E_lower_cm1=line.E_lower, temperature_K=line.temperature,
                 doppler_fwhm_MHz=line.doppler_fwhm_MHz, uncertainty_MHz=value, uncertainty_basis=basis,
-                flags=list(line.flags))
+                model=line.source, flags=list(line.flags))
 
 
 def _catalog(args):
@@ -63,24 +65,86 @@ def cmd_line(args):
     if args.json:
         print(json.dumps(dict(_as_dict(line), components=[
             dict(label=c.label, offset_MHz=c.offset_MHz, frequency_MHz=c.frequency_MHz, strength=c.strength,
-                 F_upper=c.F_upper, F_lower=c.F_lower) for c in comps]), indent=1))
+                 F_upper=c.F_upper, F_lower=c.F_lower, uncertainty_MHz=c.uncertainty_MHz) for c in comps]), indent=1))
         return
     print(f"{line.isotopologue} {line.label}   {line.position('nm'):.5f} nm vacuum   {line.nu:.5f} cm⁻¹   "
           f"{line.position('MHz'):,.3f} MHz")
     print(f"  S = {line.strength:.3e} cm at {line.temperature:.2f} K; E″ = {line.E_lower:.3f} cm⁻¹; "
           f"Doppler FWHM {line.doppler_fwhm_MHz:.1f} MHz")
-    print(f"  position uncertainty ≈ {value:,.0f} MHz (1σ estimate): {basis}")
+    print(f"  model: {line.source}")
+    print(f"  position uncertainty ≈ {format_mhz(value)} MHz (1σ): {basis}")
     if line.flags:
         print(f"  flags: {', '.join(line.flags)}")
-    print(f"\n  {'component':<12}{'offset (MHz)':>14}{'frequency (MHz)':>20}{'strength':>10}")
+    with_u = any(c.uncertainty_MHz is not None for c in comps)
+    print(f"\n  {'component':<12}{'offset (MHz)':>14}{'frequency (MHz)':>20}{'u (MHz)':>10}{'strength':>10}" if with_u
+          else f"\n  {'component':<12}{'offset (MHz)':>14}{'frequency (MHz)':>20}{'strength':>10}")
     for c in comps:
-        print(f"  {c.name:<12}{c.offset_MHz:>14.4f}{c.frequency_MHz:>20.4f}{c.strength:>10.4f}")
+        u = f"{format_mhz(c.uncertainty_MHz):>10}" if with_u else ""
+        print(f"  {c.name:<12}{c.offset_MHz:>14.4f}{c.frequency_MHz:>20.4f}{u}{c.strength:>10.4f}")
 
 
 def cmd_tui(args):
     from .tui import run
 
     run(isotopologue=args.isotopologue, temperature=args.temperature, low=args.low, high=args.high, unit=args.unit)
+
+
+def cmd_progress(args):
+    from .research_progress import OUT, ProgressMonitor
+
+    if not math.isfinite(args.interval) or args.interval < 5:
+        raise ValueError("Use a refresh interval of at least 5 seconds")
+    out = args.out or OUT
+    if args.json:
+        print(json.dumps(ProgressMonitor(out).snapshot(), allow_nan=False, indent=2))
+    else:
+        from .progress_tui import run
+        run(out=out, interval=args.interval)
+
+
+def cmd_research(args):
+    from .research import ResearchModel, research_models
+
+    if args.action == "list":
+        models = research_models()
+        if args.json:
+            print(json.dumps(dict(production_default=DEFAULT_PARAMETERS,
+                                  research_models=[model.as_dict() for model in models]), indent=2))
+        else:
+            print(f"Production default: {DEFAULT_PARAMETERS}")
+            print(f"{'model':<36} {'fitted':>6} {'inherited':>9} {'calib.':>6} {'abs kHz':>9} {'HF kHz':>9}  domain")
+            for model in models:
+                ledger, domain = model.inventory, model.domain
+                print(f"{model.id:<36} {ledger.fitted_molecular:>6} {ledger.inherited_molecular:>9} "
+                      f"{ledger.fitted_calibration:>6} {model.absolute_rms_MHz*1000:>9.3f} "
+                      f"{model.intraline_rms_MHz*1000:>9.3f}  {domain.isotopologue}, X v<={domain.X_v_max}, "
+                      f"B v<={domain.B_v_max}, J_lower<={domain.J_lower_max}")
+            print("RMS values describe reused exploratory validation. balanced_expanded gives per-line uncertainties "
+                  "(research predict); the apps prefer it for 127I2 inside its domain (I2SPEC_MODEL=i2spec2026o to "
+                  "switch back).")
+        return
+    model = ResearchModel(args.model, isotopologue=args.isotopologue)
+    if args.action == "verify":
+        print(json.dumps(model.verify(), indent=2))
+        return
+    prediction = model.predict(args.label, args.component)
+    sigma = model.uncertainty(args.label, args.component) if hasattr(model, "uncertainty") else None
+    if args.json:
+        print(json.dumps(dict(prediction.as_dict(), model_info=model.info.as_dict(),
+                              uncertainty=sigma.as_dict() if sigma else None), indent=2))
+        return
+    component = prediction.component or "hyperfine-free center"
+    print(f"{model.info.id}: {prediction.line} / {component}")
+    print(f"  {prediction.frequency_MHz:.6f} MHz   {prediction.wavenumber_cm1:.9f} cm⁻¹")
+    if sigma:
+        print(f"  1σ {sigma.sigma_MHz:.4g} MHz (statistical {sigma.statistical_MHz:.3g}, model {sigma.model_MHz:.3g}, "
+              f"hyperfine {sigma.hyperfine_MHz:.3g}); levels {sigma.status}"
+              + (f"; hyperfine {sigma.hyperfine_status}" if sigma.hyperfine_status else ""))
+    ledger = model.info.inventory
+    print(f"  {ledger.fitted_molecular} fitted + {ledger.inherited_molecular} inherited molecular coefficients; "
+          f"{ledger.fitted_calibration} calibration coefficients additional")
+    if prediction.excluded_from_fit:
+        print("  diagnostic prediction: this exact line was excluded from fitting and headline scores")
 
 
 def cmd_web(args):
@@ -140,6 +204,30 @@ def build_parser():
     p.add_argument("--high", default=None)
     p.add_argument("--unit", "-u", default="nm", choices=UNITS)
     p.set_defaults(func=cmd_tui)
+
+    p = sub.add_parser("progress", help="live terminal dashboard for the research fitting queues")
+    p.add_argument("--out", type=Path, help="research artifact directory")
+    p.add_argument("--interval", type=float, default=30, help="refresh interval in seconds (minimum 5)")
+    p.add_argument("--json", action="store_true", default=argparse.SUPPRESS,
+                   help="print a single JSON snapshot and exit")
+    p.set_defaults(func=cmd_progress)
+
+    p = sub.add_parser("research", help="explicitly select a frozen research model; production default is unchanged")
+    p.add_argument("--json", action="store_true", default=argparse.SUPPRESS)
+    actions = p.add_subparsers(dest="action", required=True)
+    listing = actions.add_parser("list", help="list frozen roles, coefficient inventories and model domains")
+    listing.add_argument("--json", action="store_true", default=argparse.SUPPRESS)
+    listing.set_defaults(func=cmd_research)
+    for name, help_text in (("predict", "predict a line with an explicitly selected research model"),
+                            ("verify", "replay the 60 absolute and 592 intraline frozen predictions")):
+        action = actions.add_parser(name, help=help_text)
+        action.add_argument("--model", required=True, help="canonical model ID or role from `i2spec research list`")
+        action.add_argument("--json", action="store_true", default=argparse.SUPPRESS)
+        action.add_argument("--isotopologue", "-i", default=argparse.SUPPRESS, choices=sorted(ISOTOPOLOGUES))
+        if name == "predict":
+            action.add_argument("label", help="for example 'P(53) 32-0'")
+            action.add_argument("--component", help="main hyperfine component, e.g. a1; omitted means the line center")
+        action.set_defaults(func=cmd_research)
 
     p = sub.add_parser("web", help="the explorer and its documentation: serve locally, export data, build the site")
     p.add_argument("action", nargs="?", default="serve", choices=("serve", "export", "build"))

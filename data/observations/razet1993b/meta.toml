@@ -1,0 +1,37 @@
+id = "razet1993b"
+citation = "A. Razet, \"On the hyperfine spectrum of the 62P(17-1) line of 127I2 at 576 nm\", Metrologia 30, 193-196 (1993)"
+source = "https://doi.org/10.1088/0026-1394/30/3/007 (PDF supplied by Matt; library copy papers/Razet1993_Metrologia_30_193.pdf)"
+doi = "10.1088/0026-1394/30/3/007"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (i) (p. 194), typed from the text layer and checked against the page: the experimental intervals of 11
+of the 15 hyperfine components of 127I2 P(62) 17-1 at 576 nm, in kHz from a1 ("o"), with uncertainties.
+They are the measurements of G. P. Barwood and W. R. C. Rowley (NPL), Metrologia 20, 19-23 (1984), "made with two
+dye lasers stabilized onto the hyperfine components ... with cells placed outside the laser cavities and with
+third-harmonic locking", printed here for the first time to the kHz with Barwood and Rowley's cooperation; that
+paper is not held, so the rows are entered here.
+Labels: "each hyperfine component is labelled by an index n which increases with the frequency", so n is the
+rank (a1-a15); the letters run the other way (o = 1, a = 15), as in the MEP.
+Not entered: the calculated column (iii) and the fitted constant differences (ii) (Delta eqQ = 1 933 304(12) kHz,
+Delta C = 37.434(10) kHz, Delta d = 17.3(7) kHz, Delta delta = -2.6(8) kHz); the group b-e, which Barwood and
+Rowley did not resolve and the paper does not print.
+"""
+
+uncertainty = "As printed, 22-28 kHz (\"the standard deviations ... represent the dispersion of measurements\"), taken as 1 sigma. Components l and m (a4, a3) \"were not fully resolved and ... the error in their measured separation could be greater than indicated\": 0.25 MHz is entered for both."
+
+notes = """
+The MEP 576 nm table (bipm2003c) prints these values rounded to 10 kHz (declared there as "same"). reinhardt2006a
+remeasured the whole pattern by comb; its a3/a4 differ from Barwood's by +211/-234 kHz, which is the blend pull
+the author warns of, and the model agrees with Reinhardt. Declared below as superseded, so these rows stay in the
+record and out of the fit. Residuals against i2spec2026o (obs - model): a3 -202 kHz and a4 +235 kHz; the other
+eight rms 17 kHz. Checked with the shipped model only.
+"""
+
+[overlaps]
+reinhardt2006a = "superseded"
+
+[conditions]
+method = "two dye lasers at 576 nm stabilized by third-harmonic saturated absorption in external cells; modulation 6 MHz p-p, one-way power density about 2e4 W/m2, cold finger 11.5 C (Barwood & Rowley 1984)"

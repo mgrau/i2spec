@@ -12,6 +12,9 @@ from i2spec.lookup import (Catalog, Line, from_wavenumber, parse_label, parse_qu
                            uncertainty)
 
 
+pytestmark = pytest.mark.usefixtures("fallback_model")   # i2spec2026o's own rules
+
+
 @pytest.fixture(scope="module")
 def catalog():
     """A catalog holding four hand-made lines near 532 nm, so no line list has to be built."""

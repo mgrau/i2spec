@@ -18,11 +18,8 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from i2spec.constants import DEFAULT_PARAMETERS  # noqa: E402
-from i2spec.level_corrections import corrections_for  # noqa: E402
+from i2spec import preferred  # noqa: E402
 from i2spec.lookup import Catalog  # noqa: E402
-from i2spec.model import RovibronicModel  # noqa: E402
-from i2spec.potentials import load_extended, load_potentials  # noqa: E402
 from i2spec.spectrum import cross_section, number_density, transmission  # noqa: E402
 
 # the helpers and colour tokens of make_figures.py, without running it
@@ -60,10 +57,16 @@ def turning(V, R, E):
     return R[inside[0]], R[inside[-1]]
 
 
-model = RovibronicModel("127I2")
-ext, from_v = load_extended()
-pub = load_potentials()
-corr = corrections_for(DEFAULT_PARAMETERS)
+model = preferred.model()                       # balanced-expanded (research-20261020)
+pot = model._levels_x.potentials
+table = preferred.preferred()
+
+
+def energy(state, v, J):
+    try:
+        return model._energy(state, v, J)
+    except ValueError:                          # dissociated at this J
+        return np.nan
 
 # ---------------------------------------------------------------------------------------------- layout
 W, H = 7.4, 5.6
@@ -73,16 +76,16 @@ XS = [0.025, 0.3525, 0.68]
 YS = [0.585, 0.135]
 STEPS = [
     ("1", "Level energies", "radial equation in V(R)"),
-    ("2", "Level corrections", "B levels, fitted to precision lines"),
+    ("2", "Uncertainties", "1σ for every level and line"),
     ("3", "Line positions", "ν = E′ − E″, with a 1σ each"),
     ("4", "Hyperfine components", "15 or 21 per line"),
     ("5", "Line strengths", "⟨v′|μₑ(R)|v″⟩², per band"),
     ("6", "Spectrum", "at T, for a given cell"),
 ]
 INPUTS = {
-    0: "X and B potentials: 2008 curves,\nMLR curves beyond their range",
-    1: "comb lines → per-level polynomials;\na Gaussian process fills the rest",
-    3: "hyperfine formulae + a table of\nmeasured B-state parameters",
+    0: "shared MLR potentials, fitted to all\n¹²⁷I₂ data and continued to both limits",
+    1: "fit covariance; errors of held-out\nlevels and hyperfine intervals",
+    3: "radial hyperfine functions; second-\norder sums beyond v′ = 43",
     4: "transition moment μₑ(R)\n(Tellinghuisen 2011)",
     5: "temperature, path length,\ncold-finger temperature",
 }
@@ -122,41 +125,30 @@ def clean(ax, xlabel=None):
 ax = plot_axes[0]
 R = np.linspace(2.25, 6.5, 800)
 for s, col in (("X", C["trace"]), ("B", C["pick"])):
-    a0, b0 = turning(pub[s], np.linspace(2.0, 9.0, 20000), model.energy(s, from_v[s] - 1, 0))
-    V = np.where((R >= a0) & (R <= b0), pub[s](R), ext[s](R))
-    ax.plot(R, V, color=col, lw=1.4)
-    for v in range(0, 80 if s == "B" else 100, 6):
-        E = model.energy(s, v, 0)
-        a, b = turning(lambda r: np.where((r >= a0) & (r <= b0), pub[s](r), ext[s](r)), np.linspace(2.2, 12, 6000), E)
+    ax.plot(R, pot[s](R), color=col, lw=1.4)
+    for v in range(0, 80 if s == "B" else 108, 6):
+        E = energy(s, v, 0)
+        a, b = turning(pot[s], np.linspace(2.2, 12, 6000), E)
         ax.plot([a, min(b, 6.5)], [E, E], color=col, lw=0.5, alpha=0.6)
 ax.text(2.95, 1500, "X", color=C["trace"], fontsize=9, fontweight="bold")
 ax.text(3.45, 15800, "B", color=C["pick"], fontsize=9, fontweight="bold")
 ax.set_ylim(-500, 21500)
 clean(ax, "R (Å)")
 
-# 2. corrections: B levels at J' = 40, from comb data (points) and from the Gaussian process (band)
+# 2. uncertainties: 1σ of R(20) v'-0 and of R(20) 5-v'' (the center of each line)
 ax = plot_axes[1]
-JS = 40
-vs, mid, err = [], [], []
-for v in sorted(corr.coefficients["B"]):
-    if v > 50:
-        continue
-    lo, hi = corr.coverage["B"].get(v, (JS, JS))
-    j = int(np.clip(JS, lo, hi))
-    vs.append(v); mid.append(corr.shift("B", v, j)); err.append(corr.uncertainty_at("B", v, j) or 1.0)
-ax.errorbar(vs, mid, err, fmt="o", ms=2.6, color=C["trace"], elinewidth=0.7, capsize=0)
-vv = np.arange(1, 36)
-ms = np.array([corr.gp(int(v), JS) for v in vv])
-ax.fill_between(vv, ms[:, 0] - ms[:, 1], ms[:, 0] + ms[:, 1], color=C["pick"], alpha=0.2, lw=0)
-ax.plot(vv, ms[:, 0], color=C["pick"], lw=1.0)
-ax.axhline(0, color=C["rule"], lw=0.6)
-ax.set_yscale("symlog", linthresh=10)
-ax.set_yticks([-100, -10, 0, 10, 100], ["−100", "−10", "0", "10", "100"])
-ax.set_xlim(0, 50)
-ax.text(0.97, 0.95, "comb data", color=C["trace"], fontsize=6.5, ha="right", va="top", transform=ax.transAxes)
-ax.text(0.97, 0.83, "Gaussian process", color=C["pick"], fontsize=6.5, ha="right", va="top", transform=ax.transAxes)
-ax.set_ylabel("ΔE (MHz)", fontsize=7, labelpad=1)
-ax.set_xlabel("v′  (J′ = 40)", fontsize=7, labelpad=1)
+vu = np.arange(0, 81)
+u_b, _, _ = table.uncertainties(np.full(vu.size, "R"), np.full(vu.size, 20), vu, np.zeros(vu.size, int))
+vl = np.arange(0, 109)
+u_x, _, _ = table.uncertainties(np.full(vl.size, "R"), np.full(vl.size, 20), np.full(vl.size, 5), vl)
+ax.semilogy(vu, u_b, color=C["pick"], lw=1.2)
+ax.semilogy(vl, u_x, color=C["trace"], lw=1.2)
+ax.set_xlim(0, 108)
+ax.set_ylim(0.05, 500)
+ax.text(0.03, 0.95, "R(20) 5–v″", color=C["trace"], fontsize=6.5, ha="left", va="top", transform=ax.transAxes)
+ax.text(0.03, 0.83, "R(20) v′–0", color=C["pick"], fontsize=6.5, ha="left", va="top", transform=ax.transAxes)
+ax.set_ylabel("1σ (MHz)", fontsize=7, labelpad=1)
+ax.set_xlabel("v′ or v″", fontsize=7, labelpad=1)
 ax.tick_params(labelsize=6.5, pad=1)
 
 # 3. line positions: the 32-0 band near its head (Fortrat)

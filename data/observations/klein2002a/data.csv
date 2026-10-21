@@ -1,0 +1,10 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(28) 0-14,,frequency,12849.383,0.01,,,klein2002a,Table 1: measured 12849.383 cm-1 (calculated 12849.379; atlas [9] 12 849.371 (line 4496))
+127I2 P(166) 0-13,,frequency,12849.655,0.01,,,klein2002a,"Table 1: measured 12849.655 cm-1 (calculated 12849.665; atlas [9] 12 849.665 (line 4497)); printed R(166) 0-13, a misprint for the P line (the printed calculated value is the P line's)"
+127I2 R(27) 0-14,,frequency,12849.688,0.01,,,klein2002a,Table 1: measured 12849.688 cm-1 (calculated 12849.698; atlas [9] 12 849.703 (line 4498))
+127I2 P(18) 0-14,,frequency,12849.820,0.01,,,klein2002a,"Table 1: measured 12849.820 cm-1 (calculated 12849.819; not in the atlas); printed R(18) 0-14, a misprint for the P line (the printed calculated value is the P line's)"
+127I2 R(26) 0-14,,frequency,12850.002,0.01,,,klein2002a,Table 1: measured 12850.002 cm-1 (calculated 12850.003; atlas [9] 12 849.970 (line 4499))
+127I2 P(17) 0-14,,frequency,12850.118,0.01,,,klein2002a,"Table 1: measured 12850.118 cm-1 (calculated 12850.118; not in the atlas); printed R(17) 0-14, a misprint for the P line (the printed calculated value is the P line's)"
+127I2 R(25) 0-14,,frequency,12850.283,0.01,,,klein2002a,Table 1: measured 12850.283 cm-1 (calculated 12850.294; not in the atlas)
+127I2 P(16) 0-14,,frequency,12850.406,0.01,,,klein2002a,"Table 1: measured 12850.406 cm-1 (calculated 12850.404; not in the atlas); printed R(16) 0-14, a misprint for the P line (the printed calculated value is the P line's)"
+127I2 P(15) 0-14,,frequency,12850.662,0.01,,,klein2002a,"Table 1: measured 12850.662 cm-1 (calculated 12850.677; atlas [9] 12 850.653 (line 4500)); printed R(15) 0-14, a misprint for the P line (the printed calculated value is the P line's)"

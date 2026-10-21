@@ -4,7 +4,6 @@ source = "https://www.bipm.org/documents/20126/41549496/M-e-P_I2_515.pdf/63b35d2
 retrieved = "2026-09-14"
 catalog = "data/catalog/precision.yaml#bipm2005a"
 unit = "MHz"
-defer_to = ["jones2002a", "goncharov2004a"]   # The recommended P(13) 43-0 a3 is the mean of these two measurements.
 transcription = """
 Page 1: adopted f(a3, P(13) 43-0) = 582 490 603 442 (5) kHz, the CIPM recommended value. Typed by hand.
 
@@ -31,3 +30,13 @@ cold_point_C = -5.0
 iodine_pressure_Pa = 2.4
 saturating_intensity_mW_cm2_max = 40.0
 cell = "external"
+
+# Measurements this compilation prints that other sets hold (docs/design/observations.md, "One record per
+# measurement"). The recommended P(13) 43-0 a3 is the mean of the JILA and LPL measurements (section 2).
+# Tables 1 and 2 (P(13) and R(15) 43-0) are weighted means of refs. [3-6], of which [5] is Borde 1981; Table 3
+# (R(98) 58-1) is Foth & Spieweck 1979 alone, so borde1981a's R(98) rows are independent of it. borde1981a is
+# pending (exclude), and a set left out has no say until it is admitted.
+[overlaps]
+jones2002a = "mean"
+goncharov2004a = "mean"
+borde1981a = { relation = "mean", lines = ["127I2 P(13) 43-0", "127I2 R(15) 43-0"] }

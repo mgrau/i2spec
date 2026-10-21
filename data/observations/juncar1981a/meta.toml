@@ -1,0 +1,46 @@
+id = "juncar1981a"
+citation = "P. Juncar, J. Pinard, J. Hamon and A. Chartier, \"Absolute determination of the wavelengths of the sodium D1 and D2 lines by using a CW tunable dye laser stabilized on iodine\", Metrologia 17, 77-79 (1981)"
+source = "https://doi.org/10.1088/0026-1394/17/3/001 (library copy papers/Juncar1981_Metrologia_17_77.pdf)"
+doi = "10.1088/0026-1394/17/3/001"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+"Measurements" (p. 78), typed from the text layer and checked against the page: vacuum wavelengths of a dye laser
+locked (third derivative) to one hyperfine component of each of two 127I2 lines next to the Na D lines, measured at
+the BIPM on the Michelson interferometer against a He-Ne laser on R(127) 11-5 d, taken as 632 991 178.3 fm
+"calculated from the value of the "i" peak recommended by the C.C.D.M. in 1973":
+- P(114) 14-1, component "o": 589 756 661.7 +- 0.2 fm (four determinations);
+- P(38) 15-2, component "n": 589 158 022.0 +- 0.45 fm (six determinations).
+Converted with c = 299 792 458 m/s and rescaled by +1.2168e-9 (+0.62 MHz), the ratio of today's d frequency
+(bipm2003a: f(a16) + 26.224 MHz = 473 612 379.828 MHz) to c / 632 991 178.3 fm.
+Component ranks, assigned here, not by the printed letters: in the Gerstenkorn-Luc letters (a highest, o lowest
+for 15 components) o and n would be a1 and a2, which the model puts 308 and 136 MHz from these values; instead
+they fall on the model's a5 (P(114) 14-1, -0.35 MHz) and a6 (P(38) 15-2, -1.13 MHz). For P(38) this is confirmed
+independently: Watanabe et al. (JJAP 42, 1462 (2003)) call the component of this paper ("ref. 5") "j", and
+compute f - j = 166.7 MHz, which is the model's a10 - a6 (166.64 MHz) with j = a6 and f = a10 in the
+Gerstenkorn-Luc letters. The paper's letters for both lines are therefore read as a5 and a6.
+Not entered: the Na D1 and D2 centres of gravity (589 755 814.7 and 589 158 326.4 fm, derived from these through a
+scanned offset of 42 and 56 MHz to Na crossovers) and their difference.
+"""
+
+uncertainty = "The printed standard deviations of the means, 0.2 and 0.45 fm (0.17 and 0.39 MHz). The 1973 reference-wavelength error is removed by the rescaling; its residual uncertainty (the CIPM value's 10 kHz) is negligible."
+
+notes = """
+[shift_correction]: the 100 mm cell was at room temperature (20 C, 26.8 Pa); no coefficient is given, so the
+typical -5 kHz/Pa is used with 2.5 kHz/Pa uncertainty (a -134(67) kHz correction). Residuals against
+i2spec2026o (obs - model, corrected): P(114) 14-1 a5 -0.22 MHz, P(38) 15-2 a6 -1.00 MHz. Watanabe 2003 (Na D2 F=2 -> F'=3 to P(38) 15-2 f, 1047.2(3) MHz) is not entered: it
+needs the Na line's absolute frequency, whose standard value is this paper's own iodine-referenced one.
+Checked with the shipped model only.
+"""
+
+[conditions]
+cell_temperature_C = 20.0
+method = "Coherent 599-21 cw dye laser, third-derivative saturated absorption in a 100 mm external cell; BIPM Michelson interferometer against a He-Ne/I2 laser on R(127) 11-5 d"
+
+[shift_correction]
+pressure_Pa = 26.8
+pressure_kHz_per_Pa = -5.0
+pressure_kHz_per_Pa_unc = 2.5
+basis = "Cell at room temperature (20 C): 26.8 Pa (Tellinghuisen 2011). No coefficient in the paper; the typical -5 kHz/Pa for 500-600 nm (as the allowances of other sets use) with 50 % uncertainty."

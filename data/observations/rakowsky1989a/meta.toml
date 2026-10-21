@@ -1,0 +1,26 @@
+id = "rakowsky1989a"
+citation = "S. Rakowsky, D. Zimmermann and W. E. Ernst, \"Accurate determination of wavenumbers for iodine molecular lines in the red spectral region\", Appl. Phys. B 48, 463-466 (1989)"
+source = "https://doi.org/10.1007/BF00694680 (PDF supplied by Matt; library copy papers/Rakowsky1989_Appl_Phys_B_48_463.pdf)"
+doi = "10.1007/BF00694680"
+retrieved = "2026-10-20"
+unit = "cm-1"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 465), typed from the text layer and checked against the page: vacuum wavenumbers of the o component of
+17 127I2 B-X lines with even J'' (v' = 0-2, v'' = 10-13, 12 980-13 890 cm-1), measured with a travelling Michelson
+wavemeter on a single-mode dye laser tuned to the polarization-spectroscopy peak (cell at about 430 C, side finger
+35 C). Labels: the 15 components a ... o run down in frequency (Fig. 2: a, f, o single, o at the low end), so o is
+rank 1. Where the k, l, m, n group was measured instead, the paper subtracts its measured distance to o.
+Wavemeter reference: a 3He-20Ne laser on 129I2 n (P(54) 8-4 a24/a25) at lambda = 632 991.3414(9) pm (Schweitzer et
+al. 1973); not rescaled (its error, a few MHz, is far inside the stated 0.0011 cm-1).
+Not entered: the centres of gravity and the comparison with the Gerstenkorn atlas (derived); the P(70) 2-10
+hyperfine constants (Fig. 2; the companion paper with the full patterns is "to be published").
+"""
+
+uncertainty = "As printed, 0.0011-0.0012 cm-1 (33-36 MHz): statistics 0.0003, wavemeter alignment 0.0005 and laser tuning or group distance 0.0003 cm-1, summed linearly by the authors. One group (the wavemeter calibration is common)."
+
+notes = "A source of Knöckel et al. 2004's near-infrared absolute data. Residuals against i2spec2026o (obs - model): -0.0004 to -0.0013 cm-1, mean -0.0009 cm-1 (-28 MHz, a common wavemeter offset within the stated error). Checked with the shipped model only."
+
+[conditions]
+method = "Doppler-free polarization spectroscopy with a cw single-mode dye laser (pyridine 2, LD 700), 0.5 m fused-silica cell at about 430 C; travelling Michelson wavemeter (1.5 m path) against a 129I2-stabilized He-Ne laser"

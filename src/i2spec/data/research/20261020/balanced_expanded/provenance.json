@@ -1,0 +1,47 @@
+{
+ "created_utc": "2026-10-20T20:32:47.269984+00:00",
+ "git_head": "74e1eb1658688f35cad375133078970c62cd009f",
+ "working_tree": "uncommitted research workspace (prototypes and data/theory are untracked)",
+ "scripts": {
+  "balanced_expanded.py": "cd781a7077e7ca7eaaa75dcb14998c1278865e699f0192decd02dee13d425ee4",
+  "curves.py": "60ed80a4cef08d73e5904bfe38a54d771544e798ded38cb6b8ca9f87867db893",
+  "fast_engine.py": "ee6cec934c418db8dcbf50ee05d5eb18e39346c5b9533d3d6cb18f057a000021",
+  "../potential_fit/engine.py": "a974531aa9a9565d93ea6ded19da1cae4f396aa7b40739cc39ab88a06c391871",
+  "hyperfine_variant.py": "5b37a19dc48e3bcdf929d15cbebc305bfaf5755132a77611dde521113ea256a2",
+  "second_order_hyperfine.py": "687a1d9e717930ebac642af09f9a033371483e236489538b9c1f07be98b624fd",
+  "second_order_fit.py": "b08b20c3b0ed2193f7251312da253f9c6fb17d8f1c249de942227fe32a5bb9ec",
+  "x_hyperfine.py": "5af1facfa128f31283b9d6f80e1bedd2fec590f309585201b5e1cf79b05e3b3f",
+  "b1g_resonance.py": "c33eb5c647323984733eba60f8b8f8ae5eb0c856c37331f5800f3b858671e982",
+  "own_hyperfine_rows.py": "7a1bab694895e19d694eb5d33fa7ff9f6b788ce96901a3caed8d181474f83b73",
+  "expanded_audit.py": "cb1898829da0378c839ca8edd1aff419bc9ec0129e5c9132c4cd49bda34fd28e",
+  "isotopologue_check.py": "60d1041702e37d9d80d7d4141045f0e3059ebdc4bedad7901de4dac5a6dbb3bf",
+  "package_expanded.py": "af6523d6ef15a353576dd75934cd743e7bc1a2fe2db3c67c102805ca90d827aa"
+ },
+ "results": {
+  "prototypes/out/explore/physical_search/balanced_expanded/final_rx/result.json": "c898176bf3b1a0353663c070a0bc608755792f56697e476a04290e2b3ff1ac23",
+  "prototypes/out/explore/physical_search/balanced_expanded/final_rx/request.json": "b8941ace6d8ad398da28c52e18b8a0180ec9b78c3f5f28164b436544639bd390",
+  "prototypes/out/explore/physical_search/balanced_expanded/own_hf_rows.npz": "2121a8b787fb2f2b4eabff65b80e43431e3a1582ad42f70de36997f6cf088158",
+  "prototypes/out/explore/physical_search/balanced_expanded/x_hyperfine/xhf.json": "7cff6dced986ce61ac629d568bb7c6938c70b262474abde03f929fe75869881b",
+  "prototypes/out/explore/physical_search/balanced_expanded/second_order/scan2_g0.65_u0/result.json": "64ea1a24c933b9c5bdc3117037f6f1268467f3a692ab939af94014d7c0d0bf14",
+  "prototypes/out/explore/physical_search/balanced_expanded/package/levels.npz": "e305af7fbf1e6028d59986a3da5d39674f5fa7f4c05f826344941eee80cf64cc",
+  "prototypes/out/explore/physical_search/balanced_expanded/package/hyperfine_tables.json": "a1d1fe760112bf72c9075e64d3ca286a9becd81864f70e4fb81b02ed22bdffa0",
+  "prototypes/out/explore/physical_search/balanced_expanded/package/resonance.json": "f669c516a311a7f40199791883342a53633b611b2dc467da461115ccb0c40138"
+ },
+ "data": {
+  "data/theory/saute1982/data.csv": "bc10252c5586cd9b8c46746c9f6ee80fbe449aaaabfb0b1c13f165c803e8c00d",
+  "data/theory/saute1982/meta.toml": "64a98d92ca4e95a4bb51f926afc1698685c2df520ecb046b8c6393a0723b40a9",
+  "data/theory/dejong1997/data.csv": "ec6e5bb16e064bbe3bcfa95ca0f3edff0a08eb6e1ab0fc0b58e55464ac9317e6",
+  "data/theory/dejong1997/meta.toml": "d71ee4c99b799763bd484bafb1ecbeb175741eab78a76b5894e56ab25582ac5e",
+  "data/theory/teichteil1994/data.csv": "7228afc547d4d273e1fda591c9dc90f93c369be45130313655feaf932cd9ad34",
+  "data/theory/teichteil1994/meta.toml": "4ca0f4749a869fdf2cf74b58ce36940aff51aef82f9b7d54fbeca802192c8dde",
+  "data/x_hyperfine/bacis1980/data.csv": "80263eabfb37529b8f59305ff1795af8e5c544584b50671fa5e750063a9ace99",
+  "data/x_hyperfine/bacis1980/meta.toml": "5e5c1154b096ac2ceb47ca68f83cc71255fce651d11683b61458d445373d618e",
+  "data/x_levels/martin1983/data.csv": "97760ed0f18ec61c7742307d0d67005855f6cee68344dfe3bad975606fa77717",
+  "data/x_levels/martin1983/meta.toml": "476668048c4505ab67681cd8e751bec0c1276cc6c6785e432d476cf89d0abcb8"
+ },
+ "versions": {
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "python": "3.12.13"
+ }
+}

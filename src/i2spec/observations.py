@@ -13,7 +13,8 @@ import csv
 import math
 import re
 import tomllib
-from dataclasses import dataclass, replace
+from collections import defaultdict
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 import numpy as np
@@ -76,6 +77,9 @@ class Observation:
     ref_component: str | None = None
     group: str | None = None  # observations that share a nuisance parameter, e.g. a calibration offset
     note: str = ""
+    # the data sets whose papers report this measurement: its own first, then the compilations that print it
+    # (load_all); where it was published, not what was measured, so equality ignores it
+    citations: tuple[str, ...] = field(default=(), compare=False)
 
 
 @dataclass
@@ -186,32 +190,107 @@ def load_dataset(path, raw=False) -> Dataset:
         raise ValueError(f"{path / 'meta.toml'}: id {meta['id']!r} differs from the directory name")
     if meta["unit"] not in UNITS:
         raise ValueError(f"{path / 'meta.toml'}: unit must be one of {tuple(UNITS)}")
-    observations = read_observations(path / "data.csv")
+    observations = [replace(o, citations=(meta["id"],)) for o in read_observations(path / "data.csv")]
     return Dataset(meta["id"], meta, observations if raw else _corrected(observations, meta))
 
 
-def _what(o):
-    """What an observation measures, for defer_to: an absolute component, or an interval between two lines
-    (or within one), whatever the components."""
-    if o.kind == "frequency":
-        return ("frequency", o.line, o.component)
-    return ("interval", o.line, o.ref_line or o.line)
+#: How a row of a compilation relates to a measurement that one of its sources holds ([overlaps] in
+#: meta.toml): "same", the source's measurement printed again, perhaps rounded or re-referenced; "mean", the
+#: compilation's own combination of it with other measurements; "superseded", an older measurement of the
+#: same quantity that the source replaces.
+RELATIONS = ("same", "mean", "superseded")
+_ABSOLUTE = "absolute"   # the node an absolute frequency joins its component to
 
 
-def load_all(root=DATA_DIR, include_excluded=False, raw=False) -> list[Dataset]:
-    """Every data set under ``root``, except those whose meta.toml has an ``exclude`` reason.
+def _ends(o):
+    """The two nodes an observation joins: (line, component rank) and its reference, or _ABSOLUTE."""
+    node = lambda line, label: (line, component_rank(label) if label else None)   # noqa: E731
+    return node(o.line, o.component), (_ABSOLUTE if o.kind == "frequency" else node(o.ref_line or o.line, o.ref_component))
 
-    A set whose meta.toml lists ``defer_to`` (a compilation such as the BIPM tables) loses the rows that one
-    of those sets also measures: the same absolute component, or intervals within the same line or between
-    the same two lines. Each measurement then enters once, from its source."""
-    datasets = [load_dataset(p, raw=raw) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
+
+def _graph(observations):
+    graph = defaultdict(list)
+    for k, o in enumerate(observations):
+        a, b = _ends(o)
+        graph[a].append((b, k))
+        graph[b].append((a, k))
+    return graph
+
+
+def _path(graph, a, b):
+    """The rows of a set that join node a to node b, from which the set determines f(a) - f(b) (or f(a), for
+    b = _ABSOLUTE); None if they are not joined."""
+    reached, queue = {a: ()}, [a]
+    for n in queue:
+        for m, k in graph.get(n, ()):
+            if m not in reached:
+                reached[m] = (*reached[n], k)
+                if m == b:
+                    return reached[m]
+                queue.append(m)
+    return None
+
+
+def _overlaps(datasets):
+    """Resolve the [overlaps] of every set in ``datasets``, keyed by (set id, row index): the rows the fit
+    leaves out (a source also determines them), the rows that are a source's measurement printed again (no
+    record of their own), and the compilations that cite each row. A row two sources determine is the
+    compilation's own mean, whatever its entries say. A source not in ``datasets`` (excluded) has no say."""
     by_id = {d.id: d for d in datasets}
+    graphs = {}
+    unfit, merged, cited = set(), set(), defaultdict(set)
     for d in datasets:
-        sources = [by_id[i] for i in d.meta.get("defer_to", []) if i in by_id]
-        if sources:
-            held = {_what(o) for src in sources for o in src.observations}
-            d.observations = [o for o in d.observations if _what(o) not in held]
-    return [d for d in datasets if (include_excluded or "exclude" not in d.meta) and d.observations]
+        sources = []
+        for sid, spec in d.meta.get("overlaps", {}).items():
+            spec = {"relation": spec} if isinstance(spec, str) else spec
+            if spec.get("relation") not in RELATIONS or set(spec) - {"relation", "lines", "groups"}:
+                raise ValueError(f"{d.id}: overlaps.{sid} must be one of {RELATIONS}, or a table of relation, "
+                                 "lines and groups")
+            if sid in by_id:
+                lines = spec.get("lines")
+                # groups: only these rows print the source, where the set also holds its own measurements
+                sources.append((sid, spec["relation"], lines and {Line.parse(s) for s in lines}, spec.get("groups")))
+                if sid not in graphs:
+                    graphs[sid] = _graph(by_id[sid].observations)
+        for k, o in enumerate(d.observations):
+            a, b = _ends(o)
+            found = [(sid, relation, path) for sid, relation, lines, groups in sources
+                     if (not lines or o.line in lines) and (not groups or o.group in groups)
+                     for path in [_path(graphs[sid], a, b)] if path]
+            if not found:
+                continue
+            unfit.add((d.id, k))
+            # a source that supersedes the row does not print it, so it has no part in what the row is
+            printed = [f for f in found if f[1] != "superseded"]
+            if len(printed) == 1 and printed[0][1] == "same":
+                merged.add((d.id, k))
+            for sid, relation, path in found:
+                if relation != "superseded":
+                    # every row of the source on each step, so a quantity it measured twice is cited twice
+                    ends = {frozenset(_ends(by_id[sid].observations[j])) for j in path}
+                    for j, o in enumerate(by_id[sid].observations):
+                        if frozenset(_ends(o)) in ends:
+                            cited[(sid, j)].add(d.id)
+    return unfit, merged, cited
+
+
+def load_all(root=DATA_DIR, include_excluded=False, raw=False, record=False, include=()) -> list[Dataset]:
+    """Every data set under ``root``, except those whose meta.toml has an ``exclude`` reason (``include`` names
+    excluded sets to keep anyway; the other excluded sets still have no say in the overlaps).
+
+    A compilation (the BIPM tables) lists in ``[overlaps]`` the sets whose measurements it prints, and how.
+    By default, for the fit, it loses every row that one of them also determines, so each measurement enters
+    once, from its source. ``record`` keeps the compilation's own values instead: it loses only the rows that
+    are a source's measurement printed again ("same"), and keeps its means and superseded measurements. Every
+    observation carries its citations, its own set first, then the compilations that print it."""
+    datasets = [load_dataset(p, raw=raw) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
+    datasets = [d for d in datasets if include_excluded or "exclude" not in d.meta or d.id in include]
+    unfit, merged, cited = _overlaps(datasets)
+    drop = merged if record else unfit
+    for d in datasets:
+        d.observations = [replace(o, citations=(d.id, *sorted(cited.get((d.id, k), ()))))
+                          for k, o in enumerate(d.observations) if (d.id, k) not in drop]
+    return [d for d in datasets if d.observations]
 
 
 @dataclass(frozen=True)

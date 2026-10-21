@@ -50,11 +50,47 @@ main components and a line with odd J″ has 21.
 
 ## Parameters
 
-The parameters eQq, C, d and δ of each level are taken from interpolation formulae in the
-vibrational energy: those of Bodermann, Knöckel & Tiemann (2002) for ¹²⁷I₂ up to v′ = 43, and those of
-Salumbides *et al.* (2006) above v′ = 43 and for the other isotopologues, scaled by the ratios of the
-nuclear moments. For ¹²⁷I₂ the formulae are supplemented by a table of B-state corrections fitted to
-the measured hyperfine spectra at each v′ for which measurements exist.
+### ¹²⁷I₂
+
+balanced-expanded computes the parameters of every level from functions shared by all levels, not from a
+table of measured values:
+
+- **B v′ ≤ 43.** Each parameter p of the B state (eqQ, C, d, δ) is the average, over the level's own
+  wavefunction, of a smooth function of R:
+
+    $$
+    p(v', J') = \sum_n b_{p,n}\,\langle z^n\rangle_{v'J'},\qquad z = \frac{R^2-R_e^2}{R^2+R_e^2}\Big/0.35, \tag{4}
+    $$
+
+    with 5, 5, 3 and 1 coefficients for eqQ, C, d and δ. These 14 coefficients were fitted together with the
+    potentials (see [Rovibrational levels](levels.md)), to the measured hyperfine intervals and the absolute
+    frequencies of individual components. A level with no hyperfine data of its own gets its parameters from
+    its wavefunction.
+- **X v″ ≤ 17.** These parameters are the interpolation formulae of Bodermann, Knöckel & Tiemann (2002):
+  eqQ = q₀ + q₁u + q₂u² + q₃x + q₄ux and C = c₀ + c₁u + c₂/(E<sub>v</sub> − c₃), with u = v + ½ and x = J(J + 1),
+  and fixed d = 1.524 kHz and δ = 3.705 kHz (eleven inherited constants).
+- **B v′ = 44–80.** Above v′ = 43 the B state approaches the I(²P3/2) + I(²P1/2) limit, and its hyperfine
+  structure takes on contributions from the nine molecular states of that limit. Each parameter is the
+  background of Eq. (4), anchored to the core fit's own values and continued smoothly, plus explicit
+  second-order sums over those states, in the framework of Chen *et al.* (2005). The potential curves of
+  these states come from de Jong *et al.* (1997) and Saute & Aubert-Frécon (1982). Three choices were set by
+  measurements of the out-of-core intervals and the constants of Chen *et al.* (2004):
+    - the mixing angle of the 1u states and the curvature of the eqQ continuation were fitted;
+    - the long-range scale of the 1g(¹Πg) curve was chosen by training cost.
+- **B v′ = 77–78.** These levels lie close to a level of the 1g(¹Πg) state, which Pique *et al.* (1986)
+  measured. That level is diagonalized together with B, and its weak extra components appear among the
+  line's components.
+- **X v″ = 18–108.** eqQ is continued smoothly from the formula of Bodermann *et al.* to its value for
+  separated atoms (Bacis *et al.* 1980).
+
+The out-of-core parameters are tabulated for every level the potentials hold, up to J = 203. A quasi-bound
+level above the asymptote has a position but no hyperfine components.
+
+### ¹²⁹I₂ and ¹²⁷I¹²⁹I
+
+The other isotopologues use the earlier model, i2spec2026o. Its parameters come from the interpolation
+formulae of Bodermann *et al.* (2002) and Salumbides *et al.* (2006), scaled by the ratios of the nuclear
+moments.
 
 ## Components and their intensities
 
@@ -70,5 +106,8 @@ increasing frequency, as in the BIPM tables.
 </figure>
 
 !!! note "Accuracy of the hyperfine offsets"
-    The component offsets relative to the hyperfine-free position are accurate to a few tens of kHz
-    for ¹²⁷I₂ with v′ ≤ 43, and to about 1 MHz for ¹²⁹I₂ and ¹²⁷I¹²⁹I.
+    Every component carries its own 1σ (see [Uncertainty estimates](uncertainty.md#hyperfine-part)). A
+    hyperfine interval within a ¹²⁷I₂ line is good to about 0.06 MHz below v′ = 44, 0.15–1 MHz at
+    v′ = 44–55, and a few MHz near v′ = 60. Beyond that the uncertainty grows to about 1 % of the interval
+    at v′ = 75. These values were fitted to intervals and constants held out of the fit. For ¹²⁹I₂ and
+    ¹²⁷I¹²⁹I the offsets are good to about 1 MHz.

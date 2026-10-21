@@ -1,0 +1,55 @@
+id = "balling2007a_532"
+citation = "P. Balling and P. Křen, \"Absolute frequency measurements of wavelength standards 532 nm, 543 nm, 633 nm and 1540 nm\", Eur. Phys. J. D 48, 3-10 (2008)"
+source = "Eur. Phys. J. D 48, 3-10 (2008), published online 5 December 2007; https://doi.org/10.1140/epjd/e2007-00325-0 (publisher PDF, Matt's library copy papers/Balling2007_EPJD48_3.pdf)"
+doi = "10.1140/epjd/e2007-00325-0"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "precision.yaml:balling2007a"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+The 532 nm part of Balling & Křen (one paper, three sets: balling2007a_633, balling2007a_543, balling2007a_532).
+
+Table 3 (journal p. 7, PDF p. 5): components a1, a2 and a5-a15 of 127I2 R(56) 32-0 for the CMI YAG1 laser
+(InnoLight Prometheus 20, 50 cm external cell, third-harmonic locking), measured repeatedly with the CMI fs
+comb. The table prints the MeP 2003 frequency and the YAG1 deviation in kHz; each row here is MeP + deviation,
+converted to MHz exactly. Read from the pdftotext -layout text layer and checked digit by digit against a
+220 dpi rendering. Every printed MeP frequency equals bipm2012a's a10 plus its interval, to the kHz. Labels are
+ranks by frequency (R(56): even J'', 15 main components); a3 and a4 were not measured.
+
+Not entered: the long-term a10 average f(CMIYAG1@a10) = 563 260 223 514.7 +- 1.0 kHz (k = 2) of Sect. 3.3, the
+history (BIPM comparison, BEV 2002/2007, CMI since 2005) that Table 3's a10 (+1.4 kHz) belongs to; the
+relative intensities and linewidths of Figs. 9-11.
+
+Overlap: the paper reports that the intervals from a10 "agree to better than 1 kHz with those in MeP", so the
+hyperfine pattern adds little to bipm2012a and its sources. The absolute values are independent of bipm2012a's
+sources (Diddams, Ye, Sugiyama, Holzwarth, Nevsky), but CMI YAG1 took part in the international comparisons
+behind the CCL means (Picard et al. 2003, the paper's ref. [9]).
+"""
+
+uncertainty = """
+Sect. 3: expanded (k = 2) uncertainties of the comb measurement combined with the laser's mid-term
+repeatability, not the laser's total uncertainty as a standard. Printed +-1.0 kHz for every component; entered
+as 0.5 kHz. One laser, cell and set of conditions, so one group. The text gives the scatter of all components
+about the MeP values as +1.27 kHz mean, +-1.15 kHz (k = 2).
+"""
+
+notes = """
+Residuals against i2spec2026o (Predictor(), obs - model): -7.8 kHz mean, sd 1.2 kHz over the 13 components as
+measured; -4.2 kHz after the shift correction. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "frequency-doubled Nd:YAG (InnoLight Prometheus 20), 50 cm external cell (ISI Brno), third-harmonic locking, average of normal and reversed piezo polarity; Menlo FC8004 comb referenced to a GPS-disciplined Rb oscillator"
+cold_finger_C = -15
+pressure_Pa = 0.85
+power_mW = 2.0
+beam_diameter_mm = 2.0
+modulation_MHz_pp = 1.5
+
+[shift_correction]
+pressure_Pa = 0.85
+pressure_kHz_per_Pa = -4.2
+pressure_kHz_per_Pa_unc = 0.2
+allowance_kHz = 1.0
+basis = "Paper Sect. 3.3: 0.85 Pa (cold finger -15 C), 2 mW, 2 mm beam, 1.5 MHz p-p. Pressure slope -4.2(0.2) kHz/Pa, the Nevsky 2001 value the CCL uses for 532 nm third-harmonic standards. Power and modulation shifts at 2 mW / 1.5 MHz p-p are not given; allowance 1 kHz (hong2004b's -0.149 kHz/mW and holzwarth2001a's -0.34 kHz/mW give 0.3-0.7 kHz at 2 mW)."

@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "absolute": 60,
+    "intraline": 592
+  },
+  "maximum_difference_Hz": {
+    "absolute": 0.5960464477539062,
+    "intraline": 0.1070412167791801
+  },
+  "tolerance_Hz": 100.0,
+  "passed": true,
+  "scope": "Numerical reproduction of saved predictions; not independent predictive validation"
+}

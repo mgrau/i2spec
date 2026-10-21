@@ -11,7 +11,7 @@ from textual.widgets import DataTable, Footer, Header, Input, Select, Static
 
 from . import saturation
 from .constants import ISOTOPOLOGUES
-from .lookup import Catalog, Component, parse_range, to_wavenumber, uncertainty
+from .lookup import Catalog, Component, format_mhz, parse_range, to_wavenumber, uncertainty
 from .spectrum import cross_section, doppler_fwhm
 
 RESULT_COLUMNS = ("λ vac (nm)", "ν (cm⁻¹)", "f (THz)", "line", "S (cm)", "u (MHz)", "notes")
@@ -150,7 +150,7 @@ class LineBrowser(App):
         table.clear()
         for line in self.lines:
             table.add_row(f"{line.position('nm'):.5f}", f"{line.nu:.5f}", f"{line.position('THz'):.7f}", line.label,
-                          f"{line.strength:.2e}", f"{line.uncertainty_MHz:,.0f}", ", ".join(line.flags))
+                          f"{line.strength:.2e}", format_mhz(line.uncertainty_MHz), ", ".join(line.flags))
         more = f", {result.total - len(self.lines)} more not shown" if result.truncated else ""
         self.set_status(f"{len(self.lines)} of {result.total} lines · {self.isotopologue} · "
                         f"{result.temperature:.2f} K · sorted by {'position' if self.sort == 'nu' else 'strength'}{more}")
@@ -175,15 +175,20 @@ class LineBrowser(App):
             f"S = {line.strength:.3e} cm at {line.temperature:.2f} K\n"
             f"E″ = {line.E_lower:.3f} cm⁻¹ · v′ = {line.v_upper}, v″ = {line.v_lower}, J″ = {line.J_lower}\n"
             f"Doppler FWHM {line.doppler_fwhm_MHz:.1f} MHz\n\n"
-            f"[b]position uncertainty ≈ {value:,.0f} MHz[/b] (1σ estimate)\n{basis}")
+            f"[b]position uncertainty ≈ {format_mhz(value)} MHz[/b] (1σ) · {line.source}\n{basis}")
         self.query_one("#components", DataTable).clear()
         self.run_worker(lambda: self._components(line), thread=True, exclusive=True, group="components")
         self.draw_spectrum()
 
     def _components(self, line):
         try:
-            model = self.catalog.model(line.isotopologue)
-            nu0, raw = model.hyperfine_components(line.v_upper, line.v_lower, line.J_lower, line.branch, dJ=2)
+            from .lookup import _preferred
+            if _preferred(line) is not None:           # the preferred model's own hyperfine (i2spec.preferred)
+                from .preferred import components
+                nu0, raw = components(line.branch, line.J_lower, line.v_upper, line.v_lower)
+            else:
+                model = self.catalog.model(line.isotopologue)
+                nu0, raw = model.hyperfine_components(line.v_upper, line.v_lower, line.J_lower, line.branch, dJ=2)
         except Exception as e:
             self.call_from_thread(self.set_status, f"[red]hyperfine: {e}[/red]")
             return

@@ -1,0 +1,25 @@
+id = "sugiyama1988a"
+citation = "K. Sugiyama, S. Iwasaki and A. Morinaga, \"Hyperfine structure of the P(48) line in the 11-3 band of iodine molecules by FM saturation spectroscopy at 612 nm\", Opt. Lett. 13, 556-558 (1988)"
+source = "https://doi.org/10.1364/OL.13.000556 (publisher PDF via ODU; Matt's library copy papers/Sugiyama1988_Opt_Lett_13_556.pdf)"
+doi = "10.1364/OL.13.000556"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 558), typed from the text layer and checked against the page: measured intervals f(x) - f(a) between
+hyperfine components of 127I2 P(48) 11-3, by beat between a dye laser locked (FM saturation spectroscopy, no
+internal modulation) to each component and a 612 nm He-Ne/I2 laser on R(47) 9-2 (NRLM), with the estimated
+standard deviation s and the calculated value (in the note). Footnote b and the text give the link between
+lines, f[a, P(48)] - f[o, R(47)] = -160.5 +- 0.7 MHz (consistent with Gläser's -160.317(5) MHz, their ref. 11).
+Labels: the table pairs the letters a-o with b15 down to b1 (a is the highest of the 15 components, as in
+razet1991a); for R(47) 9-2, a 21-component line, o is a7 (bipm2003d).
+
+Not entered: b14/b13 (both -135.6 MHz) and b12/b11 (both -155.6 MHz), each pair printed with one measured value,
+i.e. unresolved; the fitted constants (Delta eQq = 1945.0(7) MHz, Delta C = 28.2(1.3) kHz).
+"""
+
+uncertainty = "s as printed, the estimated standard deviation of each interval (0.4 or 1.0 MHz); 0.7 MHz for the link to R(47). One spectrometer, so one group."
+
+[conditions]
+method = "dye laser at 612 nm locked by FM saturation spectroscopy (6.33 MHz sidebands) to an external cell; beat against a He-Ne laser stabilized (third derivative) to R(47) 9-2 component i or n"

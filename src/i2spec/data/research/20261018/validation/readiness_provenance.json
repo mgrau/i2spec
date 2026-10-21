@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-10-18T12:24:56.129331+00:00",
+  "files_sha256": {
+    "prototypes/out/explore/physical_search/blind_validation_readiness_20261018/prospective_lab_targets_v1.json": "75f4666da4b48744a0e1aeb4aeaac0c688096db92e49d1b30e4b3598c43a25f2",
+    "prototypes/out/explore/physical_search/blind_validation_readiness_20261018/readiness_report.md": "43255693a89399766e50f1e44c5f10272195cda536edf1512d842d29e3554e53",
+    "prototypes/out/explore/physical_search/blind_validation_readiness_20261018/source_inventory.csv": "b177074d249aa7060f606b94c08ae74e48a527fe3e008ea62b1b9229f2b81ba0",
+    "prototypes/out/explore/physical_search/blind_validation_readiness_20261018/published_measurement_candidates.json": "b8c4cfc8be9da89c80273647b65546906585fac402684a228459409b0997e6ce"
+  },
+  "new_measurements_available": false,
+  "prospective_registry_sha256": "e0cdfbaba8fc4758a1700edfeceff9b92b0af76a56b737b081a9a56dfa9a32f4",
+  "literature_inference": "Primary methods unavailable; zero comparable literature outcomes. New laboratory test remains pending."
+}

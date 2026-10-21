@@ -2,8 +2,9 @@
 
     uv run --group research python documentation/figures/make_figures.py
 
-They are illustrations, not results: the levels, wavefunctions and spectra are the model's, but the
-choice of what to draw is for explanation. The SVGs are written with placeholder colours that are
+They are illustrations, not results: the levels, wavefunctions and spectra are the model's (the preferred
+model, balanced-expanded, for 127I2; i2spec2026o's line strengths), but the choice of what to draw is for
+explanation. The SVGs are written with placeholder colours that are
 then replaced by CSS variables (documentation/stylesheets/extra.css), and the pages inline them, so
 they follow the light and dark themes like the rest of the page.
 """
@@ -17,11 +18,11 @@ import numpy as np
 from matplotlib.patches import PathPatch, Patch
 from matplotlib.path import Path as MPath
 
+from i2spec import preferred
 from i2spec.constants import reduced_mass
 from i2spec.intensity import mu_tellinghuisen2011
-from i2spec.lookup import Catalog, Line, uncertainty
-from i2spec.model import RovibronicModel
-from i2spec.potentials import load_extended, load_potentials
+from i2spec.lookup import Catalog
+from i2spec.potentials import load_potentials
 from i2spec.solver import RadialSolver
 from i2spec.spectrum import cross_section, number_density, transmission
 
@@ -61,11 +62,20 @@ def turning_points(V, R, E):
     return R[inside[0]], R[inside[-1]]
 
 
-model = RovibronicModel("127I2")
-ext, from_v = load_extended()
-pub = load_potentials()
-e00 = model.energy("X", 0, 0)
+model = preferred.model()                       # balanced-expanded (research-20261020)
+ext = model._levels_x.potentials                # its X and B potentials, V(R) in cm-1
+LIMIT = model._levels_x.asymptote               # their dissociation asymptotes
+CORE = model._spec["core"]                      # the highest levels of the core fit: X 17, B 43
+KNOTS = model._spec["structure"]["knots"]
+pub = load_potentials("hannover2008")
 mu = reduced_mass("127I2")
+
+
+def energy(state, v, J):
+    try:
+        return model._energy(state, v, J)
+    except ValueError:                          # dissociated at this J
+        return np.nan
 
 # --- 1. the two potentials, their levels, and the 532 nm transition -------------------------------
 R = np.linspace(2.3, 7.0, 1500)
@@ -73,31 +83,32 @@ fig, ax = plt.subplots(figsize=(7.2, 4.6))
 for s, colour in (("X", C["trace"]), ("B", C["pick"])):
     V = ext[s]
     ax.plot(R, V(R), color=colour, lw=2)
-    levels = model.levels(s, 0)
-    top = {"X": 47, "B": 58}[s]
-    fitted = {"X": 17, "B": 43}[s]
+    top = {"X": 108, "B": 80}[s]
+    fitted = CORE[s]
     for v in range(0, top + 1):
-        if v > fitted and v % 3:            # beyond the fitted range, every third level is enough
+        if v > fitted and v % 3:            # beyond the core, every third level is enough
             continue
         if s == "B" and v <= fitted and v % 2:
             continue
-        E = levels[v]
+        E = energy(s, v, 0)
+        if not np.isfinite(E) or turning_points(V, R, E)[1] >= R[-2]:
+            continue
         a, b = turning_points(V, R, E)
         ax.plot([a, b], [E, E], color=colour, lw=0.7, alpha=0.9 if v <= fitted else 0.35)
-    E = levels[fitted]
+    E = energy(s, fitted, 0)
     a, b = turning_points(V, R, E)
-    ax.annotate(f"{'v″' if s == 'X' else 'v′'} = {fitted}: highest level in the 2008 fit", xy=(b, E),
+    ax.annotate(f"{'v″' if s == 'X' else 'v′'} = {fitted}: end of the core fit", xy=(b, E),
                 xytext=(b + 0.45, E - (900 if s == "X" else 1300)),
                 fontsize=8.5, color=C["ink3"], va="center", arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.6))
 # dissociation limits
-ax.axhline(ext["X"].De if hasattr(ext["X"], "De") else 12547.3, color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
-ax.axhline(20150.3, color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
-ax.text(6.95, 12547.3 + 250, "I ²P3/2 + I ²P3/2", ha="right", fontsize=8.5, color=C["ink3"])
-ax.text(6.95, 20150.3 + 250, "I ²P3/2 + I ²P1/2", ha="right", fontsize=8.5, color=C["ink3"])
+ax.axhline(LIMIT["X"], color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
+ax.axhline(LIMIT["B"], color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
+ax.text(6.95, LIMIT["X"] + 250, "I ²P3/2 + I ²P3/2", ha="right", fontsize=8.5, color=C["ink3"])
+ax.text(6.95, LIMIT["B"] + 250, "I ²P3/2 + I ²P1/2", ha="right", fontsize=8.5, color=C["ink3"])
 ax.text(3.25, 700, "X ¹Σg⁺", color=C["trace"], fontsize=12, fontweight="bold")
 ax.text(3.55, 15600, "B ³Π(0u⁺)", color=C["pick"], fontsize=12, fontweight="bold")
 # the 532 nm line, R(56) 32-0, drawn vertically at the equilibrium distance of X (Franck-Condon)
-Ex, Eb = model.energy("X", 0, 56), model.energy("B", 32, 57)
+Ex, Eb = energy("X", 0, 56), energy("B", 32, 57)
 ax.annotate("", xy=(2.70, Eb), xytext=(2.70, Ex), arrowprops=dict(arrowstyle="-|>", color=C["ink"], lw=1.4))
 ax.text(2.76, 13600, "532 nm\nR(56) 32–0", ha="left", va="center", fontsize=9, color=C["ink"])
 ax.set_xlim(2.3, 7.0)
@@ -106,17 +117,18 @@ ax.set_xlabel("internuclear distance R (Å)")
 ax.set_ylabel("energy above the X minimum (cm⁻¹)")
 save(fig, "potentials")
 
-# --- 2. published curve vs MLR: where each is trusted ---------------------------------------------
+# --- 2. the 2008 curves against balanced-expanded's MLR curves: where each was fitted -----------------
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.7), sharey=False)
-for ax, s, colour, span in ((axes[0], "X", C["trace"], (2.427, 3.079)), (axes[1], "B", C["pick"], (2.65, 4.589))):
+for ax, s, colour in ((axes[0], "X", C["trace"]), (axes[1], "B", C["pick"])):
+    span = (KNOTS.get(f"{s}_in", 2.65), KNOTS[f"{s}_out"])   # the core: inside the knots the tails vanish
     R = np.linspace(span[0] - 0.1, 8.0, 800)
     d = pub[s](R) - ext[s](R)
     ax.axvspan(*span, color=colour, alpha=0.12, lw=0)
     ax.axhline(0, color=C["rule"], lw=0.8)
     ax.plot(R, d, color=colour, lw=1.8)
-    ax.text(span[1] + 0.1, 0.12, "← range of the\n    fitted levels", transform=ax.get_xaxis_transform(),
+    ax.text(span[1] + 0.1, 0.80 if s == "X" else 0.12, "← core: the\n    frozen fit", transform=ax.get_xaxis_transform(),
             ha="left", va="bottom", fontsize=8, color=C["ink3"])
-    ax.set_title(f"{s} state: V(2008) − V(MLR)", fontsize=10, color=C["ink2"], loc="left")
+    ax.set_title(f"{s} state: V(2008) − V(balanced-expanded)", fontsize=10, color=C["ink2"], loc="left")
     ax.set_xlabel("R (Å)")
     lim = np.abs(d[R > span[0]]).max() * 1.15
     ax.set_ylim(-lim, lim)
@@ -126,7 +138,7 @@ save(fig, "published_vs_mlr")
 
 # --- 3. wavefunctions and the transition moment: Franck-Condon ------------------------------------
 sx = RadialSolver(ext["X"], mu, rmin=2.3, rmax=4.0, step=0.004, nlev=6)
-sb = RadialSolver(ext["B"], mu, rmin=2.4, rmax=7.0, step=0.004, nlev=40)
+sb = RadialSolver(ext["B"], mu, rmin=2.4, rmax=7.0, step=0.004, nlev=40)   # (no rotation: J = 0)
 ex, wx = sx.states(0)
 eb, wb = sb.states(0)
 fig, (ax, ax2) = plt.subplots(2, 1, figsize=(7.2, 4.8), sharex=True, gridspec_kw=dict(height_ratios=[3, 1.2], hspace=0.08))
@@ -165,7 +177,7 @@ ax.plot(nuP, J, "o", ms=2.4, color=C["pick"], label="P branch  (J′ = J″ − 
 k = np.argmax(nuR)
 ax.annotate(f"band head, J″ = {J[k]}", xy=(nuR[k], J[k]), xytext=(nuR[k] - 6, J[k] + 3), fontsize=9, ha="right",
             color=C["ink2"], arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.6))
-nu0 = model.energy("B", 32, 0) - model.energy("X", 0, 0)
+nu0 = energy("B", 32, 0) - energy("X", 0, 0)
 ax.axvline(nu0, color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
 ax.text(nu0 - 0.1, 38, "band origin", ha="right", fontsize=8.5, color=C["ink3"])
 ax.set_xlim(right=nu0 + 1.5)
@@ -235,18 +247,18 @@ ax2.invert_xaxis()
 save(fig, "spectrum")
 
 # --- 7. how well each band is known ------------------------------------------------------------------
-VU, VL = 60, 54
-classes = [(1, "≤ 1 MHz", C["u1"]), (10, "1–10 MHz", C["u2"]), (100, "10–100 MHz", C["u3"]),
-           (1000, "0.1–1 GHz", C["u4"]), (np.inf, "> 1 GHz", C["u5"])]
+VU, VL = 81, 108
+classes = [(1, "≤ 1 MHz", C["u1"]), (10, "1–10 MHz", C["u2"]), (30, "10–30 MHz", C["u3"]),
+           (100, "30–100 MHz", C["u4"]), (np.inf, "> 100 MHz", C["u5"])]
 cells = {k: [] for k in range(len(classes))}
-for vu in range(VU):
-    for vl in range(VL + 1):
-        nu = model.energy("B", vu, 51) - model.energy("X", vl, 50)
-        if nu <= 0:
-            continue
-        u, _ = uncertainty(Line("127I2", "R", 50, vu, vl, nu, 0.0, 0.0, 300.0))
-        k = next(i for i, (lim, _, _) in enumerate(classes) if u <= lim)
-        cells[k].append((vl, vu))
+grid_vu, grid_vl = np.meshgrid(np.arange(VU), np.arange(VL + 1), indexing="ij")
+u_all, status, _ = preferred.preferred().uncertainties(np.full(grid_vu.size, "R"), np.full(grid_vu.size, 20),
+                                                       grid_vu.ravel(), grid_vl.ravel())
+for vu, vl, u in zip(grid_vu.ravel(), grid_vl.ravel(), u_all):
+    if not np.isfinite(u):                      # a level dissociated at this J
+        continue
+    k = next(i for i, (lim, _, _) in enumerate(classes) if u <= lim)
+    cells[k].append((vl, vu))
 fig, ax = plt.subplots(figsize=(7.2, 4.4))
 for k, pts in cells.items():
     if not pts:
@@ -258,31 +270,23 @@ for k, pts in cells.items():
     ax.add_patch(PathPatch(MPath(verts, codes), facecolor=classes[k][2], lw=0))
 ax.axvline(17.5, color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
 ax.axhline(43.5, color=C["ink3"], lw=0.7, ls=(0, (4, 3)))
-ax.text(17.8, VU - 1.5, "v″ > 17: beyond the 2008 fit", fontsize=8.5, color=C["ink2"], va="top")
-ax.text(VL, 44.2, "v′ > 43: beyond the 2008 fit", fontsize=8.5, color=C["ink2"], ha="right")
+ax.text(18.3, VU - 1.5, "v″ > 17: beyond the core fit", fontsize=8.5, color=C["ink2"], va="top")
+ax.text(VL, 44.2, "v′ > 43: beyond the core fit", fontsize=8.5, color=C["ink2"], ha="right")
 ax.set_xlim(-0.5, VL + 0.5)
 ax.set_ylim(-0.5, VU - 0.5)
 ax.set_xlabel("v″ (X)")
 ax.set_ylabel("v′ (B)")
 ax.legend(handles=[Patch(facecolor=col, label=l) for k, (_, l, col) in enumerate(classes) if cells[k]], loc="upper left",
-          bbox_to_anchor=(1.01, 1.0), fontsize=9, title="1σ at J″ = 50", title_fontsize=9)
+          bbox_to_anchor=(1.01, 1.0), fontsize=9, title="1σ of R(20)", title_fontsize=9)
 save(fig, "uncertainty_map")
 
 
 # --- 8. hyperfine levels of R(56) 32-0 and the 15 main transitions -----------------------------------
-from i2spec import hfs_params
-from i2spec.constants import MHZ_PER_CM, NUCLEAR_SPIN
-from i2spec.hfs_table import default_table
-from i2spec.hyperfine import level_structure, line_components
+from i2spec.hyperfine import line_components
 
 vu, vl, Jl = 32, 0, 56
 Ju = Jl + 1
-xp, bp = hfs_params.line_states("127I2", vu, vl, model._reference_term("B", vu), model._reference_term("X", vl),
-                                None, default_table())
-ratios = dict(zip(("eqQ_ratio", "C_ratio"), hfs_params.nucleus_ratios("127I2")))
-spins = dict(i1=NUCLEAR_SPIN[127], i2=NUCLEAR_SPIN[127], dJ=2, **ratios)
-lower = level_structure(Jl, xp, lambda J: model.energy("X", vl, J) * MHZ_PER_CM, symmetry="g", **spins)
-upper = level_structure(Ju, bp, lambda J: model.energy("B", vu, J) * MHZ_PER_CM, symmetry="u", **spins)
+lower, upper = model._structure("X", vl, Jl), model._structure("B", vu, Ju)
 comps = [c for c in line_components(upper, lower, Ju, Jl) if c.label]
 
 fig, ax = plt.subplots(figsize=(7.2, 4.6))

@@ -1,0 +1,11 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(62) 17-1,a1,frequency,520206837,60,,,baird1979a,"p. 264: f_o = 2[f_Ne + (f_o/2 - f_Ne)] = 520 206 837 +- 60 MHz, with f_Ne = 260 103 264 +- 30 MHz (the 1.15 um 20Ne laser)"
+127I2 P(62) 17-1,a2,interval,275.5,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 584.1 MHz for peak n, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a3,interval,287.3,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 595.9 MHz for peak m, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a4,interval,293.5,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 602.1 MHz for peak l, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a5,interval,306.6,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 615.2 MHz for peak k, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a6,interval,418.7,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 727.3 MHz for peak j, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a7,interval,430.1,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 738.7 MHz for peak i, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a8,interval,438.7,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 747.3 MHz for peak h, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a9,interval,452.0,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 760.6 MHz for peak g, minus 308.6 MHz for o"
+127I2 P(62) 17-1,a10,interval,579.4,1.4,,a1,baird1979a,"Table 1: f - 2 f_Ne = 888.0 MHz for peak f, minus 308.6 MHz for o"

@@ -1,0 +1,29 @@
+id = "chen1998a"
+citation = "Chen Xuzong, Zhang Keming, Zang Erjun, Y. Akimoto, T. Kasahara, K. Sakamoto and H. Inaba, \"Frequency stabilized tunable diode laser and strong transition iodine hyperfine spectra at 633 nm\", Proc. SPIE 3547, 194-202 (1998)"
+source = "https://doi.org/10.1117/12.319612 (PDF supplied by Matt; library copy papers/Chen1998_SPIE_3547_194.pdf)"
+doi = "10.1117/12.319612"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer of pp. 196 and 200, checked against the page images. The same measurements as
+zhang1999a (the group's Acta Phys. Sin. paper of 1999, which prints them again with the same digits); this is the
+earlier publication, so it holds the record and zhang1999a declares it ("same"). Rows, groups and labels follow
+zhang1999a:
+- Sect. 3: R(39) 6-3 u is 2625.21 MHz above R(127) 11-5 a (beat between the diode laser and a He-Ne/I2 laser, APD
+  and spectrum analyzer "with the error of 0.5 MHz").
+- Table 4: measured intervals of the 21 components a-u of R(39) 6-3 from a (a = rank 21, u = rank 1).
+- Table 1: the u or o component of R(60) 8-4, P(119) 9-4, P(32) 6-3 and R(38) 6-3, "estimated by the Fabry-Perot
+  with error of 30 MHz".
+Not entered: Table 1's R(127) 11-5 a (the CIPM value) and R(39) 6-3 u (that value plus the beat); Table 3
+(calculated band positions and intensities); Table 5 (calculated hyperfine patterns); the Table 4 calculated
+column and constants (Delta eqQ = 1952 MHz, Delta C = 24.73 kHz, Delta d_T = -16.78 kHz).
+"""
+
+uncertainty = "As in zhang1999a: 0.5 MHz for the beat and the Table 4 intervals (the spectrum analyzer's error); 30 MHz, as stated, for the Fabry-Perot values."
+
+notes = "Residuals against i2spec2026o: as zhang1999a (identical rows). Checked with the shipped model only."
+
+[conditions]
+method = "New Focus 6210 extended-cavity diode laser at 633 nm, third-derivative saturated absorption in an external cell (cold finger 15 C, 6 MHz p-p, 1.8 mW one way); beats against a He-Ne/I2 laser; Fabry-Perot (FSR 300 MHz) scale"

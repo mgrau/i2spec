@@ -1,0 +1,65 @@
+id = "powel2021a"
+citation = "R. Powel, M. Koble, J. Palmes, N. Everett, P. Imgram, K. König, J. Lantis, K. Minamisono, W. Nörtershäuser, R. Parker, S. Pineda, F. Sommer and A. Klose, \"Improved wavelength meter calibration in near infrared region via Doppler-free spectroscopy of molecular iodine\", Appl. Phys. B 127, 104 (2021)"
+source = "Appl. Phys. B 127:104 (2021), published 29 June 2021; https://doi.org/10.1007/s00340-021-07650-5 (publisher PDF, Matt's library copy papers/Powel2021_APB_10.1007_s00340-021-07650-5.pdf)"
+doi = "10.1007/s00340-021-07650-5"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "precision.yaml:powel2021a"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 2 (p. 7 of 11), column "Frequency comb meas.": the TU Darmstadt comb-referenced absolute frequencies of
+three 127I2 hyperfine components near 704 nm, in MHz as printed. Read from the pdftotext -layout text layer and
+checked digit by digit against a 220 dpi rendering of p. 7. These are the authors' zero-pressure values: each
+is the mean of the zero-pressure extrapolations by three techniques (saturation, FM-saturation and
+frequency-stabilization spectroscopy, Sect. 3.2, Fig. 6b), each extrapolation from a cold-finger temperature
+series converted to pressure with Gillespie & Fraser (their eq. 1). No further correction is applied here.
+
+Not entered:
+- The "Wavemeter freq." column (MSU, WSU30 wavelength meter): the same lines on a wavemeter scale that the
+  paper calibrates against the comb column, i.e. not independent. Its differences to the comb column reproduce
+  the printed "Difference" column (13.2, 13.5 MHz; 11.0 against a printed 10.9, unrounded values).
+- Table 3: the R(54) 3-9 centre of gravity, 425 632 361.2 (0.1) [0.5] MHz, from a fit of the MSU wavemeter
+  spectrum (Fig. 8) with B constants free and X constants fixed, after subtracting the 12.8(5) MHz wavemeter
+  offset of Table 2. It is derived from the wavemeter scan through the authors' hyperfine model and calibrated
+  with the comb rows above, so it would count them again. The fitted B constants (eqQ -496.7 (0.7) [16] MHz,
+  C 25.3 (0.8) [2] kHz, A 0.09 (0.02) [0.02] MHz, d -0.10 (0.03) [0.02] MHz) carry a 16 MHz systematic on eqQ
+  and spin-spin values 25-500 times the BKT02 predictions, so they are not entered in
+  data/hyperfine_parameters/ either.
+- The pressure-shift slopes of Table 1 (kHz/Pa; MSU -8(5), -16(5), -7.0(2); TU Darmstadt -5.3(9), -5.4(9),
+  -5.5(1.4) for R(118) 2-8 a10, R(54) 3-9 a1, P(48) 3-9 a15) are recorded here only.
+- The R(114) 2-11 a1 remeasurement (Sect. 3.2): no value printed, only "roughly 300 kHz" above Reinhardt
+  2007, within both uncertainties.
+
+Component labels: R(118), R(54) and P(48) all have even J'' and 15 main components; a1, a10 and a15 are ranks
+by frequency as in the rest of the collection (the paper's own model, Sect. 4, uses the same 15/21-component
+convention). Line notation "R(118)(2-8)" is v'-v'' = 2-8. P(48) 3-9 a15 has a side peak from R(148) 6-10 a1,
+fitted together with it (Figs. 3-4).
+
+Overlap: no other set holds these lines. The nearest precision data are reinhardt2007a (735/772 nm) and
+cornish2000a/fan2014a (730 nm).
+"""
+
+uncertainty = """
+Each row's uncertainty is the quadrature sum of the two printed parts: the statistical one in parentheses
+(0.3, 0.2, 0.2 MHz; the standard deviation of the per-day, per-technique zero-pressure values, Fig. 6b) and
+the systematic one in brackets (0.3 MHz; the frequency difference between two cells measured by Reinhardt et
+al. 2007, taken as an allowance for cell impurities). Footnote 1 states that all numbers are 1 sigma. The
+0.3 MHz systematic is the same cell for all three rows, so they share one group.
+"""
+
+notes = """
+Residuals against i2spec2026o (Predictor(), obs - model): R(118) 2-8 a10 +3.22 MHz, R(54) 3-9 a1 -1.12 MHz,
+P(48) 3-9 a15 -1.64 MHz. Inside the 680-755 nm gap the paper's own ref. [13] (Knöckel 2004) quotes about 15 MHz;
+these agree with i2spec2026o to a few MHz, which rules out a misread digit or label. Checked with the shipped
+model only, not with any research candidate, so the set can still serve as blind validation.
+"""
+
+[conditions]
+method = "saturation, FM-saturation (15 MHz EOM) and frequency-stabilization spectroscopy; Menlo FC1500-250-WG comb referenced to a GPS-disciplined quartz oscillator"
+laser = "Ti:sapphire ring laser (Sirah Matisse 2), 704 nm"
+cell = "Opthos quartz cell, 60 cm, 1.6 cm inner diameter, central 30 cm at 600 C"
+cold_finger_C = [25, 50]
+pump_mW = 12
+probe_mW = 7
+pressure_shift_kHz_per_Pa = [-5.3, -5.4, -5.5]

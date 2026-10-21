@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(62) 17-1,a1,frequency,520206808.547,0.083,,,pollock1983a,"abstract: o component, 520 206 808.547 MHz, total fractional uncertainty 1.6e-10"

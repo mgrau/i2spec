@@ -1,0 +1,28 @@
+id = "morinaga1990a"
+citation = "A. Morinaga, N. Ito and K. Sugiyama, \"A dye laser spectrometer with an external iodine cell designed for optical Ramsey-fringe spectroscopy in a Ca atomic beam\", Jpn. J. Appl. Phys. 29, L1727-L1730 (1990)"
+source = "https://doi.org/10.1143/JJAP.29.L1727 (PDF supplied by Matt; library copy papers/Morinaga1990_JJAP_29_L1727.pdf)"
+doi = "10.1143/JJAP.29.L1727"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Read from 200 dpi images of the scan (pp. L1728-L1729): a 657 nm dye laser locked (FM saturation spectroscopy,
+5 MHz, external cell) to component g of R(69) 3-4 and offset by acousto-optic modulators onto the optical Ramsey
+fringes of the 40Ca 1S0-3P1 (Delta m = 0) line in an atomic beam; "the frequency separation of the Ca line and the
+component g of molecular iodine is determined as follows: Ca(1S0-3P1) - I2(g, 3-4, R(67)) = 191.48 +- 0.02 MHz".
+Line: the text (p. L1728) and Fig. 2 name "component g of the R(69) line in the 3-4 band", "191 MHz lower than ...
+the Ca line"; R(67) 3-4 lies 65 GHz higher, so R(67) in the result is a misprint. g is rank 15 (Gerstenkorn-Luc
+letters descend in frequency, a = 21 for odd J''; morinaga1989a).
+Entered as an absolute frequency: f(40Ca 1S0-3P1) = 455 986 240 494.15 kHz (Degenhardt et al. 2005, the CIPM
+recommended value; its uncertainty and the 23 kHz recoil doublet are negligible here) minus 191.48 MHz =
+455 986 049.014 MHz. The quantity measured is the difference; the Ca value is an input added here.
+Not entered: the fringe widths and the stability figures.
+"""
+
+uncertainty = "0.02 MHz as printed (the Ramsey-fringe centre scattered by 20 kHz over repeated scans)."
+
+notes = "Residual against i2spec2026o (obs - model): +0.147 MHz (not corrected for the cell pressure, which is not given). morinaga1989a (Table 1) holds the R(69) 3-4 hyperfine intervals to the MHz. Checked with the shipped model only."
+
+[conditions]
+method = "DCM dye laser locked to a high-finesse cavity stabilized by FM saturation spectroscopy (5 MHz, index 0.5) on an external I2 cell; optical Ramsey fringes in a Ca atomic beam"

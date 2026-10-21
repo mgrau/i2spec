@@ -14,7 +14,7 @@ const fmt = (v, d = 0) => {
 };
 const fmtU = v => fmt(v, v < 1 ? 2 : v < 10 ? 1 : 0);        // an uncertainty, to two figures or so
 const sentence = t => t ? t.charAt(0).toUpperCase() + t.slice(1) + (/[.)]$/.test(t) ? "" : ".") : "";
-const DEFAULT_VIEW = {line: "P(53) 32-0", near: 18788.44, halfSpan: 2};   // cm⁻¹; resolve the exact centre from the export
+const DEFAULT_VIEW = {line: "P(53) 32-0", near: 18788.44, halfSpan: 2};   // cm⁻¹; resolve the exact center from the export
 
 const state = {
   manifest: null,
@@ -30,6 +30,7 @@ const state = {
   qCache: new Map(),       // iso|T -> Q
   hfs: new Map(),          // iso -> patterns (ΔJ = ±2, for the lines the export selected)
   hfsShards: new Map(),    // hyperfine file -> ΔJ = 0 patterns of every row of one shard
+  hfsAsked: new Set(),     // isotopologues whose full patterns the plot has asked for (once each)
   index: new Map(),        // iso -> label -> line, built only when someone searches by label
   refs: null,              // the measurement sources: index -> {short, citation, link, ...}
   kinds: new Set(["model", "atlas", "precision"]),   // which kinds of line the plot and table show
@@ -87,6 +88,7 @@ const rowAt = (d, i, iso) => {
     iso, nu: d.nu[i], s0: d.s0[i], el: d.el[i], vu: d.vu[i], vl: d.vl[i],
     J: Math.abs(d.j[i]), branch: d.j[i] > 0 ? "R" : "P", meas, measured: meas !== null, u: d.u[i], w: d.w[i],
     d08: d.d08 ? d.d08[i] : null,          // the published 2008 model's position minus this one, MHz
+    d26: d.d26 ? d.d26[i] : null,          // i2spec2026o's position minus this one (balanced-expanded's lines), MHz
     hfsFile: d._hfsFile, row: i,           // where this line's ΔJ = 0 hyperfine pattern is
   };
 };
@@ -112,8 +114,9 @@ const escapeHTML = t => String(t).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "
 function sourceLink(k) {
   const s = source(k);
   const name = escapeHTML(s.short);
-  return s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${escapeHTML(s.citation || "")}">${name}</a>`
-    : `<span title="${escapeHTML(s.citation || "")}">${name}</span>`;
+  const blind = s.fit === false ? ` <span class="n" title="Held out of every fit; used only to test the model's frozen predictions (blind tests pending_blind_v1 and v2).">(blind test, not fitted)</span>` : "";
+  return (s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${escapeHTML(s.citation || "")}">${name}</a>`
+    : `<span title="${escapeHTML(s.citation || "")}">${name}</span>`) + blind;
 }
 /** "precision", "atlas" or "model": how a line is known. A line in both kinds of source counts as precision. */
 function kindOf(l) {
@@ -126,11 +129,11 @@ function kindOf(l) {
  * every line the model predicts, measured or not; "atlas" and "precision" pick out the measured ones. */
 const showKey = () => state.kinds.size === 3 ? "all" : [...state.kinds].sort().join(",");
 const keepLine = () => (state.kinds.has("model") ? () => true : l => state.kinds.has(kindOf(l)));
-/** Whether a kind of measured line is picked out in its own colour. */
+/** Whether a kind of measured line is picked out in its own color. */
 const highlighted = k => k !== "model" && state.kinds.has(k);
 let shownCache = {lines: null, show: null, out: null};
-/** Lines whose centre lies within this margin (cm⁻¹) outside the view still draw there: their hyperfine
- * components (up to ~1 GHz from the centre) and Doppler wings reach in. About 1.5 GHz. */
+/** Lines whose center lies within this margin (cm⁻¹) outside the view still draw there: their hyperfine
+ * components (up to ~1 GHz from the center) and Doppler wings reach in. About 1.5 GHz. */
 const PLOT_PAD_CM = 0.05;
 let plotCache = {lines: null, show: null, out: null};
 /** The lines the plot draws: the view's, plus those just outside it (state.plotLines), filtered as shown. */
@@ -250,8 +253,8 @@ function erf(x) {
 }
 
 /**
- * Add a Gaussian of area S, centre c and width sig to the bins, as its mean over each bin.
- * Averaging over the bin, rather than sampling at its centre, conserves the area and keeps a line's
+ * Add a Gaussian of area S, center c and width sig to the bins, as its mean over each bin.
+ * Averaging over the bin, rather than sampling at its center, conserves the area and keeps a line's
  * drawn height from jumping as it moves across the pixel grid.
  */
 function addGaussian(bins, lo, dnu, c, sig, S) {
@@ -530,7 +533,219 @@ function drawPreview(lo, hi) {
   return true;
 }
 
-// Reading a CSS variable costs a style lookup, so the colours are read once per draw, not per mark.
+// --- measured minus model, zoomed in ---------------------------------------------------------------
+
+/** Views narrower than this (nm) set each measurement against the model: a strip of measured − model
+ * under the spectrum, and on the spectrum the measured position and the model's 1σ at true scale. */
+const RESIDUAL_SPAN_NM = HFS_SPAN_NM;
+const residualsShown = () => viewSpanNm() < RESIDUAL_SPAN_NM * (1 - 1e-6);
+/** The strip needs this much plot height (px) to leave the spectrum room; a phone's plot draws without it. */
+const RESIDUAL_MIN_PH = 170;
+/** Between the spectrum and the strip (px): the strip's title goes there. */
+const RESIDUAL_GAP = 18;
+
+/** A measured component's model 1σ (MHz): the full hyperfine patterns' once loaded, else its line's. */
+function sigmaOf(line, comp) {
+  if (comp) {
+    const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
+    const k = full && full.u ? full.l.indexOf(comp) : -1;
+    if (k >= 0) return full.u[k];
+  }
+  return line.u;
+}
+
+/**
+ * Every absolute measurement whose model position is in view, from the kinds of source picked out, as
+ * {line, comp, s, kind, blind, value (MHz), u, res (measured − model, MHz), model (cm⁻¹), sigma}. The
+ * model's position is the measured value minus the residual the export computed, so the strip shows
+ * exactly what the detail panel's "− model" column lists.
+ */
+function residualPoints(lo, hi) {
+  const out = [];
+  for (const line of plotLines()) {
+    if (!line.meas) continue;
+    for (const e of line.meas) {
+      const src = source(e.s);
+      if (!highlighted(src.kind)) continue;
+      for (const [comp, value, u, res] of e.f) {
+        if (res === null || res === undefined) continue;
+        const model = (value - res) / P.MHZ_PER_CM;
+        if (model < lo || model > hi) continue;
+        out.push({line, comp, s: e.s, kind: src.kind, blind: src.fit === false, value, u, res, model,
+                  sigma: sigmaOf(line, comp)});
+      }
+    }
+  }
+  return out;
+}
+
+/** The measurements of one component (or line center), in source order: they share one model position. */
+function byComponent(points) {
+  const groups = new Map();
+  for (const p of points) {
+    const k = hfsKey(p.line) + p.comp;
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(p);
+  }
+  for (const g of groups.values()) g.sort((a, b) => a.s - b.s);
+  return [...groups.values()];
+}
+
+/** A residual or uncertainty in MHz, to the precision its uncertainty u warrants. */
+const mhzTo = (v, u) => {
+  const d = u < 0.01 ? 4 : u < 0.1 ? 3 : u < 1 ? 2 : u < 10 ? 1 : 0;
+  return Math.abs(v) >= 1e4 ? `${fmt(v / 1000, 1)} GHz` : `${v.toFixed(d)} MHz`;
+};
+const signedTo = (v, u) => (v >= 0 ? "+" : "−") + mhzTo(Math.abs(v), u);
+
+/**
+ * On the spectrum, where the scale shows them (zoomed in enough that the model's 1σ, the measurement's
+ * uncertainty or their difference spans a pixel or more): the model's ±1σ as a grey band around its
+ * position, and each measurement as a dot with its ±u bar, a row per source at the top of the plot,
+ * dropped to the baseline by a dashed line once it stands apart from the model. Returns the dots.
+ */
+function drawTrueScale(g, groups, {xPix, m, pw, top, bottom, pxPerMHz, kindInk}) {
+  const hits = [];
+  g.save();
+  g.beginPath(); g.rect(m.l, top, pw, bottom - top); g.clip();
+  for (const group of groups) {
+    const xm = xPix(group[0].model), sp = group[0].sigma * pxPerMHz;
+    if (sp >= 1) {
+      g.fillStyle = kindInk.model; g.globalAlpha = 0.2;
+      g.fillRect(xm - sp, top, 2 * sp, bottom - top);
+      g.globalAlpha = 1;
+    }
+    group.forEach((p, k) => {
+      const xo = xPix(p.value / P.MHZ_PER_CM), up = p.u * pxPerMHz;
+      if (Math.max(sp, up, Math.abs(xo - xm)) < 1.5) return;          // nothing the scale can show yet
+      const y = top + 26 + 8 * Math.min(k, 10);
+      g.strokeStyle = kindInk[p.kind]; g.lineWidth = 1.2;
+      if (Math.abs(xo - xm) >= 2) {
+        g.setLineDash([3, 3]); g.globalAlpha = 0.8;
+        g.beginPath(); g.moveTo(xo, y); g.lineTo(xo, bottom); g.stroke();
+        g.setLineDash([]); g.globalAlpha = 1;
+      }
+      if (up >= 1) {
+        g.beginPath(); g.moveTo(xo - up, y); g.lineTo(xo + up, y);
+        g.moveTo(xo - up, y - 3); g.lineTo(xo - up, y + 3); g.moveTo(xo + up, y - 3); g.lineTo(xo + up, y + 3);
+        g.stroke();
+      }
+      dot(g, xo, y, p, kindInk);
+      hits.push({x: xo, y, p});
+    });
+  }
+  g.restore();
+  return hits;
+}
+
+/** A measurement's dot: filled in its kind's color, hollow when its source was held out of every fit. */
+function dot(g, x, y, p, kindInk) {
+  g.beginPath(); g.arc(x, y, 3.5, 0, 2 * Math.PI);
+  g.fillStyle = p.blind ? ink("--surface") : kindInk[p.kind]; g.fill();
+  g.strokeStyle = p.blind ? kindInk[p.kind] : ink("--surface"); g.lineWidth = p.blind ? 1.6 : 1; g.stroke();
+}
+
+/**
+ * The strip of measured − model (MHz) under the spectrum, from y0 to y1: each measurement at its
+ * component's model position (side by side when several measured the same one), with its own
+ * uncertainty as a bar, over the model's ±1σ as a grey box. The scale covers nine points in ten (all of
+ * them when there are few), counting only the precision measurements when there are any: an atlas line's
+ * residual, tens of MHz, already shows at true scale on the spectrum. The others sit at the edge as
+ * arrows. The frame and labels go on the axes layer ga, the points on the trace layer gt. Returns the
+ * points' positions, for the pointer.
+ */
+function drawResiduals(ga, gt, groups, {xPix, m, pw, y0, y1, narrow, kindInk}) {
+  const all = groups.flat(), precise = all.filter(p => p.kind === "precision");
+  const basis = precise.length ? precise : all;
+  const reach = basis.map(p => Math.max(Math.abs(p.res) + p.u, p.sigma)).sort((a, b) => a - b);
+  const e = 1.1 * (reach[basis.length <= 12 ? reach.length - 1 : Math.floor(0.9 * (reach.length - 1))] || 1e-3);
+  const p10 = 10 ** Math.floor(Math.log10(e)), f = e / p10;
+  const ext = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p10;
+  const mid = (y0 + y1) / 2, half = (y1 - y0) / 2 - 6;
+  const yOf = v => mid - half * Math.max(-1, Math.min(1, v / ext));
+  const tick = v => v === 0 ? "0" : (v > 0 ? "+" : "−") + String(+Math.abs(v).toPrecision(2));
+
+  // the axes layer: grid at ±ext, the model at zero, the tick labels and what the strip shows
+  ga.strokeStyle = ink("--rule-2"); ga.lineWidth = 1;
+  ga.beginPath();
+  for (const v of [-ext, ext]) { ga.moveTo(m.l, Math.round(yOf(v)) + 0.5); ga.lineTo(m.l + pw, Math.round(yOf(v)) + 0.5); }
+  ga.stroke();
+  ga.strokeStyle = ink("--ink-3");
+  ga.beginPath(); ga.moveTo(m.l, Math.round(mid) + 0.5); ga.lineTo(m.l + pw, Math.round(mid) + 0.5); ga.stroke();
+  ga.strokeStyle = ink("--rule");
+  ga.beginPath(); ga.moveTo(m.l, y0 - 0.5); ga.lineTo(m.l + pw, y0 - 0.5); ga.stroke();
+  ga.font = '11px "IBM Plex Mono", ui-monospace, monospace'; ga.fillStyle = ink("--ink-3");
+  if (narrow) {
+    ga.textAlign = "left"; ga.textBaseline = "bottom";
+    ga.strokeStyle = ink("--surface"); ga.lineWidth = 3; ga.lineJoin = "round";
+    for (const v of [ext, -ext]) { ga.strokeText(tick(v), m.l + 2, yOf(v) - 2); ga.fillText(tick(v), m.l + 2, yOf(v) - 2); }
+  } else {
+    ga.textAlign = "right"; ga.textBaseline = "middle";
+    for (const v of [ext, 0, -ext]) ga.fillText(tick(v), m.l - 10, yOf(v));
+  }
+  const title = narrow ? "measured − model (MHz)" :
+    "measured − model (MHz) · bar: the measurement's 1σ · grey: the model's 1σ · hollow: not used in the fit";
+  // in the gap above the strip, clear of the points
+  ga.font = '11px "IBM Plex Sans", system-ui, sans-serif'; ga.textAlign = narrow ? "right" : "left"; ga.textBaseline = "bottom";
+  const tx = narrow ? m.l + pw - 4 : m.l + 6;
+  ga.strokeStyle = ink("--surface"); ga.lineWidth = 4; ga.lineJoin = "round";
+  ga.strokeText(title, tx, y0 - 2); ga.fillStyle = ink("--ink-2"); ga.fillText(title, tx, y0 - 2);
+  ga.textAlign = "left"; ga.textBaseline = "alphabetic";
+
+  // the trace layer: model boxes, then bars, then dots, clipped to the strip
+  const hits = [], placed = [];
+  gt.save();
+  gt.beginPath(); gt.rect(m.l, y0, pw, y1 - y0); gt.clip();
+  for (const group of groups) {
+    const n = group.length, step = Math.min(6, 24 / n), x0 = xPix(group[0].model), s = group[0].sigma;
+    const w = Math.max(9, step * (n - 1) + 9);
+    gt.fillStyle = kindInk.model; gt.globalAlpha = 0.35;
+    gt.fillRect(x0 - w / 2, yOf(s), w, yOf(-s) - yOf(s));
+    gt.globalAlpha = 1;
+    group.forEach((p, k) => placed.push([p, x0 + (k - (n - 1) / 2) * step]));
+  }
+  gt.lineWidth = 1.2;
+  for (const [p, x] of placed) {
+    const a = yOf(p.res - p.u), b = yOf(p.res + p.u);
+    if (a - b < 1) continue;
+    gt.strokeStyle = kindInk[p.kind];
+    gt.beginPath(); gt.moveTo(x, a); gt.lineTo(x, b);
+    if (a - b > 6) { gt.moveTo(x - 2.5, a); gt.lineTo(x + 2.5, a); gt.moveTo(x - 2.5, b); gt.lineTo(x + 2.5, b); }
+    gt.stroke();
+  }
+  for (const [p, x] of placed) {
+    if (Math.abs(p.res) <= ext) {
+      dot(gt, x, yOf(p.res), p, kindInk);
+      hits.push({x, y: yOf(p.res), p});
+      continue;
+    }
+    // off the scale: an arrow at the edge, pointing the way it lies
+    const up = p.res > 0, y = up ? y0 + 3 : y1 - 3, d = up ? 1 : -1;
+    gt.beginPath(); gt.moveTo(x, y); gt.lineTo(x + 4, y + 7 * d); gt.lineTo(x - 4, y + 7 * d); gt.closePath();
+    gt.fillStyle = p.blind ? ink("--surface") : kindInk[p.kind]; gt.fill();
+    gt.strokeStyle = kindInk[p.kind]; gt.lineWidth = 1.2; gt.stroke();
+    hits.push({x, y: y + 4 * d, p});
+  }
+  gt.restore();
+  return hits;
+}
+
+/** What the pointer is over: the nearest measurement dot within tol px, or null. */
+function hitAt(clientX, clientY, tol) {
+  const hits = state.geom && state.geom.hits;
+  if (!hits || !hits.length) return null;
+  const r = $("#plot").getBoundingClientRect(), x = clientX - r.left, y = clientY - r.top;
+  let best = null, bd = tol * tol;
+  for (const h of hits) {
+    const d = (h.x - x) ** 2 + (h.y - y) ** 2;
+    if (d <= bd) { best = h; bd = d; }
+  }
+  return best;
+}
+const describeHit = ({p}) => `${label(p.line)} ${p.comp || "center"} · ${source(p.s).short}${p.blind ? " (not fitted)" : ""}\n` +
+  `measured − model ${signedTo(p.res, p.u)} ± ${mhzTo(p.u, p.u)}\nmodel 1σ ${mhzTo(p.sigma, p.sigma)}`;
+
+// Reading a CSS variable costs a style lookup, so the colors are read once per draw, not per mark.
 let inkCache = null;
 const ink = name => {
   if (!inkCache) inkCache = getComputedStyle(document.documentElement);
@@ -577,6 +792,15 @@ function drawPlot() {
   gt.setTransform(dpr, 0, 0, dpr, 0, 0);
   gt.clearRect(0, 0, W, H);
   const lines = plotLines();
+  // zoomed in on measured lines: a strip of measured − model under the spectrum, which keeps phs of the height
+  const groups = residualsShown() ? byComponent(residualPoints(lo, hi)) : [];
+  const rh = groups.length && ph >= RESIDUAL_MIN_PH ? Math.round(Math.min(150, Math.max(64, 0.3 * ph))) : 0;
+  const phs = rh ? ph - rh - RESIDUAL_GAP : ph;
+  if (groups.some(g => g[0].comp) && !state.hfs.has(iso) && !state.hfsAsked.has(iso)) {
+    // the components' own 1σ are in the full patterns: until they load, each takes its line's
+    state.hfsAsked.add(iso);
+    getJSON(state.manifest.isotopologues[iso].hfs, state.hfs, iso).then(drawPlot, () => {});
+  }
   const nb = Math.max(2, Math.round(pw * dpr));        // one bin per canvas pixel
   // one binned cross section per kind of line: their sum is the model, the measured kinds are drawn over it
   const withHfs = hyperfineShown();
@@ -630,7 +854,7 @@ function drawPlot() {
   // a wavelength axis has to run the other way round, or it reads right to left
   const flip = state.unitFlips;
   const xPix = nu => m.l + pw * (flip ? (hi - nu) : (nu - lo)) / (hi - lo);
-  const yPix = v => m.t + ph * (1 - v);
+  const yPix = v => m.t + phs * (1 - v);
   g.strokeStyle = ink("--rule-2"); g.lineWidth = 1;
   g.beginPath();
   for (const [v] of ticks) { g.moveTo(m.l, yPix(v)); g.lineTo(m.l + pw, yPix(v)); }
@@ -650,7 +874,7 @@ function drawPlot() {
   g.textAlign = "center"; g.textBaseline = "alphabetic";
   const unit = $("#unit").value, digits = P.DIGITS[unit];
   drawXLabels(g, lo, hi, m, pw, H, narrow, flip);
-  if (!narrow) { g.save(); g.translate(15, m.t + ph / 2); g.rotate(-Math.PI / 2); g.fillText(ylabel, 0, 0); g.restore(); }
+  if (!narrow) { g.save(); g.translate(15, m.t + phs / 2); g.rotate(-Math.PI / 2); g.fillText(ylabel, 0, 0); g.restore(); }
 
   g = gt;                      // from here to the marker strip: the trace layer
   const xAt = k => m.l + (k + 0.5) * pw / nb;
@@ -671,7 +895,7 @@ function drawPlot() {
     g.strokeStyle = ink("--ink-2"); g.lineWidth = 1.6; g.lineJoin = "round"; g.stroke();
   } else {
     // the model's cross section, every line in it, filled; then each highlighted kind of measured line's
-    // own share of it, drawn from the baseline over the model in its colour
+    // own share of it, drawn from the baseline over the model in its color
     const curve = vals => {
       g.beginPath();
       for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(vals, k) / top)) : g.lineTo(xAt(k), yPix(at(vals, k) / top));
@@ -704,11 +928,16 @@ function drawPlot() {
     }
   }
 
+  // each measurement against the model: at true scale on the spectrum, and as measured − model in the strip
+  const hits = groups.length ? drawTrueScale(g, groups, {xPix, m, pw, top: m.t, bottom: m.t + phs, kindInk,
+    pxPerMHz: pw / ((hi - lo) * P.MHZ_PER_CM)}) : [];
+  if (rh) hits.push(...drawResiduals(gb, g, groups, {xPix, m, pw, y0: m.t + phs + RESIDUAL_GAP, y1: m.t + ph, narrow, kindInk}));
+
   // measured lines: a diamond each in a strip under the trace, one per pixel column at most
   const strip = m.t + ph + 8, seen = new Map();
   const {marked, counts, nMarked} = viewSummary();
   const nMeasured = nMarked;
-  // one diamond per pixel column, precision winning a shared column; one path per colour
+  // one diamond per pixel column, precision winning a shared column; one path per color
   const mark = (nu, kind) => {
     const x = Math.round(xPix(nu));
     if (x < m.l || x > m.l + pw || seen.get(x) === "precision") return;
@@ -732,7 +961,7 @@ function drawPlot() {
   }
   g = gb;                      // labels and legend: the axes layer
 
-  // legend, top left: what the colours mean and how many of each are in view
+  // legend, top left: what the colors mean and how many of each are in view
   g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = "left"; g.textBaseline = "middle";
   let lx = m.l + 10;
   // "model" counts every line it draws; atlas and precision those of their kind it picks out
@@ -786,8 +1015,8 @@ function drawPlot() {
       g.textAlign = x > m.l + pw - 80 ? "right" : "left";
       const tx = x + (g.textAlign === "right" ? -4 : 4);
       g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
-      g.strokeText(text, tx, m.t + ph - 4);
-      g.fillStyle = ink("--accent"); g.fillText(text, tx, m.t + ph - 4);
+      g.strokeText(text, tx, m.t + phs - 4);
+      g.fillStyle = ink("--accent"); g.fillText(text, tx, m.t + phs - 4);
       g.textBaseline = "alphabetic"; g.textAlign = "left";
     }
   }
@@ -817,7 +1046,7 @@ function drawPlot() {
     g.textAlign = "left";
     g.textBaseline = "alphabetic";
   }
-  state.geom = {m, pw, ph, y, flip};
+  state.geom = {m, pw, ph, y, flip, hits};
   keepFrame(canvas, {lo, hi, iso, m, pw, ph, W, H, dpr, flip, narrow});
 }
 
@@ -839,6 +1068,11 @@ function measuredCell(l) {
   const links = l.meas.map(e => sourceLink(e.s));
   return links.length > 3 ? links.slice(0, 3).join(", ") + ` +${links.length - 3}` : links.join(", ");
 }
+/** Which model gives a line's position: its reason's flags say (balanced-expanded or i2spec2026o). */
+const modelOf = l => {
+  const r = state.manifest.reasons[l.w];
+  return r && r.flags.some(([t]) => t === "balanced-expanded") ? "balanced-expanded" : "i2spec2026o";
+};
 /** 1σ position uncertainty (MHz), why, and the flags that go with it: computed by the Python model at export. */
 const unc = l => {
   const r = state.manifest.reasons[l.w] || {why: "", flags: []};
@@ -1093,7 +1327,7 @@ function drawHyperfine(canvas, comps, line) {
     prof[px] = v; pmax = Math.max(pmax, v);
   }
   if (pmax > 0) {
-    // a harmonic signal swings both ways: centred on the middle of the box
+    // a harmonic signal swings both ways: centered on the middle of the box
     const mid = sub && state.sub.harmonic ? (base + top) / 2 : base, amp = mid === base ? base - top : (base - top) / 2;
     g.beginPath();
     for (let px = 0; px <= W; px++) g.lineTo(px, mid - amp * prof[px] / pmax);
@@ -1121,6 +1355,11 @@ const signedMHz = v => {
   const a = Math.abs(v), s = v >= 0 ? "+" : "−";
   return a >= 1e4 ? `${s}${fmt(a / 1000, a >= 1e6 ? 0 : 1)} GHz` : `${s}${fmt(a, a < 10 ? 2 : 1)} MHz`;
 };
+/** The lines balanced-expanded gives carry i2spec2026o's position too: the previous default model. */
+function model2026oRow(line) {
+  if (line.d26 === null || line.d26 === undefined) return "";
+  return `<dt>i2spec2026o</dt><dd>${signedMHz(line.d26)} from this model <span class="n">· the previous default (level corrections)</span></dd>`;
+}
 function published2008Row(line) {
   if (line.d08 === null || line.d08 === undefined) return "";
   const where = inside2008(line) ? "inside its fitted range" : "outside its fitted range (v′ ≤ 43, v″ ≤ 17): extrapolated";
@@ -1157,6 +1396,7 @@ async function select(line) {
       <dt>S</dt><dd>${line.s0 > 0 ? `${S.toExponential(3)} cm at ${state.T} K` : "not computed: no thermal absorption (measured in emission)"}</dd>
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
+      ${model2026oRow(line)}
       ${published2008Row(line)}
       ${state.laser ? laserRows(line) : ""}
     </dl>
@@ -1187,17 +1427,18 @@ async function select(line) {
   $("#csvhfs").disabled = false;
   box.innerHTML = `<h3>Hyperfine structure</h3><canvas id="hfs"></canvas><div id="hfstable"></div>`;
   drawHyperfine($("#hfs"), comps, line);
-  const main = comps.l.map((l, i) => [l, comps.o[i], comps.s[i]]).filter(r => r[0]);
-  const f0 = line.nu * P.MHZ_PER_CM;
+  const main = comps.l.map((l, i) => [l, comps.o[i], comps.s[i], comps.u ? comps.u[i] : null]).filter(r => r[0]);
+  const f0 = line.nu * P.MHZ_PER_CM, withU = main.some(r => r[3] !== null);
   $("#hfstable").innerHTML =
-    `<table class="sub"><thead><tr><th>comp</th><th>offset (MHz)</th><th>f (MHz)</th><th>rel. strength</th></tr></thead><tbody>` +
-    main.map(([l, o, s]) => `<tr><td>${l}</td><td>${o.toFixed(3)}</td><td>${fmt(f0 + o, 1)}</td><td>${s.toFixed(4)}</td></tr>`).join("") +
+    `<table class="sub"><thead><tr><th>comp</th><th>offset (MHz)</th><th>f (MHz)</th>${withU ? "<th>u (MHz)</th>" : ""}<th>rel. strength</th></tr></thead><tbody>` +
+    main.map(([l, o, s, u]) => `<tr><td>${l}</td><td>${o.toFixed(3)}</td><td>${fmt(f0 + o, 1)}</td>${withU ? `<td>${fmtU(u)}</td>` : ""}<td>${s.toFixed(4)}</td></tr>`).join("") +
     `</tbody></table><p class="note">${main.length} main components (ΔF = ΔJ)${
       comps.o.length > main.length ? `, plus ${comps.o.length - main.length} weaker ones drawn faint above` : ""}.
      ${approx ? "Computed without the J ± 2 couplings (ΔJ = 0), which changes the offsets by less than 1 MHz; " +
        `<code>i2spec line "${label(line)}"</code> gives the full calculation.`
        : "The ΔF ≠ ΔJ components are omitted below 2% of the peak, where nothing in a spectrum shows them."}
-     Offsets are from the hyperfine-free centre, which is not itself an observable line.</p>`;
+     Offsets are from the hyperfine-free center, which is not itself an observable line.${withU ?
+       " u is the 1σ of each component's frequency: the center's with the hyperfine model's own (a floor and a pattern-scale error, both fitted to held-out intervals)." : ""}</p>`;
 }
 
 function measurementsHTML(line) {
@@ -1206,11 +1447,12 @@ function measurementsHTML(line) {
   const rows = [];
   const signed = r => r === null ? "–" : (r >= 0 ? "+" : "−") + Math.abs(r).toFixed(Math.abs(r) < 1 ? 3 : 1);
   for (const e of line.meas) {
-    // one heading row per source, carrying its link, then its values
+    // one heading row per source, carrying its link and the compilations that print the same values, then its values
     rows.push(`<tr class="srcrow"><td colspan="5">${sourceLink(e.s)}${e.i ?
-      ` <span class="n">· ${e.i} hyperfine interval${e.i === 1 ? "" : "s"}</span>` : ""}</td></tr>`);
+      ` <span class="n">· ${e.i} hyperfine interval${e.i === 1 ? "" : "s"}</span>` : ""}${e.c ?
+      ` <span class="n">· also in ${e.c.map(sourceLink).join(", ")}</span>` : ""}</td></tr>`);
     for (const [comp, value, u, res, res08] of e.f) {
-      rows.push(`<tr><td>${comp || "centre"}</td><td>${fmt(value, u < 0.1 ? 4 : u < 10 ? 2 : 1)}</td>
+      rows.push(`<tr><td>${comp || "center"}</td><td>${fmt(value, u < 0.1 ? 4 : u < 10 ? 2 : 1)}</td>
         <td>${u < 0.1 ? u.toFixed(4) : u.toFixed(u < 10 ? 2 : 1)}</td><td>${signed(res)}</td>
         <td>${res08 === undefined || res08 === null ? "–" : Math.abs(res08) >= 1e4 ? signedMHz(res08).replace(" GHz", "&nbsp;G") : signed(res08)}</td></tr>`);
     }
@@ -1219,10 +1461,14 @@ function measurementsHTML(line) {
   return `<h3>Measurements</h3>
     <div class="measwrap"><table class="sub meas"><thead><tr><th>comp</th><th>f (MHz)</th><th>u (MHz)</th><th>− model</th><th>− 2008</th></tr></thead>
     <tbody>${shown.join("")}</tbody></table></div>
-    <p class="note">${rows.length > shown.length ? `First ${shown.length} of ${rows.length} rows. ` : ""}Each source links to
+    <p class="note">${rows.length > shown.length ? `First ${shown.length} of ${rows.length} rows. ` : ""}Each measurement
+    is listed once, under the paper that reported it, followed by the compilations (such as the CIPM's) that print
+    it again; a compilation's own recommended values and means are listed under it. Each source links to
     its DOI; the <a href="docs/references.html">references</a> page lists them all. Frequencies are as published
-    (atlas lines are hyperfine-free centres on the atlas's own scale; the Orsay scales are corrected by +23.85 ppb, part I, and +200.8 ppb, Partie IV);
-    “− model” is the measured value minus this model's centre or component (MHz), ${fmt(f0, 1)} MHz for the centre;
+    (atlas lines are hyperfine-free centers on the atlas's own scale; the Orsay scales are corrected by +23.85 ppb, part I, and +200.8 ppb, Partie IV);
+    Sources marked “blind test” were held out of every fit and used only to test the frozen predictions.
+    “− model” is the measured value minus this model's center or component (MHz), ${fmt(f0, 1)} MHz for the center
+    (this model: balanced-expanded, or i2spec2026o where the line's flags say so; compare the difference with u above and the measurement's own u);
     “− 2008” minus the published model of Salumbides <i>et al.</i> (2008), computed here from its potentials and
     the published hyperfine formulae (MHz; G: GHz).</p>`;
 }
@@ -1276,15 +1522,16 @@ function exportLines() {
   const q = partitionAt(state.iso, state.T), laser = state.laser;
   const withHfs = pool.some(l => hfsOf(l));
   const head = ["line", "isotopologue", "lambda_vac_nm", "lambda_air_nm", "wavenumber_cm-1", "frequency_MHz",
-    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "class", "measured_by", "published_2008_minus_model_MHz"];
+    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "model", "class", "measured_by",
+    "i2spec2026o_minus_model_MHz", "published_2008_minus_model_MHz"];
   if (laser) head.push(`fundamental_lambda_vac_nm_div${laser.n}`, `fundamental_MHz_div${laser.n}`, "minus_laser_harmonic_MHz");
   if (withHfs) head.push("hfs_offsets_MHz_dJ0", "hfs_strengths_permille_dJ0");
   const rows = pool.map(l => {
     const lam = 1e7 / l.nu;
     const cells = [label(l), l.iso, lam.toFixed(7), P.vacToAir(lam).toFixed(7), l.nu.toFixed(6),
       (l.nu * P.MHZ_PER_CM).toFixed(2), P.strengthAt(l, q, state.T).toExponential(4), l.el.toFixed(2), l.u,
-      KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : "",
-      l.d08 === null || l.d08 === undefined ? "" : l.d08];
+      modelOf(l), KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : "",
+      l.d26 === null || l.d26 === undefined ? "" : l.d26, l.d08 === null || l.d08 === undefined ? "" : l.d08];
     if (laser) cells.push(P.fundamentalOf(l.nu, laser.n, "nm").toFixed(7), (l.nu * P.MHZ_PER_CM / laser.n).toFixed(2),
       ((l.nu - laser.nu) * P.MHZ_PER_CM).toFixed(2));
     if (withHfs) {
@@ -1296,9 +1543,11 @@ function exportLines() {
   download(fileStem() + ".csv", [
     ...csvHeader(`${fmt(pool.length)} B-X lines`),
     "# S is the line strength at the cell temperature; u is the model's 1-sigma position uncertainty;" +
-      " class is how the line is known (precision, atlas, model only); published_2008_minus_model is the" +
-      " position of the published model of Salumbides et al. (2008), computed from its potentials, minus this model's",
-    ...(withHfs ? ["# hfs_*: main hyperfine components without the J +- 2 couplings (offsets from the centre, MHz;" +
+      " model gives the line's position (balanced-expanded for 127I2 inside its domain, i2spec2026o elsewhere);" +
+      " class is how the line is known (precision, atlas, model only); i2spec2026o_minus_model and" +
+      " published_2008_minus_model are the positions of i2spec2026o and of the published model of Salumbides et al. (2008)," +
+      " computed from its potentials, minus this model's",
+    ...(withHfs ? ["# hfs_*: main hyperfine components without the J +- 2 couplings (offsets from the center, MHz;" +
       " strengths per mille), space separated"] : []),
     csvRow(head), ...rows]);
   setStatus(`saved ${fmt(pool.length)} line${pool.length === 1 ? "" : "s"} to ${fileStem()}.csv`);
@@ -1320,7 +1569,7 @@ function exportHyperfine() {
   const name = `i2spec_${line.iso}_${label(line).replace(/[()\s]+/g, "_").replace(/_+$/, "")}_hyperfine.csv`;
   download(name, [
     ...csvHeader(`hyperfine components of ${state.manifest.isotopologues[line.iso].label} ${label(line)}`),
-    `# centre (hyperfine-free, not itself observable): ${f0.toFixed(3)} MHz = ${line.nu.toFixed(7)} cm-1; ` +
+    `# center (hyperfine-free, not itself observable): ${f0.toFixed(3)} MHz = ${line.nu.toFixed(7)} cm-1; ` +
       (approx ? "computed without the J +- 2 couplings (offsets good to about 1 MHz)"
               : "full calculation; components other than the main ones (ΔF = ΔJ) below 2% of the peak omitted"),
     csvRow(head), ...rows]);
@@ -1581,7 +1830,10 @@ function wire() {
     const {m, pw, ph, y} = state.geom;
     const k = Math.round((e.clientX - plot.getBoundingClientRect().left - m.l) / pw * y.length);
     const ro = $("#readout");
-    ro.textContent = `${P.fromWavenumber(nu, unit).toFixed(P.DIGITS[unit])} ${unit}   ${nu.toFixed(5)} cm⁻¹`;
+    const hit = hitAt(e.clientX, e.clientY, 8);         // a measurement's dot: what it says, under the position
+    ro.textContent = `${P.fromWavenumber(nu, unit).toFixed(P.DIGITS[unit])} ${unit}   ${nu.toFixed(5)} cm⁻¹` +
+      (hit ? "\n" + describeHit(hit) : "");
+    plot.style.cursor = hit && !plot.classList.contains("grabbing") ? "pointer" : "";
     ro.style.top = (m.t + 6) + "px";      // inside the plot frame, clear of the top axis and its labels
     ro.style.right = (m.r + 6) + "px";
     const cross = $("#crosshair");
@@ -1595,6 +1847,9 @@ function wire() {
   plot.addEventListener("click", e => {
     const pool = shownLines();
     if (!pool.length || dragged) return;
+    // a measurement's dot picks its own line, which is not always the nearest center to a component
+    const hit = hitAt(e.clientX, e.clientY, 12);
+    if (hit) { select(hit.p.line); return; }
     const nu = nuAtClientX(e.clientX);
     let best = pool[0];
     for (const l of pool) if (Math.abs(l.nu - nu) < Math.abs(best.nu - nu)) best = l;
@@ -1878,8 +2133,8 @@ async function start() {
     const iso = $("#iso").value, {line, near, halfSpan} = DEFAULT_VIEW;
     const nearby = await linesIn(iso, near - halfSpan, near + halfSpan);
     initialLine = nearby.find(l => label(l) === line) || (await buildIndex(iso)).get(line);
-    const centre = initialLine ? initialLine.nu : near;
-    await show(centre - halfSpan, centre + halfSpan);
+    const center = initialLine ? initialLine.nu : near;
+    await show(center - halfSpan, center + halfSpan);
   }
   if (q.get("line")) await findLine(q.get("line"), {keepView: true});
   else if (initialLine) await select(initialLine);

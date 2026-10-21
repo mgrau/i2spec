@@ -1,0 +1,3 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a16,frequency,473612353.6129,0.0006,,,lea2003a_r18,"Sect. 3 and abstract: NPL-R18 on f, 473 612 353 612.9 (0.6) kHz, mean of five daily comb measurements (January-February 2002), corrected to the standard cold-finger temperature and power; the uncertainty is the standard deviation of the five days"
+127I2 R(127) 11-5,a16,frequency,473612353.6133,0.0007,,,lea2003a_s,"Sect. 5: NPL-S, comb measurement of d, e, f and g in August 2001, ""a value for component f of 473 612 353 613.3 (0.7) kHz can be extracted"""

@@ -13,23 +13,23 @@ explicit range, display mode and line selection take precedence.
 
 ## Classification of lines
 
-Each line belongs to one of three classes, shown in the same colour in the spectrum and in the
+Each line belongs to one of three classes, shown in the same color in the spectrum and in the
 table:
 
 - <span class="kind precision"></span>**precision**: measured in a sub-Doppler or frequency-comb data set;
-- <span class="kind atlas"></span>**atlas**: measured only in a Fourier-transform atlas (Doppler-limited line centre);
+- <span class="kind atlas"></span>**atlas**: measured only in a Fourier-transform atlas (Doppler-limited line center);
 - <span class="kind model"></span>**model only**: not measured; the position is the model prediction.
 
 A line measured in both kinds of data set is shown as a precision line.
 
 In the cross-section display the filled **model** area is the cross section the model predicts from
-every line, measured or not. Over it, the atlas and precision lines are each drawn in their own colour
+every line, measured or not. Over it, the atlas and precision lines are each drawn in their own color
 as their share of that cross section, and every measured line is marked by a diamond below the
 trace. The three **show** toggles act on this:
 
 - **model** includes every line, so the model area and the table cover all of them;
-- **atlas** and **precision** pick out their measured lines in colour in the spectrum. With one of them
-  off, its lines are still part of the model area and the table, but are not coloured or marked in the
+- **atlas** and **precision** pick out their measured lines in color in the spectrum. With one of them
+  off, its lines are still part of the model area and the table, but are not colored or marked in the
   spectrum.
 
 With **model** off, the spectrum and the table keep only the measured lines of the kinds switched on.
@@ -47,6 +47,30 @@ vertical stick whose height is the peak of its own profile. The patterns used fo
 for every line without the ΔJ = ±2 couplings of the hyperfine Hamiltonian; this changes the component
 offsets by less than 1 MHz (0.9 MHz for R(56) 32–0), which is small compared with the Doppler width.
 The detail panel shows the full calculation, including these couplings, where it is available.
+
+## Measurement against the model
+
+Below the same 0.1 nm, every measured absolute frequency in view is drawn against the model, in two ways:
+
+- **A strip under the spectrum** gives measured − model in MHz for each measured component (or line
+  center, for an atlas line). Each measurement is a dot at the model's position of its component,
+  with its own 1σ as a vertical bar. The grey box behind it is the model's 1σ for that component. Several
+  measurements of one component stand side by side. A hollow dot is a source held out of every fit
+  (the blind tests). The vertical scale is set by the precision measurements when there are any. An atlas
+  residual (tens of MHz) then lies off the scale and is drawn as an arrow at the edge, but it shows at
+  true scale on the spectrum itself.
+- **On the spectrum, at true scale**, the model's ±1σ is a grey band around each measured component, and
+  each measurement is a dot at its measured frequency with a ±1σ bar. There is one row per source near
+  the top of the plot. Once a dot stands apart from the model's position, a dashed line drops from it
+  to the baseline. These marks appear only when the scale can show them: an atlas line's at about 0.1 nm,
+  a comb measurement's only when a few MHz span the plot. Zooming in on one component shows, for
+  example, the 5.2 MHz miss of P(13) 43–0 a3 well outside the model's 1.2 MHz.
+
+The strip needs some height and is left out on a phone held so that the plot is short. Hovering over a
+dot gives the line, component and source, measured − model with the measurement's uncertainty, and the
+model's 1σ; a click selects the line. The values are those of the detail panel's measurement table.
+The strip and the band use the model's 1σ for each component, taken from the full hyperfine patterns
+(loaded once, about 5 MB). Until they arrive, the line's own 1σ is used.
 
 ## Sub-Doppler spectra
 
@@ -102,11 +126,16 @@ The **export CSV** buttons download:
 - **lines in view**: every line in the current view that the show toggles keep, not only the 500 listed
   in the table, in the table's order. The columns are the label, isotopologue, vacuum and air
   wavelength, wavenumber, frequency, line strength at the current temperature, E″, the 1σ position
-  uncertainty, the class (precision, atlas, model only) and the measuring sources. With a laser set,
+  uncertainty, the model that gives the line (balanced-expanded or i2spec2026o), the class (precision, atlas,
+  model only), the measuring sources, and the positions of i2spec2026o and of the 2008 model as differences. With a laser set,
   the fundamental-equivalent wavelength and frequency and the distance from the laser harmonic are
   added; below 0.1 nm, where they are loaded, the ΔJ = 0 hyperfine offsets and strengths of each line.
 - **hyperfine of selected**: the hyperfine components of the selected line as the detail panel shows
   them, with offsets, absolute frequencies, wavelengths and relative strengths.
+
+For ¹²⁷I₂ lines with the full hyperfine calculation (the strongest lines and every measured line), the detail
+panel's hyperfine table also gives each component's 1σ: the center's uncertainty combined with the hyperfine
+model's own (see [Uncertainty estimates](uncertainty.md)). `i2spec line` gives it for any line.
 
 Each file starts with comment lines (`#`) giving the model version, git revision and
 export date of the data, the download time, isotopologue, temperature, view, laser, and a link that
@@ -115,7 +144,7 @@ reopens the same view.
 ## Rendering
 
 Each line profile is averaged over the width of a screen pixel instead of being sampled at the pixel
-centre, and lines narrower than a pixel are broadened in quadrature to one pixel. The drawn height of
+center, and lines narrower than a pixel are broadened in quadrature to one pixel. The drawn height of
 a line therefore varies smoothly as the view is moved or zoomed, and the integrated cross section is
 preserved.
 
@@ -125,8 +154,19 @@ The table lists the lines in order of increasing wavelength. When the table is s
 last line, or the last line is selected and ↓ is pressed, the spectrum window moves to longer
 wavelengths and the table continues with the following lines. Scrolling beyond the first line moves
 to shorter wavelengths. For measured lines the table gives the sources, each linked to its DOI. The
-detail panel lists all measurements of the selected line with their uncertainties and their
-differences from the model.
+detail panel lists all measurements of the selected line, each with its own stated uncertainty and its
+difference from the model, beside the model's position and 1σ. A difference several times larger than both
+uncertainties marks a disagreement worth a look. Sources marked “blind test, not fitted” were held out of
+every fit and used only to test the model's frozen predictions.
+
+## The model behind each line
+
+For ¹²⁷I₂ the positions, hyperfine patterns and uncertainties are balanced-expanded's (see the
+[model overview](calculation.md)). The other isotopologues, and the few ¹²⁷I₂ lines outside its domain, come
+from the earlier model, i2spec2026o; their flags say so. For lines that both models give, the detail panel
+shows i2spec2026o's position as its difference from this model. That model's level corrections follow the
+measured lines closely, so near a measured line the difference shows how far the shared-function model sits
+from the data. The line strengths are i2spec2026o's for every line.
 
 ## Comparison with the 2008 model
 
@@ -135,7 +175,7 @@ For every line the detail panel also gives the position of the published model o
 It is computed here from the published potentials and Born–Oppenheimer corrections, and the measured
 components are compared with the published hyperfine formulae alone, so the measurements table has a
 second residual column, *obs − 2008*. Inside the range the 2008 potentials were fitted to (X v″ ≤ 17,
-B v′ ≤ 43) the two models agree to a few MHz; outside it the 2008 curves are extrapolations, and the
+B v′ ≤ 43) the models agree to a few MHz; outside it the 2008 curves are extrapolations, and the
 detail panel says so: there the difference reaches tens of GHz. The line-list CSV export carries the same
 difference as a column.
 

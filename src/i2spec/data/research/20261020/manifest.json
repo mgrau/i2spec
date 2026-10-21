@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "release": "20261020",
+  "production_default": "i2spec2026o",
+  "selection_scope": "balanced-expanded: research-20261018-balanced continued to X v<=108, B v<=80",
+  "models": [
+    {
+      "id": "research-20261020-balanced-expanded",
+      "role": "balanced_expanded",
+      "title": "Balanced, expanded",
+      "directory": "balanced_expanded",
+      "kind": "expanded",
+      "architecture": "balanced + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 3 rotation), X dC6, X cubic splines 4.2-6.6 A, shared dDe; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78",
+      "inventory": {
+        "fitted_molecular": 105,
+        "inherited_molecular": 73,
+        "fitted_calibration": 5,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "X_v_max": 108,
+        "B_v_max": 80,
+        "J_max": 200
+      },
+      "isotopologue": "127I2",
+      "exclusion": "127I2 P(13) 43-0",
+      "validated_folds": 4,
+      "training_fold": "future",
+      "validation_scope": "Core: the base model's reused benchmark (60 absolute, 592 intraline); extension: four v folds of the final settings and the 81-row future comb benchmark held out; hyperfine: ten nested v' folds; pending sets: frozen blind registry",
+      "absolute_rms_MHz": 0.15634668325293402,
+      "intraline_rms_MHz": 0.05855727081872456,
+      "verification": {
+        "counts": {
+          "center": 842,
+          "absolute": 2586,
+          "intraline": 1434
+        },
+        "passed": true,
+        "maximum_difference_Hz": {
+          "center": 1.7881393432617188,
+          "absolute": 1.7881393432617188,
+          "intraline": 0.16344074538210407
+        },
+        "tolerance_Hz": 100.0,
+        "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+      },
+      "files_sha256": {
+        "model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
+        "hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
+        "reference_predictions.json": "1c4a0b15b546cf62bdc608d793f8a1d805d2dcdf8d5afa289fabd34ec14ac52b",
+        "audits.json": "7f64811d0ec0021cbd7c76b5b05ee3b980601e45a67d711db524c961b60c0e7d",
+        "validation.json": "6b92ef97abe751cdeab6c9f1afa97f53d2190a54ad7f47443db294d24ecad5ff",
+        "selection.json": "a57a41eb0fcb8a53e899c77fcbe2f922da21de2b21ec4a7abab62a7c9b4563bd",
+        "provenance.json": "649082a620b0c81db9723cb23f6267fcbe650cf74c160678690c5ca82b7f5cbb",
+        "verification.json": "5962ee5ae8b4976fef2a0b1cd411b555a7cb5b0310e66e77e5a14962142258c1",
+        "uncertainty.json": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f",
+        "uncertainty_references.json": "a5eb298b4662e07157c615b2e5e070e2373246488a1e0ec2c346cd4c3c6db7f8"
+      },
+      "source_snapshot_sha256": {
+        "model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
+        "hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
+        "reference_predictions.json": "1c4a0b15b546cf62bdc608d793f8a1d805d2dcdf8d5afa289fabd34ec14ac52b",
+        "audits.json": "7f64811d0ec0021cbd7c76b5b05ee3b980601e45a67d711db524c961b60c0e7d",
+        "validation.json": "6b92ef97abe751cdeab6c9f1afa97f53d2190a54ad7f47443db294d24ecad5ff",
+        "selection.json": "a57a41eb0fcb8a53e899c77fcbe2f922da21de2b21ec4a7abab62a7c9b4563bd",
+        "provenance.json": "649082a620b0c81db9723cb23f6267fcbe650cf74c160678690c5ca82b7f5cbb",
+        "verification.json": "5962ee5ae8b4976fef2a0b1cd411b555a7cb5b0310e66e77e5a14962142258c1",
+        "uncertainty.json": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f",
+        "uncertainty_references.json": "a5eb298b4662e07157c615b2e5e070e2373246488a1e0ec2c346cd4c3c6db7f8"
+      },
+      "inventory_detail": {
+        "base": {
+          "model": "research-20261018-balanced",
+          "fitted_molecular": 61,
+          "inherited_molecular": 18,
+          "fitted_calibration": 4
+        },
+        "potential_tails": {
+          "fitted": 38,
+          "names": [
+            "B:ro1",
+            "B:ro2",
+            "B:ro3",
+            "B:to1",
+            "B:to10",
+            "B:to2",
+            "B:to3",
+            "B:to4",
+            "B:to5",
+            "B:to6",
+            "B:to7",
+            "B:to8",
+            "B:to9",
+            "X:dC6",
+            "X:dDe",
+            "X:ro1",
+            "X:ti1",
+            "X:to1",
+            "X:to10",
+            "X:to11",
+            "X:to12",
+            "X:to2",
+            "X:to3",
+            "X:to4",
+            "X:to5",
+            "X:to6",
+            "X:to7",
+            "X:to8",
+            "X:to9",
+            "X:w1",
+            "X:w2",
+            "X:w3",
+            "X:w4",
+            "X:w5",
+            "X:w6",
+            "X:w7",
+            "X:w8",
+            "X:w9"
+          ],
+          "note": "B:dDe is X:dDe (one shared dissociation-energy change keeps the atomic splitting)"
+        },
+        "hyperfine_fitted": {
+          "count": 6,
+          "names": [
+            "B theta_u (1u mixing)",
+            "B gamma (eqQ continuation curvature)",
+            "1g(1Pig) C5 scale (selected by training cost)",
+            "X eqQ lambda",
+            "X eqQ p",
+            "X C slope"
+          ],
+          "note": "fitted to measured B intra-line intervals out of core (B) and Bacis et al. 1980 X eqQ (X); the X C slope rests on one value (59 kHz at v''83) and is unvalidated"
+        },
+        "hyperfine_derived": {
+          "B_background": 14,
+          "X_eqQ_polynomial": 5,
+          "X_C_polynomial": 5,
+          "note": "anchored to the base model's own core predictions (B) and to BKT02 in the core (X): set by inherited/base numbers, not by new measurements"
+        },
+        "inherited_new": {
+          "atomic": [
+            "A(2P3/2)",
+            "A(2P1/2)",
+            "B(2P3/2)"
+          ],
+          "perturber_curves": 45,
+          "theta_g": "30 deg, the separated-atom quadrupole mixing (Saute 1982)",
+          "resonance": [
+            "dE(77)",
+            "B_1g(77)",
+            "dE(78)",
+            "B_1g(78)",
+            "eqQ(1g)",
+            "C(1g)"
+          ]
+        },
+        "inherited_total": 73,
+        "calibration": {
+          "base": 4,
+          "orsay4_offset_MHz": 1.1493040913367356
+        },
+        "structural": {
+          "knots": {
+            "X_out": 3.08,
+            "X_in": 2.42,
+            "X_rot": 3.08,
+            "B_out": 4.45,
+            "B_rot": 4.45
+          },
+          "orders": {
+            "X": {
+              "outer": 12,
+              "inner": 1,
+              "rotation": 1
+            },
+            "B": {
+              "outer": 10,
+              "inner": 0,
+              "rotation": 3
+            }
+          },
+          "window_knots": {
+            "X": [
+              4.2,
+              4.4,
+              4.6,
+              4.8,
+              5.0,
+              5.2,
+              5.4,
+              5.6,
+              5.8,
+              6.0,
+              6.2,
+              6.4,
+              6.6
+            ],
+            "B": null
+          },
+          "grids": "engine.TIERS + 0.6 A box, X tiers >= 33 halved",
+          "J_tables": 203
+        }
+      }
+    }
+  ]
+}

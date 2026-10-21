@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(73) 46-0,a1,frequency,583109956.557,0.006,,,ikeda2020a,"Sect. 3.4: 583 109 956 557 kHz +- 6 kHz at 2.5 Pa (-5 C) and 5.0 mW pump, mean of 13 measurements"

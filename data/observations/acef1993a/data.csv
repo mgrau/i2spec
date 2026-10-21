@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a16,frequency,473612353.5869,0.005,,,acef1993a,"abstract and p. 33: the INM12 He-Ne laser on f, 473 612 353 586.9 +- 5 kHz, two days of measurements with the LPTF CO2/OsO4-to-visible harmonic chain"

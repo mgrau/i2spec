@@ -1,0 +1,1777 @@
+{
+  "plan_id": "prospective-lab-20261018-v1",
+  "outcome_phase": "prospective_laboratory",
+  "models": [
+    "research-20261018-balanced",
+    "research-20261018-compact",
+    "research-20261018-absolute",
+    "research-20261018-precision"
+  ],
+  "primary_model": "research-20261018-balanced",
+  "thresholds_MHz": [
+    0.1,
+    0.3,
+    1.0
+  ],
+  "primary_selection": "Prior declared parameter/accuracy balance; frozen before new laboratory outcomes",
+  "n_lines": 16,
+  "n_upper_level_pairs": 8,
+  "n_component_targets": 48,
+  "target_plan_sha256": "75f4666da4b48744a0e1aeb4aeaac0c688096db92e49d1b30e4b3598c43a25f2",
+  "calibration_source_sha256": "5b35dd8adc5a69ab5f8005facee33f7d35b94c874af79eb8aff5016ae45d15c1",
+  "envelope_calibration_role": "balanced",
+  "envelope_other_roles": "Same predeclared thresholds for descriptive comparison; widths calibrated from balanced research data only",
+  "no_new_measurements_available": true,
+  "feasibility": "Radial/component existence and approximate wavelength checked with frozen predictions; laser access, signal strength, assignment, cell conditions and lab scheduling require experimental review before outcomes",
+  "missing_target_policy": "Report all missing targets and any feasibility exclusions, with reason and date; amend a versioned plan before any outcomes rather than silently dropping failed measurements",
+  "scoring_basis": "Source-supported zero-pressure/unperturbed frequencies. Preserve finite-pressure data and conditions separately; do not fit corrections to validation residuals.",
+  "interpretation": "Eight chosen P/R pairs share upper rovibrational J. Labeled hyperfine components need not share the same hyperfine eigenstate; component differences do not exactly cancel hyperfine structure.",
+  "envelopes": {
+    "routine": {
+      "half_width_MHz": 0.6,
+      "nominal_probability": null,
+      "scope": "Descriptive reused interpolation benchmark; no probability or domain-wide accuracy guarantee",
+      "recipe": "ceil_0.1(maximum_repeat_error + maximum_accepted_start_spread) for balanced future cohort",
+      "maximum_repeat_error_MHz": 0.5761994123458862,
+      "maximum_start_spread_MHz": 0.008391499519348145
+    },
+    "stress": {
+      "half_width_MHz": 13.0,
+      "nominal_probability": null,
+      "scope": "Contingency from sparse overlapping band/source folds and start sensitivity; no probability or universal high-J guarantee",
+      "recipe": "ceil_1(maximum_repeat_error + maximum_accepted_start_spread) across balanced future and seven cohorts",
+      "maximum_repeat_error_MHz": 3.509594202041626,
+      "maximum_start_spread_MHz": 9.068304181098938
+    }
+  },
+  "targets": [
+    {
+      "id": "routine_32_lowJ_P_a1",
+      "line": "127I2 P(53) 32-0",
+      "component": "a1",
+      "pair_id": "routine_32_lowJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 23,
+        "raw_precision_sources": [
+          "arie1993a",
+          "bipm2012a",
+          "ye1999a",
+          "zhang2001a"
+        ],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [
+              "arie1993a",
+              "bipm2012a",
+              "ye1999a",
+              "zhang2001a"
+            ],
+            "prior_raw_component_exposure": true
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [
+              "bipm2012a"
+            ],
+            "prior_raw_component_exposure": true
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_lowJ_P_a3",
+      "line": "127I2 P(53) 32-0",
+      "component": "a3",
+      "pair_id": "routine_32_lowJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 23,
+        "raw_precision_sources": [
+          "arie1993a",
+          "bipm2012a",
+          "ye1999a",
+          "zhang2001a"
+        ],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [
+              "arie1993a",
+              "bipm2012a",
+              "ye1999a",
+              "zhang2001a"
+            ],
+            "prior_raw_component_exposure": true
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [
+              "bipm2012a"
+            ],
+            "prior_raw_component_exposure": true
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_lowJ_P_a10",
+      "line": "127I2 P(53) 32-0",
+      "component": "a10",
+      "pair_id": "routine_32_lowJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 23,
+        "raw_precision_sources": [
+          "arie1993a",
+          "bipm2012a",
+          "ye1999a",
+          "zhang2001a"
+        ],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [
+              "arie1993a",
+              "bipm2012a",
+              "ye1999a",
+              "zhang2001a"
+            ],
+            "prior_raw_component_exposure": true
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [
+              "bipm2012a"
+            ],
+            "prior_raw_component_exposure": true
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_lowJ_R_a1",
+      "line": "127I2 R(51) 32-0",
+      "component": "a1",
+      "pair_id": "routine_32_lowJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_lowJ_R_a3",
+      "line": "127I2 R(51) 32-0",
+      "component": "a3",
+      "pair_id": "routine_32_lowJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_lowJ_R_a10",
+      "line": "127I2 R(51) 32-0",
+      "component": "a10",
+      "pair_id": "routine_32_lowJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_midJ_P_a1",
+      "line": "127I2 P(61) 32-0",
+      "component": "a1",
+      "pair_id": "routine_32_midJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_midJ_P_a3",
+      "line": "127I2 P(61) 32-0",
+      "component": "a3",
+      "pair_id": "routine_32_midJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_midJ_P_a10",
+      "line": "127I2 P(61) 32-0",
+      "component": "a10",
+      "pair_id": "routine_32_midJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_midJ_R_a1",
+      "line": "127I2 R(59) 32-0",
+      "component": "a1",
+      "pair_id": "routine_32_midJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 1,
+        "raw_precision_sources": [
+          "holzwarth2001a"
+        ],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [
+              "holzwarth2001a"
+            ],
+            "interval_sources": [],
+            "prior_raw_component_exposure": true
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_midJ_R_a3",
+      "line": "127I2 R(59) 32-0",
+      "component": "a3",
+      "pair_id": "routine_32_midJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 1,
+        "raw_precision_sources": [
+          "holzwarth2001a"
+        ],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [
+              "holzwarth2001a"
+            ],
+            "interval_sources": [],
+            "prior_raw_component_exposure": true
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "routine_32_midJ_R_a10",
+      "line": "127I2 R(59) 32-0",
+      "component": "a10",
+      "pair_id": "routine_32_midJ",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 1,
+        "raw_precision_sources": [
+          "holzwarth2001a"
+        ],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [
+              "holzwarth2001a"
+            ],
+            "interval_sources": [],
+            "prior_raw_component_exposure": true
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_ground_X_P_a1",
+      "line": "127I2 P(53) 39-0",
+      "component": "a1",
+      "pair_id": "B39_ground_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 1,
+        "atlas_sources": [
+          "apo_nist_2009"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_ground_X_P_a3",
+      "line": "127I2 P(53) 39-0",
+      "component": "a3",
+      "pair_id": "B39_ground_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 1,
+        "atlas_sources": [
+          "apo_nist_2009"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_ground_X_P_a10",
+      "line": "127I2 P(53) 39-0",
+      "component": "a10",
+      "pair_id": "B39_ground_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 1,
+        "atlas_sources": [
+          "apo_nist_2009"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_ground_X_R_a1",
+      "line": "127I2 R(51) 39-0",
+      "component": "a1",
+      "pair_id": "B39_ground_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_ground_X_R_a3",
+      "line": "127I2 R(51) 39-0",
+      "component": "a3",
+      "pair_id": "B39_ground_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_ground_X_R_a10",
+      "line": "127I2 R(51) 39-0",
+      "component": "a10",
+      "pair_id": "B39_ground_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 3,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "kitt_peak_1993",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_hot_X_P_a1",
+      "line": "127I2 P(79) 39-1",
+      "component": "a1",
+      "pair_id": "B39_hot_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_hot_X_P_a3",
+      "line": "127I2 P(79) 39-1",
+      "component": "a3",
+      "pair_id": "B39_hot_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_hot_X_P_a10",
+      "line": "127I2 P(79) 39-1",
+      "component": "a10",
+      "pair_id": "B39_hot_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_hot_X_R_a1",
+      "line": "127I2 R(77) 39-1",
+      "component": "a1",
+      "pair_id": "B39_hot_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_hot_X_R_a3",
+      "line": "127I2 R(77) 39-1",
+      "component": "a3",
+      "pair_id": "B39_hot_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "B39_hot_X_R_a10",
+      "line": "127I2 R(77) 39-1",
+      "component": "a10",
+      "pair_id": "B39_hot_X",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_first_P_a1",
+      "line": "127I2 P(159) 25-0",
+      "component": "a1",
+      "pair_id": "highJ_25_first",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_first_P_a3",
+      "line": "127I2 P(159) 25-0",
+      "component": "a3",
+      "pair_id": "highJ_25_first",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_first_P_a10",
+      "line": "127I2 P(159) 25-0",
+      "component": "a10",
+      "pair_id": "highJ_25_first",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_first_R_a1",
+      "line": "127I2 R(157) 25-0",
+      "component": "a1",
+      "pair_id": "highJ_25_first",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_first_R_a3",
+      "line": "127I2 R(157) 25-0",
+      "component": "a3",
+      "pair_id": "highJ_25_first",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_first_R_a10",
+      "line": "127I2 R(157) 25-0",
+      "component": "a10",
+      "pair_id": "highJ_25_first",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_second_P_a1",
+      "line": "127I2 P(163) 25-0",
+      "component": "a1",
+      "pair_id": "highJ_25_second",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_second_P_a3",
+      "line": "127I2 P(163) 25-0",
+      "component": "a3",
+      "pair_id": "highJ_25_second",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_second_P_a10",
+      "line": "127I2 P(163) 25-0",
+      "component": "a10",
+      "pair_id": "highJ_25_second",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 2,
+        "atlas_sources": [
+          "apo_nist_2009",
+          "salami_ross_2005"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_second_R_a1",
+      "line": "127I2 R(161) 25-0",
+      "component": "a1",
+      "pair_id": "highJ_25_second",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_second_R_a3",
+      "line": "127I2 R(161) 25-0",
+      "component": "a3",
+      "pair_id": "highJ_25_second",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "highJ_25_second_R_a10",
+      "line": "127I2 R(161) 25-0",
+      "component": "a10",
+      "pair_id": "highJ_25_second",
+      "stratum": "stress",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "X4_hot_band_P_a1",
+      "line": "127I2 P(63) 33-4",
+      "component": "a1",
+      "pair_id": "X4_hot_band",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "X4_hot_band_P_a3",
+      "line": "127I2 P(63) 33-4",
+      "component": "a3",
+      "pair_id": "X4_hot_band",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "X4_hot_band_P_a10",
+      "line": "127I2 P(63) 33-4",
+      "component": "a10",
+      "pair_id": "X4_hot_band",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "X4_hot_band_R_a1",
+      "line": "127I2 R(61) 33-4",
+      "component": "a1",
+      "pair_id": "X4_hot_band",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 1,
+        "atlas_sources": [
+          "apo_nist_2009"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "X4_hot_band_R_a3",
+      "line": "127I2 R(61) 33-4",
+      "component": "a3",
+      "pair_id": "X4_hot_band",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 1,
+        "atlas_sources": [
+          "apo_nist_2009"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "X4_hot_band_R_a10",
+      "line": "127I2 R(61) 33-4",
+      "component": "a10",
+      "pair_id": "X4_hot_band",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 1,
+        "atlas_sources": [
+          "apo_nist_2009"
+        ],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "previously_archived_transition",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "low_B1_P_a1",
+      "line": "127I2 P(33) 1-0",
+      "component": "a1",
+      "pair_id": "low_B1",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "low_B1_P_a3",
+      "line": "127I2 P(33) 1-0",
+      "component": "a3",
+      "pair_id": "low_B1",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "low_B1_P_a10",
+      "line": "127I2 P(33) 1-0",
+      "component": "a10",
+      "pair_id": "low_B1",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "low_B1_R_a1",
+      "line": "127I2 R(31) 1-0",
+      "component": "a1",
+      "pair_id": "low_B1",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "low_B1_R_a3",
+      "line": "127I2 R(31) 1-0",
+      "component": "a3",
+      "pair_id": "low_B1",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    },
+    {
+      "id": "low_B1_R_a10",
+      "line": "127I2 R(31) 1-0",
+      "component": "a10",
+      "pair_id": "low_B1",
+      "stratum": "routine",
+      "source_exposure": {
+        "raw_precision_rows": 0,
+        "raw_precision_sources": [],
+        "atlas_rows": 0,
+        "atlas_sources": [],
+        "components": {
+          "a1": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a3": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          },
+          "a10": {
+            "absolute_sources": [],
+            "interval_sources": [],
+            "prior_raw_component_exposure": false
+          }
+        },
+        "blind_line_status": "not_found_in_observation_or_atlas_CSVs_not_proof_unseen",
+        "inference_limit": "Missing identity in these CSVs does not exclude prior exposure through a paper, plotted spectrum, derived constants, or unassigned atlas."
+      },
+      "laboratory_measurement_status": "not_collected"
+    }
+  ]
+}

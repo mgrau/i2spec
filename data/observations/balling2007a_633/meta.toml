@@ -1,0 +1,66 @@
+id = "balling2007a_633"
+citation = "P. Balling and P. Křen, \"Absolute frequency measurements of wavelength standards 532 nm, 543 nm, 633 nm and 1540 nm\", Eur. Phys. J. D 48, 3-10 (2008)"
+source = "Eur. Phys. J. D 48, 3-10 (2008), published online 5 December 2007; https://doi.org/10.1140/epjd/e2007-00325-0 (publisher PDF, Matt's library copy papers/Balling2007_EPJD48_3.pdf)"
+doi = "10.1140/epjd/e2007-00325-0"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "precision.yaml:balling2007a"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+The 633 nm part of Balling & Křen (one paper, three sets: balling2007a_633, balling2007a_543, balling2007a_532,
+split because each wavelength standard needs its own [shift_correction]).
+
+Table 1 (journal p. 6, PDF p. 4): components d-j of 127I2 R(127) 11-5 measured with the CMI fs comb (Menlo
+FC8004, referenced to a GPS-disciplined Rb oscillator) for two internal-cell He-Ne lasers: SMU-1 (Slovak
+Metrology Institute, Winters Electro Optics M100, May 2006) and CMI PLO3 (June 2007). The table prints the MeP
+frequency and each laser's deviation from it in kHz; each row here is MeP + deviation, converted to MHz
+exactly. Read from the pdftotext -layout text layer and checked digit by digit against a 220 dpi rendering.
+
+Component labels: the MeP letters d, e, f, g, h, i, j are the components a18, a17, a16, a15, a14, a13, a12 of
+R(127) 11-5 (odd J'', 21 main components, ranked by frequency). Every printed MeP frequency equals bipm2003a's
+f(a16) plus its interval for that rank, to the kHz.
+
+Not entered:
+- The PLO3 long-term average f(PLO3@f) = 473 612 353 618 +- 2 kHz (k = 2) of Sect. 3.1 and Fig. 4: it averages
+  the history that includes the Table 1 run (Table 1 has f at +10.3 kHz, the average at +14 kHz), so entering
+  both would count PLO3 twice.
+- The BIPM May 2005 measurement of SMU-1 f, quoted only as "0.15 kHz below".
+"""
+
+uncertainty = """
+Sect. 3: "The uncertainties quoted in this section are expanded (k = 2) and correspond to uncertainty of fs
+comb measurement combined with mid-term (~weeks) repeatability of laser under measurement. They do not express
+total uncertainty / reproducibility of those lasers as standalone frequency standards." Entered as the printed
+value halved: 0.25 kHz (SMU-1) and 0.4 kHz (PLO3). These describe the comb measurement of each laser, not the
+molecular line: each laser's own systematic offset (power, modulation, cell contamination; the text puts PLO3
+14 kHz above the MeP value because of its low internal power and cell) is common to its seven components, so
+each laser is one group (balling2007a_633_smu1, balling2007a_633_plo3).
+"""
+
+notes = """
+The lasers run at the MeP recommended conditions, as bipm2003a's values do: the text calls the PLO3 value the
+frequency "at recommended conditions"; for SMU-1 this is assumed. [shift_correction] repeats bipm2003a's
+coefficients, so both sets are taken to zero pressure, power and modulation alike.
+
+Residuals against i2spec2026o (Predictor(), obs - model), as measured: SMU-1 -337.7 kHz mean (sd 4.4 kHz over
+the seven components), PLO3 -332.4 kHz (sd 1.7 kHz); after the shift correction -111.9 and -106.5 kHz.
+bipm2003a's a16 reads -342.7 kHz as measured (-116.8 corrected), so the two lasers sit 5-10 kHz above the
+MeP value, as Table 1 prints. Checked with the shipped model only, not with any research candidate.
+"""
+
+[conditions]
+method = "internal-cell He-Ne lasers, third-harmonic locking; Menlo FC8004 Ti:sapphire comb (197.8 MHz) referenced to a GPS-disciplined Rb oscillator (Timing Solutions TSC 4400A)"
+lasers = "SMU-1 (Winters Electro Optics M100), May 2006; CMI PLO3 (in operation since 1991, internal power about 3 mW, cell Stern-Volmer coefficient 1.7 Pa^-1), June 2007"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "MeP 633 nm recommended conditions and coefficients, exactly as bipm2003a (cold finger 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at the nominal 10 mW). The paper states recommended conditions for PLO3 (3 mW internal power, inside the power allowance); SMU-1 is assumed to run at them too."

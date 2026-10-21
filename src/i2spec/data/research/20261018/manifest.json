@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "release": "20261018",
+  "production_default": "i2spec2026o",
+  "selection_scope": "Four frozen exact-J research representatives; exploratory benchmark and seven reused physical holdouts",
+  "models": [
+    {
+      "id": "research-20261018-compact",
+      "role": "compact_value",
+      "title": "Compact value",
+      "directory": "compact_value",
+      "architecture": "x10_b20_fixed_x_0_0_5_5_2_1__exact_J",
+      "inventory": {
+        "fitted_molecular": 56,
+        "inherited_molecular": 18,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_max": 200
+      },
+      "isotopologue": "127I2",
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.19073698049917062,
+      "intraline_rms_MHz": 0.08587890572012952,
+      "validated_folds": 7,
+      "verification": {
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.476837158203125,
+          "intraline": 0.11818428902188316
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of saved predictions; not independent predictive validation"
+      },
+      "source_snapshot_sha256": {
+        "model.json": "549c5056113da137d515e249e90dd4f40dccc6c467ce791787497f715d40464f",
+        "reference_predictions.json": "511bd20021eea5b854bae57c321b223e259b245b186d603ff5f24ecb4df68fe1",
+        "selection.json": "d12b21c04237aac73fe64c094ec6a377e17e458721138d48b07e172238c8297b",
+        "audits.json": "4005d3d1a20b05244c79617c2183475ad64d94b56ff81a776c966e1e862f379f",
+        "provenance.json": "cadab21da5c2df0f21cc2ef4309c4f42245e34f0c0d8a32587d887cf3ab1c553",
+        "verification.json": "d6ae24a258f51c8a33927bd1efe94f5d0007f26a486a79cf809d86e516d029f5",
+        "verification_provenance.json": "0c6e215d08389e4cd965ee9690ae6165af119ab471fa8620b1595b0a284833e2"
+      },
+      "files_sha256": {
+        "model.json": "549c5056113da137d515e249e90dd4f40dccc6c467ce791787497f715d40464f",
+        "reference_predictions.json": "511bd20021eea5b854bae57c321b223e259b245b186d603ff5f24ecb4df68fe1",
+        "selection.json": "d12b21c04237aac73fe64c094ec6a377e17e458721138d48b07e172238c8297b",
+        "audits.json": "4005d3d1a20b05244c79617c2183475ad64d94b56ff81a776c966e1e862f379f",
+        "provenance.json": "cadab21da5c2df0f21cc2ef4309c4f42245e34f0c0d8a32587d887cf3ab1c553",
+        "verification.json": "d6ae24a258f51c8a33927bd1efe94f5d0007f26a486a79cf809d86e516d029f5",
+        "verification_provenance.json": "0c6e215d08389e4cd965ee9690ae6165af119ab471fa8620b1595b0a284833e2"
+      }
+    },
+    {
+      "id": "research-20261018-absolute",
+      "role": "absolute_accuracy",
+      "title": "Absolute accuracy",
+      "directory": "absolute_accuracy",
+      "architecture": "x14_b20_anchored_x_3_1_4_5_2_1__exact_J",
+      "inventory": {
+        "fitted_molecular": 61,
+        "inherited_molecular": 11,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_max": 200
+      },
+      "isotopologue": "127I2",
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.15553662941349616,
+      "intraline_rms_MHz": 0.10800327659957658,
+      "validated_folds": 7,
+      "verification": {
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.7152557373046875,
+          "intraline": 0.11584762660277192
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of saved predictions; not independent predictive validation"
+      },
+      "source_snapshot_sha256": {
+        "model.json": "a2f0d89e772b0a72d1824497a62bf9bc9c0c3bff4eac5f2182b3f3ae764a5ce9",
+        "reference_predictions.json": "66cafc05fb8602e289520d8e9b176728a07775f784f00915da7d8f46d6458ae2",
+        "selection.json": "e1ca017f817fc88e95b302c46cb3ae11927486d340d8c9cc082dd8110b9e881b",
+        "audits.json": "7a7324dbdfb70bcf11afa826c7a7b45d459aad6e97fbe3146c1236453dae4a29",
+        "provenance.json": "47773940995c86b9725c864bd61c1d485d9f8ef3a0f5f906e679a2b17a529d24",
+        "verification.json": "95b10e687b2bda495e7928056ca1b462c6de26ed747276e02c3a75e475076ba4",
+        "verification_provenance.json": "8a6ae3d4df8099427dc544cc0c7b5acb69a326b84041d2cb1027843c19be944e"
+      },
+      "files_sha256": {
+        "model.json": "a2f0d89e772b0a72d1824497a62bf9bc9c0c3bff4eac5f2182b3f3ae764a5ce9",
+        "reference_predictions.json": "66cafc05fb8602e289520d8e9b176728a07775f784f00915da7d8f46d6458ae2",
+        "selection.json": "e1ca017f817fc88e95b302c46cb3ae11927486d340d8c9cc082dd8110b9e881b",
+        "audits.json": "7a7324dbdfb70bcf11afa826c7a7b45d459aad6e97fbe3146c1236453dae4a29",
+        "provenance.json": "47773940995c86b9725c864bd61c1d485d9f8ef3a0f5f906e679a2b17a529d24",
+        "verification.json": "95b10e687b2bda495e7928056ca1b462c6de26ed747276e02c3a75e475076ba4",
+        "verification_provenance.json": "8a6ae3d4df8099427dc544cc0c7b5acb69a326b84041d2cb1027843c19be944e"
+      }
+    },
+    {
+      "id": "research-20261018-balanced",
+      "role": "balanced",
+      "title": "Balanced accuracy",
+      "directory": "balanced",
+      "architecture": "x14_b20_fixed_x_0_0_5_5_3_1__exact_J",
+      "inventory": {
+        "fitted_molecular": 61,
+        "inherited_molecular": 18,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_max": 200
+      },
+      "isotopologue": "127I2",
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.15636335726412082,
+      "intraline_rms_MHz": 0.058557271279601524,
+      "validated_folds": 7,
+      "verification": {
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.5960464477539062,
+          "intraline": 0.1070412167791801
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of saved predictions; not independent predictive validation"
+      },
+      "source_snapshot_sha256": {
+        "model.json": "5bc1a18086112dacd65feab460b90a9f72bf5286685beb4ad9bcbcab2dcef29d",
+        "reference_predictions.json": "08112814a366fc6b3f7e66f4490db3f73f4171552a5617951d7bfc9fff09f5af",
+        "selection.json": "2c49189afcc0e243c9c12faf8e02766829d43cb32b8446414c313eb3e3f95765",
+        "audits.json": "6b07cfd97d361828c4cccbd1dde6075fc13b5c8e441d54cc498aa09970becb32",
+        "provenance.json": "ff94fb23647e142e5c286c3e008512a52d46deb2a8287e0f855064c5e9eae63a",
+        "verification.json": "9f5e9e2dece2fb4b813fd040917446cfe7ce44e72ff9edae79f2b74f0c851da4",
+        "verification_provenance.json": "5227febf8f05733c202cae1739af748ea02097e7a291f2622af98ff4078c23c3"
+      },
+      "files_sha256": {
+        "model.json": "5bc1a18086112dacd65feab460b90a9f72bf5286685beb4ad9bcbcab2dcef29d",
+        "reference_predictions.json": "08112814a366fc6b3f7e66f4490db3f73f4171552a5617951d7bfc9fff09f5af",
+        "selection.json": "2c49189afcc0e243c9c12faf8e02766829d43cb32b8446414c313eb3e3f95765",
+        "audits.json": "6b07cfd97d361828c4cccbd1dde6075fc13b5c8e441d54cc498aa09970becb32",
+        "provenance.json": "ff94fb23647e142e5c286c3e008512a52d46deb2a8287e0f855064c5e9eae63a",
+        "verification.json": "9f5e9e2dece2fb4b813fd040917446cfe7ce44e72ff9edae79f2b74f0c851da4",
+        "verification_provenance.json": "5227febf8f05733c202cae1739af748ea02097e7a291f2622af98ff4078c23c3"
+      }
+    },
+    {
+      "id": "research-20261018-precision",
+      "role": "interval_precision",
+      "title": "Hyperfine precision",
+      "directory": "interval_precision",
+      "architecture": "x10_b20_anchored_x_4_2_6_8_3_4__exact_J",
+      "inventory": {
+        "fitted_molecular": 68,
+        "inherited_molecular": 11,
+        "fitted_calibration": 4,
+        "line_specific": 0,
+        "level_specific": 0
+      },
+      "domain": {
+        "X_v_max": 17,
+        "B_v_max": 43,
+        "J_max": 200
+      },
+      "isotopologue": "127I2",
+      "exclusion": "127I2 P(13) 43-0",
+      "absolute_rms_MHz": 0.19610646691108435,
+      "intraline_rms_MHz": 0.029752468159544975,
+      "validated_folds": 7,
+      "verification": {
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.476837158203125,
+          "intraline": 0.11714681136254512
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of saved predictions; not independent predictive validation"
+      },
+      "source_snapshot_sha256": {
+        "model.json": "29f6326aad0d888fadcd466960c06a181656b1e3df575d9a9446f858dab5fad0",
+        "reference_predictions.json": "da10ca9c30b394ff55f89d680263c2c4c24abbf48dfc26971ee3d27c470c07b2",
+        "selection.json": "744ad762c4b351643d48c17c5e46705e00de143e6a7df23d76d1c4f1913301a6",
+        "audits.json": "1c27957c086c4dfaf5d89ef4f5b41703b54a2539109ec0ffae46ac1e1557c573",
+        "provenance.json": "caab01ea71269aad6e43ad5c97cf3165cb91e0a441d5b1fbcebf084134940ed2",
+        "verification.json": "5e00c2217a98dd19602b07e9e5ef94861bb28ac1b909331a8cf16d67363db961",
+        "verification_provenance.json": "aba89e7fb2f65cf514f22148cf7003191c59a750a4f80c496ca66e6c52d595ee"
+      },
+      "files_sha256": {
+        "model.json": "29f6326aad0d888fadcd466960c06a181656b1e3df575d9a9446f858dab5fad0",
+        "reference_predictions.json": "da10ca9c30b394ff55f89d680263c2c4c24abbf48dfc26971ee3d27c470c07b2",
+        "selection.json": "744ad762c4b351643d48c17c5e46705e00de143e6a7df23d76d1c4f1913301a6",
+        "audits.json": "1c27957c086c4dfaf5d89ef4f5b41703b54a2539109ec0ffae46ac1e1557c573",
+        "provenance.json": "caab01ea71269aad6e43ad5c97cf3165cb91e0a441d5b1fbcebf084134940ed2",
+        "verification.json": "5e00c2217a98dd19602b07e9e5ef94861bb28ac1b909331a8cf16d67363db961",
+        "verification_provenance.json": "aba89e7fb2f65cf514f22148cf7003191c59a750a4f80c496ca66e6c52d595ee"
+      }
+    }
+  ]
+}

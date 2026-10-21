@@ -1,0 +1,30 @@
+id = "ye2001a"
+citation = "J. Ye, L.-S. Ma and J. L. Hall, \"Molecular iodine clock\", Phys. Rev. Lett. 87, 270801 (2001)"
+source = "https://doi.org/10.1103/PhysRevLett.87.270801 (publisher PDF, Matt's library copy papers/Ye2001_PRL87_270801.pdf)"
+doi = "10.1103/PhysRevLett.87.270801"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Fig. 5 (p. 270801-4), typed from the text layer and checked against the page: the JILA Nd:YAG laser stabilized
+on 127I2 R(56) 32-0 a10 by modulation transfer, measured repeatedly against the Cs clock with the 100 MHz
+femtosecond comb over more than a year ("Before May, 2000" and "After April, 2001"): "Measurement over a year:
+Mean Value: 17.240 kHz, Standard Deviation: 118 Hz", on the axis f1064 - CIPM frequency, "(CIPM Frequency
+281 630 111.74 MHz)". This is at the 1064 nm fundamental; doubled: f(a10) = 2 x (281 630 111.74 MHz + 17.240 kHz)
+= 563 260 223 514.48 kHz, entered the same way as jones2002a's 532 nm row.
+
+Not entered: the one-month record after the comb was improved (standard deviation 16 Hz, Fig. 5; its mean is
+plotted, not printed); the beat frequencies of Fig. 4 (comb control, not iodine).
+
+Overlap: the "Before May, 2000" points are the comb measurements that diddams2000a reports (its Fig. 4: mean
+17.2 kHz, SD 650 Hz), so this year-long mean is partly the same data. jones2002a's 750 MHz comb points (17.221 kHz)
+are later and separate; Jones prints this 100 MHz record in the same inset and leaves it to this paper. No overlap
+is declared: neither "mean" (which would leave this, the longer record, out of the fit in favour of Diddams's
+5 kHz value) nor "same" describes it, and Diddams's 25 times larger uncertainty makes the double count negligible.
+"""
+
+uncertainty = "0.236 kHz at 532 nm: twice the printed 118 Hz standard deviation at 1064 nm. It is the scatter of the year's measurements, which the paper calls the upper limit of the laser's long-term reproducibility, not a systematic budget; no cell conditions are given (as jones2002a)."
+
+[conditions]
+method = "modulation transfer spectroscopy, frequency-doubled Nd:YAG; Cs-referenced 100 MHz femtosecond comb"

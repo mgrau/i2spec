@@ -1,0 +1,17 @@
+{
+ "model": "research-20261020-balanced-expanded",
+ "counts": {
+  "center": 842,
+  "absolute": 2586,
+  "intraline": 1434
+ },
+ "maximum_difference_Hz": {
+  "center": 1.7881393432617188,
+  "absolute": 1.7881393432617188,
+  "intraline": 0.16344074538210407
+ },
+ "tolerance_Hz": 100.0,
+ "passed": true,
+ "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy",
+ "seconds": 12.490447759628296
+}

@@ -1,0 +1,174 @@
+{
+  "created_utc": "2026-10-18T12:13:37.570958+00:00",
+  "protocol_sha256": "925184e55a35b4e45afd40c7906d7969201fb44cee90ce37cde8c0f8fd0cc87a",
+  "rows": [
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "balanced",
+      "predicted_MHz": 539386406.4410145,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 539386405.8410145,
+          "upper_MHz": 539386407.0410146,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": true
+        },
+        "stress": {
+          "lower_MHz": 539386393.4410145,
+          "upper_MHz": 539386419.4410145,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": true
+        }
+      }
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "balanced",
+      "predicted_MHz": 563260223.362197,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 563260222.762197,
+          "upper_MHz": 563260223.9621971,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": true
+        },
+        "stress": {
+          "lower_MHz": 563260210.362197,
+          "upper_MHz": 563260236.362197,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": true
+        }
+      }
+    },
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "absolute_accuracy",
+      "predicted_MHz": 539386406.4519767,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 539386405.8519766,
+          "upper_MHz": 539386407.0519767,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": false
+        },
+        "stress": {
+          "lower_MHz": 539386393.4519767,
+          "upper_MHz": 539386419.4519767,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": false
+        }
+      }
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "absolute_accuracy",
+      "predicted_MHz": 563260223.3820541,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 563260222.7820541,
+          "upper_MHz": 563260223.9820541,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": false
+        },
+        "stress": {
+          "lower_MHz": 563260210.3820541,
+          "upper_MHz": 563260236.3820541,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": false
+        }
+      }
+    },
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "compact_value",
+      "predicted_MHz": 539386406.8383807,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 539386406.2383807,
+          "upper_MHz": 539386407.4383807,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": false
+        },
+        "stress": {
+          "lower_MHz": 539386393.8383807,
+          "upper_MHz": 539386419.8383807,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": false
+        }
+      }
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "compact_value",
+      "predicted_MHz": 563260223.4158956,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 563260222.8158956,
+          "upper_MHz": 563260224.0158956,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": false
+        },
+        "stress": {
+          "lower_MHz": 563260210.4158956,
+          "upper_MHz": 563260236.4158956,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": false
+        }
+      }
+    },
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "interval_precision",
+      "predicted_MHz": 539386406.8453572,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 539386406.2453572,
+          "upper_MHz": 539386407.4453572,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": false
+        },
+        "stress": {
+          "lower_MHz": 539386393.8453572,
+          "upper_MHz": 539386419.8453572,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": false
+        }
+      }
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "interval_precision",
+      "predicted_MHz": 563260223.4309975,
+      "envelopes": {
+        "routine": {
+          "lower_MHz": 563260222.8309975,
+          "upper_MHz": 563260224.0309975,
+          "half_width_MHz": 0.6,
+          "nominal_probability": null,
+          "primary": false
+        },
+        "stress": {
+          "lower_MHz": 563260210.4309975,
+          "upper_MHz": 563260236.4309975,
+          "half_width_MHz": 13.0,
+          "nominal_probability": null,
+          "primary": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+id = "king1980"
+citation = "G. W. King, I. M. Littlewood, J. R. Robins and N. T. Wijeratne, \"Energy levels of iodine-129 near the B state dissociation limit from two-photon spectroscopy\", Chem. Phys. 50, 291-298 (1980)"
+source = "https://doi.org/10.1016/0301-0104(80)85100-7 (library copy papers/King1980_Chem_Phys_50_291.pdf)"
+doi = "10.1016/0301-0104(80)85100-7"
+retrieved = "2026-10-20"
+unit = "cm-1"
+state = "B"
+isotopologue = "129I2 and 127I129I"
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+
+transcription = """
+Tables 2 and 5 (pp. 294, 297), read from 300 dpi page images (the text layer garbles Table 5). Per-level
+constants of the B state of 129I2 (v = 71-79; v = 69 printed in parentheses and not used by the authors) and of
+the mixed 127I129I (v = 70, 73, from weak lines of a trace impurity), from fits of rotational lines (J' about 2-27,
+Table 1) excited by two-photon sequential (B <- X, then E <- B) spectroscopy:
+  G      G_v (cm-1) relative to v_X = 0, J_X = 0 of the same species ("obs." column), the printed +- in units of
+         the last digits (20018.2952 +- 70 is +- 0.0070 cm-1);
+  B_x100 1e2 B_v (cm-1) ("obs." column), from linear fits of F'(J) against J'(J'+1) with D neglected (low J).
+The line frequencies themselves are not printed ("available on request from G. W. King", Table 1 footnote).
+Calibration: about 50 sharp unblended 127I2 lines of a reference cell (Gerstenkorn and Luc atlas, Barrow and Yee
+constants) up to 19 980 cm-1, extended to the (79,0) band through the (76,0) band and a 0.334 cm-1 etalon; the
+frequencies are stated accurate to 0.02 cm-1.
+Not entered: the calculated columns (Yee's isotope-scaled values and the paper's long-range fit), Table 3 (X-state
+zero-point energies: 127I2 107.1073, 127I129I 106.69095, 129I2 106.2741 cm-1, calculated), Table 4 (fitted long-
+range constants: De = 20 150.171(31) cm-1 above the X minimum, D0(127I2) = 20 043.064 cm-1, C5 = 2.765(177)e5
+cm-1 A^5, v_D = 87.676(149), and the derived D0 and v_D of the other species).
+"""
+
+uncertainty = "As printed (the fits' standard errors). The absolute calibration is stated to 0.02 cm-1, larger than most G_v errors."
+
+notes = "The first B-state level set in i2spec; the 127I2 levels of the same group's earlier paper (Chem. Phys. 1980, ref. [2]) and of Barrow and Yee 1973 are not held. Useful for the near-dissociation and isotope-scaling work: B v = 71-79 of 129I2 lie within 2-25 cm-1 of the limit. The shipped model (i2spec2026o) gives G_v (as its P(1) line + 2B'') within -0.026 to +0.051 cm-1 of the printed values, rms 0.028 cm-1, inside the stated 0.02-0.03 cm-1 calibration."

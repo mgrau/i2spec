@@ -9,6 +9,9 @@ from i2spec.observations import Line
 from i2spec.model import RovibronicModel
 
 
+pytestmark = pytest.mark.usefixtures("fallback_model")   # i2spec2026o's own rules
+
+
 @pytest.fixture(scope="module")
 def c():
     return corrections_for("i2spec2026n")

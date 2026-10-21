@@ -1,0 +1,27 @@
+id = "klein2002a"
+citation = "R. Klein and A. Arie, \"Observation of iodine transitions using the second and third harmonics of a 1.5-um laser\", Appl. Phys. B 75, 79-83 (2002)"
+source = "https://doi.org/10.1007/s00340-002-0947-z (library copy papers/Klein2002_APB75_79.pdf)"
+doi = "10.1007/s00340-002-0947-z"
+retrieved = "2026-10-21"
+unit = "cm-1"
+exclude = "record only: Doppler-limited line positions from a 1556 nm laser's second harmonic and a Burleigh wavemeter, about 0.01 cm-1 (300 MHz), no better than the FTS atlases; kept for the archive and left out of every fit, benchmark and the explorer"
+
+transcription = """
+Table 1 (p. 81), column "Measured wavenumber": nine 127I2 lines near 778 nm, typed from the text layer and
+checked against the page. Doppler-limited absorption of the frequency-doubled 1556 nm laser in a cell heated
+to about 800 K, so the lines are hyperfine-free centers (component empty). Assignments are the paper's,
+calculated from Gerstenkorn & Luc (J. Phys. 46, 867, 1985), except that five are printed as R lines that are
+P lines: "R(15)-R(18) (0-14)" are P(15)-P(18) 0-14 and "R(166) (0-13)" is P(166) 0-13. The model places the
+printed R lines 1.8-19 cm-1 away and the P lines within 0.015 cm-1, the paper's own calculated wavenumbers
+are those of the P lines, and the atlas line 4497 it cites for "R(166)" is P(166) 0-13. The other four,
+R(25)-R(28) 0-14, are as printed. The printed labels, calculated and atlas wavenumbers are in the notes.
+Not entered: P(163) 0-13 at 12 856.7 cm-1 (wavemeter accuracy 0.2 cm-1); the absorption coefficients of P(36)
+0-14 and R(33) 40-0; the 518 nm third-harmonic spectrum (figure only).
+"""
+
+notes = "Residuals against i2spec2026o (obs - model, P labels corrected): -0.013 to +0.005 cm-1. Checked with the shipped model only."
+
+uncertainty = "Not stated for Table 1. Taken as 0.01 cm-1, the spread of measured minus calculated (-0.015 to +0.004 cm-1)."
+
+[conditions]
+method = "1556 nm external-cavity diode laser, EDFA, PPLN waveguide second harmonic; heated 127I2 cell; Burleigh wavemeter"

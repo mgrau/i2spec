@@ -1,0 +1,11 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(92) 0-15,a2,interval,283.3513,0.0169,,a1,kremser1994a,"Table 1: HFS line 2, observed zero crossing 283344.3 kHz from line 1, error 16.9 kHz, minus the overlap correction -7.0 kHz (obs. - calc. -4.8 kHz)"
+127I2 R(92) 0-15,a3,interval,292.3833,0.042,,a1,kremser1994a,"Table 1: HFS line 3, observed zero crossing 292308.5 kHz from line 1, error 19.2 kHz, minus the overlap correction -74.8 kHz (obs. - calc. -0.2 kHz)"
+127I2 R(92) 0-15,a4,interval,295.6187,0.0414,,a1,kremser1994a,"Table 1: HFS line 4, observed zero crossing 295696.8 kHz from line 1, error 13.8 kHz, minus the overlap correction +78.1 kHz (obs. - calc. -19.7 kHz)"
+127I2 R(92) 0-15,a5,interval,304.6491,0.0209,,a1,kremser1994a,"Table 1: HFS line 5, observed zero crossing 304655.5 kHz from line 1, error 20.9 kHz, minus the overlap correction +6.4 kHz (obs. - calc. -6.0 kHz)"
+127I2 R(92) 0-15,a6,interval,428.2561,0.0121,,a1,kremser1994a,"Table 1: HFS line 6, observed zero crossing 428247.0 kHz from line 1, error 12.1 kHz, minus the overlap correction -9.1 kHz (obs. - calc. +13.2 kHz)"
+127I2 R(92) 0-15,a7,interval,436.5707,0.0122,,a1,kremser1994a,"Table 1: HFS line 7, observed zero crossing 436571.5 kHz from line 1, error 12.2 kHz, minus the overlap correction +0.8 kHz (obs. - calc. +1.3 kHz)"
+127I2 R(92) 0-15,a8,interval,445.1507,0.0135,,a1,kremser1994a,"Table 1: HFS line 8, observed zero crossing 445150.1 kHz from line 1, error 13.5 kHz, minus the overlap correction -0.6 kHz (obs. - calc. +4.4 kHz)"
+127I2 R(92) 0-15,a9,interval,453.6689,0.0127,,a1,kremser1994a,"Table 1: HFS line 9, observed zero crossing 453676.8 kHz from line 1, error 12.7 kHz, minus the overlap correction +7.9 kHz (obs. - calc. +8.9 kHz)"
+127I2 R(92) 0-15,a10,interval,587.9281,0.0117,,a1,kremser1994a,"Table 1: HFS line 10, observed zero crossing 587928.1 kHz from line 1, error 11.7 kHz, minus the overlap correction +0.0 kHz (obs. - calc. -0.6 kHz)"
+127I2 R(92) 0-15,a15,interval,882.0679,0.0181,,a1,kremser1994a,"Table 1: HFS line 15, observed zero crossing 882067.9 kHz from line 1, error 18.1 kHz, minus the overlap correction +0.0 kHz (obs. - calc. +7.9 kHz)"

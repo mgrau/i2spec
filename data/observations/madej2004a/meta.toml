@@ -1,0 +1,47 @@
+id = "madej2004a"
+citation = "A. A. Madej, J. E. Bernard, L. Robertsson, L.-S. Ma, M. Zucco and R. S. Windeler, \"Long-term absolute frequency measurements of 633 nm iodine-stabilized laser standards at NRC and demonstration of high reproducibility of such devices in international frequency measurements\", Metrologia 41, 152-160 (2004)"
+source = "https://doi.org/10.1088/0026-1394/41/3/007 (library copy papers/Madej2004_Metrologia_41.pdf)"
+doi = "10.1088/0026-1394/41/3/007"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the pages (Sects. 4-5, Tables 3-4, pp. 157-159). NRC femtosecond-
+comb (and, for 2000, Sr+-chain) absolute frequencies of two NRC He-Ne/I2 lasers on R(127) 11-5, each corrected
+by the authors to the exact mise en pratique conditions (15.0 C, 6.0 MHz p-p, 10 mW) with the shift coefficients
+of their Table 2; one group per laser:
+- INMS 3, f (a16): 473 612 353 602 850 +- 570 Hz, the corrected mean of the comb runs (May 2002-October 2003) and
+  of the April 2000 chain run, which is bernard2001a's measurement (recorrected here with a -1.9 kHz/mW power
+  coefficient): declared below as a "mean" that includes it.
+- INMS 2, e (a17) and f (a16): the corrected values f_mise of Tables 3 and 4 for three sessions, before transport
+  (NRC, 6-7 March 2003), at the BIPM comb (14 March) and after return (NRC, 24-25 March).
+Not entered: the as-operated values (kept in the notes); the comparisons with BIPM 4 and other lasers (Sect. 2);
+the October 2003 drift figures (-550(220) Hz e, -390(190) Hz f) given only as differences.
+"""
+
+uncertainty = "As printed (1 sigma): 570 Hz for INMS 3; 102-400 Hz for the INMS 2 sessions (statistics with the correction uncertainties)."
+
+notes = """
+All rows are at the mise en pratique conditions, so bipm2003a's coefficients take them to zero pressure, power
+and modulation as for the MeP value. Residuals against i2spec2026o (obs - model, after the shift correction): -115 to -118 kHz for all seven, against
+-116.8 kHz for the CIPM value: both lasers within 2 kHz of it. Checked with the shipped model only.
+"""
+
+[overlaps]
+bernard2001a = { relation = "mean", groups = ["madej2004a_inms3"] }   # pending until admitted
+
+[conditions]
+method = "NRC He-Ne/I2 lasers INMS 2 and INMS 3 (internal cells, third harmonic); NRC Ti:sapphire comb (and BIPM comb for INMS 2) referenced to H masers"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "The values are at (or corrected to) the CIPM standard operating conditions, so bipm2003a's coefficients take them to zero pressure, power and modulation exactly as for the MeP value: 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at 10 mW."

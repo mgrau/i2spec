@@ -1,0 +1,31 @@
+id = "cerez1974a"
+citation = "P. Cérez, A. Brillet and F. Hartmann, \"Metrological properties of the R(127) line of iodine studied by laser saturated absorption\", IEEE Trans. Instrum. Meas. IM-23, 526-528 (1974)"
+source = "https://doi.org/10.1109/TIM.1974.4314347 (IEEE Xplore via ODU; Matt's library copy papers/Cerez1974_IEEE_TIM_23_526.pdf)"
+doi = "10.1109/TIM.1974.4314347"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Fig. 4 (p. 527), a hand-lettered table, "Assignments of the observed and calculated hyperfine components of the
+R(127) line": the measured frequencies of the ten peaks a-j of 127I2 R(127) 11-5 accessible to the 633 nm He-Ne
+laser, in MHz relative to i, from beats between two lasers with intracavity cells (one locked to a peak, the
+other locked to another peak or offset-locked to it). Read from a 400 dpi page image and typed; positive values
+are above i (f - i = 138.903 MHz, as yoon2001a's 138.891).
+Labels: the letters run down in frequency from a; with i = a13 and f = a16 (bipm2003a), a-j are a21 down to a12.
+Each letter's value lies within 30 kHz of the MEP's interval for that rank (c: -30 kHz, others within 20 kHz).
+
+Not entered: the calculated column and the fitted constants (Delta eQq = 1942.57 MHz with eQq'' = -2900 MHz fixed,
+C' = 29.68 kHz); the linewidth (2.9 MHz at zero pressure), pressure broadening (8.75 MHz/Torr), pressure shift
+(-1.12 MHz/Torr, measured on e and i) and Zeeman results of Sect. III B-D.
+"""
+
+uncertainty = """
+0.5 kHz for every interval, the paper's "accuracy of +-500 Hz" for one measurement over 100 s (Sect. II). It is
+the statistical limit only. The paper also reports that the peaks with close neighbours (a and c) shift by +30
+and -20 kHz between 3 and 7 MHz peak-to-peak modulation, and the comparison with the MEP shows differences of 7 to
+30 kHz, so tens of kHz is the realistic accuracy. Two lasers, so one group.
+"""
+
+[conditions]
+method = "two 38 cm He-Ne lasers with intracavity 127I2 cells, third-harmonic locking at 1 kHz modulation (about 6 MHz p-p); beat-frequency and offset-lock measurements"

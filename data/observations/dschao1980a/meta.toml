@@ -1,0 +1,35 @@
+id = "dschao1980a"
+citation = "K. Dschao, M. Gläser and J. Helmcke, \"I2 stabilized He-Ne lasers at 612 nm\", IEEE Trans. Instrum. Meas. IM-29, 354-357 (1980)"
+source = "https://doi.org/10.1109/TIM.1980.4314953 (IEEE Xplore via ODU; Matt's library copy papers/Dschao1980_IEEETIM29_354.pdf, whose first page ends the preceding paper)"
+doi = "10.1109/TIM.1980.4314953"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table I (p. 356), read from a 300 dpi page image and typed: frequency intervals, in MHz, between component o of
+127I2 R(47) 9-2 and the strong hyperfine components of 127I2 and of 129I2 in the 612 nm He-Ne tuning range,
+measured at PTB by beat counting and offset locking between two lasers (internal and external cells).
+- 127I2 R(47) 9-2, peaks b-u. The letters run down in frequency; o is a7 (the CIPM 612 nm component, bipm2003d),
+  so letter number n (a = 0) is rank 21 - n: b = a20 ... u = a1. Every value is within 0.08 MHz of the MEP's.
+- 129I2, 25 components the paper labels a0-a24 and assigns, tentatively, to P(110) 10-2 (a hyperfine fit with a
+  1.8 MHz standard deviation). The MEP (bipm2003d Table 4) gives the same line as 129I2 P(110) 10-2 a1-a28; each
+  resolved value here matches one MEP rank to 0.12 MHz or better, which gives the label entered (the paper's own
+  label is in the note).
+
+Not entered: the three values the table prints in parentheses, which the text calls unresolved doublets: 129I2 a2
+(-230.1, the MEP's a3/a4), a5/6 (-131.0, a7/a8) and a22, a23 (153.9 and 165.1, a24/a25 and a26/a27); Table II
+(calculated 129I2 transitions in the range, not measurements); the stability and shift results.
+"""
+
+uncertainty = "Not stated. The values are printed to 0.1 MHz (two to 0.01 MHz); 0.05 MHz, half the last printed digit, is taken as 1 sigma for all. The differences from the MEP's 612 nm tables are 0.08 MHz or less. One spectrometer, so one group."
+
+notes = """
+Overlap: the MEP's 612 nm tables (bipm2003d) draw partly on this paper: its 127I2 R(47) a13 and a14 (249.6 and
+284.3 MHz) and several 129I2 values (-216.1, -116.67, -90.7, -72.7, 110.6) equal these to the printed digit, while
+other rows differ by up to 0.08 MHz, as a combination with razet1991a and other data would. Declared there as a
+mean, so once this set is admitted those MEP rows leave the fit and these rows carry the MEP as a citation.
+"""
+
+[conditions]
+method = "He-Ne lasers at 612 nm with internal and external iodine cells (127I2 and 129I2), third-harmonic locking; computer-controlled offset spectrometer, beat counting"

@@ -1,0 +1,28 @@
+id = "picard1996a"
+citation = "S. Picard, A. Razet, C. S. Edwards and F. Rodriguez-Llorente, \"Calculation of hyperfine structure constants of the 127I2 R(39) 7-4 transition at 637 nm\", Metrologia 33, 569-571 (1996)"
+source = "https://doi.org/10.1088/0026-1394/33/6/8 (publisher PDF; Matt's library copy papers/Picard1996_Metrologia33_569.pdf)"
+doi = "10.1088/0026-1394/33/6/8"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 570), typed from the text layer and checked against the page: the observed frequencies of all 21
+hyperfine components of 127I2 R(39) 7-4 at 637 nm relative to a4, in MHz, with the uncertainty of the last digit
+in parentheses, and the paper's I, F - J, calculated value and residual (all in the note). Eight components are
+starred as partially resolved: a5, a6, a9, a10, a11, a19, a20, a21 (the text names them; the text layer prints the
+star as a stray "3").
+The observed column is credited to ref. [2]: C. S. Edwards, G. P. Barwood, P. Gill, F. Rodriguez-Llorente and
+W. R. C. Rowley, Opt. Commun. 132, 94-100 (1996), measured with two NPL extended-cavity diode lasers at 637 nm
+(third-harmonic locking, beat frequencies). That paper is not held; the rows are entered here and cite this paper
+until it is transcribed, when it should take them (declare it "same" here).
+Label: R(39) has odd J'' (21 components); a_n is rank n by frequency.
+
+Not entered: Table 2 (fitted constants: Delta eqQ = 1951.90(2) MHz, Delta C = 23.26(2) kHz, Delta d = -16(1) kHz,
+Delta delta = -12(1) kHz, fit 11 kHz) and Table 3 (empirical predictions).
+"""
+
+uncertainty = "As printed for each component, 0.03-0.09 MHz, taken as 1 sigma. The paper notes they include day-to-day reproducibility and are larger than the 11 kHz fit standard deviation on the resolved components. One pair of lasers, so one group."
+
+[conditions]
+method = "two extended-cavity diode lasers at 637 nm, third-harmonic locking on an external iodine cell (NPL); beat frequencies"

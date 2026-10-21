@@ -1,0 +1,29 @@
+id = "ikeda2018a"
+citation = "K. Ikeda, Y. Hisai, K. Yoshii, H. Kosaka, F.-L. Hong and T. Horikiri, \"Compact frequency-stabilized pump laser for wavelength conversion in long-distance quantum communication\", J. Opt. Soc. Am. B 35, 2023 (2018); transcribed from the arXiv version, arXiv:1807.03472"
+source = "https://arxiv.org/abs/1807.03472 (library copy papers/Ikeda2018_JOSAB35_2023_arXiv1807.03472.pdf)"
+doi = "10.1364/josab.35.002023"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Sect. 3 (p. 3 of the arXiv version), typed from the text layer: two absolute frequencies of a10 of R(86) 33-0,
+printed as the 1064 nm fundamental and doubled here to the 532 nm transition (uncertainties doubled too).
+(1) The group's iodine-stabilized Nd:YAG laser, measured "in advance" with their optical frequency comb:
+printed 281,614,322,178.5 kHz +- 0.5 kHz. That is 20 MHz above the compact laser's 281,614,302,191.1 kHz,
+which the text says is 12.6 kHz from it; 281,614,302,178.5 kHz gives the 12.6 kHz, and the model and the
+CIPM tables agree with it (below), so the "322" is a misprint for "302" and is corrected. The published
+JOSA B version was not available to check.
+(2) The compact Nd:YVO4 laser, 281,614,302,191.1 kHz +- 1.6 kHz, from its beat with the Nd:YAG laser; the
+uncertainty is mostly the compact laser's Allan deviation.
+As operated, not corrected: the compact laser's cell had its cold finger at 7 C (8 Pa) and about 3 mW in each
+beam; the Nd:YAG laser's conditions are not stated. The paper gives no shift coefficients.
+"""
+
+uncertainty = "As printed (0.5 and 1.6 kHz at 1064 nm), doubled to 1.0 and 3.2 kHz at 532 nm."
+
+notes = "Residuals against i2spec2026o (obs - model): +153 and +178 kHz. For comparison, the CIPM a10 of R(56) 32-0 plus the ye1999a interval to R(86) 33-0 a1 and bipm2012a's a10 - a1 gives 563 228 604.369 MHz, which the Nd:YAG value (corrected) is 12 kHz below and the compact laser 13 kHz above. Checked with the shipped model only."
+
+[conditions]
+cold_finger_C = 7.0
+method = "Compact Nd:YVO4 laser (frequency doubled), 40 cm cell, third-harmonic locking; beat with the YNU iodine-stabilized Nd:YAG laser, itself measured with an optical frequency comb"

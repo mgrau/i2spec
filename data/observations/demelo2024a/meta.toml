@@ -1,0 +1,42 @@
+id = "demelo2024a"
+citation = "Á. M. G. de Melo, H. Letellier, A. Apoorva, A. Glicenstein and R. Kaiser, \"Laser frequency stabilization by modulation transfer spectroscopy and balanced detection of molecular iodine for laser cooling of 174Yb\", Opt. Express 32, 6204 (2024)"
+source = "https://doi.org/10.1364/oe.512281; values read from the arXiv preprint arXiv:2311.08542v1 (14 Nov 2023), Matt's library copy papers/Melo2024_OE32_6204_arXiv2311.08542.pdf; the published version was not compared"
+doi = "10.1364/oe.512281"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "precision.yaml:demelo2024a"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+arXiv v1, p. 5 (Sect. 3): "relying on the absolute frequency nu_a21 of the a21 hyperfine transition of P(49)24-1
+127I2 line reported in [19] (nu_a21 = 539 385 938 687 kHz) and exploiting the measured absolute frequencies of the
+a1 and a21 hyperfine transitions of P(49)24-1 127I2 lines to calibrate our scanning rate, we get for the frequency
+nu_a10 of the a10 R(158)25-0 hyperfine line an absolute frequency of nu_a10 = 539 386 406(6) MHz". Ref. [19] is
+Tanabe et al. 2022 (tanabe2022a).
+
+The measurement is a laser scan from P(49) 24-1 to R(158) 25-0 (Fig. 2), its frequency axis calibrated on the
+P(49) 24-1 a1-a21 span. It is therefore entered as the interval f(a10, R(158) 25-0) - f(a21, P(49) 24-1) =
+539 386 406 MHz - 539 385 938.687 MHz = 467.313 MHz, so the set does not depend on Tanabe's absolute value. The
+printed absolute is rounded to 1 MHz; the rounding (<= 0.5 MHz) is negligible against 6 MHz.
+
+Labels: R(158) has even J'' and 15 main components; a10 is rank 10 by frequency (the paper's Fig. 2 shows 14
+of them from -400 to +300 MHz about a10). P(49) has odd J'' and 21 components; a21 is the highest.
+
+Not entered: the 174Yb 1S0-3P1 frequency derived from it (539 386 597(6) MHz), the AOM offsets, and the
+stability results.
+"""
+
+uncertainty = "6 MHz, the authors' 'estimated precision of 6 MHz in our frequency scan', taken as 1 sigma. It is dominated by the linearity of the laser scan over 470 MHz, not by the iodine lines."
+
+notes = """
+J'' = 158 is the highest rotational level of any precision line in the collection.
+
+Residual against i2spec2026o (Predictor(), obs - model): +18.7 MHz (3.1 sigma). The label is not in doubt: the
+model's a9 and a11 lie 110 and 122 MHz from a10. The model is low for this line: the NIST/APO and Salami & Ross
+atlas centres of R(158) 25-0 (data/atlas_lines) read +13.9 and +14.4 MHz above the model's hyperfine-free centre,
+and the reference (Tanabe's a21) agrees with the model to 1 kHz. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy with balanced detection, laser scan calibrated on P(49) 24-1 a1-a21"
+laser = "frequency-doubled 1112 nm laser, 556 nm"

@@ -1,0 +1,23 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(33) 6-3,b1,interval,-922.572,0.01,,b21,razet1993a,Table 1 (i): -922572 kHz from b21 (meas - calc +9 kHz)
+127I2 P(33) 6-3,b2,interval,-895.064,0.01,,b21,razet1993a,Table 1 (i): -895064 kHz from b21 (meas - calc +5 kHz)
+127I2 P(33) 6-3,b3,interval,-869.682,0.01,,b21,razet1993a,Table 1 (i): -869682 kHz from b21 (meas - calc +1 kHz)
+127I2 P(33) 6-3,b4,interval,-660.516,0.01,,b21,razet1993a,Table 1 (i): -660516 kHz from b21 (meas - calc -2 kHz)
+127I2 P(33) 6-3,b5,interval,-610.706,0.01,,b21,razet1993a,Table 1 (i): -610706 kHz from b21 (meas - calc -4 kHz)
+127I2 P(33) 6-3,b6,interval,-594.01,0.01,,b21,razet1993a,Table 1 (i): -594010 kHz from b21 (meas - calc -16 kHz)
+127I2 P(33) 6-3,b7,interval,-547.421,0.01,,b21,razet1993a,Table 1 (i): -547421 kHz from b21 (meas - calc -6 kHz)
+127I2 P(33) 6-3,b8,interval,-487.081,0.01,,b21,razet1993a,Table 1 (i): -487081 kHz from b21 (meas - calc -3 kHz)
+127I2 P(33) 6-3,b9,interval,-461.271,0.01,,b21,razet1993a,Table 1 (i): -461271 kHz from b21 (meas - calc +15 kHz)
+127I2 P(33) 6-3,b10,interval,-453.229,0.01,,b21,razet1993a,Table 1 (i): -453229 kHz from b21 (meas - calc -9 kHz)
+127I2 P(33) 6-3,b11,interval,-439.023,0.01,,b21,razet1993a,Table 1 (i): -439023 kHz from b21 (meas - calc -7 kHz)
+127I2 P(33) 6-3,b12,interval,-347.358,0.01,,b21,razet1993a,Table 1 (i): -347358 kHz from b21 (meas - calc -4 kHz)
+127I2 P(33) 6-3,b13,interval,-310.278,0.01,,b21,razet1993a,Table 1 (i): -310278 kHz from b21 (meas - calc +23 kHz)
+127I2 P(33) 6-3,b14,interval,-263.587,0.01,,b21,razet1993a,Table 1 (i): -263587 kHz from b21 (meas - calc +10 kHz)
+127I2 P(33) 6-3,b15,interval,-214.559,0.01,,b21,razet1993a,Table 1 (i): -214559 kHz from b21 (meas - calc -22 kHz)
+127I2 P(33) 6-3,b16,interval,-179.305,0.01,,b21,razet1993a,Table 1 (i): -179305 kHz from b21 (meas - calc +9 kHz)
+127I2 P(33) 6-3,b17,interval,-153.944,0.01,,b21,razet1993a,Table 1 (i): -153944 kHz from b21 (meas - calc -3 kHz)
+127I2 P(33) 6-3,b18,interval,-118.225,0.01,,b21,razet1993a,Table 1 (i): -118225 kHz from b21 (meas - calc +11 kHz)
+127I2 P(33) 6-3,b19,interval,-36.722,0.01,,b21,razet1993a,Table 1 (i): -36722 kHz from b21 (meas - calc -6 kHz)
+127I2 P(33) 6-3,b20,interval,-21.981,0.01,,b21,razet1993a,Table 1 (i): -21981 kHz from b21 (meas - calc -4 kHz)
+127I2 P(33) 6-3,b21,interval,-558.654,0.01,127I2 R(127) 11-5,a18,razet1993a_link,"Sect. 3: nu(b21 - ""d"") = -558.654 MHz, standard deviation of order 10 kHz; dye laser on b21 against the INM9 He-Ne laser on d (a18) of R(127) 11-5"
+127I2 R(127) 11-5,a18,interval,26.229,0.01,,a16,razet1993a_link,"Sect. 3: INM9 He-Ne on d (a18) - INM12 He-Ne on f (a16) = 26.229 MHz, estimated standard deviation 10 kHz (measurement and laser reproducibilities)"

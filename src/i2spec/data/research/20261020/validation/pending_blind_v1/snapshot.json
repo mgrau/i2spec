@@ -1,0 +1,161 @@
+{
+ "data": {
+  "baird1979a": {
+   "data.csv": "2a64f82d6eba1ef392d3e22eb9d85c47e03ce9cc34d94f06ab25df29cffa237c",
+   "meta.toml": "cac8066918ce62af989137208e3f63d163234429dceaea1af7af1393baceec70"
+  },
+  "balling2007a_532": {
+   "data.csv": "19f0d8fb4e8cc47be3c4caede70f5aaa2c67d6ce00fcccee8c7b61a1fc3bb28d",
+   "meta.toml": "bff67c46365038f70c9463f6ffdd489bc0d05afeb787339ae3cc891e18b9c50c"
+  },
+  "balling2007a_543": {
+   "data.csv": "2eb5b1f4a9c72084d8f96944d315a2f009a66c322790c7fe1fd8e4e7c47e659d",
+   "meta.toml": "5b4ea76e82d3760882cd1a37ad6cff6a0e27b32b8fda8c44feb62d3fb07620b3"
+  },
+  "balling2007a_633": {
+   "data.csv": "af2fa86b372380f88658e6ad1f11a7c6c82e39dc339422941a7ce5d40da52a56",
+   "meta.toml": "8be6494e83d2e3c7d527a9ce2b89140c3a8941d30bbf3c4dafc603c3b3ddda05"
+  },
+  "bertinetto1987a": {
+   "data.csv": "6a5c586694568b7b0717f35b390b017464eee20ef2f9ede1bc8f57fce2ab976d",
+   "meta.toml": "2037cbe7e38e83430a313a71034b1b3d07eb1f1cd25e6eb752127833779a8ccf"
+  },
+  "borde1981a": {
+   "data.csv": "48a3f1f4cd4691f3dd548117130b117011982b42f9ac37c882ca2c42ed701fa9",
+   "meta.toml": "304149b7d0c4a20c8d913f24b44673dc31b4f61d746b6d5e1ed3048425caed4b"
+  },
+  "cerez1974a": {
+   "data.csv": "2c23414d7e4f1ae4fbc7937263d488871986fac83157ad81c9651ba4318674ac",
+   "meta.toml": "28c4f1573d66f91c287d2244e6dcd34d28f6ad84c15ab2696b97569e15a8f33e"
+  },
+  "cheng2021a": {
+   "data.csv": "21e42fcff9b6d7728d5e0efc9ea991005f5798e96bcc8ffa7de41669e00ad488",
+   "meta.toml": "aec8312992753c8d5472ea81cb31c23db87488477e6c4bc5650714bca98b21e4"
+  },
+  "demelo2024a": {
+   "data.csv": "891358db9a1cefa2532a2f20cc5bc30ed519537c98ced819d44848af04fa8f6a",
+   "meta.toml": "617e1cc407f8475a8747be2e12014aed73b66f3d3e15ca2bf4e6e6380f75faea"
+  },
+  "diddams2000a": {
+   "data.csv": "ffe0a89ab885013d630944c41b2f703d13d86fe5fec352aafe4b89e2fb9f9c91",
+   "meta.toml": "d248a0b4d4b08dc89a160b93d62fbdde6620d60ebf9955aeb872e25c9750108f"
+  },
+  "dschao1980a": {
+   "data.csv": "d444c83addda93b61e22db23f0753d934ba93527b7aa6218a49e8b16d16c040d",
+   "meta.toml": "7d85a9a35796753ce42b7f9e345c992eeec8229e4e6939c4d62b4bb6a92c7d54"
+  },
+  "eickhoff1995a": {
+   "data.csv": "97a0d5ed088b172d8a02c24277a08701e4e7fcbdcaa0b1608c2f3c0f81c0cf24",
+   "meta.toml": "f852e3e1ded1d8c47029860ba81697f4031d65d7c99a04abbbf29de87b98d489"
+  },
+  "fang2007a": {
+   "data.csv": "5f54c237bfd58bca9476d2056d52d02b44625eca0ba56ea56e56964b558c660c",
+   "meta.toml": "b3062eee06a5c6b9766e24de2da1b745fc8d77b1824dd0333924e70a778d441e"
+  },
+  "hackel1980a": {
+   "data.csv": "94d8365936ce3aca12df76b6bf24e66215ab87774df79b8460820f4101b48086",
+   "meta.toml": "0f87c3896ef4a797db6c4ac5982a8db63f42827d72c0c19da66765dffedf66d7"
+  },
+  "ikeda2020a": {
+   "data.csv": "934356e2464ea18375b911062490f213eaaea49968152ce59cc85c02d8480d17",
+   "meta.toml": "9006f1f7ec68499fb6fe33f1a1487273731c2933e20b12182d87e63709379ac5"
+  },
+  "jungner1995a": {
+   "data.csv": "0179eab6ae4fe6cfe7b50ecf42ee721c441beea3195706b715094c2475a0ad40",
+   "meta.toml": "4215a09cb19c36cead7db78934d231d9a7383cf5c934fd306689591f46988574"
+  },
+  "ma2006a": {
+   "data.csv": "948e4b376425e283d757dc3f96b1a1cdab3ed55ad1f11c826db8e08d8eba8717",
+   "meta.toml": "815e7e3756f7ff045ad132cf6dc1a6bb175d4a0bd697cd7b032029cac6bcbd56"
+  },
+  "macfarlane1999a": {
+   "data.csv": "cbcf08238c6cc0fc7036be6338c6e7c7ef1d1551256eda0b388d32a31e989101",
+   "meta.toml": "7c03b6e2ff6a40db5be95442612d7ffc27b05dbc14a916ef9a8ffd208f005475"
+  },
+  "merimaa2008a": {
+   "data.csv": "9e0e96dec7915a5f02ca5dba156861e3a8627e66f97001fbb92fbb4009bcc347",
+   "meta.toml": "91efd7256295fa9aacd5be4ed4b19603ae07ba167c55b6a11d9b8dd7a0829647"
+  },
+  "nishiyama2013a": {
+   "data.csv": "2c2b241509e00a0003c7ffcf4b2ae060896a3141946cf2f06ffa0b54f65ddaad",
+   "meta.toml": "5e8c3e9262d9e4fa41353673ac85fd6e6dcfb643a85c1d20c1a37a344137bb4d"
+  },
+  "picard1996a": {
+   "data.csv": "572017469fe39cbde3faadeeac0b8241c851b65a5f2bd9cae75ddf5813093f79",
+   "meta.toml": "7225208868aa505d5cca66156a5f0e9aeeeb7504054b71daacfdd507f0d09641"
+  },
+  "picard2003a": {
+   "data.csv": "33d87ed5a5dcf0ec854cc28c397799d8f6b52a0b07810bb911d2ed14531229a6",
+   "meta.toml": "88df745922e5313ff61636c84aafd2a5cfc1d13d443e4e1a5f23228e385fb093"
+  },
+  "pollock1983a": {
+   "data.csv": "d67b66f26251869157cfe214792d58746e1e85b6b8a4e8cb1e6f4c1bd1d9d15e",
+   "meta.toml": "b36ca365f1298823653b09fe9d33ac8dfef6a2aa2507f6ab2f992530331a2296"
+  },
+  "powel2021a": {
+   "data.csv": "07f9a6380efd4981fbdfad4ccac620f434bfba31b1472181c70d5abf61f05bb1",
+   "meta.toml": "4a0bc46b8b129c1197a182a1992c32215002d9014a2adfb7e6aec59e17bf391e"
+  },
+  "razet1991a": {
+   "data.csv": "1b1c2fff6c29fccd61fa3845666c1ad0614e0621051e527a758c3ac1e8757dde",
+   "meta.toml": "a68099bac95b3129b811873fbba9604e35d3031374aaffc01dc79e211992abb5"
+  },
+  "sansonetti1990a": {
+   "data.csv": "219eac83b6fb1f578427ef9c43168482212ff6e5fac9dd84e1ef025ceca0f39a",
+   "meta.toml": "957eae1d6eb979873da654ced40eed75a3d81e773c087cd1cbb3e9afd8e99bf2"
+  },
+  "schweitzer1973a": {
+   "data.csv": "3017747cdf620f2f2e418bc253055ff010fc436456766ec453200046eb22faad",
+   "meta.toml": "47f0767a33881239d8fd59d4e8c91af3dca9ea6068139c158337aeea597c5373"
+  },
+  "shiner1993a": {
+   "data.csv": "6f38837ec69dd1a54661c18ce7e09d8771e50c99f93596cc65d57da0df34558a",
+   "meta.toml": "063df6aa264d1cd38bf25b1af2b68be24deab01e32eb8e75753191881efdbe3b"
+  },
+  "smith2007a": {
+   "data.csv": "d4f23281f14f97f05cf6f8e3942b6ecdba1689e4f64762f920a8f7f75eafd736",
+   "meta.toml": "7747225639d8d850c8cdb0e93f2a15b2054ec0b412aaf530ca702487c35cdcc4"
+  },
+  "sugiyama1988a": {
+   "data.csv": "0f8f18e27127e7e433120d8c43fffb228d23dcd483c5183dd7b5307cfe440043",
+   "meta.toml": "49993171273d4d6c672aac2b0b7782ac41709728e29e59e60c10e285e044006d"
+  },
+  "weller2026a": {
+   "data.csv": "30a56b3bf7040568955dd8e112ead968673b22534222170dc28895329564f62a",
+   "meta.toml": "313ce61433fbbdaac36ef92685c89a1732441123148569d160b81aee03813560"
+  },
+  "ye2000a": {
+   "data.csv": "ee5b9fc2f411455bde5b4da114f1b7e6e59082ccf0722f03de0f1b5b81ae9fb3",
+   "meta.toml": "382ad5d3786d5d174ba687a9fb3af69d93800a8513c38843c1ef4155390180c4"
+  },
+  "ye2001a": {
+   "data.csv": "e6c789005974fab9aeeafa29dc514937247aee2e88939b03a268beaba71f779a",
+   "meta.toml": "e30bffdbc1d65d9b8b969002b560e899eb79243459870fc1ebc1e073c6fca4c1"
+  },
+  "yoon2001a": {
+   "data.csv": "b6d759f531c765a20cd1e47665409b3bb7fca1aa2a5d7a64224b2d52b417a936",
+   "meta.toml": "ecbdcf4c3176f72a88cbaddb2dd4ca80092988419694954be7a8abbd87328085"
+  },
+  "zhang1999a": {
+   "data.csv": "b5bb7b90d11267009af8dec630c571f1201c5f188f393ca73574c2ed401a9ec5",
+   "meta.toml": "2a37b5d06c6016945829442dea9903db50f771623a272117856a4826c6523b64"
+  },
+  "zhao1985a": {
+   "data.csv": "0d4030acf253e82430cb2a8d03f0fff3ac493e84da4a4c5fc6f97bd4559cbf5b",
+   "meta.toml": "cce7b1c9ae40628897c57f61d07341063d5a0870dd6ae88b7ff18c38991d7000"
+  }
+ },
+ "code": {
+  "src/i2spec/research.py": "6e2af35e112ade612bf1e084b179d8bbbbf7d0ad05e9db680a682e4e409ebb08",
+  "src/i2spec/research_expanded.py": "9a73b24e6b055fbe553f3218ad0a4bd301a40b343b31eed0db98ac0cfdeaefce",
+  "src/i2spec/hyperfine.py": "c4003ce812eed691108fbcb8a58c9240e66db8b92cfa24e3d11d426aa2242a1a",
+  "src/i2spec/model.py": "06487dbcd834d50e21da4b4f4567f00dfb5d7e3b467f7607a3f2c50fb2e019c1",
+  "src/i2spec/observations.py": "94bef3e7dfc29b0b191db2409e15c70cdbc4c4f07cfcd756fc774db3d43d671f",
+  "src/i2spec/hfs_params.py": "d5002b4b6897ab5c4b36b5301ffdd308623ff32786d39fdfc7acabc62cef6d2c",
+  "src/i2spec/hfs_table.py": "c4d2bd6f70b4bc166c8d63a3b964b2e4875083ab91d64f763e84e32e33e46c34",
+  "src/i2spec/data/research/20261020/balanced_expanded/model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
+  "src/i2spec/data/research/20261020/balanced_expanded/hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
+  "src/i2spec/data/research/20261020/balanced_expanded/reference_predictions.json": "1c4a0b15b546cf62bdc608d793f8a1d805d2dcdf8d5afa289fabd34ec14ac52b",
+  "src/i2spec/data/research/20261018/balanced/model.json": "5bc1a18086112dacd65feab460b90a9f72bf5286685beb4ad9bcbcab2dcef29d"
+ }
+}

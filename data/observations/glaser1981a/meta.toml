@@ -1,0 +1,36 @@
+id = "glaser1981a"
+citation = "M. Gläser, Dschao Kegung and H.-J. Foth, \"Hyperfine structure and fluorescence analysis of enriched 129I2 at the 612 nm wavelength of the He-Ne laser\", Opt. Commun. 38, 119-123 (1981)"
+source = "https://doi.org/10.1016/0030-4018(81)90212-1 (library copy papers/Glaser1981_Opt_Commun_38_119.pdf)"
+doi = "10.1016/0030-4018(81)90212-1"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Tables 1, 2 and 4 (pp. 120-121), typed from a 250 dpi page image and the text layer. PTB He-Ne lasers at 612 nm
+with enriched 129I2; every value relative to component o of 127I2 R(47) 9-2 (a7).
+- Table 1 (new, external cell inside an optical resonator, 2.7 Pa): eight components of 129I2 P(110) 10-2 that
+  Dschao et al. 1980 left as unresolved pairs: a3, a4, a7, a8, a24-a27 (column A of the paper's three labelling
+  schemes, rank by frequency; B is Ciddor & Brown's letters, C the earlier PTB numbering).
+- Table 2: all 28 components, "the experimental data are taken from ref. [4] [Dschao et al. 1980] partly replaced
+  by the results given in table 1". Only the calculation and exp. - calc. are printed; their sum is entered for
+  the 20 components not in Table 1 (it equals dschao1980a's values to the last digit); declared "same" below.
+- Table 4 (new, internal cell, 3f): 16 components b19-b30, b32, b34-b36 of 129I2 R(113) 14-4 (b31 and b33
+  overlap P(110) components; b1-b18 lie outside the laser's tuning range).
+Not entered: the calculated columns; Tables 3 and 5 (fitted constants); the derived P(110) 10-2 - R(113) 14-4
+centre difference, 399.9(2) MHz; the fluorescence analysis (Fig. 2).
+"""
+
+uncertainty = "Table 1: \"an estimated error of 0.2 MHz for each line\". Table 4: the fit's weighted standard deviation, 0.20 MHz. Table 2 rows: 0.05 MHz, as dschao1980a."
+
+notes = """
+The MEP 612 nm Tables 4 and 5 (bipm2003d) cite this paper (ref. [18]); declared there as "mean". Residuals against
+i2spec2026o (obs - model): P(110) 10-2 -2.58 MHz on average (as ciddor1980a: the model's line position; the pattern
+within 0.2 MHz), R(113) 14-4 +4.29 MHz on average. Checked with the shipped model only.
+"""
+
+[overlaps]
+dschao1980a = { relation = "same", groups = ["glaser1981a_t2"] }   # pending until admitted
+
+[conditions]
+method = "He-Ne lasers at 612 nm, third-harmonic locking; Table 1 external cell inside an optical resonator (2.7 Pa), Table 4 internal cell; enriched 129I2 with about 13 % 127I"

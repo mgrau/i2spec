@@ -1,0 +1,12 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(48) 11-3,b10,interval,-291.2,0.4,,b15,sugiyama1988a,"Table 1: peak f, f(x) - f(a) = -291.2 MHz, s = 0.4 MHz, calc -291.62"
+127I2 P(48) 11-3,b9,interval,-419.5,0.4,,b15,sugiyama1988a,"Table 1: peak g, f(x) - f(a) = -419.5 MHz, s = 0.4 MHz, calc -419.37"
+127I2 P(48) 11-3,b8,interval,-433.4,1.0,,b15,sugiyama1988a,"Table 1: peak h, f(x) - f(a) = -433.4 MHz, s = 1.0 MHz, calc -433.42"
+127I2 P(48) 11-3,b7,interval,-442.0,1.0,,b15,sugiyama1988a,"Table 1: peak i, f(x) - f(a) = -442.0 MHz, s = 1.0 MHz, calc -442.00"
+127I2 P(48) 11-3,b6,interval,-455.8,0.4,,b15,sugiyama1988a,"Table 1: peak j, f(x) - f(a) = -455.8 MHz, s = 0.4 MHz, calc -455.69"
+127I2 P(48) 11-3,b5,interval,-569.9,1.0,,b15,sugiyama1988a,"Table 1: peak k, f(x) - f(a) = -569.9 MHz, s = 1.0 MHz, calc -571.07"
+127I2 P(48) 11-3,b4,interval,-577.4,1.0,,b15,sugiyama1988a,"Table 1: peak l, f(x) - f(a) = -577.4 MHz, s = 1.0 MHz, calc -577.87"
+127I2 P(48) 11-3,b3,interval,-587.1,1.0,,b15,sugiyama1988a,"Table 1: peak m, f(x) - f(a) = -587.1 MHz, s = 1.0 MHz, calc -587.70"
+127I2 P(48) 11-3,b2,interval,-594.9,1.0,,b15,sugiyama1988a,"Table 1: peak n, f(x) - f(a) = -594.9 MHz, s = 1.0 MHz, calc -595.78"
+127I2 P(48) 11-3,b1,interval,-875.5,1.0,,b15,sugiyama1988a,"Table 1: peak o, f(x) - f(a) = -875.5 MHz, s = 1.0 MHz, calc -874.22"
+127I2 P(48) 11-3,b15,interval,-160.5,0.7,127I2 R(47) 9-2,a7,sugiyama1988a,"Table 1 footnote b and text: f[a, P(48)] - f[o, R(47)] = -160.5 +- 0.7 MHz"

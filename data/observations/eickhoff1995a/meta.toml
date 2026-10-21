@@ -1,0 +1,34 @@
+id = "eickhoff1995a"
+citation = "M. L. Eickhoff and J. L. Hall, \"Optical frequency standard at 532 nm\", IEEE Trans. Instrum. Meas. 44, 155-158 (1995)"
+source = "https://doi.org/10.1109/19.377797 (IEEE Xplore via ODU; Matt's library copy papers/Eickhoff1995_IEEE_TIM_44_155.pdf)"
+doi = "10.1109/19.377797"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table I (p. 157), "Measurements and fit for R(106)34-0", measurements made 18 June 1993, read from a 250 dpi page
+image (the text layer garbles the table) and typed: the measured positions of a2-a15 of 127I2 R(106) 34-0 relative
+to a1, in MHz, by heterodyne between the two JILA Nd:YAG/I2 systems (modulation transfer). Each row was checked
+against the printed calculated value and residual (meas. - calc., kept in the note): all 14 agree to 1 Hz.
+The table's footnote gives the link between lines: "East reference laser a20:P(83)33-0. Offset to
+a1:R(106)34-0 is -14 736.933 1 MHz", entered as f(a1, R(106) 34-0) - f(a20, P(83) 33-0). Its sign is confirmed
+by bipm2012a, whose tables give -14 736.925 MHz for the same interval.
+Labels: R(106) and P(83) have J'' even (15 components) and odd (21 components); a_k is rank k, as in the MEP.
+
+Not entered: the fitted hyperfine constants of the same table (derived from these rows); the R(56) 32-0 a1
+pressure shift (-1.3 kHz/Pa), pressure broadening (74 kHz/Pa) and power shift (2.1 kHz/mW) of the text, which
+are not an observable kind; the weight column of Table I.
+"""
+
+uncertainty = """
+Intervals within R(106) 34-0: 0.524 kHz, the standard deviation of the residuals of the authors' four-constant
+fit (Table I), taken as the 1 sigma of each. The weight column (0.1-0.2 kHz) is smaller than that scatter.
+The 14.7 GHz offset to P(83) 33-0 has no printed uncertainty; 2 kHz is assumed, for the different pressure and
+power shifts of two lines in two cells (the paper's -1.3 kHz/Pa and 2.1 kHz/mW, at about 1.4 Pa and a few mW).
+"""
+
+notes = "bipm2012a's Table 13 (R(106) 34-0) is this table rounded to 1 kHz, and is declared there as a reprint."
+
+[conditions]
+method = "two frequency-doubled Nd:YAG lasers (JILA East and West) stabilized by modulation transfer; heterodyne beats with rf offset phase locking"

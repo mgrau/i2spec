@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18T12:12:06.175503+00:00",
+  "primary_role": "balanced",
+  "primary_selection": "Prior declared balanced parameter/accuracy rule; no new-measurement residual used",
+  "coefficient_freeze": "All four model snapshots and their seven-fold review predate this literature search",
+  "targets": [
+    {
+      "id": "kondo2025:R158_25_0_a10",
+      "line": [
+        "R",
+        158,
+        25,
+        0
+      ],
+      "component": "a10",
+      "source_doi": "10.35848/1347-4065/ae0225",
+      "scope": "New resolved-component measurement on an atlas-observed rovibronic line; exposure audit pending"
+    },
+    {
+      "id": "pgmf2025:R56_32_0_a10",
+      "line": [
+        "R",
+        56,
+        32,
+        0
+      ],
+      "component": "a10",
+      "source_doi": "10.1088/2631-8695/ada487",
+      "scope": "Independent remeasurement of an exposed identity; new paper frequency appeared in a search snippet before this registry freeze; retrospective external check only"
+    }
+  ],
+  "predictions": [
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "balanced",
+      "predicted_MHz": 539386406.4410145
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "balanced",
+      "predicted_MHz": 563260223.362197
+    },
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "absolute_accuracy",
+      "predicted_MHz": 539386406.4519767
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "absolute_accuracy",
+      "predicted_MHz": 563260223.3820541
+    },
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "compact_value",
+      "predicted_MHz": 539386406.8383807
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "compact_value",
+      "predicted_MHz": 563260223.4158956
+    },
+    {
+      "target_id": "kondo2025:R158_25_0_a10",
+      "role": "interval_precision",
+      "predicted_MHz": 539386406.8453572
+    },
+    {
+      "target_id": "pgmf2025:R56_32_0_a10",
+      "role": "interval_precision",
+      "predicted_MHz": 563260223.4309975
+    }
+  ],
+  "model_sha256": {
+    "balanced": {
+      "model.json": "5bc1a18086112dacd65feab460b90a9f72bf5286685beb4ad9bcbcab2dcef29d",
+      "predict.py": "ffd8acbc0cfeb2ccdfbe7eec4d253a7acf1c5e48c80bd8ef76b01e2ad982c096",
+      "frozen_curves.py": "64e990df6d0c8ac6733555424fe2834c2fe8b6339e84b2c80bba5ae5175fa742",
+      "frozen_alternative_functions.py": "d2d83f1f15e5779382fca30bd2189d730cc4fc5ccaaad7c3755371d2cd78473d",
+      "selection.json": "2c49189afcc0e243c9c12faf8e02766829d43cb32b8446414c313eb3e3f95765"
+    },
+    "absolute_accuracy": {
+      "model.json": "a2f0d89e772b0a72d1824497a62bf9bc9c0c3bff4eac5f2182b3f3ae764a5ce9",
+      "predict.py": "ffd8acbc0cfeb2ccdfbe7eec4d253a7acf1c5e48c80bd8ef76b01e2ad982c096",
+      "frozen_curves.py": "64e990df6d0c8ac6733555424fe2834c2fe8b6339e84b2c80bba5ae5175fa742",
+      "frozen_alternative_functions.py": "d2d83f1f15e5779382fca30bd2189d730cc4fc5ccaaad7c3755371d2cd78473d",
+      "selection.json": "e1ca017f817fc88e95b302c46cb3ae11927486d340d8c9cc082dd8110b9e881b"
+    },
+    "compact_value": {
+      "model.json": "549c5056113da137d515e249e90dd4f40dccc6c467ce791787497f715d40464f",
+      "predict.py": "ffd8acbc0cfeb2ccdfbe7eec4d253a7acf1c5e48c80bd8ef76b01e2ad982c096",
+      "frozen_curves.py": "64e990df6d0c8ac6733555424fe2834c2fe8b6339e84b2c80bba5ae5175fa742",
+      "frozen_alternative_functions.py": "d2d83f1f15e5779382fca30bd2189d730cc4fc5ccaaad7c3755371d2cd78473d",
+      "selection.json": "d12b21c04237aac73fe64c094ec6a377e17e458721138d48b07e172238c8297b"
+    },
+    "interval_precision": {
+      "model.json": "29f6326aad0d888fadcd466960c06a181656b1e3df575d9a9446f858dab5fad0",
+      "predict.py": "ffd8acbc0cfeb2ccdfbe7eec4d253a7acf1c5e48c80bd8ef76b01e2ad982c096",
+      "frozen_curves.py": "64e990df6d0c8ac6733555424fe2834c2fe8b6339e84b2c80bba5ae5175fa742",
+      "frozen_alternative_functions.py": "d2d83f1f15e5779382fca30bd2189d730cc4fc5ccaaad7c3755371d2cd78473d",
+      "selection.json": "744ad762c4b351643d48c17c5e46705e00de143e6a7df23d76d1c4f1913301a6"
+    }
+  },
+  "uncertainty_status": "Pending separately frozen empirical-discrepancy protocol; do not inspect new2025 R158 frequency until intervals/protocol fixed",
+  "refitting_allowed": false,
+  "alternative_role_selection_after_outcomes": false,
+  "exclusion": "127I2 P(13) 43-0",
+  "limitations": [
+    "Published retrospective external measurements are distinct from genuinely new prospective laboratory measurements",
+    "Any search-snippet outcome exposure is explicitly recorded",
+    "Two measurements cannot establish calibrated95% coverage"
+  ]
+}

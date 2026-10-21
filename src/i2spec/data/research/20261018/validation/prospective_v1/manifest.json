@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18T12:22:54.456745+00:00",
+  "files_sha256": {
+    "protocol.json": "999dbcfcd3614277e3c0c7140daa47b4a63cd51523f63f05bc882b08ecda821d",
+    "models.json": "60e0ba78700a25a54aaab8b845d3414b06ca0a4fda3ebcce8f5ba8113495961e",
+    "forecasts.json": "6231d2bd914abe30c204777c026657c770944fad0b3789f70b5a948648651623"
+  }
+}

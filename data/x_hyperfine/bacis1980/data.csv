@@ -1,0 +1,79 @@
+v,eqQ,eqQ_unc,ED_minus_Ev,table,excitation_nm,source,note
+0,-2452,,12440.09,II,,"other results, Refs. 14, 17",
+11,-2455,2,10162.45,II,,"other results, Ref. 16",
+26,-2518,60,7317.55,IV,530.8,this work,
+27,-2512,60,7139.46,IV,530.8,this work,
+28,-2491,60,6962.91,IV,530.8,this work,
+29,-2511,50,6787.92,IV,530.8,this work,
+30,-2523,70,6614.5,IV,530.8,this work,
+31,-2520,50,6442.68,IV,530.8,this work,
+32,-2488,150,6272.48,IV,530.8,this work,
+33,-2484,50,6103.91,IV,530.8,this work,
+34,-2426,100,5937.0,IV,530.8,this work,
+35,-2474,50,5771.78,IV,530.8,this work,
+36,-2463,50,5608.26,IV,530.8,this work,
+37,-2449,50,5446.48,IV,530.8,this work,
+38,-2437,50,5286.45,IV,530.8,this work,
+39,-2436,50,5128.2,IV,530.8,this work,
+40,-2424,50,4971.8,IV,530.8,this work,
+41,-2418,70,4817.16,IV,530.8,this work,
+42,-2364,1,4664.43,II,,"other results, no reference marked",
+42,-2407,50,4664.4,IV,530.8,this work,
+43,-2405,70,4513.6,IV,530.8,this work,
+44,-2360,50,4364.7,IV,530.8,this work,
+45,-2349,50,4217.8,IV,530.8,this work,
+46,-2348,50,4072.83,IV,530.8,this work,
+47,-2365,50,3929.92,IV,530.8,this work,
+48,-2353,50,3789.07,IV,530.8,this work,
+49,-2345,50,3650.33,IV,530.8,this work,
+50,-2296,70,3513.74,IV,530.8,this work,
+51,-2341,50,3379.32,IV,530.8,this work,
+52,-2348,150,3247.13,IV,530.8,this work,
+53,-2287,50,3117.2,IV,530.8,this work,
+54,-2261,50,2989.57,IV,530.8,this work,
+55,-2228,50,2864.3,IV,530.8,this work,
+56,-2250,50,2741.39,IV,530.8,this work,
+57,-2264,150,2620.92,IV,530.8,this work,
+58,-2243,50,2502.93,IV,530.8,this work,
+59,-2225,100,2387.45,IV,530.8,this work,
+60,-2202,70,2274.6,IV,530.8,this work,
+62,-2128,1,2056.6,II,,"other results, Ref. 13",
+73,-1918,40,1058.03,II,514.5,this work,
+74,-1861,30,984.82,II,514.5,this work,
+75,-1852,70,914.61,II,514.5,this work,
+76,-1805,15,847.4,II,514.5,this work,
+77,-1795,40,783.15,II,514.5,this work,
+78,-1734,15,721.87,II,514.5,this work,
+79,-1701,15,663.54,II,514.5,this work,
+79,-1692,1,663.54,II,,"other results, Ref. 13",
+80,-1632,30,608.12,II,514.5,this work,
+81,-1638,15,555.6,II,514.5,this work,
+81,-1629,3,555.6,II,,"other results, Ref. 13",
+82,-1604,15,505.94,II,514.5,this work,
+82,-1740,150,505.94,III,501.7,this work,
+83,-1557,15,459.11,II,514.5,this work,
+83,-1556,1,459.11,II,,"other results, Ref. 15",
+83,-1605,70,459.11,III,501.7,this work,
+84,-1520,30,415.07,II,514.5,this work,
+84,-1495,50,415.07,III,501.7,this work,
+85,-1480,20,373.77,II,514.5,this work,
+86,-1469,50,335.19,II,514.5,this work,
+86,-1473,60,335.19,III,501.7,this work,
+87,-1148,60,299.25,III,501.7,this work,printed -1148 +- 60 (checked on the page image); off the trend of v'' = 86 and 88
+88,-1405,30,265.95,III,501.7,this work,
+89,-1279,60,235.21,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+91,-1268,110,181.27,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+92,-1124,40,157.93,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+93,-947,50,136.91,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+94,-1068,20,118.05,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+95,-940,70,101.2,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+96,-949,110,86.17,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+98,-970,,60.9,III,501.7,this work,"printed '< -970': an upper bound, eqQ more negative than -970; effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+100,-1500,400,41.04,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+101,-1635,150,33.99,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+102,-1480,140,26.1,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+103,-1510,120,20.08,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+104,-1600,100,15.12,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+105,-1640,90,11.02,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+106,-1550,100,7.65,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"
+107,-1690,120,5.2,III,501.7,this work,"effective value: perturbed by a 1g, C'' held at 0 in the fit (Sec. V A 1)"

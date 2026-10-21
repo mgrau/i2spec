@@ -7,8 +7,11 @@
 
 The app never solves a Schrödinger equation. It reads line positions and temperature-independent
 strengths from web/data/ and does the rest in the browser (web/physics.js), so re-exporting is how the
-app picks up a model change. The export also carries every measurement we hold of each line, with its
-source, so the app can mark measured lines and link each one to the paper it comes from.
+app picks up a model change. Positions, hyperfine patterns and uncertainties are the preferred model's
+(i2spec.preferred: balanced-expanded for 127I2 inside its domain, i2spec2026o elsewhere, each line marked);
+strengths are i2spec2026o's. The export also carries every measurement we hold of each line, with its
+source, so the app can mark measured lines and link each one to the paper it comes from; the data sets of
+the frozen blind tests (pending_blind_v1 and v2) are shown too, marked as not used in any fit.
 """
 
 from __future__ import annotations
@@ -23,6 +26,7 @@ import subprocess
 import time
 import tomllib
 import webbrowser
+from collections import Counter
 from datetime import date
 from pathlib import Path
 
@@ -48,26 +52,51 @@ PER_SHARD_HFS = 80
 ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
 ORSAY_SCALE_PPB = {"orsay1982_part1": 23.85, "orsay1983_part4": 200.8}   # Partie IV: +119.6 MHz at 19 870 cm-1
 #: How the app colours each of lookup.Line.flags
-FLAG_CLASS = {"corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
+FLAG_CLASS = {"balanced-expanded": "good", "levels measured": "good", "levels interpolated": "warn",
+              "levels extrapolated": "bad", "i2spec2026o: outside balanced-expanded": "warn", "i2spec2026o": "none",
+              "corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
               "v′ > 43: extended model": "warn", "v″ ≥ 48: extended model": "warn", "beyond 815 nm": "warn",
               "v″ > 17: unmeasured": "bad", "v″ 26-89: Martin 1986": "warn", "v′ 51-79: atlas-measured": "warn", "v′ > 50: extrapolated": "bad", "isotope shift": "none", "few data": "none"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
-               "orsay": "Gerstenkorn, Vergès & Chevillard"}
+               "orsay": "Gerstenkorn, Vergès & Chevillard", "borde": "Bordé", "demelo": "de Melo"}
 #: Names that the prefix alone gets wrong
 SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983"}
 
 
 # --- sources and measurements -----------------------------------------------------------------------
 
+#: The frozen blind tests whose data sets are shown (v1 scored 2026-10-20, v2 2026-10-21) though no fit uses
+#: them: they keep their ``exclude`` line. Sets transcribed later stay out of the export until a registry
+#: scores them.
+BLIND_REGISTRIES = (("20261020", "pending_blind_v1"), ("20261020", "pending_blind_v2"))
+
+
+@functools.lru_cache(maxsize=1)
+def blind_scored():
+    """The data sets of the scored blind registries (their ids, from their frozen targets)."""
+    from importlib import resources
+    out = set()
+    for release, name in BLIND_REGISTRIES:
+        folder = resources.files("i2spec").joinpath("data", "research", release, "validation", name)
+        if folder.joinpath("results.json").is_file():
+            out.update(t["set"] for t in json.loads(folder.joinpath("targets.json").read_text()))
+    return frozenset(out)
+
+
+def _records():
+    """load_all(record=True) with the scored blind sets admitted; every other excluded set has no say."""
+    from .observations import load_all
+    return load_all(OBSERVATIONS_DIR, record=True, include=blind_scored())
+
 def _short(source_id):
     """"velchev1998a" -> "Velchev 1998", "salami_ross_2005" -> "Salami & Ross 2005"."""
     if source_id in SHORT_IDS:
         return SHORT_IDS[source_id]
-    m = re.match(r"^([a-z_]+?)_?(\d{4})([a-z]?)(?:_part\d)?$", source_id)
+    m = re.match(r"^([a-z_]+?)_?(\d{4})([a-z]?)(?:_part\d|_(\d{3}))?$", source_id)
     if not m:
         return source_id
     name = SHORT_NAMES.get(m[1].rstrip("_"), m[1].replace("_", " ").title())
-    return f"{name} {m[2]}"
+    return f"{name} {m[2]}" + (f", {m[4]} nm" if m[4] else "")      # balling2007a_532: "Balling 2007, 532 nm"
 
 
 def _link(meta):
@@ -87,14 +116,17 @@ def _one_line(text):
 
 
 def sources():
-    """Every data set of measured line positions the model has used, with what it covers.
+    """Every data set of measured line positions, with what it covers: its own records (a compilation's
+    reprints are cited on their source's rows instead, and counted as ``n_also``).
 
     Computed from the data files alone, so the references page can be built without the model.
     """
-    from .observations import UNITS, load_all
+    from .observations import UNITS, load_dataset
 
-    out = []
-    for ds in load_all(OBSERVATIONS_DIR):
+    record = _records()
+    also = Counter(c for ds in record for o in ds.observations for c in o.citations[1:])
+
+    def entry(ds, n_rows):
         scale = UNITS[ds.unit]
         lines = {str(o.line) for o in ds.observations} | {str(o.ref_line) for o in ds.observations if o.ref_line}
         freq = [o for o in ds.observations if o.kind == "frequency"]
@@ -102,15 +134,21 @@ def sources():
         band = re.search(r"λ ≈ (\d+) nm", ds.meta["citation"])
         if ds.id.startswith("bipm") and band:          # six BIPM documents, one per wavelength
             short = f"BIPM {band[1]} nm"
-        out.append(dict(
+        return dict(
             id=ds.id, kind="precision", short=short, citation=_one_line(ds.meta["citation"]),
-            doi=ds.meta.get("doi"), link=_link(ds.meta), n_rows=len(ds), n_lines=len(lines),
-            n_absolute=len(freq), n_intervals=len(ds) - len(freq),
-            isotopologues=sorted({line.split()[0] for line in lines}),
+            doi=ds.meta.get("doi"), link=_link(ds.meta), n_rows=n_rows, n_lines=len(lines),
+            n_absolute=len(freq) if n_rows else 0, n_intervals=len(ds) - len(freq) if n_rows else 0,
+            n_also=also[ds.id], isotopologues=sorted({line.split()[0] for line in lines}),
             nu=[round(min(o.value * scale for o in freq) / MHZ_PER_CM, 3),
                 round(max(o.value * scale for o in freq) / MHZ_PER_CM, 3)] if freq else None,
             u_MHz=float(np.median([o.uncertainty * scale for o in ds.observations])),
-            uncertainty=_one_line(ds.meta.get("uncertainty", ""))))
+            uncertainty=_one_line(ds.meta.get("uncertainty", "")), fit="exclude" not in ds.meta)
+
+    out = [entry(ds, len(ds)) for ds in record]
+    # a set that only prints again what another reported first (zhang1999a, the paper of chen1998a) keeps no
+    # records of its own, but is cited on that set's rows: listed with its own values, and no rows
+    for cid in sorted(set(also) - {ds.id for ds in record}):
+        out.append(entry(load_dataset(OBSERVATIONS_DIR / cid), 0))
     for name in ATLASES:
         meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
         rows = _atlas_rows(name)
@@ -118,8 +156,9 @@ def sources():
         out.append(dict(
             id=name, kind="atlas", short=_short(name), citation=_one_line(meta["citation"]), doi=meta.get("doi"),
             link=_link(meta), n_rows=len(rows), n_lines=len({r[:4] for r in rows}), n_absolute=len(rows),
-            n_intervals=0, isotopologues=["127I2"], nu=[round(min(nu), 3), round(max(nu), 3)],
-            u_MHz=float(np.median([r[5] for r in rows])), uncertainty=_one_line(meta.get("calibration", ""))))
+            n_intervals=0, n_also=0, isotopologues=["127I2"], nu=[round(min(nu), 3), round(max(nu), 3)],
+            u_MHz=float(np.median([r[5] for r in rows])), uncertainty=_one_line(meta.get("calibration", "")),
+            fit=True))
     # two sources by one author in one year keep their letters: "Bodermann 1998b", "Bodermann 1998c"
     for s in out:
         twins = [t for t in out if t["short"] == s["short"]]
@@ -161,26 +200,30 @@ def measurements(model_frequency, published_frequency=None):
     for the hyperfine-free line centre, else a rank) or None when it cannot, so each measurement carries
     its residual; ``published_frequency``, with the same signature, gives the published 2008 model's, for a
     second residual. Returns {iso: {key: [{"s": source index, "f": [[component, value, u, obs - model,
-    obs - 2008 model], ...], "i": number of hyperfine intervals}, ...]}}.
+    obs - 2008 model], ...], "i": number of hyperfine intervals, "c": [indices of the compilations that
+    also print them], present only when there are some}, ...]}}: one entry per measurement, under the
+    source that first reported it (observations.load_all with record).
     """
-    from .observations import UNITS, component_rank, load_all
+    from .observations import UNITS, component_rank
 
     index = {s["id"]: k for k, s in enumerate(sources())}
     out: dict[str, dict[str, dict[int, dict]]] = {}
 
-    def entry(line_iso, key, source):
-        return out.setdefault(line_iso, {}).setdefault(key, {}).setdefault(source, {"s": source, "f": [], "i": 0})
+    def entry(line_iso, key, source, cited=()):
+        e = out.setdefault(line_iso, {}).setdefault(key, {}).setdefault(source, {"s": source, "f": [], "i": 0})
+        e.setdefault("c", []).extend(index[c] for c in cited if index[c] not in e["c"])
+        return e
 
-    for ds in load_all(OBSERVATIONS_DIR):
+    for ds in _records():
         scale, src = UNITS[ds.unit], index[ds.id]
         for o in ds.observations:
             ln = o.line
-            e = entry(ln.isotopologue, line_key(ln.branch, ln.J_lower, ln.v_upper, ln.v_lower), src)
+            e = entry(ln.isotopologue, line_key(ln.branch, ln.J_lower, ln.v_upper, ln.v_lower), src, o.citations[1:])
             if o.kind == "interval":
                 e["i"] += 1
                 if o.ref_line and o.ref_line != ln:
                     r = o.ref_line
-                    entry(r.isotopologue, line_key(r.branch, r.J_lower, r.v_upper, r.v_lower), src)["i"] += 1
+                    entry(r.isotopologue, line_key(r.branch, r.J_lower, r.v_upper, r.v_lower), src, o.citations[1:])["i"] += 1
                 continue
             value = o.value * scale
             rank = component_rank(o.component) if o.component else None
@@ -199,18 +242,22 @@ def measurements(model_frequency, published_frequency=None):
             entry("127I2", line_key(branch, J, vu, vl), src)["f"].append(
                 ["", round(value, 1), round(u, 1), None if model is None else round(value - model, 1),
                  None if published is None else round(value - published, 1)])
-    return {iso: {key: list(by_source.values()) for key, by_source in lines.items()} for iso, lines in out.items()}
+    return {iso: {key: [{k: v for k, v in e.items() if k != "c" or v} for e in by_source.values()]
+                  for key, by_source in lines.items()} for iso, lines in out.items()}
 
 
 # --- hyperfine patterns for every line -------------------------------------------------------------------
 
 _HFS_MODEL = None
+_HFS_PREFERRED = None
 
 
 def _hfs_init(iso):
-    global _HFS_MODEL
+    global _HFS_MODEL, _HFS_PREFERRED
+    from . import preferred
     from .model import RovibronicModel
     _HFS_MODEL = RovibronicModel(iso)
+    _HFS_PREFERRED = preferred.preferred() if iso == "127I2" and preferred.active() else None
 
 
 #: Weak (ΔF ≠ ΔJ) components kept for crossovers, as a fraction of the line's main components: a crossover
@@ -242,13 +289,18 @@ def weak_links(comps, main, total):
 
 
 def _hfs_chunk(items):
-    """Main components of each line, ΔJ = 0: offsets (0.1 MHz) and strengths (per mille), by frequency, and
-    the weak components that share a level with one of them (weak_links), or None when there are none."""
+    """Main components of each line, by frequency: offsets (0.1 MHz) and strengths (per mille), and the weak
+    components that share a level with one of them (weak_links), or None when there are none. The preferred
+    model's (with J ± 2) where it gives the line, else i2spec2026o's with ΔJ = 0."""
+    from .preferred import components
     out = []
     for branch, J, vu, vl in items:
         try:
-            _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0, position=False)
-        except Exception:                 # a level beyond every validated grid
+            if _HFS_PREFERRED is not None and _HFS_PREFERRED.covers("127I2", branch, J, vu, vl):
+                _, comps = components(branch, J, vu, vl)
+            else:
+                _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0, position=False)
+        except Exception:                 # a level beyond every validated grid, or without hyperfine constants
             out.append(None)
             continue
         main = sorted((c for c in comps if c.label), key=lambda c: c.offset)
@@ -259,11 +311,11 @@ def _hfs_chunk(items):
 
 
 def hyperfine_patterns(iso, lines, workers=None):
-    """ΔJ = 0 hyperfine patterns for a list of (branch, J'', v', v'') lines, computed in parallel.
+    """Hyperfine patterns for a list of (branch, J'', v', v'') lines, computed in parallel.
 
-    Leaving out the J ± 2 couplings changes the offsets by under 1 MHz (0.9 MHz for R(56) 32-0), far below
-    the 400 MHz Doppler width the explorer draws them under, and makes each pattern twenty times cheaper,
-    which is what lets every line have one. The detail pane keeps the full calculation where it has it.
+    The preferred model's lines carry its full calculation (J ± 2). The others carry i2spec2026o's ΔJ = 0
+    pattern: leaving out the J ± 2 couplings changes the offsets by under 1 MHz (0.9 MHz for R(56) 32-0), far
+    below the 400 MHz Doppler width the explorer draws them under, and makes each pattern twenty times cheaper.
     """
     import multiprocessing as mp
     import os
@@ -322,6 +374,8 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
                for iso in isotopologues}
     if "127I2" in masters:
         masters["127I2"] = with_dissociation_lines(masters["127I2"], S_min=1e-27)
+    from .lookup import preferred_positions
+    masters = {iso: preferred_positions(master) for iso, master in masters.items()}
     centres = {}
     for iso, master in masters.items():
         centres[iso] = {line_key("R" if b > 0 else "P", int(j), int(u), int(v)): float(nu) * MHZ_PER_CM
@@ -340,7 +394,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
             key = line_key(branch, J, vu, vl)
             if key in centres.get(iso, {}):
                 return centres[iso][key]
-            return catalog.model(iso).transition(vu, vl, J, branch) * MHZ_PER_CM
+            return catalog.transition(iso, branch, J, vu, vl) * MHZ_PER_CM
         except Exception:            # a level beyond every validated grid
             return None
 
@@ -375,10 +429,14 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
         {"generated": date.today().isoformat(), "sources": refs,
          "outside_absorption_list": {iso: len(keys) for iso, keys in missing.items()}}, separators=(",", ":")))
 
+    from . import preferred as pf
     manifest = {
         "generated": date.today().isoformat(),
         "model": {"package": "i2spec", "version": __version__, "git": _git_revision(),
-                  "note": "Regenerate with `uv run i2spec web export` after a model change."},
+                  "preferred": pf.model().info.id if pf.active() else None, "fallback": pf.FALLBACK,
+                  "note": ("Positions, hyperfine and uncertainties: balanced-expanded (research-20261020) for 127I2 "
+                           "inside its domain, i2spec2026o elsewhere (each line's flags say which); strengths: "
+                           "i2spec2026o. Regenerate with `uv run i2spec web export` after a model change.")},
         "constants": {"c2": C2, "mhz_per_cm": MHZ_PER_CM},
         "cutoff_cm_at_300K": s_min,
         "references": "references.json",
@@ -405,13 +463,16 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
                          Line):
     from .lookup import uncertainty
 
-    lines = master.at(300.0, S_min=0.0)
+    lines = master.at(300.0, S_min=0.0)              # every line, in the master's order
     keys = np.array([line_key("R" if b > 0 else "P", int(j), int(u), int(v))
                      for b, j, u, v in zip(lines.branch, lines.J_lower, lines.v_upper, lines.v_lower)])
     is_measured = np.array([k in measured for k in keys], dtype=bool)
     keep = (lines.S >= s_min) | is_measured       # every measured line, however weak at 300 K
+    # i2spec2026o's position minus the preferred model's (MHz), where the preferred model gives the line
+    d26 = (getattr(master, "nu_2026o", master.nu) - master.nu) * MHZ_PER_CM
+    d26 = np.where(d26 != 0.0, d26, np.nan)
     cols = dict(nu=lines.nu[keep], S=lines.S[keep], el=lines.E_lower[keep], vu=lines.v_upper[keep],
-                vl=lines.v_lower[keep], jl=lines.J_lower[keep], br=lines.branch[keep])
+                vl=lines.v_lower[keep], jl=lines.J_lower[keep], br=lines.branch[keep], d26=d26[keep])
     # Measured lines the absorption list cannot hold -- emission lines from v'' = 48-54, far below its
     # range and with no population at any cell temperature -- are added with zero strength, so the app
     # still lists them and marks where they are.
@@ -426,12 +487,13 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
             vl_, br_, J_ = re.match(r"(\d+)([PR])(\d+)", rest).groups()
             vu_, vl_, J_ = int(vu_), int(vl_), int(J_)
             try:
-                nu_ = model.transition(vu_, vl_, J_, br_)
-                rows.append((nu_, 0.0, model.energy("X", vl_, J_) - e00, vu_, vl_, J_, 1 if br_ == "R" else -1))
+                nu_ = catalog.transition(iso, br_, J_, vu_, vl_)
+                rows.append((nu_, 0.0, model.energy("X", vl_, J_) - e00, vu_, vl_, J_, 1 if br_ == "R" else -1,
+                             (model.transition(vu_, vl_, J_, br_) - nu_) * MHZ_PER_CM or np.nan))
             except Exception as err:          # a level beyond every validated grid
                 print(f"    {iso} {k}: no model position ({err})")
         if rows:
-            for name, col in zip(("nu", "S", "el", "vu", "vl", "jl", "br"), zip(*rows)):
+            for name, col in zip(("nu", "S", "el", "vu", "vl", "jl", "br", "d26"), zip(*rows)):
                 cols[name] = np.concatenate([cols[name], np.array(col, dtype=cols[name].dtype)])
             print(f"    {iso}: {len(rows)} measured lines outside the absorption list, added with zero strength")
     # Stored in the order the explorer lists them, increasing wavelength (decreasing wavenumber), within
@@ -439,13 +501,23 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     order = np.argsort(-cols["nu"], kind="stable")
     nu, S, el = cols["nu"][order], cols["S"][order], cols["el"][order]
     vu, vl, jl, br = cols["vu"][order], cols["vl"][order], cols["jl"][order], cols["br"][order]
+    d26 = cols["d26"][order]
     keys = np.array([line_key("R" if b > 0 else "P", int(j), int(u), int(v)) for b, j, u, v in zip(br, jl, vu, vl)])
     is_measured = np.array([k in measured for k in keys], dtype=bool)
     # S(T) = s0 exp(-c2 E''/T) / Q(T), so s0 follows exactly from the strengths at 300 K
     s0 = S * master.partition_function(300.0) * np.exp(C2 * el / 300.0)
-    # the position uncertainty and its reason, from the same rules the CLI and the TUI use (lookup.uncertainty)
+    # the position uncertainty and its reason, from the same rules the CLI and the TUI use (lookup.uncertainty);
+    # the preferred model's lines all at once (preferred.Preferred.uncertainties)
+    from . import preferred as pf
     u_line, w_line = np.zeros(len(nu)), np.zeros(len(nu), dtype=int)
-    for k in range(len(nu)):
+    pref = np.zeros(len(nu), bool)
+    if iso == "127I2" and pf.active():
+        sig, status, cls = pf.preferred().uncertainties(np.where(br > 0, "R", "P"), jl, vu, vl)
+        pref = status >= 0
+        for k in np.flatnonzero(pref):
+            u_line[k] = sig[k]
+            w_line[k] = reasons.setdefault((pf.basis(status[k], cls[k]), pf.flags(status[k], cls[k])), len(reasons))
+    for k in np.flatnonzero(~pref):
         line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]), 0.0, 0.0, 300.0)
         u_line[k], why = uncertainty(line)
         w_line[k] = reasons.setdefault((why, line.flags), len(reasons))
@@ -490,6 +562,7 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
             "u": [float(f"{v:.3g}") for v in u_line[sel]],                         # 1σ position, MHz
             "w": [int(v) for v in w_line[sel]],                                  # ... and why: manifest.reasons
             "d08": [None if not np.isfinite(v) else round(float(v), 1) for v in d08[sel]],  # 2008 - this, MHz
+            "d26": [None if not np.isfinite(v) else round(float(v), 2) for v in d26[sel]],  # 2026o - this, MHz
             "m": rows,                                                            # rows with measurements
             "ms": [measured[keys[sel[i]]] for i in rows],                        # ... and what they are
         }
@@ -536,6 +609,8 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         hfs[keys[k]] = {"o": [round(c.offset_MHz, 3) for c in kept],      # 1 kHz, finer than the model is right to
                         "s": [round(c.strength, 5) for c in kept],
                         "l": [c.label or "" for c in kept]}
+        if all(c.uncertainty_MHz is not None for c in kept):         # 1σ of each component's frequency (MHz)
+            hfs[keys[k]]["u"] = [float(f"{c.uncertainty_MHz:.3g}") for c in kept]
         # the weaker ones that share a level with a kept component, for the crossovers (strengths on the
         # same scale as "s")
         weak = weak_links(comps, kept, total)

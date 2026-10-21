@@ -1,0 +1,37 @@
+id = "smith2007a"
+citation = "R. P. Smith, P. A. Roos, J. K. Wahlstrand, J. A. Pipis, M. Belmonte Rivas and S. T. Cundiff, \"Optical frequency metrology of an iodine-stabilized He-Ne laser using the frequency comb of a quantum-interference-stabilized mode-locked laser\", J. Res. Natl. Inst. Stand. Technol. 112, 289-296 (2007)"
+source = "https://doi.org/10.6028/jres.112.022 (open access; Matt's library copy papers/Smith2007_JResNIST112_289.pdf)"
+doi = "10.6028/jres.112.022"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the page (abstract and p. 294): "Of the several data sets taken
+over the course of the day, the mean was 473 612 214 712.96 +- 0.663 kHz, which includes the two correctional
+shifts", the frequency of a JILA iodine-stabilized He-Ne laser on the i (a13) component of 127I2 R(127) 11-5,
+measured with a Cs-referenced comb whose offset frequency was stabilized by quantum-interference control. The
+two corrections take it to the CIPM operating conditions: -0.493 kHz for the cell-wall temperature and +7.25 kHz
+for the intracavity power (18.3 mW against the recommended 10 mW), both from the manufacturer's coefficients.
+The other conditions were within the CIPM ranges (6 MHz modulation, 15 C cold finger).
+Label: i = a13 (yoon2001a, bipm2003a).
+
+Not entered: the nu-to-2nu comparison points of Fig. 4 (plotted only).
+"""
+
+uncertainty = "0.663 kHz as printed (1 sigma), the spread of the day's data sets; the manufacturer's power and wall-temperature coefficients carry no stated uncertainty."
+
+[conditions]
+method = "Winters Electro-Optics Model 100 He-Ne laser with internal iodine cell, third-harmonic locking; Ti:sapphire comb with quantum-interference-controlled offset, Cs reference"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "The value is corrected to the CIPM standard operating conditions (p. 294), so bipm2003a's coefficients take it to zero pressure, power and modulation exactly as for the MeP value and yoon2001a."

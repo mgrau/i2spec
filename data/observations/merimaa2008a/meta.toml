@@ -1,0 +1,29 @@
+id = "merimaa2008a"
+citation = "M. Merimaa, V. Ahtee and K. Nyholm, \"Absolute frequency measurement of an iodine-stabilized 543-nm He-Ne laser with modulation-synchronized phase-locked loop for improved frequency counting\", Conference on Precision Electromagnetic Measurements (CPEM 2008), Digest, pp. 286-287 (2008)"
+source = "https://doi.org/10.1109/CPEM.2008.4574778 (IEEE Xplore via ODU; Matt's library copy papers/Merimaa2008_CPEM.pdf)"
+doi = "10.1109/CPEM.2008.4574778"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer (p. 2) and checked against the page: "Time record of an absolute frequency measurement
+of MGI2, stabilized on R(106) 28-0 b2 ... The measured absolute frequency is 551579841928.3 kHz, which, after
+correction for the modulation amplitude shift, is 3.7 kHz below the CIPM recommended value." Fig. 3a: mean
+f_meas - f_CIPM = -3.7 kHz, stdev 0.6 kHz. MGI2 is the MIKES laser of ma2006a: external 20 cm cell, cold point
+0.1 C, 3f modulation at 3 kHz, 4 MHz peak-to-peak.
+
+The printed, as-measured value is entered. The correction the paper applies goes from 4 MHz to the CIPM's 2 MHz
+modulation; with the CIPM b2 = b10 - 320.462 MHz = 551 579 841 938.0 kHz (bipm2003b), -3.7 kHz implies a +6.0 kHz
+correction, i.e. MGI2's -3.0 kHz/MHz of ma2006a Table I.
+"""
+
+uncertainty = "0.6 kHz, the standard deviation of the Fig. 3 record (counting only), and 5 kHz for the laser's reproducibility in quadrature, as in ma2006a: 5.0 kHz. No budget is given."
+
+[conditions]
+method = "He-Ne laser MGI2, third-harmonic locking, external 20 cm iodine cell at 0.1 C, 4 MHz p-p modulation; slave laser phase-locked with a modulation-synchronized digital PLL, measured with the MIKES comb against an H-maser"
+
+[shift_correction]
+pressure_Pa = 4.15
+allowance_kHz = 20.8
+basis = "As bipm2003b and ma2006a: no shift applied; allowance -5 kHz/Pa x 4.15 Pa (0.1 C)."

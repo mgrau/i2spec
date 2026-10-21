@@ -1,0 +1,33 @@
+{
+  "role": "absolute_accuracy",
+  "started_utc": "2026-10-18T06:22:58.339544+00:00",
+  "finished_utc": "2026-10-18T06:22:59.545527+00:00",
+  "passed": true,
+  "returncode": 0,
+  "snapshot_sha256": {
+    "predict.py": "ffd8acbc0cfeb2ccdfbe7eec4d253a7acf1c5e48c80bd8ef76b01e2ad982c096",
+    "model.json": "a2f0d89e772b0a72d1824497a62bf9bc9c0c3bff4eac5f2182b3f3ae764a5ce9",
+    "reference_predictions.json": "66cafc05fb8602e289520d8e9b176728a07775f784f00915da7d8f46d6458ae2",
+    "frozen_curves.py": "64e990df6d0c8ac6733555424fe2834c2fe8b6339e84b2c80bba5ae5175fa742",
+    "frozen_alternative_functions.py": "d2d83f1f15e5779382fca30bd2189d730cc4fc5ccaaad7c3755371d2cd78473d",
+    "selection.json": "e1ca017f817fc88e95b302c46cb3ae11927486d340d8c9cc082dd8110b9e881b"
+  },
+  "result": {
+    "counts": {
+      "absolute": 60,
+      "intraline": 592
+    },
+    "maximum_difference_Hz": {
+      "absolute": 0.7152557373046875,
+      "intraline": 0.11584762660277192
+    },
+    "tolerance_Hz": 100.0,
+    "passed": true,
+    "scope": "Numerical reproduction of saved predictions; not independent predictive validation"
+  },
+  "verification_sha256": "95b10e687b2bda495e7928056ca1b462c6de26ed747276e02c3a75e475076ba4",
+  "maximum_tolerance_Hz": 100.0,
+  "workers": 1,
+  "production_default_unchanged": true,
+  "scope": "Frozen prediction reproduction; exploratory validation is reviewed separately"
+}

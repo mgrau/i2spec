@@ -1,0 +1,29 @@
+id = "bertinetto1987a"
+citation = "F. Bertinetto, P. Cordiale, S. Fontana and G. B. Picotto, \"Helium-neon lasers stabilized to iodine at 605 nm\", IEEE Trans. Instrum. Meas. IM-36, 609-612 (1987)"
+source = "https://doi.org/10.1109/TIM.1987.6312750 (IEEE Xplore via ODU; Matt's library copy papers/Bertinetto1987_IEEE_TIM_36_609.pdf)"
+doi = "10.1109/TIM.1987.6312750"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table III (p. 610), read from a 350 dpi page image (the text layer is unreadable) and typed: measured frequency
+intervals of the saturated-absorption features in the tuning range of a 20Ne He-Ne laser at 605 nm (intracavity
+127I2 cell), relative to component a15 of P(62) 11-2, with the authors' assignment and calculated value. The 17
+features assigned singly to R(161) 9-0 (b5-b21) are entered; the calculated value is in the note.
+Labels: R(161) has odd J'' (21 main components); b_k is rank k. Checked against the model: every b_k lies within
+about 1 MHz of the model's rank k after a common +4.5 MHz offset (the model's error for this J'' = 161 line
+relative to P(62) 11-2), and the neighbouring ranks are 5-26 MHz away.
+
+Not entered: -154.7 MHz (assigned to the unresolved pair a11/a12 of P(62) 11-2) and -136.9 MHz (a13/a14); the
+features marked unassigned or not isolated (-211.3, -191.7*, -114.8*, -97.3, -57.7, 19.4, 39.2* MHz); Table I
+(calculated wavelengths of candidate lines), Table II (coupling constants used), Table IV (modulation shift
+coefficients) and the power-shift slopes of the text.
+"""
+
+uncertainty = "0.1 MHz, the \"relatively large uncertainty of 100 kHz in frequency intervals measurement of the weak HFS components of the transition R(161)9-0\" (p. 610), taken as 1 sigma; the values are printed to 0.1 MHz. The authors' fit to these rows has a 0.26 MHz standard deviation. One laser pair, so one group."
+
+notes = "R(161) 9-0 is among the highest-J'' lines with resolved hyperfine structure in the collection. P(62) 11-2 a15, the reference, has no absolute frequency here."
+
+[conditions]
+method = "two 20Ne He-Ne lasers at 605 nm with intracavity 127I2 cells, third-harmonic locking (6 MHz p-p modulation, about 0.9-1.2 Pa); offset locking through an AOM, beat counting"

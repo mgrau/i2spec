@@ -1,0 +1,36 @@
+id = "cheng2021a"
+citation = "F. Cheng, N. Jin, F. Zhang, H. Li, Y. Du, J. Zhang, K. Deng and Z. Lu, \"A 532 nm molecular iodine optical frequency standard based on modulation transfer spectroscopy\", Chin. Phys. B 30, 050603 (2021)"
+source = "https://doi.org/10.1088/1674-1056/abd754 (publisher PDF; Matt's library copy papers/Cheng2021_CPB30_050603.pdf; the download list called it Cheng 2020)"
+doi = "10.1088/1674-1056/abd754"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the pages (Sect. 3.3.6 and Table 2, p. 050603-8; conclusion):
+the HUST Nd:YAG/I2 laser on 127I2 R(56) 32-0 a10, measured with a comb against a Cs- and GNSS-calibrated
+hydrogen maser 11 times on different days: average 563 260 223 505.8(2) kHz at -15 C cold finger and 2.0 mW pump
+(28 mW/cm2). The paper corrects this for the shifts of its own apparatus (Table 2): RAM-induced -3.6(0.9) kHz,
+iodine impurity -5.0(5.0) kHz, comb reference -0.5(1.1) kHz, total -9.1 kHz, giving "the corrected absolute
+frequency 563 260 223 514.9 kHz" with 5.3 kHz total uncertainty. Pressure and power shifts are left in, the
+conditions being the CIPM's. The corrected value is entered.
+
+Not entered: the uncorrected average (the same measurement); the sensitivity coefficients of Table 2 other than
+pressure and power (pointing 15 Hz/urad, demodulation phase 94 Hz/degree, servo offset 2.8 kHz/mV, modulation
+width -0.2 kHz/kHz); Table 1 (other laboratories' a10 results, quoted from their papers).
+"""
+
+uncertainty = "5.3 kHz, the paper's total (Table 2: impurity 5.0, pointing 1.2, comb 1.1, RAM 0.9, power 0.4, pressure 0.1 kHz), taken as 1 sigma. The reproducibility over 11 days is 0.2 kHz."
+
+[conditions]
+method = "frequency-doubled Nd:YAG, modulation transfer at 310 kHz with RAM evaluated from the line shape; comb against an H-maser"
+cell = "cold finger -15 C (0.83 Pa), pump 2.0 mW"
+
+[shift_correction]
+pressure_Pa = 0.83
+pressure_kHz_per_Pa = -7.3
+pressure_kHz_per_Pa_unc = 0.1
+power_mW = 2.0
+power_kHz_per_mW = 1.1
+power_kHz_per_mW_unc = 0.2
+basis = "The paper's own coefficients (Table 2): pressure -7.3(0.1) kHz/Pa at -15 C (0.83 Pa, Gillespie and Fraser), power +1.1(0.2) kHz/mW at 2.0 mW pump, as holzwarth2001a uses its own."

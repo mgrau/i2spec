@@ -1,0 +1,3 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a16,frequency,473612353.60226,0.00034,,,ye2000a,"p. 3799: JILA-145 locked to f, JILA femtosecond comb, 473 612 353 602.26 +- 0.34 kHz"
+127I2 R(127) 11-5,a16,frequency,473612353.60204,0.00069,,,ye2000a,"p. 3799: JILA-145 locked to f via the NRC chain: INMS-3 595.37 +- 0.25 kHz + 16.4 +- 0.6 kHz + 10.27 +- 0.15 kHz = 602.04 +- 0.69 kHz"

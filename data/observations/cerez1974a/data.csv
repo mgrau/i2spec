@@ -1,0 +1,10 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a21,interval,299.926,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak a, 299.926 MHz from i"
+127I2 R(127) 11-5,a20,interval,291.108,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak b, 291.108 MHz from i"
+127I2 R(127) 11-5,a19,interval,282.976,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak c, 282.976 MHz from i"
+127I2 R(127) 11-5,a18,interval,165.128,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak d, 165.128 MHz from i"
+127I2 R(127) 11-5,a17,interval,152.263,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak e, 152.263 MHz from i"
+127I2 R(127) 11-5,a16,interval,138.903,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak f, 138.903 MHz from i"
+127I2 R(127) 11-5,a15,interval,125.713,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak g, 125.713 MHz from i"
+127I2 R(127) 11-5,a14,interval,21.930,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak h, 21.930 MHz from i"
+127I2 R(127) 11-5,a12,interval,-21.558,0.0005,,a13,cerez1974a,"Fig. 4, measured column: peak j, -21.558 MHz from i"

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18T12:13:37.570181+00:00",
+  "primary_role": "balanced",
+  "coefficient_refitting_allowed": false,
+  "post_outcome_model_selection_allowed": false,
+  "point_registry_sha256": "adedf47ded037078e925b84f423ed5fb616db698165798a4aee6d87a4356fda2",
+  "prior_review_sha256": "533dac242d6c48d08c94439d468273b22f8bc62e9ebb9e4056fe11e4ae98673c",
+  "source_inclusion": "Predefined127I2 B-X core-domain absolute resolved components outside current source archive; record training/exploratory identity exposure and outcome-snippet exposure separately",
+  "external_accuracy_thresholds_MHz": [
+    0.1,
+    0.3,
+    1.0
+  ],
+  "envelopes": {
+    "routine": {
+      "half_width_MHz": 0.6,
+      "nominal_probability": null,
+      "recipe": "Round up to0.1MHz the sum of maximum repeat-level absolute residual and maximum accepted-start prediction spread on the frozen balanced future benchmark",
+      "maximum_repeat_error_MHz": 0.576199412,
+      "maximum_start_spread_MHz": 0.0083915,
+      "scope": "Descriptive interpolation envelope on a reused benchmark; not a calibrated confidence interval"
+    },
+    "stress": {
+      "half_width_MHz": 13.0,
+      "nominal_probability": null,
+      "recipe": "Round up to1MHz the sum of maximum repeat-level absolute residual and maximum accepted-start prediction spread across the future cohort and seven named folds of the same frozen architecture",
+      "maximum_repeat_error_MHz": 3.509594202041626,
+      "maximum_start_spread_MHz": 9.068304181098938,
+      "scope": "Empirical contingency envelope across sparse overlapping band/source holdouts; no95%coverage or universal high-J guarantee"
+    }
+  },
+  "primary_scoring": "Signed residual, absolute residual, thresholds0.1/0.3/1MHz, and both frozen envelopes; retain all included results including failures",
+  "comparison_basis": "Use directly comparable zero-pressure/unperturbed component frequency only when supported by source; otherwise document conditions and classify as non-comparable without fitting corrections",
+  "measurement_uncertainty": "Record standard versus expanded uncertainty and coverage factor from source; do not assume a coverage factor or combine unlike uncertainties",
+  "outcomes_status": {
+    "kondo2025": "2025 numerical outcome not yet inspected; earlier2024same-transition approximate result surfaced in search",
+    "pgmf2025": "Outcome already exposed in search snippet after coefficient freezing, before point registry; retrospective external check"
+  },
+  "fresh_experimental_test": {
+    "status": "awaiting independent new measurements",
+    "user_report": "No new measurements yet",
+    "policy": "Freeze target identities, point forecasts, envelope endpoints, hashes and scoring before laboratory outcomes; append outcomes without changing coefficients, widths or primary role"
+  },
+  "caveats": [
+    "Two externally published case measurements cannot establish95%prediction-interval coverage",
+    "The calibration cohorts and seven overlapping folds were reused during research; envelope coverage remains exploratory",
+    "Measurement independence is distinct from independence of rovibrational identity or physical band",
+    "127I2 P(13)43-0 excluded from fitting, calibration, target selection and headline scoring"
+  ]
+}

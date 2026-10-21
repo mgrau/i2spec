@@ -1,0 +1,67 @@
+id = "borde1981a"
+citation = "Ch. J. Bordé, G. Camy, B. Decomps, J.-P. Descoubes and J. Vigué, \"High precision saturation spectroscopy of 127I2 with argon lasers at 5145 Å and 5017 Å: I - Main resonances\", J. Phys. (Paris) 42, 1393-1411 (1981)"
+source = "J. Phys. 42 (10), 1393-1411 (1981); https://doi.org/10.1051/jphys:0198100420100139300; HAL jpa-00209331 (open access scan, Matt's library copy papers/Borde1981_JPhys42_1393.pdf)"
+doi = "10.1051/jphys:0198100420100139300"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Main-resonance hyperfine intervals from three tables, in kHz as printed, converted to MHz exactly. The tables are
+images in the HAL scan (no text layer), so every value was read from 300 dpi renderings of PDF pp. 11, 15 and 16
+(journal pp. 1402, 1406, 1407) and checked against a second reading at 110 dpi.
+
+  Table I (p. 1402): P(13) 43-0, a_n - a1 for n = 2-9, 11-13, 15-17, 20, 21 (16 rows); R(15) 43-0, b_n - b1
+    for n = 2, 3, 5, 7, 10-21 (16 rows). Components absent from the table (P(13) a10, a14, a18, a19; R(15)
+    b4, b6, b8, b9) are not printed.
+  Table VIII (p. 1406): R(26) 62-0 (Ar+ 5017 Å), a_n - a1 for n = 2-15 (14 rows; even J'', 15 components).
+  Table X (p. 1407): R(98) 58-1 (5145 Å), a_n - a6 for n = 1-5, 7-15 (14 rows).
+
+Labels: ranks by frequency, as printed (a for P(13), R(26), R(98); b for R(15), as in the paper and bipm2005a).
+P(13) a3 - a1 = 131 770.1 kHz matches BIPM's a1 - a3 = -131 770 kHz, so the paper's a_n are the same ranks.
+
+Not entered: the "obs. - calc." columns; Table IV crossover positions (crossovers cannot be represented); the
+fitted hyperfine constants of Tables II, V, VII, IX and XI; the recoil-shift result of Sect. 4.3.2 (c8 - a7).
+
+Overlap: bipm2005a (MEP 515 nm, 2005) Tables 1 (P(13) 43-0) and 2 (R(15) 43-0) are weighted means of refs [3-6]
+and [4,5], and ref. [5] is this paper; its Table 3 (R(98) 58-1) comes from Foth & Spieweck 1979 alone, so the
+R(98) rows here are independent of it. goncharov2007a measures R(26) 62-0 to 0.35 kHz. bipm2005a's [overlaps]
+names this set as "mean" for P(13) and R(15) 43-0. A pending set has no say, so the BIPM rows stay in the fit
+until this one is admitted; then the 32 BIPM rows that this set determines leave the fit and stay in the
+record, and these rows are cited to this paper first, then to bipm2005a.
+
+P(13) 43-0 is the line Matt excludes from every potential and hyperfine fit; its 16 rows are kept in the archive
+like those of bipm2005a, jones2002a and goncharov2004a.
+"""
+
+uncertainty = """
+Sect. 3 (p. 1399-1400): "below 200 Hz (1 sigma) for most of the main resonances of P(13) and R(15), 5 kHz
+(1 sigma) for R(98) and R(26) estimated from the statistical reproducibility." Entered as:
+- P(13), R(15): 1.0 kHz. The authors' own four-parameter fits leave 1.07 and 0.72 kHz rms (Table II), five times
+  the statistical 0.2 kHz, and the BIPM evaluation that uses these data assigns 1-10 kHz.
+- R(98) 58-1: 5 kHz as printed, borne out by the comparison with Foth & Spieweck (bipm2005a Table 3): the twelve
+  well-resolved components agree to 0-3 kHz. a10 and a11 (1.05 MHz apart, "surely not very accurate", not fitted
+  by the authors; BIPM prints them only to 1 MHz): 100 kHz.
+- R(26) 62-0: 10 kHz. The authors' fits leave 17.8 kHz rms (Table IX); against goncharov2007a the 14 intervals
+  scatter by 10 kHz rms once the a4 misprint below is allowed for.
+All rows share one group (one spectrometer, one frequency-offset locking chain).
+"""
+
+notes = """
+Comparisons (obs here - other source):
+- bipm2005a: P(13) -0.4 to +1.4 kHz; R(15) -0.2 to +3.2 kHz, rising across the pattern (a scale difference of
+  about 3 ppm, or Camy's thesis data pulling the BIPM mean); R(98) 58-1 -3 to +2 kHz (a10/a11: +87, +138 kHz
+  against BIPM's 1 MHz values).
+- goncharov2007a, R(26) 62-0: -17.5 to +5.7 kHz, except a4: Bordé 295 323 kHz, goncharov2007a 295 233.9 kHz
+  (+89 kHz). Goncharov's own Table 1 prints, for each component, "frequencies deduced from [11] - ours", where
+  [11] is this paper; for a4 that column (-4.4 kHz, with a1 at +6.5 kHz) implies Bordé - Goncharov = -10.9 kHz,
+  i.e. Goncharov's a4 = 295 333.9 kHz. The "295 233.9" in the arXiv version that goncharov2007a was typed from
+  is a misprint of 295 333.9 (2 for 3). Bordé's value is confirmed by his own fit (obs - calc -1 and +8 kHz).
+Residuals against i2spec2026o (Predictor(), obs - model): P(13) -0.7 to +5.0 kHz, R(15) -3.1 to +2.2 kHz,
+R(26) 62-0 -25 to +25 kHz, R(98) 58-1 -38 to +21 kHz (a10 -150 kHz, a11 +22 kHz). Checked with the shipped
+model only, not with any research candidate.
+"""
+
+[conditions]
+method = "saturated absorption, third-harmonic detection, Ar+ lasers at 5145 and 5017 Å locked to a scanned reference resonator; intervals from beat frequencies between two lasers"
+cell = "external, cold point not restated here"

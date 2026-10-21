@@ -1,0 +1,54 @@
+id = "ma2006a"
+citation = "L. S. Ma, S. Picard, M. Zucco, J.-M. Chartier, L. Robertsson, P. Balling, P. Křen, J. Qian, Z. Liu, C. Shi, M. V. Alonso, G. Xu, S. L. Tan, K. Nyholm, J. Henningsen, J. Hald, W. R. C. Rowley, G. P. Barwood and R. Windeler, \"Absolute frequency measurement of the R(12) 26-0 and R(106) 28-0 transitions in 127I2 at lambda = 543 nm\", IEEE Trans. Instrum. Meas. 55, 876-880 (2006)"
+source = "https://doi.org/10.1109/TIM.2005.858122 (publisher PDF via ODU, Matt's library copy papers/Ma2006_IEEE_TIM_55_876.pdf)"
+doi = "10.1109/TIM.2005.858122"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table II (p. 878), read from a 200 dpi page image (the table is not in the text layer) and typed: the absolute
+frequency of each iodine-stabilized 543 nm He-Ne laser, measured with the BIPM femtosecond comb in 2002 at the
+laser's own working conditions (modulation width and cold-finger temperature, both printed in the table), on the
+component it could reach. Ten rows from eight lasers: R(106) 28-0 b10 and b15, R(12) 26-0 a9, a11, a14 and a15.
+The values are as measured, not corrected: PLG1 appears twice, at 1 and 2 MHz modulation, with different values.
+The note of each row carries its laser's conditions and its Table I shift coefficients (MIFS, modulation-induced,
+and PIFS, pressure-induced). PLG2 and NPL-G1 were measured by beat against PLG1, not with the comb directly.
+
+Labels are BIPM's (a for R(12) 26-0, b for R(106) 28-0), as in bipm2003b; both lines have even J'' and 15 main
+components, and the number is the rank by frequency.
+
+Not entered:
+- The weighted means f(a15) = 551 579 856 480.4 kHz (u_c 4.8 kHz) and f(b10) = 551 580 162 397.1 kHz (u_c 4.6 kHz)
+  at 0 C and 2.0 MHz modulation (abstract, p. 879). They are these rows corrected to a common working point and
+  averaged, so entering them would count the lasers twice.
+- The two 2-mode lasers NIM2 and SL-G 021 (not stabilized to iodine).
+- Fig. 4 (the corrected per-laser values, only plotted).
+
+Overlap: bipm2003b (the MEP 2003 543 nm value) predates the final paper but not the 2002 measurements; the
+MEP's own source list was not compared, so no overlap is declared. merimaa2008a re-measured MGI2 on b2.
+"""
+
+uncertainty = """
+Column 6 of Table II "only takes the uncertainty from the frequency measurements of each standard into account".
+The paper weights its mean with a further 5 kHz per laser for "the limited internal reproducibility" (p. 879), so
+each row's uncertainty is the printed one and 5 kHz in quadrature; the printed figure is in the note. One group
+per laser.
+"""
+
+notes = """
+Rows that need care before any fit: DFM1 (both rows), which the authors judge an outlier, its cell beams
+misaligned after relocation (a probe displacement of a third of a beam diameter moved it by about 50 kHz); and
+08A01/G10, whose cell was at 21.3 C, so its value carries an uncorrected pressure shift of order -8 kHz/Pa x
+(about 7 times 4 Pa), comparable to its 120 kHz uncertainty. The paper uses 08A01/G10 in its mean, after its
+own correction to 0 C.
+"""
+
+[conditions]
+method = "He-Ne lasers at 543 nm stabilized by third-harmonic (3f) or FM technique to external or internal iodine cells; BIPM femtosecond comb referenced to a hydrogen maser"
+
+[shift_correction]
+pressure_Pa = 4.12
+allowance_kHz = 20.6
+groups = ["ma2006a_PLG1", "ma2006a_PLG2", "ma2006a_DFM1", "ma2006a_MGI2", "ma2006a_NIM1", "ma2006a_BIG1", "ma2006a_NPL-G1"]
+basis = "As bipm2003b: no shift is applied, and a 20.6 kHz allowance (-5 kHz/Pa x 4.12 Pa, the 0 C pressure) covers the pressure shift and the lasers' differing modulation widths. Table I's per-laser coefficients are in each row's note; one set takes one correction, so they are not applied. 08A01/G10 (21.3 C) is left out of the groups and stays as measured."

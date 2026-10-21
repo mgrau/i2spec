@@ -1,0 +1,32 @@
+id = "ciddor1980a"
+citation = "P. E. Ciddor and N. Brown, \"Hyperfine spectra in iodine-129 at 612 nm\", Opt. Commun. 34, 53-56 (1980)"
+source = "https://doi.org/10.1016/0030-4018(80)90158-3 (library copy papers/Ciddor1980_Opt_Commun_34_53.pdf)"
+doi = "10.1016/0030-4018(80)90158-3"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from 300 dpi images of Tables 1 and 2 (pp. 54-55; the text layer drops several minus signs). CSIRO He-Ne
+lasers at 612 nm (frequency-offset locking, third harmonic), a cell of 83 % 129I2 and 17 % 127I2. All values
+relative to component i of 127I2 R(47) 9-2, which is a13 (the letters run down in frequency, o = a7; MEP).
+- Table 1: the 28 components a-z, a', b' of the 129I2 line the paper identifies by fluorescence as P(110) 10-2
+  (J'' even, 28 components), "measured by counting technique"; a is a28 and b' a1 (the MEP's Table 4 letters).
+- Table 2, "measured from recorder traces": 18 components a-r of a 129I2 line with odd J'', which is the MEP's
+  R(113) 14-4 (its b36-b19 carry the letters a-r, and these values lie within 1 MHz of the MEP's); and five
+  components of 127I2 P(48) 11-3 (a singlet a and the quadruplet b-e), taken as b15, b14, b13, b12, b11 by
+  position (d lies 6 MHz from the MEP's b12).
+Not entered: the estimated quadrupole splittings and centre frequencies; the fluorescence analysis.
+"""
+
+uncertainty = "None printed. Table 1 (counting): 30 kHz, as for the same laboratory's magyar1980a (23 kHz typical), 0.1 MHz for the fitted close pairs b-c, d-e and y-z. Table 2 (recorder traces, printed to 1 MHz): 2 MHz."
+
+notes = """
+The MEP 612 nm Tables 4 and 5 (bipm2003d, 129I2 P(110) 10-2 and R(113) 14-4) cite this paper as ref. [17]; declared
+there as "mean". Residuals against i2spec2026o (obs - model): 129I2 P(110) 10-2 -2.58 MHz on average with 0.08 MHz
+scatter (the model's position of that line relative to 127I2 R(47) 9-2; the pattern itself within 0.17 MHz); R(113) 14-4
++4.0 MHz on average; P(48) 11-3 within 3 MHz. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "He-Ne lasers at 612 nm with internal cells (129I2 83 %, 127I2 17 %), third-harmonic detection, frequency-offset locking; cell 4.0 Pa and 3.0 MHz p-p (survey), 2.5 Pa and 1.5 MHz p-p (line profiles)"

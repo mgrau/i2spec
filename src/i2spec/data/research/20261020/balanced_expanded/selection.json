@@ -1,0 +1,17 @@
+{
+ "decisions": [
+  "Matt, 2026-10-20: extend research-balanced without any 2026o fallback; one potential per state; no level- or line-specific terms; physics-identified terms only",
+  "B structure fb_k445_r445_v80 (Matt: \"use 3\"): 10 outer exponent + 3 rotational terms, knots at 4.45 A, Orsay IV offset, data to v'80",
+  "X near dissociation: cubic splines 4.2-6.6 A (0.2 A knots) + dC6 + one dDe shared with B; Martin 1983 v''93/97/102/103/106 added, v''109 dropped (incomplete deperturbation)",
+  "Hyperfine (Chen et al. 2005 framework): B background anchored to the base model's own core predictions; theta_u and gamma fitted out of core; theta_g fixed at 30 deg (free: unphysical 105 deg); 1g(1Pig) C5 scale 0.65 and 0u- C5 (unchanged) chosen by training cost",
+  "X hyperfine: BKT02 in the core, eqQ continued to -B(2P3/2) (Bacis et al. 1980), C bounded",
+  "B~1g(1Pig) at v'77, 78 diagonalized with Pique et al. 1986 (II) energies and rotational constants",
+  "Out-of-core line centers re-reduced with this hyperfine (no i2spec2026o offsets left), then the final joint fit; X levels on half-spacing grids (the fit engine's h = 0.01 A left X v''60-100 10-40 MHz high)",
+  "Every choice by training objectives; held-out scores never selected anything",
+  "Matt, 2026-10-20: the 36 pending sets stay blind (validation/pending_blind_v1)"
+ ],
+ "restarts": "two perturbed restarts and one start from fj_dec6 reach the same cost to 1e-4",
+ "result": "final_rx",
+ "hyperfine_result": "scan2_g0.65_u0",
+ "x_hyperfine": "xhf"
+}

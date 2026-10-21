@@ -1,0 +1,3 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(86) 33-0,a10,frequency,563228604.357,0.001,,,ikeda2018a_ndyag,"p. 3: iodine-stabilized Nd:YAG laser (YNU) on a10, fundamental by comb: printed 281,614,322,178.5 kHz +- 0.5 kHz, a misprint for 281,614,302,178.5 (the printed 12.6 kHz to the compact laser); doubled"
+127I2 R(86) 33-0,a10,frequency,563228604.3822,0.0032,,,ikeda2018a_compact,"p. 3: compact Nd:YVO4 laser on a10 (cold finger 7 C, 8 Pa, about 3 mW): 281,614,302,191.1 kHz +- 1.6 kHz at 1064 nm, from the beat with the Nd:YAG laser; doubled"

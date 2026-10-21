@@ -1,0 +1,40 @@
+id = "ruben1973a"
+citation = "D. J. Ruben, S. G. Kukolich, L. A. Hackel, D. G. Youmans and S. Ezekiel, \"Laser-molecular beam measurement of hyperfine structure in the I2 spectrum\", Chem. Phys. Lett. 22, 326-330 (1973)"
+source = "https://doi.org/10.1016/0009-2614(73)80104-6 (PDF supplied by Matt; library copy papers/Ruben1973_CPL_22_326.pdf)"
+doi = "10.1016/0009-2614(73)80104-6"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from 200 dpi page images of Tables 1 and 2 (pp. 328-329); the OCR text layer misreads some digits (it
+gives -127.1 for -127.7 in Table 1). Laser-molecular-beam spectra of 127I2 P(13) and R(15) 43-0 at 514.5 nm
+(single-frequency argon-ion laser crossing an I2 beam), frequency scale from a confocal Fabry-Perot (FSR
+300 MHz). The "Measured" column of each table, averaged over 10 sets of data.
+- Table 1: all 21 components of P(13) 43-0, relative to line 13 (I = 3, F - J = 2). The rows are in increasing
+  frequency, so they are a1-a21 and line 13 is a10.
+- Table 2: all 21 components of R(15) 43-0, relative to line 14 (I = 5, F - J = -4); in frequency order, b1-b21,
+  so line 14 is b4.
+- The link between the tables: "P(13) and R(15) are given with respect to the same reference frequency", and
+  "line 13 in P(13) and line 14 in R(15) could not be resolved" even at 300 kHz FWHM. Entered as R(15) b4 -
+  P(13) a10 = 0 with 0.3 MHz assigned here (the model puts them 0.34 MHz apart).
+Labels: the paper numbers the 42 peaks of Fig. 1 consecutively; that number and the printed I and F - J are kept
+in the notes. Labels are ranks by frequency (component letters a and b chosen here).
+
+Not entered: the "Calculated" columns; the Table 3 constants (Delta eQq = 1906(2) and 1905(2) MHz, Delta C_I =
+181(7) and 167(5) kHz) and the ground-state eQq = -2500(900) MHz, which are fits to these rows; the rotational
+energy differences used in the fit.
+"""
+
+uncertainty = "The fits' standard deviations, 1.4 MHz (P(13)) and 1.3 MHz (R(15)), taken as the 1-sigma uncertainty of each row; the authors attribute the scatter to the Fabry-Perot frequency scale, so all rows share group ruben1973a (a scale nuisance)."
+
+notes = """
+All P(13) 43-0 rows fall under the standing exclusion of that line from every fit (AGENTS/handoff rule); they stay
+in the record. Residuals against i2spec2026o (obs - model): rms 2.2 MHz (P(13)) and 2.5 MHz (R(15)), up to +4.3 MHz, growing
+with the distance from the zero: the Fabry-Perot scale is 0.55-0.59 % large on both lines. With that scale taken
+out the rms is 1.5 and 1.1 MHz, as the paper's fits. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "laser-molecular-beam spectroscopy: 514.5 nm single-frequency argon-ion laser crossing an I2 beam at right angles; fluorescence detection; confocal Fabry-Perot (300 MHz FSR) frequency scale"
+linewidth = "650 kHz FWHM (Fig. 1), 300 kHz at the best resolution (Fig. 2)"

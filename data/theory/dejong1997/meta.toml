@@ -1,0 +1,31 @@
+id = "dejong1997"
+citation = "W. A. de Jong, L. Visscher and W. C. Nieuwpoort, \"Relativistic and correlated calculations on the ground, excited, and ionized states of iodine\", J. Chem. Phys. 107, 9046-9058 (1997), Table III"
+source = "https://doi.org/10.1063/1.475194 (publisher PDF, papers/DeJong1997_JCP107_9046.pdf)"
+doi = "10.1063/1.475194"
+retrieved = "2026-10-20"
+unit = "De, Te in eV; re in A; we, wexe in cm-1"
+kind = "spectroscopic constants of the 23 valence states from the empirically improved relativistic (COSCI) potential curves"
+
+transcription = """
+Table III (p. 9052), all 23 rows, read from a 200 dpi render and checked against the PDF text layer. Columns
+*_exp are the experimental values the table prints in parentheses under a state, with the table's own
+reference number (de Jong's reference list); empty where none is printed. Experimental re printed with fewer
+digits (4.2, 4.05, 4.25) are entered as printed.
+"""
+
+notes = """
+What the curves are (Sec. IV C): DHF + COSCI (spin-orbit CI over all states of the 5p valence shell)
+energies, then every excited-state point shifted by the difference between an RKR ground state and the
+calculated one at the same R, then refitted. Unshifted COSCI vertical energies run ~0.1 eV high and bond
+lengths ~0.1 A long (p. 9051). Te + De is the same for all ten states of 2P3/2 + 2P1/2, 2.526 eV; the paper
+gives no point-wise curves, only Figs. 2-3.
+
+Use here. Chen, de Jong & Ye, JOSA B 22, 951 (2005) took these curves for R < 7 A, shifted each vertically
+to meet Saute & Aubert-Frecon 1982 (data/theory/saute1982) at 7 A, and used the result as the perturbers of
+B in second-order hyperfine sums. Without the point-wise curves, the hyperfine prototype builds each
+perturber from this table (Morse from De, re, we) joined to the Saute long range; see
+prototypes/explore/physical_search/second_order_hyperfine.py, perturber_curves().
+
+Related: Teichteil & Pelissier, Chem. Phys. 180, 1 (1994) (data/theory/teichteil1994), the earlier
+spin-orbit CI with the same 23-state space; de Jong et al. find their curves "show a close resemblance".
+"""

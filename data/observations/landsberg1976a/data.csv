@@ -1,0 +1,27 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a18,interval,12.847,0.02,,a17,landsberg1976a_hanes1973,"Table 1: d-e = 12.847 MHz (obs-calc +0.001); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a18,interval,26.206,0.02,,a16,landsberg1976a_hanes1973,"Table 1: d-f = 26.206 MHz (obs-calc -0.011); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a18,interval,39.378,0.02,,a15,landsberg1976a_hanes1973,"Table 1: d-g = 39.378 MHz (obs-calc +0.008); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a17,interval,13.371,0.02,,a16,landsberg1976a_hanes1973,"Table 1: e-f = 13.371 MHz (obs-calc +0.000); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a17,interval,26.521,0.02,,a15,landsberg1976a_hanes1973,"Table 1: e-g = 26.521 MHz (obs-calc -0.003); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a16,interval,13.167,0.02,,a15,landsberg1976a_hanes1973,"Table 1: f-g = 13.167 MHz (obs-calc +0.014); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a16,interval,116.907,0.02,,a14,landsberg1976a_hanes1973,"Table 1: f-h = 116.907 MHz (obs-calc -0.019); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a15,interval,125.71,0.02,,a13,landsberg1976a_hanes1973,"Table 1: g-i = 125.71 MHz (obs-calc +0.019); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a14,interval,21.919,0.02,,a13,landsberg1976a_hanes1973,"Table 1: h-i = 21.919 MHz (obs-calc +0.001); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a14,interval,43.472,0.02,,a12,landsberg1976a_hanes1973,"Table 1: h-j = 43.472 MHz (obs-calc -0.018); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 R(127) 11-5,a13,interval,21.591,0.02,,a12,landsberg1976a_hanes1973,"Table 1: i-j = 21.591 MHz (obs-calc +0.020); data of Hanes, Baird & DeRemigis 1973 (ref. 1)"
+127I2 P(13) 43-0,a21,interval,562.302,0.0063,,a7,landsberg1976a_hackel1975,Table 2: a-o = 562.302 MHz (obs-calc -0.011); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a20,interval,502.614,0.0063,,a7,landsberg1976a_hackel1975,Table 2: b-o = 502.614 MHz (obs-calc +0.004); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a17,interval,405.908,0.0063,,a7,landsberg1976a_hackel1975,"Table 2: e (printed c, see meta.toml)-o = 405.908 MHz (obs-calc -0.006); data of Hackel et al. 1975 (ref. 3)"
+127I2 P(13) 43-0,a16,interval,361.739,0.0063,,a7,landsberg1976a_hackel1975,Table 2: f-o = 361.739 MHz (obs-calc +0.001); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a15,interval,332.387,0.0063,,a7,landsberg1976a_hackel1975,Table 2: g-o = 332.387 MHz (obs-calc +0.007); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a12,interval,180.592,0.0063,,a7,landsberg1976a_hackel1975,Table 2: j-o = 180.592 MHz (obs-calc +0.002); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a11,interval,138.964,0.0063,,a7,landsberg1976a_hackel1975,Table 2: k-o = 138.964 MHz (obs-calc +0.008); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a9,interval,94.711,0.0063,,a7,landsberg1976a_hackel1975,Table 2: m-o = 94.711 MHz (obs-calc +0.002); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a8,interval,83.696,0.0063,,a7,landsberg1976a_hackel1975,Table 2: n-o = 83.696 MHz (obs-calc +0.003); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a6,interval,-14.224,0.0063,,a7,landsberg1976a_hackel1975,Table 2: p-o = -14.224 MHz (obs-calc +0.004); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a5,interval,-51.776,0.0063,,a7,landsberg1976a_hackel1975,Table 2: q-o = -51.776 MHz (obs-calc -0.004); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a4,interval,-178.956,0.0063,,a7,landsberg1976a_hackel1975,Table 2: r-o = -178.956 MHz (obs-calc -0.005); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a3,interval,-254.996,0.0063,,a7,landsberg1976a_hackel1975,Table 2: s-o = -254.996 MHz (obs-calc -0.002); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a2,interval,-314.901,0.0063,,a7,landsberg1976a_hackel1975,Table 2: t-o = -314.901 MHz (obs-calc -0.002); data of Hackel et al. 1975 (ref. 3)
+127I2 P(13) 43-0,a1,interval,-386.761,0.0063,,a7,landsberg1976a_hackel1975,Table 2: u-o = -386.761 MHz (obs-calc -0.000); data of Hackel et al. 1975 (ref. 3)

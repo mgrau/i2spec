@@ -1,0 +1,11 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(47) 9-2,a13,frequency,489880604.75,0.25,,,shiner1993a,"Table I: R(47) 9-2 i, 489880604.75(0.25) MHz"
+127I2 P(40) 9-2,a1,frequency,489913113.11,0.25,,,shiner1993a,"Table I: P(40) 9-2 o, 489913113.11(0.25) MHz"
+127I2 R(80) 11-2,a1,frequency,495162602.95,0.25,,,shiner1993a,"Table I: R(80) 11-2 o, 495162602.95(0.25) MHz"
+127I2 R(66) 13-2,a1,frequency,502019757.76,0.25,,,shiner1993a,"Table I: R(66) 13-2 o, 502019757.76(0.25) MHz"
+127I2 R(73) 11-2,a13,frequency,495475642.61,0.24,,,shiner1993a,"Table II: R(73) 11-2 i, 16527.288442(8) cm-1 x c (atlas line 3286)"
+127I2 R(79) 11-2,a1,frequency,495209036.13,0.24,,,shiner1993a,"Table II: R(79) 11-2 u, 16518.395407(8) cm-1 x c (atlas line 3247); the paper notes it was misidentified as o in Gilligan and Eyler 1992"
+127I2 R(24) 13-3,a15,frequency,496822926.58,0.24,,,shiner1993a,"Table II: R(24) 13-3 a, 16572.228998(8) cm-1 x c (atlas line 3603)"
+127I2 R(40) 11-2,a1,frequency,496549603.58,0.24,,,shiner1993a,"Table II: R(40) 11-2 o, 16563.111924(8) cm-1 x c (atlas line 3515)"
+127I2 P(49) 11-2,a13,frequency,496161498.14,0.24,,,shiner1993a,"Table II: P(49) 11-2 i, 16550.166120(8) cm-1 x c (atlas line 3417)"
+127I2 P(114) 12-2,a1,frequency,495962116.70,0.24,,,shiner1993a,"Table II: P(114) 12-2 o, 16543.515471(8) cm-1 x c (atlas line 3374)"

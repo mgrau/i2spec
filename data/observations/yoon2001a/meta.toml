@@ -1,0 +1,55 @@
+id = "yoon2001a"
+citation = "T. H. Yoon, J. Ye, J. L. Hall and J.-M. Chartier, \"Absolute frequency measurement of the iodine-stabilized He-Ne laser at 633 nm\", Appl. Phys. B 72, 221-226 (2001)"
+source = "Appl. Phys. B 72, 221-226 (2001); https://doi.org/10.1007/s003400000473 (publisher PDF, Matt's library copy papers/Yoon2001_APB72_221.pdf)"
+doi = "10.1007/s003400000473"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "precision.yaml:yoon2001a"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the pages:
+- Eq. (1), p. 224: f_i(JILA) = 473 612 214 711.57 +- 1.06 kHz, the i (a13) component of 127I2 R(127) 11-5 for
+  the JILA-145 laser, measured with the JILA comb against the Nd:YAG/I2 laser (281 630 111 757.22 +- 0.30 kHz at
+  1064 nm, measured the same day) and corrected by -0.38 kHz to the CIPM standard operating conditions (10 mW
+  one-way intracavity power, 15 C cold finger, 6 MHz p-p) with the Table 2 coefficients.
+- p. 225: the interval f - i = 138 890.80 kHz from the comb measurement of the f (a16) component of the same
+  laser. The heterodyne set-up of Fig. 1 gives 138 891.00 kHz for the same interval; the comb value is entered.
+Labels: i = a13 and f = a16 of R(127) 11-5 (the paper writes "i (or a13)"; bipm2003a).
+
+Not entered: f_i(BIPM-4) = 473 612 214 711.9 +- 2.0 kHz of eq. (2), the same measurement transferred to the
+BIPM-4 laser through the Table 4 intercomparison, i.e. not independent; the Table 3 laser-to-laser differences;
+the Table 2 shift coefficients (recorded under [conditions]).
+
+Overlap: this measurement is among those behind the MeP 633 nm value (bipm2003a) and enters the CIPM 2001
+re-evaluation; diddams2000a measured the JILA reference laser SN-126 (Table 3: JILA-145 - NIST-126 = -1.8 kHz).
+"""
+
+uncertainty = """
+1.06 kHz for the absolute, as printed (1 sigma). The f - i interval has no printed uncertainty; 1.0 kHz is taken:
+both components were measured with the same comb, reference and laser, and the two methods agree to 0.2 kHz.
+One laser, so one group.
+"""
+
+notes = """
+Residuals against i2spec2026o (Predictor(), obs - model): a13 -337.9 kHz as measured, -112.0 kHz after the shift
+correction (bipm2003a a16 -342.7 / -116.8; diddams2000a SN-126 a13 -335.2 / -109.4); f - i interval -6.4 kHz.
+Checked with the shipped model only.
+"""
+
+[conditions]
+method = "He-Ne laser with internal iodine cell, third-harmonic locking; Ti:sapphire comb referenced to a GPS-calibrated Rb clock, bridged from an Nd:YAG/I2 standard"
+laser = "JILA-145 (commercial He-Ne/I2), 'after' settings of Table 3: 14.91 C, 5.98 MHz p-p, 92 uW output"
+shift_coefficients = "Table 2 (JILA-145): -13.21(30) kHz/K (iodine temperature, e component), -10.52(60) kHz/MHz (FM width), -0.080(14) kHz/uW (output power)"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "Values are at the CIPM standard operating conditions (paper p. 224), so bipm2003a's coefficients take them to zero pressure, power and modulation exactly as for the MeP value: 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at 10 mW."

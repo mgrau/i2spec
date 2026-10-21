@@ -34,8 +34,15 @@ def _rows(s):
     n_int = s["n_intervals"]
     parts = [f'{s["n_absolute"]} absolute' if s["n_absolute"] else "",
              f'{n_int} interval{"" if n_int == 1 else "s"}' if n_int else ""]
+    also = s.get("n_also", 0)
+    if not s["n_rows"]:              # every row printed first elsewhere: cited under the paper that reported it
+        return (" ".join(ISO.get(i, i) for i in s["isotopologues"])
+                + f' · prints again {also} measurement{"" if also == 1 else "s"} listed under the paper'
+                  f'{"" if also == 1 else "s"} that first reported {"it" if also == 1 else "them"}')
     return (f'{s["n_rows"]} row{"" if s["n_rows"] == 1 else "s"} ({", ".join(p for p in parts if p)}) · '
-            + " ".join(ISO.get(i, i) for i in s["isotopologues"]))
+            + " ".join(ISO.get(i, i) for i in s["isotopologues"])
+            + (f' · also prints {also} measurement{"" if also == 1 else "s"} listed under the papers that '
+               f'report{"s" if also == 1 else ""} {"it" if also == 1 else "them"}' if also else ""))
 
 
 def _tables():
@@ -43,23 +50,37 @@ def _tables():
 
     src = sources()
     year = lambda s: int("".join(c for c in s["id"] if c.isdigit())[:4] or 0)  # noqa: E731
-    precision = sorted((s for s in src if s["kind"] == "precision"), key=lambda s: (year(s), s["short"]))
+    precision = sorted((s for s in src if s["kind"] == "precision" and s.get("fit", True)),
+                       key=lambda s: (year(s), s["short"]))
+    blind = sorted((s for s in src if s["kind"] == "precision" and not s.get("fit", True)),
+                   key=lambda s: (year(s), s["short"]))
     atlas = [s for s in src if s["kind"] == "atlas"]
     n = lambda kind: sum(s["n_lines"] for s in src if s["kind"] == kind)  # noqa: E731
-    out = [f'{len(precision)} precision data sets covering {n("precision"):,} lines, and {len(atlas)} atlases '
-           f'with {n("atlas"):,} assigned lines.', "",
+    out = [f'{len(precision)} precision data sets in the fit, {len(blind)} more held out of every fit for the '
+           f'blind test, covering {n("precision"):,} lines together, and {len(atlas)} atlases with '
+           f'{n("atlas"):,} assigned lines.', "",
            '## <span class="kind precision"></span>Sub-Doppler and frequency-comb measurements', "",
-           "Absolute frequencies of hyperfine components or line centres, and hyperfine intervals, with "
-           "uncertainties between 0.25 kHz and a few MHz. They determine the level energies, the level corrections "
-           "and the hyperfine parameters. Under each citation: the number of absolute frequencies and hyperfine intervals, and the isotopologues.", "",
+           "Absolute frequencies of hyperfine components or line centers, and hyperfine intervals, with "
+           "uncertainties between 0.25 kHz and a few MHz. They determine the potentials and the hyperfine "
+           "functions of balanced-expanded (and the level corrections of i2spec2026o). Under each citation: the "
+           "number of absolute frequencies and hyperfine intervals, and the isotopologues.", "",
            "| source | lines | range (nm) | median u |",
            "|---|--:|--:|--:|"]
     for s in precision:
         out.append(f'| {_source(s, _rows(s))} | {s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
+    if blind:
+        out += ["", '## <span class="kind precision"></span>Held out for the blind test', "",
+                "Transcribed on October 20 and 21, 2026 and held out of every fit: the model's predictions of them, "
+                "and from the second batch on their uncertainties, were frozen before their values were read, "
+                "then scored once (two registries, pending_blind_v1 and v2; docs/research-model-validation.md). "
+                "The explorer shows them, marked “blind test, not fitted”.", "",
+                "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
+        for s in blind:
+            out.append(f'| {_source(s, _rows(s))} | {s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
     out += ["", '## <span class="kind atlas"></span>Fourier-transform atlases', "",
-            "Doppler-limited line centres, assigned in this work by comparison with the model. They determine "
-            "levels outside the range of the precision data (X v″ = 18–25, from the Orsay atlas) and are used to "
-            "test the model elsewhere. The calibration of each atlas is given with it.", "",
+            "Doppler-limited line centers, assigned in this work by comparison with the model. The Salami & Ross "
+            "and APO atlases are in the core fit; the Orsay atlases determine the levels beyond it (X v″ = 18–25, "
+            "B v′ = 51–80). The calibration of each atlas is given with it.", "",
             "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
     for s in atlas:
         out.append(f'| {_source(s)}<br><span class="cite">Calibration: {html.escape(s["uncertainty"])}</span> | '

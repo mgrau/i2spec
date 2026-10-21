@@ -1,0 +1,50 @@
+id = "martin1983"
+citation = "F. Martin, S. Churassy, R. Bacis, R. W. Field and J. Vergès, \"Long range behavior of the gerade states near the 2P3/2 + 2P3/2 iodine dissociation limit by laser-induced-fluorescence Fourier-transform spectroscopy\", J. Chem. Phys. 79, 3725-3737 (1983)"
+source = "https://doi.org/10.1063/1.446293 (scanned PDF, papers/Martin1983_JCP79_3725.pdf)"
+doi = "10.1063/1.446293"
+retrieved = "2026-10-20"
+unit = "cm-1"
+isotopologue = "127I2"
+state = "X"
+
+transcription = """
+Table II, "Rotation-vibration constants for the near-dissociation levels of 127I2 X 0g+", printed p. 3728
+(PDF page 5, landscape). Every value was read from a 300 dpi render; the PDF's OCR text layer has wrong
+glyphs (e.g. "0.S22", "12413,9693", "O. 006163"). One row per printed row: v'' = 90-109, with two rows for
+v'' = 90 (deperturbed from 1g v=5, sampled from B v'=58 only; and the fit of B v'=61, 67, 68 lines, which
+is biased by 1g v=4 near J=35).
+
+Columns, as printed:
+  v                  v''
+  T                  T(v'', J''=0) in cm-1 relative to X(v''=0, J''=0) = 0
+  B                  B in cm-1
+  D_x1e7             D x 10^7 in cm-1
+  H_x1e12            H x 10^12 in cm-1
+  *_unc              the parenthesized uncertainty, TWO standard deviations (table footnote), converted from
+                     last-digit units to the column's printed scale. Empty = held fixed in the fit (footnote a:
+                     T of v''=90 first row and v''=93, D of v''=109, H printed 0 or with an a) or not given.
+  n_lines            number of fitted lines
+  sampled_from_B_v   B 0u+ v' levels whose fluorescence sampled the level
+  rms_x1e3           rms of the fit, 10^-3 cm-1
+  observation        the table's Observations column
+
+Term values: E(v, J) = T + B x - D x^2 + H x^3, x = J(J+1) (signs as in Martin 1986, Hutson's convention).
+"""
+
+notes = """
+Relation to Martin 1986 (data/x_levels/martin1986): the 1986 Table I lists only the unperturbed levels 91,
+92, 94-96, 99, 100, 104, 105, 107, 108 and refers to this paper for the rest. At those 11 levels
+1986 - 1983 = +0.0056 cm-1 (median; the 1986 origin is G(9) fixed to Luc's value) and the scatter about that
+is mostly within 0.2 GHz (v''=108: -0.36 GHz). Add +0.0056 cm-1 to put these values on the 1986 origin.
+
+Levels here and not in 1986: 90 (both rows), 93, 97, 106 (deperturbed from X-a 1g rotational perturbations,
+Table VI), 98 (a 1g v=14 crosses near J=0; lines from B v'=61, 62 left out of the fit), 101 (two lines only,
+perturbed by a' 0g+ v=7, which crosses it at J 45-50), 102, 103 (fitted without comment; 102 may be weakly
+perturbed by a' 0g+ v=8, 0.6 cm-1 away), 109.
+
+The rest of the paper (not transcribed here): Table III, a 1g v = 5, 8, 13, 23; Table IV, a' 0g+ v = 6-9;
+Table V, a' 0g+ RKR v = 0-9; Table VI, X-a 1g perturbation parameters (beta = 0.00705, 0.00497, 0.00251,
+0.0064 cm-1 for X v''90/a v5, 93/8, 97/13, 106/23; <X|H|1g e> = -sqrt(J(J+1)) beta); the X-a' 0g+ matrix
+element is bounded at < 0.2 cm-1; Tables VII-IX, D0 = 12440.083(145) cm-1 above X(0,0), vD = 113.93(17),
+n = 6.09(11), and C5, C6, C8 from the outer RKR turning points of X, a 1g and a' 0g+.
+"""

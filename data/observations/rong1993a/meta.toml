@@ -1,0 +1,48 @@
+id = "rong1993a"
+citation = "H. Rong, S. Grafström, J. Kowalski, G. zu Putlitz, W. Jastrzebski and R. Neumann, \"A heterodyne laser spectrometer for precision measurements of large line splittings\", Opt. Commun. 100, 268-277 (1993)"
+source = "https://doi.org/10.1016/0030-4018(93)90589-W (PDF supplied by Matt; library copy papers/Rong1993_Opt_Commun.pdf)"
+doi = "10.1016/0030-4018(93)90589-W"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 2 (p. 275), typed from a 300 dpi page image: 16 beat frequencies between hyperfine components of 17 127I2
+lines near 548.6 nm, each laser locked (third derivative) to one component in a common cell, chaining 150 GHz
+between the reference components 3770 a10, 3786 a1 and 3806 a2 of the paper's Li+ fine-structure measurement.
+Lines are named only by their number in the Gerstenkorn-Luc atlas, components "the lowest frequency hfs
+component within a given line being labeled with a1, the second-lowest with a2, etc." (ranks, as here).
+
+Assignments, made here (none is printed): with absolute positions from Riis et al. 1994 (Phys. Rev. A 49, 207,
+Table II: the 7Li+ 2 3S1 - 2 3P transitions) minus the Li+ - I2 distances of Table 1, every chained component falls
+on a model (i2spec2026o) component of the printed rank with one common offset, and the next candidates are
+hundreds of MHz away: 3770 R(86) 25-0, 3773 R(33) 24-0, 3774 P(29) 24-0, 3776 P(82) 25-0, 3779 R(32) 24-0,
+3781 P(50) 27-1, 3782 R(91) 28-1, 3786 R(85) 25-0, 3787 R(114) 26-0, 3788 R(30) 24-0, 3792 P(81) 25-0,
+3794 R(29) 24-0, 3796 P(25) 24-0, 3798 P(110) 26-0, 3802 R(84) 25-0, 3804 R(27) 24-0, 3806 P(23) 24-0 (the
+bands 24-0 to 28-1 that Knoeckel et al. 2004 name for this paper; the components a15 and a21 fall on lines with
+even and odd J'' respectively). 3786 a1, R(85) 25-0 a1, is the line grieser1994a measured absolutely, from the
+same Heidelberg Li+ project.
+
+Correction: the eighth row, 3787 a15 - 3788 a1, is printed 10 850 514 kHz. The printed sums in Sect. 3.2.2,
+(3786 a1 - 3806 a2) = 83 138.1(6) MHz and (3770 a10 - 3806 a2) = 149 647.2(1.0) MHz, are each 100.000 MHz below the
+sums of the printed rows (83 238.1 and 149 747.2), while (3770 a10 - 3786 a1) = 66 508.29 MHz equals its rows'
+sum; the model also puts that one interval 100 MHz off and every other row within 2 MHz. Entered as
+10 750.514 MHz.
+Signs: each row is f(second line) - f(first line), positive (the chain runs up in frequency).
+
+Not entered: Table 1 (Li+ - I2 distances) and Table 3, which are Li+ measurements; the derived sums.
+"""
+
+uncertainty = "The printed errors (12-27 kHz) are 3 sigma statistical, from 1-2 min of beat readings. Sect. 2.3 gives the lock reproducibility for well-isolated lines as \"better than +-100 kHz\" (a conservative estimate from repeated measurements days apart, the optics realigned), which dominates; 0.1 MHz is entered for every row. One cell held both lasers, so pressure shifts cancel."
+
+notes = """
+Residuals against i2spec2026o (obs - model): rms 1.06 MHz, largest -2.31 MHz (P(50) 27-1 a15 - R(32) 24-0 a1).
+Intervals within one band agree to 0.2 MHz (R(33)/P(29), R(29)/P(25), R(27)/P(23) of 24-0: -0.17, +0.06,
+-0.04 MHz); those across bands are off by about 1 MHz, with the 25-0 lines about 1.3 MHz low against 24-0: the
+model's relative band origins at v' = 24-28 are off at the MHz level (cf. hsiao2013a). The chain fixes 17 lines
+of v' = 24-28 to each other across 5 cm-1, where nothing else held measures them except grieser1994a's
+R(85) 25-0 a1. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "two cw ring dye lasers at 548.6 nm locked by third-derivative saturated absorption in one I2 cell (cold finger 12 C); beat counted to 12.5 GHz"

@@ -1,0 +1,31 @@
+id = "glaser1987a"
+citation = "M. Gläser, \"Properties of a He-Ne laser at lambda = 612 nm, stabilized by means of an external iodine absorption cell\", IEEE Trans. Instrum. Meas. IM-36, 604-608 (1987)"
+source = "https://doi.org/10.1109/TIM.1987.6312749 (library copy papers/Glaser1987_IEEETIM36_604.pdf)"
+doi = "10.1109/TIM.1987.6312749"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table I (p. 607), typed from a 300 dpi page image: frequency differences of 19 hyperfine components from a7 of
+R(47) 9-2, "determined by beat frequency measurements" between two BIPM He-Ne lasers at 612 nm stabilized (third
+harmonic, 4.1 Pa, 2.28 MHz) to an external 50 cm iodine cell with no cell inside the laser; matrices of
+difference frequencies adjusted by least squares (the lasers differ by 2 +- 2 kHz). Components a1-a6, a8-a15 of
+R(47) 9-2 and b11-b15 of P(48) 11-3, as labelled (ranks; R(47) has 21 components, P(48) 15).
+Not entered: the column Delta-nu - Delta-nu* (differences from the means of internal-cell lasers, ref. [9]; kept in
+the notes); the shift coefficients (pressure -53 kHz/Pa in width, modulation -4 kHz/MHz, temperature -3.7 kHz/K)
+and Fig. 7 (b11/b12 against modulation depth).
+"""
+
+uncertainty = "The printed s (5 kHz to 0.1 MHz), \"estimated from the measurement uncertainties, but also from other conditions, which may affect the peak frequencies such as the overlap of peaks or the beam geometry\"."
+
+notes = """
+The MEP 612 nm Tables 1-2 (bipm2003d) cite this paper (ref. [12]); declared there as "mean". Residuals against
+i2spec2026o (obs - model): R(47) 9-2 rms 3.6 kHz; P(48) 11-3 from a7 rms 60 kHz. Checked with the shipped model only.
+"""
+
+[conditions]
+cold_finger_C = 0.0
+pressure_Pa = 4.1
+modulation_MHz_pp = 2.28
+method = "He-Ne lasers at 612 nm with an external 50 cm I2 cell (no internal cell), third-harmonic locking at 4.4 kHz; one beam shifted by +-250 MHz with an AOM"

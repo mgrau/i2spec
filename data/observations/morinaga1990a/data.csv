@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(69) 3-4,a15,frequency,455986049.014,0.02,,,morinaga1990a,"Sect. 3: Ca(1S0-3P1) - I2(g, 3-4, R(67)) = 191.48 +- 0.02 MHz (R(67) a misprint for R(69), see meta.toml); entered as f(40Ca 1S0-3P1) = 455 986 240.494 MHz minus 191.48 MHz"

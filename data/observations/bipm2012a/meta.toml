@@ -4,7 +4,6 @@ source = "https://www.bipm.org/documents/20126/41549514/M-e-P_I2_532.pdf/16c7ddb
 retrieved = "2026-09-14"
 catalog = "data/catalog/precision.yaml#bipm2012a"
 unit = "MHz"
-defer_to = ["ye1999a", "holzwarth2001a", "zhang2001a", "hong2000a", "hong2001a", "hong2001b", "hong2002a", "hong2004a", "arie1994a", "jones2002a", "hong2004b", "hong2002b"]   # The MEP 532 nm tables are compiled from these sources (their Source data 2.2 and table references); each measurement enters the fit once, from its source (load_all drops the rows they also hold).
 transcription = """
 Page 1: recommended f(a10, R(56) 32-0). Pages 2-3: intervals f(a1 or a21 of each line) - f(a10, R(56) 32-0),
 the list of 17 lines (p. 2) and the three 2007 additions (p. 3), converted from kHz to MHz. These were typed
@@ -57,3 +56,27 @@ cold_finger_C = -15.0
 modulation_MHz_pp = 1.0
 detection = "3f"
 saturating_intensity_mW_cm2 = 17.0
+
+# Measurements this compilation prints that other sets hold (docs/design/observations.md, "One record per
+# measurement"), from its Source data 2.2 and table references. Hyperfine tables reprinted from their papers
+# ("same", one record cited to the paper first): Tables 1, 7, 8 hong2002a; 2-4 hong2001a; 5, 6 hong2000a;
+# 9, 10 ye1999a (rounded to 1 kHz); 16 hong2001b (re-referenced to a10); 18, 19 hong2002b; 20 and the 2007
+# interval hong2004a; 13 eickhoff1995a (rounded to 1 kHz); six of the intervals to R(56) a10 zhang2001a. A value
+# that two of these determine (most intervals to a10) is the MEP's mean. Table 11 is a mean that includes
+# arie1994a (differences to 4 kHz), and f(a10) is the mean of the absolute measurements, diddams2000a (pending)
+# among them.
+[overlaps]
+hong2000a = "same"
+hong2001a = "same"
+hong2001b = "same"
+hong2002a = "same"
+hong2002b = "same"
+hong2004a = "same"
+ye1999a = "same"
+zhang2001a = "same"
+holzwarth2001a = "mean"
+jones2002a = "mean"
+hong2004b = "mean"
+arie1994a = "mean"
+diddams2000a = "mean"
+eickhoff1995a = { relation = "same", lines = ["127I2 R(106) 34-0"] }   # Table 13; pending until admitted

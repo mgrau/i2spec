@@ -5,11 +5,20 @@ line. It computes level energies from potential-energy curves, line positions, h
 from an effective nuclear-spin Hamiltonian, line strengths, absorption spectra and cell transmission,
 for ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I from the dissociation limit near 499 nm into the near infrared.
 
-The model keeps the potentials of Salumbides et al. (2008) where they were fitted (X v″ ≤ 17,
-B v′ ≤ 43), uses Morse/long-range curves fitted here beyond them, and adds measured level corrections
-from every comb-referenced line, with a Gaussian process for the B levels that have no data of their
-own; it reproduces the precision data sets to 0.02–0.3 MHz where they exist. The web app's
-"How it works" page summarises the physics.
+For ¹²⁷I₂ the model is **balanced-expanded**. It has one Morse/long-range potential per state, with a
+fitted rotational function, and radial B-state hyperfine functions. These are fitted in one problem to
+every precision measurement and two Fourier-transform atlases with X v″ ≤ 17 and B v′ ≤ 43, then continued
+to both dissociation limits (X v″ ≤ 108, B v′ ≤ 80) by terms that act only beyond that core. It has no
+correction to any individual level or line. Every prediction comes with a 1σ from a frozen uncertainty
+model: the fit's covariance, plus the error of predicting levels and hyperfine intervals held out of the fit.
+It predicts held-out comb data to 0.16 MHz (absolute components) and 0.06 MHz (hyperfine intervals). On 36
+data sets kept out of every fit it ties or beats the earlier model, i2spec2026o, on lines nobody had measured
+before.
+
+¹²⁹I₂, ¹²⁷I¹²⁹I, the line strengths and the few ¹²⁷I₂ lines beyond that domain come from i2spec2026o. That
+model uses the 2008 potentials of Salumbides et al., Morse/long-range curves beyond them, level corrections
+fitted to the comb lines and the published hyperfine formulae. The documentation's "Model" pages describe
+both models.
 
 ## Quick start
 
@@ -37,9 +46,11 @@ zoom, `[`/`]` pan, `c` centres on the selected line, `l` toggles a log scale, an
 lower plot between the selected line's Doppler profile and its sub-Doppler trace (Lamb dips and
 crossovers). `s` sorts by strength, `a` shows the weak ΔF ≠ ΔJ components, `/` returns to the search box.
 
-Positions carry a 1σ uncertainty estimated from held-out data, not from a fit, with the reason:
-0.05–1 MHz on measured levels, tens of MHz for the atlas-measured X v″ = 18–25, up to GHz where
-nothing has been measured.
+Positions carry a 1σ uncertainty and the reason for it. For ¹²⁷I₂ these are balanced-expanded's: 0.2–1 MHz
+in the core, 1–30 MHz for most levels beyond it, and 0.1–0.2 GHz for the last X levels; lines whose levels lie
+beyond the data are flagged *extrapolated*. `i2spec line` also gives each hyperfine component's 1σ. Every
+measurement of a line is listed beside the model, with its own uncertainty. `I2SPEC_MODEL=i2spec2026o`
+switches the tools back to the earlier model.
 
 ## Web app
 
@@ -59,11 +70,40 @@ uv run i2spec web build site         # the static site in site/, as GitHub Pages
 node web/test_physics.mjs            # check the browser physics against the Python model
 ```
 
+The research progress dashboard runs in the terminal:
+
+```sh
+uv run i2spec progress
+```
+
+It refreshes every 30 seconds and shows remaining refits, accepted and failed
+attempts, worker log activity, finish estimates, and follow-up studies. Press
+`r` to refresh, `space` to pause display updates, `1`–`4` to switch views, and
+`q` to quit. Fits keep running when the dashboard is paused or closed. Use
+`--interval 10` for faster updates, `--out PATH` for another artifact directory,
+or `--json` for a single machine-readable snapshot. Counts and ETA cover the
+current validation queues; failed attempts count as finished. After the original
+queues finish, the overview shows the numerical recoveries, starting-value
+checks, potential/hyperfine combinations, joint-data pilots and exact-J numerical
+refits from the local finalization registry. Their counts describe the current stages; completed
+pilots still need scientific review. The dashboard includes supplemental workers.
+
 Pushing to `main` runs `.github/workflows/pages.yml`, which builds the site and publishes it to GitHub
 Pages (Settings → Pages → Source: GitHub Actions). See [`docs/design/web-app.md`](docs/design/web-app.md)
 for the data format and the deliberate limits (no sub-Doppler, no continuum, one isotopologue at a time).
 
 ## Python
+
+```python
+from i2spec import ResearchModel
+
+m = ResearchModel("balanced_expanded")             # the preferred model for 127I2
+m.frequency("R(56) 32-0", "a10")                   # ≈ 563 260 223.36 MHz (CIPM: 563 260 223.513 MHz)
+u = m.uncertainty("R(56) 32-0", "a10")             # 1σ 0.42 MHz: statistical, model and hyperfine parts
+m.uncertainty("R(56) 32-0", "a15", "a1").sigma_MHz # 0.058 MHz for an interval within the line
+```
+
+The earlier model, i2spec2026o (all isotopologues, line strengths):
 
 ```python
 from i2spec import MHZ_PER_CM, RovibronicModel
@@ -77,13 +117,35 @@ a10 = next(c for c in comps if c.label == "a10")
 print(nu0 + a10.offset)             # ≈ 563 260 223.57 MHz (CIPM value: 563 260 223.513 MHz)
 ```
 
+Five frozen research models are explicitly selectable: compact, absolute-accuracy, balanced and
+hyperfine-precision roles (October 18, 2026, X v≤17, B v≤43), and balanced-expanded (October 20, 2026),
+which the apps prefer for ¹²⁷I₂ (`src/i2spec/preferred.py`):
+
+```sh
+uv run i2spec research list
+uv run i2spec research predict 'P(53) 32-0' --component a1 --model research-20261018-balanced
+uv run i2spec research verify --model research-20261018-balanced
+```
+
+In Python, use `ResearchModel("research-20261018-balanced").frequency("P(53) 32-0", "a1")`
+from `i2spec`. Frequencies are MHz; the October 18 domain is 127I2, X v≤17,
+B v≤43 and lower J≤200; balanced-expanded's is X v≤108, B v≤80. See
+[the model inventory and API](docs/research-models.md) for validation scope, the uncertainty model and
+how the apps use balanced-expanded.
+The [prospective validation guide](docs/research-model-validation.md) provides
+48 frozen laboratory targets and measurement-scoring commands. Fresh lab
+validation is awaiting new measurements; the TUI shows that gate separately
+from completed fit queues.
+
 ## Repository layout
 
 | path | what |
 |---|---|
 | `src/i2spec/` | the package: potentials, radial solvers, level corrections, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
 | `src/i2spec/data/` | the model parameters: potentials, level corrections, hyperfine tables |
-| [`models/research-20261008/`](models/research-20261008/README.md) | frozen research candidate with the lowest current absolute RMS, coefficients, provenance and a standalone evaluator |
+| [`src/i2spec/data/research/20261018/`](src/i2spec/data/research/20261018/README.md) | four selectable frozen research roles, coefficients, source hashes, validation and reference predictions |
+| [`src/i2spec/data/research/20261020/`](src/i2spec/data/research/20261020/README.md) | balanced-expanded: its tails, hyperfine tables, uncertainty model, audits, validation and the blind test |
+| [`models/research-20261008/`](models/research-20261008/README.md) | earlier frozen research candidate and standalone evaluator |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
 | `data/catalog/` | the literature catalog: every data source found, with DOIs |
@@ -114,7 +176,10 @@ uv run --group research python prototypes/<script>.py   # a research script that
 
 ## Sources
 
-- Potentials: E. J. Salumbides et al., *Eur. Phys. J. D* **47**, 171 (2008), Table 1. This
+- balanced-expanded: Morse/long-range form of R. J. Le Roy & R. D. E. Henderson, *Mol. Phys.* **105**,
+  663 (2007); second-order B hyperfine of L. Chen, W. A. de Jong & J. Ye, *J. Opt. Soc. Am. B* **22**, 951
+  (2005). See `docs/research-models.md` and the documentation's reference list.
+- Potentials of i2spec2026o: E. J. Salumbides et al., *Eur. Phys. J. D* **47**, 171 (2008), Table 1. This
   supersedes the misprinted Table 4 of H. Knöckel, B. Bodermann & E. Tiemann, *Eur. Phys. J. D*
   **28**, 199 (2004). See `docs/research/hannover-model-reproduction.md`.
 - Hyperfine parameters: B. Bodermann, H. Knöckel & E. Tiemann, *Eur. Phys. J. D* **19**, 31 (2002),

@@ -1,0 +1,17 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(33) 24-0,a2,interval,11743.848,0.1,127I2 R(86) 25-0,a10,rong1993a,Table 2: atlas line 3773 a2 - 3770 a10 = 11743848 (12) kHz (3 sigma statistical)
+127I2 P(29) 24-0,a2,interval,5784.382,0.1,127I2 R(33) 24-0,a2,rong1993a,Table 2: atlas line 3774 a2 - 3773 a2 = 5784382 (27) kHz (3 sigma statistical)
+127I2 P(82) 25-0,a1,interval,8373.481,0.1,127I2 P(29) 24-0,a2,rong1993a,Table 2: atlas line 3776 a1 - 3774 a2 = 8373481 (15) kHz (3 sigma statistical)
+127I2 R(32) 24-0,a1,interval,9999.989,0.1,127I2 P(82) 25-0,a1,rong1993a,Table 2: atlas line 3779 a1 - 3776 a1 = 9999989 (12) kHz (3 sigma statistical)
+127I2 P(50) 27-1,a15,interval,10868.083,0.1,127I2 R(32) 24-0,a1,rong1993a,Table 2: atlas line 3781 a15 - 3779 a1 = 10868083 (15) kHz (3 sigma statistical)
+127I2 R(91) 28-1,a1,interval,8028.683,0.1,127I2 P(50) 27-1,a15,rong1993a,Table 2: atlas line 3782 a1 - 3781 a15 = 8028683 (21) kHz (3 sigma statistical)
+127I2 R(85) 25-0,a1,interval,11709.824,0.1,127I2 R(91) 28-1,a1,rong1993a,Table 2: atlas line 3786 a1 - 3782 a1 = 11709824 (18) kHz (3 sigma statistical)
+127I2 R(114) 26-0,a15,interval,4623.977,0.1,127I2 R(85) 25-0,a1,rong1993a,Table 2: atlas line 3787 a15 - 3786 a1 = 4623977 (18) kHz (3 sigma statistical)
+127I2 R(30) 24-0,a1,interval,10750.514,0.1,127I2 R(114) 26-0,a15,rong1993a,"Table 2: atlas line 3788 a1 - 3787 a15 = 10850514 (16) kHz (3 sigma statistical); printed 10850514, a misprint for 10750514: the table's sums are printed as 83138.1 MHz (3786 a1 - 3806 a2) and 149647.2 MHz (whole chain), 100 MHz below the printed rows' sums (see meta.toml)"
+127I2 P(81) 25-0,a1,interval,10693.229,0.1,127I2 R(30) 24-0,a1,rong1993a,Table 2: atlas line 3792 a1 - 3788 a1 = 10693229 (16) kHz (3 sigma statistical)
+127I2 R(29) 24-0,a2,interval,11130.219,0.1,127I2 P(81) 25-0,a1,rong1993a,Table 2: atlas line 3794 a2 - 3792 a1 = 11130219 (15) kHz (3 sigma statistical)
+127I2 P(25) 24-0,a21,interval,5892.583,0.1,127I2 R(29) 24-0,a2,rong1993a,Table 2: atlas line 3796 a21 - 3794 a2 = 5892583 (27) kHz (3 sigma statistical)
+127I2 P(110) 26-0,a15,interval,11761.622,0.1,127I2 P(25) 24-0,a21,rong1993a,Table 2: atlas line 3798 a15 - 3796 a21 = 11761622 (15) kHz (3 sigma statistical)
+127I2 R(84) 25-0,a1,interval,11488.163,0.1,127I2 P(110) 26-0,a15,rong1993a,Table 2: atlas line 3802 a1 - 3798 a15 = 11488163 (15) kHz (3 sigma statistical)
+127I2 R(27) 24-0,a2,interval,12171.202,0.1,127I2 R(84) 25-0,a1,rong1993a,Table 2: atlas line 3804 a2 - 3802 a1 = 12171202 (18) kHz (3 sigma statistical)
+127I2 P(23) 24-0,a2,interval,4627.355,0.1,127I2 R(27) 24-0,a2,rong1993a,Table 2: atlas line 3806 a2 - 3804 a2 = 4627355 (27) kHz (3 sigma statistical)

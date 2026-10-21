@@ -1,0 +1,24 @@
+id = "tesic1975a"
+citation = "M. Tesic and Y.-H. Pao, \"Theoretical assignment of the observed hyperfine structure in the saturated absorption spectra of 129I2 and 127I129I vapors in the 633 nm wavelength region\", J. Mol. Spectrosc. 57, 75-96 (1975)"
+source = "https://doi.org/10.1016/0022-2852(75)90043-0 (library copy papers/Tesic1975_J_Mol_Spectrosc.pdf)"
+doi = "10.1016/0022-2852(75)90043-0"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+A theory paper with no measurements of its own. Table 3 (p. 81) reproduces Knox and Pao's 1971 separations
+(knox1971a) "as reported", with the same digits and the same heterodyne marks; it is entered row for row as
+knox1971a is (the same pairs, assignments, signs and omissions), so that this paper is cited on those
+measurements, and declared below as "same".
+The paper's assignment of k, m, n, a', c'-j' and n'-v' to 129I2 P(54) 8-4, with l, o, p, b', k', l', m' left to
+127I129I, agrees with the one used in knox1971a (taken from the MEP).
+Not entered: Table 4, Knox's positions from k reduced by 0.8 MHz after Schweitzer et al.'s k - n = 55.7 MHz (an
+adjustment, not a measurement; the MEP's 129I2 P(54) 8-4 a6-a14 are these values); the calculated spectra and
+constants (Q' - Q'' = 1371.7(6) MHz, CM' - CM'' = 17.4(4) kHz for P(54) 8-4); Tables 1-2 (band origins).
+"""
+
+uncertainty = "As knox1971a: 0.5 MHz for the heterodyne pairs (\"accurate to 0.5 MHz\", p. 81), 1.5 MHz for the others (Knox's estimate is about 1 MHz; the a-k spacings run 10 % large)."
+
+[overlaps]
+knox1971a = "same"   # pending until admitted

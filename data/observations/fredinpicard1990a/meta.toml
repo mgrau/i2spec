@@ -1,0 +1,31 @@
+id = "fredinpicard1990a"
+citation = "S. Fredin-Picard and A. Razet, \"On the hyperfine structure of 127I2 lines at the 543 nm wavelength of the HeNe laser\", Opt. Commun. 78, 149-152 (1990)"
+source = "https://doi.org/10.1016/0030-4018(90)90112-7 (library copy papers/FredinPicard1990_Opt_Commun_78_149.pdf)"
+doi = "10.1016/0030-4018(90)90112-7"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Tables 2 and 3 (pp. 150-151), typed from 250 dpi page images: the "Obs." columns, which are the BIPM measurements
+of J.-M. Chartier, S. Fredin-Picard and L. Robertsson (Opt. Commun., ref. [6]: beats between two 543 nm He-Ne
+lasers, third-derivative locked to different components), with their standard deviations; that paper is not held,
+so the rows are entered here.
+- Table 2: R(12) 26-0 a7-a9, a11-a15 from a10.
+- Table 3: R(106) 28-0 b2-b6 from b1 (b1 printed 0.000(9)).
+Labels as printed; both lines have even J'' (15 components), a_k and b_k are ranks.
+Not entered: the calculated columns and Tables 4-5 (fitted constants, with the X state held at Yokozeki and
+Muenter's v'' = 0, J'' = 13 values).
+"""
+
+uncertainty = "As printed in parentheses (6 kHz to 0.20 MHz), the experimental standard deviations of ref. [6]."
+
+notes = """
+The MEP 543 nm tables (bipm2003b) cite this paper (ref. [7]) and Chartier et al. (ref. [5]) with Gläser 1987, Simonsen
+and Lin 1994; declared there as "mean" (no MEP row is reached: the MEP gives both lines from R(106) b10). Residuals
+against i2spec2026o (obs - model): R(12) 26-0 rms 20 kHz, R(106) 28-0 rms 0.11 MHz. Checked with the shipped model
+only.
+"""
+
+[conditions]
+method = "two He-Ne lasers at 543 nm with internal iodine cells, third-derivative locking, beat frequencies (Chartier et al.)"

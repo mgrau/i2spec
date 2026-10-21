@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(158) 25-0,a10,interval,467.313,6.0,127I2 P(49) 24-1,a21,demelo2024a,"arXiv v1 p. 5: f(a10, R(158) 25-0) = 539 386 406(6) MHz from a scan calibrated on P(49) 24-1 a1 and a21, with a21 = 539 385 938 687 kHz (Tanabe 2022); entered as the interval to a21"

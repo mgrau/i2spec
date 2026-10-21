@@ -1,0 +1,28 @@
+id = "shiner1993a"
+citation = "D. Shiner, J. M. Gilligan, B. M. Cook and W. Lichten, \"H2, D2, and HD ionization potentials by accurate calibration of several iodine lines\", Phys. Rev. A 47, 4042-4045 (1993)"
+source = "https://doi.org/10.1103/PhysRevA.47.4042 (publisher PDF; Matt's library copy papers/Shiner1993_PRA47_4042.pdf)"
+doi = "10.1103/PhysRevA.47.4042"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the pages (pp. 4043-4044): absolute frequencies of single hyperfine
+components measured at Yale by locking a dye laser to saturated absorption and comparing it interferometrically
+with an iodine-stabilized He-Ne laser at 633 nm calibrated against Cs.
+- Table I: four lines checked against earlier values, in MHz (R(47) 9-2 i, P(40) 9-2 o, R(80) 11-2 o,
+  R(66) 13-2 o). The comparison column (refs. 15 and 21) is other work and is not entered.
+- Table II: the seven lines used to calibrate the H2, D2 and HD EF-X transitions, in cm-1 with "(8)" in the last
+  digit; six are entered, converted to MHz with c = 29 979.2458 MHz/cm-1 (the wave number is in the note).
+Labels: the letters run down in frequency from a, 21 per odd-J'' line and 15 per even, so i is rank 13 (as at
+633 nm; here R(47) 9-2 i agrees with razet1991a's a13, 489 880 604.541 MHz, to 0.21 MHz), o is rank 1 of 15, u is
+rank 1 of 21 and a is rank 15 of 15.
+
+Not entered: R(9) 11-2 "rs", 16 576.909 149(8) cm-1, an unresolved pair; Tables III-V (the H2/D2/HD results and
+the comparison with predicted iodine frequencies).
+"""
+
+uncertainty = "0.25 MHz for Table I as printed, and 8e-6 cm-1 = 0.24 MHz for Table II, the \"accuracy of 250 kHz (5 parts in 10^10)\" of the abstract, taken as 1 sigma. Cell conditions and shifts are not given. One spectrometer and reference, so one group."
+
+[conditions]
+method = "cw dye laser locked to saturated absorption (modulated saturating beam, lock-in detection); wavelength by interferometric comparison with an offset-locked He-Ne laser referenced to a 633 nm He-Ne/I2 standard"

@@ -1,11 +1,11 @@
 id = "arie1993a"
 citation = "A. Arie and R. L. Byer, \"Laser heterodyne spectroscopy of 127I2 hyperfine structure near 532 nm\", J. Opt. Soc. Am. B 10, 1990-1997 (1993); errata J. Opt. Soc. Am. B 11, 866 (1994)"
-source = "https://doi.org/10.1364/josab.10.001990 (publisher PDF, scanned with an OCR text layer; the errata were not available)"
+source = "https://doi.org/10.1364/josab.10.001990 (publisher PDF, scanned with an OCR text layer); errata https://doi.org/10.1364/josab.11.000866 (Matt's library copy papers/Arie1994_erratum_JOSAB_11_866.pdf, read 2026-10-20)"
 doi = "10.1364/josab.10.001990"
 retrieved = "2026-09-29"
 unit = "MHz"
 catalog = "precision.yaml:arie1993a"
-partial = "The errata (JOSA B 11, 866, 1994) were not seen; they may correct numbers entered here."
+errata = "JOSA B 11, 866 (1994), read 2026-10-20: it corrects only footnote a of Table 4 (aeQq = 1908.4057 +- 0.1 MHz) and Table 9 (fit standard deviations and constant differences, with the line names P(53) 32-0, R(56) 32-0, P(83) 33-0, R(86) 33-0, R(106) 34-0, R(134) 36-0). No measured interval changes, and the standard deviations taken here as uncertainties (6.51, 6.92, 4.50, 2.25, 7.13, 9.81 kHz) are the corrected values, so no row was changed."
 
 transcription = """
 All numbers are beat-note intervals in MHz, as printed; the paper measures no absolute frequency. The PDF

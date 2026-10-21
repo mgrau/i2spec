@@ -1,0 +1,52 @@
+id = "sansonetti1990a"
+citation = "C. J. Sansonetti, \"Molecular Iodine Absolute Frequencies\", final report on LLNL contract #923-003, Lawrence Livermore National Laboratory report UCRL-CR-107777 (NIST, Gaithersburg, 25 June 1990)"
+source = "https://doi.org/10.2172/371207 (OSTI scan; Matt's library copy papers/Sansonetti1990_UCRL-CR-107777.pdf)"
+doi = "10.2172/371207"
+retrieved = "2026-10-20"
+unit = "cm-1"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1, report pp. 9-11 (PDF pp. 13-15), "Iodine Classifications and Wave Numbers": the "Final Value" of the one
+hyperfine component measured in each of 50 lines specified by LLNL, plus the two check lines R(73) 5-5 and P(62)
+17-1 (no line number). The report is a scan with no text layer; the table was read from 200 dpi page images and
+typed. Every row was checked: Average + Phase Correction = Final Value to 1e-6 cm-1 in all 52 rows, and each
+final value lies within 0.034 cm-1 below its atlas value.
+
+The value is entered on the classification printed on its row. Where the table lists several classifications
+for one atlas line, the others (blends, unassigned "unk" features and the lines LLNL specified but that were
+replaced by an alternate marked "A") carry no measurement and are not entered.
+
+Component labels follow sansonetti1997a, which uses the same letters: "t" is rank 1 by frequency among the main
+components for even J'' (15 components) and rank 2 for odd J'' (21), written t1 and t2; "i" in the 21-component
+R(73) 5-5 and R(69) 12-2 is rank 13 (i13); "i" in the 15-component P(26) 19-1 is rank 10 (i10). The note
+column carries the LLNL line number, the number of measurements, the average, the phase correction and the atlas
+value.
+
+Not entered: Table 2 (the two check lines against refs. 9-11, which are other laboratories' values); the
+Doppler-free scans of Appendix B, which this copy does not contain; Appendix A (a reprint of the Fabry-Perot
+wavemeter paper).
+"""
+
+uncertainty = """
+The report gives one figure for every line, +-1.1 MHz (p. 14; "(37)" in 1e-6 cm-1 in Table 2), the quadrature sum
+of a "three standard error uncertainty for the average of two measurements" of about 1 MHz, a lock-point bound of
+0.3 MHz and a phase-correction bound of 0.4 MHz. With the dominant term at three standard errors and the others
+upper bounds, one sigma lies between 1.1/3 and 1.1/2 MHz; half, 0.55 MHz = 0.0000183 cm-1, is entered, the same
+reading as sansonetti1997a's 95 percent figures. One wavemeter and reference laser, so one group.
+"""
+
+notes = """
+Superseded by sansonetti1997a. The 1997 table (102 lines) contains all 52 of these lines with the same component
+and differs by -0.96 to +0.21 MHz, the 1997 value lower for 47 of them; the difference grows with wave number,
+where the phase correction is largest, which suggests the 1997 values are a re-evaluation with a revised phase
+correction rather than a new measurement. The 1997 paper as held does not say. Declared below, so once both sets
+are admitted the 1990 values stay as records of their own and the fit keeps the 1997 ones.
+"""
+
+[conditions]
+method = "Doppler-free FM saturation spectroscopy, 25.64 MHz probe modulation; ring dye laser locked to the component, wave number from a plane Fabry-Perot wavemeter against an I2-stabilized He-Ne laser"
+cell = "30 cm iodine cell at room temperature (about 23 C); saturating beam shifted +72 MHz by an AOM, half of which is removed from the measured value"
+
+[overlaps]
+sansonetti1997a = "superseded"   # the same 52 lines re-evaluated in the 1997 report

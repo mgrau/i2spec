@@ -1,0 +1,45 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+129I2 P(110) 10-2,a3,interval,-230.77,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a3 (z), -230.77 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a4,interval,-229.43,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a4 (y), -229.43 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a7,interval,-134.7,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a7 (v), -134.7 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a8,interval,-131.0,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a8 (u), -131.0 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a24,interval,153.07,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a24 (e), 153.07 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a25,interval,154.73,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a25 (d), 154.73 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a26,interval,164.03,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a26 (c), 164.03 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a27,interval,166.17,0.2,127I2 R(47) 9-2,a7,glaser1981a_t1,"Table 1: a27 (b), 166.17 MHz from R(47) 9-2 o, external cell in an optical resonator"
+129I2 P(110) 10-2,a1,interval,-376.3,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -376.29 MHz + (exp. - calc.) -0.01 = -376.3 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a2,interval,-244.8,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -244.76 MHz + (exp. - calc.) -0.04 = -244.8 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a5,interval,-216.1,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -216.07 MHz + (exp. - calc.) -0.03 = -216.1 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a6,interval,-149.4,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -149.39 MHz + (exp. - calc.) -0.01 = -149.4 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a9,interval,-116.67,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -116.66 MHz + (exp. - calc.) -0.01 = -116.67 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a10,interval,-96.3,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -96.29 MHz + (exp. - calc.) -0.01 = -96.3 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a11,interval,-90.7,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -90.8 MHz + (exp. - calc.) +0.10 = -90.7 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a12,interval,-84.2,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -84.08 MHz + (exp. - calc.) -0.12 = -84.2 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a13,interval,-77.8,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -77.85 MHz + (exp. - calc.) +0.05 = -77.8 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a14,interval,-72.7,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation -72.77 MHz + (exp. - calc.) +0.07 = -72.7 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a15,interval,1.5,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 1.64 MHz + (exp. - calc.) -0.14 = 1.5 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a16,interval,10.6,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 10.62 MHz + (exp. - calc.) -0.02 = 10.6 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a17,interval,15.9,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 15.83 MHz + (exp. - calc.) +0.07 = 15.9 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a18,interval,25.3,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 25.31 MHz + (exp. - calc.) -0.01 = 25.3 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a19,interval,49.4,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 49.47 MHz + (exp. - calc.) -0.07 = 49.4 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a20,interval,54.7,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 54.57 MHz + (exp. - calc.) +0.13 = 54.7 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a21,interval,69.0,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 69.02 MHz + (exp. - calc.) -0.02 = 69.0 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a22,interval,74.5,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 74.46 MHz + (exp. - calc.) +0.04 = 74.5 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a23,interval,110.6,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 110.59 MHz + (exp. - calc.) +0.01 = 110.6 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 P(110) 10-2,a28,interval,208.3,0.05,127I2 R(47) 9-2,a7,glaser1981a_t2,Table 2: calculation 208.34 MHz + (exp. - calc.) -0.04 = 208.3 MHz from R(47) 9-2 o; the experimental datum is Dschao et al. 1980's (ref. [4])
+129I2 R(113) 14-4,b19,interval,-410.43,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b19 (r), -410.43 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b20,interval,-389.98,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b20 (q), -389.98 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b21,interval,-383.92,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b21 (p), -383.92 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b22,interval,-362.77,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b22 (o), -362.77 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b23,interval,-352.92,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b23 (n), -352.92 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b24,interval,-346.4,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b24 (m), -346.4 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b25,interval,-329.98,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b25 (l), -329.98 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b26,interval,-324.88,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b26 (k), -324.88 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b27,interval,-304.67,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b27 (j), -304.67 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b28,interval,-289.4,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b28 (i), -289.4 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b29,interval,-273.09,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b29 (h), -273.09 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b30,interval,-255.69,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b30 (g), -255.69 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b32,interval,-236.73,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b32 (e), -236.73 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b34,interval,-198.65,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b34 (c), -198.65 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b35,interval,-193.07,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b35 (b), -193.07 MHz from R(47) 9-2 o, internal cell, 3f recording"
+129I2 R(113) 14-4,b36,interval,-186.98,0.2,127I2 R(47) 9-2,a7,glaser1981a_t4,"Table 4: b36 (a), -186.98 MHz from R(47) 9-2 o, internal cell, 3f recording"

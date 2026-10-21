@@ -1,0 +1,47 @@
+id = "zhang1999a"
+citation = "Zhang Ke-Ming, Chen Xu-Zong, Zang Er-Jun, Y. Akimoto, T. Kasahara, K. Sakamoto and H. Inaba, \"Strong hyperfine spectra of 127I2 at 633 nm and frequency stabilized tunable diode laser\" (in Chinese, English abstract), Acta Phys. Sin. 48, 840-849 (1999)"
+source = "https://doi.org/10.7498/aps.48.840 (scan without a text layer; Matt's library copy papers/ZHANGKEMING1999_Acta_Phys_Sin_48_840.pdf)"
+doi = "10.7498/aps.48.840"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Read from 250 dpi images of the scan and typed. A 633 nm extended-cavity diode laser (third-harmonic detection)
+recorded five groups of strong lines near R(127) 11-5 (632.9625-633.0087 nm), Fig. 2.
+- p. 842: "the u component of R(39) 6-3 (Fig. 2(c)) is 2625.21 MHz higher than the a component of R(127) 11-5",
+  measured as the beat between the diode laser on that component and a He-Ne laser on R(127) 11-5 a, on an APD
+  with a 0.5 MHz-resolution spectrum analyzer (p. 844). Table 1 adds the CIPM-based value of R(127) 11-5 a (their
+  ref. [4]) to give 473 615 139.85 MHz for u; only the beat is entered.
+- Table 3 (p. 847): the measured intervals of the 21 components of R(39) 6-3 from a, with the calculated values
+  (in the note). The footnote repeats f = 473 615 139.85 MHz for the line.
+- Table 1 (p. 844): the u (odd J'') or o (even J'') component of R(60) 8-4, P(119) 9-4, P(32) 6-3 and R(38) 6-3,
+  "estimated with a Fabry-Perot cavity, error 30 MHz" (p. 844), printed to 1 MHz.
+Labels: "for odd J the lines run from component a to u (21), for even J from a to o (15)" (p. 847), descending in
+frequency (Table 3: a = 0, u = -917.66 MHz), so a is the top rank and u or o rank 1.
+
+Not entered: the R(127) 11-5 a value of Table 1 (the CIPM's, ref. [4]); Table 2 (calculated wavelengths and
+intensities); Table 4 (calculated hyperfine intervals of the other lines); the hyperfine constants fitted to
+Table 3 (Delta eQq = 1952 MHz, Delta C = 24.73 kHz, Delta d = -16.78 kHz); the stability results.
+"""
+
+uncertainty = """
+Not stated for the intervals. 0.5 MHz, the resolution of the spectrum analyzer used for the beat, is taken for
+the beat and for each Table 3 interval (whose differences from the calculated pattern are 0.04-0.59 MHz, rms 0.3).
+The four Table 1 values: 30 MHz as stated. Groups: the beat, the R(39) 6-3 table, and the Fabry-Perot estimates.
+"""
+
+notes = """
+Residuals against i2spec2026o (Predictor(), obs - model): the R(39) 6-3 beat +0.77 MHz and its table within
+1.2 MHz, consistent with 0.5 MHz. The Fabry-Perot estimates are -113 (R(60) 8-4), +29 (P(119) 9-4), -57 (P(32)
+6-3) and +11 MHz (R(38) 6-3): the labels are not in doubt (o or u is the lowest component, the next 280 MHz above),
+so for R(60) and P(32) the stated 30 MHz is optimistic by a factor of two to four. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "extended-cavity diode laser at 633 nm (New Focus 6210), third-harmonic detection with 6 MHz p-p modulation on an external cell at 15 C; beat against a He-Ne/I2 laser on R(127) 11-5 a"
+
+# The same measurements were published first in Proc. SPIE 3547 (1998), chen1998a, with the same digits (its
+# Tables 1 and 4 and the beat): this paper prints them again.
+[overlaps]
+chen1998a = "same"   # pending until admitted

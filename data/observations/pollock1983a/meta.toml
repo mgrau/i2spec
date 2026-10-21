@@ -1,0 +1,31 @@
+id = "pollock1983a"
+citation = "C. R. Pollock, D. A. Jennings, F. R. Petersen, J. S. Wells, R. E. Drullinger, E. C. Beaty and K. M. Evenson, \"Direct frequency measurements of transitions at 520 THz (576 nm) in iodine and 260 THz (1.15 um) in neon\", Opt. Lett. 8, 133-135 (1983)"
+source = "https://doi.org/10.1364/OL.8.000133 (publisher PDF via ODU; Matt's library copy papers/Pollock1983_Opt_Lett_8_133.pdf)"
+doi = "10.1364/OL.8.000133"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the page (abstract; p. 134): "The measured I2 frequency was
+520 206 808.547 MHz with a total fractional uncertainty of 1.6 x 10-10", the o hyperfine component of 127I2 P(62)
+17-1, by a cw synthesis chain from the CH4-stabilized 88 THz He-Ne laser through CO2, color-center and 1.15 um
+He-Ne transfer lasers (NBS Boulder). The dye laser was locked by first-derivative detection (100 kHz modulation,
+0.5 MHz depth) to the line in saturated fluorescence, at 4.5 Pa.
+Label: the letters a-o run down in frequency in a 15-component line (baird1979a), so o is a1, the CIPM 576 nm
+component (bipm2003c).
+
+Not entered: the 20Ne Lamb-dip laser at 260 103 249.26 MHz (not iodine).
+"""
+
+uncertainty = "0.083 MHz, the printed total fractional uncertainty 1.6e-10 times the frequency, taken as 1 sigma."
+
+notes = "The \"NBS value\" in the source data of the MEP 576 nm value (bipm2003c), which is declared there as a mean of it."
+
+[conditions]
+method = "cw dye laser locked to saturated fluorescence (first derivative, 100 kHz, 0.5 MHz depth), 4.5 Pa; frequency chain from the CH4-stabilized He-Ne standard"
+
+[shift_correction]
+pressure_Pa = 4.5
+allowance_kHz = 22.5
+basis = "No coefficient given; allowance |-5 kHz/Pa x 4.5 Pa|, as bipm2003c."

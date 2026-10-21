@@ -1,0 +1,31 @@
+id = "jungner1995a"
+citation = "P. Jungner, S. Swartz, M. Eickhoff, J. Ye, J. L. Hall and S. Waltman, \"Absolute frequency of the molecular iodine transition R(56)32-0 near 532 nm\", IEEE Trans. Instrum. Meas. 44, 151-154 (1995)"
+source = "https://doi.org/10.1109/19.377796 (IEEE Xplore via ODU; Matt's library copy papers/Jungner1995_IEEE_TIM_44_151.pdf)"
+doi = "10.1109/19.377796"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the page (abstract and p. 153): "The measured frequency of the a10
+component is 563 260 223.480 MHz +-70 kHz", the average of about 50 runs in May and June 1994, measured by summing
+the 532 nm Nd:YAG/I2 light with a Ti:sapphire laser near the Rb D2 line (778 nm, which was locked to Rb) and
+comparing with the doubled frequency of an iodine-stabilized He-Ne laser at 633 nm (a 263 GHz difference counted
+on a Schottky diode). The result is corrected for the Rb spectrometer's power shift (Fig. 3). For the 633 nm
+reference the paper takes "the frequency of BIPM4 as 473 620 612.705 MHz as recommended" (p. 153), the JILA He-Ne
+being 6 +- 2 kHz red of BIPM4. That figure is printed so and cannot be right as it stands (the 633 nm standard
+is near 473 612 GHz, e.g. 473 612 214.8 MHz for its i component); the misprint does not touch the a10 result.
+
+Not entered: the single run quoted as an example (run 5, 563 260 223.495 MHz); the Fourier-transform centroid
+estimate (563 260 251 MHz) and the 10 MHz wavemeter value cited for comparison, which are other works.
+"""
+
+uncertainty = "70 kHz, the printed total (root sum of squares), taken as 1 sigma. It is dominated by the 60 kHz uncertainty of the Rb D2 reference (NPL); the day-to-day reproducibility of the chain is 30 kHz and the statistics of 2000 readings 5 kHz. The iodine cell conditions are not stated."
+
+[conditions]
+method = "frequency-doubled Nd:YAG stabilized by modulation transfer on R(56) 32-0 a10; sum-frequency chain to the Rb D2 line and a 633 nm He-Ne/I2 laser"
+
+# The same a10 measurement was re-evaluated by the authors in Proc. SPIE 2378, 22 (1995), jungner1995b (-9 kHz,
+# with a frequency-based Rb D2 value): that value replaces this one, which stays in the record.
+[overlaps]
+jungner1995b = "superseded"   # pending until admitted

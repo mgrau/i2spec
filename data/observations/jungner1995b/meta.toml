@@ -1,0 +1,34 @@
+id = "jungner1995b"
+citation = "P. Jungner, M. L. Eickhoff, S. D. Swartz, J. Ye, J. L. Hall and S. Waltman, \"Stability and absolute frequency of molecular iodine transitions near 532 nm\", Proc. SPIE 2378, 22-34 (1995)"
+source = "https://doi.org/10.1117/12.208229 (PDF supplied by Matt; library copy papers/Jungner1995_SPIE_2378_22.pdf)"
+doi = "10.1117/12.208229"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from 300 dpi page images (pp. 27-28; p. 28's text layer is scrambled because the page is stored upside
+down). JILA frequency-doubled Nd:YAG lasers with modulation-transfer spectrometers (1.2 m cells near -10 C):
+- Table 1: measured hyperfine splittings of R(56) 32-0 from a10: a1, a2, a5-a9, a11-a13, a15 (a3/a4 "form an
+  unresolved doublet", "no data on a14"), with the calculated values and residuals (sd 1.12 kHz) in the notes.
+- Table 1 caption: the reference laser was locked to P(83) 33-0 a20, "offset 15 697.8360 MHz below a10:R(56)32-0".
+- Sect. III: the a10 absolute frequency, 563 260 223.471 MHz +- 40 kHz. This is the measurement of jungner1995a
+  (IEEE TIM 44, 151: 563 260 223.480(70) MHz) re-evaluated: the new direct frequency measurement of the Rb D2
+  d-f crossover against the 5S-5D two-photon line (f_dfx = 384 227 981.879 MHz +- 30 kHz) "leads to a correction
+  for the absolute frequency for the a10 component given there by -9 kHz". Declared in jungner1995a as
+  "superseded" by this set.
+Not entered: the Rb D2 frequencies (f_dfx, f_d = 384 227 848.543 MHz +- 25 kHz; not iodine); the pressure
+(-1.3 kHz/Pa) and power (+2.1 kHz/mW) shift coefficients; the stability data.
+"""
+
+uncertainty = "Table 1: the fit's 1.12-1.3 kHz standard deviation, entered as 1.3 kHz (as picard2003a does for the same values). The P(83) offset: none printed; 1 kHz assigned. The absolute: 40 kHz, the printed total (He-Ne chain 15 kHz, D2 day-to-day 30 kHz, d-f crossover 30 kHz, statistics 5 kHz)."
+
+notes = """
+picard2003a's Table 5 column "JILA-NIST 1" (credited to M. L. Eickhoff's 1994 thesis, not held) is this table
+rounded to 1 kHz; declared there as "same" for that group, so this, the earliest held print, holds the record.
+Residuals against i2spec2026o (obs - model): Table 1 rms 15 kHz (2 kHz after a 1e-5 scale); a10 absolute -51 kHz (1.3 sigma); the P(83) a20 offset +51 kHz, where bipm2012a's own chain (a21 - a10 = -15 682.0752, a21 - a20 = 15.763 MHz) gives -15 697.838 MHz, 2 kHz from this value, so the misfit is the model's. Checked with the shipped model only.
+"""
+
+[conditions]
+cold_finger_C = -20.0
+method = "frequency-doubled NPRO Nd:YAG, modulation transfer (500-680 kHz), 1.2 m cells; pump 500 uW, probe 200 uW for the absolute; sum-frequency chain to the Rb D2 line and a 633 nm He-Ne/I2 laser"

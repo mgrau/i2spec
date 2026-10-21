@@ -1,0 +1,41 @@
+id = "ikeda2020a"
+citation = "K. Ikeda, S. Okubo, M. Wada, K. Kashiwagi, K. Yoshii, H. Inaba and F.-L. Hong, \"Iodine-stabilized laser at telecom wavelength using dual-pitch periodically poled lithium niobate waveguide\", Opt. Express 28, 2166-2178 (2020)"
+source = "https://doi.org/10.1364/OE.381961 (open access; Matt's library copy papers/Ikeda2020_OE28_2166.pdf)"
+doi = "10.1364/OE.381961"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the page (Sect. 3.4, p. 2174): "The absolute frequency of the a1
+component of the R(73)46-0 transition with the experimental parameters used, pump beam power = 5.0 mW, a beam
+diameter ~1.5 mm, and cell cold finger temperature = -5 C (iodine pressure = 2.5 Pa), was determined as
+583 109 956 557 kHz +- 6 kHz": the mean of 13 measurements over one week (standard deviation 1.2 kHz), a
+1542 nm laser tripled to 514 nm and locked by modulation transfer, measured with a comb against UTC(NMIJ).
+Label: R(73) has odd J'' (21 components); a1 is the lowest, as in ikeda2022a.
+
+Not entered: the shift coefficients of Table 2 (pressure -5.1 kHz/Pa, power -3.6 kHz/mW, modulation phase
+260 Hz/degree), recorded under [conditions].
+"""
+
+uncertainty = "6 kHz, the paper's total (Table 2: pressure 1.1, power 1.8, modulation phase 2.6, cell impurity 5, statistics 1.2 kHz), taken as 1 sigma."
+
+notes = """
+Superseded by ikeda2022a, the same group's later measurement of the same component (583 109 956 489.2 kHz at
+1.2 Pa and 1.8 mW). That paper discusses this value as a previous, probably servo-offset-shifted measurement
+(ikeda2022a meta.toml). The difference, +68 kHz here, is the wrong sign and far too large for the paper's own
+pressure and power coefficients (which predict this value 18 kHz below the 2022 one). Declared below, so once
+both are admitted this stays a record of its own and the fit keeps the 2022 value.
+"""
+
+[conditions]
+method = "1542 nm fiber-amplified laser tripled in a dual-pitch PPLN waveguide to 514 nm; modulation transfer at 345 kHz in a 30 cm cell; comb against UTC(NMIJ)"
+shift_coefficients = "Table 2: pressure -5.1 kHz/Pa, power -3.6 kHz/mW, modulation phase 260 Hz/degree"
+
+[shift_correction]
+pressure_Pa = 2.5
+allowance_kHz = 22.0
+basis = "No shift applied, as ikeda2022a. Allowance: the paper's own coefficients applied to its conditions, -5.1 kHz/Pa x 2.5 Pa and -3.6 kHz/mW x 5.0 mW, 12.8 and 18.0 kHz in quadrature."
+
+[overlaps]
+ikeda2022a = "superseded"   # the same line re-measured by the same group in 2022

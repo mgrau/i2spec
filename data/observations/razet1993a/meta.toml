@@ -1,0 +1,35 @@
+id = "razet1993a"
+citation = "A. Razet, J. Gagnière and P. Juncar, \"Hyperfine structure analysis of the 33P(6-3) line of 127I2 at 633 nm using a continuous-wave tunable dye laser\", Metrologia 30, 61-65 (1993)"
+source = "https://doi.org/10.1088/0026-1394/30/2/002 (publisher PDF; library copy papers/Razet1993_Metrologia_30_61.pdf)"
+doi = "10.1088/0026-1394/30/2/002"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked digit by digit against a 250 dpi image of Table 1 (p. 63).
+- Table 1 (i): all 21 components of 127I2 P(33) 6-3, b1-b20 in kHz from b21 ("each hyperfine component is labelled
+  by an index which increases with the frequency"), from beats between a ring dye laser locked (first derivative,
+  2 MHz modulation) to an external cell at 15 C (17 Pa) and the INM9 He-Ne laser on R(127) 11-5 d.
+- Sect. 3: nu(b21 - "d") = -558.654 MHz (b21 of P(33) 6-3 against INM9 on d = a18 of R(127) 11-5).
+- Sect. 3: INM9 on d against INM12 on f (a16) = 26.229 MHz; a beat between two He-Ne/I2 lasers, so an a18 - a16
+  interval with the lasers' offsets in it.
+Not entered, derived: b21 - f = -532.425(15) MHz (the sum of the two rows above); the absolute frequency of b21,
+473 611 821 162(15) kHz, from INM12's f measured by Acef et al. 1993 (acef1993a) plus that sum; "i" - b4 =
+1054.049(16) MHz, which uses the CCDM's i - f. Also not entered: the fitted constants of Table 1 (ii)
+(Delta eqQ = 1 953 727(11) kHz, Delta C = 22.57(3) kHz, Delta d = -13(1) kHz, Delta delta = -8(1) kHz) and Table 2
+(the 1983 CCDM intervals, from older papers, and their differences from these).
+"""
+
+uncertainty = "Intervals: \"of order 10 kHz\", estimated from a subset of the measurements (the fit leaves 11 kHz); 10 kHz entered for each. The two links: the printed standard deviations, 10 kHz each."
+
+notes = """
+The MEP 633 nm table of P(33) 6-3 (bipm2003a Table 2) cites this paper as ref. [30], with Hanes 1971, Bergquist
+1984, Simonsen 1997, Morinaga 1978 and Edwards 1999 (edwards1999a): its values are weighted means, 1-16 kHz from
+these. Declared there as "mean" for P(33) 6-3. Residuals against i2spec2026o (obs - model): b1-b20 rms 12 kHz;
+b21 - a18 -148 kHz, where the model also misses the MEP's b21 - a16 (-532.42(2) MHz, training data) by about the
+same; a18 - a16 +6 kHz. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "Coherent 699-21 ring dye laser (DCM), jitter a few kHz, locked by first-derivative saturated absorption (2 MHz, 1.3 kHz modulation) to an external cell, cold finger 15 C (17 Pa), wall 23 C; beats against the INM9 He-Ne/I2 laser (internal cell, 3f, 6 MHz p-p, cold finger 15.5 C)"

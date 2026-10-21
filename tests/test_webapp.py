@@ -37,13 +37,20 @@ def test_measurements_carry_every_row():
                 n[0] += len(e["f"])
                 n[1] += e["i"]
     for k, s in enumerate(sources):
+        if not s["n_rows"]:                 # prints only what others reported first: cited on their rows
+            assert k not in by_source and s["n_also"] > 0, s["id"]
+            continue
         absolute, intervals = by_source[k]
         assert absolute == s["n_absolute"], s["id"]
         assert intervals >= s["n_intervals"], s["id"]     # an interval to another line counts for both
     # the residual is the published value minus the model's, here minus zero
     r56 = measured["127I2"]["32-0R56"]
-    # bipm2012a's a10 defers to its sources (observations.load_all); Jones 2002's 532 nm row carries no correction
+    # one record per measurement: Jones 2002's a10 is cited to Jones first, then to the CIPM 532 nm value that
+    # averages it, which is a record of its own; Jones 2002's 532 nm row carries no correction
     jones = next(e for e in r56 if sources[e["s"]]["id"] == "jones2002a")
+    assert [sources[c]["id"] for c in jones["c"]] == ["bipm2012a"]
+    cipm = next(e for e in r56 if sources[e["s"]]["id"] == "bipm2012a")
+    assert [f[1] for f in cipm["f"]] == [563260223.513] and "c" not in cipm
     a10 = next(f for f in jones["f"] if f[0] == "a10")
     assert a10[1] == a10[3] == 563260223.5144
     assert a10[4] is None                                # no published model given

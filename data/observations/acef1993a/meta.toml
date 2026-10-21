@@ -1,0 +1,44 @@
+id = "acef1993a"
+citation = "O. Acef, J. J. Zondy, M. Abed, D. G. Rovera, A. H. Gérard, A. Clairon, Ph. Laurent, Y. Millerioux and P. Juncar, \"A CO2 to visible optical frequency synthesis chain: accurate measurement of the 473 THz HeNe/I2 laser\", Opt. Commun. 97, 29-34 (1993)"
+source = "https://doi.org/10.1016/0030-4018(93)90612-9 (library copy papers/Acef1993_Opt_Commun_97_29.pdf)"
+doi = "10.1016/0030-4018(93)90612-9"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Abstract and Sect. 3 (p. 33), typed from the text layer and checked against the page: "The frequency of the
+INM12 laser locked on the "f" component of the (127)R11-5 line of I2 is found to be v = 473 612 353 586.9 +- 5 kHz",
+two days of one-second counts with a harmonic chain from the LPTF CO2/OsO4 reference at 29 THz (KCl:Li colour-
+centre and diode lasers, MIM diodes). f = a16.
+The laser's operating conditions are not printed here; INM12 is the INM's standard He-Ne/I2 laser, run as
+razet1993a describes it (internal cell, third-derivative lock, 6 MHz p-p, cold finger 15 C), i.e. at the CIPM
+conditions, and the bipm2003a coefficients are applied as for the other 633 nm lasers.
+Not entered: the beat comparisons with BIPM4 and the ENS laser (laser comparisons); the June 1992 preliminary
+value.
+"""
+
+uncertainty = "5 kHz as printed: \"chosen to be equal to the reproducibility of the INM12 laser over a four years period\" (the chain itself resolves 1e-12)."
+
+notes = """
+razet1993a's absolute of P(33) 6-3 b21 is this value plus its own beats, so it is not entered there. The CIPM 1997
+value drew on this measurement; the 2001 value (bipm2003a) rests on the April 2000 comparison (ye2000a), so no
+overlap is declared. Residual against i2spec2026o (obs - model, after the shift correction): -133.9 kHz, against -116.8 kHz for the CIPM 2001 value (bipm2003a): INM12 then ran 17 kHz below it. Checked with the shipped model only.
+"""
+
+[conditions]
+cold_finger_C = 15.0
+modulation_MHz_pp = 6.0
+method = "He-Ne/I2 laser INM12 (internal cell, third-derivative lock); harmonic synthesis chain from a CO2/OsO4 laser at 29 THz"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "The values are at (or corrected to) the CIPM standard operating conditions, so bipm2003a's coefficients take them to zero pressure, power and modulation exactly as for the MeP value: 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at 10 mW."

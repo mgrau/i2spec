@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a13,frequency,473612214.71296,0.000663,,,smith2007a,"p. 294: i component, 473 612 214 712.96 +- 0.663 kHz, mean of the day's data sets, corrected to CIPM conditions (-0.493 kHz wall temperature, +7.25 kHz power)"

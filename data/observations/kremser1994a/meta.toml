@@ -1,0 +1,34 @@
+id = "kremser1994a"
+citation = "S. Kremser, B. Bodermann, H. Knöckel and E. Tiemann, \"Frequency stabilization of diode lasers to hyperfine transitions of the iodine molecule\", Opt. Commun. 110, 708-716 (1994)"
+source = "https://doi.org/10.1016/0030-4018(94)90273-9 (PDF supplied by Matt; library copy papers/Kremser1994_Opt_Commun_110_708.pdf)"
+doi = "10.1016/0030-4018(94)90273-9"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 714), typed from a 300 dpi page image: hyperfine structure of 127I2 R(92) 0-15 at 793.23 nm, the
+average of seven beat measurements of each component against line 1 between two diode lasers locked (third
+harmonic) to a 500 C cell with a 20 C sidearm. Columns: observed position (the zero crossing) and its estimated
+standard deviation, obs. - calc. of the authors' fit, and "correct.", the overlap correction, "the differences
+between the pure hyperfine beat frequency and the zero crossing of the simulated spectrum". Entered: observed -
+correction, taken as the unperturbed interval from line 1 (the corrections are 0-9 kHz except lines 3 and 4,
+-74.8 and +78.1 kHz, a close pair 3.4 MHz apart; the original zero crossing is kept in each note). The sign is
+not stated unambiguously; it was settled on that pair: observed - correction puts lines 3 and 4 3.235 MHz apart,
+observed + correction 3.541 MHz, and the shipped model 3.250 MHz (the zero crossings of two overlapping
+third-derivative profiles are pushed apart, 3.388 MHz here, so the pure positions lie closer).
+Labels: J'' = 92 is even, 15 components in frequency order, lines 1-15 = a1-a15.
+
+Not entered: lines 11/12 and 13/14 (unresolved doublets, "given with large errors and only included for
+discussion"); the fitted constants (Delta eqQ = 1960.5(1) MHz, Delta C = 18.4(2), 4.9(5), -3.9(5) kHz); the
+wavenumber 12 606.7128(11) cm-1 of the line maximum (the atlas value with Gerstenkorn & Luc's -0.0056 cm-1
+correction, not a measurement); the pressure dependence of a10 - a1 (-3.9(0.7) kHz/Pa, Fig. 6b) and the widths
+(Fig. 6a); R(69) 0-15 (widths only).
+"""
+
+uncertainty = "The error column (11.7-20.9 kHz, the standard deviation of seven measurements) as 1 sigma; for lines 3 and 4, whose overlap correction exceeds it, half the correction is added in quadrature (42 and 41 kHz). Day-to-day reproducibility was +-50 kHz peak to peak (lock-in offset drift), which the seven-day averages include."
+
+notes = "Residuals against i2spec2026o (obs - model): rms 46 kHz, all -26 to -76 kHz: a common -44 kHz, so the model puts a1 itself 44 kHz too low against the rest (24 kHz rms after it). A source behind Knöckel et al. 2004's near-infrared hyperfine data; bodermann2000a (same group) measures absolute frequencies of other lines. Checked with the shipped model only."
+
+[conditions]
+method = "two diode lasers narrowed by resonant optical feedback, locked by third-harmonic saturation spectroscopy (collinear pump and probe) to a 50 cm cell at about 500 C (800 K), sidearm 20 C (about 26 Pa); modulation 5 kHz, 0.5-3 MHz"

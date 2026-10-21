@@ -34,6 +34,24 @@ Ranges can be given in `nm` (vacuum wavelength), `nm-air`, `cm-1`, `THz` or `MHz
 are integrated cross sections in cm per molecule at the chosen temperature (option `-T`, default
 293.15 K).
 
+For ¹²⁷I₂ the positions, hyperfine components and uncertainties are balanced-expanded's, and `i2spec line`
+gives each component's 1σ. The first query solves every level of that model once, which takes about 80 s on
+12 cores and is then cached. Setting the environment variable `I2SPEC_MODEL=i2spec2026o` switches the command
+line, the terminal browser and the explorer export back to the earlier model. The model can also be used
+directly, with the uncertainty of any prediction:
+
+```sh
+uv run i2spec research predict "R(41) 51-0" --model balanced_expanded --component a21
+```
+
+```python
+from i2spec import ResearchModel
+m = ResearchModel("balanced_expanded")
+m.frequency("R(56) 32-0", "a10")                    # MHz
+m.uncertainty("R(56) 32-0", "a10").sigma_MHz        # 1σ, MHz
+m.uncertainty("R(56) 32-0", "a15", "a1").sigma_MHz  # 1σ of an interval within the line
+```
+
 ## Terminal browser
 
 `uv run i2spec tui` shows the absorption spectrum of the selected range, the list of lines, and the

@@ -1,0 +1,34 @@
+id = "zhang2024a"
+citation = "Z. Zhang, W. You, X. Liu, H. Liu, J. Zhang, K. Deng and Z. Lu, \"Development and evaluation of a 532 nm iodine-stabilized laser frequency standard at PGMF\", Eng. Res. Express 7, 015309 (2025)"
+source = "https://doi.org/10.1088/2631-8695/ada487 (library copy papers/Zhang2024_Eng_Res_Express_7_015309.pdf)"
+doi = "10.1088/2631-8695/ada487"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Abstract, Sects. 3.3-3.4 and Tables 3-5, typed from the text layer and checked against the pages: the PGMF (China)
+Nd:YAG/I2 laser on 127I2 R(56) 32-0 a10, modulation transfer (325 kHz, index 1.25), cold finger -15.00 C, pump
+10.3 mW. Ten comb runs give 563 260 223 505.27 kHz (Type A 0.06 kHz; Table 4: each run 505.23-505.33 kHz). The
+paper subtracts its total shift of -9.7 kHz (Table 3: RAM -3.6(0.9), iodine impurity -5.0(5.0), pump power
+-1.1(<0.1) kHz; pressure 0 because -15 C is the CIPM condition) to give "563 260 223 515.0 kHz, with a total
+uncertainty of 5.1 kHz". That corrected value is entered (as for cheng2021a); the pressure shift is left in it.
+Not entered: the uncorrected mean and the ten runs (the same measurement); the sensitivity coefficients other
+than pressure (power -120(8) Hz/mW, pointing -4.7 Hz/urad, phase 71 Hz/degree, servo 2.56 kHz/mV); Table 1
+(other laboratories' results); the acetylene-referenced comb checks.
+"""
+
+uncertainty = "5.1 kHz, the paper's total (dominated by the 5.0 kHz impurity term), taken as 1 sigma."
+
+notes = "The same HUST group as cheng2021a, whose RAM and impurity evaluation (its ref. [31]) this paper reuses; a different laser and measurement, so not declared as an overlap, but the two share those systematics. Residual against i2spec2026o (obs - model, after the shift correction): -3.8 kHz (cheng2021a -3.2 kHz). Checked with the shipped model only."
+
+[conditions]
+cold_finger_C = -15.0
+pump_mW = 10.3
+method = "frequency-doubled Nd:YAG, modulation transfer spectroscopy (325 kHz); fibre comb referenced to an H maser"
+
+[shift_correction]
+pressure_Pa = 0.82
+pressure_kHz_per_Pa = -3.9
+pressure_kHz_per_Pa_unc = 0.1
+basis = "The paper's own pressure coefficient, -3.9(0.1) kHz/Pa (Fig. 2a), at -15.00 C = 0.82 Pa (Tellinghuisen 2011). The power shift is already removed in the entered value."

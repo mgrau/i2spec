@@ -1,0 +1,35 @@
+id = "weller2026a"
+citation = "M. Weller, K. Rostan, A. Friedrich, J. Wüst, M. Oswald, F. Kuschewski, T. Schuldt and C. Braxmaier, \"Molecular iodine at 508 nm: hyperfine spectroscopy and operating regimes for optical frequency references\", Opt. Express 34, 31567 (2026)"
+source = "https://doi.org/10.1364/oe.605121 (open access, CC BY 4.0; Matt's library copy papers/Weller2026_OE34_31567.pdf)"
+doi = "10.1364/oe.605121"
+retrieved = "2026-10-20"
+unit = "MHz"
+catalog = "broadband.yaml:weller2026"
+license = "CC BY 4.0"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer of Table 1, p. 31571, and checked against the page: "Frequency offset (MHz)" of the 21
+hyperfine components of 127I2 R(41) 51-0 at 508.028 nm, a1 = 0. Each offset is nu(a_k) - nu(a1), measured by
+locking the spectroscopy laser to a_k while an auxiliary laser stayed locked to a1 and averaging their beat
+(p. 31570), so the 20 rows are intervals to a1.
+
+Labels: R(41) has odd J'' and 21 main components, all of which the paper resolves; a_k is rank k by frequency.
+The assignment is the paper's, from the Atlas line 1255 (the overlapping P(50) 64-1 was not seen).
+
+Not entered: the linewidths, SNR and SNR/Gamma of Table 1; the pressure-broadening coefficients (84, 73 and
+95 kHz/Pa for a1, a2, a3) and the other operating-point results. No absolute frequency is given (p. 31579 lists
+it as future work).
+"""
+
+uncertainty = "0.5 kHz for every interval, the table caption's \"below +-0.5 kHz\", taken as 1 sigma. It comes from the beat-note instability; no pressure or power shift of the intervals is applied or estimated. One reference laser and set-up, so one group."
+
+[conditions]
+method = "modulation transfer spectroscopy, 96 kHz phase modulation of the pump; beat with an auxiliary laser locked to a1"
+laser = "frequency-doubled 1016 nm ECDL, 508 nm"
+cell = "30 cm cell, triple pass (90 cm); 1 Pa iodine; 8.6 mW pump, 450 uW probe, 2 mm beam diameter (Table 1 conditions, p. 31572)"
+
+notes = """
+First hyperfine data at B v'51. Residuals against i2spec2026o (Predictor(), obs - model): -2.7 to -15.5 kHz,
+mean -8 kHz, i.e. mostly the model's a1 placed 8 kHz high relative to the rest. Checked with the shipped model only.
+"""

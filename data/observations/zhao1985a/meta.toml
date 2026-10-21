@@ -1,0 +1,34 @@
+id = "zhao1985a"
+citation = "P. Zhao, J. L. Blabla and J. Helmcke, \"127I2-stabilized He-22Ne laser at 640 nm wavelength\", IEEE Trans. Instrum. Meas. IM-34, 252-256 (1985)"
+source = "https://doi.org/10.1109/TIM.1985.4315317 (IEEE Xplore via ODU; Matt's library copy papers/Zhao1985_IEEE_TIM_34_252.pdf)"
+doi = "10.1109/TIM.1985.4315317"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table I (p. 254), "Frequency differences between HFS components of the P(10) 8-5 and R(16) 8-5 lines (reference:
+a9)", read from a 300 dpi page image (the text layer garbles it) and typed: measured intervals from a9 of 127I2
+P(10) 8-5, in MHz, for two PTB 3He-22Ne lasers at 640 nm (A and B), with the authors' calc. - meas. residual and
+statistical weight (both in the note). Laser A: a2, a3, a6-a8, a10-a15 and R(16) 8-5 b1-b3; laser B: a7, a8,
+a10-a12 and b1.
+Labels as printed and as in the MEP (bipm2003e): P(10) has even J'' (15 components), a_k rank k; R(16) b1-b3 as
+the MEP has them.
+
+Not entered: a1 (-494.106 MHz, marked "estimated value (not measured)"); a4/a5, one printed value (-175.807 MHz)
+for an unresolved pair; Table II (hyperfine constants fitted to these rows); Table III (weak features near a9,
+unassigned); Table IV (modulation and pressure coefficients of a7, a9, b1, a10, a11: e.g. a9 -7.6 kHz/MHz and
+-7.8 kHz/Pa at 6 MHz and 18 C).
+"""
+
+uncertainty = """
+No per-row uncertainty is printed. Each laser's fit gives a weighted standard deviation (laser A 70.09 kHz, laser
+B 7.69 kHz) and each row a statistical weight w (0.1-1.0), so each row is given s / sqrt(w): laser A 70, 111 or
+222 kHz for w = 1.0, 0.4, 0.1; laser B 7.7 kHz. The R(16) rows have no weight and take s. Laser A's s includes the
+first-order hyperfine model's misfit; the two lasers differ by 10-90 kHz on the components both measured.
+"""
+
+notes = "The MEP's 640 nm tables (bipm2003e) average these lasers with other data (b1 = 62.834 MHz, the mean of A and B); declared there as a mean."
+
+[conditions]
+method = "two 3He-22Ne lasers at 640 nm with internal 127I2 cells, third-harmonic locking (6 MHz p-p modulation, cold finger 18 C); beat-frequency matrix measurements"

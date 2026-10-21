@@ -1,0 +1,49 @@
+id = "ye2000a"
+citation = "J. Ye, T. H. Yoon, J. L. Hall, A. A. Madej, J. E. Bernard, K. J. Siemsen, L. Marmet, J.-M. Chartier and A. Chartier, \"Accuracy comparison of absolute optical frequency measurement between harmonic-generation synthesis and a frequency-division femtosecond comb\", Phys. Rev. Lett. 85, 3797-3800 (2000)"
+source = "https://doi.org/10.1103/PhysRevLett.85.3797 (CU Scholar copy; Matt's library copy papers/Ye2000_PRL85_3797.pdf)"
+doi = "10.1103/PhysRevLett.85.3797"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from the text layer and checked against the pages (p. 3799). Both rows are the frequency of the transportable
+He-Ne/I2 laser JILA-145 locked to the f (a16) component of 127I2 R(127) 11-5, corrected with its measured shift
+coefficients "to the value the laser would produce at the nominal operating conditions" (p. 3798), measured in
+April 2000 by two independent chains:
+- JILA femtosecond comb, referenced to the Nd:YAG/I2 laser and GPS-disciplined Cs: 473 612 353 602.26 +- 0.34 kHz.
+- NRC harmonic chain (OsO4-stabilized CO2 laser and the 88Sr+ 445 THz standard): INMS-3 locked to f measured at
+  473 612 353 595.37 +- 0.25 kHz, plus JILA-145 - INMS-3 = 16.4 +- 0.6 kHz and the 10.27 +- 0.15 kHz shift of
+  JILA-145 on its return to JILA (a ~20 mK cell temperature change), giving 473 612 353 602.04 +- 0.69 kHz.
+The two agree to 220 +- 770 Hz.
+
+Not entered: the INMS-3 value by itself (its operating conditions are not given); the BIPM-4 values
+(604.4 +- 1.4 and 605.2 +- 1.9 kHz) and the "preliminary updated value" 473 612 353 604.8 +- 1.2 kHz for the
+standard, which are these measurements transferred to BIPM-4 by heterodyne comparison, not further measurements;
+the historical values of Fig. 4.
+
+Overlap: the same campaign as yoon2001a (ref. 9 here; Yoon cites this paper as ref. 11 for the NRC comparison),
+which measured the i (a13) component of the same laser and an f - i interval "from the comb measurement of the f
+component". Whether that f measurement is the 602.26 kHz value is not stated: i + (f - i) from yoon2001a gives
+602.37 kHz at standard conditions, 0.11 kHz from it. Neither set's rows fix the other's, so no overlap is declared.
+"""
+
+uncertainty = "As printed (1 sigma): 0.34 kHz for the comb (Nd:YAG reference 200 Hz, He-Ne laser 250 Hz, rf oscillator 100 Hz) and 0.69 kHz for the NRC chain (laser intercomparison 620 Hz, ion reference 200 Hz). One laser, so one group; the shift correction to zero pressure and modulation adds the common uncertainty of the coefficients."
+
+notes = "First comparison of a femtosecond comb against a harmonic frequency chain on the same optical standard."
+
+[conditions]
+method = "He-Ne laser with internal iodine cell, third-harmonic locking; femtosecond comb at JILA and a harmonic chain at NRC Ottawa"
+laser = "JILA-145 (commercial He-Ne/I2) at its nominal operating conditions, the CIPM standard conditions of yoon2001a (15 C cold finger, 6 MHz p-p)"
+
+[shift_correction]
+pressure_Pa = 17.28
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 10.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "The laser was operated at, or corrected to, its nominal conditions, the CIPM standard conditions (yoon2001a, the same laser and campaign), so bipm2003a's coefficients take the values to zero pressure, power and modulation exactly as for the MeP value: 15 C = 17.28 Pa, -9.6(1.9) kHz/Pa; 6 MHz p-p, -10(2) kHz/MHz; power 0 +- 1 kHz/mW at 10 mW."

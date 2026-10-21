@@ -1,0 +1,27 @@
+id = "gill1979a"
+citation = "P. Gill and S. J. Bennett, \"Iodine saturation spectroscopy for multi-wavelength stabilization of an argon/krypton ion laser\", Metrologia 15, 117-123 (1979)"
+source = "https://doi.org/10.1088/0026-1394/15/3/001 (PDF supplied by Matt; library copy papers/Gill1979_Metrologia_15_117.pdf)"
+doi = "10.1088/0026-1394/15/3/001"
+retrieved = "2026-10-20"
+unit = "cm-1"
+exclude = "record only: wavemeter wavenumbers at 1 part in 1e7 (about 60 MHz), no better than the FTS atlases; kept for the archive and left out of every fit, benchmark and the explorer"
+
+transcription = """
+Table 2 (p. 121), column "Measured wavenumber" marked [NPL]: centres of gravity of the hyperfine sets saturated
+inside an argon/krypton ion laser at 515, 521, 531 and 568 nm, "derived from wavelength measurements at particular
+hyperfine components" with the NPL digital wavemeter (1 in 1e7), typed from the text layer and checked against
+the page. Entered as hyperfine-free line centres (component empty). The component wavelengths of Table 3 are in
+the notes; their component labels (d, 20, 1, o) are figure labels that cannot all be ranked reliably.
+Assignments are the paper's (from sidelight fluorescence): 58-1 R(98), 49-1 P(108) ("probable"), 43-2 R(98),
+27-3 P(133).
+Not entered: the 641 nm 11-7 R(98) value (approximate, laser not stabilized); the values cited from other works
+[19, 20] for 43-0 and 40-0; Table 1 (calculated wavenumbers and group spacings); the hyperfine structure (figures
+only).
+"""
+
+uncertainty = "1 part in 1e7 as stated, about 0.002 cm-1."
+
+notes = "Residuals against i2spec2026o (obs - model): +0.0005 to +0.0012 cm-1, within the stated accuracy, which confirms all four assignments (49-1 P(108) included). Checked with the shipped model only."
+
+[conditions]
+method = "Coherent CR-MG argon/krypton ion laser with a 100 mm intra-cavity 127I2 cell, third-derivative lock; NPL digital wavemeter"

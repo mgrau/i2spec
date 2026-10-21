@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.480,0.070,,,jungner1995a,"abstract and p. 153: 563 260 223.480 MHz +-70 kHz, average of about 50 runs, May-June 1994"

@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-10-18T12:21:35.988741+00:00",
+  "release": "20261018",
+  "implementation": "i2spec.research.ResearchModel",
+  "scope": "Exact numerical replay of frozen research coefficients after package integration; no independent predictive-accuracy or uncertainty claim",
+  "production_default": "i2spec2026o",
+  "source_coefficients_changed": false,
+  "replays": [
+    {
+      "role": "absolute_accuracy",
+      "returncode": 0,
+      "log": "prototypes/out/explore/physical_search/p13_finalization_review_v2/package_integration/absolute_accuracy_replay.log",
+      "verification": {
+        "model": "research-20261018-absolute",
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.7152557373046875,
+          "intraline": 0.11584762660277192
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+      }
+    },
+    {
+      "role": "compact_value",
+      "returncode": 0,
+      "log": "prototypes/out/explore/physical_search/p13_finalization_review_v2/package_integration/compact_value_replay.log",
+      "verification": {
+        "model": "research-20261018-compact",
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.476837158203125,
+          "intraline": 0.11818428902188316
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+      }
+    },
+    {
+      "role": "balanced",
+      "returncode": 0,
+      "log": "prototypes/out/explore/physical_search/p13_finalization_review_v2/package_integration/balanced_replay.log",
+      "verification": {
+        "model": "research-20261018-balanced",
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.5960464477539062,
+          "intraline": 0.1070412167791801
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+      }
+    },
+    {
+      "role": "interval_precision",
+      "returncode": 0,
+      "log": "prototypes/out/explore/physical_search/p13_finalization_review_v2/package_integration/interval_precision_replay.log",
+      "verification": {
+        "model": "research-20261018-precision",
+        "counts": {
+          "absolute": 60,
+          "intraline": 592
+        },
+        "maximum_difference_Hz": {
+          "absolute": 0.476837158203125,
+          "intraline": 0.11714681136254512
+        },
+        "tolerance_Hz": 100.0,
+        "passed": true,
+        "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+      }
+    }
+  ],
+  "total_reference_predictions": 2608,
+  "all_replays_passed": true,
+  "isolated_package_import": {
+    "isolated_package": "/var/folders/6g/_wk5ty0n3816kgjydkwt6s9c0000gp/T/i2spec-research-installed-jnz00p71/i2spec/__init__.py",
+    "model": "research-20261018-balanced",
+    "frequency_MHz": 563262823.1728973,
+    "research_modules_loaded": []
+  },
+  "tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python -m pytest -q",
+    "passed": 279,
+    "xfailed": 1,
+    "seconds": 156.21
+  },
+  "source_sha256": {
+    "src/i2spec/research.py": "60f220ee164be1d78339758b22a668cf080265bdbfecdb5b68733e97505557bd",
+    "src/i2spec/cli.py": "c1fb4d37339b89e98cdc98822231332ef552bcb57b4d15a1df81b0f7dfdbc73c",
+    "src/i2spec/__init__.py": "ea0cf4c116b5e9308b52e76ba2d278877a993a52007f4f21164ec7f8a188ca95",
+    "src/i2spec/bspline.py": "1772a05021a6025bba74779d1d60627d2d76b00296fb33bdc256982f93fc4ee8",
+    "src/i2spec/hyperfine.py": "c4003ce812eed691108fbcb8a58c9240e66db8b92cfa24e3d11d426aa2242a1a",
+    "src/i2spec/constants.py": "fe243c658ee5a1887cca32cae29323c3c3c1bb36003b758edd71422b43c33860",
+    "src/i2spec/data/research/20261018/manifest.json": "635683afc55d9fd8eb029ba9931c3166b03a2412bcab88f39af8d4d8e6550c1b"
+  }
+}

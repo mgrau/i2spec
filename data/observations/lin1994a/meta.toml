@@ -1,0 +1,32 @@
+id = "lin1994a"
+citation = "T. Lin, Y.-W. Liu, W.-Y. Cheng and J.-T. Shy, \"Iodine-stabilized 543 nm He-Ne lasers\", Opt. Commun. 107, 389-394 (1994)"
+source = "https://doi.org/10.1016/0030-4018(94)90353-0 (library copy papers/Lin1994_Opt_Commun_107_389.pdf)"
+doi = "10.1016/0030-4018(94)90353-0"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 392), typed from the text layer and checked against a 300 dpi page image: hyperfine intervals of
+127I2 R(12) 26-0 and R(106) 28-0 at 543 nm, all relative to R(106) 28-0 b8, with estimated standard uncertainties
+in the last digits. Three measured columns, one group each:
+- "this work" (NTHU, two internal-mirror 543 nm He-Ne lasers locked to I2, each value the mean of 20 beat
+  measurements): R(12) a11-a15 and R(106) b2-b7, b9-b15;
+- column [4], U. Brand, Opt. Commun. 100, 361 (1993): R(12) a6-a15 and R(106) b1-b7, b9, b10;
+- column [13], M. Gläser, "Hyperfine components of iodine for optical frequency standards", PTB-Bericht
+  PTB-Opt-25 (1987): the same components (a9 without an uncertainty; 19 kHz, the column's largest, is assigned).
+Neither of the latter two is held, so their columns are entered here.
+Labels as printed; both lines have even J'' (15 components), so a_k, b_k are ranks.
+Not entered: the "Fitted" column and Table 2 (constants fitted to this work's R(106) values).
+"""
+
+uncertainty = "As printed (1-20 kHz): for this work the scatter of 20 measurements (statistical only); for the other columns as Lin et al. reprint them."
+
+notes = """
+The MEP 543 nm tables (bipm2003b) cite this paper (ref. [8]) and Gläser's PTB report (ref. [4]); declared there as
+"mean". cheng2001a (the same NTHU group, 2001) remeasured both lines relative to b10 by a different method.
+Residuals against i2spec2026o (obs - model): R(12) 26-0 rms 27 kHz, R(106) 28-0 rms 12 kHz over all three columns. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "internal-mirror 543 nm He-Ne lasers with internal I2 cells, third-harmonic locking; beat frequencies"

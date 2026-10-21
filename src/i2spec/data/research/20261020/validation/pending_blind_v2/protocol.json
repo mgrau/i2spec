@@ -1,0 +1,52 @@
+{
+ "schema_version": 2,
+ "created_utc": "2026-10-21T13:28:23.978348+00:00",
+ "status": "frozen",
+ "decision": "Matt, 2026-10-21: \"let's keep all new data as a blind test for now for this model\" - the pending sets no earlier registry holds stay out of every fit and are used only to score these frozen predictions and uncertainties",
+ "primary_model": "balanced_expanded",
+ "models": {
+  "balanced_expanded": {
+   "id": "research-20261020-balanced-expanded",
+   "coefficients": "2ea5fb4027f3daab90b6f08ad19e1c8106fb89ec620f27cc6da03e74e8ed27b6",
+   "uncertainty_json_sha256": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f"
+  },
+  "balanced": {
+   "id": "research-20261018-balanced",
+   "coefficients": "566847d1ac423d9d84c2bdb588b9791fcd2052b1930de723a8b475746cf22a2a"
+  },
+  "i2spec2026o": {
+   "id": "i2spec2026o",
+   "coefficients": "parameter set i2spec2026o; hyperfine table default"
+  },
+  "hannover2008": {
+   "id": "hannover2008",
+   "coefficients": "parameter set hannover2008; hyperfine table None"
+  }
+ },
+ "outcome_rule": "values are read only by `score`, after this registry exists; no refit, no model or setting selection, no exclusion of targets after scoring. A data correction found later is reported beside, not instead of, these scores",
+ "exclusion": "127I2 P(13) 43-0: diagnostic target only, never in a headline score",
+ "partitions": {
+  "blind": "nothing of this measurement is in any training set or an earlier registry",
+  "scored_before": "an [overlaps] declaration ties it to a set of an earlier registry, whose values were read when that registry was scored",
+  "seen": "an active set prints this measurement or a mean that contains it ([overlaps] same/mean)",
+  "superseded": "an active set holds the same quantity re-measured or re-evaluated by the same authors ([overlaps] superseded)"
+ },
+ "kinds": {
+  "absolute": "a component frequency",
+  "intraline": "component minus component of the same line (hyperfine only)",
+  "interline": "component (or center) of one line minus that of another"
+ },
+ "metrics": {
+  "residual": "observed - predicted (MHz), observed at zero pressure and power",
+  "scores": "per model, partition, kind and set: n, rms, median |r|, mean, rms of r/sigma, fraction within each threshold; paired on targets every compared model predicts",
+  "thresholds_MHz": [
+   0.01,
+   0.03,
+   0.1,
+   0.3,
+   1.0,
+   3.0
+  ]
+ },
+ "uncertainty_note": "sigma is the measurement uncertainty alone; |r|/sigma describes disagreement with the measurement, not model confidence. The primary forecasts also carry the model's frozen 1-sigma (sigma_model_MHz, from the release uncertainty.json, whose SHA256 is in models); coverage uses z = r / sqrt(sigma_model^2 + sigma^2)"
+}

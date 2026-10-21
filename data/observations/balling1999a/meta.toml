@@ -1,0 +1,48 @@
+id = "balling1999a"
+citation = "P. Balling and J. Blabla, \"612 nm helium-neon lasers stabilized to the hyperfine structure of iodine molecule\", Proc. SPIE 4016, 24-29 (1999)"
+source = "https://doi.org/10.1117/12.373640 (PDF supplied by Matt; library copy papers/Balling1999_SPIE_4016_24.pdf)"
+doi = "10.1117/12.373640"
+retrieved = "2026-10-20"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Typed from 300-400 dpi page images (the text layer is garbled). Two CMI He-Ne lasers at 612 nm with internal
+127I2 cells (PLO1, PLO2; cells 14, 22, 25), all frequencies relative to a7 ("o") of R(47) 9-2:
+- Table 2.1: R(34) 17-6 e1-e6 from second-harmonic (2f) spectra (3 MHz p-p, -5 C), "average uncertainty ...
+  100 kHz".
+- Table 2.2: R(48) 15-5 c1-c6, c8-c12 from 2f spectra; c2-c5 also by third-harmonic locking (column 3f); c11 and
+  c12 corrected for their mutual crosstalk (column "corrected", 0.15 MHz), entered instead of their 2f values.
+  c5's 2f value is printed without its minus sign (-209.9; Theory -209.96, 3f -209.87).
+- Table 2.3: P(48) 11-3 b6-b10, b12-b15 from 2f spectra (b12-b14 corrected for crosstalk). Its 3f values (b15,
+  b10) are those of the PLO1/cell 25 column of Table 3.1 and are entered there once.
+- Sect. 3.1: a3 of R(47) 9-2 from the 2f record, corrected for its neighbours, -312.33 MHz.
+- Table 3.1: R(47) 9-2 a1-a21 (and P(48) 11-3 b15, b10) from a7, measured by alternately locking (3f or 5f, 6 MHz
+  p-p) to o and to each component against a reference laser, for five laser/cell/harmonic combinations, each its
+  own group. The a3 entries (italic, "affected by signals of neighboring components") are left out.
+- Table 3.5: h - i and i - j (a14 - a13, a13 - a12) printed as differences from the CCDM values (34 702 and
+  30 000 kHz) with standard deviations, for five combinations; entered as CCDM + difference. These are separate
+  runs from Table 3.1 (PLO1/cell 14 3f gives h - i = 34 768 kHz in Table 3.1, 34 779 kHz here).
+Labels: a, b, c, e are the paper's letters for R(47) 9-2, P(48) 11-3, R(48) 15-5 and R(34) 17-6, numbered by
+frequency (the model puts each at its printed rank; c4 and c11, marked "?" in the paper, fall within 0.4 MHz
+of their predicted positions).
+
+Not entered: the "Theory" and CCDM columns; the "Experiment [4]" column of Table 2.2 (Cérez et al. 1980, chart
+recordings); Table 2.4 (47 crossover resonances, not representable); the 55-57 unclassified peaks (not printed);
+Tables 3.2-3.4 (modulation and temperature coefficients, 5f - 3f shifts, laser-to-laser differences).
+"""
+
+uncertainty = "2f spectra: \"the average uncertainty of frequency estimation is 100 kHz\" (Tables 2.1-2.3), 0.15 MHz for the crosstalk-corrected c11/c12. Table 3.1 prints none; the conclusions give the lasers' long-term reproducibility as \"better than 30 kHz\", entered for each 3f/5f row (the columns scatter by 10-70 kHz, cell 22 being \"bad\"). Table 3.5: the printed standard deviation with 10 kHz added in quadrature for the lock."
+
+notes = """
+Internal-cell lasers: the cell-22 laser is shifted by about 200 kHz as a whole (Table 3.3), which cancels in
+intervals within R(47) 9-2 but its columns still scatter by up to 70 kHz from the others. The MEP 612 nm tables
+(bipm2003d) predate this paper; not declared. Residuals against i2spec2026o (obs - model): R(47) 9-2 within the line
+rms 45 kHz (82 rows); P(48) 11-3 from a7 rms 0.15 MHz; R(48) 15-5 from a7 +0.19 MHz on average (the model's
+offset of that line, which bipm2003d's c1 - a7 also shows), with c4 (the paper's "c4 ?") +0.37 MHz by 3f;
+R(34) 17-6 +0.87 MHz on all six, the model's position of that line (no other set holds it). Checked with the
+shipped model only.
+"""
+
+[conditions]
+method = "He-Ne lasers at 612 nm with internal 127I2 cells (50 or 85 mm), 0.8 m resonators; 2f spectra at 3 MHz p-p and -5 C; 3f and 5f locks at 6 MHz p-p; cold fingers -5 to -12 C"

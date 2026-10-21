@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18T12:29:34.895954+00:00",
+  "status": "computational_release_ready_awaiting_new_measurements",
+  "production_default": "i2spec2026o",
+  "explicit_research_primary": "research-20261018-balanced",
+  "model_selection": "Training-only coefficient starts; prior declared representative rules on reused exploratory architecture comparison; no prospective outcome selection",
+  "fitted_molecular": 61,
+  "inherited_molecular": 18,
+  "fitted_calibration": 4,
+  "line_specific_parameters": 0,
+  "level_specific_parameters": 0,
+  "benchmark": {
+    "absolute_rms_MHz": 0.15636335726412082,
+    "intraline_rms_MHz": 0.058557271279601524,
+    "withheld_B39_absolute_rms_MHz": 3.4420242,
+    "interpretation": "Reused exploratory validation; no blind or global-optimum claim"
+  },
+  "prospective_registry_sha256": "e0cdfbaba8fc4758a1700edfeceff9b92b0af76a56b737b081a9a56dfa9a32f4",
+  "computational_release_ready": true,
+  "scientific_validation_complete": false,
+  "new_measurements_available": false,
+  "open_gates": [
+    {
+      "id": "new_measurements",
+      "label": "Fresh laboratory validation",
+      "status": "awaiting_measurements",
+      "detail": "User reports no new measurements. All 48 prospective targets remain pending; laser/assignment feasibility and traceability require laboratory review."
+    },
+    {
+      "id": "literature",
+      "label": "Published external comparison",
+      "status": "requires_primary_source",
+      "detail": "Two 2025 candidate papers retained. Kondo exact result unavailable; experimental correction and uncertainty conventions unverified for both. Zero comparable outcomes scored."
+    },
+    {
+      "id": "nominal_coverage",
+      "label": "Calibrated prediction probability",
+      "status": "not_established",
+      "detail": "Empirical half-widths 0.6 / 13 MHz carry no assigned probability. Full covariance and independent coverage calibration are unavailable; no 95% interval or universal accuracy claim."
+    }
+  ],
+  "entrypoints": {
+    "predict": "uv run i2spec research predict 'P(53) 32-0' --component a1 --model research-20261018-balanced",
+    "progress": "uv run i2spec progress",
+    "verify": "uv run python -m i2spec.validation verify src/i2spec/data/research/20261018/validation/prospective_v1",
+    "guide": "docs/research-model-validation.md"
+  },
+  "evidence": {
+    "research_release": "src/i2spec/data/research/20261018/manifest.json",
+    "frozen_snapshot_review": "prototypes/out/explore/physical_search/p13_finalization_review_v2/review.json",
+    "portable_validation": "src/i2spec/data/research/20261018/validation",
+    "uncertainty": "prototypes/out/explore/physical_search/uncertainty_coverage_20261018/report.md",
+    "readiness": "prototypes/out/explore/physical_search/blind_validation_readiness_20261018/readiness_report.md",
+    "prospective_numerical_audit": "prototypes/out/explore/physical_search/prospective_numerical_audit_20261018/summary.json"
+  }
+}
