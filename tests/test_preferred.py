@@ -14,14 +14,20 @@ def table():
     return pf.preferred()
 
 
+#: The table is built in worker processes, whose eigensolves can differ from this one's in the last bit
+#: (1e-11 cm-1 on Linux), and the statistical sigma comes from finite-difference level derivatives, which
+#: carry that to about 1e-6 of sigma: far below anything physical, but not exact.
+NU_TOL, SIGMA_REL = 1e-9, 1e-4
+
+
 def test_the_table_is_the_research_model(table):
     m = pf.model()
     for branch, J, vu, vl in (("R", 56, 32, 0), ("P", 13, 43, 0), ("R", 41, 51, 0), ("R", 86, 33, 48), ("R", 3, 80, 0)):
         nu = table.positions([branch], [J], [vu], [vl])[0]
-        assert nu == m.transition(vu, vl, J, branch)
+        assert nu == pytest.approx(m.transition(vu, vl, J, branch), abs=NU_TOL)
         sigma, status, cls = table.uncertainties([branch], [J], [vu], [vl])
         u = m.uncertainty(f"{branch}({J}) {vu}-{vl}")
-        assert sigma[0] == pytest.approx(u.sigma_MHz, rel=1e-6)
+        assert sigma[0] == pytest.approx(u.sigma_MHz, rel=SIGMA_REL)
         assert pf.STATUS[status[0]] == u.status and ("precise", "atlas", "beyond")[cls[0]] == u.line_class
 
 
@@ -61,7 +67,7 @@ def test_catalog_components_carry_their_uncertainty(table):
     a10 = next(c for c in comps if c.label == "a10")
     assert a10.frequency_MHz == pytest.approx(pf.model().frequency("R(56) 32-0", "a10"), abs=1e-6)
     assert a10.frequency_MHz-a10.offset_MHz == pytest.approx(center, abs=1e-6)
-    assert catalog.transition("127I2", "R", 56, 32, 0) == pf.model().transition(32, 0, 56, "R")
+    assert catalog.transition("127I2", "R", 56, 32, 0) == pytest.approx(pf.model().transition(32, 0, 56, "R"), abs=NU_TOL)
 
 
 def test_i2spec_model_switch(monkeypatch):
