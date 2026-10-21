@@ -1,5 +1,7 @@
 """Stage 2 of the refit: corrections to the published hyperfine formulae (src/i2spec/hyperfine_fit.py)."""
 
+from dataclasses import replace
+
 import numpy as np
 import pytest
 
@@ -111,3 +113,15 @@ def test_cross_validation_holds_out_whole_groups(bipm532):
     assert rms(held_out) > rms(in_sample)                     # and predicts unseen groups worse
     with pytest.raises(ValueError):
         HyperfineFit(datasets=[], free=("not_a_term",))
+
+
+def test_components_the_model_does_not_resolve_are_skipped():
+    """A rank beyond the model's main components has nothing to compare with: it is dropped, not scored 0."""
+    ds = load_dataset("data/observations/bipm2012a")
+    o = next(o for o in ds.observations if o.kind == "interval" and o.ref_line in (None, o.line))
+    bad = replace(o, component="a99")
+    fit = HyperfineFit(datasets=[replace(ds, observations=[o, bad])])
+    assert len(fit.data) == 1 and fit.data[0].rank != 99
+    [(key, why)] = fit.skipped
+    assert key == f"{o.line} a99-{o.ref_component}" and "main components" in why
+    assert len(fit.deviations(fit.x0)) == 1

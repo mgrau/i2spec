@@ -3,10 +3,11 @@
 import numpy as np
 import pytest
 
-from i2spec.constants import MHZ_PER_CM
-from i2spec.intensity import C2, bound, intensity_model, line_list, master_line_list, match_levels, shared_offset
+from i2spec.constants import ATOMIC_MASS, MHZ_PER_CM
+from i2spec.intensity import (C2, LineList, bound, intensity_model, line_list, master_line_list, match_levels,
+                              shared_offset)
 from i2spec.model import RovibronicModel
-from i2spec.spectrum import apparent_cross_section, ils_kernel
+from i2spec.spectrum import apparent_cross_section, cross_section, ils_kernel, molecular_mass
 
 WINDOW = (18780.0, 18800.0)
 
@@ -114,3 +115,40 @@ def test_apparent_cross_section_stays_finite_when_saturated(master):
     with np.errstate(invalid="raise", divide="raise"):
         sigma = apparent_cross_section(nu, lines, 300.0, 1e18, ils=("sinc", 0.01))
     assert np.all(np.isfinite(sigma))   # (a sinc also overshoots: negative values are its ringing, not an error)
+
+
+def test_doppler_width_follows_the_isotopologue_mass():
+    nu0, one = 18790.0, np.ones(1)
+    lines = LineList(nu0 * one, 1e-18 * one, 30 * one, 0 * one, 50 * one, one, 0 * one, 300.0)
+    nu = np.linspace(nu0 - 0.05, nu0 + 0.05, 2001)       # the profile's peak sits on the centre point
+    peak = {iso: cross_section(nu, lines, 300.0, isotopologue=iso)[1000] for iso in ("127I2", "129I2", "127I129I")}
+    np.testing.assert_array_equal(cross_section(nu, lines, 300.0),
+                                  cross_section(nu, lines, 300.0, isotopologue="127I2"))
+    for iso in ("129I2", "127I129I"):
+        ratio = np.sqrt(molecular_mass("127I2") / molecular_mass(iso))   # the Doppler width scales as m^-1/2
+        assert peak["127I2"] / peak[iso] == pytest.approx(ratio, rel=1e-9)
+        assert ratio < 1
+    assert molecular_mass("129I2") == pytest.approx(2 * ATOMIC_MASS[129])
+
+
+def test_transition_rejects_lines_without_an_upper_level():
+    m = RovibronicModel()
+    with pytest.raises(ValueError, match="no upper level"):
+        m.transition(20, 0, 0, "P")
+    with pytest.raises(ValueError, match="no upper level"):
+        m.hyperfine_components(20, 0, 0, "P", dJ=0, position=False)
+    assert m.transition(20, 0, 1, "P") < m.transition(20, 0, 0, "R")
+
+
+def test_damaged_cache_is_rebuilt(model, tmp_path, monkeypatch):
+    """A cached list cut short (an interrupted run) is built again, not a crash in every later run."""
+    monkeypatch.setenv("I2SPEC_CACHE", str(tmp_path))
+    built = master_line_list(model, 18780.0, 18781.0, T_range=(290.0, 300.0), S_min=1e-25)
+    path, = tmp_path.glob("linelist_127I2_*.npz")
+    assert [p.name for p in tmp_path.iterdir()] == [path.name]          # saved through a temporary file, gone now
+    path.write_bytes(path.read_bytes()[:100])
+    with pytest.warns(UserWarning, match="rebuilding"):
+        again = master_line_list(model, 18780.0, 18781.0, T_range=(290.0, 300.0), S_min=1e-25)
+    np.testing.assert_array_equal(built.nu, again.nu)
+    np.testing.assert_array_equal(master_line_list(model, 18780.0, 18781.0, T_range=(290.0, 300.0), S_min=1e-25).nu,
+                                  built.nu)                              # and the rebuilt file reads back

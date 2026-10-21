@@ -2,6 +2,9 @@
 # build it into site/docs/ next to the explorer, as GitHub Pages publishes it.
 site_name: i2spec
 site_description: An open, physics-based model of the molecular iodine B–X spectrum
+# the source, linked from the header of every page
+repo_url: https://github.com/mgrau/i2spec
+repo_name: mgrau/i2spec
 docs_dir: documentation
 site_dir: site/docs
 # flat pages, each a plain .html file, so the link back to the explorer is ../index.html everywhere
@@ -22,6 +25,7 @@ theme:
     code: IBM Plex Mono
   icon:
     logo: material/sine-wave
+    repo: fontawesome/brands/github
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default

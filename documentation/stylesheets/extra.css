@@ -74,3 +74,8 @@
     overflow-wrap: anywhere;
   }
 }
+
+/* the repository: just its icon in the header (the name and counts stay in the navigation drawer) */
+.md-header__source { width: auto; margin-left: 0.4rem; }
+.md-header .md-source__repository { display: none; }
+.md-header .md-source__icon { width: 1.6rem; }

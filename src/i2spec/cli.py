@@ -9,7 +9,7 @@ from pathlib import Path
 import sys
 
 from .constants import DEFAULT_PARAMETERS, ISOTOPOLOGUES
-from .lookup import UNITS, Catalog, format_mhz, parse_quantity, uncertainty
+from .lookup import UNITS, Catalog, format_mhz, from_wavenumber, parse_quantity, to_wavenumber, uncertainty
 
 COLUMNS = (("λ vac (nm)", 12, "{:.5f}"), ("λ air (nm)", 12, "{:.5f}"), ("ν (cm⁻¹)", 12, "{:.5f}"),
            ("f (THz)", 11, "{:.7f}"), ("line", 14, "{}"), ("S (cm)", 10, "{:.2e}"),
@@ -44,7 +44,9 @@ def _catalog(args):
 
 def cmd_lines(args):
     low, unit = parse_quantity(args.low, args.unit)
-    high, _ = parse_quantity(args.high, unit)
+    high, high_unit = parse_quantity(args.high, unit)  # a bare upper bound takes the lower bound's unit
+    if high_unit != unit:
+        high = from_wavenumber(to_wavenumber(high, high_unit), unit)
     result = _catalog(args).search(low, high, unit, args.isotopologue, min_strength=args.min_strength,
                                    limit=args.limit, sort=args.sort)
     if args.json:
@@ -150,16 +152,23 @@ def cmd_research(args):
 def cmd_web(args):
     from . import webapp
 
+    # before any export, which takes minutes: the files the command reads exist only in a source checkout
+    webapp.check_checkout(site=args.action != "export", docs=args.action != "export")
     if args.action == "export":
         webapp.export(s_min=args.s_min)
-    elif args.action == "build":
-        if args.rebuild or not webapp.has_data():
-            webapp.export(s_min=args.s_min)
+        return
+    if args.rebuild or not webapp.has_data():
+        if args.action == "serve":
+            print("exporting the model for the web app first (a few minutes the first time) ...", flush=True)
+        webapp.export(s_min=args.s_min)
+    else:
+        cutoff = webapp.data_cutoff()
+        if cutoff is not None and cutoff != args.s_min:
+            print(f"i2spec: note: the exported data has --s-min {cutoff:g}, not {args.s_min:g}; "
+                  f"add --rebuild to export again", file=sys.stderr, flush=True)
+    if args.action == "build":
         print(f"site written to {webapp.build(args.dest)}")
     else:
-        if args.rebuild or not webapp.has_data():
-            print("exporting the model for the web app first (a few minutes the first time) ...", flush=True)
-            webapp.export(s_min=args.s_min)
         site = webapp.build(webapp.ROOT / "site")        # the explorer and the documentation, as published
         webapp.serve(port=args.port, open_browser=not args.no_browser, directory=site,
                      host="0.0.0.0" if args.lan else args.host)
@@ -247,7 +256,7 @@ def main(argv=None):
     args = build_parser().parse_args(argv)
     try:
         args.func(args)
-    except (ValueError, LookupError) as e:
+    except (ValueError, LookupError, OSError) as e:  # OSError: a missing or unreadable data file
         print(f"i2spec: {e}", file=sys.stderr)
         return 2
     return 0

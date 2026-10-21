@@ -79,11 +79,13 @@ def _tables():
             out.append(f'| {_source(s, _rows(s))} | {s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
     out += ["", '## <span class="kind atlas"></span>Fourier-transform atlases', "",
             "Doppler-limited line centers, assigned in this work by comparison with the model. The Salami & Ross "
-            "and APO atlases are in the core fit; the Orsay atlases determine the levels beyond it (X v″ = 18–25, "
-            "B v′ = 51–80). The calibration of each atlas is given with it.", "",
+            "and APO atlases are in the core fit; Orsay part I and Partie IV determine the levels beyond it "
+            "(X v″ = 18–25, B v′ = 51–80). The others are shown for comparison and used in no fit. The "
+            "calibration of each atlas is given with it.", "",
             "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
     for s in atlas:
-        out.append(f'| {_source(s)}<br><span class="cite">Calibration: {html.escape(s["uncertainty"])}</span> | '
+        fitted = "" if s.get("fit", True) else " Not used in the fit."
+        out.append(f'| {_source(s)}<br><span class="cite">Calibration: {html.escape(s["uncertainty"])}{fitted}</span> | '
                    f'{s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
     return "\n".join(out)
 

@@ -23,7 +23,7 @@ from .model import RovibronicModel
 from .spectrum import air_to_vacuum, doppler_fwhm, vacuum_to_air
 
 #: Units accepted for a search range: vacuum nm, standard-air nm, wavenumber, frequency.
-UNITS = ("nm", "nm-air", "cm-1", "MHz", "THz")
+UNITS = ("nm", "nm-air", "cm-1", "MHz", "GHz", "THz")
 #: Highest v' covered by the data behind the published potentials (docs/research/spectra-validation.md).
 V_UPPER_FITTED = 43
 #: Highest X level the published potentials were fitted to. Above it they extrapolate, and the
@@ -55,7 +55,11 @@ def format_mhz(value):
 
 
 def to_wavenumber(value, unit="nm"):
-    """Vacuum wavenumber (cm⁻¹) from a value in any of UNITS."""
+    """Vacuum wavenumber (cm⁻¹) from a value in any of UNITS, which must be positive."""
+    if unit not in UNITS:
+        raise ValueError(f"unknown unit {unit!r}; choose from {UNITS}")
+    if not float(value) > 0:  # also catches NaN
+        raise ValueError(f"a wavelength or frequency must be positive, not {value} {unit}")
     if unit == "nm":
         return 1e7 / float(value)
     if unit == "nm-air":
@@ -64,9 +68,9 @@ def to_wavenumber(value, unit="nm"):
         return float(value)
     if unit == "MHz":
         return float(value) / MHZ_PER_CM
-    if unit == "THz":
-        return float(value) * 1e6 / MHZ_PER_CM
-    raise ValueError(f"unknown unit {unit!r}; choose from {UNITS}")
+    if unit == "GHz":
+        return float(value) * 1e3 / MHZ_PER_CM
+    return float(value) * 1e6 / MHZ_PER_CM   # THz
 
 
 def from_wavenumber(nu, unit="nm"):
@@ -79,6 +83,8 @@ def from_wavenumber(nu, unit="nm"):
         return nu
     if unit == "MHz":
         return nu * MHZ_PER_CM
+    if unit == "GHz":
+        return nu * MHZ_PER_CM / 1e3
     if unit == "THz":
         return nu * MHZ_PER_CM / 1e6
     raise ValueError(f"unknown unit {unit!r}; choose from {UNITS}")
@@ -93,11 +99,9 @@ def parse_quantity(text, default_unit="nm"):
     aliases = {"nm": "nm", "nmair": "nm-air", "nm-air": "nm-air", "air": "nm-air", "cm-1": "cm-1", "cm": "cm-1",
                "wn": "cm-1", "mhz": "MHz", "thz": "THz", "ghz": "GHz"}
     unit = aliases.get(unit.lower().replace("^", "").replace("/", ""), unit)
-    if unit == "GHz":
-        return float(m[1]) * 1e3, "MHz"
-    if unit not in UNITS:
-        raise ValueError(f"unknown unit {unit!r}; choose from {UNITS}")
-    return float(m[1]), unit
+    value = float(m[1])
+    to_wavenumber(value, unit)  # rejects an unknown unit and a value that is not positive
+    return value, unit
 
 
 def parse_range(text, default_unit="nm"):

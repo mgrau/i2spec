@@ -1,0 +1,37 @@
+id = "debus_2023"
+unit = "cm-1"
+isotopologue = "127I2"
+url = "https://doi.org/10.25625/PONFBL"
+kind = "line positions and intensities condensed from a spectrum"
+title = "IAG Göttingen FTS, January 2023: Thorlabs iodine cell (Debus et al. 2023)"
+citation = """M. Debus, S. Schäfer, A. Reiners, Toward 10 cm/s radial velocity accuracy on the Sun using a Fourier transform spectrometer, J. Astron. Telesc. Instrum. Syst. 9, 045003 (2023), doi:10.1117/1.JATIS.9.4.045003; replication data on GRO.data, doi:10.25625/PONFBL (FP_iodine_spectra.7z)"""
+instrument = """Bruker IFS 125HR at IAG Göttingen, evacuated; 222 single-channel spectra of 10 scans each, co-added here; OPUS parameters of the first file: RES 0.02, APF NBM, ZFF 2, LWN 15798.0068359375, NSS 10, SRC Parallel Input 42mm, BMS Quartz VIS, DTC RT-Si Diode [Internal Pos.4], APT 1 mm, VEL 10.0. HeNe-referenced, not comb-calibrated"""
+conditions = """Thorlabs GC19100-I cell (19 mm x 100 mm by its part number) in a GCH25-75 heater, halogen lamp; spectra from 20/01/2023 17:35:24.630 (GMT+1) to 24/01/2023 11:54:17.076 (GMT+1). The deposit records no cell temperature or column; the template is at 313.23 K, the lowest mean window rms. Band used 15180-20050 cm-1 less 15720-15876 cm-1 (the 633 nm HeNe artifact)"""
+terms = """CC0 1.0 (GRO.data): no restriction on use or redistribution; cite the paper and the data set. The spectrum is not in this repository; these are our fits to it."""
+extraction = """prototypes/condense_spectra.py (i2spec 35377f6 with uncommitted changes, 2026-10-19): prototypes/atlas_lines.py
+extract with amplitudes on, 2423 windows. Every model line whose own absorption exceeds
+0.02 at line centre gets a wavenumber shift (ridge prior 0.01 cm-1) and a strength factor
+exp(eta) (ridge prior 0.5 on eta) on the i2spec template: hyperfine structure, Doppler width at the
+template temperature, a Gaussian instrument width, column density, linear baseline and zero offset per window.
+The fit axis was divided by 1 + s, s = -150.1 ppb, and shifted by -0.0 MHz so that the
+shift prior does not pull against the calibration; the positions here are back on the spectrum's own axis."""
+positions = """debus_2023.csv: hyperfine-free line centres (cm-1) on the spectrum's own wavenumber scale, in the
+observations format. Repeats combined by inverse variance, sigma inflated by sqrt(chi2/dof). Kept: fit sigma
+< 30 MHz, window rms < 4% of transmission, depth > 0.05; no other model line within +/-0.010 cm-1 at >= 0.1 of its strength.
+The scale carries a calibration offset (and here possibly a curve) that belongs in a fit as a group
+parameter and is NOT in the per-line uncertainty. Against the reference the scale is sum_j c_j x^j ppb, x = (nu - 17900)/1000 cm-1: c2 = +0.3 +/- 0.1, c1 = +1.3 +/- 0.2, c0 = -114.3 +/- 0.1 (bootstrap over 50 cm-1 blocks). """
+uncertainty = """sqrt((1.00 sigma_fit)^2 + 7.5^2) MHz, fitted to the scatter of the positions about apo_nist_2009 (13687 common lines), after a degree-2 scale curve, in bins of sigma_fit (K = 1.00, floor = 1.0 MHz); the floor is raised to 7.5 MHz, the published extraction's (checked against precision measurements), because template errors common to both spectra cancel here."""
+intensities = """debus_2023.intensities.csv: per line and template temperature, A = N S (cm-1), the integrated
+optical depth of the line (column density times line strength: the area under -ln(transmission) before the
+instrument function), and its uncertainty from the window fits (statistical: it does not include what the
+template's line shape or a blend's split gets wrong; the blend column flags lines with a model neighbour within
++/-0.010 cm-1 at >= 0.1 of their strength). N_window_cm-2 is the window's fitted column
+density, on the scale of the template's strengths, so A / N_window is a strength in cm/molecule on that scale;
+with an independent column density (path times number density) A gives absolute strengths. Kept: window rms
+< 4%, depth > 0.05, sigma(ln A) < 0.25. Repeats combined in ln A."""
+calibration = """HeNe-referenced FTS scale, not comb-calibrated: -150.1 ppb against the i2spec model (scale_ppb;
+-114.3 ppb against apo_nist_2009). Not in the per-line uncertainty; the explorer divides it out."""
+scale_ppb = -150.1
+range_cm-1 = [15184.9, 19844.8]
+n_lines = 15928
+n_intensities = 33759

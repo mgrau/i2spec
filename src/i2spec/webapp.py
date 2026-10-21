@@ -20,6 +20,8 @@ import csv
 import functools
 import http.server
 import json
+import math
+import os
 import re
 import shutil
 import subprocess
@@ -46,11 +48,17 @@ LABELS = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I�
 #: Hyperfine patterns kept per wavenumber shard, on top of the globally strongest ones
 PER_SHARD_HFS = 80
 #: Atlas line lists we hold with assignments. The Orsay tables carry their own columns (<name>_assigned.csv);
-#: the other two are in the observations format. Each Orsay scale is the one its fit found: part I in
-#: level_corrections_2026f, Partie IV in level_corrections_2026j (prototypes/orsay4_fit.py). Partie IV shows
-#: its unblended lines only: a blend's one position belongs to none of its assignments.
-ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
-ORSAY_SCALE_PPB = {"orsay1982_part1": 23.85, "orsay1983_part4": 200.8}   # Partie IV: +119.6 MHz at 19 870 cm-1
+#: the others are in the observations format. An atlas whose .toml gives scale_ppb, how its wavenumbers read
+#: against the model (observed = true (1 + scale_ppb 1e-9)), is shown with that scale divided out: Orsay part I
+#: from its level fit (level_corrections_2026f), parts II-IV fitted at assignment (prototypes/orsay_assign_parts.py),
+#: Partie IV from its own fit (prototypes/orsay4_fit.py), Debus et al. 2023 and the pyodine cells from their
+#: calibration (prototypes/condense_spectra.py). Partie IV
+#: shows its unblended lines only: a blend's one position belongs to none of its assignments.
+ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c", "pyodine_fischer_2022",
+           "orsay1982_part1", "orsay1982_part2", "orsay1982_part3", "orsay1982_part4", "orsay1983_part4")
+#: The atlases balanced-expanded is fitted to: the core's two, Orsay part I (X v'' 18-25) and Partie IV
+#: (B v' 51-80). The others are shown for comparison, marked as not used in the fit.
+FITTED_ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"balanced-expanded": "good", "levels measured": "good", "levels interpolated": "warn",
               "levels extrapolated": "bad", "i2spec2026o: outside balanced-expanded": "warn", "i2spec2026o": "none",
@@ -59,8 +67,11 @@ FLAG_CLASS = {"balanced-expanded": "good", "levels measured": "good", "levels in
               "v″ > 17: unmeasured": "bad", "v″ 26-89: Martin 1986": "warn", "v′ 51-79: atlas-measured": "warn", "v′ > 50: extrapolated": "bad", "isotope shift": "none", "few data": "none"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
                "orsay": "Gerstenkorn, Vergès & Chevillard", "borde": "Bordé", "demelo": "de Melo"}
-#: Names that the prefix alone gets wrong
-SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983"}
+#: Names that the prefix alone gets wrong; the four parts of the 1982 atlas are told apart by their numbers
+SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983",
+             "pyodine_song_65c": "SONG cell (pyodine) 2023", "pyodine_fischer_2022": "Fischer cell (pyodine) 2022",
+             **{f"orsay1982_part{k}": f"Gerstenkorn, Vergès & Chevillard 1982 ({n})" for k, n in
+                ((1, "I"), (2, "II"), (3, "III"), (4, "IV"))}}
 
 
 # --- sources and measurements -----------------------------------------------------------------------
@@ -158,7 +169,7 @@ def sources():
             link=_link(meta), n_rows=len(rows), n_lines=len({r[:4] for r in rows}), n_absolute=len(rows),
             n_intervals=0, n_also=0, isotopologues=["127I2"], nu=[round(min(nu), 3), round(max(nu), 3)],
             u_MHz=float(np.median([r[5] for r in rows])), uncertainty=_one_line(meta.get("calibration", "")),
-            fit=True))
+            fit=name in FITTED_ATLASES))
     # two sources by one author in one year keep their letters: "Bodermann 1998b", "Bodermann 1998c"
     for s in out:
         twins = [t for t in out if t["short"] == s["short"]]
@@ -176,15 +187,18 @@ def _atlas_rows(name):
     from .observations import read_observations
 
     if name.startswith("orsay"):
-        scale = 1 + ORSAY_SCALE_PPB[name] * 1e-9
+        meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
+        scale = 1 / (1 + float(meta.get("scale_ppb", 0.0)) * 1e-9)
         with open(ATLAS_DIR / f"{name}_assigned.csv", newline="", encoding="utf-8") as f:
             return tuple((r["branch"], int(r["J_lower"]), int(r["v_upper"]), int(r["v_lower"]),
                           float(r["sigma_cm1"]) * scale, (float(r["eps_mk"]) * 1e-3 * MHZ_PER_CM if r["eps_mk"] else 150.0))
                          for r in csv.DictReader(f) if r.get("n_assignments", "1") == "1")
-    # an atlas on a wavemeter scale carries its fitted offset (offset_mhz in its .toml), subtracted here
+    # an atlas on a wavemeter scale carries its fitted offset (offset_mhz in its .toml), subtracted here; one
+    # whose scale was fitted against the model (scale_ppb: observed = true (1 + scale_ppb 1e-9)) has it divided out
     meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
     shift = float(meta.get("offset_mhz", 0.0)) / MHZ_PER_CM
-    return tuple((o.line.branch, o.line.J_lower, o.line.v_upper, o.line.v_lower, o.value - shift,
+    scale = 1 + float(meta.get("scale_ppb", 0.0)) * 1e-9
+    return tuple((o.line.branch, o.line.J_lower, o.line.v_upper, o.line.v_lower, o.value / scale - shift,
                   o.uncertainty * MHZ_PER_CM) for o in read_observations(ATLAS_DIR / f"{name}.csv"))
 
 
@@ -348,6 +362,52 @@ def hyperfine_patterns(iso, lines, workers=None):
 
 # --- the export --------------------------------------------------------------------------------------
 
+def check_checkout(export=True, site=True, docs=True):
+    """Fail at once, rather than after a long export, when the files ``i2spec web`` reads are missing.
+
+    They live in the source checkout (web/, data/, mkdocs.yml), not in the installed package.
+    """
+    needed = []
+    if export or docs:                      # the references page is written from the data too
+        needed += [OBSERVATIONS_DIR, ATLAS_DIR]
+    if site:
+        needed += [WEB / name for name in SITE_FILES]
+    if docs:
+        needed.append(MKDOCS)
+    missing = [str(p) for p in needed if not p.exists()]
+    if missing:
+        raise FileNotFoundError(
+            f"`i2spec web` needs a source checkout of i2spec (git clone it and run `uv run i2spec web` there); "
+            f"not found: {missing[0]}{f' and {len(missing) - 1} more' if len(missing) > 1 else ''}")
+
+
+def _write_atomic(path, text):
+    """Write ``text`` to ``path`` so that an interrupted write leaves the old file or none, never half of one."""
+    path = Path(path)
+    tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    try:
+        tmp.write_text(text)
+        os.replace(tmp, path)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
+def data_cutoff(data=DATA):
+    """The strength cutoff (cm at 300 K) the exported data in ``data`` was written with, or None."""
+    try:
+        return json.loads((Path(data) / "manifest.json").read_text())["cutoff_cm_at_300K"]
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def _floor4(x):
+    return round(math.floor(float(x) * 1e4) / 1e4, 4)
+
+
+def _ceil4(x):
+    return round(math.ceil(float(x) * 1e4) / 1e4, 4)
+
+
 def _git_revision():
     try:
         return subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"],
@@ -366,8 +426,12 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     from .lookup import Catalog, Line
     from . import __version__
 
+    check_checkout(site=False, docs=False)
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
+    # The shards are rewritten in place and the manifest last: without one, has_data() is False until the
+    # export completes, so an interrupted export is redone rather than served half old and half new.
+    (out / "manifest.json").unlink(missing_ok=True)
     catalog = Catalog()
     # the lines to the B limit (12 A grid, ~20 min to build) for 127I2, the one isotopologue measured there
     masters = {iso: master_line_list(intensity_model(iso), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
@@ -450,7 +514,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     # each line's `w` indexes this list: why its uncertainty is what it is, and the flags that go with it
     manifest["reasons"] = [{"why": why, "flags": [[f, FLAG_CLASS.get(f, "none")] for f in flags]}
                            for why, flags in reasons]
-    (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
+    _write_atomic(out / "manifest.json", json.dumps(manifest, indent=1))
     total = sum(f.stat().st_size for f in out.rglob("*.json"))
     print(f"wrote {len(list(out.rglob('*.json')))} files, {total / 1e6:.1f} MB, to {out}")
     for iso, keys in missing.items():
@@ -573,8 +637,9 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         (hfs_folder / name).write_text(json.dumps({"o": [p[0] for p in hfs_rows], "s": [p[1] for p in hfs_rows],
                                                    "x": [p[2] for p in hfs_rows]},
                                                   separators=(",", ":")))
-        shards.append({"file": f"lines/{iso}/{name}", "hfs": f"hfs/{iso}/{name}", "nu0": round(float(edges[k]), 4),
-                       "nu1": round(float(edges[k + 1]), 4), "n": int(sel.size), "n_measured": len(rows)})
+        # the bounds are rounded outward, so they hold every line in the shard at its stored 1e-6 cm-1
+        shards.append({"file": f"lines/{iso}/{name}", "hfs": f"hfs/{iso}/{name}", "nu0": _floor4(edges[k]),
+                       "nu1": _ceil4(edges[k + 1]), "n": int(sel.size), "n_measured": len(rows)})
 
     # the partition function needs the X term values and their nuclear-spin weights
     J = np.arange(master.x_levels.shape[0])
@@ -623,7 +688,7 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     print(f"  {iso}: {len(nu):,} lines ({int(is_measured.sum()):,} measured) in {len(shards)} shards, "
           f"{len(hfs)} hyperfine patterns")
     return {"label": LABELS[iso], "n_lines": int(len(nu)), "n_measured": int(is_measured.sum()),
-            "nu_min": round(float(nu.min()), 4), "nu_max": round(float(nu.max()), 4), "shards": shards,
+            "nu_min": _floor4(nu.min()), "nu_max": _ceil4(nu.max()), "shards": shards,
             "order": "wavelength",           # rows and shards run from short to long wavelength
             "partition": f"partition_{iso}.json", "hfs": f"hfs_{iso}.json"}
 
@@ -646,6 +711,7 @@ def build_docs(dest):
 def build(dest, data=DATA, docs=True):
     """The explorer and its data at ``dest``, the documentation at ``dest/docs``: the static site."""
     dest = Path(dest)
+    check_checkout(export=False, docs=docs)
     if not has_data(data):
         raise FileNotFoundError(f"no exported data in {data}; run `i2spec web export` first")
     dest.mkdir(parents=True, exist_ok=True)
@@ -671,10 +737,16 @@ def _lan_address():
         return None
 
 
+class _QuietHandler(http.server.SimpleHTTPRequestHandler):
+    """Serves files without logging every request to the terminal."""
+
+    def log_message(self, format, *args):
+        pass
+
+
 def serve(port=8777, open_browser=True, directory=ROOT / "site", host="127.0.0.1"):
     """Serve the site until interrupted: on this machine only by default, on the network with host="0.0.0.0"."""
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(directory))
-    handler.log_message = lambda *args: None
+    handler = functools.partial(_QuietHandler, directory=str(directory))
     for p in range(port, port + 20):
         try:
             server = http.server.ThreadingHTTPServer((host, p), handler)

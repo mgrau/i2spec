@@ -33,7 +33,8 @@ trace. The three **show** toggles act on this:
   spectrum.
 
 With **model** off, the spectrum and the table keep only the measured lines of the kinds switched on.
-The legend gives the number of lines in view for each toggle that is on.
+The legend gives the number of lines in view for each toggle that is on. While a band is highlighted
+(see below), a fourth toggle, **band**, joins them.
 
 The spectrum has two horizontal axes: the chosen unit (normally vacuum wavelength) below, and
 wavenumber above (or vacuum wavelength, when the chosen unit is wavenumber). Both carry round tick
@@ -55,22 +56,23 @@ Below the same 0.1 nm, every measured absolute frequency in view is drawn agains
 - **A strip under the spectrum** gives measured − model in MHz for each measured component (or line
   center, for an atlas line). Each measurement is a dot at the model's position of its component,
   with its own 1σ as a vertical bar. The grey box behind it is the model's 1σ for that component. Several
-  measurements of one component stand side by side. A hollow dot is a source held out of every fit
-  (the blind tests). The vertical scale is set by the precision measurements when there are any. An atlas
+  measurements of one component stand side by side. A hollow dot is a source that no fit uses: a set held
+  out for the blind tests, or an atlas shown only for comparison. The vertical scale is set by the precision measurements when there are any. An atlas
   residual (tens of MHz) then lies off the scale and is drawn as an arrow at the edge, but it shows at
   true scale on the spectrum itself.
-- **On the spectrum, at true scale**, the model's ±1σ is a grey band around each measured component, and
+- **On the spectrum, at true scale**, the model's ±1σ is shaded grey around each measured component, and
   each measurement is a dot at its measured frequency with a ±1σ bar. There is one row per source near
   the top of the plot. Once a dot stands apart from the model's position, a dashed line drops from it
-  to the baseline. These marks appear only when the scale can show them: an atlas line's at about 0.1 nm,
-  a comb measurement's only when a few MHz span the plot. Zooming in on one component shows, for
-  example, the 5.2 MHz miss of P(13) 43–0 a3 well outside the model's 1.2 MHz.
+  to the baseline. These marks appear only once the difference, the measurement's 1σ or the model's spans
+  more than a pixel: an atlas line's at about 0.1 nm, a comb measurement's typically below 10 MHz across the
+  plot. Zooming in on one component shows, for example, the 5.2 MHz miss of P(13) 43–0 a3, well outside
+  the model's 1.2 MHz.
 
 The strip needs some height and is left out on a phone held so that the plot is short. Hovering over a
 dot gives the line, component and source, measured − model with the measurement's uncertainty, and the
 model's 1σ; a click selects the line. The values are those of the detail panel's measurement table.
-The strip and the band use the model's 1σ for each component, taken from the full hyperfine patterns
-(loaded once, about 5 MB). Until they arrive, the line's own 1σ is used.
+Both views take the model's 1σ for each component from the full hyperfine patterns (loaded once, about
+5 MB). Until they arrive, the line's own 1σ is used.
 
 ## Sub-Doppler spectra
 
@@ -102,6 +104,20 @@ When a line is selected in sub-Doppler mode, the hyperfine plot in the detail pa
 sub-Doppler spectrum in place of the Doppler-broadened profile. The browser implementation is tested
 against the Python model to 10⁻⁹ in the resonance amplitudes (including crossovers, from a full
 calculation with level labels) and to 10⁻⁶ in the line shape.
+
+## Highlighting a band
+
+The **highlight band** field takes a vibrational band v′–v″, for example `32-0`. Its lines are then
+drawn over the rest in two reds: the P branch (ΔJ = −1) dark, the R branch (ΔJ = +1) light. The B–X
+system is 0u⁺ ← 0g⁺, so it has no Q branch. This works in the cross section and the sub-Doppler views,
+at any span, and the legend counts each branch's lines in view. The band's rows in the table are tinted
+to match. The detail panel of a selected line has a button that highlights its band, or clears it. To
+remove the highlight, clear the field.
+
+The **band** show toggle turns the highlight off and on without clearing the field. With **model** off,
+it keeps the band's lines, measured or not: switch off model, atlas and precision to see the band alone,
+in the spectrum and the table, or keep atlas or precision on to see the band against those measured
+lines. Entering a band switches the toggle on.
 
 ## Laser wavelength and harmonics
 
@@ -192,6 +208,7 @@ difference as a column.
 | ↑ / ↓ | move through the table |
 | `/` | search for a line by its label, e.g. `R(56) 32-0` |
 | `L` | enter a laser fundamental |
+| `B` | enter a band to highlight, e.g. `32-0` |
 
 On a phone or narrow window the spectrum takes the upper half of the screen and the line table the
 lower half; the settings are in a panel opened with **Options**. On a touch screen, drag with one finger to
@@ -204,8 +221,8 @@ round tick values and their power of ten given once above it.
 The address bar always contains the current range, isotopologue, temperature and selected line, so
 that a view can be shared as a link. It also records the y axis (`y=sigma`, `y=trans` or `y=sub`), the
 sub-Doppler settings (`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz) and
-the laser (`laser`, its unit `lunit` and the harmonic `n`). A link with a laser but no range opens on
-the laser's harmonic.
+the laser (`laser`, its unit `lunit` and the harmonic `n`), and a highlighted band (`band=32-0`). A link
+with a laser but no range opens on the laser's harmonic.
 
 !!! note "Limitations"
     The line explorer shows one isotopologue at a time and does not include the bound–free continuum,

@@ -5,6 +5,7 @@ kind = "atlas line positions"
 citation = """S. Gerstenkorn, J. Vergès, J. Chevillard, Atlas du spectre d'absorption de la molécule d'iode, 11 000-14 000 cm-1 (Laboratoire Aimé Cotton, CNRS II, Orsay, 1982), part I"""
 url = "https://books.google.com/books/about/Atlas_du_spectre_d_absorption_de_la_mole.html?id=2Qy8QwAACAAJ"
 instrument = """Fourier transform spectrometer, iodine cell at 790 °C; line table of wavenumber, precision (mK) and depth"""
-calibration = """The atlas's own wavenumber scale; the fit that uses these lines (level_corrections_2026f) found a pure scale of +23.85 ppb, which the web app applies before comparing with the model"""
+calibration = """The atlas's own wavenumber scale, which reads +23.85 ppb against the model (scale_ppb: observed = true (1 + scale_ppb 1e-9)): the atlas scale error delta of the level fit that uses these lines (prototypes/orsay_fit.py; r = obs - model = delta sigma - dX). The web app divides it out. On the lines to levels v'' <= 16 the atlas reads +8.6 MHz (median) from the current model, and -0.4 MHz with the scale removed"""
+scale_ppb = 23.85
 extraction = """Transcribed by eye from photographs of the printed table, with structural checks (consecutive line numbers, monotonic wavenumbers) and the overlap with parts II-IV; assigned against the model line list thinned to the atlas's line density (prototypes/orsay_assign.py). docs/research/orsay-atlas-11000-14000.md"""
 n_lines = 3700

@@ -23,6 +23,7 @@ from math import pi
 from pathlib import Path
 
 import warnings
+import zipfile
 
 import numpy as np
 
@@ -220,12 +221,21 @@ class MasterLineList:
                         self.branch[keep], self.E_lower[keep], T=T)
 
     def save(self, path):
-        np.savez(path, **{f.name: getattr(self, f.name) for f in fields(self)})
+        """Write to ``path`` through a temporary file beside it, so an interrupted save never leaves half a file."""
+        path = Path(path)
+        tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+        try:
+            with open(tmp, "wb") as out:    # a file object, so np.savez adds no ".npz" to the name
+                np.savez(out, **{f.name: getattr(self, f.name) for f in fields(self)})
+            os.replace(tmp, path)
+        finally:
+            tmp.unlink(missing_ok=True)
 
     @classmethod
     def load(cls, path):
-        z = np.load(path)
-        return cls(**{f.name: z[f.name] for f in fields(cls) if f.name != "isotopologue"}, isotopologue=str(z["isotopologue"]))
+        with np.load(path) as z:
+            return cls(**{f.name: z[f.name] for f in fields(cls) if f.name != "isotopologue"},
+                       isotopologue=str(z["isotopologue"]))
 
 
 def cache_dir() -> Path:
@@ -386,7 +396,11 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
                      f"{mu.__module__}.{mu.__qualname__}")
     path = cache_dir() / f"linelist_{model.isotopologue}_{key}.npz"
     if cache and path.exists():
-        return MasterLineList.load(path)
+        try:
+            return MasterLineList.load(path)
+        except (zipfile.BadZipFile, ValueError, OSError, KeyError, EOFError) as e:  # damaged: build it again
+            warnings.warn(f"rebuilding the unreadable cached line list {path} ({e})")
+            path.unlink(missing_ok=True)
 
     temps = np.unique([float(T_range[0]), float(np.sqrt(T_range[0] * T_range[1])), float(T_range[1])])
     args = (model.isotopologue, model.parameters, model.grids, model.solver, nu_min, nu_max, temps, S_min, mu)

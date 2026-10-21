@@ -12,7 +12,7 @@ from textual.widgets import DataTable, Footer, Header, Input, Select, Static
 from . import saturation
 from .constants import ISOTOPOLOGUES
 from .lookup import Catalog, Component, format_mhz, parse_range, to_wavenumber, uncertainty
-from .spectrum import cross_section, doppler_fwhm
+from .spectrum import cross_section, doppler_fwhm, molecular_mass
 
 RESULT_COLUMNS = ("λ vac (nm)", "ν (cm⁻¹)", "f (THz)", "line", "S (cm)", "u (MHz)", "notes")
 COMPONENT_COLUMNS = ("component", "offset (MHz)", "frequency (MHz)", "strength")
@@ -215,12 +215,12 @@ class LineBrowser(App):
     def _compute_spectrum(self, view, T, iso):
         lo, hi = view
         width = hi - lo
-        step = min(width / SPECTRUM_MIN_POINTS, doppler_fwhm(0.5 * (lo + hi), T) / 4)
+        step = min(width / SPECTRUM_MIN_POINTS, doppler_fwhm(0.5 * (lo + hi), T, molecular_mass(iso)) / 4)
         step = max(step, width / SPECTRUM_MAX_POINTS)
         pad = 0.01 * width + 0.05
         lines = self.catalog.master(iso).at(T, lo - pad, hi + pad)
         grid = np.arange(lo, hi, step)
-        sigma = cross_section(grid, lines, T)
+        sigma = cross_section(grid, lines, T, isotopologue=iso)
         self.call_from_thread(self._spectrum_ready, view, grid, sigma, len(lines))
 
     def _spectrum_ready(self, view, grid, sigma, n):

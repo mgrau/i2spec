@@ -24,6 +24,10 @@ header {
 }
 h1 { font: 600 17px/1.1 var(--display); margin: 0; letter-spacing: .01em; }
 #prov { margin-left: auto; font: 400 10.5px/1.3 var(--mono); color: var(--ink-3); text-align: right; }
+/* the source: a quiet icon beside the theme switch */
+#repo { display: inline-flex; padding: 5px; border-radius: 6px; color: var(--ink-3); }
+#repo:hover { color: var(--accent); background: var(--surface-2); }
+#repo svg { width: 16px; height: 16px; display: block; }
 #theme {
   border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2);
   border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;
@@ -59,6 +63,15 @@ button:hover { border-color: var(--accent); }
 .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
 #presets { display: flex; gap: 5px; flex-wrap: wrap; }
 #presets button { padding: 5px 9px; font-size: 12.5px; color: var(--ink-2); }
+/* every control in the panel the same height: text boxes, menus, buttons and the segmented groups (whose
+   buttons fill them); the text centres itself, so only the side padding is kept */
+.controls { --ctl-h: 32px; }
+.controls input, .controls select, .controls button, .controls .seg { box-sizing: border-box; height: var(--ctl-h); }
+.controls input, .controls select, .controls button { padding-top: 0; padding-bottom: 0; }
+.controls .seg button { height: 100%; }
+/* and the header's buttons one height between them */
+#theme, #optbtn, #repo { box-sizing: border-box; height: 28px; }
+#repo { padding: 0 6px; align-items: center; }
 
 main {
   flex: 1; min-height: 0; display: grid; gap: 1px; background: var(--rule);
@@ -133,6 +146,17 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
 .sw.k-precision, #rows tr.k-precision td:first-child { --k: var(--cls-precision); }
 .sw.k-atlas, #rows tr.k-atlas td:first-child { --k: var(--cls-atlas); }
 .sw.k-model { --k: var(--cls-model); }
+/* a highlighted vibrational band: its P and R branches, in the plot and the table */
+.sw.band-P { --k: var(--band-p); } .sw.band-R { --k: var(--band-r); }
+.sw.k-band { --k: var(--band-p); background: linear-gradient(90deg, var(--band-p) 50%, var(--band-r) 50%); }
+.bandfield { display: flex; align-items: center; gap: 8px; }
+#band { width: 6.5em; }
+.bandkey { display: inline-flex; align-items: center; font: 500 11px var(--mono); color: var(--ink-3); }
+.bandkey .sw { margin: 0 3px 0 6px; }
+#rows tr.band-P:not([aria-selected="true"]) td { background: color-mix(in srgb, var(--band-p) 9%, transparent); }
+#rows tr.band-R:not([aria-selected="true"]) td { background: color-mix(in srgb, var(--band-r) 12%, transparent); }
+.bandrow { margin: 6px 0 2px; }
+#bandbtn[aria-pressed="true"] { border-color: var(--band-p); color: var(--band-p); }
 #show button[aria-pressed="false"] { color: var(--ink-3); background: transparent; font-weight: 400; }
 #show button[aria-pressed="false"] .sw { background: transparent; box-shadow: inset 0 0 0 1.5px var(--k); }
 #rows tr.k-model td:first-child { --k: var(--cls-model); }
@@ -164,9 +188,9 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   #prov { display: none; }
   .site-nav a { font-size: 12px; padding: 4px 6px; }
   /* first row: title, theme, options; second: pages; third: what is on screen */
-  /* one row: title, References, options, theme; the documentation link is in the options panel */
+  /* one row: title, References, options, theme; the documentation and source links are in the options panel */
   h1 { order: 0; font-size: 16px; } .site-nav { order: 1; } #optbtn { order: 2; margin-left: auto; } #theme { order: 3; }
-  .site-nav a[href="docs/index.html"] { display: none; }
+  .site-nav a[href="docs/index.html"], #repo { display: none; }
   .controls .phone-only { display: grid; grid-column: 1 / -1; }
   #summary { display: block; flex-basis: 100%; order: 5; font: 12px var(--mono); color: var(--ink-2); }
   #optbtn { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; font-size: 13px; }
@@ -217,6 +241,7 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   <nav class="site-nav" aria-label="pages"><a href="docs/index.html">Docs</a><a href="docs/references.html">References</a></nav>
   <span id="prov">loading…</span>
   <button id="optbtn" aria-expanded="false" aria-controls="controls">Options ▾</button>
+  <a id="repo" href="https://github.com/mgrau/i2spec" title="Source on GitHub" aria-label="Source on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a>
   <button id="theme" title="Switch between light and dark" aria-label="Switch between light and dark">◐</button>
   <span id="summary"></span>
 </header>
@@ -230,6 +255,9 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   </select></div>
   <div class="field"><label for="go">&nbsp;</label><button id="go">Show</button></div>
   <div class="field"><label for="find">find a line ( / )</label><input id="find" placeholder="R(56) 32-0"></div>
+  <div class="field"><label for="band">highlight band ( B )</label><span class="bandfield">
+    <input id="band" placeholder="32-0" title="a vibrational band v′–v″: its P and R branches are drawn in two reds (B–X has no Q branch); empty to clear">
+    <span class="bandkey" aria-hidden="true"><i class="sw band-P"></i>P<i class="sw band-R"></i>R</span></span></div>
   <div class="field"><label for="laser">laser fundamental ( L )</label><span class="laser">
     <input id="laser" placeholder="1064.49" title="a fundamental laser wavelength or frequency; Enter jumps to its harmonic">
     <select id="lunit" aria-label="unit of the fundamental">
@@ -255,13 +283,14 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   <div class="field"><span class="grouplabel">show</span><span class="seg" id="show">
     <button data-kind="model" aria-pressed="true" title="every line the model predicts, measured or not"><i class="sw k-model"></i>model</button>
     <button data-kind="atlas" aria-pressed="true" title="pick out the lines measured in a Fourier-transform atlas"><i class="sw k-atlas"></i>atlas</button>
-    <button data-kind="precision" aria-pressed="true" title="pick out the lines measured to sub-Doppler or comb precision"><i class="sw k-precision"></i>precision</button></span></div>
+    <button data-kind="precision" aria-pressed="true" title="pick out the lines measured to sub-Doppler or comb precision"><i class="sw k-precision"></i>precision</button>
+    <button data-kind="band" aria-pressed="true" hidden title="pick out the highlighted band's P and R branches in two reds; with model off, its lines are kept, measured or not"><i class="sw k-band"></i>band</button></span></div>
   <div class="field"><span class="grouplabel">jump to</span><span id="presets"></span></div>
   <div class="field"><span class="grouplabel">export CSV</span><span class="exports">
     <button id="csv" title="every line in view that the show toggles keep, in the table's order">lines in view</button>
     <button id="csvhfs" title="the hyperfine components of the selected line" disabled>hyperfine of selected</button></span></div>
   <div class="field phone-only"><span class="grouplabel">pages</span>
-    <span class="pagelinks"><a href="docs/index.html">Documentation</a><a href="docs/references.html">References</a></span></div>
+    <span class="pagelinks"><a href="docs/index.html">Documentation</a><a href="docs/references.html">References</a><a href="https://github.com/mgrau/i2spec">GitHub</a></span></div>
 </div>
 
 <main>

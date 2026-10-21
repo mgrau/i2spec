@@ -8,7 +8,7 @@ import numpy as np
 from scipy.signal import fftconvolve
 from scipy.special import voigt_profile
 
-from .constants import ATOMIC_MASS, MHZ_PER_CM
+from .constants import ATOMIC_MASS, ISOTOPOLOGUES, MHZ_PER_CM
 
 _KB, _C, _U = 1.380649e-23, 299792458.0, 1.66053906892e-27
 _TORR = 133.322368  # Pa
@@ -17,6 +17,12 @@ _TORR = 133.322368  # Pa
 def doppler_fwhm(nu, T, isotopologue_mass=2 * ATOMIC_MASS[127]):
     """Doppler FWHM in cm⁻¹ (≈ 4.494e-8 ν √T for ¹²⁷I₂)."""
     return nu * np.sqrt(8 * _KB * T * log(2) / (isotopologue_mass * _U * _C**2))
+
+
+def molecular_mass(isotopologue="127I2"):
+    """Mass of the isotopologue in u."""
+    a, b = ISOTOPOLOGUES[isotopologue]
+    return ATOMIC_MASS[a] + ATOMIC_MASS[b]
 
 
 def vapor_pressure(T):
@@ -68,18 +74,19 @@ def hyperfine_patterns(model, lines, dJ=0, j_step=None):
     return pattern
 
 
-def cross_section(nu_grid, lines, T, *, hyperfine=None, lorentz_fwhm=0.0, reach=6.0):
+def cross_section(nu_grid, lines, T, *, hyperfine=None, lorentz_fwhm=0.0, reach=6.0, isotopologue="127I2"):
     """Absorption cross section σ(ν) in cm² on nu_grid (cm⁻¹).
 
     Each line (or hyperfine component) gets a Gaussian Doppler profile at temperature T, or a
     Voigt profile if lorentz_fwhm (cm⁻¹) > 0. hyperfine: None, or a callable k -> (offsets, weights),
-    e.g. hyperfine_patterns().
+    e.g. hyperfine_patterns(). isotopologue sets the mass in the Doppler width.
     """
     nu_grid = np.asarray(nu_grid, dtype=float)
+    mass = molecular_mass(isotopologue)
     sigma = np.zeros_like(nu_grid)
     for k in range(len(lines)):
         offsets, weights = (np.zeros(1), np.ones(1)) if hyperfine is None else hyperfine(k)
-        g = doppler_fwhm(lines.nu[k], T)
+        g = doppler_fwhm(lines.nu[k], T, mass)
         half = reach * (g + lorentz_fwhm) + np.abs(offsets).max()
         lo, hi = np.searchsorted(nu_grid, [lines.nu[k] - half, lines.nu[k] + half])
         if lo == hi:
@@ -136,20 +143,22 @@ def ils_kernel(step, kind="gauss", width=0.1):
 
 
 def apparent_cross_section(nu_out, lines, T, column_density, ils=("gauss", 0.1), *, hyperfine=None,
-                           continuum=None, step=None, lorentz_fwhm=0.0):
+                           continuum=None, step=None, lorentz_fwhm=0.0, isotopologue="127I2"):
     """Cross section a spectrometer would report: -ln(ILS ⊗ exp(-σN)) / N, on nu_out (cm⁻¹).
 
     Strong lines saturate at column density N (cm⁻²), so at finite resolution the apparent cross
     section depends on N (Spietz et al. 2006). ils = (kind, width) as in ils_kernel(). continuum:
     optional callable ν -> σ_c(ν) in cm², added to the line cross section. lorentz_fwhm (cm⁻¹):
-    pressure broadening. The fine grid step defaults to 1/8 of the line width.
+    pressure broadening. isotopologue: as in cross_section(). The fine grid step defaults to 1/8 of the
+    line width.
     """
     nu_out = np.asarray(nu_out, dtype=float)
-    step = (float(doppler_fwhm(nu_out.min(), T)) + lorentz_fwhm) / 8 if step is None else step
+    if step is None:
+        step = (float(doppler_fwhm(nu_out.min(), T, molecular_mass(isotopologue))) + lorentz_fwhm) / 8
     kernel = ils_kernel(step, *ils)
     pad = (kernel.size // 2) * step + 1.0
     grid = np.arange(nu_out.min() - pad, nu_out.max() + pad, step)
-    sigma = cross_section(grid, lines, T, hyperfine=hyperfine, lorentz_fwhm=lorentz_fwhm)
+    sigma = cross_section(grid, lines, T, hyperfine=hyperfine, lorentz_fwhm=lorentz_fwhm, isotopologue=isotopologue)
     if continuum is not None:
         sigma = sigma + continuum(grid)
     transmitted = fftconvolve(np.exp(-sigma * column_density), kernel, mode="same")
