@@ -30,7 +30,7 @@ from .lookup import parse_label
 from .observations import component_rank
 
 _RELEASE = "20261018"
-_RELEASES = (_RELEASE, "20261020")
+_RELEASES = (_RELEASE, "20261020", "20261021")
 
 
 def _data(release=_RELEASE):
@@ -111,15 +111,22 @@ class ResearchModelInfo:
         return asdict(self)
 
 
-def _info(entry):
-    domain = entry["domain"]
+def _info(entry, isotopologue=None):
+    isotopologue = isotopologue or entry["isotopologue"]
+    domain = entry["domains"][isotopologue] if "domains" in entry else entry["domain"]
     errors = entry["verification"]["maximum_difference_Hz"]
     return ResearchModelInfo(entry["id"], entry["role"], entry["title"], entry["architecture"],
         CoefficientInventory(**entry["inventory"]),
-        ResearchDomain(entry["isotopologue"], domain["X_v_max"], domain["B_v_max"], domain["J_max"]),
+        ResearchDomain(isotopologue, domain["X_v_max"], domain["B_v_max"], domain["J_max"]),
         entry["exclusion"], entry["absolute_rms_MHz"], entry["intraline_rms_MHz"],
         entry["validated_folds"], errors["absolute"], errors["intraline"],
         **{key: entry[key] for key in ("training_fold", "validation_scope") if key in entry})
+
+
+@lru_cache(maxsize=None)
+def _reference_model(model_id):
+    """The 127I2 model of a release, which the other isotopologues' hyperfine and equivalents are read from."""
+    return ResearchModel(model_id, "127I2")
 
 
 def research_models():
@@ -393,13 +400,20 @@ class _ExpandedModel(ResearchModel):
     (i2spec.research_expanded). Selected as ResearchModel("balanced_expanded")."""
 
     def __init__(self, model, isotopologue="127I2"):
-        if isotopologue != "127I2":
-            raise ValueError("research models support only 127I2")
         from . import research_expanded
         self._entry = _entry(model)
-        self.info = _info(self._entry)
-        self._spec = _read(self._entry, "model.json")
-        tables = _read(self._entry, "hyperfine.json")
+        # release 20261021 extends the frozen 20261020 model: its files are read, SHA256-checked, from there
+        extends = self._entry.get("extends")
+        self._core_entry = _entry(extends["id"]) if extends else self._entry
+        if extends and any(self._core_entry["files_sha256"][k] != v for k, v in extends["files_sha256"].items()):
+            raise ValueError(f"{self._entry['id']} extends a frozen model whose files have changed")
+        supported = self._entry.get("isotopologues", [self._entry["isotopologue"]])
+        if isotopologue not in supported:
+            raise ValueError(f"{self._entry['id']} supports {', '.join(supported)} only")
+        self.info = _info(self._entry, isotopologue)
+        self._spec = _read(self._core_entry, "model.json")
+        tables = _read(self._core_entry, "hyperfine.json")
+        self._extension = _read(self._entry, "isotopologues.json") if extends else None
         base = self._spec["base"]
         if _entry(base["model"])["files_sha256"]["model.json"] != base["model_sha256"]:
             raise ValueError("balanced-expanded's base coefficients differ from the frozen balanced release")
@@ -408,14 +422,16 @@ class _ExpandedModel(ResearchModel):
         self.parameters = self.info.id
         self._solvers, self._radial, self._structures, self._lines = {}, {}, {}, {}
         self._lock = RLock()
-        research_expanded.install(self, self._spec, tables, ResearchModel(base["model"]))
+        reference = _reference_model(self._entry["id"]) if isotopologue != "127I2" else None
+        research_expanded.install(self, self._spec, tables, ResearchModel(base["model"]), self._extension,
+                                  isotopologue, reference)
         self._unc = None
 
     def _uncertainty_model(self):
         if self._unc is None:
             from .research_expanded import ExpandedUncertainty
-            table = _read(self._entry, "uncertainty.json")
-            if table["model"] != self.info.id or table["pending_outcomes_used"]:
+            table = _read(self._core_entry, "uncertainty.json")
+            if table["model"] != self._core_entry["id"] or table["pending_outcomes_used"]:
                 raise ValueError("balanced-expanded's uncertainty model does not belong to this frozen model")
             self._unc = ExpandedUncertainty(table, self._base.coefficients, self._spec["structure"],
                                             self._spec["values"])
@@ -429,11 +445,21 @@ class _ExpandedModel(ResearchModel):
         self.info.domain.validate(branch, J, vu, vl)
         unc, core = self._uncertainty_model(), self._spec["core"]
         Ju = J+(1 if branch == "R" else -1)
-        a = unc.level_factor(self._levels_x, "B", vu, Ju)-unc.level_factor(self._levels_x, "X", vl, J)
-        cls = unc.line_class(core, (vu, Ju), (vl, J))
-        levels = {("B", vu, Ju): (1., unc.model_sigma(core, "B", vu, Ju, cls)),
-                  ("X", vl, J): (-1., unc.model_sigma(core, "X", vl, J, cls))}
-        status = unc.status("B", vu, Ju), unc.status("X", vl, J)
+        (vu_e, Ju_e), (vl_e, Jl_e) = self._equivalent("B", vu, Ju), self._equivalent("X", vl, J)
+        if self._iso is None:
+            a = unc.level_factor(self._levels_x, "B", vu, Ju)-unc.level_factor(self._levels_x, "X", vl, J)
+        else:                       # conditioned on the isotopologue lines, with the isotope shift's terms
+            shift = self._shift_unc()
+            a = (shift.level_vector("B", unc.level_factor(self._levels_x, "B", vu, Ju), vu, Ju)
+                 - shift.level_vector("X", unc.level_factor(self._levels_x, "X", vl, J), vl, J))
+        cls = unc.line_class(core, (vu_e, Ju_e), (vl_e, Jl_e))
+        levels = {("B", vu, Ju): (1., self._level_sigma(unc, core, "B", vu, Ju, cls)),
+                  ("X", vl, J): (-1., self._level_sigma(unc, core, "X", vl, J, cls))}
+        status = unc.status("B", vu_e, Ju_e), unc.status("X", vl_e, Jl_e)
+        if self._iso is not None:
+            order = ["measured", "interpolated", "extrapolated"]
+            shifted = self._shift_unc().status(self._iso.map.v_ref("B", vu))
+            status = max(status[0], shifted, key=order.index), status[1]
         hf, hf_status, name, offset = 0., None, None, 0.
         if component is not None:
             _, components = self._line((branch, J, vu, vl))
@@ -441,14 +467,70 @@ class _ExpandedModel(ResearchModel):
             name = f"a{component_rank(component)}"
             if name not in offsets:
                 raise ValueError(f"component {component!r} is unavailable for this line; choose from {', '.join(offsets)}")
-            a_hf, kappa = unc.hyperfine_terms(core, vu, vl)
+            a_hf, kappa = unc.hyperfine_terms(core, vu_e, vl_e)
+            if self._iso is not None:
+                a_hf = math.hypot(a_hf, self._extension["hyperfine"]["floor_MHz"])
             offset = offsets[name]
             hf = math.hypot(a_hf, kappa*offset)
             order = ["core", "validated", "interpolated", "resonance", "extrapolated"]
-            hf_status = max((unc.hyperfine_status("B", vu), unc.hyperfine_status("X", vl)),
+            hf_status = max((unc.hyperfine_status("B", vu_e), unc.hyperfine_status("X", vl_e)),
                             key=lambda text: order.index(text.split(":")[0].split(" ")[0]))
+            if self._iso is not None and hf_status.startswith("core"):
+                hf_status = "validated: " + self._extension["hyperfine"]["status"]
         return dict(label=f"{branch}({J}) {vu}-{vl}", a=a, levels=levels, cls=cls, status=status, hf=hf,
-                    hf_status=hf_status, component=name, offset=offset, kappa_floor=(unc, core, vu, vl))
+                    hf_status=hf_status, component=name, offset=offset, kappa_floor=(unc, core, vu_e, vl_e))
+
+    def level_terms(self, state, v, J):
+        """What the line uncertainties need of one level (preferred.py tabulates it): its statistical vector,
+        data status, whether its 127I2 equivalent is within 15 in J of precision rows, its model sigma for each
+        line class (precise, atlas, beyond) and whether it lies beyond the core."""
+        unc, core = self._uncertainty_model(), self._spec["core"]
+        a = unc.level_factor(self._levels_x, state, v, J)
+        ve, Je = self._equivalent(state, v, J)
+        status = unc.status(state, ve, Je)
+        if self._iso is not None:
+            shift = self._shift_unc()
+            a = shift.level_vector(state, a, v, J)
+            if state == "B":
+                order = ["measured", "interpolated", "extrapolated"]
+                status = max(status, shift.status(self._iso.map.v_ref("B", v)), key=order.index)
+        sigma = [self._level_sigma(unc, core, state, v, J, cls) for cls in ("precise", "atlas", "beyond")]
+        return a, status, unc._near("precise", state, ve, Je), sigma, ve > core[state]
+
+    def hyperfine_terms(self, vu, Ju, vl, J):
+        """(floor a MHz, scale error kappa) of a line's components: the frozen recipe at the 127I2 equivalents,
+        with the isotopologue floor."""
+        unc, core = self._uncertainty_model(), self._spec["core"]
+        a, kappa = unc.hyperfine_terms(core, self._equivalent("B", vu, Ju)[0], self._equivalent("X", vl, J)[0])
+        if self._iso is not None:
+            a = math.hypot(a, self._extension["hyperfine"]["floor_MHz"])
+        return a, kappa
+
+    def _equivalent(self, state, v, J):
+        """The 127I2 level the frozen uncertainty tables are read at: the level itself, or an isotopologue's
+        equivalent (the same J = 0 energy, rho J(J+1))."""
+        return (v, J) if self._iso is None else self._iso.map.equivalent(state, v, J)
+
+    def _level_sigma(self, unc, core, state, v, J, cls):
+        """One level's model sigma (MHz): the frozen recipe at the 127I2 equivalent; with release 20261021's
+        extension, grown as J(J+1) beyond the J the data reach, and for an isotopologue's B level with the isotope
+        shift's floor."""
+        ve, Je = self._equivalent(state, v, J)
+        sigma = unc.model_sigma(core, state, ve, Je, cls)
+        if self._extension is None:
+            return sigma
+        reach = unc.reach_J(state, ve)
+        if reach is not None and Je > reach:
+            sigma *= Je*(Je+1)/(reach*(reach+1))
+        if self._iso is not None and state == "B":
+            sigma = math.hypot(sigma, self._shift_unc().floor)
+        return sigma
+
+    def _shift_unc(self):
+        if getattr(self, "_shift_terms", None) is None:
+            from .research_expanded import IsotopeShiftUncertainty
+            self._shift_terms = IsotopeShiftUncertainty(self._extension, self._levels_x)
+        return self._shift_terms
 
     def uncertainty(self, line, component=None, ref_component=None, ref_line=None):
         """1-sigma (PredictionUncertainty, MHz) of ``frequency(line, component)``; with ``ref_component``, of the
@@ -469,6 +551,8 @@ class _ExpandedModel(ResearchModel):
                 two = self._uncertainty_terms(line, ref_component)
                 unc, core, vu, vl = one["kappa_floor"]
                 a_hf, kappa = unc.hyperfine_terms(core, vu, vl)
+                if self._iso is not None:
+                    a_hf = math.hypot(a_hf, self._extension["hyperfine"]["floor_MHz"])
                 stat = model = 0.
                 hf = math.sqrt(2*a_hf**2+(kappa*(one["offset"]-two["offset"]))**2)
                 ref_name = two["component"]
@@ -495,7 +579,7 @@ class _ExpandedModel(ResearchModel):
 
     def _validate(self):
         spec, inventory = self._spec, self.info.inventory
-        if spec["schema_version"] != 3 or spec["inventory"] != asdict(inventory):
+        if spec["schema_version"] != 3 or spec["inventory"] != asdict(_info(self._core_entry).inventory):
             raise ValueError("frozen research coefficient inventory is inconsistent")
         if inventory.line_specific or inventory.level_specific or spec["isotopologue"] != "127I2":
             raise ValueError("frozen research model violates its shared-function domain")
@@ -507,7 +591,8 @@ class _ExpandedModel(ResearchModel):
         """A copy of the frozen tails and settings, the base model's coefficients and the hyperfine tables'
         SHA256, safe for inspection."""
         return json.loads(json.dumps(dict(self._spec, base_coefficients=self._base.coefficients,
-                                          hyperfine_sha256=self._entry["files_sha256"]["hyperfine.json"])))
+                                          hyperfine_sha256=self._core_entry["files_sha256"]["hyperfine.json"],
+                                          extension=self._extension)))
 
     def _moments(self, state, J):
         raise NotImplementedError("balanced-expanded keeps no radial moments: see research_expanded")
@@ -516,9 +601,17 @@ class _ExpandedModel(ResearchModel):
         return self._levels_x.energy(state, v, J)
 
     def _couplings(self, state, v, J):
+        if self._iso is not None:
+            return self._iso.couplings(state, v, J)
+        split = self._levels_x.j_split
         if v <= self._spec["core"][state]:
-            return self._base._couplings(state, v, J)
-        return self._hf.constants(state, v, J)
+            if split is None or J <= split:
+                return self._base._couplings(state, v, J)
+            # above the fit's J the core fit's own grid does not hold the level: its functions on the model's
+            from .research_expanded import core_couplings
+            e = self._energy("X", v, 0)-self._energy("X", 0, 0) if state == "X" else None
+            return core_couplings(self._base._spec, self._levels_x, state, v, J, u=v+.5, x=J*(J+1), e=e)
+        return self._hf.constants(state, v, J, clamp=split is not None)
 
     def _structure(self, state, v, J):
         from .research_expanded import structure
@@ -532,6 +625,8 @@ class _ExpandedModel(ResearchModel):
         if not math.isfinite(tolerance_Hz) or tolerance_Hz <= 0:
             raise ValueError("verification tolerance must be finite and positive")
         rows = _read(self._entry, "reference_predictions.json")
+        rows = [row for row in rows if row.get("isotopologue", "127I2") == self.isotopologue]
+        expected = self._entry["reference_counts"][self.isotopologue] if self._extension else self._spec["reference_counts"]
         counts, maximum = dict(center=0, absolute=0, intraline=0), dict(center=0., absolute=0., intraline=0.)
         for row in rows:
             value = self.frequency(row["line"], row["component"])
@@ -542,7 +637,7 @@ class _ExpandedModel(ResearchModel):
             counts[kind] += 1
             maximum[kind] = max(maximum[kind], abs(value-row["predicted_MHz"])*1e6)
         result = dict(model=self.info.id, counts=counts, maximum_difference_Hz=maximum,
-            tolerance_Hz=tolerance_Hz, passed=counts == self._spec["reference_counts"]
+            tolerance_Hz=tolerance_Hz, passed=counts == expected
             and all(error <= tolerance_Hz for error in maximum.values()),
             scope="Numerical reproduction of frozen predictions; not independent predictive accuracy")
         if not result["passed"]:

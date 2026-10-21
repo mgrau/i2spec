@@ -376,27 +376,47 @@ measurements scored against frozen predictions (see the
 - X hyperfine at v″18–47 has no data.
 - The resonance lines' hyperfine σ is extrapolated.
 
+## The i2spec model: release 20261021 (October 21, 2026)
+
+Matt, 2026-10-21: "our goal is to produce one single model, which we will publish on the website and the paper
+... proceed with adapting balanced-extended so it is our best effort model." `research-20261021-i2spec` (role
+`i2spec`) is balanced-expanded for every isotopologue and every J the line lists reach. It reads the frozen
+20261020 files by SHA256, so ¹²⁷I₂ up to J'' = 200 is identical bit for bit. The
+[release README](../src/i2spec/data/research/20261021/README.md) has the details:
+
+- ¹²⁹I₂ and ¹²⁷I¹²⁹I use the same potentials. q(R) is scaled by ρ. A B isotope shift
+  (1 − ρ)(1 − y)^5 (a0 + a1 y) is fitted to the seven CIPM isotope-shift lines, with a leave-one-line-out rms of
+  0.078 MHz; a constant alone gives 1.2 MHz. Hyperfine is scaled per nucleus with nothing fitted: 0.19 MHz rms on
+  the CIPM intervals, against 0.17 MHz for the S06 formulae fitted to them.
+- In the ¹²⁷I₂-only covariance, the shape of the potential trades against q(R). For isotopologue levels this
+  gives unconditioned σ_stat of about 80 MHz at J = 60, so the covariance is conditioned on the CIPM isotopologue
+  lines: 0.09–0.31 MHz there, and 3.5 MHz for ¹²⁹I₂ R(56) 32-0.
+- Levels above J = 200 use the long grid, up to J'' = 445. Model σ grows as J(J + 1) beyond each level's data,
+  a rule that also applies to ¹²⁷I₂ levels below J = 200.
+- Line strengths come from the model's own wavefunctions (`RovibronicModel("research-20261021-i2spec", iso)`
+  through `intensity_model(parameters=preferred.parameters())`). In three FTS cell spectra they reproduce the
+  measured relative intensities better than i2spec2026o's (robust scatter of ln(A/NS): 1.3/2.7/3.8 % against
+  1.9/3.5/3.9 %; FC-node bands 40-1, 41-1 fixed). This is independent support for the model's V–q split.
+
 ## Preferred in the apps
 
-`i2spec.preferred` makes balanced-expanded the apps' model. It solves every level
-of the domain once, together with its statistical factor and data status (about
-80 s on 12 cores). The result is cached in `~/.cache/i2spec`, keyed by
-the release files' SHA256.
+`i2spec.preferred` makes the i2spec model (release 20261021) the apps' model for every isotopologue. It solves
+every level of the domain once per isotopologue, with its statistical vector, data status and model σ (about
+3 minutes for ¹²⁷I₂ and 10 minutes for each other isotopologue on 12 cores). The tables are cached in
+`~/.cache/i2spec`, keyed by the release files' SHA256.
 
-- **Line list.** `lookup.Catalog` replaces each ¹²⁷I₂ line's position with
-  balanced-expanded's wherever it holds both levels. The line strengths stay
-  i2spec2026o's.
-- **Uncertainties and flags.** `lookup.uncertainty` and `Line.flags` report its
-  σ and data status. `Line.source` names the model that gave the line.
-- **Hyperfine.** `Catalog.components` gives its hyperfine components, with the
-  J±2 couplings, each with its own σ.
-- **Explorer export.** For every such line the export carries balanced-expanded's
-  position, uncertainty and hyperfine pattern. It also carries i2spec2026o's
-  position minus it (`d26`, shown as "i2spec2026o" in the line's details).
-- **Measured data.** The explorer shows each measurement with its own
-  uncertainty and its residual. Since October 21 that includes the 36 data sets
-  of the scored blind test, marked "blind test, not fitted"; they still carry
-  their `exclude` line, so no fit uses them. Sets transcribed later stay out of
-  the export until a registry scores them.
+- **Line list.** `lookup.Catalog` builds the line lists on the model's potentials, so strengths and E″ are the
+  model's too. Each line's position is replaced by the table's wherever the table holds both levels.
+- **Uncertainties and flags.** `lookup.uncertainty` and `Line.flags` report its σ and data status. A line the
+  table does not hold (rare: beyond the barrier rule, or J'' > 445) is flagged "outside the fitted domain", with a
+  rough 1 GHz bound.
+- **Hyperfine.** `Catalog.components` gives its hyperfine components, with the J±2 couplings, each with its own σ.
+- **Explorer export.** Every line carries the model's position, uncertainty and hyperfine pattern. The i2spec2026o
+  comparison column (`d26`) was removed. Following Matt's 2026-10-21 decision, nothing public names the internal
+  models.
+- **Measured data.** The explorer shows each measurement with its own uncertainty and its residual. That
+  includes the data sets of the scored blind tests (v1 and v2), marked "blind test, not fitted"; they still carry
+  their `exclude` line, so no fit uses them. Sets transcribed later stay out of the export until a registry
+  scores them.
 
-`I2SPEC_MODEL=i2spec2026o` switches the apps back to i2spec2026o throughout.
+`I2SPEC_MODEL=i2spec2026o` switches the apps back to i2spec2026o throughout (internal use).

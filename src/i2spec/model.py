@@ -96,8 +96,15 @@ class RovibronicModel:
         self.isotopologue = isotopologue
         self.parameters = parameters
         self.solver = solver
+        #: ``parameters`` naming a frozen research release ("research-20261021-i2spec") takes its potentials, as
+        #: this isotopologue sees them (mass ratio and isotope shift built in), with nothing added: what the line
+        #: lists of the preferred model are built on (intensity.intensity_model).
+        self.research = parameters.startswith("research-")
+        if self.research:
+            from .research import ResearchModel
+            potentials = {**ResearchModel(parameters, isotopologue)._levels_x.potentials, **(potentials or {})}
         #: ``potentials`` replaces one or both published curves, for trying a new form (Phase C).
-        self.potentials = {**load_potentials(parameters), **(potentials or {})}
+        self.potentials = potentials if self.research else {**load_potentials(parameters), **(potentials or {})}
         mu = reduced_mass(isotopologue)
         ratio = reduced_mass(REFERENCE_ISOTOPOLOGUE) / mu
         self._mu, self._ratio, self._far = mu, ratio, {}

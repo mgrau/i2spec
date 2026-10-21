@@ -62,7 +62,7 @@ def _tables():
            '## <span class="kind precision"></span>Sub-Doppler and frequency-comb measurements', "",
            "Absolute frequencies of hyperfine components or line centers, and hyperfine intervals, with "
            "uncertainties between 0.25 kHz and a few MHz. They determine the potentials and the hyperfine "
-           "functions of balanced-expanded (and the level corrections of i2spec2026o). Under each citation: the "
+           "functions of the model. Under each citation: the "
            "number of absolute frequencies and hyperfine intervals, and the isotopologues.", "",
            "| source | lines | range (nm) | median u |",
            "|---|--:|--:|--:|"]
@@ -72,7 +72,7 @@ def _tables():
         out += ["", '## <span class="kind precision"></span>Held out for the blind test', "",
                 "Transcribed on October 20 and 21, 2026 and held out of every fit: the model's predictions of them, "
                 "and from the second batch on their uncertainties, were frozen before their values were read, "
-                "then scored once (two registries, pending_blind_v1 and v2; docs/research-model-validation.md). "
+                "then scored once, in two batches (results on the [uncertainty page](uncertainty.md)). "
                 "The explorer shows them, marked “blind test, not fitted”.", "",
                 "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
         for s in blind:

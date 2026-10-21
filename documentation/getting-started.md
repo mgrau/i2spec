@@ -12,9 +12,17 @@ uv run i2spec tui
 uv run i2spec web
 ```
 
-The first query for an isotopologue computes its line list, which takes a few minutes and is then
-cached in `~/.cache/i2spec`. The first `i2spec web` also exports the model data used by the line
-explorer to `web/data/`.
+The first query for an isotopologue solves the model's levels and computes its line list, and caches both
+in `~/.cache/i2spec` (190 MB for all three isotopologues). The first `i2spec web` also exports the data of
+the line explorer to `web/data/` (590 MB): the line lists of all three isotopologues and the hyperfine
+pattern of every line. After that, every query takes under a second. With an empty cache:
+
+| first run | Apple M5 Max (18 cores, 128 GB) |
+|---|--:|
+| `i2spec lines` (¹²⁷I₂) | 1 min 45 s |
+| `i2spec web`, with the export | 14 min 20 s |
+
+The export needs up to 19 GB of memory.
 
 ## Command line
 
@@ -34,22 +42,18 @@ Ranges can be given in `nm` (vacuum wavelength), `nm-air`, `cm-1`, `THz` or `MHz
 are integrated cross sections in cm per molecule at the chosen temperature (option `-T`, default
 293.15 K).
 
-For ¹²⁷I₂ the positions, hyperfine components and uncertainties are balanced-expanded's, and `i2spec line`
-gives each component's 1σ. The first query solves every level of that model once, which takes about 80 s on
-12 cores and is then cached. Setting the environment variable `I2SPEC_MODEL=i2spec2026o` switches the command
-line, the terminal browser and the explorer export back to the earlier model. The model can also be used
-directly, with the uncertainty of any prediction:
-
-```sh
-uv run i2spec research predict "R(41) 51-0" --model balanced_expanded --component a21
-```
+Every position and every hyperfine component comes with its 1σ, and `i2spec line` lists both. The model can
+also be used directly from Python, with the uncertainty of any prediction:
 
 ```python
-from i2spec import ResearchModel
-m = ResearchModel("balanced_expanded")
-m.frequency("R(56) 32-0", "a10")                    # MHz
-m.uncertainty("R(56) 32-0", "a10").sigma_MHz        # 1σ, MHz
-m.uncertainty("R(56) 32-0", "a15", "a1").sigma_MHz  # 1σ of an interval within the line
+from i2spec.preferred import model
+# the fitted model for ¹²⁷I₂
+m = model()
+# component a10 of R(56) 32-0 and its 1σ, in MHz
+m.frequency("R(56) 32-0", "a10")
+m.uncertainty("R(56) 32-0", "a10").sigma_MHz
+# 1σ of an interval within the line, a15 − a1
+m.uncertainty("R(56) 32-0", "a15", "a1").sigma_MHz
 ```
 
 ## Terminal browser
@@ -61,7 +65,7 @@ hyperfine components of the selected line.
 |---|---|
 | `+` / `-` | zoom the spectrum in or out |
 | `[` / `]` | move the spectrum window |
-| `c` | centre the spectrum on the selected line |
+| `c` | center the spectrum on the selected line |
 | `l` | logarithmic intensity scale |
 | `p` | line profile: Doppler-broadened or sub-Doppler (Lamb dips and crossover resonances) |
 | `s` | sort the list by strength |

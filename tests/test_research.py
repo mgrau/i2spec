@@ -14,7 +14,7 @@ from i2spec.research import _Potential, _data, _entry, _read
 def test_roles_and_ledgers_are_explicit_and_production_default_is_unchanged():
     models = research_models()
     assert [m.role for m in models] == ["compact_value", "absolute_accuracy", "balanced", "interval_precision",
-                                        "balanced_expanded"]
+                                        "balanced_expanded", "i2spec"]
     assert [(m.inventory.fitted_molecular, m.inventory.inherited_molecular, m.inventory.fitted_calibration)
             for m in models[:4]] == [(56, 18, 4), (61, 11, 4), (61, 18, 4), (68, 11, 4)]
     assert DEFAULT_PARAMETERS == "i2spec2026o"
@@ -127,7 +127,7 @@ def test_public_api_matches_frozen_absolute_and_interval_references(role):
 def test_cli_requires_explicit_model_and_metadata_is_available_without_fits(capsys):
     assert cli.main(["research", "list", "--json"]) == 0
     value = json.loads(capsys.readouterr().out)
-    assert value["production_default"] == "i2spec2026o" and len(value["research_models"]) == 5
+    assert value["production_default"] == "i2spec2026o" and len(value["research_models"]) == 6
     with pytest.raises(SystemExit):
         cli.build_parser().parse_args(["research", "predict", "P(53) 32-0"])
     assert cli.main(["research", "predict", "P(53) 32-0", "--model", "unknown"]) == 2

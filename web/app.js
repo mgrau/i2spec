@@ -90,7 +90,6 @@ const rowAt = (d, i, iso) => {
     iso, nu: d.nu[i], s0: d.s0[i], el: d.el[i], vu: d.vu[i], vl: d.vl[i],
     J: Math.abs(d.j[i]), branch: d.j[i] > 0 ? "R" : "P", meas, measured: meas !== null, u: d.u[i], w: d.w[i],
     d08: d.d08 ? d.d08[i] : null,          // the published 2008 model's position minus this one, MHz
-    d26: d.d26 ? d.d26[i] : null,          // i2spec2026o's position minus this one (balanced-expanded's lines), MHz
     hfsFile: d._hfsFile, row: i,           // where this line's ΔJ = 0 hyperfine pattern is
   };
 };
@@ -118,8 +117,8 @@ function sourceLink(k) {
   const name = escapeHTML(s.short);
   // a data set held out for the blind tests, or an atlas shown only for comparison
   const blind = s.fit !== false ? "" : s.kind === "atlas" ?
-    ` <span class="n" title="Shown for comparison; balanced-expanded is not fitted to it.">(not fitted)</span>` :
-    ` <span class="n" title="Held out of every fit; used only to test the model's frozen predictions (blind tests pending_blind_v1 and v2).">(blind test, not fitted)</span>`;
+    ` <span class="n" title="Shown for comparison; the model is not fitted to it.">(not fitted)</span>` :
+    ` <span class="n" title="Held out of every fit; used only to test the model's frozen predictions.">(blind test, not fitted)</span>`;
   return (s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${escapeHTML(s.citation || "")}">${name}</a>`
     : `<span title="${escapeHTML(s.citation || "")}">${name}</span>`) + blind;
 }
@@ -770,7 +769,7 @@ function drawResiduals(ga, gt, groups, {xPix, m, pw, y0, y1, narrow, kindInk}) {
     for (const v of [ext, 0, -ext]) ga.fillText(tick(v), m.l - 10, yOf(v));
   }
   const title = narrow ? "measured − model (MHz)" :
-    "measured − model (MHz) · bar: the measurement's 1σ · grey: the model's 1σ · hollow: not used in the fit";
+    "measured − model (MHz) · bar: the measurement's 1σ · gray: the model's 1σ · hollow: not used in the fit";
   // in the gap above the strip, clear of the points
   ga.font = '11px "IBM Plex Sans", system-ui, sans-serif'; ga.textAlign = narrow ? "right" : "left"; ga.textBaseline = "bottom";
   const tx = narrow ? m.l + pw - 4 : m.l + 6;
@@ -1201,10 +1200,10 @@ function measuredCell(l) {
   const links = l.meas.map(e => sourceLink(e.s));
   return links.length > 3 ? links.slice(0, 3).join(", ") + ` +${links.length - 3}` : links.join(", ");
 }
-/** Which model gives a line's position: its reason's flags say (balanced-expanded or i2spec2026o). */
-const modelOf = l => {
+/** Whether the fitted model gives a line's position: its reason's flags say when it does not. */
+const domainOf = l => {
   const r = state.manifest.reasons[l.w];
-  return r && r.flags.some(([t]) => t === "balanced-expanded") ? "balanced-expanded" : "i2spec2026o";
+  return r && r.flags.some(([t]) => t === "outside the fitted domain") ? "outside" : "fitted";
 };
 /** 1σ position uncertainty (MHz), why, and the flags that go with it: computed by the Python model at export. */
 const unc = l => {
@@ -1498,11 +1497,6 @@ const signedMHz = v => {
   const a = Math.abs(v), s = v >= 0 ? "+" : "−";
   return a >= 1e4 ? `${s}${fmt(a / 1000, a >= 1e6 ? 0 : 1)} GHz` : `${s}${fmt(a, a < 10 ? 2 : 1)} MHz`;
 };
-/** The lines balanced-expanded gives carry i2spec2026o's position too: the previous default model. */
-function model2026oRow(line) {
-  if (line.d26 === null || line.d26 === undefined) return "";
-  return `<dt>i2spec2026o</dt><dd>${signedMHz(line.d26)} from this model <span class="n">· the previous default (level corrections)</span></dd>`;
-}
 function published2008Row(line) {
   if (line.d08 === null || line.d08 === undefined) return "";
   const where = inside2008(line) ? "inside its fitted range" : "outside its fitted range (v′ ≤ 43, v″ ≤ 17): extrapolated";
@@ -1539,7 +1533,6 @@ async function select(line) {
       <dt>S</dt><dd>${line.s0 > 0 ? `${S.toExponential(3)} cm at ${state.T} K` : "not computed: no thermal absorption (measured in emission)"}</dd>
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
-      ${model2026oRow(line)}
       ${published2008Row(line)}
       ${state.laser ? laserRows(line) : ""}
     </dl>
@@ -1615,7 +1608,7 @@ function measurementsHTML(line) {
     (atlas lines are hyperfine-free centers, with the scale fitted to each atlas divided out: its calibration is on the references page);
     Sources marked “blind test” were held out of every fit and used only to test the frozen predictions.
     “− model” is the measured value minus this model's center or component (MHz), ${fmt(f0, 1)} MHz for the center
-    (this model: balanced-expanded, or i2spec2026o where the line's flags say so; compare the difference with u above and the measurement's own u);
+    (compare the difference with u above and the measurement's own u);
     “− 2008” minus the published model of Salumbides <i>et al.</i> (2008), computed here from its potentials and
     the published hyperfine formulae (MHz; G: GHz).</p>`;
 }
@@ -1670,16 +1663,16 @@ function exportLines() {
   const q = partitionAt(state.iso, state.T), laser = state.laser;
   const withHfs = pool.some(l => hfsOf(l));
   const head = ["line", "isotopologue", "lambda_vac_nm", "lambda_air_nm", "wavenumber_cm-1", "frequency_MHz",
-    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "model", "class", "measured_by",
-    "i2spec2026o_minus_model_MHz", "published_2008_minus_model_MHz"];
+    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "domain", "class", "measured_by",
+    "published_2008_minus_model_MHz"];
   if (laser) head.push(`fundamental_lambda_vac_nm_div${laser.n}`, `fundamental_MHz_div${laser.n}`, "minus_laser_harmonic_MHz");
   if (withHfs) head.push("hfs_offsets_MHz_dJ0", "hfs_strengths_permille_dJ0");
   const rows = pool.map(l => {
     const lam = 1e7 / l.nu;
     const cells = [label(l), l.iso, lam.toFixed(7), P.vacToAir(lam).toFixed(7), l.nu.toFixed(6),
       (l.nu * P.MHZ_PER_CM).toFixed(2), P.strengthAt(l, q, state.T).toExponential(4), l.el.toFixed(2), l.u,
-      modelOf(l), KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : "",
-      l.d26 === null || l.d26 === undefined ? "" : l.d26, l.d08 === null || l.d08 === undefined ? "" : l.d08];
+      domainOf(l), KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : "",
+      l.d08 === null || l.d08 === undefined ? "" : l.d08];
     if (laser) cells.push(P.fundamentalOf(l.nu, laser.n, "nm").toFixed(7), (l.nu * P.MHZ_PER_CM / laser.n).toFixed(2),
       ((l.nu - laser.nu) * P.MHZ_PER_CM).toFixed(2));
     if (withHfs) {
@@ -1691,9 +1684,9 @@ function exportLines() {
   download(fileStem() + ".csv", [
     ...csvHeader(`${fmt(pool.length)} B-X lines`),
     "# S is the line strength at the cell temperature; u is the model's 1-sigma position uncertainty;" +
-      " model gives the line's position (balanced-expanded for 127I2 inside its domain, i2spec2026o elsewhere);" +
-      " class is how the line is known (precision, atlas, model only); i2spec2026o_minus_model and" +
-      " published_2008_minus_model are the positions of i2spec2026o and of the published model of Salumbides et al. (2008)," +
+      " domain is fitted, or outside for lines the fit does not yet cover (129I2, 127I129I, 127I2 with J'' > 200" +
+      " or B v' > 80; their flags say so); class is how the line is known (precision, atlas, model only);" +
+      " published_2008_minus_model is the position of the published model of Salumbides et al. (2008)," +
       " computed from its potentials, minus this model's",
     ...(withHfs ? ["# hfs_*: main hyperfine components without the J +- 2 couplings (offsets from the center, MHz;" +
       " strengths per mille), space separated"] : []),

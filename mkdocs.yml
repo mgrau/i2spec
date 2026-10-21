@@ -47,10 +47,12 @@ theme:
     - search.suggest
     - content.code.copy
 
+# the pages before Model sit under the site title (i2spec); Model and References are sections
 nav:
-  - ← Spectrum (line explorer): ../index.html
+  - Open the line explorer →: ../index.html
   - Home: index.md
   - Installation and usage: getting-started.md
+  - Line explorer: explorer.md
   - Model:
       - Overview of the calculation: calculation.md
       - Rovibrational levels: levels.md
@@ -58,8 +60,8 @@ nav:
       - Hyperfine structure: hyperfine.md
       - Line intensities and spectra: spectra.md
       - Uncertainty estimates: uncertainty.md
-  - Line explorer: explorer.md
-  - References: references.md
+  - References:
+      - Data and publications: references.md
 
 markdown_extensions:
   - admonition

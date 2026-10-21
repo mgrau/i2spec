@@ -3,7 +3,7 @@ from the model, and what each step takes in.
 
     uv run --group research python documentation/figures/pipeline.py
 
-Writes documentation/figures/pipeline.svg with the same placeholder colours as make_figures.py, so it follows
+Writes documentation/figures/pipeline.svg with the same placeholder colors as make_figures.py, so it follows
 the site's light and dark themes.
 """
 import sys
@@ -22,7 +22,7 @@ from i2spec import preferred  # noqa: E402
 from i2spec.lookup import Catalog  # noqa: E402
 from i2spec.spectrum import cross_section, number_density, transmission  # noqa: E402
 
-# the helpers and colour tokens of make_figures.py, without running it
+# the helpers and color tokens of make_figures.py, without running it
 C = dict(ink="#010101", ink2="#020202", ink3="#030303", rule="#040404", trace="#050505", pick="#060606",
          mark="#070707", surface="#080808")
 TOKENS = {C["ink"]: "var(--ink)", C["ink2"]: "var(--ink-2)", C["ink3"]: "var(--ink-3)", C["rule"]: "var(--rule)",
@@ -76,18 +76,18 @@ XS = [0.025, 0.3525, 0.68]
 YS = [0.585, 0.135]
 STEPS = [
     ("1", "Level energies", "radial equation in V(R)"),
-    ("2", "Uncertainties", "1σ for every level and line"),
-    ("3", "Line positions", "ν = E′ − E″, with a 1σ each"),
-    ("4", "Hyperfine components", "15 or 21 per line"),
-    ("5", "Line strengths", "⟨v′|μₑ(R)|v″⟩², per band"),
-    ("6", "Spectrum", "at T, for a given cell"),
+    ("2", "Line positions", "ν = E′ − E″, P and R branches"),
+    ("3", "Hyperfine components", "15 or 21 per line"),
+    ("4", "Line strengths", "⟨v′|μₑ(R)|v″⟩², per band"),
+    ("5", "Spectrum", "at T, for a given cell"),
+    ("6", "Uncertainties", "1σ for every line and component"),
 ]
 INPUTS = {
     0: "shared MLR potentials, fitted to all\n¹²⁷I₂ data and continued to both limits",
-    1: "fit covariance; errors of held-out\nlevels and hyperfine intervals",
-    3: "radial hyperfine functions; second-\norder sums beyond v′ = 43",
-    4: "transition moment μₑ(R)\n(Tellinghuisen 2011)",
-    5: "temperature, path length,\ncold-finger temperature",
+    2: "radial hyperfine functions; second-\norder sums beyond v′ = 43",
+    3: "transition moment μₑ(R)\n(Tellinghuisen 2011)",
+    4: "temperature, path length,\ncold-finger temperature",
+    5: "fit covariance; errors of held-out\nlevels and hyperfine intervals",
 }
 plot_axes = []
 for k, (num, title, sub) in enumerate(STEPS):
@@ -97,19 +97,19 @@ for k, (num, title, sub) in enumerate(STEPS):
     fig.text(x + 0.012, y + CARD_H - 0.012, num, fontsize=14, fontweight="bold", color=C["trace"], va="top")
     fig.text(x + 0.045, y + CARD_H - 0.014, title, fontsize=9.5, fontweight="bold", color=C["ink"], va="top")
     fig.text(x + 0.045, y + CARD_H - 0.050, sub, fontsize=7.5, color=C["ink3"], va="top")
-    pad = 0.035 if k in (1, 2) else 0.0
+    pad = 0.035 if k in (1, 5) else 0.0
     plot_axes.append(fig.add_axes([x + 0.035 + pad, y + 0.075, CARD_W - 0.05 - pad, CARD_H - 0.16]))
     if k in INPUTS:
         fig.text(x + CARD_W / 2, y - 0.014, INPUTS[k], fontsize=7, color=C["ink2"], ha="center", va="top",
                  linespacing=1.15, style="italic")
-# arrows along each row; the reader carries on from the end of the first row to the start of the second
-for row in (0, 1):
-    for i in (0, 1):
-        y = YS[row] + CARD_H / 2
-        fig.patches.append(FancyArrowPatch((XS[i] + CARD_W + 0.004, y), (XS[i + 1] - 0.004, y),
-                                           transform=fig.transFigure, arrowstyle="-|>", mutation_scale=9,
-                                           color=C["ink2"], lw=1.0))
-fig.text(0.5, 0.985, "computed once per isotopologue, independent of temperature: steps 1–5", ha="center",
+# arrows along each row; the reader carries on from the end of the first row to the start of the second.
+# None into step 6: the uncertainties belong to the line list of steps 1-4, not to the spectrum.
+for row, i in ((0, 0), (0, 1), (1, 0)):
+    y = YS[row] + CARD_H / 2
+    fig.patches.append(FancyArrowPatch((XS[i] + CARD_W + 0.004, y), (XS[i + 1] - 0.004, y),
+                                       transform=fig.transFigure, arrowstyle="-|>", mutation_scale=9,
+                                       color=C["ink2"], lw=1.0))
+fig.text(0.5, 0.985, "computed once per isotopologue, independent of temperature: steps 1–4 and 6", ha="center",
          va="top", fontsize=8, color=C["ink3"])
 
 
@@ -135,8 +135,8 @@ ax.text(3.45, 15800, "B", color=C["pick"], fontsize=9, fontweight="bold")
 ax.set_ylim(-500, 21500)
 clean(ax, "R (Å)")
 
-# 2. uncertainties: 1σ of R(20) v'-0 and of R(20) 5-v'' (the center of each line)
-ax = plot_axes[1]
+# 6. uncertainties: 1σ of R(20) v'-0 and of R(20) 5-v'' (the center of each line)
+ax = plot_axes[5]
 vu = np.arange(0, 81)
 u_b, _, _ = table.uncertainties(np.full(vu.size, "R"), np.full(vu.size, 20), vu, np.zeros(vu.size, int))
 vl = np.arange(0, 109)
@@ -151,8 +151,8 @@ ax.set_ylabel("1σ (MHz)", fontsize=7, labelpad=1)
 ax.set_xlabel("v′ or v″", fontsize=7, labelpad=1)
 ax.tick_params(labelsize=6.5, pad=1)
 
-# 3. line positions: the 32-0 band near its head (Fortrat)
-ax = plot_axes[2]
+# 2. line positions: the 32-0 band near its head (Fortrat)
+ax = plot_axes[1]
 J = np.arange(1, 81)
 for br, col in (("R", C["trace"]), ("P", C["pick"])):
     nu = np.array([model.transition(32, 0, j, br) for j in J])
@@ -167,8 +167,8 @@ ax.set_xlabel("ν (cm⁻¹), band 32–0", fontsize=7, labelpad=1)
 ax.xaxis.get_major_formatter().set_useOffset(False)
 ax.locator_params(axis="x", nbins=3)
 
-# 4. hyperfine: R(56) 32-0
-ax = plot_axes[3]
+# 3. hyperfine: R(56) 32-0
+ax = plot_axes[2]
 nu0, comps = model.hyperfine_components(32, 0, 56, "R")
 main = [c for c in comps if c.label]
 off = np.array([c.offset for c in main]); st = np.array([c.strength for c in main])
@@ -181,8 +181,8 @@ ax.text(-950, 0.95, "R(56) 32–0", fontsize=7, color=C["ink2"])
 ax.set_ylim(0, 1.1)
 clean(ax, "offset (MHz)")
 
-# 5. line strengths: band strengths of the v'' = 0 progression at 300 K
-ax = plot_axes[4]
+# 4. line strengths: band strengths of the v'' = 0 progression at 300 K
+ax = plot_axes[3]
 catalog = Catalog(temperature=300.0)
 master = catalog.master("127I2")
 L = master.at(300.0, 14000.0, 20100.0, S_min=1e-24)
@@ -194,8 +194,8 @@ ax.legend(fontsize=6.5, loc="upper right", handlelength=0.8, borderaxespad=0.1)
 ax.set_xlim(0, 60)
 clean(ax, "v′")
 
-# 6. spectrum: cross section and 10 cm cell transmission at 532 nm
-ax = plot_axes[5]
+# 5. spectrum: cross section and 10 cm cell transmission at 532 nm
+ax = plot_axes[4]
 lines = master.at(293.15, 18787.7, 18789.0, S_min=1e-26)
 grid = np.linspace(18787.75, 18789.0, 1500)
 sigma = cross_section(grid, lines, 293.15)

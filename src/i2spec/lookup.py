@@ -1,11 +1,12 @@
 """Line lookup: the query layer behind the command line, the TUI and the explorer's export.
 
-Strengths come from the cached master line list (``i2spec.intensity``). Positions, hyperfine components and
-uncertainties come from the preferred model (``i2spec.preferred``): balanced-expanded for 127I2 lines inside its
-domain, with the uncertainty of ``ResearchModel.uncertainty``; elsewhere (other isotopologues, 127I2 beyond that
-domain, or with ``I2SPEC_MODEL=i2spec2026o``) from i2spec2026o's ``RovibronicModel``, with the estimated
+Line lists (strengths, lower-level energies) are built on the preferred model's potentials and cached
+(``i2spec.intensity``). Positions, hyperfine components and uncertainties come from the preferred model
+(``i2spec.preferred``: the i2spec model, release 20261021, for every isotopologue), with the uncertainty of
+``ResearchModel.uncertainty``. A line its level table does not hold is flagged outside the fitted domain. With
+``I2SPEC_MODEL=i2spec2026o`` (internal) everything comes from i2spec2026o's ``RovibronicModel``, with the estimated
 uncertainties of ``uncertainty_2026o`` (validation in ``docs/research/spectra-validation.md`` and
-``docs/research/bipm-hyperfine-tables.md``). Each line says which model gave it (``Line.source``).
+``docs/research/bipm-hyperfine-tables.md``).
 """
 
 from __future__ import annotations
@@ -163,9 +164,12 @@ class Line:
 
     @property
     def source(self):
-        """The model that gives this line's position: balanced-expanded or i2spec2026o (i2spec.preferred)."""
-        from .preferred import FALLBACK, LABEL
-        return LABEL if _preferred(self) is not None else FALLBACK
+        """Which model gives this line's position, as the apps say it: i2spec, or i2spec outside the fitted domain
+        (internally balanced-expanded or i2spec2026o, see i2spec.preferred); i2spec2026o under I2SPEC_MODEL."""
+        from .preferred import FALLBACK, OUTSIDE, PUBLIC
+        if _preferred(self) is not None:
+            return PUBLIC
+        return f"{PUBLIC}, {OUTSIDE}" if _preferred_active() else FALLBACK
 
     @property
     def flags(self):
@@ -173,15 +177,19 @@ class Line:
         if p is not None:
             from .preferred import flags
             return flags(p[1], p[2])
+        if _preferred_active():
+            from .preferred import OUTSIDE
+            return (OUTSIDE,)
         return flags_2026o(self)
 
 
 def _preferred(line):
     """(sigma_center MHz, status code, class code) where the preferred model gives this line, else None."""
     from . import preferred as pf
-    if line.isotopologue != "127I2" or not pf.active():
+    if not pf.active():
         return None
-    sigma, status, cls = pf.preferred().uncertainties([line.branch], [line.J_lower], [line.v_upper], [line.v_lower])
+    sigma, status, cls = pf.preferred(line.isotopologue).uncertainties([line.branch], [line.J_lower], [line.v_upper],
+                                                                       [line.v_lower])
     return None if status[0] < 0 else (float(sigma[0]), int(status[0]), int(cls[0]))
 
 
@@ -211,7 +219,8 @@ def flags_2026o(line):
     elif line.nu < NU_PRECISION:
         out.append("few data")
     if _preferred_active():
-        out.append("i2spec2026o: outside balanced-expanded" if line.isotopologue == "127I2" else "i2spec2026o")
+        from .preferred import OUTSIDE
+        out.append(OUTSIDE)
     return tuple(out)
 
 
@@ -299,8 +308,17 @@ def uncertainty(line: Line):
     p = _preferred(line)
     if p is not None:
         from .preferred import basis
-        return round(p[0], 3), basis(p[1], p[2])
+        return round(p[0], 3), basis(p[1], p[2], line.isotopologue)
+    if _preferred_active():
+        return OUTSIDE_SIGMA_MHZ, ("Outside the fitted domain: the model's level table does not hold a level of this "
+                                   "line (beyond its centrifugal-barrier rule, B v′ > 80, or J″ > 445); the position "
+                                   "comes from the same potentials on the line list's grid, and the uncertainty is a "
+                                   "rough bound")
     return uncertainty_2026o(line)
+
+
+#: The 1-sigma quoted for a line the preferred model's table does not hold (MHz): a rough bound, not an estimate
+OUTSIDE_SIGMA_MHZ = 1000.0
 
 
 def uncertainty_2026o(line: Line):
@@ -442,18 +460,20 @@ class Catalog:
         self.temperature = float(temperature)
         self._masters = dict(masters or {})
         self._models = dict(models or {})
+        self._positions = {}
         #: isotopologues whose list reaches the B limit; an injected list counts as complete
         self._extended = set(self._masters)
 
     def master(self, isotopologue="127I2", near_dissociation=False):
         """The master line list; with ``near_dissociation``, extended to the B limit (a further build, once)."""
+        from .preferred import parameters
         if isotopologue not in self._masters:
-            model = intensity_model(isotopologue)
+            model = intensity_model(isotopologue, parameters=parameters())
             self._masters[isotopologue] = master_line_list(model, *self.nu_range, T_range=(200.0, 600.0),
                                                            S_min=self.s_min)
         if near_dissociation and self.nu_range[1] > NEAR_FROM and isotopologue not in self._extended:
             self._masters[isotopologue] = with_dissociation_lines(self._masters[isotopologue], S_min=self.s_min,
-                                                                  nu_max=self.nu_range[1])
+                                                                  nu_max=self.nu_range[1], parameters=parameters())
             self._extended.add(isotopologue)
         return preferred_positions(self._masters[isotopologue])
 
@@ -499,7 +519,13 @@ class Catalog:
         line = Line(isotopologue, branch, J, v_upper, v_lower, 0.0, 0.0, 0.0, self.temperature)
         if _preferred(line) is not None:
             from .preferred import preferred
-            return float(preferred().positions([branch], [J], [v_upper], [v_lower])[0])
+            return float(preferred(isotopologue).positions([branch], [J], [v_upper], [v_lower])[0])
+        if _preferred_active():          # the same potentials on the line list's position grid
+            from .intensity import POSITION_GRIDS
+            from .preferred import parameters
+            if isotopologue not in self._positions:
+                self._positions[isotopologue] = RovibronicModel(isotopologue, parameters(), grids=POSITION_GRIDS)
+            return self._positions[isotopologue].transition(v_upper, v_lower, J, branch)
         return self.model(isotopologue).transition(v_upper, v_lower, J, branch)
 
     def components(self, line: Line, dJ=2, main_only=False) -> list[Component]:
@@ -508,10 +534,11 @@ class Catalog:
         p = _preferred(line)
         if p is not None:
             from .preferred import components, sigma_component
-            nu0, comps = components(line.branch, line.J_lower, line.v_upper, line.v_lower)
+            nu0, comps = components(line.branch, line.J_lower, line.v_upper, line.v_lower, line.isotopologue)
             out = [Component(c.label, c.offset, c.strength, c.F_upper, c.F_lower, nu0 + c.offset, c.I_upper,
                              c.I_lower, c.upper_level, c.lower_level,
-                             sigma_component(p[0], line.branch, line.J_lower, line.v_upper, line.v_lower, c.offset))
+                             sigma_component(p[0], line.branch, line.J_lower, line.v_upper, line.v_lower, c.offset,
+                                             line.isotopologue))
                    for c in comps if c.label or not main_only]
             return sorted(out, key=lambda c: c.offset_MHz)
         model = self.model(line.isotopologue)
@@ -527,10 +554,10 @@ def preferred_positions(master):
     i2spec2026o's); unchanged for other isotopologues or with I2SPEC_MODEL=i2spec2026o."""
     from dataclasses import replace
     from . import preferred as pf
-    if master.isotopologue != "127I2" or not pf.active() or getattr(master, "_preferred", False):
+    if not pf.active() or getattr(master, "_preferred", False):
         return master
-    nu = pf.preferred().positions(np.where(master.branch > 0, "R", "P"), master.J_lower, master.v_upper,
-                                  master.v_lower)
+    nu = pf.preferred(master.isotopologue).positions(np.where(master.branch > 0, "R", "P"), master.J_lower,
+                                                     master.v_upper, master.v_lower)
     out = replace(master, nu=np.where(np.isfinite(nu), nu, master.nu))
     out._preferred = True
     out.nu_2026o = master.nu

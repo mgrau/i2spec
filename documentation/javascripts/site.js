@@ -1,4 +1,4 @@
-// Runs on every page: typeset the maths, and inline the figures so they take this page's theme colours.
+// Runs on every page: typeset the maths, and inline the figures so they take this page's theme colors.
 function typeset(root) {
   if (window.renderMathInElement) {
     renderMathInElement(root, {

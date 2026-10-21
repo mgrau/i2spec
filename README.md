@@ -5,20 +5,19 @@ line. It computes level energies from potential-energy curves, line positions, h
 from an effective nuclear-spin Hamiltonian, line strengths, absorption spectra and cell transmission,
 for ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I from the dissociation limit near 499 nm into the near infrared.
 
-For ¹²⁷I₂ the model is **balanced-expanded**. It has one Morse/long-range potential per state, with a
-fitted rotational function, and radial B-state hyperfine functions. These are fitted in one problem to
-every precision measurement and two Fourier-transform atlases with X v″ ≤ 17 and B v′ ≤ 43, then continued
-to both dissociation limits (X v″ ≤ 108, B v′ ≤ 80) by terms that act only beyond that core. It has no
-correction to any individual level or line. Every prediction comes with a 1σ from a frozen uncertainty
-model: the fit's covariance, plus the error of predicting levels and hyperfine intervals held out of the fit.
-It predicts held-out comb data to 0.16 MHz (absolute components) and 0.06 MHz (hyperfine intervals). On 36
-data sets kept out of every fit it ties or beats the earlier model, i2spec2026o, on lines nobody had measured
-before.
+The model has one Morse/long-range potential per state, with a fitted rotational function, and radial
+B-state hyperfine functions. These are fitted in one problem to every precision measurement of ¹²⁷I₂ and two
+Fourier-transform atlases with X v″ ≤ 17 and B v′ ≤ 43, then continued to both dissociation limits
+(X v″ ≤ 108, B v′ ≤ 80) by terms that act only beyond that core. It has no correction to any individual level
+or line. Every prediction comes with a 1σ from a frozen uncertainty model: the fit's covariance, plus the
+error of predicting levels and hyperfine intervals held out of the fit. It predicts held-out comb data to
+0.16 MHz (absolute components) and 0.06 MHz (hyperfine intervals), and on 35 data sets scored blind against
+frozen predictions 90 % of the measurements lie within 2σ.
 
-¹²⁹I₂, ¹²⁷I¹²⁹I, the line strengths and the few ¹²⁷I₂ lines beyond that domain come from i2spec2026o. That
-model uses the 2008 potentials of Salumbides et al., Morse/long-range curves beyond them, level corrections
-fitted to the comb lines and the published hyperfine formulae. The documentation's "Model" pages describe
-both models.
+¹²⁹I₂ and ¹²⁷I¹²⁹I use the same potentials at their own reduced mass, with a Born–Oppenheimer correction of two
+coefficients fitted to the CIPM isotope shifts (each line predicted from the others to 0.08 MHz) and the
+hyperfine functions scaled by the moments of each nucleus. Line strengths use the transition moment of
+Tellinghuisen (2011) with the model's own wavefunctions.
 
 ## Quick start
 
@@ -42,15 +41,14 @@ uv run i2spec lines 632.9 633.0 -i 129I2 --json  # any isotopologue; JSON for sc
 ```
 
 In the terminal browser the top panel is the absorption spectrum of the whole search range: `+`/`-`
-zoom, `[`/`]` pan, `c` centres on the selected line, `l` toggles a log scale, and `p` switches the
+zoom, `[`/`]` pan, `c` centers on the selected line, `l` toggles a log scale, and `p` switches the
 lower plot between the selected line's Doppler profile and its sub-Doppler trace (Lamb dips and
 crossovers). `s` sorts by strength, `a` shows the weak ΔF ≠ ΔJ components, `/` returns to the search box.
 
-Positions carry a 1σ uncertainty and the reason for it. For ¹²⁷I₂ these are balanced-expanded's: 0.2–1 MHz
-in the core, 1–30 MHz for most levels beyond it, and 0.1–0.2 GHz for the last X levels; lines whose levels lie
-beyond the data are flagged *extrapolated*. `i2spec line` also gives each hyperfine component's 1σ. Every
-measurement of a line is listed beside the model, with its own uncertainty. `I2SPEC_MODEL=i2spec2026o`
-switches the tools back to the earlier model.
+Positions carry a 1σ uncertainty and the reason for it: 0.2–1 MHz in the core, 1–30 MHz for most levels
+beyond it, and 0.1–0.2 GHz for the last X levels; lines whose levels lie beyond the data are flagged
+*extrapolated*. `i2spec line` also gives each hyperfine component's 1σ. Every measurement of a line is listed
+beside the model, with its own uncertainty.
 
 ## Web app
 
@@ -95,47 +93,39 @@ for the data format and the deliberate limits (no sub-Doppler, no continuum, one
 ## Python
 
 ```python
-from i2spec import ResearchModel
+from i2spec.preferred import model
 
-m = ResearchModel("balanced_expanded")             # the preferred model for 127I2
+m = model()                                        # the model, for 127I2 (model("129I2") for another)
 m.frequency("R(56) 32-0", "a10")                   # ≈ 563 260 223.36 MHz (CIPM: 563 260 223.513 MHz)
 u = m.uncertainty("R(56) 32-0", "a10")             # 1σ 0.42 MHz: statistical, model and hyperfine parts
 m.uncertainty("R(56) 32-0", "a15", "a1").sigma_MHz # 0.058 MHz for an interval within the line
 ```
 
-The earlier model, i2spec2026o (all isotopologues, line strengths):
+The published 2008 model (the potentials of Salumbides et al., for comparison):
 
 ```python
 from i2spec import MHZ_PER_CM, RovibronicModel
 
-m = RovibronicModel("127I2")
+m = RovibronicModel("127I2", "hannover2008")
 nu = m.transition(32, 0, 56, "R")   # R(56) 32-0, hyperfine-free, cm^-1
-print(nu, nu * MHZ_PER_CM)          # ≈ 18788.3355 cm^-1 ≈ 563 260 129 MHz (532 nm)
+print(nu, nu * MHZ_PER_CM)          # ≈ 18788.3356 cm^-1 ≈ 563 260 131 MHz (532 nm)
 
 nu0, comps = m.hyperfine_components(32, 0, 56, "R")   # MHz; offsets relative to nu0
 a10 = next(c for c in comps if c.label == "a10")
-print(nu0 + a10.offset)             # ≈ 563 260 223.57 MHz (CIPM value: 563 260 223.513 MHz)
+print(nu0 + a10.offset)             # ≈ 563 260 225.51 MHz (CIPM value: 563 260 223.513 MHz)
 ```
 
-Five frozen research models are explicitly selectable: compact, absolute-accuracy, balanced and
-hyperfine-precision roles (October 18, 2026, X v≤17, B v≤43), and balanced-expanded (October 20, 2026),
-which the apps prefer for ¹²⁷I₂ (`src/i2spec/preferred.py`):
+The fit's frozen releases, with every coefficient, table and reference prediction under SHA256, can be listed
+and replayed:
 
 ```sh
 uv run i2spec research list
-uv run i2spec research predict 'P(53) 32-0' --component a1 --model research-20261018-balanced
-uv run i2spec research verify --model research-20261018-balanced
+uv run i2spec research verify --model MODEL      # MODEL: an id from the list
 ```
 
-In Python, use `ResearchModel("research-20261018-balanced").frequency("P(53) 32-0", "a1")`
-from `i2spec`. Frequencies are MHz; the October 18 domain is 127I2, X v≤17,
-B v≤43 and lower J≤200; balanced-expanded's is X v≤108, B v≤80. See
-[the model inventory and API](docs/research-models.md) for validation scope, the uncertainty model and
-how the apps use balanced-expanded.
-The [prospective validation guide](docs/research-model-validation.md) provides
-48 frozen laboratory targets and measurement-scoring commands. Fresh lab
-validation is awaiting new measurements; the TUI shows that gate separately
-from completed fit queues.
+See [the release inventory and API](docs/research-models.md) and the
+[prospective validation guide](docs/research-model-validation.md), which provides frozen laboratory targets and
+measurement-scoring commands.
 
 ## Repository layout
 
@@ -143,8 +133,8 @@ from completed fit queues.
 |---|---|
 | `src/i2spec/` | the package: potentials, radial solvers, level corrections, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
 | `src/i2spec/data/` | the model parameters: potentials, level corrections, hyperfine tables |
-| [`src/i2spec/data/research/20261018/`](src/i2spec/data/research/20261018/README.md) | four selectable frozen research roles, coefficients, source hashes, validation and reference predictions |
-| [`src/i2spec/data/research/20261020/`](src/i2spec/data/research/20261020/README.md) | balanced-expanded: its tails, hyperfine tables, uncertainty model, audits, validation and the blind test |
+| [`src/i2spec/data/research/20261018/`](src/i2spec/data/research/20261018/README.md) | the core fit's frozen release: coefficients, source hashes, validation and reference predictions |
+| [`src/i2spec/data/research/20261020/`](src/i2spec/data/research/20261020/README.md) | the fitted model's release: its continuation, hyperfine tables, uncertainty model, audits, validation and the blind tests |
 | [`models/research-20261008/`](models/research-20261008/README.md) | earlier frozen research candidate and standalone evaluator |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
@@ -176,10 +166,10 @@ uv run --group research python prototypes/<script>.py   # a research script that
 
 ## Sources
 
-- balanced-expanded: Morse/long-range form of R. J. Le Roy & R. D. E. Henderson, *Mol. Phys.* **105**,
+- The model: Morse/long-range form of R. J. Le Roy & R. D. E. Henderson, *Mol. Phys.* **105**,
   663 (2007); second-order B hyperfine of L. Chen, W. A. de Jong & J. Ye, *J. Opt. Soc. Am. B* **22**, 951
-  (2005). See `docs/research-models.md` and the documentation's reference list.
-- Potentials of i2spec2026o: E. J. Salumbides et al., *Eur. Phys. J. D* **47**, 171 (2008), Table 1. This
+  (2005). See the documentation's reference list.
+- The published 2008 model (for comparison): E. J. Salumbides et al., *Eur. Phys. J. D* **47**, 171 (2008), Table 1. This
   supersedes the misprinted Table 4 of H. Knöckel, B. Bodermann & E. Tiemann, *Eur. Phys. J. D*
   **28**, 199 (2004). See `docs/research/hannover-model-reproduction.md`.
 - Hyperfine parameters: B. Bodermann, H. Knöckel & E. Tiemann, *Eur. Phys. J. D* **19**, 31 (2002),

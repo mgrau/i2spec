@@ -2,9 +2,8 @@
 
     uv run --group research python documentation/figures/make_figures.py
 
-They are illustrations, not results: the levels, wavefunctions and spectra are the model's (the preferred
-model, balanced-expanded, for 127I2; i2spec2026o's line strengths), but the choice of what to draw is for
-explanation. The SVGs are written with placeholder colours that are
+They are illustrations, not results: the levels, wavefunctions, line strengths and spectra are the model's (the
+preferred model, i2spec.preferred), but the choice of what to draw is for explanation. The SVGs are written with placeholder colors that are
 then replaced by CSS variables (documentation/stylesheets/extra.css), and the pages inline them, so
 they follow the light and dark themes like the rest of the page.
 """
@@ -27,7 +26,7 @@ from i2spec.solver import RadialSolver
 from i2spec.spectrum import cross_section, number_density, transmission
 
 OUT = Path(__file__).resolve().parent
-# placeholder colours -> the site's tokens (web/site.css)
+# placeholder colors -> the site's tokens (web/site.css)
 C = dict(ink="#010101", ink2="#020202", ink3="#030303", rule="#040404", trace="#050505", pick="#060606",
          mark="#070707", surface="#080808", u1="#0a0a01", u2="#0a0a02", u3="#0a0a03", u4="#0a0a04", u5="#0a0a05")
 TOKENS = {**{C[f"u{k}"]: f"var(--unc-{k})" for k in range(1, 6)},C["ink"]: "var(--ink)", C["ink2"]: "var(--ink-2)", C["ink3"]: "var(--ink-3)", C["rule"]: "var(--rule)",
@@ -62,7 +61,7 @@ def turning_points(V, R, E):
     return R[inside[0]], R[inside[-1]]
 
 
-model = preferred.model()                       # balanced-expanded (research-20261020)
+model = preferred.model()                       # the model (release 20261021), 127I2
 ext = model._levels_x.potentials                # its X and B potentials, V(R) in cm-1
 LIMIT = model._levels_x.asymptote               # their dissociation asymptotes
 CORE = model._spec["core"]                      # the highest levels of the core fit: X 17, B 43
@@ -80,9 +79,9 @@ def energy(state, v, J):
 # --- 1. the two potentials, their levels, and the 532 nm transition -------------------------------
 R = np.linspace(2.3, 7.0, 1500)
 fig, ax = plt.subplots(figsize=(7.2, 4.6))
-for s, colour in (("X", C["trace"]), ("B", C["pick"])):
+for s, color in (("X", C["trace"]), ("B", C["pick"])):
     V = ext[s]
-    ax.plot(R, V(R), color=colour, lw=2)
+    ax.plot(R, V(R), color=color, lw=2)
     top = {"X": 108, "B": 80}[s]
     fitted = CORE[s]
     for v in range(0, top + 1):
@@ -94,7 +93,7 @@ for s, colour in (("X", C["trace"]), ("B", C["pick"])):
         if not np.isfinite(E) or turning_points(V, R, E)[1] >= R[-2]:
             continue
         a, b = turning_points(V, R, E)
-        ax.plot([a, b], [E, E], color=colour, lw=0.7, alpha=0.9 if v <= fitted else 0.35)
+        ax.plot([a, b], [E, E], color=color, lw=0.7, alpha=0.9 if v <= fitted else 0.35)
     E = energy(s, fitted, 0)
     a, b = turning_points(V, R, E)
     ax.annotate(f"{'v″' if s == 'X' else 'v′'} = {fitted}: end of the core fit", xy=(b, E),
@@ -117,18 +116,18 @@ ax.set_xlabel("internuclear distance R (Å)")
 ax.set_ylabel("energy above the X minimum (cm⁻¹)")
 save(fig, "potentials")
 
-# --- 2. the 2008 curves against balanced-expanded's MLR curves: where each was fitted -----------------
+# --- 2. the 2008 curves against the model's MLR curves: where each was fitted -----------------
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.7), sharey=False)
-for ax, s, colour in ((axes[0], "X", C["trace"]), (axes[1], "B", C["pick"])):
+for ax, s, color in ((axes[0], "X", C["trace"]), (axes[1], "B", C["pick"])):
     span = (KNOTS.get(f"{s}_in", 2.65), KNOTS[f"{s}_out"])   # the core: inside the knots the tails vanish
     R = np.linspace(span[0] - 0.1, 8.0, 800)
     d = pub[s](R) - ext[s](R)
-    ax.axvspan(*span, color=colour, alpha=0.12, lw=0)
+    ax.axvspan(*span, color=color, alpha=0.12, lw=0)
     ax.axhline(0, color=C["rule"], lw=0.8)
-    ax.plot(R, d, color=colour, lw=1.8)
+    ax.plot(R, d, color=color, lw=1.8)
     ax.text(span[1] + 0.1, 0.80 if s == "X" else 0.12, "← core: the\n    frozen fit", transform=ax.get_xaxis_transform(),
             ha="left", va="bottom", fontsize=8, color=C["ink3"])
-    ax.set_title(f"{s} state: V(2008) − V(balanced-expanded)", fontsize=10, color=C["ink2"], loc="left")
+    ax.set_title(f"{s} state: V(2008) − V(i2spec)", fontsize=10, color=C["ink2"], loc="left")
     ax.set_xlabel("R (Å)")
     lim = np.abs(d[R > span[0]]).max() * 1.15
     ax.set_ylim(-lim, lim)
@@ -145,17 +144,17 @@ fig, (ax, ax2) = plt.subplots(2, 1, figsize=(7.2, 4.8), sharex=True, gridspec_kw
 R = np.linspace(2.3, 7.0, 1200)
 ax.plot(R, ext["X"](R), color=C["trace"], lw=1.4)
 ax.plot(R, ext["B"](R), color=C["pick"], lw=1.4)
-for solver, e, w, v, colour, height, V in ((sx, ex, wx, 0, C["trace"], 2600, ext["X"]),
+for solver, e, w, v, color, height, V in ((sx, ex, wx, 0, C["trace"], 2600, ext["X"]),
                                           (sb, eb, wb, 5, C["pick"], 1100, ext["B"]),
                                           (sb, eb, wb, 32, C["pick"], 1100, ext["B"])):
     psi = w[:, v] / np.abs(w[:, v]).max() * height
     psi *= np.sign(psi[np.argmax(np.abs(psi))])
     keep = np.abs(psi) > 1e-3 * height
     a, b = turning_points(V, solver.R, e[v])
-    ax.plot([a, b], [e[v], e[v]], color=colour, lw=0.6, alpha=0.6)
-    ax.fill_between(solver.R[keep], e[v], e[v] + psi[keep], color=colour, alpha=0.18, lw=0)
-    ax.plot(solver.R[keep], e[v] + psi[keep], color=colour, lw=1.1)
-    ax.text(b + 0.06, e[v] + (500 if colour == C["trace"] else -700), f"{'v″' if colour == C['trace'] else 'v′'} = {v}", fontsize=9, color=colour, va="center")
+    ax.plot([a, b], [e[v], e[v]], color=color, lw=0.6, alpha=0.6)
+    ax.fill_between(solver.R[keep], e[v], e[v] + psi[keep], color=color, alpha=0.18, lw=0)
+    ax.plot(solver.R[keep], e[v] + psi[keep], color=color, lw=1.1)
+    ax.text(b + 0.06, e[v] + (500 if color == C["trace"] else -700), f"{'v″' if color == C['trace'] else 'v′'} = {v}", fontsize=9, color=color, va="center")
 ax.axvspan(2.55, 2.80, color=C["ink3"], alpha=0.08, lw=0)
 ax.text(2.675, 23000, "Franck–Condon\nregion", ha="center", va="top", fontsize=8.5, color=C["ink3"])
 ax.set_ylim(-500, 23200)

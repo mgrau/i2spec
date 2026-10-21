@@ -7,9 +7,9 @@
 
 The app never solves a Schrödinger equation. It reads line positions and temperature-independent
 strengths from web/data/ and does the rest in the browser (web/physics.js), so re-exporting is how the
-app picks up a model change. Positions, hyperfine patterns and uncertainties are the preferred model's
-(i2spec.preferred: balanced-expanded for 127I2 inside its domain, i2spec2026o elsewhere, each line marked);
-strengths are i2spec2026o's. The export also carries every measurement we hold of each line, with its
+app picks up a model change. Positions, hyperfine patterns, uncertainties and strengths are the preferred
+model's (i2spec.preferred: the i2spec model for every isotopologue; a line it does not hold is marked). The export
+also carries every measurement we hold of each line, with its
 source, so the app can mark measured lines and link each one to the paper it comes from; the data sets of
 the frozen blind tests (pending_blind_v1 and v2) are shown too, marked as not used in any fit.
 """
@@ -19,6 +19,7 @@ from __future__ import annotations
 import csv
 import functools
 import http.server
+import itertools
 import json
 import math
 import os
@@ -60,8 +61,8 @@ ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c"
 #: (B v' 51-80). The others are shown for comparison, marked as not used in the fit.
 FITTED_ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
 #: How the app colours each of lookup.Line.flags
-FLAG_CLASS = {"balanced-expanded": "good", "levels measured": "good", "levels interpolated": "warn",
-              "levels extrapolated": "bad", "i2spec2026o: outside balanced-expanded": "warn", "i2spec2026o": "none",
+FLAG_CLASS = {"levels measured": "good", "levels interpolated": "warn",
+              "levels extrapolated": "bad", "outside the fitted domain": "warn",
               "corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
               "v′ > 43: extended model": "warn", "v″ ≥ 48: extended model": "warn", "beyond 815 nm": "warn",
               "v″ > 17: unmeasured": "bad", "v″ 26-89: Martin 1986": "warn", "v′ 51-79: atlas-measured": "warn", "v′ > 50: extrapolated": "bad", "isotope shift": "none", "few data": "none"}
@@ -264,14 +265,16 @@ def measurements(model_frequency, published_frequency=None):
 
 _HFS_MODEL = None
 _HFS_PREFERRED = None
+_HFS_ISO = None
 
 
 def _hfs_init(iso):
-    global _HFS_MODEL, _HFS_PREFERRED
+    global _HFS_MODEL, _HFS_PREFERRED, _HFS_ISO
     from . import preferred
     from .model import RovibronicModel
     _HFS_MODEL = RovibronicModel(iso)
-    _HFS_PREFERRED = preferred.preferred() if iso == "127I2" and preferred.active() else None
+    _HFS_PREFERRED = preferred.preferred(iso) if preferred.active() else None
+    _HFS_ISO = iso
 
 
 #: Weak (ΔF ≠ ΔJ) components kept for crossovers, as a fraction of the line's main components: a crossover
@@ -310,8 +313,8 @@ def _hfs_chunk(items):
     out = []
     for branch, J, vu, vl in items:
         try:
-            if _HFS_PREFERRED is not None and _HFS_PREFERRED.covers("127I2", branch, J, vu, vl):
-                _, comps = components(branch, J, vu, vl)
+            if _HFS_PREFERRED is not None and _HFS_PREFERRED.covers(branch, J, vu, vl):
+                _, comps = components(branch, J, vu, vl, _HFS_ISO)
             else:
                 _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0, position=False)
         except Exception:                 # a level beyond every validated grid, or without hyperfine constants
@@ -337,16 +340,21 @@ def hyperfine_patterns(iso, lines, workers=None):
 
     lines = list(lines)
     n = _n_workers() if workers is None else max(1, workers)
-    # neighbouring lines share levels, so chunks of consecutive lines reuse each worker's level cache
-    order = sorted(range(len(lines)), key=lambda k: (lines[k][2], lines[k][3], lines[k][1]))
-    chunks = [[lines[k] for k in order[i:i + 400]] for i in range(0, len(order), 400)]
+    # Nearly all the work is the radial solutions at each level's J (and J ± 2, for the couplings), solved
+    # once per J and kept by the worker that needs them. So each chunk is a window of J'' across every band, and
+    # a worker solves only the J of its windows and a few beyond their edges; chunks of whole bands had every
+    # worker solve every J (three times the solves for the same patterns). About three windows per worker.
+    width = max(4, -(-(max((line[1] for line in lines), default=0) + 1) // (3 * n)))
+    order = sorted(range(len(lines)), key=lambda k: (lines[k][1] // width, lines[k][2], lines[k][3], lines[k][1]))
+    chunks = [[lines[k] for k in window]
+              for _, window in itertools.groupby(order, key=lambda k: lines[k][1] // width)]
     main = __import__("__main__")
     if n > 1 and getattr(main, "__file__", None):
         saved = {k: os.environ.get(k) for k in _THREAD_VARS}
         os.environ.update({k: "1" for k in _THREAD_VARS})
         try:
             with mp.get_context("spawn").Pool(n, initializer=_hfs_init, initargs=(iso,)) as pool:
-                results = pool.map(_hfs_chunk, chunks)
+                results = pool.map(_hfs_chunk, chunks, chunksize=1)
         finally:
             for k, v in saved.items():
                 os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
@@ -434,10 +442,12 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     (out / "manifest.json").unlink(missing_ok=True)
     catalog = Catalog()
     # the lines to the B limit (12 A grid, ~20 min to build) for 127I2, the one isotopologue measured there
-    masters = {iso: master_line_list(intensity_model(iso), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
+    from .preferred import parameters
+    masters = {iso: master_line_list(intensity_model(iso, parameters=parameters()), 11000.0, 20100.0,
+                                     T_range=(200.0, 600.0), S_min=1e-27)
                for iso in isotopologues}
     if "127I2" in masters:
-        masters["127I2"] = with_dissociation_lines(masters["127I2"], S_min=1e-27)
+        masters["127I2"] = with_dissociation_lines(masters["127I2"], S_min=1e-27, parameters=parameters())
     from .lookup import preferred_positions
     masters = {iso: preferred_positions(master) for iso, master in masters.items()}
     centres = {}
@@ -497,10 +507,11 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     manifest = {
         "generated": date.today().isoformat(),
         "model": {"package": "i2spec", "version": __version__, "git": _git_revision(),
-                  "preferred": pf.model().info.id if pf.active() else None, "fallback": pf.FALLBACK,
-                  "note": ("Positions, hyperfine and uncertainties: balanced-expanded (research-20261020) for 127I2 "
-                           "inside its domain, i2spec2026o elsewhere (each line's flags say which); strengths: "
-                           "i2spec2026o. Regenerate with `uv run i2spec web export` after a model change.")},
+                  "fit": pf.model().info.id.split("-")[1] if pf.active() else None,
+                  "note": ("Positions, hyperfine patterns, uncertainties and line strengths: the i2spec model for "
+                           "127I2, 129I2 and 127I129I, every line whose levels it holds (J'' <= 445); the few others "
+                           "are flagged 'outside the fitted domain'. Regenerate with `uv run i2spec web export` after "
+                           "a model change.")},
         "constants": {"c2": C2, "mhz_per_cm": MHZ_PER_CM},
         "cutoff_cm_at_300K": s_min,
         "references": "references.json",
@@ -532,11 +543,8 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
                      for b, j, u, v in zip(lines.branch, lines.J_lower, lines.v_upper, lines.v_lower)])
     is_measured = np.array([k in measured for k in keys], dtype=bool)
     keep = (lines.S >= s_min) | is_measured       # every measured line, however weak at 300 K
-    # i2spec2026o's position minus the preferred model's (MHz), where the preferred model gives the line
-    d26 = (getattr(master, "nu_2026o", master.nu) - master.nu) * MHZ_PER_CM
-    d26 = np.where(d26 != 0.0, d26, np.nan)
     cols = dict(nu=lines.nu[keep], S=lines.S[keep], el=lines.E_lower[keep], vu=lines.v_upper[keep],
-                vl=lines.v_lower[keep], jl=lines.J_lower[keep], br=lines.branch[keep], d26=d26[keep])
+                vl=lines.v_lower[keep], jl=lines.J_lower[keep], br=lines.branch[keep])
     # Measured lines the absorption list cannot hold -- emission lines from v'' = 48-54, far below its
     # range and with no population at any cell temperature -- are added with zero strength, so the app
     # still lists them and marks where they are.
@@ -552,12 +560,11 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
             vu_, vl_, J_ = int(vu_), int(vl_), int(J_)
             try:
                 nu_ = catalog.transition(iso, br_, J_, vu_, vl_)
-                rows.append((nu_, 0.0, model.energy("X", vl_, J_) - e00, vu_, vl_, J_, 1 if br_ == "R" else -1,
-                             (model.transition(vu_, vl_, J_, br_) - nu_) * MHZ_PER_CM or np.nan))
+                rows.append((nu_, 0.0, model.energy("X", vl_, J_) - e00, vu_, vl_, J_, 1 if br_ == "R" else -1))
             except Exception as err:          # a level beyond every validated grid
                 print(f"    {iso} {k}: no model position ({err})")
         if rows:
-            for name, col in zip(("nu", "S", "el", "vu", "vl", "jl", "br", "d26"), zip(*rows)):
+            for name, col in zip(("nu", "S", "el", "vu", "vl", "jl", "br"), zip(*rows)):
                 cols[name] = np.concatenate([cols[name], np.array(col, dtype=cols[name].dtype)])
             print(f"    {iso}: {len(rows)} measured lines outside the absorption list, added with zero strength")
     # Stored in the order the explorer lists them, increasing wavelength (decreasing wavenumber), within
@@ -565,7 +572,6 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     order = np.argsort(-cols["nu"], kind="stable")
     nu, S, el = cols["nu"][order], cols["S"][order], cols["el"][order]
     vu, vl, jl, br = cols["vu"][order], cols["vl"][order], cols["jl"][order], cols["br"][order]
-    d26 = cols["d26"][order]
     keys = np.array([line_key("R" if b > 0 else "P", int(j), int(u), int(v)) for b, j, u, v in zip(br, jl, vu, vl)])
     is_measured = np.array([k in measured for k in keys], dtype=bool)
     # S(T) = s0 exp(-c2 E''/T) / Q(T), so s0 follows exactly from the strengths at 300 K
@@ -575,12 +581,13 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     from . import preferred as pf
     u_line, w_line = np.zeros(len(nu)), np.zeros(len(nu), dtype=int)
     pref = np.zeros(len(nu), bool)
-    if iso == "127I2" and pf.active():
-        sig, status, cls = pf.preferred().uncertainties(np.where(br > 0, "R", "P"), jl, vu, vl)
+    if pf.active():
+        sig, status, cls = pf.preferred(iso).uncertainties(np.where(br > 0, "R", "P"), jl, vu, vl)
         pref = status >= 0
         for k in np.flatnonzero(pref):
             u_line[k] = sig[k]
-            w_line[k] = reasons.setdefault((pf.basis(status[k], cls[k]), pf.flags(status[k], cls[k])), len(reasons))
+            w_line[k] = reasons.setdefault((pf.basis(status[k], cls[k], iso), pf.flags(status[k], cls[k])),
+                                           len(reasons))
     for k in np.flatnonzero(~pref):
         line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]), 0.0, 0.0, 300.0)
         u_line[k], why = uncertainty(line)
@@ -626,7 +633,6 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
             "u": [float(f"{v:.3g}") for v in u_line[sel]],                         # 1σ position, MHz
             "w": [int(v) for v in w_line[sel]],                                  # ... and why: manifest.reasons
             "d08": [None if not np.isfinite(v) else round(float(v), 1) for v in d08[sel]],  # 2008 - this, MHz
-            "d26": [None if not np.isfinite(v) else round(float(v), 2) for v in d26[sel]],  # 2026o - this, MHz
             "m": rows,                                                            # rows with measurements
             "ms": [measured[keys[sel[i]]] for i in rows],                        # ... and what they are
         }

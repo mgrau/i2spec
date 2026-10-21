@@ -10,7 +10,7 @@ measured lines are marked in the spectrum and linked to these sources.
 
 Publications that provide the functional forms and parameters of the model.
 
-### balanced-expanded (¹²⁷I₂)
+### Potentials and hyperfine
 
 1. **Morse/long-range potential form.** R. J. Le Roy, R. D. E. Henderson, Mol. Phys. 105, 663 (2007). [10.1080/00268970701241656](https://doi.org/10.1080/00268970701241656)
 1. **Dispersion coefficients and the potential form near the limits, X and B** (inherited by the core fit). E. J. Salumbides *et al.*, Eur. Phys. J. D 47, 171 (2008). [10.1140/epjd/e2008-00045-y](https://doi.org/10.1140/epjd/e2008-00045-y)
@@ -25,14 +25,20 @@ Publications that provide the functional forms and parameters of the model.
 1. **X-state level constants to v″ = 89** (data beyond the core). F. Martin, R. Bacis, S. Churassy, J. Vergès, J. Mol. Spectrosc. 116, 71 (1986). [10.1016/0022-2852(86)90254-7](https://doi.org/10.1016/0022-2852(86)90254-7)
 1. **X-state levels near the dissociation limit** (v″ = 93, 97, 102, 103, 106). F. Martin, S. Churassy, R. Bacis, R. W. Field, J. Vergès, J. Chem. Phys. 79, 3725 (1983). [10.1063/1.446293](https://doi.org/10.1063/1.446293)
 
-### i2spec2026o (¹²⁹I₂, ¹²⁷I¹²⁹I, line strengths)
+### Isotopologues
 
-1. **Potential expanded in (R − R<sub>e</sub>)/R.** G. Simons, R. G. Parr, J. M. Finlan, J. Chem. Phys. 59, 3229 (1973). [10.1063/1.1680464](https://doi.org/10.1063/1.1680464)
-1. **Potential expanded in 2(R − R<sub>e</sub>)/(R + R<sub>e</sub>) and in (m + n)(R − R<sub>e</sub>)/(mR + nR<sub>e</sub>).** J. F. Ogilvie, Proc. R. Soc. Lond. A 378, 287 (1981). [10.1098/rspa.1981.0152](https://doi.org/10.1098/rspa.1981.0152)
-1. **Generalized reduced coordinate for diatomic potentials.** V. Šurkus, R. J. Rakauskas, A. B. Bolotin, Chem. Phys. Lett. 105, 291 (1984). [10.1016/0009-2614(84)85032-0](https://doi.org/10.1016/0009-2614(84)85032-0)
-1. **Power series in (R − R<sub>e</sub>)/(R + bR<sub>e</sub>) with an exponential inner wall and a dispersion-plus-exchange outer branch.** C. Samuelis, E. Tiesinga, T. Laue, M. Elbs, H. Knöckel, E. Tiemann, Phys. Rev. A 63, 012710 (2000). [10.1103/PhysRevA.63.012710](https://doi.org/10.1103/PhysRevA.63.012710)
+1. **Born–Oppenheimer correction functions and their form** (followed for ¹²⁹I₂ and ¹²⁷I¹²⁹I). E. J. Salumbides *et al.*, Eur. Phys. J. D 47, 171 (2008). [10.1140/epjd/e2008-00045-y](https://doi.org/10.1140/epjd/e2008-00045-y)
+1. **Nuclear quadrupole-moment and g-factor ratios of ¹²⁹I and ¹²⁷I.** E. J. Salumbides *et al.*, Mol. Phys. 104, 2641 (2006). [10.1080/00268970600747696](https://doi.org/10.1080/00268970600747696)
+1. **Isotope shifts** (fit of the correction): the CIPM compilation's ¹²⁹I₂ and ¹²⁷I¹²⁹I intervals, listed with the data sets above (BIPM 2003).
+1. **X-state levels of ¹²⁹I₂ and ¹²⁷I¹²⁹I** (test of the mass scaling). D. Cerny, R. Bacis, J. Vergès, J. Mol. Spectrosc. 116, 458 (1986). [10.1016/0022-2852(86)90140-2](https://doi.org/10.1016/0022-2852(86)90140-2)
+
+### Line strengths
+
+1. **Transition moment, line strengths and vapor pressure.** J. Tellinghuisen, J. Chem. Phys. 134, 084301 (2011). [10.1063/1.3555623](https://doi.org/10.1063/1.3555623)
+
+### The published 2008 model (shown for comparison)
+
 1. **Potentials, X and B, with Born–Oppenheimer corrections.** E. J. Salumbides *et al.*, Eur. Phys. J. D 47, 171 (2008). [10.1140/epjd/e2008-00045-y](https://doi.org/10.1140/epjd/e2008-00045-y)
+1. **Their form: a power series in (R − R<sub>e</sub>)/(R + bR<sub>e</sub>) with an exponential inner wall and a dispersion-plus-exchange outer branch.** C. Samuelis, E. Tiesinga, T. Laue, M. Elbs, H. Knöckel, E. Tiemann, Phys. Rev. A 63, 012710 (2000). [10.1103/PhysRevA.63.012710](https://doi.org/10.1103/PhysRevA.63.012710)
 1. **¹²⁷I₂ hyperfine parameters.** B. Bodermann, H. Knöckel, E. Tiemann, Eur. Phys. J. D 19, 31 (2002). [10.1140/epjd/e20020052](https://doi.org/10.1140/epjd/e20020052)
 1. **¹²⁹I₂ and ¹²⁷I¹²⁹I hyperfine parameters.** E. J. Salumbides *et al.*, Mol. Phys. 104, 2641 (2006). [10.1080/00268970600747696](https://doi.org/10.1080/00268970600747696)
-1. **Near-infrared local model.** H. Knöckel, B. Bodermann, E. Tiemann, Eur. Phys. J. D 28, 199 (2004). [10.1140/epjd/e2003-00313-4](https://doi.org/10.1140/epjd/e2003-00313-4)
-1. **Transition moment, line strengths and vapour pressure.** J. Tellinghuisen, J. Chem. Phys. 134, 084301 (2011). [10.1063/1.3555623](https://doi.org/10.1063/1.3555623)

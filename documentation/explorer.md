@@ -55,12 +55,12 @@ Below the same 0.1 nm, every measured absolute frequency in view is drawn agains
 
 - **A strip under the spectrum** gives measured − model in MHz for each measured component (or line
   center, for an atlas line). Each measurement is a dot at the model's position of its component,
-  with its own 1σ as a vertical bar. The grey box behind it is the model's 1σ for that component. Several
+  with its own 1σ as a vertical bar. The gray box behind it is the model's 1σ for that component. Several
   measurements of one component stand side by side. A hollow dot is a source that no fit uses: a set held
   out for the blind tests, or an atlas shown only for comparison. The vertical scale is set by the precision measurements when there are any. An atlas
   residual (tens of MHz) then lies off the scale and is drawn as an arrow at the edge, but it shows at
   true scale on the spectrum itself.
-- **On the spectrum, at true scale**, the model's ±1σ is shaded grey around each measured component, and
+- **On the spectrum, at true scale**, the model's ±1σ is shaded gray around each measured component, and
   each measurement is a dot at its measured frequency with a ±1σ bar. There is one row per source near
   the top of the plot. Once a dot stands apart from the model's position, a dashed line drops from it
   to the baseline. These marks appear only once the difference, the measurement's 1σ or the model's spans
@@ -129,7 +129,7 @@ sub-Doppler mode). Harmonic generation multiplies the optical frequency by n, so
 converted to vacuum at the fundamental before it is multiplied; the harmonic of 1064 nm in air is not
 532 nm in air.
 
-The harmonic is marked in the spectrum by a dotted line labelled *laser ×n*, and the status bar gives
+The harmonic is marked in the spectrum by a dotted line labeled *laser ×n*, and the status bar gives
 both values, for example `laser 2 × 281.630263 THz = 563.260526 THz (1064.4895 nm → 532.2447 nm vac)`.
 For the selected line the detail panel adds its fundamental-equivalent wavelength and frequency (÷ n)
 and its distance from the laser harmonic, both at the harmonic and at the fundamental: the tuning the
@@ -142,8 +142,8 @@ The **export CSV** buttons download:
 - **lines in view**: every line in the current view that the show toggles keep, not only the 500 listed
   in the table, in the table's order. The columns are the label, isotopologue, vacuum and air
   wavelength, wavenumber, frequency, line strength at the current temperature, E″, the 1σ position
-  uncertainty, the model that gives the line (balanced-expanded or i2spec2026o), the class (precision, atlas,
-  model only), the measuring sources, and the positions of i2spec2026o and of the 2008 model as differences. With a laser set,
+  uncertainty, the domain (fitted, or outside for lines the fit does not yet cover), the class (precision,
+  atlas, model only), the measuring sources, and the position of the 2008 model as a difference. With a laser set,
   the fundamental-equivalent wavelength and frequency and the distance from the laser harmonic are
   added; below 0.1 nm, where they are loaded, the ΔJ = 0 hyperfine offsets and strengths of each line.
 - **hyperfine of selected**: the hyperfine components of the selected line as the detail panel shows
@@ -177,12 +177,9 @@ every fit and used only to test the model's frozen predictions.
 
 ## The model behind each line
 
-For ¹²⁷I₂ the positions, hyperfine patterns and uncertainties are balanced-expanded's (see the
-[model overview](calculation.md)). The other isotopologues, and the few ¹²⁷I₂ lines outside its domain, come
-from the earlier model, i2spec2026o; their flags say so. For lines that both models give, the detail panel
-shows i2spec2026o's position as its difference from this model. That model's level corrections follow the
-measured lines closely, so near a measured line the difference shows how far the shared-function model sits
-from the data. The line strengths are i2spec2026o's for every line.
+The positions, hyperfine patterns, uncertainties and line strengths of all three isotopologues are the model's
+(see the [model overview](calculation.md)). Each line's flags give the data status of its levels; the few lines
+the model does not hold say *outside the fitted domain*.
 
 ## Comparison with the 2008 model
 
@@ -215,7 +212,7 @@ lower half; the settings are in a panel opened with **Options**. On a touch scre
 move the window, pinch with two fingers to zoom about the point between them, and tap to select the
 nearest line. The page does not scroll: the spectrum takes the upper half of the
 screen, the line table below it scrolls on its own, and the selected line appears in a bar at the
-bottom that opens to the full detail when tapped. The vertical axis is labelled inside the plot, with
+bottom that opens to the full detail when tapped. The vertical axis is labeled inside the plot, with
 round tick values and their power of ten given once above it.
 
 The address bar always contains the current range, isotopologue, temperature and selected line, so

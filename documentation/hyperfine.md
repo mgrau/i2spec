@@ -2,10 +2,11 @@
 
 ## Angular momenta
 
-Both iodine nuclei have spin, i = 5/2 for ¹²⁷I and i = 7/2 for ¹²⁹I, and an electric quadrupole
-moment. The nuclear spins couple to the total nuclear spin **I** = **I**₁ + **I**₂, and **I** couples
-to the rotational angular momentum **J** to give the total angular momentum **F** = **J** + **I**.
-The hyperfine Hamiltonian is set up in the coupled basis |J, (i₁ i₂) I; F⟩ and diagonalised
+Both iodine nuclei have a spin and an electric quadrupole moment. The nuclear spin is 5/2 for ¹²⁷I and 7/2
+for ¹²⁹I: I₁ = I₂ = 5/2 in ¹²⁷I₂, I₁ = I₂ = 7/2 in ¹²⁹I₂, and I₁ = 5/2, I₂ = 7/2 in ¹²⁷I¹²⁹I. The nuclear spins
+couple to the total nuclear spin **I** = **I**₁ + **I**₂, and **I** couples to the rotational angular
+momentum **J** to give the total angular momentum **F** = **J** + **I**. The hyperfine Hamiltonian is set
+up in the coupled basis |J, (I₁ I₂) I; F⟩ and diagonalized
 separately for each F. For ¹²⁷I₂ each rovibrational level has 15 or 21 hyperfine sublevels, depending
 on the parity of J (see below).
 
@@ -21,17 +22,18 @@ with the electric quadrupole interaction (eQq), the nuclear spin–rotation inte
 tensor (d) and scalar (δ) nuclear spin–spin interactions. Within one value of J the operators are
 
 $$
-H_\text{EQ} = -\sum_{n=1,2}\frac{3(\mathbf I_n\cdot\mathbf J)^2 + \tfrac32(\mathbf I_n\cdot\mathbf J) - \mathbf I_n^2\mathbf J^2}{2i_n(2i_n-1)(2J-1)(2J+3)},\qquad H_\text{SR} = \mathbf I_1\cdot\mathbf J + \frac{C_2}{C_1}\,\mathbf I_2\cdot\mathbf J, \tag{2}
-$$
-
-$$
-H_\text{TSS} = \frac{3(\mathbf I_1\cdot\mathbf J)(\mathbf I_2\cdot\mathbf J) + 3(\mathbf I_2\cdot\mathbf J)(\mathbf I_1\cdot\mathbf J) - 2(\mathbf I_1\cdot\mathbf I_2)\,J(J+1)}{(2J-1)(2J+3)},\qquad H_\text{SSS} = \mathbf I_1\cdot\mathbf I_2 . \tag{3}
+\begin{aligned}
+H_\text{EQ} &= -\sum_{n=1,2}\frac{3(\mathbf I_n\cdot\mathbf J)^2 + \tfrac32(\mathbf I_n\cdot\mathbf J) - \mathbf I_n^2\mathbf J^2}{2I_n(2I_n-1)(2J-1)(2J+3)},\\[9pt]
+H_\text{SR} &= \mathbf I_1\cdot\mathbf J + \frac{C_2}{C_1}\,\mathbf I_2\cdot\mathbf J,\\[9pt]
+H_\text{TSS} &= \frac{3(\mathbf I_1\cdot\mathbf J)(\mathbf I_2\cdot\mathbf J) + 3(\mathbf I_2\cdot\mathbf J)(\mathbf I_1\cdot\mathbf J) - 2(\mathbf I_1\cdot\mathbf I_2)\,J(J+1)}{(2J-1)(2J+3)},\\[9pt]
+H_\text{SSS} &= \mathbf I_1\cdot\mathbf I_2 .
+\end{aligned} \tag{2}
 $$
 
 The quadrupole and tensor spin–spin operators are second-rank tensors with respect to the molecular
 axis. They therefore also have matrix elements between J and J ± 2 (and between I and I ± 2). These
 matrix elements shift the components by up to a few tens of kHz at high J and are included; the
-energies of the neighbouring rotational levels are taken from the level model. All matrix elements are
+energies of the neighboring rotational levels are taken from the level model. All matrix elements are
 evaluated with Wigner 3j, 6j and 9j symbols. For ¹²⁷I¹²⁹I the two nuclei have different eQq and C,
 which gives additional matrix elements with ΔI = ±1.
 
@@ -45,21 +47,21 @@ main components and a line with odd J″ has 21.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/hyperfine_levels.svg" role="img" aria-label="Hyperfine energy levels of the upper and lower levels of R(56) 32-0 and its 15 main transitions"></div>
-<figcaption markdown="span">**Figure 1.** Hyperfine sublevels of the lower level X(v″ = 0, J″ = 56) and the upper level B(v′ = 32, J′ = 57) of R(56) 32–0, and the 15 main transitions a1–a15. Energies are relative to the centre of each group. The upper group is drawn with a three times larger vertical scale; the scale bars give 100 MHz (upper) and 500 MHz (lower), and the separation of the two groups is not to scale. The splitting of both levels is dominated by the quadrupole interaction; eQq is −2453 MHz for the lower level and −545 MHz for the upper level, so the lower level is split about 4.5 times more widely (1.1 GHz against 0.25 GHz).</figcaption>
+<figcaption markdown="span">**Figure 1.** Hyperfine sublevels of the lower level X(v″ = 0, J″ = 56) and the upper level B(v′ = 32, J′ = 57) of R(56) 32–0, and the 15 main transitions a1–a15. Energies are relative to the center of each group. The upper group is drawn with a three times larger vertical scale; the scale bars give 100 MHz (upper) and 500 MHz (lower), and the separation of the two groups is not to scale. The splitting of both levels is dominated by the quadrupole interaction; eQq is −2453 MHz for the lower level and −545 MHz for the upper level, so the lower level is split about 4.5 times more widely (1.1 GHz against 0.25 GHz).</figcaption>
 </figure>
 
 ## Parameters
 
 ### ¹²⁷I₂
 
-balanced-expanded computes the parameters of every level from functions shared by all levels, not from a
+The model computes the parameters of every level from functions shared by all levels, not from a
 table of measured values:
 
 - **B v′ ≤ 43.** Each parameter p of the B state (eqQ, C, d, δ) is the average, over the level's own
   wavefunction, of a smooth function of R:
 
     $$
-    p(v', J') = \sum_n b_{p,n}\,\langle z^n\rangle_{v'J'},\qquad z = \frac{R^2-R_e^2}{R^2+R_e^2}\Big/0.35, \tag{4}
+    p(v', J') = \sum_n b_{p,n}\,\langle z^n\rangle_{v'J'},\qquad z = \frac{R^2-R_e^2}{R^2+R_e^2}\Big/0.35, \tag{3}
     $$
 
     with 5, 5, 3 and 1 coefficients for eqQ, C, d and δ. These 14 coefficients were fitted together with the
@@ -71,7 +73,7 @@ table of measured values:
   and fixed d = 1.524 kHz and δ = 3.705 kHz (eleven inherited constants).
 - **B v′ = 44–80.** Above v′ = 43 the B state approaches the I(²P3/2) + I(²P1/2) limit, and its hyperfine
   structure takes on contributions from the nine molecular states of that limit. Each parameter is the
-  background of Eq. (4), anchored to the core fit's own values and continued smoothly, plus explicit
+  background of Eq. (3), anchored to the core fit's own values and continued smoothly, plus explicit
   second-order sums over those states, in the framework of Chen *et al.* (2005). The potential curves of
   these states come from de Jong *et al.* (1997) and Saute & Aubert-Frécon (1982). Three choices were set by
   measurements of the out-of-core intervals and the constants of Chen *et al.* (2004):
@@ -83,21 +85,34 @@ table of measured values:
 - **X v″ = 18–108.** eqQ is continued smoothly from the formula of Bodermann *et al.* to its value for
   separated atoms (Bacis *et al.* 1980).
 
-The out-of-core parameters are tabulated for every level the potentials hold, up to J = 203. A quasi-bound
-level above the asymptote has a position but no hyperfine components.
+The out-of-core parameters are tabulated for every level the potentials hold, up to J = 203; above it each
+level keeps the constants of J = 203 at its v. Below v′ = 44 and v″ = 18 the functions above give every J. A
+quasi-bound level above the asymptote below J = 203 has a position but no hyperfine components.
 
 ### ¹²⁹I₂ and ¹²⁷I¹²⁹I
 
-The other isotopologues use the earlier model, i2spec2026o. Its parameters come from the interpolation
-formulae of Bodermann *et al.* (2002) and Salumbides *et al.* (2006), scaled by the ratios of the nuclear
-moments.
+The parameters are properties of each nucleus and of the electronic wavefunction, so the other isotopologues
+take them from the same functions:
+
+- **Per nucleus.** eqQ scales with the nuclear quadrupole moment, C with the nuclear g-factor, and d and δ with
+  the product of the two g-factors. The ratios for ¹²⁹I against ¹²⁷I are 0.701 213 (Q) and 0.6655 (g), from
+  Salumbides *et al.* (2006). In ¹²⁷I¹²⁹I the two nuclei carry different eqQ and C.
+- **At the same energy.** In the core, a B level's parameters are the radial functions of Eq. (4) averaged over
+  its own wavefunction. An X level's come from the formulae of Bodermann *et al.* at the ¹²⁷I₂ vibrational
+  quantum number of the same J = 0 energy (not an integer) and at ρ J(J + 1), ρ = μ(¹²⁷I₂)/μ: the same
+  rotational stretching. Beyond the core, the tabulated ¹²⁷I₂ constants are interpolated at that equivalent level.
+  The near-resonant 1g level at ¹²⁷I₂ B v′ = 77–78 is not carried over.
+
+No parameter is fitted to the other isotopologues. Against the 108 hyperfine intervals of the CIPM compilation in
+four ¹²⁹I₂ and ¹²⁷I¹²⁹I lines, whose median stated uncertainty is 0.10 MHz, the scaled functions leave
+0.19 MHz rms; the formulae of Salumbides *et al.* (2006), which were fitted to these data, leave 0.17 MHz.
 
 ## Components and their intensities
 
 The relative intensity of a component is the square of the electric-dipole matrix element between the
-upper and lower hyperfine eigenvectors, normalised to unity over the line. The dipole operator acts on
+upper and lower hyperfine eigenvectors, normalized to unity over the line. The dipole operator acts on
 the rotational coordinates only, so ΔF = 0, ±1 and ΔI = 0 in the uncoupled limit. The main components
-have ΔF = ΔJ and carry almost all of the intensity at high J. They are labelled a1, a2, … in order of
+have ΔF = ΔJ and carry almost all of the intensity at high J. They are labeled a1, a2, … in order of
 increasing frequency, as in the BIPM tables.
 
 <figure class="fig" markdown="span">
@@ -110,4 +125,5 @@ increasing frequency, as in the BIPM tables.
     hyperfine interval within a ¹²⁷I₂ line is good to about 0.06 MHz below v′ = 44, 0.15–1 MHz at
     v′ = 44–55, and a few MHz near v′ = 60. Beyond that the uncertainty grows to about 1 % of the interval
     at v′ = 75. These values were fitted to intervals and constants held out of the fit. For ¹²⁹I₂ and
-    ¹²⁷I¹²⁹I the offsets are good to about 1 MHz.
+    ¹²⁷I¹²⁹I a floor of 0.10 MHz per component is added, the excess of the CIPM intervals over their stated
+    uncertainties.

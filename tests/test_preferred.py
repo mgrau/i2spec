@@ -1,5 +1,6 @@
-"""The preferred model (src/i2spec/preferred.py): balanced-expanded's positions, hyperfine and uncertainties in the
-line list, the command line and the explorer, i2spec2026o elsewhere. Uses the cached level table (built once)."""
+"""The preferred model (src/i2spec/preferred.py): the i2spec model's positions, hyperfine and uncertainties in the
+line list, the command line and the explorer, for every isotopologue; i2spec2026o only for lines the model does not
+hold. Uses the cached level tables (built once)."""
 import numpy as np
 import pytest
 
@@ -32,20 +33,33 @@ def test_the_table_is_the_research_model(table):
 
 
 def test_lines_outside_the_domain_are_not_held(table):
-    sigma, status, _ = table.uncertainties(["R", "R", "R", "P"], [201, 60, 20, 0], [32, 80, 81, 32], [0, 0, 0, 0])
-    assert list(status) == [-1, -1, -1, -1] and np.isnan(sigma).all()      # J > 200, dissociated, v' > 80, P(0)
+    sigma, status, _ = table.uncertainties(["R", "R", "R", "P"], [446, 60, 20, 0], [32, 80, 81, 32], [0, 0, 0, 0])
+    assert list(status) == [-1, -1, -1, -1] and np.isnan(sigma).all()      # J > 445, dissociated, v' > 80, P(0)
     assert np.isnan(table.positions(["R"], [20], [32], [109])[0])
+
+
+def test_lines_above_the_fit_J_are_held_and_extrapolated(table):
+    m = pf.model()
+    sigma, status, _ = table.uncertainties(["R", "P"], [230, 330], [10, 15], [2, 4])
+    assert list(status) == [2, 2] and (sigma > 1).all()                    # extrapolated, and said to be
+    assert table.positions(["R"], [230], [10], [2])[0] == pytest.approx(m.transition(10, 2, 230, "R"), abs=NU_TOL)
 
 
 def test_lookup_takes_the_preferred_line_and_says_so(table):
     line = Line("127I2", "R", 56, 32, 0, 0.0, 0.0, 0.0, 300.0)
     value, why = uncertainty(line)
-    assert line.source == "balanced-expanded" and line.flags == ("balanced-expanded", "levels measured")
-    assert 0.1 < value < 1.0 and why.startswith("balanced-expanded")
-    other = Line("129I2", "R", 56, 32, 0, 0.0, 0.0, 0.0, 300.0)
-    assert other.source == "i2spec2026o" and "i2spec2026o" in other.flags
-    hot = Line("127I2", "R", 230, 10, 2, 0.0, 0.0, 0.0, 300.0)
-    assert hot.source == "i2spec2026o" and "i2spec2026o: outside balanced-expanded" in hot.flags
+    assert line.source == "i2spec" and line.flags == ("levels measured",)
+    assert 0.1 < value < 1.0 and why.startswith("The fit's statistical uncertainty")
+    # the apps present one model: the internal names appear in no flag, source or reason
+    other = Line("129I2", "R", 56, 32, 0, 0.0, 0.0, 0.0, 300.0)       # every isotopologue is the model's
+    assert other.source == "i2spec" and other.flags == ("levels extrapolated",)
+    hot = Line("127I2", "R", 230, 10, 2, 0.0, 0.0, 0.0, 300.0)         # and every J the line lists reach
+    assert hot.source == "i2spec" and hot.flags == ("levels extrapolated",)
+    far = Line("127I2", "R", 20, 81, 0, 0.0, 0.0, 0.0, 300.0)          # beyond B v' = 80: not the model's
+    assert far.source == "i2spec, outside the fitted domain" and far.flags[-1] == "outside the fitted domain"
+    for shown in (line, other, hot, far):
+        text = " ".join([shown.source, *shown.flags, uncertainty(shown)[1]]).lower()
+        assert "2026o" not in text and "balanced" not in text, text
 
 
 def test_master_lists_take_the_preferred_positions(table):
@@ -54,7 +68,8 @@ def test_master_lists_take_the_preferred_positions(table):
                             J_lower=np.array([56, 20, 230]), branch=np.array([1, 1, 1]), E_lower=np.zeros(3),
                             x_levels=np.zeros((2, 2)), upper_cut=np.full(2, np.nan), isotopologue="127I2")
     out = preferred_positions(master)
-    assert out.nu[0] == table.positions(["R"], [56], [32], [0])[0] and list(out.nu[1:]) == [18788.0, 18000.0]
+    assert out.nu[0] == table.positions(["R"], [56], [32], [0])[0] and out.nu[1] == 18788.0    # v' 81: kept
+    assert out.nu[2] == table.positions(["R"], [230], [10], [2])[0]
     assert preferred_positions(out) is out and list(out.nu_2026o) == list(nu)
 
 

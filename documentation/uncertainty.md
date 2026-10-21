@@ -1,13 +1,14 @@
 # Uncertainty estimates
 
 Every line position, every hyperfine component and every hyperfine interval comes with a standard (1σ)
-uncertainty. For ¹²⁷I₂ the uncertainty is computed by balanced-expanded's frozen uncertainty model, which has
-three parts:
+uncertainty, computed by the model's frozen uncertainty model, which has three parts:
 
 $$
-\sigma_\text{center}^2 = \sigma_\text{stat}^2 + \sigma_\text{model}^2,\qquad
-\sigma_\text{component}^2 = \sigma_\text{center}^2 + \sigma_\text{HF}^2,\qquad
-\sigma_\text{interval} = \sqrt{2a^2 + (\kappa\,\Delta)^2}. \tag{1}
+\begin{aligned}
+\sigma_\text{center}^2 &= \sigma_\text{stat}^2 + \sigma_\text{model}^2,\\
+\sigma_\text{component}^2 &= \sigma_\text{center}^2 + \sigma_\text{HF}^2,\\
+\sigma_\text{interval} &= \sqrt{2a^2 + (\kappa\,\Delta)^2}.
+\end{aligned} \tag{1}
 $$
 
 The statistical part comes from the fit, the model part from the errors of predictions the fit did not see,
@@ -24,7 +25,7 @@ stated uncertainty beside the model's position and σ, so the two can be compare
 σ<sub>stat</sub> is the uncertainty the data leave in the fitted coefficients, propagated to the line. Its
 parameters are:
 
-- the 38 new coefficients of balanced-expanded;
+- the 38 coefficients of the continuation beyond the core;
 - the 47 potential coefficients of the core fit, refitted jointly in the linearization so that their
   covariance, and their correlation with the new terms, come from the same data;
 - the seven inherited dispersion coefficients, each with a 10 % prior;
@@ -157,16 +158,61 @@ check, not a blind test:
 *Table 4. Coverage of the uncertainties on data the fit never used.*
 
 One set, Nishiyama *et al.* (2013), lies well outside: a median deviation of 0.64 MHz against a median σ of
-0.16 MHz. A blind test of the uncertainties needs measurements made after they were frozen.
+0.16 MHz.
 
-## Other isotopologues and lines outside the domain
+A further 35 data sets were held out as a blind test of the uncertainties: the model's predictions and their
+σ were frozen for every target first, and the measurements were then scored once:
 
-The lines that i2spec2026o gives keep that model's uncertainty estimates:
+| rows | n | within 1σ | within 2σ |
+|---|---:|---:|---:|
+| independent of the fit | 345 | 61 % | 90 % |
+| absolute frequencies | 70 | 61 % | 100 % |
+| intervals between lines | 76 | 93 % | 99 % |
+| hyperfine intervals within a line | 199 | 49 % | 83 % |
 
-- ¹²⁹I₂ and ¹²⁷I¹²⁹I;
-- ¹²⁷I₂ lines with J″ > 200 or B v′ > 80.
+*Table 5. The blind test of the uncertainties.*
 
-These are estimates from its agreement with measurements by region, not computed values. They range from
-0.05–1 MHz for levels corrected by comb data, through 3–8 MHz in the range of the 2008 fit without
-corrections, to 150–400 MHz for X v″ = 26–89 and 1 GHz for uncorrected B v′ > 50. ¹²⁹I₂ and ¹²⁷I¹²⁹I add
-3 MHz for the isotope shift. Such lines carry the flag *i2spec2026o*.
+The center uncertainties hold. The hyperfine part is too small: intervals within a line fall outside 2σ about
+three times as often as they should.
+
+## Above the fitted J
+
+The fit's data reach J = 200, and at most levels much less. Beyond the J the training rows reach at a level's v
+(or within 2 in v), plus 15, the level's model part grows as J(J + 1), the size of the centrifugal term through
+which the rotational function and the shape of the potential act: σ<sub>model</sub> × J(J + 1)/J<sub>r</sub>(J<sub>r</sub> + 1). This
+is a rule, not fitted. Such levels are marked *extrapolated*. The 321 lines of the Orsay atlas part I with
+J″ = 200–271, which no fit used, scatter about the model by 50 MHz up to J″ = 225, the atlas's own scatter at lower J,
+and by 65–100 MHz above.
+
+## Isotopologues
+
+The lines of ¹²⁹I₂ and ¹²⁷I¹²⁹I have the same three parts, read from the ¹²⁷I₂ tables at the equivalent
+level (the same J = 0 energy and ρ J(J + 1)), with three additions:
+
+- **Statistical part, conditioned.** The ¹²⁷I₂ levels do not separate the shape of a potential from its
+  rotational function, which an isotopologue sees scaled by ρ: combinations of coefficients that leave every
+  ¹²⁷I₂ level unchanged move the isotopologue levels as J(J + 1). The covariance of the fit and of the two
+  isotope-shift coefficients is therefore conditioned on the seven CIPM isotopologue lines. It leaves
+  0.09–0.31 MHz at those lines, and grows with the distance from them in v and J.
+- **Isotope shift.** Each B level adds the leave-one-line-out rms of the shift fit, 0.078 MHz for ¹²⁹I₂ and
+  half that for ¹²⁷I¹²⁹I, and the spread of the equally good forms of Eq. (5) of the
+  [levels page](levels.md#isotopologues) (Table 4 there).
+- **Hyperfine.** Each component adds a floor of 0.10 MHz, the excess of the CIPM intervals over their stated
+  uncertainties.
+
+A B level whose ¹²⁷I₂-equivalent v lies more than 2 from the lines that fix the shift (v′ = 6–14) is marked
+*extrapolated*.
+
+| line | center | a1 | a2 − a1 | status |
+|---|---:|---:|---:|---|
+| ¹²⁹I₂ P(54) 8-4 (633 nm) | 0.18 MHz | 0.21 MHz | 0.15 MHz | interpolated |
+| ¹²⁹I₂ R(20) 15-1 | 0.74 MHz | 0.75 MHz | 0.15 MHz | interpolated |
+| ¹²⁹I₂ R(56) 32-0 (532 nm) | 3.5 MHz | 3.5 MHz | 0.15 MHz | extrapolated |
+| ¹²⁹I₂ R(41) 51-0 | 12 MHz | 12 MHz | 0.20 MHz | extrapolated |
+| ¹²⁷I¹²⁹I P(33) 6-3 (633 nm) | 0.15 MHz | 0.19 MHz | 0.15 MHz | interpolated |
+| ¹²⁷I¹²⁹I R(56) 32-0 | 1.8 MHz | 1.8 MHz | 0.15 MHz | extrapolated |
+
+*Table 6. Uncertainties of a few isotopologue lines.*
+
+Lines whose levels the model does not hold (B v′ > 80 for ¹²⁷I₂, or a level beyond its barrier rule) carry
+the flag *outside the fitted domain* and an estimated uncertainty of at least 1 GHz.

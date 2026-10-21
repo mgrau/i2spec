@@ -15,6 +15,7 @@ form S₀ = S_UNIT · ν · s · |μ|² · g_ns, with S(T) = S₀ exp(-c2 E''/T)
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 from dataclasses import dataclass, fields
 from functools import lru_cache
@@ -27,7 +28,7 @@ import zipfile
 
 import numpy as np
 
-from .constants import MHZ_PER_CM, ISOTOPOLOGUES, NUCLEAR_SPIN
+from .constants import DEFAULT_PARAMETERS, MHZ_PER_CM, ISOTOPOLOGUES, NUCLEAR_SPIN
 from .model import RovibronicModel
 
 _H, _C, _EPS0 = 6.62607015e-34, 299792458.0, 8.8541878188e-12
@@ -80,16 +81,18 @@ def nuclear_spin_weight(J, isotopologue):
     return sum(2 * I + 1 for I in range(round(2 * NUCLEAR_SPIN[a]) + 1) if (I - J) % 2 == 0)
 
 
-def intensity_model(isotopologue="127I2", nlev_x=40, nlev_b=70, grid=None, x_rmin=X_RMIN):
+def intensity_model(isotopologue="127I2", nlev_x=40, nlev_b=70, grid=None, x_rmin=X_RMIN,
+                    parameters=DEFAULT_PARAMETERS):
     """A sinc-DVR RovibronicModel for intensities: B on ``grid``, X on the same points extended inward.
 
     Its eigenvectors give the transition moments. Its energies are only good to a few MHz, so
-    master_line_list takes positions from the B-spline solver instead.
+    master_line_list takes positions from the B-spline solver instead. ``parameters``: a parameter set, or a
+    frozen research release (preferred.parameters(): the model the apps use).
     """
     g = {**SHARED_GRID, **(grid or {})}
     n_inner = max(int(round((g["rmin"] - x_rmin) / g["step"])), 0)
     gx = dict(g, rmin=g["rmin"] - n_inner * g["step"], nlev=nlev_x)
-    return RovibronicModel(isotopologue, grids={"X": gx, "B": dict(g, nlev=nlev_b)}, solver="dvr")
+    return RovibronicModel(isotopologue, parameters, grids={"X": gx, "B": dict(g, nlev=nlev_b)}, solver="dvr")
 
 
 #: For an intensity model whose B box reaches the dissociation region (intensity_model(grid=NEAR_DISSOCIATION)):
@@ -246,7 +249,15 @@ def cache_dir() -> Path:
 @lru_cache(maxsize=None)
 def _parameter_files_digest(name):
     """Hash of the bytes of a parameter set's file and of every file it uses, so that editing any of them in
-    place (a refitted level-correction file, say) gives cached line lists a new key."""
+    place (a refitted level-correction file, say) gives cached line lists a new key. For a research release,
+    the SHA256 of its files and of the files of the release it extends."""
+    if name.startswith("research-"):
+        from .research import _entry
+        entry = _entry(name)
+        files = [entry["files_sha256"]]
+        if entry.get("extends"):
+            files.append(_entry(entry["extends"]["id"])["files_sha256"])
+        return hashlib.sha1(json.dumps(files, sort_keys=True).encode()).hexdigest()
     from .potentials import parameter_set
     p = parameter_set(name)
     extended = p.get("extended", {})
@@ -373,9 +384,11 @@ def _worker_lines(job):
     return _WORKER.lines(Js, levels, x_matched, Q)
 
 
-#: Worker processes for master_line_list; I2SPEC_WORKERS overrides, 1 runs in-process.
+#: Worker processes for master_line_list and the explorer's hyperfine patterns: one per core but one, as
+#: preferred._build uses (the work per J is even, so it scales to every core). I2SPEC_WORKERS overrides; 1 runs
+#: in-process.
 def _n_workers():
-    return max(1, int(os.environ.get("I2SPEC_WORKERS", min(8, os.cpu_count() or 1))))
+    return max(1, int(os.environ.get("I2SPEC_WORKERS", (os.cpu_count() or 2) - 1)))
 
 
 def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.0), S_min=1e-28,
@@ -388,9 +401,9 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
     absorption above that is continuum.Continuum's. The result is cached in cache_dir() unless
     cache=False.
 
-    The work is per J and runs in ``workers`` processes (default: I2SPEC_WORKERS, else up to 8): first the
-    X levels and the partition function, then the lines, in blocks of consecutive J so each B level is
-    solved once per block. workers=1 is the same computation in-process.
+    The work is per J and runs in ``workers`` processes (default: _n_workers()): first the X levels and the
+    partition function, then the lines, in blocks of consecutive J so each B level is solved once per block.
+    workers=1 is the same computation in-process.
     """
     key = _cache_key(model, float(nu_min), float(nu_max), tuple(map(float, T_range)), float(S_min),
                      f"{mu.__module__}.{mu.__qualname__}")
@@ -485,7 +498,7 @@ NEAR_FROM = 19600.0
 
 
 def with_dissociation_lines(master: MasterLineList, T_range=(200.0, 600.0), S_min=1e-27, nu_max=20100.0,
-                            mu=mu_tellinghuisen2011) -> MasterLineList:
+                            mu=mu_tellinghuisen2011, parameters=DEFAULT_PARAMETERS) -> MasterLineList:
     """``master`` (a default-grid list) plus the lines above NEAR_FROM that only the 12 A box holds.
 
     The 12 A list (intensity_model(grid=NEAR_DISSOCIATION)) reaches every B level bound by more than
@@ -493,8 +506,9 @@ def with_dissociation_lines(master: MasterLineList, T_range=(200.0, 600.0), S_mi
     dropped, so the default list's values stay as they were; the rest are added. Each J' then has levels
     up to the higher of the two cuts, which the continuum must start above.
     """
-    near = master_line_list(intensity_model(master.isotopologue, grid=NEAR_DISSOCIATION, nlev_b=95), NEAR_FROM,
-                            nu_max, T_range=T_range, S_min=S_min, mu=mu)
+    near = master_line_list(intensity_model(master.isotopologue, grid=NEAR_DISSOCIATION, nlev_b=95,
+                                            parameters=parameters), NEAR_FROM, nu_max, T_range=T_range, S_min=S_min,
+                            mu=mu)
     have = set(zip(master.branch.tolist(), master.J_lower.tolist(), master.v_upper.tolist(), master.v_lower.tolist()))
     add = np.array([k not in have for k in zip(near.branch.tolist(), near.J_lower.tolist(), near.v_upper.tolist(),
                                                near.v_lower.tolist())], dtype=bool)

@@ -20,13 +20,25 @@ transition moment is that of Tellinghuisen (2011),
 |μₑ(R)|² = 21.5 exp[−1.18 (R − 3.65)²] / R² D², with R in Å.
 
 The matrix element in Eq. (1) is computed with the J-dependent vibrational wavefunctions of both
-states, so the variation of the intensity with J within a band (Herman–Wallis effect) is included.
+states, so the variation of the intensity with J within a band (Herman–Wallis effect) is included. The
+wavefunctions are the model's, solved on a uniform grid (a sinc discrete-variable representation, 0.005 Å) that
+the transition moment is evaluated on; the line positions and E″ come from the model's levels.
+
+Bands whose upper level lies near a node of the overlap with the lower level depend sharply on where each
+potential sits in R, which the line positions alone do not fix (the shape of a potential trades against its
+rotational function). Measured intensities test it. In three Fourier-transform cell spectra (Debus 2023 and
+the two pyodine cells, 20 000–24 000 lines each), the line strength implied by each line's integrated
+absorbance, relative to its spectral window's column density, scatters about the model by 1.3 %, 2.7 % and
+3.8 % (robust standard deviations of the logarithm). The 2008 potentials' wavefunctions give 1.9 %, 3.5 % and
+3.9 %. The v″ = 1 bands near the overlap's node show the difference best: 41-1 lies 8–10 % below the 2008
+potentials' strengths in all three spectra and within 2 % of the model's, and 40-1 does the same in the SONG
+spectrum (−11 % against +1 %), though not in the Fischer spectrum (+4 % against +15 %).
 Only f depends on temperature. The line list therefore stores the temperature-independent quantity
 S₀ = S Q(T) exp(c₂E″/T), from which S is obtained for any T.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/wavefunctions.svg" role="img" aria-label="Vibrational wavefunctions in the X and B potentials and the transition moment"></div>
-<figcaption markdown="span">**Figure 1.** Vibrational wavefunctions of X v″ = 0 and of B v′ = 5 and v′ = 32, drawn at their energies, and the transition moment μₑ(R) (lower panel). The band strength is proportional to the square of the overlap ⟨v′|μₑ|v″⟩. The v″ = 0 wavefunction is localised near R = 2.67 Å (shaded). The overlap is largest for upper levels whose inner turning point lies in this region, where the upper wavefunction has its largest amplitude; for v″ = 0 this is the case near v′ = 30, at 500–540 nm.</figcaption>
+<figcaption markdown="span">**Figure 1.** Vibrational wavefunctions of X v″ = 0 and of B v′ = 5 and v′ = 32, drawn at their energies, and the transition moment μₑ(R) (lower panel). The band strength is proportional to the square of the overlap ⟨v′|μₑ|v″⟩. The v″ = 0 wavefunction is localized near R = 2.67 Å (shaded). The overlap is largest for upper levels whose inner turning point lies in this region, where the upper wavefunction has its largest amplitude; for v″ = 0 this is the case near v′ = 30, at 500–540 nm.</figcaption>
 </figure>
 
 Upper levels are included up to the last bound level of each J′. Absorption to the continuum above the
@@ -46,19 +58,19 @@ $$
 \sigma(\nu) = \sum_i S_i\,g(\nu-\nu_i), \tag{4}
 $$
 
-with g a normalised Gaussian (a Voigt profile, including pressure broadening, in the Python
+with g a normalized Gaussian (a Voigt profile, including pressure broadening, in the Python
 package). A cell of length L transmits
 
 $$
 \mathcal T(\nu) = \exp\left[-\sigma(\nu)\,N\,L\right], \tag{5}
 $$
 
-where the number density N is determined by the iodine vapour pressure at the cold-finger temperature
+where the number density N is determined by the iodine vapor pressure at the cold-finger temperature
 (Tellinghuisen 2011, Eq. 8).
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/spectrum.svg" role="img" aria-label="Cross section and cell transmission near 532.25 nm"></div>
-<figcaption markdown="span">**Figure 2.** Absorption cross section near 532 nm at 20 °C (upper panel) and transmission of a 10 cm cell with the cold finger at 20 °C (lower panel). Each peak is a single rovibronic line; the strongest are labelled.</figcaption>
+<figcaption markdown="span">**Figure 2.** Absorption cross section near 532 nm at 20 °C (upper panel) and transmission of a 10 cm cell with the cold finger at 20 °C (lower panel). Each peak is a single rovibronic line; the strongest are labeled.</figcaption>
 </figure>
 
 The Python package also computes sub-Doppler spectra: Lamb dips, crossover resonances between

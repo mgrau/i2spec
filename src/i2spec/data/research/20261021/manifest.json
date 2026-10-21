@@ -1,0 +1,117 @@
+{
+ "schema_version": 1,
+ "release": "20261021",
+ "production_default": "research-20261021-i2spec",
+ "selection_scope": "the i2spec model: research-20261020-balanced-expanded for every isotopologue and J",
+ "models": [
+  {
+   "id": "research-20261021-i2spec",
+   "role": "i2spec",
+   "title": "i2spec",
+   "directory": "i2spec",
+   "kind": "expanded",
+   "extends": {
+    "id": "research-20261020-balanced-expanded",
+    "files_sha256": {
+     "model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
+     "hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
+     "uncertainty.json": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f"
+    }
+   },
+   "architecture": "balanced + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 3 rotation), X dC6, X cubic splines 4.2-6.6 A, shared dDe; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78; 129I2 and 127I129I: q(R) x rho, B isotope shift (1 - y)^5 (a0 + a1 y), hyperfine scaled per nucleus; levels to J'' = 445",
+   "inventory": {
+    "fitted_molecular": 107,
+    "inherited_molecular": 75,
+    "fitted_calibration": 5,
+    "line_specific": 0,
+    "level_specific": 0
+   },
+   "domain": {
+    "X_v_max": 108,
+    "B_v_max": 80,
+    "J_max": 445
+   },
+   "domains": {
+    "127I2": {
+     "X_v_max": 108,
+     "B_v_max": 80,
+     "J_max": 445
+    },
+    "129I2": {
+     "X_v_max": 109,
+     "B_v_max": 81,
+     "J_max": 445
+    },
+    "127I129I": {
+     "X_v_max": 108,
+     "B_v_max": 80,
+     "J_max": 445
+    }
+   },
+   "isotopologue": "127I2",
+   "isotopologues": [
+    "127I2",
+    "129I2",
+    "127I129I"
+   ],
+   "exclusion": "127I2 P(13) 43-0",
+   "validated_folds": 4,
+   "training_fold": "future",
+   "validation_scope": "Core: the base model's reused benchmark (60 absolute, 592 intraline); extension: four v folds of the final settings and the 81-row future comb benchmark held out; hyperfine: ten nested v' folds; pending sets: frozen blind registry; isotope shift: leave one line out of the seven CIPM lines",
+   "absolute_rms_MHz": 0.15634668325293402,
+   "intraline_rms_MHz": 0.05855727081872456,
+   "reference_counts": {
+    "127I2": {
+     "center": 10,
+     "absolute": 168,
+     "intraline": 10
+    },
+    "129I2": {
+     "center": 10,
+     "absolute": 304,
+     "intraline": 10
+    },
+    "127I129I": {
+     "center": 5,
+     "absolute": 240,
+     "intraline": 5
+    }
+   },
+   "verification": {
+    "counts": {
+     "127I2": {
+      "center": 10,
+      "absolute": 168,
+      "intraline": 10
+     },
+     "129I2": {
+      "center": 10,
+      "absolute": 304,
+      "intraline": 10
+     },
+     "127I129I": {
+      "center": 5,
+      "absolute": 240,
+      "intraline": 5
+     }
+    },
+    "passed": true,
+    "maximum_difference_Hz": {
+     "center": 0.0,
+     "absolute": 0.059604644775390625,
+     "intraline": 0.0
+    },
+    "tolerance_Hz": 100.0,
+    "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+   },
+   "files_sha256": {
+    "isotopologues.json": "89c3bc0736ac90fffd0ea1546a366ddc99bc9ae295fa79fc6d16f7c818f364e9",
+    "reference_predictions.json": "3052a140cd50076108d9c48e633b18af229ff8cb16b62b86be14af330cd7f22c"
+   },
+   "source_snapshot_sha256": {
+    "isotopologues.json": "89c3bc0736ac90fffd0ea1546a366ddc99bc9ae295fa79fc6d16f7c818f364e9",
+    "reference_predictions.json": "3052a140cd50076108d9c48e633b18af229ff8cb16b62b86be14af330cd7f22c"
+   }
+  }
+ ]
+}

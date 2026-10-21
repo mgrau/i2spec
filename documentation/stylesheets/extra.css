@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap");
 /* The explorer's palette (web/site.css) carried into Material, so the documentation and the app read
-   as one site. The figures' colours are these variables too (figures/make_figures.py). */
+   as one site. The figures' colors are these variables too (figures/make_figures.py). */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color: #0070a0; --md-primary-fg-color--light: #3a98cc; --md-primary-fg-color--dark: #005a80;
   --md-accent-fg-color: #c0306a; --md-typeset-a-color: #0070a0;
@@ -36,7 +36,7 @@
   font-size: .72rem; line-height: 1.55; color: var(--md-default-fg-color--light); }
 .md-typeset figure.fig figcaption strong { color: var(--md-default-fg-color); }
 
-/* the kinds of line, as the explorer colours them */
+/* the kinds of line, as the explorer colors them */
 .kind { display: inline-block; width: .7em; height: .7em; border-radius: 2px; vertical-align: -.05em; margin-right: .3em; }
 .kind.precision { background: var(--cls-precision); }
 .kind.atlas { background: var(--cls-atlas); }
@@ -52,7 +52,7 @@
 .md-typeset .refs table:not([class]) td:not(:first-child) { white-space: nowrap; }
 .md-typeset .cite { display: inline-block; margin-top: .2em; line-height: 1.45; }
 
-/* phones: each source becomes a block, its citation and then its numbers on one labelled line */
+/* phones: each source becomes a block, its citation and then its numbers on one labeled line */
 @media (max-width: 600px) {
   .md-typeset .refs table:not([class]), .md-typeset .refs table:not([class]) tbody,
   .md-typeset .refs table:not([class]) tr { display: block; width: 100%; }
@@ -67,12 +67,11 @@
   .md-typeset .refs table:not([class]) td:nth-child(3)::after { content: " nm"; }
 }
 
-/* On a phone, command and code lines wrap instead of scrolling sideways (the wrapped part keeps its indent). */
-@media (max-width: 600px) {
-  .md-typeset pre > code {
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
+/* Command and code lines wrap instead of scrolling sideways, at any width (the examples are written to fit
+   the desktop column; on a phone they wrap). */
+.md-typeset pre > code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* the repository: just its icon in the header (the name and counts stay in the navigation drawer) */

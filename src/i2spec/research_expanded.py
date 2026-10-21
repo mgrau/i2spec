@@ -21,7 +21,7 @@ from scipy.interpolate import BSpline
 from scipy.linalg import eigh
 
 from .bspline import BSplineSolver
-from .constants import HBAR2_2U, MHZ_PER_CM, reduced_mass
+from .constants import HBAR2_2U, ISOTOPOLOGUES, MHZ_PER_CM, NUCLEAR_SPIN, reduced_mass
 from .hyperfine import (HyperfineLevel, HyperfineLevels, HyperfineParameters, _coefficient_terms, build_blocks,
                         level_structure)
 from .wigner import wigner_3j as w3j, wigner_6j as w6j
@@ -159,17 +159,108 @@ def _element(k, Jp, Ip, J, I, F, omega, parity, eps, value):
     return angular*f*(1+s_b)
 
 
-class ExpandedLevels:
-    """E(state, v, J) of the expanded potentials on the fit's grids (one grid per range of v)."""
+class IsotopeShift:
+    """The adiabatic correction of B relative to X, cm-1 per unit (1 - rho), rho = mu(127I2)/mu:
+    dV(R) = (1 - y)^p (a0 + a1 y), y = (R - Re_B)/(R + Re_B), so that it vanishes towards the separated atoms
+    (Born-Oppenheimer breakdown in the form of the 2008 model; release 20261021 isotopologues.json)."""
 
-    def __init__(self, base, structure, values):
+    def __init__(self, spec):
+        self.p, self.re, self.a = spec["power"], spec["re_B"], np.asarray(spec["coefficients"], float)
+
+    def basis(self, R):
+        y = (R-self.re)/(R+self.re)
+        g = (1-y)**self.p
+        return np.stack([g, g*y], axis=-1)
+
+    def __call__(self, R):
+        return self.basis(np.asarray(R, float))@self.a
+
+
+class IsotopeShiftUncertainty:
+    """The isotopologue part of a line's uncertainty (release 20261021 isotopologues.json).
+
+    The 127I2 data do not separate the potential's shape from the rotational function q(R), which an isotopologue
+    sees scaled by rho: its lines are sensitive to directions of the fit's covariance that no 127I2 level is. The
+    covariance of the fit's whitened parameters and the isotope shift's two coefficients is therefore conditioned
+    on the CIPM isotopologue lines (``joint_factor``, its Cholesky factor). A line's statistical vector is
+    [a, b] L, a the 127I2 factors of its levels and b the shift's sensitivities, followed by the deviations of the
+    equally fitting forms with other powers p (signed, so that they cancel between lines with the same shift).
+    ``floor``: the leave-one-line-out rms of the shift fit, scaled with (1 - rho), added per B level."""
+
+    def __init__(self, spec, levels):
+        s = spec["isotope_shift"]
+        self.levels, self.main = levels, IsotopeShift(s)
+        self.L = np.asarray(s["joint_factor"], float)
+        self.alternatives = [IsotopeShift(dict(s, power=a["power"], coefficients=a["coefficients"]))
+                             for a in s["alternatives"]]
+        self.scale = (1-levels.rho)*MHZ_PER_CM
+        self.floor = s["floor_MHz"]*(1-levels.rho)/s["floor_one_minus_rho"]
+        self.v_range = s["data_v_ref"]
+
+    def sensitivity(self, v, J):
+        """MHz per unit shift coefficient of the B level (v, J)."""
+        return self.scale*self.levels.averages("B", v, J, "isotope shift basis", self.main.basis)
+
+    def form(self, v, J):
+        main = self.levels.averages("B", v, J, "isotope shift basis", self.main.basis)@self.main.a
+        alts = self.levels.averages("B", v, J, "isotope shift forms",
+                                    lambda R: np.stack([alt(R) for alt in self.alternatives], axis=-1))
+        return self.scale*(alts-main)/sqrt(len(self.alternatives))
+
+    def level_vector(self, state, a, v, J):
+        """A level's statistical vector: [a, b] L and, for B, the form deviations."""
+        b = self.sensitivity(v, J) if state == "B" else np.zeros(2)
+        f = self.form(v, J) if state == "B" else np.zeros(len(self.alternatives))
+        return np.concatenate([np.concatenate([a, b])@self.L, f])
+
+    def status(self, v_ref):
+        lo, hi = self.v_range
+        return "interpolated" if lo-2 <= v_ref <= hi+2 else "extrapolated"
+
+
+class _IsotopologuePotential:
+    """One state's potential as an isotopologue sees it (BSplineSolver protocol, the mass ratio built in): the
+    rotational function scaled by rho (Le Roy's convention) and, for B, the isotope shift added."""
+
+    def __init__(self, pot, rho, shift=None):
+        self.pot, self.rho, self.shift, self.state = pot, rho, shift, pot.state
+
+    def __call__(self, R):
+        V = self.pot(R)
+        return V if self.shift is None else V+(1-self.rho)*self.shift(np.asarray(R, float))
+
+    def nonadiabatic(self, R, mass_ratio=1.):
+        return self.rho*self.pot.nonadiabatic(R)
+
+    def adiabatic(self, R, mass_ratio=1.):
+        return np.zeros_like(np.asarray(R, float))
+
+
+class ExpandedLevels:
+    """E(state, v, J) of the expanded potentials on the fit's grids (one grid per range of v).
+
+    For another isotopologue the same potentials are solved with its reduced mass (``shift``: the B-state isotope
+    shift), each level on the grid of the 127I2 level of about the same energy. Above ``j_split`` every level is
+    solved on the last, long grid, whose barrier rule keeps quasi-bound levels at any J."""
+
+    def __init__(self, base, structure, values, isotopologue="127I2", shift=None, j_split=None):
         self.potentials = {s: _ExpandedPotential(s, base, structure, values) for s in ("X", "B")}
         self.grids = structure["grids"]
         self.joins = structure["joins"]
         self._solvers, self._levels = {}, {}
         self.asymptote = {s: float(p(np.array([400.]))[0]) for s, p in self.potentials.items()}
+        self.isotopologue, self.mu = isotopologue, reduced_mass(isotopologue)
+        self.rho = reduced_mass("127I2")/self.mu
+        if isotopologue != "127I2":
+            self.potentials = {s: _IsotopologuePotential(p, self.rho, shift if s == "B" else None)
+                               for s, p in self.potentials.items()}
+        self.j_split = j_split
 
-    def tier(self, state, v):
+    def tier(self, state, v, J=0):
+        if self.j_split is not None and J > self.j_split:
+            return len(self.grids[state])-1
+        if self.rho != 1.:      # the 127I2 grid of about the same energy, rounded up (harmonic scaling of v + 1/2)
+            v = min(int(np.ceil((v+.5)*sqrt(self.rho)-.5)), self.grids[state][-1][0])
         for i, (limit, _) in enumerate(self.grids[state]):
             if v <= limit:
                 return i
@@ -181,7 +272,7 @@ class ExpandedLevels:
             grid = dict(self.grids[state][tier][1])
             if (state, tier) not in self._solvers:
                 g = {k: (tuple(map(tuple, x)) if k == "mesh" else x) for k, x in grid.items() if k != "nlev"}
-                self._solvers[state, tier] = BSplineSolver(self.potentials[state], reduced_mass("127I2"),
+                self._solvers[state, tier] = BSplineSolver(self.potentials[state], self.mu,
                                                            joins=self.joins[state], nlev=grid["nlev"], **g)
             solver, pot = self._solvers[state, tier], self.potentials[state]
             E, psi = solver.wavefunctions(J)
@@ -189,9 +280,10 @@ class ExpandedLevels:
                 # the fit engine's rule: bound levels and quasi-bound resonances (>= 90% inside the barrier)
                 R, asym = solver.R, self.asymptote[state]
                 w = solver.W[:, None]*psi**2
-                veff = pot(R)+J*(J+1)*HBAR2_2U/reduced_mass("127I2")/R**2*(1+pot.nonadiabatic(R))
-                outer = R > 4.5
-                if veff[outer].max() > asym:
+                veff = pot(R)+J*(J+1)*HBAR2_2U/self.mu/R**2*(1+pot.nonadiabatic(R))
+                # the barrier: beyond 4.5 A up to the fit's J; beyond the well's minimum above that, where it moves in
+                outer = R > 4.5 if self.j_split is None or J <= self.j_split else R > R[int(np.argmin(veff))]
+                if outer.any() and veff[outer].max() > asym:
                     Rb = R[outer][int(np.argmax(veff[outer]))]
                     frac = (w*(R[:, None] < Rb)).sum(0)/w.sum(0)
                     E = E[(E < asym) | (frac >= .9)]
@@ -201,14 +293,26 @@ class ExpandedLevels:
         return self._levels[key]
 
     def energy(self, state, v, J):
-        E = self._kept(state, self.tier(state, v), J)
+        E = self._kept(state, self.tier(state, v, J), J)
         if v >= len(E):
-            raise ValueError(f"balanced-expanded has no {state} v={v} level at J={J} (dissociated)")
+            raise ValueError(f"the model has no {self.isotopologue} {state} v={v} level at J={J} (dissociated)")
         return float(E[v])
+
+    def averages(self, state, v, J, name, f):
+        """<v J| f(R) |v J> of level v (f: R -> values, or columns of values), from one solve per grid and J for all
+        its levels; ``name`` identifies f in the cache."""
+        tier = self.tier(state, v, J)
+        key = state, tier, J, name
+        if not hasattr(self, "_averages"):
+            self._averages = {}
+        if key not in self._averages:
+            R, density, _ = self.densities(state, v, J)
+            self._averages[key] = density.T@f(R)
+        return self._averages[key][v]
 
     def densities(self, state, v, J):
         """(R, W psi^2 of the kept levels, solver) on the grid that holds v: what _kept keeps, in its order."""
-        tier = self.tier(state, v)
+        tier = self.tier(state, v, J)
         E = self._kept(state, tier, J)
         solver, pot = self._solvers[state, tier], self.potentials[state]
         energies, psi = solver.wavefunctions(J)
@@ -229,14 +333,115 @@ class ExpandedHyperfine:
                           for v, r in tables["resonance"]["levels"].items()}
         self.resonance_state = tables["resonance"]
 
-    def constants(self, state, v, J):
+    def constants(self, state, v, J, clamp=False):
+        """The tabulated constants; with ``clamp``, beyond the table's last J at this v those of that J."""
         table = self.B if state == "B" else self.X
+        if (v, J) not in table and clamp:
+            top = max((j for w, j in table if w == v), default=None)
+            if top is not None and J > top:
+                J = top
         if (v, J) not in table:
             raise ValueError(f"balanced-expanded has no hyperfine constants for {state} v={v} J={J}")
         c = table[(v, J)]
         if state == "B":
             return HyperfineParameters(eqQ=c[0], C=c[1], d=c[2], delta=c[3])
         return HyperfineParameters(eqQ=c[0], C=c[1], **self.x_spin_spin)
+
+
+def core_couplings(base_spec, levels, state, v, J, u=None, x=None, e=None):
+    """The core fit's hyperfine constants of a level from its wavefunction on ``levels``: B, the radial functions
+    averaged over it; X, the fixed formulae in u = v + 1/2, x = J(J+1) and the J = 0 energy e above X(0, 0)
+    (given for an isotopologue as its 127I2 equivalents). For levels the core fit's own grid does not hold."""
+    hf = base_spec["hyperfine"]
+    if state == "X":
+        q, c = hf["fixed_x_constants"]["eqQ"], hf["fixed_x_constants"]["C"]
+        return HyperfineParameters(q[0]+q[1]*u+q[2]*u*u+q[3]*x+q[4]*u*x, c[0]+c[1]*u+c[2]/(e-c[3]),
+                                   hf["fixed_x_constants"]["d"], hf["fixed_x_constants"]["delta"])
+    re = np.exp(base_spec["values"]["B"]["logRe"])
+    scale = hf["radial_scale"]["B"]
+    mean = levels.averages("B", v, J, "core B hyperfine moments",
+                           lambda R: np.vander((R**2-re**2)/(R**2+re**2)/scale, 8, increasing=True))
+    values = {p: float(np.dot(c, mean[:len(c)])) for p, c in hf["coefficients"]["B"].items()}
+    return HyperfineParameters(**values)
+
+
+class IsotopologueMap:
+    """An isotopologue's level and its 127I2 equivalent: the fractional 127I2 v of the same J = 0 energy, and
+    J(J+1) scaled by rho (the same rotational stretching)."""
+
+    def __init__(self, levels, ref_levels):
+        self.levels, self.ref = levels, ref_levels
+        self._splines = {}
+
+    def v_ref(self, state, v):
+        if state not in self._splines:
+            from scipy.interpolate import CubicSpline
+            E = []
+            for w in range(self.ref.grids[state][-1][0]+1):
+                try:
+                    E.append(self.ref.energy(state, w, 0))
+                except ValueError:
+                    break
+            self._splines[state] = CubicSpline(np.array(E), np.arange(len(E)))
+        return float(self._splines[state](self.levels.energy(state, v, 0)))
+
+    def j_ref(self, J):
+        return sqrt(self.levels.rho*J*(J+1)+.25)-.5
+
+    def equivalent(self, state, v, J):
+        """The nearest 127I2 level (v, J): what the uncertainty tables are read at."""
+        return max(int(round(self.v_ref(state, v))), 0), max(int(round(self.j_ref(J))), 0)
+
+
+class IsotopologueHyperfine:
+    """Hyperfine constants of an isotopologue's levels, per nucleus 1, from the 127I2 model (release 20261021
+    isotopologues.json): B in the core from the core fit's radial functions over its own wavefunction; X in the
+    core from the fixed formulae at its 127I2-equivalent u, x and energy; beyond the core the 127I2 constants
+    interpolated at the equivalent (v, J). Scaled by the nuclear moments: eqQ by Q, C by g, d and delta by g_1 g_2."""
+
+    def __init__(self, ref, levels, isotopologue, spec):
+        self.ref, self.levels, self.map = ref, levels, IsotopologueMap(levels, ref._levels_x)
+        a, b = ISOTOPOLOGUES[isotopologue]
+        q, g = spec["nuclear_ratios"]["eqQ"], spec["nuclear_ratios"]["g"]
+        self.scale = np.array([q[str(a)], g[str(a)], g[str(a)]*g[str(b)], g[str(a)]*g[str(b)]])
+        self.eqQ_ratio, self.C_ratio = q[str(b)]/q[str(a)], g[str(b)]/g[str(a)]
+        self.core = ref._spec["core"]
+        self._ref = {}
+
+    def where(self, state, v):
+        return "core" if self.map.v_ref(state, v) <= self.core[state]+1e-9 else "beyond"
+
+    def _reference(self, state, w, j):
+        key = state, w, j
+        if key not in self._ref:
+            p = self.ref._couplings(state, w, j)
+            self._ref[key] = np.array([p.eqQ, p.C, p.d, p.delta])
+        return self._ref[key]
+
+    def _interpolated(self, state, v, J):
+        vr, jr = self.map.v_ref(state, v), self.map.j_ref(J)
+        w0, j0 = int(np.floor(vr)), int(np.floor(jr))
+        fv, fj = vr-w0, jr-j0
+        out = 0.
+        for dw, cw in ((0, 1-fv), (1, fv)):
+            for dj, cj in ((0, 1-fj), (1, fj)):
+                if cw*cj > 0:
+                    out = out+cw*cj*self._reference(state, w0+dw, j0+dj)
+        return out
+
+    def couplings(self, state, v, J):
+        if self.where(state, v) == "beyond":
+            c = self._interpolated(state, v, J)
+        elif state == "B":
+            p = core_couplings(self.ref._base._spec, self.levels, "B", v, J)
+            c = np.array([p.eqQ, p.C, p.d, p.delta])
+        else:
+            e = self.levels.energy("X", v, 0)-self.ref._levels_x.energy("X", 0, 0)
+            p = core_couplings(self.ref._base._spec, self.levels, "X", v, J, u=self.map.v_ref("X", v)+.5,
+                               x=self.levels.rho*J*(J+1), e=e)
+            c = np.array([p.eqQ, p.C, p.d, p.delta])
+        c = c*self.scale
+        return HyperfineParameters(eqQ=c[0], C=c[1], d=c[2], delta=c[3])
 
 
 def resonance_structure(hf, levels, v, J):
@@ -363,12 +568,12 @@ class ExpandedUncertainty:
 
     def level_factor(self, levels, state, v, J):
         """a = F^T dE/dp (MHz) of one level."""
-        tier = levels.tier(state, v)
+        tier = levels.tier(state, v, J)
         key = state, tier, J
         if key not in self._factors:
             R, density, _ = levels.densities(state, v, J)
             dV, dq = self._potential_derivatives(state, tier, R)
-            rot = J*(J+1)*HBAR2_2U/reduced_mass("127I2")/R**2
+            rot = J*(J+1)*HBAR2_2U/levels.mu/R**2*levels.rho      # an isotopologue's q is rho times 127I2's
             self._factors[key] = (density.T@(dV+rot[:, None]*dq))*MHZ_PER_CM@self.F
         factors = self._factors[key]
         if v >= len(factors):
@@ -385,6 +590,13 @@ class ExpandedUncertainty:
     def _span(self, state, v):
         runs = self.table["coverage"]["all"].get(f"{state}:{v}")
         return (runs[0][0], runs[-1][1]) if runs else None
+
+    def reach_J(self, state, v):
+        """The highest J the training rows reach at v or within the neighbor reach in v, plus the margin; None if
+        none do (release 20261021: beyond it a level's model sigma grows as J(J+1))."""
+        cov = self.table["coverage"]
+        tops = [s[1] for w in range(v-cov["neighbor_v"], v+cov["neighbor_v"]+1) if (s := self._span(state, w))]
+        return max(tops)+cov["margin_J"] if tops else None
 
     def status(self, state, v, J):
         """measured: training rows within 15 in J at this v; interpolated: inside this v's J range, or between
@@ -442,22 +654,39 @@ class ExpandedUncertainty:
         return "extrapolated"
 
 
-def install(model, spec, tables, base):
-    """Attach the expanded levels and hyperfine to a ResearchModel instance (see research._ExpandedModel)."""
-    model._levels_x = ExpandedLevels(base.coefficients, spec["structure"], spec["values"])
+def install(model, spec, tables, base, extension=None, isotopologue="127I2", reference=None):
+    """Attach the expanded levels and hyperfine to a ResearchModel instance (see research._ExpandedModel).
+
+    ``extension`` (release 20261021 isotopologues.json) adds the isotope shift, the hyperfine of the other
+    isotopologues (from ``reference``, the 127I2 model of the same release) and the levels above J = j_split."""
+    shift = IsotopeShift(extension["isotope_shift"]) if extension and isotopologue != "127I2" else None
+    model._levels_x = ExpandedLevels(base.coefficients, spec["structure"], spec["values"], isotopologue, shift,
+                                     extension["j_split"] if extension else None)
     model._hf = ExpandedHyperfine(tables)
     model._base = base
+    a, b = ISOTOPOLOGUES[isotopologue]
+    model._iso = None if isotopologue == "127I2" else IsotopologueHyperfine(reference, model._levels_x, isotopologue,
+                                                                           extension)
+    model._spins = (dict(i1=NUCLEAR_SPIN[a], i2=NUCLEAR_SPIN[b], eqQ_ratio=1., C_ratio=1.) if model._iso is None else
+                    dict(i1=NUCLEAR_SPIN[a], i2=NUCLEAR_SPIN[b], eqQ_ratio=model._iso.eqQ_ratio,
+                         C_ratio=model._iso.C_ratio))
+    model._symmetric = a == b
 
 
 def structure(model, state, v, J):
-    core = model._spec["core"]
-    if state == "B" and v in model._hf.resonance:
+    """The hyperfine levels of (state, v, J), with the J +- 2 couplings; 127I2's B v' 77/78 with the 1g level
+    (where its tables reach); without the couplings where a J +- 2 partner is dissociated."""
+    if model._iso is None and state == "B" and v in model._hf.resonance and \
+            all(j in model._hf.resonance[v]["constants"] for j in (J-2, J, J+2) if j >= 0):
         return resonance_structure(model._hf, model._levels_x, v, J)
     energy = model._energy(state, v, J)
-    if v <= core[state]:
-        couplings = lambda j: model._base._couplings(state, v, j)      # noqa: E731
-    else:
-        couplings = lambda j: model._hf.constants(state, v, j)        # noqa: E731
-    return level_structure(J, couplings, lambda j: (model._energy(state, v, j)-energy)*MHZ_PER_CM,
-                           symmetry="g" if state == "X" else "u", dJ=2)
+    symmetry = ("g" if state == "X" else "u") if model._symmetric else None
+    couplings = lambda j: model._couplings(state, v, j)                 # noqa: E731
+    rot = lambda j: (model._energy(state, v, j)-energy)*MHZ_PER_CM      # noqa: E731
+    try:
+        return level_structure(J, couplings, rot, symmetry=symmetry, dJ=2, **model._spins)
+    except ValueError:
+        if model._levels_x.j_split is None or J <= model._levels_x.j_split:
+            raise
+        return level_structure(J, couplings, rot, symmetry=symmetry, dJ=0, **model._spins)
 

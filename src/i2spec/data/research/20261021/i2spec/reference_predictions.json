@@ -1,0 +1,5336 @@
+[
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 563260128.7293628
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 563259651.8739406
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 563259911.5298557
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 563259937.3694059
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 563259938.0563599
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 563259963.2794561
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 563260053.2996572
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 563260068.8156731
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 563260091.4876667
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 563260107.2229059
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 563260223.3621973
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 563260349.845018
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 563260354.5532786
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 563260377.8486173
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 563260384.0368122
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 563260509.7427961
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(56) 32-0",
+  "component": "a15",
+  "ref_component": "a1",
+  "predicted_MHz": 857.8688554763794
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 563263337.5634129
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 563262823.1728976
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 563262860.7053617
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 563262896.3402557
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 563263094.4782398
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 563263145.5040301
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 563263147.5821755
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 563263196.3928739
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 563263260.0176232
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 563263278.3945264
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 563263299.4700917
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 563263313.119342
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 563263395.5486646
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 563263432.1662785
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 563263472.1327765
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 563263536.0367461
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 563263562.3694434
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 563263585.7339897
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 563263611.5575526
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 563263702.1844361
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 563263716.0387462
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 563263733.1883245
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(53) 32-0",
+  "component": "a21",
+  "ref_component": "a1",
+  "predicted_MHz": 910.0154268741608
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 473612117.3530751
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 473611606.43769735
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 473611631.2187309
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 473611655.3374056
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 473611893.5757664
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 473611921.53829503
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 473611924.100884
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 473611951.38439375
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 473612051.5302344
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 473612060.5256025
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 473612076.4924175
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 473612084.56240976
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 473612192.788263
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 473612214.394317
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 473612236.49269295
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 473612340.0920314
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 473612353.2915552
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 473612366.7187578
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 473612379.6421661
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 473612497.45169055
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 473612505.5648436
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 473612514.4152136
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(127) 11-5",
+  "component": "a21",
+  "ref_component": "a1",
+  "predicted_MHz": 907.977516233921
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 489880507.6710748
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 489879997.7893832
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 489880020.8477262
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 489880042.50485843
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 489880268.7828689
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 489880307.58041143
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 489880318.0811516
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 489880354.96759474
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 489880436.3708687
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 489880453.9918844
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 489880462.3603369
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 489880473.970515
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 489880574.52521783
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 489880604.4854769
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 489880639.25603265
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 489880713.3272146
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 489880739.5666202
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 489880758.6730526
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 489880784.9438583
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 489880882.07391196
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 489880894.1663849
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 489880910.02720714
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(47) 9-2",
+  "component": "a21",
+  "ref_component": "a1",
+  "predicted_MHz": 912.2378239631653
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 582488629.7326193
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 582488104.0732346
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 582488156.0205835
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 582488322.9798594
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 582488357.4527918
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 582488411.4674549
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 582488517.0222123
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 582488690.7608718
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 582488718.3058653
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 582488744.1435194
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 582488772.3701619
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 582488772.7897019
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 582488833.1344346
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 582488945.4190738
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 582489000.7525563
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 582489029.7691046
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(98) 58-1",
+  "component": "a15",
+  "ref_component": "a1",
+  "predicted_MHz": 925.6958700418472
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 599671643.4016426
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 599671181.8538728
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 599671249.1073239
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 599671415.7661806
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 599671424.176323
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 599671484.3018806
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 599671491.4728509
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 599671629.9888467
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 599671677.4002736
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 599671727.173768
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 599671745.306958
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 599671762.2318357
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 599671800.1076
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 599671924.2091398
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 599671973.7799205
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 599672007.7864585
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(20) 70-0",
+  "component": "a15",
+  "ref_component": "a1",
+  "predicted_MHz": 825.9325857162476
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 112132804.46545878
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 112132581.18119265
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 112132697.89931543
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 112132699.98010823
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 112132727.45244661
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 112132729.54059345
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 112132747.59857377
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 112132771.23418042
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 112132778.9142264
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 112132809.90903924
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 112132844.91922963
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 112132893.7032999
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 112132900.41001481
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 112132928.08562414
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 112132936.12642081
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 112132981.09651445
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(10) 2-90",
+  "component": "a15",
+  "ref_component": "a1",
+  "predicted_MHz": 399.9153217971325
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 501172981.6825627
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 501172499.68778706
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 501172744.63287085
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 501172779.5763977
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 501172797.9015476
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 501172832.67242044
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 501172898.1014133
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 501172911.63282824
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 501172954.76869917
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 501172968.1982838
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 501173077.7999596
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 501173199.37038606
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 501173209.91070396
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 501173234.715622
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 501173245.6487003
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 501173367.10137576
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(210) 20-3",
+  "component": "a15",
+  "ref_component": "a1",
+  "predicted_MHz": 867.4135887026787
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 473739985.30448663
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 473739498.62585145
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 473739755.9372752
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 473739783.41027033
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 473739797.67402655
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 473739825.0533884
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 473739908.8449396
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 473739919.54252815
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 473739953.37465
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 473739964.00709844
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 473740082.4644728
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 473740210.352947
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 473740218.63207996
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 473740238.19708234
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 473740246.76006436
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 473740374.55893445
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "R(260) 10-2",
+  "component": "a15",
+  "ref_component": "a1",
+  "predicted_MHz": 875.9330829977989
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 460019802.1860999
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 460019318.46122074
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 460019541.6371813
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 460019593.007648
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 460019624.08606565
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 460019675.3936976
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 460019702.0463936
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 460019720.39651394
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 460019786.70565593
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 460019804.963275
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 460019898.64664674
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 460020009.7107586
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 460020026.0678542
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 460020061.2949429
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 460020078.0366314
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 460020188.9820289
+ },
+ {
+  "isotopologue": "127I2",
+  "line": "P(330) 15-4",
+  "component": "a15",
+  "ref_component": "a1",
+  "predicted_MHz": 870.520808160305
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 473612067.0908603
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 473611725.37701726
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 473611860.76989913
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 473611867.25699735
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 473611876.43481445
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 473611882.1673082
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 473611951.1040522
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 473611966.8592655
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 473611971.57475424
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 473611986.82396567
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 473612005.28403956
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 473612013.5896307
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 473612018.0900488
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 473612021.56135625
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 473612028.54174143
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 473612104.7825994
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 473612113.113345
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 473612117.5905306
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 473612128.148939
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 473612148.2388368
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 473612155.1034306
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 473612172.2063578
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 473612180.41429156
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 473612212.6297819
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 473612255.2143525
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 473612255.25054044
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 473612267.7424117
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 473612269.6263229
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 473612310.85300034
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(54) 8-4",
+  "component": "a28",
+  "ref_component": "a1",
+  "predicted_MHz": 585.4759830832481
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 473613545.36969525
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 473613183.48913866
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 473613203.2945904
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 473613221.00255024
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 473613305.94157
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 473613341.6770671
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 473613358.41291064
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 473613390.6860473
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 473613409.5104676
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 473613441.5569135
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 473613452.77474254
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 473613463.2712069
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 473613471.57968867
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 473613476.1949681
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 473613490.9107171
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 473613496.18461275
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 473613498.7715692
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 473613509.2256258
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 473613537.7719928
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 473613544.55268264
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 473613590.1993502
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 473613595.7828178
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 473613607.7950191
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 473613627.64875674
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 473613642.2875101
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 473613653.0317936
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 473613659.3180464
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 473613669.49825513
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 473613689.78702
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 473613705.7310869
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 473613724.69964105
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 473613725.66368365
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 473613746.36747134
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 473613767.5909958
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 473613777.3158743
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 473613783.59035134
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 473613798.0454788
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(33) 6-3",
+  "component": "a36",
+  "ref_component": "a1",
+  "predicted_MHz": 614.5563401579857
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 473612767.3277932
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 473612409.6890157
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 473612426.80316234
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 473612443.0473268
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 473612545.1754172
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 473612569.78362185
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 473612575.65392673
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 473612599.06843895
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 473612649.32289565
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 473612669.2821057
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 473612670.36374974
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 473612684.62840885
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 473612698.4909107
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 473612705.89417994
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 473612713.1044443
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 473612718.50040853
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 473612723.22835934
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 473612729.5305294
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 473612742.77566814
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 473612787.00227785
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 473612813.1427423
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 473612817.93944323
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 473612843.78718406
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 473612847.06398255
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 473612855.7964866
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 473612871.88022345
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 473612877.01484966
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 473612897.0135449
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 473612912.5916689
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 473612931.766792
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 473612943.20586383
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 473612954.89619297
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 473612966.3432137
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 473612977.91481817
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 473613003.3522859
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 473613008.7711505
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 473613016.3040659
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(69) 12-6",
+  "component": "a36",
+  "ref_component": "a1",
+  "predicted_MHz": 606.6150501966476
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 473611610.23710716
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 473611268.50304645
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 473611403.64554775
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 473611411.00781924
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 473611418.92732507
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 473611425.6252273
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 473611494.8662615
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 473611510.65833056
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 473611514.10550946
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 473611529.4418491
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 473611548.8548333
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 473611556.5708176
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 473611561.2482257
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 473611565.06193775
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 473611571.6666097
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 473611648.02967376
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 473611656.3323059
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 473611660.8159989
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 473611670.96878946
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 473611692.24748725
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 473611698.7743662
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 473611715.15136373
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 473611722.7779461
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 473611755.914623
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 473611798.60539085
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 473611798.84724027
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 473611810.66408235
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 473611812.5319655
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 473611854.0573357
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(60) 8-4",
+  "component": "a28",
+  "ref_component": "a1",
+  "predicted_MHz": 585.5542892217636
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 489880319.7783596
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 489879978.61675084
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 489880110.0698823
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 489880124.0635504
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 489880125.50337905
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 489880139.15742606
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 489880205.48086774
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 489880220.2336526
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 489880224.07166827
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 489880238.54516685
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 489880258.65720797
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 489880264.1692084
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 489880270.9028065
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 489880277.3212666
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 489880282.45357984
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 489880356.6012496
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 489880365.6126927
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 489880370.8929629
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 489880380.513875
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 489880404.3891018
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 489880409.54247457
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 489880424.13237286
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 489880429.5742214
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 489880465.61374813
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 489880508.0185184
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 489880509.69429463
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 489880518.98163337
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 489880521.3249412
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 489880563.31671834
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(110) 10-2",
+  "component": "a28",
+  "ref_component": "a1",
+  "predicted_MHz": 584.6999675035477
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 489879920.0307366
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 489879557.722423
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 489879580.0893443
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 489879601.81951153
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 489879698.65102804
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 489879725.5956368
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 489879725.8354379
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 489879752.00411505
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 489879802.4097115
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 489879819.6929947
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 489879825.7611404
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 489879840.71355456
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 489879849.88414973
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 489879857.00271034
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 489879862.9884715
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 489879871.29728556
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 489879879.2987627
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 489879884.90667045
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 489879894.2105542
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 489879943.8428467
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 489879965.1360164
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 489879971.44639933
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 489879992.3424902
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 489880001.8342097
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 489880008.4113172
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 489880024.9850469
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 489880030.14062536
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 489880050.0980377
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 489880065.2955761
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 489880081.8147773
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 489880099.3853062
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 489880108.44722086
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 489880118.7694864
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 489880127.5264522
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 489880156.6417999
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 489880161.84380275
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 489880168.0691325
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(113) 14-4",
+  "component": "a36",
+  "ref_component": "a1",
+  "predicted_MHz": 610.3467094898224
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 562810329.5820194
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 562809995.2163882
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 562810113.0345361
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 562810136.4519634
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 562810140.2850612
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 562810162.8083397
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 562810203.8956351
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 562810230.8679825
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 562810236.1988409
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 562810259.2187009
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 562810262.4339255
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 562810269.6228702
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 562810281.3245401
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 562810291.9557668
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 562810301.0445601
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 562810356.6561427
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 562810371.8106555
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 562810380.9909419
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 562810398.4513711
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 562810401.5433025
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 562810410.5511711
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 562810436.690702
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 562810446.8784041
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 562810471.5060169
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 562810508.6608372
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 562810510.8288181
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 562810527.6525501
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 562810532.1002203
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 562810567.7646037
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(56) 32-0",
+  "component": "a28",
+  "ref_component": "a1",
+  "predicted_MHz": 572.548215508461
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 569903763.5336894
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 569903432.1184396
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 569903449.1190062
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 569903555.6695231
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 569903559.9219254
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 569903591.352985
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 569903628.978834
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 569903629.6988007
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 569903653.2561673
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 569903696.6667091
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 569903706.329641
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 569903714.9156811
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 569903725.1406463
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 569903774.0991336
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 569903775.8723645
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 569903788.2572901
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 569903789.4054163
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 569903798.7824215
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 569903812.5746828
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 569903829.9313648
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 569903894.1076623
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 569903899.5351669
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 569903903.3384587
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 569903908.6294955
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 569903922.633575
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 569903927.8189174
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 569903973.0143931
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 569903994.2764335
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 569903998.680337
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "P(120) 45-1",
+  "component": "a28",
+  "ref_component": "a1",
+  "predicted_MHz": 566.5618973970413
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 599613500.2558157
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 599613119.5072091
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 599613177.4189173
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 599613215.4055521
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 599613297.2051445
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 599613298.3818072
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 599613326.0795871
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 599613349.4431481
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 599613353.284517
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 599613410.802265
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 599613444.8660661
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 599613446.2488134
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 599613459.9989102
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 599613476.3653728
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 599613498.9505653
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 599613500.9959905
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 599613527.4173074
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 599613561.6759555
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 599613565.3366811
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 599613566.2761533
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 599613610.2872565
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 599613621.8137786
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 599613624.5138417
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 599613649.4251807
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 599613667.767333
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 599613692.257553
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 599613706.2573105
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 599613720.7813601
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 599613743.0482494
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(20) 70-0",
+  "component": "a28",
+  "ref_component": "a1",
+  "predicted_MHz": 623.5410403013229
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 466450656.1755723
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 466450315.65928185
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 466450414.8156512
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 466450454.8831956
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 466450468.11167353
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 466450508.08304745
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 466450518.13406783
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 466450544.24023813
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 466450573.1704057
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 466450575.3389209
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 466450584.2275486
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 466450599.10521024
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 466450607.335505
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 466450630.3440729
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 466450639.13718235
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 466450672.76470774
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 466450696.69611627
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 466450712.39826006
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 466450727.8578801
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 466450736.6092577
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 466450736.6881237
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 466450769.5780468
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 466450778.41289264
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 466450801.7669164
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 466450834.38465524
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 466450841.78570044
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 466450858.96599156
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 466450866.80550945
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 466450899.2229675
+ },
+ {
+  "isotopologue": "129I2",
+  "line": "R(300) 12-3",
+  "component": "a28",
+  "ref_component": "a1",
+  "predicted_MHz": 583.5636856555939
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 473612495.96153784
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 473612057.24581337
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 473612077.03309876
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 473612084.593428
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 473612102.32118595
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 473612193.0385428
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 473612222.9076106
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 473612232.0491756
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 473612255.1357054
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 473612293.2331593
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 473612322.7427123
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 473612326.378483
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 473612343.9827508
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 473612350.369379
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 473612352.18553793
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 473612361.46353114
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 473612364.83687055
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 473612380.04848754
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 473612385.8331899
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 473612390.66299546
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 473612405.6396517
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 473612471.5487293
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 473612510.360822
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 473612515.86382246
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 473612518.44074184
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 473612518.8762453
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 473612523.52718645
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 473612530.08559537
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 473612567.53672147
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 473612575.59245497
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 473612609.9923278
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 473612623.1735679
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 473612635.32837397
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 473612643.9952049
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 473612648.36073047
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 473612648.4380667
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 473612655.83569574
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a37",
+  "ref_component": null,
+  "predicted_MHz": 473612672.8868437
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a38",
+  "ref_component": null,
+  "predicted_MHz": 473612680.5242387
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a39",
+  "ref_component": null,
+  "predicted_MHz": 473612691.0866084
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a40",
+  "ref_component": null,
+  "predicted_MHz": 473612697.74168646
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a41",
+  "ref_component": null,
+  "predicted_MHz": 473612741.0631757
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a42",
+  "ref_component": null,
+  "predicted_MHz": 473612755.0432174
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a43",
+  "ref_component": null,
+  "predicted_MHz": 473612767.4196027
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a44",
+  "ref_component": null,
+  "predicted_MHz": 473612788.1567349
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a45",
+  "ref_component": null,
+  "predicted_MHz": 473612797.1560235
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a46",
+  "ref_component": null,
+  "predicted_MHz": 473612805.88133305
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a47",
+  "ref_component": null,
+  "predicted_MHz": 473612814.7627251
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a48",
+  "ref_component": null,
+  "predicted_MHz": 473612825.82660234
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(33) 6-3",
+  "component": "a48",
+  "ref_component": "a1",
+  "predicted_MHz": 768.5807889699936
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 563036228.4050633
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 563035786.8516887
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 563035819.7863432
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 563035825.7555183
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 563035856.9763755
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 563035927.3088756
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 563035964.7729774
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 563035966.9737864
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 563036001.3279707
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 563036027.3507619
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 563036055.3023416
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 563036066.7150966
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 563036073.3757589
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 563036083.882322
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 563036092.3046025
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 563036094.1038231
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 563036105.3058013
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 563036112.0596875
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 563036122.518523
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 563036131.8860073
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 563036144.2288244
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 563036209.0709193
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 563036232.6639105
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 563036242.8020214
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 563036250.1064266
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 563036253.0863076
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 563036259.4317648
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 563036270.7364271
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 563036293.2699215
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 563036312.0379641
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 563036340.5942024
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 563036352.7894504
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 563036369.0241722
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 563036370.6276444
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 563036377.5467632
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 563036379.4190729
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 563036383.7467846
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a37",
+  "ref_component": null,
+  "predicted_MHz": 563036404.0401725
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a38",
+  "ref_component": null,
+  "predicted_MHz": 563036408.6374667
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a39",
+  "ref_component": null,
+  "predicted_MHz": 563036418.0786163
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a40",
+  "ref_component": null,
+  "predicted_MHz": 563036421.8729063
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a41",
+  "ref_component": null,
+  "predicted_MHz": 563036469.2888744
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a42",
+  "ref_component": null,
+  "predicted_MHz": 563036483.3531885
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a43",
+  "ref_component": null,
+  "predicted_MHz": 563036494.7751774
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a44",
+  "ref_component": null,
+  "predicted_MHz": 563036511.0486276
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a45",
+  "ref_component": null,
+  "predicted_MHz": 563036524.717007
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a46",
+  "ref_component": null,
+  "predicted_MHz": 563036533.6533192
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a47",
+  "ref_component": null,
+  "predicted_MHz": 563036539.9570276
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a48",
+  "ref_component": null,
+  "predicted_MHz": 563036549.6038036
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(56) 32-0",
+  "component": "a48",
+  "ref_component": "a1",
+  "predicted_MHz": 762.7521148920059
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 589961892.8438429
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 589961400.2505394
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 589961486.4657638
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 589961497.5062323
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 589961542.8797612
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 589961580.019366
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 589961623.7431592
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 589961641.5477341
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 589961648.8052479
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 589961692.1785622
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 589961704.8809167
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 589961713.687831
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 589961716.3037177
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 589961733.6256928
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 589961746.9465337
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 589961770.7959002
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 589961776.4585372
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 589961798.4262656
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 589961810.448334
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 589961828.7277931
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 589961829.8217734
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 589961855.1806048
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 589961862.5034457
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 589961885.8950077
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 589961913.4151398
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 589961914.4943184
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 589961937.6398137
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 589961940.9836498
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 589961966.3731458
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 589961994.4895146
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 589961996.3914835
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 589962003.0520217
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 589962004.2402035
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 589962019.8418952
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 589962023.2782099
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 589962029.4172333
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 589962069.8526858
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a37",
+  "ref_component": null,
+  "predicted_MHz": 589962077.7538092
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a38",
+  "ref_component": null,
+  "predicted_MHz": 589962083.4561195
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a39",
+  "ref_component": null,
+  "predicted_MHz": 589962101.8265206
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a40",
+  "ref_component": null,
+  "predicted_MHz": 589962107.9832784
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a41",
+  "ref_component": null,
+  "predicted_MHz": 589962111.2443618
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a42",
+  "ref_component": null,
+  "predicted_MHz": 589962134.5331658
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a43",
+  "ref_component": null,
+  "predicted_MHz": 589962159.3007909
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a44",
+  "ref_component": null,
+  "predicted_MHz": 589962170.8232614
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a45",
+  "ref_component": null,
+  "predicted_MHz": 589962187.9076723
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a46",
+  "ref_component": null,
+  "predicted_MHz": 589962189.8936442
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a47",
+  "ref_component": null,
+  "predicted_MHz": 589962199.8702857
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a48",
+  "ref_component": null,
+  "predicted_MHz": 589962218.2673624
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(41) 51-0",
+  "component": "a48",
+  "ref_component": "a1",
+  "predicted_MHz": 818.0168229341507
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 526995650.4615531
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 526995214.56824636
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 526995238.46385115
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 526995242.52984744
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 526995265.57941735
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 526995358.17393804
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 526995384.03482705
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 526995386.4263651
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 526995410.89951813
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 526995458.064987
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 526995477.0503355
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 526995486.1622849
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 526995504.11178493
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 526995504.4048062
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 526995512.3416758
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 526995519.24491525
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 526995527.8585148
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 526995531.27952594
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 526995540.11457187
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 526995546.6453593
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 526995554.75227153
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 526995644.9317498
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 526995660.1102228
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 526995667.4716358
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 526995673.35625
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 526995675.1007478
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 526995680.29829454
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 526995688.2185565
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 526995703.00177544
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 526995747.0897902
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 526995766.35867745
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 526995774.8245383
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 526995792.43744314
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 526995801.59021086
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 526995801.6163934
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 526995808.56785
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 526995811.2455049
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a37",
+  "ref_component": null,
+  "predicted_MHz": 526995825.7396086
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a38",
+  "ref_component": null,
+  "predicted_MHz": 526995828.7981178
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a39",
+  "ref_component": null,
+  "predicted_MHz": 526995835.334623
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a40",
+  "ref_component": null,
+  "predicted_MHz": 526995837.35516644
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a41",
+  "ref_component": null,
+  "predicted_MHz": 526995900.848065
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a42",
+  "ref_component": null,
+  "predicted_MHz": 526995910.96675557
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a43",
+  "ref_component": null,
+  "predicted_MHz": 526995918.8193212
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a44",
+  "ref_component": null,
+  "predicted_MHz": 526995929.8211509
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a45",
+  "ref_component": null,
+  "predicted_MHz": 526995954.6560236
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a46",
+  "ref_component": null,
+  "predicted_MHz": 526995961.08122
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a47",
+  "ref_component": null,
+  "predicted_MHz": 526995965.2131884
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a48",
+  "ref_component": null,
+  "predicted_MHz": 526995971.9117846
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "P(87) 20-1",
+  "component": "a48",
+  "ref_component": "a1",
+  "predicted_MHz": 757.3435382246971
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": null,
+  "ref_component": null,
+  "predicted_MHz": 489071068.8653948
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a1",
+  "ref_component": null,
+  "predicted_MHz": 489070604.50752205
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a2",
+  "ref_component": null,
+  "predicted_MHz": 489070654.682034
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a3",
+  "ref_component": null,
+  "predicted_MHz": 489070659.1698612
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a4",
+  "ref_component": null,
+  "predicted_MHz": 489070708.83064187
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a5",
+  "ref_component": null,
+  "predicted_MHz": 489070755.61296123
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a6",
+  "ref_component": null,
+  "predicted_MHz": 489070794.45997477
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a7",
+  "ref_component": null,
+  "predicted_MHz": 489070810.2545772
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a8",
+  "ref_component": null,
+  "predicted_MHz": 489070848.6375689
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a9",
+  "ref_component": null,
+  "predicted_MHz": 489070859.75348264
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a10",
+  "ref_component": null,
+  "predicted_MHz": 489070884.25819963
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a11",
+  "ref_component": null,
+  "predicted_MHz": 489070904.15657777
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a12",
+  "ref_component": null,
+  "predicted_MHz": 489070914.31728184
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a13",
+  "ref_component": null,
+  "predicted_MHz": 489070916.3079771
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a14",
+  "ref_component": null,
+  "predicted_MHz": 489070924.6752064
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a15",
+  "ref_component": null,
+  "predicted_MHz": 489070938.5186392
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a16",
+  "ref_component": null,
+  "predicted_MHz": 489070940.57824033
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a17",
+  "ref_component": null,
+  "predicted_MHz": 489070954.1942844
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a18",
+  "ref_component": null,
+  "predicted_MHz": 489070970.77327
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a19",
+  "ref_component": null,
+  "predicted_MHz": 489070979.0360549
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a20",
+  "ref_component": null,
+  "predicted_MHz": 489070990.3725364
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a21",
+  "ref_component": null,
+  "predicted_MHz": 489071053.50128746
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a22",
+  "ref_component": null,
+  "predicted_MHz": 489071062.99101186
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a23",
+  "ref_component": null,
+  "predicted_MHz": 489071073.9620296
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a24",
+  "ref_component": null,
+  "predicted_MHz": 489071091.6651855
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a25",
+  "ref_component": null,
+  "predicted_MHz": 489071093.97511965
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a26",
+  "ref_component": null,
+  "predicted_MHz": 489071111.17661726
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a27",
+  "ref_component": null,
+  "predicted_MHz": 489071122.16596156
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a28",
+  "ref_component": null,
+  "predicted_MHz": 489071131.8652059
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a29",
+  "ref_component": null,
+  "predicted_MHz": 489071159.2713232
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a30",
+  "ref_component": null,
+  "predicted_MHz": 489071183.7834763
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a31",
+  "ref_component": null,
+  "predicted_MHz": 489071195.73811483
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a32",
+  "ref_component": null,
+  "predicted_MHz": 489071212.4495751
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a33",
+  "ref_component": null,
+  "predicted_MHz": 489071215.85294014
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a34",
+  "ref_component": null,
+  "predicted_MHz": 489071219.9356329
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a35",
+  "ref_component": null,
+  "predicted_MHz": 489071224.2137348
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a36",
+  "ref_component": null,
+  "predicted_MHz": 489071225.0530686
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a37",
+  "ref_component": null,
+  "predicted_MHz": 489071250.9653603
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a38",
+  "ref_component": null,
+  "predicted_MHz": 489071252.20868564
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a39",
+  "ref_component": null,
+  "predicted_MHz": 489071260.48243403
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a40",
+  "ref_component": null,
+  "predicted_MHz": 489071263.7509136
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a41",
+  "ref_component": null,
+  "predicted_MHz": 489071316.4813823
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a42",
+  "ref_component": null,
+  "predicted_MHz": 489071329.1404354
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a43",
+  "ref_component": null,
+  "predicted_MHz": 489071340.7973999
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a44",
+  "ref_component": null,
+  "predicted_MHz": 489071353.5167116
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a45",
+  "ref_component": null,
+  "predicted_MHz": 489071372.95160383
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a46",
+  "ref_component": null,
+  "predicted_MHz": 489071381.23447615
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a47",
+  "ref_component": null,
+  "predicted_MHz": 489071385.6573376
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a48",
+  "ref_component": null,
+  "predicted_MHz": 489071393.9520851
+ },
+ {
+  "isotopologue": "127I129I",
+  "line": "R(250) 15-2",
+  "component": "a48",
+  "ref_component": "a1",
+  "predicted_MHz": 789.4445630311966
+ }
+]
