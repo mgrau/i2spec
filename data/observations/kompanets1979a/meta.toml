@@ -1,0 +1,33 @@
+id = "kompanets1979a"
+citation = "O. N. Kompanets and E. L. Mikhailov, \"Helium-neon 0.63 mu laser with a 129I2 nonlinear absorption cell\", Sov. J. Quantum Electron. 9, 1202-1203 (1979) [Kvantovaya Elektron. (Moscow) 6, 2042-2044 (1979)]"
+source = "https://doi.org/10.1070/QE1979v009n09ABEH009497 (publisher PDF of the English translation)"
+doi = "10.1070/qe1979v009n09abeh009497"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+p. 1203, the only numbers about the iodine spectrum: "The measured frequency intervals between the peaks A, B, and C
+were (in the notation of Ref. 2): nu_AB = 17.91 +- 0.10 MHz; nu_BC = 19.71 +- 0.11 MHz. These values agreed well with
+the results of Ref. 3 and differed slightly from those of Ref. 2." Ref. 2 is Schweitzer et al., Appl. Opt. 12, 2927
+(1973) (schweitzer1973a); Ref. 3 is Helmcke and Bayer-Helms, IEEE Trans. Instrum. Meas. IM-23, 529 (1974), not held.
+Read from the text layer and a rendering of the page.
+
+Assignment, made here, not in the paper. The peaks are the 3He-22Ne / 129I2 laser's peaks A, B and C, the
+components of 129I2 P(33) 6-3 that the MEP 633 nm table (bipm2003a) labels e1, e2 and e3 ("x = A, B, C"), with
+e2 - e1 = 19.82(5) MHz and e3 - e2 = 17.83(3) MHz; schweitzer1973a's B is e2. Schweitzer et al. print the
+wavelengths A = 632 990.1007 pm, B = 632 990.0742 pm and C = 632 990.0502 pm, so in Ref. 2's notation A is the lowest
+frequency, B - A = 19.8 MHz and C - B = 18.0 MHz. Taken literally, this paper's nu_AB = 17.91 MHz and nu_BC = 19.71 MHz
+would then be 1.9 MHz (19 sigma) from both Ref. 2 and the MEP, which the paper calls "differed slightly". With the
+two intervals exchanged they agree with the MEP to 0.08 and 0.11 MHz. They are entered exchanged: 17.91 MHz as
+e3 - e2 and 19.71 MHz as e2 - e1. If the letters were not swapped, these two rows are wrong by 1.9 MHz each;
+a blind test will show which.
+
+Conditions: 129I2 enriched to 89 %, internal 5 cm quartz cell with its side tube at 10 C (about 80 mTorr), He-Ne
+gain tube 3He:22Ne 7:1 at 1.85 Torr, modulation 7 kHz, third-harmonic locking. Not corrected for pressure or power.
+
+Not entered: the Allan deviations (Fig. 4), the frequency reproducibility (about 2e-10) and the description of the
+laser.
+"""
+
+uncertainty = "As printed, 0.10 and 0.11 MHz, taken as 1 sigma (the paper does not say)."

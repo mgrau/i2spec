@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(13) 43-0,a2,interval,71.8652,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 71865.2 kHz from a1 (I = 1, F - J = 0); printed PTB - LPL 1980 0.1 kHz"
+127I2 P(13) 43-0,a3,interval,131.7700,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 131770.0 kHz from a1 (I = 5, F - J = 5); printed PTB - LPL 1980 0.0 kHz"
+127I2 P(13) 43-0,a4,interval,207.8190,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 207819.0 kHz from a1 (I = 5, F - J = -4); printed PTB - LPL 1980 0.2 kHz"
+127I2 P(13) 43-0,a6,interval,372.5435,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 372543.5 kHz from a1 (I = 3, F - J = -1); printed PTB - LPL 1980 -0.4 kHz"
+127I2 P(13) 43-0,a7,interval,386.7751,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 386775.1 kHz from a1 (I = 5, F - J = -3); printed PTB - LPL 1980 -0.3 kHz"
+127I2 P(13) 43-0,a8,interval,470.4691,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 470469.1 kHz from a1 (I = 3, F - J = -2); printed PTB - LPL 1980 -0.2 kHz"
+127I2 P(13) 43-0,a11,interval,525.7320,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 525732.0 kHz from a1 (I = 3, F - J = 3); printed PTB - LPL 1980 0.0 kHz"
+127I2 P(13) 43-0,a12,interval,567.3689,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 567368.9 kHz from a1 (I = 3, F - J = -3); printed PTB - LPL 1980 -0.9 kHz"
+127I2 P(13) 43-0,a15,interval,719.1662,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 719166.2 kHz from a1 (I = 5, F - J = -1); printed PTB - LPL 1980 -0.5 kHz"
+127I2 P(13) 43-0,a16,interval,748.5261,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 748526.1 kHz from a1 (I = 5, F - J = 3); printed PTB - LPL 1980 0.0 kHz"
+127I2 P(13) 43-0,a17,interval,792.7023,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 792702.3 kHz from a1 (I = 1, F - J = 1); printed PTB - LPL 1980 -0.5 kHz"
+127I2 P(13) 43-0,a21,interval,949.1065,0.0010,,a1,spieweck1980a,"Table I, PTB 1980 column: 949106.5 kHz from a1 (I = 5, F - J = 1); printed PTB - LPL 1980 0.0 kHz"

@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a10,frequency,563260223.50826,0.0003,,,hong2003a,"Eq. (7) (p. 242): NMIJ-Y3 at cold finger -10 C, 563 260 223 508.26(12) kHz by the NMIJ fs comb (six measurements after the comparison); uncertainty 0.3 kHz, the stated comb-measurement uncertainty"

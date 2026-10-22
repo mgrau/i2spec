@@ -1,0 +1,44 @@
+id = "hong2003a"
+citation = "F.-L. Hong, J. Ishikawa, K. Sugiyama, A. Onae, H. Matsumoto, J. Ye and J. L. Hall, \"Comparison of independent optical frequency measurements using a portable iodine-stabilized Nd:YAG laser\", IEEE Trans. Instrum. Meas. 52, 240-244 (2003)"
+source = "https://doi.org/10.1109/TIM.2003.811676 (open-access author copy, CU Scholar)"
+doi = "10.1109/tim.2003.811676"
+retrieved = "2026-10-22"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from a 110 dpi rendering of pp. 240-242 (the text layer drops the equations). One row: the absolute frequency of
+NMIJ-Y3 on a10 of R(56) 32-0, Eq. (7), "563 260 223 508.26(12) kHz", measured with the NMIJ/AIST femtosecond comb
+(their ref. [9], Sugiyama et al., a symposium paper not held) at a cold-finger temperature of -10 C (1.38 Pa, p. 241).
+
+Not entered, because they are not independent of this row or of ye2001a:
+- Eq. (1), JILA-W at -15 C, 563 260 223 514.48(24) kHz: this is ye2001a.
+- Eqs. (2)-(5), the beat notes Y1 - Y3 = 0.84(11) and 0.81(17) kHz and JILA-W - Y1 = 5.74(21) kHz (Y1 at -10 C)
+  and 3.90(35) kHz (Y1 at -15 C). These are laser-to-laser offsets, not line positions.
+- Eq. (6), Y3 at -10 C from the comparison, 563 260 223 507.93(36) kHz. It is ye2001a's value transferred through
+  the portable laser, and it agrees with Eq. (7) to 0.33 kHz.
+- Eq. (8), the value reported to the CCL, 563 260 223 510.1(3) kHz at -15 C. This is Eq. (7) plus 1.8 kHz for the
+  0.60 Pa pressure difference. The paper says the CCL accepted it in 2001 as one of three references for the
+  recommended 532 nm value, so bipm2012a's R(56) a10 frequency is partly built from this row. The overlap is noted
+  here only; while this set is pending it does not change bipm2012a.
+
+Measured shift: -3.07 kHz/Pa for the portable laser Y1 (Fig. 4, 0.8-1.4 Pa), "similar to that observed at NMIJ/AIST".
+"""
+
+uncertainty = """
+0.3 kHz, the uncertainty the paper states for the comb measurements of Y3 over three months (p. 242) and the
+uncertainty of the reported value, Eq. (8). The (12) printed with Eq. (7) is the statistical part. Taken as 1 sigma.
+"""
+
+[conditions]
+method = "third-harmonic saturated absorption, frequency-doubled Nd:YAG, 45 cm cell; Cs-referenced femtosecond comb"
+laser = "NMIJ-Y3"
+cold_finger_C = -10.0
+pressure_Pa = 1.38
+pressure_shift_kHz_per_Pa = -3.07
+
+[shift_correction]
+pressure_Pa = 1.38
+pressure_kHz_per_Pa = -3.07
+pressure_kHz_per_Pa_unc = 0.3
+basis = "Paper: -10 C, 1.38 Pa (p. 241); slope -3.07 kHz/Pa measured on the portable laser Y1 (Fig. 4), said to be similar at NMIJ/AIST. No slope uncertainty is printed; 0.3 kHz/Pa (10 %) is assumed here. Power and modulation shifts are not given."

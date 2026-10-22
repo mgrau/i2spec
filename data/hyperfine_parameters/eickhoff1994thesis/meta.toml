@@ -1,0 +1,30 @@
+id = "eickhoff1994thesis"
+citation = "M. L. Eickhoff, \"Two new methods for real-time precision refractometry and a precise test of the hyperfine Hamiltonian via modulation transfer spectroscopy of molecular iodine at 532 nm\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. L. Hall), 1994, Chapter X, Tables 10.2-10.8 (pp. 209-215)"
+source = "dissertation scan (UMI order number 9518616, 283 pages, image only)"
+retrieved = "2026-10-21"
+unit = "MHz"
+kind = "B-state effective hyperfine parameters, one row per four-term fit of one line's measured splittings"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The block "Hyperfine constants for the excited state derived from this calculation" of each fit summary, Tables
+10.2-10.8, seven lines: the five of data/observations/eickhoff1994thesis (P(119) 35-0, R(86) 33-0, R(134) 36-0,
+P(83) 33-0, P(53) 32-0) and the two whose splittings are held elsewhere (R(106) 34-0 in eickhoff1995a, R(56)
+32-0 in jungner1995b). Typed from 220 dpi renderings of the image-only scan. Uncertainties are the printed
+parenthesised digits in units of the last digit ("-548.6961(19)" is 0.0019 MHz). fit_sd_kHz is the printed "sdev"
+(MHz) times 1000; the tables also print an RMS, kept in the note. Table 10.8 prints its four constants without a
+unit; the other tables say MHz, and the magnitudes match, so MHz is entered.
+"""
+
+uncertainty = "As printed, from each fit (p. 216: the fit weights each component by the quadrature sum of the standard deviations of the beat notes involved). Statistical only."
+
+notes = """
+X-state values held fixed in every fit (each table, "Hyperfine constants of the ground state (v''=0, J''=13) given
+by Yokozeki and Munter"): eqQ'' = -2452.5837(16) MHz, C'' = 0.003162(8) MHz, d'' = 0.00158(5) MHz, delta'' =
+0.00366(3) MHz. pp. 216-217 explain the choice: only main lines (Delta F = Delta J) were measured, which constrain the
+differences between the states, and the v''=0, J''=13 values are used for the lines' own J'' (53-134), citing the
+small J dependence found by others. The B-state values therefore carry the X-state values' J dependence, which
+the fits do not model.
+The 1995 paper (eickhoff1995a's source) prints a fit of R(106) 34-0 to the same 14 splittings; its constants were
+not entered there, so the R(106) row here is the only one.
+"""

@@ -1,0 +1,32 @@
+id = "wallerand2000"
+citation = "J.-P. Wallerand, Y. Millerioux, D. Chagniot, S. Guerandel and M. Himbert, \"Accurate determination of hyperfine constants of upper level of the P(33) 6-3 transition of molecular iodine using a laser diode emitting around 633 nm\", Conference on Precision Electromagnetic Measurements (CPEM 2000), Digest, pp. 677-678"
+source = "https://doi.org/10.1109/CPEM.2000.851193 (publisher PDF of the two-page digest)"
+doi = "10.1109/cpem.2000.851193"
+retrieved = "2026-10-20"
+unit = "MHz"
+kind = "B-state effective hyperfine parameters, one row per four-term fit"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 678), "Hyperfine constants for the upper rovibronic level v' = 6, J' = 33", read from the text layer and
+a 150 dpi rendering of p. 678 (the text layer drops the delta' row). eqQ' is printed in MHz, C', d' and delta' in kHz;
+converted to MHz exactly. Uncertainties are the parenthesised digits in units of the last digit.
+
+The digest is inconsistent about the level. The title says "upper level of the P(33) 6-3 transition", whose upper
+level is v' = 6, J' = 32; Table 1's caption says J' = 33; the abstract says the constants are those of "the
+rovibrational level v''=6, J''=33 of the ground electronic state". eqQ' = -498.9 MHz is a B-state value (the X state's
+is near -2450 MHz), so the row is entered as the upper level of 127I2 P(33) 6-3 (J' = 32), the transition measured.
+
+Method (p. 677-678): a 633 nm laser diode locked to the components of P(33) 6-3 in a 30 cm cell, beat against an
+iodine-stabilized He-Ne laser; "The separations between hyperfine components have been measured with an uncertainty
+of 6 kHz", and "the difference between the calculated values and the measured one does not exceed 15 kHz". The
+separations themselves are not printed (a plotted spectrum only), so nothing goes to data/observations.
+"""
+
+uncertainty = "As printed, from the fit; statistical only. No fit standard deviation is printed, so fit_sd_kHz is empty."
+
+notes = """
+X-state values held fixed: "the values of ground state constants were fixed [5]", ref. [5] being Wallerand et al.,
+Eur. Phys. J. D 6, 63-76 (1999), hyperfine splittings of ground rovibronic states measured by stimulated resonant
+Raman spectroscopy. The digest does not print the values used.
+"""

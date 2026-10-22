@@ -1,0 +1,76 @@
+id = "eickhoff1994thesis"
+citation = "M. L. Eickhoff, \"Two new methods for real-time precision refractometry and a precise test of the hyperfine Hamiltonian via modulation transfer spectroscopy of molecular iodine at 532 nm\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. L. Hall), 1994, Chapter X, Tables 10.2-10.8 (pp. 209-215)"
+source = "dissertation scan (UMI order number 9518616, 283 pages, image only)"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Chapter X, "Hyperfine Structure" (pp. 203-218): Tables 10.2-10.8, one "fit summary" per line, each listing the
+measured splittings of the main (Delta F = Delta J) components from a1 in MHz ("observed" or "measured"), the
+authors' fit ("calculated"), the residual and a weight, with "Experimental notes" that give the offset from a1 of
+the line to the reference laser's component. The scan has no text layer. Every row was typed from 220 dpi
+renderings and checked by script: observed - calculated reproduces the printed residual in all 97 rows of the
+seven tables (to 1 Hz, the rounding; a1 is the zero of each), so a misread digit in either column would show;
+within each table the values and the component numbers increase together.
+
+Entered: the splittings of P(119) 35-0 (Table 10.2), R(86) 33-0 (10.3), R(134) 36-0 (10.5), P(83) 33-0 (10.6) and
+P(53) 32-0 (10.8), 72 rows, and the five offsets of their a1 to the reference component (group
+eickhoff1994thesis_offset), stated in the notes as "E reference laser a20:P(83)33-0, offset 16492.5738 MHz above
+a1:R(86)33-0" and entered as f(a1) - f(reference). The P(53) and R(56) notes say "below", the others "above".
+
+Not entered, because the same measurement is already held with the same digits:
+- Table 10.4, R(106) 34-0 (14 splittings and the offset to P(83) 33-0 a20): eickhoff1995a, the 1995 paper's
+  Table I, measured the same day (18 June 1993); all 14 values and the offset agree to the last digit.
+- Table 10.7, R(56) 32-0 (11 splittings and the offset of its a1 to P(83) 33-0 a20, 15126.2892 MHz):
+  jungner1995b prints them to 1 Hz, re-referenced to a10 (its P(83) a20 - R(56) a10 = -15697.836 MHz equals
+  -15126.2892 - 571.546776).
+Also not entered: Table 10.1 (Fourier-transform wavenumbers to 1e-4 cm-1, Doppler-limited, and wavenumbers
+calculated from molecular constants); the fitted constants, which are data/hyperfine_parameters/eickhoff1994thesis;
+the Allan deviations and the power-broadening fits of Figs. 10.7-10.11.
+
+Labels: a_k is the component's rank by frequency from the lowest, as in the tables; F' and I of each component are
+kept in the note. Missing components, as the notes explain: P(119) a7, a8, a12 ("do not fit well: they throw the
+fitting routine off to the point of non-convergence. What I have labelled in my data as a7 actually would fit the
+expected position of a8"); R(134) a10 and a15 (weak, just to the red of P(83) a1 and to the blue of P(83) a4, left
+out "due to possible line pulling"); P(83) a12 ("Data on component a10 was accidentally repeated in place of a12");
+P(53) a5-a14 ("too weak for locking due to absorption by residual Doppler background"). R(134) 36-0 has no measured
+wavenumber in Table 10.1.
+
+Conditions (pp. 208, 216, 218): two frequency-doubled Nd:YAG lasers, each locked by modulation transfer
+(modulation 500 kHz) to its own iodine cell, both cold fingers at 0 C; the E laser stayed on one reference
+component while the W laser stepped through the components of the line in random order; the beat (4-16 GHz) was
+mixed down against a synthesizer and counted (50 readings of 0.5 s per component). Measurements of 17-21 June 1993,
+dates and times in each table (in the notes here). Not corrected for pressure or power: intervals within a line
+share these shifts to well below their uncertainty, the offsets between lines do not.
+"""
+
+uncertainty = """
+Splittings: the "sdev" of each table's fit, taken as the 1 sigma of every splitting of that line, as in
+eickhoff1995a: P(119) 1.202 kHz, R(86) 0.655, R(134) 6.014, P(83) 2.694, P(53) 4.815 kHz. The weight column (the
+counter statistics of the two beat notes, 0.1-0.3 kHz) is smaller than the scatter; p. 218 says the sdev values "are
+still greater than the measurement uncertainty". p. 217 says most of the R(134) and P(53) scatter is in one
+component (R(134) a3, -16.5 kHz; P(53) a4, -10.9 kHz), kept by the authors for want of "a priori reason to doubt the
+validity of their measured splittings"; p. 218 notes that the R(86), P(119) and P(53) residuals are not random and
+suggests the residual Doppler background.
+Offsets between lines: 6.4 kHz for each. The thesis prints none. Two of its tables measure the same interval
+independently: R(56) a15 - P(83) a1 is 16888.9670 MHz in Table 10.6 (17 June, 1 AM) and 16888.9580 MHz from
+Table 10.7 (17 June, 9 PM: 15126.2892 + 857.957180 - 904.711602). They differ by 9.0 kHz, so 9.0 / sqrt(2) per
+offset. The 1995 paper's single offset was entered with an assumed 2 kHz.
+"""
+
+notes = """
+Compared, before entry, with a model prediction and with the other sets that hold these lines:
+- The splittings match the model to a few kHz, except P(83) 33-0: every component lies 9-15 kHz further from a1 than
+  predicted, a common shift of a1. Table 10.5's note puts R(134) 36-0 a10 "just to the red side of a1:P(83)33-0",
+  so a1 is likely pulled toward lower frequency. Kept as printed.
+- bipm2012a (MEP 532 nm) prints the splittings of P(119) 35-0, R(86) 33-0, R(134) 36-0, P(83) 33-0 and P(53)
+  32-0 equal to these, rounded to 1 kHz (all 72 within 0.5 kHz, with the same missing components, e.g. P(53)
+  a5-a14). The MEP lists "Eickhoff thesis 1994" among its sources. When this set is admitted, bipm2012a's
+  [overlaps] should name it with relation "same" for those five lines, as it does eickhoff1995a for R(106) 34-0.
+  bipm2012a's offsets between lines are means of later measurements (ye1999a, zhang2001a) and differ from these by
+  3-9 kHz; R(56) 32-0, measured by several groups, is a mean there too.
+- arie1993a and arie1994a measure the same lines independently (differences up to 17 kHz for P(53) 32-0, whose
+  neighbor the thesis identifies as "most likely P(103)34-0").
+- The fitted constants agree with Arie & Byer's within their error bars, as p. 218 says.
+"""

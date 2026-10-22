@@ -1,0 +1,3 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+129I2 P(33) 6-3,e3,interval,17.91,0.10,,e2,kompanets1979a,"p. 1203: ""nu_AB = 17.91 +- 0.10 MHz"" in Schweitzer's notation, assigned here as e3 - e2 (C - B); see meta.toml for why the letters are swapped"
+129I2 P(33) 6-3,e2,interval,19.71,0.11,,e1,kompanets1979a,"p. 1203: ""nu_BC = 19.71 +- 0.11 MHz"" in Schweitzer's notation, assigned here as e2 - e1 (B - A); see meta.toml for why the letters are swapped"

@@ -1,0 +1,2 @@
+line,eqQ,eqQ_unc,C,C_unc,d,d_unc,delta,delta_unc,fit_sd_kHz,note
+127I2 P(33) 6-3,-498.885,0.005,0.02574,0.00001,-0.0123,0.0006,-0.0023,0.0005,,"Table 1 (p. 678): eqQ' = -498.885(5) MHz, C' = 25.74(1) kHz, d' = -12.3(6) kHz, delta' = -2.3(5) kHz; caption ""upper rovibronic level v' = 6, J' = 33"" (P(33) 6-3 has J' = 32); no fit standard deviation printed (residuals ""do not exceed 15 kHz"")"

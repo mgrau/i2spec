@@ -1,5 +1,5 @@
 # i2spec Stage 2a catalog: broadband, Doppler-limited and supporting data for molecular iodine
-# Companion narrative: docs/research/02a-broadband-data.md (compiled September 2026).
+# Compiled September 2026.
 # One list item per dataset; schema fields in fixed order (id ... notes). Sub-Doppler / hyperfine-resolved /
 # comb-referenced 127I2 B-X frequencies are catalogued separately (Stage 2b) and appear here only as context.
 # Category blocks (comments only): 1 FTS atlases & broadband; 2 fluorescence, term values, other states;
@@ -466,7 +466,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Another agent's reading reports a 7381-line B–X data set; not verified here. Likely derived from the atlas or from low-resolution spectra for teaching, so it probably adds nothing beyond the atlas (inference). Found by forward citation from the Gerstenkorn–Luc papers."
+  notes: "One secondary source reports a 7381-line B–X data set; not verified here. Likely derived from the atlas or from low-resolution spectra for teaching, so it probably adds nothing beyond the atlas (inference). Found by forward citation from the Gerstenkorn–Luc papers."
 - id: reiners2024
   citation: "A. Reiners, M. Debus, S. Schäfer, E. Tiemann, M. Zechmeister, Accurate calibration spectra for precision radial velocities. Iodine absorption referenced by a laser frequency comb, Astron. Astrophys. 690, A210 (2024)"
   doi: "10.1051/0004-6361/202451389"
@@ -973,7 +973,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Historical. LeRoy (1970) showed that one resonance series ends on a state other than X, so Verma's near-dissociation assignments and D0 are unreliable. The LIF-FTS work supersedes it."
+  notes: "Historical. LeRoy (1970) showed that one resonance series ends on a state other than X, so Verma's near-dissociation assignments and D0 are unreliable. Verma & Le Roy, J. Chem. Phys. 61, 438 (1974), doi:10.1063/1.1681666, re-photographed the spectrum: the lines of Table V assigned to doublet series IVb are NO impurity lines (0-1 band of the gamma system), so X levels are observed only up to v'' = 84, and the reassignment to a 0g+ state is withdrawn too. The LIF-FTS work supersedes it."
 - id: leroy1970
   citation: "R. J. LeRoy, Spectroscopic Reassignment and Ground-State Dissociation Energy of Molecular Iodine, J. Chem. Phys. 52, 2678–2682 (1970)"
   doi: "10.1063/1.1673357"
@@ -982,11 +982,11 @@
   group: "R. J. Le Roy (University of Waterloo; inferred)"
   isotopologues: ["127I2"]
   system: "X"
-  technique: "Near-dissociation re-analysis of B-state bandhead data"
+  technique: "Re-analysis of Verma's (1960) UV resonance-series data (near-dissociation extrapolation of the X-state vibrational levels)"
   observable: "other"
   range_nm: null
   range_cm1: null
-  transitions: "B-state bandheads; X-state D0"
+  transitions: "X-state vibrational levels near the limit (Verma 1960 series); X-state D0"
   n_items: null
   uncertainty: "D0 = 12440.9 ± 1.1 cm-1 (stated)"
   uncertainty_MHz: null
@@ -997,7 +997,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Historical D0 determination; it reassigned one of Verma's series to a 0g+ state. Superseded by martin1983 (12440.083 ± 0.145 cm-1) and tromp1983 (12440.18 ± 0.02 cm-1)."
+  notes: "Historical D0 determination; it reassigned one of Verma's series to a 0g+ state. Verma & Le Roy (1974, J. Chem. Phys. 61, 438) later showed that series to be NO impurity lines, so the reassignment is withdrawn and the D0 here rests on levels up to v'' = 84 only. Superseded by martin1983 (12440.083 ± 0.145 cm-1) and tromp1983 (12440.18 ± 0.02 cm-1)."
 - id: kiefer1972
   citation: "W. Kiefer, H. J. Bernstein, Vibrational-rotational structure in the resonance Raman effect of iodine vapor, J. Mol. Spectrosc. 43, 366–381 (1972)"
   doi: "10.1016/0022-2852(72)90048-3"
@@ -2707,7 +2707,7 @@
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "Rare modern absolute line-strength measurement on individual B-X lines, in the weak red/near-IR region (hot bands from v''=9,10). Also gives eQq/C hyperfine differences (overlaps sub-Doppler agent's scope). Uses literature FC factors to convert to mu_e. Published 2004 so not in the Knöckel 2004 fit."
+  notes: "Rare modern absolute line-strength measurement on individual B-X lines, in the weak red/near-IR region (hot bands from v''=9,10). Also gives eQq/C hyperfine differences (the scope of the precision catalog). Uses literature FC factors to convert to mu_e. Published 2004 so not in the Knöckel 2004 fit."
 - id: suwaiyan1992
   citation: "A. Suwaiyan, J. Mastromarino, U. Klein, Absorption, fluorescence and saturation of 127I2 in the region 16999.100-17001.300 cm-1, Chem. Phys. Lett. 192, 581-589 (1992)"
   doi: "10.1016/0009-2614(92)85520-K"
@@ -3139,7 +3139,7 @@
   likely_in_knockel2004: unknown
   priority: medium
   verified: true
-  notes: "Stated: wavelength dependence of hyperfine linewidth mapped; narrowest ~4 kHz near 508 nm. Observable is linewidth (natural + transit + pressure). Errata DOI 10.1364/OL.27.001076. Line positions/hfs are in the sub-Doppler agent's scope. Same paper as precision.yaml cheng2002a; linewidths only."
+  notes: "Stated: wavelength dependence of hyperfine linewidth mapped; narrowest ~4 kHz near 508 nm. Observable is linewidth (natural + transit + pressure). Errata DOI 10.1364/OL.27.001076. Line positions/hfs are in the the scope of the precision catalog. Same paper as precision.yaml cheng2002a; linewidths only."
 - id: baxter1907
   citation: "G. P. Baxter, C. H. Hickey, W. C. Holmes, The vapor pressure of iodine, J. Am. Chem. Soc. 29, 127-136 (1907)"
   doi: "10.1021/ja01956a004"
@@ -3574,7 +3574,7 @@
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "The MeP documents convert cold-finger temperature to pressure with the Gillespie & Fraser (1936) formula (Category 4). These coefficients belong to specific lock schemes and include modulation and line-shape dependent parts, so they are not pure impact shifts of isolated components. From the MeP's own 640 nm temperature/pressure pairs, -15 kHz/°C at 633 nm corresponds to roughly -9 kHz/Pa (my estimate). Absolute component frequencies are the other agent's scope."
+  notes: "The MeP documents convert cold-finger temperature to pressure with the Gillespie & Fraser (1936) formula (Category 4). These coefficients belong to specific lock schemes and include modulation and line-shape dependent parts, so they are not pure impact shifts of isolated components. From the MeP's own 640 nm temperature/pressure pairs, -15 kHz/°C at 633 nm corresponds to roughly -9 kHz/Pa (an estimate). Absolute component frequencies are in the precision catalog."
 - id: nevsky2001
   citation: "A. Yu. Nevsky, R. Holzwarth, J. Reichert, Th. Udem, T. W. Hänsch, J. von Zanthier, H. Walther, H. Schnatz, et al., Frequency comparison and absolute frequency measurement of I2-stabilized lasers at 532 nm, Opt. Commun. 192, 263-272 (2001)"
   doi: "10.1016/s0030-4018(01)01190-7"
@@ -3598,7 +3598,7 @@
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "The absolute frequencies are the sub-Doppler agent's scope; only the pressure-shift coefficient is cataloged here, taken second-hand from the MeP."
+  notes: "The absolute frequencies are the the scope of the precision catalog; only the pressure-shift coefficient is cataloged here, taken second-hand from the MeP."
 - id: eickhoff1995
   citation: "M. L. Eickhoff, J. L. Hall, Optical frequency standard at 532 nm, IEEE Trans. Instrum. Meas. 44, 155-158 (1995)"
   doi: "10.1109/19.377797"
@@ -3742,7 +3742,7 @@
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "The cleanest recent set: four lines of one band with stated uncertainties, showing no significant J dependence (J''=33-36). Hyperfine constants and frequencies are the sub-Doppler agent's scope."
+  notes: "The cleanest recent set: four lines of one band with stated uncertainties, showing no significant J dependence (J''=33-36). Hyperfine constants and frequencies are the the scope of the precision catalog."
 - id: chen2024
   citation: "Y. T. Chen, N. C. Xin, H. R. Qin, S. N. Miao, Y. Zheng, J. W. Zhang, L. J. Wang, Absolute frequency measurement of molecular iodine hyperfine transitions at 554 nm and its application to stabilize a 369 nm laser for Yb+ ions cooling, Chin. J. Phys. 88, 485-492 (2024)"
   doi: "10.1016/j.cjph.2023.12.007"

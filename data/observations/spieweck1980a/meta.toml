@@ -1,0 +1,45 @@
+id = "spieweck1980a"
+citation = "F. Spieweck, \"Frequency stabilization of Ar+ lasers at 582 THz using expanded beams in external 127I2 cells\", IEEE Trans. Instrum. Meas. IM-29, 361-363 (1980)"
+source = "https://doi.org/10.1109/TIM.1980.4314955 (publisher PDF)"
+doi = "10.1109/tim.1980.4314955"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 362), "Frequency separations relative to a1 of 127I2 hyperfine components of the P(13) 43-0 absorption
+line", read from the text layer and checked against a 170 dpi rendering of p. 362. Entered: the "PTB 1980" column,
+this paper's measurement, 12 components (a2-a4, a6-a8, a11, a12, a15-a17, a21) in kHz, converted to MHz exactly.
+The last column, "PTB-LPL 1980", equals PTB 1980 minus LPL 1980 in every row (checked by script), which confirms the
+PTB digits.
+
+Not entered: the other columns, which are other laboratories' measurements printed for comparison: "MIT 1975"
+(Hackel et al., Phys. Rev. Lett. 35, 568 (1975), a molecular beam; held as hackel1980a's P(13) rows, relative to
+a7), "LPL 1979" (the paper's ref. [9]) and "LPL 1980" (ref. [10], Borde et al.; borde1981a's P(13) rows, which
+these equal to 0.1 kHz); Table II (the uncertainty budget of the stabilized laser); Fig. 3 (the a3 - b2 beat
+against pressure, read only from a plot).
+
+Method (pp. 361-362): two Ar+ lasers, prestabilized to Fabry-Perot cavities, locked by third-harmonic detection
+(modulation 2778 Hz) to external 50 cm cells. One laser stepped through the components of P(13) 43-0 while the
+other stayed on component b3 of R(15) 43-0, "situated roughly in the middle" of P(13); the beat frequencies were
+differenced. The paper prints only the separations from a1, not the beats against b3. Cell at 2.5 Pa (cold finger
+-5 C), power density 30-80 mW/cm2; the separations are not corrected for pressure or power (the a3 pressure shift,
+-2.9 kHz/Pa, is common to the components to well below their uncertainty).
+
+Labels: a_k is the rank by frequency, as in the MEP 515 nm table; the I and F - J columns are kept in the note.
+P(13) has odd J'' and 21 main components.
+
+P(13) 43-0 is held out of every potential and hyperfine fit as a diagnostic; these rows are kept in the archive
+like those of hackel1980a, borde1981a and the MEP 515 nm table.
+"""
+
+uncertainty = """
+1.0 kHz for each separation: the abstract gives "an uncertainty of less than 1 kHz". The deviations from LPL 1980 are
+0.0-0.9 kHz (p. 362: "usually less than |0.5 kHz|, increasing to |0.9 kHz| for the weakest line a12").
+"""
+
+notes = """
+Overlap: bipm2005a (MEP 515 nm) Table 1 gives weighted means of several laboratories' P(13) 43-0 separations; this
+paper is a candidate source (PTB 1980). Not compared table by table here; P(13) rows enter no fit, so no [overlaps]
+declaration changes any fit.
+"""
