@@ -1,0 +1,138 @@
+id = "jewsbury1993"
+citation = "P. J. Jewsbury, T. Ridley, K. P. Lawley and R. J. Donovan, \"Parity mixing in the valence states of I2 probed by optical-optical double-resonance excitation of ion-pair states: characterization of a new ion-pair state, H1u(3P1), and a valence state, c1g\", J. Mol. Spectrosc. 157, 33-49 (1993)"
+source = "https://doi.org/10.1006/jmsp.1993.1003 (library copy papers/Jewsbury1993_JMS157_33.pdf, a 300 dpi scan with no text layer)"
+doi = "10.1006/jmsp.1993.1003"
+retrieved = "2026-10-21"
+unit = "cm-1"
+state = "B v = 59 of 127I2, its perturber c1g(ab) v = 14, and the H1u(2) ion-pair state"
+isotopologue = "127I2 (natural iodine; the paper names no isotope)"
+files = ["data.csv", "constants.csv", "c1g_potential.csv"]
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+
+transcription = """
+Read from page images rendered at 150 and 300 dpi (the scan has no text layer). Every number was read again from a
+300 dpi crop of its table or paragraph.
+
+The paper prints no line positions and no B-state level energies. It names the B-X pump lines, P(23) and R(24) 59-0
+(Sect. 3.4) and R(21) 59-0 (Eq. 1), but gives no wavenumbers for them. The H <- c excitation spectrum (Fig. 1,
+348-353 nm) and the E/F excitation spectrum (Fig. 8, 364.5-367 nm) are shown only as figures. So there is no
+observation set.
+
+data.csv: the B(v = 59, J) levels that Sects. 3.3, 3.4 and 4.1 discuss, each with its partner level in c1g(v = 14),
+the authors' energy mismatch Delta12, and what the text says about H-state production at that JB. Fig. 6 itself
+is not digitized. The template columns G, G_unc, B_x100 and B_x100_unc are empty, because the paper measures none
+of them.
+
+constants.csv: the "This work" values of Table III (H1u(2) Dunham parameters) and Table V (c1g Dunham parameters
+derived from the spline), and the coupling numbers of Sect. 4.1.
+
+c1g_potential.csv: Table IV, the 20 (R, V) knots of the cubic-spline c1g potential, with V measured from the
+potential minimum. The table's two column pairs are merged in order of R.
+
+Checks:
+- Te + De = 20150 cm-1, the I(2P3/2) + I(2P1/2) limit, for c1g and for every ab state of Table II
+  (B0u+: 15769.05 + 4380.95 = 20150.00). For the aa states the sum is 12547.2.
+- B = 16.8576 / (mu Re^2), with mu = 63.452 u, gives back both printed Be values (0.020152 and 0.016181 cm-1).
+- The inner and outer knots at equal V (14.5, 69, 126.5 and 169 cm-1) are turning-point pairs near v = 0, 2, 4
+  and 6 of Table V. Those levels sit 14.6, 70.6, 122.4 and 170.2 cm-1 above Te.
+- Tables I and II repeat the "This work" constants, rounded.
+
+Misprints and inconsistencies. None of them is corrected.
+(1) Table V gives Be(c) = 0.01618(0.0016). That uncertainty is ten times what Re +- 0.02 A implies (0.00016), so
+    a zero was probably dropped. It is entered as printed.
+(2) Table II prints omega_e(c) = 29.6. Table V prints 29.5(0.4).
+(3) Eq. (1) names the pump as R(21) 59-0, while Sect. 3.4 names P(23) 59-0. Both reach B(59, 22), so this is not
+    a contradiction.
+(4) The five Delta12 values have no signs. Suppose they are signed and change sign between JB = 21 and 22. Then
+    they fall by 2.5e-4 to 3.9e-4 cm-1 per unit J(J+1), which is not one constant slope. They are the authors'
+    calculation from their c-state potential, not measurements.
+(5) The electronic matrix element, ~0.1 cm-1, is H12 divided by the Franck-Condon factor (0.01 / 0.105).
+    Eq. (5) defines H12 with the overlap <vB|vc> = 0.32, and dividing by that would give 0.03 cm-1.
+
+Not entered:
+- Tables I and II: constants of the other ion-pair and valence states, taken from refs. 3-40, with their
+  dissociation limits.
+- The H(v' = 0-4) line positions and the c(v'' = 1-16) peak positions, which appear only in Figs. 1, 4 and 5.
+- The intensities of Fig. 6.
+- The overlap <E(v')|B(vB)> = 0.005 (Sect. 3.4).
+- The +-0.005 A Re sensitivity test (Fig. 3).
+- The wavefunction analysis of Sect. 4.2 (Eqs. 9-18).
+"""
+
+uncertainty = "Table III: twice the standard deviation from the polynomial fit (Sect. 3.1), so 2 sigma. Table V: no statement. H12 and the electronic matrix element are orders of magnitude. Delta12, the Franck-Condon factor and the Table IV knots carry no uncertainty."
+
+notes = """
+What the paper finds. B v = 59 of 127I2 is hyperfine-coupled to v = 14 of c1g(ab). This g/u parity mixing lets a
+two-photon OODR scheme reach ungerade ion-pair states: the new H1u(2) state and F0u+(2). c1g(ab) is a newly
+characterized shallow valence state: Te 19685 cm-1, De 465 cm-1, Re 4.05 A. The authors identify it with the 1g(ab)
+state that Pique et al. found mixing at B v = 78.
+- The mixing is resonant at JB = Jc = 22. There the calculated mismatch is 0.005 cm-1 and the effective H12 is
+  ~0.01 cm-1.
+- There is a weaker resonance at JB = 8, displaced from the predicted JB = 7. The authors attribute the
+  displacement to a local perturbation of about 0.1 cm-1.
+- Only v' = 59 is studied. The paper says nothing about v' = 57, 58 or 60.
+
+Shipped-model checks (Predictor(), i2spec2026o):
+- B(59, J = 0) lies 20006.447 cm-1 above the X minimum (19899.348 cm-1 above X(0,0)). That is 143.6 cm-1 below the
+  20150.0 cm-1 limit of Table II, which matches the paper's "more than 140 cm-1 below dissociation".
+- Table V's constants put c(14) at 20005.5 cm-1, 0.9 cm-1 below B(59, 0). That is inside the 1.5 cm-1 Te
+  uncertainty.
+- The model gives B_v(59) = 0.012468 cm-1.
+- In the model, R(J+1) - P(J) of the 59-0 band equals (2J+2)(3B' - B'') and stays within 0.018 cm-1 for J <= 31.
+  For P(23)/R(24) it is -0.0054 cm-1, with P(23) at 19885.046 cm-1 (502.891 nm, vacuum). This confirms the pump
+  pairs of Eqs. (3)-(4) fall inside the 0.2 cm-1 pump bandwidth.
+- The model has no c1g state, so the mixing itself lies outside what it can reproduce.
+
+Expected size of the effect. This estimate was made here from the paper's numbers; the paper does not print it.
+- With H12 ~ 0.01 cm-1 and Delta12 = 0.005 cm-1, a two-state treatment at J = 22 gives near-complete mixing
+  (tan 2 theta = 4).
+- The B-like sublevels then move by about 0.008 cm-1 (about 230 MHz).
+- Their c-like partners sit about 0.021 cm-1 (about 620 MHz) away and carry about 38 % B character.
+- H12 depends on F. The effect should therefore show as distorted hyperfine structure, with extra components, in
+  lines to B(59, 22) (P(23) and R(21) 59-v''), not as a uniform shift of the line center.
+
+Doppler-limited check against the Orsay 1983 part IV atlas (data/atlas_lines/orsay1983_part4*, with its -200.8 ppb
+scale removed):
+- Every low-J 59-0 line in the atlas is a P(J)/R(J+1) blend.
+- 17 blends with J'' = 11-31 have no other band overlapping them. 15 of these sit 18-59 MHz below the model
+  midpoint (median -41 MHz).
+- P(23)/R(24), whose upper levels are J' = 22 and 25, is at -41 MHz. So at Doppler resolution the J' = 22 mixing
+  moves the centroid by less than about 20 MHz.
+- The other two, P(18)/R(19) (-105 MHz) and P(22)/R(23) (-184 MHz, broad, eps 1.6 mK), deviate, and so do
+  P(20)/R(21) and P(21)/R(22), which other bands overlap. This is inconclusive.
+- At low J, P(7)/R(8) and P(8)/R(9) are +194 and +155 MHz from the model and broadened (eps 0.7 and 0.5 mK, against
+  0.2-0.3). The atlas lists no line within 0.028 cm-1 of the model position of P(9)/R(10) (J' = 8/11).
+- None of these deviations fits a shift of any single level: J' = 7, 10 and 11 look normal in other clean blends,
+  and the other lines of J' = 6 and 9 deviate the opposite way. They are more likely unassigned overlaps. The
+  atlas can neither confirm nor rule out the JB = 8 perturbation.
+- Hyperfine-resolved scans of P(23) and R(21) 59-0 (J' = 22) and of P(7)-P(9) 59-0 would test both claims.
+
+Checked with the shipped model only.
+"""
+
+[columns]
+data = """
+isotopologue, v: the B-state level (v = vB).
+G, G_unc, B_x100, B_x100_unc: king1980 template columns, empty here.
+J: JB, the rotational quantum number of the B level (J' of B-X lines).
+perturber: the perturbing state.
+perturber_v, perturber_J: its vibrational level and rotational J (Jc).
+delta12_calc: Delta12(JB) = E_B(59, JB) - E_c(14, Jc) in cm-1, as printed. All values are printed positive, with
+  no sign given. The authors calculated them from their c-state potential (Sect. 4.1); they are not measured.
+h_signal: H1u(2) production through this level, in the paper's words.
+note: section and quotation.
+"""
+constants = """
+state: H1u(2) (ion-pair, second cluster, 3P1 + 1S0), c1g(ab) (valence, I(2P3/2) + I(2P1/2)), or B(59)~c1g(14) for
+  the coupling.
+quantity: Te, Y10 (omega_e), Y20 (-omega_e x_e), Be, Re, De; H12, FC or electronic for the coupling.
+value, uncertainty, unit: as printed. The uncertainty is empty where the paper gives none.
+source: the table or section of the paper.
+"""
+c1g_potential = "R_angstrom: internuclear distance (A). V_cm1: potential energy above the c1g minimum (cm-1), Table IV. The minimum lies at Te = 19685 cm-1 above the X minimum."
+
+[conditions]
+method = "Two-color optical-optical double resonance: one excimer laser pumps two dye lasers (Coumarin 307 pump; Coumarin 47 or DMQ probe), with collinear counterpropagating pulses. Fluorescence excitation spectra and dispersed fluorescence are taken through a monochromator. A neon-filled Mo hollow cathode lamp calibrates the wavelengths, by optogalvanic signal and by its emission lines."
+pump_bandwidth_cm1 = 0.2
+pressure = "p(I2) = 0.1 Torr (Sect. 3.4); cells at room temperature"
+pulse_length_ns = 15

@@ -1,0 +1,7 @@
+line,eqQ_X_exp_MHz,eqQ_X_calc_MHz,eqQ_B_exp_MHz,eqQ_B_calc_MHz,DeltaeqQ_exp_MHz,DeltaeqQ_calc_MHz,ref,source,note
+129I2 P(110) 10-2,-1813,-1718.0,-448,-356.1,1365.3,1361.9,16,"M. Gläser, private communication",
+129I2 R(113) 14-4,-1887,-1719.1,-529,-360.2,1358.4,1358.8,16,"M. Gläser, private communication",
+129I2 P(54) 8-4,-1808,-1721.5,-450,-353.9,1368.2,1367.6,17,"M. Gläser, private communication","exp eqQ_B - exp eqQ_X = 1358, not the printed exp DeltaeqQ 1368.2 (the other five rows agree to 0.4 MHz); one of the three is misprinted, not corrected"
+129I2 R(60) 8-4,-1800,-1721.3,-430,-353.9,1370.0,1367.4,17,"M. Gläser, private communication",
+129I2 P(69) 12-6,-1801,-1721.9,-440,-357.8,1360.8,1364.1,17,"M. Gläser, private communication",
+129I2 P(33) 6-3,-1804,-1721.3,-430,-352.0,1374.0,1369.3,17,"M. Gläser, private communication",

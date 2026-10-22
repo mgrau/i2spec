@@ -353,8 +353,10 @@ def load_hyperfine_parameters(path) -> HyperfineParameterSet:
     return HyperfineParameterSet(meta["id"], meta, rows)
 
 
-def load_all_hyperfine_parameters(root=PARAMETERS_DIR) -> list[HyperfineParameterSet]:
-    return [load_hyperfine_parameters(p) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
+def load_all_hyperfine_parameters(root=PARAMETERS_DIR, include_excluded=False) -> list[HyperfineParameterSet]:
+    """Every set under ``root``, except those whose meta.toml has an ``exclude`` reason, as in ``load_all``."""
+    sets = [load_hyperfine_parameters(p) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
+    return [s for s in sets if include_excluded or "exclude" not in s.meta]
 
 
 class Predictor:

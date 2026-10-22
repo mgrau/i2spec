@@ -1,0 +1,46 @@
+id = "danyluk1977"
+citation = "M. D. Danyluk and G. W. King, \"Energy levels of iodine near the B state dissociation limit\", Chem. Phys. 25, 343-351 (1977)"
+source = "https://doi.org/10.1016/0301-0104(77)85144-6 (library copy papers/Danyluk1977_ChemPhys25_343.pdf)"
+doi = "10.1016/0301-0104(77)85144-6"
+retrieved = "2026-10-21"
+unit = "cm-1"
+state = "B"
+isotopologue = "127I2"
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+
+transcription = """
+Tables 2 and 3 (pp. 348, 350), read from 300 dpi page images (the scan's native resolution); the text layer
+garbles digits (it reads the v = 81 error in Table 2 as 31; the page shows 37) and has no text for p. 350.
+Per-level constants of the B state of 127I2, v = 77-83, from rotational lines (J up to about 15-17) of B <- X
+bands excited by two-photon sequential spectroscopy (pump B <- X, probe E <- B, detected by E -> B
+fluorescence). The authors took the term values F'(J) as the line frequency plus the ground-state term (Le Roy's
+v_X = 0 constants), and G_v and B_v as the intercept and slope of a linear regression of F'(J) on J(J+1), with
+centrifugal distortion neglected (Sect. 3):
+  G      G_v (cm-1) relative to v_X = 0, J_X = 0 (the Table 2 heading), "obs." column; the printed +- is in units
+         of the last digits (20038.1637 +- 136 is +- 0.0136 cm-1).
+  B_x100 1e2 B_v (cm-1), Table 3 first column ("obs."), +- in units of the last digits.
+v = 83 is entered as printed, in parentheses and with no error on G; the authors used it in none of their
+calculations (Sect. 3: only unresolved R/P pairs whose J numbering is uncertain).
+Not entered: the "BY" columns of Tables 2 and 3 (Barrow and Yee 1973, v = 72-77, reprinted; they agree digit
+for digit with barrow1973, which holds them); the "calc." columns (Table 2: G_v from the paper's long-range fit,
+v = 72-87; Table 3: B_v from eq. (4) with C5 = 2.776e5 cm-1 A^5); Table 1 and Table 5 (fitted constants, below);
+Table 4 (RKR turning points v = 70-82, with G_v relative to the B-state minimum: Table 2's G_v minus
+15 661.91 cm-1 at v = 77-82, and D = 4381.15 cm-1); Figs. 1-3. The line frequencies are not printed.
+Misprints: Table 3 sets "obs. BY" under its first heading; the first column is this work (v = 77-83) and the
+second is Barrow and Yee's (its v = 72-77 values and errors are theirs). Table 3, v = 83: the opening parenthesis
+is not closed. Tromp et al. 1983 (Table II) reprint the v = 79 B error as (69); this paper prints 59, and Tromp's
+own Table I (+-1.25e-4, about 2.1 x 59, as for the other levels) supports 59.
+Fitted constants (Table 1, last line; n = 5 assumed, levels v = 77-82 with Barrow and Yee's v = 72-76):
+D = 20 043.063 +- 0.020 cm-1 relative to v'' = 0, J'' = 0 of the ground state; 1e-5 C5 = 2.776 +- 0.018
+cm-1 A^5 and v_D = 87.183 +- 0.012 for D fixed, +- 0.132 and +- 0.106 with the uncertainty of D carried
+through (footnotes d, e). Table 5 line (c) (alpha = 0, 8.0 <= R_v <= 15.3 A, this work plus Barrow and Yee
+v = 72-76): 1e-5 C5 = 2.776, 1e-5 C6 = 17.8, 1e-5 C8 = 243 (cm-1 A^m); its other lines are Yee's and Le Roy's
+values. From the B_v (eq. 4), upper bounds C5 = (5.79 +- 0.50)e5 (v = 72-82) and (3.23 +- 0.37)e5 (v = 77-82).
+The preliminary note (ref. 10, Chem. Phys. Lett. 43, 1 (1976)) gave D = 20 043.122 cm-1. Table 1 also
+reprints Steinfeld et al. 1969 (D = 20 055.6), Le Roy and Bernstein 1971 (20 044.0 +- 1.2, C5 3.11 +- 0.2,
+v_D 87.7 +- 0.4) and Barrow and Yee (20 043.208 +- 0.033, 2.8861 +- 0.006, 87.345 +- 0.007).
+"""
+
+uncertainty = "As printed: the standard deviations of the linear regressions (1 sigma presumably; not stated). They omit the absolute calibration: relative frequencies are stated to +-0.005 cm-1 (a solid etalon, fringes every 0.556 cm-1), and the scale was set against the stronger lines predicted by Barrow and Yee's constants at lower frequency, checked against a Fe/Ne lamp. Tromp et al. 1983 trace the errors at v >= 79 to this calibration, which needed long extrapolations."
+
+notes = "The 127I2 counterpart of king1980 (same group): levels within 0.4-5 cm-1 of the B limit. Tromp et al. 1983 showed the B_v for v >= 79 to be wrong (calibration, not a perturbation); G_v up to v = 78 fit near-dissociation theory, and v = 77 agrees with Barrow and Yee (20038.1637 against 20038.162). The shipped model (i2spec2026o) puts G_v (its J' = 0 level above X(0,0): its P(1) v'-0 line plus E_X(0,1) - E_X(0,0)) above every printed value: obs - model -0.011, -0.005, -0.033 cm-1 at v = 77-79 (rms 0.020), where the model rests on the Orsay atlas Partie IV, and -0.029, -0.046, -0.106 at v = 80-82, outside the fitted domain (the atlas ends at v = 79); -0.22 at v = 83. Fitting the model's levels the authors' way (linear in J'(J'+1) over J' = 1-16) moves these by only -0.002 to -0.005. G_v straight from the atlas lines (unblended v'-0 lines with J' <= 40, X terms from the model, the atlas scale of -200.8 ppb divided out) gives obs - atlas -0.007, -0.007, -0.041 cm-1 at v = 77, 78, 79 (v = 79 on six lines). B_v: from v = 78 on, every printed value is below the model's low-J B_v (by 0.016-0.089 in B_x100) and below the model fitted the authors' way (by 0.009-0.074), the error Tromp et al. found; the Gerstenkorn-Luc B_v of v = 78-80 that Tromp et al. reprint agree with the model to 0.002-0.004e-3 cm-1. The model's B asymptote is 20 043.217 cm-1 above X(0,0), 0.154 above this paper's D (King et al. 1980 imply 20 043.064 for 127I2). Checked with the shipped model only."

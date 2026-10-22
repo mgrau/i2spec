@@ -1,0 +1,58 @@
+id = "gerstenkorn1983"
+citation = "S. Gerstenkorn and P. Luc, \"Excitation spectrum of I2 induced by laser radiation near the dissociation limit of the B-state\", Laser Chem. 1, 83-112 (1983)"
+source = "https://doi.org/10.1155/lc.1.83 (library copy papers/Gerstenkorn1983_LaserChem1_83.pdf)"
+doi = "10.1155/lc.1.83"
+retrieved = "2026-10-21"
+unit = "cm-1"
+state = "B"
+isotopologue = "127I2"
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+
+transcription = """
+Tables II (p. 89), III (p. 91), V and VI (p. 94), read from 300 and 600 dpi page images (the text layer garbles the
+digits). Per-level constants of B v' = 73-80 of 127I2, from least-squares fits of each (v',0) band's R and P lines
+with the paper's eqs. (1)-(2): upper term sigma0 + B x - D x^2 + H x^3 + L x^4 + M* x^5 with x = J'(J'+1), lower
+term of X v'' = 0, and the distortion constants D to M* held at calculated values:
+  G       sigma_0,v', the band origin of (v',0): the B(v', J' = 0) term above X(v'' = 0, J'' = 0) ("sigma_0v' =
+          T_e + G_v'"); the printed +- is in units of the last digits;
+  B_x100  1e2 B_v'.
+v' = 73-79 are from Table II (G to 1e-3 cm-1, no uncertainty). For v' = 78 and 79, the more precise "Present work"
+values with uncertainties of Tables V and VI replace them; they round to the Table II values. v' = 80 is from the
+fit of the ten Table III lines (G 20041.569 +- 0.005, B 0.002837(50)), repeated in Tables V (20041.5690(50)) and
+VI. The data behind v' = 73-77 are lines of the Fourier absorption spectrum (19 900-20 036 cm-1, J'' up to 56); v'
+= 78-80 rest on the laser excitation spectrum alone (J'' <= 22). Table I's line counts, J ranges and sd are in the
+note column.
+Check: the Table II constants reproduce the calculated Figure 3 line list (255 assigned positions) with sd 0.5 mK
+(3-decimal entries) and 1.0 mK (4-decimal entries), with the X v'' = 0 terms of the shipped model.
+Not entered (calculated):
+  - the distortion constants of Table II, from the authors' smooth RKR potential by Hutson's method and fixed in
+    the fits; M* is 2.6 times the calculated M, for the neglected higher terms:
+      v'   1e6 D    -1e10 H   -1e14 L   -1e17 M*
+      73   .16609   .07692    .07267    .02065
+      74   .18274   .09888    .10987    .03671
+      75   .20215   .12927    .17082    .06819
+      76   .22491   .17225    .27434    .13343
+      77   .25205   .23451    .45738    .27765
+      78   .28472   .32712    .79646    .62128
+      79   .32455   .46889    1.45920   1.51442
+    and for v' = 80, D = 0.3723e-6 (Table III);
+  - the extrapolated constants of v' = 80 that served for the assignment (Table III: 20041.579, 0.002840,
+    0.3723e-6), and the calculated v' = 81 and 82 (Table V: 20042.180, 20042.598; Table VI: 0.002373, 0.001915);
+  - the Danyluk and King (1977) columns that Tables V and VI reprint for v' = 78-82 (data/b_levels/danyluk1977),
+    and the printed differences from them (G +0.001, +0.032, +0.009 cm-1; B -4.5, -11, -9.5 %);
+  - Table IV, the long-range fits (summarized in data/observations/gerstenkorn1983a's notes).
+"""
+
+uncertainty = "As printed (least-squares standard errors) for v' = 78-80; v' = 73-77 carry none. G inherits the Fourier-spectrum wavenumber scale through the calibration lines: the atlas Partie IV reads -200.8 ppb against the model, about -4 mK here."
+
+notes = """
+These are the "Gerstenkorn and Luc (1982)" values that Tromp et al. 1983 (data/b_levels/tromp1983) set against
+Danyluk and King 1977; the paper calls them "Present work, 1982". The measured lines of v' = 78-80 that appear in
+tables are in data/observations/gerstenkorn1983a (one (78,0) line from Table VII and the ten (80,0) lines of Table
+III); those of v' = 78 and 79 are otherwise printed only as calculated positions in Figure 3.
+The shipped model (i2spec2026o), B(v', J' = 0) - X(0, 0), minus G: v' = 73 +4.1, 74 +4.1, 75 +4.4, 76 +2.5,
+77 +7.8, 78 +3.7, 79 +0.6, 80 +19.4 mK. Its B (fit of the model's terms minus the paper's polynomial over J' =
+0-22) is within 0.15 % for v' = 73-79 and 0.8 % lower at v' = 80 (the paper's uncertainty there is 1.8 %). The
+common +4 mK is the Fourier scale. v' = 80 has no atlas line, so the model's level there is an extrapolation.
+Checked with the shipped model only.
+"""

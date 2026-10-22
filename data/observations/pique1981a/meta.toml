@@ -1,0 +1,99 @@
+id = "pique1981a"
+citation = "J. P. Pique, F. Hartmann, R. Bacis and S. Churassy, \"Hyperfine structure of higher rovibrational levels in the iodine B state studied by Ar+ laser induced fluorescence\", Opt. Commun. 36, 354-358 (1981), Table 1"
+source = "https://doi.org/10.1016/0030-4018(81)90240-6 (publisher PDF, papers/Pique1981_OptCommun36_354.pdf)"
+doi = "10.1016/0030-4018(81)90240-6"
+retrieved = "2026-10-21"
+unit = "cm-1"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Table 1 (p. 356), every printed position, typed from the text layer and checked digit by digit against a 300 dpi
+render. One row per printed value. The lambdameter column gives absolute vacuum wavenumbers (8 lines). The
+interferometer column is relative: footnote a makes P(12) 61-0 its origin, with the lambdameter value, so its other
+six values are entered as intervals to P(12) 61-0 (19925.9416 - 19925.9160 = 0.0256 cm-1, and so on). R(13) 61-0 has
+no position in either column (no good lambdameter reading, and outside the interferometer scans of the central seven
+lines), and R(51) 68-0 has no interferometer value.
+
+What a row means. The paper gives each line's "center of gravity", located by fitting the calculated hyperfine
+pattern to the recorded components, so it is entered as the hyperfine-free line center (empty component). With the
+shipped model's patterns, the intensity-weighted center of gravity of each of these lines is within 6 MHz
+(0.0002 cm-1) of the hyperfine-free center, far inside the stated accuracy.
+
+Misprints, resolved from the paper itself. (1) The abstract lists "R(55)77-1"; Table 1 prints R(55)71-0, Table 2
+gives J' = 56, v' = 71, the text says all nine lines come from v'' = 0, and B v' = 77 has no bound level at J' = 56 in
+the model: R(55) 71-0. (2) Table 2 prints v' = 63 for J' = 40, where Table 1 and the abstract print R(39) 64-0.
+R(39) 63-0 would lie at 19915.39 cm-1 (model), 10 cm-1 outside the 0.35 cm-1 tuning range
+(5018.5220 < lambda_vac < 5018.6090 A); the paper's own C'_th = 1.183 MHz is Vigue's formula at v' = 64 (1190 kHz in
+data/theory/vigue1979); Fig. 2 plots the point at v' = 64; and Spirko & Blabla 1988 (data/theory/spirko1988, Tables
+III and V) quote it as v' = 64. So the level is B v' = 64, J' = 40.
+"""
+
+uncertainty = """
+As printed: every position in Table 1 is "believed to be accurate to +-0.001 cm-1" (p. 356; the lambdameter reads to
+5 parts in 1e8, |delta nu| <= 30 MHz). Not stated as 1 sigma; used as 1 sigma here. The interferometer intervals carry
+the same 0.001 cm-1; the paper adds that drifts limited the calibration of its 80.9 MHz free spectral range to "no
+better than a few megahertz". Two groups, one per instrument: the lambdameter rows share its calibration, the
+interferometer rows share the P(12) 61-0 origin and the free-spectral-range scale. The comparison below finds a common
+lambdameter offset of about -0.004 cm-1, four times the stated accuracy.
+"""
+
+notes = """
+Residuals against i2spec2026o (obs - model, no correction), cm-1.
+Lambdameter: P(12) 61-0 -0.0038, R(49) 67-0 -0.0049, R(39) 64-0 -0.0038, R(26) 62-0 -0.0032, R(51) 68-0 -0.0044,
+R(54) 70-0 -0.0076, R(55) 71-0 -0.0092, P(56) 73-0 -0.0223. The five lines with v' <= 68 average -0.0040 cm-1
+(-120 MHz), standard deviation 0.0006. At R(26) 62-0 the model holds the goncharov2007a comb values to 0.34 MHz, so
+this offset belongs to the lambdameter.
+Interferometer intervals to P(12) 61-0: R(49) 67-0 -0.0004, R(39) 64-0 +0.0004, R(26) 62-0 0.0000 (12 MHz or
+better), then R(54) 70-0 -0.0050, R(55) 71-0 -0.0061, P(56) 73-0 -0.0197 (150, 180 and 590 MHz). The two columns
+agree with each other to 0.0013 cm-1 on every line they share, so both instruments put these v' = 70, 71 and 73
+levels (J' = 55, 56, 55) below the model. P(56) 73-0 ends 2 cm-1 above the dissociation limit (p. 356), on a level
+behind the centrifugal barrier.
+
+Link to the Orsay atlas. Gerstenkorn & Luc set the scale of the Orsay atlas Partie IV (data/atlas_lines/orsay1983_part4,
+to which the shipped model's B state at v' = 51-79 is fitted) on this set's lambdameter value of R(26) 62-0,
+19926.0009 cm-1 (docs/research/orsay-atlas-19700-20035.md). The i2spec fit, which gives the atlas a free offset with a
+prior from comb lines, found the atlas scale +119.6 MHz low: the lambdameter offset found here. The atlas does not
+resolve two pairs that this set separates: its line N = 2482 (19925.9489 cm-1) is assigned to both R(49) 67-0 and
+R(39) 64-0, and N = 2484 (19926.0396) to both P(56) 73-0 and R(54) 70-0. Blended atlas lines are not fitted, and
+this set's P(56) 73-0 lies about 0.02 cm-1 below that blend (0.018-0.024 cm-1, by column and with or without the
+lambdameter offset).
+
+Not entered as rows: Table 2 (p. 357), the B-state hyperfine constants. They belong in data/hyperfine_parameters/,
+whose loader requires d and delta with positive uncertainties, but the paper fits only eq'Q and C' (Sect. 3.2: the
+Hamiltonian H_EQ + H_MD, no spin-spin terms), and holds eq'Q fixed for four lines. A draft set waits for optional d
+and delta columns. The table, image-checked (line from Table 1; J', v'; standard deviation of the fit to the component
+positions in MHz; eq'Q in MHz; C'_exp and C'_th in MHz; +- as printed, convention not stated):
+  P(12) 61-0  J' 11, v' 61,  2.6,  -560 +- 8,   0.864 +- 0.015, 0.890
+  R(13) 61-0  J' 14, v' 61,  3.0,  -563 +- 9,   0.868 +- 0.020, 0.890
+  R(26) 62-0  J' 27, v' 62,  2.7,  -566 +- 9,   0.941 +- 0.009, 0.975
+  R(39) 64-0  J' 40, v' 64 (printed 63),  3.5,  -574 +- 10,  1.159 +- 0.009, 1.183
+  R(49) 67-0  J' 50, v' 67,  4.2,  -583 +- 14,  1.633 +- 0.011, 1.628
+  R(51) 68-0  J' 52, v' 68,  5.5,  -570 (held), 1.844 +- 0.012, 1.828
+  R(54) 70-0  J' 55, v' 70,  6.6,  -570 (held), 2.333 +- 0.020, 2.341
+  R(55) 71-0  J' 56, v' 71,  9.0,  -570 (held), 2.743 +- 0.028, 2.677
+  P(56) 73-0  J' 55, v' 73, 16.0,  -570 (held), 4.073 +- 0.045, 3.585
+Model choices: eq''Q held at -2452.5837 MHz (Yokozeki & Muenter 1980, v'' = 0; footnote a), C'' at 3 kHz, eq'Q at
+-570 MHz for the last four lines (footnote b), d and delta zero in both states. C'_th is Vigue et al.'s formula as
+quoted on p. 357, C'(kHz) = 3.614e6 (1 - omega_v'/2 omega_e) / r+^2 / (E_diss - E_v'), r+ in A and energies in cm-1.
+About 220 components were recorded in a 15 G field (p. 356); the component positions are not printed (Fig. 1 shows
+part of the spectrum, unlabeled).
+
+Table 2 against the shipped model's B-state parameters (hfs_params.line_states with the parameter set's hyperfine
+table), Pique - model. eq'Q: +9.5, +6.5, +3.2, -6.1, -18.8 MHz at v' = 61, 61, 62, 64, 67 (0.4-1.3 sigma); the held
+-570 is 7-13 MHz below the model's -562.7 to -556.5 at v' = 68-73. C': +0.016, +0.019, +0.002, 0.000 MHz at v' = 61-64
+(0-1.0 sigma), -0.022 (2.0 sigma) at v' = 67, -0.013 (1.0 sigma) at v' = 68, +0.087 (4.3 sigma) at R(54) 70-0, where
+the model holds its v' = 70 correction at the J' = 46 edge of Chen's lines, and +0.48 and +1.79 MHz (17 and 40 sigma)
+at v' = 71 and 73, where the model has no measured hyperfine data and gives C_B = 2.26 and 2.28 MHz. The 1.159 MHz the model
+gives at R(39) 64-0 is an interpolation between Chen's v' = 63 and 65, not this value: the model's hyperfine table
+holds no Pique data.
+Against chen2004a at the same v'. v' = 61: C' at J' = 11 and 14 is +0.017 and +0.019 MHz (1.1 and 0.9 sigma) above a
+quadratic in J'(J'+1) through Chen's J' = 16, 37, 52, 82; eq'Q is +9.8 and +6.8 MHz (1.2, 0.8 sigma) from Chen's mean,
+-569.83 MHz. v' = 70: C' = 2.333(20) MHz at J' = 55 lies between Chen's 2.230 MHz at J' = 46 and the quadratic
+extrapolation of Chen's J' = 34, 38, 46 to J' = 55 (2.400 MHz, -3.3 sigma); the held eq'Q is 12 MHz below Chen's
+-557.9. Chen fits d and delta, which reach -0.94 and +3.05 MHz at R(45) 70-0, comparable to C itself, so at high v'
+Pique's two-parameter C' is an effective value and need not equal Chen's.
+Checked with the shipped model only.
+"""
+
+[conditions]
+method = "Sub-Doppler laser-induced fluorescence of a collimated supersonic I2 molecular beam (residual Doppler width below 1 MHz), excited by a single-mode Ar+ laser at 501.7 nm (200-800 mW, 5018.5220 < lambda_vac < 5018.6090 A) in a d.c. field of about 15 G; lambdameter referenced to an iodine-stabilized He-Ne laser; invar confocal interferometer, free spectral range 80.9 MHz, checked on the R(26) 62-0 hyperfine structure"

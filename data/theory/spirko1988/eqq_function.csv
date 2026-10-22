@@ -1,0 +1,11 @@
+function,parameter,power_of_y,value_MHz,sigma_MHz
+eqQ_X,eqQ0,0,-2451.02,0.62
+eqQ_X,a,1,1051.18,401.93
+eqQ_X,b,2,-2594.41,727.32
+eqQ_X,c,3,6053.38,205.54
+eqQ_X,d,4,-2397.44,432.28
+eqQ_BX,DeltaeqQ0,0,1957.17,3.62
+eqQ_BX,Delta_a,1,-1056.32,335.71
+eqQ_BX,Delta_b,2,2400.88,599.59
+eqQ_BX,Delta_c,3,-6159.80,288.97
+eqQ_BX,Delta_d,4,2631.94,426.89

@@ -1,0 +1,51 @@
+id = "tromp1983"
+citation = "J. W. Tromp, R. J. Le Roy, S. Gerstenkorn and P. Luc, \"Reexamination of the I2 spectrum near the B(3Pi0u+) state dissociation limit\", J. Mol. Spectrosc. 100, 82-94 (1983)"
+source = "https://doi.org/10.1016/0022-2852(83)90027-9 (library copy papers/Tromp1983_JMS100_82.pdf)"
+doi = "10.1016/0022-2852(83)90027-9"
+retrieved = "2026-10-21"
+unit = "cm-1"
+state = "B"
+isotopologue = "127I2"
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+
+transcription = """
+Tables I-III (pp. 84, 90, 92), read from 300 dpi page images (the scan's native resolution). The paper
+re-analyzes other papers' data and prints no measured level of its own; G, G_unc, B_x100 and B_x100_unc are
+therefore empty. What it adds, and what is entered, are its "mechanical" constants, extrapolated from
+near-dissociation-expansion (NDE) fits to Luc's (1980) constants for v = 1-62 (Sect. I; refs. 4, 8). Both are
+calculated values:
+  B_mech_x1e4  B_v(mech) in 1e-4 cm-1, Table I column 3, as printed (51.33 is 51.33e-4 cm-1; divide by 100 for
+               the B_x100 scale of the other sets). Table II prints the same values for v = 78-80 to three
+               figures in 1e-3 cm-1 (3.731, 3.270, 2.813).
+  D_mech_x1e4  D_v(mech) in 1e-4 cm-1, Table I column 5, as printed (0.0021 is 2.1e-7 cm-1; multiply by 1e4 for
+               the D_x1e8 scale of barrow1973).
+Reprints, not entered as values (each row's note quotes them): Table I B_v(obs) and Table II "Danyluk-King
+(1977)" (danyluk1977, Table 3); Table II "Gerstenkorn-Luc (1982)", B_v = 3.738(10), 3.291(10), 2.837(50) e-3
+cm-1 for v = 78-80, from ref. 10 (S. Gerstenkorn and P. Luc, Laser Chem. 1, 83-112 (1983): laser-induced
+fluorescence near the limit), whose level constants no b_levels set holds (data/observations/gerstenkorn1983a,
+started in parallel on 2026-10-21, appears to be that paper's line table); the Table III rows of refs. 24, 6, 1 and 10 (below).
+Also not entered: Table I column 4 ([B_v(mech) - B_v(obs)], from the reprint) and columns 6-8, the predicted
+Coriolis shifts dB_v(R*) of the B levels by the repulsive 1u state for R* = infinity, 11 and 7 A, in 1e-4 cm-1:
+v = 75: 0.110, 0.122, 0.128; 78: 0.150, 0.158, 0.160; 79: 0.170, 0.170, 0.174; 80: 0.192, 0.192, 0.190;
+81: 0.220, 0.210, 0.210; 82: 0.258, 0.236, 0.236. Figs. 1-4 are not digitized. Fig. 4 (laser-induced
+fluorescence traces) labels one frequency, 20 028.947 cm-1, at the feature that the Gerstenkorn-Luc constants
+identify as P(18) 79-0; a figure annotation, not entered as an observation (the model puts P(18) 79-0 at
+20 028.9435 cm-1, 0.0035 below).
+Misprints: Table II gives Danyluk and King's v = 79 B error as (69); they print 59, and Table I's own +-1.25e-4
+fits 59 (Table I's errors are 2.0-2.2 times Danyluk and King's printed ones at every level, unexplained;
+perhaps the authors' refit of King's term values). Tables II and III date ref. 10 "1982"; the reference list
+gives Laser Chem. 1 (1983).
+Fitted constants (Table III, "Recommended; 1983": a nonlinear n = 5 fit of Eq. (17) to Gerstenkorn and Luc's
+energies for v = 73-80): D = 20 043.159(+-0.019) cm-1, "expressed relative to the zero point level of the
+ground X state" (X v = 0, J = 0), v_D = 87.324(+-0.035), C5 = 2.884(+-0.031) x 1e5 cm-1 A^5, and from these
+D0(X) = 12 440.18(+-0.02) cm-1 (abstract; this implies 7602.98 cm-1 for the 2P1/2 - 2P3/2 separation, where
+Barrow and Yee used 7603.15). Reprinted in Table III: Le Roy and Bernstein 1971 (v = 55-72) 20 044.0(+-1.2),
+87.7(+-0.4), 3.11(+-0.2); Barrow and Yee 1972 (64-77) 20 043.208(+-0.033), 87.345(+-0.007), 2.886(+-0.006);
+Danyluk and King 1977 (72-82) 20 043.063(+-0.020), 87.183(+-0.012), 2.776(+-0.018); Gerstenkorn and Luc 1982
+(73-80) 20 043.176(+-0.008), 87.364(+-0.006), 2.850(+-0.010). The authors call the errors of the two linearized
+fits (Barrow and Yee; Gerstenkorn and Luc) unrealistically small.
+"""
+
+uncertainty = "Calculated values; the paper gives no uncertainty for B_v(mech) or D_v(mech)."
+
+notes = "Shows that Danyluk and King's B_v for v >= 79 are wrong (calibration), not perturbed: Coriolis coupling to the 1u state and spin-rotation coupling are an order of magnitude or more too small, and neglected centrifugal distortion does not explain them. Its mechanical B_v agree with the shipped model's low-J B_v (cubic in J'(J'+1) over J' = 0-10, stable to 0.002e-4 against other fit ranges) to +0.01e-4 cm-1 at v = 75 and -0.05e-4 at v = 78, and lie 0.17-0.35e-4 below it at v = 79-82 (above v = 79 the model is outside its fitted domain); its D_v(mech) are 4-25 % above the model's (0.0020-0.0053e-4 cm-1 at v = 75-82). The reprinted Gerstenkorn-Luc B_v of v = 78-80 agree with the model to 0.0016, 0.0044 and 0.0025e-3 cm-1, inside their errors. The model's B asymptote, 20 043.217 cm-1 above X(0,0), lies 0.058 above the recommended D (3 times its error) and 0.041 above Gerstenkorn and Luc's (5 times theirs), with Barrow and Yee's 20 043.208(33). The paper holding the new measurements, Gerstenkorn and Luc, Laser Chem. 1, 83 (1983), had no catalog entry on 2026-10-21. Checked with the shipped model only."

@@ -1,0 +1,55 @@
+id = "chen2005thesis"
+citation = "L. Chen, \"High-Precision Spectroscopy of Molecular Iodine: From Optical Frequency Standards to Global Descriptions of Hyperfine Interactions and Associated Electronic Structure\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. Ye), 2005, Appendix B, Tables B.46, B.48, B.57, B.58, B.79"
+source = "Matt's library copy papers/Chen2005_thesis_Colorado.pdf (pdfTeX, 272 pages, with a text layer)"
+retrieved = "2026-10-21"
+unit = "MHz"
+kind = "B-state effective hyperfine parameters, one row per four-term fit; only the lines that chen2004a (= thesis Table 4.1) does not hold"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+The "Fitted hyperfine parameters for the excited state B" block under each Appendix B table, for the five lines that
+the thesis leaves out of Table 4.1 because of the 1g(1Pi_g) perturbation: P(69) 58-0, R(18) 59-0, P(77) 60-0 (two
+fits, two rows), P(84) 60-0 and P(63) 70-0. Their measured components are data/observations/chen2005thesis_b.
+Read from the text layer, with the minus signs (dropped by the text layer) taken from the column geometry as in
+chen2005thesis_a, and every value and sign checked against 200 dpi renders of pp. 209, 213, 223, 225 and 247.
+Uncertainties are the printed parenthesised digits converted to MHz exactly ("-550.7(3.8)" is 3.8 MHz). fit_sd_kHz is
+the printed "standard dev." (MHz) times 1000. Unusual signs are as printed: d_B > 0 for P(69) 58-0 and both P(77)
+60-0 fits, delta_B < 0 for P(77) 60-0 fit 1.
+
+These fits are the authors' own and they reject them: Sec. 4.4 says the fits of P(69) 58-0, R(18) 59-0, P(77) 60-0
+and P(63) 70-0 "produce very large standard deviations (0.3-1 MHz)" and that P(84) 60-0 "cannot be fitted at all by
+the effective hyperfine Hamiltonian" (footnote 2: with a2 and a10 excluded, a fit with 1.1 MHz residual error).
+
+Lines also in chen2004a are not entered again. The thesis's Table 4.1 (pp. 87-88) equals chen2004a (JOSA B Table 1)
+in every value, uncertainty and standard deviation of all 74 lines (compared by script). The blocks under the
+Appendix B tables equal Table 4.1 for 62 of those lines (standard deviations within 1-4 kHz, the appendix printing
+them in MHz to two figures, e.g. 0.20 MHz for 196 kHz). For 12 they differ and are not entered (the published Table 4.1 is the authors' final set;
+entering the appendix values would give two parameter rows for one spectrum). Appendix vs Table 4.1:
+  misprints (one digit): P(19) 42-0 C 0.1766(17) vs 0.17666(17); P(91) 45-0 d -0.1325(10) vs -0.1324(10); R(65) 57-0
+    eqQ -571.756(86) vs -571.765(86); P(43) 63-0 eqQ uncertainty (82) vs (83).
+  a different fit of the same spectrum (eqQ, C, d, delta; sd in kHz):
+    R(27) 43-0  -558.662(26), 0.191579(37), -0.0980(17), 0.0006(13), 12  vs -558.667(23), 0.191593(38), -0.0988(16), 0.0015(12), 11
+    R(51) 47-0  -563.295(17), 0.270541(14), -0.1473(12), 0.01565(88), 10 vs -563.294(12), 0.270529(10), -0.14741(84), 0.01588(64), 7
+    P(89) 53-0  -569.287(39), 0.493519(20), -0.2670(27), 0.1078(18), 21  vs -569.274(40), 0.493524(21), -0.2664(27), 0.1073(19), 21
+    R(95) 57-0  -570.699(83), 0.741638(48), -0.3274(59), 0.3327(50), 51  vs -570.701(83), 0.741636(48), -0.3270(59), 0.3323(50), 51
+    P(17) 59-0  -568.61(21), 0.72138(46), -0.287(19), 0.139(16), 80      vs -568.58(15), 0.72125(42), -0.290(13), 0.141(11), 73
+    R(49) 69-0  -560.28(43), 2.01971(48), -0.862(28), 2.597(25), 240     vs -559.39(26), 2.02075(33), -0.854(14), 2.559(14), 116
+    P(35) 70-0  -556.68(29), 2.08631(41), -0.832(17), 2.815(12), 170     vs -557.32(24), 2.08735(37), -0.809(12), 2.8335(88), 111
+    R(37) 70-0  -557.55(32), 2.12504(50), -0.873(21), 2.884(18), 230     vs -557.47(35), 2.12619(51), -0.867(22), 2.886(14), 173
+"""
+
+uncertainty = "1 sigma, estimated by the authors from the standard deviation of each fit (table footnote). Statistical only, and here dominated by the four-term model's failure for these perturbed levels."
+
+notes = """
+X-state values held fixed (App. B, eqs. B.2, B.3 and the table footnotes), the same as chen2004a's (BKT02 eqs. (14) and
+(10); d_X = 1.524 kHz, delta_X = 3.705 kHz), so these B-state values compare directly with i2spec's:
+- eqQ_X from eq. B.2, printed per table (in `note`). As printed, B.2's J''(J''+1) term reads
+  -0.1927e-3 (v''+1/2)^2 J''(J''+1); the per-table values of all 78 single-fit tables follow -0.1927e-3 J''(J''+1)
+  without the (v''+1/2)^2 (to 5 kHz), so the factor is a misprint: eqQ_X = -2452.2916 - 0.542(v''+1/2)
+  + 0.4535e-1 (v''+1/2)^2 - 0.1927e-3 J''(J''+1) + 0.694e-5 (v''+1/2) J''(J''+1) MHz.
+- C_X from eq. B.3, 1.9245 + 0.01356(v''+1/2) - 15098/(E(v'') - 12340), printed as MHz but in kHz, with E(v'') the
+  vibrational energy above v'' = 0 in cm-1: the tables print C_X = 0.00315478 MHz for v'' = 0 and 0.00318986 MHz for
+  v'' = 1, which this reproduces. The text below B.3 says "d_B and delta_B are fixed"; the table footnotes say d_X and
+  delta_X, which is meant.
+All five lines are from v'' = 0. The basis spans Delta J = 0, +-2, +-4 (Sec. 4.3.2).
+"""

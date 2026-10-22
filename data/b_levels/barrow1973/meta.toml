@@ -1,0 +1,63 @@
+id = "barrow1973"
+citation = "R. F. Barrow and K. K. Yee, \"B 3Pi0u+ - X 1Sigma g+ system of 127I2: rotational analysis and long-range potential in the B 3Pi0u+ state\", J. Chem. Soc., Faraday Trans. 2 69, 684-700 (1973)"
+source = "https://doi.org/10.1039/f29736900684 (library copy papers/Barrow1973_JCSFaradayII69_684.pdf)"
+doi = "10.1039/f29736900684"
+retrieved = "2026-10-21"
+unit = "cm-1"
+state = "B"
+isotopologue = "127I2"
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+
+transcription = """
+Table 2 (pp. 687-688), B-state part, read from the scan's native 400 dpi page images (extracted with pdfimages;
+the text layer drops digits, decimal points and +- signs). T_v,J=0, B_v and D_v of 58 levels of 127I2,
+v = 4-77, from a term-value analysis (Aslund's method) of 64 bands and about 7000 lines of the B-X absorption
+spectrum (4985-6500 A); the term values of each level were fitted to (-1)^J X + T0 + B_v J(J+1) - D_v J^2(J+1)^2:
+  G           T_v,J=0 (cm-1), "the vibrational term value relative to X(v = 0, J = 0)" (footnote b). The table
+              prints the leading digits only where they change (20 038.162, then 36.396, ...; 081.049 at v = 36
+              is 19 081.049); they are restored here. +- in units of the last digits (+-35 is +-0.035).
+  B_x100      1e2 B_v (cm-1), +- in units of the last digits.
+  D_x1e8      1e8 D_v (cm-1), +- in units of the last digits (16.965 +- 668 is +-0.668), except where the error
+              is printed with its own decimal point (v = 73-77, e.g. 38.340 +- 20.62).
+  note        the bands behind the level, from Table 1: v'-v'', J range Jmin-Jmax as printed (the table does
+              not say J' or J''), and the numbers of R and P lines. Bands that Table 1 marks "from ref. (7) with
+              slight revisions" (Steinfeld et al. 1965) are flagged; the 7-3 band was left out of the term-value
+              fit (p. 687).
+Checks: Table 2 agrees digit for digit with Table 7 "obs." (G, v = 64-77), Table 10 "obs." (B, v = 64-77) and
+Danyluk and King 1977's reprints (G for v = 72-77; B and its errors for v = 72-77). 58 levels and 65 bands (60 of
+this work and 5 of ref. 7, 64 used) as the text states; Table 1 sums to 7038 lines. First and second differences
+of G and B run smoothly.
+Not entered: the X-state part of Table 2 (v'' = 0-5; it belongs in data/x_levels): T 0.0, 213.302(5),
+425.307(3), 636.130(4), 845.732(3), 1054.072(3); 1e2 B 3.73129(7), 3.7199(2), 3.7087(1), 3.6985(2), 3.6859(1),
+3.6741(2); 1e8 D 0.459(4), 0.409(12), 0.507(15), 0.624(18), 0.551(6), 0.575(21). Table 3 (X constants, v'' = 0-5:
+we = 214.5016 +- 0.014, wexe = 0.61468 +- 0.002, Be = 3.73719e-2 +- 4.7e-6, alpha_e = 1.1376e-4 +- 1.37e-6,
+re = 2.66634 A with mu = 63.4502 u, 1e9 De = 4.25 +- 0.42, 1e9 beta_e = 0.321 +- 0.122). Table 4 (B polynomials:
+G_v = sum_{n=1..5} C_n (v + 1/2)^n for v up to 50, C1 = 125.69708 +- 3.71e-2, C2 = -7.64244e-1 +- 3.60e-3,
+C3 = -1.77598e-3 +- 1.54e-4, C4 = -7.37943e-5 +- 2.99e-6, C5 = 1.03060e-6 +- 2.16e-8, T0,0 = 15 724.57,
+Te = 15 769.01; B_v = sum_{n=0..4} c_n (v + 1/2)^n for v up to 77, c0 = 2.903876e-2 +- 2.07e-5,
+c1 = -1.58190e-4 +- 3.25e-6, c2 = -3.36318e-7 +- 1.53e-7, c3 = -4.77727e-8 +- 2.76e-9, c4 = 3.26287e-10 +- 1.67e-11,
+re = 3.02481 A, 1e9 De = 5.43 +- 1.44 and 1e9 beta_e = 0.300 +- 0.186 for v < 10). Table 5 (residuals of the
+long-range fits for n = 4, 5, 5.5, 6). Table 7 (G_v from the n = 5 long-range fit, v = 64-87; for v = 78-87:
+20 039.632, 40.756, 41.605, 42.224, 42.653, 42.930, 43.092, 43.172, 43.202, 43.208; its "obs." column is Table 2).
+Table 8 (RKR turning points v = 0-85, G relative to the B minimum, 15 661.89 cm-1 below Table 2's zero at
+v = 77). Table 10 (B_v: Table 2 values for v = 64-77, graphical extrapolations in brackets for v = 78-86, 1e2 B =
+0.376, 0.331, 0.286, 0.240, 0.194, 0.150, 0.107, 0.066, 0.031, and two calculated columns). The line list and the
+term values were not printed ("may be obtained on request").
+Fitted constants, all relative to X(v = 0, J = 0) unless stated. Table 6 (eqs. (4) and (5), v = 64-77): for n = 5,
+D = 20 043.208 +- 0.033 cm-1 (printed 20 043.20_8), v_D = 87.345 +- 0.007, 1e-5 C5 = 2.8861 cm-1 A^5 (from
+1/H_n = 6.376 +- 0.0027; no error printed for C5); D = 20 045.010 +- 0.21 (n = 4), 20 042.550 +- 0.07 (n = 5.5),
+20 042.000 +- 0.13 (n = 6). Table 9 (RKR outer turning points against eq. (6)): v = 64-85, De = 4381.293 +- 0.015
+cm-1 above the B-state minimum (20 043.220 relative to X(0, 0); Fig. 5: De = 4381.29), 1e-5 C5 = 3.40 +- 0.13,
+1e-6 C6 = 1.100 +- 0.13, 1e-8 C8 = 0.45 +- 0.02 (cm-1 A^m); v = 64-77 (D fixed): 3.43 +- 0.13, 1.064 +- 0.133,
+0.46 +- 0.02. Table 6 and Table 9 also reprint Le Roy and Bernstein 1971 (D = 20 044.040 +- 1.2, v_D = 87.745
++- 0.38, 1e-5 C5 = 3.106 +- 0.16) and Le Roy and Cummings (C5 3.68 theory, C6 1.850 +- 0.2, C8 0.19 +- 0.04).
+D0(X) = 12 440.06 cm-1 from D and the 2P1/2 - 2P3/2 separation 7603.15 cm-1 (Moore 1958; p. 693; abstract:
+12 440.1 cm-1).
+Misprints: none found in Table 2. Small inconsistencies: Table 4 writes the G_v sum from n = 1 and the range
+"0 < v < 50" where the text (p. 689) writes n = 0 and 4 <= v <= 50; Table 6 gives C5 (n = 5) without an error,
+which Danyluk and King and Tromp et al. quote as +-0.006.
+"""
+
+uncertainty = "As printed: one standard error (Table 2, footnote a: 'Error limits in this table and throughout the paper are one standard error') of the term-value fit. They omit the absolute calibration, which is not discussed here (experimental details in Yee and Miller, Chem. Commun. 1972, 1054). The constants reproduce the unblended lines to +-0.02 cm-1 (p. 690), and the bands shared with ref. 7 agree 'generally to within about +-0.02 cm-1'."
+
+notes = "The B levels up to v = 77 on which Danyluk and King 1977 and Tromp et al. 1983 build. The shipped model (i2spec2026o) gives G_v (its J' = 0 level above X(0,0): its P(1) v'-0 line plus E_X(0,1) - E_X(0,0)) within -0.024 to +0.024 cm-1 of the printed values at v = 43-77 (rms 0.014 at v = 43-63 and 0.012 at v = 64-77; up to 6 printed errors). Lower levels are worse: rms 0.036 at v = 25-36 (-0.078 at v = 36, from lines with J 64-114 only), +0.052 to +0.075 at v = 16-20 (-0.047 at v = 21), and -0.051 to -0.117 at v = 4-13. Those v = 4-13 levels rest on hot bands (v'' = 2-5), and this paper's X levels v'' = 2-5 lie 0.066-0.080 cm-1 below the model's (v'' = 1 agrees to 0.002), so they carry that offset. B_v (the model's levels fitted as the authors fitted, quadratic in J(J+1) over each band's Table 1 J range): rms 0.0012-0.0014 in B_x100 up to v = 63, a few printed errors; 0.006 at v = 64-77, where v = 74-76 differ by 0.009-0.012 together with D_v. At v = 64-79 the model rests on the Orsay atlas Partie IV; G_v taken straight from the atlas lines (unblended v'-0 lines with J' <= 40, X terms from the model, the atlas scale of -200.8 ppb divided out) gives obs - atlas -0.023 to +0.022 cm-1 at v = 64-77, as against the model. Table 7's extrapolated G_v for v = 78-86 lie -0.008 to +0.026 cm-1 from the model's levels (outside the fitted domain above v = 79), and Table 10's graphical B_v for v = 78-80 (0.376, 0.331, 0.286) are within 0.0025 of the model's low-J values, as are Gerstenkorn and Luc's later measurements (Tromp et al. 1983), unlike Danyluk and King's. The model's B asymptote, 20 043.217 cm-1 above X(0,0), is 0.009 above Table 6's D and 0.003 below the RKR value. Checked with the shipped model only."

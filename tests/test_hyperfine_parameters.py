@@ -69,3 +69,14 @@ def test_loader_rejects_bad_files(tmp_path):
     (d / "meta.toml").write_text('id = "other"\ncitation = "c"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n')
     with pytest.raises(ValueError, match="directory name"):
         load_hyperfine_parameters(d)
+
+
+def test_excluded_parameter_sets_skipped(tmp_path):
+    header = "line,eqQ,eqQ_unc,C,C_unc,d,d_unc,delta,delta_unc,fit_sd_kHz,note\n127I2 R(1) 1-0,-500,1,1,1,1,1,1,1,,\n"
+    meta = 'id = "{}"\ncitation = "c"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n'
+    for name, extra in (("a2000", ""), ("b2000", 'exclude = "pending"\n')):
+        (tmp_path / name).mkdir()
+        (tmp_path / name / "meta.toml").write_text(meta.format(name) + extra)
+        (tmp_path / name / "data.csv").write_text(header)
+    assert [s.id for s in load_all_hyperfine_parameters(tmp_path)] == ["a2000"]
+    assert [s.id for s in load_all_hyperfine_parameters(tmp_path, include_excluded=True)] == ["a2000", "b2000"]

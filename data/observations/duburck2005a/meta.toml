@@ -1,0 +1,34 @@
+id = "duburck2005a"
+citation = "F. du Burck, C. Daussy, A. Amy-Klein, A. N. Goncharov, O. Lopez, C. Chardonnet and J.-P. Wallerand, \"Frequency measurement of an Ar+ laser stabilized on narrow lines of molecular iodine at 501.7 nm\", IEEE Trans. Instrum. Meas. 54, 754-758 (2005); transcribed from the arXiv version, quant-ph/0411211"
+source = "https://arxiv.org/abs/quant-ph/0411211 (library copy papers/DuBurck2005_IEEETIM54_754_arXiv0411211.pdf)"
+doi = "10.1109/tim.2005.843579"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Sect. V (arXiv pp. 7-8), typed from the text layer: the absolute frequency of the Ar+ laser locked to a7 of
+R(26) 62-0, measured against the LPL femtosecond comb over a few days in 2004 at 0.33 Pa (2.5 mTorr), pump
+2-3.4 mW, probe 300-500 uW: 597 366 498 654.62 kHz, "the standard deviation of the mean values obtained for
+each of the 4 measurement sets is 0.85 kHz".
+Not entered: the five same-day measurements of 23/01/04 (only their 65 Hz reproducibility is given); the
+local pressure sensitivity, -38.4 kHz/Pa at 0.33 Pa (nonlinear there), and the probe-power shift (about
+1 kHz per factor 2); the linewidths.
+Overlap: goncharov2007a (the same LPL group, 2007) gives a1 and the a7 - a1 interval and quotes its own mean
+of eight a7 measurements, 597 366 498 654.47 kHz. Its measurements are not dated in the arXiv text, so
+whether they include these 2004 sets is not known and no overlap is declared.
+"""
+
+uncertainty = "As printed: 0.85 kHz, the standard deviation of the four set means (not divided by sqrt 4). The pressure allowance below adds 13 kHz in quadrature."
+
+notes = "Residual against i2spec2026o (obs - model, no correction): -356.5 kHz, the same as goncharov2007a's a1 residual (-336.5 kHz) plus its a7 - a1 residual (-20.0 kHz), so the two campaigns agree to 0.15 kHz. Checked with the shipped model only."
+
+[conditions]
+pressure_Pa = 0.33
+method = "Ar+ laser at 501.7 nm, low-pressure continuously pumped cell, frequency-modulation spectroscopy; femtosecond comb referenced to the LPL/SYRTE frequency chain"
+
+[shift_correction]
+pressure_Pa = 0.33
+power_mW = 0.5
+allowance_kHz = 13.0
+basis = "As goncharov2007a for the same setup: no correction, a 13 kHz allowance for the pressure shift (12.7 kHz if this paper's local -38.4 kHz/Pa held down to zero pressure) with about 2 kHz for the probe power."

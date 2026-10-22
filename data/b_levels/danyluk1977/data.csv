@@ -1,0 +1,8 @@
+isotopologue,v,G,G_unc,B_x100,B_x100_unc,note
+127I2,77,20038.1637,0.0136,0.4266,0.0109,"Tables 2 and 3 also reprint Barrow and Yee 1973 for this level: 20038.162 and 0.4297 +- 180"
+127I2,78,20039.6086,0.0073,0.3577,0.0049,"Tromp et al. 1983 Table I: B 1.54(+-1.00)e-4 cm-1 below their near-dissociation (mechanical) value; Gerstenkorn and Luc (Tromp Table II) give 0.3738(10)"
+127I2,79,20040.6972,0.0030,0.2964,0.0059,"Tromp et al. 1983: v >= 79 unreliable (calibration); B 3.06(+-1.25)e-4 below mechanical; Gerstenkorn and Luc 0.3291(10); their Fig. 4 shows no line where these constants put P(18) 79-0"
+127I2,80,20041.5595,0.0026,0.2591,0.0068,"Tromp et al. 1983: v >= 79 unreliable (calibration); B 2.22(+-1.43)e-4 below mechanical; Gerstenkorn and Luc 0.2837(50)"
+127I2,81,20042.1618,0.0037,0.1784,0.0039,"Tromp et al. 1983: v >= 79 unreliable (calibration); B 5.79(+-0.80)e-4 below mechanical"
+127I2,82,20042.5333,0.0073,0.1064,0.0189,"Tromp et al. 1983: v >= 79 unreliable (calibration); B 8.56(+-4.13)e-4 below mechanical"
+127I2,83,20042.6996,,0.0711,0.0231,"Tables 2 and 3: printed in parentheses (Table 3 lacks the closing parenthesis), no error on G; Sect. 3: only unresolved R/P pairs whose J numbering is uncertain, not used in any of the authors' calculations"

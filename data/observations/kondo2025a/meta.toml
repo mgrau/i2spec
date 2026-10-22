@@ -1,0 +1,123 @@
+id = "kondo2025a"
+citation = "Y. Kondo, S. Yamauchi, Y. Kawai, T. Kohno, D. Akamatsu and F.-L. Hong, \"Frequency measurement of hyperfine transitions of the R(158)25-0 iodine line near the 1S0-3P1 transition of 174Yb\", Jpn. J. Appl. Phys. 64, 098001 (2025)"
+source = "https://doi.org/10.35848/1347-4065/ae0225 (publisher PDF, library copy papers/Kondo2025_JJAP64_098001.pdf)"
+doi = "10.35848/1347-4065/ae0225"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+Brief Note, pp. 098001-1 to -3 (PDF pages 2-4; page 1 is the IOP cover sheet). Typed by hand from the
+pdftotext layer and checked digit by digit against 300 dpi renderings of pp. 098001-2 and -3 (Table I,
+Table II, the a10 paragraph, Figs. 1 and 2). A script re-parsed Table II from the text layer independently
+and found the 14 entered intervals equal to it. kHz converted to MHz exactly.
+
+(1) Absolute frequency of a10 of R(158) 25-0 (p. 098001-3): "539 386 408 387(9) kHz", the mean of 20 comb
+measurements (200 s each, 1 s gate), each made after the pump-probe alignment was re-optimized (Fig. 2(b),
+whose annotation prints f_averaged = 539 386 408 387.2 kHz; the text value is entered). The comb is
+referenced to the group's iodine-stabilized Nd:YAG laser (their ref. 18).
+(2) Table II, "Obs." column: f(a_n) - f(a1), n = 2-15, in kHz ("calculated as a difference relative to the a1
+transition"). Each component was recorded for 600 s with a 1 s gate, under the same conditions as a10. The
+a1 row (0.0) is the reference and is not entered.
+
+Conditions: the comb measurements and Table II are at cold finger 16 C, 18 Pa ("to prevent laser unlocking
+during extended operation because the R(158)25-0 line is relatively weak"), pump 2 mW ("the 2 mW used in the
+present work"). The Fig. 1 survey spectrum was taken at -0.2 C (4.0 Pa), pump 2.0 mW, probe 0.3 mW. The
+values are as measured, not extrapolated to zero pressure or power. Table I gives coefficients measured on
+R(158) a10 itself: pressure -6.1 kHz/Pa (Fig. 2(c), nine points over 4-20 Pa, zero at 18 Pa), power
++2.9 kHz/mW (positive as printed), EOM phase -0.12 kHz/degree, servo offset -8.6 kHz/mV. [shift_correction]
+applies the first two: +109.8 kHz (pressure) - 5.8 kHz (power) = +104.0 kHz on the absolute, adding 22.0 kHz in
+quadrature from 20 % slope uncertainties (a judgement, as in tanabe2022a and kobayashi2016a; none are printed).
+The text's "approximately 85 kHz" between 4 Pa and 18 Pa agrees with -6.1 kHz/Pa x 14 Pa = 85.4 kHz.
+
+Labels: R(158) has even J'' and 15 main components. The paper labels them a1-a15 and labels P(49) 24-1
+b1-b21 (Fig. 1; tanabe2022a, from the same group, calls P(49) a1-a21). Fig. 1, with frequency increasing to
+the right, puts a1 lowest and a15 highest, 863 MHz apart, and Table II increases monotonically from a1 to
+a15. That is i2spec's rank convention, so no relabelling. a10 is the component demelo2024a measured.
+
+Checks, misprints and inconsistencies (nothing corrected):
+- Table II: Obs. - Cal. reproduces the printed column to within 0.05 kHz in 14 rows. In a13 the printed 8.1
+  differs from 731 521.7 - 731 513.7 = 8.0, which is rounding in the unrounded columns. The Obs. value is
+  entered as printed. sqrt(sum (Obs. - Cal.)^2 / (15 - 5)) = 6.43 kHz reproduces the printed SD of 6.4 kHz,
+  so the fit had five free parameters, the four hyperfine constants and a common offset (Cal. a1 = 4.0).
+- Table I: the terms add in quadrature to 8.92 kHz, as printed (8.9 kHz).
+- Misprint in the text (p. 098001-3, right column): "the a10 transition frequency and the measured intervals
+  listed in Table I" should say Table II (Table I is the uncertainty budget). It changes no number.
+- The text says the fit "achieved sub-kilohertz accuracy" and that "All 'Obs.-Cal.' values fell within this
+  SD". Table II contradicts both: the SD is 6.4 kHz, and four entries exceed it (a8 7.9, a12 -10.3, a13 8.1,
+  a14 -8.5 kHz). The table is taken as the record.
+
+Not entered: the Cal. column and its SD; the Allan deviations; the absolute frequencies of the other
+components (the paper leaves them to the reader as a10 plus the Table II intervals, so they would duplicate
+rows held here); and the P(49) 24-1 a21 pressure coefficient, "approximately -5.6 kHz/Pa" over a wider
+pressure range. The authors say it shows that tanabe2022a's -1.8 kHz/Pa (measured on P(49) a1) is inaccurate.
+That bears on tanabe2022a's [shift_correction], not on this set.
+
+Overlap: the paper quotes de Melo's 539 386 406(6) MHz (demelo2024a) for comparison only. It prints no other
+paper's measurement as its own, so there is no [overlaps]. The two are independent measurements of the same
+component (a comb measurement here, a laser scan from P(49) 24-1 there).
+"""
+
+uncertainty = """
+Absolute a10: 9 kHz as printed ("(9)"; Table I total 8.9 kHz), taken as 1 sigma. Its terms: alignment 6.3 kHz
+(the SD of the 20 realigned measurements, not divided by sqrt 20), cell impurity 5 kHz (the CIPM figure),
+servo offset 2.6, statistics 1.6, comb reference 1.5, pressure 1.2 (from a 0.2 Pa pressure uncertainty), EOM
+phase 1.2 and power 0.6 kHz. The 9 kHz holds at the stated operating point (18 Pa, 2 mW); [shift_correction]
+adds 22 kHz for the move to zero pressure and power.
+Intervals: 6.4 kHz each, a judgement, since the paper gives no uncertainty for Table II. 6.4 kHz is the SD of
+the authors' hyperfine fit, close to the 6.3 kHz alignment scatter of single a10 measurements; each component
+is one 600 s record. All 14 intervals share the single a1 record (Obs. - Cal. -4.0 kHz), so their errors are
+correlated through a1; the group kondo2025a_hfs marks this. Treated as independent, one interval would carry
+about sqrt(2) x 6.4 = 9.1 kHz. The 1-2 kHz splitting uncertainty of this group's earlier sets (tanabe2022a,
+kobayashi2016a) is not used here: this weak line was locked at 18 Pa, and the paper's own fit scatters by 6.4 kHz.
+"""
+
+notes = """
+The first comb-referenced absolute frequency at J'' = 158, and the first complete hyperfine table of this line.
+
+Residuals against i2spec2026o (Predictor(), obs - model), 2026-10-21:
+- a10 absolute: +21.056 MHz as printed (18 Pa, 2 mW), +21.160 MHz after [shift_correction] (load_dataset's default).
+- Intervals a_n - a1 (14): -289 to +286 kHz, mean -3 kHz, rms 161 kHz (a2 -289, a3 -67, a4 +74, a5 +286, a6 -214,
+  a7 -148, a8 +151, a9 +210, a10 -0.9, a11 -151, a12 -86, a13 +76, a14 +125, a15 -11 kHz). The authors' own
+  four-constant fit gives 6.4 kHz, so the 0.3 MHz is the model's hyperfine prediction at J' = 159, not the
+  transcription. The labels are secure: the largest residual (0.29 MHz) is far below the closest spacing
+  between components (10.0 MHz, a11-a12).
+
+Comparison with demelo2024a (de Melo 2024, the same component by a laser scan, 6 MHz): de Melo's a10 is
+539 386 406(6) MHz, entered there as 467.313 MHz above tanabe2022a's P(49) 24-1 a21 (539 385 938.687 MHz,
+which tanabe2022a's rows reproduce exactly). This a10 minus the same a21 is 469.700 MHz, so the two differ by
++2.387 MHz, 0.40 sigma of de Melo's 6 MHz. Pressure and power differences (18 Pa and 2 mW here, 300 mW pump
+there, per this paper) are kHz to sub-MHz and immaterial at 6 MHz. Both put the model low for this line:
++18.7 MHz (de Melo) and +21.1 MHz (here). With the model's a10 - center offset of 95.585 MHz, this a10 puts the
+hyperfine-free center about 21 MHz above the model's; the FTS atlas centers quoted in demelo2024a's notes are
++13.9 and +14.4 MHz, within atlas precision of it.
+
+Neighbors: placed with tanabe2022a's P(49) 24-1 values, R(158) a1 lies 17.4 MHz above P(49) a18 and 76.5 MHz
+below a19. That is the "weak b1 feature of R(158) 25-0 between a18 and a19 of P(49) 24-1" that tanabe2022a's
+text mentions (Tanabe's b1 is a1 here), an independent check of the a1 placement. A reference 17 MHz from a
+line about twice as strong could be pulled at 18 Pa; Table II's a1 Obs. - Cal. (-4.0 kHz) is within the
+scatter. The largest Obs. - Cal. (a12 -10.3, a13 8.1, a14 -8.5 kHz) fall on the two close pairs, a11/a12
+(10.0 MHz apart) and a13/a14 (10.4 MHz), which may pull each other at 18 Pa. This is an observation only.
+
+Checked with the shipped model only.
+"""
+
+[conditions]
+method = "modulation transfer spectroscopy, 45 cm cell, set-up as tanabe2022a (their ref. 14); optical frequency comb referenced to an iodine-stabilized Nd:YAG laser"
+laser = "556 nm"
+cell_length_cm = 45
+cold_finger_C = 16.0
+pressure_Pa = 18.0
+pump_mW = 2.0
+extrapolated_to_zero_pressure = false
+pressure_shift_kHz_per_Pa = -6.1
+power_shift_kHz_per_mW = 2.9
+
+[shift_correction]
+pressure_Pa = 18.0
+pressure_kHz_per_Pa = -6.1
+pressure_kHz_per_Pa_unc = 1.22
+power_mW = 2.0
+power_kHz_per_mW = 2.9
+power_kHz_per_mW_unc = 0.58
+basis = "Paper Table I and Fig. 2(c), measured on R(158) 25-0 a10 itself: 16 C (18 Pa), pump 2 mW, -6.1 kHz/Pa, +2.9 kHz/mW. Slope uncertainties are not printed; 20 % is a judgement, as in tanabe2022a. Moves the absolute by +104.0 kHz and adds 22.0 kHz in quadrature."

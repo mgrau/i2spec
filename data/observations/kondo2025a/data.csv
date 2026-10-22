@@ -1,0 +1,16 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(158) 25-0,a10,frequency,539386408.387,0.009,,,kondo2025a,"p. 098001-3: f(a10) = 539 386 408 387(9) kHz, mean of the 20 comb measurements of Fig. 2(b) (annotated there as 539 386 408 387.2 kHz); at 18 Pa (cold finger 16 C), pump 2 mW, not extrapolated"
+127I2 R(158) 25-0,a2,interval,245.2037,0.0064,,a1,kondo2025a_hfs,Table II Obs. (245 203.7 kHz); at 18 Pa
+127I2 R(158) 25-0,a3,interval,279.5102,0.0064,,a1,kondo2025a_hfs,Table II Obs. (279 510.2 kHz); at 18 Pa
+127I2 R(158) 25-0,a4,interval,295.7799,0.0064,,a1,kondo2025a_hfs,Table II Obs. (295 779.9 kHz); at 18 Pa
+127I2 R(158) 25-0,a5,interval,329.8059,0.0064,,a1,kondo2025a_hfs,Table II Obs. (329 805.9 kHz); at 18 Pa
+127I2 R(158) 25-0,a6,interval,396.8877,0.0064,,a1,kondo2025a_hfs,Table II Obs. (396 887.7 kHz); at 18 Pa
+127I2 R(158) 25-0,a7,interval,410.7932,0.0064,,a1,kondo2025a_hfs,Table II Obs. (410 793.2 kHz); at 18 Pa
+127I2 R(158) 25-0,a8,interval,451.9419,0.0064,,a1,kondo2025a_hfs,Table II Obs. (451 941.9 kHz); at 18 Pa
+127I2 R(158) 25-0,a9,interval,465.7277,0.0064,,a1,kondo2025a_hfs,Table II Obs. (465 727.7 kHz); at 18 Pa
+127I2 R(158) 25-0,a10,interval,575.286,0.0064,,a1,kondo2025a_hfs,Table II Obs. (575 286.0 kHz); at 18 Pa
+127I2 R(158) 25-0,a11,interval,696.6727,0.0064,,a1,kondo2025a_hfs,Table II Obs. (696 672.7 kHz); at 18 Pa
+127I2 R(158) 25-0,a12,interval,706.6481,0.0064,,a1,kondo2025a_hfs,"Table II Obs. (706 648.1 kHz); at 18 Pa; Obs. - Cal. -10.3 kHz, the largest of the table (a11 is 10.0 MHz away)"
+127I2 R(158) 25-0,a13,interval,731.5217,0.0064,,a1,kondo2025a_hfs,"Table II Obs. (731 521.7 kHz); at 18 Pa; printed Obs. - Cal. 8.1 kHz, the columns give 8.0 (rounding)"
+127I2 R(158) 25-0,a14,interval,741.9498,0.0064,,a1,kondo2025a_hfs,"Table II Obs. (741 949.8 kHz); at 18 Pa; a13 is 10.4 MHz away"
+127I2 R(158) 25-0,a15,interval,863.2052,0.0064,,a1,kondo2025a_hfs,Table II Obs. (863 205.2 kHz); at 18 Pa

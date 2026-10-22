@@ -1,0 +1,81 @@
+id = "spirko1988"
+citation = "V. Špirko and J. Blabla, \"Nuclear quadrupole coupling functions of the 1Sigma_g+ and 3Pi_0u+ states of molecular iodine\", J. Mol. Spectrosc. 129, 59-71 (1988), Tables I-X"
+source = "https://doi.org/10.1016/0022-2852(88)90258-5 (publisher PDF, papers/Spirko1988_JMS129_59.pdf)"
+doi = "10.1016/0022-2852(88)90258-5"
+retrieved = "2026-10-21"
+unit = "eqQ in MHz; potential coefficients in cm-1, re in A, a in 1/A (column headers name the unit)"
+kind = "empirical nuclear quadrupole coupling functions eqQ(r) of X and B fitted to measured eqQ, the polynomial potentials they are averaged over, the fitted data, and the predicted eqQ(v) and eqQ(v, J) of 127I2 and 129I2"
+
+[files]
+"potential.csv" = "Table I: V(r) = sum_{i=2..10} f_i y^i (Eq. 2), y = 1 - exp[-a (r - re)] (Eq. 3), fitted to RKR points (X: Martin et al. 1986, Ref. 4, cf. data/x_levels/martin1986; B: Gerstenkorn & Luc 1985, Ref. 5). sigma is the printed standard error (in units of the last digit in print, converted here); a held fixed."
+"eqq_function.csv" = "Table II: eqQ_X(y) = eqQ0 + a y + b y^2 + c y^3 + d y^4 (Eq. 4) and eqQ_BX(y) = DeltaeqQ0 + Delta_a y + ... (Eq. 5), MHz, with standard errors. See transcription for how they combine."
+"eqq_fit_delta.csv" = "Table III: measured and calculated DeltaeqQ = eqQ_B - eqQ_X of 22 127I2 lines, with the fit weight W and the paper's reference number; line is built here from v'', J'', v', J'."
+"eqq_fit_x.csv" = "Table IV: measured and calculated eqQ_X of 23 X levels (v, J), weight and reference; J of v = 79 and 81 marked 'assumed' (footnote a)."
+"eqq_fit_b.csv" = "Table V: measured and calculated eqQ_B of 12 B levels (v, J), weight and reference."
+"eqq_fit_129i2.csv" = "Table IX: 129I2, six lines: measured and calculated eqQ_X, eqQ_B and DeltaeqQ, with Q(129I) = 0.701213 Q(127I) (Ref. 23)."
+"eqq_levels.csv" = "Tables VI (127I2 X, v = 0-87), VII (127I2 B, v = 0-63), VIII (127I2 X, v = 0-80 by 5, J = 60, 100, 120, 160) and X (129I2 X, v = 0-87): calculated <vJ|eqQ|vJ>, MHz. J is empty where the table prints none; those are J = 0 values (transcription)."
+
+transcription = """
+Every value of Tables I-X (pp. 60-65). The long Tables VI, VII and X were parsed by script from the PDF text layer and
+every value was compared with a 300 dpi render; the short tables (I-V, VIII, IX) were typed from the renders and
+checked against the text layer. The scan's text layer has errors, all settled on the image: Table I X f7 ("84 X74.8")
+and B f2, f3 ("lo 251.08", "3 0%65"); Table III calc of R(39) 64-0 1882.9 (read "1 802.9") and exp of P(47) 9-2 1948.3
+(read "1 940.3"); Table III reference 8 (read "a"); Table VI v = 68 ("2 011*01"); Table X v = 68 (read "60") and
+v = 70, -1386.32 (read "-1 366.32"). Table I and II uncertainties are printed in units of the last digit and are
+converted to the value's units.
+
+Internal checks. Every Exp. - Calc. in Tables III-V recomputes from the printed Exp. and Calc. to 0.1 MHz (the
+three 0.1 differences are rounding: 0.4 for 1894.0 - 1893.5, -1.5 for 1930.8 - 1932.4, -15.5 for -583.0 + 567.4).
+In Table IX, calc DeltaeqQ = calc eqQ_B - calc eqQ_X to 0.1 MHz in all six rows.
+
+Recomputation from Tables I and II (scratch scripts, not kept in the repo). The radial equation for 127I2 (and
+129I2) was solved in the Table I potentials and the Table II functions averaged over the wavefunctions:
+  Table VII (B, J = 0) is reproduced to 0.02 MHz or better at all 64 v' except v' = 6;
+  Table VI (X, J = 0) to 0.03 MHz rms for v'' <= 40, with a smooth drift to -0.36 MHz at v'' = 87 (numerics);
+  Table VIII the same way (to -0.25 MHz at v'' = 80, smooth), and Table X (0.701213 times the 127I2 function, with
+  129I2 wavefunctions) to -0.20 MHz, smooth.
+No residual jumps by more than 0.03 MHz from one v to the next (0.07 MHz at the last two X levels), so no value is
+misread. This fixes three things the text leaves open:
+  (1) eqQ_B(r) = eqQ_X(y) + eqQ_BX(y) with both polynomials in the B-state variable y = 1 - exp[-1.2 (r - 3.02680)].
+      With the X-state y in both, Table VII is missed by 10 MHz rms; with eqQ_X in the X-state y and eqQ_BX in the
+      B-state y, by 270 MHz. Eq. (7) prints the same |vJ> in both terms; it is DeltaeqQ = <v'J'|eqQ_B|v'J'> -
+      <v''J''|eqQ_X|v''J''>.
+  (2) Tables VI, VII and X are J = 0 values (X v = 0: J = 0 gives -2451.73 as printed, J = 13 gives -2451.67).
+  (3) The Table I X polynomial rises to 12 348 cm-1 at 5 A, above its own asymptote (sum of f_i = 11 443 cm-1, below
+      the true D_e), so X levels above v'' of about 72 are quasi-bound behind an artificial hump; their printed values
+      are reproduced only with the grid cut at the hump (r <= 5.0 A). The B polynomial rises steadily to 4367 cm-1.
+
+Misprints.
+  Table VII, v' = 6: printed -501.97, entered as -502.06. Tables I-II give -502.061, the other 63 values are
+  reproduced to 0.02 MHz, and the printed value breaks the smooth progression (steps of 1.21 and 1.40 MHz where the
+  neighbors step 1.28-1.33). The printed value is in the row's note.
+  Table IX, 129I2 P(54) 8-4: exp eqQ_B - exp eqQ_X = -450 + 1808 = 1358, but exp DeltaeqQ is printed 1368.2 (the
+  other five rows agree to 0.4 MHz, and calc DeltaeqQ is 1367.6). One of the three is misprinted; not corrected.
+  Reference 23 is printed "R. Livongstone and H. Zelder": R. Livingston and H. Zeldes, Phys. Rev. 90, 609 (1953).
+"""
+
+notes = """
+What the paper does. Effective eqQ of a level is taken as the expectation value of an eqQ(r) function over the
+rovibrational wavefunction (off-diagonal contributions "a few kilohertz", Sect. 2). Polynomial eqQ functions in the
+Coolidge-James-Vernon variable y were fitted, with the weights W of Tables III-V, to the sub-Doppler values and some
+Doppler-limited fluorescence values (Bacis et al. 1980, data/x_hyperfine/bacis1980, Ref. 22, for most of Table IV);
+rows with W = 0 did not enter the fit. Tables VI-X are predictions "for those states that are not strongly
+perturbed". Rotation enters only through the centrifugal term in the wavefunctions, and no electronic perturbation
+is modeled. Table VII stops at v' = 63; Pique's v' = 61-67 values entered the fit with W = 0 (Table V, residuals up
+to 15.5 MHz).
+
+Sources the fit tables cite that i2spec holds: Bordé et al. 1981 (borde1981a), Foth & Spieweck 1979 (foth1979a),
+Pique et al. 1981 (pique1981a, whose v' = 64 level Tables III and V print correctly where Pique's own Table 2 prints
+v' = 63), Zhao, Blabla & Helmcke 1985 (zhao1985a), Bacis et al. 1980 (x_hyperfine/bacis1980). The 129I2 values of
+Table IX and several Table III-V rows are M. Gläser, private communication (Refs. 16, 17).
+
+Against the shipped model (i2spec2026o; hfs_params.line_states with its hyperfine table at J' = 1, and hfs_params.eqq_x
+at J'' = 0). Table VII minus the model's eqQ_B: -5.7 MHz at v' = 0, rising through zero between v' = 10 and 11 to
++3.4 MHz at v' = 24-27, back to +0.3 at v' = 42 (v' = 0-43: mean +1.0, rms 2.7 MHz); v' = 44-63: within 1.1 MHz except
++3.6 MHz at v' = 58 (rms 0.9 MHz).
+Table VI minus the model's eqQ_X: v'' = 0-17 (BKT02's stated range), mean -4.0, rms 4.6 MHz; beyond it the shipped
+eqQ_X is BKT02 extrapolated and the difference grows to +28 MHz at v'' = 40, +156 at 60 and +540 at 80. At v'' = 80
+Bacis's measured -1632 MHz (Table IV) is 29 MHz from this paper's function and about 570 MHz from the extrapolated
+BKT02 value (-2202 MHz at J = 12).
+Checked with the shipped model only.
+"""

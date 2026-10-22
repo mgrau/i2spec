@@ -1,0 +1,111 @@
+id = "chen2005thesis_a"
+citation = "L. Chen, \"High-Precision Spectroscopy of Molecular Iodine: From Optical Frequency Standards to Global Descriptions of Hyperfine Interactions and Associated Electronic Structure\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. Ye), 2005, Appendix B (Tables B.1-B.79, pp. 162-248)"
+source = "Matt's library copy papers/Chen2005_thesis_Colorado.pdf (pdfTeX, 272 pages, with a text layer)"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+What it is. Appendix B gives one table per measured line (79 lines, v' = 42-70, 500-517 nm): the measured position of
+each observed main hyperfine component relative to one reference component (printed 0), its F', the position
+calculated by the authors' four-term fit, measured - calculated, and the fitted B-state constants. This set holds the
+74 lines that the thesis fits in Table 4.1 (the same 74 lines and constants as JOSA B 21, 820, Table 1, i.e.
+data/hyperfine_parameters/chen2004a). The five lines the authors leave out of Table 4.1 because of the 1g
+perturbation (P(69) 58-0, R(18) 59-0, P(77) 60-0, P(84) 60-0, P(63) 70-0) are chen2005thesis_b.
+
+Each row is f(a_k) - f(a_ref), kind "interval", with ref_component the component printed as 0 (a1 to a16, chosen
+per line). One more row, group chen2005thesis_a_sec432, is the a3 - a1 interval of P(13) 43-0 that Sec. 4.3.2 (p. 83)
+and the JOSA B paper quote from one pairwise scan of those two components, 131.764(8) MHz, as a check of the system; it
+is a separate scan from Table B.6, whose a1 and a3 are each measured from a12 (they give 131.767 MHz). Per Sec. 4.3 and the JOSA B paper (p. 822), the splittings were measured pairwise: the laser, locked to a
+reference cavity and tuned by a synthesizer-driven double-pass AOM, scanned back and forth across the reference
+component and one other component, and the bidirectional average of their separation was taken. So each row is a
+measured interval to the reference, not a position derived from a fit.
+
+How it was read. Parsed by script from the text layer (pdftotext -bbox), not retyped. The text layer drops every minus
+sign (the cmsy10 minus has no Unicode mapping) and renders the decimal point as ":". Signs were recovered from the
+page geometry: every table column is centered, so a number printed with a minus has its digits 4.65 pt to the right of
+the column center (the center of its header), and an unsigned one sits on it. Every position, calculation and
+difference in the 74 tables fell within 1.2 pt of one of the two cases. Checks, all passed:
+- in every table the signed positions increase with the component label, and only the reference row is 0;
+- in every row, measurement - calculation reproduces the printed Mea.-Cal. column (whose sign was recovered
+  independently) to 1.5 kHz, the rounding of the printed values;
+- the printed F' of every label equals the F' of the main component of that rank in i2spec's own strongest-first
+  assignment (hyperfine.line_components), in all 74 lines, so the labels are ranks by frequency as i2spec uses them;
+- the tables of 33 lines were compared digit by digit with 200 dpi renders (B.1, B.6, B.7, B.9, B.10, B.12, B.14,
+  B.16, B.21, B.28, B.32, B.35-B.37, B.39, B.41, B.42, B.44, B.45, B.47, B.49, B.50, B.52, B.54, B.60, B.61, B.64,
+  B.69, B.71-B.74, B.77), including every table with a row more than 5 sigma from the model. No difference was found.
+
+Left out: the 15 rows marked "*" ("Not included in the fit"), as the authors did. The text layer drops the asterisk
+too; the starred labels were found from their 2.36 pt left shift in the label column and confirmed on the renders
+(the 12 tables with the footnote have exactly these stars). No reason is printed; Fig. B.2 shows P(17) 59-0 a5-a8
+blended with R(18) 59-0. As printed (MHz, from the reference; thesis obs - calc in brackets):
+  R(31) 47-0 a2 -402.022 [+0.097], a14 233.666 [+0.119] (from a9); P(17) 59-0 a5 381.348 [+0.132], a6 389.629
+  [-0.244], a7 419.638 [+0.131], a8 489.586 [-0.260] (from a1); P(27) 59-0 a3 -373.759 [+0.540] (from a12);
+  P(21) 60-0 a3 -308.604 [+51.608] (from a9; the fit puts it at -360.212); R(45) 60-1 a4 -293.039 [-0.168] (from
+  a11); P(33) 65-0 a19 417.943 [+0.789] (from a9); P(33) 69-0 a1 -606.777 [+0.792] (from a6); P(39) 69-0 a9 183.857
+  [-0.988] (from a5); R(44) 69-0 a11 137.248 [-1.023] (from a7); R(45) 70-0 a10 176.439 [-1.602], a11 185.292 [-0.080]
+  (from a8).
+
+Misprints and inconsistencies (none changes a value):
+- Table B.14's caption, and the list of tables, say "R(69) 45-0"; the section heading says P(69) 45-0, and the F'
+  values (63-73, so J' = 68) and Table 4.1 confirm it. Entered as P(69) 45-0.
+- Ten captions (B.65-B.68, B.70, B.75-B.79) print "cold-finger temperature: -2.28 C (vapor pressure: 0.5 Pa)";
+  -2.28 C is 3.3 Pa, as every other caption and the JOSA B paper say. Which is wrong is not known; at kHz level it
+  does not matter for these intervals, whose fit standard deviations there are 40-250 kHz.
+- The fitted constants printed under the tables equal Table 4.1 (and chen2004a) for 62 of the 74 lines; for 12 they
+  are a different fit or carry a misprint (listed in data/hyperfine_parameters/chen2005thesis/meta.toml). The
+  measured positions are not affected.
+
+Not entered from the thesis: the calculated and obs - calc columns (in `note`); the figures' spectra (Figs. B.1-B.6);
+the absolute frequency of P(13) 43-0 a3 in Chapter 3, which is jones2002a's measurement printed again (see notes);
+Chapter 2's linewidths and broadening coefficients (Table 2.1, Figs. 2.5-2.10).
+"""
+
+uncertainty = """
+Not printed per row. Each row carries the standard deviation of its line's four-term fit, as printed under the same
+table (4.6-250 kHz; footnote: the parameters' 1 sigma uncertainties are estimated from it). It is the scatter of the
+printed positions about the fit printed beside them, so it also contains the four-term model's own error, which
+dominates at v' >= 57 (Sec. 4.4: 10-20 kHz below v' = 55, from experimental causes). Where the appendix's standard
+deviation differs from Table 4.1's (R(51) 47-0 10 vs 7 kHz, P(17) 59-0 80 vs 73, R(49) 69-0 240 vs 116, P(35) 70-0 170
+vs 111, R(37) 70-0 230 vs 173, and by 1-4 kHz elsewhere, from the appendix's two-figure MHz values) the appendix's
+is used, since it belongs to the printed calculation column. R(41) 42-0 prints 0.0173732 MHz and is entered as printed. Two checks agree with this
+scale: Sec. 4.3.2 gives a1 - a3 of P(13) 43-0 from a separate pairwise scan as 131.764(8) MHz (131.7701 published);
+the 16 Table B.6 rows of P(13) 43-0, taken to a3, are 9.8 kHz rms from bipm2005a (fit sd 11 kHz).
+One group per line (chen2005thesis_a_B<table number>): its rows share the measured position of the reference component.
+"""
+
+notes = """
+Coverage: 74 lines, 1119 intervals (1118 from the tables, 1 from Sec. 4.3.2), v' = 42, 43, 45, 47, 49, 50, 51, 53, 55,
+57, 59, 60, 61, 63, 65, 69, 70, J'' = 10-111, all from v'' = 0 except P(49) 59-1 and R(45) 60-1. 962 rows are at v' >= 44 and 656 rows (44 lines) at v' >= 53, where
+the record held only R(98) 58-1 and R(26) 62-0 before.
+
+Relation to held data. These are the spectra behind data/hyperfine_parameters/chen2004a (JOSA B 21, 820, Table 1 =
+thesis Table 4.1, identical for all 74 lines; the journal prints no splittings). Fitting both counts the same spectra
+twice. The shipped model's B-state hyperfine table (src/i2spec/data/b_state_lines.json, hfs_table.py) is built from
+chen2004a, so the residuals below are not an independent test of these 74 lines. No observation set holds these
+measurements, so there is no [overlaps] table. P(13) 43-0 (17 rows) is also held from other groups (bipm2005a,
+borde1981a, hackel1980a, ruben1973a, landsberg1976a) as independent measurements, and falls under the standing
+exclusion of that line (validation.EXCLUSION). Chapter 3's P(13) 43-0 a3 absolute (71.8 +- 1.5 kHz above the CIPM
+value, cold finger -5 C) is jones2002a's measurement and is not entered again; the thesis prints the CIPM reference as
+582 490 603 307 kHz twice in the text (pp. 62, 67), the same transposition as the Jones 2002 Fig. 5 inset (the CIPM
+1997 value is ...370 kHz; see jones2002a).
+
+Residuals against i2spec2026o (Predictor(), obs - model): 1119 rows, 222 kHz rms, median |r| 22.5 kHz, rms(r/u) 2.95,
+80 rows beyond 5 u. By v': 42-43 (157 rows) 32 kHz rms; 45-55 (428 rows) 25 kHz; 57-61 (306) 330 kHz; 63-70 (228)
+306 kHz. Without the five lines the authors themselves flag as perturbed (R(65), R(74) 57-0; P(17), P(27), R(28)
+59-0; 61 rows, 722 kHz rms): 1058 rows, 148 kHz rms. The Sec. 4.3.2 row is -5.1 kHz from the model. Every row beyond
+5 u was compared with its render, and every one is within 2.1 fit standard deviations of the authors' own four-term
+fit, so they are model errors, not transcription errors: at v' = 43 the residuals of P(25), P(38) and R(40) grow with the interval (a scale-like 1e-4,
+up to 123 kHz at 850 MHz), the lines whose chen2004a eqQ scatters 0.1-0.3 MHz from BKT02 (hfs_table.SOURCE_FLOOR);
+above v' = 55 the model misses by 0.1-1.4 MHz, most at the 1g-perturbed lines and at v' = 69-70.
+Checked with the shipped model only.
+"""
+
+[conditions]
+method = "FM saturation spectroscopy (1 MHz FM sidebands on the probe, pump amplitude-modulated); frequency-doubled Ti:sapphire laser locked to a reference cavity and tuned by a double-pass AOM; intervals measured pairwise against one reference component, bidirectional scans"
+cell = "BIPM cell, 8 cm, Brewster windows"
+cold_finger_C = -2.28
+pressure_Pa = 3.3
+pump_mW = [1.4, 17.0]
+probe_mW = [0.09, 0.57]
+note = "Per-line pump and probe powers and lock-in time constants (30 or 100 ms) are in each table caption; beams about 3 mm, focused for some weak lines at v' >= 60; ten captions print 0.5 Pa beside -2.28 C (see transcription)"

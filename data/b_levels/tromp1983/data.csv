@@ -1,0 +1,7 @@
+isotopologue,v,G,G_unc,B_x100,B_x100_unc,B_mech_x1e4,D_mech_x1e4,note
+127I2,75,,,,,51.33,0.0021,"Table I: no observed value (dashes)"
+127I2,78,,,,,37.31,0.0032,"Table II prints this B_mech as 3.731e-3. Reprints, not entered: Table I B_v(obs) 35.77(+-1.00)e-4 (Danyluk and King 1977); Table II Gerstenkorn-Luc (1982, ref. 10) 3.738(10)e-3 and Danyluk-King 3.577(49)e-3"
+127I2,79,,,,,32.70,0.0037,"Table II prints this B_mech as 3.270e-3. Reprints, not entered: Table I B_v(obs) 29.64(+-1.25)e-4 (Danyluk and King 1977); Table II Gerstenkorn-Luc (1982, ref. 10) 3.291(10)e-3 and Danyluk-King 2.964(69)e-3 (misprint: Danyluk and King print +- 59)"
+127I2,80,,,,,28.13,0.0044,"Table II prints this B_mech as 2.813e-3. Reprints, not entered: Table I B_v(obs) 25.91(+-1.43)e-4 (Danyluk and King 1977); Table II Gerstenkorn-Luc (1982, ref. 10) 2.837(50)e-3 and Danyluk-King 2.591(68)e-3"
+127I2,81,,,,,23.63,0.0053,"Reprint, not entered: Table I B_v(obs) 17.84(+-0.80)e-4 (Danyluk and King 1977)"
+127I2,82,,,,,19.20,0.0066,"Reprint, not entered: Table I B_v(obs) 10.64(+-4.13)e-4 (Danyluk and King 1977)"

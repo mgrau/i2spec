@@ -1,0 +1,9 @@
+isotopologue,v,G,G_unc,B_x100,B_x100_unc,J,perturber,perturber_v,perturber_J,delta12_calc,h_signal,note
+127I2,59,,,,,7,c1g(ab),14,6,,"predicted, not observed","Sect. 4.1: 'a second but less close resonance at Jc = 6, JB = 7 is predicted' by the two-state model of Eq. (8) (Fig. 6), a Delta J = 1 hyperfine coupling; no Delta12 printed"
+127I2,59,,,,,8,c1g(ab),14,,,very minor peak,"Sect. 3.3: 'a very minor peak at JB = 8'; Sect. 4.1: 'instead a much weaker peak ... is observed at JB = 8. Presumably a small local perturbation at the 0.1 cm-1 level has moved levels in and out of resonance'; partner J not given"
+127I2,59,,,,,10,c1g(ab),14,10,0.12,weak background,"Sect. 4.1: Delta12(10) = 0.12 cm-1; Sect. 3.3: weak H-state production throughout JB = 6-29"
+127I2,59,,,,,15,c1g(ab),14,15,0.088,weak background,"Sect. 4.1: Delta12(15) = 0.088 cm-1"
+127I2,59,,,,,21,c1g(ab),14,21,0.012,,"Sect. 4.1: Delta12(21) = 0.012 cm-1; signal in Fig. 6 only (not digitized)"
+127I2,59,,,,,22,c1g(ab),14,22,0.005,sharp peak,"Sects. 3.3, 4.1: the closest resonance, Jc = JB = 22, and the strong peak of H-state production; Delta12(22) = 0.005 cm-1; pumped by P(23) 59-0 (Sect. 3.4; Eq. (1) names R(21) 59-0, which reaches the same level)"
+127I2,59,,,,,23,c1g(ab),14,23,0.016,,"Sect. 4.1: Delta12(23) = 0.016 cm-1; signal in Fig. 6 only (not digitized)"
+127I2,59,,,,,25,c1g(ab),14,,,too weakly coupled,"Sect. 3.4: pumped by R(24) 59-0 together with B(59, 22) (P(23) 59-0) inside the 0.2 cm-1 pump bandwidth; 'only the first is sufficiently strongly coupled to the c1g state to access ungerade IP states'; from it only parallel transitions to high v of E0g+(1) are seen"

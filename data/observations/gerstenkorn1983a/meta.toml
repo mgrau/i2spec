@@ -1,0 +1,122 @@
+id = "gerstenkorn1983a"
+citation = "S. Gerstenkorn and P. Luc, \"Excitation spectrum of I2 induced by laser radiation near the dissociation limit of the B-state\", Laser Chem. 1, 83-112 (1983)"
+source = "https://doi.org/10.1155/lc.1.83 (library copy papers/Gerstenkorn1983_LaserChem1_83.pdf)"
+doi = "10.1155/lc.1.83"
+retrieved = "2026-10-21"
+unit = "cm-1"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+The PDF is a scan (600 dpi bilevel) whose text layer garbles most digits; every number was read on 300 and 600 dpi
+page renders and typed. Two tables are entered, 85 rows, all hyperfine-free line centers (component empty) of
+(v',0) bands, v' = 72-80, J'' = 2-16:
+
+Table VII (pp. 103-104), "Wavenumbers of selected lines, useful for calibration purposes": 44 lines of the laser
+excitation spectrum between 20022.2 and 20037.6 cm-1 (the text says 43).
+  sigma_Fourier, the line's wavenumber in the laboratory's Fourier-transform absorption spectrum, with its
+  uncertainty in parentheses in units of 1e-4 cm-1: group gerstenkorn1983a_fourier, 44 rows.
+  sigma_F.P., the wavenumber measured in the excitation spectrum with Fabry-Perot fringes from a reference line of
+  the same scan, whose wavenumber was set to its Fourier value: group gerstenkorn1983a_fp, 31 rows. The 13
+  reference lines (F.P. value in parentheses, equal to the Fourier value; the text says 12) have no F.P. row.
+  sigma_cal (calculated from the Table II constants, or those of ref. 8 for the 72-0 band) and the printed
+  F.P. - Fourier are in the note column.
+Table III (p. 91), the ten "unblended lines that we have assigned to the (80,0) band", column Obs.: group
+gerstenkorn1983a_fp, 10 rows.
+
+Assignments. Table VII gives only the line number N of the excitation spectrum; the assignment is the starred
+entry of that number in the Figure 3 line list (pp. 107-112), whose wavenumber equals the Table VII sigma_cal in
+all 44 cases. Fifteen numbers carry further assignments in Figure 3 ("Blended lines have same line number and the
+same intensity", p. 106): 4, 17, 19, 21, 43, 50, 67, 70, 84, 92, 109, 127, 157, 162, 181. They are entered under the
+starred assignment the authors chose for calibration, and the note names the other lines with their calculated
+positions (0.5-15 mK away); the value is the position of the blended feature. Four Table III lines are also
+printed, unassigned, in Figure 3 with the same values (lines 135, 174, 187, 189).
+
+Checks and misprints.
+  - F.P. - Fourier recomputed from the transcribed values equals the printed column in 29 of 31 rows. Line 47:
+    .955 - .9565 = -1.5e-3, printed -1.0 (the F.P. value was probably .9555 before rounding). Line 158: .946 -
+    .9480 = -2.0e-3, printed +2.0: either the sign or the F.P. value (.950) is misprinted, and the model cannot
+    tell (-2.3 or +1.7 mK). Both entered as printed and flagged in the note.
+  - Table III: B80 recomputed from the four R(J) - P(J) pairs (J = 7, 8, 9, 11; the paper's eq. 3 with D = 0.372e-6)
+    is 0.0028367 +- 0.0000045 (printed 0.002837(50)), and sigma0(80) refitted to the ten Obs. values with B and D
+    fixed is 20041.5688 +- 0.0024 (printed 20041.569 +- 0.005), so all ten values are those the authors used. The
+    Diff. column is calc - obs and has two misprints: R(8) prints -5 for +5 (.144 - .139) and R(11) +13 for +17
+    (.087 - .070); the R(11) value .070 is also Figure 3 line 189. The Calculated R(4), printed 20040.817, is
+    20040.917 from the printed extrapolated constants (calculated, not entered).
+  - The sigma_Fourier values are the line list of the Orsay atlas Partie IV to 1 in the last digit, and every
+    printed uncertainty is the atlas pointing precision (see notes).
+
+Not entered:
+  - Figure 3, the line list of the whole excitation spectrum (218 numbers, 20022.10-20039.43 cm-1): its wavenumbers
+    are calculated ("the adopted values of the wavenumbers are not the observed values but the calculated ones",
+    p. 105). Recomputed from Table II with the X v'' = 0 terms, they match the printed values with sd 0.5 mK
+    (3-decimal entries, v' = 78, 79) and 1.0 mK (4-decimal entries). Its measured entries are the six unassigned
+    lines (four are Table III lines; 118 at 20031.6100 and 172 at 20036.0100 remain unassigned) and the R'1
+    features (groups of hyperfine components of R(1): 72-0 20024.53, 73-0 20028.28, 74-0 20031.47, 75-0 20034.14,
+    76-0 20036.35), which a line key cannot hold. Five entries depart from Table II and may be measured values, but
+    the paper does not say so: P(20) 78-0 20025.3240 (calc .3163), P(13) 78-0 20033.3970 (.3945), R(0) 75-0
+    20034.1760 (.1713), R(0) 77-0 20038.18 (.1754), and R(9) 78-0, printed 20036.659 on p. 111 but 20036.6489 (the
+    atlas line 3602) on p. 112. Typing slips: 22024.5640 (R(0) 72-0), 22025.3240 (P(20) 78-0), 20036.505 for
+    20026.505 (R(20) 79-0); number 71 is printed for two features of different intensity and 72 is missing.
+  - Tables I, II, IV, V and VI (constants). The measured per-level G and B of Tables II, III, V and VI are in
+    data/b_levels/gerstenkorn1983; the long-range results of Table IV are summarized below.
+  - The extrapolated constants and the Calculated column of Table III.
+"""
+
+uncertainty = """
+Fourier rows: as printed, which is the atlas pointing precision (noise only), 1.0-5.1 mK. The Fourier scale is
+common to the group: the atlas states an absolute accuracy of 0.002 cm-1, and against the model it reads -200.8 ppb
+(data/atlas_lines/orsay1983_part4.toml), -4.0 mK here.
+F.P. rows: 0.005 cm-1, the stated estimate for distances between strong, well-defined lines (p. 87) and the stated
+reproducibility for repeated scans (p. 105); not called 1 sigma. For Table VII the authors add that within 0.8 cm-1
+of a reference line the F.P. values agree with the Fourier ones within 0.010 cm-1 (pp. 102-104); the printed
+differences have rms 5 mK (mean +3.9 mK). The six Table III lines above 20037.547 cm-1 (R(7), R(8), R(9), P(7),
+P(8), P(9) of 80-0) get 0.025 cm-1: there "the line positions were determined solely by means of the Fabry-Perot
+fringes", and the authors expect their uncertainties "do not exceed 0.025 cm-1" (p. 105), an upper bound entered as
+printed. The F.P. scale is set by Fourier values (one or more reference lines per scan, and "43 Fourier values as
+standards" for the lines of Figure 3); which scan each line came from is not stated, so all F.P. rows share one
+group, which also keeps the (80,0) rows from having a group to themselves.
+"""
+
+notes = """
+Same laboratory and the same Fourier spectrum as the Orsay atlas Partie IV (Gerstenkorn and Luc 1983, 19 700-20 035
+cm-1; data/atlas_lines/orsay1983_part4*): 43 of the 44 sigma_Fourier values are atlas lines (within 1e-4 cm-1,
+with the same uncertainties), so group gerstenkorn1983a_fourier is the atlas measurement printed again, not an
+independent one. The atlas is not an observation set, so there is no [overlaps] entry. Table VII line 158 (P(6)
+76-0, 20034.9480(30)) is not in the atlas line list, whose classification gives P(6) 76-0 only as calculated
+(20034.9441). The F.P. and (80,0) values are this paper's own measurements, from the excitation spectrum.
+Gerstenkorn and Luc's 1985 Dunham analysis (J. Phys. 46, 867; catalog gerstenkorn1985a) reaches v' = 80, presumably
+with these lines.
+
+Residuals against i2spec2026o (obs - model):
+  Fourier (44 rows): mean -3.7 mK, sd 1.7 mK; by v': 72 -5.3 (5 rows), 73 -3.9 (4), 74 -3.5 (7), 75 -3.8 (12),
+  76 -2.3 (10), 77 -5.3 (5, sd 2.6), 78 -0.4 (1). The mean is the atlas scale (-4.0 mK at -200.8 ppb). This is not
+  an independent test: the shipped model's levels v' = 51-79 were fitted to the unblended atlas lines
+  (prototypes/orsay4_fit.py), which include most of these. Blended rows (15): mean -4.6 mK, sd 1.9; the others:
+  mean -3.2 mK, sd 1.5. Two rows exceed 5 times their printed uncertainty, R(8) 72-0 (-5.3 mK) and R(5) 72-0
+  (-6.2 mK), both at 1.0 mK and both blends; with the -4.0 mK scale removed they are -1.3 and -2.2 mK, and both
+  values were checked against the page and the atlas.
+  F.P., Table VII (31 rows): mean +0.2 mK, rms 3.5 mK, all within 1.5 x 0.005; by v': 72-77 rms 1.6-4.2 mK, P(12)
+  78-0 +6.1 mK.
+  (80,0), Table III (10 rows): -6 to -28 mK, mean -19 mK, rms 20 mK. The four rows at 0.005 cm-1 are at 4.4-5.5
+  times it (R(11) -26.1, P(11) -27.5, P(12) -25.3, P(15) -21.8 mK); the six above 20037.55 cm-1 are within 0.025
+  (-6 to -25 mK). They were re-checked against the page images and by the B80 and sigma0 recomputation, so they are
+  not transcription errors. v' = 80 has no atlas line, and the model's level there is an extrapolation: its J = 0
+  term is 19.4 mK (0.58 GHz) above the paper's sigma0(80), and its B is 0.8 % lower (the paper's uncertainty is
+  1.8 %), while at v' = 73-79 the model is within +0.6 to +7.8 mK of the paper's G (data/b_levels/gerstenkorn1983).
+
+The paper's long-range results (not entered): Le Roy-Bernstein fits (n = 5) to G of v' = 73-80 (Tables II and III),
+with "one standard deviation" errors: D(B) = 20 043.176 +- 0.008 cm-1 (above X v = 0, J = 0), v_D = 87.364 +- 0.006,
+C5 = (2.850 +- 0.010)e5 cm-1 A^5. Doubling the range to v' = 66-80 and dropping the lowest levels one by one gives D
+from 20 043.159 to 20 043.181. The authors propose D(B) = 20 043.176 +- 0.016 cm-1 for the 2P3/2 + 2P1/2 limit, and,
+with the fine-structure splitting 7602.977 +- 0.005 cm-1 (ref. 14), D0(X) = 12 440.200 +- 0.020 cm-1. The last bound
+level is v' = 87. Table IV also reprints Barrow and Yee (v' = 64-77: 20 043.208(33), 87.345(7), 2.8861) and Danyluk
+and King (72-82: 20 043.063(20), 87.183(12), 2.776(18)); these are not entered. Band intensities fall by about a
+factor 1.5 per v' (the Franck-Condon density predicts 1.25), and (80,0) is about 100 times weaker than (73,0). No
+(81,0) or (82,0) line was found; all observed lines of 20 022-20 039 cm-1 but one are assigned, so no perturbing
+state was seen. Checked with the shipped model only.
+"""
+
+[conditions]
+method = "Laser-induced fluorescence excitation spectrum: single-mode ring dye laser (Spectra-Physics 380, coumarin) scanned continuously over about 1 cm-1, each scan repeated four times, about 100 overlapping scans over 20 022-20 039.5 cm-1; fluorescence at right angles on a photomultiplier; chart recorder with Fabry-Perot fringes at 0.025, 0.033 and 0.250 cm-1 (etalons not temperature stabilized); line width 0.025 cm-1"
+cell = "sealed, 10 cm long, 2 cm diameter, about 20 C, 0.25 Torr"
+fourier = "the laboratory's Fourier-transform absorption spectrum, published as the atlas Partie IV"

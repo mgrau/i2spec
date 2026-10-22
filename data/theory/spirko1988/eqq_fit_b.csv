@@ -1,0 +1,13 @@
+v,J,exp_MHz,calc_MHz,exp_minus_calc_MHz,weight,ref,source
+8,9,-502.1,-504.7,2.6,30,18,"K. G. Zhao, J. Blabla and J. Helmcke, IEEE Trans. Instrum. Meas. IM-34, 252 (1985) (data/observations/zhao1985a)"
+8,9,-493.3,-504.7,11.4,0,19,"J. Blabla and J. Helmcke, IXth Int. Conf. on High Resolution IR Spectroscopy, Liblice (1986)"
+11,47,-500.0,-508.9,8.9,0.1,17,"M. Gläser, private communication"
+11,128,-514.0,-509.7,-4.3,10,16,"M. Gläser, private communication"
+12,6,-510.0,-510.2,0.2,30,15,"S. Churassy et al., Opt. Commun. 30, 41 (1979)"
+15,49,-500.0,-514.7,14.7,0.1,17,"M. Gläser, private communication"
+17,35,-530.0,-517.5,-12.5,0,17,"M. Gläser, private communication"
+43,12,-558.7,-558.0,-0.7,100,8,"A. Yokozeki and J. S. Muenter, J. Chem. Phys. 72, 3796 (1980)"
+61,11,-560.0,-568.9,8.9,0,11,"J. P. Pique et al., Opt. Commun. 36, 354 (1981) (data/observations/pique1981a)"
+62,27,-569.1,-568.8,-0.3,100,9,"Ch. J. Bordé et al., J. Phys. 42, 1393 (1981) (data/observations/borde1981a)"
+64,40,-574.0,-568.4,-5.6,0,11,"J. P. Pique et al., Opt. Commun. 36, 354 (1981) (data/observations/pique1981a)"
+67,50,-583.0,-567.4,-15.5,0,11,"J. P. Pique et al., Opt. Commun. 36, 354 (1981) (data/observations/pique1981a)"

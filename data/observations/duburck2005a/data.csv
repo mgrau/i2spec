@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(26) 62-0,a7,frequency,597366498.65462,0.00085,,,duburck2005a,"Sect. V: f(a7) = 597 366 498 654.62 kHz, standard deviation of the four measurement-set means 0.85 kHz (11/02-12/02/2004 and earlier sets; Fig. 7)"

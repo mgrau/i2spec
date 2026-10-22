@@ -265,10 +265,11 @@ fit is unchanged by the change.
 | `thang2012a` | Thang et al. 2012 (633 nm): the VMI He-Ne/I₂ laser on f by the KRISS comb at three output powers, 1.1 kHz | 3 | **pending**; `[shift_correction]` as `bipm2003a` |
 | `ikeda2018a` | Ikeda et al. 2018 (532 nm, arXiv version): R(86) 33-0 a10 of the YNU Nd:YAG laser by comb (1.0 kHz) and of a compact Nd:YVO₄ laser by beat (3.2 kHz) | 2 | **pending**; the printed Nd:YAG value has "322" for "302" (20 MHz), corrected |
 | `klein2002a` | Klein & Arie 2002 (778 nm): nine Doppler-limited line centers of the 0-14 and 0-13 bands by wavemeter, 0.01 cm⁻¹ | 9 | **record only** (excluded): five "R" lines are P lines, corrected |
+| `duburck2005a` | du Burck et al. 2005 (501.7 nm, arXiv version): R(26) 62-0 a7 absolute, 2004 comb measurements, 0.85 kHz | 1 | **pending**; entered after the `pending_blind_v2` freeze; same group and allowance as `goncharov2007a` (agrees to 0.15 kHz), no overlap declared |
 
-**Pending sets.** The 36 sets transcribed on 2026-10-20 (`powel2021a` to `zhang1999a`) and the 35 of
-2026-10-21 (`ruben1973a` to the end, except the three record-only sets) carry an `exclude` line that starts with
-"pending": 71 sets, 1278 rows. They load and validate, but `load_all()` leaves them out of every
+**Pending sets.** The 36 sets transcribed on 2026-10-20 (`powel2021a` to `zhang1999a`) and the 36 of
+2026-10-21 (`ruben1973a` to the end, except the three record-only sets; `duburck2005a` came after the v2 freeze)
+carry an `exclude` line that starts with "pending": 72 sets, 1279 rows. They load and validate, but `load_all()` leaves them out of every
 fit and benchmark. Matt decided on 2026-10-21 that every new set stays out of training and serves as the blind
 test of balanced-expanded (`research-20261020-balanced-expanded`). How a later model is trained on the complete
 data is decided then. The 36 sets of 2026-10-20 were frozen and scored once in
@@ -348,6 +349,32 @@ Checked on 2026-10-21 in the literature search (OpenAlex, Crossref, arXiv and th
 - A spectrum, not a line list: Mashburn et al. 2026 (arXiv:2602.07239), a comb-referenced dual-comb I₂ spectrum over
   500-600 nm at 100 MHz resolution, compared with the Salami-Ross atlas; the data would have to be requested.
 - Already in: the Sansonetti 1996 LLNL report (UCRL-CR-125216) is the source `sansonetti1997a` was typed from.
+
+Library audit, 2026-10-21 (every PDF in papers/ against the data directories and this file). Not entered:
+- Measurements the library does not hold: Salumbides et al. 2008 (Eur. Phys. J. D 47, 171) measured more than
+  380 frequency differences between ¹²⁷I₂ lines and ¹²⁹I₂ or ¹²⁷I¹²⁹I lines, but they are only in its "electronic
+  form at www.epj.org" data set, which Springer's page no longer links. Salumbides et al. 2006 (Mol. Phys. 104,
+  2641) gives per-line ¹²⁹I₂ and ¹²⁷I¹²⁹I hyperfine parameters in its Molecular Physics supplement only. Knöckel et
+  al. 2004 (Eur. Phys. J. D 28, 199) keeps its ~1500 compiled frequencies in an EDP online table, and its
+  near-infrared difference frequencies come from Bodermann's 1998 Hannover thesis.
+- Not yet transcribed: Gerstenkorn, Luc & Vetter 1981 (Rev. Phys. Appl. 16, 529), more than 750 laser-excitation
+  lines in 15 780-15 815 cm⁻¹, the gap the He-Ne monitor left in the Orsay atlas (the held atlases have 80-188 lines
+  there). The positions are printed under the spectrum plots and are not in the text layer; it is atlas work, like
+  `data/atlas_lines/orsay*`.
+- Nothing measured to enter: Arie et al. 1993 (Opt. Lett. 18, 1757; its Table 1 is atlas and calculated
+  wavenumbers), Cheng et al. 2002 (Opt. Lett. 27, 571; linewidths and spectra), Wolf 2009 (thesis; calculated
+  positions, pressure broadening and shift coefficients), Gerstenkorn & Luc 1979 (the atlas calibration, -0.0056
+  cm⁻¹), Gerstenkorn et al. 1980 and Gerstenkorn & Luc 1985 (J. Phys. 46, 867; constants), Gerstenkorn et al. 1985
+  (J. Phys. 46, 355; an IPA potential and its eigenvalues), Bacis et al. 1986 (re-fits the `x_levels` data), Broyer
+  et al. 1978 (theory), Vigué et al. 1981 (lifetimes and predissociation rates), Reiners et al. 2024 (comb-line
+  positions; the iodine spectrum is on request), the dual-comb demonstrations Ideguchi et al. 2012 and Eber et al.
+  2025 and 2026, Döringshoff et al. 2017 (stability), Vergès & Amiot 1987 (review).
+- Other electronic states with no home here: Churassy et al. 1981 (J. Chem. Phys. 75, 4863; rotation-vibration
+  constants of a 1g and a' 0g⁺ from B-a and B-a' fluorescence).
+- Hyperfine constants only: Bodermann et al. 2002 (Eur. Phys. J. D 19, 31; near-infrared lines), with the papers above.
+- Library files that are not what their names say: `Doringshoff2019_PRApplied11_054068_arXiv1702.08330.pdf` is
+  Schkolnik et al.'s 2017 JOKARUS design preprint (the 2019 Phys. Rev. Applied paper is not held), and
+  `ChenYT2024_CJP88_485_arXiv2309.05932.pdf` is the arXiv preprint, not the journal version `chen2023a` still lacks.
 
 The 2026-10-21 search found about 150 papers with iodine measurements that are not held; only those above were open
 to a script. The rest (publisher bot walls: IOP, AIP, APS, Elsevier, Optica, IEEE, RSC, Wiley, Springer and

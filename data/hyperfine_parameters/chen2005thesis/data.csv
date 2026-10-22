@@ -1,0 +1,7 @@
+line,eqQ,eqQ_unc,C,C_unc,d,d_unc,delta,delta_unc,fit_sd_kHz,note
+127I2 P(69) 58-0,-553.38,0.69,0.72696,0.00053,0.589,0.049,0.726,0.032,300,"Table B.46 (p. 209): four-term fit to the 14 printed components (a1, a3, a4, a9-a12, a15-a21); eqQ_X = -2453.47 MHz; left out of Table 4.1 and chen2004a (1g perturbation); d and delta both positive as printed"
+127I2 R(18) 59-0,-564.99,0.44,0.7332,0.0014,-0.197,0.026,0.030,0.037,200,"Table B.48 (p. 213): fit to 10 components (a1, a2, a6-a8, a10-a14; a5 starred, not included); eqQ_X = -2452.62 MHz; left out of Table 4.1 and chen2004a (1g perturbation); spectrum overlaps P(17) 59-0 (Fig. B.2)"
+127I2 P(77) 60-0,-550.7,3.8,0.9176,0.0022,0.88,0.24,-0.30,0.18,2400,"Table B.57 (p. 223), fit 1 of 2: a1-a10, a13-a21; eqQ_X = -2453.69 MHz; left out of Table 4.1 and chen2004a (1g perturbation); fit 2 is the next row"
+127I2 P(77) 60-0,-563.68,0.89,0.91296,0.00036,0.119,0.064,0.175,0.054,330,"Table B.57 (p. 223), fit 2 of 2: a1-a10, a13 only; eqQ_X = -2453.69 MHz; left out of Table 4.1 and chen2004a (1g perturbation); fit 1 is the previous row"
+127I2 P(84) 60-0,-566.1,3.2,0.9093,0.0021,-1.00,0.16,0.25,0.17,1100,"Table B.58 (p. 225): fit to 13 components, a2 and a10 not observed and excluded; eqQ_X = -2453.9 MHz; u-g mixing with the 1g state (Fig. B.5); the authors say the spectrum cannot be fitted (Sec. 4.4 footnote 2)"
+127I2 P(63) 70-0,-584.3,1.2,2.5889,0.0011,-2.408,0.050,3.456,0.043,620,"Table B.79 (p. 247): fit to 17 components (a1-a13, a16-a19); eqQ_X = -2453.31 MHz; left out of Table 4.1 and chen2004a (1g perturbation)"

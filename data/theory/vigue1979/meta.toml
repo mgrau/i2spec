@@ -1,0 +1,56 @@
+id = "vigue1979"
+citation = "J. Vigué, M. Broyer and J. C. Lehmann, \"Ab initio calculation of hyperfine and magnetic parameters in the I2 B state\", Phys. Rev. Lett. 42, 883-886 (1979), Table I"
+source = "https://doi.org/10.1103/physrevlett.42.883 (publisher PDF, papers/Vigue1979_PRL42_883.pdf)"
+doi = "10.1103/physrevlett.42.883"
+retrieved = "2026-10-21"
+unit = "C_I in kHz; g_J and g_1 dimensionless, in nuclear magnetons (see notes); r2 in A; ED_minus_Ev in cm-1; P2 dimensionless"
+kind = "semiclassical calculation of the B-state magnetic hyperfine constant C_I, rotational g factor g_J and nuclear-g-factor shift g_1 near the dissociation limit, with the measured values the paper compares them to"
+
+transcription = """
+Table I (p. 885), all 5 rows and every column, read from a 300 dpi render and checked against the PDF text layer,
+which drops the column subscripts and footnote markers. Columns *_calc are the paper's results; *_meas and *_meas_unc
+are the experimental values it prints for comparison (+- as printed, convention not stated), empty where none is
+printed. P2, r2 and E_D - E_v are the inputs of the calculation. Printed digits kept (e.g. 0.83, -0.4).
+
+Eq. (17) (p. 886), the analytic formula behind C_I(calc), as printed:
+  C_I = 1 - omega_v/2 omega_e  hbar^2/(2 mu r2^2)  1/(E_D - E_0+u,v)  [ (9/2) a_3/2 + (3/2) a_1/2 ],
+with the parentheses around 1 - omega_v/2 omega_e missing in print: that factor is P2 = 1 - P1, P1 = omega_v/2 omega_e
+(Eqs. 10b, 11). a_3/2 and a_1/2 are the atomic magnetic hyperfine constants of the 2P3/2 and 2P1/2 states (Ref. 9).
+Pique et al. 1981 (p. 357) quote the formula with its constant evaluated: C'(kHz) = 3.614e6 P2 / r+^2 / (E_diss - E_v),
+r+ in A and energies in cm-1. Check: with that constant, the printed P2, r2 and E_D - E_v give 207.4, 246.5, 979.6,
+1195.7 and 2428 kHz against the printed 207, 246, 977, 1190 and 2390, within the rounding of the printed inputs
+(E_D - E_v = 27 cm-1 at v' = 70 is the least precise: 27.45 cm-1 gives 2390).
+"""
+
+notes = """
+Sources of the columns, from the table footnotes and the reference list (p. 886-887):
+  r2: Ref. 10, J. Wei and J. Tellinghuisen, J. Mol. Spectrosc. 50, 317 (1974), and J. Tellinghuisen, private
+    communication.
+  C_I meas: Refs. 1 and 2, M. D. Levenson and A. L. Schawlow, Phys. Rev. A 6, 10 (1972); L. A. Hackel,
+    K. H. Casleton, S. G. Kukolich and S. Ezekiel, Phys. Rev. Lett. 35, 568 (1975); B. M. Landsberg, Chem. Phys.
+    Lett. 43, 102 (1976). The table does not say which line (J') each value comes from. At v' = 43 it is presumably
+    P(13) 43-0 (J' = 12), the line those papers analyze; Landsberg's refit gives C' = 186.905 +- 0.064 kHz for it
+    (library copy, text layer), so the printed 186.8 +- 0.1 is probably Hackel et al.'s value (not held).
+  g_J and g_1 meas: Ref. 3, M. Broyer, J. C. Lehmann and J. Vigué, J. Phys. (Paris) 36, 235 (1975); G. Gouedard,
+    M. Broyer, J. Vigué and J. C. Lehmann, Chem. Phys. Lett. 43, 118 (1976).
+Units of g_J and g_1. The table prints none. Ref. 3 (p. 236, checked on a 300 dpi render of the library copy
+papers/Broyer1975_JPhys36_235.pdf) writes H_Zeem = -g_J mu_N H0 J_z - (g_I + g_1) mu_N H0 I_z, with g_I = 1.12 for
+127I, and its text gives g_J = -0.32 +- 0.04 and -1.8 +- 0.2, the values quoted here: so g_J and g_1 are in nuclear
+magnetons, and g_1 is the shift of the nuclear g factor, g_I -> g_I + g_1 (this paper, p. 884).
+
+What the calculation is. Second-order perturbation of B 0u+ by the two 1u states of the same 2P3/2 + 2P1/2 limit,
+through the off-diagonal rotational (J.L, J.S), electronic Zeeman and magnetic hyperfine operators, averaged
+semiclassically (WKB) and reduced to the outer turning point r2, which a level near the limit visits for a fraction
+P2 of its period. The 1u curves are taken flat at the B-state limit beyond 4.5 A (Gordeev et al., Ref. 8), and the
+electronic matrix elements come from separated-atom wavefunctions (Eqs. 13-15) and the atomic a_3/2, a_1/2. The
+energy denominators are the weak point the authors name. Pique et al. 1981 (data/observations/pique1981a) compare
+this formula with their C' at v' = 61-73 (its Table 2 C'_th column); Spirko & Blabla 1988 (data/theory/spirko1988)
+treat the quadrupole coupling instead. The fuller treatment is Broyer, Vigué & Lehmann, J. Phys. 39, 591 (1978)
+(catalog broyer1978a).
+
+Against the shipped model (i2spec2026o, hfs_params.line_states with its hyperfine table), C_B at J' = 12 (27 and 50
+for the upper levels): v' = 40, 150.3 kHz; v' = 43, 190.3; v' = 62, 930.3 (938.7 at J' = 27); v' = 64, 1109.9
+(1126.5 at J' = 27); v' = 70, 2066.6 (2236.1 at J' = 50). C_I(calc) runs 38 % and 29 % above the model at v' = 40
+and 43, and 4-16 % above at v' = 62-70; the printed meas values sit within 1-2 % of the model where both exist.
+Checked with the shipped model only.
+"""

@@ -1,0 +1,71 @@
+id = "chen2005thesis_b"
+citation = "L. Chen, \"High-Precision Spectroscopy of Molecular Iodine: From Optical Frequency Standards to Global Descriptions of Hyperfine Interactions and Associated Electronic Structure\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. Ye), 2005, Appendix B, Tables B.46, B.48, B.57, B.58 and B.79"
+source = "Matt's library copy papers/Chen2005_thesis_Colorado.pdf (pdfTeX, 272 pages, with a text layer)"
+retrieved = "2026-10-21"
+unit = "MHz"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+
+transcription = """
+The five lines of Appendix B that the thesis leaves out of Table 4.1 (and the JOSA B paper out of its Table 1,
+data/hyperfine_parameters/chen2004a) because the 1g(1Pi_g) state perturbs their upper levels: P(69) 58-0 (Table B.46,
+p. 209), R(18) 59-0 (B.48, p. 213), P(77) 60-0 (B.57, p. 223), P(84) 60-0 (B.58, p. 225) and P(63) 70-0 (B.79,
+p. 247). The other 74 tables are chen2005thesis_a, whose meta.toml describes the tables, the pairwise measurement and
+the reading; the same method and checks apply here. Each row is f(a_k) - f(a_ref), kind "interval", ref_component the
+component printed as 0.
+
+Reading. Parsed from the text layer with the signs recovered from the column geometry (see chen2005thesis_a), except
+Table B.57 (P(77) 60-0), whose two-fit layout was typed from the 200 dpi render of p. 223: the 18 positions from a1
+are all positive. All five tables were compared digit by digit with the renders. In B.46, B.48, B.58 and B.79,
+measurement - calculation reproduces the printed obs - calc to 1.5 kHz in every row; in B.57 both fits' columns were
+checked by hand. The printed F' of every label equals the F' of i2spec's main component of that rank, except P(63)
+70-0, where the thesis has a3 F' = 59 below a4 F' = 62 and i2spec orders them the other way; the labels are kept as
+printed (rank by measured frequency).
+
+Labels. In these lines the labels and F' are the authors' assignment through their four-term fit, which they say does
+not describe the spectra (Sec. 4.4, App. B intro): fit standard deviations 0.20 MHz (R(18) 59-0), 0.30 (P(69) 58-0),
+0.62 (P(63) 70-0), 2.4 or 0.33 (P(77) 60-0, two fits) and 1.1 MHz (P(84) 60-0, "cannot be fitted at all" without a2
+and a10). A rank by frequency is still well defined for the printed peaks, which is what i2spec matches.
+
+Left out:
+- R(18) 59-0 a5, starred "Not included in the fit": 338.729 MHz from a1 (thesis obs - calc -0.114 MHz).
+- P(84) 60-0 a2 and a10 (starred): not observed, no measurement printed (calculated -351.726 and 228.971 MHz from a6).
+- The extra peaks of the figures, which have no tabulated frequency: in P(84) 60-0 (Fig. B.5, p. 226) b1-b4 from u-g
+  mixing with the 1g state (b2 the crossover of b1 and b3), c7-c15 of R(30) 64-1 and d1 of P(81) 59-0; the R(65) 57-0
+  components (b1-b21) under P(69) 58-0 in Fig. B.1 (R(65) 57-0 is in chen2005thesis_a).
+- The calculated and obs - calc columns (in `note`; both fits for P(77) 60-0).
+"""
+
+uncertainty = """
+A judgement; the thesis prints no measurement uncertainty, and these lines' fit standard deviations (0.2-2.4 MHz)
+measure the failure of the four-term Hamiltonian, not the measurement. The spectra were taken the same way as the
+unperturbed lines of chen2005thesis_a, whose fit standard deviations at v' = 57-61 are 11-120 kHz (Sec. 4.4: 10-20 kHz
+from experimental causes below v' = 55), so 0.1 MHz is entered for the four lines at v' = 58-60. For P(63) 70-0, 0.2 MHz,
+about the largest fit standard deviation of the other v' = 70 lines (0.17-0.23 MHz; weak lines, pump 9-15 mW). One
+group per line (chen2005thesis_b_B<table number>).
+"""
+
+notes = """
+5 lines, 68 intervals: P(69) 58-0 (13 rows, from a1), R(18) 59-0 (9, from a1), P(77) 60-0 (18, from a1), P(84) 60-0
+(12, from a6), P(63) 70-0 (16, from a5). The thesis's own fitted constants of these lines, with very large standard
+deviations, are in data/hyperfine_parameters/chen2005thesis. P(17) 59-0 and R(18) 59-0 overlap in one scan (Fig.
+B.2), as do P(27) and R(28) 59-0 (Fig. B.3) and P(69) 58-0 and R(65) 57-0 (Fig. B.1). Cell conditions as
+chen2005thesis_a (BIPM 8 cm cell; captions: -2.28 C, 3.3 Pa, except B.79, which prints 0.5 Pa beside -2.28 C); pump
+2.5-10.2 mW.
+
+Residuals against i2spec2026o (Predictor(), obs - model): 68 rows, 38.4 MHz rms; by line P(63) 70-0 76.6 MHz rms
+(up to 149 MHz), P(69) 58-0 20.0, P(77) 60-0 7.6, P(84) 60-0 4.3, R(18) 59-0 2.2 MHz; 63 rows beyond 5 u. All five
+tables were compared with their renders; the authors' own fits come within 0.24 (R(18) 59-0), 0.73 (P(69) 58-0), 1.5
+(P(63) 70-0), 2.0 (P(84) 60-0) and 3.8 MHz (P(77) 60-0, fit 1) of every row, so the large residuals are the model's. Most of it is the spin-rotation constant: the model's C_B is 0.772 MHz at P(69) 58-0
+(thesis fit 0.727) and 2.262 MHz at P(63) 70-0 (thesis fit 2.589), and C_B times J' (68, 62) moves the outer
+components by tens of MHz. P(63) 70-0 (J' = 62) lies beyond the J' = 34-46 that chen2004a measured at v' = 70, where
+hfs_table holds the correction polynomial at its edge value, and v' = 58 has only R(98) 58-1 in the table.
+Checked with the shipped model only.
+"""
+
+[conditions]
+method = "FM saturation spectroscopy (1 MHz FM sidebands on the probe, pump amplitude-modulated); frequency-doubled Ti:sapphire laser locked to a reference cavity and tuned by a double-pass AOM; intervals measured pairwise against one reference component, bidirectional scans"
+cell = "BIPM cell, 8 cm, Brewster windows"
+cold_finger_C = -2.28
+pressure_Pa = 3.3
+pump_mW = [2.5, 10.2]
+probe_mW = [0.16, 0.39]

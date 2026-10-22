@@ -1,0 +1,9 @@
+isotopologue,v,G,G_unc,B_x100,B_x100_unc,note
+127I2,73,20028.303,,0.60672,,"Table II; fit to the Fourier-spectrum lines of (73,0) (Table I: R J'' 3-41, 31 lines; P 1-56, 25 lines; sd 2.8e-3 cm-1)"
+127I2,74,20031.489,,0.56018,,"Table II; (74,0) Fourier lines: R 2-47 (33), P 7-50 (26); sd 3.0e-3 cm-1"
+127I2,75,20034.161,,0.51340,,"Table II; (75,0) Fourier lines: R 4-44 (29), P 2-44 (29); sd 3.0e-3 cm-1"
+127I2,76,20036.373,,0.46689,,"Table II; (76,0) Fourier lines: R 2-32 (17), P 5-42 (19); sd 3.5e-3 cm-1"
+127I2,77,20038.167,,0.42117,,"Table II; (77,0) Fourier lines: R 7-35 (14), P 5-35 (10); sd 4.7e-3 cm-1"
+127I2,78,20039.6095,0.0020,0.3738,0.0010,"Tables V and VI (Table II: 20039.609, 0.37379); (78,0) from the excitation spectrum alone: R 2-21 (8), P 2-22 (9); sd 7.0e-3 cm-1"
+127I2,79,20040.7292,0.0030,0.3291,0.0010,"Tables V and VI (Table II: 20040.729, 0.32912); (79,0) from the excitation spectrum alone: R 6-21 (7), P 6-21 (8); sd 4.0e-3 cm-1"
+127I2,80,20041.5690,0.0050,0.2837,0.0050,"Tables III, V and VI: least-squares fit to the ten (80,0) lines of Table III (J'' 7-15) with D fixed at the calculated 0.3723e-6 (Table III prints 20041.569 +- 0.005); B also from R(J) - P(J), eq. 3"
