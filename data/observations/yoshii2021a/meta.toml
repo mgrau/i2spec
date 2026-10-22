@@ -58,7 +58,7 @@ of the splitting measurements (p. 1456); again without the systematic compressio
 """
 
 notes = """
-Residuals against the default Predictor (2026-09-29): R(36) 32-0 a1 +1.230 MHz (kobayashi2015a on
+Residuals against an earlier version of the model (2026-09-29): R(36) 32-0 a1 +1.230 MHz (kobayashi2015a on
 the same component: +0.991 MHz). P(35) 32-0 splittings -29 to +80 kHz, with the high-numbered ones
 (a15-a21) negative, as expected from the compression.
 """

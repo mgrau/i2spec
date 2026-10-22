@@ -40,7 +40,7 @@ it is not dominant for its ensemble, dispersion 0.5 kHz; the CCL assigns 5 kHz).
 """
 
 notes = """
-Residual against the current model (Predictor(), obs - model): -57.5 kHz, the model's absolute offset at
+Residual against an earlier version of the model (obs - model): -57.5 kHz, the model's absolute offset at
 R(56) 32-0 a10 (bipm2012a's CIPM value gives -52.4 kHz on the same line).
 """
 

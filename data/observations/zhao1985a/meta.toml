@@ -1,10 +1,10 @@
 id = "zhao1985a"
 citation = "P. Zhao, J. L. Blabla and J. Helmcke, \"127I2-stabilized He-22Ne laser at 640 nm wavelength\", IEEE Trans. Instrum. Meas. IM-34, 252-256 (1985)"
-source = "https://doi.org/10.1109/TIM.1985.4315317 (IEEE Xplore via ODU; Matt's library copy papers/Zhao1985_IEEE_TIM_34_252.pdf)"
+source = "https://doi.org/10.1109/TIM.1985.4315317 (IEEE Xplore)"
 doi = "10.1109/TIM.1985.4315317"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table I (p. 254), "Frequency differences between HFS components of the P(10) 8-5 and R(16) 8-5 lines (reference:

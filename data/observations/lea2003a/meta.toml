@@ -1,10 +1,10 @@
 id = "lea2003a"
 citation = "S. N. Lea, W. R. C. Rowley, H. S. Margolis, G. P. Barwood, G. Huang, P. Gill, J.-M. Chartier and R. S. Windeler, \"Absolute frequency measurements of 633 nm iodine-stabilized helium-neon lasers\", Metrologia 40, 84-88 (2003)"
-source = "https://doi.org/10.1088/0026-1394/40/2/313 (PDF supplied by Matt; library copy papers/Lea2003_Metrologia_40_84.pdf)"
+source = "https://doi.org/10.1088/0026-1394/40/2/313 (publisher PDF)"
 doi = "10.1088/0026-1394/40/2/313"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the pages: femtosecond-comb (Ti:sapphire, microstructure fibre,
@@ -21,7 +21,7 @@ NPL-S/BIPM-4 comparison.
 
 uncertainty = "As printed: 0.6 kHz (the standard deviation of the five daily values, each with 0.5 kHz for the modulation depth, 0.1 kHz temperature and 0.1 kHz power) and 0.7 kHz."
 
-notes = "Measured after the CIPM 2001 value (bipm2003a), so not one of its sources. [shift_correction] repeats bipm2003a's (CIPM conditions). Residuals against i2spec2026o (obs - model): -333.8 and -333.4 kHz as measured, -107.9 and -107.5 kHz after the shift correction, where bipm2003a's a16 reads -116.8 kHz: these lasers sit 9 kHz above the CIPM 2001 value, as the paper says. Checked with the shipped model only."
+notes = "Measured after the CIPM 2001 value (bipm2003a), so not one of its sources. [shift_correction] repeats bipm2003a's (CIPM conditions). Residuals against an earlier version of the model (obs - model): -333.8 and -333.4 kHz as measured, -107.9 and -107.5 kHz after the shift correction, where bipm2003a's a16 reads -116.8 kHz: these lasers sit 9 kHz above the CIPM 2001 value, as the paper says. Checked against the model only."
 
 [conditions]
 cold_finger_C = 15.0

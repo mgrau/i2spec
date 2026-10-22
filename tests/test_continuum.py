@@ -10,7 +10,7 @@ from i2spec.spectrum import air_to_vacuum
 
 EPS = 3.82353e-21  # cm² per L mol⁻¹ cm⁻¹
 #: Table II, ε at 0 °C and 35 °C. Its wavelengths fit best as air wavelengths (0.2-0.6 % at
-#: 405-495 nm, against 0.5-2 % read as vacuum; docs/research/continuum-model.md §10).
+#: 405-495 nm, against 0.5-2 % read as vacuum).
 TABLE2 = {405: (1.38, 1.89), 420: (7.08, 8.83), 435: (26.22, 30.24), 450: (74.08, 80.85), 465: (170.00, 178.24),
           480: (328.57, 332.99), 495: (533.16, 523.97), 700: (38.55, 37.07), 720: (31.81, 30.98),
           740: (24.04, 24.06), 760: (16.80, 17.45), 780: (10.99, 11.95), 800: (6.79, 7.79), 850: (1.69, 2.26)}

@@ -1,7 +1,7 @@
 """¹²⁹I₂ and ¹²⁷I¹²⁹I hyperfine structure (Salumbides et al., Mol. Phys. 104, 2641 (2006), S06).
 
 Targets: peaks of the calculated profiles in S06 Figs. 4 and 5, digitized from the PDF vector paths
-to about 0.1 MHz (docs/research/isotopologue-hyperfine.md §4.1b). The profiles come from S06's
+to about 0.1 MHz. The profiles come from S06's
 per-line fits, not from its Table 2-4 formulae, so differences of a few 0.1 MHz are expected.
 """
 
@@ -26,7 +26,7 @@ FIG5_127I129I_R37_11_3 = (12.2, [0.00, 21.99, 44.59, 136.44, 170.54, 196.05, 236
 
 @pytest.fixture(scope="module")
 def models():
-    return {iso: RovibronicModel(iso) for iso in ("127I2", "129I2", "127I129I")}
+    return {iso: RovibronicModel(iso, "hannover2008") for iso in ("127I2", "129I2", "127I129I")}
 
 
 def product_space(J_values, i1, i2):
@@ -76,7 +76,7 @@ def test_main_component_counts(models, iso, J_lower, n_main):
 @pytest.mark.parametrize("v, J, eqQ, C, delta, d", [(32, 57, -544.814, 89.935, -6.75, -41.30),
                                                     (53, 88, -569.446, 490.376, 100.41, -271.57)])
 def test_s06_b_state_values(models, v, J, eqQ, C, delta, d):
-    """docs/research/isotopologue-hyperfine.md §8(b), Ω = 0 sign flipped, E at J = 0."""
+    """S06 Tables 2-4, Ω = 0 sign flipped, E at J = 0."""
     p = hfs_params.b_state_s06(v, J, models["127I2"]._reference_term("B", v))
     np.testing.assert_allclose([p.eqQ, p.C, p.delta, p.d], [eqQ, C, delta, d], atol=0.01)
 

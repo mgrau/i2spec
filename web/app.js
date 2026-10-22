@@ -195,12 +195,16 @@ const inBand = l => state.band !== null && l.vu === state.band.vu && l.vl === st
 const inShownBand = l => bandOn() && inBand(l);
 const BRANCHES = ["P", "R"];
 
-async function loadShards(iso, files, note) {
+async function loadShards(files, note) {
   const missing = files.filter(f => !state.shards.has(f));
-  for (let k = 0; k < missing.length; k++) {
-    if (note) setStatus(`${note} ${k + 1}/${missing.length}…`);
-    await getJSON(missing[k], state.shards);
-  }
+  let done = 0, next = 0;
+  const worker = async () => {          // six requests in flight, as browsers allow per host
+    while (next < missing.length) {
+      await getJSON(missing[next++], state.shards);
+      if (note) setStatus(`${note} ${++done}/${missing.length}…`);
+    }
+  };
+  await Promise.all(Array.from({length: Math.min(6, missing.length)}, worker));
 }
 
 /** Fetch shards without waiting for them; redraw the view when they arrive if they are in it. */
@@ -227,7 +231,7 @@ async function linesIn(iso, nuLo, nuHi, {loadedOnly = false} = {}) {
     loadInBackground(iso, need);
     need = need.filter(s => state.shards.has(s.file));
   } else {
-    await loadShards(iso, need.map(s => s.file), need.length > 3 ? "loading line list" : null);
+    await loadShards(need.map(s => s.file), need.length > 3 ? "loading line list" : null);
   }
   // The export stores the lines in the order the table lists them, increasing wavelength, within
   // each shard and across shards (manifest order). The lines in view are a run of each shard, found by
@@ -267,7 +271,7 @@ async function loadHfs(iso, nuLo, nuHi) {
 async function buildIndex(iso) {
   if (state.index.has(iso)) return state.index.get(iso);
   const info = state.manifest.isotopologues[iso];
-  await loadShards(iso, info.shards.map(s => s.file), "indexing every line");
+  await loadShards(info.shards.map(s => s.file), "indexing every line");
   const index = new Map();
   for (const s of info.shards) for (const line of rowsOf(state.shards.get(s.file), s, iso)) index.set(label(line), line);
   state.index.set(iso, index);
@@ -276,11 +280,6 @@ async function buildIndex(iso) {
 
 // --- the spectrum --------------------------------------------------------------------------------
 
-/**
- * Bin the lines onto the pixel grid. A line narrower than one pixel becomes a spike of the right
- * area rather than the right height, so the trace keeps its integral as you zoom; a resolved line
- * is spread as the Gaussian it is.
- */
 /** erf(x), Abramowitz & Stegun 7.1.26: absolute error below 1.5e-7, far under a pixel. */
 function erf(x) {
   const t = 1 / (1 + 0.3275911 * Math.abs(x));
@@ -405,6 +404,24 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || 
 }
 
 /**
+ * Cell transmission on the pixel grid. exp(-σN) is not linear in σ, so in a view narrow enough to show the
+ * hyperfine structure it is computed on a grid that resolves the Doppler profiles (no line widened to a pixel)
+ * and then averaged onto the pixels; a wider view applies it to the pixel-averaged cross section, which makes
+ * strong dips too shallow (the plot says so).
+ */
+function transmissionOnPixels(sigma, lines, lo, hi, nb, T, iso, withHfs, N) {
+  const dopplerSigma = P.dopplerFWHM(lo, T, iso) / 2.35482;
+  const os = withHfs ? Math.max(1, Math.min(Math.ceil(3 * (hi - lo) / nb / dopplerSigma), Math.floor(4e5 / nb))) : 1;
+  if (!withHfs) return Array.from(sigma, s => Math.exp(-s * N));
+  const parts = binned(lines, lo, hi, nb * os, T, iso, true, (state.plotLines || state.lines).slices).parts;
+  const y = new Array(nb).fill(0);
+  const optical = new Float64Array(nb * os);
+  for (const p of parts) for (let k = 0; k < p.length; k++) optical[k] += p[k] * N;
+  for (let k = 0; k < optical.length; k++) y[Math.floor(k / os)] += Math.exp(-optical[k]) / os;
+  return y;
+}
+
+/**
  * The highlighted band's lines on the pixel grid, by branch, and how many of each lie in the view. Read from
  * every row in view, not the per-shard histograms (which do not know bands), so a whole band shows however
  * wide the view; with the hyperfine components where the plot shows them. Each shard's lines are binned
@@ -456,7 +473,7 @@ function withLevels(o, s, x, scale = 1) {
  * A line's hyperfine components as {offset (MHz), strength, upper, lower}: the full calculation when the
  * detail pane has loaded it, else the ΔJ = 0 pattern of its shard, else the line alone. Each carries the
  * weak ΔF ≠ ΔJ components that share a level with a main one (10⁻² to 10⁻⁴ of the line), so
- * physics.resonances() finds the crossovers as well as the Lamb dips (docs/research/sub-doppler.md §2).
+ * physics.resonances() finds the crossovers as well as the Lamb dips.
  */
 function componentsOf(line) {
   const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
@@ -892,7 +909,11 @@ function drawPlot() {
   // one binned cross section per kind of line: their sum is the model, the measured kinds are drawn over it
   const withHfs = hyperfineShown();
   const subOn = state.mode === "sub" && withHfs;
-  const {parts, sticks} = binned(lines, lo, hi, nb, T, iso, withHfs, (state.plotLines || state.lines).slices);
+  // the pixel cross section, unless the trace is drawn from something else: the sub-Doppler signal, or a
+  // resolved transmission (transmissionOnPixels bins on its own finer grid)
+  const pixelSigma = !subOn && !(state.mode === "trans" && withHfs);
+  const {parts, sticks} = pixelSigma ? binned(lines, lo, hi, nb, T, iso, withHfs, (state.plotLines || state.lines).slices) :
+    {parts: KINDS.map(() => new Float64Array(nb)), sticks: []};
   const sub = subOn ? subDopplerBins(lines, lo, hi, nb, T, iso) : null;
   // the highlighted band, by branch: drawn over the kinds in the cross section and sub-Doppler views
   const band = !bandOn() || state.mode === "trans" ? null : sub ? sub.band : bandBins(lo, hi, nb, T, iso, withHfs);
@@ -917,8 +938,9 @@ function drawPlot() {
       ylabel = "sat. signal (rel.)";
     }
   } else if (state.mode === "trans") {
-    const N = P.numberDensity(Number($("#cold").value) + 273.15, T) * Number($("#path").value);
-    y = Array.from(sigma, s => Math.exp(-s * N));
+    // the coldest point of the cell sets the vapor pressure
+    const N = P.numberDensity(Math.min(Number($("#cold").value) + 273.15, T), T) * Number($("#path").value);
+    y = transmissionOnPixels(sigma, lines, lo, hi, nb, T, iso, withHfs, N);
     ylabel = "transmission";
     ticks = [0, 0.25, 0.5, 0.75, 1].map(v => [v, v.toFixed(2)]);
   } else {
@@ -1163,6 +1185,14 @@ function drawPlot() {
       g.textBaseline = "alphabetic";
     }
   }
+  if (state.mode === "trans" && !withHfs) {
+    const note = `transmission of the averaged cross section: zoom below ${HFS_SPAN_NM} nm for resolved dips`;
+    g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = narrow ? "right" : "left"; g.textBaseline = "top";
+    const nx = narrow ? m.l + pw - 4 : m.l + 8;
+    g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
+    g.strokeText(note, nx, m.t + 6); g.fillStyle = ink("--ink-2"); g.fillText(note, nx, m.t + 6);
+    g.textAlign = "left"; g.textBaseline = "alphabetic";
+  }
   if (state.mode === "sub") {
     // what the sub-Doppler trace is, or why it is not drawn: inside the plot, with a halo; top left, or on a
     // phone, where the tick labels are inside the plot at the left, top right
@@ -1403,7 +1433,15 @@ function topK(items, k, cmp) {
   return heap.sort(cmp);
 }
 
-function setStatus(text) { $("#status").textContent = text; }
+let statusTimer = null;
+/** The status line; on a phone, where it has no room of its own, it shows for a few seconds over the plot. */
+function setStatus(text) {
+  $("#status").textContent = text;
+  const bar = $("#statusbar");
+  bar.classList.add("fresh");
+  clearTimeout(statusTimer);
+  statusTimer = setTimeout(() => bar.classList.remove("fresh"), 4000);
+}
 
 /** Keep the address bar describing the view, so a range or a line can be sent to someone. */
 function pushURL() {
@@ -1684,8 +1722,8 @@ function exportLines() {
   download(fileStem() + ".csv", [
     ...csvHeader(`${fmt(pool.length)} B-X lines`),
     "# S is the line strength at the cell temperature; u is the model's 1-sigma position uncertainty;" +
-      " domain is fitted, or outside for lines the fit does not yet cover (129I2, 127I129I, 127I2 with J'' > 200" +
-      " or B v' > 80; their flags say so); class is how the line is known (precision, atlas, model only);" +
+      " domain is fitted, or outside for lines whose levels the model does not hold (B v' > 80, J'' > 445 or beyond" +
+      " the centrifugal barrier; their flags say so); class is how the line is known (precision, atlas, model only);" +
       " published_2008_minus_model is the position of the published model of Salumbides et al. (2008)," +
       " computed from its potentials, minus this model's",
     ...(withHfs ? ["# hfs_*: main hyperfine components without the J +- 2 couplings (offsets from the center, MHz;" +
@@ -1966,7 +2004,7 @@ function wire() {
   });
   const all = document.createElement("button");
   all.textContent = "all";
-  all.title = "the whole exported range; the first time this loads about 10 MB of line data";
+  all.title = "the whole exported range; the first time this loads 15-20 MB of line data";
   all.onclick = () => {
     const i = state.manifest.isotopologues[$("#iso").value];
     show(i.nu_min, i.nu_max);

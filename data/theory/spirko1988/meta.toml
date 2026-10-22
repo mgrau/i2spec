@@ -1,6 +1,6 @@
 id = "spirko1988"
 citation = "V. Špirko and J. Blabla, \"Nuclear quadrupole coupling functions of the 1Sigma_g+ and 3Pi_0u+ states of molecular iodine\", J. Mol. Spectrosc. 129, 59-71 (1988), Tables I-X"
-source = "https://doi.org/10.1016/0022-2852(88)90258-5 (publisher PDF, papers/Spirko1988_JMS129_59.pdf)"
+source = "https://doi.org/10.1016/0022-2852(88)90258-5 (publisher PDF)"
 doi = "10.1016/0022-2852(88)90258-5"
 retrieved = "2026-10-21"
 unit = "eqQ in MHz; potential coefficients in cm-1, re in A, a in 1/A (column headers name the unit)"
@@ -69,7 +69,7 @@ Pique et al. 1981 (pique1981a, whose v' = 64 level Tables III and V print correc
 v' = 63), Zhao, Blabla & Helmcke 1985 (zhao1985a), Bacis et al. 1980 (x_hyperfine/bacis1980). The 129I2 values of
 Table IX and several Table III-V rows are M. Gläser, private communication (Refs. 16, 17).
 
-Against the shipped model (i2spec2026o; hfs_params.line_states with its hyperfine table at J' = 1, and hfs_params.eqq_x
+Against an earlier version of the model (hfs_params.line_states with its hyperfine table at J' = 1, and hfs_params.eqq_x
 at J'' = 0). Table VII minus the model's eqQ_B: -5.7 MHz at v' = 0, rising through zero between v' = 10 and 11 to
 +3.4 MHz at v' = 24-27, back to +0.3 at v' = 42 (v' = 0-43: mean +1.0, rms 2.7 MHz); v' = 44-63: within 1.1 MHz except
 +3.6 MHz at v' = 58 (rms 0.9 MHz).
@@ -77,5 +77,5 @@ Table VI minus the model's eqQ_X: v'' = 0-17 (BKT02's stated range), mean -4.0, 
 eqQ_X is BKT02 extrapolated and the difference grows to +28 MHz at v'' = 40, +156 at 60 and +540 at 80. At v'' = 80
 Bacis's measured -1632 MHz (Table IV) is 29 MHz from this paper's function and about 570 MHz from the extrapolated
 BKT02 value (-2202 MHz at J = 12).
-Checked with the shipped model only.
+Checked against the model only.
 """

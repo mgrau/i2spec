@@ -1,12 +1,12 @@
 id = "weller2026a"
 citation = "M. Weller, K. Rostan, A. Friedrich, J. Wüst, M. Oswald, F. Kuschewski, T. Schuldt and C. Braxmaier, \"Molecular iodine at 508 nm: hyperfine spectroscopy and operating regimes for optical frequency references\", Opt. Express 34, 31567 (2026)"
-source = "https://doi.org/10.1364/oe.605121 (open access, CC BY 4.0; Matt's library copy papers/Weller2026_OE34_31567.pdf)"
+source = "https://doi.org/10.1364/oe.605121 (open access, CC BY 4.0)"
 doi = "10.1364/oe.605121"
 retrieved = "2026-10-20"
 unit = "MHz"
 catalog = "broadband.yaml:weller2026"
 license = "CC BY 4.0"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer of Table 1, p. 31571, and checked against the page: "Frequency offset (MHz)" of the 21
@@ -30,6 +30,6 @@ laser = "frequency-doubled 1016 nm ECDL, 508 nm"
 cell = "30 cm cell, triple pass (90 cm); 1 Pa iodine; 8.6 mW pump, 450 uW probe, 2 mm beam diameter (Table 1 conditions, p. 31572)"
 
 notes = """
-First hyperfine data at B v'51. Residuals against i2spec2026o (Predictor(), obs - model): -2.7 to -15.5 kHz,
-mean -8 kHz, i.e. mostly the model's a1 placed 8 kHz high relative to the rest. Checked with the shipped model only.
+First hyperfine data at B v'51. Residuals against an earlier version of the model (obs - model): -2.7 to -15.5 kHz,
+mean -8 kHz, i.e. mostly the model's a1 placed 8 kHz high relative to the rest. Checked against the model only.
 """

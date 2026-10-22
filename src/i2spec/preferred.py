@@ -1,16 +1,12 @@
-"""The preferred model: the i2spec model (release 20261021) for every isotopologue, i2spec2026o elsewhere.
+"""Whole line lists of the released model: positions and uncertainties as table lookups.
 
-Matt, 2026-10-21: balanced-expanded (research-20261020) predicts the lines it was not fitted to better than
-i2spec2026o, so the line list, the terminal browser, the command line and the explorer prefer it; and "our goal is
-to produce one single model". Release 20261021 (``research-20261021-i2spec``, role ``i2spec``) is balanced-expanded
-unchanged for 127I2 up to J'' = 200, carried to 129I2 and 127I129I (fitted isotope shift, scaled hyperfine) and to
-J'' = 445. For every line whose levels it holds (bound, or held behind their centrifugal barrier) the apps give its
-position, hyperfine components and uncertainty (``ResearchModel.uncertainty``). i2spec2026o now gives only lines
-the model does not hold, and every line strength until the line lists are rebuilt on the model's wavefunctions.
+The model (release 20261021, ``ResearchModel("i2spec", isotopologue)``) covers ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I up to
+J'' = 445 and every level bound, or held behind its centrifugal barrier, to B v' = 80 and X v'' = 108. For every line
+whose levels it holds, the apps give its position, hyperfine components and uncertainty
+(``ResearchModel.uncertainty``); a line it does not hold is flagged OUTSIDE.
 
 Every level of the domain is solved once per isotopologue, in parallel (a few minutes on 12 cores), and kept in
-``cache_dir()`` with its statistical vector, data status and model sigma, keyed by the release files' SHA256:
-positions and uncertainties of whole line lists are then table lookups.
+``cache_dir()`` with its statistical vector, data status and model sigma, keyed by the release files' SHA256.
 """
 from __future__ import annotations
 
@@ -23,11 +19,8 @@ import os
 import numpy as np
 
 
+#: The release role the apps use, and how they name the model
 MODEL = "i2spec"
-#: Internal names, for research notes and I2SPEC_MODEL only. The apps and the documentation present one model,
-#: i2spec, and name neither (Matt, 2026-10-21): a line it does not hold is flagged OUTSIDE.
-LABEL = "balanced-expanded"
-FALLBACK = "i2spec2026o"
 PUBLIC = "i2spec"
 OUTSIDE = "outside the fitted domain"
 ISOTOPOLOGUES = ("127I2", "129I2", "127I129I")
@@ -36,24 +29,9 @@ STATUS = ("measured", "interpolated", "extrapolated")
 _TABLE_VERSION = 2
 
 
-def active():
-    """Do the apps prefer the model? Yes, unless I2SPEC_MODEL names i2spec2026o."""
-    return os.environ.get("I2SPEC_MODEL", MODEL).strip().lower() not in (FALLBACK, "2026o")
-
-
-def parameters():
-    """The parameter set the line lists (strengths, lower-level energies) are built on: the model's own release,
-    or i2spec2026o under I2SPEC_MODEL."""
-    if not active():
-        from .constants import DEFAULT_PARAMETERS
-        return DEFAULT_PARAMETERS
-    from .research import _entry
-    return _entry(MODEL)["id"]
-
-
 @lru_cache(maxsize=None)
 def model(isotopologue="127I2"):
-    """The preferred research model (ResearchModel) of one isotopologue, loaded once."""
+    """The model (ResearchModel) of one isotopologue, loaded once."""
     from .research import ResearchModel
     return ResearchModel(MODEL, isotopologue)
 
@@ -124,8 +102,7 @@ def _build(isotopologue, workers):
 
 
 class Preferred:
-    """Whole-list positions and uncertainties of the preferred model for one isotopologue, from its cached
-    level table."""
+    """Whole-list positions and uncertainties of the model for one isotopologue, from its cached level table."""
 
     def __init__(self, isotopologue="127I2", workers=None, cache=True):
         from .intensity import cache_dir
@@ -159,7 +136,7 @@ class Preferred:
         return iu, il, ok
 
     def positions(self, branch, J, vu, vl):
-        """Wavenumbers (cm-1) of the lines, NaN where the preferred model has no line."""
+        """Wavenumbers (cm-1) of the lines, NaN where the model has no line."""
         iu, il, ok = self._index(branch, J, vu, vl)
         return np.where(ok, self.t["E_B"][iu]-self.t["E_X"][il], np.nan)
 
@@ -201,7 +178,7 @@ def preferred(isotopologue="127I2") -> Preferred:
 
 
 def basis(status, cls, isotopologue="127I2"):
-    """The sentence the apps show for a preferred line's uncertainty (status, cls: Preferred.uncertainties codes)."""
+    """The sentence the apps show for a line's uncertainty (status, cls: Preferred.uncertainties codes)."""
     where = {0: "both levels are within 15 in J of comb or Doppler-free measurements at their v",
              1: "its levels are known from atlases and other lines (no precision data within 15 in J)",
              2: "a level lies beyond the core fit (X v″ > 17 or B v′ > 43)"}[int(cls)]
@@ -227,9 +204,9 @@ def sigma_component(center_sigma, branch, J, vu, vl, offset, isotopologue="127I2
 
 
 def components(branch, J, vu, vl, isotopologue="127I2"):
-    """(center MHz, hyperfine components) of a preferred line, with the J +- 2 couplings."""
+    """(center MHz, hyperfine components) of a line the model holds, with the J +- 2 couplings."""
     return model(isotopologue).hyperfine_components(vu, vl, J, branch)
 
 
-__all__ = ["MODEL", "LABEL", "FALLBACK", "PUBLIC", "OUTSIDE", "ISOTOPOLOGUES", "Preferred", "preferred", "active",
-           "model", "parameters", "basis", "flags", "components", "sigma_component"]
+__all__ = ["MODEL", "PUBLIC", "OUTSIDE", "ISOTOPOLOGUES", "Preferred", "preferred", "model", "basis", "flags",
+           "components", "sigma_component"]

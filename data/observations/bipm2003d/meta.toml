@@ -35,8 +35,7 @@ pressure_Pa = 2.46
 allowance_kHz = 19.7
 basis = "MEP 612 nm, p. 1: recommended value applies at cold finger -5 C (cell inside or outside the laser). Pressure 2.46 Pa from Gillespie & Fraser at 268.15 K. The MEP gives no pressure, power or modulation coefficient and no power or modulation condition, so no shift is applied; allowance = |-8 kHz/Pa (typical slope, 600-700 nm) x 2.46 Pa| = 19.7 kHz."
 
-# Measurements this compilation prints that other sets hold (docs/design/observations.md, "One record per
-# measurement"): its hyperfine tables combine razet1991a (127I2 R(47) 9-2, P(48) 11-3, R(48) 15-5; within 1-7 kHz)
+# Measurements this compilation prints that other sets hold: its hyperfine tables combine razet1991a (127I2 R(47) 9-2, P(48) 11-3, R(48) 15-5; within 1-7 kHz)
 # and dschao1980a (127I2 R(47) 9-2 and 129I2 P(110) 10-2; some rows equal to the printed digit) with other data.
 [overlaps]
 razet1991a = "mean"    # pending until admitted

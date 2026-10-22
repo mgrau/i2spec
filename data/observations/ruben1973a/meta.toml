@@ -1,10 +1,10 @@
 id = "ruben1973a"
 citation = "D. J. Ruben, S. G. Kukolich, L. A. Hackel, D. G. Youmans and S. Ezekiel, \"Laser-molecular beam measurement of hyperfine structure in the I2 spectrum\", Chem. Phys. Lett. 22, 326-330 (1973)"
-source = "https://doi.org/10.1016/0009-2614(73)80104-6 (PDF supplied by Matt; library copy papers/Ruben1973_CPL_22_326.pdf)"
+source = "https://doi.org/10.1016/0009-2614(73)80104-6 (publisher PDF)"
 doi = "10.1016/0009-2614(73)80104-6"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from 200 dpi page images of Tables 1 and 2 (pp. 328-329); the OCR text layer misreads some digits (it
@@ -30,9 +30,9 @@ uncertainty = "The fits' standard deviations, 1.4 MHz (P(13)) and 1.3 MHz (R(15)
 
 notes = """
 All P(13) 43-0 rows fall under the standing exclusion of that line from every fit (AGENTS/handoff rule); they stay
-in the record. Residuals against i2spec2026o (obs - model): rms 2.2 MHz (P(13)) and 2.5 MHz (R(15)), up to +4.3 MHz, growing
+in the record. Residuals against an earlier version of the model (obs - model): rms 2.2 MHz (P(13)) and 2.5 MHz (R(15)), up to +4.3 MHz, growing
 with the distance from the zero: the Fabry-Perot scale is 0.55-0.59 % large on both lines. With that scale taken
-out the rms is 1.5 and 1.1 MHz, as the paper's fits. Checked with the shipped model only.
+out the rms is 1.5 and 1.1 MHz, as the paper's fits. Checked against the model only.
 """
 
 [conditions]

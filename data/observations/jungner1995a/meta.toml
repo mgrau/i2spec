@@ -1,10 +1,10 @@
 id = "jungner1995a"
 citation = "P. Jungner, S. Swartz, M. Eickhoff, J. Ye, J. L. Hall and S. Waltman, \"Absolute frequency of the molecular iodine transition R(56)32-0 near 532 nm\", IEEE Trans. Instrum. Meas. 44, 151-154 (1995)"
-source = "https://doi.org/10.1109/19.377796 (IEEE Xplore via ODU; Matt's library copy papers/Jungner1995_IEEE_TIM_44_151.pdf)"
+source = "https://doi.org/10.1109/19.377796 (IEEE Xplore)"
 doi = "10.1109/19.377796"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the page (abstract and p. 153): "The measured frequency of the a10

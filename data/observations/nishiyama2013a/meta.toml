@@ -1,10 +1,10 @@
 id = "nishiyama2013a"
 citation = "A. Nishiyama, D. Ishikawa and M. Misono, \"High resolution molecular spectroscopic system assisted by an optical frequency comb\", J. Opt. Soc. Am. B 30, 2107-2112 (2013)"
-source = "https://doi.org/10.1364/JOSAB.30.002107 (publisher PDF via ODU, Matt's library copy papers/Nishiyama2013_JOSAB_30_2107.pdf)"
+source = "https://doi.org/10.1364/JOSAB.30.002107 (publisher PDF)"
 doi = "10.1364/JOSAB.30.002107"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the page (p. 2110): Table 1, the absolute frequencies of R(47) 9-2
@@ -25,10 +25,10 @@ notes = """
 Overlap: the two Table 1 lines are the CIPM 612 nm and 576 nm standards (bipm2003d, bipm2003c), measured here
 independently with a comb, so no overlap is declared.
 
-Residuals against i2spec2026o (Predictor(), obs - model): R(47) 9-2 a7 +0.08 MHz, P(62) 17-1 a1 +0.33 MHz (the
+Residuals against an earlier version of the model (obs - model): R(47) 9-2 a7 +0.08 MHz, P(62) 17-1 a1 +0.33 MHz (the
 CIPM value is +0.28 MHz from the model), the rest -0.66 to +0.72 MHz, several times the printed uncertainties;
 neighbouring components are tens of MHz apart, so the labels are not in doubt and the spread is the shipped
-model's at B v' = 10-19 (these levels have no other comb data). Checked with the shipped model only.
+model's at B v' = 10-19 (these levels have no other comb data). Checked against the model only.
 """
 
 [conditions]

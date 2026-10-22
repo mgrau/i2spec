@@ -1,6 +1,6 @@
 id = "dejong1997"
 citation = "W. A. de Jong, L. Visscher and W. C. Nieuwpoort, \"Relativistic and correlated calculations on the ground, excited, and ionized states of iodine\", J. Chem. Phys. 107, 9046-9058 (1997), Table III"
-source = "https://doi.org/10.1063/1.475194 (publisher PDF, papers/DeJong1997_JCP107_9046.pdf)"
+source = "https://doi.org/10.1063/1.475194 (publisher PDF)"
 doi = "10.1063/1.475194"
 retrieved = "2026-10-20"
 unit = "De, Te in eV; re in A; we, wexe in cm-1"
@@ -24,7 +24,7 @@ Use here. Chen, de Jong & Ye, JOSA B 22, 951 (2005) took these curves for R < 7 
 to meet Saute & Aubert-Frecon 1982 (data/theory/saute1982) at 7 A, and used the result as the perturbers of
 B in second-order hyperfine sums. Without the point-wise curves, the hyperfine prototype builds each
 perturber from this table (Morse from De, re, we) joined to the Saute long range; see
-prototypes/explore/physical_search/second_order_hyperfine.py, perturber_curves().
+a research script, perturber_curves().
 
 Related: Teichteil & Pelissier, Chem. Phys. 180, 1 (1994) (data/theory/teichteil1994), the earlier
 spin-orbit CI with the same 23-state space; de Jong et al. find their curves "show a close resemblance".

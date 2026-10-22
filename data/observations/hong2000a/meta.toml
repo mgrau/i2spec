@@ -50,7 +50,7 @@ and 730 Hz, and BIPM assigns 2 kHz to every interval of both tables.
 """
 
 notes = """
-Residuals against the current model (Predictor(), obs - model), 28 rows: R(122) 35-0 -1.4 to +2.3 kHz
+Residuals against an earlier version of the model (obs - model), 28 rows: R(122) 35-0 -1.4 to +2.3 kHz
 (mean +0.6, rms 1.0 kHz); P(84) 33-0 -1.7 to +4.6 kHz (mean +0.5, rms 1.7 kHz; largest a2). No row dropped.
 """
 

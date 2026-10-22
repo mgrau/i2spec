@@ -1,10 +1,10 @@
 id = "juncar1981a"
 citation = "P. Juncar, J. Pinard, J. Hamon and A. Chartier, \"Absolute determination of the wavelengths of the sodium D1 and D2 lines by using a CW tunable dye laser stabilized on iodine\", Metrologia 17, 77-79 (1981)"
-source = "https://doi.org/10.1088/0026-1394/17/3/001 (library copy papers/Juncar1981_Metrologia_17_77.pdf)"
+source = "https://doi.org/10.1088/0026-1394/17/3/001"
 doi = "10.1088/0026-1394/17/3/001"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 "Measurements" (p. 78), typed from the text layer and checked against the page: vacuum wavelengths of a dye laser
@@ -30,9 +30,9 @@ uncertainty = "The printed standard deviations of the means, 0.2 and 0.45 fm (0.
 notes = """
 [shift_correction]: the 100 mm cell was at room temperature (20 C, 26.8 Pa); no coefficient is given, so the
 typical -5 kHz/Pa is used with 2.5 kHz/Pa uncertainty (a -134(67) kHz correction). Residuals against
-i2spec2026o (obs - model, corrected): P(114) 14-1 a5 -0.22 MHz, P(38) 15-2 a6 -1.00 MHz. Watanabe 2003 (Na D2 F=2 -> F'=3 to P(38) 15-2 f, 1047.2(3) MHz) is not entered: it
+an earlier version of the model (obs - model, corrected): P(114) 14-1 a5 -0.22 MHz, P(38) 15-2 a6 -1.00 MHz. Watanabe 2003 (Na D2 F=2 -> F'=3 to P(38) 15-2 f, 1047.2(3) MHz) is not entered: it
 needs the Na line's absolute frequency, whose standard value is this paper's own iodine-referenced one.
-Checked with the shipped model only.
+Checked against the model only.
 """
 
 [conditions]

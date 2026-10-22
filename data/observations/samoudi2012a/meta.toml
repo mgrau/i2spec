@@ -1,10 +1,10 @@
 id = "samoudi2012a"
 citation = "B. Samoudi, M. M. Pérez, S. Ferreira-Barragáns and E. Prieto, \"Absolute optical frequency measurements of iodine-stabilized He-Ne laser at 633 nm by using a femtosecond laser frequency comb\", Int. J. Metrol. Qual. Eng. 3, 101-106 (2012)"
-source = "https://doi.org/10.1051/ijmqe/2012012 (PDF supplied by Matt; library copy papers/Samoudi2012_IJMQE.pdf)"
+source = "https://doi.org/10.1051/ijmqe/2012012 (publisher PDF)"
 doi = "10.1051/ijmqe/2012012"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Sect. 4 and Table 1 (pp. 104-105), typed from the text layer and checked against the page: the CEM (Spain)
@@ -19,7 +19,7 @@ Not entered: the 2006 BIPM measurement quoted only as "within 5.1 kHz" of the CI
 
 uncertainty = "The paper's uncertainties are expanded (k = 2), \"the uncertainty of the femtosecond comb combined with the repeatability of the laser\"; halved: 0.05 kHz (BEV) and 2.189 kHz (CEM, the same 4.378 kHz for every component). The BEV value's 0.1 kHz excludes the laser's reproducibility and its operating-condition offsets."
 
-notes = "At or near the mise en pratique conditions, so bipm2003a's coefficients are applied as for the MeP value. Residuals against i2spec2026o (obs - model, after the shift correction): -103 to -117 kHz, against -116.8 kHz for the CIPM value. Checked with the shipped model only."
+notes = "At or near the mise en pratique conditions, so bipm2003a's coefficients are applied as for the MeP value. Residuals against an earlier version of the model (obs - model, after the shift correction): -103 to -117 kHz, against -116.8 kHz for the CIPM value. Checked against the model only."
 
 [conditions]
 method = "He-Ne/I2 laser CEM2 (internal cell, third harmonic); BEV fibre comb and CEM Ti:sapphire comb"

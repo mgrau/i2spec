@@ -1,10 +1,10 @@
 id = "fredinpicard1990a"
 citation = "S. Fredin-Picard and A. Razet, \"On the hyperfine structure of 127I2 lines at the 543 nm wavelength of the HeNe laser\", Opt. Commun. 78, 149-152 (1990)"
-source = "https://doi.org/10.1016/0030-4018(90)90112-7 (library copy papers/FredinPicard1990_Opt_Commun_78_149.pdf)"
+source = "https://doi.org/10.1016/0030-4018(90)90112-7"
 doi = "10.1016/0030-4018(90)90112-7"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Tables 2 and 3 (pp. 150-151), typed from 250 dpi page images: the "Obs." columns, which are the BIPM measurements
@@ -23,7 +23,7 @@ uncertainty = "As printed in parentheses (6 kHz to 0.20 MHz), the experimental s
 notes = """
 The MEP 543 nm tables (bipm2003b) cite this paper (ref. [7]) and Chartier et al. (ref. [5]) with Gläser 1987, Simonsen
 and Lin 1994; declared there as "mean" (no MEP row is reached: the MEP gives both lines from R(106) b10). Residuals
-against i2spec2026o (obs - model): R(12) 26-0 rms 20 kHz, R(106) 28-0 rms 0.11 MHz. Checked with the shipped model
+against an earlier version of the model (obs - model): R(12) 26-0 rms 20 kHz, R(106) 28-0 rms 0.11 MHz. Checked with the shipped model
 only.
 """
 

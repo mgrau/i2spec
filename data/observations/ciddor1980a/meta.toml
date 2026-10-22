@@ -1,10 +1,10 @@
 id = "ciddor1980a"
 citation = "P. E. Ciddor and N. Brown, \"Hyperfine spectra in iodine-129 at 612 nm\", Opt. Commun. 34, 53-56 (1980)"
-source = "https://doi.org/10.1016/0030-4018(80)90158-3 (library copy papers/Ciddor1980_Opt_Commun_34_53.pdf)"
+source = "https://doi.org/10.1016/0030-4018(80)90158-3"
 doi = "10.1016/0030-4018(80)90158-3"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from 300 dpi images of Tables 1 and 2 (pp. 54-55; the text layer drops several minus signs). CSIRO He-Ne
@@ -23,9 +23,9 @@ uncertainty = "None printed. Table 1 (counting): 30 kHz, as for the same laborat
 
 notes = """
 The MEP 612 nm Tables 4 and 5 (bipm2003d, 129I2 P(110) 10-2 and R(113) 14-4) cite this paper as ref. [17]; declared
-there as "mean". Residuals against i2spec2026o (obs - model): 129I2 P(110) 10-2 -2.58 MHz on average with 0.08 MHz
+there as "mean". Residuals against an earlier version of the model (obs - model): 129I2 P(110) 10-2 -2.58 MHz on average with 0.08 MHz
 scatter (the model's position of that line relative to 127I2 R(47) 9-2; the pattern itself within 0.17 MHz); R(113) 14-4
-+4.0 MHz on average; P(48) 11-3 within 3 MHz. Checked with the shipped model only.
++4.0 MHz on average; P(48) 11-3 within 3 MHz. Checked against the model only.
 """
 
 [conditions]

@@ -1,10 +1,10 @@
 id = "balling1999a"
 citation = "P. Balling and J. Blabla, \"612 nm helium-neon lasers stabilized to the hyperfine structure of iodine molecule\", Proc. SPIE 4016, 24-29 (1999)"
-source = "https://doi.org/10.1117/12.373640 (PDF supplied by Matt; library copy papers/Balling1999_SPIE_4016_24.pdf)"
+source = "https://doi.org/10.1117/12.373640 (publisher PDF)"
 doi = "10.1117/12.373640"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from 300-400 dpi page images (the text layer is garbled). Two CMI He-Ne lasers at 612 nm with internal
@@ -37,7 +37,7 @@ uncertainty = "2f spectra: \"the average uncertainty of frequency estimation is 
 notes = """
 Internal-cell lasers: the cell-22 laser is shifted by about 200 kHz as a whole (Table 3.3), which cancels in
 intervals within R(47) 9-2 but its columns still scatter by up to 70 kHz from the others. The MEP 612 nm tables
-(bipm2003d) predate this paper; not declared. Residuals against i2spec2026o (obs - model): R(47) 9-2 within the line
+(bipm2003d) predate this paper; not declared. Residuals against an earlier version of the model (obs - model): R(47) 9-2 within the line
 rms 45 kHz (82 rows); P(48) 11-3 from a7 rms 0.15 MHz; R(48) 15-5 from a7 +0.19 MHz on average (the model's
 offset of that line, which bipm2003d's c1 - a7 also shows), with c4 (the paper's "c4 ?") +0.37 MHz by 3f;
 R(34) 17-6 +0.87 MHz on all six, the model's position of that line (no other set holds it). Checked with the

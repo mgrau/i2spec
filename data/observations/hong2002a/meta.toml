@@ -52,7 +52,7 @@ three lines. Taken as 1 sigma.
 """
 
 notes = """
-Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: R(87) 33-0 -1.5 to +1.2 kHz
+Residuals against an earlier version of the model (2026-09-29), obs - model: R(87) 33-0 -1.5 to +1.2 kHz
 (rms 0.8); P(132) 36-0 -0.9 to +1.1 kHz (rms 0.6); R(145) 37-0 -7.3 to +14.9 kHz (rms 5.1; largest a2 +14.9,
 a6 +10.6, a3 -7.3, a5 and a10 +6.9), i.e. the model's hyperfine pattern at v' = 37, J' = 146 is off by more
 than the data. No row was dropped.

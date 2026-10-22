@@ -1,12 +1,9 @@
 """Line lookup: the query layer behind the command line, the TUI and the explorer's export.
 
-Line lists (strengths, lower-level energies) are built on the preferred model's potentials and cached
-(``i2spec.intensity``). Positions, hyperfine components and uncertainties come from the preferred model
-(``i2spec.preferred``: the i2spec model, release 20261021, for every isotopologue), with the uncertainty of
-``ResearchModel.uncertainty``. A line its level table does not hold is flagged outside the fitted domain. With
-``I2SPEC_MODEL=i2spec2026o`` (internal) everything comes from i2spec2026o's ``RovibronicModel``, with the estimated
-uncertainties of ``uncertainty_2026o`` (validation in ``docs/research/spectra-validation.md`` and
-``docs/research/bipm-hyperfine-tables.md``).
+Line lists (strengths, lower-level energies) are built on the model's potentials and cached (``i2spec.intensity``).
+Positions, hyperfine components and uncertainties come from the model's level tables (``i2spec.preferred``), with
+the uncertainty of ``ResearchModel.uncertainty``. A line whose levels the tables do not hold is flagged outside the
+fitted domain: its position comes from the same potentials, its components from the published hyperfine formulae.
 """
 
 from __future__ import annotations
@@ -14,7 +11,6 @@ from __future__ import annotations
 import math
 import re
 from dataclasses import dataclass
-from functools import lru_cache
 
 import numpy as np
 
@@ -25,24 +21,6 @@ from .spectrum import air_to_vacuum, doppler_fwhm, vacuum_to_air
 
 #: Units accepted for a search range: vacuum nm, standard-air nm, wavenumber, frequency.
 UNITS = ("nm", "nm-air", "cm-1", "MHz", "GHz", "THz")
-#: Highest v' covered by the data behind the published potentials (docs/research/spectra-validation.md).
-V_UPPER_FITTED = 43
-#: Highest X level the published potentials were fitted to. Above it they extrapolate, and the
-#: measured errors are enormous: +7.76 cm-1 at v'' = 48 (matyugin2012) and -14.64 and -21.12 cm-1 at
-#: v'' = 53 and 54 (nesterenko2019), against residuals under 4 MHz for every v'' <= 17.
-V_LOWER_FITTED = 17
-#: From this v' up, in the BIPM range, the B levels drift by more than the 3 MHz quoted below it: the
-#: BIPM 532 nm intervals put v' = 33-37 at -6 to +6 MHz against v' = 32, and Nishiyama 2024 puts v' = 39
-#: at 5.5 MHz (docs/design/uncertainty.md).
-V_UPPER_DRIFT = 31
-#: Wavenumber above which the BIPM tables constrain the model (500-667 nm).
-NU_PRECISION = 15000.0
-#: 755 nm: the short-wavelength end of the near-infrared anchor data (Liao et al. 2010) and of the
-#: band set (v' = 0, v'' = 12-17) that the published local models describe.
-NU_NIR = 13250.0
-#: 815 nm: the long-wavelength end of those anchors and of both local models. Below it nothing has
-#: ever been measured absolutely (docs/research/nir-model-2010.md).
-NU_NIR_ANCHORS = 12270.0
 _LABEL = re.compile(r"^([PR])\(?(\d+)\)?\s+(\d+)\s*-\s*(\d+)$", re.IGNORECASE)
 _QUANTITY = re.compile(r"^\s*([-+0-9.eE]+)\s*([A-Za-z0-9/^-]*)\s*$")
 #: One end of a range: a number and, optionally, its unit. A unit starts with a letter, so the "-" between
@@ -164,246 +142,41 @@ class Line:
 
     @property
     def source(self):
-        """Which model gives this line's position, as the apps say it: i2spec, or i2spec outside the fitted domain
-        (internally balanced-expanded or i2spec2026o, see i2spec.preferred); i2spec2026o under I2SPEC_MODEL."""
-        from .preferred import FALLBACK, OUTSIDE, PUBLIC
-        if _preferred(self) is not None:
-            return PUBLIC
-        return f"{PUBLIC}, {OUTSIDE}" if _preferred_active() else FALLBACK
+        """How the apps name the model behind this line's position."""
+        from .preferred import OUTSIDE, PUBLIC
+        return PUBLIC if _held(self) is not None else f"{PUBLIC}, {OUTSIDE}"
 
     @property
     def flags(self):
-        p = _preferred(self)
-        if p is not None:
-            from .preferred import flags
-            return flags(p[1], p[2])
-        if _preferred_active():
+        p = _held(self)
+        if p is None:
             from .preferred import OUTSIDE
             return (OUTSIDE,)
-        return flags_2026o(self)
+        from .preferred import flags
+        return flags(p[1], p[2])
 
 
-def _preferred(line):
-    """(sigma_center MHz, status code, class code) where the preferred model gives this line, else None."""
-    from . import preferred as pf
-    if not pf.active():
-        return None
-    sigma, status, cls = pf.preferred(line.isotopologue).uncertainties([line.branch], [line.J_lower], [line.v_upper],
-                                                                       [line.v_lower])
+def _held(line):
+    """(sigma_center MHz, status code, class code) where the model's level tables hold this line, else None."""
+    from .preferred import preferred
+    sigma, status, cls = preferred(line.isotopologue).uncertainties([line.branch], [line.J_lower], [line.v_upper],
+                                                                    [line.v_lower])
     return None if status[0] < 0 else (float(sigma[0]), int(status[0]), int(cls[0]))
 
 
-def flags_2026o(line):
-    """i2spec2026o's flags of a line: where its levels come from (the fallback model's regions)."""
-    out = []
-    if line.v_lower > V_LOWER_FITTED:
-        if 48 <= line.v_lower <= 54:
-            out.append("v″ ≥ 48: extended model")
-        elif line.v_lower <= 25 and corrected(line) is not None:
-            out.append("v″ 18-25: atlas-measured")
-        else:
-            out.append("v″ > 17: unmeasured" if line.v_lower <= 25 or line.v_lower > 89 else "v″ 26-89: Martin 1986")
-    if line.v_upper > V_UPPER_FITTED:
-        if line.v_upper <= 50:
-            out.append("v′ > 43: extended model")
-        else:
-            out.append("v′ 51-79: atlas-measured" if corrected(line) is not None else "v′ > 50: extrapolated")
-    if line.isotopologue != "127I2":
-        out.append("isotope shift")
-    if corrected(line) is not None:
-        out.append("corrected levels")
-    elif line.nu < NU_NIR_ANCHORS:
-        out.append("beyond 815 nm")
-    elif line.nu < NU_NIR:
-        out.append("local NIR model" if local_nir_covers(line) else "few data")
-    elif line.nu < NU_PRECISION:
-        out.append("few data")
-    if _preferred_active():
-        from .preferred import OUTSIDE
-        out.append(OUTSIDE)
-    return tuple(out)
-
-
-def _preferred_active():
-    from . import preferred as pf
-    return pf.active()
-
-
-@lru_cache(maxsize=1)
-def _local_nir():
-    """The Knöckel 2004 local Dunham model, loaded once (i2spec.local_nir)."""
-    from .local_nir import load_local_nir
-    return load_local_nir("knockel2004")
-
-
-def local_nir_covers(line: Line) -> bool:
-    """Does a published local NIR model describe this line better than the potentials do?
-
-    True inside the Knöckel 2004 domain (¹²⁷I₂, v' = 0, v'' = 12-17, J'' <= 242) and its validated
-    775-815 nm window, where it reproduces the measured anchors to 0.23 MHz rms against the
-    potentials' 2.31 MHz (docs/research/nir-model-2010.md §6).
-    """
-    m = _local_nir()
-    return (line.isotopologue == "127I2" and m.covers(line.v_upper, line.v_lower, line.J_lower)
-            and m.domain.covers_wavenumber(line.nu))
-
-
-@lru_cache(maxsize=1)
-def _corrections():
-    """The default parameter set's level corrections, if it names any."""
-    from .constants import DEFAULT_PARAMETERS
-    from .level_corrections import corrections_for
-    return corrections_for(DEFAULT_PARAMETERS)
-
-
-def corrected(line: Line):
-    """Is this ¹²⁷I₂ line inside the measured range of the parameter set's level corrections?
-
-    Returns the estimated 1σ (MHz) of its corrected position, or None. X levels below v″ = 11 and
-    B v′ = 0 are the reference the corrections are defined against, so they count as covered.
-    """
-    c = _corrections()
-    if c is None or line.isotopologue != "127I2":
-        return None
-    if c.band_covers(line.v_upper, line.v_lower, line.J_lower):
-        return round(c.band["held_out_MHz"], 2)      # the whole prediction, held out a line at a time
-    J_up = line.J_lower + (1 if line.branch == "R" else -1)
-    x_ok = line.v_lower <= 10 or c.covers("X", line.v_lower, line.J_lower)
-    b_ok = line.v_upper == 0 or c.covers("B", line.v_upper, J_up)
-    if not (x_ok and b_ok):
-        return None
-    parts = [0.3]                                   # the floor the corrections were fitted with
-    for state, v, J in (("X", line.v_lower, line.J_lower), ("B", line.v_upper, J_up)):
-        if (state == "X" and v <= 10) or (state == "B" and v == 0):
-            continue
-        # the covariance propagated to this J where the set carries it (it grows away from the data),
-        # else the level's held-out rms
-        u = c.uncertainty_at(state, v, J)
-        if u is None:
-            u = c.uncertainty(state, v)
-        parts.append(1.0 if u is None else u)       # a level fixed by one line: exact there, 1 MHz assumed nearby
-    return round(math.sqrt(sum(p * p for p in parts)), 2)
-
-
-def gp_corrected(line: Line):
-    """1σ (MHz) of a line whose B level the Gaussian-process correction fills in, to X v″ <= 5 (reference levels
-    the comb data pin down); None otherwise, or where the region value is smaller. Lines to other
-    X levels keep the X level's rule: their position carries the correction, their uncertainty the X level's."""
-    c = _corrections()
-    if c is None or line.isotopologue != "127I2":
-        return None
-    J_up = line.J_lower + (1 if line.branch == "R" else -1)
-    if not c.gp_covers("B", line.v_upper):
-        return None
-    if line.v_lower > 5:           # beyond v'' = 5 the reference X levels themselves are uncertain by 1-6 MHz
-        return None                # (the bake-off's X surface at v'' = 5-8, J up to 150), so the region rule stays
-    _, sd = c.gp(line.v_upper, J_up)
-    u = math.hypot(sd, 0.5)
-    return round(u, 2) if u < 3.0 else None
-
-
-def uncertainty(line: Line):
-    """1σ uncertainty (MHz) of the hyperfine-free position, and the evidence for it: the preferred model's
-    (``ResearchModel.uncertainty``) where it gives the line, else ``uncertainty_2026o``."""
-    p = _preferred(line)
-    if p is not None:
-        from .preferred import basis
-        return round(p[0], 3), basis(p[1], p[2], line.isotopologue)
-    if _preferred_active():
-        return OUTSIDE_SIGMA_MHZ, ("Outside the fitted domain: the model's level table does not hold a level of this "
-                                   "line (beyond its centrifugal-barrier rule, B v′ > 80, or J″ > 445); the position "
-                                   "comes from the same potentials on the line list's grid, and the uncertainty is a "
-                                   "rough bound")
-    return uncertainty_2026o(line)
-
-
-#: The 1-sigma quoted for a line the preferred model's table does not hold (MHz): a rough bound, not an estimate
+#: The 1-sigma quoted for a line the model's tables do not hold (MHz): a rough bound, not an estimate
 OUTSIDE_SIGMA_MHZ = 1000.0
 
 
-def uncertainty_2026o(line: Line):
-    """i2spec2026o's estimated 1σ uncertainty (MHz) of the hyperfine-free position, and the evidence for it.
-
-    This is the uncertainty of the position i2spec reports, which always comes from the potentials.
-    Where ``local_nir_covers`` is true, ``i2spec.local_nir`` predicts the same line an order of
-    magnitude better; the basis string says so.
-    """
-    c = _corrections()
-    if (line.isotopologue == "127I2" and c is not None and c.band_covers(line.v_upper, line.v_lower, line.J_lower)):
-        return corrected(line), (
-            "NIR band correction: the v′ = 0 → v″ = 12-17 lines on top of the level corrections, "
-            "fitted to 108 comb- and beat-referenced rows of Liao 2010, Bodermann 1998/2000 and Bodermann's thesis "
-            "(liao2010a 0.027 MHz in-sample with its 114 kHz pressure shift, 0.053 held out); this line is within "
-            "15 in J″ of the data at its v″, and the value is the held-out rms of all 108 rows")
-    if (u := corrected(line)) is not None and 18 <= line.v_lower <= 25:
-        return u, ("X v″ = 18-25 measured: 3 700 lines of the Orsay atlas part I (Gerstenkorn, Vergès & "
-                   "Chevillard 1982, cell at 790 °C) assigned and fitted with the atlas's own scale calibration; this line "
-                   "is within 15 in J of the atlas lines that fixed its lower level, and the value is that level's "
-                   "held-out uncertainty with the atlas's per-line scatter removed")
-    if u is not None and line.v_upper > 50:
-        return u, ("B v′ = 51-79 measured: 2 009 unblended lines of the Orsay atlas Partie IV (Gerstenkorn "
-                   "& Luc 1983), on the scale of the three atlas lines also measured against a comb, fitted level by level "
-                   "on the refitted B potential; this line is within 15 in J′ of the atlas lines of its upper level, and "
-                   "the value is that level's held-out uncertainty with the atlas's per-line scatter removed")
-    if u is not None:
-        return u, ("measured level corrections: every comb-referenced line fitted as polynomials in "
-                   "J(J+1) per level, 0.02-0.3 MHz in-sample; this line is within 15 in J of the lines that fixed its "
-                   "levels, and the value is their held-out rms (1 MHz where a single line fixed a level)")
-    if (g := gp_corrected(line)) is not None:
-        return g, ("Gaussian-process B correction: this B level has no correction of its own, so its value "
-                   "is interpolated from the corrected levels around it in v′ and J′ (docs/research/model-bakeoff.md), and the lower level is X v″ <= 5; "
-                   "held out a level at a time, B v′ = 3-35 is predicted to 1.1 MHz rms, against 1.9 MHz uncorrected, "
-                   "82 % of lines within the quoted 1σ (the posterior σ, with a 0.5 MHz floor)")
-    if 48 <= line.v_lower <= 54:
-        return 20.0, ("v″ = 48-54 comes from the extended-range MLR X potential: the emission lines of "
-                      "matyugin2012 and nesterenko2019 are reproduced to 7 and 19 MHz, and that residual is the X-state "
-                      "hyperfine model there, not the levels")
-    if line.v_lower > V_LOWER_FITTED:
-        if line.v_lower <= 25:
-            return 300.0, ("v″ = 18-25 outside the J the Orsay atlas part I measured: the extended X potential "
-                           "alone, which the atlas levels hold to ~15 MHz within their J")
-        if line.v_lower <= 75:
-            return 150.0, ("the extended X potential fitted to the level constants of "
-                           "Martin et al. 1986: 60 MHz rms at v″ = 26-47, 55 at 49-60, 73 at 61-75 for J ≤ 120, "
-                           "twice that quoted for the constants' own accuracy and J extrapolation")
-        if line.v_lower <= 89:
-            return 400.0, ("the extended X potential fitted to Martin et al. 1986 at v″ = 76-89, "
-                           "174 MHz rms; near the X limit, where the levels crowd")
-        return 2.1e6, ("v″ > 89: not physical. The extended X potential is fitted to v″ = 89 and dips up to "
-                       "170 cm⁻¹ below its dispersion limit at 7-9 Å; its levels above sit 70 cm⁻¹ rms from Martin "
-                       "et al. 1986, and fits that follow those cost the measured levels below "
-                       "(docs/research/x-levels-martin1986.md)")
-    if line.v_upper > 50:
-        return 1000.0, ("v′ > 50 outside the J the Orsay atlas Partie IV measured, or v′ = 80-86, which it did not reach: "
-                        "the refitted B potential alone sits 150-350 MHz from the atlas levels, and the "
-                        "level corrections carry that over only in their constant and J(J+1) terms")
-    if line.v_upper > V_UPPER_FITTED:
-        return 15.0, ("v′ = 44-50 comes from the extended-range MLR B potential: 12.5 MHz rms on the six "
-                      "matsunaga2024a lines and 3.3 on yoshiki2023a before their corrections")
-    if line.nu >= NU_PRECISION and line.v_upper >= V_UPPER_DRIFT:
-        value, why = 5.0, ("the B levels drift across v′ = 31-43: the BIPM 532 nm intervals put v′ = 33-37 at −6 to "
-                           "+6 MHz against v′ = 32, and the v′ = 39 lines of Nishiyama 2024 sit 5.5 MHz off")
-    elif line.nu >= NU_PRECISION:
-        value, why = 3.0, ("BIPM absolute frequencies (±2 MHz) at 500-667 nm; 672 comb-referenced lines at v′ ≤ 17 "
-                           "are reproduced to 1.2 MHz rms")
-    elif line.nu >= NU_NIR:
-        value, why = 5.0, ("the 671 nm anchor of Huang et al. 2013: the model sits +2.3 MHz above it, and within "
-                           "0.33 MHz of IodineSpec 5")
-    elif line.nu >= NU_NIR_ANCHORS:
-        if line.v_upper == 0:
-            value, why = 3.0, ("56 comb-referenced components of the v′ = 0 bands at 755-815 nm (Liao et al. 2010, "
-                               "Bodermann et al. 2000): the potentials are 2.4 MHz rms, 6.2 MHz at worst. Above "
-                               "775 nm i2spec.local_nir predicts these lines to 0.23 MHz")
-        else:
-            value, why = 8.0, ("v′ > 0 is the worst-known part of the near infrared: the 1-14 band sits 7.0 MHz off "
-                               "in Bodermann et al. 2000, and no published local model covers v′ > 0")
-    else:
-        value, why = 50.0, ("beyond 815 nm nothing has been measured absolutely, both published local NIR models (Knöckel 2004, Liao 2010) stop, "
-                            "and the potentials are unchecked")
-    if line.isotopologue != "127I2":
-        return math.hypot(value, 3.0), why + ("; with the model's adiabatic correction the ¹²⁹I₂ lines are 3.4 MHz rms "
-                                              "and ¹²⁷I¹²⁹I 0.3 MHz against BIPM (isotope shifts)")
-    return value, why
+def uncertainty(line: Line):
+    """1σ uncertainty (MHz) of the hyperfine-free position, and the evidence for it (``ResearchModel.uncertainty``)."""
+    p = _held(line)
+    if p is not None:
+        from .preferred import basis
+        return round(p[0], 3), basis(p[1], p[2], line.isotopologue)
+    return OUTSIDE_SIGMA_MHZ, ("Outside the fitted domain: the model's level tables do not hold a level of this line "
+                               "(beyond its centrifugal-barrier rule, B v′ > 80, or J″ > 445); the position comes from "
+                               "the same potentials, and the uncertainty is a rough bound")
 
 
 @dataclass(frozen=True)
@@ -420,7 +193,7 @@ class Component:
     I_lower: int | None = None
     upper_level: int | None = None  # hyperfine eigenstate indices (hyperfine.Component)
     lower_level: int | None = None
-    uncertainty_MHz: float | None = None  # 1σ of frequency_MHz, where the preferred model gives the line
+    uncertainty_MHz: float | None = None  # 1σ of frequency_MHz, where the model's tables hold the line
 
     @property
     def name(self):
@@ -460,25 +233,23 @@ class Catalog:
         self.temperature = float(temperature)
         self._masters = dict(masters or {})
         self._models = dict(models or {})
-        self._positions = {}
         #: isotopologues whose list reaches the B limit; an injected list counts as complete
         self._extended = set(self._masters)
 
     def master(self, isotopologue="127I2", near_dissociation=False):
         """The master line list; with ``near_dissociation``, extended to the B limit (a further build, once)."""
-        from .preferred import parameters
         if isotopologue not in self._masters:
-            model = intensity_model(isotopologue, parameters=parameters())
-            self._masters[isotopologue] = master_line_list(model, *self.nu_range, T_range=(200.0, 600.0),
-                                                           S_min=self.s_min)
+            self._masters[isotopologue] = master_line_list(intensity_model(isotopologue), *self.nu_range,
+                                                           T_range=(200.0, 600.0), S_min=self.s_min)
         if near_dissociation and self.nu_range[1] > NEAR_FROM and isotopologue not in self._extended:
             self._masters[isotopologue] = with_dissociation_lines(self._masters[isotopologue], S_min=self.s_min,
-                                                                  nu_max=self.nu_range[1], parameters=parameters())
+                                                                  nu_max=self.nu_range[1])
             self._extended.add(isotopologue)
         return preferred_positions(self._masters[isotopologue])
 
     def model(self, isotopologue="127I2"):
-        """The B-spline model used for hyperfine structure (more accurate than the intensity grid)."""
+        """The B-spline model of the lines the level tables do not hold: their positions, lower-level energies and
+        hyperfine components (published formulae)."""
         if isotopologue not in self._models:
             self._models[isotopologue] = RovibronicModel(isotopologue)
         return self._models[isotopologue]
@@ -515,50 +286,41 @@ class Catalog:
                     float(master.E_lower[k]), T)
 
     def transition(self, isotopologue, branch, J, v_upper, v_lower):
-        """Hyperfine-free wavenumber (cm⁻¹): the preferred model's where it gives the line, else i2spec2026o's."""
+        """Hyperfine-free wavenumber (cm⁻¹): from the level tables, or the potentials where the tables stop."""
         line = Line(isotopologue, branch, J, v_upper, v_lower, 0.0, 0.0, 0.0, self.temperature)
-        if _preferred(line) is not None:
+        if _held(line) is not None:
             from .preferred import preferred
             return float(preferred(isotopologue).positions([branch], [J], [v_upper], [v_lower])[0])
-        if _preferred_active():          # the same potentials on the line list's position grid
-            from .intensity import POSITION_GRIDS
-            from .preferred import parameters
-            if isotopologue not in self._positions:
-                self._positions[isotopologue] = RovibronicModel(isotopologue, parameters(), grids=POSITION_GRIDS)
-            return self._positions[isotopologue].transition(v_upper, v_lower, J, branch)
         return self.model(isotopologue).transition(v_upper, v_lower, J, branch)
 
     def components(self, line: Line, dJ=2, main_only=False) -> list[Component]:
-        """Hyperfine components of a line, with absolute frequencies. The preferred model always includes the
-        J ± 2 couplings (``dJ`` applies to i2spec2026o's lines) and gives each component its 1σ."""
-        p = _preferred(line)
+        """Hyperfine components of a line, with absolute frequencies. Where the level tables hold the line, the
+        model's, always with the J ± 2 couplings and each component's 1σ; elsewhere the published formulae's, with
+        ``dJ``."""
+        p = _held(line)
         if p is not None:
             from .preferred import components, sigma_component
             nu0, comps = components(line.branch, line.J_lower, line.v_upper, line.v_lower, line.isotopologue)
-            out = [Component(c.label, c.offset, c.strength, c.F_upper, c.F_lower, nu0 + c.offset, c.I_upper,
-                             c.I_lower, c.upper_level, c.lower_level,
-                             sigma_component(p[0], line.branch, line.J_lower, line.v_upper, line.v_lower, c.offset,
-                                             line.isotopologue))
-                   for c in comps if c.label or not main_only]
-            return sorted(out, key=lambda c: c.offset_MHz)
-        model = self.model(line.isotopologue)
-        nu0, comps = model.hyperfine_components(line.v_upper, line.v_lower, line.J_lower, line.branch, dJ=dJ)
+            sigma = lambda c: sigma_component(p[0], line.branch, line.J_lower, line.v_upper, line.v_lower,  # noqa: E731
+                                              c.offset, line.isotopologue)
+        else:
+            nu0, comps = self.model(line.isotopologue).hyperfine_components(line.v_upper, line.v_lower, line.J_lower,
+                                                                            line.branch, dJ=dJ)
+            sigma = lambda c: None  # noqa: E731
         out = [Component(c.label, c.offset, c.strength, c.F_upper, c.F_lower, nu0 + c.offset, c.I_upper, c.I_lower,
-                         c.upper_level, c.lower_level)
+                         c.upper_level, c.lower_level, sigma(c))
                for c in comps if c.label or not main_only]
         return sorted(out, key=lambda c: c.offset_MHz)
 
 
 def preferred_positions(master):
-    """A 127I2 master line list with the preferred model's positions where it gives the line (the strengths stay
-    i2spec2026o's); unchanged for other isotopologues or with I2SPEC_MODEL=i2spec2026o."""
+    """A master line list with the level tables' positions where they hold the line."""
     from dataclasses import replace
-    from . import preferred as pf
-    if not pf.active() or getattr(master, "_preferred", False):
+    from .preferred import preferred
+    if getattr(master, "_preferred", False):
         return master
-    nu = pf.preferred(master.isotopologue).positions(np.where(master.branch > 0, "R", "P"), master.J_lower,
-                                                     master.v_upper, master.v_lower)
+    nu = preferred(master.isotopologue).positions(np.where(master.branch > 0, "R", "P"), master.J_lower,
+                                                  master.v_upper, master.v_lower)
     out = replace(master, nu=np.where(np.isfinite(nu), nu, master.nu))
     out._preferred = True
-    out.nu_2026o = master.nu
     return out

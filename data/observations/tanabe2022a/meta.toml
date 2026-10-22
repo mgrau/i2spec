@@ -58,7 +58,7 @@ group and method). The three absolutes share one group; the splittings carry no 
 """
 
 notes = """
-Residuals against the default Predictor (2026-09-29). a1 absolutes: R(53) 24-1 -0.443 MHz,
+Residuals against an earlier version of the model (2026-09-29). a1 absolutes: R(53) 24-1 -0.443 MHz,
 P(49) 24-1 -0.672 MHz (hauden2024a a1: -0.675 MHz), R(95) 25-1 -1.303 MHz, line-centre offsets of the
 size seen for other v'' = 1 lines. Splittings: all 60 between -1 and +94 kHz, means +55, +48, +46 kHz
 (rms 60, 52, 52 kHz) for R(53), P(49), R(95). The pattern is the same in all three lines (a3, a7, a11,

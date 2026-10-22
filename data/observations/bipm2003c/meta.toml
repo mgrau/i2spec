@@ -26,8 +26,7 @@ pressure_Pa = 7.45
 allowance_kHz = 37.3
 basis = "MEP 576 nm, p. 1: recommended value applies at cold finger 6 C (cell inside or outside the laser). Pressure 7.45 Pa from Gillespie & Fraser at 279.15 K. The MEP gives no pressure, power or modulation coefficient and no power or modulation condition, so no shift is applied; allowance = |-5 kHz/Pa (typical slope, 500-600 nm) x 7.45 Pa| = 37.3 kHz."
 
-# Measurements this compilation prints that other sets hold (docs/design/observations.md, "One record per
-# measurement"). The P(62) 17-1 hyperfine table is Barwood 1984's measurement; reinhardt2006a remeasured the
+# Measurements this compilation prints that other sets hold. The P(62) 17-1 hyperfine table is Barwood 1984's measurement; reinhardt2006a remeasured the
 # whole pattern by comb, and its a3/a4 differ by +211/-234 kHz at a stated 20 kHz while the model agrees with
 # Reinhardt (+9/-3 kHz). The table stays in the record and leaves the fit; the recommended a1 absolute is kept.
 # The recommended a1 combines "the NBS value", pollock1983a, with a ratio to the 633 nm standard: a mean.

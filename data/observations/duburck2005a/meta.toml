@@ -1,10 +1,10 @@
 id = "duburck2005a"
 citation = "F. du Burck, C. Daussy, A. Amy-Klein, A. N. Goncharov, O. Lopez, C. Chardonnet and J.-P. Wallerand, \"Frequency measurement of an Ar+ laser stabilized on narrow lines of molecular iodine at 501.7 nm\", IEEE Trans. Instrum. Meas. 54, 754-758 (2005); transcribed from the arXiv version, quant-ph/0411211"
-source = "https://arxiv.org/abs/quant-ph/0411211 (library copy papers/DuBurck2005_IEEETIM54_754_arXiv0411211.pdf)"
+source = "https://arxiv.org/abs/quant-ph/0411211"
 doi = "10.1109/tim.2005.843579"
 retrieved = "2026-10-21"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Sect. V (arXiv pp. 7-8), typed from the text layer: the absolute frequency of the Ar+ laser locked to a7 of
@@ -21,7 +21,7 @@ whether they include these 2004 sets is not known and no overlap is declared.
 
 uncertainty = "As printed: 0.85 kHz, the standard deviation of the four set means (not divided by sqrt 4). The pressure allowance below adds 13 kHz in quadrature."
 
-notes = "Residual against i2spec2026o (obs - model, no correction): -356.5 kHz, the same as goncharov2007a's a1 residual (-336.5 kHz) plus its a7 - a1 residual (-20.0 kHz), so the two campaigns agree to 0.15 kHz. Checked with the shipped model only."
+notes = "Residual against an earlier version of the model (obs - model, no correction): -356.5 kHz, the same as goncharov2007a's a1 residual (-336.5 kHz) plus its a7 - a1 residual (-20.0 kHz), so the two campaigns agree to 0.15 kHz. Checked against the model only."
 
 [conditions]
 pressure_Pa = 0.33

@@ -7,11 +7,11 @@ kind = "atlas line positions"
 citation = """NIST 2-m Fourier transform spectrometer scan of the APO iodine cell (sample AS-17), 21 July 2009, distributed in the iodine_atlas/ directory of https://github.com/jaklusmeyer/APO_pyodine; the reduction code is that of Heeren et al., Astron. Astrophys. 674, A164 (2023), doi:10.1051/0004-6361/202244441"""
 instrument = """NIST 2-m FTS, RESOLUTN 0.018 cm-1, 32 scans, Xe lamp; air wavelengths converted here"""
 calibration = """HeNe-referenced FTS scale; agrees with Salami & Ross to <= 5e-8 in earlier checks"""
-extraction = """Line positions fitted from the transmission spectrum by prototypes/atlas_lines.py:
+extraction = """Line positions fitted from the transmission spectrum by a research script:
 per-line wavenumber shifts of the i2spec model template in 2.4 cm-1 windows stepped by 2 cm-1, with
 the column density, baseline, zero offset and instrument width fitted per window, hyperfine structure
 included in the template, and a ridge prior of 0.01 cm-1 on each shift. Repeats combined by inverse
-variance (prototypes/atlas_dataset.py). Kept: fit sigma < 30 MHz, window rms <
+variance (a research script). Kept: fit sigma < 30 MHz, window rms <
 4% of transmission, line depth > 0.03. The positions are
 hyperfine-free line centres on the atlas's own wavenumber scale; that scale carries a calibration
 offset and slope which belong in the fit as a group nuisance parameter, and are NOT in the per-line

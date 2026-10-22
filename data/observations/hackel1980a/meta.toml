@@ -1,10 +1,10 @@
 id = "hackel1980a"
 citation = "R. P. Hackel, L. A. Hackel and S. Ezekiel, \"Re-evaluation of the hyperfine coupling constants for B-X transitions in I2\", Phys. Rev. A 21, 1342-1343 (1980)"
-source = "https://doi.org/10.1103/PhysRevA.21.1342 (publisher PDF, Matt's library copy papers/Hackel1980_PRA21_1342.pdf)"
+source = "https://doi.org/10.1103/PhysRevA.21.1342 (publisher PDF)"
 doi = "10.1103/PhysRevA.21.1342"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table I (p. 1342), read from a 250 dpi page image (the text layer scrambles the table) and typed: measured

@@ -1,8 +1,7 @@
 """Measured line positions and hyperfine intervals: the data sets of the global fit.
 
 A data set is a directory data/observations/<id>/ holding meta.toml (source, provenance, unit,
-conditions) and data.csv (one observation per row); docs/design/observations.md describes the
-format. Lines are keyed as "127I2 R(56) 32-0". Hyperfine components keep their published labels
+conditions) and data.csv (one observation per row); data/README.md describes the format. Lines are keyed as "127I2 R(56) 32-0". Hyperfine components keep their published labels
 ("a10", "b12"): the number is the component's rank by frequency (1 = lowest), and the letter only
 names the line in the source.
 """
@@ -17,10 +16,8 @@ from collections import defaultdict
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 
-import numpy as np
 
-from .constants import ISOTOPOLOGUES, MHZ_PER_CM, DEFAULT_PARAMETERS
-from .model import RovibronicModel
+from .constants import ISOTOPOLOGUES, MHZ_PER_CM
 
 KINDS = ("frequency", "interval")
 UNITS = {"MHz": 1.0, "cm-1": MHZ_PER_CM}  # MHz per unit
@@ -154,7 +151,7 @@ def shift_correction(meta):
 
     Pressure and power shifts are negative for I2, so a zero-pressure value is the measured one minus
     slope x pressure. Intervals within a line are left alone: the shift is common to its components to
-    well under their uncertainty (docs/design/observations.md, "Pressure and power")."""
+    well under their uncertainty."""
     c = meta.get("shift_correction")
     if not c:
         return 0.0, 0.0
@@ -357,40 +354,3 @@ def load_all_hyperfine_parameters(root=PARAMETERS_DIR, include_excluded=False) -
     """Every set under ``root``, except those whose meta.toml has an ``exclude`` reason, as in ``load_all``."""
     sets = [load_hyperfine_parameters(p) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
     return [s for s in sets if include_excluded or "exclude" not in s.meta]
-
-
-class Predictor:
-    """Model values of observations: one RovibronicModel per isotopologue, with cached line results."""
-
-    def __init__(self, parameters=DEFAULT_PARAMETERS, dJ=2, **model_options):
-        self.parameters, self.dJ, self.model_options = parameters, dJ, model_options
-        self._models, self._centres, self._offsets = {}, {}, {}
-
-    def model(self, isotopologue):
-        if isotopologue not in self._models:
-            self._models[isotopologue] = RovibronicModel(isotopologue, self.parameters, **self.model_options)
-        return self._models[isotopologue]
-
-    def position(self, line, component=None):
-        """Frequency (MHz) of a hyperfine component, or of the hyperfine-free line centre."""
-        if line not in self._centres:
-            m = self.model(line.isotopologue)
-            self._centres[line] = m.transition(line.v_upper, line.v_lower, line.J_lower, line.branch) * MHZ_PER_CM
-        if component is None:
-            return self._centres[line]
-        if line not in self._offsets:
-            _, comps = self.model(line.isotopologue).hyperfine_components(line.v_upper, line.v_lower, line.J_lower,
-                                                                          line.branch, dJ=self.dJ)
-            self._offsets[line] = {component_rank(c.label): c.offset for c in comps if c.label}
-        return self._centres[line] + self._offsets[line][component_rank(component)]
-
-    def __call__(self, obs, unit="MHz"):
-        f = self.position(obs.line, obs.component)
-        if obs.kind == "interval":
-            f -= self.position(obs.ref_line or obs.line, obs.ref_component)
-        return f / UNITS[unit]
-
-
-def residuals(predictor, dataset):
-    """Observed − model for each observation of a data set, in the data set's unit."""
-    return np.array([o.value - predictor(o, dataset.unit) for o in dataset.observations])

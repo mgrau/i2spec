@@ -47,8 +47,7 @@ overall accuracy of 200 kHz is assigned to the transition frequencies in Table 2
 and the same unstudied pressure shift limit Table 1 and the R(141) line, so they carry it too.
 
 Not entered: the predicted frequencies in columns 4 and 6 of Table 2 (model output, not data) and
-the improved Dunham parameters of Table 3 (a model; transcribed in
-src/i2spec/data/liao2010_nir.json and analysed in docs/research/nir-model-2010.md).
+the improved Dunham parameters of Table 3 (a model).
 """
 uncertainty = "Standard (1σ), 0.200 MHz for every row: the overall accuracy the paper assigns (p. 1211), dominated by the uncharacterised pressure shift of the cell. The per-row measurement uncertainty as printed is in the note column."
 partial = "complete for the frequencies this paper publishes"

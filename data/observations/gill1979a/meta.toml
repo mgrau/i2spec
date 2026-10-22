@@ -1,6 +1,6 @@
 id = "gill1979a"
 citation = "P. Gill and S. J. Bennett, \"Iodine saturation spectroscopy for multi-wavelength stabilization of an argon/krypton ion laser\", Metrologia 15, 117-123 (1979)"
-source = "https://doi.org/10.1088/0026-1394/15/3/001 (PDF supplied by Matt; library copy papers/Gill1979_Metrologia_15_117.pdf)"
+source = "https://doi.org/10.1088/0026-1394/15/3/001 (publisher PDF)"
 doi = "10.1088/0026-1394/15/3/001"
 retrieved = "2026-10-20"
 unit = "cm-1"
@@ -21,7 +21,7 @@ only).
 
 uncertainty = "1 part in 1e7 as stated, about 0.002 cm-1."
 
-notes = "Residuals against i2spec2026o (obs - model): +0.0005 to +0.0012 cm-1, within the stated accuracy, which confirms all four assignments (49-1 P(108) included). Checked with the shipped model only."
+notes = "Residuals against an earlier version of the model (obs - model): +0.0005 to +0.0012 cm-1, within the stated accuracy, which confirms all four assignments (49-1 P(108) included). Checked against the model only."
 
 [conditions]
 method = "Coherent CR-MG argon/krypton ion laser with a 100 mm intra-cavity 127I2 cell, third-derivative lock; NPL digital wavemeter"

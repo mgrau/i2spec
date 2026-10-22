@@ -1,6 +1,6 @@
 id = "reinhardt2006a"
 citation = "S. Reinhardt, G. Saathoff, S. Karpuk, C. Novotny, G. Huber, M. Zimmermann, R. Holzwarth, T. Udem, T. W. Hänsch and G. Gwinner, \"Iodine hyperfine structure and absolute frequency measurements at 565, 576, and 585 nm\", Opt. Commun. 261, 282-290 (2006)"
-source = "https://doi.org/10.1016/j.optcom.2005.12.029 (publisher PDF, papers/Reinhardt2006_OptCommun261_282.pdf; values re-checked against it on 2026-09-29)"
+source = "https://doi.org/10.1016/j.optcom.2005.12.029 (publisher PDF, ; values re-checked against it on 2026-09-29)"
 doi = "10.1016/j.optcom.2005.12.029"
 retrieved = "2026-09-29"
 unit = "MHz"
@@ -57,7 +57,7 @@ hence one group. The heterodyne interval: 30 kHz, "a conservative estimation of 
 """
 
 notes = """
-Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model, absolutes after the shift
+Residuals against an earlier version of the model (2026-09-29), obs - model, absolutes after the shift
 correction (+52 kHz): P(10) 14-1 a15 +40 kHz; P(80) 21-1 a10 -3.86 MHz; interval P(10) a15 - R(99) a13
 +2.45 MHz (grieser1994a's R(99) 15-1 a13 absolute is -2.47 MHz from the model too, so the model's R(99) 15-1
 line position is some 2.4 MHz high; both are measured values, not misprints: Fig. 7's axis offsets

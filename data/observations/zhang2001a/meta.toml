@@ -59,7 +59,7 @@ than 1 kHz, so the 1 kHz is optimistic as a between-laboratory figure.
 """
 
 notes = """
-Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: -456 kHz (P(132) 36-0) to
+Residuals against an earlier version of the model (2026-09-29), obs - model: -456 kHz (P(132) 36-0) to
 +462 kHz (R(134) 36-0), rms 271 kHz; these are the model's line-centre errors at v' = 32-37 (bipm2012a,
 which holds nearly the same numbers, shows the same pattern). No row was dropped.
 """

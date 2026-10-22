@@ -21,10 +21,10 @@ Spectroscopy*, §2.3 and §7.2):
   factor 2 counts the two classes. It is what makes crossovers fade out beyond the Doppler width.
 * w_ij is 1 for a shared lower level (V-type) and ``lambda_weight`` for a shared upper level
   (Λ-type). The two mechanisms differ, so the default of 1 is a deliberate assumption, not a
-  result: see docs/research/sub-doppler.md.
+  result.
 
 The amplitudes are relative and sum to 1, so this module gives the *shape* of a Doppler-free
-spectrum, not its depth. docs/research/sub-doppler.md derives all of it and lists the assumptions.
+spectrum, not its depth (documentation/spectra.md).
 """
 
 from __future__ import annotations
@@ -60,7 +60,7 @@ def shared_level(a, b):
     Levels are identified by the eigenstate index the components carry (hyperfine.Component.upper_level
     and lower_level), or by (I, F) for components without one. (I, F) alone is not unique: I is the
     dominant total nuclear spin, which the quadrupole coupling mixes, and two levels of one F can carry
-    the same I (docs/research/sub-doppler.md).
+    the same I.
     """
     def same(side):
         ka, kb = getattr(a, f"{side}_level", None), getattr(b, f"{side}_level", None)
@@ -124,7 +124,7 @@ def lineshape(x, fwhm, *, harmonic=0, modulation=0.0, points=256):
     A Lorentzian of the given FWHM, or, when the laser frequency is modulated sinusoidally with
     peak-to-peak width ``modulation``, the in-phase ``harmonic``-th Fourier component of it:
 
-        S_n(x) = (2/π) ∫₀^π L(x + (m/2) cos θ) cos(nθ) dθ.
+        S_n(x) = (2/π) ∫₀^π L(x + (m/2) cos θ) cos(nθ) dθ   (n ≥ 1; half that for n = 0, the mean).
 
     For m ≪ FWHM this tends to the n-th derivative of the Lorentzian. The BIPM mise en pratique
     defines the recommended iodine frequencies for third-harmonic detection (n = 3) with about
@@ -135,7 +135,7 @@ def lineshape(x, fwhm, *, harmonic=0, modulation=0.0, points=256):
     if harmonic == 0 and modulation == 0.0:
         return _lorentzian(x, fwhm)
     theta = (np.arange(points) + 0.5) * np.pi / points  # midpoint rule, exact for smooth periodic integrands
-    weight = np.cos(harmonic * theta) * (2.0 / points)
+    weight = np.cos(harmonic * theta) * ((1.0 if harmonic == 0 else 2.0) / points)
     return (weight * _lorentzian(x[..., None] + 0.5 * modulation * np.cos(theta), fwhm)).sum(-1)
 
 
@@ -146,8 +146,8 @@ def signal(nu, resonances, fwhm, *, harmonic=0, modulation=0.0, points=256, wing
     each resonance for harmonic = 0: it is the increase in probe transmission, not the absorption.
     ``fwhm`` (MHz) is the homogeneous width the caller wants: natural width, transit-time and
     pressure broadening and saturation broadening together. Modulated shapes are interpolated from
-    an internal kernel of step FWHM/256, truncated at ``wings`` half-widths, which holds the error
-    below about 1e-5 of the peak even across the steep zero crossing a laser locks to.
+    an internal kernel of step FWHM/256 that reaches ``wings`` FWHM beyond the modulation's swing, which holds
+    the error below about 1e-5 of the peak even across the steep zero crossing a laser locks to.
     """
     nu = np.asarray(nu, dtype=float)
     offsets = np.array([r.offset for r in resonances])
@@ -157,8 +157,11 @@ def signal(nu, resonances, fwhm, *, harmonic=0, modulation=0.0, points=256, wing
     if harmonic == 0 and modulation == 0.0:
         return (amplitudes * _lorentzian(nu[..., None] - offsets, fwhm)).sum(-1)
     step = fwhm / 256
-    grid = np.arange(-wings * (fwhm + modulation), wings * (fwhm + modulation) + step, step)
-    kernel = lineshape(grid, fwhm, harmonic=harmonic, modulation=modulation, points=points)
+    half = wings * fwhm + 0.5 * modulation
+    grid = np.arange(-half, half + step, step)
+    # in slices: the quadrature holds ``points`` values per grid point
+    kernel = np.concatenate([lineshape(grid[k:k + 4096], fwhm, harmonic=harmonic, modulation=modulation,
+                                       points=points) for k in range(0, grid.size, 4096)])
     out = np.zeros_like(nu)
     for offset, amplitude in zip(offsets, amplitudes):
         out += amplitude * np.interp(nu - offset, grid, kernel, left=0.0, right=0.0)

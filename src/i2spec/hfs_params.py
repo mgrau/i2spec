@@ -10,7 +10,7 @@ Both are in cm⁻¹ and are taken from the ¹²⁷I₂ rovibronic model. eqQ is 
 delta in kHz. BKT02 stated validity: v' <= 43 (E_b < 19 500 cm⁻¹), v'' <= 17, J'' <= 200. Stated 2σ
 uncertainties (§7): ΔeqQ ±50 kHz, ΔC ±2 kHz, Δδ ±3 kHz, Δd ±4 kHz.
 
-Deviations from the printed texts (docs/research/isotopologue-hyperfine.md):
+Deviations from the printed texts:
 
 BKT02 eqs. (12) and (13) are used as the B-state values δ_B and d_B. The paper says to add δ_X and
 d_X to them. Evaluated at the levels of the paper's own Table 4 (17 lines, E from our model), eq.
@@ -24,64 +24,11 @@ is -78 kHz against -6 kHz from BKT02, and the whole S06 set misses the BIPM R(56
 line_states keeps BKT02 for ¹²⁷I₂ at v' <= 43.
 """
 
-from dataclasses import dataclass
 from math import exp
 
 from .constants import ISOTOPOLOGUES
 from .hyperfine import HyperfineParameters
 
-
-@dataclass(frozen=True)
-class Corrections:
-    """Additive corrections to the published hyperfine formulae (M5 stage 2).
-
-    Zero reproduces BKT02 and S06 exactly, so nothing changes unless a fit asks for it. Units follow
-    HyperfineParameters: eqQ in MHz; C, d and delta in kHz. Each correction is a low-order polynomial
-    in s = (v + 1/2)/10 and y = J(J + 1)/10^4, which are both of order one over the data, so every
-    coefficient carries the units of its parameter. Suffixes name the monomial: ``C_b_sy`` multiplies
-    s*y. The published formulae carry their own v and J dependence in the same variables.
-
-    BKT02 section 7 gives 2 sigma uncertainties of 50 kHz on eqQ, 2 kHz on C, 3 kHz on delta and
-    4 kHz on d; halved, those are the natural priors on the constant terms.
-    """
-
-    eqQ_b: float = 0.0
-    eqQ_b_s: float = 0.0
-    eqQ_b_y: float = 0.0
-    C_b: float = 0.0
-    C_b_s: float = 0.0
-    C_b_s2: float = 0.0
-    C_b_y: float = 0.0
-    C_b_sy: float = 0.0
-    C_b_y2: float = 0.0
-    d_b: float = 0.0
-    d_b_s: float = 0.0
-    d_b_y: float = 0.0
-    delta_b: float = 0.0
-    delta_b_s: float = 0.0
-    delta_b_y: float = 0.0
-    eqQ_x: float = 0.0
-    eqQ_x_s: float = 0.0
-    C_x: float = 0.0
-    C_x_s: float = 0.0
-
-    def apply_b(self, p: HyperfineParameters, v, J) -> HyperfineParameters:
-        s, y = (v + 0.5) / 10, J * (J + 1) / 1e4
-        return HyperfineParameters(
-            p.eqQ + self.eqQ_b + self.eqQ_b_s * s + self.eqQ_b_y * y,
-            p.C + self.C_b + self.C_b_s * s + self.C_b_s2 * s * s + self.C_b_y * y + self.C_b_sy * s * y
-            + self.C_b_y2 * y * y,
-            p.d + self.d_b + self.d_b_s * s + self.d_b_y * y,
-            p.delta + self.delta_b + self.delta_b_s * s + self.delta_b_y * y)
-
-    def apply_x(self, p: HyperfineParameters, v, J) -> HyperfineParameters:
-        s = (v + 0.5) / 10
-        return HyperfineParameters(p.eqQ + self.eqQ_x + self.eqQ_x_s * s, p.C + self.C_x + self.C_x_s * s,
-                                   p.d, p.delta)
-
-
-#: The published formulae, unmodified.
-NO_CORRECTIONS = Corrections()
 
 #: Upper end of the validated range of the BKT02 B-state formulae (v' = 43 is at 19 434 cm⁻¹).
 E_B_MAX = 19450.0
@@ -135,8 +82,7 @@ def b_state(v, J, E_b):
 #: Upper end of the validated range of the S06 B-state formulae (v' = 53 is at 19 772 cm⁻¹).
 #: Above it the formulae are held at this energy. That keeps them finite, but it is wrong: Chen 2004 measures
 #: C_B rising to 2.2 MHz at v' = 70 while the held value stays at 500-650 kHz, and the hyperfine intervals
-#: of v' = 55-70 lines come out 63 MHz rms (median) away from those Chen's parameters give, up to 470 MHz
-#: (docs/design/hyperfine-fit.md, "Chen 2004").
+#: of v' = 55-70 lines come out 63 MHz rms (median) away from those Chen's parameters give, up to 470 MHz.
 E_B_MAX_S06 = 19785.0
 
 #: Nuclear quadrupole-moment and magnetic-moment (μ/I) ratios to ¹²⁷I (S06 Table 1).
@@ -200,22 +146,13 @@ def b_state_s06(v, J, E_b, isotopologue="127I2"):
                                delta=s * delta_b_s06(v, J, E_b))
 
 
-def line_states(isotopologue, v_upper, v_lower, E_b, E_x, corrections=None, table=None):
+def line_states(isotopologue, v_upper, v_lower, E_b, E_x):
     """Parameter functions J -> HyperfineParameters of the (lower, upper) levels of one B-X line.
 
     BKT02 for ¹²⁷I₂ up to E_B_MAX (v' <= 43); S06 otherwise, with E_b frozen at E_B_MAX_S06 above
-    v' = 53, because the formulae have poles near the dissociation limit. ``corrections`` adds the
-    fitted offsets of ``Corrections``; ``table`` (an hfs_table.HyperfineTable) adds the measured
-    corrections of the B state for ¹²⁷I₂. None for both leaves the published formulae untouched.
+    v' = 53, because the formulae have poles near the dissociation limit.
     """
-    c = corrections or NO_CORRECTIONS
-    tab = (lambda p, J: table.apply(p, v_upper, J)) if (table is not None and isotopologue == "127I2") \
-        else (lambda p, J: p)                                                       # noqa: E731
     if isotopologue == "127I2" and E_b <= E_B_MAX:
-        lower = lambda J: c.apply_x(x_state(v_lower, J, E_x), v_lower, J)          # noqa: E731
-        upper = lambda J: tab(c.apply_b(b_state(v_upper, J, E_b), v_upper, J), J)  # noqa: E731
-        return lower, upper
+        return (lambda J: x_state(v_lower, J, E_x)), (lambda J: b_state(v_upper, J, E_b))
     E_b = min(E_b, E_B_MAX_S06)
-    lower = lambda J: c.apply_x(x_state_s06(v_lower, J, E_x, isotopologue), v_lower, J)   # noqa: E731
-    upper = lambda J: tab(c.apply_b(b_state_s06(v_upper, J, E_b, isotopologue), v_upper, J), J)   # noqa: E731
-    return lower, upper
+    return (lambda J: x_state_s06(v_lower, J, E_x, isotopologue)), (lambda J: b_state_s06(v_upper, J, E_b, isotopologue))

@@ -1,12 +1,12 @@
-"""balanced-expanded: research-balanced continued to X v''<=108 and B v'<=80 (release 20261020).
+"""The core fit continued to X v''<=108 and B v'<=80 (release 20261020), and to the other isotopologues (20261021).
 
-Every coefficient of research-20261018-balanced is kept (read from that release, SHA256-checked). Beyond its
+Every coefficient of the core fit (release 20261018) is kept (read from that release, SHA256-checked). Beyond its
 data the MLR exponent and rotational function continue as their own Taylor polynomials plus Bernstein tail
 terms, X gains a C6 change, a local cubic-spline correction on 4.2-6.6 A and, shared with B, a dissociation
 energy change. Levels are solved on the fit's own grids (one grid per range of v, long boxes for the highest
 levels, quasi-bound levels kept inside their centrifugal barrier).
 
-Hyperfine: balanced's own constants in its domain (B v'<=43, X v''<=17). Beyond, tabulated constants of the
+Hyperfine: the core fit's own constants in its domain (B v'<=43, X v''<=17). Beyond, tabulated constants of the
 second-order model (B: anchored background + second-order sums over the nine 2P3/2 + 2P1/2 states; X: eqQ
 continued to the separated-atom value), and at B v' = 77, 78 the 1g(1Pig) level that Pique et al. 1986 found
 near resonance, diagonalized with B. Tables hold every level the potentials bind (or hold behind their
@@ -14,11 +14,11 @@ barrier) up to J = 203.
 """
 from __future__ import annotations
 
+from collections import OrderedDict
 from math import comb, factorial, sqrt
 import numpy as np
 from numpy.polynomial.chebyshev import chebder, chebval
 from scipy.interpolate import BSpline
-from scipy.linalg import eigh
 
 from .bspline import BSplineSolver
 from .constants import HBAR2_2U, ISOTOPOLOGUES, MHZ_PER_CM, NUCLEAR_SPIN, reduced_mass
@@ -56,7 +56,7 @@ class _Tail:
 
 
 class _ExpandedPotential:
-    """V(R) and the rotational function of one state: balanced's MLR with its tails (BSplineSolver protocol)."""
+    """V(R) and the rotational function of one state: the core MLR with its tails (BSplineSolver protocol)."""
 
     def __init__(self, state, base, structure, values):
         cfg, frozen = base["config"], base["values"][state]
@@ -247,7 +247,10 @@ class ExpandedLevels:
         self.potentials = {s: _ExpandedPotential(s, base, structure, values) for s in ("X", "B")}
         self.grids = structure["grids"]
         self.joins = structure["joins"]
-        self._solvers, self._levels = {}, {}
+        self._solvers, self._levels, self._averages = {}, {}, {}
+        #: the probability densities of the last few (state, grid, J) solved, which averages() and the uncertainty's
+        #: level derivatives read right after the levels: one eigensolve serves all three
+        self._densities = OrderedDict()
         self.asymptote = {s: float(p(np.array([400.]))[0]) for s, p in self.potentials.items()}
         self.isotopologue, self.mu = isotopologue, reduced_mass(isotopologue)
         self.rho = reduced_mass("127I2")/self.mu
@@ -275,11 +278,12 @@ class ExpandedLevels:
                 self._solvers[state, tier] = BSplineSolver(self.potentials[state], self.mu,
                                                            joins=self.joins[state], nlev=grid["nlev"], **g)
             solver, pot = self._solvers[state, tier], self.potentials[state]
-            E, psi = solver.wavefunctions(J)
+            energies, psi = solver.wavefunctions(J)
+            w = solver.W[:, None]*psi**2
+            E = energies
             if "mesh" in grid:
                 # the fit engine's rule: bound levels and quasi-bound resonances (>= 90% inside the barrier)
                 R, asym = solver.R, self.asymptote[state]
-                w = solver.W[:, None]*psi**2
                 veff = pot(R)+J*(J+1)*HBAR2_2U/self.mu/R**2*(1+pot.nonadiabatic(R))
                 # the barrier: beyond 4.5 A up to the fit's J; beyond the well's minimum above that, where it moves in
                 outer = R > 4.5 if self.j_split is None or J <= self.j_split else R > R[int(np.argmin(veff))]
@@ -290,7 +294,14 @@ class ExpandedLevels:
                 else:
                     E = E[E < asym]
             self._levels[key] = E
+            self._keep_density(key, solver.R, w[:, np.isin(energies, E)])
         return self._levels[key]
+
+    def _keep_density(self, key, R, density):
+        self._densities[key] = R, density
+        self._densities.move_to_end(key)
+        while len(self._densities) > 16:
+            self._densities.popitem(last=False)
 
     def energy(self, state, v, J):
         E = self._kept(state, self.tier(state, v, J), J)
@@ -303,22 +314,22 @@ class ExpandedLevels:
         its levels; ``name`` identifies f in the cache."""
         tier = self.tier(state, v, J)
         key = state, tier, J, name
-        if not hasattr(self, "_averages"):
-            self._averages = {}
         if key not in self._averages:
             R, density, _ = self.densities(state, v, J)
             self._averages[key] = density.T@f(R)
         return self._averages[key][v]
 
     def densities(self, state, v, J):
-        """(R, W psi^2 of the kept levels, solver) on the grid that holds v: what _kept keeps, in its order."""
+        """(R, W psi^2 of the kept levels, tier) on the grid that holds v: what _kept keeps, in its order."""
         tier = self.tier(state, v, J)
+        key = state, tier, J
         E = self._kept(state, tier, J)
-        solver, pot = self._solvers[state, tier], self.potentials[state]
-        energies, psi = solver.wavefunctions(J)
-        density = solver.W[:, None]*psi**2
-        keep = np.isin(energies, E)
-        return solver.R, density[:, keep], tier
+        if key not in self._densities:          # solved before, but its densities have since been dropped
+            solver = self._solvers[state, tier]
+            energies, psi = solver.wavefunctions(J)
+            self._keep_density(key, solver.R, (solver.W[:, None]*psi**2)[:, np.isin(energies, E)])
+        R, density = self._densities[key]
+        return R, density, tier
 
 
 class ExpandedHyperfine:
@@ -341,7 +352,7 @@ class ExpandedHyperfine:
             if top is not None and J > top:
                 J = top
         if (v, J) not in table:
-            raise ValueError(f"balanced-expanded has no hyperfine constants for {state} v={v} J={J}")
+            raise ValueError(f"the model has no hyperfine constants for {state} v={v} J={J}")
         c = table[(v, J)]
         if state == "B":
             return HyperfineParameters(eqQ=c[0], C=c[1], d=c[2], delta=c[3])
@@ -455,7 +466,7 @@ def resonance_structure(hf, levels, v, J):
     Jb = [j for j in (J-2, J, J+2) if j >= 0]
     for j in Jb:
         if j not in r["constants"]:
-            raise ValueError(f"balanced-expanded's resonance tables lack B v={v} J={j}")
+            raise ValueError(f"the resonance tables lack B v={v} J={j}")
     E0, Ezero = levels.energy("B", v, J), levels.energy("B", v, 0)
 
     def params(j):
@@ -489,7 +500,7 @@ def resonance_structure(hf, levels, v, J):
             H[nb+a, nb+a] += Eg
             for i, (jb, ib) in enumerate(basis):
                 if (Jg, jb) not in r["overlaps"]:
-                    raise ValueError(f"balanced-expanded's resonance tables lack the overlap {Jg}-{jb} at v={v}")
+                    raise ValueError(f"the resonance tables lack the overlap {Jg}-{jb} at v={v}")
                 x = sum(_element(k, Jg, Ig, jb, ib, F, omega, parity, eps, values[k]) for k in (1, 2))
                 H[i, nb+a] = H[nb+a, i] = x*r["overlaps"][(Jg, jb)]
         w, U = np.linalg.eigh(H)
@@ -508,7 +519,7 @@ def resonance_structure(hf, levels, v, J):
 
 
 class ExpandedUncertainty:
-    """1-sigma of balanced-expanded's predictions (release 20261020 uncertainty.json; recipe in its `recipe`).
+    """1-sigma of the model's predictions (release 20261020 uncertainty.json; recipe in its `recipe`).
 
     sigma_stat: the linearized covariance of the fit, Cov = F F^T over the free parameters (new terms, frozen core
     potential coefficients, inherited dispersion log factors, calibrations), propagated through each level's
@@ -577,7 +588,7 @@ class ExpandedUncertainty:
             self._factors[key] = (density.T@(dV+rot[:, None]*dq))*MHZ_PER_CM@self.F
         factors = self._factors[key]
         if v >= len(factors):
-            raise ValueError(f"balanced-expanded has no {state} v={v} level at J={J} (dissociated)")
+            raise ValueError(f"the model has no {state} v={v} level at J={J} (dissociated)")
         return factors[v]
 
     # the frozen smooth functions and tables
@@ -683,10 +694,12 @@ def structure(model, state, v, J):
     symmetry = ("g" if state == "X" else "u") if model._symmetric else None
     couplings = lambda j: model._couplings(state, v, j)                 # noqa: E731
     rot = lambda j: (model._energy(state, v, j)-energy)*MHZ_PER_CM      # noqa: E731
-    try:
-        return level_structure(J, couplings, rot, symmetry=symmetry, dJ=2, **model._spins)
-    except ValueError:
-        if model._levels_x.j_split is None or J <= model._levels_x.j_split:
-            raise
-        return level_structure(J, couplings, rot, symmetry=symmetry, dJ=0, **model._spins)
+    dJ = 2
+    if model._levels_x.j_split is not None and J > model._levels_x.j_split:
+        for j in (J-2, J+2):                    # above the fit's J a partner may lie beyond the barrier
+            try:
+                model._energy(state, v, j)
+            except ValueError:
+                dJ = 0
+    return level_structure(J, couplings, rot, symmetry=symmetry, dJ=dJ, **model._spins)
 

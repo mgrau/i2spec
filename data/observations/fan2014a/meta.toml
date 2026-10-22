@@ -62,7 +62,7 @@ folded into the printed 0.1 MHz.
 """
 
 notes = """
-Residual vs the i2spec Predictor (default parameters, dJ=2), 2026-09-29: obs - model = +4.76 MHz for
+Residual against an earlier version of the model, 2026-09-29: obs - model = +4.76 MHz for
 R(26) 5-13 a15 (cornish2000a gives +4.86 MHz on the same component). A model error of this size at
 v''=13 is plausible; the row is not an outlier relative to cornish2000a.
 The two lines are weak hot-band lines at 730-733 nm "not reported in the iodine atlas at 13 350-13 920

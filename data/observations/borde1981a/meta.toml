@@ -1,10 +1,10 @@
 id = "borde1981a"
 citation = "Ch. J. Bordé, G. Camy, B. Decomps, J.-P. Descoubes and J. Vigué, \"High precision saturation spectroscopy of 127I2 with argon lasers at 5145 Å and 5017 Å: I - Main resonances\", J. Phys. (Paris) 42, 1393-1411 (1981)"
-source = "J. Phys. 42 (10), 1393-1411 (1981); https://doi.org/10.1051/jphys:0198100420100139300; HAL jpa-00209331 (open access scan, Matt's library copy papers/Borde1981_JPhys42_1393.pdf)"
+source = "J. Phys. 42 (10), 1393-1411 (1981); https://doi.org/10.1051/jphys:0198100420100139300; HAL jpa-00209331 (open access scan)"
 doi = "10.1051/jphys:0198100420100139300"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Main-resonance hyperfine intervals from three tables, in kHz as printed, converted to MHz exactly. The tables are
@@ -30,7 +30,7 @@ names this set as "mean" for P(13) and R(15) 43-0. A pending set has no say, so 
 until this one is admitted; then the 32 BIPM rows that this set determines leave the fit and stay in the
 record, and these rows are cited to this paper first, then to bipm2005a.
 
-P(13) 43-0 is the line Matt excludes from every potential and hyperfine fit; its 16 rows are kept in the archive
+P(13) 43-0 is held out of every potential and hyperfine fit as a diagnostic; its 16 rows are kept in the archive
 like those of bipm2005a, jones2002a and goncharov2004a.
 """
 
@@ -57,9 +57,8 @@ Comparisons (obs here - other source):
   [11] is this paper; for a4 that column (-4.4 kHz, with a1 at +6.5 kHz) implies Bordé - Goncharov = -10.9 kHz,
   i.e. Goncharov's a4 = 295 333.9 kHz. The "295 233.9" in the arXiv version that goncharov2007a was typed from
   is a misprint of 295 333.9 (2 for 3). Bordé's value is confirmed by his own fit (obs - calc -1 and +8 kHz).
-Residuals against i2spec2026o (Predictor(), obs - model): P(13) -0.7 to +5.0 kHz, R(15) -3.1 to +2.2 kHz,
-R(26) 62-0 -25 to +25 kHz, R(98) 58-1 -38 to +21 kHz (a10 -150 kHz, a11 +22 kHz). Checked with the shipped
-model only, not with any research candidate.
+Residuals against an earlier version of the model (obs - model): P(13) -0.7 to +5.0 kHz, R(15) -3.1 to +2.2 kHz,
+R(26) 62-0 -25 to +25 kHz, R(98) 58-1 -38 to +21 kHz (a10 -150 kHz, a11 +22 kHz). checked against the model only, not with any research candidate.
 """
 
 [conditions]

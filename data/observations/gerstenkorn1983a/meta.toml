@@ -1,10 +1,10 @@
 id = "gerstenkorn1983a"
 citation = "S. Gerstenkorn and P. Luc, \"Excitation spectrum of I2 induced by laser radiation near the dissociation limit of the B-state\", Laser Chem. 1, 83-112 (1983)"
-source = "https://doi.org/10.1155/lc.1.83 (library copy papers/Gerstenkorn1983_LaserChem1_83.pdf)"
+source = "https://doi.org/10.1155/lc.1.83"
 doi = "10.1155/lc.1.83"
 retrieved = "2026-10-21"
 unit = "cm-1"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 The PDF is a scan (600 dpi bilevel) whose text layer garbles most digits; every number was read on 300 and 600 dpi
@@ -87,11 +87,11 @@ independent one. The atlas is not an observation set, so there is no [overlaps] 
 Gerstenkorn and Luc's 1985 Dunham analysis (J. Phys. 46, 867; catalog gerstenkorn1985a) reaches v' = 80, presumably
 with these lines.
 
-Residuals against i2spec2026o (obs - model):
+Residuals against an earlier version of the model (obs - model):
   Fourier (44 rows): mean -3.7 mK, sd 1.7 mK; by v': 72 -5.3 (5 rows), 73 -3.9 (4), 74 -3.5 (7), 75 -3.8 (12),
   76 -2.3 (10), 77 -5.3 (5, sd 2.6), 78 -0.4 (1). The mean is the atlas scale (-4.0 mK at -200.8 ppb). This is not
   an independent test: the shipped model's levels v' = 51-79 were fitted to the unblended atlas lines
-  (prototypes/orsay4_fit.py), which include most of these. Blended rows (15): mean -4.6 mK, sd 1.9; the others:
+  (a research script), which include most of these. Blended rows (15): mean -4.6 mK, sd 1.9; the others:
   mean -3.2 mK, sd 1.5. Two rows exceed 5 times their printed uncertainty, R(8) 72-0 (-5.3 mK) and R(5) 72-0
   (-6.2 mK), both at 1.0 mK and both blends; with the -4.0 mK scale removed they are -1.3 and -2.2 mK, and both
   values were checked against the page and the atlas.
@@ -113,7 +113,7 @@ level is v' = 87. Table IV also reprints Barrow and Yee (v' = 64-77: 20 043.208(
 and King (72-82: 20 043.063(20), 87.183(12), 2.776(18)); these are not entered. Band intensities fall by about a
 factor 1.5 per v' (the Franck-Condon density predicts 1.25), and (80,0) is about 100 times weaker than (73,0). No
 (81,0) or (82,0) line was found; all observed lines of 20 022-20 039 cm-1 but one are assigned, so no perturbing
-state was seen. Checked with the shipped model only.
+state was seen. Checked against the model only.
 """
 
 [conditions]

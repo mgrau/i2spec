@@ -28,7 +28,7 @@ def _phase(x):
     return -1.0 if round(x) % 2 else 1.0
 
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=1 << 18)   # bounded: a whole line list of 127I129I would hold ~1e6 symbols
 def wigner_3j(j1, j2, j3, m1, m2, m3):
     if abs(m1 + m2 + m3) > 1e-9 or not _triad(j1, j2, j3):
         return 0.0
@@ -42,7 +42,7 @@ def wigner_3j(j1, j2, j3, m1, m2, m3):
     return _phase(j1 - j2 - m3) * total
 
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=1 << 18)   # bounded: a whole line list of 127I129I would hold ~1e6 symbols
 def wigner_6j(j1, j2, j3, j4, j5, j6):
     if not (_triad(j1, j2, j3) and _triad(j1, j5, j6) and _triad(j4, j2, j6) and _triad(j4, j5, j3)):
         return 0.0
@@ -55,7 +55,7 @@ def wigner_6j(j1, j2, j3, j4, j5, j6):
     return total
 
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=1 << 18)   # bounded: a whole line list of 127I129I would hold ~1e6 symbols
 def wigner_9j(j1, j2, j3, j4, j5, j6, j7, j8, j9):
     """Sum over three 6j symbols (Edmonds 6.4.3)."""
     x = max(abs(j1 - j9), abs(j4 - j8), abs(j2 - j6))

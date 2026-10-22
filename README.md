@@ -68,27 +68,8 @@ uv run i2spec web build site         # the static site in site/, as GitHub Pages
 node web/test_physics.mjs            # check the browser physics against the Python model
 ```
 
-The research progress dashboard runs in the terminal:
-
-```sh
-uv run i2spec progress
-```
-
-It refreshes every 30 seconds and shows remaining refits, accepted and failed
-attempts, worker log activity, finish estimates, and follow-up studies. Press
-`r` to refresh, `space` to pause display updates, `1`–`4` to switch views, and
-`q` to quit. Fits keep running when the dashboard is paused or closed. Use
-`--interval 10` for faster updates, `--out PATH` for another artifact directory,
-or `--json` for a single machine-readable snapshot. Counts and ETA cover the
-current validation queues; failed attempts count as finished. After the original
-queues finish, the overview shows the numerical recoveries, starting-value
-checks, potential/hyperfine combinations, joint-data pilots and exact-J numerical
-refits from the local finalization registry. Their counts describe the current stages; completed
-pilots still need scientific review. The dashboard includes supplemental workers.
-
 Pushing to `main` runs `.github/workflows/pages.yml`, which builds the site and publishes it to GitHub
-Pages (Settings → Pages → Source: GitHub Actions). See [`docs/design/web-app.md`](docs/design/web-app.md)
-for the data format and the deliberate limits (no sub-Doppler, no continuum, one isotopologue at a time).
+Pages (Settings → Pages → Source: GitHub Actions).
 
 ## Python
 
@@ -115,35 +96,26 @@ a10 = next(c for c in comps if c.label == "a10")
 print(nu0 + a10.offset)             # ≈ 563 260 225.51 MHz (CIPM value: 563 260 223.513 MHz)
 ```
 
-The fit's frozen releases, with every coefficient, table and reference prediction under SHA256, can be listed
-and replayed:
+The model's frozen releases hold every coefficient, table and reference prediction under SHA256:
 
 ```sh
-uv run i2spec research list
-uv run i2spec research verify --model MODEL      # MODEL: an id from the list
+uv run i2spec model                  # its domain, coefficient count and held-out accuracy
+uv run i2spec model verify           # replay its frozen reference predictions
 ```
-
-See [the release inventory and API](docs/research-models.md) and the
-[prospective validation guide](docs/research-model-validation.md), which provides frozen laboratory targets and
-measurement-scoring commands.
 
 ## Repository layout
 
 | path | what |
 |---|---|
-| `src/i2spec/` | the package: potentials, radial solvers, level corrections, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
-| `src/i2spec/data/` | the model parameters: potentials, level corrections, hyperfine tables |
-| [`src/i2spec/data/research/20261018/`](src/i2spec/data/research/20261018/README.md) | the core fit's frozen release: coefficients, source hashes, validation and reference predictions |
-| [`src/i2spec/data/research/20261020/`](src/i2spec/data/research/20261020/README.md) | the fitted model's release: its continuation, hyperfine tables, uncertainty model, audits, validation and the blind tests |
-| [`models/research-20261008/`](models/research-20261008/README.md) | earlier frozen research candidate and standalone evaluator |
+| `src/i2spec/` | the package: the model, radial solvers, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
+| `src/i2spec/data/` | the published 2008 potentials, for comparison |
+| [`src/i2spec/data/research/`](src/i2spec/data/research/20261021/README.md) | the model's frozen releases: coefficients, hyperfine tables, uncertainty model, audits, reference predictions and the blind tests |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
 | `data/catalog/` | the literature catalog: every data source found, with DOIs |
 | `web/` | the explorer, a static web app; `web/data/` is generated |
 | `documentation/`, `mkdocs.yml` | the documentation site (MkDocs Material) |
 | `tests/` | `uv run pytest` |
-| `prototypes/` | the research scripts behind each fit and figure; see `prototypes/README.md` |
-| `docs/design/`, `docs/research/` | design records and research notes |
 | `notebooks/` | an executed walkthrough |
 
 ## Walkthrough
@@ -160,8 +132,7 @@ uv run --group notebook jupyter lab notebooks/walkthrough.ipynb
 ## Development
 
 ```sh
-uv run pytest                         # the test suite (a few minutes; builds line lists on first run)
-uv run --group research python prototypes/<script>.py   # a research script that needs matplotlib or h5py
+uv run pytest                         # the test suite (about two minutes; builds line lists on first run)
 ```
 
 ## Sources
@@ -171,10 +142,11 @@ uv run --group research python prototypes/<script>.py   # a research script that
   (2005). See the documentation's reference list.
 - The published 2008 model (for comparison): E. J. Salumbides et al., *Eur. Phys. J. D* **47**, 171 (2008), Table 1. This
   supersedes the misprinted Table 4 of H. Knöckel, B. Bodermann & E. Tiemann, *Eur. Phys. J. D*
-  **28**, 199 (2004). See `docs/research/hannover-model-reproduction.md`.
-- Hyperfine parameters: B. Bodermann, H. Knöckel & E. Tiemann, *Eur. Phys. J. D* **19**, 31 (2002),
-  eqs. (10)–(15). For the conventions we established, see `docs/research/hannover-model-reproduction.md`.
-- Research notes, data catalogs and the plan are in `docs/` and `data/catalog/`.
+  **28**, 199 (2004).
+- Published hyperfine formulae (the 2008 model, and lines beyond the model's domain): B. Bodermann, H. Knöckel &
+  E. Tiemann, *Eur. Phys. J. D* **19**, 31 (2002), eqs. (10)–(15); E. J. Salumbides et al., *Mol. Phys.* **104**,
+  2641 (2006).
+- The data catalog, with every source and its DOI, is in `data/catalog/`.
 
 ## License
 

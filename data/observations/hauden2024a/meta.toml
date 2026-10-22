@@ -51,7 +51,7 @@ represented by the shared group label; intervals between components are therefor
 than 5-6 kHz, but the paper gives no separate splitting uncertainty.
 """
 notes = """
-Residuals against the default Predictor (2026-09-29): all 21 components between -0.677 and -0.603
+Residuals against an earlier version of the model (2026-09-29): all 21 components between -0.677 and -0.603
 MHz, mean -0.634 MHz (a line-centre offset of the size seen for other v'' = 1 lines, e.g.
 kobayashi2016a -0.11 to -1.17 MHz). After removing the mean, the rms is 20 kHz and the extremes are
 -43 kHz (a4) and +31 kHz (a7, a11), so the rank labels a1-a21 match the model's hyperfine pattern;

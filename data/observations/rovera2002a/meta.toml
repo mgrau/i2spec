@@ -1,10 +1,10 @@
 id = "rovera2002a"
 citation = "G. D. Rovera, F. Ducos, J.-J. Zondy, O. Acef, J.-P. Wallerand, J. C. Knight and P. St. J. Russell, \"Absolute frequency measurement of an I2 stabilized Nd:YAG optical frequency standard\", Meas. Sci. Technol. 13, 918-922 (2002)"
-source = "https://doi.org/10.1088/0957-0233/13/6/313 (PDF supplied by Matt; library copy papers/Rovera2002_Meas_Sci_Technol_13_918.pdf)"
+source = "https://doi.org/10.1088/0957-0233/13/6/313 (publisher PDF)"
 doi = "10.1088/0957-0233/13/6/313"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Eq. (1), p. 921, typed from the text layer and checked against the page: the frequency of the BNM-INM
@@ -19,7 +19,7 @@ Not entered: the stability results; the comparison with JILA and MPQ in the text
 
 uncertainty = "The printed 88 Hz is statistical only (\"without accounting for the reproducibility of the standard after transportation or complete realignment ... No attempt was made to evaluate systematic frequency shifts\"); the authors \"assume 1 kHz as reproducibility\" (BIPM comparison, May 2001). Entered: both in quadrature, 1.004 kHz."
 
-notes = "picard2003a (the BIPM comparisons) and bipm2012a do not use this value as such; no overlap declared. Residual against i2spec2026o (obs - model): -10.1 kHz, as for the CIPM value (-9 kHz). Checked with the shipped model only."
+notes = "picard2003a (the BIPM comparisons) and bipm2012a do not use this value as such; no overlap declared. Residual against an earlier version of the model (obs - model): -10.1 kHz, as for the CIPM value (-9 kHz). Checked against the model only."
 
 [conditions]
 cold_finger_C = -15.0

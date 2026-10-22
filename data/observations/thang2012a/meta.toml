@@ -1,10 +1,10 @@
 id = "thang2012a"
 citation = "Le Huu Thang, Bui Quoc Thu, Vu Khanh Xuan, Ho Suhng Suh and Pham Van Hoi, \"Precision frequency measurement for He-Ne/I2 laser emission with kHz-accuracy\", Communications in Physics 22, 161-166 (2012)"
-source = "https://doi.org/10.15625/0868-3166/22/2/1615 (library copy papers/Thang2012_CommunPhys22_161.pdf)"
+source = "https://doi.org/10.15625/0868-3166/22/2/1615"
 doi = "10.15625/0868-3166/22/2/1615"
 retrieved = "2026-10-21"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 163), typed from the text layer and checked against the page: three femtosecond-comb (KRISS,
@@ -17,7 +17,7 @@ Not entered: the uncertainty budget's sensitivity coefficients (power -0.106 kHz
 
 uncertainty = "Table 2: 1.1 kHz combined (k = 1) at the 80 uW operating point; applied to all three rows."
 
-notes = "Residuals against i2spec2026o (obs - model, after the shift correction): -116.1, -117.2 and -122.0 kHz, against -116.8 kHz for the CIPM value and -118.8/-120.2 kHz for hamid2006a. Checked with the shipped model only."
+notes = "Residuals against an earlier version of the model (obs - model, after the shift correction): -116.1, -117.2 and -122.0 kHz, against -116.8 kHz for the CIPM value and -118.8/-120.2 kHz for hamid2006a. Checked against the model only."
 
 [conditions]
 cold_finger_C = 14.98

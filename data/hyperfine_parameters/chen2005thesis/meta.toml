@@ -1,10 +1,10 @@
 id = "chen2005thesis"
 citation = "L. Chen, \"High-Precision Spectroscopy of Molecular Iodine: From Optical Frequency Standards to Global Descriptions of Hyperfine Interactions and Associated Electronic Structure\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. Ye), 2005, Appendix B, Tables B.46, B.48, B.57, B.58, B.79"
-source = "Matt's library copy papers/Chen2005_thesis_Colorado.pdf (pdfTeX, 272 pages, with a text layer)"
+source = "the thesis PDF (pdfTeX, 272 pages, with a text layer)"
 retrieved = "2026-10-21"
 unit = "MHz"
 kind = "B-state effective hyperfine parameters, one row per four-term fit; only the lines that chen2004a (= thesis Table 4.1) does not hold"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 The "Fitted hyperfine parameters for the excited state B" block under each Appendix B table, for the five lines that

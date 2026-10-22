@@ -1,10 +1,10 @@
 id = "bernard2001a"
 citation = "J. E. Bernard, A. A. Madej, K. J. Siemsen and L. Marmet, \"Absolute frequency measurement of the HeNe/I2 standard at 633 nm\", Opt. Commun. 187, 211-218 (2001)"
-source = "https://doi.org/10.1016/S0030-4018(00)01085-3 (library copy papers/Bernard2001_Opt_Commun_187_211.pdf)"
+source = "https://doi.org/10.1016/S0030-4018(00)01085-3"
 doi = "10.1016/S0030-4018(00)01085-3"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Abstract, Sects. 3-4 (pp. 214-217), typed from the text layer and checked against the pages: the f (= a16)
@@ -23,7 +23,7 @@ uncertainty = "As printed: 720 Hz for the corrected value (the 230 Hz statistica
 notes = """
 This measurement is the NRC chain of the April 2000 JILA/NRC/BIPM comparison on which the CIPM 2001 f(a16) rests
 (bipm2003a, declared there as \"mean\"); ye2000a's NRC-chain row for JILA-145 is this value carried over by the
-INMS-3/JILA-145 beat. Residual against i2spec2026o (obs - model, after the shift correction): -120.6 kHz, against -116.8 kHz for the CIPM value. Checked with the shipped model only.
+INMS-3/JILA-145 beat. Residual against an earlier version of the model (obs - model, after the shift correction): -120.6 kHz, against -116.8 kHz for the CIPM value. Checked against the model only.
 """
 
 [conditions]

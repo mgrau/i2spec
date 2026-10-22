@@ -49,7 +49,7 @@ uses u_c/y = 1.3e-12 (0.76 kHz). It excludes any pressure-shift allowance; a fac
 beam powers and modulation amplitude gave no shift above 0.5 kHz.
 """
 
-notes = "Model check (Predictor, DEFAULT_PARAMETERS, 2026-09-29): obs - model = +0.2 kHz; jones2002a (2.38 Pa) gives -5.3 kHz and bipm2005a -5.1 kHz."
+notes = "Model check (an earlier version of the model, 2026-09-29): obs - model = +0.2 kHz; jones2002a (2.38 Pa) gives -5.3 kHz and bipm2005a -5.1 kHz."
 
 [conditions]
 method = "saturated absorption, probe frequency-modulated at 2.5 MHz by AOM, pump amplitude-modulated at 5 kHz; fs comb (1 GHz Ti:Sa) as transfer oscillator, referenced to the BNM-SYRTE H-maser via 43 km fibre link"

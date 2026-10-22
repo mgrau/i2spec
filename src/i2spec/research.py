@@ -1,12 +1,10 @@
-"""Explicitly selected, frozen 127I2 research models.
+"""The model's frozen coefficients, read and checked against their SHA256.
 
-The October 18, 2026 release holds four models with shared MLR potentials and
-radial hyperfine functions, without line/level corrections. The October 20
-release continues its balanced model to X v<=108 and B v<=80
-(research_expanded). Their data are installed with i2spec; the fitting
-workspace and observation archive are not runtime dependencies. Production
-continues to use i2spec2026o. Benchmark errors describe reused exploratory
-validation, not per-prediction uncertainties.
+The model is built in three frozen releases under ``i2spec/data/research``: the exact-J core fit of ¹²⁷I₂
+(20261018: MLR potentials and radial hyperfine functions to X v'' <= 17, B v' <= 43, J'' <= 200), its continuation to
+X v'' <= 108 and B v' <= 80 with the uncertainty model (20261020, ``research_expanded``), and the released model
+(20261021): the same for ¹²⁹I₂ and ¹²⁷I¹²⁹I and up to J'' = 445. ``ResearchModel("i2spec", isotopologue)`` is the
+released model; the earlier releases are read only as its parts. No coefficient is specific to a line or level.
 """
 from __future__ import annotations
 
@@ -61,8 +59,7 @@ def _entry(name):
 
 
 def _read(entry, filename):
-    folder = _data(entry["release"]) if entry.get("release", _RELEASE) != _RELEASE else _data()
-    raw = folder.joinpath(entry["directory"], filename).read_bytes()
+    raw = _data(entry.get("release", _RELEASE)).joinpath(entry["directory"], filename).read_bytes()
     if hashlib.sha256(raw).hexdigest() != entry["files_sha256"][filename]:
         raise ValueError(f"frozen research artifact failed its SHA256 check: {entry['id']}/{filename}")
     return json.loads(raw)
@@ -133,11 +130,6 @@ def _reference_model(model_id):
     return ResearchModel(model_id, "127I2")
 
 
-def research_models():
-    """Metadata for every selectable research model (all releases), without radial solves."""
-    return tuple(_info(entry) for entry in _entries())
-
-
 @dataclass(frozen=True)
 class ResearchPrediction:
     model: str
@@ -154,7 +146,7 @@ class ResearchPrediction:
 
 @dataclass(frozen=True)
 class PredictionUncertainty:
-    """1-sigma of a balanced-expanded prediction and where it comes from (MHz).
+    """1-sigma of a prediction and where it comes from (MHz).
 
     ``sigma_MHz`` is the total: statistical and model terms in quadrature for a line center, plus the hyperfine
     term for a component; an intraline interval carries the hyperfine term alone. ``status`` is the worse of the
@@ -221,13 +213,11 @@ class _Potential:
 
 
 class ResearchModel:
-    """One immutable coefficient snapshot selected by canonical ID or role.
+    """One immutable coefficient snapshot, selected by canonical ID or role ("i2spec" is the released model).
 
-    ``frequency('P(53) 32-0', 'a1')`` returns MHz. ``transition`` and
-    ``hyperfine_components`` follow RovibronicModel's argument order and units.
-    Fitted radial functions include J±2 hyperfine mixing; no measured correction
-    tables are applied. This API does not provide a line-intensity catalog or
-    attach production uncertainty estimates to research predictions.
+    ``frequency('P(53) 32-0', 'a1')`` returns MHz. ``transition`` and ``hyperfine_components`` follow
+    RovibronicModel's argument order and units. The radial hyperfine functions include the J±2 mixing. The released
+    model also gives every prediction its 1σ (``uncertainty``); line strengths come from i2spec.intensity.
     """
     def __new__(cls, model, isotopologue="127I2"):
         if cls is ResearchModel and isinstance(model, str) and _entry(model).get("kind") == "expanded":
@@ -407,10 +397,15 @@ class ResearchModel:
         return result
 
 
+def _canonical(line):
+    """(branch, J'', v', v'') of a label or tuple."""
+    return parse_label(line) if isinstance(line, str) else tuple(line)
+
+
 class _ExpandedModel(ResearchModel):
-    """balanced-expanded (release 20261020): research-balanced's frozen coefficients with tails to X v<=108,
-    B v<=80, balanced's hyperfine in its own domain and tabulated second-order hyperfine beyond
-    (i2spec.research_expanded). Selected as ResearchModel("balanced_expanded")."""
+    """The continued model (releases 20261020 and 20261021): the core fit's frozen coefficients with tails to
+    X v<=108, B v<=80, the core's hyperfine in its own domain and tabulated second-order hyperfine beyond
+    (i2spec.research_expanded), and with release 20261021 the other isotopologues and J'' <= 445."""
 
     def __init__(self, model, isotopologue="127I2"):
         from . import research_expanded
@@ -429,7 +424,7 @@ class _ExpandedModel(ResearchModel):
         self._extension = _read(self._entry, "isotopologues.json") if extends else None
         base = self._spec["base"]
         if _entry(base["model"])["files_sha256"]["model.json"] != base["model_sha256"]:
-            raise ValueError("balanced-expanded's base coefficients differ from the frozen balanced release")
+            raise ValueError("the continued model's base coefficients differ from the frozen core release")
         self._validate()
         self.isotopologue = isotopologue
         self.parameters = self.info.id
@@ -445,7 +440,7 @@ class _ExpandedModel(ResearchModel):
             from .research_expanded import ExpandedUncertainty
             table = _read(self._core_entry, "uncertainty.json")
             if table["model"] != self._core_entry["id"] or table["pending_outcomes_used"]:
-                raise ValueError("balanced-expanded's uncertainty model does not belong to this frozen model")
+                raise ValueError("the uncertainty model does not belong to this frozen model")
             self._unc = ExpandedUncertainty(table, self._base.coefficients, self._spec["structure"],
                                             self._spec["values"])
         return self._unc
@@ -556,6 +551,9 @@ class _ExpandedModel(ResearchModel):
         """
         if (ref_component is not None or ref_line is not None) and component is None and ref_line is None:
             raise ValueError("an interval needs both components")
+        if ref_line is not None and _canonical(ref_line) == _canonical(line) and component is not None \
+                and ref_component is not None:
+            ref_line = None                           # an interval within one line
         with self._lock:
             one = self._uncertainty_terms(line, component)
             order = ["measured", "interpolated", "extrapolated"]
@@ -578,7 +576,15 @@ class _ExpandedModel(ResearchModel):
                         c, _ = net.get(key, (0., sigma))
                         net[key] = (c+sign*s, sigma)
                 model = math.sqrt(sum((c*sigma)**2 for c, sigma in net.values()))
-                hf = math.hypot(one["hf"], two["hf"])
+                if one["component"] and two["component"] and one["kappa_floor"][2:] == two["kappa_floor"][2:]:
+                    # one band: the pattern-scale error is common to both lines' components
+                    unc, core, vu, vl = one["kappa_floor"]
+                    a_hf, kappa = unc.hyperfine_terms(core, vu, vl)
+                    if self._iso is not None:
+                        a_hf = math.hypot(a_hf, self._extension["hyperfine"]["floor_MHz"])
+                    hf = math.sqrt(2*a_hf**2+(kappa*(one["offset"]-two["offset"]))**2)
+                else:
+                    hf = math.hypot(one["hf"], two["hf"])
                 statuses += list(two["status"])
                 ref_name = two["component"]
             else:
@@ -608,7 +614,7 @@ class _ExpandedModel(ResearchModel):
                                           extension=self._extension)))
 
     def _moments(self, state, J):
-        raise NotImplementedError("balanced-expanded keeps no radial moments: see research_expanded")
+        raise NotImplementedError("the continued model keeps no radial moments: see research_expanded")
 
     def _energy(self, state, v, J):
         return self._levels_x.energy(state, v, J)

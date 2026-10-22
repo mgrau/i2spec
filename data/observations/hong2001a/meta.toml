@@ -51,7 +51,7 @@ for all three lines. Taken as 1 sigma.
 """
 
 notes = """
-Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: R(58) 32-0 -1.9 to +1.8 kHz
+Residuals against an earlier version of the model (2026-09-29), obs - model: R(58) 32-0 -1.9 to +1.8 kHz
 (rms 1.1); P(55) 32-0 -1.4 to +2.6 kHz (rms 1.1); P(104) 34-0 -3.6 to +8.2 kHz (rms 4.5 with a15), with a15 at -12.1 kHz (the
 component the authors left out, their own calc misses it by 21.8 kHz) and a11 +8.2, a14 +5.5 kHz. No row
 was dropped.

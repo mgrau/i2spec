@@ -1,8 +1,7 @@
 """Milestone 1: the published Hannover 2008 potentials reproduce known results.
 
 Parameters: Salumbides et al., EPJD 47, 171 (2008), Table 1. Checks against
-Gerstenkorn, Luc & Le Roy, Can. J. Phys. 69, 1299 (1991) (T0, zero-point energy) and the
-local NIR Dunham model of Knöckel, Bodermann & Tiemann, EPJD 28, 199 (2004), Table 1.
+Gerstenkorn, Luc & Le Roy, Can. J. Phys. 69, 1299 (1991) (T0, zero-point energy) and measured absolute frequencies.
 """
 
 import numpy as np
@@ -10,22 +9,12 @@ import pytest
 from scipy.optimize import minimize_scalar
 
 from i2spec import MHZ_PER_CM, RovibronicModel, load_potentials, reduced_mass
-from i2spec.local_nir import load_local_nir
 from i2spec.solver import RadialSolver
-
-# Knöckel 2004 Table 1: bands 0-v'' (v'' = 12..17), hyperfine-free, stated 1σ < 200 kHz. The
-# parameters live in src/i2spec/data/knockel2004_nir.json, so there is one copy of them; this test
-# and tests/test_local_nir.py share it.
-LOCAL_NIR = load_local_nir("knockel2004")
-
-
-def dunham_nir_r_line(v_lower, J_lower):
-    return LOCAL_NIR.transition(0, v_lower, J_lower, "R")
 
 
 @pytest.fixture(scope="module")
 def model():
-    return RovibronicModel("127I2")
+    return RovibronicModel("127I2", "hannover2008")
 
 
 def test_extensions_join_the_series():
@@ -39,13 +28,6 @@ def test_zero_point_energy_and_T0(model):
     e00 = model.energy("X", 0, 0)
     assert e00 == pytest.approx(107.101, abs=0.005)  # De - D0 (GLL 1991)
     assert model.energy("B", 0, 0) - e00 == pytest.approx(15724.587, abs=0.002)  # T0 (GLL 1991)
-
-
-@pytest.mark.parametrize("v_lower", [14, 15])
-@pytest.mark.parametrize("J_lower", [20, 50, 80, 100, 120])
-def test_central_nir_bands_match_local_dunham_model(model, v_lower, J_lower):
-    diff = (model.transition(0, v_lower, J_lower, "R") - dunham_nir_r_line(v_lower, J_lower)) * MHZ_PER_CM
-    assert abs(diff) < 5.0
 
 
 @pytest.mark.parametrize(

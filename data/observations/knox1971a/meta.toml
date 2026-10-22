@@ -1,10 +1,10 @@
 id = "knox1971a"
 citation = "J. D. Knox and Y.-H. Pao, \"High-resolution saturation spectra of the iodine isotope I2-129 in the 633-nm wavelength region\", Appl. Phys. Lett. 18, 360-362 (1971)"
-source = "https://doi.org/10.1063/1.1653696 (PDF supplied by Matt; library copy papers/Knox1971_APL_18_360.pdf)"
+source = "https://doi.org/10.1063/1.1653696 (publisher PDF)"
 doi = "10.1063/1.1653696"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table I (p. 361), typed from the text layer and checked against the page: 37 separations between 38 adjacent
@@ -25,7 +25,7 @@ blend of P(54) a24/a25 and 127I129I m8) and j' (P(54) a15 with 127I129I m4): f-g
 
 uncertainty = "None printed. Against magyar1980a the heterodyne pairs differ by up to 1 MHz (a'-b' 20.54 against 19.58) and the scaled ones are about 10 % large in a-k; 0.5 MHz is entered for heterodyne pairs and 1.5 MHz for scaled ones. Groups: heterodyne and scaled."
 
-notes = "The MEP 633 nm Table 3 (129I2 P(54) 8-4) cites this paper (ref. [39]); declared there as \"mean\", although these rows reach none of that table's intervals to a28 (the chain is broken at the blends). Residuals against i2spec2026o (obs - model): rms 0.65 MHz over the 30 rows, -1.7 to +0.8 MHz. Checked with the shipped model only."
+notes = "The MEP 633 nm Table 3 (129I2 P(54) 8-4) cites this paper (ref. [39]); declared there as \"mean\", although these rows reach none of that table's intervals to a28 (the chain is broken at the blends). Residuals against an earlier version of the model (obs - model): rms 0.65 MHz over the 30 rows, -1.7 to +0.8 MHz. Checked against the model only."
 
 [conditions]
 method = "two 3He-20Ne lasers with 129I2 absorption cells (12.5 and 8 cm) inside the cavity, saturated absorption (inverted Lamb dips); 129I2 at 6 C (0.06 Torr)"

@@ -182,11 +182,11 @@ class LineBrowser(App):
 
     def _components(self, line):
         try:
-            from .lookup import _preferred
-            if _preferred(line) is not None:           # the preferred model's own hyperfine (i2spec.preferred)
+            from .lookup import _held
+            if _held(line) is not None:                # the model's own hyperfine (i2spec.preferred)
                 from .preferred import components
-                nu0, raw = components(line.branch, line.J_lower, line.v_upper, line.v_lower)
-            else:
+                nu0, raw = components(line.branch, line.J_lower, line.v_upper, line.v_lower, line.isotopologue)
+            else:                                      # beyond the level tables: the published formulae
                 model = self.catalog.model(line.isotopologue)
                 nu0, raw = model.hyperfine_components(line.v_upper, line.v_lower, line.J_lower, line.branch, dJ=2)
         except Exception as e:

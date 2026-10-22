@@ -1,10 +1,10 @@
 id = "glaser1987a"
 citation = "M. Gläser, \"Properties of a He-Ne laser at lambda = 612 nm, stabilized by means of an external iodine absorption cell\", IEEE Trans. Instrum. Meas. IM-36, 604-608 (1987)"
-source = "https://doi.org/10.1109/TIM.1987.6312749 (library copy papers/Glaser1987_IEEETIM36_604.pdf)"
+source = "https://doi.org/10.1109/TIM.1987.6312749"
 doi = "10.1109/TIM.1987.6312749"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table I (p. 607), typed from a 300 dpi page image: frequency differences of 19 hyperfine components from a7 of
@@ -21,7 +21,7 @@ uncertainty = "The printed s (5 kHz to 0.1 MHz), \"estimated from the measuremen
 
 notes = """
 The MEP 612 nm Tables 1-2 (bipm2003d) cite this paper (ref. [12]); declared there as "mean". Residuals against
-i2spec2026o (obs - model): R(47) 9-2 rms 3.6 kHz; P(48) 11-3 from a7 rms 60 kHz. Checked with the shipped model only.
+an earlier version of the model (obs - model): R(47) 9-2 rms 3.6 kHz; P(48) 11-3 from a7 rms 60 kHz. Checked against the model only.
 """
 
 [conditions]

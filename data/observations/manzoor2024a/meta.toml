@@ -51,7 +51,7 @@ not excluded by the paper.
 """
 
 notes = """
-Residuals vs the i2spec Predictor (default parameters, dJ=2), 2026-09-29: obs - model = -3.44 to -4.40
+Residuals against an earlier version of the model, 2026-09-29: obs - model = -3.44 to -4.40
 MHz, mean -3.88 MHz, SD 0.37 MHz. The common offset agrees with their C.G. - model centre = -3.87 MHz,
 i.e. the i2spec line centre of P(63) 4-4 is about 3.9 MHz high (still 5x better than the 1985 atlas
 constants the paper compares with). With the mean removed the hyperfine pattern residuals are -0.51 to

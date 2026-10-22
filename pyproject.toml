@@ -26,7 +26,7 @@ dev = [
     "pytest>=8",
     "sympy>=1.12",
 ]
-# the research scripts in prototypes/: figures, and the APO atlas's HDF5 file
+# research scripts kept outside the package: figures, and the APO atlas's HDF5 file
 research = ["matplotlib>=3.8", "h5py>=3.16.0"]
 notebook = ["jupyterlab>=4", "matplotlib>=3.8"]
 

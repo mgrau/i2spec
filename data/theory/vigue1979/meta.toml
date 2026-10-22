@@ -1,6 +1,6 @@
 id = "vigue1979"
 citation = "J. Vigué, M. Broyer and J. C. Lehmann, \"Ab initio calculation of hyperfine and magnetic parameters in the I2 B state\", Phys. Rev. Lett. 42, 883-886 (1979), Table I"
-source = "https://doi.org/10.1103/physrevlett.42.883 (publisher PDF, papers/Vigue1979_PRL42_883.pdf)"
+source = "https://doi.org/10.1103/physrevlett.42.883 (publisher PDF)"
 doi = "10.1103/physrevlett.42.883"
 retrieved = "2026-10-21"
 unit = "C_I in kHz; g_J and g_1 dimensionless, in nuclear magnetons (see notes); r2 in A; ED_minus_Ev in cm-1; P2 dimensionless"
@@ -30,11 +30,10 @@ Sources of the columns, from the table footnotes and the reference list (p. 886-
     K. H. Casleton, S. G. Kukolich and S. Ezekiel, Phys. Rev. Lett. 35, 568 (1975); B. M. Landsberg, Chem. Phys.
     Lett. 43, 102 (1976). The table does not say which line (J') each value comes from. At v' = 43 it is presumably
     P(13) 43-0 (J' = 12), the line those papers analyze; Landsberg's refit gives C' = 186.905 +- 0.064 kHz for it
-    (library copy, text layer), so the printed 186.8 +- 0.1 is probably Hackel et al.'s value (not held).
+    (PDF, text layer), so the printed 186.8 +- 0.1 is probably Hackel et al.'s value (not held).
   g_J and g_1 meas: Ref. 3, M. Broyer, J. C. Lehmann and J. Vigué, J. Phys. (Paris) 36, 235 (1975); G. Gouedard,
     M. Broyer, J. Vigué and J. C. Lehmann, Chem. Phys. Lett. 43, 118 (1976).
-Units of g_J and g_1. The table prints none. Ref. 3 (p. 236, checked on a 300 dpi render of the library copy
-papers/Broyer1975_JPhys36_235.pdf) writes H_Zeem = -g_J mu_N H0 J_z - (g_I + g_1) mu_N H0 I_z, with g_I = 1.12 for
+Units of g_J and g_1. The table prints none. Ref. 3 (p. 236, checked on a 300 dpi render of the PDF) writes H_Zeem = -g_J mu_N H0 J_z - (g_I + g_1) mu_N H0 I_z, with g_I = 1.12 for
 127I, and its text gives g_J = -0.32 +- 0.04 and -1.8 +- 0.2, the values quoted here: so g_J and g_1 are in nuclear
 magnetons, and g_1 is the shift of the nuclear g factor, g_I -> g_I + g_1 (this paper, p. 884).
 
@@ -48,9 +47,9 @@ this formula with their C' at v' = 61-73 (its Table 2 C'_th column); Spirko & Bl
 treat the quadrupole coupling instead. The fuller treatment is Broyer, Vigué & Lehmann, J. Phys. 39, 591 (1978)
 (catalog broyer1978a).
 
-Against the shipped model (i2spec2026o, hfs_params.line_states with its hyperfine table), C_B at J' = 12 (27 and 50
+Against an earlier version of the model (hfs_params.line_states with its hyperfine table), C_B at J' = 12 (27 and 50
 for the upper levels): v' = 40, 150.3 kHz; v' = 43, 190.3; v' = 62, 930.3 (938.7 at J' = 27); v' = 64, 1109.9
 (1126.5 at J' = 27); v' = 70, 2066.6 (2236.1 at J' = 50). C_I(calc) runs 38 % and 29 % above the model at v' = 40
 and 43, and 4-16 % above at v' = 62-70; the printed meas values sit within 1-2 % of the model where both exist.
-Checked with the shipped model only.
+Checked against the model only.
 """

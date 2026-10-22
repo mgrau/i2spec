@@ -1,10 +1,10 @@
 id = "acef1993a"
 citation = "O. Acef, J. J. Zondy, M. Abed, D. G. Rovera, A. H. Gérard, A. Clairon, Ph. Laurent, Y. Millerioux and P. Juncar, \"A CO2 to visible optical frequency synthesis chain: accurate measurement of the 473 THz HeNe/I2 laser\", Opt. Commun. 97, 29-34 (1993)"
-source = "https://doi.org/10.1016/0030-4018(93)90612-9 (library copy papers/Acef1993_Opt_Commun_97_29.pdf)"
+source = "https://doi.org/10.1016/0030-4018(93)90612-9"
 doi = "10.1016/0030-4018(93)90612-9"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Abstract and Sect. 3 (p. 33), typed from the text layer and checked against the page: "The frequency of the
@@ -23,7 +23,7 @@ uncertainty = "5 kHz as printed: \"chosen to be equal to the reproducibility of 
 notes = """
 razet1993a's absolute of P(33) 6-3 b21 is this value plus its own beats, so it is not entered there. The CIPM 1997
 value drew on this measurement; the 2001 value (bipm2003a) rests on the April 2000 comparison (ye2000a), so no
-overlap is declared. Residual against i2spec2026o (obs - model, after the shift correction): -133.9 kHz, against -116.8 kHz for the CIPM 2001 value (bipm2003a): INM12 then ran 17 kHz below it. Checked with the shipped model only.
+overlap is declared. Residual against an earlier version of the model (obs - model, after the shift correction): -133.9 kHz, against -116.8 kHz for the CIPM 2001 value (bipm2003a): INM12 then ran 17 kHz below it. Checked against the model only.
 """
 
 [conditions]

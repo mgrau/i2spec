@@ -57,7 +57,7 @@ def turning(V, R, E):
     return R[inside[0]], R[inside[-1]]
 
 
-model = preferred.model()                       # balanced-expanded (research-20261020)
+model = preferred.model()                       # the released model
 pot = model._levels_x.potentials
 table = preferred.preferred()
 

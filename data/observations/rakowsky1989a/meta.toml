@@ -1,10 +1,10 @@
 id = "rakowsky1989a"
 citation = "S. Rakowsky, D. Zimmermann and W. E. Ernst, \"Accurate determination of wavenumbers for iodine molecular lines in the red spectral region\", Appl. Phys. B 48, 463-466 (1989)"
-source = "https://doi.org/10.1007/BF00694680 (PDF supplied by Matt; library copy papers/Rakowsky1989_Appl_Phys_B_48_463.pdf)"
+source = "https://doi.org/10.1007/BF00694680 (publisher PDF)"
 doi = "10.1007/BF00694680"
 retrieved = "2026-10-20"
 unit = "cm-1"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 465), typed from the text layer and checked against the page: vacuum wavenumbers of the o component of
@@ -20,7 +20,7 @@ hyperfine constants (Fig. 2; the companion paper with the full patterns is "to b
 
 uncertainty = "As printed, 0.0011-0.0012 cm-1 (33-36 MHz): statistics 0.0003, wavemeter alignment 0.0005 and laser tuning or group distance 0.0003 cm-1, summed linearly by the authors. One group (the wavemeter calibration is common)."
 
-notes = "A source of Knöckel et al. 2004's near-infrared absolute data. Residuals against i2spec2026o (obs - model): -0.0004 to -0.0013 cm-1, mean -0.0009 cm-1 (-28 MHz, a common wavemeter offset within the stated error). Checked with the shipped model only."
+notes = "A source of Knöckel et al. 2004's near-infrared absolute data. Residuals against an earlier version of the model (obs - model): -0.0004 to -0.0013 cm-1, mean -0.0009 cm-1 (-28 MHz, a common wavemeter offset within the stated error). Checked against the model only."
 
 [conditions]
 method = "Doppler-free polarization spectroscopy with a cw single-mode dye laser (pyridine 2, LD 700), 0.5 m fused-silica cell at about 430 C; travelling Michelson wavemeter (1.5 m path) against a 129I2-stabilized He-Ne laser"

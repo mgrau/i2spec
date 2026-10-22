@@ -1,10 +1,10 @@
 id = "schweitzer1973a"
 citation = "W. G. Schweitzer, Jr., E. G. Kessler, Jr., R. D. Deslattes, H. P. Layer and J. R. Whetstone, \"Description, performance, and wavelengths of iodine stabilized lasers\", Appl. Opt. 12, 2927-2938 (1973)"
-source = "https://doi.org/10.1364/AO.12.002927 (publisher PDF via ODU; Matt's library copy papers/Schweitzer1973_Appl_Opt_12_2927.pdf)"
+source = "https://doi.org/10.1364/AO.12.002927 (publisher PDF)"
 doi = "10.1364/AO.12.002927"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the pages (abstract; pp. 2935-2936). NBS He-Ne lasers with internal
@@ -38,11 +38,10 @@ above today's (yoon2001a), so 2.0 MHz (both in quadrature) is entered.
 """
 
 notes = """
-Residuals against i2spec2026o (Predictor(), obs - model): a28 - 127I2 a13 +0.82 MHz and e2 - a28 +0.83 MHz, where
+Residuals against an earlier version of the model (obs - model): a28 - 127I2 a13 +0.82 MHz and e2 - a28 +0.83 MHz, where
 bipm2003a's rows for the same links give +0.69 MHz (a28 - a16) and +0.75 MHz (e2 - a28): the shipped model's
 129I2 isotope shift is about 0.7 MHz off, and these beats agree with the MEP to 0.13 and 0.08 MHz, which confirms
-the assignments. The absolute is +2.6 MHz (the same 0.7 MHz and the Kr scale's 2 MHz). Checked with the shipped
-model only.
+the assignments. The absolute is +2.6 MHz (the same 0.7 MHz and the Kr scale's 2 MHz). checked against the model only.
 """
 
 [conditions]

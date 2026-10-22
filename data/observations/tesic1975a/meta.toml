@@ -1,10 +1,10 @@
 id = "tesic1975a"
 citation = "M. Tesic and Y.-H. Pao, \"Theoretical assignment of the observed hyperfine structure in the saturated absorption spectra of 129I2 and 127I129I vapors in the 633 nm wavelength region\", J. Mol. Spectrosc. 57, 75-96 (1975)"
-source = "https://doi.org/10.1016/0022-2852(75)90043-0 (library copy papers/Tesic1975_J_Mol_Spectrosc.pdf)"
+source = "https://doi.org/10.1016/0022-2852(75)90043-0"
 doi = "10.1016/0022-2852(75)90043-0"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 A theory paper with no measurements of its own. Table 3 (p. 81) reproduces Knox and Pao's 1971 separations

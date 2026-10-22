@@ -1,10 +1,10 @@
 id = "madej2004a"
 citation = "A. A. Madej, J. E. Bernard, L. Robertsson, L.-S. Ma, M. Zucco and R. S. Windeler, \"Long-term absolute frequency measurements of 633 nm iodine-stabilized laser standards at NRC and demonstration of high reproducibility of such devices in international frequency measurements\", Metrologia 41, 152-160 (2004)"
-source = "https://doi.org/10.1088/0026-1394/41/3/007 (library copy papers/Madej2004_Metrologia_41.pdf)"
+source = "https://doi.org/10.1088/0026-1394/41/3/007"
 doi = "10.1088/0026-1394/41/3/007"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the pages (Sects. 4-5, Tables 3-4, pp. 157-159). NRC femtosecond-
@@ -24,8 +24,8 @@ uncertainty = "As printed (1 sigma): 570 Hz for INMS 3; 102-400 Hz for the INMS 
 
 notes = """
 All rows are at the mise en pratique conditions, so bipm2003a's coefficients take them to zero pressure, power
-and modulation as for the MeP value. Residuals against i2spec2026o (obs - model, after the shift correction): -115 to -118 kHz for all seven, against
--116.8 kHz for the CIPM value: both lasers within 2 kHz of it. Checked with the shipped model only.
+and modulation as for the MeP value. Residuals against an earlier version of the model (obs - model, after the shift correction): -115 to -118 kHz for all seven, against
+-116.8 kHz for the CIPM value: both lasers within 2 kHz of it. Checked against the model only.
 """
 
 [overlaps]

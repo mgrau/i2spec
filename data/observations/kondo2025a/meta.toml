@@ -1,10 +1,10 @@
 id = "kondo2025a"
 citation = "Y. Kondo, S. Yamauchi, Y. Kawai, T. Kohno, D. Akamatsu and F.-L. Hong, \"Frequency measurement of hyperfine transitions of the R(158)25-0 iodine line near the 1S0-3P1 transition of 174Yb\", Jpn. J. Appl. Phys. 64, 098001 (2025)"
-source = "https://doi.org/10.35848/1347-4065/ae0225 (publisher PDF, library copy papers/Kondo2025_JJAP64_098001.pdf)"
+source = "https://doi.org/10.35848/1347-4065/ae0225 (publisher PDF)"
 doi = "10.35848/1347-4065/ae0225"
 retrieved = "2026-10-21"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Brief Note, pp. 098001-1 to -3 (PDF pages 2-4; page 1 is the IOP cover sheet). Typed by hand from the
@@ -75,7 +75,7 @@ kobayashi2016a) is not used here: this weak line was locked at 18 Pa, and the pa
 notes = """
 The first comb-referenced absolute frequency at J'' = 158, and the first complete hyperfine table of this line.
 
-Residuals against i2spec2026o (Predictor(), obs - model), 2026-10-21:
+Residuals against an earlier version of the model (obs - model), 2026-10-21:
 - a10 absolute: +21.056 MHz as printed (18 Pa, 2 mW), +21.160 MHz after [shift_correction] (load_dataset's default).
 - Intervals a_n - a1 (14): -289 to +286 kHz, mean -3 kHz, rms 161 kHz (a2 -289, a3 -67, a4 +74, a5 +286, a6 -214,
   a7 -148, a8 +151, a9 +210, a10 -0.9, a11 -151, a12 -86, a13 +76, a14 +125, a15 -11 kHz). The authors' own
@@ -99,7 +99,7 @@ line about twice as strong could be pulled at 18 Pa; Table II's a1 Obs. - Cal. (
 scatter. The largest Obs. - Cal. (a12 -10.3, a13 8.1, a14 -8.5 kHz) fall on the two close pairs, a11/a12
 (10.0 MHz apart) and a13/a14 (10.4 MHz), which may pull each other at 18 Pa. This is an observation only.
 
-Checked with the shipped model only.
+Checked against the model only.
 """
 
 [conditions]

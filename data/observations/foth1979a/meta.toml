@@ -1,10 +1,10 @@
 id = "foth1979a"
 citation = "H.-J. Foth and F. Spieweck, \"Hyperfine structure of the R(98), 58-1 line of 127I2 at 514.5 nm\", Chem. Phys. Lett. 65, 347-352 (1979)"
-source = "https://doi.org/10.1016/0009-2614(79)87079-7 (PDF supplied by Matt; library copy papers/Foth1979_CPL_65_347.pdf)"
+source = "https://doi.org/10.1016/0009-2614(79)87079-7 (publisher PDF)"
 doi = "10.1016/0009-2614(79)87079-7"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 350): the "Experiment" column, splittings of the 15 hyperfine lines of 127I2 R(98) 58-1 at 514.5 nm
@@ -30,8 +30,8 @@ uncertainty = "Splittings: \"determined with an accuracy of 30 kHz\" by the hete
 notes = """
 The P(13) 43-0 link row falls under the standing exclusion of that line from the fits. bipm2005a and borde1981a
 also hold R(98) 58-1; the MEP does not name this paper among its sources, so no overlap is declared.
-Residuals against i2spec2026o (obs - model): the 12 splittings rms 21 kHz (largest -45 kHz at a12), and the link
--0.04 MHz. Checked with the shipped model only.
+Residuals against an earlier version of the model (obs - model): the 12 splittings rms 21 kHz (largest -45 kHz at a12), and the link
+-0.04 MHz. Checked against the model only.
 """
 
 [conditions]

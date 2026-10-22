@@ -1,10 +1,10 @@
 id = "ikeda2018a"
 citation = "K. Ikeda, Y. Hisai, K. Yoshii, H. Kosaka, F.-L. Hong and T. Horikiri, \"Compact frequency-stabilized pump laser for wavelength conversion in long-distance quantum communication\", J. Opt. Soc. Am. B 35, 2023 (2018); transcribed from the arXiv version, arXiv:1807.03472"
-source = "https://arxiv.org/abs/1807.03472 (library copy papers/Ikeda2018_JOSAB35_2023_arXiv1807.03472.pdf)"
+source = "https://arxiv.org/abs/1807.03472"
 doi = "10.1364/josab.35.002023"
 retrieved = "2026-10-21"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Sect. 3 (p. 3 of the arXiv version), typed from the text layer: two absolute frequencies of a10 of R(86) 33-0,
@@ -22,7 +22,7 @@ beam; the Nd:YAG laser's conditions are not stated. The paper gives no shift coe
 
 uncertainty = "As printed (0.5 and 1.6 kHz at 1064 nm), doubled to 1.0 and 3.2 kHz at 532 nm."
 
-notes = "Residuals against i2spec2026o (obs - model): +153 and +178 kHz. For comparison, the CIPM a10 of R(56) 32-0 plus the ye1999a interval to R(86) 33-0 a1 and bipm2012a's a10 - a1 gives 563 228 604.369 MHz, which the Nd:YAG value (corrected) is 12 kHz below and the compact laser 13 kHz above. Checked with the shipped model only."
+notes = "Residuals against an earlier version of the model (obs - model): +153 and +178 kHz. For comparison, the CIPM a10 of R(56) 32-0 plus the ye1999a interval to R(86) 33-0 a1 and bipm2012a's a10 - a1 gives 563 228 604.369 MHz, which the Nd:YAG value (corrected) is 12 kHz below and the compact laser 13 kHz above. Checked against the model only."
 
 [conditions]
 cold_finger_C = 7.0

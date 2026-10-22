@@ -1,10 +1,10 @@
 id = "cerez1974a"
 citation = "P. Cérez, A. Brillet and F. Hartmann, \"Metrological properties of the R(127) line of iodine studied by laser saturated absorption\", IEEE Trans. Instrum. Meas. IM-23, 526-528 (1974)"
-source = "https://doi.org/10.1109/TIM.1974.4314347 (IEEE Xplore via ODU; Matt's library copy papers/Cerez1974_IEEE_TIM_23_526.pdf)"
+source = "https://doi.org/10.1109/TIM.1974.4314347 (IEEE Xplore)"
 doi = "10.1109/TIM.1974.4314347"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Fig. 4 (p. 527), a hand-lettered table, "Assignments of the observed and calculated hyperfine components of the

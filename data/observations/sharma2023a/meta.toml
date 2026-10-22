@@ -42,7 +42,7 @@ text, presumably the WS7 absolute accuracy. Taken as 1 sigma but see `exclude`.
 """
 
 notes = """
-Residuals against the default Predictor (2026-09-29): a1 +117 MHz, a10 -76 MHz, a15 -31 MHz.
+Residuals against an earlier version of the model (2026-09-29): a1 +117 MHz, a10 -76 MHz, a15 -31 MHz.
 """
 
 [conditions]

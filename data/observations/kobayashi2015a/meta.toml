@@ -45,7 +45,7 @@ Taken as standard (1 sigma) for the operating conditions above; it does not cove
 the unperturbed transition.
 """
 notes = """
-Residual against the default Predictor (2026-09-29): +0.99 MHz. This is a line-centre offset of the
+Residual against an earlier version of the model (2026-09-29): +0.99 MHz. This is a line-centre offset of the
 size the model shows for other v' = 32 lines (bipm2012a a1 of P(53)/P(54)/P(55) 32-0: +0.21 to
 +0.36 MHz, R(57)/R(58) 32-0: -0.08/-0.17 MHz), not a transcription or labelling problem; only about
 0.12 MHz of it could come from the uncorrected pressure, power and modulation shifts.

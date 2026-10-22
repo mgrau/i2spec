@@ -1,10 +1,10 @@
 id = "bertinetto1987a"
 citation = "F. Bertinetto, P. Cordiale, S. Fontana and G. B. Picotto, \"Helium-neon lasers stabilized to iodine at 605 nm\", IEEE Trans. Instrum. Meas. IM-36, 609-612 (1987)"
-source = "https://doi.org/10.1109/TIM.1987.6312750 (IEEE Xplore via ODU; Matt's library copy papers/Bertinetto1987_IEEE_TIM_36_609.pdf)"
+source = "https://doi.org/10.1109/TIM.1987.6312750 (IEEE Xplore)"
 doi = "10.1109/TIM.1987.6312750"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table III (p. 610), read from a 350 dpi page image (the text layer is unreadable) and typed: measured frequency

@@ -1,10 +1,10 @@
 id = "ye2001a"
 citation = "J. Ye, L.-S. Ma and J. L. Hall, \"Molecular iodine clock\", Phys. Rev. Lett. 87, 270801 (2001)"
-source = "https://doi.org/10.1103/PhysRevLett.87.270801 (publisher PDF, Matt's library copy papers/Ye2001_PRL87_270801.pdf)"
+source = "https://doi.org/10.1103/PhysRevLett.87.270801 (publisher PDF)"
 doi = "10.1103/PhysRevLett.87.270801"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Fig. 5 (p. 270801-4), typed from the text layer and checked against the page: the JILA Nd:YAG laser stabilized

@@ -1,10 +1,10 @@
 id = "ikeda2020a"
 citation = "K. Ikeda, S. Okubo, M. Wada, K. Kashiwagi, K. Yoshii, H. Inaba and F.-L. Hong, \"Iodine-stabilized laser at telecom wavelength using dual-pitch periodically poled lithium niobate waveguide\", Opt. Express 28, 2166-2178 (2020)"
-source = "https://doi.org/10.1364/OE.381961 (open access; Matt's library copy papers/Ikeda2020_OE28_2166.pdf)"
+source = "https://doi.org/10.1364/OE.381961 (open access)"
 doi = "10.1364/OE.381961"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the page (Sect. 3.4, p. 2174): "The absolute frequency of the a1

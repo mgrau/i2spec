@@ -69,7 +69,7 @@ the authors' Obs - Cal reaches 9 kHz.
 """
 
 notes = """
-Residuals against the default Predictor (i2spec2026k), obs - model, 2026-09-29.
+Residuals against an earlier version of the model, obs - model, 2026-09-29.
 Absolute a1/b1: R(38) 32-0 +1.12 MHz, P(35) 32-0 +1.31, R(37) 32-0 +1.14, P(34) 32-0 +1.37 MHz (v' = 32,
 J'' = 34-38); R(75) 33-0 +0.72 MHz; R(98) 34-0 +0.004 MHz; P(112) 35-0 -1.16 MHz. So in bands 33-0 to
 35-0 the model is off by at most 1.2 MHz here, not the ~5 MHz reported for the Knoeckel 2004 fit. The

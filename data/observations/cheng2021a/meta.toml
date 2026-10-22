@@ -1,10 +1,10 @@
 id = "cheng2021a"
 citation = "F. Cheng, N. Jin, F. Zhang, H. Li, Y. Du, J. Zhang, K. Deng and Z. Lu, \"A 532 nm molecular iodine optical frequency standard based on modulation transfer spectroscopy\", Chin. Phys. B 30, 050603 (2021)"
-source = "https://doi.org/10.1088/1674-1056/abd754 (publisher PDF; Matt's library copy papers/Cheng2021_CPB30_050603.pdf; the download list called it Cheng 2020)"
+source = "https://doi.org/10.1088/1674-1056/abd754 (publisher PDF; the download list called it Cheng 2020)"
 doi = "10.1088/1674-1056/abd754"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the pages (Sect. 3.3.6 and Table 2, p. 050603-8; conclusion):

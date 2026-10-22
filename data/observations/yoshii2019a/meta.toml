@@ -37,7 +37,7 @@ servo offset < 1.2, EOM phase < 1.8, alignment < 0.5, cell impurity 5, comb refe
 """
 
 notes = """
-Residual against the default Predictor (i2spec2026k), 2026-09-29: +1.114 MHz, the same as the
+Residual against an earlier version of the model, 2026-09-29: +1.114 MHz, the same as the
 sakagami2020a R(38) 32-0 a1 residual (+1.116 MHz), i.e. a line-centre error of the model at low J in
 v' = 32, not a labelling problem.
 """

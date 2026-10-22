@@ -1,11 +1,11 @@
-"""Line intensities of the I₂ B-X system. Inputs and sources: docs/research/intensity-inputs.md.
+"""Line intensities of the I₂ B-X system.
 
 Integrated absorption cross section of one rovibronic line (Tellinghuisen, JCP 134, 084301 (2011), eq. 1):
 
     S = 2π² ν / (3 ε₀ h c) · s_J'J'' / (2J''+1) · |<v'J'|μ_e(R)|v''J''>|² · f(v'', J''),
 
 with s_J'J'' = J'' for P and J''+1 for R lines, and f the fractional population of the lower level.
-In practical units S [cm] = 4.1625e-19 · ν[cm⁻¹] · s/(2J''+1) · |μ|²[D²] · f. The matrix elements
+In practical units S [cm] = 4.1624e-19 · ν[cm⁻¹] · s/(2J''+1) · |μ|²[D²] · f. The matrix elements
 use the J-dependent wavefunctions of both states, so Herman-Wallis effects are included.
 
 Because f = g_ns (2J''+1) exp(-c2 E''/T) / Q(T), a line list is stored in the temperature-independent
@@ -28,7 +28,7 @@ import zipfile
 
 import numpy as np
 
-from .constants import DEFAULT_PARAMETERS, MHZ_PER_CM, ISOTOPOLOGUES, NUCLEAR_SPIN
+from .constants import DEFAULT_PARAMETERS, ISOTOPOLOGUES, NUCLEAR_SPIN
 from .model import RovibronicModel
 
 _H, _C, _EPS0 = 6.62607015e-34, 299792458.0, 8.8541878188e-12
@@ -63,9 +63,8 @@ MATCH_TOLERANCE = 0.01
 #: An eigenvector with more than EDGE_WEIGHT of its probability within EDGE (Å) of the outer grid
 #: boundary is a box state (continuum above the dissociation limit or the centrifugal barrier).
 EDGE, EDGE_WEIGHT = 0.5, 1e-6
-_CACHE_VERSION = 7   # 4: level corrections of the parameter set; 5: extended-range potentials (i2spec2026d);
-                     # 6: the NIR band correction (i2spec2026e); 7: DVR levels beyond the position model's
-                     # physical ones are continuum on every grid
+#: Bumped whenever a change to the build changes the lines it writes, so stale caches are rebuilt
+_CACHE_VERSION = 7
 
 
 def mu_tellinghuisen2011(R):
@@ -86,8 +85,8 @@ def intensity_model(isotopologue="127I2", nlev_x=40, nlev_b=70, grid=None, x_rmi
     """A sinc-DVR RovibronicModel for intensities: B on ``grid``, X on the same points extended inward.
 
     Its eigenvectors give the transition moments. Its energies are only good to a few MHz, so
-    master_line_list takes positions from the B-spline solver instead. ``parameters``: a parameter set, or a
-    frozen research release (preferred.parameters(): the model the apps use).
+    master_line_list takes positions from the B-spline solver instead. ``parameters``: the released model (the
+    default) or a published parameter set.
     """
     g = {**SHARED_GRID, **(grid or {})}
     n_inner = max(int(round((g["rmin"] - x_rmin) / g["step"])), 0)
@@ -96,7 +95,7 @@ def intensity_model(isotopologue="127I2", nlev_x=40, nlev_b=70, grid=None, x_rmi
 
 
 #: For an intensity model whose B box reaches the dissociation region (intensity_model(grid=NEAR_DISSOCIATION)):
-#: the position grid follows it out, with the levels a 12 A box holds (docs/design/near-dissociation.md).
+#: the position grid follows it out, with the levels a 12 A box holds.
 NEAR_DISSOCIATION = dict(rmax=12.0)
 
 
@@ -146,19 +145,6 @@ def shared_offset(X, B):
     if k < 0 or X.R.size != k + B.R.size or not np.allclose(X.R[k:], B.R, atol=1e-9):
         raise ValueError("X must be on B's grid points, extended inward; build the model with intensity_model()")
     return k
-
-
-def partition_function(model, T, rel_tol=1e-10):
-    """Rovibrational partition function of X, with nuclear-spin weights, energies relative to X(0, 0)."""
-    e00 = model.energy("X", 0, 0)
-    Q, J = 0.0, 0
-    while True:
-        e = model.states["X"].levels(J) - e00
-        term = nuclear_spin_weight(J, model.isotopologue) * (2 * J + 1) * np.exp(-C2 * e / T).sum()
-        Q += term
-        if J > 10 and term < rel_tol * Q:
-            return Q
-        J += 1
 
 
 def bound(vectors, R, edge=EDGE, weight=EDGE_WEIGHT):
@@ -248,9 +234,9 @@ def cache_dir() -> Path:
 
 @lru_cache(maxsize=None)
 def _parameter_files_digest(name):
-    """Hash of the bytes of a parameter set's file and of every file it uses, so that editing any of them in
-    place (a refitted level-correction file, say) gives cached line lists a new key. For a research release,
-    the SHA256 of its files and of the files of the release it extends."""
+    """Hash of the files behind a parameter set, so that changing any of them gives cached line lists a new key: for
+    the released model, the SHA256 of its files and of the files of the release it extends; for a published set,
+    its file's bytes."""
     if name.startswith("research-"):
         from .research import _entry
         entry = _entry(name)
@@ -258,20 +244,7 @@ def _parameter_files_digest(name):
         if entry.get("extends"):
             files.append(_entry(entry["extends"]["id"])["files_sha256"])
         return hashlib.sha1(json.dumps(files, sort_keys=True).encode()).hexdigest()
-    from .potentials import parameter_set
-    p = parameter_set(name)
-    extended = p.get("extended", {})
-    used = [name, *(extended[st] for st in ("X", "B") if st in extended)]
-    used += [p[k] for k in ("level_corrections", "gp_corrections", "hyperfine_table") if p.get(k)]
-    data = resources.files("i2spec").joinpath("data")
-    h = hashlib.sha1()
-    for stem in used:
-        for suffix in (".json", ".npz"):
-            f = data.joinpath(stem + suffix)
-            if f.is_file():
-                h.update(f"{stem}{suffix}\0".encode())
-                h.update(f.read_bytes())
-    return h.hexdigest()
+    return hashlib.sha1(resources.files("i2spec").joinpath("data", f"{name}.json").read_bytes()).hexdigest()
 
 
 def _cache_key(model, *args):
@@ -292,8 +265,6 @@ class _Build:
         self.iso = isotopologue
         self.exact = position_model(self.model)
         self.e00 = self.exact.energy("X", 0, 0)
-        self.top = {st: (self.exact.extended[st] if self.exact.extended is not None else self.exact.states[st])
-                    for st in ("X", "B")}
         self.nu_min, self.nu_max, self.temps, self.S_min = nu_min, nu_max, np.asarray(temps), S_min
         self.mu_R = mu(self.B.R)
         self.x_points = int(np.searchsorted(self.X.R, X_RMAX + 1e-9))
@@ -301,7 +272,7 @@ class _Build:
     def x_levels(self, J):
         """X term values of the physical levels at J (above X(0,0)), and which matched a B-spline level."""
         # physical_prefix first: its eigensolve also fills the solver's level cache, which levels() then reads
-        n_phys = physical_prefix(self.top["X"], J)
+        n_phys = physical_prefix(self.exact.states["X"], J)
         exact = self.exact.levels("X", J)
         if min(n_phys, len(exact)) >= self.X.nlev:
             # every DVR level matches its B-spline level by index (match_levels), so its own energy is not needed
@@ -327,11 +298,9 @@ class _Build:
                 if J_up not in upper:
                     e_b, c_b = self.B.states(J_up)
                     ok, _ = bound_prefix(e_b, c_b, self.B.R, self.e00)
-                    n_phys = physical_prefix(self.top["B"], J_up)
+                    n_phys = physical_prefix(self.exact.states["B"], J_up)
                     # a DVR level beyond the position model's last physical level has no position: treat it as
-                    # continuum. The published curve holds a few more levels in the box than the extended MLR
-                    # does, near the limit on the 12 A grid and, since mlr_b_2026d (wider at long range), at
-                    # v' ~ 63-66 on the default 7 A one, where the MLR's levels already touch the wall
+                    # continuum
                     ok[n_phys:] = False
                     matched, good = match_levels(e_b[ok], self.exact.levels("B", J_up), n_index=n_phys)
                     e_b = np.concatenate([matched, e_b[~ok]])
@@ -339,11 +308,6 @@ class _Build:
                     upper[J_up] = (e_b, c_b, ok, np.concatenate([good, np.ones((~ok).sum(), bool)]))
                 e_b, c_b, ok_b, b_matched = upper[J_up]
                 nu = e_b[:, None] - e_x[None, :]
-                corr = self.exact.corrections
-                if corr is not None and corr.band is not None and len(e_b):
-                    label = "R" if branch > 0 else "P"
-                    for vx in range(corr.band["v_lower"][0], min(corr.band["v_lower"][1] + 1, nu.shape[1])):
-                        nu[0, vx] += corr.band_shift(0, vx, J, label) / MHZ_PER_CM
                 strength0 = S_UNIT * nu * s * (c_b.T @ weighted) ** 2 * g
                 keep = ((nu >= self.nu_min) & (nu <= self.nu_max) & (strength0 * boltz[None, :] >= self.S_min)
                         & ok_b[:, None] & ok_x[None, :])
@@ -502,7 +466,7 @@ def with_dissociation_lines(master: MasterLineList, T_range=(200.0, 600.0), S_mi
     """``master`` (a default-grid list) plus the lines above NEAR_FROM that only the 12 A box holds.
 
     The 12 A list (intensity_model(grid=NEAR_DISSOCIATION)) reaches every B level bound by more than
-    0.3 cm-1, to v' = 73 (docs/design/near-dissociation.md). Its lines that the default list also has are
+    0.3 cm-1, to v' = 73. Its lines that the default list also has are
     dropped, so the default list's values stay as they were; the rest are added. Each J' then has levels
     up to the higher of the two cuts, which the continuum must start above.
     """
@@ -515,7 +479,8 @@ def with_dissociation_lines(master: MasterLineList, T_range=(200.0, 600.0), S_mi
     n = max(len(master.upper_cut), len(near.upper_cut))
     pad = lambda a: np.r_[a, np.full(n - len(a), np.nan)]                     # noqa: E731
     cut = np.fmax(pad(master.upper_cut), pad(near.upper_cut))
-    cat = lambda f: np.concatenate([getattr(master, f), getattr(near, f)[add]])   # noqa: E731
+    order = np.argsort(np.concatenate([master.nu, near.nu[add]]), kind="stable")    # by wavenumber, as built
+    cat = lambda f: np.concatenate([getattr(master, f), getattr(near, f)[add]])[order]   # noqa: E731
     return MasterLineList(cat("nu"), cat("strength0"), cat("v_upper"), cat("v_lower"), cat("J_lower"), cat("branch"),
                           cat("E_lower"), master.x_levels, cut, master.isotopologue)
 

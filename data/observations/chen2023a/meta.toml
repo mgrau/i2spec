@@ -28,8 +28,7 @@ shift -78.2 +/- 8.8 kHz/Pa (2.6-3.9 Pa), power shift +17.9 +/- 0.9 kHz/mW (5.0-7
 the corrections as +219.0 (29.4) kHz (pressure) and -128.9 (5.8) kHz (power), net +90 kHz, and the text says
 this 90 kHz was added to all the measured frequencies as a "rough correction" (the same coefficients are
 assumed for every line). No further correction is applied here. The -78 kHz/Pa coefficient is about ten
-times the usual I2 self-shift (-1 to -8 kHz/Pa; see data/catalog/broadband.yaml#chen2024 and
-docs/research/02a-broadband-data.md); if it is wrong the correction could be off by ~0.2 MHz, which is
+times the usual I2 self-shift (-1 to -8 kHz/Pa; see data/catalog/broadband.yaml#chen2024); if it is wrong the correction could be off by ~0.2 MHz, which is
 negligible next to the discrepancies below.
 
 WARNING - THE PRINTED FREQUENCIES DO NOT AGREE WITH THE MODEL OR THE ATLAS. Observed - i2spec (default

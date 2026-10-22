@@ -35,7 +35,7 @@ with the 1.7 kHz rms difference from bipm2012a). No pressure or power correction
 """
 
 notes = """
-Residuals against the default Predictor (2026-09-29), obs - model: -4.3 (a3) to +4.0 kHz (a17), rms 2.0 kHz.
+Residuals against an earlier version of the model (2026-09-29), obs - model: -4.3 (a3) to +4.0 kHz (a17), rms 2.0 kHz.
 """
 
 [conditions]

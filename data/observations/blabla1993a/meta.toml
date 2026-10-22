@@ -1,10 +1,10 @@
 id = "blabla1993a"
 citation = "J. Blabla, S. Picard-Fredin and A. Razet, \"On the fifth-derivative spectrum of the hyperfine structure of 127I2 at the 633-nm wavelength of the helium-neon laser\", J. Mol. Spectrosc. 159, 282-285 (1993)"
-source = "https://doi.org/10.1006/jmsp.1993.1126 (library copy papers/Blabla1993_J_Mol_Spectrosc_159_282.pdf, a scan without a text layer)"
+source = "https://doi.org/10.1006/jmsp.1993.1126 (a scan without a text layer)"
 doi = "10.1006/jmsp.1993.1126"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Tables I and II (pp. 283-284), typed from 150 dpi page images. CMI (Czech Institute of Metrology) measurements of
@@ -22,7 +22,7 @@ Table III (fitted constants).
 
 uncertainty = "Table I's parentheses, \"equivalent to the experimental standard deviations including all series of measurements\": 0.3-1.4 kHz (in the fourth decimal of MHz). The overlap corrections add an unstated uncertainty, largest for THT a10, a11, a19 (14-18 kHz corrections)."
 
-notes = "Not one of the MEP 633 nm sources (bipm2003a's Table 1 cites earlier CMI work, ref. [26]). Residuals against i2spec2026o (obs - model): rms 8 kHz over both techniques (mean -7 kHz). Checked with the shipped model only."
+notes = "Not one of the MEP 633 nm sources (bipm2003a's Table 1 cites earlier CMI work, ref. [26]). Residuals against an earlier version of the model (obs - model): rms 8 kHz over both techniques (mean -7 kHz). Checked against the model only."
 
 [conditions]
 cold_finger_C = 15.0

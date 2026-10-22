@@ -1,10 +1,10 @@
 id = "eickhoff1995a"
 citation = "M. L. Eickhoff and J. L. Hall, \"Optical frequency standard at 532 nm\", IEEE Trans. Instrum. Meas. 44, 155-158 (1995)"
-source = "https://doi.org/10.1109/19.377797 (IEEE Xplore via ODU; Matt's library copy papers/Eickhoff1995_IEEE_TIM_44_155.pdf)"
+source = "https://doi.org/10.1109/19.377797 (IEEE Xplore)"
 doi = "10.1109/19.377797"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table I (p. 157), "Measurements and fit for R(106)34-0", measurements made 18 June 1993, read from a 250 dpi page

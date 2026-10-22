@@ -20,10 +20,10 @@ marker "d" on the first eqQ_B value is dropped. fit_sd_kHz is the "Standard Devi
 
 Checks. Every value lies in its physical range. Within each v', C_B is smooth enough in J'(J'+1) that
 each line's value is predicted from the other lines at its v' to 0.03-0.15 kHz rms for v' <= 53 and
-5 kHz above (prototypes/hyperfine_chen2004.py), so a misread C_B digit would stand out; none does. At v' = 42-43, inside
+5 kHz above (a research script), so a misread C_B digit would stand out; none does. At v' = 42-43, inside
 BKT02's range, C_B agrees with the formula to 0.46 kHz rms and eqQ_B to 0.31 MHz. P(13) 43-0 also
 appears in bipm2005a: its C_B here is +0.13 +- 0.08 kHz from BKT02, and a fit to the bipm2005a splittings
-gives +0.066 +- 0.005 kHz (docs/design/hyperfine-fit.md).
+gives +0.066 +- 0.005 kHz.
 """
 uncertainty = "1 sigma, estimated from the standard deviation of each line's fit (footnote d). Statistical only."
 notes = """

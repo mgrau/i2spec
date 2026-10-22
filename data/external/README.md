@@ -35,7 +35,7 @@ initialized. The package should download them, or ask for them, not ship them.
 - **`Iodine_xsection.xls`:** extracted from the zip. Excel 97 format, one sheet named `I2_295 K`, two columns: `wavelength / nm` and `cross-section / cm^2molecule^-1`.
   - Row 2 holds a stray value, 2003.0, in the cross-section column with an empty wavelength. Skip it.
   - 1474 data rows from 182 to 750 nm. The step is 1 nm for 182–500 and 630–750 nm; 500–630 nm is mixed 0.1/0.2 nm, with 0.2 nm steps becoming more common toward the red.
-  - Cross section at 295 K and 760 Torr of air, from an FTS at 4 cm⁻¹. The paper doesn't say whether wavelengths are in air or vacuum. For conditions, and a cross-correlation that puts them on a vacuum scale, see `docs/research/cross-section-data.md`.
+  - Cross section at 295 K and 760 Torr of air, from an FTS at 4 cm⁻¹. The paper doesn't say whether wavelengths are in air or vacuum.
   - The MPI-Mainz copy (`mpi_mainz_i2/I2_Saiz-Lopez(2004)_295K_182-750nm.txt`) has the same points, agreeing to ≤5 × 10⁻⁶ relative.
 - **Terms:** the article is under **CC BY-NC-SA 2.5**, according to the ACP landing page. The supplement's licence isn't stated separately.
 
@@ -53,7 +53,7 @@ initialized. The package should download them, or ask for them, not ship them.
 - **`I2DOASref_0300.TXT`:** the 0.59 nm FWHM spectrum, 428.463–588.287 nm, 1024 points.
   - Recording: 300 grooves/mm grating, 50 µm slit, 0.154 nm/pixel.
   - Column and cell: I₂ column (1.42 ± 0.038) × 10¹⁶ cm⁻², 26.4 cm path, 1000 mbar of N₂.
-  - Wavelengths are vacuum (±0.11 nm) as stated. **But the scale appears to run 0.09–0.17 nm long;** see the research doc.
+  - Wavelengths are vacuum (±0.11 nm) as stated. **But the scale appears to run 0.09–0.17 nm long.**
   - Uncertainty: the larger of 2.7 % of σ and 7 × 10⁻²⁰ cm².
 - **Format of both files:** ISO-8859-1 text with CRLF line endings, and a ~30-line header giving the conditions above. Data are two whitespace-separated columns, `lambdaVac` (nm) and `sigma` (cm² molecule⁻¹), scaled to σ(500 nm) = 2.191 × 10⁻¹⁸ cm².
 - **Other copies:** these are the same data as the MPI-Mainz copies. They also match the IUP Bremen copies (https://www.iup.uni-bremen.de/gruppen/molspec/I2/RefSpec_0.25nmFWHM_I2_IUPBremen.TXT and `RefSpec_0.59nmFWHM_I2_IUPBremen.TXT`), which have LF line endings and an extra citation note. The Bremen copies were not stored.
@@ -64,7 +64,7 @@ initialized. The package should download them, or ask for them, not ship them.
 - **Source:** H. Keller-Rudek, G. K. Moortgat, R. Sander & R. Sörensen, "The MPI-Mainz UV/VIS Spectral Atlas of Gaseous Molecules of Atmospheric Interest", *Earth Syst. Sci. Data* **5**, 365–373 (2013), doi:10.5194/essd-5-365-2013. I₂ page: https://uv-vis-spectral-atlas-mainz.org/uvvis/cross_sections/Halogens+mixed%20halogens/I2.spc
 - **URL pattern:** `https://uv-vis-spectral-atlas-mainz.org/uvvis_data/cross_sections/Halogens+mixed%20halogens/<file>`, with the parentheses and commas URL-encoded.
 - **Downloaded:** 2026-09-15. The page lists 32 files. All 30 covering the visible are stored under their original names. The two VUV/UV-only sets, Myer & Samson 1970 and Roxlo & Mandl 1980, were skipped.
-- **Contents:** the dataset list, with each set's T, resolution and notes, is in `docs/research/cross-section-data.md`.
+- **Contents:** the atlas's I₂ page lists each set's T, resolution and notes.
 - **Format:** CRLF line endings. Mostly two tab-separated columns, wavelength (nm) and σ (cm² molecule⁻¹), with no header. The exceptions are listed below.
   - `Bauer(1998)`, `Spietz(2006)_298K_500nm` and the three `Tellinghuisen(2011)` files with standard deviations have one to three header lines and a third column: the error limit or s.d.
   - The two `Tellinghuisen(2011)_..._400-500,600-850nm` files also have a blank line between the 400–500 and 600–850 nm blocks.
@@ -84,7 +84,7 @@ initialized. The package should download them, or ask for them, not ship them.
 - **Knöckel et al. 2004 supplementary table (the Hannover fit data set):** unavailable. The paper points to `http://www.edpsciences.org`, which no longer resolves, and the SpringerLink page has no supplementary files (checked 2026-09-15). The data set has to be rebuilt from the sources the paper cites.
 - **Salumbides et al. 2008 supplementary data:** also missing from SpringerLink (checked 2026-09-15). The potential parameters are printed in its Table 1.
 - **Reiners et al. 2024 comb-calibrated FTS spectrum**, and the NIST FTS scans of astronomical iodine cells: not public, available on request.
-- **Tellinghuisen 2011 papers** (J. Chem. Phys. 134, 084301 and 135, 054301): read from the published papers. The MPI-Mainz `Tellinghuisen(2011)_294-300K_520-635nm` file is the continuum absorptivity ε_c of Table II of the 134, 084301 paper (converted to σ); see `docs/research/intensity-inputs.md`.
+- **Tellinghuisen 2011 papers** (J. Chem. Phys. 134, 084301 and 135, 054301): read from the published papers. The MPI-Mainz `Tellinghuisen(2011)_294-300K_520-635nm` file is the continuum absorptivity ε_c of Table II of the 134, 084301 paper (converted to σ).
 - **MPI-Mainz 2013 Zenodo snapshot** (doi:10.5281/zenodo.6951, CC BY 4.0): the download was refused with HTTP 403 (checked 2026-09-15).
 
 ## `heeren_pyodine_atlas/` — two FTS iodine-cell atlases from the `pyodine` RV code
@@ -92,13 +92,13 @@ initialized. The package should download them, or ask for them, not ship them.
 - **Source:** the `iodine_atlas/` directory of the pyodine repository, https://gitlab.com/Heeren/pyodine (branch `master`), fetched 2026-09-20 through the GitLab API. Paper: P. Heeren, R. J. Tronsgaard, F. Grundahl, S. Reffert, A. Quirrenbach, T. Marquart, "Pyodine: an open, flexible reduction software for iodine-calibrated precise radial velocities", *Astron. Astrophys.* **674**, A164 (2023), doi:10.1051/0004-6361/202244441. The repository's README asks that this paper be cited by anyone using the software.
 - **`song_iodine_cell_01_65C.h5`:** the SONG (Tenerife) iodine cell at 65 °C, FTS transmission. Datasets `wavelength` (vacuum, Å), `wavelength_air`, `wavenumber` (cm⁻¹), `flux`, `flux_normalized`. 4990.0–6500.0 Å vacuum = 15 384.6–20 040.1 cm⁻¹, 618 003 points, 0.00244 Å ≈ 0.0075 cm⁻¹ per point.
 - **`Fischer_Cell_May2022_downsampled3.h5`:** D. Fischer's cell (Lick/Yale), scanned May 2022, downsampled ×3. Same datasets. 4980.0–6250.0 Å = 16 000.0–20 080.3 cm⁻¹, 1 551 029 points, 0.00082 Å ≈ 0.0026 cm⁻¹ per point.
-- **Calibration** (`docs/research/data-access-broadband.md` §1.1): both carry a ≈ −2×10⁻⁷ relative scale offset against Salami & Ross 2005, i.e. they were resampled/shifted for RV use; fit the scale out before using positions.
+- **Calibration:** both carry a ≈ −2×10⁻⁷ relative scale offset against Salami & Ross 2005, i.e. they were resampled/shifted for RV use; fit the scale out before using positions.
 - **Terms:** **MIT** (`LICENSE`, copied here). Cite Heeren et al. 2023.
 
 ## `apo_pyodine_atlas/` — a NIST 2-m FTS scan of the APO iodine cell
 
 - **Source:** the `iodine_atlas/` directory of https://github.com/jaklusmeyer/APO_pyodine (branch `main`, Git LFS), fetched 2026-09-20. The repository README describes it as "module for apo song pyodine — small changes from pyodine"; it builds on Heeren et al. 2023 (above), which should be cited for the software. **No licence file is present in that repository**, so the h5 files are used here for research only and are not redistributed.
-- **`APO_I2_from_FITS_cleaned_newscan_vnorm.h5`:** a cleaned, normalised copy of an FTS scan that keeps its Xgremlin/NSO header as HDF5 attributes: `ORIGIN = NIST 2m IR-vis-UV FT`, `DATE = Jul 21, 2009`, `SAMPLE = I2, AS-17`, `RESOLUTN = 0.018 cm⁻¹`, `AIRCORR = No`, band 14 200–21 300 cm⁻¹. Datasets `wavelength_air` (Å, 4980.0–6500.0) and `flux_normalized`; 2 492 660 points. The FTS scale is HeNe-referenced: against Salami & Ross the line minima agree to ≲ 5×10⁻⁸ (§1.1 of the same doc), so this is an independent absolute position source once converted from air to vacuum (the header says `AIRCORR = No`, but the dataset name says air; the calibration check above was done with an air→vacuum conversion and is consistent).
+- **`APO_I2_from_FITS_cleaned_newscan_vnorm.h5`:** a cleaned, normalised copy of an FTS scan that keeps its Xgremlin/NSO header as HDF5 attributes: `ORIGIN = NIST 2m IR-vis-UV FT`, `DATE = Jul 21, 2009`, `SAMPLE = I2, AS-17`, `RESOLUTN = 0.018 cm⁻¹`, `AIRCORR = No`, band 14 200–21 300 cm⁻¹. Datasets `wavelength_air` (Å, 4980.0–6500.0) and `flux_normalized`; 2 492 660 points. The FTS scale is HeNe-referenced: against Salami & Ross the line minima agree to ≲ 5×10⁻⁸, so this is an independent absolute position source once converted from air to vacuum (the header says `AIRCORR = No`, but the dataset name says air; the calibration check above was done with an air→vacuum conversion and is consistent).
 - **`APO_I2_cleaned_normalized_shifted.h5`:** the same cell, cleaned, normalised and **shifted** for RV use: `wavelength_vac`, `wavelength_air`, `flux_raw`, `flux_normalized`; 346 647 points. Not a position reference.
 - **Attribution for the scan itself:** NIST 2-m Fourier transform spectrometer (Gaithersburg), scan of 21 July 2009, sample AS-17. If positions from it are published, acknowledge NIST and the APO_pyodine repository; the scan has no paper of its own that we have found.
 
@@ -129,13 +129,12 @@ Fetched 2026-09-20 from the HAL open archive (`https://hal.science/<id>/document
 
 ## Derived: `data/atlas_lines/` (in the repository)
 
-Line positions extracted from `salami_ross_2005/` and `apo_pyodine_atlas/` by `prototypes/atlas_lines.py`
-and `prototypes/atlas_dataset.py` are committed as `data/atlas_lines/*.csv` with their own `.toml`
+Line positions extracted from `salami_ross_2005/` and `apo_pyodine_atlas/` by research scripts are committed as `data/atlas_lines/*.csv` with their own `.toml`
 provenance. They are measurements derived here, not copies of the source files; each `.toml` carries the
 citation of the spectrum it came from, which must accompany any use of them.
 
-`data/atlas_lines/debus_2023.{csv,intensities.csv,toml}`: positions and intensities from `debus2023/` (CC0), by
-`prototypes/condense_spectra.py`. That spectrum is public, so they are in this repository, not in `i2spec_data`.
+`data/atlas_lines/debus_2023.{csv,intensities.csv,toml}`: positions and intensities from `debus2023/` (CC0), by a
+research script. That spectrum is public, so they are in this repository, not in `i2spec_data`.
 
 ## Derived: the private companion repository `i2spec_data`
 
@@ -143,7 +142,7 @@ Line positions **and intensities** condensed from the files here whose terms are
 kept in a separate private repository, `i2spec_data`. Clone it next to this one (`../i2spec_data`) or set
 `I2SPEC_DATA`. It covers `salami_ross_2005/`, `apo_pyodine_atlas/`, `rodriguez_fernandez_marcassa/`,
 32 of the `kitt_peak_fts/` scans, and the IodineSpec5 output (`iodinespec5/`). The files were made by
-`prototypes/condense_spectra.py` and `prototypes/condense_iodinespec5.py`. Nothing from it goes into this
+research scripts. Nothing from it goes into this
 repository until the source's terms allow.
 
 ## `tellinghuisen_2011_supplement/`
@@ -152,7 +151,7 @@ repository until the source's terms allow.
 - **Obtained:** 2026-09-30, by the project's author, with institutional access. `JT-Supplement-JCP-I2.txt` is its `pdftotext -layout` text.
 - **Contents:**
   - Table IS: the measured molar absorptivity ε and its smoothed σ (l mol⁻¹ cm⁻¹) at 35.4 and 64.0 °C, 400–500 and 600–850 nm, every 2 nm.
-  - Table IIS: the fitted contributions of the A←X, B←X (bound–free) and C←X transitions and their total, at 0 and 35 °C, with LS standard errors at 35 °C, every 5 nm from 400 nm. These are the component bands listed as item 6 in `docs/research/data-availability.md`. The table notes that at 500–650 nm the results are limited by the pseudocontinuum treatment.
+  - Table IIS: the fitted contributions of the A←X, B←X (bound–free) and C←X transitions and their total, at 0 and 35 °C, with LS standard errors at 35 °C, every 5 nm from 400 nm. The table notes that at 500–650 nm the results are limited by the pseudocontinuum treatment.
   - The normalised residuals of the recommended fit.
 - **Terms:** AIP supplementary material; licence not stated.
 
@@ -170,8 +169,8 @@ repository until the source's terms allow.
   - `Iodine spectrum 14400-14600 cm-1.txt`: 332 350 points, 14 399.859–14 600.163 cm⁻¹, about 0.0006 cm⁻¹ (18 MHz) steps. The frequency axis is not monotonic in places, so it is several scans joined. Sort before use.
   - `Iodine spectrum 14600-14710 cm-1.txt`: 141 317 points, 14 600.000–14 710.211 cm⁻¹, 0.0007 cm⁻¹ steps.
   - Both have two header lines ("Frequency / Transmission", "cm^-1 / arb. units"), a blank line, CRLF line endings, and transmission 0.46–1.03.
-- **First comparison (2026-09-30, i2spec2026m):** a parabola at the transmission minimum of each of the 379 strongest isolated lines lies **+131 MHz** above the model's hyperfine-free centre (median; robust spread 65 MHz): +148, +113 and +138 MHz at 14 400–14 500, 14 500–14 600 and 14 600–14 710 cm⁻¹. The model is known to about 1 MHz here, so this is the spectra's calibration, and the papers say as much: a HighFinesse WS7 wavemeter, calibrated to a diode laser locked to ⁸⁵Rb 5S₁/₂ F = 3 → 5P₃/₂ F′ = 4 at 780 nm, with a stated absolute uncertainty of 0.002 cm⁻¹ (60 MHz); 0.5 cm⁻¹ scans in 0.001 cm⁻¹ (30 MHz) steps; a line uncertainty of about 3 × 10⁻³ cm⁻¹. Against Gerstenkorn & Luc and Salami & Ross the authors find their own lines higher by about 5 × 10⁻³ cm⁻¹ (≈150 MHz) in the 2023 paper and ≈105 MHz in the 2022 paper, the same sign and size as here. Mean FWHM 29 × 10⁻³ cm⁻¹, more than twice the Doppler width (unresolved hyperfine structure).
-- **`rodriguez_fernandez_2023.csv`, `.toml`:** our line centres fitted to these spectra (`prototypes/rodriguez_lines.py --dataset`): 825 lines, offset +113.0 ± 2.0 MHz, robust spread 18 MHz. Kept here, not in `data/atlas_lines/`, until the authors agree to their release.
+- **First comparison (2026-09-30, an earlier version of the model):** a parabola at the transmission minimum of each of the 379 strongest isolated lines lies **+131 MHz** above the model's hyperfine-free center (median; robust spread 65 MHz): +148, +113 and +138 MHz at 14 400–14 500, 14 500–14 600 and 14 600–14 710 cm⁻¹. The model is known to about 1 MHz here, so this is the spectra's calibration, and the papers say as much: a HighFinesse WS7 wavemeter, calibrated to a diode laser locked to ⁸⁵Rb 5S₁/₂ F = 3 → 5P₃/₂ F′ = 4 at 780 nm, with a stated absolute uncertainty of 0.002 cm⁻¹ (60 MHz); 0.5 cm⁻¹ scans in 0.001 cm⁻¹ (30 MHz) steps; a line uncertainty of about 3 × 10⁻³ cm⁻¹. Against Gerstenkorn & Luc and Salami & Ross the authors find their own lines higher by about 5 × 10⁻³ cm⁻¹ (≈150 MHz) in the 2023 paper and ≈105 MHz in the 2022 paper, the same sign and size as here. Mean FWHM 29 × 10⁻³ cm⁻¹, more than twice the Doppler width (unresolved hyperfine structure).
+- **`rodriguez_fernandez_2023.csv`, `.toml`:** our line centers fitted to these spectra: 825 lines, offset +113.0 ± 2.0 MHz, robust spread 18 MHz. Kept here, not in `data/atlas_lines/`, until the authors agree to their release.
 - **Terms:** shared by the authors for this work; not for redistribution.
 
 ## `debus2023/` (on the lab workstation only)
@@ -187,5 +186,5 @@ repository until the source's terms allow.
   - The spectra run from 2023-01-20 17:35 to 2023-01-24 11:54 (GMT+1).
   - `RVs/SERVAL*`, `Temperature/`: the authors' RV results, scripts and temperature logs. The logs cover the etalon housing and the lab, not the iodine cell.
 - **Cell:** a Thorlabs GC19100-I in a GCH25-75 heater, lit by a halogen lamp. A Fabry–Pérot etalon at 813–990 nm is in the same spectrum. The iodine channel is 498–659 nm, less ±3 nm about the 633 nm HeNe artifact.
-- **Read with:** `prototypes/opus.py`. The co-added spectrum and the condensed line list come from `prototypes/condense_spectra.py --coadd`, then `--calibrate`, `--fit` and `--build debus_2023`. The window fits put the template at 313 K; the scale is −150 ppb against the model and −114 ppb against APO.
+- **Read with:** a research reader for Bruker OPUS files. The co-added spectrum and the condensed line list come from a research script that co-adds, calibrates and fits the spectra. The window fits put the template at 313 K; the scale is −150 ppb against the model and −114 ppb against APO.
 - **Terms:** **CC0 1.0.** Redistribution and modification are allowed. Cite the paper and the data set.

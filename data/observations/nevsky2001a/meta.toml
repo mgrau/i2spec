@@ -1,10 +1,10 @@
 id = "nevsky2001a"
 citation = "A. Yu. Nevsky, R. Holzwarth, J. Reichert, Th. Udem, T. W. Hänsch, J. von Zanthier, H. Walther, H. Schnatz, F. Riehle, P. V. Pokasov, M. N. Skvortsov and S. N. Bagayev, \"Frequency comparison and absolute frequency measurement of I2-stabilized lasers at 532 nm\", Opt. Commun. 192, 263-272 (2001)"
-source = "https://doi.org/10.1016/S0030-4018(01)01190-7 (library copy papers/Nevsky2001_Opt_Commun_192_263.pdf)"
+source = "https://doi.org/10.1016/S0030-4018(01)01190-7"
 doi = "10.1016/S0030-4018(01)01190-7"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Sect. 4, eqs. (1)-(8), typed from the text layer and checked against the pages. MPQ harmonic chain and comb
@@ -26,8 +26,8 @@ notes = """
 [shift_correction]: the extrapolated absolutes are at 0.46 Pa; the paper's coefficient takes them to zero pressure
 (+1.9 kHz). The gaps are left alone. The value is cell-specific (16/89PTB was found 2.6(2.8) kHz from the BIPM4
 reference cell). holzwarth2001a is the same MPQ chain with a different laser; not declared. Residuals against
-i2spec2026o (obs - model, after the shift correction): R(56) a10 -2.3 kHz; P(54) a1, a10, a15 -8.5 kHz; the three
-gaps -3.7 to -5.0 kHz. Checked with the shipped model only.
+an earlier version of the model (obs - model, after the shift correction): R(56) a10 -2.3 kHz; P(54) a1, a10, a15 -8.5 kHz; the three
+gaps -3.7 to -5.0 kHz. Checked against the model only.
 """
 
 [conditions]

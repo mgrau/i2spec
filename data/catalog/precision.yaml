@@ -1,6 +1,6 @@
 # i2spec Stage 2b catalog: sub-Doppler, hyperfine-resolved and absolute-frequency
 # measurements of molecular iodine (B-X system unless noted).
-# Compiled 2026-09-14. See docs/research/02b-precision-data.md for the narrative.
+# Compiled 2026-09-14.
 # Conventions:
 #   - uncertainty_MHz is a representative 1-sigma value in MHz (null if not convertible).
 #   - likely_in_knockel2004: true if the source is cited by / used in Knoeckel, Bodermann,
@@ -912,7 +912,7 @@
   uncertainty_MHz: 0.1
   absolute: true
   hyperfine_resolved: true
-  data_availability: "tables in paper; transcribed to data/observations/bodermann2000a, see docs/research/nir-anchor-data-2000.md"
+  data_availability: "tables in paper; transcribed to data/observations/bodermann2000a"
   machine_readable: true
   likely_in_knockel2004: true
   priority: medium

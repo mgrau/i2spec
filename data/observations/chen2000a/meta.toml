@@ -1,6 +1,6 @@
 id = "chen2000a"
 citation = "Chen Xuzong and Wang Yiqiu, \"Measurement of hyperfine spectra of iodine molecule available to diode laser frequency standard at 630-640 nm\", Proc. SPIE 4220, 59-63 (2000)"
-source = "https://doi.org/10.1117/12.401669 (PDF supplied by Matt; library copy papers/Chen2000_SPIE_4220_59.pdf)"
+source = "https://doi.org/10.1117/12.401669 (publisher PDF)"
 doi = "10.1117/12.401669"
 retrieved = "2026-10-20"
 unit = "MHz"
@@ -19,7 +19,7 @@ the calculated columns; Table 1 (calculated wavenumbers and intensities).
 
 uncertainty = "None stated. 5 MHz is assigned: against the shipped model the P(94) column is 2-4 MHz off, R(80) 8-18 MHz and P(74) up to 21 MHz (f), so these are record only."
 
-notes = "Residuals against i2spec2026o (obs - model): P(94) 8-4 +0.6 to +4.3 MHz, R(80) 8-4 +8 to +18 MHz, P(74) 8-4 -21 (f) to +5 MHz. No other set holds these three lines. Checked with the shipped model only."
+notes = "Residuals against an earlier version of the model (obs - model): P(94) 8-4 +0.6 to +4.3 MHz, R(80) 8-4 +8 to +18 MHz, P(74) 8-4 -21 (f) to +5 MHz. No other set holds these three lines. Checked against the model only."
 
 [conditions]
 method = "New Focus 6210 extended-cavity diode laser, third-derivative saturated absorption in an external cell (cold finger 15 C, 6 MHz p-p, 1.8 mW one way); chart recording with Fabry-Perot fringes"

@@ -12,7 +12,7 @@ import numpy as np
 from numpy.polynomial.legendre import leggauss
 from scipy.interpolate import BSpline
 from scipy.linalg import eigh
-from scipy.sparse import csr_matrix
+from scipy.sparse import diags
 
 from .constants import HBAR2_2U
 
@@ -52,33 +52,30 @@ class BSplineSolver:
         for x in bp[1:-1]:
             interior += [x] * (order - 4 if any(abs(x - j) < 1e-12 for j in joins) else 1)
         t = np.r_[[rmin] * order, interior, [rmax] * order]
-        n_basis = len(t) - order
 
         xg, wg = leggauss(order + 4)
         a, b = bp[:-1, None], bp[1:, None]
         self.R = (0.5 * (b - a) * xg + 0.5 * (a + b)).ravel()
         self.W = (0.5 * (b - a) * wg).ravel()
-        values, slopes = np.zeros((2, n_basis - 2, self.R.size))      # one row per basis function
-        for i in range(1, n_basis - 1):  # dropping the end functions enforces ψ = 0 at rmin and rmax
-            c = np.zeros(n_basis)
-            c[i] = 1.0
-            spline = BSpline(t, c, order - 1, extrapolate=False)
-            # B_i vanishes outside [t_i, t_(i+order)], so it is evaluated only there (the same values)
-            lo, hi = np.searchsorted(self.R, (t[i], t[i + order]))
-            values[i - 1, lo:hi] = np.nan_to_num(spline(self.R[lo:hi]))
-            slopes[i - 1, lo:hi] = np.nan_to_num(spline.derivative()(self.R[lo:hi]))
-        B = values.T
-        dB = slopes.T
-        W = self.W[:, None]
-        self.S = B.T @ (W * B)
-        self._T = HBAR2_2U / mu * (dB.T @ (W * dB))
+        # every basis function on the quadrature grid at once (sparse: each is nonzero on `order` knot intervals),
+        # and their slopes from the degree below on the same knots:
+        #     B'_i,k = k B_i,k-1 / (t_i+k - t_i) - k B_i+1,k-1 / (t_i+k+1 - t_i+1)
+        # The end functions are dropped, which enforces ψ = 0 at rmin and rmax.
+        k = order - 1
+        span = t[k:] - t[:-k]                                     # t_i+k - t_i for the n_basis + 1 lower functions
+        lower = BSpline.design_matrix(self.R, t, k - 1).tocsc() @ diags(np.divide(k, span, out=np.zeros_like(span),
+                                                                                    where=span > 0))
+        B = BSpline.design_matrix(self.R, t, k).tocsc()[:, 1:-1]
+        dB = (lower[:, :-1] - lower[:, 1:])[:, 1:-1]
+        WB = diags(self.W) @ B
+        self.S = (B.T @ WB).toarray()
+        self._T = HBAR2_2U / mu * (dB.T @ diags(self.W) @ dB).toarray()
         V = potential(self.R) + potential.adiabatic(self.R, mass_ratio)
         rot = HBAR2_2U / mu * (1 + potential.nonadiabatic(self.R, mass_ratio)) / self.R**2
-        self._V = B.T @ (W * V[:, None] * B)
-        self._rot = B.T @ (W * rot[:, None] * B)
-        # Each B-spline is nonzero on `order` knot intervals only, so B on the quadrature grid is ~1% filled:
-        # kept sparse it takes 3 MB rather than 320 MB on the longest grid, and psi = B c comes out the same, faster
-        self._basis = csr_matrix(B)
+        self._V = (B.T @ diags(V) @ WB).toarray()
+        self._rot = (B.T @ diags(rot) @ WB).toarray()
+        # kept sparse, B takes 3 MB rather than 320 MB on the longest grid, and psi = B c comes out the same, faster
+        self._basis = B.tocsr()
         self.nlev = nlev
         self._cache: dict[int, np.ndarray] = {}
 

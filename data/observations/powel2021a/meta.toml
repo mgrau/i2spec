@@ -1,11 +1,11 @@
 id = "powel2021a"
 citation = "R. Powel, M. Koble, J. Palmes, N. Everett, P. Imgram, K. König, J. Lantis, K. Minamisono, W. Nörtershäuser, R. Parker, S. Pineda, F. Sommer and A. Klose, \"Improved wavelength meter calibration in near infrared region via Doppler-free spectroscopy of molecular iodine\", Appl. Phys. B 127, 104 (2021)"
-source = "Appl. Phys. B 127:104 (2021), published 29 June 2021; https://doi.org/10.1007/s00340-021-07650-5 (publisher PDF, Matt's library copy papers/Powel2021_APB_10.1007_s00340-021-07650-5.pdf)"
+source = "Appl. Phys. B 127:104 (2021), published 29 June 2021; https://doi.org/10.1007/s00340-021-07650-5 (publisher PDF)"
 doi = "10.1007/s00340-021-07650-5"
 retrieved = "2026-10-20"
 unit = "MHz"
 catalog = "precision.yaml:powel2021a"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 2 (p. 7 of 11), column "Frequency comb meas.": the TU Darmstadt comb-referenced absolute frequencies of
@@ -49,10 +49,9 @@ al. 2007, taken as an allowance for cell impurities). Footnote 1 states that all
 """
 
 notes = """
-Residuals against i2spec2026o (Predictor(), obs - model): R(118) 2-8 a10 +3.22 MHz, R(54) 3-9 a1 -1.12 MHz,
+Residuals against an earlier version of the model (obs - model): R(118) 2-8 a10 +3.22 MHz, R(54) 3-9 a1 -1.12 MHz,
 P(48) 3-9 a15 -1.64 MHz. Inside the 680-755 nm gap the paper's own ref. [13] (Knöckel 2004) quotes about 15 MHz;
-these agree with i2spec2026o to a few MHz, which rules out a misread digit or label. Checked with the shipped
-model only, not with any research candidate, so the set can still serve as blind validation.
+these agree with an earlier version of the model to a few MHz, which rules out a misread digit or label. checked against the model only, not with any research candidate, so the set can still serve as blind validation.
 """
 
 [conditions]

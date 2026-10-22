@@ -80,25 +80,33 @@ def cross_section(nu_grid, lines, T, *, hyperfine=None, lorentz_fwhm=0.0, reach=
     Each line (or hyperfine component) gets a Gaussian Doppler profile at temperature T, or a
     Voigt profile if lorentz_fwhm (cm⁻¹) > 0. hyperfine: None, or a callable k -> (offsets, weights),
     e.g. hyperfine_patterns(). isotopologue sets the mass in the Doppler width.
+
+    A Gaussian is cut at ``reach`` FWHM and rescaled to its full strength on the grid; a Voigt profile reaches a
+    further 100 Lorentzian FWHM, which holds all but ~0.3 % of its wings, and is not rescaled (rescaling would move
+    the wings' area into the core). A line narrower than the grid step adds its strength to the nearest point.
     """
     nu_grid = np.asarray(nu_grid, dtype=float)
     mass = molecular_mass(isotopologue)
     sigma = np.zeros_like(nu_grid)
+    step = nu_grid[1] - nu_grid[0] if nu_grid.size > 1 else 1.0
     for k in range(len(lines)):
         offsets, weights = (np.zeros(1), np.ones(1)) if hyperfine is None else hyperfine(k)
         g = doppler_fwhm(lines.nu[k], T, mass)
-        half = reach * (g + lorentz_fwhm) + np.abs(offsets).max()
+        half = reach * g + 100 * lorentz_fwhm + np.abs(offsets).max()
         lo, hi = np.searchsorted(nu_grid, [lines.nu[k] - half, lines.nu[k] + half])
         if lo == hi:
+            if 0 < lo < nu_grid.size:          # inside the grid, between two points: keep its strength
+                nearest = lo if nu_grid[lo] - lines.nu[k] < lines.nu[k] - nu_grid[lo - 1] else lo - 1
+                sigma[nearest] += lines.S[k] * weights.sum() / step
             continue
         x = nu_grid[lo:hi, None] - (lines.nu[k] + offsets)[None, :]
         if lorentz_fwhm > 0:
             profile = voigt_profile(x, g / (2 * sqrt(2 * log(2))), lorentz_fwhm / 2)
         else:
             profile = sqrt(4 * log(2) / pi) / g * np.exp(-4 * log(2) * (x / g) ** 2)
-        if 0 < lo and hi < nu_grid.size:
-            # keep each line's integrated strength despite truncating the profile (Lorentzian wings)
-            profile = profile / (profile.sum(axis=0) * (nu_grid[1] - nu_grid[0]))
+            if 0 < lo and hi < nu_grid.size:
+                # each component's strength on the grid, however coarse
+                profile = profile / (profile.sum(axis=0) * step)
         sigma[lo:hi] += lines.S[k] * profile @ weights
     return sigma
 

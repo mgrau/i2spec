@@ -1,11 +1,11 @@
 id = "balling2007a_633"
 citation = "P. Balling and P. Křen, \"Absolute frequency measurements of wavelength standards 532 nm, 543 nm, 633 nm and 1540 nm\", Eur. Phys. J. D 48, 3-10 (2008)"
-source = "Eur. Phys. J. D 48, 3-10 (2008), published online 5 December 2007; https://doi.org/10.1140/epjd/e2007-00325-0 (publisher PDF, Matt's library copy papers/Balling2007_EPJD48_3.pdf)"
+source = "Eur. Phys. J. D 48, 3-10 (2008), published online 5 December 2007; https://doi.org/10.1140/epjd/e2007-00325-0 (publisher PDF)"
 doi = "10.1140/epjd/e2007-00325-0"
 retrieved = "2026-10-20"
 unit = "MHz"
 catalog = "precision.yaml:balling2007a"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 The 633 nm part of Balling & Křen (one paper, three sets: balling2007a_633, balling2007a_543, balling2007a_532,
@@ -43,10 +43,10 @@ The lasers run at the MeP recommended conditions, as bipm2003a's values do: the 
 frequency "at recommended conditions"; for SMU-1 this is assumed. [shift_correction] repeats bipm2003a's
 coefficients, so both sets are taken to zero pressure, power and modulation alike.
 
-Residuals against i2spec2026o (Predictor(), obs - model), as measured: SMU-1 -337.7 kHz mean (sd 4.4 kHz over
+Residuals against an earlier version of the model (obs - model), as measured: SMU-1 -337.7 kHz mean (sd 4.4 kHz over
 the seven components), PLO3 -332.4 kHz (sd 1.7 kHz); after the shift correction -111.9 and -106.5 kHz.
 bipm2003a's a16 reads -342.7 kHz as measured (-116.8 corrected), so the two lasers sit 5-10 kHz above the
-MeP value, as Table 1 prints. Checked with the shipped model only, not with any research candidate.
+MeP value, as Table 1 prints. checked against the model only, not with any research candidate.
 """
 
 [conditions]

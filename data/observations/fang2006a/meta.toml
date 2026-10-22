@@ -52,7 +52,7 @@ spread of the differences from CCL (rms 10 kHz) is consistent with that or somew
 """
 
 notes = """
-Residuals against the default Predictor (i2spec2026k, 2026-09-29), obs - model: -14.6 to +17.1 kHz, rms 9.4 kHz,
+Residuals against an earlier version of the model (2026-09-29), obs - model: -14.6 to +17.1 kHz, rms 9.4 kHz,
 all within the 20 kHz uncertainty. The differences follow the BIPM ones (the model agrees with the BIPM table to
 ~1-2 kHz). Five splittings (a5/a9, a8/a10, a12-a14/a10) come out 11-17 kHz too large in magnitude, none too
 small by more than 4 kHz; a7/a10 at a similar AOM frequency (155 MHz) agrees, so it is not a simple AOM

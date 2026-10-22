@@ -1,9 +1,9 @@
-"""balanced-expanded (release 20261020): selection, frozen base, domain, port and replay contracts."""
+"""The continued model (release 20261020): selection, frozen base, domain, port and replay contracts."""
 import numpy as np
 import pytest
 
-from i2spec import ResearchModel, research_models
-from i2spec.research import _entry, _read
+from i2spec import ResearchModel
+from i2spec.research import _entry, _info, _read
 from i2spec.research_expanded import _ExpandedPotential
 
 
@@ -18,7 +18,7 @@ def references():
 
 
 def test_selection_ledger_and_domain():
-    info = next(m for m in research_models() if m.role == "balanced_expanded")
+    info = _info(_entry("balanced_expanded"))
     assert info.id == "research-20261020-balanced-expanded"
     assert (info.domain.X_v_max, info.domain.B_v_max, info.domain.J_lower_max) == (108, 80, 200)
     assert info.inventory.line_specific == info.inventory.level_specific == 0

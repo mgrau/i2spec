@@ -1,13 +1,13 @@
 id = "jewsbury1993"
 citation = "P. J. Jewsbury, T. Ridley, K. P. Lawley and R. J. Donovan, \"Parity mixing in the valence states of I2 probed by optical-optical double-resonance excitation of ion-pair states: characterization of a new ion-pair state, H1u(3P1), and a valence state, c1g\", J. Mol. Spectrosc. 157, 33-49 (1993)"
-source = "https://doi.org/10.1006/jmsp.1993.1003 (library copy papers/Jewsbury1993_JMS157_33.pdf, a 300 dpi scan with no text layer)"
+source = "https://doi.org/10.1006/jmsp.1993.1003 (a 300 dpi scan with no text layer)"
 doi = "10.1006/jmsp.1993.1003"
 retrieved = "2026-10-21"
 unit = "cm-1"
 state = "B v = 59 of 127I2, its perturber c1g(ab) v = 14, and the H1u(2) ion-pair state"
 isotopologue = "127I2 (natural iodine; the paper names no isotope)"
 files = ["data.csv", "constants.csv", "c1g_potential.csv"]
-exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets"
 
 transcription = """
 Read from page images rendered at 150 and 300 dpi (the scan has no text layer). Every number was read again from a
@@ -72,7 +72,7 @@ state that Pique et al. found mixing at B v = 78.
   displacement to a local perturbation of about 0.1 cm-1.
 - Only v' = 59 is studied. The paper says nothing about v' = 57, 58 or 60.
 
-Shipped-model checks (Predictor(), i2spec2026o):
+Checks against an earlier version of the model:
 - B(59, J = 0) lies 20006.447 cm-1 above the X minimum (19899.348 cm-1 above X(0,0)). That is 143.6 cm-1 below the
   20150.0 cm-1 limit of Table II, which matches the paper's "more than 140 cm-1 below dissociation".
 - Table V's constants put c(14) at 20005.5 cm-1, 0.9 cm-1 below B(59, 0). That is inside the 1.5 cm-1 Te
@@ -107,7 +107,7 @@ scale removed):
   atlas can neither confirm nor rule out the JB = 8 perturbation.
 - Hyperfine-resolved scans of P(23) and R(21) 59-0 (J' = 22) and of P(7)-P(9) 59-0 would test both claims.
 
-Checked with the shipped model only.
+Checked against the model only.
 """
 
 [columns]

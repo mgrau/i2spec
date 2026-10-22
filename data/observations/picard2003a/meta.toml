@@ -1,10 +1,10 @@
 id = "picard2003a"
 citation = "S. Picard, L. Robertsson, L.-S. Ma, K. Nyholm, M. Merimaa, T. E. Ahola, P. Balling, P. Křen and J.-P. Wallerand, \"Comparison of 127I2-stabilized frequency-doubled Nd:YAG lasers at the Bureau International des Poids et Mesures\", Appl. Opt. 42, 1019-1028 (2003)"
-source = "https://doi.org/10.1364/AO.42.001019 (publisher PDF via ODU, Matt's library copy papers/Picard2003_Appl_Opt_42_1019.pdf)"
+source = "https://doi.org/10.1364/AO.42.001019 (publisher PDF)"
 doi = "10.1364/AO.42.001019"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 5 (p. 1026), "Compilation of relative frequency measurements of the complete hyperfine structure of the

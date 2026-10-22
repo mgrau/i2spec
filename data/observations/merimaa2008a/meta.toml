@@ -1,10 +1,10 @@
 id = "merimaa2008a"
 citation = "M. Merimaa, V. Ahtee and K. Nyholm, \"Absolute frequency measurement of an iodine-stabilized 543-nm He-Ne laser with modulation-synchronized phase-locked loop for improved frequency counting\", Conference on Precision Electromagnetic Measurements (CPEM 2008), Digest, pp. 286-287 (2008)"
-source = "https://doi.org/10.1109/CPEM.2008.4574778 (IEEE Xplore via ODU; Matt's library copy papers/Merimaa2008_CPEM.pdf)"
+source = "https://doi.org/10.1109/CPEM.2008.4574778 (IEEE Xplore)"
 doi = "10.1109/CPEM.2008.4574778"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer (p. 2) and checked against the page: "Time record of an absolute frequency measurement

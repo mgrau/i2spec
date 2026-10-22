@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 from i2spec.intensity import (S_UNIT, intensity_model, line_list, mu_tellinghuisen2011, nuclear_spin_weight,
-                              partition_function, shared_offset)
+                              shared_offset)
 from i2spec.spectrum import cross_section, doppler_fwhm, vapor_pressure
 
 
@@ -39,13 +39,6 @@ def test_r_centroids_match_tellinghuisen_fit(model, v_upper):
     r_centroid = (c_b[:, v_upper] * B.R) @ c_x[:, 0] / overlap
     lam = 1e7 / (e_b[v_upper] - e_x[0])
     assert r_centroid == pytest.approx(2.6322 + 0.001548 * (lam - 500) - 9.1e-7 * (lam - 500) ** 2, abs=0.005)
-
-
-def test_partition_function_close_to_rigid_rotor_harmonic_estimate(model):
-    T = 295.0
-    kT = 0.6950348 * T
-    estimate = 18 * kT / 0.03737 / (1 - np.exp(-214.5 / kT))  # mean nuclear-spin weight 18
-    assert partition_function(model, T) == pytest.approx(estimate, rel=0.05)
 
 
 def test_doppler_width_and_vapor_pressure():

@@ -1,8 +1,7 @@
 {
   "schema_version": 1,
   "release": "20261020",
-  "production_default": "i2spec2026o",
-  "selection_scope": "balanced-expanded: research-20261018-balanced continued to X v<=108, B v<=80",
+  "selection_scope": "the core fit (release 20261018) continued to X v<=108, B v<=80",
   "models": [
     {
       "id": "research-20261020-balanced-expanded",
@@ -10,7 +9,7 @@
       "title": "Balanced, expanded",
       "directory": "balanced_expanded",
       "kind": "expanded",
-      "architecture": "balanced + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 3 rotation), X dC6, X cubic splines 4.2-6.6 A, shared dDe; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78",
+      "architecture": "core fit + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 3 rotation), X dC6, X cubic splines 4.2-6.6 A, shared dDe; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78",
       "inventory": {
         "fitted_molecular": 105,
         "inherited_molecular": 73,

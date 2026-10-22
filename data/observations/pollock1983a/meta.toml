@@ -1,10 +1,10 @@
 id = "pollock1983a"
 citation = "C. R. Pollock, D. A. Jennings, F. R. Petersen, J. S. Wells, R. E. Drullinger, E. C. Beaty and K. M. Evenson, \"Direct frequency measurements of transitions at 520 THz (576 nm) in iodine and 260 THz (1.15 um) in neon\", Opt. Lett. 8, 133-135 (1983)"
-source = "https://doi.org/10.1364/OL.8.000133 (publisher PDF via ODU; Matt's library copy papers/Pollock1983_Opt_Lett_8_133.pdf)"
+source = "https://doi.org/10.1364/OL.8.000133 (publisher PDF)"
 doi = "10.1364/OL.8.000133"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the page (abstract; p. 134): "The measured I2 frequency was

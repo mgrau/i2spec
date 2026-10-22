@@ -8,7 +8,7 @@ citation = """FTS iodine-cell spectrum distributed in iodine_atlas/ of the pyodi
 instrument = """Fourier transform spectrum of the cell, continuum-normalised by the pyodine authors; instrument and resolution are not recorded in the file"""
 conditions = """the SONG telescope's (Teide) iodine cell, 65 C. The template is at 338.15 K (the cell temperature); band used 15400-19840 cm-1"""
 terms = """MIT (the pyodine repository's licence); cite Heeren et al. 2023. The spectrum is not in this repository; these are our fits to it."""
-extraction = """prototypes/condense_spectra.py (i2spec e91698c with uncommitted changes, 2026-10-20): prototypes/atlas_lines.py
+extraction = """a research script (i2spec e91698c with uncommitted changes, 2026-10-20): a research script
 extract with amplitudes on, 2336 windows. Every model line whose own absorption exceeds
 0.02 at line centre gets a wavenumber shift (ridge prior 0.01 cm-1) and a strength factor
 exp(eta) (ridge prior 0.5 on eta) on the i2spec template: hyperfine structure, Doppler width at the

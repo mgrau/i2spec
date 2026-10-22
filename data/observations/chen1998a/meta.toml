@@ -1,10 +1,10 @@
 id = "chen1998a"
 citation = "Chen Xuzong, Zhang Keming, Zang Erjun, Y. Akimoto, T. Kasahara, K. Sakamoto and H. Inaba, \"Frequency stabilized tunable diode laser and strong transition iodine hyperfine spectra at 633 nm\", Proc. SPIE 3547, 194-202 (1998)"
-source = "https://doi.org/10.1117/12.319612 (PDF supplied by Matt; library copy papers/Chen1998_SPIE_3547_194.pdf)"
+source = "https://doi.org/10.1117/12.319612 (publisher PDF)"
 doi = "10.1117/12.319612"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer of pp. 196 and 200, checked against the page images. The same measurements as
@@ -23,7 +23,7 @@ column and constants (Delta eqQ = 1952 MHz, Delta C = 24.73 kHz, Delta d_T = -16
 
 uncertainty = "As in zhang1999a: 0.5 MHz for the beat and the Table 4 intervals (the spectrum analyzer's error); 30 MHz, as stated, for the Fabry-Perot values."
 
-notes = "Residuals against i2spec2026o: as zhang1999a (identical rows). Checked with the shipped model only."
+notes = "Residuals against an earlier version of the model: as zhang1999a (identical rows). Checked against the model only."
 
 [conditions]
 method = "New Focus 6210 extended-cavity diode laser at 633 nm, third-derivative saturated absorption in an external cell (cold finger 15 C, 6 MHz p-p, 1.8 mW one way); beats against a He-Ne/I2 laser; Fabry-Perot (FSR 300 MHz) scale"

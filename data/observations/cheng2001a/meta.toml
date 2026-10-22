@@ -41,7 +41,7 @@ b10, and the rms difference from bipm2003b is 9 kHz. A fit using these rows shou
 """
 
 notes = """
-Residuals against the default Predictor (2026-09-29), obs - model: R(106) 28-0 -25.2 (b1) to +7.5 kHz,
+Residuals against an earlier version of the model (2026-09-29), obs - model: R(106) 28-0 -25.2 (b1) to +7.5 kHz,
 rms 7.5 kHz, rms 3.3 kHz without b1; R(12) 26-0 +0.3 (a9) to +41.7 kHz (a14), with a10 +27.5, a12 +24.2,
 a14 +41.7, a15 +39.4. bipm2003b shows the same R(12) pattern against the model (a12 +22, a14 +49,
 a15 +33 kHz; a10 +1), so apart from a10 the R(12) residuals are the model's; a10 and b1 are this paper's

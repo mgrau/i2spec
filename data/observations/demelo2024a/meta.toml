@@ -1,11 +1,11 @@
 id = "demelo2024a"
 citation = "Á. M. G. de Melo, H. Letellier, A. Apoorva, A. Glicenstein and R. Kaiser, \"Laser frequency stabilization by modulation transfer spectroscopy and balanced detection of molecular iodine for laser cooling of 174Yb\", Opt. Express 32, 6204 (2024)"
-source = "https://doi.org/10.1364/oe.512281; values read from the arXiv preprint arXiv:2311.08542v1 (14 Nov 2023), Matt's library copy papers/Melo2024_OE32_6204_arXiv2311.08542.pdf; the published version was not compared"
+source = "https://doi.org/10.1364/oe.512281; values read from the arXiv preprint arXiv:2311.08542v1 (14 Nov 2023), ; the published version was not compared"
 doi = "10.1364/oe.512281"
 retrieved = "2026-10-20"
 unit = "MHz"
 catalog = "precision.yaml:demelo2024a"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 arXiv v1, p. 5 (Sect. 3): "relying on the absolute frequency nu_a21 of the a21 hyperfine transition of P(49)24-1
@@ -31,10 +31,10 @@ uncertainty = "6 MHz, the authors' 'estimated precision of 6 MHz in our frequenc
 notes = """
 J'' = 158 is the highest rotational level of any precision line in the collection.
 
-Residual against i2spec2026o (Predictor(), obs - model): +18.7 MHz (3.1 sigma). The label is not in doubt: the
+Residual against an earlier version of the model (obs - model): +18.7 MHz (3.1 sigma). The label is not in doubt: the
 model's a9 and a11 lie 110 and 122 MHz from a10. The model is low for this line: the NIST/APO and Salami & Ross
 atlas centres of R(158) 25-0 (data/atlas_lines) read +13.9 and +14.4 MHz above the model's hyperfine-free centre,
-and the reference (Tanabe's a21) agrees with the model to 1 kHz. Checked with the shipped model only.
+and the reference (Tanabe's a21) agrees with the model to 1 kHz. Checked against the model only.
 """
 
 [conditions]

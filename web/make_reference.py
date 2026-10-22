@@ -3,10 +3,10 @@ import json
 
 import numpy as np
 
-from i2spec import RovibronicModel, saturation, spectrum
+from i2spec import saturation, spectrum
 from i2spec.intensity import C2, intensity_model, master_line_list
 from i2spec.lookup import Catalog, uncertainty
-from i2spec.preferred import parameters
+from i2spec.preferred import components
 
 
 def make_reference():
@@ -20,9 +20,8 @@ def make_reference():
                     for nu in (12600.0, 18788.0) for T in (200.0, 293.15, 600.0)],
     }
 
-    # the line list the export writes: strengths from the model's own potentials (preferred.parameters())
-    master = master_line_list(intensity_model("127I2", parameters=parameters()), 11000.0, 20100.0,
-                              T_range=(200.0, 600.0), S_min=1e-27)
+    # the line list the export writes: strengths from the model's own potentials
+    master = master_line_list(intensity_model("127I2"), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
     out["Q"] = [[T, float(master.partition_function(T))] for T in (200.0, 250.0, 293.15, 300.0, 400.0, 600.0)]
 
     lines = master.at(300.0, S_min=1e-24)
@@ -46,7 +45,7 @@ def make_reference():
     # sub-Doppler: the full hyperfine calculation of R(56) 32-0, with the levels the crossovers need (eigenstate
     # numbers, as saturation.shared_level uses them and as the export gives them: webapp.weak_links), and
     # what saturation.py makes of it, for the browser's copy of the same model to reproduce
-    nu0, comps = RovibronicModel("127I2").hyperfine_components(32, 0, 56, "R")
+    nu0, comps = components("R", 56, 32, 0)
     width = saturation.doppler_width("127I2", nu0, 300.0)
     out["sub_doppler"] = {
         "line": "R(56) 32-0", "doppler_width": width,

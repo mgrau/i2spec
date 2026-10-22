@@ -1,10 +1,10 @@
 id = "wallerand2006a"
 citation = "J.-P. Wallerand, L. Robertsson, L.-S. Ma and M. Zucco, \"Absolute frequency measurement of molecular iodine lines at 514.7 nm, interrogated by a frequency-doubled Yb-doped fibre laser\", Metrologia 43, 294-298 (2006)"
-source = "https://doi.org/10.1088/0026-1394/43/3/012 (PDF supplied by Matt; library copy papers/Wallerand2006_Metrologia_43_294.pdf)"
+source = "https://doi.org/10.1088/0026-1394/43/3/012 (publisher PDF)"
 doi = "10.1088/0026-1394/43/3/012"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the page (Table 1 and Sect. 3.2, p. 296): BIPM comb (H maser)
@@ -29,8 +29,8 @@ notes = """
 [shift_correction] takes the P(49) 44-0 group to zero pressure with the 515 nm coefficient of jones2002a and
 goncharov2004a (-2.5(5) kHz/Pa, JILA, P(13) 43-0) at 1.22 Pa (Tellinghuisen 2011 vapour pressure at -11.48 C),
 with a 2 kHz allowance for the unknown power shift. The P(13) a3 row is left as measured. Residuals against
-i2spec2026o (obs - model): P(49) 44-0 +0.097 MHz on average (rms 0.103 over the 20 rows: the model's position of the
-line; the pattern itself within about 50 kHz); P(13) 43-0 a3 -0.6 kHz. Checked with the shipped model only.
+an earlier version of the model (obs - model): P(49) 44-0 +0.097 MHz on average (rms 0.103 over the 20 rows: the model's position of the
+line; the pattern itself within about 50 kHz); P(13) 43-0 a3 -0.6 kHz. Checked against the model only.
 """
 
 [conditions]

@@ -1,11 +1,11 @@
 id = "balling2007a_532"
 citation = "P. Balling and P. Křen, \"Absolute frequency measurements of wavelength standards 532 nm, 543 nm, 633 nm and 1540 nm\", Eur. Phys. J. D 48, 3-10 (2008)"
-source = "Eur. Phys. J. D 48, 3-10 (2008), published online 5 December 2007; https://doi.org/10.1140/epjd/e2007-00325-0 (publisher PDF, Matt's library copy papers/Balling2007_EPJD48_3.pdf)"
+source = "Eur. Phys. J. D 48, 3-10 (2008), published online 5 December 2007; https://doi.org/10.1140/epjd/e2007-00325-0 (publisher PDF)"
 doi = "10.1140/epjd/e2007-00325-0"
 retrieved = "2026-10-20"
 unit = "MHz"
 catalog = "precision.yaml:balling2007a"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 The 532 nm part of Balling & Křen (one paper, three sets: balling2007a_633, balling2007a_543, balling2007a_532).
@@ -35,8 +35,8 @@ about the MeP values as +1.27 kHz mean, +-1.15 kHz (k = 2).
 """
 
 notes = """
-Residuals against i2spec2026o (Predictor(), obs - model): -7.8 kHz mean, sd 1.2 kHz over the 13 components as
-measured; -4.2 kHz after the shift correction. Checked with the shipped model only.
+Residuals against an earlier version of the model (obs - model): -7.8 kHz mean, sd 1.2 kHz over the 13 components as
+measured; -4.2 kHz after the shift correction. Checked against the model only.
 """
 
 [conditions]

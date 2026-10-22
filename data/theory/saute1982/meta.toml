@@ -1,6 +1,6 @@
 id = "saute1982"
 citation = "M. Saute and M. Aubert-Frécon, \"Calculated long-range potential-energy curves for the 23 molecular states of I2\", J. Chem. Phys. 77, 5639-5646 (1982), Table II"
-source = "https://doi.org/10.1063/1.443770 (publisher PDF, papers/Saute1982_JCP77_5639.pdf)"
+source = "https://doi.org/10.1063/1.443770 (publisher PDF)"
 doi = "10.1063/1.443770"
 retrieved = "2026-10-20"
 unit = "C5 in 1e5 cm-1 A^5, C6 in 1e6 cm-1 A^6, E_diss in cm-1 above 2P3/2 + 2P3/2"
@@ -24,7 +24,7 @@ de Jong & Ye, JOSA B 22, 951 (2005), Fig. 2, attach them: the strongly attractiv
 1'g = 1g(1Pig), the nearly pure-C6 1g is 1''g = 1g(3Sigmag-); the repulsive 1u (C5 = +2.38) is
 1'u = 1u(3Sigmau+) and the nearly pure-C6 one is 1''u = C:1u(3Sigmau+).
 
-Check (prototypes/explore/physical_search/second_order_hyperfine.py, long_range_quadrupole()): at
+Check (a research script)): at
 2P3/2 + 2P1/2 the first-order C5 is a pure exchange term (the 2P1/2 atom has no quadrupole moment), so it
 is one reduced matrix element squared times angular factors. Scaled to B = -3.59, the separated-atom
 angular algebra gives 0g+ +3.59, 0g- 0, 0u- 0, 1g -2.393 and 0, 1u +2.393 and 0, 2g +0.598, 2u -0.598: every

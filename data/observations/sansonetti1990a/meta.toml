@@ -1,10 +1,10 @@
 id = "sansonetti1990a"
 citation = "C. J. Sansonetti, \"Molecular Iodine Absolute Frequencies\", final report on LLNL contract #923-003, Lawrence Livermore National Laboratory report UCRL-CR-107777 (NIST, Gaithersburg, 25 June 1990)"
-source = "https://doi.org/10.2172/371207 (OSTI scan; Matt's library copy papers/Sansonetti1990_UCRL-CR-107777.pdf)"
+source = "https://doi.org/10.2172/371207 (OSTI scan)"
 doi = "10.2172/371207"
 retrieved = "2026-10-20"
 unit = "cm-1"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1, report pp. 9-11 (PDF pp. 13-15), "Iodine Classifications and Wave Numbers": the "Final Value" of the one

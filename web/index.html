@@ -216,6 +216,10 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   #detail h2::after { content: "▴ details"; margin-left: auto; font: 12px var(--body); color: var(--ink-3); }
   #detail.expanded h2::after { content: "▾ close"; }
   #statusbar { display: none; }
+  #statusbar.fresh { display: block; position: fixed; left: 10px; right: 10px; z-index: 7; pointer-events: none;
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px)); padding: 6px 10px; border-radius: 6px; font-size: 12px;
+    background: var(--surface); box-shadow: 0 2px 10px rgb(0 0 0 / .18); }
+  #statusbar.fresh #hint { display: none; }
   /* the wavenumber and frequency columns repeat the wavelength; the detail pane has them */
   #head th:nth-child(3), #head th:nth-child(4), #rows td:nth-child(3), #rows td:nth-child(4) { display: none; }
   #hint { display: none; }
@@ -272,7 +276,7 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
     <button data-mode="sigma" aria-pressed="false">cross section</button>
     <button data-mode="trans" aria-pressed="false">transmission</button>
     <button data-mode="sub" aria-pressed="true" title="saturated absorption: Lamb dips of the hyperfine components; shown for spans up to 5 cm⁻¹">sub-Doppler</button></span></div>
-  <div class="field cellonly" hidden><label for="cold">cold finger (°C)</label><input id="cold" type="number" value="20" step="5" min="-40" max="120"></div>
+  <div class="field cellonly" hidden><label for="cold">cold finger (°C)</label><input id="cold" type="number" value="20" step="5" min="-40" max="113"></div>
   <div class="field cellonly" hidden><label for="path">path (cm)</label><input id="path" type="number" value="10" step="1" min="0.1"></div>
   <div class="field subonly"><label for="gamma">Γ hom. (MHz)</label><input id="gamma" type="number" value="2" step="0.5" min="0.01"
     title="homogeneous FWHM of each resonance: natural, transit-time, pressure and power broadening together"></div>
@@ -303,7 +307,7 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   <section id="detail"></section>
   <section class="tablewrap"><table><thead><tr id="head"></tr></thead><tbody id="rows"></tbody></table></section>
 </main>
-<footer id="statusbar"><span id="status">loading…</span>
+<footer id="statusbar"><span id="status" role="status" aria-live="polite">loading…</span>
   <span id="hint">drag to pan · shift-drag to zoom to a range · scroll to zoom · ← → to pan · ↑↓ through the list</span></footer>
 
 <script type="module" src="app.js"></script>

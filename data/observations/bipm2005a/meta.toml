@@ -31,8 +31,7 @@ iodine_pressure_Pa = 2.4
 saturating_intensity_mW_cm2_max = 40.0
 cell = "external"
 
-# Measurements this compilation prints that other sets hold (docs/design/observations.md, "One record per
-# measurement"). The recommended P(13) 43-0 a3 is the mean of the JILA and LPL measurements (section 2).
+# Measurements this compilation prints that other sets hold. The recommended P(13) 43-0 a3 is the mean of the JILA and LPL measurements (section 2).
 # Tables 1 and 2 (P(13) and R(15) 43-0) are weighted means of refs. [3-6], of which [5] is Borde 1981; Table 3
 # (R(98) 58-1) is Foth & Spieweck 1979 alone, so borde1981a's R(98) rows are independent of it. borde1981a is
 # pending (exclude), and a set left out has no say until it is admitted.

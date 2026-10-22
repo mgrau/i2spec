@@ -8,7 +8,7 @@ citation = """M. Debus, S. Schäfer, A. Reiners, Toward 10 cm/s radial velocity 
 instrument = """Bruker IFS 125HR at IAG Göttingen, evacuated; 222 single-channel spectra of 10 scans each, co-added here; OPUS parameters of the first file: RES 0.02, APF NBM, ZFF 2, LWN 15798.0068359375, NSS 10, SRC Parallel Input 42mm, BMS Quartz VIS, DTC RT-Si Diode [Internal Pos.4], APT 1 mm, VEL 10.0. HeNe-referenced, not comb-calibrated"""
 conditions = """Thorlabs GC19100-I cell (19 mm x 100 mm by its part number) in a GCH25-75 heater, halogen lamp; spectra from 20/01/2023 17:35:24.630 (GMT+1) to 24/01/2023 11:54:17.076 (GMT+1). The deposit records no cell temperature or column; the template is at 313.23 K, the lowest mean window rms. Band used 15180-20050 cm-1 less 15720-15876 cm-1 (the 633 nm HeNe artifact)"""
 terms = """CC0 1.0 (GRO.data): no restriction on use or redistribution; cite the paper and the data set. The spectrum is not in this repository; these are our fits to it."""
-extraction = """prototypes/condense_spectra.py (i2spec 35377f6 with uncommitted changes, 2026-10-19): prototypes/atlas_lines.py
+extraction = """a research script (i2spec 35377f6 with uncommitted changes, 2026-10-19): a research script
 extract with amplitudes on, 2423 windows. Every model line whose own absorption exceeds
 0.02 at line centre gets a wavenumber shift (ridge prior 0.01 cm-1) and a strength factor
 exp(eta) (ridge prior 0.5 on eta) on the i2spec template: hyperfine structure, Doppler width at the

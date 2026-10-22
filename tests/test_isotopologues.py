@@ -1,4 +1,4 @@
-"""Release 20261021, the i2spec model: balanced-expanded unchanged for 127I2, carried to 129I2 and 127I129I (isotope
+"""Release 20261021, the released model: the continued model of release 20261020 unchanged for 127I2, carried to 129I2 and 127I129I (isotope
 shift fitted to the CIPM isotopologue lines, hyperfine scaled per nucleus) and to J'' = 445."""
 import numpy as np
 import pytest

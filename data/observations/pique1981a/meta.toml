@@ -1,10 +1,10 @@
 id = "pique1981a"
 citation = "J. P. Pique, F. Hartmann, R. Bacis and S. Churassy, \"Hyperfine structure of higher rovibrational levels in the iodine B state studied by Ar+ laser induced fluorescence\", Opt. Commun. 36, 354-358 (1981), Table 1"
-source = "https://doi.org/10.1016/0030-4018(81)90240-6 (publisher PDF, papers/Pique1981_OptCommun36_354.pdf)"
+source = "https://doi.org/10.1016/0030-4018(81)90240-6 (publisher PDF)"
 doi = "10.1016/0030-4018(81)90240-6"
 retrieved = "2026-10-21"
 unit = "cm-1"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 356), every printed position, typed from the text layer and checked digit by digit against a 300 dpi
@@ -38,7 +38,7 @@ lambdameter offset of about -0.004 cm-1, four times the stated accuracy.
 """
 
 notes = """
-Residuals against i2spec2026o (obs - model, no correction), cm-1.
+Residuals against an earlier version of the model (obs - model, no correction), cm-1.
 Lambdameter: P(12) 61-0 -0.0038, R(49) 67-0 -0.0049, R(39) 64-0 -0.0038, R(26) 62-0 -0.0032, R(51) 68-0 -0.0044,
 R(54) 70-0 -0.0076, R(55) 71-0 -0.0092, P(56) 73-0 -0.0223. The five lines with v' <= 68 average -0.0040 cm-1
 (-120 MHz), standard deviation 0.0006. At R(26) 62-0 the model holds the goncharov2007a comb values to 0.34 MHz, so
@@ -51,7 +51,7 @@ behind the centrifugal barrier.
 
 Link to the Orsay atlas. Gerstenkorn & Luc set the scale of the Orsay atlas Partie IV (data/atlas_lines/orsay1983_part4,
 to which the shipped model's B state at v' = 51-79 is fitted) on this set's lambdameter value of R(26) 62-0,
-19926.0009 cm-1 (docs/research/orsay-atlas-19700-20035.md). The i2spec fit, which gives the atlas a free offset with a
+19926.0009 cm-1. The i2spec fit, which gives the atlas a free offset with a
 prior from comb lines, found the atlas scale +119.6 MHz low: the lambdameter offset found here. The atlas does not
 resolve two pairs that this set separates: its line N = 2482 (19925.9489 cm-1) is assigned to both R(49) 67-0 and
 R(39) 64-0, and N = 2484 (19926.0396) to both P(56) 73-0 and R(54) 70-0. Blended atlas lines are not fitted, and
@@ -92,7 +92,7 @@ quadratic in J'(J'+1) through Chen's J' = 16, 37, 52, 82; eq'Q is +9.8 and +6.8 
 extrapolation of Chen's J' = 34, 38, 46 to J' = 55 (2.400 MHz, -3.3 sigma); the held eq'Q is 12 MHz below Chen's
 -557.9. Chen fits d and delta, which reach -0.94 and +3.05 MHz at R(45) 70-0, comparable to C itself, so at high v'
 Pique's two-parameter C' is an effective value and need not equal Chen's.
-Checked with the shipped model only.
+Checked against the model only.
 """
 
 [conditions]

@@ -57,7 +57,7 @@ technical budget applies; BIPM assigns 5 kHz. All rows share group hong2004a (sa
 """
 
 notes = """
-Residuals against the current model (Predictor(), obs - model): absolute a1 -85.5 kHz; interval to
+Residuals against an earlier version of the model (obs - model): absolute a1 -85.5 kHz; interval to
 R(56) a10 -25.9 kHz; hyperfine intervals a2-a21 -3.8 to -1.7 kHz (mean -2.8, rms 2.9 kHz): a nearly
 uniform offset of all components from a1, i.e. the model's a1 sits about 3 kHz too low relative to the
 rest of the pattern, not a scatter. No row dropped.

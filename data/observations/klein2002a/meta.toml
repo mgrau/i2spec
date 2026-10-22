@@ -1,6 +1,6 @@
 id = "klein2002a"
 citation = "R. Klein and A. Arie, \"Observation of iodine transitions using the second and third harmonics of a 1.5-um laser\", Appl. Phys. B 75, 79-83 (2002)"
-source = "https://doi.org/10.1007/s00340-002-0947-z (library copy papers/Klein2002_APB75_79.pdf)"
+source = "https://doi.org/10.1007/s00340-002-0947-z"
 doi = "10.1007/s00340-002-0947-z"
 retrieved = "2026-10-21"
 unit = "cm-1"
@@ -19,7 +19,7 @@ Not entered: P(163) 0-13 at 12 856.7 cm-1 (wavemeter accuracy 0.2 cm-1); the abs
 0-14 and R(33) 40-0; the 518 nm third-harmonic spectrum (figure only).
 """
 
-notes = "Residuals against i2spec2026o (obs - model, P labels corrected): -0.013 to +0.005 cm-1. Checked with the shipped model only."
+notes = "Residuals against an earlier version of the model (obs - model, P labels corrected): -0.013 to +0.005 cm-1. Checked against the model only."
 
 uncertainty = "Not stated for Table 1. Taken as 0.01 cm-1, the spread of measured minus calculated (-0.015 to +0.004 cm-1)."
 

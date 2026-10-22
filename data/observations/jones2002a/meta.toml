@@ -66,7 +66,7 @@ before a fit where kHz-level residuals matter.
 """
 
 notes = """
-Model check (Predictor, DEFAULT_PARAMETERS, 2026-09-29): P(13) 43-0 a3 obs - model = -5.3 kHz, which
+Model check (an earlier version of the model, 2026-09-29): P(13) 43-0 a3 obs - model = -5.3 kHz, which
 matches the expected pressure shift at 2.38 Pa (-6.0 kHz); goncharov2004a (0.12 Pa) gives +0.2 kHz.
 R(56) 32-0 a10 obs - model = -51.0 kHz; bipm2012a's CIPM value gives -52.4 kHz, so the offset is the
 model's at 532 nm, not a transcription error (the two data values differ by 1.4 kHz).

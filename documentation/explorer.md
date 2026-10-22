@@ -77,8 +77,7 @@ Both views take the model's 1σ for each component from the full hyperfine patte
 ## Sub-Doppler spectra
 
 The **sub-Doppler** button of the y-axis control draws the saturated-absorption spectrum that a
-pump–probe experiment records, using the same model as the Python package (`i2spec.saturation`,
-derived in `docs/research/sub-doppler.md`). It needs the hyperfine patterns, so it is drawn only when
+pump–probe experiment records, using the same model as the Python package (`i2spec.saturation`). It needs the hyperfine patterns, so it is drawn only when
 the view spans at most 5 cm⁻¹; a wider view shows the cross section with a note to zoom in.
 
 - Every hyperfine component gives a **Lamb dip** of amplitude proportional to S², the weak-saturation

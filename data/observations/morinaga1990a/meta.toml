@@ -1,10 +1,10 @@
 id = "morinaga1990a"
 citation = "A. Morinaga, N. Ito and K. Sugiyama, \"A dye laser spectrometer with an external iodine cell designed for optical Ramsey-fringe spectroscopy in a Ca atomic beam\", Jpn. J. Appl. Phys. 29, L1727-L1730 (1990)"
-source = "https://doi.org/10.1143/JJAP.29.L1727 (PDF supplied by Matt; library copy papers/Morinaga1990_JJAP_29_L1727.pdf)"
+source = "https://doi.org/10.1143/JJAP.29.L1727 (publisher PDF)"
 doi = "10.1143/JJAP.29.L1727"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Read from 200 dpi images of the scan (pp. L1728-L1729): a 657 nm dye laser locked (FM saturation spectroscopy,
@@ -22,7 +22,7 @@ Not entered: the fringe widths and the stability figures.
 
 uncertainty = "0.02 MHz as printed (the Ramsey-fringe centre scattered by 20 kHz over repeated scans)."
 
-notes = "Residual against i2spec2026o (obs - model): +0.147 MHz (not corrected for the cell pressure, which is not given). morinaga1989a (Table 1) holds the R(69) 3-4 hyperfine intervals to the MHz. Checked with the shipped model only."
+notes = "Residual against an earlier version of the model (obs - model): +0.147 MHz (not corrected for the cell pressure, which is not given). morinaga1989a (Table 1) holds the R(69) 3-4 hyperfine intervals to the MHz. Checked against the model only."
 
 [conditions]
 method = "DCM dye laser locked to a high-finesse cavity stabilized by FM saturation spectroscopy (5 MHz, index 0.5) on an external I2 cell; optical Ramsey fringes in a Ca atomic beam"

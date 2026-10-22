@@ -1,11 +1,11 @@
 id = "diddams2000a"
 citation = "S. A. Diddams, D. J. Jones, J. Ye, S. T. Cundiff, J. L. Hall, J. K. Ranka, R. S. Windeler, R. Holzwarth, Th. Udem and T. W. Hänsch, \"Direct link between microwave and optical frequencies with a 300 THz femtosecond laser comb\", Phys. Rev. Lett. 84, 5102-5105 (2000)"
-source = "Phys. Rev. Lett. 84, 5102 (2000); https://doi.org/10.1103/physrevlett.84.5102 (publisher PDF, Matt's library copy papers/Diddams2000_PRL84_5102.pdf)"
+source = "Phys. Rev. Lett. 84, 5102 (2000); https://doi.org/10.1103/physrevlett.84.5102 (publisher PDF)"
 doi = "10.1103/physrevlett.84.5102"
 retrieved = "2026-10-20"
 unit = "MHz"
 catalog = "precision.yaml:diddams2000a"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Two absolute frequencies from p. 5104 (PDF p. 3), typed from the text layer and checked against the page:
@@ -30,9 +30,9 @@ of bipm2003a is this one.
 uncertainty = "As printed, read as 1 sigma (5 kHz and 2.1 kHz). The two rows are separate groups: different lasers, cells and conditions."
 
 notes = """
-Residuals against i2spec2026o (Predictor(), obs - model): R(56) 32-0 a10 -8.0 kHz (holzwarth2001a and the
+Residuals against an earlier version of the model (obs - model): R(56) 32-0 a10 -8.0 kHz (holzwarth2001a and the
 balling2007a_532 YAG1 laser read -4 to -8 kHz); R(127) 11-5 a13 -335.2 kHz as measured, -109.4 kHz after the
-shift correction (yoon2001a -337.9 / -112.0; bipm2003a a16 -342.7 / -116.8). Checked with the shipped model only.
+shift correction (yoon2001a -337.9 / -112.0; bipm2003a a16 -342.7 / -116.8). Checked against the model only.
 """
 
 [conditions]

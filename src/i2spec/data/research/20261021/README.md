@@ -1,7 +1,7 @@
-# Frozen research release: October 21, 2026
+# Frozen release: October 21, 2026 — the released model
 
 One model, `research-20261021-i2spec` (role `i2spec`): the model the apps and the documentation present. It is
-`research-20261020-balanced-expanded` for every isotopologue and every J the line lists reach. Select it as
+the continued model of release 20261020 for every isotopologue and every J the line lists reach. Select it as
 `i2spec.ResearchModel("i2spec", isotopologue)` or through `i2spec.preferred.model(isotopologue)`.
 
 The release holds only what it adds. `model.json`, `hyperfine.json` and `uncertainty.json` are read from
@@ -33,6 +33,3 @@ model's, bit for bit.
 
 `i2spec/reference_predictions.json` holds centers, components and one intraline interval per line for 10 ¹²⁷I₂,
 10 ¹²⁹I₂ and 5 ¹²⁷I¹²⁹I lines. `ResearchModel("i2spec", iso).verify()` reproduces them exactly.
-
-Built by `prototypes/explore/physical_search/package_i2spec.py`
-(stages `fit write condition references verify`), with `isotopologues.py` (in the gitignored `prototypes/explore/`).

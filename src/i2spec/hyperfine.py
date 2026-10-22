@@ -87,24 +87,6 @@ def _spin_spin_reduced(Ip, I, i1, i2):
     return sqrt(5 * (2 * I + 1) * (2 * Ip + 1)) * w9j(i1, i1, 1, i2, i2, 1, Ip, I, 2) * _vec_reduced(i1) * _vec_reduced(i2)
 
 
-def matrix_element(Jp, Ip, J, I, F, p: HyperfineParameters, i1, i2, eqQ_ratio=1.0, C_ratio=1.0):
-    """<J' I' F|H|J I F> in MHz. eqQ_ratio, C_ratio = eqQ, C of nucleus 2 over those of nucleus 1."""
-    value = 0.0
-    if Jp == J and Ip == I:
-        value += 1e-3 * p.C * (F * (F + 1) - I * (I + 1) - J * (J + 1)) / 2
-        value += 1e-3 * p.delta * (I * (I + 1) - i1 * (i1 + 1) - i2 * (i2 + 1)) / 2
-    if Jp == J and C_ratio != 1.0:  # C I·J + (C_ratio - 1) C I2·J, Edmonds 7.1.6
-        value += (1e-3 * p.C * (C_ratio - 1.0) * _sign(J + Ip + F) * w6j(F, Ip, J, 1, J, I) * _vec_reduced(J)
-                  * _one_nucleus(2, Ip, I, i1, i2, 1, _vec_reduced(i2)))
-    rot = rot_reduced(Jp, J, 2)
-    if rot == 0.0:
-        return value
-    geometry = _sign(J + Ip + F) * w6j(F, Ip, Jp, 2, J, I) * rot
-    quad = sum(ratio * sqrt(6) / (4 * i * (2 * i - 1)) * _one_nucleus(n, Ip, I, i1, i2, 2, _quad_reduced(i))
-               for n, (i, ratio) in enumerate(((i1, 1.0), (i2, eqQ_ratio)), start=1))
-    return value + geometry * (K_Q * p.eqQ * quad + K_T * 1e-3 * p.d * _spin_spin_reduced(Ip, I, i1, i2))
-
-
 def allowed_spins(J, i1, i2, symmetry):
     """Total nuclear spins I that combine with rotational level J.
 
@@ -119,12 +101,9 @@ def allowed_spins(J, i1, i2, symmetry):
     return [I for I in spins if ((I - J) % 2 == 0) == (symmetry == "g")]
 
 
-def _mean(a: HyperfineParameters, b: HyperfineParameters) -> HyperfineParameters:
-    return HyperfineParameters((a.eqQ + b.eqQ) / 2, (a.C + b.C) / 2, (a.d + b.d) / 2, (a.delta + b.delta) / 2)
-
-
 def _coefficient_terms(Jp, Ip, J, I, F, i1, i2, eqQ_ratio, C_ratio):
-    """matrix_element split by parameter: the factors multiplying C, delta, eqQ and d (MHz per unit)."""
+    """<J' I' F|H|J I F> split by parameter: the factors multiplying C, delta, eqQ and d (MHz per unit).
+    eqQ_ratio, C_ratio = eqQ, C of nucleus 2 over those of nucleus 1."""
     c = dl = q = t = 0.0
     if Jp == J and Ip == I:
         c += 1e-3 * (F * (F + 1) - I * (I + 1) - J * (J + 1)) / 2

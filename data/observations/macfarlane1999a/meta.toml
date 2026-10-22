@@ -1,10 +1,10 @@
 id = "macfarlane1999a"
 citation = "G. M. Macfarlane, G. P. Barwood, W. R. C. Rowley and P. Gill, \"Interferometric frequency measurement of iodine stabilized Nd:YAG lasers\", IEEE Trans. Instrum. Meas. 48, 600-603 (1999)"
-source = "https://doi.org/10.1109/19.769667 (IEEE Xplore via ODU; Matt's library copy papers/MacFarlane1999_IEEE_TIM_48_600.pdf)"
+source = "https://doi.org/10.1109/19.769667 (IEEE Xplore)"
 doi = "10.1109/19.769667"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Tables I-III (p. 602) are images; read from a 230 dpi page image and typed.

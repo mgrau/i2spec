@@ -1,10 +1,10 @@
 id = "sugiyama1988a"
 citation = "K. Sugiyama, S. Iwasaki and A. Morinaga, \"Hyperfine structure of the P(48) line in the 11-3 band of iodine molecules by FM saturation spectroscopy at 612 nm\", Opt. Lett. 13, 556-558 (1988)"
-source = "https://doi.org/10.1364/OL.13.000556 (publisher PDF via ODU; Matt's library copy papers/Sugiyama1988_Opt_Lett_13_556.pdf)"
+source = "https://doi.org/10.1364/OL.13.000556 (publisher PDF)"
 doi = "10.1364/OL.13.000556"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 558), typed from the text layer and checked against the page: measured intervals f(x) - f(a) between

@@ -1,10 +1,10 @@
 id = "magyar1980a"
 citation = "J. A. Magyar and N. Brown, \"High resolution saturated absorption spectra of iodine molecules 129I2, 129I127I, and 127I2 at 633 nm\", Metrologia 16, 63-68 (1980)"
-source = "https://doi.org/10.1088/0026-1394/16/2/001 (PDF supplied by Matt; library copy papers/Magyar1980_Metrologia_16_63.pdf)"
+source = "https://doi.org/10.1088/0026-1394/16/2/001 (publisher PDF)"
 doi = "10.1088/0026-1394/16/2/001"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 66), typed from a 300 dpi page image: 54 third-harmonic peaks of a 129I2/127I2 mixed cell at 633 nm
@@ -25,7 +25,7 @@ g1 and g2 (resolved here, 127I129I m14 and m13) are entered.
 
 uncertainty = "\"A standard deviation of 23 kHz was calculated for the differences in component frequencies\" between the 25 Pa and 7.3 Pa spectra after removing a 107 kHz pressure shift; \"these components are typical of the spectrum as a whole so this standard deviation indicates a typical accuracy. However some components required large corrections for adjacent line effects (such as w″)\". 30 kHz is entered, 0.1 MHz for w″."
 
-notes = "The MEP 633 nm Tables 3, 4 and 7 (bipm2003a) cite this paper (ref. [41]) among their sources; declared there as \"mean\". Residuals against i2spec2026o (obs - model): 129I2 P(54) 8-4 rms 49 kHz; 127I129I P(33) 6-3 +0.11 MHz on average (the model's isotope shift), within 0.2 MHz except o (m7), +1.16 MHz, where the MEP's mean is -78.2(5) MHz against -77.69 here: its sources disagree by about 1 MHz; 129I2 P(69) 12-6 +1.66 MHz on all six (the model's position of that line). Checked with the shipped model only."
+notes = "The MEP 633 nm Tables 3, 4 and 7 (bipm2003a) cite this paper (ref. [41]) among their sources; declared there as \"mean\". Residuals against an earlier version of the model (obs - model): 129I2 P(54) 8-4 rms 49 kHz; 127I129I P(33) 6-3 +0.11 MHz on average (the model's isotope shift), within 0.2 MHz except o (m7), +1.16 MHz, where the MEP's mean is -78.2(5) MHz against -77.69 here: its sources disagree by about 1 MHz; 129I2 P(69) 12-6 +1.66 MHz on all six (the model's position of that line). Checked against the model only."
 
 [conditions]
 method = "He-Ne lasers (internal iodine cells) frequency-offset locked; third-harmonic saturated absorption; 129I2 with 17 % (and about 50 %) 127I2, at 25 Pa, 11 Pa and 7.3 Pa"

@@ -43,7 +43,7 @@ about 10 kHz, not 30 kHz.
 """
 
 notes = """
-Residuals against the current model (Predictor(), obs - model): a1 -678 kHz, a10 -680 kHz, a15 -708 kHz,
+Residuals against an earlier version of the model (obs - model): a1 -678 kHz, a10 -680 kHz, a15 -708 kHz,
 mean -689 kHz. The common offset is the model's line-centre error for this v'' = 4 hot band (the paper finds
 -0.88 to -0.93 MHz against IodineSpec5, quoted at +-3 MHz 2 sigma); the implied splittings a10 - a1 and
 a15 - a1 differ from the model by -2 and -30 kHz.

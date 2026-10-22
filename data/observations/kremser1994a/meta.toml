@@ -1,10 +1,10 @@
 id = "kremser1994a"
 citation = "S. Kremser, B. Bodermann, H. Knöckel and E. Tiemann, \"Frequency stabilization of diode lasers to hyperfine transitions of the iodine molecule\", Opt. Commun. 110, 708-716 (1994)"
-source = "https://doi.org/10.1016/0030-4018(94)90273-9 (PDF supplied by Matt; library copy papers/Kremser1994_Opt_Commun_110_708.pdf)"
+source = "https://doi.org/10.1016/0030-4018(94)90273-9 (publisher PDF)"
 doi = "10.1016/0030-4018(94)90273-9"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 714), typed from a 300 dpi page image: hyperfine structure of 127I2 R(92) 0-15 at 793.23 nm, the
@@ -28,7 +28,7 @@ correction, not a measurement); the pressure dependence of a10 - a1 (-3.9(0.7) k
 
 uncertainty = "The error column (11.7-20.9 kHz, the standard deviation of seven measurements) as 1 sigma; for lines 3 and 4, whose overlap correction exceeds it, half the correction is added in quadrature (42 and 41 kHz). Day-to-day reproducibility was +-50 kHz peak to peak (lock-in offset drift), which the seven-day averages include."
 
-notes = "Residuals against i2spec2026o (obs - model): rms 46 kHz, all -26 to -76 kHz: a common -44 kHz, so the model puts a1 itself 44 kHz too low against the rest (24 kHz rms after it). A source behind Knöckel et al. 2004's near-infrared hyperfine data; bodermann2000a (same group) measures absolute frequencies of other lines. Checked with the shipped model only."
+notes = "Residuals against an earlier version of the model (obs - model): rms 46 kHz, all -26 to -76 kHz: a common -44 kHz, so the model puts a1 itself 44 kHz too low against the rest (24 kHz rms after it). A source behind Knöckel et al. 2004's near-infrared hyperfine data; bodermann2000a (same group) measures absolute frequencies of other lines. Checked against the model only."
 
 [conditions]
 method = "two diode lasers narrowed by resonant optical feedback, locked by third-harmonic saturation spectroscopy (collinear pump and probe) to a 50 cm cell at about 500 C (800 K), sidearm 20 C (about 26 Pa); modulation 5 kHz, 0.5-3 MHz"

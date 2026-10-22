@@ -1,10 +1,10 @@
 id = "zhang1999a"
 citation = "Zhang Ke-Ming, Chen Xu-Zong, Zang Er-Jun, Y. Akimoto, T. Kasahara, K. Sakamoto and H. Inaba, \"Strong hyperfine spectra of 127I2 at 633 nm and frequency stabilized tunable diode laser\" (in Chinese, English abstract), Acta Phys. Sin. 48, 840-849 (1999)"
-source = "https://doi.org/10.7498/aps.48.840 (scan without a text layer; Matt's library copy papers/ZHANGKEMING1999_Acta_Phys_Sin_48_840.pdf)"
+source = "https://doi.org/10.7498/aps.48.840 (scan without a text layer)"
 doi = "10.7498/aps.48.840"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Read from 250 dpi images of the scan and typed. A 633 nm extended-cavity diode laser (third-harmonic detection)
@@ -32,10 +32,10 @@ The four Table 1 values: 30 MHz as stated. Groups: the beat, the R(39) 6-3 table
 """
 
 notes = """
-Residuals against i2spec2026o (Predictor(), obs - model): the R(39) 6-3 beat +0.77 MHz and its table within
+Residuals against an earlier version of the model (obs - model): the R(39) 6-3 beat +0.77 MHz and its table within
 1.2 MHz, consistent with 0.5 MHz. The Fabry-Perot estimates are -113 (R(60) 8-4), +29 (P(119) 9-4), -57 (P(32)
 6-3) and +11 MHz (R(38) 6-3): the labels are not in doubt (o or u is the lowest component, the next 280 MHz above),
-so for R(60) and P(32) the stated 30 MHz is optimistic by a factor of two to four. Checked with the shipped model only.
+so for R(60) and P(32) the stated 30 MHz is optimistic by a factor of two to four. Checked against the model only.
 """
 
 [conditions]

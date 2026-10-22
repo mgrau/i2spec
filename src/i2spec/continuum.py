@@ -1,6 +1,6 @@
 """Continuous absorption of I₂: A←X, C←X, and B←X above the discrete line list.
 
-Model of Tellinghuisen, J. Chem. Phys. 135, 054301 (2011) (docs/research/continuum-model.md), eq. (2):
+Model of Tellinghuisen, J. Chem. Phys. 135, 054301 (2011), eq. (2):
 
     σ(ν) = S_UNIT · ν · Σ_{v'',J''} f(v'', J'') · |<E'|μ_e(R)|v'' J''>|²,    E' = E'' + ν,
 
@@ -23,6 +23,8 @@ Boltzmann population of X. Nuclear-spin weights average out.
 from __future__ import annotations
 
 import hashlib
+import warnings
+import zipfile
 from dataclasses import dataclass
 from math import log
 
@@ -30,8 +32,8 @@ import numpy as np
 from numpy.polynomial import polynomial as P
 from scipy.optimize import brentq, minimize_scalar
 
-from .constants import HBAR2_2U, ISOTOPOLOGUES, REFERENCE_ISOTOPOLOGUE, reduced_mass, DEFAULT_PARAMETERS
-from .intensity import C2, S_UNIT, cache_dir, mu_tellinghuisen2011
+from .constants import HBAR2_2U, ISOTOPOLOGUES, PUBLISHED_PARAMETERS, REFERENCE_ISOTOPOLOGUE, reduced_mass
+from .intensity import C2, S_UNIT, _parameter_files_digest, cache_dir, mu_tellinghuisen2011
 from .potentials import load_potentials
 from .solver import RadialSolver
 
@@ -195,14 +197,14 @@ class Continuum:
 
     @classmethod
     def load(cls, path):
-        z = np.load(path)
-        states = [k[3:] for k in z.files if k.startswith("m2_")]
-        return cls(z["J"], float(z["dJ"]), z["e_lower"], {s: z[f"E_{s}"] for s in states},
-                   {s: z[f"m2_{s}"] for s in states}, z["cut"], str(z["isotopologue"]))
+        with np.load(path) as z:
+            states = [k[3:] for k in z.files if k.startswith("m2_")]
+            return cls(z["J"], float(z["dJ"]), z["e_lower"], {s: z[f"E_{s}"] for s in states},
+                       {s: z[f"m2_{s}"] for s in states}, z["cut"], str(z["isotopologue"]))
 
 
 def continuum_model(isotopologue="127I2", upper_cut=None, *, T_max=600.0, dJ=5, nu_max=26500.0,
-                    parameters=DEFAULT_PARAMETERS, cache=True) -> Continuum:
+                    parameters=PUBLISHED_PARAMETERS, cache=True) -> Continuum:
     """Continuum for T <= T_max and ν <= nu_max (cm⁻¹).
 
     upper_cut: MasterLineList.upper_cut of the line list the continuum complements, or None for B←X
@@ -211,11 +213,15 @@ def continuum_model(isotopologue="127I2", upper_cut=None, *, T_max=600.0, dJ=5, 
     if isotopologue not in ISOTOPOLOGUES:
         raise ValueError(f"unknown isotopologue {isotopologue!r}")
     cut_hash = hashlib.sha1(np.ascontiguousarray(upper_cut, dtype=float).tobytes()).hexdigest() if upper_cut is not None else None
-    key = hashlib.sha1(repr((_CACHE_VERSION, isotopologue, parameters, float(T_max), float(dJ), float(nu_max),
-                             cut_hash)).encode()).hexdigest()[:16]
+    key = hashlib.sha1(repr((_CACHE_VERSION, isotopologue, parameters, _parameter_files_digest(parameters),
+                             float(T_max), float(dJ), float(nu_max), cut_hash)).encode()).hexdigest()[:16]
     path = cache_dir() / f"continuum_{isotopologue}_{key}.npz"
     if cache and path.exists():
-        return Continuum.load(path)
+        try:
+            return Continuum.load(path)
+        except (zipfile.BadZipFile, ValueError, OSError, KeyError, EOFError) as e:  # damaged: build it again
+            warnings.warn(f"rebuilding the unreadable cached continuum {path} ({e})")
+            path.unlink(missing_ok=True)
 
     pots = load_potentials(parameters)
     mu = reduced_mass(isotopologue)

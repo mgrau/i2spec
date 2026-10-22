@@ -1,11 +1,11 @@
 id = "yoon2001a"
 citation = "T. H. Yoon, J. Ye, J. L. Hall and J.-M. Chartier, \"Absolute frequency measurement of the iodine-stabilized He-Ne laser at 633 nm\", Appl. Phys. B 72, 221-226 (2001)"
-source = "Appl. Phys. B 72, 221-226 (2001); https://doi.org/10.1007/s003400000473 (publisher PDF, Matt's library copy papers/Yoon2001_APB72_221.pdf)"
+source = "Appl. Phys. B 72, 221-226 (2001); https://doi.org/10.1007/s003400000473 (publisher PDF)"
 doi = "10.1007/s003400000473"
 retrieved = "2026-10-20"
 unit = "MHz"
 catalog = "precision.yaml:yoon2001a"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the pages:
@@ -32,9 +32,9 @@ One laser, so one group.
 """
 
 notes = """
-Residuals against i2spec2026o (Predictor(), obs - model): a13 -337.9 kHz as measured, -112.0 kHz after the shift
+Residuals against an earlier version of the model (obs - model): a13 -337.9 kHz as measured, -112.0 kHz after the shift
 correction (bipm2003a a16 -342.7 / -116.8; diddams2000a SN-126 a13 -335.2 / -109.4); f - i interval -6.4 kHz.
-Checked with the shipped model only.
+Checked against the model only.
 """
 
 [conditions]

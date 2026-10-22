@@ -108,7 +108,7 @@ export function harmonicView(value, unit, n, halfNm = 0.1) {
 }
 
 // --- sub-Doppler (saturated-absorption) spectra ------------------------------------------------------
-// The same model as i2spec/saturation.py, which derives it (docs/research/sub-doppler.md): a Lamb dip at
+// The same model as i2spec/saturation.py: a Lamb dip at
 // every hyperfine component and a crossover halfway between two components that share a level, with
 // weak-saturation amplitudes, each drawn as a Lorentzian of the homogeneous width or as its n-th
 // harmonic under sinusoidal frequency modulation.
@@ -161,7 +161,7 @@ function quadrature(harmonic, points) {
     const cos = new Float64Array(points), weight = new Float64Array(points);
     for (let k = 0; k < points; k++) {
       const theta = (k + 0.5) * Math.PI / points;
-      cos[k] = Math.cos(theta); weight[k] = Math.cos(harmonic * theta) * (2 / points);
+      cos[k] = Math.cos(theta); weight[k] = Math.cos(harmonic * theta) * ((harmonic === 0 ? 1 : 2) / points);
     }
     QUADRATURE.set(key, {cos, weight});
   }
@@ -181,9 +181,9 @@ export function lineshape(x, fwhm, {harmonic = 0, modulation = 0.0, points = 256
   return s;
 }
 
-/** The modulated shape tabulated as saturation.signal() does: step fwhm/256 out to `wings` half-widths. */
+/** The modulated shape tabulated as saturation.signal() does: step fwhm/256, `wings` FWHM beyond the swing. */
 function kernel(fwhm, harmonic, modulation, points, wings, step) {
-  const half = wings * (fwhm + modulation);
+  const half = wings * fwhm + 0.5 * modulation;
   const start = -half, n = Math.ceil((half + step - start) / step);    // numpy.arange's length
   const values = new Float64Array(n);
   for (let k = 0; k < n; k++) values[k] = lineshape(start + k * step, fwhm, {harmonic, modulation, points});

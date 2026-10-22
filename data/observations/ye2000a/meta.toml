@@ -1,10 +1,10 @@
 id = "ye2000a"
 citation = "J. Ye, T. H. Yoon, J. L. Hall, A. A. Madej, J. E. Bernard, K. J. Siemsen, L. Marmet, J.-M. Chartier and A. Chartier, \"Accuracy comparison of absolute optical frequency measurement between harmonic-generation synthesis and a frequency-division femtosecond comb\", Phys. Rev. Lett. 85, 3797-3800 (2000)"
-source = "https://doi.org/10.1103/PhysRevLett.85.3797 (CU Scholar copy; Matt's library copy papers/Ye2000_PRL85_3797.pdf)"
+source = "https://doi.org/10.1103/PhysRevLett.85.3797 (CU Scholar copy)"
 doi = "10.1103/PhysRevLett.85.3797"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the pages (p. 3799). Both rows are the frequency of the transportable

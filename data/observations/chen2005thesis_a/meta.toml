@@ -1,9 +1,9 @@
 id = "chen2005thesis_a"
 citation = "L. Chen, \"High-Precision Spectroscopy of Molecular Iodine: From Optical Frequency Standards to Global Descriptions of Hyperfine Interactions and Associated Electronic Structure\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. Ye), 2005, Appendix B (Tables B.1-B.79, pp. 162-248)"
-source = "Matt's library copy papers/Chen2005_thesis_Colorado.pdf (pdfTeX, 272 pages, with a text layer)"
+source = "the thesis PDF (pdfTeX, 272 pages, with a text layer)"
 retrieved = "2026-10-21"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 What it is. Appendix B gives one table per measured line (79 lines, v' = 42-70, 500-517 nm): the measured position of
@@ -81,24 +81,24 @@ the record held only R(98) 58-1 and R(26) 62-0 before.
 
 Relation to held data. These are the spectra behind data/hyperfine_parameters/chen2004a (JOSA B 21, 820, Table 1 =
 thesis Table 4.1, identical for all 74 lines; the journal prints no splittings). Fitting both counts the same spectra
-twice. The shipped model's B-state hyperfine table (src/i2spec/data/b_state_lines.json, hfs_table.py) is built from
+twice. The B-state hyperfine table of that earlier model was built from
 chen2004a, so the residuals below are not an independent test of these 74 lines. No observation set holds these
 measurements, so there is no [overlaps] table. P(13) 43-0 (17 rows) is also held from other groups (bipm2005a,
 borde1981a, hackel1980a, ruben1973a, landsberg1976a) as independent measurements, and falls under the standing
-exclusion of that line (validation.EXCLUSION). Chapter 3's P(13) 43-0 a3 absolute (71.8 +- 1.5 kHz above the CIPM
+exclusion of that line. Chapter 3's P(13) 43-0 a3 absolute (71.8 +- 1.5 kHz above the CIPM
 value, cold finger -5 C) is jones2002a's measurement and is not entered again; the thesis prints the CIPM reference as
 582 490 603 307 kHz twice in the text (pp. 62, 67), the same transposition as the Jones 2002 Fig. 5 inset (the CIPM
 1997 value is ...370 kHz; see jones2002a).
 
-Residuals against i2spec2026o (Predictor(), obs - model): 1119 rows, 222 kHz rms, median |r| 22.5 kHz, rms(r/u) 2.95,
+Residuals against an earlier version of the model (obs - model): 1119 rows, 222 kHz rms, median |r| 22.5 kHz, rms(r/u) 2.95,
 80 rows beyond 5 u. By v': 42-43 (157 rows) 32 kHz rms; 45-55 (428 rows) 25 kHz; 57-61 (306) 330 kHz; 63-70 (228)
 306 kHz. Without the five lines the authors themselves flag as perturbed (R(65), R(74) 57-0; P(17), P(27), R(28)
 59-0; 61 rows, 722 kHz rms): 1058 rows, 148 kHz rms. The Sec. 4.3.2 row is -5.1 kHz from the model. Every row beyond
 5 u was compared with its render, and every one is within 2.1 fit standard deviations of the authors' own four-term
 fit, so they are model errors, not transcription errors: at v' = 43 the residuals of P(25), P(38) and R(40) grow with the interval (a scale-like 1e-4,
-up to 123 kHz at 850 MHz), the lines whose chen2004a eqQ scatters 0.1-0.3 MHz from BKT02 (hfs_table.SOURCE_FLOOR);
+up to 123 kHz at 850 MHz), the lines whose chen2004a eqQ scatters 0.1-0.3 MHz from BKT02;
 above v' = 55 the model misses by 0.1-1.4 MHz, most at the 1g-perturbed lines and at v' = 69-70.
-Checked with the shipped model only.
+Checked against the model only.
 """
 
 [conditions]

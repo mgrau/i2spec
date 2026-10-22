@@ -1,10 +1,10 @@
 id = "hamid2006a"
 citation = "R. Hamid, E. Sahin, M. Celik, G. Özen, M. Zucco, L. Robertsson and L. S. Ma, \"10^-12 level reproducibility of an iodine-stabilized He-Ne laser endorsed by absolute frequency measurements in the BIPM and UME\", Metrologia 43, 106-108 (2006)"
-source = "https://doi.org/10.1088/0026-1394/43/1/015 (library copy papers/Hamid2006_Metrologia_43.pdf)"
+source = "https://doi.org/10.1088/0026-1394/43/1/015"
 doi = "10.1088/0026-1394/43/1/015"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Abstract and Sect. 3 (p. 107), typed from the text layer and checked against the page: two femtosecond-comb
@@ -17,7 +17,7 @@ Not entered: the sensitivity coefficients of d, e, f, g (pressure -8.0 to -8.2 k
 
 uncertainty = "As printed, 1.1 kHz each (weighted average and its uncertainty)."
 
-notes = "Operated at the mise en pratique conditions (cold finger 15 C, 6 MHz), so bipm2003a's coefficients are applied as for the MeP value. Residuals against i2spec2026o (obs - model, after the shift correction): -118.8 and -120.2 kHz, against -116.8 kHz for the CIPM value. Checked with the shipped model only."
+notes = "Operated at the mise en pratique conditions (cold finger 15 C, 6 MHz), so bipm2003a's coefficients are applied as for the MeP value. Residuals against an earlier version of the model (obs - model, after the shift correction): -118.8 and -120.2 kHz, against -116.8 kHz for the CIPM value. Checked against the model only."
 
 [conditions]
 cold_finger_C = 14.99

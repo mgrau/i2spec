@@ -1,6 +1,5 @@
-"""The preferred model (src/i2spec/preferred.py): the i2spec model's positions, hyperfine and uncertainties in the
-line list, the command line and the explorer, for every isotopologue; i2spec2026o only for lines the model does not
-hold. Uses the cached level tables (built once)."""
+"""The model's level tables (src/i2spec/preferred.py): its positions, hyperfine and uncertainties in the line list,
+the command line and the explorer, for every isotopologue. Uses the cached level tables (built once)."""
 import numpy as np
 import pytest
 
@@ -70,7 +69,7 @@ def test_master_lists_take_the_preferred_positions(table):
     out = preferred_positions(master)
     assert out.nu[0] == table.positions(["R"], [56], [32], [0])[0] and out.nu[1] == 18788.0    # v' 81: kept
     assert out.nu[2] == table.positions(["R"], [230], [10], [2])[0]
-    assert preferred_positions(out) is out and list(out.nu_2026o) == list(nu)
+    assert preferred_positions(out) is out
 
 
 def test_catalog_components_carry_their_uncertainty(table):
@@ -83,9 +82,3 @@ def test_catalog_components_carry_their_uncertainty(table):
     assert a10.frequency_MHz == pytest.approx(pf.model().frequency("R(56) 32-0", "a10"), abs=1e-6)
     assert a10.frequency_MHz-a10.offset_MHz == pytest.approx(center, abs=1e-6)
     assert catalog.transition("127I2", "R", 56, 32, 0) == pytest.approx(pf.model().transition(32, 0, 56, "R"), abs=NU_TOL)
-
-
-def test_i2spec_model_switch(monkeypatch):
-    monkeypatch.setenv("I2SPEC_MODEL", "i2spec2026o")
-    line = Line("127I2", "R", 56, 32, 0, 18788.3356, 0.0, 0.0, 300.0)
-    assert not pf.active() and line.source == "i2spec2026o" and line.flags == ("corrected levels",)

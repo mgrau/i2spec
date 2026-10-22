@@ -10,7 +10,7 @@ instrument = """McMath-Pierce 1-m FTS, RESOLUTN 0.037 cm-1, 0.01409 cm-1 per poi
 DZE lamp, 8 mm aperture, evacuated tank; vacuum wavenumbers (AIRCORR = No), WAVCORR = 0 (no scale
 correction applied in the archive). Keck cell, 100 mm, 50.0 C; useful band 15 875-20 000 cm-1."""
 calibration = """HeNe-referenced (REFWAVNO 15798.0025 cm-1), uncorrected, and NOT a single scale.
-Against i2spec2026m the lines read -784 MHz (median; robust spread 145 MHz), from
+Against an earlier version of the model, the lines read -784 MHz (median; robust spread 145 MHz), from
 -1210 ppb at 15 750 cm-1 to -1700 ppb at 19 750 cm-1. A constant scale fits -1453 +/- 16 ppb but
 leaves +/-100 MHz of structure. The scan's scale, obs = model (1 + s(nu)), is
   s(nu) = c0 + c1 x + c2 x^2 ppb, x = (nu - 17900 cm-1)/1000 cm-1,
@@ -19,9 +19,9 @@ leaves +/-100 MHz of structure. The scan's scale, obs = model (1 + s(nu)), is
 against apo_nist_2009 is c0 = -1388.6, c1 = -135.1, c2 = -13.8 ppb (APO itself reads -18 MHz
 from the model). Divide the values by (1 + s(nu)) to put them on the model's scale. The curve is NOT
 in the per-line uncertainty; a fit using this set needs these three group parameters, not one."""
-extraction = """prototypes/kitt_peak_lines.py: the scan divided by its upper envelope (99.5th percentile
+extraction = """a research script: the scan divided by its upper envelope (99.5th percentile
 in 4 cm-1 blocks) and its axis by (1 - 1.33e-6) (restored afterwards, so the 0.01 cm-1 ridge prior
-does not pull against a -700 MHz offset), then fitted by prototypes/atlas_lines.py extract at 323.15 K:
+does not pull against a -700 MHz offset), then fitted by a research script extract at 323.15 K:
 per-line wavenumber shifts of the i2spec template in 3.2 cm-1 windows (the extractor needs 200 points)
 stepped by 2.4 cm-1; column density, linear baseline, zero offset and Gaussian instrument width per
 window; hyperfine structure in the template; ridge prior 0.01 cm-1. Repeats combined by inverse

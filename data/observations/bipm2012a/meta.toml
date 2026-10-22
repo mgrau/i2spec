@@ -57,8 +57,7 @@ modulation_MHz_pp = 1.0
 detection = "3f"
 saturating_intensity_mW_cm2 = 17.0
 
-# Measurements this compilation prints that other sets hold (docs/design/observations.md, "One record per
-# measurement"), from its Source data 2.2 and table references. Hyperfine tables reprinted from their papers
+# Measurements this compilation prints that other sets hold, from its Source data 2.2 and table references. Hyperfine tables reprinted from their papers
 # ("same", one record cited to the paper first): Tables 1, 7, 8 hong2002a; 2-4 hong2001a; 5, 6 hong2000a;
 # 9, 10 ye1999a (rounded to 1 kHz); 16 hong2001b (re-referenced to a10); 18, 19 hong2002b; 20 and the 2007
 # interval hong2004a; 13 eickhoff1995a (rounded to 1 kHz); six of the intervals to R(56) a10 zhang2001a. A value

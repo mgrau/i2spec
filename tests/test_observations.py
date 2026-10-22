@@ -1,10 +1,10 @@
-"""Observation data sets: format, validation and model residuals (docs/design/observations.md)."""
+"""Observation data sets: format, validation and model residuals (data/README.md)."""
 
 import numpy as np
 import pytest
 
-from i2spec.observations import (COLUMNS, DATA_DIR, Line, Predictor, component_rank, load_all, load_dataset,
-                                 read_observations, residuals, write_observations)
+from i2spec.observations import (COLUMNS, DATA_DIR, UNITS, Line, component_rank, load_all, load_dataset,
+                                 read_observations, write_observations)
 
 
 def test_line_keys():
@@ -165,13 +165,25 @@ def test_columns_checked(tmp_path):
 
 
 def test_bipm_532_residuals():
-    """The published parameters: f(a10) 2.0 MHz high, B-level errors of ±6 MHz over v' = 32-37."""
+    """The model against the BIPM 532 nm values: the a10 frequency, the hyperfine intervals of R(56) 32-0 and
+    R(87) 33-0, and the intervals between lines (v' = 32-37)."""
+    from i2spec.preferred import model
+    m = model("127I2")
+
+    def predict(line, component):
+        return m.frequency(f"{line.branch}({line.J_lower}) {line.v_upper}-{line.v_lower}", component)
+
     ds = load_dataset(DATA_DIR / "bipm2012a")
-    pairs = list(zip(ds.observations, residuals(Predictor(), ds)))
+    pairs = []
+    for o in ds.observations:
+        value = predict(o.line, o.component)
+        if o.kind == "interval":
+            value -= predict(o.ref_line or o.line, o.ref_component)
+        pairs.append((o, o.value * UNITS[ds.unit] - value))
     absolute = [r for o, r in pairs if o.kind == "frequency" and str(o.line) == "127I2 R(56) 32-0"]
     hyperfine = [r for o, r in pairs if o.kind == "interval" and o.ref_line is None
                  and str(o.line) in ("127I2 R(56) 32-0", "127I2 R(87) 33-0")]
     between_lines = [r for o, r in pairs if o.kind == "interval" and o.ref_line is not None]
-    assert abs(absolute[0]) < 3.0  # MHz
+    assert abs(absolute[0]) < 0.5  # MHz
     assert len(hyperfine) == 32 and np.abs(hyperfine).max() < 0.15
-    assert len(between_lines) == 19 and np.abs(between_lines).max() < 8.0
+    assert len(between_lines) == 19 and np.abs(between_lines).max() < 2.0

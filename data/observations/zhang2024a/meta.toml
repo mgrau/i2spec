@@ -1,10 +1,10 @@
 id = "zhang2024a"
 citation = "Z. Zhang, W. You, X. Liu, H. Liu, J. Zhang, K. Deng and Z. Lu, \"Development and evaluation of a 532 nm iodine-stabilized laser frequency standard at PGMF\", Eng. Res. Express 7, 015309 (2025)"
-source = "https://doi.org/10.1088/2631-8695/ada487 (library copy papers/Zhang2024_Eng_Res_Express_7_015309.pdf)"
+source = "https://doi.org/10.1088/2631-8695/ada487"
 doi = "10.1088/2631-8695/ada487"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Abstract, Sects. 3.3-3.4 and Tables 3-5, typed from the text layer and checked against the pages: the PGMF (China)
@@ -20,7 +20,7 @@ than pressure (power -120(8) Hz/mW, pointing -4.7 Hz/urad, phase 71 Hz/degree, s
 
 uncertainty = "5.1 kHz, the paper's total (dominated by the 5.0 kHz impurity term), taken as 1 sigma."
 
-notes = "The same HUST group as cheng2021a, whose RAM and impurity evaluation (its ref. [31]) this paper reuses; a different laser and measurement, so not declared as an overlap, but the two share those systematics. Residual against i2spec2026o (obs - model, after the shift correction): -3.8 kHz (cheng2021a -3.2 kHz). Checked with the shipped model only."
+notes = "The same HUST group as cheng2021a, whose RAM and impurity evaluation (its ref. [31]) this paper reuses; a different laser and measurement, so not declared as an overlap, but the two share those systematics. Residual against an earlier version of the model (obs - model, after the shift correction): -3.8 kHz (cheng2021a -3.2 kHz). Checked against the model only."
 
 [conditions]
 cold_finger_C = -15.0

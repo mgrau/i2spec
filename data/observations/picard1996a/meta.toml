@@ -1,10 +1,10 @@
 id = "picard1996a"
 citation = "S. Picard, A. Razet, C. S. Edwards and F. Rodriguez-Llorente, \"Calculation of hyperfine structure constants of the 127I2 R(39) 7-4 transition at 637 nm\", Metrologia 33, 569-571 (1996)"
-source = "https://doi.org/10.1088/0026-1394/33/6/8 (publisher PDF; Matt's library copy papers/Picard1996_Metrologia33_569.pdf)"
+source = "https://doi.org/10.1088/0026-1394/33/6/8 (publisher PDF)"
 doi = "10.1088/0026-1394/33/6/8"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Table 1 (p. 570), typed from the text layer and checked against the page: the observed frequencies of all 21

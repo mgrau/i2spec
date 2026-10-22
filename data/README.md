@@ -14,7 +14,6 @@ not, is in `catalog/`.
 | `x_levels/` | ground-state term values from laser-induced fluorescence | transcribed from the published tables |
 | `atlas_lines/` | Doppler-limited line positions from Fourier-transform and laser atlases, most of them assigned; for `debus_2023` also line intensities | fitted here to published spectra (Salami & Ross 2005, the NIST scan of the APO cell, Debus *et al.* 2023, the 1993 Kitt Peak Keck cell); transcribed from printed atlases (Orsay 1982, all four parts; Orsay 1983); the authors' own list (Nölleke 2018, unassigned) |
 | `spectra/` | measured spectra small enough to keep and free to share | as published (Nölleke 2018 scans) |
-| `potentials/` | potential-energy curves fitted in this work | `prototypes/` |
 | `catalog/` | the bibliography of iodine data (about 300 entries), with what each measures and where its numbers are | compiled from the literature |
 | `external/` | third-party raw files, **not in the repository** (`.gitignore`) | see `external/README.md` |
 

@@ -1,9 +1,9 @@
 id = "chen2005thesis_b"
 citation = "L. Chen, \"High-Precision Spectroscopy of Molecular Iodine: From Optical Frequency Standards to Global Descriptions of Hyperfine Interactions and Associated Electronic Structure\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. Ye), 2005, Appendix B, Tables B.46, B.48, B.57, B.58 and B.79"
-source = "Matt's library copy papers/Chen2005_thesis_Colorado.pdf (pdfTeX, 272 pages, with a text layer)"
+source = "the thesis PDF (pdfTeX, 272 pages, with a text layer)"
 retrieved = "2026-10-21"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 The five lines of Appendix B that the thesis leaves out of Table 4.1 (and the JOSA B paper out of its Table 1,
@@ -52,14 +52,14 @@ B.2), as do P(27) and R(28) 59-0 (Fig. B.3) and P(69) 58-0 and R(65) 57-0 (Fig. 
 chen2005thesis_a (BIPM 8 cm cell; captions: -2.28 C, 3.3 Pa, except B.79, which prints 0.5 Pa beside -2.28 C); pump
 2.5-10.2 mW.
 
-Residuals against i2spec2026o (Predictor(), obs - model): 68 rows, 38.4 MHz rms; by line P(63) 70-0 76.6 MHz rms
+Residuals against an earlier version of the model (obs - model): 68 rows, 38.4 MHz rms; by line P(63) 70-0 76.6 MHz rms
 (up to 149 MHz), P(69) 58-0 20.0, P(77) 60-0 7.6, P(84) 60-0 4.3, R(18) 59-0 2.2 MHz; 63 rows beyond 5 u. All five
 tables were compared with their renders; the authors' own fits come within 0.24 (R(18) 59-0), 0.73 (P(69) 58-0), 1.5
 (P(63) 70-0), 2.0 (P(84) 60-0) and 3.8 MHz (P(77) 60-0, fit 1) of every row, so the large residuals are the model's. Most of it is the spin-rotation constant: the model's C_B is 0.772 MHz at P(69) 58-0
 (thesis fit 0.727) and 2.262 MHz at P(63) 70-0 (thesis fit 2.589), and C_B times J' (68, 62) moves the outer
 components by tens of MHz. P(63) 70-0 (J' = 62) lies beyond the J' = 34-46 that chen2004a measured at v' = 70, where
-hfs_table holds the correction polynomial at its edge value, and v' = 58 has only R(98) 58-1 in the table.
-Checked with the shipped model only.
+that model's hyperfine table held its correction polynomial at the edge value, and v' = 58 has only R(98) 58-1 in the table.
+Checked against the model only.
 """
 
 [conditions]

@@ -1,6 +1,6 @@
 id = "bacis1980"
 citation = "R. Bacis, M. Broyer, S. Churassy, J. Vergès and J. Vigué, \"eQq measurements in the X, 1g, 0g+ and B state of I2: A test of the electronic molecular eigenfunctions\", J. Chem. Phys. 73, 2641-2650 (1980), Tables II-IV"
-source = "https://doi.org/10.1063/1.440477 (publisher PDF, papers/Bacis1980_JCP73_2641.pdf)"
+source = "https://doi.org/10.1063/1.440477 (publisher PDF)"
 doi = "10.1063/1.440477"
 retrieved = "2026-10-20"
 unit = "eqQ in MHz; ED_minus_Ev (the paper's E_Dis - E_v) in cm-1"

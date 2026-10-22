@@ -10,7 +10,7 @@ from i2spec.intensity import MasterLineList  # noqa: E402
 from i2spec.lookup import Catalog  # noqa: E402
 
 
-pytestmark = pytest.mark.usefixtures("fallback_model")   # i2spec2026o's own rules
+pytestmark = pytest.mark.usefixtures("hand_made")
 
 
 class _Model:

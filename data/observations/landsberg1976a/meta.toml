@@ -1,10 +1,10 @@
 id = "landsberg1976a"
 citation = "B. M. Landsberg, \"Nuclear hyperfine splittings in the B-X electronic band system of 127I2\", Chem. Phys. Lett. 43, 102-103 (1976)"
-source = "https://doi.org/10.1016/0009-2614(76)80766-X (PDF supplied by Matt; library copy papers/Landsberg1976_CPL_43_102.pdf)"
+source = "https://doi.org/10.1016/0009-2614(76)80766-X (publisher PDF)"
 doi = "10.1016/0009-2614(76)80766-X"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from a 220 dpi page image of p. 103 (the OCR text layer misreads several labels). A refit of two older data
@@ -33,8 +33,8 @@ its own fit's 5.4 kHz).
 notes = """
 Table 2 is Hackel et al. 1975's measurement, which hackel1980a also prints (declared "same" below); they agree to
 the kHz except s - o = a3 - a7, -254.996 here and -254.994 there. Table 1 is the only copy of the Hanes 1973
-separations held. Residuals against i2spec2026o (obs - model): Table 1 rms 29 kHz (mean -18 kHz, largest -46 kHz
-at f - h), Table 2 rms 10 kHz (-27 kHz at a21 - a7). Checked with the shipped model only.
+separations held. Residuals against an earlier version of the model (obs - model): Table 1 rms 29 kHz (mean -18 kHz, largest -46 kHz
+at f - h), Table 2 rms 10 kHz (-27 kHz at a21 - a7). Checked against the model only.
 """
 
 [overlaps]

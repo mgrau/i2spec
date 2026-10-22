@@ -1,10 +1,10 @@
 id = "shiner1993a"
 citation = "D. Shiner, J. M. Gilligan, B. M. Cook and W. Lichten, \"H2, D2, and HD ionization potentials by accurate calibration of several iodine lines\", Phys. Rev. A 47, 4042-4045 (1993)"
-source = "https://doi.org/10.1103/PhysRevA.47.4042 (publisher PDF; Matt's library copy papers/Shiner1993_PRA47_4042.pdf)"
+source = "https://doi.org/10.1103/PhysRevA.47.4042 (publisher PDF)"
 doi = "10.1103/PhysRevA.47.4042"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from the text layer and checked against the pages (pp. 4043-4044): absolute frequencies of single hyperfine

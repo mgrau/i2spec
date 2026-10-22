@@ -7,11 +7,10 @@
 
 The app never solves a Schrödinger equation. It reads line positions and temperature-independent
 strengths from web/data/ and does the rest in the browser (web/physics.js), so re-exporting is how the
-app picks up a model change. Positions, hyperfine patterns, uncertainties and strengths are the preferred
-model's (i2spec.preferred: the i2spec model for every isotopologue; a line it does not hold is marked). The export
-also carries every measurement we hold of each line, with its
-source, so the app can mark measured lines and link each one to the paper it comes from; the data sets of
-the frozen blind tests (pending_blind_v1 and v2) are shown too, marked as not used in any fit.
+app picks up a model change. Positions, hyperfine patterns, uncertainties and strengths are the model's
+(i2spec.preferred, for every isotopologue; a line its level tables do not hold is marked). The export also carries
+every measurement we hold of each line, with its source, so the app can mark measured lines and link each one to
+the paper it comes from; the data sets of the frozen blind tests are shown too, marked as not used in any fit.
 """
 
 from __future__ import annotations
@@ -50,22 +49,17 @@ LABELS = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I�
 PER_SHARD_HFS = 80
 #: Atlas line lists we hold with assignments. The Orsay tables carry their own columns (<name>_assigned.csv);
 #: the others are in the observations format. An atlas whose .toml gives scale_ppb, how its wavenumbers read
-#: against the model (observed = true (1 + scale_ppb 1e-9)), is shown with that scale divided out: Orsay part I
-#: from its level fit (level_corrections_2026f), parts II-IV fitted at assignment (prototypes/orsay_assign_parts.py),
-#: Partie IV from its own fit (prototypes/orsay4_fit.py), Debus et al. 2023 and the pyodine cells from their
-#: calibration (prototypes/condense_spectra.py). Partie IV
-#: shows its unblended lines only: a blend's one position belongs to none of its assignments.
+#: against the model (observed = true (1 + scale_ppb 1e-9)), is shown with that scale divided out, as fitted when
+#: it was assigned or calibrated. Partie IV shows its unblended lines only: a blend's one position belongs to none
+#: of its assignments.
 ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c", "pyodine_fischer_2022",
            "orsay1982_part1", "orsay1982_part2", "orsay1982_part3", "orsay1982_part4", "orsay1983_part4")
-#: The atlases balanced-expanded is fitted to: the core's two, Orsay part I (X v'' 18-25) and Partie IV
-#: (B v' 51-80). The others are shown for comparison, marked as not used in the fit.
+#: The atlases the model is fitted to: the core's two, Orsay part I (X v'' 18-25) and Partie IV (B v' 51-80). The
+#: others are shown for comparison, marked as not used in the fit.
 FITTED_ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
 #: How the app colours each of lookup.Line.flags
-FLAG_CLASS = {"levels measured": "good", "levels interpolated": "warn",
-              "levels extrapolated": "bad", "outside the fitted domain": "warn",
-              "corrected levels": "good", "local NIR model": "good", "v″ 18-25: atlas-measured": "warn",
-              "v′ > 43: extended model": "warn", "v″ ≥ 48: extended model": "warn", "beyond 815 nm": "warn",
-              "v″ > 17: unmeasured": "bad", "v″ 26-89: Martin 1986": "warn", "v′ 51-79: atlas-measured": "warn", "v′ > 50: extrapolated": "bad", "isotope shift": "none", "few data": "none"}
+FLAG_CLASS = {"levels measured": "good", "levels interpolated": "warn", "levels extrapolated": "bad",
+              "outside the fitted domain": "warn"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
                "orsay": "Gerstenkorn, Vergès & Chevillard", "borde": "Bordé", "demelo": "de Melo"}
 #: Names that the prefix alone gets wrong; the four parts of the 1982 atlas are told apart by their numbers
@@ -78,8 +72,7 @@ SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983",
 # --- sources and measurements -----------------------------------------------------------------------
 
 #: The frozen blind tests whose data sets are shown (v1 scored 2026-10-20, v2 2026-10-21) though no fit uses
-#: them: they keep their ``exclude`` line. Sets transcribed later stay out of the export until a registry
-#: scores them.
+#: them: they keep their ``exclude`` line. Sets added later stay out of the export until a blind test scores them.
 BLIND_REGISTRIES = (("20261020", "pending_blind_v1"), ("20261020", "pending_blind_v2"))
 
 
@@ -184,7 +177,7 @@ def sources():
 def _atlas_rows(name):
     """(branch, J'', v', v'', ν cm⁻¹ on the corrected scale, u MHz) for each assigned atlas line.
 
-    An Orsay line without a printed precision gets 150 MHz, as in its fit (prototypes/orsay_fit.py)."""
+    An Orsay line without a printed precision gets 150 MHz, as in its fit."""
     from .observations import read_observations
 
     if name.startswith("orsay"):
@@ -264,16 +257,16 @@ def measurements(model_frequency, published_frequency=None):
 # --- hyperfine patterns for every line -------------------------------------------------------------------
 
 _HFS_MODEL = None
-_HFS_PREFERRED = None
+_HFS_TABLE = None
 _HFS_ISO = None
 
 
 def _hfs_init(iso):
-    global _HFS_MODEL, _HFS_PREFERRED, _HFS_ISO
+    global _HFS_MODEL, _HFS_TABLE, _HFS_ISO
     from . import preferred
     from .model import RovibronicModel
     _HFS_MODEL = RovibronicModel(iso)
-    _HFS_PREFERRED = preferred.preferred(iso) if preferred.active() else None
+    _HFS_TABLE = preferred.preferred(iso)
     _HFS_ISO = iso
 
 
@@ -308,18 +301,17 @@ def weak_links(comps, main, total):
 def _hfs_chunk(items):
     """Main components of each line, by frequency: offsets (0.1 MHz) and strengths (per mille), and the weak
     components that share a level with one of them (weak_links), or None when there are none: the three as JSON
-    text, or None for a line without a pattern. The preferred model's (with J ± 2) where it gives the line, else
-    i2spec2026o's with ΔJ = 0."""
+    text, or None for a line without a pattern. The model's (with J ± 2) where its level tables hold the line, else
+    the published formulae's with ΔJ = 0."""
     from .hyperfine import _dipole_operator
     from .preferred import components, model
     # the levels of the worker's last window of J, and their dipole matrices: GB of them by the end otherwise
-    if _HFS_PREFERRED is not None:
-        model(_HFS_ISO).cache_clear()
+    model(_HFS_ISO).cache_clear()
     _dipole_operator.cache_clear()
     out = []
     for branch, J, vu, vl in items:
         try:
-            if _HFS_PREFERRED is not None and _HFS_PREFERRED.covers(branch, J, vu, vl):
+            if _HFS_TABLE.covers(branch, J, vu, vl):
                 _, comps = components(branch, J, vu, vl, _HFS_ISO)
             else:
                 _, comps = _HFS_MODEL.hyperfine_components(vu, vl, J, branch, dJ=0, position=False)
@@ -339,8 +331,8 @@ def hyperfine_patterns(iso, lines, workers=None):
     """Hyperfine patterns for a list of (branch, J'', v', v'') lines, computed in parallel, each as _hfs_chunk
     gives it (JSON text).
 
-    The preferred model's lines carry its full calculation (J ± 2). The others carry i2spec2026o's ΔJ = 0
-    pattern: leaving out the J ± 2 couplings changes the offsets by under 1 MHz (0.9 MHz for R(56) 32-0), far
+    The lines the level tables hold carry the model's full calculation (J ± 2). The others carry the published
+    formulae's ΔJ = 0 pattern: leaving out the J ± 2 couplings changes the offsets by under 1 MHz (0.9 MHz for R(56) 32-0), far
     below the 400 MHz Doppler width the explorer draws them under, and makes each pattern twenty times cheaper.
     """
     import multiprocessing as mp
@@ -453,12 +445,10 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     (out / "manifest.json").unlink(missing_ok=True)
     catalog = Catalog()
     # the lines to the B limit (12 A grid, ~20 min to build) for 127I2, the one isotopologue measured there
-    from .preferred import parameters
-    masters = {iso: master_line_list(intensity_model(iso, parameters=parameters()), 11000.0, 20100.0,
-                                     T_range=(200.0, 600.0), S_min=1e-27)
+    masters = {iso: master_line_list(intensity_model(iso), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
                for iso in isotopologues}
     if "127I2" in masters:
-        masters["127I2"] = with_dissociation_lines(masters["127I2"], S_min=1e-27, parameters=parameters())
+        masters["127I2"] = with_dissociation_lines(masters["127I2"], S_min=1e-27)
     from .lookup import preferred_positions
     masters = {iso: preferred_positions(master) for iso, master in masters.items()}
     centres = {}
@@ -483,8 +473,8 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
         except Exception:            # a level beyond every validated grid
             return None
 
-    # the published 2008 model, computed here from its potentials and the hyperfine formulae alone (no
-    # table of measured corrections), so every line and measurement can be compared with it
+    # the published 2008 model, computed here from its potentials and the hyperfine formulae, so every line and
+    # measurement can be compared with it
     from .model import RovibronicModel
     published_models = {}
 
@@ -495,7 +485,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
 
     @functools.lru_cache(maxsize=None)
     def published_components(iso, branch, J, vu, vl):
-        nu0, comps = published(iso).hyperfine_components(vu, vl, J, branch, table=None)
+        nu0, comps = published(iso).hyperfine_components(vu, vl, J, branch)
         return {int(c.label[1:]): nu0 + c.offset for c in comps if c.label}
 
     def published_frequency(iso, branch, J, vu, vl, rank):
@@ -518,7 +508,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     manifest = {
         "generated": date.today().isoformat(),
         "model": {"package": "i2spec", "version": __version__, "git": _git_revision(),
-                  "fit": pf.model().info.id.split("-")[1] if pf.active() else None,
+                  "fit": pf.model().info.id.split("-")[1],
                   "note": ("Positions, hyperfine patterns, uncertainties and line strengths: the i2spec model for "
                            "127I2, 129I2 and 127I129I, every line whose levels it holds (J'' <= 445); the few others "
                            "are flagged 'outside the fitted domain'. Regenerate with `uv run i2spec web export` after "
@@ -588,18 +578,16 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     # S(T) = s0 exp(-c2 E''/T) / Q(T), so s0 follows exactly from the strengths at 300 K
     s0 = S * master.partition_function(300.0) * np.exp(C2 * el / 300.0)
     # the position uncertainty and its reason, from the same rules the CLI and the TUI use (lookup.uncertainty);
-    # the preferred model's lines all at once (preferred.Preferred.uncertainties)
+    # the lines the level tables hold all at once (preferred.Preferred.uncertainties)
     from . import preferred as pf
     u_line, w_line = np.zeros(len(nu)), np.zeros(len(nu), dtype=int)
-    pref = np.zeros(len(nu), bool)
-    if pf.active():
-        sig, status, cls = pf.preferred(iso).uncertainties(np.where(br > 0, "R", "P"), jl, vu, vl)
-        pref = status >= 0
-        for k in np.flatnonzero(pref):
-            u_line[k] = sig[k]
-            w_line[k] = reasons.setdefault((pf.basis(status[k], cls[k], iso), pf.flags(status[k], cls[k])),
-                                           len(reasons))
-    for k in np.flatnonzero(~pref):
+    sig, status, cls = pf.preferred(iso).uncertainties(np.where(br > 0, "R", "P"), jl, vu, vl)
+    held = status >= 0
+    u_line[held] = sig[held]
+    for st, c in set(zip(status[held].tolist(), cls[held].tolist())):
+        w = reasons.setdefault((pf.basis(st, c, iso), pf.flags(st, c)), len(reasons))
+        w_line[held & (status == st) & (cls == c)] = w
+    for k in np.flatnonzero(~held):
         line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]), 0.0, 0.0, 300.0)
         u_line[k], why = uncertainty(line)
         w_line[k] = reasons.setdefault((why, line.flags), len(reasons))
@@ -701,8 +689,7 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         if n % 200 == 0:
             print(f"    {iso} hyperfine {n}/{len(wanted)} ({time.time() - t0:.0f} s)", flush=True)
     (out / f"hfs_{iso}.json").write_text(json.dumps(hfs, separators=(",", ":")))
-    if pf.active():
-        pf.model(iso).cache_clear()      # the levels of those lines: no other isotopologue needs them
+    pf.model(iso).cache_clear()      # the levels of those lines: no other isotopologue needs them
 
     print(f"  {iso}: {len(nu):,} lines ({int(is_measured.sum()):,} measured) in {len(shards)} shards, "
           f"{len(hfs)} hyperfine patterns")

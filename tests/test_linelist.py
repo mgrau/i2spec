@@ -22,6 +22,13 @@ def master(model):
     return master_line_list(model, *WINDOW, T_range=(250.0, 450.0), S_min=1e-26, cache=False)
 
 
+def test_partition_function_close_to_rigid_rotor_harmonic_estimate(master):
+    T = 295.0
+    kT = 0.6950348 * T
+    estimate = 18 * kT / 0.03737 / (1 - np.exp(-214.5 / kT))  # mean nuclear-spin weight 18
+    assert master.partition_function(T) == pytest.approx(estimate, rel=0.05)
+
+
 def test_temperature_scaling_is_exact(master):
     a, b = master.at(300.0), master.at(400.0)
     expected = (np.exp(-C2 * a.E_lower * (1 / 400.0 - 1 / 300.0))

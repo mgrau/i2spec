@@ -1,12 +1,12 @@
 id = "tromp1983"
 citation = "J. W. Tromp, R. J. Le Roy, S. Gerstenkorn and P. Luc, \"Reexamination of the I2 spectrum near the B(3Pi0u+) state dissociation limit\", J. Mol. Spectrosc. 100, 82-94 (1983)"
-source = "https://doi.org/10.1016/0022-2852(83)90027-9 (library copy papers/Tromp1983_JMS100_82.pdf)"
+source = "https://doi.org/10.1016/0022-2852(83)90027-9"
 doi = "10.1016/0022-2852(83)90027-9"
 retrieved = "2026-10-21"
 unit = "cm-1"
 state = "B"
 isotopologue = "127I2"
-exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets until Matt decides how they are used"
+exclude = "pending: transcribed 2026-10-21; no code reads data/b_levels yet; held back with the pending observation sets"
 
 transcription = """
 Tables I-III (pp. 84, 90, 92), read from 300 dpi page images (the scan's native resolution). The paper
@@ -48,4 +48,4 @@ fits (Barrow and Yee; Gerstenkorn and Luc) unrealistically small.
 
 uncertainty = "Calculated values; the paper gives no uncertainty for B_v(mech) or D_v(mech)."
 
-notes = "Shows that Danyluk and King's B_v for v >= 79 are wrong (calibration), not perturbed: Coriolis coupling to the 1u state and spin-rotation coupling are an order of magnitude or more too small, and neglected centrifugal distortion does not explain them. Its mechanical B_v agree with the shipped model's low-J B_v (cubic in J'(J'+1) over J' = 0-10, stable to 0.002e-4 against other fit ranges) to +0.01e-4 cm-1 at v = 75 and -0.05e-4 at v = 78, and lie 0.17-0.35e-4 below it at v = 79-82 (above v = 79 the model is outside its fitted domain); its D_v(mech) are 4-25 % above the model's (0.0020-0.0053e-4 cm-1 at v = 75-82). The reprinted Gerstenkorn-Luc B_v of v = 78-80 agree with the model to 0.0016, 0.0044 and 0.0025e-3 cm-1, inside their errors. The model's B asymptote, 20 043.217 cm-1 above X(0,0), lies 0.058 above the recommended D (3 times its error) and 0.041 above Gerstenkorn and Luc's (5 times theirs), with Barrow and Yee's 20 043.208(33). The paper holding the new measurements, Gerstenkorn and Luc, Laser Chem. 1, 83 (1983), had no catalog entry on 2026-10-21. Checked with the shipped model only."
+notes = "Shows that Danyluk and King's B_v for v >= 79 are wrong (calibration), not perturbed: Coriolis coupling to the 1u state and spin-rotation coupling are an order of magnitude or more too small, and neglected centrifugal distortion does not explain them. Its mechanical B_v agree with the shipped model's low-J B_v (cubic in J'(J'+1) over J' = 0-10, stable to 0.002e-4 against other fit ranges) to +0.01e-4 cm-1 at v = 75 and -0.05e-4 at v = 78, and lie 0.17-0.35e-4 below it at v = 79-82 (above v = 79 the model is outside its fitted domain); its D_v(mech) are 4-25 % above the model's (0.0020-0.0053e-4 cm-1 at v = 75-82). The reprinted Gerstenkorn-Luc B_v of v = 78-80 agree with the model to 0.0016, 0.0044 and 0.0025e-3 cm-1, inside their errors. The model's B asymptote, 20 043.217 cm-1 above X(0,0), lies 0.058 above the recommended D (3 times its error) and 0.041 above Gerstenkorn and Luc's (5 times theirs), with Barrow and Yee's 20 043.208(33). The paper holding the new measurements, Gerstenkorn and Luc, Laser Chem. 1, 83 (1983), had no catalog entry on 2026-10-21. Checked against the model only."

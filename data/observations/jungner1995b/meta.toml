@@ -1,10 +1,10 @@
 id = "jungner1995b"
 citation = "P. Jungner, M. L. Eickhoff, S. D. Swartz, J. Ye, J. L. Hall and S. Waltman, \"Stability and absolute frequency of molecular iodine transitions near 532 nm\", Proc. SPIE 2378, 22-34 (1995)"
-source = "https://doi.org/10.1117/12.208229 (PDF supplied by Matt; library copy papers/Jungner1995_SPIE_2378_22.pdf)"
+source = "https://doi.org/10.1117/12.208229 (publisher PDF)"
 doi = "10.1117/12.208229"
 retrieved = "2026-10-20"
 unit = "MHz"
-exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until Matt decides whether new sets join the training data or form a blind validation set; delete this line to admit it"
+exclude = "pending: transcribed 2026-10-21 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """
 Typed from 300 dpi page images (pp. 27-28; p. 28's text layer is scrambled because the page is stored upside
@@ -26,7 +26,7 @@ uncertainty = "Table 1: the fit's 1.12-1.3 kHz standard deviation, entered as 1.
 notes = """
 picard2003a's Table 5 column "JILA-NIST 1" (credited to M. L. Eickhoff's 1994 thesis, not held) is this table
 rounded to 1 kHz; declared there as "same" for that group, so this, the earliest held print, holds the record.
-Residuals against i2spec2026o (obs - model): Table 1 rms 15 kHz (2 kHz after a 1e-5 scale); a10 absolute -51 kHz (1.3 sigma); the P(83) a20 offset +51 kHz, where bipm2012a's own chain (a21 - a10 = -15 682.0752, a21 - a20 = 15.763 MHz) gives -15 697.838 MHz, 2 kHz from this value, so the misfit is the model's. Checked with the shipped model only.
+Residuals against an earlier version of the model (obs - model): Table 1 rms 15 kHz (2 kHz after a 1e-5 scale); a10 absolute -51 kHz (1.3 sigma); the P(83) a20 offset +51 kHz, where bipm2012a's own chain (a21 - a10 = -15 682.0752, a21 - a20 = 15.763 MHz) gives -15 697.838 MHz, 2 kHz from this value, so the misfit is the model's. Checked against the model only.
 """
 
 [conditions]
