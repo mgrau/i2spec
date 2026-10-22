@@ -12,6 +12,7 @@ import numpy as np
 from numpy.polynomial.legendre import leggauss
 from scipy.interpolate import BSpline
 from scipy.linalg import eigh
+from scipy.sparse import csr_matrix
 
 from .constants import HBAR2_2U
 
@@ -66,17 +67,25 @@ class BSplineSolver:
             lo, hi = np.searchsorted(self.R, (t[i], t[i + order]))
             values[i - 1, lo:hi] = np.nan_to_num(spline(self.R[lo:hi]))
             slopes[i - 1, lo:hi] = np.nan_to_num(spline.derivative()(self.R[lo:hi]))
-        self._B = values.T
+        B = values.T
         dB = slopes.T
         W = self.W[:, None]
-        self.S = self._B.T @ (W * self._B)
+        self.S = B.T @ (W * B)
         self._T = HBAR2_2U / mu * (dB.T @ (W * dB))
         V = potential(self.R) + potential.adiabatic(self.R, mass_ratio)
         rot = HBAR2_2U / mu * (1 + potential.nonadiabatic(self.R, mass_ratio)) / self.R**2
-        self._V = self._B.T @ (W * V[:, None] * self._B)
-        self._rot = self._B.T @ (W * rot[:, None] * self._B)
+        self._V = B.T @ (W * V[:, None] * B)
+        self._rot = B.T @ (W * rot[:, None] * B)
+        # Each B-spline is nonzero on `order` knot intervals only, so B on the quadrature grid is ~1% filled:
+        # kept sparse it takes 3 MB rather than 320 MB on the longest grid, and psi = B c comes out the same, faster
+        self._basis = csr_matrix(B)
         self.nlev = nlev
         self._cache: dict[int, np.ndarray] = {}
+
+    @property
+    def _B(self) -> np.ndarray:
+        """The basis on the quadrature grid, dense (one column per basis function)."""
+        return self._basis.toarray()
 
     def levels(self, J: int) -> np.ndarray:
         """Lowest ``nlev`` eigenvalues (cm⁻¹) for rotational quantum number J.
@@ -105,4 +114,4 @@ class BSplineSolver:
         energies, c = eigh(H, self.S, driver="gvd")
         energies, c = energies[:self.nlev], c[:, :self.nlev]
         self._cache.setdefault(J, energies)
-        return energies, self._B @ c
+        return energies, self._basis @ c

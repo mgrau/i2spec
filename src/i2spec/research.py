@@ -31,6 +31,10 @@ from .observations import component_rank
 
 _RELEASE = "20261018"
 _RELEASES = (_RELEASE, "20261020", "20261021")
+#: Lines whose components a model keeps, the oldest dropped first. One is quick to compute again from its two
+#: levels, which stay cached; the components of a whole line list would take several GB (a 127I129I line
+#: has about a thousand).
+_LINE_CACHE = 256
 
 
 def _data(release=_RELEASE):
@@ -318,6 +322,8 @@ class ResearchModel:
             center = (self._energy("B", vu, upper)-self._energy("X", vl, J))*MHZ_PER_CM
             components = line_components(self._structure("B", vu, upper), self._structure("X", vl, J), upper, J)
             self._lines[key] = center, tuple(components)
+            if len(self._lines) > _LINE_CACHE:
+                del self._lines[next(iter(self._lines))]
         return self._lines[key]
 
     def hyperfine_components(self, v_upper, v_lower, J_lower, branch, dJ=2):
@@ -327,6 +333,13 @@ class ResearchModel:
         with self._lock:
             center, components = self._line((branch, J_lower, v_upper, v_lower))
             return center, [replace(component) for component in components]
+
+    def cache_clear(self):
+        """Forget the levels' hyperfine structures and the lines' components: a pass over a whole line list, a
+        window of J at a time, needs only the levels of the current window."""
+        with self._lock:
+            self._structures.clear()
+            self._lines.clear()
 
     def transition(self, v_upper, v_lower, J_lower, branch):
         """Hyperfine-free transition wavenumber in cm^-1."""

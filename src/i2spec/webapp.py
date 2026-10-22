@@ -307,9 +307,15 @@ def weak_links(comps, main, total):
 
 def _hfs_chunk(items):
     """Main components of each line, by frequency: offsets (0.1 MHz) and strengths (per mille), and the weak
-    components that share a level with one of them (weak_links), or None when there are none. The preferred
-    model's (with J ± 2) where it gives the line, else i2spec2026o's with ΔJ = 0."""
-    from .preferred import components
+    components that share a level with one of them (weak_links), or None when there are none: the three as JSON
+    text, or None for a line without a pattern. The preferred model's (with J ± 2) where it gives the line, else
+    i2spec2026o's with ΔJ = 0."""
+    from .hyperfine import _dipole_operator
+    from .preferred import components, model
+    # the levels of the worker's last window of J, and their dipole matrices: GB of them by the end otherwise
+    if _HFS_PREFERRED is not None:
+        model(_HFS_ISO).cache_clear()
+    _dipole_operator.cache_clear()
     out = []
     for branch, J, vu, vl in items:
         try:
@@ -322,13 +328,16 @@ def _hfs_chunk(items):
             continue
         main = sorted((c for c in comps if c.label), key=lambda c: c.offset)
         total = sum(c.strength for c in main) or 1.0
-        out.append(([round(c.offset, 1) for c in main], [round(1000 * c.strength / total) for c in main],
-                    weak_links(comps, main, total) or None))
+        pattern = ([round(c.offset, 1) for c in main], [round(1000 * c.strength / total) for c in main],
+                   weak_links(comps, main, total) or None)
+        # as JSON text: the lists of a whole line list would hold GB in the process that writes them
+        out.append(tuple(json.dumps(part, separators=(",", ":")) for part in pattern))
     return out
 
 
 def hyperfine_patterns(iso, lines, workers=None):
-    """Hyperfine patterns for a list of (branch, J'', v', v'') lines, computed in parallel.
+    """Hyperfine patterns for a list of (branch, J'', v', v'') lines, computed in parallel, each as _hfs_chunk
+    gives it (JSON text).
 
     The preferred model's lines carry its full calculation (J ± 2). The others carry i2spec2026o's ΔJ = 0
     pattern: leaving out the J ± 2 couplings changes the offsets by under 1 MHz (0.9 MHz for R(56) 32-0), far
@@ -343,8 +352,10 @@ def hyperfine_patterns(iso, lines, workers=None):
     # Nearly all the work is the radial solutions at each level's J (and J ± 2, for the couplings), solved
     # once per J and kept by the worker that needs them. So each chunk is a window of J'' across every band, and
     # a worker solves only the J of its windows and a few beyond their edges; chunks of whole bands had every
-    # worker solve every J (three times the solves for the same patterns). About three windows per worker.
-    width = max(4, -(-(max((line[1] for line in lines), default=0) + 1) // (3 * n)))
+    # worker solve every J (three times the solves for the same patterns). About three windows per worker, and
+    # at most 12 J wide: a window's levels are what a worker holds (50 J of 127I129I took 1.4 GB), and only
+    # the levels at a window's edges are solved twice.
+    width = min(12, max(4, -(-(max((line[1] for line in lines), default=0) + 1) // (3 * n))))
     order = sorted(range(len(lines)), key=lambda k: (lines[k][1] // width, lines[k][2], lines[k][3], lines[k][1]))
     chunks = [[lines[k] for k in window]
               for _, window in itertools.groupby(order, key=lambda k: lines[k][1] // width)]
@@ -638,11 +649,11 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         }
         name = f"{len(shards):03d}.json"
         (folder / name).write_text(json.dumps(payload, separators=(",", ":"), ensure_ascii=False))
-        # the same rows' hyperfine patterns, in a file of their own: only a narrow view loads it
-        hfs_rows = [patterns[g] or [[], [], None] for g in sel]
-        (hfs_folder / name).write_text(json.dumps({"o": [p[0] for p in hfs_rows], "s": [p[1] for p in hfs_rows],
-                                                   "x": [p[2] for p in hfs_rows]},
-                                                  separators=(",", ":")))
+        # the same rows' hyperfine patterns, in a file of their own: only a narrow view loads it. They come as
+        # JSON text, joined as json.dumps({"o": [...], "s": [...], "x": [...]}) would join them.
+        hfs_rows = [patterns[g] or ("[]", "[]", "null") for g in sel]
+        (hfs_folder / name).write_text(
+            "{" + ",".join(f'"{k}":[' + ",".join(p[i] for p in hfs_rows) + "]" for i, k in enumerate("osx")) + "}")
         # the bounds are rounded outward, so they hold every line in the shard at its stored 1e-6 cm-1
         shards.append({"file": f"lines/{iso}/{name}", "hfs": f"hfs/{iso}/{name}", "nu0": _floor4(edges[k]),
                        "nu1": _ceil4(edges[k + 1]), "n": int(sel.size), "n_measured": len(rows)})
@@ -690,6 +701,8 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         if n % 200 == 0:
             print(f"    {iso} hyperfine {n}/{len(wanted)} ({time.time() - t0:.0f} s)", flush=True)
     (out / f"hfs_{iso}.json").write_text(json.dumps(hfs, separators=(",", ":")))
+    if pf.active():
+        pf.model(iso).cache_clear()      # the levels of those lines: no other isotopologue needs them
 
     print(f"  {iso}: {len(nu):,} lines ({int(is_measured.sum()):,} measured) in {len(shards)} shards, "
           f"{len(hfs)} hyperfine patterns")
