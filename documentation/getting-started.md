@@ -13,16 +13,18 @@ uv run i2spec web
 ```
 
 The first query for an isotopologue solves the model's levels and computes its line list, and caches both
-in `~/.cache/i2spec` (190 MB for all three isotopologues). The first `i2spec web` also exports the data of
+in `~/.cache/i2spec` (230 MB for all three isotopologues). The first `i2spec web` also exports the data of
 the line explorer to `web/data/` (590 MB): the line lists of all three isotopologues and the hyperfine
 pattern of every line. After that, every query takes under a second. With an empty cache:
 
 | first run | Apple M5 Max (18 cores, 128 GB) |
 |---|--:|
-| `i2spec lines` (¹²⁷I₂) | 1 min 45 s |
-| `i2spec web`, with the export | 14 min 20 s |
+| `i2spec lines` (¹²⁷I₂) | 2 min 45 s |
+| `i2spec web`, with the export | 16 min 30 s |
 
-The export needs up to 19 GB of memory.
+About half of the export is solving the levels of the three isotopologues. It needs about 5 GB in its main
+process and 1-2 GB in each worker process: with three workers (a 4-core machine, or `I2SPEC_WORKERS=3`), it
+peaks at 10 GB.
 
 ## Command line
 
