@@ -6,6 +6,7 @@ import numpy as np
 from i2spec import RovibronicModel, saturation, spectrum
 from i2spec.intensity import C2, intensity_model, master_line_list
 from i2spec.lookup import Catalog, uncertainty
+from i2spec.preferred import parameters
 
 
 def make_reference():
@@ -19,7 +20,9 @@ def make_reference():
                     for nu in (12600.0, 18788.0) for T in (200.0, 293.15, 600.0)],
     }
 
-    master = master_line_list(intensity_model("127I2"), 11000.0, 20100.0, T_range=(200.0, 600.0), S_min=1e-27)
+    # the line list the export writes: strengths from the model's own potentials (preferred.parameters())
+    master = master_line_list(intensity_model("127I2", parameters=parameters()), 11000.0, 20100.0,
+                              T_range=(200.0, 600.0), S_min=1e-27)
     out["Q"] = [[T, float(master.partition_function(T))] for T in (200.0, 250.0, 293.15, 300.0, 400.0, 600.0)]
 
     lines = master.at(300.0, S_min=1e-24)
