@@ -23,7 +23,7 @@ jobs:
     outputs:
       model: ${{ steps.diff.outputs.model }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - id: diff
@@ -51,14 +51,14 @@ jobs:
         python: ["3.11", "3.14"]
     name: pytest (Python ${{ matrix.python }})
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.1
         with:
           enable-cache: true
           python-version: ${{ matrix.python }}
       - name: Restore line lists
         if: needs.changes.outputs.model == 'true'
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/i2spec
           key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
@@ -78,8 +78,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.1
       - run: uv build
       - name: Install the wheel into a clean environment and use it
         run: |

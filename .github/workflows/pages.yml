@@ -31,18 +31,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 150
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # the commit the tests passed on (a manual run builds the branch it was started from)
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@v10.3.1
         with:
           enable-cache: true
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
       - name: Restore line lists
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/i2spec
           key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
@@ -50,7 +50,7 @@ jobs:
       - name: Restore the explorer's data
         # an exact key only: `i2spec web build` re-exports when web/data/ is absent, and a stale copy
         # restored from an older key would be published as it is
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: web/data
           key: web-data-${{ hashFiles('src/i2spec/**', 'data/atlas_lines/**', 'data/observations/**', 'pyproject.toml', 'uv.lock') }}
@@ -61,7 +61,7 @@ jobs:
         run: |
           uv run python web/make_reference.py > web/reference.json
           node web/test_physics.mjs
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
 
@@ -73,4 +73,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
