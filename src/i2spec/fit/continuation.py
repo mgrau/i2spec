@@ -332,16 +332,18 @@ def release_start(problem, spec=None):
     return problem.compress(np.array(full))
 
 
-def fit(rows=None, structure=None, start=None, max_nfev=1, finish=40, fixed=None):
+def fit(rows=None, structure=None, start=None, max_nfev=1, finish=40, fixed=None, initial=None):
     """Fit the tail terms. Defaults: the release's continuation rows and structure, started from (and, with
-    max_nfev=1 and finish=40, the settings of) the release's own final run. `fixed`: {(state, name): value} held."""
+    max_nfev=1 and finish=40, the settings of) the release's own final run. `fixed`: {(state, name): value} held;
+    `initial`: {state: {name: value}} starting values in place of the release's (e.g. `project`'s)."""
     spec = release_spec()
     structure = structure or spec["structure"]
     curves = build_curves(structure)
     rows = rows if rows is not None else training.release("continuation")
     every = [(s, n) for s, c in curves.items() for n in c.tail_names]
+    values = initial or spec["values"]
     for (s, n) in every:
-        curves[s].values[n] = spec["values"].get(s, {}).get(n, 0.)
+        curves[s].values[n] = values.get(s, {}).get(n, 0.)
     fixed = dict(fixed or {})
     if structure.get("shared_de"):           # one shift for both states: fixing either fixes both
         for a, b in ((("X", "dDe"), ("B", "dDe")), (("B", "dDe"), ("X", "dDe"))):
@@ -352,7 +354,13 @@ def fit(rows=None, structure=None, start=None, max_nfev=1, finish=40, fixed=None
     names = [k for k in every if k not in fixed]
     tie = {("B", "dDe"): ("X", "dDe")} if structure.get("shared_de") and ("B", "dDe") in names else {}
     prob = Problem(rows, curves, names, tie=tie)
-    x0 = release_start(prob, spec) if start is None else np.asarray(start, float)
+    if start is not None:
+        x0 = np.asarray(start, float)
+    elif initial is not None:
+        x0 = prob.compress(np.array([curves[s].values[n] for s, n in prob.names]
+                                    + [spec["calibration"][f"{c}_offset_MHz"] for c in prob.offsets]))
+    else:
+        x0 = release_start(prob, spec)
     scale = np.array([.01 if n.startswith("ro") else .1 if n.startswith("dC") else 1. for _, n in prob.free]+[50.]*len(prob.offsets))
     result = marquardt(prob, x0, max_nfev, scale)
     if finish:
@@ -396,12 +404,12 @@ def holdout_mask(rows, K, i):
     return np.array([any(k[2] > CORE_V[k[1]] and k[2] % K == i for k, _ in lv) for lv in rows.levels])
 
 
-def fold(i, K=4, rows=None, finish=40):
-    """Refit without fold i of K (from the released values) and predict the held-out rows: (ids, pred, observed,
-    result)."""
+def fold(i, K=4, rows=None, finish=40, **settings):
+    """Refit without fold i of K (from the released values, or `settings` as for `fit`) and predict the held-out
+    rows: (ids, pred, observed, result)."""
     rows = rows if rows is not None else training.release("continuation")
     held = holdout_mask(rows, K, i)
-    prob, result = fit(rows=rows[~held], finish=finish)
+    prob, result = fit(rows=rows[~held], finish=finish, **settings)
     test = rows[held]
     curves = prob.curves
     values = prob.values(result.x)
@@ -409,3 +417,50 @@ def fold(i, K=4, rows=None, finish=40):
         curves[s].values.update(values[s])
     pred, _ = Problem(test, curves, prob.names, prob.offsets, tie=prob.tie, physical=False).predict(result.x)
     return test.id, pred, test.value, result
+
+
+def project(structure, values=None, old=None, reach=dict(X=10., B=20.)):
+    """Starting values on another structure: each exponent tail of the old fit (default: the release) projected by
+    weighted least squares onto the new structure's terms, over the radii the levels reach (to `reach` A outside,
+    the inner end inside), each point weighted by how much the exponent moves V there; rotational tails and the spline
+    correction projected over their span; other terms carried over, new ones 0. Returns {state: {name: value}}."""
+    spec = release_spec()
+    old = old or spec["structure"]
+    values = values or spec["values"]
+    a, b = build_curves(old), build_curves(structure)
+    out = {}
+    for s in ("X", "B"):
+        va = dict(a[s].values, **values[s])
+        out[s] = {n: va.get(n, 0.) for n in b[s].tail_names if n in va}
+        re = float(np.exp(a[s].frozen["logRe"]))
+        q = a[s].config.powers(s)[1]
+        ref = a[s].ref
+        for ta, tb in zip(a[s].exponent_tails, b[s].exponent_tails):
+            if not tb.names:
+                continue
+            knot = (ref**q*(1+tb.zk)/(1-tb.zk))**(1/q)
+            R = np.linspace(knot, reach[s], 800) if tb.side > 0 else np.linspace(old["inner_end"], knot, 200)
+            z = (R**q-ref**q)/(R**q+ref**q)
+            *_, factor = _exponent_weight(a[s], va, R)
+            target = ta.basis(z)@np.array([va.get(n, 0.) for n in ta.names]) if ta.names else np.zeros(len(z))
+            coef = np.linalg.lstsq(tb.basis(z)*factor[:, None], target*factor, rcond=None)[0]
+            out[s].update(zip(tb.names, coef))
+        ra, rb = a[s].rotation_tail, b[s].rotation_tail
+        if rb.names:
+            R = np.linspace(re*(1+rb.zk)/(1-rb.zk), reach[s], 400)
+            ya = (R-re)/(R+re)
+            target = ra.basis(ya)@np.array([va.get(n, 0.) for n in ra.names]) if ra.names else np.zeros(len(R))
+            out[s].update(zip(rb.names, np.linalg.lstsq(rb.basis(ya), target, rcond=None)[0]))
+        if b[s].window:
+            R = np.linspace(b[s].window[0], b[s].window[-1], 600)
+            target = (a[s].window_unit*a[s].window_basis(R)@np.array([va[n] for n in a[s].window_names])
+                      if a[s].window else np.zeros(len(R)))
+            coef = np.linalg.lstsq(b[s].window_unit*b[s].window_basis(R), target, rcond=None)[0]
+            out[s].update(zip(b[s].window_names, coef))
+    return out
+
+
+def _exponent_weight(curve, values, R):
+    """|dV/d(exponent)| on R: how much a change of the MLR exponent moves the potential there."""
+    V, de, shape, y, yq, yp, argument = curve._pieces(values, np.asarray(R, float))
+    return V, np.abs(2*de*(1-shape)*shape*yp*(1-y))
