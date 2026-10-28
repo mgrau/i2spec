@@ -1,0 +1,61 @@
+id = "bennett1979a"
+citation = "S. J. Bennett, P. Cérez, J. Hamon and A. Chartier, \"Wavelength of a helium-neon laser stabilized by saturated absorption in iodine at 612 nm\", Metrologia 15, 125 (1979)"
+source = "https://doi.org/10.1088/0026-1394/15/3/002 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0026-1394/15/3/002"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+"Results" (p. 125, one page), read from a 300 dpi rendering of the page and the text layer, which agree: six
+wavelength determinations in vacuum on the BIPM Michelson interferometer (path difference 375 mm) of a 612 nm He-Ne
+laser locked to component i of 127I2 R(47) 9-2, against a 633 nm He-Ne laser on peak i of R(127) 11-5 whose
+wavelength "was taken to be 632 991 399 fm (value recommended by the CCDM in 1973)"; "the weighted mean ... was
+611 970 458.6 fm with a standard deviation of 0.2 fm (3 x 10^-10)". The abstract gives the same value.
+
+The paper prints only the wavelength; the measured quantity is the ratio to the 633 nm reference. The row is
+derived here as f(a13) = f(i) x 632 991 399 / 611 970 458.6 with f(i) = f(a16) + (a13 - a16) = 473 612 353.604 -
+138.892 = 473 612 214.712 MHz, the CIPM 2001 value (bipm2003a), as bonsch1983a and the CIPM documents convert such
+ratios: 489 880 604.7924 MHz. Taking c / 611 970 458.6 fm directly would give 489 880 604.1812 MHz; the difference,
++611.2 kHz (+1.2477e-9), is the error of the 1973 reference wavelength relative to the 2001 value.
+
+Labels: i of the 21-component R(47) 9-2 is a13 (bipm2003d; the letters run down in frequency, o = a7). For the
+reference, i of R(127) 11-5 is a13 as well (bipm2003a, x = i).
+
+Checks (model-free): bipm2003d f(a7) + 249.600 MHz (its a13 - a7) = 489 880 604.530 MHz, 0.26 MHz (1.6 sigma)
+below this row; himbert1991a (re-based to the CIPM 2001 anchors) 489 880 604.419, 0.37 MHz below; shiner1993a
+489 880 604.75(25), 0.04 MHz below; bonsch1983a's a7 + 249.600 = 489 880 604.645, 0.15 MHz below. The 1983 CIPM
+document (Metrologia 19, 163 (1984), section 1.4 and its ref. [21]) recalculates this paper's value as the ratio
+f(o)/f(i) = 1.034 349 072 88; the same ratio follows from the printed wavelengths with o = i - 249.6 MHz
+(1.034 349 072 881), which confirms the reading of the reference wavelength and component.
+
+Not entered: the neon 3s2-2p4 wavelength from the NBS tables and the calculated wavelength of the line (611.9703 and
+611.9704 nm), which only identify the line.
+"""
+
+uncertainty = """
+0.160 MHz: the printed standard deviation of the weighted mean, 0.2 fm (3e-10), taken as 1 sigma. The rescaling to
+the CIPM 2001 f(i) replaces the 1973 reference value's error; its own uncertainty (11 kHz) is negligible and is not
+added. [shift_correction] adds a 16 kHz allowance for the iodine pressure of the laser (2 Pa); no shift is applied.
+"""
+
+notes = """
+One of the five ratios averaged into the 1983 CIPM value for 612 nm ("LHA-BIPM, 1979", Metrologia 19, 163 (1984),
+section 1.4, ref. [21]). Not among the source data of the CIPM 2001 value (MEP 2001, Quinn, Metrologia 40, 103
+(2003), section 2.6), so bipm2003d needs no declaration. A set holding the 1983 document's source data should
+declare this set "same" for that ratio.
+
+The hyperfine structure of the same line from the same laboratory is cerez1979a (Cérez & Bennett 1979, Appl. Opt.).
+"""
+
+[conditions]
+method = "He-Ne laser at 612 nm (LT7 tube, 750 mm cavity, Brewster prism) with a 100 mm internal 127I2 cell, locked to R(47) 9-2 i; BIPM vacuum Michelson interferometer against a He-Ne/I2 laser on R(127) 11-5 i"
+cell_length_mm = 100
+pressure_Pa = 2.0
+output_power_uW = 40
+reference = "He-Ne 633 nm on R(127) 11-5 i (a13), 632 991 399 fm (CCDM 1973); converted here with the CIPM 2001 value 473 612 214 712 kHz"
+
+[shift_correction]
+pressure_Pa = 2.0
+allowance_kHz = 16.0
+basis = "Paper p. 125: iodine pressure 2 Pa in the 100 mm internal cell; no coefficient, modulation or power shift given, so no shift is applied; allowance = |-8 kHz/Pa (typical slope, 600-700 nm, as bipm2003d) x 2.0 Pa| = 16 kHz."

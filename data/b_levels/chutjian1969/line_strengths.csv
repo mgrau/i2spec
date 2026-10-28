@@ -1,0 +1,7 @@
+band,v_upper,v_lower,line,J_lower,matrix_element_sq_D2,matrix_element_sq_unc_D2,q_calc,rcentroid_calc_A,Re2_D2,Re2_unc_D2,note
+12-2,12,2,P(66),66,0.0355,0.0019,0.0312,2.779,1.14,0.06,
+13-2,13,2,P(71),71,0.0415,0.0026,0.0365,2.773,1.14,0.07,
+14-1,14,1,P(93),93,0.0212,0.0014,0.0186,2.759,1.14,0.08,
+16-2,16,2,P(77),77,0.0438,0.0028,0.0399,2.759,1.10,0.07,"line printed p(n) in the OCR text layer; P(77) on the page image (p. 1243)"
+25-0,25,0,R(46),46,0.0222,0.0011,0.0266,2.703,0.837,0.042,"also measured in a 15 kG field: equivalent width unchanged within the 90 % limits (p. 1249)"
+29-0,29,0,P(38),38,0.0262,0.0013,0.0314,2.689,0.837,0.042,"absorption varied through the vapor pressure, not the path length (p. 1243)"

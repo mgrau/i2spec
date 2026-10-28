@@ -31,4 +31,4 @@ detection = "modulation transfer"
 [shift_correction]
 pressure_Pa = 1.4
 allowance_kHz = 7.0
-basis = "Paper not re-read (not available); meta: -10 C, 1.4 Pa, pump 1.8 mW, no correction or coefficient recorded. Allowance = |-5 kHz/Pa (typical, 500-600 nm) x 1.4 Pa|."
+basis = "Paper: -10 C, 1.4 Pa, pump 1.8 mW; it prints no pressure or power coefficient and applies no correction. Allowance = |-5 kHz/Pa (typical, 500-600 nm) x 1.4 Pa|."

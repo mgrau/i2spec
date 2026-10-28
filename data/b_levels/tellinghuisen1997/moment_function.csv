@@ -1,0 +1,7 @@
+fit,form,parameter,value,uncertainty,unit,note
+C,mu_e^2 = c1 exp[-c2 (R - c3)^2] R^-2,c1,21.5,2.1,D^2 A^2,"Eq. (11); the representative best fit: Vigue et al. 1981 radiative decay rates A_T(v') plus the absorption points of Tellinghuisen 1982"
+C,mu_e^2 = c1 exp[-c2 (R - c3)^2] R^-2,c2,1.73,0.37,A^-2,Eq. (11)
+C,mu_e^2 = c1 exp[-c2 (R - c3)^2] R^-2,c3,3.49,0.12,A,Eq. (11)
+C,derived,peak mu_e^2,1.85,0.1,D^2,"near R = 3.30 A (text); abstract: 1.85 +- 0.1 D^2 near 3.3 A; other forms of comparable variance peak within 0.1 D^2 and 0.1 A"
+A,fourth-order polynomial in R for mu_e^2,peak mu_e^2,3.3,0.8,D^2,"fit of the A_T data alone; coefficients not printed; well determined only near 2.9 and 5.6 A"
+B,fourth-order polynomial in R for mu_e^2,peak mu_e^2,1.85,0.16,D^2,"A_T data plus the absorption data of Tellinghuisen 1982; coefficients not printed"

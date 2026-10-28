@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(13) 43-0,a3,frequency,582490603.442,0.0105,,,,"515 nm, a3 component: f = 582 490 603 442 kHz, lambda = 514 673 466.368 fm, relative standard uncertainty 1.8e-11 (10.5 kHz)"
+127I2 R(56) 32-0,a10,frequency,563260223.513,0.0050,,,,"532 nm, a10 component: f = 563 260 223 513 kHz, lambda = 532 245 036.104 fm, relative standard uncertainty 8.9e-12 (5.0 kHz)"
+127I2 R(106) 28-0,b10,frequency,551580162.400,0.0248,,,,"543 nm, b10 component: f = 551 580 162 400 kHz, lambda = 543 515 663.608 fm, relative standard uncertainty 4.5e-11 (24.8 kHz)"

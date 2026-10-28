@@ -1,0 +1,43 @@
+id = "arie1992a"
+citation = "A. Arie, S. Schiller, E. K. Gustafson and R. L. Byer, \"Absolute frequency stabilization of diode-laser-pumped Nd:YAG lasers to hyperfine transitions in molecular iodine\", Opt. Lett. 17, 1204-1206 (1992)"
+source = "https://doi.org/10.1364/OL.17.001204 (publisher PDF, author-hosted copy)"
+doi = "10.1364/ol.17.001204"
+retrieved = "2026-10-22"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Fig. 2 (p. 1205), the FM saturation spectrum of "R(56)32-0 @ 18788.3 cm-1": the frequencies printed under the
+peaks, 0, 259.9, 285.8, 310.8, 402.8, 416.7, 440.6, 454.7, 572.1, 701.4, 729.7 and 858.7 MHz, read from a 300 dpi
+rendering. They are measured numbers, not readings of a plot: "The frequency spacings between the lines were
+determined by locking one system to the lowest-frequency hyperfine transition and locking the second system each
+time to a different transition. The beat frequency was measured by taking the average of one hundred 4-s
+measurements" (caption).
+
+Labels: 0 is the lowest-frequency component, a1; R(56) has even J'' and 15 components. The caption says "the lines
+at 285.8, 701.4, and 729.7 MHz each contain two unresolved hyperfine transitions" (a3+a4, a11+a12, a13+a14), so
+those three are left out; the other eight are a2 and a5-a10, a15 in order.
+
+Not entered: the line's position, 18 788.3371(6) cm-1, which is the Gerstenkorn-Luc atlas value with their
+0.0056 cm-1 correction (ref. 14), not a measurement here; the beat statistics of Figs. 3-4 (Allan deviation 650 Hz
+at 24-80 s, 2.3e-12).
+"""
+
+uncertainty = """
+The paper prints no uncertainty for the spacings. 1 MHz is assumed: the values are printed to 0.1 MHz, the
+lines were 5.3 MHz wide (12.4 MHz power-broadened in the second system), the cell was at room temperature, and
+the lock offsets of the FM signals were not studied. For comparison, arie1993a (the same group, 1993) gives
+the same spacings to 7 kHz; the values here differ from it by -0.6 to +1.3 MHz.
+"""
+
+notes = """
+Superseded by arie1993a (Arie & Byer 1993, Table 4: all fifteen components of R(56) 32-0 from a1 by heterodyne
+spectroscopy), declared below, so these rows stay in the record and out of the fit.
+"""
+
+[overlaps]
+arie1993a = "superseded"   # the same group's 1993 measurement of the whole pattern
+
+[conditions]
+method = "FM saturation spectroscopy (pump/probe 90/10, 0.2 mm beam) in a 10 cm cell at room temperature; two frequency-doubled diode-pumped Nd:YAG ring lasers, one locked to a1, the other stepped through the components; 1064 nm beat counted"
+cell = "10 cm, room temperature"

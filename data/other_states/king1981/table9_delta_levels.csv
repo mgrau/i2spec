@@ -1,0 +1,9 @@
+table,page,state,isotopologue,v,T0_cm1,T0_unc,B_x100,B_x100_unc,two_point_fit,note
+9,153,delta,127I2,0,41732,1,1.4,0.3,,"footnote b: arbitrary numbering (v = 0 is the first observed band, p. 152)"
+9,153,delta,127I2,1,41832,1,1.5,0.3,,
+9,153,delta,127I2,2,41931,1,1.5,0.3,,
+9,153,delta,127I2,3,42031,1,1.7,0.3,,
+9,153,delta,127I2,4,42129,1,1.7,0.3,,
+9,153,delta,127I2,5,42228,1,2.0,0.3,,
+9,153,delta,127I2,6,42328,1,1.8,0.3,,
+9,153,delta,127I2,7,42425,1,1.5,0.3,,

@@ -1,0 +1,117 @@
+part,band,v_upper,v_lower,line,intensity,normalized_to,method,source,column,mark,note
+a,25-0,25,0,R(33),3.1,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-0,25,0,R(33),1.1,25-3,photographic estimate,"Lenz 1924 or Oldenberg 1927 (refs. 4, 5)",Ref. e,,"plate-blackening estimate; outside the band ranges of footnote e (Lenz 25-1 to 25-18, Oldenberg 25-21 to 25-37)"
+a,25-1,25,1,R(33),0.85,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-1,25,1,R(33),1.1,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-1,25,1,R(33),1.0,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-2,25,2,R(33),0.009,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-2,25,2,R(33),0.0,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-2,25,2,R(33),0.1,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-3,25,3,R(33),1.00,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-3,25,3,R(33),1.0,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-3,25,3,R(33),1.0,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-4,25,4,R(33),0.20,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-4,25,4,R(33),0.3,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-4,25,4,R(33),0.3,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-5,25,5,R(33),0.38,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-5,25,5,R(33),0.9,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-6,25,6,R(33),0.63,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-6,25,6,R(33),0.7,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-6,25,6,R(33),0.9,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-7,25,7,R(33),0.067,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-7,25,7,R(33),0.06,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-7,25,7,R(33),0.2,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-8,25,8,R(33),0.73,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-8,25,8,R(33),0.8,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-8,25,8,R(33),1.0,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-9,25,9,R(33),0.029,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-9,25,9,R(33),0.03,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-9,25,9,R(33),0.0,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-10,25,10,R(33),0.80,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-10,25,10,R(33),0.6,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-10,25,10,R(33),0.9,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-11,25,11,R(33),0.10,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-11,25,11,R(33),0.3,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-11,25,11,R(33),0.3,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-12,25,12,R(33),0.11,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-12,25,12,R(33),0.2,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-12,25,12,R(33),0.2,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-13,25,13,R(33),0.34,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-13,25,13,R(33),0.5,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-13,25,13,R(33),0.8,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-14,25,14,R(33),0.006,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-14,25,14,R(33),0.0,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-14,25,14,R(33),0.0,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-15,25,15,R(33),0.38,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-15,25,15,R(33),0.5,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-15,25,15,R(33),0.8,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-16,25,16,R(33),0.048,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-16,25,16,R(33),0.06,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-16,25,16,R(33),0.0,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-17,25,17,R(33),0.21,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-17,25,17,R(33),0.4,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-17,25,17,R(33),0.2,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-18,25,18,R(33),0.17,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-18,25,18,R(33),0.3,25-3,densitometric,Arnot and McDowell (ref. 6),Ref. d,,"unpublished data reported in F. E. Stafford's thesis (UCRL-8854, 1959); the table footnote dates them 1958"
+a,25-18,25,18,R(33),0.1,25-3,photographic estimate,Lenz 1924 (ref. 4),Ref. e,,plate-blackening estimate
+a,25-19,25,19,R(33),0.16,25-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Ref. c,,average of P and R branch intensities (footnote c)
+a,25-19,25,19,R(33),0.0,25-3,photographic estimate,"Lenz 1924 or Oldenberg 1927 (refs. 4, 5)",Ref. e,,"plate-blackening estimate; outside the band ranges of footnote e (Lenz 25-1 to 25-18, Oldenberg 25-21 to 25-37)"
+a,25-21,25,21,R(33),0.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-22,25,22,R(33),1.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-23,25,23,R(33),0.2,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-24,25,24,R(33),0.3,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-25,25,25,R(33),1.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-26,25,26,R(33),0.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-27,25,27,R(33),1.1,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-28,25,28,R(33),0.1,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-29,25,29,R(33),1.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-30,25,30,R(33),1.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-31,25,31,R(33),0.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-32,25,32,R(33),1.1,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-33,25,33,R(33),0.1,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-34,25,34,R(33),1.0,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-35,25,35,R(33),0.6,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-36,25,36,R(33),0.2,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate
+a,25-37,25,37,R(33),0.2,25-3,photographic estimate,Oldenberg 1927 (ref. 5),Ref. e,,plate-blackening estimate; v'' = 37 carries the footnote mark e
+b,14-2,14,2,P(144),1.09,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,14-3,14,3,P(144),1.00,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,14-4,14,4,P(144),0.26,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,14-5,14,5,P(144),0.32,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,14-6,14,6,P(144),0.73,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,14-7,14,7,P(144),0.26,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,14-8,14,8,P(144),0.11,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,14-9,14,9,P(144),0.40,14-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-0,15,0,P(45),0.16,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,"printed '15-0, P(45)'"
+b,15-1,15,1,P(45),0.80,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-3,15,3,P(45),1.00,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-4,15,4,P(45),0.00,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-5,15,5,P(45),0.76,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-6,15,6,P(45),0.80,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-7,15,7,P(45),0.00,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-8,15,8,P(45),0.50,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+b,15-9,15,9,P(45),0.46,15-3,photoelectric,"Brown 1963 (ref. 2a), thesis",Observed intensity (footnote g),,
+c,27-2,27,2,,0.0,27-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,27-3,27,3,,1.0,27-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,27-4,27,4,,0.0,27-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,27-5,27,5,,0.24,27-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,27-6,27,6,,0.37,27-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,26-1,26,1,,0.3,26-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),(...)j,footnote j: relatively uncertain due to large self-absorption; printed in parentheses
+c,26-2,26,2,,0.0,26-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,26-3,26,3,,1.0,26-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,26-4,26,4,,0.08,26-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,26-5,26,5,,0.27,26-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,26-6,26,6,,0.49,26-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,24-0,24,0,,0.29,24-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),j,footnote j: relatively uncertain due to large self-absorption
+c,24-1,24,1,,1.01,24-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,24-2,24,2,,0.0,24-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,24-3,24,3,,1.0,24-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,24-4,24,4,,0.28,24-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,24-5,24,5,,0.28,24-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,26-6,24,6,,1.08,24-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,"printed band label 26-6, in the v' = 24 block between 24-5 and 23-0 (26-6 is printed above with 0.41, 0.49): a misprint for 24-6; band as printed, v_upper and v_lower as the block implies"
+c,23-0,23,0,,0.95,23-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),j,footnote j: relatively uncertain due to large self-absorption
+c,23-1,23,1,,2.36,23-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,23-2,23,2,,0.0,23-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,23-3,23,3,,1.0,23-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,23-4,23,4,,0.95,23-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,23-5,23,5,,0.0,23-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,
+c,23-6,23,6,,1.40,23-3,photoelectric,"Steinfeld 1964 (ref. 2b), this laboratory",Observed intensity (footnote i),,

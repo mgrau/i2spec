@@ -1,0 +1,3 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(33) 6-3,b12,interval,-741.5,0.3,127I2 R(127) 11-5,a13,bergquist1984a,"p. 330: ""The measured splitting of P(33) 6-3, j to R(127) 11-5, i is 741.5 +- 0.3 MHz""; j lies below i (Fig. 3: 473 611 473.3 MHz = 473 612 214.8 - 741.5); j = b12, i = a13"
+127I2 P(33) 6-3,b4,interval,-1053.8,0.2,127I2 R(127) 11-5,a13,bergquist1984a,"p. 331: frequency difference between P(33) 6-3, r and R(127) 11-5, i, 1053.8 +- 0.2 MHz; r lies below i; r = b4, i = a13"

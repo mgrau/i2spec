@@ -1,0 +1,95 @@
+id = "himbert1991a"
+citation = "M. Himbert, P. Bouchareine, A. Hachour, P. Juncar, Y. Millerioux and A. Razet, \"Measurements of optical wavelength ratios using a compensated field sigmameter\", IEEE Trans. Instrum. Meas. 40, 200-203 (1991)"
+source = "https://doi.org/10.1109/TIM.1990.1032915 (publisher PDF, scanned)"
+doi = "10.1109/TIM.1990.1032915"
+retrieved = "2026-10-23"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from 300 dpi renderings of the four scanned pages (the PDF has no text layer), with Tables I and II
+re-rendered at 600 dpi. Measured wavelength ratios against a 633 nm He-Ne/I2 laser on the e component of
+R(127) 11-5, with a two-channel field-compensated Michelson interferometer (sigmameter) in vacuum (path difference
+up to 3.6 m, about 80 MHz per fringe). The paper prints frequencies, not ratios.
+
+Table II (p. 203), "Deduced frequencies of various I2 lines of metrological interest", the five "this work" rows:
+  47 R(9-2) i      489 880 604.541 (.088) MHz
+  114 P(14-1) k    508 332 466.606 (.090) MHz
+  38 P(15-2) j     508 848 979.622 (.090) MHz
+  80 P(16-2) o     510 098 228.837 (.091) MHz
+  85 R(12-2) i     510 084 073.713 (.091) MHz   ("i" from their ref. [14])
+The "from [n]" rows under each are other papers' values (CIPM 1983, Juncar et al. 1981, Hlousek & Fairbank 1983,
+Juncar et al. 1983) and are not entered.
+
+How the printed frequencies were obtained (Sect. III-B and Table I, p. 202): the interferometer is not perfectly
+achromatic, so it was calibrated with two lines of known frequency, R(127) 11-5 e (the 633 nm reference) and
+P(62) 17-1 o at 576 nm (Table I: e = 473 612 367.082 (.076) MHz from Jennings et al. 1983, o = 520 206 808.535
+(.078) MHz from Pollock et al. 1983; the latter is Pollock's printed 808.547 MHz less the 12 kHz reduction the NBS
+requested at the 1982 CCDM, as the MEP 576 nm document, section 2.1, describes). The 576 nm excess fraction showed a bias of -0.0233 fringe from the value computed from o, and a
+correction linear in frequency (about 5e-4 per THz) was applied to all lines between 633 and 576 nm. Each printed
+frequency is therefore an interpolation between the two anchors, nu = nu_e r + w (nu_o - nu_e r_o), with weight
+w = (nu - nu_e) / (nu_o - nu_e), so a change of the anchors moves it by (1 - w) d(nu_e) + w d(nu_o). The footnote of
+Table II says the results "were determined with respect to the 62 P(17-1) o line".
+
+Re-based here to the CIPM 2001 values of both anchors, as the other ratio sets are converted with the CIPM 2001
+f(i): e = a17 of R(127) 11-5 = f(a16) + 13.363 MHz = 473 612 366.967 MHz (bipm2003a; d(nu_e) = -115 kHz) and
+P(62) 17-1 a1 = 520 206 808.4 MHz (bipm2003c, adopted value; d(nu_o) = -135 kHz):
+  R(47) 9-2    w = 0.349   -122.0 kHz   489 880 604.419 MHz
+  P(114) 14-1  w = 0.745   -129.9 kHz   508 332 466.476 MHz
+  P(38) 15-2   w = 0.756   -130.1 kHz   508 848 979.492 MHz
+  P(80) 16-2   w = 0.783   -130.7 kHz   510 098 228.706 MHz
+  R(85) 16-2   w = 0.783   -130.7 kHz   510 084 073.582 MHz
+Using the unrounded CIPM mean for 576 nm (520 206 808.388 MHz) instead would lower the rows by a further 4-9 kHz.
+The MEP 612 nm document (bipm2003d, source data 2.5) converts the R(47) 9-2 value differently: as a pure ratio
+f(a13)/f(e) with f(e) = 473 612 367.055 MHz (the 1983 recommended f(i) plus e - i), which gives 489 880 604.450 MHz;
+that reading ignores the 576 nm calibration point and uses an e value other than the one the paper prints.
+
+Labels (Gerstenkorn-Luc letters, a at the highest frequency): i of the 21-component R(47) 9-2 is a13 (as in
+bipm2003d); k and j of the 15-component P(114) 14-1 and P(38) 15-2 are a5 and a6; o of the 15-component P(80) 16-2
+is a1; i of the 21-component R(85) 16-2 is a13. k and j are the same components as juncar1981a's (Table II
+compares them with that paper), whose ranks a5 and a6 were assigned there from the model because Juncar 1981
+printed "o" and "n"; these letters confirm that assignment independently.
+
+Line corrected: Table II prints "85 R (12-2)". R(85) 12-2 lies at 16 613.59 cm-1 in every held atlas, 401 cm-1
+(12 THz) below the printed frequency (17 014.588 cm-1). The strong line there is R(85) 16-2 (17 014.5694 cm-1 in
+apo_nist_2009, 17 014.5705 in salami_ross_2005, depth 0.98), in the same band as the P(80) 16-2 line beside it,
+so 12-2 is read as a misprint of 16-2. Check of the label i = a13 without the model: the offset of the printed
+value from the atlas line center minus the same offset for R(47) 9-2 a13 is -5.1, +10.3, +2.5 and +12.5 MHz in
+apo_nist_2009, salami_ross_2005, debus_2023 and pyodine_fischer_2022, while a12 and a14 of R(47) 9-2 lie 30 and
+35 MHz from a13.
+
+Checks against other held sets (re-based values): P(80) 16-2 a1 is +0.30 MHz from sansonetti1997a's t1
+(17 015.045402 cm-1); P(114) 14-1 a5 and P(38) 15-2 a6 are +0.03 and -0.32 MHz from juncar1981a after that set's
+pressure correction (+0.17 and -0.19 MHz before it); R(47) 9-2 a13 is -0.11 MHz from bipm2003d's f(a7) +
+(a13 - a7) = 489 880 604.53 MHz, and razet1991a prints this paper's value as its own absolute (see notes).
+
+No conditions correction is applied: the paper gives no cell, pressure or modulation conditions for the measured
+lines.
+
+Not entered: Table I (the two calibration values, other papers' measurements); the "from [n]" comparison rows of
+Table II; Figs. 2-3 (interferometric signals).
+"""
+
+uncertainty = """
+Printed: 88-91 kHz, combined from the ratio measurements (6-8e-11), the realization of the reference frequency
+(1.5e-10) and the linear chromatic correction (p. 202). Re-basing replaces the reference term, so each row carries
+sqrt(u_printed^2 - (1.5e-10 nu)^2 + ((1 - w) 11 kHz)^2 + (w 200 kHz)^2): 11 kHz for the CIPM 2001 e (10 kHz on
+a16, 5 kHz on a17 - a16) and 200 kHz for the CIPM 2001 576 nm a1 (4e-10). That gives 85 kHz at 612 nm and
+157-164 kHz at 588-590 nm, where the 576 nm anchor weighs 0.75-0.78. Taken as 1 sigma. The five rows share both
+anchors and the interferometer and are one group; the shared anchor error is not represented.
+"""
+
+notes = """
+The primary source of the R(47) 9-2 a13 absolute that razet1991a (pending) enters as its group razet1991a_abs
+("their ref. [7]", cited there as P. Bouchareine et al.), with this paper's printed digits. razet1991a is not given
+an [overlaps] entry: the row there is on the paper's original anchors, 122 kHz from the re-based row here, more
+than the 44 kHz a "same" reprint may differ by.
+
+One of the five determinations averaged into the CIPM 2001 612 nm value (MEP 612 nm, source data 2.5, via
+f(a13) and f(a7) - f(a13) = -249.600 MHz). The MEP's source table prints that determination as 489 880 358 850 kHz;
+its text derives 489 880 354 850 kHz, which is the value its unweighted mean of 489 880 354 929 kHz requires.
+"""
+
+[conditions]
+method = "two-channel field-compensated Michelson interferometer (sigmameter) in vacuum, path difference up to 3.6 m, 180-step phase scans; reference He-Ne/I2 laser at 633 nm on R(127) 11-5 e"
+calibration = "two-point chromatic calibration on R(127) 11-5 e (Jennings et al. 1983) and P(62) 17-1 o (Pollock et al. 1983, NBS-revised), re-based here to the CIPM 2001 values"

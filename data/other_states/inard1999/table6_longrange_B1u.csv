@@ -1,0 +1,7 @@
+fit,method,De_cm1,De_unc,C5_1e5,C5_unc,C6_1e6,C6_unc,C8_1e8,C8_unc,v_last_bound,vD,vD_unc,note
+I,RKR outer turning points to Eq. (2) V = De - sum Cn/R^n; three free parameters,202.50,0.06,-0.58,0.09,1.07,0.10,0.4,,22,,,"C8 fixed at the value of minimum RMS over nine fits (14 <= vmin <= 18, up to v = 20); RMS ~0.005 cm-1"
+II,same with De fixed,202.53,,-0.49,0.28,1.00,0.33,0.40,0.06,22,,,"De fixed at 202.53 from Eq. (3)"
+III,same with De fixed at 202.53 +- 0.04,202.53,0.04,-0.49,0.28 +- 0.02,1.00,0.33 +- 0.01,0.40,0.06 +- 0.01,,,,"parentheses: 2 SD +- statistical spread of the fits with De = 202.53 +- 0.04"
+IV,G(v) against (dG/dv)^(3/2) (Eq. 5),202.6,0.1,,,0.5,0.1,,,,,,"effective C6; levels 18 <= v <= 20; K6 = 59.8301, mu = 63.4522"
+V,(De - G(v))^(1/3) against v (Eq. 6),202.53,,,,0.45,0.05,,,,23.4,0.1,"De fixed; effective C6; X6(0) = 7931.950"
+Fig10,B(v) against v (Eq. 7),,,,,2.,1.,,,,25.5,0.5,"Fig. 10 caption; X6(1) = 546.6391; 'less reliable'"

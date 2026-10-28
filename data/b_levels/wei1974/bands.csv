@@ -1,0 +1,14 @@
+isotopologue,band,v_upper,v_lower,nu0,nu0_unc,Bu_x100,Bu_x100_unc,Bl_x100,Bl_x100_unc,correlation,source,faint,note
+127I2,16-2,16,2,17090.243,0.002,2.61555,0.00067,3.70946,0.00067,0.99917,"ref. 8 band, assignments extended to higher J (footnote c)","Bu digits 4-5 (55) faint",
+127I2,17-0,17,0,17612.784,0.002,2.59254,0.00075,3.73010,0.00075,0.99946,new band,"Bu digits 2 and 4 (9, 5) faint","nu0 0.07 cm-1 below Barrow and Yee's term value (text p. 322)"
+127I2,17-2,17,2,17187.382,0.002,2.59355,0.00056,3.70750,0.00056,0.99944,"ref. 8 band, assignments extended to higher J (footnote c)","Bu digits 3-5 (355) and Bl digit 4 (5) faint",
+127I2,18-0,18,0,17708.026,0.001,2.57153,0.00067,3.72936,0.00067,0.99929,new band,,"nu0 0.09 cm-1 below Barrow and Yee's term value (text p. 322)"
+127I2,20-1,20,1,17679.553,0.002,2.52995,0.00061,3.71955,0.00061,0.99949,new band,"nu0 digits 4 and 7 (9, 3) and Bu digit 4 (9) faint","Bu digit 4 settled by Bu - Bl (see transcription)"
+127I2,20-4,20,4,17047.021,0.003,2.53160,0.00165,3.68644,0.00165,0.99876,"ref. 8 band, assignments extended to higher J (footnote c)","Bu digit 2 (3) faint",
+127I2,21-1,21,1,17769.054,0.002,2.50735,0.00071,3.71913,0.00071,0.99942,new band,"nu0 digit 7 (5; 3 also possible) and Bu digit 4 (3) and Bl digit 5 (3) faint",
+127I2,21-4,21,4,17136.543,0.002,2.50914,0.00098,3.68666,0.00098,0.99951,"ref. 8 band, assignments extended to higher J (footnote c)",,
+127I2,22-4,22,4,17224.097,0.004,2.48255,0.00105,3.68273,0.00105,0.99922,ref. 8 band (no footnote mark legible),"nu0 digit 7 (9; 7 also possible), Bu digits 4-5 (55) and Bl digit 6 (3) faint","printed '22 - 4' (the v'' is faint); the text lists 22-3 among the extended bands, but nu0 = 17 224.1 is 22-4 (22-3 lies near 17 433.7)"
+127I2,25-0,25,0,18320.659,0.002,2.41395,0.00090,3.73124,0.00091,0.99917,"new band (to corroborate Steinfeld et al. 1965)","nu0 digit 7 (5; 3 also possible) and Bu digits 4-6 (395) faint; uncertainties printed (90) and (91)","Bu digits settled by Bu - Bl (see transcription)"
+127I2,26-0,26,0,18400.137,0.002,2.38830,0.00076,3.73070,0.00076,0.99953,"new band (to corroborate Steinfeld et al. 1965)","nu0 digit 7 (3; 5 also possible) and Bu digit 5 (3) and correlation digit 5 (3) faint",
+127I2,34-0,34,0,18961.779,0.002,2.17015,0.00102,3.73288,0.00102,0.99926,"ref. 8 band, assignments extended to higher J (footnote c)","Bu digit 6 (5) faint",
+127I2,35-0,35,0,19022.532,0.002,2.13953,0.00085,3.73268,0.00085,0.99934,"ref. 8 band, assignments extended to higher J (footnote c)","Bu digits 4-5 (53) faint",

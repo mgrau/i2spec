@@ -1,0 +1,70 @@
+id = "glaser1986a"
+citation = "M. Gläser, \"An improved He-Ne laser at lambda = 612 nm, stabilized by means of an external absorption cell\", Metrologia 23, 45-53 (1986), Table 2"
+source = "https://doi.org/10.1088/0026-1394/23/1/006 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0026-1394/23/1/006"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+What the paper measures (BIPM): a He-Ne laser at 612 nm with only an external 50 cm 127I2 cell (no internal cell),
+third-harmonic locking at 4.4 kHz; its pressure, modulation, power, beam-geometry and wall-temperature dependences,
+linewidth and asymmetry of b15, Allan deviation, and the frequency differences of the nine peaks in its 320 MHz
+tuning range. The reference laser was BIOR I (internal cell, cold point -13 C, 5 MHz modulation, 90 uW), locked in
+turn to three different peaks; "the results are the means of the corresponding three measurement series and are
+presented as relative to the peaks in the test laser only" (p. 53). Test laser at the normal conditions: cold point
+0 C (4.1 Pa), cell wall 23 C, modulation depth 2.28 MHz.
+
+Entered: Table 2 (p. 52), Delta f = f - f(a7) of b15 of P(48) 11-3 and a4, a5, a6, a8-a11 of R(47) 9-2, with s, 8
+rows. Read from a 300 dpi rendering of p. 52; the text layer agrees digit for digit. The column Delta f* - Delta f
+(Delta f* from ref. [11], Metrologia 19, 163 (1984), the 1983 recommended table) is kept in each row's note: it
+reproduces that table (e.g. a4: -86.165 - 0.015 = -86.180, the 1983 value of r).
+Labels: as printed; a_n of R(47) 9-2 (21 components) and b15 of P(48) 11-3 (15) are ranks, as in bipm2003d.
+
+Model-free checks (this set minus other, kHz, from a7): glaser1987a 0 to +1 on all nine (see notes); bipm2003d -2
+to +3, rms 2.0; razet1991a -6 to +3, rms 3.0; dschao1980a rms 33 (its values are printed to 0.1 MHz);
+sugiyama1988a b15 +183 (its link is 0.7 MHz).
+
+Not entered: Table 1 (p. 50), the multiple-regression coefficients of each peak's frequency on pressure p and
+modulation depth m, f = beta1 + (b2 + b3 m) p: b2 (kHz/Pa), b3 (kHz/(Pa MHz)), correlation, sigma1, sigma2 (kHz/(Pa
+MHz)), N_p:
+  b15 -4.0193 -0.8502 0.99898 0.243 0.069 6;  a4 -2.7328 -1.4412 0.99635 0.910 0.222 6;
+  a5 -4.0025 -0.8942 0.99809 0.262 0.113 3;   a6 -3.7761 -0.9302 0.99919 0.121 0.125 3;
+  a7 -4.4414 -0.7710 0.99881 0.106 0.106 6;   a8 -3.9054 -0.8754 0.99961 0.098 0.132 3;
+  a9 -3.9958 -0.8414 0.99955 0.125 0.122 3;   a10 -3.9880 -0.8786 0.99961 0.093 0.075 3;
+  a11 -3.8219 -0.9164 0.99900 0.120 0.125 3;  mean without a4 -3.9938 -0.8697 0.99911 0.146 0.108,
+  s 0.2021 0.0500 0.00052 0.067 0.024
+(read from a 300 dpi rendering of p. 50; a4 deviates, which the paper attributes to the crossover c5a). Also not
+entered: the absorption coefficient at b15 (0.11 m-1 Pa-1, contrast 0.4 % at 4.1 Pa), the half-linewidth slope
+(53 kHz/Pa), the temperature and modulation derivatives at normal conditions (-3.7 kHz/K, -4 kHz/MHz), the wall
+coefficient (0.2 kHz/K), and Figs. 4-9.
+"""
+
+uncertainty = """
+s as printed, 3-10 kHz, "estimated from a root-mean-square combination of the uncertainties of: repeated
+measurements, use of different beam geometries, the regression analysis and possible perturbations caused by
+neighbouring hyperfine components" (Table 2 caption); the beat measurements themselves were below 1 kHz. Taken as
+1 sigma. The intervals are at 4.1 Pa and 2.28 MHz; the pressure coefficients of Table 1 differ between peaks by up
+to 1.7 kHz/Pa (a4 against a7), so the zero-pressure intervals could differ by up to about 7 kHz; not corrected.
+"""
+
+notes = """
+Superseded by glaser1987a (Gläser, IEEE Trans. Instrum. Meas. IM-36, 604 (1987)), which cites this paper as "to be
+published" and reuses its regression analyses: its Table I gives all nine of these intervals again, six with the
+same digits and three (a4, a5, b15) 1 kHz apart, from two external-cell lasers and a least-squares adjustment of
+the matrix of beat measurements, with a1-a3, a12-a15 and b11-b14 added. Agreement to 0-1 kHz against s = 3-10 kHz
+means the later table includes these measurements, so these rows stay in the record and leave the fit
+([overlaps] "superseded"). glaser1987a is the one the MEP 612 nm tables cite (bipm2003d); this paper is not cited
+there.
+"""
+
+[conditions]
+method = "He-Ne laser at 612 nm with a 50 cm external 127I2 cell and no internal cell, third-harmonic locking (4.4 kHz); beats against BIOR I (internal cell) locked in turn to three peaks"
+cold_point_C = 0.0
+pressure_Pa = 4.1
+cell_wall_C = 23.0
+modulation_MHz_pp = 2.28
+power_into_cell_uW = 350
+
+[overlaps]
+glaser1987a = "superseded"   # its Table I includes these nine intervals (0-1 kHz apart); pending until admitted

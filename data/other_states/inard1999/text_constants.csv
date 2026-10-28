@@ -1,0 +1,15 @@
+quantity,value,unc,unit,source,note
+Te(B''1u),12344.804,0.040,cm-1,"Eq. (4), abstract","Te = C + G[X(0,0)] + Y00(B'') - Y00(X); above the X minimum"
+De(B''1u),202.53,0.04,cm-1,"Eq. (3), abstract","De(B'') = De(X) - Te(B'')"
+De(X0g+),12547.335,0.018,cm-1,"Eq. (3), quoted from ref. 11 (Cerny et al. 1997)","reprint"
+G[X0g+(v=0,J=0)],107.111,0.002,cm-1,"Table 2 footnote, Eq. (4), from ref. 6 (Gerstenkorn and Luc 1985)","X(0,0) above the X minimum, neglecting Y00(X) = -0.010"
+Y00(X0g+),-0.0101,,cm-1,"Eq. (4), ref. 11",
+v20 below limit,0.978,,cm-1,abstract,"B'' v = 20 lies 0.978 cm-1 below the dissociation limit"
+last bound level,23,+0/-1,,"Sect. 5, abstract","v = 23 (+0/-1); Hutson's program on the extrapolated curve gives v = 22 (Table 7)"
+barrier height,~0.001,,cm-1,Sect. 5,"barrier to dissociation at R ~ 25 A (C5 negative)"
+Be-Bf (B''1u),-19.8 + 1.96 v,,1e-6 cm-1,Fig. 7 caption,"linear fit, 2 SD: -19.8(3.6) + 1.96(30) v; sign change at v = 10.1 +- 2.4 (text)"
+lines B''1u,776,,lines,Sect. 4,"E -> B'' lines, levels 0 <= v'' <= 20, 4 <= J'' <= 73"
+lines A1u,947,,lines,Sect. 4,"E -> A lines, levels 3 <= v'' <= 34, 4 <= J'' <= 108"
+lines total,1723,,lines,Table 2 footnote,"RMS obs - calc 0.012 cm-1"
+validity limit LeRoy radius,5.68,,A,Sect. 5,"R ~ 4 sqrt(<r2>) [ref. 38], reached at v = 10 (R = 5.799 A)"
+D0u+ energy losses,111/205/299,,cm-1,Sect. 3,"main E(v'=1, J'=25) -> D(vt = 4, 3, 2) transfers; population ratios 0.33:1.00:0.11"

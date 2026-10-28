@@ -1,0 +1,23 @@
+state,quantity,value,unit,source,note
+B,omega_e,125.531,cm-1,p. 205,"pooled with ref. 1 (Steinfeld et al. 1965, data/b_levels/steinfeld1965); valid to about v' = 52"
+B,omega_e x_e,0.73389,cm-1,p. 205,
+B,omega_e y_e,0.004133,cm-1,p. 205,"printed positive; sign convention not stated (steinfeld1965 has -0.00567)"
+B,omega_e z_e,1.195e-6,cm-1,p. 205,printed +1.195e-6
+B,omega_e t_e,2.208e-7,cm-1,p. 205,printed +2.208e-7
+B,T_e,15769.48,cm-1,p. 205,above the X potential minimum (presumably)
+B,B_e,0.028873,cm-1,p. 205,
+B,alpha_e,0.0001345,cm-1,p. 205,
+B,gamma_e,-1.148e-6,cm-1,p. 205,
+B,delta_e,-2.08e-8,cm-1,p. 205,
+B,D_e,3.5e-9,cm-1,p. 205,"'remain ... unchanged from the previous investigation' (approximate)"
+B,beta_e,3.9e-10,cm-1,p. 205,approximate
+B,last line,4990.59,A,p. 210,"the last discernible discrete line (air wavelength); gives 20 139.2 cm-1 for the I(2P1/2) + I(2P3/2) limit above the X potential minimum"
+B,dissociation limit (last line),20139.2,cm-1,p. 210,above the X potential minimum
+B,dissociation limit,20162.8,cm-1,p. 210,"D0'' (Verma 1960, ref. 17) plus the 2P1/2-2P3/2 splitting (Moore 1958), above the X minimum; reprint-based"
+B,D_e',4393,cm-1,p. 211,"corresponding to the 20 162.8 cm-1 limit (text p. 211: 4393; Table II implies 4393.3 from G_obs - (G - De))"
+B,C5,1096933,cm-1 A^5,"p. 211, Table II","-C/R^5 fitted through the outer turning point of v' = 50"
+B,C4,222954,cm-1 A^4,Table II,for comparison
+B,C6,5396911,cm-1 A^6,Table II,for comparison
+B,number of bound levels,93,,abstract,"93 +- 2 bound vibrational levels"
+B,transition quadrupole moment,11.5,buckingham,p. 214,"from C5; Garstang's calculated value 4.8, 6.8 from <r^2> = 6.5 a0^2 (reprints)"
+B,magnetic-dipole transition moment,1.2e-20,erg/G,p. 214,derived from the observed A = 20 s-1 (ref. 24)

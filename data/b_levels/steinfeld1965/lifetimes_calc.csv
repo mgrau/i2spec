@@ -1,0 +1,4 @@
+v,line,A_per_s,A_unc_per_s,A_source,tau_absorption_s,tau_brewer_s,tau_brewer_note
+14,14-3 P(114),2.8e5,0.3e5,Brown 1963,3.2e-7,6.2e-7,"computed from tau(25') with Eq. (8); uncertain to +-15 % (footnotes c, d)"
+15,15-3 P(45),1.0e5,0.2e5,Brown 1963,6.8e-7,6.3e-7,"computed from tau(25') with Eq. (8); uncertain to +-15 % (footnotes c, d)"
+25,25-3 R(33),2.0e5,1.6e5,Malamond and Boiteux 1954,3.5e-7,7.2e-7,"measured by Brewer et al. (phase shift); uncertain to +-15 % (footnotes c, e)"

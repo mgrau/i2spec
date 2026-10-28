@@ -1,0 +1,20 @@
+state,quantity,value,uncertainty,unit,source,note
+B,Te,15770.59,,cm-1,"abstract; p. 29","T(v' = 4, J' = 0) = 16 319.05 (Table III) minus its vibrational energy 548.46; above the X potential minimum. The printed omega_e polynomial gives G(4) = 549.02 cm-1, not 548.46"
+B,omega_e,125.273,0.1,cm-1,"abstract; p. 28","polynomial fit to 'the pooled band-head data' (not listed): G = omega_e (v+1/2) - omega_e x_e (v+1/2)^2 + omega_e y_e (v+1/2)^3 + omega_e z_e (v+1/2)^4; errors from Eq. (2), correlated ('the complete set ... must be employed')"
+B,omega_e x_e,0.7016,0.01,cm-1,"abstract; p. 28",
+B,omega_e y_e,-0.00567,0.0004,cm-1,"abstract; p. 28",
+B,omega_e z_e,0.000032,0.000005,cm-1,"abstract; p. 28",
+B,Be,0.028969,0.00007,cm-1,"abstract; p. 28","Eq. (1): B_v = Be - alpha_e (v+1/2) + gamma_e (v+1/2)^2 + delta_e (v+1/2)^3, fitted to the Table I B_v (all sources)"
+B,alpha_e,0.0001562,0.00002,cm-1,"abstract; p. 28",
+B,gamma_e,-4.0e-7,13e-7,cm-1,"abstract; p. 28","printed -(4.0 +- 13) x 10^-7"
+B,delta_e,-3.5e-8,3e-8,cm-1,"abstract; p. 28","printed -(3.5 +- 3) x 10^-8"
+B,re,3.0276,0.004,A,"abstract; p. 28",from Be
+B,De (centrifugal),3.5e-9,,cm-1,"abstract; p. 28","printed 'De' ~= 3.5 x 10^-9'; from the D_v of Fig. 2 (not tabulated)"
+B,beta_e,3.9e-10,,cm-1,"abstract; p. 28",printed '~='
+B,De (dissociation),4391.0,,cm-1,"abstract; p. 29","text: De' ~= 4391 cm-1, from Te and Eq. (4)"
+B,De' + Te from Eq. (3),20121,,cm-1,p. 29,"E_diss + E0'' with Mecke's series limit 20 014 cm-1 (4995 A)"
+B,De' + Te from Eq. (4),20163,,cm-1,p. 29,"De'' + E_at with Verma's De'' and Moore's E_at; a limit at 4985 A would reconcile the two"
+X,De'' (reprint),12559.6,1.5,cm-1,p. 29,"R. D. Verma, J. Chem. Phys. 32, 738 (1960) (data/x_levels/verma1960 holds D0 = 12 452.5 +- 1.5, which is invalid per Verma and Le Roy 1974)"
+B,E_diss (reprint),20014,,cm-1,p. 29,"Mecke 1923, the optical absorption series limit (4995 A)"
+atom,2P1/2 - 2P3/2 (reprint),7603.15,,cm-1,p. 29,"C. Moore, NBS Circ. 467 (1958)"
+B,v' and J' excited by Hg 5460.75 A,25; 34,,,"p. 33 (conclusion 2)","previously assigned v' = 26, J' = 34; Table VI(a): fluorescence from v' = 25 after R(33) absorption"

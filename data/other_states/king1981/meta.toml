@@ -1,0 +1,132 @@
+id = "king1981"
+citation = "G. W. King, I. M. Littlewood and J. R. Robins, \"Two-photon sequential absorption spectroscopy of iodine-127 and 129 in the 5 eV region\", Chem. Phys. 56, 145-156 (1981), Tables 1-11"
+source = "https://doi.org/10.1016/0301-0104(81)80001-8 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0301-0104(81)80001-8"
+retrieved = "2026-10-26"
+unit = "cm-1 (term values and constants, in the scaled units of their rows where noted); A for re and turning points"
+state = "ion-pair E 3Pig(0g+) (as printed; E 0g+) and the states labeled alpha, beta, gamma, delta (labels of Danyluk and King 1977; Omega not assigned), reached from B 0u+ levels near its dissociation limit"
+isotopologue = "127I2 and 129I2"
+files = ["table1_E_levels.csv", "table3_gamma_levels.csv", "table5_beta_levels.csv", "table7_alpha_levels.csv", "table9_delta_levels.csv", "table2_4_6_8_10_constants.csv", "table11_rkr_E.csv", "text_constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Every number of Tables 1-11 (pp. 149-154; PDF pages 5-10) and the constants of the text, read from 600 dpi renders of
+the scan (300 dpi for the text); the OCR text layer garbles most table digits (e.g. "1.?273", "4175496", "-4X62.63")
+and drops Tables 6 and 9 entirely, so nothing was taken from it.
+
+The measurement: two-photon sequential absorption. A pressure-scanned dye laser (0.075 cm-1) pumps a B <- X line from
+X v'' = 0 (pumped B levels v_B = 21-81); a second, grating-tuned dye laser (about 1 cm-1 wide) probes transitions from
+that B level to states near 5 eV, detected by their broad-band UV fluorescence. Probe frequencies were calibrated with a
+Spex 1400 monochromator against Fe/Ne hollow-cathode lines ("overall accuracy of the spectral line frequencies was
+about +-0.5 cm-1", p. 146). The upper-state term values are the probe wavenumber plus the calculated term value of the
+pumped B level: for 127I2 from Luc's Dunham coefficients (v_B <= 62), Barrow and Yee (to 76) and Danyluk and King 1977
+(to 81); for 129I2 from Luc's constants mass-scaled (rho = 0.99221, v_B <= 62), Yee's calculated values (to 70) and
+King et al. 1980 (data/b_levels/king1980, to 79); Te(B-X) = 15769.05 cm-1 where needed; this adds about +-0.05 cm-1
+(p. 147). Per-level T0 and B_v come from linear regressions of the term values on J(J + 1), with calculated centrifugal
+distortion added first (p. 148).
+
+Per-level tables, one CSV each, one row per printed (isotopologue, v): T0(v', J' = 0) "relative to v'' = 0, J'' = 0 in
+the X state" (footnote a) and 1e2 B_v, with the parenthesized errors converted to the column's units (41354.61(26) ->
+0.26; 1.9929(56) -> 0.0056; 41456.2(1.0) -> 1.0; 42147.68(9) -> 0.09; 0.8(9) -> 0.9). Rows printed "-" are omitted.
+- table1_E_levels.csv: Table 1, E state, 127I2 v = 0-24 and 26-29 (v = 25 printed "-", always too weak), 129I2 v = 0-25.
+  129I2 v = 24 and 25 are printed "(43655.5" and "(43747.0" with an opening parenthesis only and no error, and B = 1.7
+  with footnote b, "From two-point fit".
+- table3_gamma_levels.csv: Table 3, gamma state, 127I2 v = 0-12, 129I2 v = 0-11.
+- table5_beta_levels.csv: Table 5, beta state, 127I2 v = 0-9 and 11-14, 129I2 v = 4-9 and 12-16 (v = 10 "too weak to be
+  observed"); footnote b, "Two-point fit, error is experimental", on 127I2 v = 0, 9, 11 and 129I2 v = 12, 16.
+- table7_alpha_levels.csv: Table 7, alpha state, 127I2 v = 8-18, 129I2 v = 9-13 and 15-18; the table prints the leading
+  digits only where they change (40438.0, then 539.14 ...; 41049.46, then 149.83 ...), restored here. Footnote b on
+  127I2 v = 8.
+- table9_delta_levels.csv: Table 9, "Approximate molecular constants" of the delta state, 127I2 only, v = 0-7, printed
+  41732(+-1) and 1.4(+-0.3); footnote b, "Arbitrary numbering".
+table2_4_6_8_10_constants.csv: Tables 2 (E), 4 (gamma), 6 (beta), 8 (alpha) and 10 (delta), one row per printed entry
+  and isotopologue, as printed: value_printed in the scaled unit of the row header (10^4 weye -> scale_exp 4), its
+  parenthesized error in the same unit, and the re printed once below each table. The fits (Eqs. 1-2) are
+  T(eta) = sum_n T_n eta^n and B(eta) = B_v / rho^2 = sum_n B_n eta^n in the mass-reduced eta = rho (v + 1/2), rho = 1
+  (127I2) and 0.99221 (129I2), fitted to both isotopologues together, with T(eta) "relative to the X state potential
+  minimum" (the Table 1 T0 plus the X zero-point energies 107.107 and 106.691 cm-1). So Te is common to both
+  isotopologues and the 129I2 constants are the 127I2 ones times rho^k: they are not independent.
+table11_rkr_E.csv: Table 11, "RKR potential turning points for lower vibrational levels of the 127I2 E state": G_v,
+  R_min, R_max for v = 0-10, 12, ..., 30 (derived).
+text_constants.csv: the numbers of the text: X zero-point energies and Te(B-X) used (reprints), counts, the alpha and
+  delta numbering notes, and the D' and A' estimates of the discussion (reprints labeled; two derived pairs).
+
+Checks (model-free):
+- Isotope scaling: every 129I2 constant of Tables 2, 4, 6 and 8 equals the 127I2 value times rho (we), rho^2 (wexe, Be),
+  rho^3 (weye, alpha_e) or rho^4 (gamma_e) to the printed digits, except Table 2 Be: printed 1.9959 for 129I2, which is
+  rho x 2.0116; rho^2 gives 1.9804, and the Table 1 129I2 B_v follow rho^2 (e.g. v = 2: 1.9601 from the Table 2
+  constants with rho^2, printed 1.9617(30); with rho, 1.975). The 129I2 Be of Table 2 is misprinted or miscomputed;
+  entered as printed.
+- re from Be (re = (16.857629 / (mu Be))^1/2, mu = 63.4522 u): 3.6342 (E), 3.6722 (gamma), 3.6695 (beta), 3.591 (alpha),
+  4.04 A (delta), as printed (3.6342, 3.6721, 3.669, 3.59, 4.0).
+- Levels against their constants (T0 + 107.107 against T(eta) of Tables 2, 4, 6, 8): 127I2 mean and sd -0.51 and 0.75
+  cm-1 for E (a smooth pattern, -1.1 to -1.5 cm-1 at v = 2-13), +0.03 and 0.20 for gamma, +0.10 and 0.61 for beta,
+  -0.01 and 0.53 for alpha; the 129I2 levels scatter by sd 0.45-0.94 cm-1 about their curves. delta: Table 10
+  reproduces Table 9 to -1.2 to +0.4 cm-1; the mean of the Table 9 B_v is 1.6375 (Table 10 prints 1.63).
+- Table 11: G_v runs 0.00-0.12 cm-1 (mean 0.07) above we x - wexe x^2 + weye x^3 of Table 2 (x = v + 1/2), a near-
+  constant offset.
+- Against data/other_states/danyluk1977b (the same group's 1977 spectra of 127I2): gamma v = 0-12, Danyluk - this = -0.59
+  to +0.90 cm-1 in T0 and -0.019 to +0.008 in 1e2 B_v; epsilon v = E v + 12 (p. 149: "the level previously labelled
+  epsilon_0 has v_E = 12"), T0 within -0.73 to +1.33 cm-1 for v_E = 12-22, the 1977 B_v 7-15 % higher (mean 11 %; the
+  text says "about 8 % too high").
+- Against the FTS E0g+ levels of data/other_states/inard1999 (127I2, v = 0, 1, 3, 5, 7, 8, 11; above X(0, 0)): T0 here
+  is lower by 0.81, 1.15, 1.44, 0.97, 0.64, 0.72 and 0.65 cm-1 (mean 0.91), more than the stated +-0.5 cm-1; 1e2 B_v
+  agree within -0.002 to +0.006 (within the errors here).
+- The stated X zero-point energy for 129I2, 106.691 cm-1, is the 127I129I value of King et al. 1980
+  (data/b_levels/king1980 notes: 127I129I 106.69095, 129I2 106.2741). If it was used for 129I2, the 129I2 T(eta), and
+  with them the common Te, are shifted by 0.42 cm-1 against 127I2. A refit of the Table 1 T0 (weighted by their
+  errors) gives Te, we, wexe, weye = 41410.44, 101.933, 0.2392, 9.3e-4 with 106.691 and 41410.40, 101.861, 0.2337,
+  8.3e-4 with 106.274; the printed 41410.27, 101.907, 0.2373, 9.05e-4 lie between (the authors fitted term values, not
+  these T0), so the printed numbers do not tell which was used. The T0 of Table 1 (relative to each isotopologue's own
+  X(0, 0)) do not depend on it.
+
+Not entered: Figs. 1-2 (the gamma_2 band with and without focusing; bars of the E levels reached from each pumped v_B);
+the pump lines named in the text without wavenumbers (e.g. R78(7), R77(18), R77(25), R78(11), P78(13), P78(17), R78(18)
+for 127I2; P71(19), R72(0), P72(11), P73(22), P71(23), R72(28), R73(18) for 129I2). The term values and line frequencies
+are not printed.
+"""
+
+uncertainty = "As printed: the parenthesized errors of the per-level linear regressions (Tables 1, 3, 5, 7) and of the polynomial fits (Tables 2, 4, 6, 8), in units of the last digits, convention not stated (standard errors presumably); footnote b rows (two-point fits) carry the 'experimental' error. The absolute scale rests on the probe calibration ('overall accuracy of the spectral line frequencies was about +-0.5 cm-1', p. 146) plus about +-0.05 cm-1 from the calculated B levels; the held FTS E0g+ levels (inard1999) put the 127I2 E levels here 0.6-1.4 cm-1 low, so the absolute T0 are good to about +-1 cm-1. Table 9 (delta) carries +-1 cm-1 and +-0.3e-2 cm-1 as printed; Table 10 is 'approximate' with no errors. The alpha Te carries an extra +-200 cm-1 from its uncertain numbering (p. 152)."
+
+notes = """
+What the paper is. A fuller version of the two-photon sequential study of Danyluk and King 1977
+(data/other_states/danyluk1977b): better signal (60 Hz nitrogen laser), both 127I2 and 129I2 (the 129I2 sample was
+prepared in the laboratory; its purity is not stated), and the isotope shift used to fix vibrational numberings.
+Results: the E state rotationally analysed for v = 0-29 (127I2) and 0-25 (129I2), with constants and an RKR curve;
+per-level constants of the gamma, beta and alpha states for both isotopologues and rough ones for delta (127I2 only).
+
+State labels. E is printed E 3Pig(0g+), the ion-pair E 0g+ state (the E of data/other_states/wieland1972 and
+inard1999); the paper shows that the epsilon progression of 1977 is E, v_E = v_epsilon + 12. alpha, beta, gamma and
+delta are the arbitrary labels of 1977, kept as printed; the paper assigns them no symmetry beyond the discussion
+(beta, or alpha, possibly D' 2g, p. 154, with the A' consequences in text_constants.csv; delta possibly the v = 50
+levels of the 0g+ state near 36 000 cm-1). No modern label is added here (see the report's open question).
+
+X and B. No X or B levels or constants are derived: the X zero-point energies and the B term values of the pumped levels
+are calculated from other work (above), and the pump lines are named without wavenumbers.
+
+Relation to other sets. Not a reprint of danyluk1977b: the gamma and epsilon levels are re-determined (the text speaks
+of "the additional rotational terms that are available" for gamma, p. 150, without saying whether the 1977 terms were
+refitted with them). The E constants agree in Te and we with wieland1972's band-head constants to 1.5 and 0.3 cm-1
+(41410.27 against 41411.8; 101.907 against 101.59). The held FTS E0g+ levels (inard1999) are far more precise (0.004-0.03
+cm-1) but cover only v = 0, 1, 3, 5, 7, 8, 11. Not compared with any model.
+
+data/other_states holds measured levels and constants of electronic states other than X and B (no loader reads it).
+"""
+
+[columns]
+table1_E_levels = """
+table, page (printed), state (as printed), isotopologue, v (as printed), T0_cm1 and T0_unc (T0(v', J' = 0) above X(v'' =
+0, J'' = 0) of the same isotopologue, cm-1), B_x100 and B_x100_unc (1e2 B_v, cm-1), two_point_fit (yes for footnote b),
+note.
+"""
+table3_gamma_levels = "As table1_E_levels, for Table 3 (gamma)."
+table5_beta_levels = "As table1_E_levels, for Table 5 (beta)."
+table7_alpha_levels = "As table1_E_levels, for Table 7 (alpha)."
+table9_delta_levels = "As table1_E_levels, for Table 9 (delta; v arbitrary, 127I2 only, errors printed as +-)."
+table2_4_6_8_10_constants = """
+table, page, state, isotopologue, parameter (Te above the X potential minimum, we, wexe, weye, Be, alpha_e, gamma_e, re),
+value_printed and unc_printed (in the scaled unit of the printed row: parameter = value_printed x 10^-scale_exp),
+scale_exp, unit, note.
+"""
+table11_rkr_E = "v; G_cm1 (G_v above the E potential minimum, cm-1); R_min_A, R_max_A (RKR turning points, A); note."
+text_constants = "state, quantity, value (as printed; ';' separates paired values), unit, source (page and reference), note (reprints labeled)."

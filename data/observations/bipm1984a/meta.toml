@@ -1,0 +1,128 @@
+id = "bipm1984a"
+citation = "BIPM, \"Documents concerning the new definition of the metre\", Metrologia 19, 163-177 (1984): Recommendation 1 (CI-1983) with the List of Recommended Radiations, 1983 (pp. 165-166); Appendix M 4 of the 7th CCDM session (1982), source data for the list (pp. 166-171); Appendix M 5, Tables 1-14, frequency intervals between hyperfine components of iodine (pp. 171-177)"
+source = "https://doi.org/10.1088/0026-1394/19/4/004 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0026-1394/19/4/004"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+transcription = """
+The CIPM 1983 mise en pratique (MEP 1983). Everything was read from page images (200 dpi, 400 dpi for doubtful
+digits); the OCR text layer garbles digits and was used only to find the pages. Typed by hand.
+
+List of Recommended Radiations, 1983 (p. 165), the four iodine radiations, entered as frequencies with the
+standard deviation of the adopted value from App. M 4 (the list prints an "estimated overall uncertainty",
+three times it):
+  1.2 576 nm, 127I2 P(62) 17-1 component o (a1): 520 206 808.51 MHz, s = 0.11 MHz (App. M 4 1.2.3)
+  1.3 633 nm, 127I2 R(127) 11-5 component i (a13): 473 612 214.8 MHz, s = 0.16 MHz (1.3.4)
+  1.4 612 nm, 127I2 R(47) 9-2 component o (a7): 489 880 355.1 MHz, s = 0.18 MHz (1.4)
+  1.5 515 nm, 127I2 P(13) 43-0 component a3 (s): 582 490 603.6 MHz, s = 0.25 MHz (1.5)
+The list also prints vacuum wavelengths; they equal c/f to the printed rounding (0.002-0.04 fm) and are not
+entered. The frequency quoted in each table heading is the list value and is not entered again.
+
+App. M 5, all 14 tables (unit MHz, s = estimated standard deviation), component labels as printed (the number is
+the rank; the letter column, the observed feature, is kept in each note as x = ...):
+  p. 171  Table 1 127I2 P(13) 43-0 a1-a21 from a3; Table 2 R(15) 43-0 b2-b21 from b1
+  p. 172  Table 3 R(98) 58-1 d1-d15 from d6; Table 4 P(62) 17-1 a2-a10 from o (a1); Table 5 R(47) 9-2 a1-a21
+          from o (a7)
+  p. 173  Table 6 129I2 P(110) 10-2 a1-a28 and Table 7 129I2 R(113) 14-4 b19-b36, from o of 127I2 R(47) 9-2
+  p. 174  Table 8 R(127) 11-5 a2-a21 from i (a13); Table 9 P(33) 6-3 b1-b20 from b21
+  p. 175  Table 10 129I2 P(54) 8-4 a2-a27 from k (a28); Table 11 129I2 P(69) 12-6 b1-b17, b20-b36 from k
+  p. 176  Table 12 129I2 "P(60) 8-4" d23-d28 from k; Table 13 129I2 P(33) 6-3 e1-e17 from e2
+  p. 177  Table 14 127I129I P(33) 6-3 m1-m48 from k
+The references between lines printed in the table headings are entered once each: f(b1, R(15)) - f(a1, P(13)) =
+283.835(0.005), f(d6, R(98)) - f(a3, P(13)) = -2100(1), f(b21, P(33) 6-3) - f(i) = -393.5(0.1), f(k) - f(i) =
+95.90(0.04) and f(e2) - f(i) = 988.29(0.2).
+
+Corrections and relabelling:
+- Table 11 numbers q′ as b20 (between b17 and b22). The 1997 and 2003 lists number the same entry b21 (quinn1999a,
+  bipm2003a); entered as b21.
+- Table 12 is titled 129I2 P(60) 8-4; the 1997 and 2003 lists call the same table R(60) 8-4. With rough rotational
+  constants of 129I2 (B′ about 0.0271, B″ about 0.0363 cm-1) R(60) 8-4 lies within a few GHz of P(54) 8-4, as the
+  -0.5 GHz intervals require, while P(60) 8-4 lies about 200 GHz lower. Entered as R(60) 8-4.
+- Table 14 m″ (m32) is kept as printed, 322.54(0.10); see notes.
+
+Left out, 14 blends, the same entries as in bipm2003a: features that carry one letter in a 129I2 table and in the
+127I129I table at the same position within the printed figures are one observed peak assigned to both, so the
+position is not a measurement of either: n (129I2 P(54) a24, a25 and 127I129I m8, -56(1), marked "also
+component"), j′ (a15 -206.05(0.2) and m4 -207(1.5)), r″ (P(69) b5 257.0(0.5) and m28 256.95(0.20)), q″ (b6
+264.9(0.5) and m29 264.88(0.20)), k″ (b8 338(1) and m34, m35 337.8(0.5)), d″ (b12 385(4) and m40 385(4)).
+Pairs printed with one value and a bracket (129I2 P(69) b9/b10, R(60) d24/d25 and d26/d27, 127I129I m24/m25) are
+one unresolved peak within a line: both components are entered with the printed value.
+
+Not entered: the CH4 radiation (list 1.1) and the 86Kr, 198Hg and 114Cd lamp radiations (2.1, 2.2), which are not
+iodine. The source data of App. M 4 (absolute CH4 determinations; f(i)/f(CH4) of NBS 1976, NPL 1982, PTB 1982 and
+the unused NPL 1979, PTB 1979, IMM 1981; f(i)/f(CO2) of NPL 1978 and 1974; NBS 1982 f(o, 576) and f(i); NPL 1982
+f(o)/f(i) at 576 nm; the 612/633 ratios of LHA-BIPM 1979, BIPM 1979, PTB 1980, NPL 1982, BIPM 1982; the 515/633
+ratios of BIPM 1979, PTB 1979, NPL 1982, BIPM 1982) and the intervals quoted in its bibliography (f(129I2 k) -
+f(127I2 i) = -96 050(50) kHz at 40 C, f(i) - f(d) = -165 074(4) and -165 114 kHz, f(d′) - f(i) = -249 600(40) kHz)
+are the inputs of the adopted values, so entering them would count those twice (as in bipm2003a-e).
+
+Checks (model-free): the adopted values follow from the printed source data (576 nm: weighted mean 520 206
+808.508 MHz; 633 nm: unweighted mean of the five f(i) 473 612 214 836 kHz; 612 nm: mean ratio 1.034 349 072 40 x
+f(i) = 489 880 355.06 MHz; 515 nm: 1.229 889 317 38 x f(i) = 582 490 603.56 MHz). Every table entry was compared
+with the 1992 and 1997 lists (quinn1994a, quinn1999a) and the current BIPM files (bipm2003a-e, bipm2005a): 173
+entries recur unchanged in the 1992 list, and every difference was re-read on the page image. Tables 1-3 equal bipm2005a
+except P(13) a4 (u 0.002 here, 0.001 in 2005) and the R(15) b1 reference (0.005 MHz here, 5000 kHz in 2005).
+Against held primaries: Table 4 is baird1979a to the digit; Table 9 b1-b11 are hanes1971a's values and b12-b20
+with f(b21) - f(i) are morinaga1978a's (the same 20 values as morinaga1984a); 24 of the 30 127I129I entries that
+magyar1980a also holds are its values to the digit.
+"""
+uncertainty = """
+The tables print s, an estimated standard deviation (1 sigma), which the CCDM based on the authors' uncertainties,
+the spread of the determinations and the effect of perturbing components (p. 164); entered as printed (0.001-5
+MHz). The list values carry "estimated overall uncertainties" equal to three times the relative standard
+deviation; the standard deviations printed in App. M 4 are entered (0.11-0.25 MHz). The footnote of Table 9 warns
+that b1-b11 (Hanes et al. 1971) "may be too large by several megahertz"; the printed 0.5 MHz is entered and the
+note of each row repeats the warning (the 1992 list moves them by 3.7-6.9 MHz).
+"""
+notes = """
+The first mise en pratique of the 1983 definition, reprinting the CCDM 1982 tables. It was replaced by the 1992
+list (quinn1994a): rows whose value or uncertainty changed carry groups ending _to1992 (_to2005 for P(13) a4,
+changed only in bipm2005a) and declare the replacing set "superseded"; the other rows still stand in the current
+BIPM files, and the later lists (quinn1994a, quinn1999a) declare this set "same" for them.
+
+Table 14 m″ (m32): printed 322.54(0.10); the 1992 and 1997 lists give 324.52(0.03). magyar1980a prints 342.54, out
+of order, and was corrected there to 324.54 from the 1992 list. This table equals magyar1980a to the digit in 24
+of 30 entries, so 322.54 is more likely Magyar & Brown's own number (one digit misprinted there) than a misprint
+here; the 2 MHz difference from 1992 is then a real one. Not corrected; left for the data owner.
+
+The 1983 table labels the 576 nm reference "o" and the 612 nm reference "o" (prime in App. M 4); 129I2 k = a28.
+No [shift_correction]: the four absolute values belong to four lasers with different cells (one block per set),
+and all four were replaced in 1992. The cell conditions are in [conditions].
+"""
+
+[conditions]
+nm576 = "dye laser (or frequency-doubled He-Ne), iodine cell inside or outside the laser, cold finger 6 +- 2 C"
+nm633 = "He-Ne laser with internal iodine cell, cell wall 16-50 C, cold finger 15 +- 1 C, one-way intracavity power 15 +- 10 mW, modulation 6 +- 1 MHz p-p"
+nm612 = "He-Ne laser, iodine cell inside or outside the laser, cold finger -5 +- 2 C"
+nm515 = "Ar+ laser, iodine cell inside or outside the laser, cold finger -5 +- 2 C"
+
+# Relations to other sets, by row group. Later MEPs: rows changed in 1992 (quinn1994a) or in the 2005 BIPM file
+# (bipm2005a) are "superseded" there. Sources named in the table references (App. M 5 bibliography): Table 1 refs.
+# [2]-[5] (Hackel 1975, held as hackel1980a; Camy; Borde 1981; Spieweck), Table 2 [3, 4, 6], Table 3 [4, 6, 7]
+# (Foth & Spieweck 1979), Table 4 [8] (Baird 1979: the same digits), Table 5 [9-11] (Cerez & Bennett 1979, Dschao
+# 1980, Bertinetto 1983), Tables 6-7 [10, 12, 13], Table 8 [14-22, 34] (Rowley & Wallard 1973, Hanes 1973 held in
+# landsberg1976a, Cerez 1974, ..., Morinaga & Tanaka 1978), Table 9 [22, 23] (b1-b11 Hanes 1971 and b12-b20
+# Morinaga & Tanaka 1978, the same digits), Tables 10-14 Gerlach 1975, Knox & Pao 1971, Magyar & Brown 1980,
+# Schweitzer 1973 for f(e2) - f(i). The 576 nm value combines the NBS 1982 value (pollock1983a) with a preliminary
+# NPL ratio (later barwood1984a); the other absolute values are means of ratios not held here. Means over the
+# primaries of this batch that need care are listed in the report, not declared.
+[overlaps]
+bipm2005a = { relation = "superseded", groups = ["bipm1984a_t1_to2005"] }
+quinn1994a = { relation = "superseded", groups = ["bipm1984a_t4_to1992", "bipm1984a_t5_to1992", "bipm1984a_t8_to1992", "bipm1984a_t9b_to1992", "bipm1984a_t9a_to1992", "bipm1984a_t10_to1992", "bipm1984a_t11_to1992", "bipm1984a_t13_to1992", "bipm1984a_t14_to1992", "bipm1984a_rec576_to1992", "bipm1984a_rec633_to1992", "bipm1984a_rec612_to1992", "bipm1984a_rec515_to1992"] }
+borde1981a = { relation = "mean", groups = ["bipm1984a_t1", "bipm1984a_t1_to2005", "bipm1984a_t2", "bipm1984a_t3"] }
+spieweck1980a = { relation = "mean", groups = ["bipm1984a_t1", "bipm1984a_t1_to2005"] }
+hackel1980a = { relation = "mean", groups = ["bipm1984a_t1", "bipm1984a_t1_to2005"] }
+foth1979a = { relation = "mean", groups = ["bipm1984a_t3"] }
+baird1979a = { relation = "same", groups = ["bipm1984a_t4_to1992"] }
+dschao1980a = { relation = "mean", groups = ["bipm1984a_t5_to1992", "bipm1984a_t6"] }
+ciddor1980a = { relation = "mean", groups = ["bipm1984a_t6", "bipm1984a_t7"] }
+glaser1981a = { relation = "mean", groups = ["bipm1984a_t6", "bipm1984a_t7"] }
+landsberg1976a = { relation = "mean", groups = ["bipm1984a_t8", "bipm1984a_t8_to1992"] }
+cerez1974a = { relation = "mean", groups = ["bipm1984a_t8", "bipm1984a_t8_to1992"] }
+hanes1971a = { relation = "same", groups = ["bipm1984a_t9a_to1992"] }
+morinaga1978a = { relation = "same", groups = ["bipm1984a_t9b_to1992"] }
+knox1971a = { relation = "mean", groups = ["bipm1984a_t10", "bipm1984a_t10_to1992"] }
+magyar1980a = { relation = "mean", groups = ["bipm1984a_t10", "bipm1984a_t10_to1992", "bipm1984a_t11", "bipm1984a_t11_to1992", "bipm1984a_t14", "bipm1984a_t14_to1992"] }
+schweitzer1973a = { relation = "mean", groups = ["bipm1984a_t13", "bipm1984a_t13_to1992"] }
+pollock1983a = { relation = "mean", groups = ["bipm1984a_rec576_to1992"] }

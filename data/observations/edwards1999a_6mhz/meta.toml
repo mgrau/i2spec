@@ -1,0 +1,68 @@
+id = "edwards1999a_6mhz"
+citation = "C. S. Edwards, G. P. Barwood, P. Gill and W. R. C. Rowley, \"A 633 nm iodine-stabilized diode-laser frequency standard\", Metrologia 36, 41-45 (1999), Table 2 and Section 5 (6 MHz modulation depth)"
+source = "https://doi.org/10.1088/0026-1394/36/1/7 (publisher PDF)"
+doi = "10.1088/0026-1394/36/1/7"
+retrieved = "2026-10-23"
+catalog = "precision.yaml:edwards1999a"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 2 (p. 45), "Hyperfine separations for 6-3, P(33) using a modulation depth of 6 MHz": the NPL column,
+f(bn - b21) of 127I2 P(33) 6-3 for b1-b20, and the absolute frequency of b21 at the default conditions of
+Section 4 (6 MHz modulation depth), 473 611 821 128 (15) kHz (Section 5, p. 44, and the Table 2 caption). 21 rows.
+Parsed by script from the PDF text layer and checked against a 200 dpi rendering of p. 45: every digit, minus sign
+and uncertainty agrees. Check: the printed Offset columns (NPL - CIPM, NPL - DFM) are reproduced exactly from the
+NPL, CIPM and DFM columns in all 20 rows. Values are printed in kHz and converted to MHz exactly. b21 is the
+reference of the table and is not entered as an interval. Components b1-b21 are the 21 main components of P(33)
+(odd J''), labelled by rank in frequency as in the paper.
+
+Not entered: the CIPM column (Quinn, Metrologia 30, 523 (1993/94), the recommended values) and the DFM column
+(Simonsen, IEEE Trans. Instrum. Meas. 46, 141 (1997)), which are other sources; the Offset columns, which are
+derived.
+
+Relation to edwards1999a: the same laser, cell and line, measured a second time at 6 MHz instead of 2 MHz
+modulation depth (Section 6: "two sets of hyperfine interval measurements made using modulation depths of 2 MHz and
+6 MHz, respectively, with the other parameters set to the default values"). edwards1999a holds Table 1 and the
+2 MHz f(b21); this set holds the 6 MHz measurement, so together the two sets hold the paper's line data and no row
+is duplicated. The two share the He-Ne reference (12 kHz) and the cell shift (5 kHz), so their absolute values
+are correlated; the intervals are separate measurements.
+
+Model-free checks. Table 2 - Table 1, component by component: -57 kHz (b9) to +58 kHz (b10), rms 22 kHz; without
+the poorly resolved pair b9/b10 (singled out by the paper, p. 45), -20 to +21 kHz. Table 2 - bipm2003a (Table 2 of
+the MEP 633 nm, weighted means): -13 to +14 kHz except b9 (-51 kHz) and b10 (+50 kHz). f(b21): 6 MHz minus 2 MHz
+= -42 kHz, which the paper's -10.4 kHz/MHz slope for b21 predicts over 4 MHz (-41.6 kHz).
+"""
+
+uncertainty = """
+Standard (1 sigma) uncertainties, as printed in parentheses; the Table 2 caption says so. Intervals: 3-8 kHz.
+f(b21): 15 kHz, the quadrature sum of the 12 kHz He-Ne reference (NPL-D on a13 of R(127) 11-5, CIPM value), the
+7 kHz reproducibility of the diode laser and a 5 kHz Type B uncertainty for the cell shift (Section 5).
+"""
+
+notes = """
+The MEP 633 nm Table 2 (bipm2003a) names this paper as one of its sources (its ref. [34]); its recommended values
+apply at 6 MHz modulation, so this table is the likely input. While this set is pending it has no say in bipm2003a.
+The DFM column (not entered) is Simonsen 1997, now held as simonsen1997a, digit for digit; no overlap to declare.
+"""
+
+[conditions]
+laser = "extended-cavity diode laser, 633 nm, PZT modulation at 530 Hz, third-harmonic detection"
+cell_length_mm = 100
+cold_finger_C = 15.0
+iodine_pressure_Pa = 17
+cell_wall_C = 20.5
+modulation_MHz_pp = 6
+saturating_power_uW = 800
+probe_power_uW = 80
+reference = "He-Ne NPL-D on a13 of 127I2 R(127) 11-5"
+
+[shift_correction]
+pressure_Pa = 17.0
+pressure_kHz_per_Pa = -9.5
+pressure_kHz_per_Pa_unc = 1.9
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.4
+modulation_kHz_per_MHz_unc = 2.1
+allowance_kHz = 2.0
+basis = "Paper, Sections 2-4: default conditions cold finger 15.00(5) C, 17 Pa, wall 20.5(1) C, modulation depth 6 MHz (peak-to-peak). Pressure: -9.5 kHz/Pa for b21 and b17 (Fig. 5, 4-26 Pa at 6 MHz); no uncertainty is printed, 1.9 kHz/Pa (20 %) is assumed here. Modulation: -10.4 kHz/MHz for b21 (Fig. 4, linear over 3-8 MHz; b17 shows -11.8 kHz/MHz), applied at 6 MHz with 2.1 kHz/MHz (20 %) assumed. Power: no shift discernible over 250-800 uW saturating power (less than +-2 kHz), entered as a 2 kHz allowance."

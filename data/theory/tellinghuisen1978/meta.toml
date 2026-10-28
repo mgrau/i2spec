@@ -1,0 +1,72 @@
+id = "tellinghuisen1978"
+citation = "J. Tellinghuisen, \"Intensity factors for the I2 B<->X band system\", J. Quant. Spectrosc. Radiat. Transfer 19, 149-161 (1978), Tables 1, 2, 4 and 7"
+source = "https://doi.org/10.1016/0022-4073(78)90074-2 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-4073(78)90074-2"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:tellinghuisen1978"
+unit = "FCF dimensionless; R-centroid in A"
+kind = "calculated Franck-Condon factors and R-centroids of B-X from RKR potentials (Wei and Tellinghuisen 1974 constants for B and low X; Le Roy 1970 for X in the fluorescence series)"
+files = ["fcf_absorption.csv", "fcf_fluorescence.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Entered: Table 1 (pp. 153-155; v'' = 0-5, v' = 0-67, J' = J'' = 0, Q branch, 408 FCF + 408 R-centroids), Table 2
+(pp. 156-157; v'' = 0-5, v' = 0-56, J' = J'' = 100, 342 + 342), Table 4 (p. 158; v' = 6, J' = J'' = 32, v'' = 0-47) and
+Table 7 (p. 159; v' = 43, J' = J'' = 14, v'' = 0-95). 1500 + 288 numbers. FCFs are printed as mantissa-exponent
+("1.429-9" = 1.429e-9) and entered in e-notation with the printed digits.
+
+Not entered (a defined subset was taken): Table 3 (p. 158; Franck-Condon density, units 1e-6 cm, and R-centroids, at
+15 B energies 4100-4800 cm-1 above the curve minimum for absorption from v'' = 0-5, Q(0) and Q(100); a smaller typeface
+of poorer legibility); Table 5 and Table 6 (p. 158-159; v' = 21, J' = 116, R(115) and P(117) branches, v'' = 0-65);
+Table 8 (p. 160; v' = 62, J' = 27, v'' = 0-104); Figs. 1-2. They are calculations of the same kind and can be added if
+needed; v' = 43 (Table 7) was chosen because two held measurements (koffend1979, bhale1985) concern that progression,
+and v' = 6 (Table 4) because it is the 632.8 nm (He-Ne) fluorescence series.
+
+How the tables were read. The OCR text layer is unusable (8 read as 0, a, B; 9 as S). Tables 1 and 2 (line-printer
+listings) were read by a template-matching OCR written for this font (character templates bootstrapped from 108
+values read by eye from p. 153, then extended by self-training), run twice with different template sets; each value
+was compared with tesseract and with the PDF text layer, digit by digit. Every value with a low-confidence character
+(80), every disagreement between the two runs and every value not confirmed digit by digit by one of the other two
+readers (49) was read by eye from 600-1200 dpi renders or pixel dumps; a random sample of 40 unflagged values was also
+read by eye (40/40 correct). Two machine readings were wrong and corrected: Table 1 v' = 55, v'' = 0, 6.535-3 (read
+5.535-3; the 6 lacks its top stroke) and Table 2 v' = 22, v'' = 4, R = 2.7568 (read 2.7566; a broken 8). Tables 4 and 7
+were read by eye from 600 dpi renders and checked against the machine reading.
+
+Checks (model-free):
+- Sum rule (p. 152): Table 1 v'' = 0 FCFs over v' = 0-67 sum to 0.8546; the text gives 0.867 for the whole discrete
+  sum, and the missing v' = 68 to the limit contribute about 0.01 (the text's v' = 75 example is 5.6e-4).
+- Table 7 (v' = 43, all v'' = 0-95) sums to 1.000008 and Table 4 (v' = 6, v'' = 0-47) to 0.9980: "virtually 100 %
+  discrete" (p. 156).
+- Table 1 against Table 2: |FCF(J = 0) - FCF(J = 100)| <= 3.1e-3 everywhere (text: "less than 3e-3"); the two
+  largest differences (v' = 10, v'' = 5) are 3.1e-3.
+- R-centroids: smooth in v' and in v'' wherever the FCF exceeds 2e-3 (cubic-interpolation residuals < 4e-4 A), and
+  R(J = 100) - R(J = 0) smooth in v'; the exceptions are near FCF nodes, where the paper's R-centroids jump (printed so,
+  e.g. Table 1 v' = 63, v'' = 2, 2.3380; Table 7 v'' = 90, "-.6467").
+- Table 4 against Table 1 at v' = 6 (J = 32 against J = 0): ratios 0.91-1.00 for v'' = 0-5.
+- Table 7 against the v' = 43 FCFs printed by koffend1979 (v'' = 15, 17: 3.595e-3, 3.297e-3 here; 3.457e-3, 3.199e-3
+  there) and by bhale1985 (Tellinghuisen 1983 and Raghuveer-Narasimham): agreement within 10-20 % for v'' < 20, worse
+  above, as the paper warns ("agreement beyond the 10 % level unlikely for transitions to v'' > 20").
+
+Reading notes: Table 1 v' = 36, v'' = 3 is printed "5.85-10" (three significant figures, two-digit exponent). Table 4
+v'' = 4 and 12 and Table 7 v'' = 18 have a broken second mantissa digit (left half missing), read as 0 from the glyph
+shape (no middle bar, as a 3 would have).
+"""
+
+uncertainty = """
+Calculated values. The paper: numerically reliable to one or two units in the fourth significant figure for FCFs above
+1e-3; the spectroscopic uncertainties are an order of magnitude larger; FCFs in Tables 4-8 uncertain by 0.001 in
+absolute value or 10 %, whichever is larger (p. 156); R-centroids are ill-defined where the FCF is small. The
+transcription itself carries a small residual risk of a misread digit in unflagged values (see transcription).
+"""
+
+notes = """
+Use. Tables 1 and 2 give FCFs and R-centroids for absorption from v'' = 0-5, from which J-dependence can be
+interpolated linearly in J(J+1) for J < 140 (p. 152); P/R differences at J = 100 are below 2e-4. The constants are
+superseded (Tellinghuisen 1982, footnote 41, finds Tables 1-2 still reliable to about 1 % for values above 1e-3 when
+recomputed with Luc 1980 and Tellinghuisen et al. 1980 constants; Tables 3-8 used a different X curve). Measured
+intensities that used these or later FCFs: chutjian1969, koffend1979, bhale1985, tellinghuisen1982.
+"""
+
+[columns]
+fcf_absorption = "table (1: J = 0, 2: J = 100), J (J' = J''), v_upper (v'), v_lower (v''), fcf, rcentroid_A, note."
+fcf_fluorescence = "table (4 or 7), v_upper, J_upper, J_lower, branch (Q, the hypothetical Q branch), v_lower, fcf, rcentroid_A, note."

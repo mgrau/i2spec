@@ -1,0 +1,21 @@
+state,quantity,value,unit,source,note
+X 0g+,zero-point energy used for 127I2,107.107,cm-1,"p. 148 (refs. 12, 13)","reprint (calculated values of King et al. 1980 and Luc 1980); added to the term values to refer Eqs. (1)-(2) to the X potential minimum"
+X 0g+,zero-point energy used for 129I2,106.691,cm-1,"p. 148 (refs. 12, 13)","as printed; King et al. 1980 (data/b_levels/king1980, Table 3) give 106.69095 for 127I129I and 106.2741 for 129I2 (see transcription)"
+B 0u+,Te(B-X) assumed,15769.05,cm-1,"p. 147","reprint; 'where necessary' in computing the pumped B levels"
+E,number of resolved E <- B lines analysed (127I2),867,,"p. 147",
+E,number of resolved E <- B lines analysed (129I2),250,,"p. 147",
+E,pumped B levels (v_B; J_B),21-74; 0-158,,"p. 147","the pumped B levels overall had v_B = 21-81 (p. 146)"
+E,short E progressions in the 127I2 runs,104,,"p. 147",
+E,highest observed level,29,,"p. 148","v_E = 25 always too weak; v = 23-29 from about six term values each, not very accurate"
+alpha,lowest level from which fluorescence was detected,40438,cm-1,"p. 146","v_alpha = 8"
+alpha,first observed band (v),8 +- 2,,"p. 152","from the 129I2 isotope shifts; +-200 cm-1 in Te"
+delta,first observed band,41732,cm-1,"p. 152","arbitrarily assigned v_delta = 0; eight bands, intensity maximum at delta_3"
+D' (2g),we; wexe,103.96; 0.205,cm-1,"p. 154 (ref. 7)","reprint: vibrational analysis of the 3400 A D' -> A' emission (Tellinghuisen 1977); 'almost identical to the beta state values in table 6'"
+D' (2g),Te',40650,cm-1,"p. 154 (ref. 8)","reprint: temperature-intensity studies (Guy et al. 1980), within 400 cm-1 of Te(beta)"
+D' (2g),Delta Te (D'-A'),30341.0,cm-1,"p. 154 (ref. 7)",reprint
+A' (2u),Te'' and De'' if beta = D',10689; 1858,cm-1,"p. 154","derived here from Te(beta) = 41030 and Delta Te = 30341.0, assuming A' dissociates to ground-state atoms; De'' = 1858 lies below the A' v = 23 level at ~2025 cm-1 (ref. 7), which 'precludes a definite identification of beta with D''"
+A' (2u),Te'' and De'' if alpha = D',9308; 3239,cm-1,"p. 154","derived here by the same argument"
+E,re from Tellinghuisen's Morse function,3.65(2),A,"p. 154 (ref. 20)","reprint; 'in accord with' re = 3.6342(18) A of this work"
+E,lifetime,27,ns,"p. 154 (ref. 22)","reprint (Rousseau 1975)"
+E,Cunha et al. levels at v_E = 14,about 5 too high,cm-1,"p. 149","comparison with Cunha et al. 1979 (pump v_B = 25-28, probe v_E = 0-14); their Be are 1-2 % larger"
+E,Wieland et al. constants,Te 41411.8; we 101.59; wexe 0.2380,cm-1,"p. 149 (ref. 6)","reprint of data/other_states/wieland1972 Table III"

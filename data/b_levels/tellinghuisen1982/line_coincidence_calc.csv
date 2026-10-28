@@ -1,0 +1,9 @@
+band,v_upper,v_lower,line,wavenumber_cm1,k0l_calc,absorption_pct_calc,note
+11-5,11,5,R(100),15856.376,0.196,,
+5-2,5,2,R(76),15856.379,0.465,,
+17-8,17,8,R(92),15856.380,0.058,,
+13-6,13,6,P(95),15856.522,0.318,2.8,
+17-8,17,8,P(87),15856.557,0.073,3.1,
+13-5,13,5,R(175),15866.663,0.000,,"printed 15 866.663; 15 856.663 is meant (the table is in ascending order and lists lines near 15 856.574 cm-1)"
+2-0,2,0,P(111),15846.692,0.000,,"printed 15 846.692; 15 856.692 is meant (ascending order)"
+3-1,3,1,P(47),15856.744,0.017,,

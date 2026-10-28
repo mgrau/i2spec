@@ -1,0 +1,6 @@
+series,verma_series,E_cm1,E_unc,v_upper_wieland,J_upper,v_lower,J_lower,y_cm1,exciting_calc_cm1,note
+1,I,55019.440,0.049,208,87,0,86,198.122,54633.419,"E' above the X potential minimum; v' = n + 4 with n = 204 in Wieland's formula (footnote a: absolute numbering unknown, likely within 15); exciting line R(86)"
+2,II,54824.596,0.014,205,46,0,47,132.418,54633.330,"v' = n + 1; exciting line P(47)"
+3,III,54828.053,0.016,205,49,0,48,135.882,54633.207,"v' = n + 1; exciting line R(48)"
+4,IVa,54761.091,0.016,204,22,0,23,112.367,54633.382,"v' = n; exciting line P(23)"
+5,IVb,54762.860,0.015,204,25,0,24,114.137,54633.360,"v' = n; exciting line R(24)"

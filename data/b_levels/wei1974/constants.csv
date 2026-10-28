@@ -1,0 +1,40 @@
+state,quantity,n,value,uncertainty,unit,table,reading,note
+B,T_e + G_v,0,15768.32,,cm-1,III,clear,"T_e, above the X potential minimum; T_e + G_v = sum_{n=0..10} c_n (v'+1/2)^n, valid v' = 4-77; footnote b: sd 0.016 cm-1, the printed figures reproduce the calculated values within 0.01 cm-1"
+B,T_e + G_v,1,126.1670,,cm-1,III,inferred,"omega_e; the fifth digit is broken in the scan (a fragment with a lower hook, read 5 or 3 by eye); with the other ten coefficients fixed, 126.1650 and 126.1630 leave residual trends against barrow1973's term values v' = 43-77 (sd 0.029 and 0.047, max 0.060 and 0.092 cm-1), 126.1670 gives sd 0.016, max 0.028, as the paper states (sd 0.016, max 0.032); 126.1680 gives sd 0.016, max 0.042"
+B,T_e + G_v,2,-0.86735,,cm-1,III,faint,"first digit after the point faint (read 3 or 8); -0.36735 cannot fit any B-state term values; with -0.86735 every other reading fits barrow1973 at sd 0.016 cm-1, a change of 1 in the last digit raises sd to 0.12"
+B,T_e + G_v,3,1.07448e-2,,cm-1,III,clear,
+B,T_e + G_v,4,-1.012324e-3,,cm-1,III,clear,
+B,T_e + G_v,5,4.55014e-5,,cm-1,III,faint,"second digit faint (5 or 3); 4.53014e-5 raises the sd against barrow1973 to over 3 cm-1"
+B,T_e + G_v,6,-1.334168e-6,,cm-1,III,faint,"second and third digits faint (3 or 5 each); only 1.334168 fits"
+B,T_e + G_v,7,2.499684e-8,,cm-1,III,faint,"third and fourth digits faint; only 2.499684 fits (2.497684 gives sd 3 cm-1)"
+B,T_e + G_v,8,-2.809711e-10,,cm-1,III,faint,"printed '2.?0 711' with the second and fourth digits faint; only 2.809711 fits"
+B,T_e + G_v,9,1.722584e-12,,cm-1,III,faint,"fifth digit faint (5 or 3); 1.722384 gives sd 5 cm-1"
+B,T_e + G_v,10,-4.431776e-15,,cm-1,III,faint,"third digit faint (3 or 5); -4.451776 gives sd 3 cm-1"
+B,B_v,0,0.02893,,cm-1,III,faint,"B_e; printed 0.0289__ with the last digits broken: only '0.0289' and a following 3 are legible; the other seven coefficients and barrow1973's B_v (v' = 4-77) imply 0.028941 +- 0.00003 before the authors' adjustment for the B0'' change (about -0.000007), i.e. about 0.028934"
+B,B_v,1,-1.204e-4,,cm-1,III,clear,"B_v = sum_{n=0..7} c_n (v'+1/2)^n; footnote c: sd about 5e-6 cm-1 (printed figures reproduce the calculated values within 1e-6 cm-1 for v <= 40, 2e-6 for v <= 60 and 5e-6 above)"
+B,B_v,2,-5.608e-6,,cm-1,III,clear,
+B,B_v,3,2.988e-7,,cm-1,III,faint,second digit faint
+B,B_v,4,-1.159e-8,,cm-1,III,faint,third digit faint
+B,B_v,5,2.195e-10,,cm-1,III,faint,third digit faint
+B,B_v,6,-2.047e-12,,cm-1,III,clear,
+B,B_v,7,7.579e-15,,cm-1,III,faint,"last digit faint; with these readings barrow1973's B_v minus the polynomial is flat (0.028941 +- 0.000031 cm-1, no trend over v' = 4-77)"
+B,ln(1e9 D_v),0,1.797,,,III,faint,"ln(D_v x 1e9 cm) = sum_{n=0..5} c_n (v'+1/2)^n (D_v in cm-1); second digit faint (7 or 8); 1.797 gives D_4 = 6.71e-9 cm-1, the calculated value of data/b_levels/yee1976 Table 2; footnote d: sd(D_v) about 6e-10 cm-1, fitted values reproduced within 1 %"
+B,ln(1e9 D_v),1,2.48e-2,,,III,clear,
+B,ln(1e9 D_v),2,-4.06e-4,,,III,clear,
+B,ln(1e9 D_v),3,3.4e-5,,,III,faint,"printed 3.4_ x 10^-5 with the third digit and the exponent faint; a fit to barrow1973's D_v (v' = 13-77) with the other five fixed gives 3.435e-5"
+B,ln(1e9 D_v),4,-6.41e-7,,,III,clear,
+B,ln(1e9 D_v),5,4.17e-9,,,III,clear,
+X,G_v,1,214.5918,,cm-1,IV,faint,"omega_e; printed 214.5?18 with the fifth digit faint; footnote a: from the fit of 29 band origins with T_e, 5 upper-state and 2 lower-state parameters, sd 0.012 cm-1. With x_e omega_e below, 3 omega_e + 18 x_e omega_e = G(4) - G(1) = 632.539 against the duplicate band origins of Table I (20-1 minus 20-4: 632.532); 214.5218 would give 632.33"
+X,G_v,2,-0.62427,,cm-1,IV,faint,"x_e omega_e (G_v = omega_e (v+1/2) + c2 (v+1/2)^2); first and last digits faint"
+X,B_v,0,0.037363,,cm-1,IV,faint,"B_e; fourth digit faint; consistent with Table II (3.73630e-2) and with the B0'' = 0.037306 that Gerstenkorn et al. 1977 (data/atlas_lines/gerstenkorn1977) reprint for this paper; footnote b: results of the correlated fit of Table II"
+X,B_v,1,-1.14e-4,,cm-1,IV,faint,"-alpha_e; printed -1.14?2 x 10^-4 with the fourth digit faint (3 or 5); Table II prints the same number, 1.14?2(24)"
+X,D_v,0,4.5e-9,,cm-1,IV,faint,"D_e; printed 4.?? x 10^-9 with the second and third digits faint (read 4.53 or 4.55); Gerstenkorn et al. 1977 reprint 4.54e-9 for this paper; footnote c: calculated from Dunham's relation"
+X,D_v,1,2.6e-11,,cm-1,IV,faint,"beta_e (D_v = D_e + beta_e (v+1/2)); first digit faint; calculated"
+X,B_e (correlated fit),,3.73630e-2,0.00068e-2,cm-1,II,clear,"Table II, correlated least squares (6 upper-state and 2 lower-state parameters; 29 bands: Table I and ref. 8, without 3-6 and 11-1)"
+X,alpha_e (correlated fit),,1.14e-4,0.0024e-4,cm-1,II,faint,"printed 1.14?2(24) x 10^-4, fourth digit faint (3 or 5)"
+B,B_e (correlated fit),,2.89927e-2,0.00221e-2,cm-1,II,faint,"printed 2.8??27(221) x 10^-2 with the third and fourth digits faint; read 2.89927 (third and fourth digits 9, 9 uncertain)"
+X,B_e (B_v difference fit),,3.73645e-2,0.00145e-2,cm-1,II,clear,"constant term (B_e' - B_e'') plus 5 upper-state and 1 lower-state parameters; (B_e' + B_e'') from the sums with the higher-order parameters fixed"
+X,alpha_e (B_v difference fit),,1.14e-4,0.0030e-4,cm-1,II,faint,"printed 1.14?4(30) x 10^-4, fourth digit faint"
+B,B_e (B_v difference fit),,2.89960e-2,0.00145e-2,cm-1,II,faint,"printed 2.8??60(145) x 10^-2 with the third and fourth digits faint; read 2.89960 (third and fourth digits 9, 9 uncertain)"
+X,B_e (pooled B_v''),,3.73617e-2,0.00076e-2,cm-1,II,clear,"direct fit of the pooled B_v'' values with 2 parameters"
+X,alpha_e (pooled B_v''),,1.12e-4,0.0343e-4,cm-1,II,faint,"printed 1.12?8(343) x 10^-4, fourth digit faint"

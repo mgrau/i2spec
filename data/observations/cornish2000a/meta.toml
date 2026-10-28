@@ -1,5 +1,5 @@
 id = "cornish2000a"
-citation = "S. L. Cornish, Y.-W. Liu, I. C. Lane, P. E. G. Baird, G. P. Barwood, P. Taylor and W. R. C. Rowley, \"Interferometric measurements of ¹²⁷I₂ reference frequencies for 1S-2S spectroscopy in muonium, hydrogen, and deuterium\", J. Opt. Soc. Am. B 17, 6-13 (2000)"
+citation = "S. L. Cornish, Y.-W. Liu, I. C. Lane, P. E. G. Baird, G. P. Barwood, P. Taylor and W. R. C. Rowley, \"Interferometric measurements of ¹²⁷I₂ reference frequencies for 1S-2S spectroscopy in muonium, hydrogen, and deuterium\", J. Opt. Soc. Am. B 17, 6-10 (2000)"
 source = "https://opg.optica.org/josab/abstract.cfm?uri=josab-17-1-6 (PDF obtained 2026-09-16)"
 doi = "10.1364/josab.17.000006"
 retrieved = "2026-09-16"
@@ -11,7 +11,12 @@ Table 2, "Iodine Transition Frequencies", read from the text layer of the publis
 2026-09-16. Three rows are printed; two are transcribed.
 
 Component labels are as printed (a15). For even J'' a line has 15 main components, so a15 is rank 15
-by frequency; this is the same labelling as Sansonetti (1997), which the paper follows.
+by frequency. The paper labels components "according to the nomenclature established by Gläser et al."
+(its ref. 19, Opt. Commun. 38, 119 (1981)), and its Figs. 3-5 run from a1 at the low-frequency end to a15
+(a21) at the high end, so the number is the rank, as here.
+
+Checked again on 2026-10-23 against the publisher PDF (text layer and a 200 dpi rendering of p. 9): both rows,
+their uncertainties and the printed temperatures agree.
 
 Excluded: R(137) 5-12, printed as component "a19-21". Its three components are blended in the
 measurement and it cannot be attached to a single rank, so it is left out rather than guessed at.
@@ -19,16 +24,19 @@ measurement and it cannot be attached to a single rank, so it is left out rather
 
 uncertainty = """
 As printed, per row, in parentheses: 0.14 MHz for R(26) 5-13 and 1.2 MHz for P(258) 7-11. Taken as
-standard (1 sigma) uncertainties.
+standard (1 sigma) uncertainties. The paper (p. 9) calls the parenthesized figure the standard error of the mean
+of four or five measurements over three days, "dominated by the frequency reproducibility of the iodine-stabilized
+laser", and says the measurement uncertainty of +-1 part in 10^10 (+-40 kHz, its Table 1) "must be added"; that
+term is not included in the figures entered here.
 """
 
 [conditions]
-cell = "wall and cold-finger temperatures printed per row; see notes"
-method = "interferometric measurement against a stabilised reference"
+cell = "quartz, 540 mm long, 30 mm diameter, in an oven; wall and cold-finger temperatures printed per row, see notes"
+method = "FM saturation spectroscopy (Ti:sapphire, 10.23 MHz sidebands, pump chopped at about 90 kHz); 1 m Fabry-Perot interferometer against a 633 nm He-Ne laser stabilized to R(127) 11-5"
 
 notes = "Wall/cold-finger temperatures as printed: R(26) 5-13 at 650 C wall, 39(3) C cold finger; P(258) 7-11 at 680 C wall, 43(3) C cold finger. These are hot-cell measurements; any pressure or temperature shift is as the authors left it."
 
 [shift_correction]
 pressure_Pa = 127.3
 allowance_kHz = 637.0
-basis = "Paper not available; meta: hot cells, cold finger 39(3) C (R(26) 5-13) and 43(3) C (P(258) 7-11), no correction. 127.3 Pa at 39 C from the Gillespie & Fraser vapour pressure. Allowance = |-5 kHz/Pa x 127.3 Pa|, using the ~-5 kHz/Pa for NIR hot-cell lines (Bodermann thesis -5.1(1.0); Liao 2010 '~5 kHz/Pa')."
+basis = "Paper (pp. 7-9, Table 2): hot cell, wall 650 C and cold finger 39(3) C for R(26) 5-13, 680 C and 43(3) C for P(258) 7-11; sidearm 25-45 C 'corresponding to iodine vapor pressures in the range 41-200 Pa'. The paper quotes a pressure shift of -5 kHz/Pa (its ref. 25, Bagayev et al.) only to size the cold-finger uncertainty (about 160 kHz for 3 C at 40 C) and applies no pressure correction. 127.3 Pa at 39 C from the Gillespie & Fraser vapor pressure (consistent with the paper's 41-200 Pa over 25-45 C). Allowance = |-5 kHz/Pa x 127.3 Pa|, the paper's -5 kHz/Pa (also Bodermann thesis -5.1(1.0); Liao 2010 '~5 kHz/Pa'), applied to both rows."

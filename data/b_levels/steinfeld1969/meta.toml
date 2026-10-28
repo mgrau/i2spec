@@ -1,0 +1,85 @@
+id = "steinfeld1969"
+citation = "J. I. Steinfeld, J. D. Campbell and N. A. Weiss, \"Spectroscopy of I2 at the dissociation limit\", J. Mol. Spectrosc. 29, 204-215 (1969), Tables I-III"
+source = "https://doi.org/10.1016/0022-2852(69)90100-3 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(69)90100-3"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:steinfeld1969"
+unit = "cm-1 (lines, terms, constants); A (wavelengths, turning points)"
+state = "B-X lines (Table I); B (Tables II, III, constants)"
+isotopologue = "127I2"
+files = ["lines.csv", "heads.csv", "coincidences.csv", "constants.csv", "potential.csv", "levels_calc.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-III (pp. 206-213), the constants of p. 205 and the numbers of the text, read from 400-450 dpi renderings of the
+scan. Table I is typewritten and clean; the OCR layer has most digits right but not all ("60.74" for 68.74, "la.56" for
+18.56, "68.83" for 88.83, "61.82" for 67.82, "4324.3"/"4432.0" kept as printed; "0.6012" for 0.0012), so every value was
+read from the images.
+
+The measurement: B-X absorption photographed on the Harrison echelle spectrograph (MIT), 20-cm cell heated to about
+100 C for the red bands, tungsten-iodine and xenon-arc continua, Fe and Ni hollow-cathode calibration lines, the
+exciting laser or lamp line superimposed. Red-region positions were measured relative to the 8-4 band (ref. 14).
+
+lines.csv (621 rows): Table I, every printed line of the 6-3, 7-3, 8-4, 9-4 and 10-5 bands (15 760-15 834 cm-1) and the
+43-0 and 49-1 bands (19 376-19 436 cm-1), J of the lower state (absorption notation). The table prints the leading digits
+only where they change (15806.88, then 06.53, ...); they are restored and the printed string is kept in 'printed'.
+heads.csv (4 rows): the band heads printed in Table I. coincidences.csv (12 rows): the air-wavelength coincidences of
+pp. 206-207 with the Ne 6328 A, Ar+ 5145 A and Cd 5086 A lines. constants.csv: the revised B constants of p. 205 and the
+dissociation-limit numbers of the text. potential.csv (9 rows): Table II, outer turning points R+ and G_v(obs) of
+v' = 43-51 and the -C/R^n comparisons. levels_calc.csv (36 rows): Table III, calculated G_v and Franck-Condon factors
+q(v', 0) for v' = 50-85 from the -C/R^5 potential (calculated).
+
+Checks (model-free):
+- Second differences along every branch are smooth to 0.1-0.3 cm-1 (the 0.01 cm-1 printing); the flagged departures are
+  blends.
+- Against the FTS constants of data/b_levels/luc1980 (upper and lower term values from Tables IV-V there): the red bands
+  fit with constant offsets: 6-3 -0.10 (sd 0.05), 8-4 -0.02, 10-5 -0.11 (sd 0.05), 7-3 and 9-4 -0.05 cm-1 with a J-dependent
+  trend to -0.2 at the highest J (J 96-137). The green bands do NOT fit as assigned: the 43-0 lines lie 1.1-1.9 cm-1 below
+  luc1980's 43-0 (a J shift of +1 reduces it to -0.12, sd 0.23), and the 49-1 lines 9.8-11.6 cm-1 below 49-1; no shift of J
+  or v' makes either fit to better than 0.1-0.2 cm-1 sd. They are blends of other bands, which agrees with the text ('all the
+  strong lines were actually blends') and with Tellinghuisen (J. Chem. Phys. 58, 2821 (1973)), Wei and Tellinghuisen 1974
+  (data/b_levels/wei1974) and Barrow and Yee 1973, who rejected these results. The modern assignment of the Ar+ 5145 A
+  excitation is P(13) and R(15) 43-0 (data/b_levels/yee1976, data/atlas_lines/gerstenkorn1979), not P(12)/R(14).
+- 7-3: R(J+6) and P(J) are printed with identical values for J = 96-113 (R 102-119), and 8-4: R(J+6) = P(J) for J = 1-37,
+  43-0: R(J+2) = P(J) for J = 12-21: the doublets were not resolved; those rows are marked.
+- Table II: G_obs - (G - De) = 4393.3 cm-1 in every row (De' of p. 211: 4393); the -C/R^n columns all equal -380.5 at v' = 50.
+- Table III: G_v rises smoothly except v' = 70.
+
+Misprints (entered as printed): Table III v' = 70 G_v printed 4432.0 between 4324.3 and 4338.9 (must be 4332.0); Table III
+v' = 50 is 4012.3 where Table II gives 4012.8. Table III prints no q(63, 0).
+
+Not entered: Figs. 1-4 (laser line profile, the plate near the limit, the Delta G curve with Mecke's data, the potential
+sketch).
+"""
+
+uncertainty = """
+No uncertainties are printed. The lines are given to 0.01 cm-1; the comparison with the FTS constants of luc1980 shows
+band offsets of -0.02 to -0.11 cm-1 and scatter of about 0.05 cm-1 in the red, and that the green 43-0 and 49-1 rows are
+not lines of those bands at all (above). The revised constants carry no error estimate and are stated to be valid only to
+about v' = 52. Calculated terms and Franck-Condon factors of Table III depend on the assumed -C/R^5 potential.
+"""
+
+notes = """
+What the set is. A 1969 echelle study near the Ne 6328 A line and near the B-state dissociation limit: line lists of five
+red hot bands, two (misassigned) green bands, revised B constants, and an R^-5 long-range potential with 93 +- 2 bound
+levels. The red-band lines are usable Doppler-limited positions (0.05-0.1 cm-1); the green-band assignments were rejected
+by every later analysis and should not be used as assigned. The dissociation limit 20 162.8 cm-1 rests on Verma's D0''
+(data/x_levels/verma1960), later shown to be wrong; the modern limit is about 20 043 cm-1 above X(0,0).
+
+Overlap with held sets. The constants pool this work with Steinfeld et al. 1965 (data/b_levels/steinfeld1965). Not
+compared with any model.
+"""
+
+[columns]
+lines = """
+isotopologue; line: branch(J'') v'-v''; band, branch, J_lower, v_upper, v_lower; sigma: vacuum wavenumber, cm-1 (leading
+digits restored); printed: as printed; note: blends and coincidences.
+"""
+heads = "band, v_upper, v_lower, head (cm-1), note."
+coincidences = "source_line, source_A (air wavelength of the emission line, A), line, lambda_A (the absorption line, A, as printed), note."
+constants = "state, quantity, value, unit, source (page or table), note."
+potential = """
+v; R_plus_A: outer turning point (A); G_obs: G_v' above the B minimum (cm-1); G_minus_De (cm-1); C4_term, C5_term,
+C6_term: -C'/R^4, -C/R^5, -C''/R^6 at R+ (cm-1, calculated).
+"""
+levels_calc = "v; G_calc: calculated G_v' above the B minimum (cm-1); fcf_v0: Franck-Condon factor q(v', 0); note."

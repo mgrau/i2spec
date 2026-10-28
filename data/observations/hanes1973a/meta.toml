@@ -1,0 +1,84 @@
+id = "hanes1973a"
+citation = "G. R. Hanes, K. M. Baird and J. DeRemigis, \"Stability, reproducibility, and absolute wavelength of a 633-nm He-Ne laser stabilized to an iodine hyperfine component\", Appl. Opt. 12, 1600-1605 (1973), Table I and pp. 1603-1604"
+source = "https://doi.org/10.1364/AO.12.001600 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1364/AO.12.001600"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked against 300 dpi renderings of pp. 1603-1604 (Table I and the "Absolute
+Wavelength" section). Two NRC He-Ne lasers with 12 cm internal cells of natural iodine (127I2), third-harmonic
+locking.
+
+Table I (p. 1603), "Best Values": the fitted positions of e, f, g, h, i, j relative to d (12 846, 26 215, 39 370,
+143 141, 165 060, 186 632 kHz, all below d) and the "Deviation matrix (measured-fitted)" for the eleven measured
+intervals (d-e +1, d-f -9, d-g +8, e-f +2, e-g -3, f-g +12, f-h -19, g-i +20, h-i 0, h-j -19, i-j +19 kHz). The
+measurements themselves are not printed; each is entered as fitted + deviation, f(x) - f(y) > 0 for x above y;
+group hanes1973a. (The text calls Table I "component locations relative to i"; the table is relative to d.)
+Labels: the letters run down in frequency from a; d, e, f, g, h, i, j = a18, a17, a16, a15, a14, a13, a12 (MEP:
+f = a16, i = a13).
+
+Absolute (abstract and p. 1604): "The weighted mean of all the measurements gives for the wavelength of the i
+component of the iodine absorption line lambda_i = 632991.398 +- 0.003 pm", against the 86Kr standard (the
+new photographic Fabry-Perot series, 632 991.399 +- 0.003 pm, eleven plates; the 1969 F-P and Michelson series,
+632 991.395 +- 0.005 pm; the 1968 value of Hanes & Baird, Metrologia 5, 32 (1969), 632 991.39 +- 0.02 pm).
+Entered as a frequency, c / lambda with c = 299 792 458 m/s (the 86Kr definition of the metre, carried into the
+1983 one), 473 612 214.869 MHz; group hanes1973a_kr. Only the weighted mean is entered: the 1972 series is most
+of its weight, and the earlier series are the authors' (the 1968 one also Hanes & Baird's).
+
+Checks (model-free): the eleven intervals are digit for digit landsberg1976a's Table 1 (its "data of ref. [1]"),
+which therefore reprints this table; measured = fitted + deviation reproduces them all. Against bipm2003a the
+intervals differ by -46 to +26 kHz (rms 30 kHz), and against cerez1974a by -66 to +33 kHz (rms 29 kHz). The weighted
+mean of the three printed wavelengths (weights 1/sigma^2) is 632 991.3978 pm, as printed. The frequency is 0.16 MHz
+above bipm2003a's a13 (473 612 214.712 MHz), and the i wavelength derived by rowley1973a (632 991 399.0 fm) is 1 fm
+longer, as that paper notes ("a value determined at NRC Canada (Baird 1973)").
+
+Not entered: the stability and reproducibility results (Allan variance, Fig. 3; 1000 s stability 1e-11; 2e-10
+reproducibility); the servo offsets (nu_i' - nu_i = -70 and -110 kHz for the uncompensated servos of the 29 cm
+and 23 cm lasers) and the two h - j values that differed by 15 kHz, which test the compensated servo; the pressure
+sensitivity of the locked wavelength (4.8e-9 lambda/Torr with 0.5 % third-harmonic distortion in the modulation,
+1.1e-9 lambda/Torr with it filtered, p. 1603).
+"""
+
+uncertainty = """
+Intervals: 20 kHz, as landsberg1976a enters the same values. The paper gives an rms deviation of 13 kHz for the fit
+of the eleven intervals, a +-20 kHz standard deviation for a 200 s reading of the beat (p. 1602), and residual
+systematic biases (background third derivative, overlap of components) "thought to be less than 40 kHz".
+Absolute: 0.003 pm is the standard deviation of the mean (2.24 MHz). The 86Kr standard itself is uncertain by
+about 1e-8 in the paper's words, "largely due to spectral line asymmetry", with "the mean asymmetry correction ...
+about half the maximum" for the path differences used (not stated as applied). As in schweitzer1973a, 4e-9 (1.89
+MHz) is taken for the realization of the 86Kr standard (the figure jennings1983a quotes for wavelength
+measurements against Kr) and combined in quadrature: 2.94 MHz.
+"""
+
+notes = """
+landsberg1976a's Table 1 reprints the eleven intervals (declared "same" there, group landsberg1976a_hanes1973).
+The MEP 633 nm R(127) 11-5 table (bipm2003a) cites this paper (Quinn 2003, ref. [102]); its values are weighted means
+of twelve sources.
+
+[shift_correction] applies to the absolute row only and is a tenth of its uncertainty: the iodine pressure was
+"regulated at about 100 mTorr" (13.3 Pa) by thermoelectric coolers on the side arm and the modulation was about
+5 MHz peak-to-peak (p. 1601); the coefficients are bipm2003a's. The 1968 and 1969 series in the weighted mean used
+earlier lasers whose conditions are not given here.
+"""
+
+[conditions]
+method = "two He-Ne lasers (23 and 29 cm cavities, 0.2 % mirrors) with 12 cm internal cells of natural iodine, third-harmonic locking at 170 Hz modulation, about 5 MHz p-p; intervals by beat frequency with one laser on a compensated servo; wavelength of i by photographic scanning Fabry-Perot against the 86Kr lamp"
+cell_length_mm = 120
+iodine_pressure_Pa = 13.3
+modulation_MHz_pp = 5.0
+output_power_uW = 50
+
+[shift_correction]
+groups = ["hanes1973a_kr"]
+pressure_Pa = 13.3
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 25.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 5.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "Paper p. 1600-1601: iodine about 100 mTorr (13.3 Pa), modulation about 5 MHz p-p, about 50 uW out of each 0.2 % mirror (about 25 mW intracavity). Coefficients as bipm2003a (MEP 633 nm): -9.6(1.9) kHz/Pa, -10(2) kHz/MHz, power 0(1) kHz/mW. Shift +178 kHz, uncertainty 37 kHz, against 2.94 MHz."

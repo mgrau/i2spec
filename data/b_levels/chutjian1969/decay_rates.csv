@@ -1,0 +1,7 @@
+v,band,sigma3q_1e12_cm3,A_rad_1e5_s,A_rad_unc_1e5_s,inv_tau_phase_shift_1e5_s,inv_tau_phase_shift_unc_1e5_s,inv_tau_direct_1e5_s,inv_tau_direct_unc_1e5_s,note
+12,12-2,1.763,5.63,0.57,,,,,
+13,13-2,1.743,5.60,0.56,,,,,
+14,14-1,1.718,5.49,0.55,8.77,0.46,7.63,0.58,"1/tau reprints: phase shift Chutjian, Link and Brewer 1967 (ref. 1); direct decay Davis and Grimes (ref. 2, unpublished)"
+16,16-2,1.684,5.38,0.54,,,,,
+25,25-0,1.495,4.82,0.48,13.0,0.5,15.6,0.7,"1/tau reprints as for v = 14 (total depopulation of small regions centered at v' = 14 and 25)"
+29,29-0,1.402,4.54,0.45,,,,,

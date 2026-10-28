@@ -1,0 +1,4 @@
+state,C5_theory_1e5,C6_theory_1e6,C5_meas_1e5,C5_meas_unc,C6_meas_1e6,C6_meas_unc,C8_meas_1e8,C8_meas_unc,meas_ref,note
+X0g+,-0.045,2.11,0,,1.48,0.12,0.386,0.120,"Ref. 10: Bacis, Cerny and Martin, J. Mol. Spectrosc. 118, 434 (1986)","theory: Saute and Aubert-Frecon 1982 (data/theory/saute1982), sign reversed to V = De - sum Cn/R^n"
+A'2u,2.09,1.95,1.74,0.12,1.80,0.10,0.39,0.05,"Ref. 11: Cerny et al., Chem. Phys. 216, 207 (1997)",
+B''1u,-0.907,1.78,-0.49,0.28,1.00,0.33,0.40,0.06,this work,

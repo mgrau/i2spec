@@ -1,0 +1,79 @@
+id = "jennings1983a"
+citation = "D. A. Jennings, C. R. Pollock, F. R. Petersen, R. E. Drullinger, K. M. Evenson, J. S. Wells, J. L. Hall and H. P. Layer, \"Direct frequency measurement of the I2-stabilized He-Ne 473-THz (633-nm) laser\", Opt. Lett. 8, 136-138 (1983), abstract and Table 1"
+source = "https://doi.org/10.1364/OL.8.000136 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1364/OL.8.000136"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked against 200 dpi renderings of pp. 136-137. The 473 THz He-Ne/I2 laser was
+compared with the sum of three laser frequencies (88 THz CH4-stabilized He-Ne, a 125 THz color-center laser
+measured against 13C18O2, and a 260 THz He-Ne laser locked by its second harmonic to a dye laser on the o component
+of P(62) 17-1) generated in a He-Ne plasma (NBS Boulder). Entered (group jennings1983a):
+- g of R(127) 11-5 (a15): 473 612 340.492 MHz (abstract and Table 1);
+- i of R(127) 11-5 (a13): 473 612 214.789 MHz, as measured (abstract and Table 1);
+both with the printed total uncertainty, 74 kHz (1.6e-10).
+Also entered, as a reprint (group jennings1983a_pollock1983): Table 1's "I2/2, 260 THz" frequency, 260 103 404.273
+MHz, doubled, 520 206 808.546 MHz for the o component (a1) of P(62) 17-1. It is the measurement of Pollock et al.
+1983 (the text's ref. 4: "the CO2 laser used to measure the 260-THz frequency"), held as pollock1983a
+(520 206 808.547 MHz); it differs by the rounding of the half, and is declared "same" below.
+Labels: g = a15, i = a13 (MEP letters for R(127) 11-5); o of P(62) 17-1 = a1 (pollock1983a, bipm2003c).
+
+Not entered: the i value "adjusted to the operating conditions recommended by the BIPM", 473 612 214.830 +- 0.074
+MHz (the measured value with -37 kHz for 13.4 mW against 40 mW standing-wave power and +80 kHz for a 20 C against
+15 C cold finger, both from other papers; the corrections as printed sum to 214.832); the other Table 1 rows (CH4,
+88 376 181.609 MHz, the reference; the color-center laser, 125 132 754.610 MHz, not iodine); the g - i difference,
+125.703 MHz, which is the two entered rows; "recent frequency measurements in our laboratory between g and i of
+125.694 MHz", printed without an uncertainty or a source.
+
+Checks (model-free): Table 1 sums: 88 376 181.609 + 125 132 754.610 + 260 103 404.273 = 473 612 340.492 MHz (g, the
+color-center laser "as tuned for g"), and g - i = 125.703 MHz as printed. The total uncertainty: [(27.4)^2 + 51^2 +
+47^2]^(1/2) = 74 kHz, with 51 kHz = 9 + 12 + 30 kHz (CH4-correlated, added) and 27.4 kHz printed for the measurement
+terms 0, 11 and 25 kHz in quadrature (27.3 kHz). Against bipm2003a as printed: g +86 kHz, i +77 kHz, and g - i is 9
+kHz above bipm2003a's 125.694 MHz.
+"""
+
+uncertainty = """
+The printed total uncertainty, 74 kHz, taken as 1 sigma: the 27.4 kHz measurement uncertainty (counting, MIM diode),
+the 51 kHz from the CH4 reference value (9 kHz at 88 THz, propagated through the chain and added linearly) and the
+47 kHz reproducibility of the I2-stabilized laser (that of g, "about 47 kHz"). The two rows share the CH4 and most
+of the chain, so their errors are largely common. The 576 nm reprint: the doubled Table 1 terms, 50 kHz
+(measurement) and 60 kHz (CH4) in quadrature, 78 kHz (pollock1983a carries 83 kHz).
+"""
+
+notes = """
+The 1983 recommended value of the 633 nm standard (f(i) = 473 612 214.8 MHz, CCDM 1982) rests on this measurement;
+the MEP 2001 value (bipm2003a, f(a16) by comb measurements) does not, so no [overlaps] with bipm2003a.
+
+[shift_correction] applies to the two 633 nm rows: the laser had its I2 cold finger at 20 C (26.94 Pa, Gillespie &
+Fraser), 6 MHz modulation width and 13.4 mW standing-wave power (Table 1 footnote c and p. 138). bipm2003a's
+coefficients are used, as for the other 633 nm He-Ne/I2 sets: -9.6(1.9) kHz/Pa (the -15 kHz/C of the MEP, which is
+the paper's own +80 kHz for 20 to 15 C within 7 kHz), -10(2) kHz/MHz, and power 0(1) kHz/mW at 13.4 mW (the paper's
+-37 kHz for 13.4 to 40 mW, -1.4 kHz/mW, is within that). Shift +319 kHz, uncertainty 54 kHz. The 576 nm reprint row
+is left as printed (pollock1983a has its own correction).
+"""
+
+[conditions]
+method = "He-Ne/I2 laser (3He-20Ne, internal cell) compared with the sum frequency of 88 THz (CH4-stabilized He-Ne), 125 THz (color-center laser, against 13C18O2 R1(26)) and 260 THz (He-Ne locked to half of a dye laser on P(62) 17-1 o) radiation, generated in an 8 m He-Ne summing tube; frequency chain from the CH4 standard"
+cold_finger_C = 20.0
+modulation_MHz_pp = 6.0
+standing_wave_power_mW = 13.4
+output_power_uW = 47
+
+[shift_correction]
+groups = ["jennings1983a"]
+pressure_Pa = 26.94
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 13.4
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 6.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+basis = "Paper Table 1 footnote c and p. 138: cold finger 20 C (26.94 Pa, Gillespie & Fraser at 293.15 K), modulation width 6 MHz, standing-wave power 13.4 mW. Coefficients as bipm2003a (MEP 633 nm): -9.6(1.9) kHz/Pa, -10(2) kHz/MHz, power 0(1) kHz/mW. Shift +319 kHz, uncertainty 54 kHz."
+
+# Table 1's 260 THz row is pollock1983a's 520 THz measurement, halved and rounded.
+[overlaps]
+pollock1983a = { relation = "same", groups = ["jennings1983a_pollock1983"] }   # pending until admitted

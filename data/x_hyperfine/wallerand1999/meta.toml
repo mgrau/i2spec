@@ -1,0 +1,96 @@
+id = "wallerand1999"
+citation = "J.-P. Wallerand, F. du Burck, B. Mercier, A. N. Goncharov, M. Himbert and Ch. J. Bordé, \"Frequency measurements of hyperfine splittings in ground rovibronic states of I2 by stimulated resonant Raman spectroscopy\", Eur. Phys. J. D 6, 63-76 (1999), Tables 1-3"
+source = "https://doi.org/10.1007/s100530050285 (publisher PDF)"
+doi = "10.1007/s100530050285"
+retrieved = "2026-10-26"
+unit = "splittings (data.csv) in kHz; eqQ in MHz, C, d and delta in kHz (constants.csv)"
+isotopologue = "127I2"
+state = "X"
+files = ["data.csv", "constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 2(a) and 2(b) (p. 72): the 32 measured hyperfine splittings of X v'' = 0, J'' = 13 (16) and J'' = 15 (16), with
+their standard uncertainties; Table 3(a) and 3(b) (p. 72): the four hyperfine constants fitted to each J'' (8 rows).
+The PDF is born-digital (LaTeX); the values were parsed by script from its text layer and checked against a 300 dpi
+rendering of p. 72: all 32 rows (labels, signs, digits, uncertainties) agree. Uncertainties are printed in Hz and
+converted to kHz exactly. Rows are in the printed order.
+
+Labels. Table 2 gives each splitting as "(eps, F -> eps, F + 1)" for J'' = 13 and "(eps, F -> eps, F - 1)" for
+J'' = 15; F_from and F_to are the first and second level as printed, eps (3 or 5) the paper's label of the hyperfine
+manifold (Fig. 2: "eps'' = 5 hyperfine levels", "eps'' = 3 hyperfine levels"), F the total angular momentum. For
+odd J'' only the exchange-symmetric nuclear-spin states (I = 1, 3, 5) exist; eps is the I of the manifold, but the
+quadrupole coupling mixes I strongly, so eps is a label rather than a good quantum number where I = 1 also occurs
+(F = 12-14 for J'' = 13, F = 14-16 for J'' = 15).
+
+Sign. Not defined in the text. The printed value is E(eps, F_from) - E(eps, F_to), the first-listed level minus the
+second: Fig. 2(a) draws the eps'' = 5, J'' = 13 levels with F'' = 8 highest and F'' = 14 lowest, and 5, 8 -> 5, 9 is
+printed +264 267.940 kHz. The independent calculation below gives this sign for all 32 rows with eqQ < 0 in the
+standard linear-molecule quadrupole Hamiltonian.
+
+Checks (model-free; the script is independent of i2spec code). The four-term X-state Hamiltonian (eqQ, C, d, delta)
+was diagonalized in a product basis with the quadrupole coupling to J'' +- 2 included (B0'' = 0.037315 cm-1), keeping
+the symmetric nuclear-spin states. Every row is matched to a pair of levels of the same eps with the printed sign and
+magnitude. (1) With the Table 3 constants as printed, every row is reproduced to 0.65 kHz (rms 0.31 kHz for
+J'' = 13, 0.25 kHz for J'' = 15) when the tensor spin-spin term is taken as 2/((2J-1)(2J+3)) [3/2((I1.J)(I2.J) +
+(I2.J)(I1.J)) - (I1.I2)J^2] times d; the paper does not print its Hamiltonian, and with 5/((2J-1)(2J+3)) the fitted
+d is 2.46 times smaller. (2) A free fit of the four constants to each table gives rms 0.27 kHz (J'' = 13) and
+0.22 kHz (J'' = 15), no residual above 0.51 kHz, eqQ within 0.21 and 0.18 kHz of Table 3 (its uncertainty 0.45 kHz),
+delta within 20 and 16 Hz, C within 9.6 and 6.5 Hz (2-3 times the printed uncertainty). So no row is misprinted
+beyond about 1 kHz, and every label is consistent; the residuals are about ten times the printed 28-75 Hz, so the
+check does not test the printed uncertainties (the paper prints no fit residuals; an eqQ uncertainty of 0.45 kHz
+from 16 rows points to a fit standard deviation of a few hundred Hz as well, an inference). (3) The magnitudes agree
+with the rounded MHz values written next to each pair of levels in Fig. 2 (264, 229, 339, 87, 219, 75, 100, 163, 349,
+458; 129.25, 129.12, 332, 388, 212, 29; 278, 229, 335, 447 ...).
+
+Not entered: Fig. 2's optical components of P(13) and R(15) 43-0 at 514.5 nm used to drive each Raman pair (a
+diagram); the line-shape theory, Eqs. (1)-(14); the systematic studies of Sect. 4 (in notes); Figs. 4-12.
+"""
+
+uncertainty = """
+Table 2: "Standard uncertainty (Hz)", 1 sigma (Table 1: "The uncertainties are expressed as standard deviations"):
+type A repeatability 6-28 Hz (53 and 69 Hz for the two weak lines), reproducibility 15 Hz; type B beam divergence
+15 Hz, beam aberrations 20 Hz, light shift 20 Hz for two lines only (eps 3, F 15 -> 16 of J'' = 13 and eps 3, F 18 ->
+17 of J'' = 15, Sect. 4.3.2), synthesizers < 1 Hz; combined 28-39 Hz, 60 and 75 Hz for the two weak lines. Each
+value is the mean of two series of ten measurements made a few days apart.
+Table 3: as printed, from an unweighted least-squares fit ("No ponderation has been used"); statistical only.
+"""
+
+notes = """
+Method. Stimulated resonant Raman spectroscopy in a continuously pumped 57 cm cell at about 0.13 Pa (1 mTorr): two
+co-propagating beams from one Ar+ laser at 514.5 nm, shifted by two AOMs driven by GPS-referenced synthesizers, are
+tuned to a strong (Delta F = Delta J) and a weak (Delta F = 0) hyperfine component of P(13) or R(15) 43-0 sharing the
+upper level (B v' = 43, J' = 12 or 16); the Raman resonance frequency omega1 - omega2 is the splitting of two X
+v'' = 0 hyperfine levels (27-458 MHz). 12.5 mm waist, 10 um pinhole for wavefront control, 5 kHz frequency
+modulation of beam 1 (index about 1), Lorentzian-derivative fits; linewidth about 6-7 kHz HWHM.
+
+Systematic studies printed (Sect. 4), coefficients of the Raman resonances (X-state coherences), not of optical lines:
+line-center shift from wavefront curvature Delta f(Hz) = 20 000 / R(m) (Fig. 6), 500 Hz at R = 50 m (Fig. 5); beam
+angle below 3e-6 rad, transit broadening 1 kHz; light shift computed -320 Hz at the beam center, -213 Hz for the
+Gaussian profile (20 mW per beam, 12.5 mm waist, perturbing level 2.7 MHz away), extrapolated to zero power with a
+20 Hz uncertainty; pressure broadening 7 +- 1 kHz/mTorr (53 +- 8 kHz/Pa, 0.04-8 Pa, from the earlier paper, ref.
+[1]); no pressure shift from 1 to 4 mTorr (0.13-0.53 Pa) with a 15 Hz standard deviation while the width went from
+about 7 to 28 kHz; a 10 G field (horizontal or vertical) broadens without shift (orthogonal linear polarizations),
+earth-field broadening about 200 Hz; 2 % added amplitude modulation gives no measurable shift.
+
+Related sets. The text compares J'' = 13 with Yokozeki and Muenter's molecular-beam values (100-1600 Hz
+uncertainty, not reprinted here). data/hyperfine_parameters/wallerand2000 held the X state at this paper's
+constants (not printed there). hong2000a, hong2001a, hong2002a and hong2002b held C'', d'', delta'' at this paper's
+values (hong2002a: d'' = 1.52 kHz, delta'' = 3.70 kHz) as fixed inputs of their own fits; those are not reprints of
+these measurements. The paper's eqQ(J'' = 15) - eqQ(J'' = 13) = -11.85 kHz, attributed by the authors to centrifugal
+distortion. Not in the catalog. Not compared with any model.
+
+data/x_hyperfine holds X-state hyperfine data; no loader reads this set (src/i2spec/fit/x_hyperfine.py reads only
+bacis1980 by path).
+"""
+
+[columns]
+data = """
+v, J: the X level (v'' = 0; J'' = 13 or 15). eps, F_from, F_to: the printed transition (eps, F_from -> eps, F_to).
+value_kHz: the printed measured frequency, E(eps, F_from) - E(eps, F_to) (see transcription, Sign).
+uncertainty_kHz: printed standard uncertainty (Hz) / 1000. table: 2(a) or 2(b). note: printed row.
+"""
+constants = """
+v, J: the X level. quantity: eqQ, C, d or delta (the paper's four-term Hamiltonian, not printed in the paper).
+value, uncertainty, unit: as printed (uncertainty printed as m x 10^-n). table: 3(a) or 3(b). note: printed row.
+"""

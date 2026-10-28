@@ -1,0 +1,17 @@
+state,quantity,value,unit,source,note
+gamma,Be,1.9664e-2,cm-1,"Table 3, last line","rotational constants from the Table 3 B_v, v' = 6 excluded"
+gamma,alpha_e,1.79e-5,cm-1,"Table 3, last line",
+epsilon,Be,2.153e-2,cm-1,"Table 4, last line",
+epsilon,alpha_e,5.07e-5,cm-1,"Table 4, last line",
+gamma,re,3.676,A,p. 69,"from Be; Delta J = +-1 only, so gamma is 3Pig(0g+) if case (c) holds (p. 69)"
+epsilon,re,3.513,A,p. 69,"from Be; Delta J = +-1 only, so 0g+ (p. 69); king1981 finds these B_v about 8 % too high (its E state re = 3.6342 A)"
+alpha,first observed member T0,40334.5,cm-1,p. 64,"approximately; relative to X(0, 0)"
+beta,first observed member T0,40976.9,cm-1,p. 64,approximately
+gamma,first member T0,41561.2,cm-1,p. 65,
+epsilon,first observed member T0,42541.8,cm-1,p. 65,
+alpha; beta,vibrational spacing,about 100,cm-1,p. 64,"each progression over twenty members; the possibility that beta is the alpha upper levels probed from a B level 642 cm-1 lower, populated by relaxation, is rejected (p. 64)"
+epsilon,apparent alternation,about 190,cm-1,p. 65,alternating intensities give the impression of two interleaved progressions with omega about 190 cm-1; the authors believe one progression with multifrequency pumping
+B 0u+,dissociation limit D,20043.122,cm-1,p. 63 (ref. 14),"reprint: Danyluk and King, Chem. Phys. Lett. 43, 1 (1976); relative to X(0, 0)"
+B 0u+,lifetime of J63(103) (calculated),1e7,s,p. 63,vibrational (tunneling) lifetime from Le Roy and Bernstein's quadrature with the RKR potential of Barrow and Yee
+B 0u+,J78(8) below the B limit,3.26,cm-1,p. 64,20043.122 - 20039.86
+B 0u+,relative frequency of B <- X lines,+-0.005,cm-1,p. 62,pump-laser frequencies against a 0.556 cm-1 etalon; absolute to +-0.05 cm-1

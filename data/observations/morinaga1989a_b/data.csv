@@ -1,0 +1,10 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(84) 5-5,f10,interval,-293,1,,a15,morinaga1989a_b_p84,"Table 2: f, -293 +- 1 MHz (calc. -293.45); Gerstenkorn-Luc letter f = rank 10 by frequency"
+127I2 P(84) 5-5,g9,interval,-427,1,,a15,morinaga1989a_b_p84,"Table 2: g, -427 +- 1 MHz (calc. -426.49); letter g = rank 9"
+127I2 P(84) 5-5,h8,interval,-436,1,,a15,morinaga1989a_b_p84,"Table 2: h, -436 +- 1 MHz (calc. -435.61); letter h = rank 8"
+127I2 P(84) 5-5,i7,interval,-445,1,,a15,morinaga1989a_b_p84,"Table 2: i, -445 +- 1 MHz (calc. -444.78); letter i = rank 7 (the label is dropped in the text layer)"
+127I2 P(84) 5-5,j6,interval,-454,1,,a15,morinaga1989a_b_p84,"Table 2: j, -454 +- 1 MHz (calc. -453.82); letter j = rank 6"
+127I2 P(84) 5-5,k5,interval,-575,1,,a15,morinaga1989a_b_p84,"Table 2: k, -575 +- 1 MHz (calc. -575.39); letter k = rank 5"
+127I2 P(84) 5-5,n2,interval,-598,1,,a15,morinaga1989a_b_p84,"Table 2: n, -598 +- 1 MHz (calc. -598.13); letter n = rank 2"
+127I2 P(84) 5-5,o1,interval,-880,1,,a15,morinaga1989a_b_p84,"Table 2: o, -880 +- 1 MHz (calc. -879.81); letter o = rank 1"
+127I2 R(69) 3-4,a21,frequency,455986233.494,2,,,morinaga1989a_b_ca,"p. 1657 and p. 1659: the 40Ca 1S0-3P1 line is 7 +- 2 MHz higher than component a of R(69) 3-4; entered as f(40Ca 1S0-3P1) = 455 986 240.494 MHz minus 7 MHz"

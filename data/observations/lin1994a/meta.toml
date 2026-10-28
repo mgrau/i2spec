@@ -26,7 +26,12 @@ notes = """
 The MEP 543 nm tables (bipm2003b) cite this paper (ref. [8]) and Gläser's PTB report (ref. [4]); declared there as
 "mean". cheng2001a (the same NTHU group, 2001) remeasured both lines relative to b10 by a different method.
 Residuals against an earlier version of the model (obs - model): R(12) 26-0 rms 27 kHz, R(106) 28-0 rms 12 kHz over all three columns. Checked against the model only.
+Column [4] is now held at its source, brand1993a (Brand 1993, Table 2, from R(12) a9; all 19 values equal after
+re-referencing to b8), and is declared "same" there by group below.
 """
 
 [conditions]
 method = "internal-mirror 543 nm He-Ne lasers with internal I2 cells, third-harmonic locking; beat frequencies"
+
+[overlaps]
+brand1993a = { relation = "same", groups = ["lin1994a_brand"] }   # column [4], Brand 1993 Table 2 re-referenced to b8; pending until admitted

@@ -1,0 +1,35 @@
+v,U,r_min_A,r_max_A,note
+0,102.08,2.621,2.717,
+2,527.44,2.564,2.790,
+6,1363.60,2.510,2.874,
+10,2179.06,2.474,2.940,
+14,2973.82,2.446,3.001,
+18,3747.28,2.423,3.056,
+22,4498.49,2.403,3.111,
+26,5226.63,2.386,3.164,
+30,5930.54,2.371,3.217,
+34,6608.93,2.358,3.273,
+38,7260.45,2.346,3.329,
+42,7882.80,2.336,3.389,
+46,8474.73,2.328,3.451,
+50,9034.45,2.321,3.517,
+54,9559.11,2.315,3.591,
+58,10045.19,2.309,3.671,
+62,10490.72,2.305,3.760,
+66,10893.54,2.301,3.861,
+70,11251.24,2.298,3.973,
+74,11562.11,2.296,4.108,
+78,11824.50,2.294,4.263,
+82,12039.72,2.292,4.448,
+85,12170.52,2.291,4.628,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974)"
+89,12302.32,2.290,4.942,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +0.10 cm-1"
+91,12352.32,2.290,5.133,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +1.50 cm-1"
+93,12393.42,2.289,5.354,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +3.60 cm-1"
+95,12427.12,2.289,5.563,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +6.10 cm-1"
+97,12454.62,2.289,5.778,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +7.70 cm-1"
+99,12476.92,2.288,6.010,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +8.10 cm-1"
+101,12495.02,2.288,6.263,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +7.40 cm-1"
+103,12509.82,2.288,6.522,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +5.70 cm-1"
+105,12522.32,2.288,6.823,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +4.10 cm-1"
+107,12532.22,2.288,7.236,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = +2.30 cm-1"
+112,12547.52,2.288,8.814,"above v'' = 84: r_min from a short extrapolation, r_max = r_min + 2f (text p. 747); rests on the Table V lines, which are NO (Verma and Le Roy 1974); U(v) - U(0) - (sum of Table VI to v) = -1.70 cm-1"

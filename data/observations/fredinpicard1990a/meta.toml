@@ -25,7 +25,13 @@ The MEP 543 nm tables (bipm2003b) cite this paper (ref. [7]) and Chartier et al.
 and Lin 1994; declared there as "mean" (no MEP row is reached: the MEP gives both lines from R(106) b10). Residuals
 against an earlier version of the model (obs - model): R(12) 26-0 rms 20 kHz, R(106) 28-0 rms 0.11 MHz. Checked with the shipped model
 only.
+Ref. [6] is now held as chartier1989a (Opt. Commun. 74, 87 (1989), Table 1, from a10, with the a10 - b1 link and
+external 0.5 m cells at 2.2 Pa, not internal ones); every row here is its value, R(106) re-referenced to b1, and is
+declared "same" below.
 """
 
 [conditions]
-method = "two He-Ne lasers at 543 nm with internal iodine cells, third-derivative locking, beat frequencies (Chartier et al.)"
+method = "two He-Ne lasers at 543 nm with external 0.5 m iodine cells at 2.2 Pa (cold finger -6 C), third-derivative locking, beat frequencies (Chartier et al.)"
+
+[overlaps]
+chartier1989a = "same"   # Tables 2-3 "Obs." are Chartier et al. 1989 Table 1; pending until admitted

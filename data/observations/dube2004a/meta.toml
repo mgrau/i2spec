@@ -1,5 +1,5 @@
 id = "dube2004a"
-citation = "P. Dubé and M. Trinczek, \"Hyperfine-structure splittings and absorption strengths of molecular-iodine transitions near the trapping transitions of francium and thallium\", J. Opt. Soc. Am. B 21, 1113-1126 (2004)"
+citation = "P. Dubé and M. Trinczek, \"Hyperfine-structure splittings and absorption strengths of molecular-iodine transitions near the trapping frequencies of francium\", J. Opt. Soc. Am. B 21, 1113-1126 (2004)"
 source = "https://doi.org/10.1364/JOSAB.21.001113 (PDF obtained 2026-09-16)"
 doi = "10.1364/JOSAB.21.001113"
 retrieved = "2026-09-16"
@@ -22,6 +22,12 @@ components), and odd for R(113) 3-10, which runs to a21 (21). Component labels a
 frequency, consistent with the rest of the collection.
 
 This set gives no absolute frequency: the paper measures splittings only.
+
+Checked again on 2026-10-23 by script against the text layer of the publisher PDF (p. 1117) and on a 200 dpi
+rendering: all 62 values agree. Not entered: Table 2, Delta eQq and Delta C per line (the fit varied eQq' and C'
+only, with d' and delta' set to zero and the X state held at Yokozeki and Muenter's v'' = 0, J'' = 13 values): two
+constants, not the four that data/hyperfine_parameters carries; Table 3, line strengths and transition dipole
+moments; the Doppler line centers printed in Fig. 2, which are atlas values (its ref. 15, the 1982 Orsay atlas).
 """
 
 uncertainty = """
@@ -36,7 +42,7 @@ per-row error. It is recorded here as a group systematic instead: each line has 
 """
 
 [conditions]
-cell = "iodine at 284 mTorr, cell at 680 K (conditions given for the Fig. 2 spectra near 718 nm)"
-method = "saturated absorption, pump 1.24 W/cm2, probe 0.107 W/cm2"
+cell = "0.2370 m cell at 680 K, iodine at 284(12) mTorr (cold finger 24.0(5) C) (conditions given for the Fig. 2 spectra near 718 nm)"
+method = "modulation-transfer saturated absorption (pump chopped at 7.1 kHz), pump 1.24 W/cm2, probe 0.107 W/cm2"
 
-notes = "v'' = 9 and 10, inside the 660-740 nm region where the observation set was otherwise empty. Lines chosen as references near the francium and thallium trapping transitions."
+notes = "v'' = 9 and 10, inside the 660-740 nm region where the observation set was otherwise empty. Lines chosen as references near the francium trapping transitions (D2 line, 718 nm)."

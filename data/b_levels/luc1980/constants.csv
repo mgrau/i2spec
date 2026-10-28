@@ -1,0 +1,10 @@
+state,quantity,value,unit,source,note
+X,B0 (Part I),0.037311571,cm-1,p. 43,"global fit of Part I (107 bands, 11 462 lines, 217 parameters); the value adopted in Table IV"
+X,D0 (Part I),4.577333e-9,cm-1,p. 43,
+X,B0 (Part II),0.037311729,cm-1,p. 43,"global fit of Part II (32 bands v' = 31-62, v'' = 0; 2654 lines, 130 parameters) with B0'' and D0'' free"
+X,D0 (Part II),4.568565e-9,cm-1,p. 43,
+X,B0 (one sweep),0.037311565,cm-1,p. 43,"all 14 116 lines with the 139 band origins fixed (206 unknowns)"
+X,D0 (one sweep),4.574309e-9,cm-1,p. 43,
+X,E(v''=0) offset,-107.1067,cm-1,p. 43,"E(v'') = -107.1067 + G(v'') with G from Table VI reproduces Table IV to 0.0005 cm-1 (sd)"
+B,T00,15724.5894,cm-1,Table VII,"printed above the Table VII G column: (T_0,0 = 15 724.5894)"
+B-X,sd global fit,0.0015,cm-1,p. 43,"standard deviation between calculated and measured wavenumbers of the global fit; 0.001, 0.0015 (abstract and Fig. 1: 0.0017) and 0.004 (Fig. 1: 0.0042) cm-1 for J = 50, 100, 150"

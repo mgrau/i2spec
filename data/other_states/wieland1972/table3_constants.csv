@@ -1,0 +1,5 @@
+state,Te_cm1,we_cm1,wexe_cm1,re_A,transition,nu00_cm1,source,note
+"X 1Sigmag+(0+)",0,214.548,0.61626,2.67,,,"Table III; Ref. (14): R. J. Le Roy, J. Chem. Phys. 52, 2678 (1970)","reprint, not derived here; footnote b: the X levels G(v) used for the calculated heads come from the complete formulas of Ref. (14)"
+"B 3Piu(0+)",15769.5,125.531,0.7339,3.03,B<->X,15724.95,"Table III; Ref. (13): J. I. Steinfeld, J. D. Campbell and N. A. Weiss, J. Mol. Spectrosc. 29, 204 (1969)","reprint, not derived here; footnote b: the B levels G(v) come from the complete formulas of Ref. (13)"
+"E 3Pig(0+)?",41411.8,101.59,0.2380,3.7,E->B,25630.5,"Table III","this work; the state label carries the printed question mark; re printed ~3.7, an approximate r0 from the strongest band of the v' = 0 progression, E(0') -> B(22'') (p. 73)"
+"F 1Sigmau+(0+)",47217.8,95.955,0.3623,3.6,F->X,47158.6,"Table III","this work; re printed ~3.6, an approximate r0 from the strongest band of the v' = 0 progression, F(0') -> X(55'') (p. 75)"

@@ -1,0 +1,65 @@
+id = "xu2000a_recovered"
+citation = "S. C. Xu, R. van Dierendonck, W. Hogervorst and W. Ubachs, \"A Dense Grid of Reference Iodine Lines for Optical Frequency Calibration in the Range 595-655 nm\", J. Mol. Spectrosc. 201, 256-266 (2000), Tables 1-15"
+source = "https://doi.org/10.1006/jmsp.2000.8085 (publisher PDF, VU Research Portal copy)"
+doi = "10.1006/jmsp.2000.8085"
+retrieved = "2026-10-22"
+catalog = "data/catalog/precision.yaml#xu2000a"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables 1-15 (pp. 258-265), "Measured Hyperfine t Components for Various Rotational Lines in the B-X (6, 5) Band of
+I2" and "Data for the (v', v'') Band", one table per band: line, frequency of the t component (MHz), the calculated
+shift of t from the center of gravity (Delta_hyp) and the deviation of the center of gravity from the paper's own
+band fit (Delta_o-c). The tables are 1-bit scanned bitmaps with no text layer. Each was extracted at its native
+300 dpi, upscaled 3x and 4x and read in two independent OCR passes (the second restricted to digits, P, R and the
+footnote letters); the band of each bitmap comes from the table captions in the text layer and the page layout.
+Every disagreement between the passes was settled by eye on the bitmap.
+
+Check, on all 521 printed rows: frequency + Delta_hyp - Delta_o-c is the paper's own fitted center of gravity, which
+must follow its Eqs. [5]-[6] exactly within a band (one polynomial in J'(J'+1) and J''(J''+1)). A least-squares fit
+of those eight linear terms per band reproduces it to 0.02-0.05 MHz rms in all 15 bands, so a misread digit worth
+0.2 MHz or more in any of the three numbers stands out. Only one printed row fails: P(17) 7-3 (in xu2000a), off by
+1.0 MHz, an inconsistency in the print itself (frequency or Delta_o-c), not a reading error. Every row of this set
+was also read by eye from the bitmap.
+
+Of the 521 rows, 481 carry no footnote: these are the "481 t-hyperfine components" of the abstract, measured in this
+work. xu2000a holds 446 of them. This set holds the other 35, which the earlier reading lost to OCR damage in the
+line label or the leading digit (e.g. "A" for 4), not to any defect in the print:
+(6,5) P(17); (6,4) P(100), P(111); (7,4) R(55); (8,4) P(42), P(80), P(83), R(40), R(67), R(86), R(90); (7,3) P(18),
+P(86), P(88), P(94), P(95); (9,4) P(51), P(69), P(70), P(94), P(99), P(102), P(103), P(104), R(57), R(77), R(99),
+R(101), R(107); (10,4) P(101); (12,3) P(78), R(85), R(90); (11,2) R(9); (12,2) R(9).
+None of these 35 lines is in any other set here. The printed Delta_hyp and Delta_o-c are kept in the note column.
+
+Component: "t" in the a-u lettering the authors adopt from Sansonetti (1997), recorded as in xu2000a: rank 1 by
+frequency for even J'' (t1) and rank 2 for odd J'' (t2). Delta_hyp is 482.6-488.5 MHz in every row here, the t
+shift of the neighboring rows. The two R(9) rows are the lowest J'' here; at J'' < 20 more components are resolved
+(Velchev et al. 1998, p. 23), and the rank of t there rests on the same convention as xu2000a's low-J'' rows.
+
+Not entered:
+- Footnote a, "From Ref. (11)" (Sansonetti 1997), 30 rows: all 30 are in sansonetti1997a (equal to its values
+  within the 0.1 MHz rounding), and 27 of them also in xu2000a (group sansonetti1997a).
+- Footnote b, "From Ref. (8); various components used" (Shiner et al. 1993), 8 rows. Seven are in shiner1993a,
+  equal to rounding: P(49), R(40), R(73), R(79), R(80) 11-2, P(114) 12-2, R(66) 13-2. The eighth, a second R(9)
+  11-2 row at 496963234.0 MHz (Delta_hyp 411.0, Delta_o-c 0.2), is not in shiner1993a; its component is not named.
+- Footnote c, "From Ref. (9)" (Quinn 1993): P(48) 11-3 at 489879902.7 MHz, Delta_hyp -96.7. This is the 612 nm
+  standard R(47) 9-2 a7, 489880354.9 MHz, less the P(48) 11-3 b10 interval, 452.2 MHz, both held in the BIPM sets.
+- Footnote d, "From Ref. (10), 'r'-component measured" (Edwards et al. 1996): R(39) 7-4 at 470766455.5 MHz,
+  Delta_hyp 246.4, the r component (rank 4 of 21). Another group's measurement, reprinted rounded to 0.1 MHz; the
+  primary paper is the place to take it from.
+- The Delta_hyp and Delta_o-c columns as data (derived), Table 16 (ground-state constants taken from the Hannover
+  analysis) and Table 17 (fitted B-state constants per band), and the ~3400 predicted t components of the
+  supplementary appendix, which is not available.
+"""
+
+uncertainty = """
+1.0 MHz (1 sigma) for every row. Abstract: "determined with an absolute accuracy of 1.0 MHz (1 sigma uncertainty)";
+p. 258: "Uncertainties in the frequency positions are not listed separately but they are all within 1 MHz (1 sigma)."
+"""
+
+notes = "Same measurement campaign and reference-line calibration as xu2000a, so the rows carry group = xu2000a. Bands (v', v'') as in the paper: v'' = 2-5."
+
+[conditions]
+cell = "I2 cell, Doppler-free saturated absorption"
+laser = "cw ring dye laser, 1 MHz bandwidth (Rhodamine B for 595-620 nm, DCM for 620-655 nm)"
+method = "etalon (FSR 148.956 MHz) locked to an I2-stabilized He-Ne laser, interpolated between 60 previously calibrated lines"

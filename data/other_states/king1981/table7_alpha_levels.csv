@@ -1,0 +1,21 @@
+table,page,state,isotopologue,v,T0_cm1,T0_unc,B_x100,B_x100_unc,two_point_fit,note
+7,153,alpha,127I2,8,40438.0,1.5,0.9,1.2,yes,"footnote b: 'Two-point fit, error is experimental'; lowest level from which fluorescence was detected (p. 146: v_alpha = 8 at 40438 cm-1); the v numbering of alpha rests on the 129I2 isotope shift, first band v = 8(+-2) (p. 152)"
+7,153,alpha,127I2,9,40539.14,0.50,2.32,0.27,,printed as 539.14 under 40438.0: the leading digits 40 are printed only where they change and are restored here (likewise 41 from v = 14)
+7,153,alpha,129I2,9,40533.0,2.0,1.78,0.27,,"printed 40533.0(2.0); later rows print only the last three digits (634.60 ...), restored here"
+7,153,alpha,127I2,10,40642.62,0.25,1.93,0.13,,
+7,153,alpha,129I2,10,40634.60,0.77,1.88,0.15,,
+7,153,alpha,127I2,11,40744.77,0.62,1.96,0.26,,
+7,153,alpha,129I2,11,40735.85,0.82,1.92,0.16,,
+7,153,alpha,127I2,12,40846.82,0.44,1.99,0.18,,
+7,153,alpha,129I2,12,40837.83,0.52,1.848,0.099,,
+7,153,alpha,127I2,13,40948.09,0.67,2.22,0.36,,
+7,153,alpha,129I2,13,40939.12,0.70,1.76,0.13,,
+7,153,alpha,127I2,14,41049.46,0.61,2.11,0.32,,
+7,153,alpha,127I2,15,41149.83,0.32,2.20,0.13,,
+7,153,alpha,129I2,15,41141.1,1.8,1.39,0.30,,
+7,153,alpha,127I2,16,41249.90,0.22,1.904,0.089,,
+7,153,alpha,129I2,16,41238.2,1.8,1.79,0.32,,
+7,153,alpha,127I2,17,41349.26,0.76,1.73,0.29,,
+7,153,alpha,129I2,17,41337.65,0.90,1.77,0.15,,
+7,153,alpha,127I2,18,41449.22,0.56,1.94,0.24,,
+7,153,alpha,129I2,18,41437.4,1.2,1.64,0.20,,

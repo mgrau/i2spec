@@ -1,5 +1,5 @@
 id = "morinaga1989a"
-citation = "A. Morinaga, K. Sugiyama, N. Ito and J. Helmcke, \"Hyperfine structure of low-lying vibrational levels in the B state of molecular iodine\", J. Opt. Soc. Am. B 6, 1656-1662 (1989)"
+citation = "A. Morinaga, K. Sugiyama, N. Ito and J. Helmcke, \"Hyperfine structure of low-lying vibrational levels in the B electronic state of molecular iodine\", J. Opt. Soc. Am. B 6, 1656-1659 (1989)"
 source = "https://doi.org/10.1364/JOSAB.6.001656 (PDF obtained 2026-09-16)"
 doi = "10.1364/JOSAB.6.001656"
 retrieved = "2026-09-16"
@@ -29,9 +29,9 @@ Transcribed here as intervals relative to component a, which is rank 21 for this
 odd, so 21 main components). Only the experimental column is used; the calculated column and the
 residuals are outputs of the paper's own fit.
 
-Not transcribed: Table 2 (the same for another line) and Table 3, which lists fitted eqQ_B and C
-values per vibrational level. Table 3 is hyperfine constants, a kind the observation format does not
-yet carry.
+Not transcribed here: Table 2 (the same for P(84) 5-5) and the Ca 1S0-3P1 offset from component a
+(p. 1657), both in morinaga1989a_b (pending); Table 3, which lists eQq_B and Delta C per vibrational
+level (two constants, not the four that data/hyperfine_parameters carries).
 """
 
 uncertainty = """

@@ -1,0 +1,86 @@
+id = "wei1974"
+citation = "J. Wei and J. Tellinghuisen, \"Parameterizing diatomic spectra: 'best' spectroscopic constants for the I2 B<->X transition\", J. Mol. Spectrosc. 50, 317-332 (1974), Tables I-IV"
+source = "https://doi.org/10.1016/0022-2852(74)90239-2 (publisher PDF: a 1-bit 300 dpi scan with an OCR text layer that skips the tables)"
+doi = "10.1016/0022-2852(74)90239-2"
+retrieved = "2026-10-26"
+unit = "cm-1"
+state = "B and X"
+isotopologue = "127I2"
+files = ["bands.csv", "constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-IV (pp. 322, 324, 326, 327) and the footnotes. The four tables are typewritten and reproduced so faintly that
+the 1-bit scan has lost strokes of many digits; the OCR text layer has no table text. Every value was read from the
+native 1-bit strips (stitched, upscaled 3-12x, with and without a 3-5 pixel dilation); tesseract on the dilated images
+was used only as a hint. Each row of both CSVs carries a 'faint'/'reading' field naming the digits that could not be
+read with certainty. Where the paper's own statements or other held sets settle such a digit, the check is recorded
+there; no value was taken from a model.
+
+bands.csv (13 rows): Table I, the band-by-band fits of the authors' new absorption bands (17-0, 18-0, 20-1, 21-1, 25-0,
+26-0) and of earlier bands of ref. 8 (Singh and Tellinghuisen 1973) extended to higher J (16-2, 17-2, 20-4, 21-4, 22-4,
+34-0, 35-0, footnote c): band origin nu0, 1e2 B', 1e2 B'' with standard errors in the last digits, and the correlation
+coefficient of B' and B''. The lists of assigned lines were not printed ("available on request").
+constants.csv (39 rows): Table III (B state: T_e + G_v, 11 coefficients; B_v, 8; ln(1e9 D_v), 6; valid v' = 4-77), Table IV
+(X state: omega_e, x_e omega_e, B_e, alpha_e, D_e, beta_e; valid v'' = 0-6) and Table II (B_e'', alpha_e'', B_e' from
+three reductions).
+
+How the faint digits of Table III were settled (model-free): the 11-term G polynomial cancels to 1e5 cm-1 at v' = 77,
+so every digit matters. With the legible digits fixed, each faint digit was varied over its possible readings and the
+polynomial compared with the term values of data/b_levels/barrow1973 at v' = 43-77 (which Wei and Tellinghuisen fitted
+with their own v' < 38 data; Section V: sd 0.016 cm-1, max 0.032). Exactly one combination fits: sd 0.016, max 0.028 cm-1,
+offset -107.19 cm-1 (the X zero-point energy, T_e being above the X minimum). It requires c2 = -0.86735 (the first digit
+looks like 3 or 8; -0.367 cannot fit) and c1 = 126.1670, whose fifth digit is broken and was read 5 by eye (126.1650
+gives sd 0.029, max 0.060); 126.1670 is entered and flagged 'inferred'. For B_v, the legible coefficients leave
+barrow1973's B_v minus the polynomial flat over v' = 4-77 (0.028941 +- 0.000031), confirming them; B_e itself is only
+partly legible. For ln D_v the c3 coefficient (3.4_e-5) agrees with a fit to barrow1973's D_v (3.435e-5).
+
+Table I faint digits: B' - B'' is fixed far better than either (text) and must follow Table III's B' minus Table IV's
+B''; that settles Bu of 20-1 (2.52995, not 2.52395) and 25-0 (2.41395, not 2.41555), and leaves the others within
++-0.0004 (x 1e-2) of the smooth course. The band origins against data/b_levels/luc1980 (sigma_0v' - E''(v'')): -0.016 to
+-0.053 cm-1 for v' = 16-26 (22-4 with the faint digit read 9: -0.042), +0.001 for 25-0 (-0.019 if the faint digit is 3),
++0.037 and +0.044 for 34-0 and 35-0 (Luc 1980 notes a -0.040 cm-1 discrepancy of these authors near v' = 33). The two
+duplicate estimates the text mentions agree: G4'' - G1'' = 632.532 (20-1 minus 20-4) and 632.511 (21-1 minus 21-4, with
+the faint digit of 21-1 read 5; 632.531 if it is 7), G21' - G20' = 89.501 and 89.522.
+
+Misprints and inconsistencies: the text (p. 321) lists 22-3 among the extended bands, but Table I prints 22-4 (faint) and
+its nu0 = 17 224.1 is the 22-4 origin (22-3 lies near 17 433.7). Table I prints the 25-0 errors as (90) and (91) where
+every other band has equal errors for B' and B''.
+
+Not entered: Figs. 1-4 (comparisons of B_v'', G_v'' and D_v with other work, plotted only). The X-state 'calculated'
+D_v'' of Fig. 3 and the B-state D_v of ref. 8 used as fixed inputs are not printed.
+"""
+
+uncertainty = """
+Table I: standard errors in the last digits as printed (1 sigma); the authors call the band-origin errors unrealistic and
+estimate the true uncertainty of the origins of their new bands at +-0.02 cm-1 (p. 322); B' and B'' are highly
+correlated (correlation 0.999), B' - B'' is about 50 times better determined. Table III: sd 0.016 cm-1 (G), about 5e-6
+cm-1 (B), about 6e-10 cm-1 or 1 % (D) for the representation; Table IV: band-origin fit sd 0.012 cm-1. Table II errors
+as printed in the last digits. Values flagged 'faint' may be wrong in the flagged digit; 'inferred' marks the one digit
+taken from the check rather than the print.
+"""
+
+notes = """
+What the set is. A 1974 parameterization of the B and X states of 127I2 from Doppler-limited grating spectra (3.4-m
+Ebert spectrograph, thorium standards): new absorption bands, the emission bands of Singh and Tellinghuisen 1973, and
+Barrow and Yee's B-state term values for v' = 43-77, reduced with a correlated least-squares treatment. Superseded by
+the FTS work (luc1980 and later); Luc 1980 finds these constants good to 0.05 cm-1 for J = 100 and v' = 12-45. The
+B-state G and B expansions reproduce barrow1973 above v' = 43 by construction, so they are not independent of it there.
+
+Overlap with held sets. Table III's input for v' = 43-77 is barrow1973 (term values and B_v, the latter adjusted for the
+change in B0''); its D_v input for v' = 13-77 is barrow1973's empirical D_v. Gerstenkorn et al. 1977
+(data/atlas_lines/gerstenkorn1977, Table IV) reprint some of these constants. Not compared with any model.
+"""
+
+[columns]
+bands = """
+isotopologue; band v'-v''; v_upper, v_lower; nu0, nu0_unc: band origin and its standard error, cm-1. Bu_x100,
+Bu_x100_unc, Bl_x100, Bl_x100_unc: 1e2 B' and 1e2 B'' with standard errors (cm-1). correlation: of B' and B'' (footnote
+b). source: new band or ref. 8 band. faint: the digits read with doubt (position counted from the first digit) and the
+alternatives. note: checks.
+"""
+constants = """
+state; quantity; n: the power of (v + 1/2) for the expansions; value; uncertainty (Table II only, as printed); unit; table;
+reading: clear, faint (a flagged digit could be misread) or inferred (digit settled by the check, not by the print);
+note: definitions, footnotes and checks.
+"""

@@ -1,0 +1,9 @@
+v,J,quantity,value,uncertainty,unit,table,note
+0,13,eqQ,-2452.58514,0.00045,MHz,3(a),"Table 3(a): eqQ(MHz) -2452.58514, uncertainty 4.5 x 10^-4; fitted (unweighted least squares) to the 16 Table 2(a) splittings"
+0,13,C,3.1536,0.0033,kHz,3(a),"Table 3(a): C(kHz) 3.1536, uncertainty 3.3 x 10^-3"
+0,13,d,1.528,0.018,kHz,3(a),"Table 3(a): d(kHz) 1.528, uncertainty 1.8 x 10^-2"
+0,13,delta,3.708,0.022,kHz,3(a),"Table 3(a): delta(kHz) 3.708, uncertainty 2.2 x 10^-2"
+0,15,eqQ,-2452.59699,0.00045,MHz,3(b),"Table 3(b): eqQ(MHz) -2452.59699, uncertainty 4.5 x 10^-4; fitted (unweighted least squares) to the 16 Table 2(b) splittings"
+0,15,C,3.1543,0.0029,kHz,3(b),"Table 3(b): C(kHz) 3.1543, uncertainty 2.9 x 10^-3"
+0,15,d,1.519,0.018,kHz,3(b),"Table 3(b): d(kHz) 1.519, uncertainty 1.8 x 10^-2"
+0,15,delta,3.701,0.023,kHz,3(b),"Table 3(b): delta(kHz) 3.701, uncertainty 2.3 x 10^-2"

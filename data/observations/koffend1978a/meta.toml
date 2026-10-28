@@ -1,0 +1,68 @@
+id = "koffend1978a"
+citation = "J. B. Koffend, S. Goldstein, R. Bacis, R. W. Field and S. Ezekiel, \"Doppler-free stimulated-emission spectroscopy and secondary frequency standards using an optically pumped laser\", Phys. Rev. Lett. 41, 1040-1044 (1978), Table I"
+source = "https://doi.org/10.1103/PhysRevLett.41.1040 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1103/PhysRevLett.41.1040"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 1042), "Frequencies of the hyperfine structure of the (43,83) P(13) line in I2 and fits", read from a 400 dpi
+render (the scan's native 612 dpi) and checked against the text layer, which is right except for the component
+subscripts. The first PDF page (p. 1040, top) is the end of the preceding letter (Shakeshaft and Spruch); this letter
+starts lower on that page.
+
+What the letter measures: the hyperfine structure of the B-X (43,83) P(13) line at 1.34 um, a line not reachable in
+absorption (X v'' = 83 is unpopulated), in the output of a cw I2 laser optically pumped on 43-0 P(13) by a frequency-
+stabilized single-mode Ar+ 514.5 nm laser locked to one hyperfine component; the I2-laser cavity is scanned and the
+pump velocity class gives nu+/nu- doublets around each zero-velocity component; the scale comes from the doublet
+splitting (Eq. 2), known from the pump detuning to +-5 kHz. 49 separations were measured; Table I prints 15 ("not all
+the experimental points are included ... as the same splittings are multiply determined").
+
+Entered: the 15 printed separations, as intervals f(a_j) - f(a_i) for the printed "a_i - a_j" (all positive, the
+higher label higher in frequency); group koffend1978a. Both obs - calc columns (quadrupole only; quadrupole plus
+spin-rotation) are in each row's note.
+
+Labels. "We use the notation of Ref. 10" (Hackel et al. 1975, 43-0 P(13)): the text identifies a1 as I = 5, F'' = F' + 1
+= 8, a2 as I = 1, F'' = 13 and a3 as I = 5, F'' = 18, i.e. each (43,83) component carries the label of the 43-0 P(13)
+component sharing its upper hyperfine level (in held sets such as chen2005thesis_a, a1, a2, a3 of 43-0 P(13) have F' =
+7, 12, 17). Whether these labels are also the frequency ranks in (43,83) was checked with an independent hyperfine
+calculation (a script written for this check, not the i2spec code: quadrupole coupling of both nuclei with Delta I = 0,
++-2 and Delta J = 0, +-2, +-4 mixing, spin-rotation), first validated on 43-0 P(13) against chen2005thesis_a (all 21
+components in order, F' assignments identical, intervals within 1.1 MHz), then run with this paper's constants
+(eqQ'' = -1550.1 MHz, C'' = 59 kHz; B v' = 43 held at Hackel's eqQ' = -554.094 MHz, C' = 186.71 kHz; B'' (v'' = 83) =
+0.0192356 cm-1 from data/x_levels/martin1986, B' (43) = 0.018736 cm-1 from data/b_levels/barrow1973): the frequency
+order of the 21 (43,83) components is exactly a1 ... a21, with a18 and a19 0.55 MHz apart (the paper: "a18 and a19
+overlap"). So label = rank and the components are entered as printed. The same calculation reproduces the printed
+separations to within 2.1 MHz (rms 0.90 MHz).
+
+Sign of the residual columns: against that calculation the printed obs - calc have the opposite sign in all 15 rows
+(both columns), so the residuals refer to the separation taken as a_i - a_j (negative) with the observed column printed
+as a magnitude. Entered as printed; the convention does not affect the separations.
+
+Also in the letter (not rows): eqQ'' = -1550.1 +- 0.5 MHz and C'' = 59 +- 5 kHz for X v'' = 83, J'' = 13 (fit to all 49
+separations, standard deviation 0.82 MHz; 3.19 MHz with eqQ'' alone), and C''(v'' = 0) = 0 +- 5 kHz from a refit of
+Hackel's data (footnote 14); these are data/x_hyperfine/koffend1978. The I2 laser was locked to a gain line center to
+1 kHz (tau = 10 ms). Not entered: Fig. 2 (a scan, 10 MHz scale bar).
+"""
+
+uncertainty = """
+0.82 MHz for every interval: the paper gives "estimated measurement uncertainty which ranges from 0.3 to 1.0 MHz,
+depending upon the degree of line overlapping" without per-row values, and the two-constant fit to the 49 separations
+leaves a standard deviation of 0.82 MHz, "consistent with the uncertainty in our present measurements". The two
+overlapped rows (a17-a18 and a17-a19, one printed value 41.16 for both) are each a measurement of the blended a18/a19
+pair and are not independent of each other. The frequency scale (pump detuning and Eq. 2) is good to +-5 kHz.
+"""
+
+notes = """
+The only held hyperfine intervals of a B-X line ending on a high X level (v'' = 83). The X-state constants are
+reprinted, shifted, by data/x_hyperfine/bacis1980 (Table II, v'' = 83, -1556 +- 1 MHz "taken from Ref. 15" = this
+letter, corrected to eqQ_B(v' = 43) = -558.6 MHz). Upper-state constants fixed at Hackel et al. 1975 (Phys. Rev. Lett.
+35, 568), whose 43-0 P(13) table is reprinted by landsberg1976a. Not in the catalog.
+"""
+
+[conditions]
+method = "Doppler-free stimulated emission: cw I2 laser (55 cm cavity, 50 cm cell) longitudinally pumped by a single-frequency, I2-stabilized Ar+ 514.5 nm laser on 43-0 P(13); output on (43,83) P(13) selected by a 0.75 m monochromator; cavity length scanned"
+iodine_pressure_mTorr = 100
+pump_power_mW = 50
+line_wavelength_um = 1.34

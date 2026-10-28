@@ -330,10 +330,10 @@
   technique: "saturation spectroscopy with cw dye laser, interferometric calibration"
   observable: "absolute hyperfine component frequencies"
   range_nm: [571.0, 596.0]
-  range_cm1: null
-  transitions: "dense grid of lines (hyperfine components, typically a1/a10-type strong components), 571-596 nm"
-  n_items: null
-  uncertainty: "about 1 MHz (per Knoeckel 2004)"
+  range_cm1: [16827.5, 17494.6]
+  transitions: "Table 1: absolute frequency of the 't' hyperfine component (lowest of the 15 main components for even J'', second lowest of 21 for odd J'') of 115 P and R lines in the B-X 13-1 to 18-1 bands, J'' = 6-137, 571.6-594.3 nm. Not measured: the 1584 predicted t components (J = 9-140) of the supplementary data, and the reference lines from refs. 7, 8, 9, 11, 18, 20 used in the fits but not listed"
+  n_items: 115
+  uncertainty: "1.0-4.5 MHz per line (median 1.7), the authors' estimated absolute accuracy as printed in Table 1; Xu et al. 2000 (p. 256) state that these were 2 sigma. Band fits (Table 2) predict t components to 2 MHz"
   uncertainty_MHz: 1.0
   absolute: true
   hyperfine_resolved: true
@@ -342,7 +342,7 @@
   likely_in_knockel2004: true
   priority: medium
   verified: true
-  notes: "Knoeckel 2004 ref. [12]. Number of lines not checked (no abstract available via APIs). Partly superseded near 576/585 nm by Reinhardt 2006 (comb)."
+  notes: "Knoeckel 2004 ref. [12]. Partly superseded near 576/585 nm by Reinhardt 2006 (comb). Table 1 and Table 2 (per-band constants of Eqs. [1]-[2], derived) are scanned bitmaps in the publisher PDF. Transcribed: Table 1 as data/observations/velchev1998a (115 rows)."
 
 - id: xu2000a
   citation: "S. C. Xu, R. van Dierendonck, W. Hogervorst, W. Ubachs, A dense grid of reference iodine lines for optical frequency calibration in the range 595-655 nm, J. Mol. Spectrosc. 201, 256-266 (2000)"
@@ -355,10 +355,10 @@
   technique: "saturation spectroscopy with cw dye laser, interferometric calibration"
   observable: "absolute hyperfine component frequencies"
   range_nm: [595.0, 655.0]
-  range_cm1: null
-  transitions: "dense grid of hyperfine components, 595-655 nm"
-  n_items: null
-  uncertainty: "about 1 MHz (per Knoeckel 2004)"
+  range_cm1: [15286.4, 16786.2]
+  transitions: "Tables 1-15, one per band: absolute frequency of the 't' hyperfine component of 481 P and R lines in 15 B-X bands, (6,5), (5,4), (6,4), (7,4), (8,4), (7,3), (9,4), (10,4), (9,3), (10,3), (11,3), (12,3), (11,2), (12,2), (13,2), J'' = 9-123, 595.7-654.2 nm, each with the calculated t shift from the center of gravity and the deviation from the per-band fit. The tables also reprint 40 lines of other groups: Sansonetti 1997 (30, footnote a), Shiner et al. 1993 (8, b), Quinn 1993 (1, c) and Edwards et al. 1996 (1, d)"
+  n_items: 481
+  uncertainty: "1.0 MHz (1 sigma) for every line, as stated (no per-line values)"
   uncertainty_MHz: 1.0
   absolute: true
   hyperfine_resolved: true
@@ -367,7 +367,7 @@
   likely_in_knockel2004: true
   priority: medium
   verified: true
-  notes: "Knoeckel 2004 ref. [13]. Line count not checked."
+  notes: "Knoeckel 2004 ref. [13]. Tables 1-17 are scanned bitmaps in the publisher PDF; Tables 16-17 are rotational constants (X fixed, B fitted), derived. A ~3400-line prediction of t components (J = 9-120) was published only as supplementary data. Transcribed: data/observations/xu2000a (446 of the 481 lines, plus 27 of the 30 Sansonetti reprints) and data/observations/xu2000a_recovered (the other 35 lines, pending). Print inconsistency: P(17) 7-3, frequency + shift - deviation is 1.0 MHz off the band's fitted curve."
 
 - id: ye1999a
   citation: "J. Ye, L. Robertsson, S. Picard, L.-S. Ma, J. L. Hall, Absolute frequency atlas of molecular I2 lines at 532 nm, IEEE Trans. Instrum. Meas. 48, 544-549 (1999)"
@@ -617,7 +617,7 @@
   likely_in_knockel2004: true
   priority: low
   verified: true
-  notes: "Knoeckel 2004 ref. [3]. A probable source of bipm2012a Table 11; erratum Opt. Commun. 127, 382 (1996) not seen."
+  notes: "Knoeckel 2004 ref. [3]. A probable source of bipm2012a Table 11; erratum Opt. Commun. 127, 382 (1996) not seen. Erratum Opt. Commun. 127, 382 (1996) read 2026-10-26: it corrects only the G(v') coefficient of Eq. (2) (0.023501 -> 0.023051); no Table 1 value changes. With it, the two v'=43 rows of Table 2 sit exactly 2.000 MHz below Eq. (2) (probably 1893 for 1895)."
 
 - id: eickhoff1995a
   citation: "M. L. Eickhoff, J. L. Hall, Optical frequency standard at 532 nm, IEEE Trans. Instrum. Meas. 44, 155-158 (1995)"
@@ -828,21 +828,21 @@
   isotopologues: ["127I2"]
   system: "B-X"
   technique: "interferometric wavelength comparison against 633 nm He-Ne/I2 and Ca 657 nm"
-  observable: "absolute hyperfine component frequencies"
+  observable: "absolute hyperfine component frequencies; hyperfine and line-to-line frequency differences"
   range_nm: [781.4, 793.6]
   range_cm1: null
-  transitions: "R(96)0-14 a10 = 781.488 441 03(10) nm; R(96)0-15 a10 = 793.527 910 44(10) nm; P(166)0-14 a = 790.109 812 76(10) nm"
-  n_items: 3
-  uncertainty: "relative 1.3e-10 (about 50 kHz)"
+  transitions: "Table 2: R(96)0-14 a10 = 781.488 441 03(10) nm = 383 617 264 515(49) kHz; P(166)0-14 a1 = 790.109 812 76(10) nm = 379 431 381 762(48) kHz; R(96)0-15 a10 = 793.527 910 44(10) nm = 377 796 992 463(48) kHz. Table 3: nine beat differences to these (R(96)0-15 a1, a15 and P(228)1-14 b10; P(166)0-14 a15 and R(19)0-15 b2, b15; R(96)0-14 a1, a8, a15)"
+  n_items: 12
+  uncertainty: "relative 1.3e-10 (48-49 kHz) on the three absolutes; 9-63 kHz on the differences; all 1 sigma"
   uncertainty_MHz: 0.05
   absolute: true
   hyperfine_resolved: true
-  data_availability: "values in abstract and paper"
+  data_availability: "values in abstract and paper (Tables 2-3, p. 112)"
   machine_readable: false
   likely_in_knockel2004: true
   priority: medium
   verified: true
-  notes: "Knoeckel 2004 ref. [14]. Hot-band (v''=14,15) NIR anchors."
+  notes: "Knoeckel 2004 ref. [14]. Hot-band (v''=14,15) NIR anchors. Transcribed 2026-10-23 as data/observations/bodermann1998a (12 rows, pending). Table 2 and the P(228) and R(19) b2 rows of Table 3 are bodermann1998c's (thesis) rows, digit for digit; the thesis is the later reprint."
 
 - id: bodermann1998b
   citation: "B. Bodermann, M. Klug, H. Knoeckel, E. Tiemann, T. Trebst, H. R. Telle, Frequency measurement of I2 lines in the NIR using Ca and CH4 optical frequency standards, Appl. Phys. B 67, 95-99 (1998)"
@@ -1709,9 +1709,9 @@
   observable: "absolute hyperfine component frequencies"
   range_nm: [514.0, 514.2]
   range_cm1: null
-  transitions: "P(57)45-0, P(91)48-0, R(73)46-0: all hyperfine components"
+  transitions: "P(57)45-0, P(91)48-0, R(73)46-0: 59 of the 63 main components (P(57) a20 and P(91) b1 unresolved from each other; P(91) b3, b4 unresolved); absolute frequencies of P(57) a1, P(91) b2, R(73) a1, splittings from them"
   n_items: 59
-  uncertainty: "5.4 kHz (9.3e-12); hyperfine constants to a few kHz"
+  uncertainty: "5.4 kHz (9.3e-12) absolute; splittings 0.4 kHz; four-term fit SD 1.6-3.6 kHz; DeltaeqQ to 4-9 kHz"
   uncertainty_MHz: 0.0054
   absolute: true
   hyperfine_resolved: true
@@ -1720,7 +1720,7 @@
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "New comb anchors for v' = 45, 46, 48, in the 514-526 nm region where Knoeckel 2004 is only good to ~30 MHz."
+  notes: "New comb anchors for v' = 45, 46, 48, in the 514-526 nm region where Knoeckel 2004 is only good to ~30 MHz. Transcribed: Tables 1-4 as data/observations/ikeda2022a (59 rows); Table 5 (B - X four-term constants, X state held fixed at the eqQ''(J) law of Hong 2001 and C'' = 3.154, d'' = 1.524, delta'' = 3.705 kHz) as B-state rows in data/hyperfine_parameters/ikeda2022a (3 rows, pending). Table 1 misprint: the P(91)48-0 b2 interval to 3 x P(16) of 13C2H2 is printed -2 669 966 kHz; the printed frequencies give -2 699 966 kHz."
 
 - id: matsunaga2024a
   citation: "S. Matsunaga, Y. Isawa, D. Akamatsu, F.-L. Hong, Optical frequency references at 1542 nm: precision spectroscopy of the R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, and P(71)46-0 lines of 127I2 at 514 nm, Photonics 11, 770 (2024)"
@@ -1734,9 +1734,9 @@
   observable: "absolute hyperfine component frequencies"
   range_nm: [514.0, 514.2]
   range_cm1: null
-  transitions: "R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, P(71)46-0: all hyperfine components"
+  transitions: "R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, P(71)46-0: 97 of the 102 main components (R(100) a2, R(59) b7, b8 and P(82) a6, a7 measured but printed as excluded, too close to neighbors); absolute frequencies of a1 (b1 for R(59)), splittings from them"
   n_items: 97
-  uncertainty: "5.6 kHz (9.6e-12); systematic 5 kHz from cell impurity"
+  uncertainty: "5.6 kHz (9.6e-12) absolute; systematic 5 kHz from cell impurity; splittings 0.6 kHz; four-term fit SD 2.1-8.6 kHz"
   uncertainty_MHz: 0.0056
   absolute: true
   hyperfine_resolved: true
@@ -1745,7 +1745,7 @@
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "Open access. Covers v' = 45-50 and high J (up to 106) at 514 nm, which fills the 514-526 nm weakness of Knoeckel 2004."
+  notes: "Open access. Covers v' = 45-50 and high J (up to 106) at 514 nm, which fills the 514-526 nm weakness of Knoeckel 2004. Conditions: -10 C (~1.4 Pa), pump 1.8 mW, probe 0.28 mW (0.15 mW for P(71)46-0). Transcribed: Tables 1-3 as data/observations/matsunaga2024a (97 rows); Table 4 (B - X four-term constants) as B-state rows in data/hyperfine_parameters/matsunaga2024a (6 rows, pending; the paper does not print the X-state values it held fixed and refers to its refs. [18,19] for them)."
 
 - id: nishiyama2024a
   citation: "A. Nishiyama, S. Okubo, T. Kobayashi, A. Kawasaki, H. Inaba, Measurement of transition frequencies and hyperfine constants of molecular iodine at 520.2 nm, J. Opt. Soc. Am. B 41, 2290 (2024) (arXiv:2409.16522)"
@@ -1923,54 +1923,54 @@
   notes: "Mainly technical. Includes a 594 nm line, P(69)12-1, the only 594 nm item found in this survey. Linewidth caveat of Yoshii 2021 applies."
 
 - id: cheng2019a
-  citation: "F. Cheng, K. Deng, K. Liu, H. Liu, J. Zhang, Z. H. Lu, Absolute frequency measurement of molecular iodine hyperfine transition at 534 nm, J. Opt. Soc. Am. B 36, 1816 (2019)"
+  citation: "F. Cheng, K. Deng, K. Liu, H. Liu, J. Zhang, Z. H. Lu, Absolute frequency measurement of molecular iodine hyperfine transition at 534 nm, J. Opt. Soc. Am. B 36, 1816-1822 (2019)"
   doi: "10.1364/josab.36.001816"
   url: "https://doi.org/10.1364/josab.36.001816"
   year: 2019
   group: "Huazhong Univ. of Science and Technology (HUST)"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "1068 nm ECDL doubled, MTS, comb; pressure/power shifts measured"
+  technique: "1068 nm ECDL MOPA doubled, MTS in a 15 cm multipass cell at -10 C (1.4 Pa), fiber comb on an H maser; a21 pressure (-41(2) kHz/Pa) and power (+9.6(1.1) kHz/mW) shifts measured"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [533.9, 534.1]
-  range_cm1: null
-  transitions: "R(53)31-0: 19 hyperfine components"
+  range_nm: [533.989, 533.990]
+  range_cm1: [18726.956, 18726.988]
+  transitions: "Table 1: R(53)31-0, 19 of the 21 main components (a5, a6 overlapped, not measured), raw lock points at 1.4 Pa and 8.5 mW pump; Table 3: a21 corrected to zero pressure and power (-24 kHz). Spectra without numbers: R(120)34-0, P(50)31-0, R(85)32-0, R(82)32-0 (Figs. 2, 4, 5)"
   n_items: 19
-  uncertainty: "a21 = 561 420 951 318 +/- 8 (type A) +/- 12 (type B) kHz"
+  uncertainty: "a21 = 561 420 951 318 (14) kHz: type A 8, type B 12 kHz (pressure 2.8, power 10, cell impurity 5, maser 3.4; Table 2). Table 1 values: statistical only, 1-16 kHz (five 1000 s runs)"
   uncertainty_MHz: 0.014
   absolute: true
   hyperfine_resolved: true
-  data_availability: "table in paper"
+  data_availability: "Tables 1-3 in paper"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "New band 31-0 anchor near 534 nm (Al+ 267 nm subharmonic)."
+  notes: "New band 31-0 anchor near 534 nm (Al+ 267 nm subharmonic). Transcribed: data/observations/cheng2019a (a21 absolute from Table 3, the other 18 components as intervals to the raw a21 of Table 1). The probe power is 0.3 mW in Sect. 2 and 0.6 mW in Sect. 3C; the Fig. 5 plot is labeled P(82) 32-0, the text and caption R(82) 32-0."
 
 - id: shie2013a
-  citation: "N.-C. Shie, S.-E. Chen, C.-Y. Chang, W.-F. Hsieh, J.-T. Shy, Absolute frequency measurements of the molecular iodine hyperfine transitions at 535 nm, J. Opt. Soc. Am. B 30, 2022 (2013)"
+  citation: "N.-C. Shie, S.-E. Chen, C.-Y. Chang, W.-F. Hsieh, J.-T. Shy, Absolute frequency measurements of the molecular iodine hyperfine transitions at 535 nm, J. Opt. Soc. Am. B 30, 2022-2026 (2013)"
   doi: "10.1364/josab.30.002022"
   url: "https://doi.org/10.1364/josab.30.002022"
   year: 2013
   group: "NTHU / NCTU (Taiwan)"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "doubled 1070 nm Nd:GdVO4, 3f detection, comb; zero-pressure extrapolation"
+  technique: "doubled 1070 nm Nd:GdVO4, 3f detection in a 6 cm cell, comb on a GPS-disciplined Rb clock; zero-pressure extrapolation over 4.2-26.9 Pa"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [535.0, 535.1]
-  range_cm1: null
-  transitions: "P(28)30-0 a1, a10, a15"
+  range_nm: [535.19, 535.20]
+  range_cm1: [18684.63, 18684.67]
+  transitions: "Table 1: P(28)30-0 a1, a10, a15, zero-pressure values (slopes -5.28(8), -5.23(7), -5.12(5) kHz/Pa; pump 22.9 mW, no power-shift correction)"
   n_items: 3
-  uncertainty: "not stated in abstract (stability 3e-12 at 10 s)"
-  uncertainty_MHz: null
+  uncertainty: "11 kHz each (Table 1: statistical 1-2 kHz combined with servo loop ~10 kHz and lock-in DC offset ~2 kHz)"
+  uncertainty_MHz: 0.011
   absolute: true
   hyperfine_resolved: true
-  data_availability: "table in paper"
+  data_availability: "Table 1 (values also in the text, p. 2024)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "Band 30-0 anchor (Tl parity-nonconservation laser). Gives zero-pressure values and pressure/power broadening of a10."
+  notes: "Band 30-0 anchor (Tl parity-nonconservation laser). Gives zero-pressure values and pressure/power broadening of a10 (125(14) kHz/Pa; 12.6(2) kHz/mW). Transcribed: Table 1 as data/observations/shie2013a (3 rows)."
 
 - id: hrabina2014b
   citation: "J. Hrabina, O. Acef, F. du Burck, N. Chiodo, Y. Candela, M. Sarbort, M. Hola, J. Lazar, Comparison of molecular iodine spectral properties at 514.7 and 532 nm wavelengths, Meas. Sci. Rev. 14, 213-218 (2014)"
@@ -2051,29 +2051,29 @@
 # D1. Post-2003 data, 540-600 nm (reference lines near Li+, Yb, Yb+, Al+, Ca; 560-585 nm)
 # ---------------------------------------------------------------------------------------
 - id: hsiao2013a
-  citation: "Y.-C. Hsiao, C.-Y. Kao, H.-C. Chen, S.-E. Chen, J.-L. Peng, L.-B. Wang, Absolute frequency measurement of the molecular iodine hyperfine transitions at 548 nm, J. Opt. Soc. Am. B 30, 328 (2013)"
+  citation: "Y.-C. Hsiao, C.-Y. Kao, H.-C. Chen, S.-E. Chen, J.-L. Peng, L.-B. Wang, Absolute frequency measurement of the molecular iodine hyperfine transitions at 548 nm, J. Opt. Soc. Am. B 30, 328-332 (2013)"
   doi: "10.1364/josab.30.000328"
   url: "https://doi.org/10.1364/josab.30.000328"
   year: 2013
   group: "NTHU / ITRI (Taiwan)"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "doubled fibre-amplified ECDL, MTS, comb; pressure shift/broadening studied"
+  technique: "doubled fiber-amplified 1097 nm ECDL, MTS in a 10 cm cell at 6.5 C (7.8 Pa), fiber comb on a GPS-calibrated Rb clock; pressure shift/broadening studied"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [548.0, 548.6]
-  range_cm1: null
-  transitions: "P(28)24-0 a1, a10, a15"
+  range_nm: [548.62, 548.63]
+  range_cm1: [18227.20, 18227.24]
+  transitions: "Table 2: P(28)24-0 a1, a10, a15 at zero pressure (the authors' +69 kHz correction, -8.9(1.2) kHz/Pa common to the three) and the a15-a10, a10-a1 splittings formed from them; Fig. 5 gives the raw means at 7.8 Pa. The text of p. 330 and the captions of Figs. 2, 4, 6 misprint the line as P(28)20-0"
   n_items: 3
-  uncertainty: "line centres determined to better than 20 kHz"
-  uncertainty_MHz: 0.02
+  uncertainty: "12 kHz each (Table 2: Fig. 5 statistics 1-3 kHz with the Table 1 terms pressure shift 9, error-signal offset 2, error-signal asymmetry 8 kHz); splittings 17 kHz. The abstract says line centers to better than 20 kHz"
+  uncertainty_MHz: 0.012
   absolute: true
   hyperfine_resolved: true
-  data_availability: "table in paper"
+  data_availability: "Tables 1-2 in paper"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "Reference for Li+ spectroscopy (548 nm). Band 24-0 anchor."
+  notes: "Reference for Li+ spectroscopy (548 nm). Band 24-0 anchor. Table 2 prints a10-a1 166(17) kHz above IodineSpec5 while a15-a10 agrees to 10(17) kHz, and the absolutes 3.4-3.6 MHz below it ('marginal agreement'). Transcribed: Table 2 absolutes as data/observations/hsiao2013a (3 rows, set aside from the fit; see its meta)."
 
 - id: ko2012a
   citation: "K.-H. Ko, K. H. Lee, H. Park, J. Han, Y.-H. Cha, G. Lim, T.-S. Kim, D.-Y. Jeong, Frequency stabilization of the frequency doubled DOFA to the 127I2 line for calcium spectroscopy, Chin. Opt. Lett. 10, S21903 (2012)"
@@ -2201,29 +2201,29 @@
   notes: "Identifies a very high-J line (J=158) near 174Yb 556 nm; no absolute frequency in abstract."
 
 - id: zhang2009a
-  citation: "J. Zhang, Z. H. Lu, L. J. Wang, Absolute frequency measurement of the molecular iodine hyperfine components near 560 nm with a solid-state laser source, Appl. Opt. 48, 5629 (2009)"
+  citation: "J. Zhang, Z. H. Lu, L. J. Wang, Absolute frequency measurement of the molecular iodine hyperfine components near 560 nm with a solid-state laser source, Appl. Opt. 48, 5629-5635 (2009)"
   doi: "10.1364/ao.48.005629"
   url: "https://doi.org/10.1364/ao.48.005629"
   year: 2009
   group: "MPL Erlangen / Univ. Erlangen-Nuernberg"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "all-solid-state frequency-quadrupled source, comb"
+  technique: "frequency-quadrupled 1120 nm diode MOPA (SHG at 560 nm), FM saturation spectroscopy in a 10 cm cell at 12 C (13 Pa), comb referenced to a Cs clock"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [559.9, 560.2]
-  range_cm1: null
-  transitions: "R(34)20-0 a1, a10, a15; P(144)23-0 a1"
+  range_nm: [559.27, 559.28]
+  range_cm1: [17880.32, 17880.40]
+  transitions: "Table 1: R(34)20-0 a1, a10, a15 and P(144)23-0 a1 (P(144) mixed with R(53)28-3 b1-b21, Fig. 5b), means of ten 300 s sessions at 12 C cold finger, pump 7.6 mW, uncorrected for pressure or power"
   n_items: 4
-  uncertainty: "not stated in abstract (stability 4e-12 at 100 s)"
-  uncertainty_MHz: null
+  uncertainty: "Table 1, 2 sigma: 8, 23, 17, 142 kHz (statistical only, the session scatter; no systematic budget); 1 sigma 4-71 kHz"
+  uncertainty_MHz: 0.004
   absolute: true
   hyperfine_resolved: true
-  data_availability: "table in paper"
+  data_availability: "Table 1 (also Fig. 2 caption and Conclusion)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "Band 20-0 and a very high-J (144) 23-0 line; pressure and power broadening of R(34)20-0 a10. Likely for Mg+ (280 nm = 560/2) spectroscopy (inferred)."
+  notes: "Band 20-0 and a very high-J (144) 23-0 line; pressure and power broadening of R(34)20-0 a10 (38(4) kHz/Pa; weak-field width 0.67(2) MHz). The frequencies serve as references for a trapped Mg+ ion experiment (stated). Transcribed: Table 1 as data/observations/zhang2009a (4 rows, halved to 1 sigma)."
 
 - id: yang2011a
   citation: "T. Yang, F. Meng, Y. Zhao, P. Yu, Y. Li, J. Cao, C. Gao, Z. Fang, E. Zang, Hyperfine structure and absolute frequency measurements of 127I2 transitions with monolithic Nd:YAG 561-nm lasers, Appl. Phys. B 106, 613-618 (2012)"
@@ -2301,29 +2301,29 @@
   notes: "No abstract available through the APIs; ScienceDirect blocked. Cites Knoeckel 2004 and Bodermann 2002 and probably compares with them. Re-measures the 585 nm standard of Grieser 1994 and the 576 nm MeP region."
 
 - id: hong2009a
-  citation: "F.-L. Hong, H. Inaba, K. Hosaka, M. Yasuda, A. Onae, Doppler-free spectroscopy of molecular iodine using a frequency-stable light source at 578 nm, Opt. Express 17, 1652 (2009) (arXiv:0902.0463)"
+  citation: "F.-L. Hong, H. Inaba, K. Hosaka, M. Yasuda, A. Onae, Doppler-free spectroscopy of molecular iodine using a frequency-stable light source at 578 nm, Opt. Express 17, 1652-1659 (2009) (arXiv:0902.0463)"
   doi: "10.1364/oe.17.001652"
   url: "https://doi.org/10.1364/oe.17.001652"
   year: 2009
   group: "NMIJ/AIST"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "sum-frequency-generation source, saturation spectroscopy, comb"
+  technique: "sum-frequency generation of 1319 nm Nd:YAG and 1030 nm Yb fiber laser in a PPLN waveguide, modulation transfer spectroscopy in a 45 cm cell at -5 C (2.4 Pa), Ti:sapphire comb on an H maser"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [578.4, 578.5]
-  range_cm1: null
-  transitions: "R(37)16-1 a1 (hyperfine components observed)"
+  range_nm: [578.41, 578.41]
+  range_cm1: [17288.78, 17288.78]
+  transitions: "R(37)16-1 a1, laser locked at the Sect. 3.2 spectrometer conditions (2.4 Pa, pump 2.1 mW, probe 0.19 mW), not extrapolated to zero pressure or power. Fig. 4 shows all 21 components, no splittings printed. Fig. 1 marks P(33)16-1, R(101)17-1 and R(37)16-1 from the Gerstenkorn-Luc atlas (not measured here). No tables"
   n_items: 1
-  uncertainty: "a1 = 518 304 551 833 (2) kHz"
+  uncertainty: "a1 = 518 304 551 833 (2) kHz, the lock/unlock reproducibility; the 5 kHz cell-contamination term is mentioned but not included"
   uncertainty_MHz: 0.002
   absolute: true
   hyperfine_resolved: true
-  data_availability: "value in abstract; full text on arXiv (0902.0463)"
+  data_availability: "value in abstract, Sect. 1, Sect. 3.3 (without uncertainty) and Sect. 4; publisher PDF and arXiv 0902.0463 print the same number"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "Reference for the Yb 1S0-3P0 clock laser at 578 nm. v''=1 hot band."
+  notes: "Reference for the Yb 1S0-3P0 clock laser at 578 nm. v''=1 hot band. Published version against arXiv 0902.0463: same value and uncertainty; it adds that the absolute measurement used the Sect. 3.2 spectrometer conditions, a 5.8 kHz (0.1 s) stability estimate for a4, and that the cell was the one used in 532 nm international comparisons; its reference list leaves the CLEO 2006 entry unnumbered, so the printed numbers from 4 on are one lower than the text citations. Transcribed: data/observations/hong2009a (1 row)."
 
 - id: kobayashi2016a
   citation: "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, Absolute frequency measurements and hyperfine structures of the molecular iodine transitions at 578 nm, J. Opt. Soc. Am. B 33, 725 (2016) (arXiv:1603.07416)"
@@ -2351,7 +2351,7 @@
   notes: "Open preprint. Near the Yb clock transition."
 
 - id: yoshiki2023a
-  citation: "M. Yoshiki, S. Matsunaga, K. Ikeda, D. Akamatsu, F.-L. Hong, Rotation dependence of v' = 44 excited-state hyperfine constants obtained via precise measurements of the hyperfine structures of 127I2 lines near 514 nm, Eur. Phys. J. D 77 (2023)"
+  citation: "M. Yoshiki, S. Matsunaga, K. Ikeda, D. Akamatsu, F.-L. Hong, Rotation dependence of v' = 44 excited-state hyperfine constants obtained via precise measurements of the hyperfine structures of 127I2 lines near 514 nm, Eur. Phys. J. D 77, 140 (2023)"
   doi: "10.1140/epjd/s10053-023-00712-7"
   url: "https://ynu.repo.nii.ac.jp/records/2001411"
   year: 2023
@@ -2364,7 +2364,7 @@
   range_cm1: null
   transitions: "R(38)44-0, P(36)44-0, R(37)44-0, P(35)44-0, R(36)44-0, P(34)44-0, R(58)45-0; e.g. R(38)44-0 a1 = 583 075 471 946.2(5.6) kHz, P(34)44-0 a1 = 583 161 470 615.8(5.6) kHz, R(58)45-0 b1 = 583 161 394 939.6(5.6) kHz"
   n_items: 103
-  uncertainty: "5.6 kHz (9.6e-12) absolute; hyperfine fits ~1-2 kHz; eQq' to ~4 kHz"
+  uncertainty: "5.6 kHz (9.6e-12) absolute; splittings 0.4 kHz; hyperfine fits ~1-2 kHz; eQq' to ~4 kHz"
   uncertainty_MHz: 0.0056
   absolute: true
   hyperfine_resolved: true
@@ -2373,7 +2373,7 @@
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "From the accepted manuscript (Table 8): the Bodermann 2002 interpolation formulae mispredict the R(58)45-0 hyperfine splittings with SD 386.7 kHz, max |obs-pred| 802.8 kHz (b5); for P(34)44-0 the SD is 78.2 kHz. The a5 of P(34)44-0 and b7 of R(58)45-0 are blended (167 kHz pull). This is direct evidence that the 2002 hyperfine model fails at v' >= 44 and high J. Gives an empirical v'=44 J-dependence of eQq', C', d', delta'."
+  notes: "Transcribed: Tables 1-3 as data/observations/yoshiki2023a (79 rows); Tables 7-8 (P(34)44-0 and R(58)45-0 splittings) as data/observations/yoshiki2023a_p34r58 (24 rows, pending); Tables 4 and 6 (four-term constants, X state held at the eqQ''(J) law of Hong 2001 and C'' = 3.154, d'' = 1.524, delta'' = 3.705 kHz) as B-state rows in data/hyperfine_parameters/yoshiki2023a (7 rows, pending). Pressure: 1.2 Pa in the Table 1 footnote, ~1.4 Pa at -10 C in the text (p. 3); pressure coefficient -1.7 kHz/Pa in the uncertainty budget. Table 8 (also in the accepted manuscript): the Bodermann 2002 interpolation formulae mispredict the R(58)45-0 hyperfine splittings with SD 386.7 kHz, max |obs-pred| 802.8 kHz (b5); for P(34)44-0 the SD is 78.2 kHz. The a5 of P(34)44-0 and b7 of R(58)45-0 are blended (167 kHz pull). This is direct evidence that the 2002 hyperfine model fails at v' >= 44 and high J. Gives an empirical v'=44 J-dependence of eQq', C', d', delta'."
 
 # ---------------------------------------------------------------------------------------
 # D2. Post-2003 data, 600-680 nm, and post-2003 re-measurements of the 532/543/633 nm standards
@@ -2936,25 +2936,25 @@
   doi: "10.1016/j.optcom.2007.02.050"
   url: "https://doi.org/10.1016/j.optcom.2007.02.050"
   year: 2007
-  group: "Univ. Mainz / MPQ / GSI"
+  group: "MPI-K Heidelberg / MPQ / GSI / Univ. Mainz"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "I2-stabilized Ti:sapphire/diode lasers, femtosecond comb"
+  technique: "Ti:sapphire laser, FM saturation spectroscopy (5 MHz EOM probe, 40 kHz chopped AOM pump, lock-in) in heated 60 cm cells (oven 550 C for 772 nm, 600 C for 735/780 nm), fiber comb referenced to a Rb standard; two cells (MAINZ, GSI) compared"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [735.0, 772.0]
-  range_cm1: null
-  transitions: "per Salumbides 2008: P(42)1-14 and R(114)2-11 (both quoted 'at 735 nm'); 772 nm line(s) not identified here"
-  n_items: null
-  uncertainty: null
-  uncertainty_MHz: null
+  range_nm: [735.1, 780.3]
+  range_cm1: [12816.7, 13603.3]
+  transitions: "Table 2: a1 absolute frequencies of R(114)2-11 (735 nm, cold finger 28 C), P(42)1-14 (772 nm, 25 C) and P(148)1-14 (780 nm, 20 C; comparison line), MAINZ cell, at those cold-finger temperatures (not extrapolated to zero pressure); Table 3: a10-a1 and a15-a1 of R(114)2-11 and P(42)1-14. Also printed: a1 pressure-shift slopes per cell (Fig. 4; weighted means -5.6(2), -5.0(2), -5.5(3) kHz/Pa), GSI-cell means (Fig. 5) and GSI-minus-MAINZ offsets -237(14), -295(17), -281(23) kHz (Table 1), attributed to impurities in the GSI cell"
+  n_items: 7
+  uncertainty: "absolute 0.30 MHz, set by the authors to the 300 kHz difference from Bodermann 2000 at 780 nm; their quadrature sums are 276/265/263 kHz (Rb standard 6.3e-10, about 0.25 MHz and common to the three lines; 100 kHz spectroscopy setup; 10-16 kHz statistical). Splittings 42 kHz (standard deviation of a difference of two single measurements)"
+  uncertainty_MHz: 0.30
   absolute: true
   hyperfine_resolved: true
-  data_availability: "tables in paper (not checked)"
+  data_availability: "Tables 1-3 in paper"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "No abstract via APIs. Anchors in the 667-776 nm gap for the Li+ Ives-Stilwell experiment at ESR/GSI (inferred context). Included in the Salumbides 2008 refit."
+  notes: "Anchors in the 667-776 nm gap: P(42)1-14 a1 is the reference of the Li+ time-dilation experiment in an ion storage ring, R(114)2-11 a1 that of the Li 2s-3s isotope-shift measurements (stated). Included in the Salumbides 2008 refit. Transcribed: Tables 2-3 as data/observations/reinhardt2007a (7 rows, MAINZ cell only). Fig. 3 caption misprints P(42)1-14 as 'P(42)1-12'."
 
 - id: liao2010a
   citation: "C.-C. Liao, K.-Y. Wu, Y.-H. Lien, H. Knoeckel, H.-C. Chui, E. Tiemann, J.-T. Shy, Precise frequency measurements of 127I2 lines in the wavelength region 750-780 nm, J. Opt. Soc. Am. B 27, 1208 (2010)"
@@ -3041,11 +3041,11 @@
   system: "B-X"
   technique: "three-level (pump 532 nm / probe ECDL) emission spectroscopy, Ti:sapphire comb"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [982.0, 985.0]
-  range_cm1: null
-  transitions: "B->X emission to v''=48: R56(32-48) a1, P58(32-48) a1, P85(33-48) a1, R87(33-48) a1, R88(33-48) a10 and all 15 components of R86(33-48)"
+  range_nm: [981.4, 985.0]
+  range_cm1: [10152.37, 10189.48]
+  transitions: "B->X emission to v''=48 (Table 1, 20 rows): P58(32-48) a1, R56(32-48) a1, R87(33-48) a1, P85(33-48) a1, P88(33-48) a10 and all 15 components of R86(33-48). The abstract and text call the a10 line R88(33-48), and the table prints the a15 row of R86 as (32-48). The lines lie at 981.4-985.0 nm, partly outside the 982-985 nm of the title"
   n_items: 20
-  uncertainty: "relative 7e-10 (~0.2 MHz), set by diode-laser instability"
+  uncertainty: "relative 7e-10 (~0.2 MHz), set by diode-laser instability; the per-line figures in Table 1 (3-65 kHz) are statistical only, and the authors call the data preliminary, with uncertainty 'within 200 kHz' and an uncorrected pressure shift estimated at -45 kHz"
   uncertainty_MHz: 0.21
   absolute: true
   hyperfine_resolved: true
@@ -3054,7 +3054,7 @@
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "Unique precision data on X-state levels v''=48, far above the v''<=17 range of Knoeckel 2004. Combined with the known B v'=32/33 levels (532 nm system) they give X term values near the dissociation limit."
+  notes: "Unique precision data on X-state levels v''=48, far above the v''<=17 range of Knoeckel 2004. Combined with the known B v'=32/33 levels (532 nm system) they give X term values near the dissociation limit. Transcribed: data/observations/matyugin2012 holds 18 of the 20 rows; R87(33-48) a1 and P85(33-48) a1 are left out because their printed labels do not fit the other rows (the R56/P58 and R86/P88 pairs, which share upper levels, give consistent X v''=48 combination differences; read as printed, R87 and P85 would need impossible B' values for v'=33)."
 
 - id: nesterenko2019a
   citation: "M. I. Nesterenko, S. M. Ignatovich, S. A. Kuznetsov, Yu. A. Matyugin, M. N. Skvortsov, Absolute frequency measurements for emission transitions of molecular iodine in the range of 1053-1068 nm, Quantum Electron. 49, 633-640 (2019)"
@@ -3185,7 +3185,7 @@
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "Links impurity level to absolute frequency shift; basis for a cell-purity uncertainty term. See also Lazar et al. IFCS 2007 (doi:10.1109/freq.2007.4319044) and SPIE 2007 (doi:10.1117/12.735420)."
+  notes: "Links impurity level to absolute frequency shift; basis for a cell-purity uncertainty term. See also Lazar et al. IFCS 2007 (doi:10.1109/freq.2007.4319044) and SPIE 2007 (doi:10.1117/12.735420). Read 2026-10-26, nothing entered: Table 1 (R(56) a10, -15 C) K0 = 1.136, 0.777, 0.697 Pa after 1-3 sublimations with shifts -7, -0.7, +0.9 kHz; about 1 kHz is the noise floor."
 
 - id: hrabina2008a
   citation: "J. Hrabina, P. Jedlicka, J. Lazar, Methods for measurement and verification of purity of iodine cells for laser frequency stabilization, Meas. Sci. Rev. 8 (2008)"
@@ -3285,7 +3285,7 @@
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "Large cell-to-cell spread in purity that correlates with frequency; the main justification for a few-kHz 'cell' uncertainty floor on every absolute datum."
+  notes: "Large cell-to-cell spread in purity that correlates with frequency; the main justification for a few-kHz 'cell' uncertainty floor on every absolute datum. Read 2026-10-26, nothing entered: df/dK0 = -4.4(7) kHz/Pa (515 nm P(49) 44-0 a3), -3.4(6) (532 nm R(56) a10), -13.5(1.5) (633 nm f); 633 nm cells spread 6.7 kHz about -3.2 kHz."
 
 - id: fang2005a
   citation: "H.-M. Fang, S.-C. Wang, J.-T. Shy, Pressure and power broadening of the a10 component of R(56) 32-0 transition of molecular iodine at 532 nm, Opt. Commun. 257, 76-83 (2006)"

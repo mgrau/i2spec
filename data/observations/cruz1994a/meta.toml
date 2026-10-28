@@ -1,0 +1,57 @@
+id = "cruz1994a"
+citation = "F. C. Cruz, A. Scalabrin and D. Pereira, \"Hyperfine structure of the R(115) 20-1 line of 127I2 at 570 nm\", Il Nuovo Cimento D 16, 155-161 (1994)"
+source = "https://doi.org/10.1007/BF02451697 (publisher PDF, page scan)"
+doi = "10.1007/bf02451697"
+retrieved = "2026-10-23"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 158), "Observed and calculated frequency differences between the hyperfine components of the R(115) 20-1
+line of the transition B<-X of 127I2", read from the text layer and checked digit by digit against a 200 dpi
+rendering of p. 158. Entered: the "Delta nu_obs (MHz)" column, 20 intervals of components b-u from component a, in
+MHz as printed. The F column, the first-order calculated values and obs - calc, and the second-order calculated
+values are kept in each row's note. Checks: obs - calc equals the difference of the printed columns in every row
+(both orders), and the rms of the printed obs - calc columns is 0.537 and 0.618 MHz, the 0.54 and 0.61 MHz the
+table prints.
+
+Method (pp. 157-158): conventional saturated absorption (chopped pump, counterpropagating probe, no frequency
+modulation) with a single-frequency ring dye laser in a 20 cm external cell; the frequency differences were measured
+against the transmission peaks of a home-made confocal Fabry-Perot interferometer of 75 MHz free spectral range,
+from "over thirty recordings" at room temperature (200 mTorr) and at 0 C (33 mTorr). The line was identified from
+the Gerstenkorn-Luc atlas (17 525.6519 cm-1, as quoted on p. 157).
+
+Labels: the paper uses the nomenclature of Hanes et al. (1971): "component a is the highest-frequency one and the
+others are labelled in decreasing order". R(115) has odd J'' and 21 components, all observed, so a = a21, b = a20,
+..., t = a2, u = a1 (rank = 22 - letter index). Every row is an interval to a21.
+Checked model-free: the pattern, taken to u (a1), is 33.5, 66.0, 284.4, 318.2/323.4 (the q/p pair 5 MHz apart),
+356.8, ..., 884.2, 893.6, 904.0 MHz, which follows the held odd-J'' R lines of nearby bands rank for rank, e.g.
+yang2011a R(103) 23-1 (34.8, 69.5, 283.7, 320.6/325.7, 362.1, ..., 888.4, 899.1, 911.0) and kobayashi2016a R(101)
+17-1 (27.5, 54.2, 283.5, ..., 886.9, 896.3, 906.7); the reverse lettering would not. The atlas line is the
+strongest feature at 17 525.65 cm-1 in the held FTS atlases, assigned R(115) 20-1 there (salami_ross_2005,
+apo_nist_2009, debus_2023).
+
+Not entered: the line's wavenumber (the atlas value, not a measurement here); the fitted constants (p. 159, X held
+at eqQ'' = -2500 MHz, C'' = 0): first order Delta eqQ = 1911.83(0.92) MHz, Delta C = 45.13(0.71) kHz; second order
+(Delta J = +-2 included) 1911.39(0.92) MHz and 44.13(0.71) kHz. data/hyperfine_parameters/ needs all four
+constants with uncertainties, which this paper does not give. Fig. 1 (the spectrum, arbitrary zero).
+"""
+
+uncertainty = """
+1.0 MHz for each interval: "The experimental uncertainty in the determination of the peaks is estimated to be smaller
+than 1 MHz" (pp. 156-157) and "precision < 1 MHz" (Table I); the bound is taken as the 1 sigma value. The authors'
+two-parameter fit leaves 0.54 MHz rms, so the bound is conservative. Components p and q (a6, a5), 5 MHz apart, were
+resolved only in the 0 C spectra and were given weight 0.5 in the authors' fit; 1.4 MHz (1.0 x sqrt 2) is entered
+for them. The Fabry-Perot free spectral range is a scale common to every row (group cruz1994a); its uncertainty is
+not given.
+"""
+
+notes = """
+No other set holds this line's hyperfine structure, and no compilation prints it. Not in the catalog.
+"""
+
+[conditions]
+method = "saturated absorption with a chopped pump, no frequency modulation; single-frequency ring dye laser (Ar+ pumped), about 10 mW; 20 cm external cell; intervals from a 75 MHz FSR confocal Fabry-Perot as frequency marker"
+cell_length_cm = 20
+pressure_room_temperature_mTorr = 200
+pressure_0C_mTorr = 33

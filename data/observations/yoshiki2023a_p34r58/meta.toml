@@ -1,0 +1,68 @@
+id = "yoshiki2023a_p34r58"
+citation = "M. Yoshiki, S. Matsunaga, K. Ikeda, D. Akamatsu, F.-L. Hong, \"Rotation dependence of v' = 44 excited-state hyperfine constants obtained via precise measurements of the hyperfine structures of 127I2 lines near 514 nm\", Eur. Phys. J. D 77, 140 (2023), Tables 7 and 8"
+source = "https://doi.org/10.1140/epjd/s10053-023-00712-7 (publisher PDF)"
+doi = "10.1140/epjd/s10053-023-00712-7"
+retrieved = "2026-10-22"
+catalog = "data/catalog/precision.yaml#yoshiki2023a"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 7 (p. 7), "Hyperfine splittings of the P(34)44-0 line", and Table 8 (p. 8), "Hyperfine splittings of the
+R(58)45-0 line": the "Obs" columns, f(a_n) - f(a1) of P(34) 44-0 and f(b_n) - f(b1) of R(58) 45-0, in kHz. Parsed
+by script from the PDF text layer (thousands separators removed), converted kHz -> MHz exactly, and every row and
+every asterisk checked against 200 dpi renderings of pp. 7-8. Check: each Obs value reproduces the printed
+"Obs-Pred1", "Obs-Pred2" and "Obs-Cal" columns of Table 7 and the "Obs-Pred" and "Obs-Cal" columns of Table 8 to
+0.1 kHz in all 30 rows, which confirms the Obs digits. The Obs-Cal of the paper's own four-term fit is kept in
+the note column.
+
+Entered: P(34) 44-0 a2, a6-a15 (11 rows) and R(58) 45-0 b2-b6, b8-b15 (13 rows), 24 rows. Both lines have even
+J'' (34, 58) and 15 main components; a and b are the paper's series letters, and the numbers rank the components
+by frequency, as in the rest of the collection. The assignment of the components to the two overlapped lines is
+the authors' (Sect. 4, from the structures predicted by their v' = 44 formulas and by the Bodermann-Knoeckel-
+Tiemann 2002 interpolation formulas).
+
+Not entered, as in yoshiki2023a (which leaves out the starred values of Tables 2-3): the starred values the
+authors excluded from their fits. P(34) 44-0 a3 281 390.0 and a4 284 642.5 kHz, "close" components; and P(34) 44-0
+a5 319 427.4 kHz and R(58) 45-0 b7 395 097.5 kHz, which are one unresolved peak (the a5 of P(34) blended with the b7
+of R(58), p. 8; the paper's fits leave them +174.9 and -177.5 kHz from their calculated positions). Also not
+entered: the "Pred1", "Pred2", "Pred" and "Cal" columns, which are calculations (from the paper's Table 5 v' = 44
+formulas, from the 2002 interpolation formulas, and from the paper's fits); the four-term constants of these
+fits (Table 6, "HFS fitting") are in data/hyperfine_parameters/yoshiki2023a.
+
+Relation to yoshiki2023a: the same paper and measurement campaign. yoshiki2023a holds Table 1, including the
+absolute frequencies of the two reference components (P(34) 44-0 a1 and R(58) 45-0 b1), and the splittings of the
+other five lines (Tables 2-3), but no splittings of these two lines; the rows here complete the paper's line data
+and duplicate no held row. Together the two sets hold 103 rows, the "103 hyperfine transitions" of the abstract
+(111 measured components less the 8 starred).
+
+Consistency note (model-free): the blended peak reached through the two lines' references, Table 1 plus these
+tables, is P(34) a1 + a5 = 583 161 790 043.2 kHz and R(58) b1 + b7 = 583 161 790 037.1 kHz, 6.1 kHz apart, against
+about 0.7 kHz expected from the stated 0.3 kHz repeatability of the four values. The paper does not say whether
+the a5 and b7 locks were one measurement; the difference is reported, not resolved.
+"""
+
+uncertainty = """
+0.4 kHz for each splitting, sqrt(2) x the 0.3 kHz lock repeatability, as the paper states for its splittings
+(p. 4) and as yoshiki2023a: the systematic shifts are common to the components of one line. The paper's four-term
+fits of these lines have standard deviations of 2.0 kHz (P(34) 44-0, Table 7) and 1.6 kHz (R(58) 45-0, Table 8), so
+0.4 kHz is optimistic relative to the hyperfine model.
+"""
+
+notes = """
+Modulation transfer spectroscopy of 127I2 at 514 nm with the third harmonic of a 1542 nm external-cavity diode
+laser (dual-pitch PPLN waveguide), pump phase-modulated at 220 kHz by an acousto-optic modulator, 30 cm cell,
+frequencies measured with an Er-fiber comb referenced to an iodine-stabilized Nd:YAG laser. Same set-up and
+conditions as yoshiki2023a. The two lines share atlas line number 4184 (Gerstenkorn-Luc), which does not
+resolve them; their Doppler-free spectra overlap (Fig. 1h). No other held set contains either line.
+"""
+
+[conditions]
+cold_finger_C = -10.0
+pressure_Pa = 1.2
+pump_mW = 1.8
+probe_mW = 0.3
+modulation_kHz = 220
+cell_length_cm = 30
+detection = "modulation transfer"
+pressure_note = "Table 1 footnote a: 1.2 Pa; the text (p. 3) says the -10 C cold finger corresponds to approximately 1.4 Pa"

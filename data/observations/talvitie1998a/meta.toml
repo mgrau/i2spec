@@ -1,0 +1,72 @@
+id = "talvitie1998a"
+citation = "H. Talvitie, M. Merimaa and E. Ikonen, \"Frequency stabilization of a diode laser to Doppler-free spectrum of molecular iodine at 633 nm\", Opt. Commun. 152, 182-188 (1998)"
+source = "https://doi.org/10.1016/S0030-4018(98)00166-7 (publisher PDF)"
+doi = "10.1016/s0030-4018(98)00166-7"
+retrieved = "2026-10-23"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 186), "Measured frequency values nu_LD of the hyperfine components b4-b21 of P(33) 6-3 transition", read
+from the text layer and checked against a 200 dpi rendering of p. 186. Entered:
+- the "Measured nu_LD (MHz)" column, 15 intervals from b21 (b4-b8, b11-b20; b9 and b10, an unresolved doublet, were
+  not measured; b1-b3 were outside the counter's bandwidth), group talvitie1998a;
+- the last row, b21 (footnote b) relative to a15 of R(127) 11-5, -519.213 MHz (sigma 3 kHz; also in the text,
+  p. 186), group talvitie1998a_link.
+The diode laser was locked in turn to each resolved component while a He-Ne/I2 laser on a15 of R(127) 11-5 served
+as the reference; the intervals are averages of repeated beat measurements, taken relative to b21 by the authors.
+Check: the printed column (nu_LD - nu_CIPM + Delta nu_corr) equals nu_LD - nu_CIPM + 9 kHz in all 16 rows (by
+script), with Delta nu_corr = 9 kHz as stated. The CIPM column (the 1992 MEP values) is not entered.
+
+The paper prints the CIPM b21 - a15 as -519.224 MHz, and the 9 kHz it states as the difference implies -519.222 MHz,
+which is what the MEP 2001 values give (bipm2003a: -532.42 + 13.198). The measured -519.213 MHz is taken as printed.
+
+Labels: b1-b21 and a1-a21 are the components of P(33) 6-3 and R(127) 11-5 by rank in frequency, as in the MEP 633 nm
+document (p. 184: "assigned as b1-b21 and a1-a21"). Checked model-free against the held P(33) 6-3 sets: the ten
+resolved intervals are within -33 to +1 kHz of simonsen2000a (mean -12 kHz) and within -43 to +9 kHz of bipm2003a,
+edwards1999a and razet1993a; the five partially resolved ones (b5, b6, b11, b19, b20) differ by -101 to +112 kHz,
+with the signs and sizes of the authors' calculated pushing shifts.
+
+Not entered: the calculated pushing shifts (Table 1, last column; they are calculated, see uncertainty); Figs. 4-8
+(spectra, Allan deviations, shift plots); the pressure and modulation shifts, which are in [conditions].
+"""
+
+uncertainty = """
+Intervals within P(33) 6-3: the printed experimental standard deviations (1 sigma, 3-22 kHz) combined in quadrature
+with the authors' calculated shift from the pushing of neighboring components (Table 1, last column: 0-7 kHz for
+the resolved components, 49-114 kHz for the partially resolved b5, b6, b11, b19 and b20), since the values are not
+corrected for it: 3-12 kHz and 49-116 kHz. The calculation also shifts b21 itself by +14 kHz, which lowers every
+interval by about that much (the resolved rows sit 12 kHz below simonsen2000a on average); this common term is not
+added to each row. The text adds that b15 is pushed by about +20 kHz by a1 of R(127) 11-5, 1 MHz away, which the
+column (-1 kHz) does not show.
+b21 - a15 of R(127) 11-5: 25 kHz, the day-to-day reproducibility (1 sigma) of the laser frequency (p. 186, "the mean
+laser frequency varied up to +-50 kHz" between days); the printed 3 kHz is the scatter of one series.
+"""
+
+notes = """
+Not a source of the MEP: the 2001 MEP table for P(33) 6-3 (bipm2003a; Quinn 2003, Table 21) cites refs. 108 and
+113-117 (Morinaga & Tanaka 1978, Razet et al. 1993, Hanes et al. 1971, Bergquist & Daniel 1984, Simonsen 1997,
+Edwards et al. 1999), not this paper. An independent measurement of the same intervals, so no [overlaps]. Not in the
+catalog.
+
+The b21 - a15 row is an interval between two lasers under different conditions: the diode laser's cell at 15 C,
+7 MHz modulation amplitude; the He-Ne reference's conditions are not stated. Neither laser's modulation shift is
+corrected (intervals are not shift-corrected), as for razet1993a's b21 - a18 link.
+"""
+
+[conditions]
+method = "microlens-coupled diode laser (BlueSky Research PS010, about 3 MHz linewidth), collinear saturated absorption in a 10 cm cell (Opthos), 3f detection; current modulation at 10 kHz, amplitude about 7 MHz (14 MHz p-p); beats against a He-Ne/I2 laser on R(127) 11-5 a15"
+cell_length_cm = 10
+cold_finger_C = 15.0
+pressure_Pa = 17.28
+saturating_power_mW = 5.0
+saturating_intensity_W_per_cm2 = 1.6
+probe_fraction = 0.04
+modulation_MHz_pp = 14.0
+hyperfine_linewidth_MHz = 8.0
+pressure_shift_b17_kHz_per_Pa = -11.2
+pressure_shift_b18_kHz_per_Pa = -11.6
+pressure_shift_b21_kHz_per_Pa = -9.1
+pressure_shift_range = "cold finger 9.2-20.0 C, 10.1-26.9 Pa (p. 187, Fig. 7)"
+modulation_shift = "b21: less than 10 kHz for modulation amplitudes up to 10 MHz, rising quickly above (p. 187, Fig. 8)"
+pressure_basis = "17.28 Pa from Gillespie & Fraser at 288.15 K (the paper gives the cold finger, 15.0(0.1) C, and the 10.1-26.9 Pa span of 9.2-20.0 C)."

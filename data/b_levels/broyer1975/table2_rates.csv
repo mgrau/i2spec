@@ -1,0 +1,34 @@
+isotopologue,v,method,Gamma_rad_1e6_s,Gamma_rad_unc_1e6_s,k_v_s,k_v_unc_s,k_v_limit,source,note
+127I2,9,decay,1.6,0.08,130,10,,this work,
+127I2,10,decay,1.4,0.07,95,6,,this work,
+127I2,11,decay,1.09,0.06,67,6,,this work,
+127I2,12,decay,0.86,0.04,39,4,,this work,
+127I2,13,decay,0.79,0.04,13,4,,this work,
+127I2,14,decay,0.76,0.04,,,,this work,"k_v printed 'not measured' (one level only)"
+127I2,15,decay,0.74,0.04,,,,this work,
+127I2,16,decay,0.82,0.04,,,,this work,
+127I2,17,decay,0.87,0.05,,,,this work,
+127I2,18,decay,1.03,0.05,10,,<,this work,"printed <10; text: k18 <= 10 s-1, no clear J' dependence of the lifetime"
+127I2,19,decay,1.09,0.06,,,,this work,
+127I2,20,decay,1.12,0.06,,,,this work,
+127I2,6,orientation,2.9,,250,90,,Ref. 3,"k_v footnote a (Ref. 3); Gamma_rad printed without a footnote"
+127I2,11,orientation,1.37,0.2,68,10,,this work,"footnote b: this work, Sect. IV: circular polarization of v' = 11, J' = 128 (He-Ne 632.8 nm), delta = 0.38 +- 0.05, k11 J'(J'+1) = (0.8 +- 0.1) Gamma_rad, with 1/tau0 = (2.5 +- 0.2)e6 s-1"
+127I2,17,orientation,,,5,2,,Ref. 3,footnote a
+127I2,18,orientation,,,13,5,,Ref. 3,"no footnote printed; the text gives k18 = (13 +- 5) s-1 from Ref. 3"
+127I2,21,orientation,1.1,,24,7,,Ref. 3,"k_v footnote a (Ref. 3); Gamma_rad without a footnote"
+127I2,32,orientation,1.0,,,,,Refs. 4 and 5,"Gamma_rad footnote c"
+127I2,40,orientation,0.5,,17,5,,Ref. 3,"k_v footnote a (Ref. 3); Gamma_rad without a footnote"
+127I2,43,orientation,0.4,,,,,Refs. 4 and 5,"Gamma_rad footnote c"
+127I2,62,orientation,0.07,,,,,Refs. 4 and 5,"Gamma_rad footnote c"
+127I2,6,Tellinghuisen,1.1,,1700,,~,Ref. 1,"prediction, printed ~1700"
+127I2,9,Tellinghuisen,0.9,,500,,~,Ref. 1,prediction
+127I2,10,Tellinghuisen,0.9,,350,,~,Ref. 1,prediction
+127I2,11,Tellinghuisen,0.9,,250,,~,Ref. 1,prediction
+127I2,12,Tellinghuisen,0.8,,150,,~,Ref. 1,prediction
+127I2,13,Tellinghuisen,0.8,,80,,~,Ref. 1,prediction
+127I2,17,Tellinghuisen,0.7,,,,,Ref. 1,prediction
+127I2,18,Tellinghuisen,0.7,,200,,~,Ref. 1,prediction
+127I2,21,Tellinghuisen,0.6,,300,,~,Ref. 1,prediction
+127I2,40,Tellinghuisen,0.3,,,,,Ref. 1,prediction
+127I2,43,Tellinghuisen,0.28,,,,,Ref. 1,prediction
+127I2,62,Tellinghuisen,0.15,,,,,Ref. 1,prediction

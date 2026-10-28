@@ -1,0 +1,12 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(62) 17-1,a2,interval,275.027,0.022,,a1,barwood1984a_hfs,"Table 1: n, 275.027 (0.022) MHz from o"
+127I2 P(62) 17-1,a3,interval,287.050,0.25,,a1,barwood1984a_hfs,"Table 1: m, 287.050 (0.022) MHz from o; not fully resolved, ""the error in the measured separation could be larger than indicated"": 0.25 MHz entered"
+127I2 P(62) 17-1,a4,interval,292.574,0.25,,a1,barwood1984a_hfs,"Table 1: l, 292.574 (0.022) MHz from o; not fully resolved, ""the error in the measured separation could be larger than indicated"": 0.25 MHz entered"
+127I2 P(62) 17-1,a5,interval,304.262,0.022,,a1,barwood1984a_hfs,"Table 1: k, 304.262 (0.022) MHz from o"
+127I2 P(62) 17-1,a6,interval,416.673,0.023,,a1,barwood1984a_hfs,"Table 1: j, 416.673 (0.023) MHz from o"
+127I2 P(62) 17-1,a7,interval,428.513,0.023,,a1,barwood1984a_hfs,"Table 1: i, 428.513 (0.023) MHz from o"
+127I2 P(62) 17-1,a8,interval,440.169,0.023,,a1,barwood1984a_hfs,"Table 1: h, 440.169 (0.023) MHz from o"
+127I2 P(62) 17-1,a9,interval,452.295,0.024,,a1,barwood1984a_hfs,"Table 1: g, 452.295 (0.024) MHz from o"
+127I2 P(62) 17-1,a10,interval,579.430,0.025,,a1,barwood1984a_hfs,"Table 1: f, 579.430 (0.025) MHz from o; a sum through an intermediate component"
+127I2 P(62) 17-1,a15,interval,869.534,0.028,,a1,barwood1984a_hfs,"Table 1: a, 869.534 (0.028) MHz from o; a sum through an intermediate component"
+127I2 P(62) 17-1,a1,frequency,520206808.2800,0.0520,,,barwood1984a_ratio,"derived here: f_o/f_i = 1.09838131729 (1e-10, p. 23) x 473612214712 kHz (CIPM 2001 f_i); printed 520 206 808.38 MHz with the 1982 f_i = 473 612 214.8 MHz; at the 6 C reference conditions"

@@ -33,7 +33,7 @@ Oddities in the paper (no effect on the numbers): the text on p. 330 and the cap
 4 and 6 call the line "P(28) 20-0", while the abstract, Sec. 3, the Conclusion and the captions of
 Figs. 7-8 say P(28) 24-0; 548 nm and the model residuals confirm 24-0. Figs. 7-8 mention an "a11"
 component, which is not among the measured ones. The text says 766 kHz/Pa and 596 kHz/mW in the
-text layer; the rendered page reads 76(6) kHz/Pa and 59(6) kHz/mW (a text-layer artefact; neither
+text layer; the rendered page reads 76(6) kHz/Pa and 59(6) kHz/mW (a text-layer artifact; neither
 number is used here).
 """
 
@@ -47,7 +47,7 @@ and asymmetry parts are common to the three components, hence the one group.
 notes = "The paper reports IodineSpec5 predictions about 3.4-3.6 MHz above the measured values."
 
 [conditions]  # values already at zero pressure (authors)
-method = "modulation transfer spectroscopy of a frequency-doubled, fibre-amplified 1097 nm ECDL, comb-referenced"
+method = "modulation transfer spectroscopy of a frequency-doubled, fiber-amplified 1097 nm ECDL, comb-referenced"
 cell_length_cm = 10
 cold_finger_C = 6.5
 pressure_Pa = 7.8

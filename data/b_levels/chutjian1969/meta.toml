@@ -1,0 +1,72 @@
+id = "chutjian1969"
+citation = "A. Chutjian and T. C. James, \"Intensity measurements in the B 3Pi0u+ - X 1Sigma0g+ system of I2\", J. Chem. Phys. 51, 1242-1249 (1969), Tables II and III"
+source = "https://doi.org/10.1063/1.1672129 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1063/1.1672129"
+retrieved = "2026-10-26"
+unit = "D^2 (squared matrix elements and |Re|^2); 1e5 s-1 (rates); 1e12 cm-3 (mean cubed wavenumber); A (R-centroids)"
+state = "B-X"
+isotopologue = "127I2"
+files = ["line_strengths.csv", "decay_rates.csv", "results.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables II and III (pp. 1246-1247) and the numbers of the text (pp. 1243-1249), read from 300 dpi renders of the scan
+(the PDF has a cover page, so p. 1242 is PDF page 2). The OCR text layer garbles the +- signs, the 16-2 line ("p(n)")
+and the exponents of the widths; every value was read from the images.
+
+The measurement: photoelectric equivalent widths of single rotational lines (1-kW quartz-iodine lamp, 1.84 m Ebert
+spectrometer, 0.05-0.08 cm-1 slit), several path lengths (4, 10, 30 cm; 120 cm cell to saturate and detect blends),
+pure Doppler curve of growth (a = 0.0023), 22 C. Lines chosen after the blending tests (p. 1243): 12-2 P(66), 13-2 P(71),
+14-1 P(93), 16-2 P(77), 25-0 R(46), 29-0 P(38).
+
+line_strengths.csv (6 rows): Table II, the measured |<v'|R(r)|v''>|^2 (Eq. 2b; unit D^2, implied by |Re|^2 = matrix
+element / q), with the calculated Franck-Condon factor q (from Steinfeld and Cunningham, private communication) and
+r-centroid (Cunningham) used to form |Re|^2.
+decay_rates.csv (6 rows): Table III, the mean cubed fluorescence wavenumber <sigma^3 q>_v' (calculated) and the radiative
+rate A_v' = (64 pi^4/3h) |Re|^2 <sigma^3 q> with the average |Re|^2 = 1.03 +- 0.10 D^2 (Eq. 3), and the total
+depopulation rates 1/tau at v' = 14 and 25 that the table reprints from ref. 1 (Chutjian, Link and Brewer, J. Chem.
+Phys. 46, 2666 (1967), phase shift) and ref. 2 (S. P. Davis and D. E. Grimes, unpublished, direct decay).
+results.csv (13 rows): the computed widths and curve-of-growth parameter, the continuum absorption between lines, the
+magnetic-field limit, and the decay-channel fractions of the Discussion.
+
+Not entered: Table I (pp. 1244-1245), W/Sl of Eq. (1) for a = 0-9.99 in steps of 0.01: a mathematical function
+(the pure Doppler curve of growth), not a measurement. Fig. 1 (a 29-0 scan) and Fig. 2 (Table III plotted).
+
+Checks (model-free): |Re|^2 = matrix element / q reproduces 1.14, 1.14, 1.14, 1.10 for 12-2 to 16-2; for 25-0 and 29-0
+it gives 0.835 and 0.834 against the printed 0.837 (rounding of q). The mean of the six |Re|^2 is 1.032 (printed
+1.03). A_v' / <sigma^3 q> is 3.19-3.24 (1e5 s-1 per 1e12 cm-3) across the rows; (64 pi^4/3h)(1.03 D^2) gives 3.23. The
+text: 14.3e5 = mean(13.0, 15.6); 14.3 - 4.82 = 9.5; 9.5/14.3 = 66 %; 48.0 - 9.5 - 4.8 = 33.7. Widths: 1/(4 pi c tau) at
+tau = 1e-6 s is 2.65e-6 cm-1 as printed; a = (ln 2)^1/2 (2.65e-6 + 1.66e-5)/6.59e-3 = 0.0024 (printed 0.0023).
+No misprint found.
+"""
+
+uncertainty = """
+Table II: "the 90 % confidence limits on the standard deviation of the mean, or +-5 %, whichever was greater" (p. 1247);
+entered as printed, not converted to 1 sigma. Table III: A_v' carries the +-10 % of the mean |Re|^2. The reprinted 1/tau
+values carry the errors printed in Table III. Path-length repeats agreed to 5-10 % (p. 1243). The paper assumes pure
+Doppler line shapes; Tellinghuisen 1982 (data/b_levels/tellinghuisen1982, footnote 42) argues that the then unknown
+hyperfine broadening makes these |Re|^2 10-20 % too large.
+"""
+
+notes = """
+The first line-by-line absolute B-X transition strengths. |Re|^2 is about 1.14 D^2 at r-centroid 2.76-2.78 A and 0.84
+D^2 at 2.69-2.70 A: it rises with r-centroid, but the authors use the mean (1.03 D^2) for the radiative rates. In the
+R-centroid picture these are |mu_e(R)|^2 at R = 2.69-2.78 A; for comparison with Tellinghuisen's later functional form
+(mu_e^2 = c1 exp[-c2 (R - c3)^2]/R^2, Tellinghuisen 1997 and 2011) these are single points, not a function.
+The comparison of A_v' with total decay rates gives the first evidence of spontaneous (collision-free) predissociation
+of B at v' = 25 (66 % of the decay); see broyer1975 for later level-resolved lifetimes. The FCFs here are of Steinfeld
+(steinfeld1965 deposit, not held) and Cunningham.
+"""
+
+[columns]
+line_strengths = """
+band, v_upper, v_lower, line, J_lower: the measured line (P/R and J'' as printed in the text). matrix_element_sq_D2,
+_unc: |<v'|R(r)|v''>|^2 from Eq. (2b), D^2. q_calc: calculated FCF. rcentroid_calc_A: calculated r-centroid, A.
+Re2_D2, Re2_unc_D2: |Re|^2 = matrix element / q, D^2. note.
+"""
+decay_rates = """
+v: B level. band: the band measured. sigma3q_1e12_cm3: calculated mean cubed wavenumber, 1e12 cm-3. A_rad_1e5_s, _unc:
+radiative rate, 1e5 s-1. inv_tau_phase_shift_*, inv_tau_direct_*: total depopulation rates reprinted from refs. 1 and
+2, 1e5 s-1. note.
+"""
+results = "quantity, value, uncertainty (as printed), unit, source (page), note. Calculated values are marked so."

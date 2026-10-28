@@ -1,0 +1,76 @@
+id = "bodermann1998a"
+citation = "B. Bodermann, G. Bönsch, H. Knöckel, A. Nicolaus and E. Tiemann, \"Wavelength measurements of three iodine lines between 780 nm and 795 nm\", Metrologia 35, 105-113 (1998)"
+source = "https://doi.org/10.1088/0026-1394/35/2/5 (publisher PDF)"
+doi = "10.1088/0026-1394/35/2/5"
+retrieved = "2026-10-23"
+unit = "MHz"
+catalog = "precision.yaml:bodermann1998a"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked against a 300 dpi rendering of p. 112, which holds both tables. Values
+printed in kHz, entered in MHz.
+
+Table 2, "Wavelength and frequency values of the measured transitions" (group bodermann1998a_wavelength): vacuum
+wavelengths and frequencies of three hyperfine components, from interferometric wavelength comparison at PTB (3.8 m
+Michelson interferometer) against an iodine-stabilized He-Ne laser at 633 nm (R(127) 11-5 a13, related to BIPM4)
+and a Ca-stabilized dye laser at 657 nm:
+  R(96) 0-14 a10    781.488 441 03(10) nm   383 617 264 515(49) kHz
+  P(166) 0-14 a1    790.109 812 76(10) nm   379 431 381 762(48) kHz
+  R(96) 0-15 a10    793.527 910 44(10) nm   377 796 992 463(48) kHz
+The frequency column is entered. c/lambda of the printed wavelengths gives the printed frequencies to 2.5, 1.0 and
+0.4 kHz. The values include a correction "of -42 kHz ... applied to the measured wavelength" (p. 112): the older
+cell used showed a (-42 +- 5) kHz frequency shift against two newer, purer cells, and the values are referred to
+the newer ones (+42 kHz in frequency, as bodermann1998c reads the same correction in the thesis). The paper does not
+print the numerical value it took for the 633 nm standard; if it was the CIPM 1992 value of R(127) 11-5 a13, the
+CIPM 2001 value would raise the rows by 1.5e-11, at most 6 kHz. Not rescaled.
+
+Table 3, "Measured frequency differences to the calibrated lines" (group bodermann1998a_beats): nine beat-frequency
+differences, each to the calibrated line of its block, entered as intervals f(transition) - f(calibrated line):
+R(96) 0-15 a1, a15 and P(228) 1-14 b10 from R(96) 0-15 a10; P(166) 0-14 a15 and R(19) 0-15 b2, b15 from P(166)
+0-14 a1; R(96) 0-14 a1, a8 and a15 from R(96) 0-14 a10. Signs as printed.
+
+Labels: the number is the rank by frequency (a1 lowest; a1 - a10 is negative, a15 - a10 positive). a and b only
+tell apart lines in one scan (Fig. 4: R(96) 0-15 a1-a15 with P(228) 1-14 b1-b15; P(166) 0-14 a1-a15 with R(19) 0-15
+b1-b17). R(19) 0-15 has odd J'' and 21 main components, of which Fig. 4b labels 17; b2 and b15 are taken as ranks 2
+and 15, as bodermann1998c does for the same two components.
+
+Not entered: Table 1 (the uncertainty budget); Figs. 2-4 (laser emission spectra and the iodine spectra).
+"""
+
+uncertainty = """
+As printed, 1 sigma (p. 112, "All uncertainties given above correspond to one standard deviation"). Table 2: the
+combined standard uncertainty, relative 1.3e-10 (Table 1: standard laser 3, laser to be measured 11, spectral
+properties 3, interferometer 4, diffraction 2, statistics 1, in parts in 1e11), 48-49 kHz. Table 3: 9-63 kHz.
+"""
+
+notes = """
+The same measurements as rows held in bodermann1998c (the Hannover thesis, training data):
+- Table 2 is the thesis's Table 6.12 primary lines, digit for digit (bodermann1998c rows 2-4).
+- Table 3's P(228) 1-14 b10 and R(19) 0-15 b2 are bodermann1998c rows 5-6 (-546.041 and 159.564 MHz).
+- Table 3's P(166) 0-14 a15 - a1 (882.176 MHz) and R(19) 0-15 b15 - P(166) 0-14 a1 (826.333 MHz) equal, to 0.2 and
+  0.4 kHz, differences of the thesis's Table 7.1 beats to R(16) 0-15 a9 (bodermann1998c rows 44, 46, 47), which
+  also give R(19) 0-15 b2 - P(166) 0-14 a1 = 159.5639 MHz.
+- Table 3's R(96) 0-15 a1 - a10 (-587.968(20) MHz) is 8.5 kHz from the difference of the thesis's two beats to
+  P(88) 0-15 a15 (-587.9595 MHz), so it may be a separate determination.
+- R(96) 0-15 a15 and R(96) 0-14 a1, a8, a15 relative to a10 are held by no other set.
+The paper (received October 1997) is the first report of these values; the thesis prints them again. Per "one
+record per measurement" the [overlaps] entry belongs in bodermann1998c, which is training data, so none is declared
+here.
+
+[shift_correction]: the paper gives the cell conditions of Table 2 (cold finger 20(1) C, (27 +- 2.4) Pa, wall
+600(50) C) but no pressure-shift coefficient; the slope is the one bodermann1998c takes from the same group's thesis,
+so the same measurement is corrected the same way in both sets. Table 3's intervals are left alone.
+"""
+
+[conditions]
+method = "interferometric wavelength comparison (PTB 3.8 m Michelson interferometer) of a diode laser locked by third-harmonic saturated absorption, against He-Ne/I2 at 633 nm (R(127) 11-5 a13) and a Ca-stabilized dye laser at 657 nm"
+cell = "50 cm quartz cell, cold finger 20 +- 1 C (27 +- 2.4 Pa), wall 600 +- 50 C"
+modulation = "5 kHz, 3 MHz amplitude, third-harmonic detection"
+
+[shift_correction]
+groups = ["bodermann1998a_wavelength"]
+pressure_Pa = 27.0
+pressure_kHz_per_Pa = -5.1
+pressure_kHz_per_Pa_unc = 1.0
+basis = "Paper p. 108: cold finger 20(1) C, (27 +- 2.4) Pa; no coefficient printed. Slope -5.1(1.0) kHz/Pa as in bodermann1998c (the authors' thesis budget, cell at 600 C). Shift +137.7 kHz. No power or modulation dependence within 1e-11 (p. 112)."

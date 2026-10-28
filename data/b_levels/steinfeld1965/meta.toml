@@ -1,0 +1,175 @@
+id = "steinfeld1965"
+citation = "J. I. Steinfeld, R. N. Zare, L. Jones, M. Lesk and W. Klemperer, \"Spectroscopic constants and vibrational assignment for the B 3Pi0u+ state of iodine\", J. Chem. Phys. 42, 25-33 (1965)"
+source = "https://doi.org/10.1063/1.1695685 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1063/1.1695685"
+retrieved = "2026-10-23"
+unit = "cm-1 (B_v, term values, constants); A (turning points); s-1 and s (lifetimes); relative units (intensities)"
+state = "B (Tables I, III-VII); X (Table II)"
+isotopologue = "127I2"
+files = ["data.csv", "x_B.csv", "constants.csv", "intensity_obs.csv", "intensity_calc.csv", "rkr_calc.csv", "sensitivity_calc.csv", "lifetimes_calc.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-VII (pp. 27-33) and the constants of the abstract and Sect. A, read from the scan's native 300 dpi page images
+(rendered at 400-900 dpi for reading). The PDF has 9 pages: the top of PDF page 1 (p. 25) is the end of the preceding
+article and PDF page 9 (p. 33) carries the start of the next (Brown and James, the isotope-shift confirmation of the
+numbering). The OCR text layer drops the '...' entries of Table VI and garbles exponents; every value was read from the
+images.
+
+The measurement: B-X absorption at room temperature and about 100 C (hot bands), 10-m Littrow spectrograph (resolving
+power about 500 000, about 1 A/cm), thorium lines as the reference, line positions from a traveling-microscope comparator
+(0.002 cm-1); the same line on different plates agreed to within +-0.03 cm-1. 719 lines of nine bands (3-6, 4-7, 5-4, 7-5,
+11-1, 12-2, 13-2, 25-0, 29-0) were measured and assigned. The line list is NOT printed: footnote 13 says it was deposited
+(frequencies and air wavelengths) as Document No. 8187 with the ADI Auxiliary Publications Project, Photoduplication
+Service, Library of Congress; the Franck-Condon factors are in the same deposit. Neither is held here.
+
+data.csv (18 rows, 16 levels v' = 3-29): one row per level and source of Tables I and III.
+  B_x100      Table I "B_v' (polynomial fit)": the B-state term values (ground-state levels from Rank's constants plus
+              the absorption wavenumbers) fitted as a polynomial in J(J+1); x 100, as in the other b_levels sets.
+  B_cd_x100   Table I "B_v' (combination differences)", x 100.
+  T_xmin      Table III "Rotationless term value", the J = 0 extrapolation of the term values, "relative to zero of
+              X-state potential" (footnote a), i.e. above the X potential minimum, not above X(0,0). G (above
+              X(v'' = 0, J'' = 0)) is therefore left empty: the paper does not print the X zero-point energy it used.
+              Table III is headed "Band heads" but prints these term values.
+  band_B, source_B, band_T, source_T: the band(s) and source letter of each table, written out: a/b "this work",
+              b "Mecke 1923" (Table I), c "Brown 1963" (R. L. Brown, thesis, Harvard 1963, ref. 2a), d "Brown and
+              Griffiths 1961" (unpublished), e "Loomis 1927". Rows from other sources are reprints: 17 of the 25 B values
+              are this work's (two jointly with Mecke), 8 of the 11 term values (one jointly with Brown).
+  v' is in the paper's revised numbering throughout (see notes); the reprinted bands of Mecke and Loomis are relabeled
+  by the authors (Loomis's 26-1 and 29-0 appear as 25-1 and 28-0).
+
+x_B.csv: Table II, B_v'' of X v'' = 0, 1, 2, 5, 7 from the combination differences of this work (B_cd) and, for
+  comparison, calculated from Rank's constants (D. H. Rank and B. S. Rao, J. Mol. Spectrosc. 13, 34 (1964); B_calc_rank,
+  calculated).
+
+constants.csv: the fitted B-state constants of the abstract and Sect. A (omega_e to omega_e z_e from the pooled band-head
+  data; Be to delta_e from Table I; re, De, beta_e; Te and the dissociation energy), with the printed error limits, and the
+  numbers the paper takes from elsewhere for the dissociation-energy discussion (labeled reprint).
+
+intensity_obs.csv (116 values, measured) and intensity_calc.csv (86 values, calculated): Table VI, the intensity
+  distribution in B-X fluorescence, in long format (one row per band and source).
+  (a) the fluorescence from v' = 25 after R(33) absorption of the Hg 5460.75 A line, v'' = 0-37, normalized to 25-3 =
+      1.00 (energy per second): calculated (38), observed photoelectrically in this laboratory (Ref. c = ref. 2b,
+      Steinfeld 1964, average of P and R; 19 values, v'' = 1-19), densitometric (Ref. d, Arnot and McDowell; 18 values,
+      v'' = 0-18), photographic estimates (Ref. e, Lenz 1924 for 25-1 to 25-18 and Oldenberg 1927 for 25-21 to 25-37;
+      37 values, v'' = 0-19 and 21-37).
+  (b) fluorescence from v' = 14 (printed "14-0, P(144)") and v' = 15 ("15-0, P(45)"), v'' = 0-9, normalized to 14-3 and
+      15-3: calculated (20) and observed photoelectrically by Brown 1963 (17).
+  (c) v' = 27, 26, 24, 23, v'' = 0-6, normalized to v'-3, calculated for R(33): calculated (28) and observed
+      photoelectrically in this laboratory (ref. 2b; 25). Footnote j ("relatively uncertain due to large
+      self-absorption") marks 26-1 (printed in parentheses, (0.3)), 24-0 and 23-0 (mark column).
+  The observed values of (a) Ref. c and (c) are this group's measurements (ref. 2b, then to be published); the others are
+  reprints of other work, kept because this table is where their numbers are printed (Arnot and McDowell's are
+  unpublished).
+
+rkr_calc.csv: Table IV, the calculated RKR turning points of the revised B potential, v' = 0-44 (45 levels). Footnotes:
+  the repulsive inner end V(r) = 1.343e9/r^12 - 11 496 cm-1 for r < 2.66 A and the long-range end V(r) =
+  -5.567e6/r^6.085 cm-1 for r > 4.53 A (both with the dissociation limit as zero, judged from the turning points; the
+  paper does not say).
+sensitivity_calc.csv: Table V, the calculated inner turning point of the fluorescing level for the assignments v' = 24,
+  25, 26 with all B_v' shifted by +0.00004, 0 and -0.00004 cm-1 (9 values).
+lifetimes_calc.csv: Table VII, calculated radiative lifetimes of v' = 14, 15, 25 from absorption (Eq. 9), with the
+  absorption Einstein coefficients A they use (reprints: Brown 1963; C. Malamond and H. Boiteux, Compt. Rend. 238, 778
+  (1954)) and Brewer et al.'s lifetimes (measured for v' = 25, (7.2 +- 1.0)e-7 s in the text; computed from it with
+  Eq. (8) for v' = 14 and 15).
+
+Checks (model-free):
+- Table III against the held levels of data/b_levels/barrow1973 (same numbering): T_xmin - G(barrow1973) = 107.19,
+  107.20, 107.20, 107.14, 107.17, 107.24, 107.02, 107.11, 107.12 cm-1 at v' = 4, 5, 7, 11, 12, 13, 16, 25, 29: constant
+  to +-0.1 cm-1 (the stated accuracy) and equal to the X zero-point energy (107.10 cm-1, data/b_levels/gerstenkorn1991
+  constants). This confirms both footnote a and that the revised numbering is the modern one.
+- Table I against barrow1973: the polynomial-fit B_v' differ by -7.3 to +0.8 e-5 cm-1 (most within the stated
+  +-4e-5), the combination-difference values by -13 to +5 e-5; against Eq. (1) with the printed Be, alpha_e, gamma_e,
+  delta_e, by -7 to +6 e-5 (one -10.4e-5, the 29-0 combination difference). Table II against barrow1973's X B_v'' (v'' =
+  0, 1, 2, 5): -2.3, -13.9, -6.7, -2.1 e-5 cm-1.
+- Table III against the omega_e polynomial: T(v) - T(4) minus G(v) - G(4) is -0.24 to +0.09 cm-1 (the polynomial is
+  fitted to "the pooled band-head data", which the paper does not list). But Te + G(v) lies 0.47-0.80 cm-1 above every Table III value: the
+  "vibrational energy 548.46 cm-1" of v' = 4 (p. 29) is not reproduced by the printed constants, which give 549.02.
+- Table VI: the normalizing bands are 1.00 (1.0) in every column. Table IV: r- and r+ run smoothly (second differences
+  within +-0.003 A above v' = 2). The Table V row dB = 0 equals Table IV at v' = 25 (2.700).
+
+Misprints and reading notes (entered as printed):
+- Table VI(c): the last row of the v' = 24 block is labeled "26-6" (0.88, 1.08); 26-6 is printed above (0.41, 0.49).
+  It is 24-6; v_upper and v_lower say so, band keeps the printed label.
+- Table VI(b) labels the v' = 14 progression "14-0, P(144)", Table VII "14-3 P(114)": one J is a misprint.
+- Table VII cites Brown 1963 as "Reference 1" (ref. 1 is Franck and Wood; Brown is ref. 2a) and Brewer et al. as
+  "Ref. 25" (ref. 24).
+- Table VI(a): v'' = 37 carries the footnote mark e; the Ref. e values at v'' = 0 and 19 fall outside the band ranges
+  footnote e gives for Lenz (25-1 to 25-18) and Oldenberg (25-21 to 25-37).
+- Table I "a, b" (v' = 3, 4): the values combine this work and Mecke 1923; Table III "b, c" (v' = 13): this work and Brown.
+
+Not entered: the 719-line list (deposited, not printed); Fig. 2 (D_v' of the levels, plotted only), Figs. 3-6 (B_v'
+curves, the intensity comparison and |M_el(r)|), Fig. 1 (a plate near the Hg line).
+"""
+
+uncertainty = """
+B_v' of this work: "reliable to better than +-0.00004 cm-1" (p. 27; B_x100_unc and B_cd_x100_unc = 0.004); Brown and
+Griffiths' values +-0.0001 cm-1 (footnote d; 0.01); none stated for Mecke's, Loomis's and Brown's. Term values (Table III):
+"to about 0.1 cm-1 or less" (p. 28; T_xmin_unc = 0.1), against band heads five to ten times worse. Lines: comparator
+0.002 cm-1, plate-to-plate +-0.03 cm-1. The error limits of the constants "refer to the absolute determination" from the
+least-squares cofactors (Eq. 2) and are correlated. Intensities: none printed; the photoelectric values are the most
+accurate except at v'' = 11 and 19 (filter edges, footnote 22), the plate-blackening estimates indicate only the
+alternation of strong and weak bands (p. 30). Lifetimes from absorption: uncertain to a factor of 2 or 3 (p. 32);
+Brewer et al.'s to +-15 % (footnote c).
+"""
+
+notes = """
+Vibrational numbering. The B-state numbering of Mecke (1923) and Loomis (1927) is decreased here by one unit (v'(this
+paper) = v'(Mecke, Loomis) - 1), so that the calculated Franck-Condon intensities match the observed fluorescence (the
+only shift of the numbering by -3 to +3 that does, Sect. B and Fig. 4); the level excited by the Hg 5460.75 A line,
+formerly v' = 26, J' = 34, is v' = 25, J' = 34. Brown and James, J. Chem. Phys. 42, 33 (1965), confirmed the revised
+numbering from vibrational isotope shifts. It is the numbering used by every later analysis and by the other
+b_levels sets: Table III minus barrow1973 is the constant X zero-point energy at all nine common levels (above), with no
+one-quantum offset. So v' here maps one-to-one to the modern v'; only the reprinted Mecke/Loomis band labels differ from
+their originals.
+
+Overlap with held sets. Barrow and Yee 1973 (data/b_levels/barrow1973) took five of these bands, "from ref. (7) with
+slight revisions": 11-1, 12-2, 13-2, 25-0 and 29-0. Their levels v' = 12, 13, 25 and 29 rest on these lines alone and
+v' = 11 partly (with their own 11-3), so barrow1973 and this set are not independent there. The other four bands (3-6,
+4-7, 5-4, 7-5) are independent of barrow1973, which has no v' = 3 and measured v' = 4, 5 and 7 in its own 4-3, 5-4,
+5-3, 7-5, 7-4 and 7-3 bands.
+
+What the set is. The B_v' and J = 0 term values of nine B levels from Doppler-limited photographic absorption, a 1965
+assignment paper; superseded by barrow1973 and the Fourier-transform atlases. Its lasting results are the vibrational
+numbering and the intensity data. The dissociation-energy discussion uses Verma's De'' (data/x_levels/verma1960),
+later shown to rest on NO impurity lines. Not compared with any model.
+"""
+
+[columns]
+data = """
+isotopologue, v: the B level (v', revised numbering = modern numbering).
+G, G_unc: the b_levels template columns, empty (Table III is above the X potential minimum; see T_xmin).
+B_x100, B_x100_unc: Table I B_v' (polynomial fit) x 100, cm-1; uncertainty as stated (see uncertainty).
+B_cd_x100, B_cd_x100_unc: Table I B_v' (combination differences) x 100, cm-1.
+T_xmin, T_xmin_unc: Table III rotationless (J' = 0) term value above the X-state potential minimum, cm-1.
+band_B, source_B: Table I band(s) and source. band_T, source_T: Table III band(s) and source.
+note: footnotes and reading notes.
+"""
+x_B = """
+v: X level (v''). band: the band(s) of the combination differences.
+B_cd: B_v'' from combination differences (this work), cm-1. B_calc_rank: calculated from Rank and Rao's constants, cm-1
+  (calculated, printed for comparison).
+"""
+constants = """
+state: B, X or atom. quantity, value, uncertainty (as printed; empty if none), unit, source (abstract, page, equation).
+note: definitions, and "reprint" for numbers the paper takes from other work.
+"""
+intensity_obs = """
+part: Table VI (a), (b) or (c). band: v'-v'' as printed. v_upper, v_lower: the band's levels (v_upper differs from the
+  printed band label in one misprinted row). line: the excitation (R(33) of 25-0 in (a); P(144) of v' = 14 and P(45) of
+  v' = 15 as printed in (b); empty in (c)).
+intensity: observed relative intensity as printed (energy per second), normalized to the band in normalized_to.
+method, source, column: measurement method, reference, and the Table VI column it is printed in.
+mark: footnote j ("relatively uncertain due to large self-absorption"); "(...)j" if printed in parentheses.
+"""
+intensity_calc = """
+Columns as intensity_obs; intensity_calc is the calculated relative intensity (energy per second; from the
+Franck-Condon overlaps of the RKR potentials with a constant electronic transition moment).
+"""
+rkr_calc = "v: B level. r_minus_A, r_plus_A: calculated inner and outer classical turning points, A."
+sensitivity_calc = "dB_cm1: uniform shift of the measured B_v' (cm-1). r_minus_A_v24/25/26: calculated inner turning point of the fluorescing level for the assignment v' = 24, 25 or 26, A."
+lifetimes_calc = """
+v, line: B level and the absorption line used. A_per_s, A_unc_per_s, A_source: absorption Einstein coefficient with its
+error and source (reprint). tau_absorption_s: calculated radiative lifetime from absorption, s. tau_brewer_s,
+tau_brewer_note: Brewer et al.'s lifetime (measured for v' = 25, computed via Eq. (8) for v' = 14, 15), s.
+"""

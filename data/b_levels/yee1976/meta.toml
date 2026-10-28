@@ -1,0 +1,133 @@
+id = "yee1976"
+citation = "K. K. Yee, \"B 3Pi0u+ - X 1Sigma g+ systems of 127I2 and 129I2: molecular constants, laser-excited fluorescence and Franck-Condon factors\", J. Chem. Soc., Faraday Trans. 2 72, 2113-2126 (1976), Tables 1-7 and Eqs. (6)-(9)"
+source = "https://doi.org/10.1039/f29767202113 (publisher PDF: a 400 dpi scan with an OCR text layer)"
+doi = "10.1039/f29767202113"
+retrieved = "2026-10-26"
+unit = "cm-1"
+state = "X (Table 1); B (Tables 2-5); B-X lines (Tables 6-7)"
+isotopologue = "127I2 (Tables 1-3, 6); 129I2 (Tables 4, 5, 7)"
+files = ["data.csv", "excitations.csv", "constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables 1-7 (pp. 2115-2121), Eqs. (6)-(9) and the constants of the text, read from the scan's native 400 dpi page images
+(rendered at 200-400 dpi). The paper (received 27 February 1975) is almost entirely calculated: distortion constants from
+RKR potentials by the method of Albritton et al. (Eqs. (3)-(4)), 129I2 B-state levels from isotope relations, and
+calculated line positions for the laser-excited fluorescence series. Its measured content is the "measured" column of
+Table 6 (absorption-line positions, mostly from the plates of Barrow and Yee 1973, "most of the molecular lines were
+assigned from direct measurement at high resolution", p. 2122) and the reprinted experimental D_v of Table 2. The OCR text
+layer garbles digits ("6.38" for 6.88 at Table 1 v = 38, "5.5" for 15.5 and "1.3" for 11.3 in Table 2, "17 594.50" for
+17 594.80 in Table 7, "0.59" for 0.89 at Table 1 v = 14); every value was read from the images. An earlier, interrupted
+pass had entered data.csv and excitations.csv. Tables 6 and 7 were checked again row by row on 400 dpi crops (all 42 rows
+agree with the print); Tables 1-5 were checked against the page renderings, the text layer and their internal relations
+(smooth runs in v, Table 4 = Table 2 x rho^4, Table 5 = Eqs. (7) and (9), Table 2 'obs.' = barrow1973), which every row
+passes; where the text layer differs (Table 1 v = 14, 38; Table 2 H at v = 28-30, 34) the entered value is the one that
+continues the smooth run. constants.csv and this file were added.
+
+data.csv (182 rows): one row per printed row of Tables 1-5.
+  Table 1 (50 rows, X state of 127I2, v = 0-49): 1e9 D_v and -1e15 H_v, RKR-calculated from Le Roy's (1970) G(v) and B_v
+    (eigenfunctions of v = 0-55 only). H_v is printed for v = 0-43, as a dash at v = 10.
+  Table 2 (40 rows, B state of 127I2, v = 0-39): 1e9 D_v RKR-calculated (Eq. 3) from Barrow and Yee's potential, -1e15 H_v
+    (Eq. 4; dash at v = 10, none at v = 39), and the "obs." column (23 values, v = 4-36), footnote a "values from ref. (1)":
+    a reprint of barrow1973's D_v (D_x1e8 there x 10; all 23 agree digit for digit with barrow1973).
+  Table 3 (19 rows, B state of 127I2, v = 54-72): 1e8 D_v, smoothed and extrapolated (calculated; see constants.csv for
+    the Eq. (6) coefficients that represent v = 0-53).
+  Table 4 (40 rows, B state of 129I2, v = 0-39): 1e9 D_v and -1e15 H_v, RKR-calculated assuming the 127I2 potential.
+  Table 5 (33 rows, B state of 129I2, v = 40-72): G(v) "relative to the equilibrium position of state B" (G_Bmin_calc)
+    and 1e8 D_v. The table prints the leading digits only where they change (4360.24, then 55.54, ...; 00.13 at v = 64 is
+    4300.13, 01.27 at v = 53 is 4101.27); they are restored (marked in the note). G_calc is NOT printed: it is G_Bmin_calc
+    + 15 662.75 cm-1, the term value above X(v = 0, J = 0) by the table's own footnote, added so that the column has the
+    meaning of the other b_levels sets.
+excitations.csv (42 rows): Table 6 (38 rows, 127I2) and Table 7 (4 rows, 129I2), one row per assigned transition, with
+  the exciting source, its wavelength (A) and wavenumber (cm-1) as printed, the line (J numbering of the ground state,
+  footnote a), the measured and calculated frequency (cm-1), the footnote marks and the reference numbers (printed on the
+  first row of each laser line's group, kept on that row). Marks: c fluorescence series observed with the laser in
+  multi-mode; d single-mode excitation with hyperfine structure observed; e (sigma_meas_mark) measured frequency from
+  ref. 26 (R. L. Brown and W. Klemperer, J. Chem. Phys. 41, 3072 (1964)), i.e. a reprint. Table 7's footnote c is
+  "single-mode, hyperfine structure observed" (its d). Eight Table 6 rows print a calculated value only (R(76) 40-0,
+  R(98) 11-7, R(127) 11-5, R(16) and P(10) 8-5, R(33) 25-0, P(38) and R(43) 15-2); Table 7 prints calculated values only.
+  The Se+/He (4993, 5069, 5305 A) and Xe+ (5045 A) rows are "expected excitations" (p. 2122) but carry measured
+  absorption positions. "Calculated" (footnote b) means from the term values and constants of Barrow and Yee 1973 and
+  Tables 1-3 (Table 7: Eqs. (7)-(9), Tables 3 and 5).
+constants.csv (8 rows): the Eq. (6) coefficients D_0-D_4 (Table 3), rho = 0.99221 and the 15 662.75 cm-1 offset of
+  Table 5, and the theoretical H_e of the X state (p. 2116).
+
+Checks (model-free):
+- Table 5 G(v) for v = 40-50 equals Eq. (7) evaluated with rho and barrow1973's Table 4 coefficients (C1-C5) to
+  +-0.01 cm-1 (v = 42 and 45 differ by 0.01, rounding); from v = 51 on the printed values fall below Eq. (7), as the text
+  says they come from a fit to Delta G^i(v) instead. barrow1973's 127I2 levels minus Table 5's G_calc give Delta G^i =
+  13.91, 13.57, ... 2.23, 1.89, 1.57 cm-1 at v = 43 ... 70, 71, 72, smooth and as drawn in Fig. 1. Table 5 D_v for
+  v = 40-53 equals Eq. (9) to 0.01 (as the text says); Eq. (6) reproduces Table 3 at v = 54-58 to 0.01 and then falls
+  below it (the extrapolated values follow a second fit).
+- Table 4 versus Table 2 times rho^4 = 0.969: within 0.1 (1e-9 cm-1) at v <= 20, within 0.4 above.
+- Table 5 G_calc against the measured 129I2 levels of data/b_levels/king1980 (published later): 20 006.75 against
+  (20 006.73) at v = 69, 20 018.29 against 20 018.2952 at v = 71, 20 022.99 against 20 023.0021 at v = 72.
+- Table 6 calculated minus measured: median 0.00, within +-0.03 cm-1 for 27 of 30 lines; -0.06 (P(107) 14-1), -0.10
+  (P(114) 14-1), +0.12 (R(105) 16-2), the three Brown-Klemperer values.
+- Table 6 measured values against the FTS atlases held in data/atlas_lines (same J'' labels; salami_ross_2005,
+  apo_nist_2009, debus_2023, orsay1983_part4): within +-0.03 cm-1 for most lines (R(61) 33-0 0.000, R(67) 33-0 +0.005,
+  P(89) 34-0 +0.007, P(48) 11-3 -0.003); the 5682 A group is +0.05 high (17 594.85 against 17 594.80 for P(117) 21-1,
+  17 594.93 against 17 594.874-881 for the other three), and the three 5017 A lines are printed as one value 19 925.97
+  (atlas 19 925.949 for the 64-0/67-0 blend, 19 926.001 for R(26) 62-0). The calculated values of R(105) 16-2, P(38)
+  and R(43) 15-2 lie 0.10-0.15 cm-1 above the atlas lines. Against data/atlas_lines/gerstenkorn1979: P(13) 43-0 -0.010,
+  P(107) 35-0 +0.010, P(89) 34-0 0.000, R(67) 33-0 -0.001, P(48) 11-3 -0.014 cm-1.
+- Table 2's "obs." column equals barrow1973's D_v (x 10) at all 23 levels, including the outliers 1.25 (v = 13) and 4.32
+  (v = 25).
+
+Reading notes and misprints (entered as printed): Table 6 prints the calculated value of R(15) 43-0 as "19 429 81" (no
+decimal point). Table 1 prints no H_v above v = 43 and a dash at v = 10 (also in Tables 2 and 4). Table 7 labels its
+single-mode footnote c where Table 6 uses d.
+
+Not entered: Figs. 1-3 (Delta G^i(v) of the two isotopologues, the absorption spectrum near the 5682 A Kr+ line with
+J labels only, and the calculated relative intensities of the v' = 43 series); the Franck-Condon factors and r-centroids
+(127I2 v' = 0-49 x v'' = 0-55, 129I2 v' = 0-49 x v'' = 0-10), which the paper says are "too lengthy to publish" and
+available on request; the G_n and B_n of Eqs. (1), (2), (7), (8), which are barrow1973's Table 4 (held in that set's
+meta) and are not reprinted here.
+"""
+
+uncertainty = """
+No uncertainties are printed. The calculated D_v and H_v carry the numerical limits of the RKR/eigenfunction method:
+the text calls the H_v scatter real ("highly sensitive dependence of expression (4) on the vibrational eigenfunction",
+p. 2116) and the high-v extrapolated D_v "empirical" (p. 2117). The measured line positions of Table 6 are printed to
+0.01 cm-1 with no stated error; Barrow and Yee's constants reproduce their unblended lines to +-0.02 cm-1, and the
+comparison with the FTS atlases above (+-0.03 cm-1, one group +0.05) is the best guide. Where a laser line excites
+several transitions, the same measured value is printed for all of them (5017, 5145, 5309, 5682 A groups): these are
+blended absorption features, not resolved lines.
+"""
+
+notes = """
+What the set is. A 1976 compilation of calculated distortion constants (X and B of 127I2, B of 129I2), of estimated
+129I2 B-state vibrational energies for v = 40-72, and of the assignments of the laser-excited B-X fluorescence series
+known in 1975 (Ar+, Kr+, Se+/He, Xe+, He-Ne lines and the Cd, Hg and Na atomic lines). Its measured line positions are
+Doppler-limited plate measurements (0.01 cm-1), superseded by the FTS atlases; its 129I2 levels are calculated from
+127I2 data by isotope relations and agree with King et al.'s later measurements (king1980) to 0.02 cm-1. The vibrational
+numbering is the modern one (that of barrow1973).
+
+Overlap with held sets. Table 2's "obs." column reprints barrow1973's D_v; the G_n and B_n used throughout are
+barrow1973's. Three measured values of Table 6 (R(105) 16-2, P(107) and P(114) 14-1, mark e) are reprints of Brown and
+Klemperer 1964, which is not held. The other measured positions are not printed in barrow1973 (which gives term values,
+not lines), so they are not duplicates of a held set. Not compared with any model.
+"""
+
+[columns]
+data = """
+isotopologue, v: the level; state: X or B; table: the source table (1-5).
+G, G_unc, B_x100, B_x100_unc: the b_levels template columns, empty (no measured levels are printed).
+G_Bmin_calc: Table 5 G(v) above the B-state minimum, calculated, cm-1 (leading digits restored).
+G_calc: G_Bmin_calc + 15 662.75 cm-1 (Table 5 footnote), the calculated term value above X(v = 0, J = 0); derived here,
+  not printed.
+D_x1e9_calc: 1e9 D_v, RKR-calculated (Tables 1, 2, 4), cm-1.
+negH_x1e15_calc: -1e15 H_v, RKR-calculated (Tables 1, 2, 4), cm-1 (so H_v = -value x 1e-15).
+D_x1e8_calc: 1e8 D_v, extrapolated (Table 3) or isotope-scaled (Table 5), cm-1.
+D_x1e9_obs_reprint: Table 2 "obs." column, 1e9 D_v from barrow1973 (a reprint), cm-1.
+note: reading notes.
+"""
+excitations = """
+table: 6 or 7. isotopologue. exciting_source, laser_A, laser_cm1: the source and its line as printed (A, cm-1).
+line: branch(J'') v'-v'' as printed (J for the ground state). branch, J_lower, v_upper, v_lower: the same, split.
+sigma_meas: measured frequency, cm-1 (empty where none is printed). sigma_meas_mark: "e" = from ref. 26 (a reprint).
+sigma_calc: calculated frequency, cm-1. marks: footnotes c, d. refs: the printed reference numbers. note: reading notes.
+"""
+constants = """
+isotopologue, state, quantity, value, uncertainty (none printed), unit, source (table, page, equation), note.
+"""

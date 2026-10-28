@@ -1,0 +1,293 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(13) 43-0,a1,interval,-131.770,0.001,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a2,interval,-59.905,0.001,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a4,interval,76.049,0.002,,a3,bipm1984a_t1_to2005,App. M5 Table 1
+127I2 P(13) 43-0,a5,interval,203.229,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a6,interval,240.774,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a7,interval,255.005,0.001,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a8,interval,338.699,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a9,interval,349.717,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a10,interval,369,1,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a11,interval,393.962,0.002,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a12,interval,435.599,0.003,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a13,interval,499.712,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a14,interval,518,1,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a15,interval,587.396,0.002,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a16,interval,616.756,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a17,interval,660.932,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a18,interval,740,1,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a19,interval,742,1,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a20,interval,757.631,0.010,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 P(13) 43-0,a21,interval,817.337,0.005,,a3,bipm1984a_t1,App. M5 Table 1
+127I2 R(15) 43-0,b1,interval,283.835,0.005,127I2 P(13) 43-0,a1,bipm1984a_t2,App. M5 Table 2 (table reference between lines); table reference f(b1) - f(a1) = 283.835 (0.005) MHz; bipm2005a prints 283 835 (5000) kHz
+127I2 R(15) 43-0,b2,interval,69.739,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b3,interval,129.155,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b4,interval,217,1,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b5,interval,335.828,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b6,interval,368,1,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b7,interval,396.442,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b8,interval,471,1,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b9,interval,472,1,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b10,interval,500.627,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b11,interval,525.207,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b12,interval,566.287,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b13,interval,630.782,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b14,interval,658.178,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b15,interval,725.166,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b16,interval,739.394,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b17,interval,791.673,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b18,interval,865.523,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b19,interval,874.840,0.005,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b20,interval,892.895,0.010,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(15) 43-0,b21,interval,947.278,0.010,,b1,bipm1984a_t2,App. M5 Table 2
+127I2 R(98) 58-1,d6,interval,-2100,1,127I2 P(13) 43-0,a3,bipm1984a_t3,App. M5 Table 3 (table reference between lines)
+127I2 R(98) 58-1,d1,interval,-413.488,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d2,interval,-359.553,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d3,interval,-194.521,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d4,interval,-159.158,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d5,interval,-105.769,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d7,interval,172.200,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d8,interval,200.478,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d9,interval,225.980,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d10,interval,253,1,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d11,interval,254,1,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d12,interval,314.131,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d13,interval,426.691,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d14,interval,481.574,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 R(98) 58-1,d15,interval,510.246,0.005,,d6,bipm1984a_t3,App. M5 Table 3
+127I2 P(62) 17-1,a2,interval,275.5,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = n
+127I2 P(62) 17-1,a3,interval,287.3,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = m
+127I2 P(62) 17-1,a4,interval,293.5,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = l
+127I2 P(62) 17-1,a5,interval,306.6,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = k
+127I2 P(62) 17-1,a6,interval,418.7,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = j
+127I2 P(62) 17-1,a7,interval,430.1,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = i
+127I2 P(62) 17-1,a8,interval,438.7,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = h
+127I2 P(62) 17-1,a9,interval,452.0,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = g
+127I2 P(62) 17-1,a10,interval,579.4,1.0,,a1,bipm1984a_t4_to1992,App. M5 Table 4: x = f
+127I2 R(47) 9-2,a1,interval,-357.15,0.08,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = u
+127I2 R(47) 9-2,a2,interval,-333.99,0.05,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = t
+127I2 R(47) 9-2,a3,interval,-312.5,0.3,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = s
+127I2 R(47) 9-2,a4,interval,-86.18,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = r
+127I2 R(47) 9-2,a5,interval,-47.30,0.05,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = q
+127I2 R(47) 9-2,a6,interval,-36.84,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = p
+127I2 R(47) 9-2,a8,interval,81.46,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = n
+127I2 R(47) 9-2,a9,interval,99.13,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = m
+127I2 R(47) 9-2,a10,interval,107.52,0.05,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = l
+127I2 R(47) 9-2,a11,interval,119.12,0.05,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = k
+127I2 R(47) 9-2,a12,interval,219.64,0.05,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = j
+127I2 R(47) 9-2,a13,interval,249.63,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = i
+127I2 R(47) 9-2,a14,interval,284.36,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = h
+127I2 R(47) 9-2,a15,interval,358.35,0.20,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = g
+127I2 R(47) 9-2,a16,interval,384.76,0.20,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = f
+127I2 R(47) 9-2,a17,interval,403.84,0.20,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = e
+127I2 R(47) 9-2,a18,interval,430.04,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = d
+127I2 R(47) 9-2,a19,interval,527.20,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = c
+127I2 R(47) 9-2,a20,interval,539.32,0.10,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = b
+127I2 R(47) 9-2,a21,interval,555.23,0.20,,a7,bipm1984a_t5_to1992,App. M5 Table 5: x = a
+129I2 P(110) 10-2,a1,interval,-376.29,0.05,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = b′
+129I2 P(110) 10-2,a2,interval,-244.76,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = a′
+129I2 P(110) 10-2,a3,interval,-230.79,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = z
+129I2 P(110) 10-2,a4,interval,-229.40,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = y
+129I2 P(110) 10-2,a5,interval,-216.10,0.05,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = x
+129I2 P(110) 10-2,a6,interval,-149.37,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = w
+129I2 P(110) 10-2,a7,interval,-134.68,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = v
+129I2 P(110) 10-2,a8,interval,-130.98,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = u
+129I2 P(110) 10-2,a9,interval,-116.67,0.05,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = t
+129I2 P(110) 10-2,a10,interval,-96.26,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = s
+129I2 P(110) 10-2,a11,interval,-90.70,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = r
+129I2 P(110) 10-2,a12,interval,-84.12,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = q
+129I2 P(110) 10-2,a13,interval,-77.79,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = p
+129I2 P(110) 10-2,a14,interval,-72.70,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = o
+129I2 P(110) 10-2,a15,interval,1.61,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = n
+129I2 P(110) 10-2,a16,interval,10.63,0.15,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = m
+129I2 P(110) 10-2,a17,interval,15.82,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = l
+129I2 P(110) 10-2,a18,interval,25.32,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = k
+129I2 P(110) 10-2,a19,interval,49.44,0.15,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = j
+129I2 P(110) 10-2,a20,interval,54.66,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = i
+129I2 P(110) 10-2,a21,interval,69.02,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = h
+129I2 P(110) 10-2,a22,interval,74.47,0.15,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = g
+129I2 P(110) 10-2,a23,interval,110.60,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = f
+129I2 P(110) 10-2,a24,interval,153.09,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = e
+129I2 P(110) 10-2,a25,interval,154.70,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = d
+129I2 P(110) 10-2,a26,interval,163.98,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = c
+129I2 P(110) 10-2,a27,interval,166.22,0.20,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = b
+129I2 P(110) 10-2,a28,interval,208.29,0.10,127I2 R(47) 9-2,a7,bipm1984a_t6,App. M5 Table 6: x = a
+129I2 R(113) 14-4,b19,interval,-410.4,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = r
+129I2 R(113) 14-4,b20,interval,-390.0,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = q
+129I2 R(113) 14-4,b21,interval,-383.9,0.5,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = p
+129I2 R(113) 14-4,b22,interval,-362.8,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = o
+129I2 R(113) 14-4,b23,interval,-352.9,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = n
+129I2 R(113) 14-4,b24,interval,-346.4,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = m
+129I2 R(113) 14-4,b25,interval,-330.0,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = l
+129I2 R(113) 14-4,b26,interval,-324.9,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = k
+129I2 R(113) 14-4,b27,interval,-304.7,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = j
+129I2 R(113) 14-4,b28,interval,-289.4,0.5,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = i
+129I2 R(113) 14-4,b29,interval,-273.1,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = h
+129I2 R(113) 14-4,b30,interval,-255.7,0.5,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = g
+129I2 R(113) 14-4,b31,interval,-247,5.0,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = f
+129I2 R(113) 14-4,b32,interval,-237,5.0,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = e
+129I2 R(113) 14-4,b33,interval,-223,5.0,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = d
+129I2 R(113) 14-4,b34,interval,-198.6,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = c
+129I2 R(113) 14-4,b35,interval,-193.1,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = b
+129I2 R(113) 14-4,b36,interval,-187.0,0.3,127I2 R(47) 9-2,a7,bipm1984a_t7,App. M5 Table 7: x = a
+127I2 R(127) 11-5,a2,interval,-582.9,0.5,,a13,bipm1984a_t8,App. M5 Table 8: x = t
+127I2 R(127) 11-5,a3,interval,-558.9,0.5,,a13,bipm1984a_t8,App. M5 Table 8: x = s
+127I2 R(127) 11-5,a4,interval,-320.6,0.1,,a13,bipm1984a_t8_to1992,App. M5 Table 8: x = r
+127I2 R(127) 11-5,a5,interval,-292.7,0.5,,a13,bipm1984a_t8_to1992,App. M5 Table 8: x = q
+127I2 R(127) 11-5,a6,interval,-290.3,0.5,,a13,bipm1984a_t8_to1992,App. M5 Table 8: x = p
+127I2 R(127) 11-5,a7,interval,-263.0,0.1,,a13,bipm1984a_t8_to1992,App. M5 Table 8: x = o
+127I2 R(127) 11-5,a8,interval,-162.814,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = n
+127I2 R(127) 11-5,a9,interval,-153.801,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = m
+127I2 R(127) 11-5,a10,interval,-137.994,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = l
+127I2 R(127) 11-5,a11,interval,-129.950,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = k
+127I2 R(127) 11-5,a12,interval,-21.565,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = j
+127I2 R(127) 11-5,a14,interval,21.939,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = h
+127I2 R(127) 11-5,a15,interval,125.694,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = g
+127I2 R(127) 11-5,a16,interval,138.892,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = f
+127I2 R(127) 11-5,a17,interval,152.255,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = e
+127I2 R(127) 11-5,a18,interval,165.116,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = d
+127I2 R(127) 11-5,a19,interval,283.006,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = c
+127I2 R(127) 11-5,a20,interval,291.100,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = b
+127I2 R(127) 11-5,a21,interval,299.931,0.005,,a13,bipm1984a_t8,App. M5 Table 8: x = a
+127I2 P(33) 6-3,b21,interval,-393.5,0.1,127I2 R(127) 11-5,a13,bipm1984a_t9b_to1992,App. M5 Table 9: x = a (table reference between lines)
+127I2 P(33) 6-3,b1,interval,-915.7,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = u; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b2,interval,-888.3,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = t; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b3,interval,-863.0,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = s; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b4,interval,-655.1,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = r; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b5,interval,-605.5,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = q; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b6,interval,-589.0,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = p; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b7,interval,-543.0,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = o; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b8,interval,-482.9,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = n; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b9,interval,-456.0,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = m; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b10,interval,-449.5,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = l; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b11,interval,-435.0,0.5,,b21,bipm1984a_t9a_to1992,App. M5 Table 9: x = k; footnote a: b1 to b11 may be too large by several MHz
+127I2 P(33) 6-3,b12,interval,-347.3,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = j
+127I2 P(33) 6-3,b13,interval,-310.2,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = i
+127I2 P(33) 6-3,b14,interval,-263.5,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = h
+127I2 P(33) 6-3,b15,interval,-214.5,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = g
+127I2 P(33) 6-3,b16,interval,-179.2,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = f
+127I2 P(33) 6-3,b17,interval,-153.9,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = e
+127I2 P(33) 6-3,b18,interval,-118.2,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = d
+127I2 P(33) 6-3,b19,interval,-36.8,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = c
+127I2 P(33) 6-3,b20,interval,-22.0,0.2,,b21,bipm1984a_t9b_to1992,App. M5 Table 9: x = b
+129I2 P(54) 8-4,a28,interval,95.90,0.04,127I2 R(127) 11-5,a13,bipm1984a_t10,App. M5 Table 10: x = k (table reference between lines)
+129I2 P(54) 8-4,a2,interval,-449,2,,a28,bipm1984a_t10,App. M5 Table 10: x = z′
+129I2 P(54) 8-4,a3,interval,-443,2,,a28,bipm1984a_t10,App. M5 Table 10: x = y′
+129I2 P(54) 8-4,a4,interval,-434,2,,a28,bipm1984a_t10,App. M5 Table 10: x = x′
+129I2 P(54) 8-4,a5,interval,-429,2,,a28,bipm1984a_t10,App. M5 Table 10: x = w′
+129I2 P(54) 8-4,a6,interval,-360.9,1,,a28,bipm1984a_t10,App. M5 Table 10: x = v′
+129I2 P(54) 8-4,a7,interval,-345.1,1,,a28,bipm1984a_t10,App. M5 Table 10: x = u′
+129I2 P(54) 8-4,a8,interval,-340.8,1,,a28,bipm1984a_t10,App. M5 Table 10: x = t′
+129I2 P(54) 8-4,a9,interval,-325.4,1,,a28,bipm1984a_t10,App. M5 Table 10: x = s′
+129I2 P(54) 8-4,a10,interval,-307.0,1,,a28,bipm1984a_t10,App. M5 Table 10: x = r′
+129I2 P(54) 8-4,a11,interval,-298.2,1,,a28,bipm1984a_t10,App. M5 Table 10: x = q′
+129I2 P(54) 8-4,a12,interval,-293.1,1,,a28,bipm1984a_t10,App. M5 Table 10: x = p′
+129I2 P(54) 8-4,a13,interval,-289.7,1,,a28,bipm1984a_t10,App. M5 Table 10: x = o′
+129I2 P(54) 8-4,a14,interval,-282.7,1,,a28,bipm1984a_t10,App. M5 Table 10: x = n′
+129I2 P(54) 8-4,a16,interval,-197.73,0.08,,a28,bipm1984a_t10,App. M5 Table 10: x = i′
+129I2 P(54) 8-4,a17,interval,-193.23,0.08,,a28,bipm1984a_t10,App. M5 Table 10: x = h′
+129I2 P(54) 8-4,a18,interval,-182.74,0.03,,a28,bipm1984a_t10,App. M5 Table 10: x = g′
+129I2 P(54) 8-4,a19,interval,-162.61,0.05,,a28,bipm1984a_t10,App. M5 Table 10: x = f′
+129I2 P(54) 8-4,a20,interval,-155.72,0.05,,a28,bipm1984a_t10,App. M5 Table 10: x = e′
+129I2 P(54) 8-4,a21,interval,-138.66,0.05,,a28,bipm1984a_t10,App. M5 Table 10: x = d′
+129I2 P(54) 8-4,a22,interval,-130.46,0.05,,a28,bipm1984a_t10,App. M5 Table 10: x = c′
+129I2 P(54) 8-4,a23,interval,-98.21,0.05,,a28,bipm1984a_t10_to1992,App. M5 Table 10: x = a′
+129I2 P(54) 8-4,a26,interval,-43.1,0.5,,a28,bipm1984a_t10_to1992,App. M5 Table 10: x = m2
+129I2 P(54) 8-4,a27,interval,-41.2,0.5,,a28,bipm1984a_t10_to1992,App. M5 Table 10: x = m1
+129I2 P(69) 12-6,b1,interval,99.09,0.10,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = b‴
+129I2 P(69) 12-6,b2,interval,116.05,0.10,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = a‴
+129I2 P(69) 12-6,b3,interval,132.02,0.10,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = z″
+129I2 P(69) 12-6,b4,interval,234.55,0.10,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = s″
+129I2 P(69) 12-6,b7,interval,288.06,0.10,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = p″
+129I2 P(69) 12-6,b9,interval,359,1,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = i1″; unresolved pair with b10 (one printed value)
+129I2 P(69) 12-6,b10,interval,359,1,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = i2″; unresolved pair with b9 (one printed value)
+129I2 P(69) 12-6,b11,interval,373.77,0.20,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = f″
+129I2 P(69) 12-6,b13,interval,393,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = c″
+129I2 P(69) 12-6,b14,interval,401,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = b″
+129I2 P(69) 12-6,b15,interval,407,4,129I2 P(54) 8-4,a28,bipm1984a_t11,App. M5 Table 11: x = a″
+129I2 P(69) 12-6,b16,interval,411,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = z′
+129I2 P(69) 12-6,b17,interval,417,4,129I2 P(54) 8-4,a28,bipm1984a_t11,App. M5 Table 11: x = y′
+129I2 P(69) 12-6,b21,interval,508,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = q′; printed as b20; numbered b21 as in the 1997 and 2003 lists
+129I2 P(69) 12-6,b22,interval,535,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = o′
+129I2 P(69) 12-6,b23,interval,538,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = n′
+129I2 P(69) 12-6,b24,interval,547,5,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = m′
+129I2 P(69) 12-6,b25,interval,561,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = l′
+129I2 P(69) 12-6,b26,interval,565,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = k′
+129I2 P(69) 12-6,b27,interval,582,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = j′
+129I2 P(69) 12-6,b28,interval,598,5,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = i′
+129I2 P(69) 12-6,b29,interval,616,5,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = h′
+129I2 P(69) 12-6,b30,interval,628,5,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = g′
+129I2 P(69) 12-6,b31,interval,640,5,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = f′
+129I2 P(69) 12-6,b32,interval,652,4,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = e′
+129I2 P(69) 12-6,b33,interval,665,3,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = d′
+129I2 P(69) 12-6,b34,interval,692,2,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = c′
+129I2 P(69) 12-6,b35,interval,697,2,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = b′
+129I2 P(69) 12-6,b36,interval,705,2,129I2 P(54) 8-4,a28,bipm1984a_t11_to1992,App. M5 Table 11: x = a′
+129I2 R(60) 8-4,d23,interval,-555,5,129I2 P(54) 8-4,a28,bipm1984a_t12,App. M5 Table 12: x = A′; table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d24,interval,-511,2,129I2 P(54) 8-4,a28,bipm1984a_t12,App. M5 Table 12: x = N; unresolved pair with d25 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d25,interval,-511,2,129I2 P(54) 8-4,a28,bipm1984a_t12,App. M5 Table 12: x = N; unresolved pair with d24 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d26,interval,-499,2,129I2 P(54) 8-4,a28,bipm1984a_t12,App. M5 Table 12: x = M; unresolved pair with d27 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d27,interval,-499,2,129I2 P(54) 8-4,a28,bipm1984a_t12,App. M5 Table 12: x = M; unresolved pair with d26 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d28,interval,-456,2,129I2 P(54) 8-4,a28,bipm1984a_t12,App. M5 Table 12: x = K; table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 P(33) 6-3,e2,interval,988.29,0.2,127I2 R(127) 11-5,a13,bipm1984a_t13,App. M5 Table 13: x = B (table reference between lines)
+129I2 P(33) 6-3,e1,interval,-19.81,0.05,,e2,bipm1984a_t13_to1992,App. M5 Table 13: x = A
+129I2 P(33) 6-3,e3,interval,17.83,0.03,,e2,bipm1984a_t13,App. M5 Table 13: x = C
+129I2 P(33) 6-3,e4,interval,102.58,0.05,,e2,bipm1984a_t13,App. M5 Table 13: x = D
+129I2 P(33) 6-3,e5,interval,141,2,,e2,bipm1984a_t13,App. M5 Table 13: x = E
+129I2 P(33) 6-3,e6,interval,157,2,,e2,bipm1984a_t13,App. M5 Table 13: x = F
+129I2 P(33) 6-3,e7,interval,191,2,,e2,bipm1984a_t13,App. M5 Table 13: x = G
+129I2 P(33) 6-3,e8,interval,208,2,,e2,bipm1984a_t13,App. M5 Table 13: x = H
+129I2 P(33) 6-3,e9,interval,239,2,,e2,bipm1984a_t13,App. M5 Table 13: x = I
+129I2 P(33) 6-3,e10,interval,249,2,,e2,bipm1984a_t13,App. M5 Table 13: x = J
+129I2 P(33) 6-3,e11,interval,260,2,,e2,bipm1984a_t13,App. M5 Table 13: x = K
+129I2 P(33) 6-3,e12,interval,269,3,,e2,bipm1984a_t13,App. M5 Table 13: x = L
+129I2 P(33) 6-3,e13,interval,273,4,,e2,bipm1984a_t13,App. M5 Table 13: x = M
+129I2 P(33) 6-3,e14,interval,287,4,,e2,bipm1984a_t13,App. M5 Table 13: x = N
+129I2 P(33) 6-3,e15,interval,293,5,,e2,bipm1984a_t13,App. M5 Table 13: x = O
+129I2 P(33) 6-3,e16,interval,295,5,,e2,bipm1984a_t13,App. M5 Table 13: x = P
+129I2 P(33) 6-3,e17,interval,306,6,,e2,bipm1984a_t13,App. M5 Table 13: x = Q
+127I129I P(33) 6-3,m1,interval,-254,3,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = m′
+127I129I P(33) 6-3,m2,interval,-233.71,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = l′
+127I129I P(33) 6-3,m3,interval,-226.14,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = k′
+127I129I P(33) 6-3,m5,interval,-117.79,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = b′
+127I129I P(33) 6-3,m6,interval,-87.83,0.15,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = p
+127I129I P(33) 6-3,m7,interval,-78.2,0.5,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = o
+127I129I P(33) 6-3,m9,interval,-17.52,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = l
+127I129I P(33) 6-3,m10,interval,12.06,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = j
+127I129I P(33) 6-3,m11,interval,15.59,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = i
+127I129I P(33) 6-3,m12,interval,33.16,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = h
+127I129I P(33) 6-3,m13,interval,39.7,0.5,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = g2
+127I129I P(33) 6-3,m14,interval,41.3,0.5,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = g1
+127I129I P(33) 6-3,m15,interval,50.74,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = f
+127I129I P(33) 6-3,m16,interval,54.06,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = e
+127I129I P(33) 6-3,m17,interval,69.34,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = d
+127I129I P(33) 6-3,m18,interval,75.08,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = c
+127I129I P(33) 6-3,m19,interval,80.0,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = b
+127I129I P(33) 6-3,m20,interval,95.01,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = a
+127I129I P(33) 6-3,m21,interval,160.75,0.05,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = y″
+127I129I P(33) 6-3,m22,interval,199.52,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = x″
+127I129I P(33) 6-3,m23,interval,205.08,0.15,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = w″
+127I129I P(33) 6-3,m24,interval,207.9,0.5,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = v2″; unresolved pair with m25 (one printed value)
+127I129I P(33) 6-3,m25,interval,207.9,0.5,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = v1″; unresolved pair with m24 (one printed value)
+127I129I P(33) 6-3,m26,interval,212.85,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = u″
+127I129I P(33) 6-3,m27,interval,219.46,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = t″
+127I129I P(33) 6-3,m30,interval,299.25,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = o″
+127I129I P(33) 6-3,m31,interval,312.46,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = n″
+127I129I P(33) 6-3,m32,interval,322.54,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = m″; as printed; 1992 and 1997 lists 324.52 (0.03)
+127I129I P(33) 6-3,m33,interval,333.14,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = l″
+127I129I P(33) 6-3,m36,interval,345.07,0.10,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = j″
+127I129I P(33) 6-3,m37,interval,362.21,0.20,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = h″
+127I129I P(33) 6-3,m38,interval,369.79,0.15,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = g″
+127I129I P(33) 6-3,m39,interval,379,5,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = e″
+127I129I P(33) 6-3,m41,interval,431,4,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = x′
+127I129I P(33) 6-3,m42,interval,445,4,129I2 P(54) 8-4,a28,bipm1984a_t14,App. M5 Table 14: x = w′
+127I129I P(33) 6-3,m43,interval,456,4,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = v′
+127I129I P(33) 6-3,m44,interval,478,4,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = u′
+127I129I P(33) 6-3,m45,interval,487,4,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = t′
+127I129I P(33) 6-3,m46,interval,495,4,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = s′
+127I129I P(33) 6-3,m47,interval,505,4,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = r′
+127I129I P(33) 6-3,m48,interval,516,4,129I2 P(54) 8-4,a28,bipm1984a_t14_to1992,App. M5 Table 14: x = p′
+127I2 P(62) 17-1,a1,frequency,520206808.51,0.11,,,bipm1984a_rec576_to1992,"List 1.2, component o: f = 520 206 808.51 MHz (overall +-6e-10 = 3 s); App. M4 1.2.3: standard deviation 0.11 MHz"
+127I2 R(127) 11-5,a13,frequency,473612214.8,0.16,,,bipm1984a_rec633_to1992,"List 1.3, component i: f = 473 612 214.8 MHz (overall +-1e-9 = 3 s); App. M4 1.3.4: standard deviation 0.16 MHz"
+127I2 R(47) 9-2,a7,frequency,489880355.1,0.18,,,bipm1984a_rec612_to1992,"List 1.4, component o: f = 489 880 355.1 MHz (overall +-1.1e-9 = 3 s); App. M4 1.4: standard deviation 0.18 MHz"
+127I2 P(13) 43-0,a3,frequency,582490603.6,0.25,,,bipm1984a_rec515_to1992,"List 1.5, component a3 (s): f = 582 490 603.6 MHz (overall +-1.3e-9 = 3 s); App. M4 1.5: standard deviation 0.25 MHz"

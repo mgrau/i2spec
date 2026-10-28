@@ -1,0 +1,8 @@
+quantity,value,unc_2sd,unit,note
+Y00,-0.010,0.023,cm-1,"from a polynomial expansion over 0 <= v <= 3 (Table 4 footnote)"
+we,19.831,0.031,cm-1,"same expansion; 2 SD, statistical only; abstract and conclusion: 19.83(3)"
+wexe,0.4830,0.0076,cm-1,
+Be,0.0146070,0.0000110,cm-1,"abstract: 0.014607(11)"
+alpha_e,0.2905e-3,0.0130e-3,cm-1,
+re,4.26475,,A,"abstract: 4.265"
+A_inner,5.8551e17,,cm-1 A^27,"Rmin smoothed above v = 17 with A/Rmin^27"

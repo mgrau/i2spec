@@ -1,0 +1,79 @@
+id = "barwood1984a"
+citation = "G. P. Barwood and W. R. C. Rowley, \"Characteristics of a 127I2-stabilized dye laser at 576 nm\", Metrologia 20, 19-23 (1984)"
+source = "https://doi.org/10.1088/0026-1394/20/1/004 (publisher PDF)"
+doi = "10.1088/0026-1394/20/1/004"
+retrieved = "2026-10-22"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked against 200 dpi renderings of pp. 22-23.
+
+Table 1 (p. 22), "Hyperfine component separations of the 17-1 P(62) line of 127I2 at 576 nm (in MHz)": ten
+separations f - f_o with their standard deviations, entered as printed (group barwood1984a_hfs). The text
+(p. 22): the group b, c, d, e is not given because it was not resolved with 6 MHz modulation; "Components l
+and m were not fully resolved and so the error in the measured separation could be larger than indicated"; f
+and a are each "a sum obtained by locking to an intermediate component". Each laser was locked alternately to
+the two components and the results averaged, to cancel laser offsets.
+
+Labels: Fig. 2 (p. 20) has the laser frequency increasing to the right with o at the left and a at the right,
+so o is a1 (lowest) and the letters run o, n, m, l, k, j, i, h, g, f, e, d, c, b, a = a1-a15 (P(62) has even
+J'' and 15 components). This matches the MEP 576 nm table (bipm2003c), whose x column gives o for a1 and n-a
+for a2-a15.
+
+The frequency ratio (p. 23, group barwood1984a_ratio): f_o / f_i = 1.098 381 317 29, uncertainty 1e-10, from 22
+observations on three days with a 1 m Fabry-Perot etalon, against a He-Ne laser on i (= a13) of R(127) 11-5.
+Both lasers' results are corrected to the preferred reference conditions (576 nm cell at cold finger 6 C; 633
+nm laser on i at 15 C). The paper multiplies the ratio by the 1982 nominal f_i, 473 612 214.8 MHz, and prints
+520 206 808.38 MHz. The row here uses the CIPM 2001 value f_i = f(a16) + (a13 - a16) = 473 612 214 712 kHz
+(bipm2003a), as the MEP 576 nm document does (its section 2.2: 520 206 808 280 kHz): 520 206 808 280.0 kHz.
+
+Not entered: the beat statistics between the two dye lasers (mean offset 10 kHz, sd 19 kHz over 29 days); the
+shift measurements other than the pressure slope (which is used below); Fig. 2 (the spectrum); the result a year
+earlier (CCDM/82-34, 3e-11 lower), which the paper only mentions.
+"""
+
+uncertainty = """
+Table 1: the printed standard deviations, 22-28 kHz, taken as 1 sigma. For l and m (a4, a3), which the text says
+were not fully resolved, 0.25 MHz is entered for the printed 22 kHz, as in razet1993b (where Razet's fit misses
+both by about 220 kHz).
+The ratio: 1e-10 as assigned by the authors (p. 23), "a root-sum-square combination" of the 2e-11 standard error
+of the mean with 4e-11 for each laser's reproducibility and interferometer allowances: 52 kHz. The 2.2e-11
+uncertainty of the reference value is not added (the MEP quotes 1e-10 for the derived value too).
+"""
+
+notes = """
+Primary source of three things other sets hold or use:
+- razet1993b prints Table 1 again, with the same digits (Razet 1993 says it gives the values to the kHz for
+  the first time, but this paper already does). razet1993b declares this set "same".
+- bipm2003c (MEP 576 nm) prints Table 1 rounded to 10 kHz, declared there as "same" with razet1993b; and its
+  recommended a1 is the unweighted mean of pollock1983a and this ratio (MEP section 2.2), so this set is a
+  "mean" source of bipm2003c's a1. bipm2003c is training data, so neither entry is declared there now; when
+  this set is admitted, bipm2003c should name barwood1984a ("same" for the table, in place of razet1993b, and
+  "mean" for a1).
+reinhardt2006a remeasured the whole pattern by comb; its a3/a4 differ from Table 1 by +211/-234 kHz, the blend
+pull the authors warn of. Declared below as superseded for the table (as razet1993b does), so these rows stay
+in the record and out of the fit.
+
+Measured shifts (p. 22, o component): iodine pressure -7.7(0.7) kHz/Pa between 5 and 33 Pa (Fig. 5); no
+significant power shift (upper limit 0.3 Hz/(W m-2) at 2e4 W m-2, i.e. 6 kHz); modulation shift upper limit
+about -1.5 kHz/MHz at a 6 C cold finger.
+"""
+
+[overlaps]
+reinhardt2006a = { relation = "superseded", groups = ["barwood1984a_hfs"] }
+
+[conditions]
+method = "two dye lasers (Rhodamine 6G) locked by third-harmonic saturated absorption to external 10 cm cells; frequency ratio to a He-Ne laser by servo-controlled Fabry-Perot interferometry"
+modulation_MHz_pp = 6.0
+power_density_W_per_m2 = 2.0e4
+cold_finger_C = 11.5
+ratio_reference_conditions = "corrected by the authors to a 576 nm cold finger of 6 C and to the 633 nm laser on i at 15 C"
+
+[shift_correction]
+groups = ["barwood1984a_ratio"]
+pressure_Pa = 7.45
+pressure_kHz_per_Pa = -7.7
+pressure_kHz_per_Pa_unc = 0.7
+allowance_kHz = 11.0
+basis = "Paper p. 23: the ratio is corrected to a 6 C cold finger (7.45 Pa by Gillespie & Fraser at 279.15 K); slope -7.7(0.7) kHz/Pa measured on o (p. 22, Fig. 5). Shift +57.4 kHz. Allowance: the paper's upper limits on the power shift (6 kHz at 2e4 W m-2) and the modulation shift (1.5 kHz/MHz x 6 MHz = 9 kHz), in quadrature."

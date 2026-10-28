@@ -1,0 +1,69 @@
+id = "bhale1985"
+citation = "G. L. Bhale, S. F. Ahmad and S. Paddi Reddy, \"A study of variation of electronic transition moment of the B-X system of I2 from its laser-excited fluorescence spectrum\", J. Phys. B: At. Mol. Phys. 18, 645-655 (1985), Table 1 and p. 649"
+source = "https://doi.org/10.1088/0022-3700/18/4/012 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1088/0022-3700/18/4/012"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:bhale1985"
+unit = "relative intensities and relative |M(R)|^2 (arbitrary scale); cm-1 (wavenumbers); A (R-centroids)"
+state = "B-X"
+isotopologue = "127I2"
+files = ["intensity_obs.csv", "moment_function.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (pp. 650-651, printed sideways) and the quartic of the abstract and p. 649, read from the native 300 dpi page
+images rotated and rendered at 400 dpi. The OCR text layer drops the table entirely. Authors: the paper prints
+"S F Ahmad" and "S Paddi Reddy" (the catalog has S. A. Ahmad, S. G. Reddy).
+
+The measurement: fluorescence of I2 (cell at 0 C, about 30 mTorr) excited by a multimode Ar+ 514.5 nm laser, which
+pumps B v' = 43, J' = 12 and 16 (43-0 P(13) and R(15)); the spectrum 5200-8500 A was recorded on a 0.85 m double
+monochromator with a cooled photomultiplier and photon counting, calibrated with an NBS-traceable tungsten lamp; the
+P(17) lines (from J' = 16, free of overlap) of 38 bands (43, v'' = 1-34, 36, 38, 40, 42) were measured six times each.
+
+intensity_obs.csv (38 rows): every column of Table 1: wavenumber, relative intensity (corrected for the response) with
+its error; FCF (10^3 q) and R-centroid from Tellinghuisen (1983, private communication) and the relative |M|^2 they
+give; FCF and R-centroid from Raghuveer and Narasimham (1983, private communication; constants of Luc 1980) and the
+relative |M|^2 they give; and the weight of each point in the quartic fit (zero for v'' = 31 and 33). The FCFs and
+R-centroids are calculated; the intensities are the measurement.
+moment_function.csv: the weighted quartic fit of the Raghuveer-Narasimham |M|^2 against R-centroid,
+|M(R)|^2 = c0 + c1 R + c2 R^2 + c3 R^3 + c4 R^4 (R in A, arbitrary units), valid over 2.65-3.09 A, maximum at 2.83 A.
+
+Misprints:
+- The constant term: abstract -500.358, text (p. 649) -500.258. A weighted quartic refit of column 9 with the printed
+  weights leaves a weighted rms of 0.0408; the printed polynomial with -500.358 leaves 0.0411 and with -500.258 0.111
+  (it lies 0.1 above every point). So -500.358 is right; both are kept (coefficient, coefficient_printed_text). The
+  other coefficients are poorly determined individually (the refit's coefficients differ wildly while giving the same
+  curve); use them only together.
+- v'' = 30: weight printed 4.8 where 1/0.06^2 on the scale of the other rows gives 4.7; entered as printed.
+- v'' = 17: Tellinghuisen's FCF printed with four digits (3.449); as printed.
+
+Checks (model-free): relative |M|^2 = I / ((nu/1e4)^4 x 10^3 q) reproduces both |M|^2 columns in all 38 rows to
+<= 0.007 (the printed digits), confirming Eq. (4) (nu^4, energy units) and the transcription of intensity, wavenumber
+and both FCF columns; the |M|^2 errors equal |M|^2 x (intensity error / intensity) to <= 0.006; the weights are
+0.0169-0.0173 x 1/(error)^2. The peak of the quartic (with -500.358) is 1.975 at 2.834 A.
+"""
+
+uncertainty = """
+Intensity errors: "the standard errors corresponding to six individual measurements and realistic estimates of the
+errors associated with the drop in the spectrometer sensitivity at longer wavelengths" (p. 649); taken as 1 sigma.
+Polarization of the fluorescence was not corrected (relative intensities unchanged between 40 and 400 mW pump). The
+|M|^2 columns carry only the intensity errors, not FCF errors. Relative scale only.
+"""
+
+notes = """
+Relation to the code's form: a relative quartic in R-centroid over 2.65-3.09 A; Tellinghuisen 1997 and 2011 use
+mu_e^2 = c1 exp[-c2 (R - c3)^2] / R^2 (src/i2spec/intensity.py, mu_tellinghuisen2011). This paper puts the maximum at
+2.83 A, against about 3.2-3.3 A in koffend1979 and tellinghuisen1997, and finds only a 50 % rise from 2.65 to 2.83 A.
+The intensities themselves (with the FCFs of any potential) are the reusable data: P(17) lines from B v' = 43, J' = 16.
+The same v' = 43 progression: koffend1979 (gain, v'' = 15-84) and data/theory/tellinghuisen1978 Table 7 (FCFs, J = 14).
+Discussion: Balasubramanian et al. 1981 intensities agree after x 1/3.15 for v'' = 1-10 only (not held).
+"""
+
+[columns]
+intensity_obs = """
+v_upper, J_upper: 43, 16. v_lower: v''. line: P(17). wavenumber_cm1: as printed. intensity, intensity_unc: relative
+intensity corrected for the response (energy units). q_t_x1e3, rcentroid_t_A: Tellinghuisen (1983) 10^3 FCF and
+R-centroid. M2_t, M2_t_unc: relative |M|^2 from these. q_rn_x1e3, rcentroid_rn_A, M2_rn, M2_rn_unc: the same from
+Raghuveer and Narasimham (1983). weight: weight in the quartic fit of M2_rn. note.
+"""
+moment_function = "power of R; coefficient (the fit, abstract value for the constant); coefficient_printed_text (p. 649); note."

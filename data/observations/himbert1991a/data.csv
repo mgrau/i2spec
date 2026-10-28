@@ -1,0 +1,6 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(47) 9-2,a13,frequency,489880604.4190,0.085,,,himbert1991a,"Table II: 47 R(9-2) i, printed 489 880 604.541 (.088) MHz; re-based to the CIPM 2001 anchors, -122.0 kHz (w = 0.349, see meta.toml)"
+127I2 P(114) 14-1,a5,frequency,508332466.4761,0.157,,,himbert1991a,"Table II: 114 P(14-1) k, printed 508 332 466.606 (.090) MHz; re-based to the CIPM 2001 anchors, -129.9 kHz (w = 0.745); k = a5, the component of juncar1981a"
+127I2 P(38) 15-2,a6,frequency,508848979.4919,0.159,,,himbert1991a,"Table II: 38 P(15-2) j, printed 508 848 979.622 (.090) MHz; re-based to the CIPM 2001 anchors, -130.1 kHz (w = 0.756); j = a6, the component of juncar1981a"
+127I2 P(80) 16-2,a1,frequency,510098228.7063,0.164,,,himbert1991a,"Table II: 80 P(16-2) o, printed 510 098 228.837 (.091) MHz; re-based to the CIPM 2001 anchors, -130.7 kHz (w = 0.783)"
+127I2 R(85) 16-2,a13,frequency,510084073.5823,0.164,,,himbert1991a,"Table II: 85 R(12-2) i (""i"" from their ref. [14]), printed 510 084 073.713 (.091) MHz; band misprinted, read as 16-2 (R(85) 12-2 is 12 THz lower; see meta.toml); re-based to the CIPM 2001 anchors, -130.7 kHz (w = 0.783)"

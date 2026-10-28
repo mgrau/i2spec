@@ -1,0 +1,9 @@
+state,quantity,value,uncertainty,unit,source,note
+D 0u+,Delta T_n,106.240,0.046,cm-1,"Eq. (13), p. 241","correction to the electronic energy of Wieland's vibrational formula (Mulliken 1971, Eq. 12) in the region v' = n; from the correlated fit of the five E' (Eq. 12); estimated standard deviation"
+D 0u+,B_n,0.012139,0.000024,cm-1,"Eq. (13), p. 241","local rotational constant at v' = n; 2 % smaller than Verma's estimate (p. 241)"
+D 0u+,alpha_n,3.43e-5,0.29e-5,cm-1,"Eq. (13), p. 241","local vibration-rotation constant: y = Delta T_n + B_n J'(J'+1) - alpha_n (v' - n) J'(J'+1)"
+D 0u+,D_v,4.8e-9,,cm-1,"p. 240","calculated from the D-state potential of the McLennan-band work (Tellinghuisen, Chem. Phys. Lett. 29, 359 (1974)); held fixed in Eq. (12)"
+D 0u+,n,204,,,"p. 241","the v' = n level excited at 1830 A is v' = 204 in Wieland's formula; absolute numbering unknown, likely within 15 (Table VIII footnote a)"
+D 0u+,Delta T_n - G0'',0.88,,cm-1,"p. 241","Delta T_n differs from the X zero-point energy G0'' (107.115) by 0.88 cm-1, 'the estimated error in Wieland's formula with respect to the band origins in the v' = n region'"
+I atom,exciting line,54633.46,,cm-1,"p. 242","reprint: the tabulated wavenumber of the I atomic transition at 1830 A (Moore, Atomic Energy Levels, NSRDS-NBS 35, 1971)"
+I atom,width of the exciting line,0.5,,cm-1,"pp. 226, 242","reprint: the hyperfine bandwidth of the 1830 A line (Tellinghuisen and Clyne 1976); the five calculated exciting transitions span 0.21 cm-1"

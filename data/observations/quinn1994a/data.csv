@@ -1,0 +1,365 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(12) 26-0,a1,interval,-482.822,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a2,interval,-230.450,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a3,interval,-220.688,0.028,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a4,interval,-173.917,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a5,interval,-168.710,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a6,interval,-116.493,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a7,interval,-72.983,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a8,interval,-53.724,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a10,interval,83.283,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a11,interval,193.769,0.033,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a12,interval,203.037,0.030,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a13,interval,256.166,0.023,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a14,interval,269.370,0.017,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 R(12) 26-0,a15,interval,373.511,0.015,,a9,quinn1994a_t4_to1997,App. M3 Table 4
+127I2 P(13) 43-0,a1,interval,-131.770,0.001,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a2,interval,-59.905,0.001,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a4,interval,76.049,0.002,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a5,interval,203.229,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a6,interval,240.774,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a7,interval,255.005,0.001,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a8,interval,338.699,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a9,interval,349.717,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a10,interval,369,1,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a11,interval,393.962,0.002,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a12,interval,435.599,0.003,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a13,interval,499.712,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a14,interval,518,1,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a15,interval,587.396,0.002,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a16,interval,616.756,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a17,interval,660.932,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a18,interval,740,1,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a19,interval,742,1,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a20,interval,757.631,0.010,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 P(13) 43-0,a21,interval,817.337,0.005,,a3,quinn1994a_mep1983,App. M3 Table 1
+127I2 R(15) 43-0,b1,interval,283.835,0.005,127I2 P(13) 43-0,a1,quinn1994a_mep1983,App. M3 Table 2 (table reference between lines); table reference f(b1) - f(a1) = 283.835 (0.005) MHz; bipm2005a prints 283 835 (5000) kHz
+127I2 R(15) 43-0,b2,interval,69.739,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b3,interval,129.155,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b4,interval,217,1,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b5,interval,335.828,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b6,interval,368,1,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b7,interval,396.442,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b8,interval,471,1,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b9,interval,472,1,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b10,interval,500.627,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b11,interval,525.207,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b12,interval,566.287,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b13,interval,630.782,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b14,interval,658.178,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b15,interval,725.166,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b16,interval,739.394,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b17,interval,791.673,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b18,interval,865.523,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b19,interval,874.840,0.005,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b20,interval,892.895,0.010,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(15) 43-0,b21,interval,947.278,0.010,,b1,quinn1994a_mep1983,App. M3 Table 2
+127I2 R(98) 58-1,d6,interval,-2100,1,127I2 P(13) 43-0,a3,quinn1994a_mep1983,App. M3 Table 3 (table reference between lines)
+127I2 R(98) 58-1,d1,interval,-413.488,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d2,interval,-359.553,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d3,interval,-194.521,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d4,interval,-159.158,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d5,interval,-105.769,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d7,interval,172.200,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d8,interval,200.478,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d9,interval,225.980,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d10,interval,253,1,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d11,interval,254,1,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d12,interval,314.131,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d13,interval,426.691,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d14,interval,481.574,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(98) 58-1,d15,interval,510.246,0.005,,d6,quinn1994a_mep1983,App. M3 Table 3
+127I2 R(106) 28-0,b1,interval,105.637,0.016,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b2,interval,358.943,0.015,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b3,interval,387.823,0.016,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b4,interval,397.265,0.015,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b5,interval,425.741,0.020,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b6,interval,506.727,0.015,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b7,interval,519.996,0.017,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b8,interval,551.661,0.021,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b9,interval,564.849,0.015,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b10,interval,679.420,0.015,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b11,interval,804.246,0.020,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b12,interval,811.724,0.020,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b13,interval,833.939,0.020,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b14,interval,842.064,0.020,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(106) 28-0,b15,interval,966.655,0.021,127I2 R(12) 26-0,a9,quinn1994a_t5_to1997,App. M3 Table 5
+127I2 R(47) 9-2,a1,interval,-357.16,0.02,,a7,quinn1994a_t7,App. M3 Table 7: x = u
+127I2 R(47) 9-2,a2,interval,-333.97,0.01,,a7,quinn1994a_t7,App. M3 Table 7: x = t
+127I2 R(47) 9-2,a3,interval,-312.46,0.02,,a7,quinn1994a_t7,App. M3 Table 7: x = s
+127I2 R(47) 9-2,a4,interval,-86.168,0.007,,a7,quinn1994a_t7,App. M3 Table 7: x = r
+127I2 R(47) 9-2,a5,interval,-47.274,0.004,,a7,quinn1994a_t7,App. M3 Table 7: x = q
+127I2 R(47) 9-2,a6,interval,-36.773,0.003,,a7,quinn1994a_t7,App. M3 Table 7: x = p
+127I2 R(47) 9-2,a8,interval,81.452,0.003,,a7,quinn1994a_t7,App. M3 Table 7: x = n
+127I2 R(47) 9-2,a9,interval,99.103,0.003,,a7,quinn1994a_t7,App. M3 Table 7: x = m
+127I2 R(47) 9-2,a10,interval,107.463,0.005,,a7,quinn1994a_t7,App. M3 Table 7: x = l
+127I2 R(47) 9-2,a11,interval,119.045,0.006,,a7,quinn1994a_t7,App. M3 Table 7: x = k
+127I2 R(47) 9-2,a12,interval,219.602,0.006,,a7,quinn1994a_t7,App. M3 Table 7: x = j
+127I2 R(47) 9-2,a13,interval,249.602,0.01,,a7,quinn1994a_t7,App. M3 Table 7: x = i
+127I2 R(47) 9-2,a14,interval,284.304,0.01,,a7,quinn1994a_t7,App. M3 Table 7: x = h
+127I2 R(47) 9-2,a15,interval,358.37,0.03,,a7,quinn1994a_t7,App. M3 Table 7: x = g
+127I2 R(47) 9-2,a16,interval,384.66,0.01,,a7,quinn1994a_t7,App. M3 Table 7: x = f
+127I2 R(47) 9-2,a17,interval,403.764,0.02,,a7,quinn1994a_t7,App. M3 Table 7: x = e
+127I2 R(47) 9-2,a18,interval,429.993,0.02,,a7,quinn1994a_t7,App. M3 Table 7: x = d
+127I2 R(47) 9-2,a19,interval,527.165,0.02,,a7,quinn1994a_t7,App. M3 Table 7: x = c
+127I2 R(47) 9-2,a20,interval,539.222,0.02,,a7,quinn1994a_t7,App. M3 Table 7: x = b
+127I2 R(47) 9-2,a21,interval,555.093,0.02,,a7,quinn1994a_t7,App. M3 Table 7: x = a
+127I2 P(62) 17-1,a2,interval,275.03,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = n
+127I2 P(62) 17-1,a3,interval,287.05,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = m
+127I2 P(62) 17-1,a4,interval,292.57,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = l
+127I2 P(62) 17-1,a5,interval,304.26,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = k
+127I2 P(62) 17-1,a6,interval,416.67,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = j
+127I2 P(62) 17-1,a7,interval,428.51,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = i
+127I2 P(62) 17-1,a8,interval,440.17,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = h
+127I2 P(62) 17-1,a9,interval,452.30,0.02,,a1,quinn1994a_t6,App. M3 Table 6: x = g
+127I2 P(62) 17-1,a10,interval,579.43,0.03,,a1,quinn1994a_t6,App. M3 Table 6: x = f
+127I2 P(62) 17-1,a15,interval,869.53,0.03,,a1,quinn1994a_t6,App. M3 Table 6: x = a
+127I2 P(48) 11-3,b1,interval,-1034.75,0.07,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b2,interval,-755.86,0.05,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b3,interval,-748.28,0.03,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b4,interval,-738.35,0.04,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b5,interval,-731.396,0.006,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b6,interval,-616.01,0.03,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b7,interval,-602.42,0.03,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b8,interval,-593.98,0.01,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b9,interval,-579.91,0.01,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b10,interval,-452.163,0.005,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b11,interval,-316.6,0.4,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b12,interval,-315.8,0.4,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b13,interval,-297.42,0.03,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b14,interval,-294.72,0.03,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 P(48) 11-3,b15,interval,-160.318,0.003,127I2 R(47) 9-2,a7,quinn1994a_t8,App. M3 Table 8
+127I2 R(48) 15-5,c1,interval,-513.83,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+127I2 R(48) 15-5,c2,interval,-237.40,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+127I2 R(48) 15-5,c3,interval,-228.08,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+127I2 R(48) 15-5,c4,interval,-218.78,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+127I2 R(48) 15-5,c5,interval,-209.96,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+127I2 R(48) 15-5,c6,interval,-97.74,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+127I2 R(48) 15-5,c8,interval,-73.92,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+127I2 R(48) 15-5,c9,interval,-59.30,0.03,127I2 R(47) 9-2,a7,quinn1994a_t9,App. M3 Table 9
+129I2 P(110) 10-2,a1,interval,-376.29,0.05,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = b′
+129I2 P(110) 10-2,a2,interval,-244.76,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = a′
+129I2 P(110) 10-2,a3,interval,-230.79,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = z
+129I2 P(110) 10-2,a4,interval,-229.40,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = y
+129I2 P(110) 10-2,a5,interval,-216.10,0.05,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = x
+129I2 P(110) 10-2,a6,interval,-149.37,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = w
+129I2 P(110) 10-2,a7,interval,-134.68,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = v
+129I2 P(110) 10-2,a8,interval,-130.98,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = u
+129I2 P(110) 10-2,a9,interval,-116.67,0.05,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = t
+129I2 P(110) 10-2,a10,interval,-96.26,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = s
+129I2 P(110) 10-2,a11,interval,-90.70,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = r
+129I2 P(110) 10-2,a12,interval,-84.12,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = q
+129I2 P(110) 10-2,a13,interval,-77.79,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = p
+129I2 P(110) 10-2,a14,interval,-72.70,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = o
+129I2 P(110) 10-2,a15,interval,1.61,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = n
+129I2 P(110) 10-2,a16,interval,10.63,0.15,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = m
+129I2 P(110) 10-2,a17,interval,15.82,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = l
+129I2 P(110) 10-2,a18,interval,25.32,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = k
+129I2 P(110) 10-2,a19,interval,49.44,0.15,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = j
+129I2 P(110) 10-2,a20,interval,54.66,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = i
+129I2 P(110) 10-2,a21,interval,69.02,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = h
+129I2 P(110) 10-2,a22,interval,74.47,0.15,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = g
+129I2 P(110) 10-2,a23,interval,110.60,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = f
+129I2 P(110) 10-2,a24,interval,153.09,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = e
+129I2 P(110) 10-2,a25,interval,154.70,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = d
+129I2 P(110) 10-2,a26,interval,163.98,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = c
+129I2 P(110) 10-2,a27,interval,166.22,0.20,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = b
+129I2 P(110) 10-2,a28,interval,208.29,0.10,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 10: x = a
+129I2 R(113) 14-4,b19,interval,-410.4,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = r
+129I2 R(113) 14-4,b20,interval,-390.0,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = q
+129I2 R(113) 14-4,b21,interval,-383.9,0.5,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = p
+129I2 R(113) 14-4,b22,interval,-362.8,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = o
+129I2 R(113) 14-4,b23,interval,-352.9,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = n
+129I2 R(113) 14-4,b24,interval,-346.4,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = m
+129I2 R(113) 14-4,b25,interval,-330.0,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = l
+129I2 R(113) 14-4,b26,interval,-324.9,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = k
+129I2 R(113) 14-4,b27,interval,-304.7,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = j
+129I2 R(113) 14-4,b28,interval,-289.4,0.5,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = i
+129I2 R(113) 14-4,b29,interval,-273.1,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = h
+129I2 R(113) 14-4,b30,interval,-255.7,0.5,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = g
+129I2 R(113) 14-4,b31,interval,-247,5,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = f
+129I2 R(113) 14-4,b32,interval,-237,5,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = e
+129I2 R(113) 14-4,b33,interval,-223,5,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = d
+129I2 R(113) 14-4,b34,interval,-198.6,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = c
+129I2 R(113) 14-4,b35,interval,-193.1,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = b
+129I2 R(113) 14-4,b36,interval,-187.0,0.3,127I2 R(47) 9-2,a7,quinn1994a_mep1983,App. M3 Table 11: x = a
+127I2 R(127) 11-5,a2,interval,-582.9,0.5,,a13,quinn1994a_mep1983,App. M3 Table 12: x = t
+127I2 R(127) 11-5,a3,interval,-558.9,0.5,,a13,quinn1994a_mep1983,App. M3 Table 12: x = s
+127I2 R(127) 11-5,a4,interval,-320.73,0.01,,a13,quinn1994a_t12,App. M3 Table 12: x = r
+127I2 R(127) 11-5,a5,interval,-292.69,0.05,,a13,quinn1994a_t12,App. M3 Table 12: x = q
+127I2 R(127) 11-5,a6,interval,-290.29,0.05,,a13,quinn1994a_t12,App. M3 Table 12: x = p
+127I2 R(127) 11-5,a7,interval,-263.20,0.01,,a13,quinn1994a_t12,App. M3 Table 12: x = o
+127I2 R(127) 11-5,a8,interval,-162.814,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = n
+127I2 R(127) 11-5,a9,interval,-153.801,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = m
+127I2 R(127) 11-5,a10,interval,-137.994,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = l
+127I2 R(127) 11-5,a11,interval,-129.950,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = k
+127I2 R(127) 11-5,a12,interval,-21.565,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = j
+127I2 R(127) 11-5,a14,interval,21.939,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = h
+127I2 R(127) 11-5,a15,interval,125.694,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = g
+127I2 R(127) 11-5,a16,interval,138.892,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = f
+127I2 R(127) 11-5,a17,interval,152.255,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = e
+127I2 R(127) 11-5,a18,interval,165.116,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = d
+127I2 R(127) 11-5,a19,interval,283.006,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = c
+127I2 R(127) 11-5,a20,interval,291.100,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = b
+127I2 R(127) 11-5,a21,interval,299.931,0.005,,a13,quinn1994a_mep1983,App. M3 Table 12: x = a
+127I2 P(33) 6-3,b21,interval,-393.53,0.02,127I2 R(127) 11-5,a13,quinn1994a_t13,App. M3 Table 13: x = a (table reference between lines)
+127I2 P(33) 6-3,b1,interval,-922.57,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = u
+127I2 P(33) 6-3,b2,interval,-895.06,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = t
+127I2 P(33) 6-3,b3,interval,-869.68,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = s
+127I2 P(33) 6-3,b4,interval,-660.52,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = r
+127I2 P(33) 6-3,b5,interval,-610.71,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = q
+127I2 P(33) 6-3,b6,interval,-594.01,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = p
+127I2 P(33) 6-3,b7,interval,-547.42,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = o
+127I2 P(33) 6-3,b8,interval,-487.08,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = n
+127I2 P(33) 6-3,b9,interval,-461.27,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = m
+127I2 P(33) 6-3,b10,interval,-453.23,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = l
+127I2 P(33) 6-3,b11,interval,-439.02,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = k
+127I2 P(33) 6-3,b12,interval,-347.36,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = j
+127I2 P(33) 6-3,b13,interval,-310.28,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = i
+127I2 P(33) 6-3,b14,interval,-263.60,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = h
+127I2 P(33) 6-3,b15,interval,-214.56,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = g
+127I2 P(33) 6-3,b16,interval,-179.30,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = f
+127I2 P(33) 6-3,b17,interval,-153.94,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = e
+127I2 P(33) 6-3,b18,interval,-118.22,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = d
+127I2 P(33) 6-3,b19,interval,-36.72,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = c
+127I2 P(33) 6-3,b20,interval,-21.98,0.02,,b21,quinn1994a_t13_to1997,App. M3 Table 13: x = b
+129I2 P(54) 8-4,a28,interval,95.90,0.04,127I2 R(127) 11-5,a13,quinn1994a_mep1983,App. M3 Table 14: x = k
+129I2 P(54) 8-4,a2,interval,-449,2,,a28,quinn1994a_mep1983,App. M3 Table 14: x = z′
+129I2 P(54) 8-4,a3,interval,-443,2,,a28,quinn1994a_mep1983,App. M3 Table 14: x = y′
+129I2 P(54) 8-4,a4,interval,-434,2,,a28,quinn1994a_mep1983,App. M3 Table 14: x = x′
+129I2 P(54) 8-4,a5,interval,-429,2,,a28,quinn1994a_mep1983,App. M3 Table 14: x = w′
+129I2 P(54) 8-4,a6,interval,-360.9,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = v′
+129I2 P(54) 8-4,a7,interval,-345.1,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = u′
+129I2 P(54) 8-4,a8,interval,-340.8,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = t′
+129I2 P(54) 8-4,a9,interval,-325.4,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = s′
+129I2 P(54) 8-4,a10,interval,-307.0,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = r′
+129I2 P(54) 8-4,a11,interval,-298.2,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = q′
+129I2 P(54) 8-4,a12,interval,-293.1,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = p′
+129I2 P(54) 8-4,a13,interval,-289.7,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = o′
+129I2 P(54) 8-4,a14,interval,-282.7,1,,a28,quinn1994a_mep1983,App. M3 Table 14: x = n′
+129I2 P(54) 8-4,a16,interval,-197.73,0.08,,a28,quinn1994a_mep1983,App. M3 Table 14: x = i′
+129I2 P(54) 8-4,a17,interval,-193.23,0.08,,a28,quinn1994a_mep1983,App. M3 Table 14: x = h′
+129I2 P(54) 8-4,a18,interval,-182.74,0.03,,a28,quinn1994a_mep1983,App. M3 Table 14: x = g′
+129I2 P(54) 8-4,a19,interval,-162.61,0.05,,a28,quinn1994a_mep1983,App. M3 Table 14: x = f′
+129I2 P(54) 8-4,a20,interval,-155.72,0.05,,a28,quinn1994a_mep1983,App. M3 Table 14: x = e′
+129I2 P(54) 8-4,a21,interval,-138.66,0.05,,a28,quinn1994a_mep1983,App. M3 Table 14: x = d′
+129I2 P(54) 8-4,a22,interval,-130.46,0.05,,a28,quinn1994a_mep1983,App. M3 Table 14: x = c′
+129I2 P(54) 8-4,a23,interval,-98.22,0.03,,a28,quinn1994a_t14,App. M3 Table 14: x = a′
+129I2 P(54) 8-4,a26,interval,-43.08,0.03,,a28,quinn1994a_t14,App. M3 Table 14: x = m2
+129I2 P(54) 8-4,a27,interval,-41.24,0.05,,a28,quinn1994a_t14,App. M3 Table 14: x = m1
+129I2 P(69) 12-6,b1,interval,99.12,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = b‴
+129I2 P(69) 12-6,b2,interval,116.08,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = a‴
+129I2 P(69) 12-6,b3,interval,132.05,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = z″
+129I2 P(69) 12-6,b4,interval,234.54,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = s″
+129I2 P(69) 12-6,b7,interval,288.06,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = p″
+129I2 P(69) 12-6,b9,interval,358.8,0.5,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = i1″; unresolved pair with b10 (one printed value)
+129I2 P(69) 12-6,b10,interval,358.8,0.5,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = i2″; unresolved pair with b9 (one printed value)
+129I2 P(69) 12-6,b11,interval,373.80,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = f″
+129I2 P(69) 12-6,b13,interval,395.3,0.2,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = c″
+129I2 P(69) 12-6,b14,interval,402.45,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = b″
+129I2 P(69) 12-6,b15,interval,407,4,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 15: x = a″
+129I2 P(69) 12-6,b16,interval,412.37,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = z′
+129I2 P(69) 12-6,b17,interval,417,4,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 15: x = y′
+129I2 P(69) 12-6,b21,interval,507.66,0.10,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = q′; printed as b20; numbered b21 as in the 1997 and 2003 lists
+129I2 P(69) 12-6,b22,interval,532.65,0.10,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = o′
+129I2 P(69) 12-6,b23,interval,536.59,0.10,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = n′
+129I2 P(69) 12-6,b24,interval,545.06,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = m′
+129I2 P(69) 12-6,b25,interval,560.94,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = l′
+129I2 P(69) 12-6,b26,interval,566.19,0.05,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = k′
+129I2 P(69) 12-6,b27,interval,586.27,0.03,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = j′
+129I2 P(69) 12-6,b28,interval,601.78,0.03,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = i′
+129I2 P(69) 12-6,b29,interval,620.85,0.03,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = h′
+129I2 P(69) 12-6,b30,interval,632.42,0.03,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = g′
+129I2 P(69) 12-6,b31,interval,644.09,0.03,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = f′
+129I2 P(69) 12-6,b32,interval,655.47,0.03,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = e′
+129I2 P(69) 12-6,b33,interval,666.81,0.10,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = d′
+129I2 P(69) 12-6,b34,interval,692.45,0.10,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = c′
+129I2 P(69) 12-6,b35,interval,697.96,0.10,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = b′
+129I2 P(69) 12-6,b36,interval,705.43,0.10,129I2 P(54) 8-4,a28,quinn1994a_t15,App. M3 Table 15: x = a′
+129I2 R(60) 8-4,d23,interval,-555,5,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 16: x = A′; table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d24,interval,-511,2,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 16: x = N; unresolved pair with d25 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d25,interval,-511,2,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 16: x = N; unresolved pair with d24 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d26,interval,-499,2,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 16: x = M; unresolved pair with d27 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d27,interval,-499,2,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 16: x = M; unresolved pair with d26 (one printed value); table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 R(60) 8-4,d28,interval,-456,2,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 16: x = K; table titled P(60) 8-4; R(60) as in the 1997 and 2003 lists
+129I2 P(33) 6-3,e2,interval,988.29,0.20,127I2 R(127) 11-5,a13,quinn1994a_mep1983,App. M3 Table 17: x = B
+129I2 P(33) 6-3,e1,interval,-19.82,0.05,,e2,quinn1994a_t17,App. M3 Table 17: x = A
+129I2 P(33) 6-3,e3,interval,17.83,0.03,,e2,quinn1994a_mep1983,App. M3 Table 17: x = C
+129I2 P(33) 6-3,e4,interval,102.58,0.05,,e2,quinn1994a_mep1983,App. M3 Table 17: x = D
+129I2 P(33) 6-3,e5,interval,141,2,,e2,quinn1994a_mep1983,App. M3 Table 17: x = E
+129I2 P(33) 6-3,e6,interval,157,2,,e2,quinn1994a_mep1983,App. M3 Table 17: x = F
+129I2 P(33) 6-3,e7,interval,191,2,,e2,quinn1994a_mep1983,App. M3 Table 17: x = G
+129I2 P(33) 6-3,e8,interval,208,2,,e2,quinn1994a_mep1983,App. M3 Table 17: x = H
+129I2 P(33) 6-3,e9,interval,239,2,,e2,quinn1994a_mep1983,App. M3 Table 17: x = I
+129I2 P(33) 6-3,e10,interval,249,2,,e2,quinn1994a_mep1983,App. M3 Table 17: x = J
+129I2 P(33) 6-3,e11,interval,260,2,,e2,quinn1994a_mep1983,App. M3 Table 17: x = K
+129I2 P(33) 6-3,e12,interval,269,3,,e2,quinn1994a_mep1983,App. M3 Table 17: x = L
+129I2 P(33) 6-3,e13,interval,273,4,,e2,quinn1994a_mep1983,App. M3 Table 17: x = M
+129I2 P(33) 6-3,e14,interval,287,4,,e2,quinn1994a_mep1983,App. M3 Table 17: x = N
+129I2 P(33) 6-3,e15,interval,293,5,,e2,quinn1994a_mep1983,App. M3 Table 17: x = O
+129I2 P(33) 6-3,e16,interval,295,5,,e2,quinn1994a_mep1983,App. M3 Table 17: x = P
+129I2 P(33) 6-3,e17,interval,306,6,,e2,quinn1994a_mep1983,App. M3 Table 17: x = Q
+127I129I P(33) 6-3,m1,interval,-254,3,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = m′
+127I129I P(33) 6-3,m2,interval,-233.71,0.10,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = l′
+127I129I P(33) 6-3,m3,interval,-226.14,0.10,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = k′
+127I129I P(33) 6-3,m5,interval,-117.79,0.10,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = b′
+127I129I P(33) 6-3,m6,interval,-87.83,0.15,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = p
+127I129I P(33) 6-3,m7,interval,-78.2,0.5,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = o
+127I129I P(33) 6-3,m9,interval,-17.55,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = l
+127I129I P(33) 6-3,m10,interval,12.04,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = j
+127I129I P(33) 6-3,m11,interval,15.60,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = i
+127I129I P(33) 6-3,m12,interval,33.16,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = h
+127I129I P(33) 6-3,m13,interval,39.9,0.2,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = g2
+127I129I P(33) 6-3,m14,interval,41.3,0.2,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = g1
+127I129I P(33) 6-3,m15,interval,50.72,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = f
+127I129I P(33) 6-3,m16,interval,54.06,0.10,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = e
+127I129I P(33) 6-3,m17,interval,69.33,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = d
+127I129I P(33) 6-3,m18,interval,75.06,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = c
+127I129I P(33) 6-3,m19,interval,80.00,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = b
+127I129I P(33) 6-3,m20,interval,95.00,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = a
+127I129I P(33) 6-3,m21,interval,160.74,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = y″
+127I129I P(33) 6-3,m22,interval,199.52,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = x″
+127I129I P(33) 6-3,m23,interval,205.06,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = w″
+127I129I P(33) 6-3,m24,interval,207.9,0.5,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = v2″; unresolved pair with m25 (one printed value)
+127I129I P(33) 6-3,m25,interval,207.9,0.5,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = v1″; unresolved pair with m24 (one printed value)
+127I129I P(33) 6-3,m26,interval,212.80,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = u″
+127I129I P(33) 6-3,m27,interval,219.43,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = t″
+127I129I P(33) 6-3,m30,interval,299.22,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = o″
+127I129I P(33) 6-3,m31,interval,312.43,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = n″
+127I129I P(33) 6-3,m32,interval,324.52,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = m″
+127I129I P(33) 6-3,m33,interval,333.14,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = l″
+127I129I P(33) 6-3,m36,interval,345.05,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = j″
+127I129I P(33) 6-3,m37,interval,362.18,0.10,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = h″
+127I129I P(33) 6-3,m38,interval,369.78,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = g″
+127I129I P(33) 6-3,m39,interval,380.37,0.03,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = e″
+127I129I P(33) 6-3,m41,interval,431,4,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = x′
+127I129I P(33) 6-3,m42,interval,445,4,129I2 P(54) 8-4,a28,quinn1994a_mep1983,App. M3 Table 18: x = w′
+127I129I P(33) 6-3,m43,interval,456.7,0.5,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = v′
+127I129I P(33) 6-3,m44,interval,477.17,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = u′
+127I129I P(33) 6-3,m45,interval,486.43,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = t′
+127I129I P(33) 6-3,m46,interval,495.16,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = s′
+127I129I P(33) 6-3,m47,interval,503.55,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = r′
+127I129I P(33) 6-3,m48,interval,515.11,0.05,129I2 P(54) 8-4,a28,quinn1994a_t18,App. M3 Table 18: x = p′
+127I2 P(10) 8-5,a1,interval,-495.4,0.4,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a2,interval,-241.5,0.7,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a3,interval,-233.0,0.35,,a9,quinn1994a_t19_to1997,App. M3 Table 19
+127I2 P(10) 8-5,a4,interval,-177.8,1.3,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a5,interval,-175.2,0.6,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a6,interval,-130.8,0.04,,a9,quinn1994a_t19_to1997,App. M3 Table 19
+127I2 P(10) 8-5,a7,interval,-82.45,0.03,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a8,interval,-61.85,0.14,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a10,interval,77.84,0.03,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a11,interval,186.22,0.07,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a12,interval,199.51,0.07,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a13,interval,256.6,0.15,,a9,quinn1994a_t19_to1997,App. M3 Table 19
+127I2 P(10) 8-5,a14,interval,272.75,0.07,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 P(10) 8-5,a15,interval,374.0,0.2,,a9,quinn1994a_t19,App. M3 Table 19
+127I2 R(16) 8-5,b1,interval,62.83,0.01,127I2 P(10) 8-5,a9,quinn1994a_t20,App. M3 Table 20
+127I2 R(16) 8-5,b2,interval,329.8,0.2,127I2 P(10) 8-5,a9,quinn1994a_t20,App. M3 Table 20
+127I2 R(16) 8-5,b3,interval,335.99,0.02,127I2 P(10) 8-5,a9,quinn1994a_t20,App. M3 Table 20
+127I2 P(10) 8-5,a9,frequency,468218332.4,0.2,,,quinn1994a_rec640,"List 1.3, a9 (g): f = 468 218 332.4 MHz, u_r 4.5e-10; App. M2 1.3: standard uncertainty 0.2 MHz"
+127I2 R(127) 11-5,a13,frequency,473612214.705,0.012,,,quinn1994a_rec633_to2003,"List 1.4, a13 (i): f = 473 612 214 705 kHz, u_r 2.5e-11; App. M2 1.4: standard uncertainty 12 kHz"
+127I2 R(47) 9-2,a7,frequency,489880354.9,0.15,,,quinn1994a_rec612,"List 1.5, a7 (o): f = 489 880 354.9 MHz, u_r 3e-10; App. M2 1.5: standard uncertainty 0.15 MHz"
+127I2 P(62) 17-1,a1,frequency,520206808.4,0.2,,,quinn1994a_rec576,"List 1.6, a1: f = 520 206 808.4 MHz, u_r 4e-10; App. M2 1.6: standard uncertainty 0.2 MHz"
+127I2 R(12) 26-0,a9,frequency,551579482.96,0.14,,,quinn1994a_rec543_to2003,"List 1.7, a9: f = 551 579 482.96 MHz, u_r 2.5e-10; App. M2 1.7: standard uncertainty 0.14 MHz"
+127I2 P(13) 43-0,a3,frequency,582490603.37,0.15,,,quinn1994a_rec515_to2005,"List 1.8, a3 (s): f = 582 490 603.37 MHz, u_r 2.5e-10; App. M2 1.8: standard uncertainty 0.15 MHz"

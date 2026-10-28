@@ -22,6 +22,8 @@ uncertainty = "The printed s (5 kHz to 0.1 MHz), \"estimated from the measuremen
 notes = """
 The MEP 612 nm Tables 1-2 (bipm2003d) cite this paper (ref. [12]); declared there as "mean". Residuals against
 an earlier version of the model (obs - model): R(47) 9-2 rms 3.6 kHz; P(48) 11-3 from a7 rms 60 kHz. Checked against the model only.
+glaser1986a (Gläser 1986, Metrologia 23, 45) holds the earlier values of P(48) 11-3 b15 and R(47) 9-2 a4-a11,
+equal to Table I here within 1 kHz; it declares this set as superseding it.
 """
 
 [conditions]

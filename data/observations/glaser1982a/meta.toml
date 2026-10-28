@@ -1,0 +1,81 @@
+id = "glaser1982a"
+citation = "M. Gläser, \"Frequency shifts at low iodine pressure of 127I2-stabilized He-Ne lasers at 633 nm wavelength\", Metrologia 18, 53-58 (1982), Table 1"
+source = "https://doi.org/10.1088/0026-1394/18/2/002 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0026-1394/18/2/002"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:glaser1982"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 57), "Linear pressure parameters at I2-pressures larger than 5 Pa measured with laser L2. The reference
+laser L1 has been stabilized to HFS component f": the last column, "Frequency difference (MHz) extrapolated to
+pressure zero", all 13 rows. Read from a 300 dpi rendering of p. 57 and checked against the OCR text layer (which
+splits "-13.280" as "-1 3.280"). Each row is the beat L2 - L1 between laser L2 locked to component g or d with its
+cell (I or II) and the reference laser L1 locked to f at 17.3 Pa (15 C) with 6 MHz modulation, L2's linear pressure
+dependence above 5 Pa extrapolated to zero pressure. The modulation amplitude of L2 and the printed pressure
+coefficient are in each row's note.
+
+Labels. The letters d, e, f, g are the 633 nm components of R(127) 11-5 (J'' = 127, 21 components): d = a18,
+f = a16, g = a15 by rank in frequency, as in bipm2003a (x = d, f, g) and the a16 = f of the MEP; Table 1's signs
+(d above f, g below) agree.
+
+Groups. All rows share L1 at 17.3 Pa, whose own pressure shift (and modulation shift) is in every printed
+difference: the rows are a15 - a16 and a18 - a16 only up to an offset common to the set. Cell II (contaminated;
+the text: 237 kHz below L1 at 17.3 Pa, against 7 kHz for cell I) adds an offset of its own that the extrapolation
+does not remove (Fig. 4: the curves stay parallel). So each cell is a group, glaser1982a_cell1 (8 rows) and
+glaser1982a_cell2 (5 rows), and only differences within a group (a18 - a15) are hyperfine intervals.
+
+Model-free checks. (1) a18 - a15 within cell I: 39.433, 39.429, 39.427, 39.423 MHz at 10, 8, 6, 4 MHz modulation;
+cell II at 6 MHz: 39.423 MHz. bipm2003a gives 26.224 + 13.198 = 39.422 MHz; blabla1993a 39.418 (third harmonic),
+cerez1974a 39.415. (2) Offsets from bipm2003a: cell I +120 to +129 kHz (g) and +130 to +131 kHz (d), as expected
+from L1's pressure shift, -7.4 kHz/Pa x 17.3 Pa = -128 kHz (the reference sits low, so L2 at zero pressure reads
+high); cell II -67 to -111 kHz (g) and -81 kHz (d). (3) Cell II - cell I at 6 MHz, brought back to 17.3 Pa with
+the printed coefficients: -231 kHz (g) and -223 kHz (d), against the text's 237 - 7 = 230 kHz. (4) Table 3:
+Delta nu_g - Delta nu_d and (Delta nu_g + Delta nu_d)/2 reproduce from the Delta nu_d, Delta nu_g columns in all
+four rows, and the printed average +42 is the mean of +42, +63, +32, +32.
+
+Not entered: Figs. 1-5 (frequency difference against pressure, plotted only); the pressure coefficients of Table 1,
+Table 2 (modulation coefficients) and Table 3 (deviations from the linear extrapolation at 0.8 Pa), which are shift
+coefficients and are in notes; the L2 - L1 differences at 17.3 Pa for cells I and II (-7 and -237 kHz, the same
+component in two cells: an impurity shift, not an interval).
+"""
+
+uncertainty = """
+No uncertainty is printed for the extrapolated values. The points of Fig. 1 carry 1 sigma error bars of about 1-3 kHz
+above 5 Pa (rising below 5 Pa with the falling signal-to-noise ratio), the extrapolations at different modulation
+amplitudes "all fall within an interval of 10 kHz" (p. 55), and Table 3's deviations have an estimated 1 sigma of
+15 kHz at 0.8 Pa. Entered: 5 kHz for every row, taken as 1 sigma, a judgment covering the intercept of a linear fit
+over 5-17 Pa and half the 10 kHz spread. The common offset of each group (above) is not part of it.
+"""
+
+notes = """
+Shift coefficients printed (for the catalog; not entered). Pressure coefficients above 5 Pa (Table 1, kHz/Pa):
+cell I g -8.9, -8.2, -7.4, -6.6 and d -9.4, -8.8, -8.1, -6.8 at 10, 8, 6, 4 MHz; cell II g -8.6, -8.5, -8.8, -8.7 at
+8, 7, 6, 5 MHz and d -8.8 at 6 MHz. Modulation coefficients for g (Table 2, kHz/MHz): cell I -8.0 +- 0.8 (17.3 Pa),
+-2.4 +- 2.0 (4.0 Pa), +11 +- 4 (0.8 Pa); cell II -14 +- 2, -16 +- 4, -14 +- 5; the sign change for cell I near
+3 Pa. Deviations from the linear extrapolation at 0.8 Pa, cell I (Table 3, kHz, 1 sigma about 15): Delta nu_d +37,
++5, 0, -10 and Delta nu_g +79, +68, +32, +22 at 10, 8, 6, 4 MHz; g - d +42 +- 15 on average; the component-
+independent mean (58 +- 15) kHz at 10 MHz. Recoil doubling with unequal intensities can account for less than 6 kHz,
+background curvature for about 10 kHz at most. Cell II: an apparent condensation point at -14.3 C (about 0.9 Pa);
+if the secondary gas were water vapor (about 180 Pa above it), the I2-H2O pressure coefficient would be -1.3 kHz/Pa
+(the author's estimate). L2 output power rises from about 60 uW at 17 Pa to about 110 uW at 0.8 Pa, so the low-
+pressure points also carry a power change.
+
+The non-linear behavior below 5 Pa is the reason for extrapolating only from above 5 Pa; the low-pressure points are
+not entered.
+"""
+
+[conditions]
+method = "two BIPM He-Ne lasers at 633 nm, internal 10 cm cells, third-harmonic locking; beat L2 - L1, 10 s gates, 6-12 samples per point, averaged over two detector phases 180 degrees apart"
+laser = "He-Ne, 40 cm resonator, plane and 60 cm radius mirrors (0.9 % transmission), cell near the flat mirror"
+cell_length_cm = 10
+cell_wall_C = 20
+cells = "L2 with cell I (low impurity content) or cell II (high impurity content, increased hyperfine linewidth)"
+pressure_range_Pa = "L2: 0.8-17 (cold finger down to -20 C); Table 1 extrapolated from above 5 Pa"
+modulation_MHz_pp = "L2: 4-10 (cell I), 5-8 (cell II)"
+extrapolated_to_zero_pressure = true
+reference = "laser L1 on f (a16), not extrapolated; cell quality 'similar to those of most national metrological laboratories'"
+reference_cold_finger_C = 15.0
+reference_pressure_Pa = 17.3
+reference_modulation_MHz_pp = 6.0

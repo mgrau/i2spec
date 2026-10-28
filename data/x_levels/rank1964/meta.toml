@@ -1,0 +1,101 @@
+id = "rank1964"
+citation = "D. H. Rank and B. S. Rao, \"Molecular constants of the ground state of I2\", J. Mol. Spectrosc. 13, 34-42 (1964), Tables I-III and Eqs. (6)-(9)"
+source = "https://doi.org/10.1016/0022-2852(64)90052-9 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(64)90052-9"
+retrieved = "2026-10-26"
+unit = "cm-1"
+state = "X"
+isotopologue = "127I2"
+files = ["green_series.csv", "uv_residuals.csv", "constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-III (pp. 36, 40, 41), Eqs. (6)-(9) (pp. 37-39) and the constants of the text and footnotes, read from the scan's
+native 300 dpi page images (rendered at 300-900 dpi). Table I and Table II are typewritten; the OCR text layer garbles
+most of their digits ("18,054.305" for 18 094.309, "IC,E32.13C" for 15 832.335, "466.5" for 486.5) and Table III has no
+usable text; every value was read from the images.
+
+The measurement: Wood's green-line resonance series, B-X fluorescence of 127I2 from the level excited by the Hg 5461 A
+line (J_r = 34; B v' = 25 in the modern numbering of Steinfeld et al. 1965, data/b_levels/steinfeld1965; the paper names
+no v'), observed as R(J_r - 1) = R(33) and P(J_r + 1) = P(35) doublets to X v''. Doublets v'' = 1-22 "were measured with
+the interferometer" (the original data of Rank and Baldwin, J. Chem. Phys. 19, 1210 (1951), first printed in full here);
+v'' = 23, 25, 27 are Wood and Kimura's (Phil. Mag. 35, 252 (1918), 1-m plane grating) and v'' = 29-39 Rank's (J. Opt.
+Soc. Am. 36, 239 (1946), 1-m concave grating): both reprints.
+
+green_series.csv (52 rows): Table I, columns 1-5: the observed R(33) and P(35) lines of 26 v'' (1, 3-6, 8, 10-13, 15, 17,
+18, 20, 22, 23, 25, 27, 29, 30, 32, 34-37, 39) with the printed calc - obs (cm-1). The table prints the leading digits only
+where they change (18,094.309, then 17,671.664, 462.205, ...; 11,001.4 at v'' = 39); they are restored. Lines are
+labeled in absorption notation (R(33) 25-v'', P(35) 25-v''), which has the same wavenumber as the emission line.
+uv_residuals.csv (45 rows): Table I, columns 6-9: calc - obs of R(J_r - 1) = R(86) of Verma's J_r = 87 ultraviolet series
+(the 1830 A series, Verma 1960, data/x_levels/verma1960; v'' = 2-84). The observed values themselves are Verma's and are
+not printed here.
+constants.csv (44 rows): Table II (the X constants, with the 'calculated' marks), Table III (Sandeman potential constants
+c1-c4 observed and calculated, and Verma's constants reprinted), the coefficients of Eqs. (6)-(9), nu0 of both series,
+and the Morse and Kratzer values of the text.
+
+Checks (model-free):
+- Eq. (8) reproduces the printed calc - obs of every green-series R line to 0.0003 cm-1 or better (v'' = 1-22: 12 of 15
+  rows to 0.0001-0.0003; v'' = 23-39 to the printed 0.01), except v'' = 5 (+0.0061 against the printed +0.0051), 13
+  (+0.0001 against +0.0023) and 20 (+0.0010 against +0.0021). The image digits of those lines (17 253.992, 15 634.470,
+  14 287.584) are clear; the printed residuals are entered as printed and the differences flagged in the notes.
+  P(35) = Eq. (8) - Eq. (6) reproduces the P residuals to 0.0005 for v'' <= 22; above (grating data) to 0.03-0.05 only,
+  so the authors used something slightly different there.
+- The green-series lines against the held X levels of data/x_levels/martin1986 (v'' >= 8): each line plus Martin's
+  term E''(v'', J'') gives the same upper level, 18 349.354-18 349.384 cm-1 for the interferometric lines v'' = 8-22 (a
+  slow drift of +0.02 over that range), and 18 349.21-18 350.22 for the grating lines v'' = 23-39.
+- Against the FTS atlases held in data/atlas_lines: R(33) 25-1 is 0.019-0.023 cm-1 below salami_ross_2005,
+  apo_nist_2009 and debus_2023, R(33) 25-3 0.016-0.018 below, and P(35) 25-1 and 25-3 0.020 and 0.016 below apo_nist_2009:
+  the interferometric scale (set by nu0 = 18 307.4712 for the Hg-line absorption) reads about 0.02 cm-1 low. The
+  atlases have no lines of this series above v'' = 3.
+- The ultraviolet residuals equal Eq. (9) minus Verma's observed series I R(86) (verma1960) to 0.01 cm-1 at 43 of 45 v'',
+  not the "average" of R and P + dnu that the text describes; v'' = 24 (-0.52 against -0.48) and 59 (+0.40 against +0.29)
+  differ (noted in the rows).
+- Table II is consistent with Eqs. (4) and (8): t_e omega_e = -(v^5 coefficient) = -1.589e-7 (printed -1.6e-7); the v^4
+  coefficient gives z_e omega_e = -5.04e-6 with t_e omega_e and phi_e, as printed.
+
+Misprints and inconsistencies (entered as printed): the three residuals above; Table III prints beta_e (calculated) as
+-1.80e-11 where Table II and footnote 1 give -1.20e-11 from Sandeman's relations (-1.8e-11 is footnote 1's order-of-
+magnitude estimate from approximate theory); Table III prints Verma's delta_e as -1.839e-7, Verma's own value is
+-1.839e-8 (verma1960). The c3 of Table III reads "]4.53" in the scan; the typewriter 1 is shaped so, and Eq. (12)
+interpolation between c2 and c4 gives about 14.5, so 14.53.
+
+Not entered: Fig. 1 (residuals of the doublet separations against Eqs. (6) and (7), plotted only), Fig. 2 (log10 A_n
+against n), the general Eqs. (1)-(5) and (10)-(12) (forms only, described in the notes of constants.csv).
+"""
+
+uncertainty = """
+No uncertainties are printed for the lines or constants. The authors say the interferometric lines are about 20 times
+more precise than Verma's ultraviolet ones and that statistical probable errors are "absurdly small" (tripling them is
+"more realistic"). The calc - obs of the interferometric green-series lines (v'' = 1-22) have an rms of 0.005 cm-1 (R)
+and 0.005 cm-1 (P), with v'' = 18 (-0.009, -0.014) and 22 (+0.016) the largest, attributed to accidental reabsorption.
+The grating lines (v'' = 23-39) scatter by 0.1-0.8 cm-1. The absolute scale is about 0.02 cm-1 low against the FTS
+atlases (above). The ultraviolet residuals (Verma's lines against Eq. (9)) are 0.1-0.6 cm-1 up to v'' = 50 and grow to
+71 cm-1 at v'' = 84, where Eq. (9) no longer represents the levels.
+"""
+
+notes = """
+What the set is. The first full printing of Rank and Baldwin's interferometric measurements of the Hg green-line
+resonance doublets (X v'' = 1-22, the most precise X-state data before the 1970s laser work), with older grating data
+to v'' = 39, and the X-state constants fitted to them (with Verma's ultraviolet J_r = 87 series for delta_e and phi_e).
+Its constants were the reference for the X state in several later papers (Steinfeld et al. 1965 Table II, Wei and
+Tellinghuisen 1974, Luc 1980 Fig. 2). The constants use a sign convention in which every term of G'' and the D_e term of
+F'' carry a plus sign (so x_e omega_e and D_e are printed negative).
+
+Overlap with held sets. The ultraviolet data are Verma's (data/x_levels/verma1960); only residuals are printed here, so
+there is no duplicated measurement. The green-series lines of v'' = 23-39 are reprints of Wood and Kimura 1918 and Rank
+1946 (not held). The B-X absorption line R(33) 25-0 that the Hg line excites is the subject of other held sets
+(data/b_levels/steinfeld1965 Table VI, data/b_levels/yee1976 Table 6, calculated only). Not compared with any model.
+"""
+
+[columns]
+green_series = """
+isotopologue; line: R(33) 25-v'' or P(35) 25-v'' (absorption notation, J'' = J_r - 1 or J_r + 1, J_r = 34, B v' = 25 in
+the modern numbering); branch, J_lower, v_upper, v_lower: the same split. sigma: observed wavenumber, cm-1 (vacuum).
+calc_minus_obs: as printed, cm-1 (R from Eq. (8); P from Eq. (8) minus Eq. (6)). method, source: how and by whom the
+doublet was measured (interferometer: this group's own data; gratings: reprints). note: reading notes and checks.
+"""
+uv_residuals = "v_lower: X v''. calc_minus_obs: Eq. (9) minus the observed R(86) of Verma's J_r = 87 series, cm-1, as printed. note: checks against verma1960."
+constants = """
+state, quantity, value, uncertainty (none printed), unit, source (table, page, equation); status: fitted, calculated
+(from theory or other constants) or reprint; note: definitions and sign conventions.
+"""

@@ -1,0 +1,82 @@
+id = "rowley1973a"
+citation = "W. R. C. Rowley and A. J. Wallard, \"Wavelength values of the 633 nm laser, stabilized with 127I2 saturated absorption\", J. Phys. E: Sci. Instrum. 6, 647-652 (1973), Tables 1-4"
+source = "https://doi.org/10.1088/0022-3735/6/7/019 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0022-3735/6/7/019"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked digit by digit against 300 dpi renderings of pp. 649-651. NPL He-Ne lasers
+(32 cm cavity) with 100 mm intracavity 127I2 cells, third-harmonic locking at about 5 MHz p-p, seven components
+d-j of R(127) 11-5 within reach ("designated 'defg, hij' in descending order of frequency").
+- Table 2 (p. 650): direct beat measurements d-e 12.882, e-f 13.362, f-g 13.189 MHz, each the mean over six
+  occasions in several months (the deviations of the six are printed); group rowley1973a_direct.
+- Table 3 (p. 650): beats through a subsidiary laser (two counted beats added or subtracted): e-h 130.284, f-h
+  116.932, g-h 103.736, e-g 26.556 MHz with the subsidiary laser between the two (group rowley1973a_sub), and
+  e-g 26.541, f-g 13.184, h-i 21.938 MHz with it outside (group rowley1973a_subout); each is the mean of two sets
+  with the locked components interchanged, which cancels a 60 kHz offset of one servo.
+- Table 1 (p. 649) and abstract: the vacuum wavelength of the laser on d against the 86Kr standard, 632 991 178.3
+  +- 0.8 fm (3 sigma), twenty interference maxima; entered as c / lambda (c = 299 792 458 m/s), 473 612 379.252 MHz;
+  group rowley1973a_kr.
+Each interval is f(x) - f(y) > 0 for x above y. Labels: d, e, f, g, h, i = a18, a17, a16, a15, a14, a13 (MEP: f =
+a16, i = a13).
+
+Not entered: Table 4, the least-squares adjustment of Tables 2 and 3 (intervals 12.882, 13.360, 13.188, 103.739,
+21.938 MHz; positions from d down to i 0, 12.882, 26.242, 39.430, 143.169, 165.107 MHz) and the wavelengths of e-i
+computed from d (632 991 195.5, 213.4, 231.0, 369.6, 399.0 fm): derived from the entered rows; the Allan deviation
+(12 kHz at 10 s) and the reproducibility (standard deviation of a measurement 11 kHz).
+
+Checks (model-free): Table 4 is reproduced from its intervals (sums to 39.430, 143.169, 165.107 MHz) and its
+wavelengths from d and the positions (to 0.1 fm). The six Table 2 deviations average to 0.5, 0.5 and -1.5 kHz and
+pool to an 11.1 kHz standard deviation, the 11 kHz the text quotes; the twenty Table 1 deviations average to 0.02
+fm with a standard error of 0.26 fm, as printed. Against bipm2003a the intervals differ by -32 to +21 kHz (rms
+17 kHz) and against cerez1974a by -49 to +17 kHz (rms 26 kHz); the three intervals across the 100 MHz gap (e-h,
+f-h, g-h) are all low, by 19-32 kHz against bipm2003a. f(d) is 0.58 MHz below bipm2003a's a18 (473 612 379.828 MHz),
+0.3 sigma; the i wavelength derived from it is 1 fm shorter than hanes1973a's, as the paper notes.
+"""
+
+uncertainty = """
+Intervals: the statistical part is the standard error of the six Table 2 occasions (2.2, 5.8, 4.9 kHz) or one third
+of the printed Table 3 "Uncertainty 3 sigma" (2.3-5.3 kHz). The authors add that "the various perturbing systematic
+shifts ... have not at present been assessed below the 20 kHz level" and that "the frequency separation results are
+unlikely to be in error by as much as 20 kHz"; 20 kHz is combined in quadrature as 1 sigma (a conservative reading,
+supported by the 17-26 kHz rms of the checks above): 20-21 kHz.
+Absolute: the printed +-0.8 fm is a 3 sigma limit; the standard error of the mean, 0.26 fm, is 0.19 MHz. The paper
+did not correct for the asymmetry of the 86Kr line or extrapolate the lamp conditions to zero perturbation and gives
+"a systematic uncertainty of approximately 1 x 10-8"; as in schweitzer1973a and hanes1973a, 4e-9 (1.89 MHz) is
+taken for the realization of the 86Kr standard (the figure jennings1983a quotes): 1.90 MHz in all.
+"""
+
+notes = """
+The MEP 633 nm R(127) 11-5 table (bipm2003a) cites this paper (Quinn 2003, ref. [101]); its values are weighted means
+of twelve sources. hanes1973a is the NRC measurement the paper compares with ("Baird 1973, Appl. Opt., to be
+published").
+
+[shift_correction] applies to the absolute row only. The cells "were not temperature controlled and took up
+temperatures a few degrees above room temperature (20 C)" (p. 648): 23(2) C is taken, 34.9 Pa (Gillespie & Fraser),
+with bipm2003a's coefficients; the intracavity power is not given (50-100 uW out of a 0.5 % mirror, 10-20 mW).
+The paper found no pressure shift of the intervals between cells at 22 and 32 C, nor a power shift above 20 kHz
+for a factor three in power, and a scan shift below 2 kHz.
+"""
+
+[conditions]
+method = "He-Ne lasers, 32 cm cavity, 180 mm gain tube (3 Torr He + natural Ne), 100 mm intracavity 127I2 cell (no temperature control, a few C above 20 C room), third-harmonic locking at 572 and 586 Hz, about 5 MHz p-p; beat frequencies counted for 10 s; wavelength of d by pressure-scanned Fabry-Perot (38 and 195 mm spacers) against a 86Kr lamp at 63.4 K"
+cell_length_mm = 100
+cell_temperature_C = 23.0
+modulation_MHz_pp = 5.0
+output_power_uW = 75
+
+[shift_correction]
+groups = ["rowley1973a_kr"]
+pressure_Pa = 34.9
+pressure_kHz_per_Pa = -9.6
+pressure_kHz_per_Pa_unc = 1.9
+power_mW = 15.0
+power_kHz_per_mW = 0.0
+power_kHz_per_mW_unc = 1.0
+modulation_MHz = 5.0
+modulation_kHz_per_MHz = -10.0
+modulation_kHz_per_MHz_unc = 2.0
+allowance_kHz = 57.0
+basis = "Paper p. 648: cells a few C above 20 C room, not controlled; 23 C taken (34.9 Pa, Gillespie & Fraser), and the +-2 C spread (+-6 Pa x 9.6 kHz/Pa) entered as a 57 kHz allowance. Modulation about 5 MHz p-p; power 50-100 uW out of a 0.5 % mirror, 15 mW intracavity taken. Coefficients as bipm2003a (MEP 633 nm): -9.6(1.9) kHz/Pa, -10(2) kHz/MHz, power 0(1) kHz/mW. Shift +385 kHz, uncertainty 89 kHz, against 1.90 MHz."

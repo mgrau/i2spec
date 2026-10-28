@@ -1,0 +1,118 @@
+id = "quinn1994a"
+citation = "T. J. Quinn, \"Mise en pratique of the definition of the metre (1992)\", Metrologia 30, 523-541 (1993/94): Recommendation 3 (CI-1992) with the List of Recommended Radiations, 1992 (pp. 524-525); Appendix M 2, source data and annotated bibliography (pp. 525-532); Appendix M 3, Tables 1-20, frequency intervals between hyperfine components of iodine (pp. 532-539)"
+source = "https://doi.org/10.1088/0026-1394/30/5/011 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0026-1394/30/5/011"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+transcription = """
+The CIPM 1992 mise en pratique (MEP 1992). Everything was read from page images (200 dpi, 400 dpi for doubtful
+digits); the OCR text layer (decimal commas) was used only as a guide. Typed by hand.
+
+List of Recommended Radiations, 1992 (pp. 524-525), the six iodine radiations, entered as frequencies with the
+standard uncertainty of the adopted value from App. M 2 (the list prints the relative standard uncertainty):
+  1.3 640 nm, 127I2 P(10) 8-5 a9 (g): 468 218 332.4 MHz, 0.2 MHz (4.5e-10)
+  1.4 633 nm, 127I2 R(127) 11-5 a13 (i): 473 612 214 705 kHz, 12 kHz (2.5e-11)
+  1.5 612 nm, 127I2 R(47) 9-2 a7 (o): 489 880 354.9 MHz, 0.15 MHz (3e-10)
+  1.6 576 nm, 127I2 P(62) 17-1 a1: 520 206 808.4 MHz, 0.2 MHz (4e-10)
+  1.7 543 nm, 127I2 R(12) 26-0 a9: 551 579 482.96 MHz, 0.14 MHz (2.5e-10)
+  1.8 515 nm, 127I2 P(13) 43-0 a3 (s): 582 490 603.37 MHz, 0.15 MHz (2.5e-10)
+The printed vacuum wavelengths equal c/f to the rounding (0.0004-0.05 fm) and are not entered; nor is the list
+value repeated in each table heading.
+
+App. M 3, all 20 tables (unit MHz, s = estimated standard uncertainty), labels as printed (number = rank; the
+letter column is kept in each note as x = ...):
+  p. 532  Table 1 127I2 P(13) 43-0 a1-a21 from a3
+  p. 533  Table 2 R(15) 43-0 b2-b21 from b1; Table 3 R(98) 58-1 d1-d15 from d6; Table 4 R(12) 26-0 a1-a15 from a9
+  p. 534  Table 5 R(106) 28-0 b1-b15 from a9 of R(12) 26-0; Table 6 P(62) 17-1 a2-a10, a15 from a1;
+          Table 7 R(47) 9-2 a1-a21 from a7
+  p. 535  Table 8 P(48) 11-3 b1-b15, Table 9 R(48) 15-5 c1-c6, c8, c9 and Table 10 129I2 P(110) 10-2 a1-a28,
+          all from a7 of 127I2 R(47) 9-2
+  p. 536  Table 11 129I2 R(113) 14-4 b19-b36 from a7; Table 12 R(127) 11-5 a2-a21 from a13; Table 13 P(33) 6-3
+          b1-b20 from b21
+  p. 537  Table 14 129I2 P(54) 8-4 a2-a27 from a28 (k); Table 15 129I2 P(69) 12-6 b1-b17, b20-b36 from a28
+  p. 538  Table 16 129I2 "P(60) 8-4" d23-d28 from a28; Table 17 129I2 P(33) 6-3 e1-e17 from e2; Table 18
+          127I129I P(33) 6-3 m1-m48 from a28 of 129I2 P(54) 8-4 (continued on p. 539)
+  p. 539  Table 19 P(10) 8-5 a1-a15 from a9; Table 20 R(16) 8-5 b1-b3 from a9 of P(10) 8-5
+The references between lines printed in the table headings are entered once each: f(b1, R(15)) - f(a1, P(13)) =
+283.835(0.005), f(d6) - f(a3) = -2100(1), f(b21, P(33) 6-3) - f(a13) = -393.53(0.02), f(a28, 129I2 P(54)) -
+f(a13) = 95.90(0.04) and f(e2) - f(a13) = 988.29(0.20).
+
+Corrections and relabelling (as in bipm1984a): Table 15 numbers q′ as b20, entered as b21 (the 1997 and 2003
+numbering); Table 16 is titled P(60) 8-4, entered as R(60) 8-4 (the 1997 and 2003 title; see bipm1984a).
+
+Left out, the 14 blends of bipm2003a (one observed peak assigned to 129I2 and to 127I129I): n (129I2 P(54) a24,
+a25 -55.6(0.5) and m8 -56(1), marked "also component"), j′ (a15 -206.05(0.2), m4 -207(1.5)), r″ (P(69) b5
+256.90(0.05) and m28 256.90(0.10), marked), q″ (b6 264.84(0.05) and m29 264.84(0.05), marked), k″ (b8 337.75(0.1)
+and m34, m35 337.7(0.5)), d″ (b12 387.24(0.05) and m40 385(4)). Pairs printed with one value (b9/b10, d24/d25,
+d26/d27, m24/m25) are entered twice with the printed value.
+
+Not entered: the CH4 (1.1), 40Ca (1.2) and lamp (2.1, 2.2) radiations, which are not iodine; the source data of
+App. M 2 (640 nm values of NPL 1984, NIM/CSMU/PTB 1985, IMGC/BIPM 1985; the LPTF/ETCA/INM 1992 f(f) of INM12, 473
+612 353 586(3.4) kHz, its f(i) 473 612 214 694.0 kHz and f(BIPM4) - f(INM12) = 11.4 kHz; the 612 nm values of NPL
+1982, BIPM 1982, PTB/BIPM 1986, VNIIM 1989, INM 1991; the 576 nm NBS 1982 value rescaled to 520 206 808 491 kHz
+and the NPL value from Barwood & Rowley's ratio, 520 206 808 272 kHz; the 543 nm PTB 1991 and NPL 1992 values;
+the 515/633 ratios of NPL 1982, BIPM 1982, PTB 1985, 1986, 1989, 1991). They are the inputs of the adopted values
+(as in bipm2003a-e). The intervals quoted in the bibliography (f(b15) - f(a7) = -160 318(3) kHz, f(a7) - f(a13) =
+-249 602(10) kHz, f(d) - f(i), f(e) - f(i), f(f) - f(i), f(b10) - f(a9) = 679 420(15) kHz) are table entries.
+
+Checks (model-free): the adopted values follow from the printed source data (515 nm: mean ratio 1.229 889 317 22
+x f(i) = 582 490 603 371 kHz; 612 nm: unweighted mean 489 880 354 922 kHz; 576 nm: mean 520 206 808 382 kHz;
+543 nm: mean 551 579 482 964 kHz). Every entry was compared with the 1983 list (bipm1984a), the 1997 list
+(quinn1999a) and the current BIPM files: 173 entries equal the 1983 list; the 1997 list rounds Table 7 (R(47)
+9-2) to 10 kHz, as its own footnote says for a13, and revises Tables 4, 5 and 13 and the uncertainties of Table
+19 a3, a6 and a13 (0.35, 0.04, 0.15 here; 0.4, 0.1, 0.2 in 1997). Every difference was re-read on the image.
+Against held primaries: Table 6 is barwood1984a rounded to 10 kHz (the same digits razet1993b prints); Table 9
+is razet1991a rounded; Table 13 is razet1993a rounded to 10 kHz in 19 of 20 entries (b14 differs by 13 kHz).
+"""
+uncertainty = """
+The tables print s, the estimated standard uncertainty (1 sigma), which accounts for the authors' uncertainties,
+the spread of the determinations, perturbing components and calculated minus measured values (App. M 3); entered
+as printed (0.001-5 MHz). The list values are entered with the standard uncertainty of App. M 2 (12 kHz to 0.2
+MHz); the 633 nm figure assumes the 1992 operating conditions, a relaxed laser being quoted at about 50 kHz.
+"""
+notes = """
+The 1992 revision of the mise en pratique; it replaced the 1983 list (bipm1984a, declared "same" for the 173
+entries printed unchanged, group quinn1994a_mep1983) and was replaced by the 1997 list (quinn1999a). Rows changed
+in 1997 carry groups ending _to1997; the 633, 543 and 515 nm values, unchanged in 1997, were replaced in the 2003
+and 2005 BIPM files (_to2003, _to2005; bipm2003a, bipm2003b, bipm2005a "superseded"). The 640 and 576 nm values,
+Tables 6-9, 12 (a4-a7), 14, 15, 17 (e1), 18, 19 and 20 still stand in the current BIPM files.
+
+The 633 nm value is the LPTF chain measurement of INM12 on f (acef1993a) carried to i with f - i = 138 892 kHz
+and to the BIPM4 laser (+11.4 kHz); not declared, since acef1993a holds f(a16) only and no row here joins it. The
+612 nm mean includes the INM 1991 sigmameter value (himbert1991a, razet1991a's a13 row), re-based; the 576 nm
+mean includes barwood1984a's ratio, re-based with the 1992 f(i) (barwood1984a is declared "same" for Table 6, and
+a set takes one relation). No [shift_correction]: six lasers with different cells; conditions in [conditions].
+"""
+
+[conditions]
+nm640 = "He-Ne laser with internal iodine cell, cold finger 16 +- 1 C, modulation 6 +- 1 MHz p-p"
+nm633 = "He-Ne laser with internal iodine cell, cell wall 25 +- 5 C, cold finger 15 +- 0.2 C, modulation 6 +- 0.3 MHz p-p, one-way intracavity power 10 +- 5 mW (power coefficient <= 1.4 kHz/mW)"
+nm612 = "He-Ne laser, iodine cell inside or outside the laser, cold finger -5 +- 2 C"
+nm576 = "dye laser (or frequency-doubled He-Ne), iodine cell inside or outside the laser, cold finger 6 +- 2 C"
+nm543 = "He-Ne laser with external iodine cell, cold finger 0 +- 2 C"
+nm515 = "Ar+ laser with external iodine cell, cold finger -5 +- 2 C"
+
+# Relations to other sets, by row group. Table references (App. M 3 bibliography): Tables 4-5 [8-13] (Chartier
+# 1986, Glaser 1987, Chartier 1989, Brand 1991, Simonsen 1990, Fredin-Picard & Razet 1990), Table 6 [14, 15]
+# (Baird 1979, Barwood & Rowley 1984: the values are Barwood's rounded), Tables 7-8 [16, 18, 19, 21, 24] (Razet
+# 1991, Glaser 1987, Bertinetto 1985, Robertsson 1992), Table 9 [16] (Razet 1991 alone; declared "mean" together
+# with Tables 7-8), Table 12 [27-39], Table 13 [35, 40-42] (Morinaga & Tanaka 1978, Razet 1993, Hanes 1971,
+# Bergquist & Daniel 1984), Tables 14-18 [43-54] (Gerlach, Knox & Pao, Tesic & Pao, Magyar & Brown, Chartier),
+# Tables 19-20 [9, 19, 55-62] (Zhao et al.). Means over the primaries entered in this batch (morinaga1978a,
+# hanes1971a, bergquist1984a, chartier1989a, brand1993a, glaser1986a, ...) are listed in the report, not declared.
+[overlaps]
+bipm1984a = { relation = "same", groups = ["quinn1994a_mep1983"] }
+quinn1999a = { relation = "superseded", groups = ["quinn1994a_t4_to1997", "quinn1994a_t5_to1997", "quinn1994a_t13_to1997", "quinn1994a_t19_to1997"] }
+bipm2003a = { relation = "superseded", groups = ["quinn1994a_rec633_to2003"] }
+bipm2003b = { relation = "superseded", groups = ["quinn1994a_rec543_to2003"] }
+bipm2005a = { relation = "superseded", groups = ["quinn1994a_rec515_to2005"] }
+fredinpicard1990a = { relation = "mean", groups = ["quinn1994a_t4_to1997", "quinn1994a_t5_to1997"] }
+barwood1984a = { relation = "same", groups = ["quinn1994a_t6"] }
+razet1991a = { relation = "mean", groups = ["quinn1994a_t7", "quinn1994a_t8", "quinn1994a_t9"] }
+glaser1987a = { relation = "mean", groups = ["quinn1994a_t7", "quinn1994a_t8"] }
+razet1993a = { relation = "mean", groups = ["quinn1994a_t13", "quinn1994a_t13_to1997"] }
+knox1971a = { relation = "mean", groups = ["quinn1994a_t14"] }
+magyar1980a = { relation = "mean", groups = ["quinn1994a_t14", "quinn1994a_t15", "quinn1994a_t18"] }
+zhao1985a = { relation = "mean", groups = ["quinn1994a_t19", "quinn1994a_t19_to1997", "quinn1994a_t20"] }
+pollock1983a = { relation = "mean", groups = ["quinn1994a_rec576"] }

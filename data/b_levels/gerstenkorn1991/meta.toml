@@ -1,0 +1,150 @@
+id = "gerstenkorn1991"
+citation = "S. Gerstenkorn, P. Luc and R. J. Le Roy, \"Molecular constants describing the B(3Pi0u+) - X(1Sigmag+) transitions of 127,129I2 and 129,129I2\", Can. J. Phys. 69, 1299-1303 (1991)"
+source = "https://doi.org/10.1139/p91-194 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1139/p91-194"
+retrieved = "2026-10-22"
+unit = "cm-1 (Dunham coefficients, energies, wavenumbers); u (reduced masses); GHz (glaser1987_GHz); the column headers name any other unit"
+state = "X and B"
+isotopologue = "127I129I and 129I2 (Dunham coefficients, Table 6 levels, most lines); 127I2 for the Table 3 energies and one line"
+files = ["data.csv", "constants.csv", "dunham.csv", "lines_calc.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Every number in Tables 1-8 (pp. 1300-1303) and the constants of Sect. 2, read from the scan's native 300 dpi page
+images (the OCR text layer garbles the tables). Every value in the paper is calculated: the authors scale the 127I2
+constants of their ref. 1 (Gerstenkorn and Luc, J. Phys. 46, 867 (1985)) to the radioactive isotopologues with the
+first-order isotope relations Y_lm(i) = rho_i^(l + 2m) Y_lm(127,127), rho_i = [mu(127,127)/mu(i)]^(1/2), and assume
+the same potentials (De', De'', Te and the asymptote separation) for all three species. The measured values the
+paper prints are reprints from other work, kept only as comparison columns (see below).
+
+dunham.csv: Table 1 (127I129I) and Table 2 (129I2), 45 coefficients each: X Y10-Y70 and Y01-Y51 (valid for
+v'' = 0-19), B Y10-Y16,0 and Y01-Y15,1 (valid for v' = 0-80; the table headers print "v''" for the B state, a
+misprint). Values are entered as printed, mantissa and power of ten (0.213695264472e+03 is printed
+0.213 695 264 472 x 10^+3). Y00 is not in the tables; the text gives Y00' = -0.026 and Y00'' = -0.010
+(constants.csv).
+
+constants.csv: Table 3 (G0'', G0', T0, D0'', D0' of 127I2, 127I129I and 129I2) and the values of Sect. 2: De', De'',
+Te, the 2P1/2 - 2P3/2 separation, Y00', Y00'' and the three reduced masses. Definitions (Table 3 caption, Sect. 2):
+G0 is the zero-point energy above the potential minimum, Y00 included (127I2: 107.111 - 0.010 = 107.101 cm-1);
+T0 = B(v' = 0, J' = 0) above X(v'' = 0, J'' = 0); D0 is each state's dissociation energy from its own v = 0 level.
+
+data.csv: Table 6, the near-dissociation B levels of 129I2 (v' = 71-79) and 127I129I (v' = 70, 73), "G_v'
+(relative to the ground-state zero-point level)": the paper's prediction (G_calc) and the smoothed prediction of
+King et al. 1980 (G_calc_king1980). The measured column of Table 6 is King et al.'s, held in data/b_levels/king1980,
+so G and G_unc are empty here and each note quotes the reprint and the printed Delta (measured - calculated, mK).
+B_x100 and B_x100_unc are empty: the paper prints no B_v.
+
+lines_calc.csv: calculated line positions.
+  Table 7 (22 rows): the program's sample output for 129I2, 19 925.5-19 926.8 cm-1 at T = 293 K: sigma, the
+    lower and upper term values above X(0, 0), the fractional Boltzmann population of the lower level, the
+    Franck-Condon factor, Int. = Boltz. x FCF and the r-centroid. Exponents printed as "0.7497-002" are written
+    0.7497e-2. Flags: "*" (high J where the constants "are no longer valid"), "++" (intensity from J = 0 matrix
+    elements) and "J=0" (FCF taken at J = 0) as printed.
+  Table 8 (10 of the Table 7 lines): the prediction of ref. 15 (M. Gläser, PTB-Bericht opt-25, Braunschweig 1987)
+    in GHz (glaser1987_GHz); the note quotes the paper's own value rounded to 1e-3 cm-1, its GHz conversion and the
+    printed difference.
+  Tables 4 and 5 (8 rows): calculated positions of six 129I2 lines and of P(33) 6-3 of 127I2 and 127I129I, with the
+    measured values the paper compares them to (sigma_meas) and the printed Delta (calculated - measured, mK; Table
+    6 uses the opposite sign). The measured values are from ref. 3, Metrologia 19, 163 (1984) (the documents of the
+    1983 definition of the metre), and for Table 5 also a private communication (J. M. Chartier, footnote 4). They
+    are reprints, not held as observations here. 129I2 P(33) 6-3 appears in both tables with the same numbers and
+    is entered once.
+
+Checks (all model-free):
+- Isotope relations: for all 45 coefficient pairs, Y(129I2)/Y(127I129I) = r^(l + 2m) with a single r to 4e-12, the
+  rounding of the 12 printed digits, so no coefficient is misread. The fitted r gives mu(127,129)/mu(129,129) =
+  0.99217971, against 0.99217965 from the printed reduced masses: the authors' internal masses differ slightly from
+  the printed ones. Scaling either table back to 127I2 gives the same 127I2 constants (X Y10 = 214.529219 and
+  214.529225 cm-1) and G0'' = 107.1013, G0' = 62.6202 cm-1, the Table 3 values.
+- Table 3: De'' - G0'' = D0'', De' - G0' = D0' and Te + G0' - G0'' = T0 for all three species to the printed digit,
+  except 127I129I, where G0' = 62.378 as read gives 4318.871 and 15724.760 against the printed 4318.872 and
+  15724.759. The Table 1 coefficients give G0' = 62.3774 (with Y00'), so the printed 62.378 (a smudged last digit)
+  is probably 62.377. Not corrected. The Table 1-2 coefficients give G0'' = 106.6856 and 106.2681 (printed 106.686
+  and 106.268) and G0' = 62.1337 for 129I2 (62.134).
+- Sect. 2: Te + De' - 7602.977 = 12547.340 = De'', so the four constants are consistent.
+- Table 6: Te + G'(v) + Y00' - G0'' from the Table 1-2 coefficients reproduces "This work" to -1.5 to +1.4 mK at all
+  11 levels. Both Delta columns recompute from the printed values to the mK, and their rms are the 0.032 and
+  0.046 cm-1 of the text.
+- Table 7: E_upper - E_lower = sigma to 1e-4 cm-1 and Boltz. x FCF = Int. to the printed rounding in all 22 rows.
+  Table 8's GHz values are Table 7's sigma times 29.9792458, and Diff. = present - ref. 15.
+- Tables 4 and 5: every printed Delta recomputes; the rms of Table 4 is 0.0022 cm-1, as the text says.
+
+Not entered: the centrifugal distortion constants D, H, L, M of the X levels v'' = 0-19 and B levels v' = 0-80,
+computed by Hutson's method from the RKR potentials and available only in the program (not printed), and the
+program's Franck-Condon grid. Footnote 5 gives the J range in which the constants are valid: J <= 200 for
+v' <= 40, J <= 375 - 4.375 v' above, and never beyond the J range of the band in the 127I2 spectrum.
+"""
+
+uncertainty = "None printed for the isotopologue constants, which are calculated. Sect. 2 prints De' = 4381.249(1), De'' = 12547.340(6), Te = 15769.068(2) and 7602.977(2) cm-1 with the error convention unstated. The authors gauge the constants with Table 4 (rms 0.0022 cm-1 against laser-measured 129I2 lines, within the uncertainties of the 127I2 input constants) and Table 6 (rms 0.032 cm-1 against King et al. 1980 near the B limit, whose errors they put at about 0.01 cm-1). They note that the Born-Oppenheimer approximation may break down near the dissociation limit."
+
+notes = """
+What the paper is. Constants for the radioactive isotopologues 127I129I and 129I2 behind the program IODINE
+IDENTIFICATION, made from the 127I2 Fourier-transform constants by first-order (Born-Oppenheimer, WKB) mass scaling,
+with no Born-Oppenheimer-breakdown terms. The authors state that higher-order and Born-Oppenheimer-breakdown
+corrections can be neglected at the few-mK accuracy of Fourier-transform spectroscopy (their ref. 9). So these
+constants are a reference for pure mass scaling, not measurements of the minor isotopologues.
+
+Dissociation limits (derived here from the printed values, not printed in the paper): the B-state limit
+I(2P3/2) + I(2P1/2) lies T0 + D0' = D0'' + 7602.977 above X(0, 0): 20043.216 cm-1 for 127I2, 20043.631 for 127I129I
+and 20044.049 for 129I2 (the two routes give the same value to the printed 1e-3 cm-1). Above the X minimum it is
+Te + De' = 20150.317 for all three, with De'' = 12547.340 (the catalog entry records Knöckel et al. 2004 citing this
+paper for these two asymptotes). The isotope dependence of D0 is the zero-point energy alone: D0''(129I2) -
+D0''(127I2) = 0.833 = G0''(127I2) - G0''(129I2).
+
+Comparison with other held sets (same quantities):
+- data/b_levels/tromp1983: recommended B limit 20043.159(19) above X(0, 0) and D0(X) = 12440.18(2), with 7602.98;
+  this paper's 127I2 values are 0.057 and 0.06 cm-1 higher. Both papers share authors; this one takes De' from
+  Gerstenkorn, Luc and Amiot 1985 instead of the 1983 near-dissociation fit.
+- data/b_levels/barrow1973: D = 20043.208(33) above X(0, 0) (n = 5 fit), D0(X) = 12440.06 with 7603.15.
+- data/b_levels/king1980 (not entered there): calculated X zero-point energies 107.1073, 106.69095 and 106.2741 cm-1,
+  0.006, 0.005 and 0.006 cm-1 above Table 3; long-range D0(127I2) = 20043.064 above X(0, 0). Table 6 reprints
+  King et al.'s measured G_v exactly as held there, rounded to 1e-3 cm-1 (127I129I v' = 73: +-0.0094 printed as
+  (10)).
+- data/x_levels/cerny1986_127I129I uses rho = 0.9961126 and G(0) = 106.69457 cm-1 from Luc's 1980 127I2 constants
+  without Y00; Table 1 gives 0.99611263 and 106.6956 without Y00.
+- Inard et al. 1999 (catalog inard1999) place X(0, 0) at 107.111(2) cm-1 above the X minimum, "neglecting Y00
+  (= -0.010)", from the same ref. 1: the 107.101 of Table 3.
+
+Use. The Table 6 levels are the paper's predictions for the levels King et al. measured; the lines of Tables 4, 5
+and 7 test the 129I2 and 127I129I line positions. The measured values those tables quote are reprints (King et al.
+1980, held in data/b_levels/king1980; the 1983 metre documents, not held). No calculated value here is a
+measurement, and none is compared with any model.
+"""
+
+[columns]
+data = """
+isotopologue, v: the B level (v').
+G, G_unc, B_x100, B_x100_unc: the b_levels template columns; empty, because the paper measures none of them (the
+  measured G of Table 6 is King et al.'s, held in data/b_levels/king1980).
+G_calc: "This work", the calculated B(v', J' = 0) term above X(v'' = 0, J'' = 0), cm-1.
+G_calc_king1980: "Ref. 12", King et al.'s smoothed prediction, cm-1.
+note: the reprinted measured value with its error in units of the last digits, and the two printed Delta (measured
+  - calculated, mK).
+"""
+constants = """
+isotopologue: 127I2, 127I129I, 129I2, or "all" for constants the paper assumes the same for every species.
+state: X, B, or "atom" for the asymptote separation; empty for the reduced masses.
+quantity: G0, T0, D0, De, Te, Y00, mu, or 2P1/2-2P3/2 (see transcription for the definitions).
+value, uncertainty, unit: as printed; uncertainty in the value's units, empty where none is printed.
+source: table or section. note: references and checks.
+"""
+dunham = """
+isotopologue, state: 127I129I (Table 1) or 129I2 (Table 2); X (valid v'' = 0-19) or B (valid v' = 0-80).
+l, m: indices of Y_lm in G_v + B_v J(J+1) with G_v = sum_l Y_l0 (v + 1/2)^l and B_v = sum_l Y_l1 (v + 1/2)^l.
+Y_cm1: the coefficient in cm-1, as printed (mantissa and power of ten).
+table: 1 or 2.
+"""
+lines_calc = """
+table: the paper's table (7 rows also in Table 8 carry glaser1987_GHz; "4 5" = in both Tables 4 and 5).
+isotopologue, line: line label as printed, e.g. P(57) 74-0 (v'-v'').
+sigma_calc: calculated wavenumber, cm-1.
+E_lower, E_upper: Table 7, the lower and upper term values above X(v'' = 0, J'' = 0), cm-1.
+boltz, fcf, intensity: Table 7, fractional Boltzmann population of the lower level at 293 K, Franck-Condon factor,
+  and their product.
+rc_A: Table 7, the r-centroid <v''J''|r|v'J'>/<v''J''|v'J'>, A.
+flags: Table 7 marks, see transcription.
+sigma_meas: Tables 4 and 5, the measured wavenumber the paper compares with (ref. 3; reprint), cm-1.
+delta_mK: Tables 4 and 5, printed Delta = calculated - measured, mK.
+glaser1987_GHz: Table 8, the prediction of M. Gläser, PTB-Bericht opt-25 (1987), GHz.
+note: Table 8 values of this paper and the printed difference; reading notes.
+"""

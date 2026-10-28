@@ -1,0 +1,45 @@
+state,quantity,value,uncertainty,unit,source,status,note
+X,alpha_e,-0.0001210,,cm-1,"Table II; p. 37",fitted,"from Eq. (6) with J_r = 34 and D_e = -4.54e-9; sign convention of Eq. (3): B_v = B_e + alpha_e (v + 1/2) + gamma_e (v + 1/2)^2 + delta_e (v + 1/2)^3 + phi_e (v + 1/2)^4. The Morse approximation gives -0.0001185 (p. 37)"
+X,gamma_e,1.90e-8,,cm-1,"Table II; Table III; footnote 1",calculated,"from Sandeman's relations; the Kratzer approximation gamma_e = 6 D_e gives 2.7e-8 (footnote 1)"
+X,delta_e,8.57e-11,,cm-1,"Table II; Table III; p. 38",fitted,"from the J_r = 87 ultraviolet series (Eq. (7)); footnote 2: little confidence, the signs of delta_e and phi_e should probably be reversed"
+X,phi_e,-1.86e-10,,cm-1,"Table II; p. 38",fitted,"from the J_r = 87 ultraviolet series (Eq. (7)); see delta_e"
+X,B_e,0.037389,,cm-1,"Table II; p. 37",fitted,"from Eq. (6) (green-line doublets) with J_r = 34 and D_e = -4.54e-9"
+X,D_e,-4.54e-9,,cm-1,"Table II; Table III; footnote 1",calculated,"Morse function; sign convention of Eq. (3): F = ... + [D_e + beta_e (v + 1/2)] J^2 (J + 1)^2, so the usual D_e is +4.54e-9"
+X,beta_e,-1.20e-11,,cm-1,"Table II; footnote 1",calculated,"from Sandeman's relations (footnote 1, Table II); Table III prints -1.80e-11 in its calculated column; footnote 1 also gives -1.8e-11 as the order of magnitude from approximate theory"
+X,omega_e,214.51886,,cm-1,"Table II",fitted,"from Eq. (8) via Eq. (4); G''(v) = omega_e (v + 1/2) + x_e omega_e (v + 1/2)^2 + y_e omega_e (v + 1/2)^3 + z_e omega_e (v + 1/2)^4 + t_e omega_e (v + 1/2)^5 (Eq. 2, all plus signs)"
+X,x_e omega_e,-0.60738,,cm-1,"Table II",fitted,"sign convention of Eq. (2)"
+X,y_e omega_e,-1.307e-3,,cm-1,"Table II",fitted,
+X,z_e omega_e,-5.04e-6,,cm-1,"Table II",fitted,
+X,t_e omega_e,-1.6e-7,,cm-1,"Table II",fitted,"the v^5 coefficient of Eq. (8), -t_e omega_e = +0.0000001589"
+X,nu0 green series,18307.4712,,cm-1,"Table I; Eq. (8)",fitted,"R(J_r - 1) at v'' = 0, the constant of Eq. (8): the R(33) 25-0 line excited by the Hg 5461 A line"
+X,nu0 UV series,54633.22,,cm-1,"Table I; Eq. (9)",fitted,"R(J_r - 1) at v'' = 0 of Verma's J_r = 87 series (the constant of Eq. (9))"
+X,Eq. (6) a0,5.14987,,cm-1,"Eq. (6)",fitted,"green-line doublet separation dnu = R(J_r - 1) - P(J_r + 1) = a0 + a1 v, fitted to the interferometric doublets v'' = 1-22"
+X,Eq. (6) a1,-0.016699,,cm-1,"Eq. (6)",fitted,
+X,Eq. (7) a0,13.0445,,cm-1,"Eq. (7)",fitted,"doublet separation of Verma's J_r = 87 series: dnu = a0 + a1 v + a2 v^2 + a3 v^3 + a4 v^4"
+X,Eq. (7) a1,-0.04241,,cm-1,"Eq. (7)",fitted,
+X,Eq. (7) a2,6.65e-6,,cm-1,"Eq. (7)",fitted,
+X,Eq. (7) a3,-1.00e-7,,cm-1,"Eq. (7)",fitted,
+X,Eq. (7) a4,-6.50e-8,,cm-1,"Eq. (7)",fitted,
+X,Eq. (8) c0,18307.4712,,cm-1,"Eq. (8)",fitted,"R(J_r - 1) of the green series = c0 + c1 v + ... + c5 v^5 (v = v''); 4th degree fitted to the interferometric lines, the 5th-degree term fixed by the v'' = 36 grating point"
+X,Eq. (8) c1,-213.774747,,cm-1,"Eq. (8)",fitted,
+X,Eq. (8) c2,0.6093235,,cm-1,"Eq. (8)",fitted,
+X,Eq. (8) c3,0.00130848,,cm-1,"Eq. (8)",fitted,
+X,Eq. (8) c4,0.0000056441,,cm-1,"Eq. (8)",fitted,
+X,Eq. (8) c5,0.0000001589,,cm-1,"Eq. (8)",fitted,
+X,Eq. (9) c0,54633.22,,cm-1,"Eq. (9)",fitted,"R(J_r - 1) of Verma's J_r = 87 series = c0 + c1 v + ... + c5 v^5, from the vibrational terms of Eq. (8) and the rotational constants; only c0 (A') is fitted to the ultraviolet data"
+X,Eq. (9) c1,-213.0048223,,cm-1,"Eq. (9)",calculated,
+X,Eq. (9) c2,0.60920361,,cm-1,"Eq. (9)",calculated,
+X,Eq. (9) c3,0.001310297,,cm-1,"Eq. (9)",calculated,
+X,Eq. (9) c4,0.0000068252,,cm-1,"Eq. (9)",calculated,
+X,Eq. (9) c5,0.0000001589,,cm-1,"Eq. (9)",calculated,
+X,Sandeman c1,2.047,,,"Table III; p. 41",fitted,"potential constant from alpha_e ~ x11 (Table III 'observed'); Eq. (12) gives 2.048 (Table III 'calculated')"
+X,Sandeman c1 (Eq. 12),2.048,,,"Table III",calculated,
+X,Sandeman c2,5.415,,,"Table III; p. 41",fitted,"from x_e omega_e ~ x20; Eq. (12) gives 5.427"
+X,Sandeman c2 (Eq. 12),5.427,,,"Table III",calculated,
+X,Sandeman c3 (Eq. 12),14.53,,,"Table III",calculated,"interpolated with Eq. (12) (log10 A_n = K n + B n^4, A_n = (n + 1) c_n); the first digit is a typewriter 1, confirmed by the interpolation"
+X,Sandeman c4,32.86,,,"Table III; p. 41",fitted,"from y_e omega_e ~ x30 and c2 (printed 32.8 with a subscript 6 in the text); Eq. (12) gives 32.78; 'considerably less precise'"
+X,Sandeman c4 (Eq. 12),32.78,,,"Table III",calculated,
+X,gamma_e (Verma),4.44e-7,,cm-1,"Table III, 'Observed Verma'",reprint,"Verma 1960 (data/x_levels/verma1960)"
+X,delta_e (Verma),-1.839e-7,,cm-1,"Table III, 'Observed Verma'",reprint,"as printed here; verma1960 holds -1.839e-8 (c3 of its Eq. (1)), which gives sensible B_v at high v: the exponent here is probably a misprint"
+X,D_e (Verma),1.99e-9,,cm-1,"Table III, 'Observed Verma'",reprint,"Verma 1960"
+X,beta_e (Verma),1.236e-10,,cm-1,"Table III, 'Observed Verma'",reprint,"Verma 1960"

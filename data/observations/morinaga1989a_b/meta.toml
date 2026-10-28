@@ -1,0 +1,66 @@
+id = "morinaga1989a_b"
+citation = "A. Morinaga, K. Sugiyama, N. Ito and J. Helmcke, \"Hyperfine structure of low-lying vibrational levels in the B electronic state of molecular iodine\", J. Opt. Soc. Am. B 6, 1656-1659 (1989), Table 2 and pp. 1657, 1659"
+source = "https://doi.org/10.1364/JOSAB.6.001656 (publisher PDF)"
+doi = "10.1364/JOSAB.6.001656"
+retrieved = "2026-10-23"
+catalog = "precision.yaml:morinaga1989a"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The paper's measurements that morinaga1989a (Table 1, R(69) 3-4) does not hold. The PDF is a scan with an OCR text
+layer; every number was read from the text layer and confirmed on a 200 dpi rendering of p. 1657.
+
+Table 2, "Frequency Separations of Components of the P(84) Line in the 5-5 Band" (p. 1657), the "Exp." column, in
+MHz, relative to component a (0). Gerstenkorn-Luc letters, a the highest frequency and o the lowest, as in Table 1
+(see morinaga1989a): J'' = 84 is even, so the line has 15 main components and rank = 15 - index(letter), a = 0, so a
+is rank 15 and o rank 1. The text layer drops the label of the ninth row (i) and prints "+" or nothing for the
+plus-minus sign; the rendering shows both. Check: Exp. - Calc. reproduces the printed "Res." column to 0.05 MHz in
+every row. Entered: f, g, h, i, j, k, n, o, 8 rows (group morinaga1989a_b_p84).
+Not entered: a (the reference); the three pairs printed with one value and +-2.5 MHz each, b/c at -139, d/e at -154
+and l/m at -585 MHz (each one unresolved peak; the paper's fit puts the two components 2.47, 1.85 and 3.59 MHz
+apart), as in chen2000a; the "Calc." and "Res." columns, which are the paper's fit.
+
+Ca reference (p. 1657, repeated in the conclusion, p. 1659): "The frequency of the calcium intercombination was
+found to be 7 +- 2 MHz higher than that of HFS component a of the R(69) line." For this measurement the reference
+dye laser was locked to the center of the 40Ca 1S0-3P1 line in linear absorption in a collimated atomic beam, with
+the residual first-order Doppler shift minimized to +-2 MHz. Component a of R(69) 3-4 is rank 21 (21 components for
+odd J''; morinaga1989a). Entered as an absolute frequency, as in morinaga1990a: f(40Ca 1S0-3P1) =
+455 986 240 494.15 kHz (Degenhardt et al. 2005, the CIPM recommended value; its uncertainty and the 23 kHz recoil
+doublet are negligible here) minus 7 MHz = 455 986 233.494 MHz (group morinaga1989a_b_ca). The quantity measured is
+the difference; the Ca value is an input added here.
+
+Model-free check: morinaga1990a (pending) measured Ca - g of the same line as 191.48(2) MHz, and morinaga1989a's
+Table 1 gives g - a = -184(1) MHz, so Ca - a = 7.5(1.0) MHz, consistent with the 7(2) MHz here.
+
+Not entered: the fitted Delta eQq = 1955.8 +- 1.3 MHz and Delta C = 21.9 +- 1.5 kHz of P(84) 5-5 (Table 2 footnote;
+1961.0 +- 1.0 MHz and 21.6 +- 1.2 kHz for R(69) 3-4, Table 1 footnote), and Table 3, eQq_B and Delta C per
+vibrational level (v_B = 3 and 5 from this paper, eQq_B derived with eQq_X = -2452.6 MHz taken for v_X <= 5; the
+other levels quoted from other papers). These are two constants per line, the tensor and scalar spin-spin terms
+were not determined, so they do not fit data/hyperfine_parameters, which carries four B-state constants per line.
+"""
+
+uncertainty = """
+As printed, per row: +-1 MHz for every Table 2 row entered, +-2 MHz for the Ca offset. The paper does not say what
+the figures are; they are taken as standard (1 sigma) uncertainties, as for Table 1 in morinaga1989a. For P(84) "the
+frequency measurements were repeated several times to reduce statistical error caused by residual frequency
+excursions of the reference laser" (p. 1657). The Ca offset is limited by the residual Doppler shift, +-2 MHz.
+"""
+
+notes = """
+P(84) 5-5 is in no other held set. The reference laser was stabilized to its own temperature-controlled cavity for
+P(84) (frequency fluctuations about 10 kHz) and to the Ca line for R(69) (about 200 kHz), p. 1657.
+"""
+
+[conditions]
+method = "FM saturation spectroscopy (probe phase-modulated at 5 MHz, index 0.2; saturating beam offset by 40 MHz and chopped at 30 kHz by an AOM); a dye laser locked to each component in turn, beat against a second stabilized dye laser"
+cell_length_mm = 200
+iodine_pressure_Pa = 27
+saturating_power_mW = 15
+probe_power_mW = 0.3
+
+[shift_correction]
+groups = ["morinaga1989a_b_ca"]
+pressure_Pa = 27.0
+allowance_kHz = 270.0
+basis = "Paper p. 1656: 20 cm cell, iodine pressure 27 Pa (0.2 Torr); no pressure or power shift is given or corrected. Allowance = |-10 kHz/Pa x 27 Pa| = 270 kHz, the size of the visible-band pressure shifts (-5 to -10 kHz/Pa), for the one absolute row; it is small beside the 2 MHz uncertainty."

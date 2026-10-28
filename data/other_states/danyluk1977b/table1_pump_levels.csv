@@ -1,0 +1,7 @@
+transition,branch,v_B,J_X,sigma1_cm1,J_B,T_B_cm1,note
+R78(7),R,78,7,20037.77,8,20039.86,"the pump line of Fig. 4 (all five progressions); orsay1983_part4 has R(7) 78-0 at 20037.790; J78(8) lies 3.26 cm-1 below the B limit (p. 64)"
+R59(21),R,59,21,19888.41,22,19905.66,"orsay1983_part4: 19888.394 (blended there with P(20) 59-0 and P(45) 62-0); T_B equals barrow1973's v = 59 term at J = 22 (19905.659)"
+R74(41),R,74,41,19976.65,42,20040.92,"orsay1983_part4: 19976.699; T_B equals barrow1973's v = 74 term at J = 42 (20040.920)"
+P74(43),P,74,43,19970.30,42,20040.92,"pumps the same level as R74(41); orsay1983_part4: 19970.359; the pump line of Figs. 2 and 5"
+P76(66),P,76,66,19888.77,65,20053.77,"above the B limit D = 20043.122 (quasibound); T_B equals barrow1973's v = 76 term at J = 65 (20053.770); no assigned atlas line"
+P63(104),P,63,104,19654.44,103,20061.57,"above the B limit (quasibound); calculated tunneling lifetime 10^7 s (p. 63); barrow1973's v = 63 term at J = 103 is 20061.392"

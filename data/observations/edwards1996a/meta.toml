@@ -1,0 +1,82 @@
+id = "edwards1996a"
+citation = "C. S. Edwards, G. P. Barwood, P. Gill, F. Rodriguez-Llorente and W. R. C. Rowley, \"Frequency-stabilised diode lasers in the visible region using Doppler-free iodine spectra\", Opt. Commun. 132, 94-100 (1996)"
+source = "https://doi.org/10.1016/0030-4018(96)00316-1 (publisher PDF, page scan)"
+doi = "10.1016/0030-4018(96)00316-1"
+retrieved = "2026-10-23"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked against 200 dpi renderings of pp. 97-99 and a 400 dpi rendering of Table 2
+(the text layer garbles subscripts, daggers and several uncertainties).
+
+Table 2 (p. 99), "Hyperfine components of 127I2 transition 7-4, R(39)": f(a_n) - f(a4) in MHz with sigma for the 20
+other components, entered as printed (group edwards1996a_hfs). Each interval is the mean of two beat frequencies,
+the two lasers locked in turn to both components, so the laser-to-laser offset (+7(12) kHz on average, p. 97)
+cancels (p. 99). The daggers ("not fully resolved") are on a5, a6, a9, a10, a11, a19 and a20, as in the text.
+
+The absolute frequency (p. 98, and the Table 2 heading): f(a4) = 470 766 455.46 (0.10) MHz, group edwards1996a_abs.
+The diode laser on a4 was compared with a 633 nm He-Ne laser through an evacuated 1 m etalon (ratio of integer
+orders; order number from a 10 MHz wavemeter), and the He-Ne by beat frequency with a reference laser on a16 of
+R(127) 11-5 "under the preferred reference conditions" of ref. [3] (Quinn, Metrologia 30, 523: the CIPM 1992
+values). The CIPM 2001 values put that standard 1.5e-11 higher (i: 473 612 214 705 -> 712 kHz), +7 kHz here; not
+rescaled (0.07 sigma), as in grieser1994a. The printed value is at 28.6 Pa, 10 MHz modulation depth and 0.9 mW
+saturating power; [shift_correction] takes it to zero pressure (see below).
+
+Labels: the paper prints the ranks a1-a21 by frequency beside the letters u-a of its ref. [12] (Edwards et al.,
+Electron. Lett. 31, 796 (1995)); a4 = r. R(39) has odd J'' and 21 components. The line (atlas number 1188) was
+assigned by the authors from the Gerstenkorn-Luc constants, calculated and observed centers agreeing to better
+than 6 MHz (p. 97). Checked model-free: the held FTS atlases put R(39) 7-4 at 470 766 694 (salami_ross_2005) and
+470 766 700 MHz (apo_nist_2009), and a4 plus the 246.4 MHz center-of-gravity shift xu2000a prints for this
+component gives 470 766 702 MHz; picard1996a fits the 21-component pattern with Delta eqQ = 1951.90 MHz, close to
+the 1953.73 MHz razet1993a fits for P(33) 6-3 (v' = 6, J' = 32).
+
+Not entered: Table 1 (the budget of the absolute value); Fig. 3 (Allan deviation); the laser-to-laser offset and the
+633 nm cell shift (+19(2) kHz) of p. 97; the day-to-day reproducibility (28 kHz for one laser, p. 97); the
+assignment of atlas line 1191 as 7-4 P(32), for which no frequency is given; the preliminary wavemeter values of
+a2 and a21 (ref. [12]), which this paper does not print.
+"""
+
+uncertainty = """
+Intervals: the printed sigma, 0.03-0.09 MHz, taken as 1 sigma: for each pair of components "the offset was combined
+with the observation statistics by the root-sum-of-squares method to give the standard deviation quoted" (p. 99).
+The daggered components "may be expected to give abnormally large shifts when these operating parameters are
+varied", with laser offsets up to 78 kHz (a9); a21 also showed a 36 kHz offset. Kept as printed; picard1996a's fit
+to this table misses a9 and a10 by -0.29 and +0.25 MHz, about 3 sigma, the pull of an unresolved pair.
+Absolute: 0.10 MHz (1 sigma, 2.2e-10), the root-sum-square of Table 1: observation statistics 16e-11, linewidth
+contribution 13e-11, laser reproducibility 5.9e-11, flatness and illumination 3e-11, 633 nm standard 2.5e-11,
+servo 2e-11, phase shift and prismatic imbalance 0.5e-11 each. The loader adds the [shift_correction] terms in
+quadrature (116 kHz), giving 153 kHz.
+"""
+
+notes = """
+Overlaps: picard1996a (Picard, Razet, Edwards and Rodriguez-Llorente 1996) prints Table 2 as its Table 1 "observed"
+column and credits this paper; values and sigmas agree digit for digit for all 20 components (checked by script).
+Declared there as "same". xu2000a's footnote d reprints a4 as R(39) 7-4 "r", 470 766 455.5 MHz (rounded); xu2000a
+does not hold that row, so there is nothing to declare. edwards1999a is the same group's 633 nm diode-laser
+standard on P(33) 6-3, a different line: no overlap. Not in the catalog.
+"""
+
+[conditions]
+method = "two extended-cavity diode lasers (SDL-7501-G1, Littrow grating), 3f saturated absorption in 100 mm external cells, saturating and probe beams orthogonally polarized (2:1), PZT modulation at 530 Hz; intervals by beat frequency; absolute by 1 m etalon comparison with a 633 nm He-Ne laser referenced to R(127) 11-5 a16"
+cell_length_mm = 100
+pressure_Pa = 28.6
+cell_wall_C = 20.8
+cold_finger = "no temperature control; air 20.4-21.3 C during the interval measurements (28.7 +- 1.2 Pa)"
+modulation_MHz_depth = 10.0
+saturating_power_uW = 900
+probe_power_uW = 450
+peak_power_density_W_per_m2 = 3.0e4
+pressure_shift = "not measured; assumed <= -10 kHz/Pa from earlier work (p. 97)"
+modulation_shift = "does not exceed +-10 kHz/MHz for depths of 10-20 MHz (p. 97)"
+power_shift = "no correlation for 450-1350 uW saturating power; variation within +-43 kHz (3 sigma) (pp. 97-98)"
+
+[shift_correction]
+pressure_Pa = 28.6
+pressure_kHz_per_Pa = -10.0
+pressure_kHz_per_Pa_unc = 2.0
+modulation_MHz = 10.0
+modulation_kHz_per_MHz = 0.0
+modulation_kHz_per_MHz_unc = 10.0
+allowance_kHz = 14.0
+basis = "Paper pp. 97-98: 28.6(0.8) Pa, wall 20.8 C, 10(1) MHz modulation depth, 0.9 mW saturating power. Pressure: the paper measures no slope and assumes <= -10 kHz/Pa; -10 kHz/Pa is taken with 2 kHz/Pa (20 %), which covers the 633 nm measurements -9.1 to -11.6 kHz/Pa (talvitie1998a, edwards1999a, the MEP): shift +286(57) kHz. Modulation: the paper bounds the slope by +-10 kHz/MHz (10-20 MHz), entered as 0(10) kHz/MHz at 10 MHz, no shift and 100 kHz uncertainty. Power: no correlation over 450-1350 uW and +-43 kHz (3 sigma) scatter; 14 kHz allowance (the 1 sigma of that scatter). Total +286 kHz, 116 kHz in quadrature."

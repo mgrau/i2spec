@@ -1,0 +1,65 @@
+id = "morinaga1978a"
+citation = "A. Morinaga and K. Tanaka, \"Hyperfine structure in the electronic spectrum of 127I2 by saturated absorption spectroscopy at 633 nm\", Appl. Phys. Lett. 32, 114-116 (1978), Tables I and II and p. 116"
+source = "https://doi.org/10.1063/1.89957 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1063/1.89957"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked digit by digit against 300 dpi renderings of pp. 115-116. A complex-resonator
+He-Ne laser (190 cm main resonator, 10 cm folded sub-resonator) with a 10 cm intracavity iodine cell, third-
+derivative detection, locked in turn to each component and beat against an iodine-stabilized He-Ne laser on i of
+R(127) (Tanaka et al. 1977).
+- Table I (p. 115), "Frequency separations of components of the R(127) line relative to component i", the "Expt."
+  column: a-h and j-t of R(127) 11-5 from i, 19 rows; group morinaga1978a_r127. Cell at 10 C.
+- Table II (p. 116), "Frequency separations of components of the P(33) line relative to component a", the "This
+  work" column: b-j of P(33) 6-3 from a, 9 rows; group morinaga1978a_p33. Cell lowered to 0 C to reach them.
+- p. 116: "The frequency of component a of the P(33) line was also found to be 393.5 +- 0.1 MHz lower than that of
+  component i of the R(127) line", entered as P(33) 6-3 b21 - R(127) 11-5 a13 = -393.5 MHz; group
+  morinaga1978a_link.
+
+Labels: both tables list the letters with frequency falling from a (checked: monotonic); R(127) a-u = a21-a1 (MEP:
+f = a16, i = a13) and P(33) a-j = b21-b12 (MEP: u-a = b1-b21). In R(127), p (F = J+1, -290.3) lies above q
+(F = J-1, -292.7), so p = a6 and q = a5, as in bipm2003a (p -429.18, q -431.58 from a16).
+
+Not entered: u of R(127), printed "-603 ~ -613": not observed, only estimated to lie within the width of P(33) g;
+the "Calc." column and the fitted constants in Kroll's notation (Delta eQq = -960.6(1) MHz, K = 484.8(1.4) MHz,
+R(127) 11-5); the comparison columns, which are other papers' values: Table II "Ref. 2" (Hanes et al. 1971,
+hanes1971a, b-j) and Table I "Ref. 1" and "Ref. 5" (see notes).
+
+Checks (model-free): R(127) against bipm2003a, -131 to +198 kHz (rms 88 kHz; a, h, o and r of R(127), a21, a14, a7
+and a4, are 1.3-2 sigma); against cerez1974a, -126 to +170 kHz. P(33) against razet1993a, -78 to +105 kHz (mean +40
+kHz), and similarly against edwards1999a (-70 to +117 kHz) and simonsen2000a (-67 to +119 kHz). The link agrees with
+hanes1971a (-394(4) MHz) and with bipm2003a (-532.42 + 138.892 = -393.53 MHz). The nine P(33) values are digit for
+digit morinaga1984a's b12-b20 (the CCDM 1982 summary).
+"""
+
+uncertainty = """
+As printed (taken as 1 sigma): +-0.1 MHz, "the frequency separations of these components have been determined with
+an experimental error of +-0.1 MHz", for the components reached by locking and beat measurement (all but p, q, s, t
+and u of R(127)); +-0.5 MHz for p, q, s and t of R(127), "determined ... by interpolating the measured frequency
+separations by measuring their positions on the chart". The link: 0.1 MHz as printed.
+"""
+
+notes = """
+Morinaga 1984 (morinaga1984a) prints the nine P(33) values, relative to b21, as the CCDM 1982 summary ("CCDM adopted
+the frequency intervals measured by Morinaga and Tanaka ... as the first ten components") and declares this set
+"same" for them (group morinaga1984a_mt1978). The MEP 633 nm document (Quinn 2003) cites this paper for both the
+R(127) 11-5 table (ref. [108], among refs. [101-112]) and the P(33) 6-3 table (refs. [108, 113-117]); bipm2003a's
+values are weighted means.
+
+Comparison columns of Table I (MHz from i), not entered because they are other papers' measurements, neither held:
+"Ref. 1", G. R. Hanes and C. E. Dahlstrom, Appl. Phys. Lett. 14, 362 (1969), 14 components a-n: 297.3, 288.5,
+280.7, 166.9, 153.6, 139.7, 126.3, 22.3, 0 (i), -22.0, -129.3, -137.1, -152.3, -162.0; "Ref. 5", K. Tanaka,
+T. Sakurai and T. Kurosawa, Jpn. J. Appl. Phys. 16, 2071 (1977), d-j "with an accuracy of +-30 kHz": 165.13,
+152.27, 138.91, 125.71, 21.96, 0 (i), -21.56. wallard1972a's Fig. 1 prints the Hanes & Dahlstrom values with c as
+280.1, not 280.7; the 1969 paper would settle which is the misprint.
+"""
+
+[conditions]
+method = "complex-resonator He-Ne laser (190 cm main, 10 cm folded sub-resonator) with a 10 cm intracavity 127I2 cell, third-derivative locking (spectra shown at 4 and 6 MHz p-p; the modulation of the measurements is not stated); beats against an iodine-stabilized He-Ne laser on R(127) i, read against a counted marker oscillator on a spectrum analyzer"
+cell_length_mm = 100
+cell_temperature_C = 10.0
+cell_temperature_P33_C = 0.0
+output_power = "about 10 mW without the iodine cell, a few mW with it"

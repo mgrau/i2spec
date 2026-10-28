@@ -1,0 +1,32 @@
+function,representation,parameter,value,uncertainty,fixed,note
+G,polynomial,c1,214.52429,0.00188,,"G_v = sum_i c_i (v + 1/2)^i for v <= 85, above the X potential minimum (no c0)"
+G,polynomial,c2,-0.609818,0.000803,,
+G,polynomial,c3,-9.4482e-4,,,
+G,polynomial,c4,-3.1363e-5,,,
+G,polynomial,c5,9.104e-7,,,
+G,polynomial,c6,-1.854e-8,,,
+G,polynomial,c7,-1.381e-10,,,
+G,polynomial,c8,1.244e-11,,,
+G,polynomial,c9,-2.32e-13,,,
+G,polynomial,c10,1.92e-15,,,
+G,polynomial,c11,-6e-18,,,
+G,NDE,vD,111.786,,,"vibrational index at dissociation (non-integral); shared by the G and B expansions (printed once, in the G column)"
+G,NDE,X0,0.0111,,yes,"footnote b: held fixed, based on Ref. (27); G_v = De - X0 (vD - v)^3 F_G for v > 85"
+G,NDE,a1,0.54577,,,"F_G = 1 + sum_i a_i (vD - v)^i"
+G,NDE,a2,-7.1157e-2,,,
+G,NDE,a3,3.8535e-3,,,
+G,NDE,a4,-9.6e-5,,,
+G,NDE,a5,9.1e-7,,,
+G,NDE,De,12547.19,,yes,"footnote b: held fixed, based on Ref. (27) (Martin et al. 1983); the dissociation energy above the X minimum; the NDE levels are referenced to the dissociation limit, De below the polynomial levels"
+B,polynomial,c0,3.73684e-2,3.3e-6,,"B_v = sum_i c_i (v + 1/2)^i for v <= 85"
+B,polynomial,c1,-1.1449e-4,3.9e-7,,
+B,polynomial,c2,-1.145e-7,,,
+B,polynomial,c3,-2.201e-8,,,
+B,polynomial,c4,6.47e-10,,,
+B,polynomial,c5,-1.06e-11,,,
+B,polynomial,c6,4.9e-14,,,
+B,NDE,X1,7.65e-4,,yes,"footnote b: held fixed, based on Ref. (27); B_v = X1 (vD - v) F_B for v > 85"
+B,NDE,a1,3.599e-2,,,"F_B = exp(sum_i a_i (vD - v)^i)"
+B,NDE,a2,-4.277e-3,,,
+B,NDE,a3,1.598e-4,,,
+B,NDE,a4,-2.1e-6,,,

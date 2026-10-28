@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(47) 9-2,a13,frequency,489880604.7924,0.160,,,bennett1979a,"Results: component i, vacuum wavelength 611 970 458.6 fm, standard deviation 0.2 fm (3e-10), weighted mean of six determinations against R(127) 11-5 i taken as 632 991 399 fm (CCDM 1973); derived here as f(i) x 632991399 / 611970458.6 with f(i) = 473 612 214.712 MHz (CIPM 2001, bipm2003a); see meta.toml"

@@ -1,0 +1,14 @@
+quantity,value,uncertainty,unit,source,note
+mean |Re|^2 of the six bands,1.03,0.10,D^2,"Table III caption; p. 1248","used for every A_v' in decay_rates.csv"
+gamma_D (Doppler half width),6.59e-3,,cm-1,p. 1246,"calculated: T = 295 K, m = 253.8, 1/lambda = 1.7e4 cm-1"
+gamma_N (natural half width),2.65e-6,,cm-1,p. 1246,"calculated for tau = 1e-6 s"
+gamma_C (collisional half width),1.66e-5,,cm-1,p. 1246,"calculated for sigma^2 = 60 A^2 at 0.238 Torr"
+a = (ln 2)^1/2 (gamma_N + gamma_C)/gamma_D,0.0023,,1,p. 1246,curve-of-growth parameter
+continuum absorption between 12-2 lines (6016 A),3,,%,p. 1247,"rise of the background transmission when the I2 was frozen out; 30 cm path, 22 C"
+continuum absorption between 25-0 lines (5460 A),2,,%,p. 1247,"4 cm path, 22 C"
+magnetic-field effect on the 25-0 R(46) line strength (15 kG),3,,%,p. 1249,upper limit
+total depopulation rate at v' = 25 (zero pressure),14.3e5,,s-1,p. 1249,"mean of the phase-shift and direct-decay reprints"
+spontaneous predissociation rate at v' = 25,9.5e5,,s-1,p. 1249,14.3e5 - 4.82e5
+fraction predissociating at v' = 25 (zero pressure),66,,%,p. 1249,9.5/14.3; 34 % radiate
+total depopulation rate at v' = 25 at 22 C (0.238 Torr),48.0e5,,s-1,p. 1249,"from the quenching data of ref. 1"
+fractions at 22 C: predissociation / radiation / collision-induced,20 / 10 / 70,,%,p. 1249,"9.5/48.0, 4.8/48.0, 33.7/48.0"

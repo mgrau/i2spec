@@ -1,0 +1,98 @@
+id = "gerstenkorn1979"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "atlas line positions"
+citation = """S. Gerstenkorn, P. Luc, Assignments of several groups of iodine (I2) lines in the B-X system, J. Mol. Spectrosc. 77, 310-321 (1979), Tables I-VI"""
+doi = "10.1016/0022-2852(79)90111-5"
+source = "https://doi.org/10.1016/0022-2852(79)90111-5 (publisher PDF, image scan)"
+retrieved = "2026-10-23"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+instrument = """Fourier transform absorption spectrum of the authors' atlas (ref. 1: S. Gerstenkorn, P. Luc, Atlas du spectre d'absorption de la molécule d'iode, 14 800-20 000 cm-1, Éditions du CNRS, Paris, 1978); resolving power of the order of 1e6 (p. 320); line half-widths up to 0.040 cm-1 near 5145 A, of which hyperfine structure is about 0.025-0.030 cm-1 (p. 319, Fig. 7); lines with signal to noise above 4 were assigned (p. 312)."""
+calibration = """The atlas's own 1978 scale, as printed. The observed wavenumbers and intensities are the atlas values: Table VII heads both columns "Observed, Fourier Spectroscopy [1]" and "Int. Obser. [1]", ref. 1 being the 1978 atlas, and its 14 observed values and intensities near 5145 A are those of Table I. The paper (received 5 October 1978) mentions no correction, so the -0.0056 cm-1 that Gerstenkorn & Luc later found for the whole atlas (Rev. Phys. Appl. 14, 791 (1979); catalog gerstenkorn1979a) is not applied here."""
+tables = """I: Ar+ 5145 A (19 429 cm-1), p. 311; II: Ar+ 5287 A (18 908 cm-1), p. 312; III: Kr+ 5208 A (19 192 cm-1), p. 313; IV: Kr+ 5308 A (18 830 cm-1), p. 314; V: Kr+ 5683 A (17 594 cm-1), p. 315; VI: He-Ne 6119 A (16 340 cm-1), p. 316. laser_A is the laser wavelength in angstroms as the paper gives it."""
+files = ["gerstenkorn1979.csv", "gerstenkorn1979_assigned.csv"]
+n_lines = 219
+n_assignments = 315
+
+columns = """
+gerstenkorn1979.csv, one row per observed line: line (running number here), table, laser_A, N (the atlas line
+number, printed for 108 of the lines and blank for the others), sigma_cm1 (observed), intensity (the I column,
+blank where none is printed), n_assignments (assignment rows printed with or beneath the line; 0 = unassigned).
+
+gerstenkorn1979_assigned.csv, one row per printed assignment row: line (the observed line on whose row, or beneath
+which, it is printed), table, with_line (1 = printed on the row of the observed line; 0 = a calculated-only row,
+printed with no observed value), N, sigma_cm1 and intensity (filled only when with_line = 1), v_upper, v_lower,
+J_lower, branch, sigma_cal_GL (the authors' calculated wavenumber).
+"""
+
+transcription = """
+Tables I-VI (pp. 311-316), read row by row from 300 dpi renderings of the image-only scan (its text layer is
+too garbled to use), and read a second time independently. The two readings agree on every row but two, both
+in Table III and both on this font's 3/5 ambiguity, settled on the image: 19 192.1693 (or .1695; 2R (38,0)),
+and 19 194.8304 with 147R (49,0) calculated .8355 (or .8504 and .8555; calculated minus observed is +5.1 mK
+either way). Every row is entered: all observed lines, assigned or not, and all assignment rows, including the
+rows that carry only an assignment and a calculated value. Abbreviated wavenumbers (".9350")
+are expanded with the integer part of the last full value in the same column. One calculated value is printed
+with three decimals and is entered so: 45P (40,2) 18 831.812 (Table IV). Two lines in Table V, 17 596.7481 and
+17 596.7850, have no intensity printed. The least certain digits, read alike both times (3 or 5, last place):
+observed 19 430.4123, 18 909.2195, 19 195.0893, 19 195.1983 and 19 192.1693; calculated 67R (45,0) 19 430.4095
+and 108P (8,1) 16 341.6293; the intensity 83 of 18 908.9427. Where a band has enough lines its smooth course
+settles such digits (e.g. 10P (32,0) .8293, 11P (43,0) .8193).
+
+What the columns mean (pp. 310-313): the calculated wavenumbers come from molecular constants fitted band by
+band by least squares (nonlinear SIMPLEX) and extended to higher J in a few iterations, not from the global
+fit (ref. 5, P. Luc, J. Mol. Spectrosc., then to appear). The tables list the lines in wavenumber order and
+print each calculated-only row beneath the observed line that precedes it; Table VII brackets such rows with the line above (e.g. five transitions with
+19 430.1491), so the authors treat most of them as blended in that line, but some lie far from it (87R (55,1),
++0.138 cm-1 from 19 431.3197; 29R (24,3), +0.323 cm-1 from 17 593.0697; 29R (7,1) at 16 340.9813 is printed under
+16 340.6439, two rows above the line 16 340.9831). The pairing is therefore kept as printed in "line" and
+"with_line" and no observed value is attached to those rows. The first assignment printed on a line's row is
+likewise not always the nearest: 22R (41,2) 18 909.7270 on the row of 18 909.7674, 23P (24,3) 17 594.8154 on the
+row of 17 594.8772.
+
+Not entered: Table VII (p. 317), wavenumbers near 5145 A calculated from the constants of Wei & Tellinghuisen
+(1974) and Barrow & Yee (1973) and from the global fit, with Barrow & Yee's J_max; it repeats the observed values
+of Table I and adds five (v',2) lines with calculated values only, 60,2 R(49) .4810, 60,2 P(48) .6680,
+61,2 R(54) .8050, 62,2 R(58) .138 and 61,2 P(53) .184 (19 429-19 430 cm-1). Table VIII (p. 319), six
+fluorescence doublet splittings, Fabry-Perot (Patterson et al. 1975) against the atlas and the global fit.
+Figs. 1-7, the spectra with the assigned lines drawn against level diagrams.
+
+Checks (no model involved): observed wavenumbers rise down every table; atlas numbers rise by one per numbered
+line in every table (I 4073-4088, II 1609-1622, III 2920-2936, IV 1277-1301, V 3468-3482, VI 2354-2374). The
+calculated values of the bands with enough lines follow one polynomial in m (m = J+1 for R, -J for P) to
+0.1-0.3e-4 cm-1 rms, i.e. rounding: (7,1), (9,2), (11,3), (13,4), (17,0), (22,2), (24,3), (32,0), (38,0), (41,2),
+(43,0), (49,1); the lower-state combination differences R(J-1) - P(J+1) of (32,0) and (43,0) agree to 2e-4 cm-1,
+and so do the upper-state differences R(J) - P(J) of (32,0), (41,2) and (43,0) with a smooth curve. Calculated
+minus observed, for the lines with a single assignment printed on their row: median -1.0 mK, rms 4.7 mK (2.8 mK
+for I >= 60). The observed positions agree, line by line, with other measured atlases held here
+(salami_ross_2005, apo_nist_2009) to a few mK after a common offset of +4 to +7 mK (the size of the later
+-0.0056 cm-1 correction), except at blends.
+"""
+
+uncertainty = """
+The paper states no uncertainty for the wavenumbers. Its text gives the line half-widths (up to 0.040 cm-1), the
+resolving power (about 1e6) and agreement with Barrow & Yee's constants within 0.020 cm-1 below their J_max.
+Later, the authors estimated the absolute accuracy of the atlas at 0.002 cm-1 once 0.0056 cm-1 is subtracted
+(gerstenkorn1979a), which applies to these values. Intensities are the atlas's relative values (strongest about
+90). The calculated values are rounded to 1e-4 cm-1.
+"""
+
+notes = """
+Discrepancies within the paper, entered as printed:
+- (43,1), Table III: the calculated P-branch values 35P .7975, 36P .4277, 37P 19 193.0206 have a second
+  difference of -0.0373 cm-1, as do the R and P branches of (43,0), but the R-branch values 37R .8209, 38R .4506,
+  39R 19 193.0340 have -0.0463 cm-1, so one of the three R values is misprinted by about 0.009 cm-1 (37R would
+  fit as 19 195.8299, 38R as 19 194.4461, 39R as 19 193.0430). The print is clear; it is kept.
+- Table VII prints, for the global fit, 43,0 R(16) .2672, 52,0 R(119) .3900 and 58,1 P(97) .176 where Table I has
+  .2679, .3965 and .1634. Table I's .2679 lies on the smooth (43,0) band; the other two bands have too few lines
+  to check. All other Table VII values in that column equal Table I's to the printed digits.
+- In Table I, 87R (55,1) .4577 is printed before 47P (44,0) .4668 and 82R (54,1) .4347; in Table V, 111P (26,3)
+  .8863 before 121R (21,1) .8848: the tables are only nearly in wavenumber order.
+
+The atlas numbers are the atlas's own: across Tables IV, II, III, I (18 830-19 432 cm-1) they rise with
+wavenumber at 4-5 numbered lines per cm-1, as one series, but Tables VI and V (2354-2374 at 16 338 cm-1,
+3468-3482 at 17 594 cm-1) are not in that series, so N identifies a line only together with its table.
+
+Bands (v',2) with 28 <= v' <= 46 near 5287 and 5308 A (Tables II, IV) were searched for after Tellinghuisen's
+Franck-Condon factors (pp. 320-321); hot bands v'' = 2 near 5145 A were not analyzed (Table VII only).
+"""

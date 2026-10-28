@@ -1,0 +1,97 @@
+id = "king1989"
+citation = "G. W. King and T. D. McLean, \"The three-photon absorption spectrum of 127I2 and 129I2 in the region 16 500-18 500 cm-1\", J. Mol. Spectrosc. 135, 207-222 (1989)"
+source = "https://doi.org/10.1016/0022-2852(89)90151-3 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(89)90151-3"
+retrieved = "2026-10-23"
+unit = "cm-1 (the Dunham coefficients in the scaled units of their rows, see [columns])"
+state = "ion-pair F 0u+ (3P0) and F' 0u+ (1D), reached by three-photon absorption from X 0g+ through B 0u+"
+isotopologue = "127I2 and 129I2"
+files = ["table1_3P1C_features.csv", "table2_3P2C_heads.csv", "table3_assignment_summary.csv", "table4_5_dunham.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Every number of Tables I-V (pp. 210, 215, 216, 218, 219), read from 300 dpi renders of the scan and checked against
+the OCR text layer (which is right in Tables I and III-V except for subscripts and footnote marks, and garbles parts
+of Table II).
+
+table1_3P1C_features.csv: Table I, "Strong 3P1C spectral features (cm-1) observed over the Kiton Red, R6G, and C-540A
+dye profiles": 65 wavenumbers of the strongest features of the low-resolution (broadband laser, 0.7 cm-1) one-color
+spectra, by dye and isotopologue, in printed order. The features are unassigned; the text explains them as groups
+of three-photon lines to F 0u+.
+
+table2_3P2C_heads.csv: Table II, "3P2C heads and assignments": 26 heads of the two-color spectra, 18 of 127I2 and 8
+of 129I2. sigma_BDL is the B <- X band head the broadband laser pumped (v2-v1 as printed; ditto marks resolved, see
+note), sigma_NDL the scanned narrow-band laser at the head, type I (sigma_BDL + 2 sigma_NDL) or II (2 sigma_BDL +
+sigma_NDL), T3 the upper level "measured relative to the potential minimum of the ground state" (footnote b), and the
+assignment (F0u+ or F'0u+, v3).
+
+table3_assignment_summary.csv: Table III, "Summary of assignments for the F0u+ state": numbers of 3P1C and 3P2C
+assignments with their v and J ranges, and the printed totals.
+
+table4_5_dunham.csv: Table IV (F0u+, "constants valid for v = 51 - 102", footnote a) and Table V (F'0u+), "Dunham
+parameters ... from combined isotope analysis", both isotopologues, and sigma_fit. E3(v3, J3) = sum_lm Y_lm (v3 +
+1/2)^l [J3(J3 + 1)]^m rho^(l + 2m) (Eq. 3), rho = 1 for 127I2 and 0.99221002 for 129I2; the 129I2 columns are the
+127I2 coefficients scaled by rho^(l + 2m) (Eq. 4, Table IV footnote b), so they are not independent. Values as
+printed: value_printed is the column entry, Y_lm = value_printed x 10^(-scale_exp) cm-1 (header "Y3,0 x 10^3" gives
+scale_exp = 3); unc_printed is the parenthesized uncertainty in the same scaled unit (47 282(4) -> 4).
+
+Checks (model-free):
+- Table II: T3 - (sigma_BDL + 2 sigma_NDL) for type I, and T3 - (2 sigma_BDL + sigma_NDL) for type II, is 107.0-107.2
+  cm-1 for all 18 rows of 127I2 and 106.1-106.3 for all 8 of 129I2: the X(v = 0, J ~ 0) zero-point energies (107.10
+  and 106.27 cm-1 above the X minimum). So the heads were taken as J ~ 0 and every row is internally consistent.
+- Table II against Tables IV and V (J = 0 term values from the printed coefficients): within -1.4 to +1.3 cm-1 for 23
+  of the 26 heads (sigma_fit 0.46 and 0.41); F0u+ v3 = 56 (type II, +1.9), 55 (type II, +3.2) and 60 (127I2, +4.2)
+  lie higher, as heads of J > 0 lines would.
+- Isotope scaling: the 129I2 coefficients equal the 127I2 ones times rho^(l + 2m) to the printed digits, except Table
+  IV Y1,0, printed 85.95 for both (Eq. 4: 85.28; see the row's note: a misprint), Table IV Y3,0 (printed -0.1790,
+  Eq. 4: -0.1792) and the uncertainty of Table V Y1,1 (printed (2), against (22) for 127I2). Entered as printed.
+- Table III totals: 188 + 115 = 303, 130 + 117 + 23 = 270, 303 + 270 = 573, as printed.
+
+Not entered: Figs. 1-5 (spectra with assignments, e.g. the 81-20-0, 87-25-2, 83-21-0 and 71/84-21-0 groups near
+17 905-17 990 cm-1). The line lists are not printed ("Details of the analyses are given in Ref. (32)", McLean's 1986
+McMaster thesis; "Copies of the data can be obtained from G.W.K. on request").
+"""
+
+uncertainty = "As printed: the parenthesized errors of Tables IV and V in units of the last digits (convention not stated, presumably one standard error of the least-squares fit) and sigma_fit = 0.46 (F0u+) and 0.41 (F'0u+). Laser widths 0.7 cm-1 (broadband, BDL) and 0.12 cm-1 (narrow-band, NDL) at 600 nm. Calibration: the scanned BDL by the optogalvanic effect in neon; the NDL by simultaneously recording the B-X LIF spectrum of iodine against the Gerstenkorn-Luc atlas; the fixed BDL by photographing it on a 1.5 m spectrograph against an Fe/Ne spectrum. Table I features and Table II heads are given to 0.1 cm-1 with no stated uncertainty. The F0u+ vibrational coefficients rest on an extrapolation to v3 = 0 from v3 = 51-102 (p. 218: 'The large uncertainties in the vibrational coefficients are due to the extrapolation to v3 = 0')."
+
+notes = """
+What the paper is. High-resolution one-color and two-color multiphoton spectra of 127I2 and 129I2 (129I2 of 96 %
+isotopic purity; sealed silica cells at 20 C, 0.284 Torr), reinterpreting the "Goodman bands" (17 600-18 100 cm-1),
+which earlier work took as two-photon transitions to a bound gerade state near 35 000 cm-1, as resonance-enhanced
+three-photon transitions through B 0u+ to the ion-pair states F 0u+ (3P0) and F' 0u+ (1D) near 50 000 cm-1. The
+paper finds no evidence of excited states near 35 000 cm-1.
+
+Counts from the text (not tabulated): 303 high-resolution 1C lines of 127I2 (17 040-18 310 cm-1) and 333 of 129I2
+(17 090-18 000 cm-1); F0u+ is reached at all but 10 levels of v3 = 51-102 (127I2) and all but 6 of v3 = 52-96 (129I2);
+F'0u+: 38 lines of 127I2 and 78 of 129I2, v3 = 0-11, J3 = 0-135, the extra 129I2 lines from the (1-15-1) and
+(9-17-0) resonances; the F0u+ and F'0u+ analyses account for about 65 % of the 1C lines; 31 further 127I2 lines are
+assigned tentatively to D 0u+ (3P2) v3 = 169-213, with Tellinghuisen's numbering (Can. J. Phys. 62, 1933 (1984)), and
+none for 129I2. Four MPI-dip resonances of Carper and Wessel 1982 are assigned to F0u+ v3 = 103 (J3 = 16, 24) and 102
+(J3 = 58, 65). The 3P1C "head" at 18 239.1 cm-1 is assigned to (97-24-0) of F0u+ (p. 216).
+
+Relation to other sets. F 0u+ here is the F state of data/other_states/wieland1972 (F 1Sigmau+ (0u+), Te = 47217.8,
+we = 95.955 cm-1 from F -> X band heads at v' = 0-19), but Table IV describes v3 = 51-102 and its Y0,0 = 47 282(4) is an
+extrapolation over 51 quanta, so the two Te are not comparable at the 65 cm-1 level. The B and X levels used to
+compute the resonances and the term values are Hutson, Gerstenkorn, Luc and Sinzelle 1982 (B) and Tromp and Le Roy
+1985 (X) (refs. 20, 21). No B or X constants or term values are derived here, for either isotopologue; the 129I2 B
+levels enter only as pumped intermediates (B v2 = 14 and 15, Table II), and the paper's 129I2 constants are mass-scaled
+127I2 constants.
+
+data/other_states holds measured levels and constants of electronic states other than X and B (no loader reads it).
+"""
+
+[columns]
+table1_3P1C_features = "dye: Kiton Red (595-609 nm), R6G (575-592 nm) or C-540A (127I2 535-570 nm, 129I2 552-570 nm). isotopologue. sigma_cm1: laser wavenumber of the feature (one photon), cm-1. note: the text's comment on the feature."
+table2_3P2C_heads = """
+isotopologue. sigma_BDL_cm1, band_BDL: the B <- X band head pumped by the broadband laser and its v2-v1 (Table II's
+  first column; printed once per group, then as ditto marks, which the note flags). sigma_NDL_cm1: the narrow-band
+  laser wavenumber of the 3P2C head. type: I = sigma(BDL) + 2 sigma(NDL), II = sigma(BDL) + {sigma(BDL) +
+  sigma(NDL)} (text, p. 214). T3_cm1: the upper level above the X potential minimum. state, v3: assignment (F0u+ =
+  F 0u+ (3P0), F'0u+ = F' 0u+ (1D)).
+"""
+table3_assignment_summary = "isotopologue (or total). method: 3P1C (one color) or 3P2C (two color). n_assignments, v_range, J_range: as printed (v and J of the F0u+ level). note: the printed totals."
+table4_5_dunham = """
+table: IV (F0u+) or V (F'0u+). state, isotopologue ("both" for sigma_fit). l, m: Y_lm. value_printed, unc_printed:
+the printed entry and its parenthesized error in the scaled unit of the row. scale_exp: the printed row header
+multiplies Y by 10^scale_exp (Y_lm = value_printed x 10^-scale_exp cm-1). note: checks and misprints.
+"""

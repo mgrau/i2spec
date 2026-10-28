@@ -1,0 +1,62 @@
+table,quantity,column,value,uncertainty,unit,note
+III,nu0,this work (all free),18697.698,,cm-1,"'+- X': the whole spectrum may be shifted by up to 0.004 cm-1 (footnote a)"
+III,B0'',this work (all free),0.0373110,,cm-1,
+III,B30',this work (all free),0.0228362,,cm-1,
+III,1e9 D0'',this work (all free),4.52,,cm-1,
+III,1e9 D30',this work (all free),14.78,,cm-1,
+III,1e15 H0'',this work (all free),-1.34,,cm-1,
+III,1e15 H30',this work (all free),-37.9,,cm-1,
+III,B0''-B30',this work (all free),0.0144748,,cm-1,
+III,1e9 (D30'-D0''),this work (all free),10.26,,cm-1,
+III,sd,this work (all free),0.0007,,cm-1,standard deviation calc - measured (the + lines)
+III,nu0,this work (B0'' and D0'' fixed),18697.698,,cm-1,"'+- X' (footnote a)"
+III,B0'',this work (B0'' and D0'' fixed),0.0373115,0.0000030,cm-1,"from the Delta2F''(J) combination differences of four independent sets ((30,0) and (29,0), two interferograms); Sect. 4.2"
+III,B30',this work (B0'' and D0'' fixed),0.0228367,0.0000030,cm-1,
+III,1e9 D0'',this work (B0'' and D0'' fixed),4.55,0.20,cm-1,
+III,1e9 D30',this work (B0'' and D0'' fixed),14.80,0.20,cm-1,
+III,1e15 H0'',this work (B0'' and D0'' fixed),-0.76,,cm-1,
+III,1e15 H30',this work (B0'' and D0'' fixed),-37.4,,cm-1,
+III,B0''-B30',this work (B0'' and D0'' fixed),0.0144748,,cm-1,
+III,1e9 (D30'-D0''),this work (B0'' and D0'' fixed),10.25,,cm-1,
+III,sd,this work (B0'' and D0'' fixed),0.0007,,cm-1,
+III,nu0,Richardson and Powell 1967 (reprint),18697.692,0.001,cm-1,"printed '+- 1' (last digit)"
+III,B0'',Richardson and Powell 1967 (reprint),0.0373040,0.0000130,cm-1,
+III,B30',Richardson and Powell 1967 (reprint),0.0228260,0.0000130,cm-1,
+III,1e9 D0'',Richardson and Powell 1967 (reprint),4.19,0.97,cm-1,
+III,1e9 D30',Richardson and Powell 1967 (reprint),14.25,0.96,cm-1,
+III,B0''-B30',Richardson and Powell 1967 (reprint),0.014478,,cm-1,
+III,1e9 (D30'-D0''),Richardson and Powell 1967 (reprint),10.06,,cm-1,
+III,sd,Richardson and Powell 1967 (reprint),0.009,,cm-1,
+IV,B30',Le Roy 1970 / Brown et al. 1973 (calculated),0.022833,,cm-1,
+IV,B0'',Le Roy 1970 / Brown et al. 1973 (calculated),0.037328,,cm-1,
+IV,1e9 D30',Le Roy 1970 / Brown et al. 1973 (calculated),14.63,,cm-1,
+IV,1e9 D0'',Le Roy 1970 / Brown et al. 1973 (calculated),4.55,,cm-1,
+IV,1e15 H30',Le Roy 1970 / Brown et al. 1973 (calculated),-37.8,,cm-1,
+IV,1e15 H0'',Le Roy 1970 / Brown et al. 1973 (calculated),-0.65,,cm-1,footnote a: from Dunham relations
+IV,B0''-B30',Le Roy 1970 / Brown et al. 1973 (calculated),0.014495,,cm-1,
+IV,1e9 (D30'-D0''),Le Roy 1970 / Brown et al. 1973 (calculated),10.08,,cm-1,
+IV,B30',Barrow and Yee 1973 (reprint),0.022828,,cm-1,
+IV,B0'',Barrow and Yee 1973 (reprint),0.037315,,cm-1,
+IV,1e9 D30',Barrow and Yee 1973 (reprint),15.1,,cm-1,
+IV,1e9 D0'',Barrow and Yee 1973 (reprint),4.41,,cm-1,
+IV,1e15 H0'',Barrow and Yee 1973 (reprint),-0.47,,cm-1,footnote a: from Dunham relations
+IV,B0''-B30',Barrow and Yee 1973 (reprint),0.014487,,cm-1,
+IV,B30',Wei and Tellinghuisen 1974 (reprint),0.022830,,cm-1,data/b_levels/wei1974
+IV,B0'',Wei and Tellinghuisen 1974 (reprint),0.037306,,cm-1,
+IV,1e9 D30',Wei and Tellinghuisen 1974 (reprint),15.0,,cm-1,
+IV,1e9 D0'',Wei and Tellinghuisen 1974 (reprint),4.54,,cm-1,
+IV,1e15 H30',Wei and Tellinghuisen 1974 (reprint),-38,,cm-1,
+IV,1e15 H0'',Wei and Tellinghuisen 1974 (reprint),-0.52,,cm-1,
+IV,B0''-B30',Wei and Tellinghuisen 1974 (reprint),0.014476,,cm-1,
+IV,1e9 (D30'-D0''),Wei and Tellinghuisen 1974 (reprint),10.4,,cm-1,
+eq1,doublet R(J+3)-P(J) c0,this work,0.009,,cm-1,"Eq. (1): dnu = c0 + c1 J + c2 J^2 + c3 J^3 + c4 J^4 + c5 J^5"
+eq1,c1,this work,0.00449,,cm-1,
+eq1,c2,this work,-1.45e-6,,cm-1,
+eq1,c3,this work,-2.42e-7,,cm-1,"Eq. (1) gives +0.002 cm-1 at J = 129, where the doublet is unresolved (text)"
+eq1,c4,this work,-1.1e-11,,cm-1,
+eq1,c5,this work,-1.1e-12,,cm-1,"= 30 H30' - 18 H0'' (text)"
+eq2,doublet R(J+3)-P(J) c0,Richardson and Powell 1967 (reprint),0.0089,,cm-1,Eq. (2)
+eq2,c1,Richardson and Powell 1967 (reprint),0.00443,,cm-1,
+eq2,c2,Richardson and Powell 1967 (reprint),-1.41e-6,,cm-1,
+eq2,c3,Richardson and Powell 1967 (reprint),-2.35e-7,,cm-1,
+I,ratio mean (7 lines),this work,1.40,0.08,,"mean intensity ratio of consecutive P lines J = 106-116 omitting the three ratios involving lines 112 and 113 (rows 111-113); 1.35 with all 10 (theory 7/5 for I = 5/2)"

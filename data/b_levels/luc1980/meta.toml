@@ -1,0 +1,96 @@
+id = "luc1980"
+citation = "P. Luc, \"Molecular constants and Dunham expansion parameters describing the B-X system of the iodine molecule\", J. Mol. Spectrosc. 80, 41-55 (1980), Tables I-VII"
+source = "https://doi.org/10.1016/0022-2852(80)90269-6 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(80)90269-6"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:luc1980"
+unit = "cm-1"
+state = "B (Tables V, VII); X (Tables IV, VI)"
+isotopologue = "127I2"
+files = ["data.csv", "x_levels.csv", "dunham.csv", "bands.csv", "constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-VII (pp. 42-50) and the constants of the text, read from 400-900 dpi renderings of the scan. The tables are
+clean typescript; the OCR text layer is right for most digits but not all (e.g. "15348.7476" for 15 848.7476, "17982.3592"
+for 17 982.3892, "1.7575683" for 1.7535683, "19863.2565" for 19 863.2585, "121" for 127 in Table II), so every value was
+read from the images.
+
+What the paper did: the Fourier-transform absorption spectrum of the authors' atlas (Table I: four recordings, 14 000-
+20 000 cm-1, cells 12.5-200 cm, 20 and 250 C, about 0.25 Torr; 4730 + 18 000 + 24 000 + 21 000 recorded lines). 14 116
+assigned lines of 139 bands (v' = 1-62, v'' = 0-9) were fitted simultaneously with one band origin per band, B', D', H'
+per upper level (v' = 1-62) and B'', D'' per lower level (v'' = 0-9), in two parts (Table III: Part I, 107 bands,
+11 462 lines, 217 parameters; Part II, the 32 bands (v', 0) with v' = 31-62, 2654 lines, 130 parameters, B0'' and D0''
+fixed from Part I). H'' and L' were set to zero.
+
+data.csv (62 rows): Table V, the B-state constants of v' = 1-62: sigma_0v' (entered as G: the rotationless term of
+v' above X(v'' = 0, J = 0); it equals Table VII's T_e + G_v minus Table VI's G''(0)), 1e2 B', 1e8 D', and H' (Table V
+prints 1e14 H' for v' = 1-30 and 1e13 H' for v' = 31-62; all are given here as 1e14 H', the printed value in the note
+of each row from v' = 31).
+x_levels.csv (10 rows): Table IV, E_0v'' (above v'' = 0), B'' and 1e9 D'' of X v'' = 0-9.
+dunham.csv (60 rows, the 60 parameters of the abstract): Table VI (X: 3 G, 4 B and 3 D coefficients) and Table VII (B: T_e plus 11 G, 13 B, 9 D and 16 H
+coefficients), polynomials in (v + 1/2); the standard deviations and Kratzer values printed under each table are in the
+notes.
+bands.csv (140 rows): Table II, per band the minimum and maximum J and the number of lines in each branch and the
+total; 13-0 is printed as BLEND (139 analyzed bands plus this row).
+constants.csv (9 rows): the B0'' and D0'' of Parts I and II and of the one-sweep fit (p. 43), the -107.1067 cm-1 offset
+of the X energies (p. 43), T_0,0 (Table VII) and the fit's standard deviations.
+
+Checks (model-free):
+- Table II: N_P + N_R equals the printed total in all 139 rows, and the totals sum to 14 116, the number of equations
+  the text gives (p. 43).
+- Table VII reproduces Table V: B_v to 0.6e-6 cm-1 below v' = 31 and to 3.2e-6 above, D_v to 4e-10, H_v to 8e-14;
+  T_e + G_v - G''(0) (Table VI) to 0.001 cm-1 below v' = 30, the difference then growing smoothly to 0.009 at v' = 62
+  (polynomial rounding). Table VI reproduces Table IV to 0.0009 cm-1 (E), 1.2e-7 (B'') and 6e-12 (D''). The one
+  exception is v' = 45: Table V's B_v = 1.8002895e-2 lies 2.5e-5 cm-1 below Table VII and below both neighbours'
+  smooth course; barrow1973 also gives 0.0022e-2 more. Entered as printed and flagged (a misprint is likely).
+- Against data/b_levels/barrow1973 (the levels Barrow and Yee 1973 fitted from grating spectra): sigma_0v' - G =
+  +0.055 to +0.121 cm-1 at v' = 4-13 (barrow1973's hot-band levels), -0.05 to -0.07 at v' = 16-20, and within +-0.03 at
+  v' = 29-62 except v' = 36 (+0.082); B within +-0.003e-2.
+- x_levels.csv v'' = 8 and 9 against data/x_levels/martin1986: 1671.5786 against 1671.5787 and 1874.8283 against
+  1874.8283 (identical: martin1986 may have taken v'' = 9 from here; its G_unc is empty for that level).
+
+Not entered: Figs. 1-4 (residuals at J = 50, 100, 150; G''(v'') and band-origin comparisons with Rank and Rao, Le Roy,
+Barrow and Yee, Wei and Tellinghuisen, Simmons and Hougen; calculated-wavenumber differences, plotted only). The line
+list itself is not printed (the wavenumbers are in the 1978 atlas).
+"""
+
+uncertainty = """
+No uncertainties are printed for individual constants. Standard deviations of the fits: 0.0015 cm-1 overall, 0.001,
+0.0015 (0.0017 in the abstract and Fig. 1) and 0.004 cm-1 for lines with J near 50, 100 and 150 (p. 43, Fig. 1); the
+expansions of Tables VI and VII reproduce the per-level constants with the S.D. printed under them (Table VI: 0.6e-3,
+0.6e-7, 0.003e-9 cm-1; Table VII: 0.6e-3, 2e-7, 9e-11, 1e-15 cm-1). The band origins are 'almost free from correlation';
+the B, D, H are strongly correlated. The atlas scale is the 1978 one: Gerstenkorn and Luc later found the whole atlas
+0.0056 cm-1 high (catalog gerstenkorn1979a), which applies to sigma_0v' and E_0v'' differences only through the band
+origins (no correction is applied here; the paper mentions none).
+"""
+
+notes = """
+What the set is. The first global fit of the Orsay FTS absorption atlas: per-level B-state constants for v' = 1-62 and
+X-state constants for v'' = 0-9, with Dunham-type expansions, superseded by Gerstenkorn and Luc 1985 (catalog) and the
+later Orsay analyses (data/b_levels/gerstenkorn1991). The author calls the constants 'preliminary' and warns that
+extrapolation above v' = 62 or beyond each band's J_max (Table II) 'will be disastrous'. The comparison section says
+the bands Barrow and Yee took from Steinfeld et al. 1965 (29-0, 25-0, 13-2, 12-2, 11-1) differ from these constants by
+about 0.1 cm-1, and that Wei and Tellinghuisen's band origin near v' = 33 is 0.040 cm-1 off (traced to Singh and
+Tellinghuisen's data).
+
+Overlap with held sets. The line positions behind these constants are those of the Orsay atlas (data/atlas_lines
+orsay1982_* and gerstenkorn1979 hold parts of it), so this set is not independent of them. Not compared with any model.
+"""
+
+[columns]
+data = """
+isotopologue, v: B level v'. G: Table V sigma_0v', the J = 0 term of v' above X(v'' = 0, J = 0), cm-1. G_unc,
+B_x100_unc: empty (none printed). B_x100: 1e2 B', cm-1. D_x1e8: 1e8 D', cm-1. H_x1e14: 1e14 H', cm-1 (v' >= 31 converted
+from the printed 1e13 H'). note: reading notes.
+"""
+x_levels = "isotopologue, v: X level v''. G: E_0v'' above v'' = 0 (J = 0), cm-1. B: B'', cm-1. D_x1e9: 1e9 D'', cm-1."
+dunham = """
+state, quantity (G, B, D, H), n: the power of (v + 1/2); coefficient as printed (cm-1); table; note. For the B state
+n = 0 of G is T_e (above the X potential minimum); for X, G starts at n = 1.
+"""
+bands = """
+band v'-v''; v_upper, v_lower; P_Jmin, P_Jmax, N_P, R_Jmin, R_Jmax, N_R: Table II (J as printed, the table does not say
+J' or J''); N_total: N_P + N_R as printed.
+"""
+constants = "state, quantity, value, unit, source (page or table), note."

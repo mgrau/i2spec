@@ -1,0 +1,12 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a18,interval,12.882,0.020,,a17,rowley1973a_direct,"Table 2: d-e, mean 12.882 MHz of six occasions (deviations -3 +3 +6 +0 -8 +5 kHz); uncertainty hypot(2.2, 20) kHz"
+127I2 R(127) 11-5,a17,interval,13.362,0.021,,a16,rowley1973a_direct,"Table 2: e-f, mean 13.362 MHz of six occasions (deviations -14 -9 +0 +25 +8 -7 kHz); uncertainty hypot(5.8, 20) kHz"
+127I2 R(127) 11-5,a16,interval,13.189,0.021,,a15,rowley1973a_direct,"Table 2: f-g, mean 13.189 MHz of six occasions (deviations -6 +13 +5 -19 -9 +7 kHz); uncertainty hypot(4.9, 20) kHz"
+127I2 R(127) 11-5,a17,interval,130.284,0.020,,a14,rowley1973a_sub,"Table 3 (subsidiary laser between the two): e-h, 130.284 MHz, 19 observations, 3 sigma 11 kHz; uncertainty hypot(11/3, 20) kHz"
+127I2 R(127) 11-5,a16,interval,116.932,0.020,,a14,rowley1973a_sub,"Table 3 (subsidiary laser between the two): f-h, 116.932 MHz, 20 observations, 3 sigma 7 kHz; uncertainty hypot(7/3, 20) kHz"
+127I2 R(127) 11-5,a15,interval,103.736,0.020,,a14,rowley1973a_sub,"Table 3 (subsidiary laser between the two): g-h, 103.736 MHz, 36 observations, 3 sigma 7 kHz; uncertainty hypot(7/3, 20) kHz"
+127I2 R(127) 11-5,a17,interval,26.556,0.020,,a15,rowley1973a_sub,"Table 3 (subsidiary laser between the two): e-g, 26.556 MHz, 10 observations, 3 sigma 9 kHz; uncertainty hypot(9/3, 20) kHz"
+127I2 R(127) 11-5,a17,interval,26.541,0.021,,a15,rowley1973a_subout,"Table 3 (subsidiary laser not intermediate in frequency): e-g, 26.541 MHz, 20 observations, 3 sigma 16 kHz; uncertainty hypot(16/3, 20) kHz"
+127I2 R(127) 11-5,a16,interval,13.184,0.020,,a15,rowley1973a_subout,"Table 3 (subsidiary laser not intermediate in frequency): f-g, 13.184 MHz, 20 observations, 3 sigma 13 kHz; uncertainty hypot(13/3, 20) kHz"
+127I2 R(127) 11-5,a14,interval,21.938,0.020,,a13,rowley1973a_subout,"Table 3 (subsidiary laser not intermediate in frequency): h-i, 21.938 MHz, 22 observations, 3 sigma 7 kHz; uncertainty hypot(7/3, 20) kHz"
+127I2 R(127) 11-5,a18,frequency,473612379.252,1.90,,,rowley1973a_kr,"abstract and Table 1: d, vacuum wavelength 632 991 178.3 +- 0.8 fm (3 sigma; standard error of the mean 0.26 fm) against 86Kr; c / lambda; uncertainty hypot(0.19 MHz, 4e-9) (see meta.toml)"

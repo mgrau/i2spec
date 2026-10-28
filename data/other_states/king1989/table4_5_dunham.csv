@@ -1,0 +1,29 @@
+table,state,isotopologue,l,m,value_printed,unc_printed,scale_exp,note
+IV,F0u+,127I2,0,0,47282,4,0,
+IV,F0u+,127I2,1,0,85.95,0.15,0,
+IV,F0u+,127I2,2,0,-0.0630,0.0020,0,
+IV,F0u+,127I2,3,0,-0.1835,0.0087,3,
+IV,F0u+,127I2,0,1,0.022867,0.000027,0,
+IV,F0u+,127I2,1,1,-0.6264,0.0035,4,
+IV,F0u+,127I2,0,2,-0.471,0.064,9,
+IV,F0u+,129I2,0,0,47282,4,0,"footnote b: the 129I2 coefficients are calculated from the 127I2 ones with Eq. (4), Y(129) = Y(127) rho^(l+2m)"
+IV,F0u+,129I2,1,0,85.95,0.15,0,"printed as the 127I2 value; Eq. (4) gives 85.95 x 0.99221002 = 85.28, and the 129I2 levels of Table II (v3 = 58, 60, 61) fit 85.28 to 0.0-0.7 cm-1 and miss 85.95 by about 40 cm-1: a misprint for 85.28"
+IV,F0u+,129I2,2,0,-0.0620,0.0020,0,
+IV,F0u+,129I2,3,0,-0.1790,0.0085,3,Eq. (4) gives -0.1792
+IV,F0u+,129I2,0,1,0.022512,0.000027,0,
+IV,F0u+,129I2,1,1,-0.6119,0.0034,4,
+IV,F0u+,129I2,0,2,-0.456,0.062,9,
+V,F'0u+,127I2,0,0,51706.129,0.059,0,
+V,F'0u+,127I2,1,0,130.932,0.026,0,
+V,F'0u+,127I2,2,0,-0.4614,0.0025,0,
+V,F'0u+,127I2,0,1,0.0219750,0.0000092,0,
+V,F'0u+,127I2,1,1,-1.008,0.022,4,
+V,F'0u+,127I2,0,2,-2.5,,9,no uncertainty printed (fixed or rounded)
+V,F'0u+,129I2,0,0,51706.129,0.059,0,
+V,F'0u+,129I2,1,0,129.912,0.026,0,
+V,F'0u+,129I2,2,0,-0.4542,0.0025,0,
+V,F'0u+,129I2,0,1,0.0216340,0.0000091,0,
+V,F'0u+,129I2,1,1,-0.9846,0.0002,4,"printed -0.9846(2); the 127I2 value is -1.008(22), so (2) is probably (22) with a digit lost"
+V,F'0u+,129I2,0,2,-2.4,,9,no uncertainty printed
+IV,F0u+,both,,,0.46,,0,sigma_fit of the combined-isotope fit (unit not printed; cm-1 by context)
+V,F'0u+,both,,,0.41,,0,sigma_fit of the combined-isotope fit (unit not printed; cm-1 by context)

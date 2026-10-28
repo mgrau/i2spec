@@ -1,0 +1,56 @@
+table,page,state,isotopologue,parameter,value_printed,unc_printed,scale_exp,unit,note
+2,149,E,127I2,Te,41410.27,0.15,0,cm-1,"Eqs. (1)-(2): T(eta) = sum T_n eta^n relative to the X potential minimum, eta = rho (v + 1/2), rho = 1 (127I2), 0.99221 (129I2); combined fit of both isotopologues (one Te)"
+2,149,E,129I2,Te,41410.27,0.15,0,cm-1,
+2,149,E,127I2,we,101.907,0.041,0,cm-1,
+2,149,E,129I2,we,101.113,0.041,0,cm-1,"= rho x 127I2 value (101.113)"
+2,149,E,127I2,wexe,0.2373,0.0032,0,cm-1,
+2,149,E,129I2,wexe,0.2336,0.0032,0,cm-1,"= rho^2 x 127I2 value (0.2336)"
+2,149,E,127I2,weye,9.05,0.70,4,cm-1,"printed as 10^4 weye"
+2,149,E,129I2,weye,8.84,0.68,4,cm-1,"= rho^3 x 127I2 value (8.84)"
+2,149,E,127I2,Be,2.0116,0.0020,2,cm-1,"printed as 10^2 Be; Eq. (2): B(eta) = B_v / rho^2 = sum B_n eta^n"
+2,149,E,129I2,Be,1.9959,0.0019,2,cm-1,"as printed; rho^2 x 2.0116 = 1.9804, while 1.9959 = rho x 2.0116 (misprint or error, see transcription); the Table 1 129I2 B_v follow rho^2"
+2,149,E,127I2,alpha_e,8.76,0.44,5,cm-1,"printed as 10^5 alpha_e"
+2,149,E,129I2,alpha_e,8.55,0.43,5,cm-1,"= rho^3 x 127I2 value (8.56)"
+2,149,E,127I2,gamma_e,1.86,0.23,6,cm-1,"printed as 10^6 gamma_e"
+2,149,E,129I2,gamma_e,1.80,0.22,6,cm-1,"= rho^4 x 127I2 value (1.80)"
+2,149,E,127I2,re,3.6342,0.0018,0,A,"printed once below the table (r_e = 3.6342(18) A); equals the re of Be = 2.0116e-2 cm-1 for 127I2"
+4,151,gamma,127I2,Te,41621.29,0.20,0,cm-1,"relative to the X potential minimum (Eqs. 1-2); both isotopologues"
+4,151,gamma,129I2,Te,41621.29,0.20,0,cm-1,
+4,151,gamma,127I2,we,95.01,0.14,0,cm-1,
+4,151,gamma,129I2,we,94.27,0.14,0,cm-1,
+4,151,gamma,127I2,wexe,0.222,0.027,0,cm-1,
+4,151,gamma,129I2,wexe,0.218,0.027,0,cm-1,
+4,151,gamma,127I2,weye,28,14,4,cm-1,"printed as 10^4 weye"
+4,151,gamma,129I2,weye,27,14,4,cm-1,
+4,151,gamma,127I2,Be,1.9702,0.0027,2,cm-1,"printed as 10^2 Be"
+4,151,gamma,129I2,Be,1.9397,0.0027,2,cm-1,
+4,151,gamma,127I2,alpha_e,2.72,0.68,5,cm-1,"printed as 10^5 alpha_e"
+4,151,gamma,129I2,alpha_e,2.66,0.66,5,cm-1,
+4,151,gamma,127I2,re,3.6721,0.0025,0,A,"printed once below the table"
+6,152,beta,127I2,Te,41029.74,0.56,0,cm-1,"relative to the X potential minimum (Eqs. 1-2); both isotopologues"
+6,152,beta,129I2,Te,41029.74,0.56,0,cm-1,
+6,152,beta,127I2,we,104.19,0.14,0,cm-1,
+6,152,beta,129I2,we,103.37,0.14,0,cm-1,"rho x 104.19 = 103.378"
+6,152,beta,127I2,wexe,0.2212,0.0072,0,cm-1,
+6,152,beta,129I2,wexe,0.2178,0.0071,0,cm-1,
+6,152,beta,127I2,Be,1.973,0.088,2,cm-1,"printed as 10^2 Be"
+6,152,beta,129I2,Be,1.943,0.087,2,cm-1,
+6,152,beta,127I2,alpha_e,3.7,7.7,5,cm-1,"printed as 10^5 alpha_e"
+6,152,beta,129I2,alpha_e,3.6,7.5,5,cm-1,
+6,152,beta,127I2,re,3.669,0.082,0,A,"printed once below the table"
+8,153,alpha,127I2,Te,39648.6,3.5,0,cm-1,"relative to the X potential minimum (Eqs. 1-2); both isotopologues; the absolute v numbering (first band v = 8(+-2)) means an uncertainty of +-200 cm-1 in Te (p. 152)"
+8,153,alpha,129I2,Te,39648.6,3.5,0,cm-1,
+8,153,alpha,127I2,we,107.15,0.53,0,cm-1,
+8,153,alpha,129I2,we,106.31,0.53,0,cm-1,
+8,153,alpha,127I2,wexe,0.218,0.019,0,cm-1,
+8,153,alpha,129I2,wexe,0.214,0.019,0,cm-1,
+8,153,alpha,127I2,Be,2.06,0.20,2,cm-1,"printed as 10^2 Be"
+8,153,alpha,129I2,Be,2.03,0.20,2,cm-1,
+8,153,alpha,127I2,alpha_e,1.1,1.4,4,cm-1,"printed as 10^4 alpha_e"
+8,153,alpha,129I2,alpha_e,1.1,1.4,4,cm-1,
+8,153,alpha,127I2,re,3.59,0.16,0,A,"printed once below the table"
+10,153,delta,127I2,Te,41789,,0,cm-1,"'Approximate vibrational and rotational constants'; arbitrary v numbering (Table 9 footnote b)"
+10,153,delta,127I2,we,100.2,,0,cm-1,
+10,153,delta,127I2,wexe,0.13,,0,cm-1,
+10,153,delta,127I2,Be,1.63,,2,cm-1,"printed as 10^2 Be: the mean of the Table 9 B_v (p. 153)"
+10,153,delta,127I2,re,4.0,,0,A,

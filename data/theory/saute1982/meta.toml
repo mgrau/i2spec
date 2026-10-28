@@ -37,4 +37,8 @@ use 0.84 for the 1g pair; Chen et al. fit 0.99 (Fig. 6, C_B) and 0.92 (Fig. 9) f
 C6 is nearly isotropic, -2.106 +- 0.5% (text, p. 5643), so C5 sets the long-range splittings. Chen et al.
 replaced the 0u- long-range curve by the 2g one and "fine tuned" the 1g(1Pig) one (pp. 958-959); those
 adjustments are model choices, not data, and are not entered here.
+
+Ground-limit labels, from Inard et al. 1999 (data/other_states/inard1999), whose Table 8 reprints these values with
+the sign reversed: the 1u with C5 = +0.907, C6 = -1.78 is B''1u(1Piu), so the 1u with -0.595 is A1u(3Piu); the 2u
+(-2.09) is A'2u.
 """

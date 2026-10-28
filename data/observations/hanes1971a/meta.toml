@@ -1,0 +1,67 @@
+id = "hanes1971a"
+citation = "G. R. Hanes, J. Lapierre, P. R. Bunker and K. C. Shotton, \"Nuclear hyperfine structure in the electronic spectrum of 127I2 by saturated absorption spectroscopy, and comparison with theory\", J. Mol. Spectrosc. 39, 506-515 (1971), Table I and p. 508"
+source = "https://doi.org/10.1016/0022-2852(71)90220-7 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1016/0022-2852(71)90220-7"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 512), "The observed and calculated frequency separations of the components of the P(33) line in the 6-3
+band of the B <- X transition in 127I2", typed from a 300 dpi rendering of p. 512 (the OCR text layer scrambles the
+first rows). Entered: the "Delta nu obsd (MHz)" column, 20 separations of components b-u from component a, the
+highest in frequency ("the frequency intervals between each iodine component and the one of highest frequency
+(component a)", p. 508), each the average of five independent measurements; group hanes1971a. Signs: the printed
+separations are positive below a, so each row is f(x) - f(a) = -separation.
+Also entered (p. 508, read from a 250 dpi rendering): "The frequency of components a in P(33) was found to be
+394 +- 4 MHz lower than that of i in R(127)", from scans holding R(127) h-n and P(33) a-c, as b21 - a13 of
+R(127) 11-5; group hanes1971a_link.
+
+Labels: the letters a-u run down in frequency (the separations increase monotonically, checked by script), so
+a-u = b21-b1, the 633 nm convention (bipm2003a: u-a = b1-b21). The table orders p (F = J-1, 589.0) before q
+(F = J+1, 605.5), so p = b6 and q = b5; morinaga1984a assigns the same pair the same way. i of R(127) is a13.
+
+Checks (model-free): obs - calc is reproduced from the printed columns for all 20 rows, for both the complete and
+the first-order fits (by script). Against razet1993a the separations d-u are 0.6-1.2 % small (razet1993a / this
+paper = 1.0064-1.0116, 1.0 to 6.9 MHz), while b and c agree to 0.02 and 0.28 MHz; a least-squares scale of 1.0082
+leaves an rms of 0.47 MHz (m, overlapped, 1.55 MHz), consistent with the printed precision. edwards1999a,
+simonsen2000a and bipm2003a show the same. Morinaga & Tanaka 1978 (morinaga1978a, Table II) remeasured b-j by beat
+frequencies and print these values beside theirs, 0.2-2.7 MHz smaller; Morinaga 1984 (morinaga1984a) calls it "a
+systematic offset of a few MHz". The link, -394(4) MHz, agrees with morinaga1978a (-393.5(1)) and with bipm2003a's
+b21 - a16 and a13 - a16 (-532.42 + 138.892 = -393.53 MHz).
+
+Not entered: the calculated columns (complete and first-order fits); Fig. 3, the absorption coefficient over the
+2.5 GHz tuning range (a plot only, "ZERO = 473.612.3 GHz"); the vacuum wavelength of i, 6329.9139 +- 0.0002 A,
+quoted from Hanes & Baird (Metrologia 5, 32 (1969)); the fitted constants (see notes).
+"""
+
+uncertainty = """
+The paper's precision, 0.36 MHz ("the relative positions of the components have been measured with a precision of
+0.36 MHz", abstract; the fit's rms deviation is 0.35 MHz), taken as 1 sigma per separation; 0.72 MHz for l (b10) and
+m (b9), "Overlapped; assigned weight 1/4 in all least-squares fitting" (Table I, footnote a). Combined in quadrature
+with 0.8 % of the separation for the scale error found in the checks above (0.2 MHz at b, 7.3 MHz at u): the paper
+reports no scale error, so this term is an allowance set from held data (as knox1971a's), not a printed figure.
+The link: 4 MHz as printed, taken as 1 sigma.
+"""
+
+notes = """
+Morinaga 1984 (morinaga1984a) prints b1-b11 of this table, relative to b21, as the CCDM 1982 summary and declares
+this set "same" for those rows (group morinaga1984a_hanes1971). The MEP 633 nm P(33) 6-3 table (bipm2003a) cites this
+paper (Quinn 2003, ref. [114]); its values are weighted means of six sources. Morinaga & Tanaka 1978 reprint b-j
+in their Table II beside their own values (not entered there).
+
+Fitted constants (complete second-order theory, eQq'' fixed at -2980 MHz, C'' = 0; 1 sigma): Delta eQq = eQq' -
+eQq'' = 1938.09(34) MHz, Delta C_I = 21.69(96) kHz, and eQq'' = -2980(490) MHz from the free fit; first-order theory:
+Delta eQq = 1939.2(8) MHz, Delta C_I = 36.5(2.2) kHz, rms 0.79 MHz. The same theory applied to Hanes & Dahlstrom's
+R(127) 11-5 positions gives Delta eQq = 1926.2(3.0) MHz, Delta C_I = 28.2(1.5) kHz, rms 1.4 MHz. Kept here, not in
+data/hyperfine_parameters, because they are upper-minus-lower differences with the X state fixed. The paper also
+estimates the component widths at about 9 MHz (FWHM), with no power broadening over a factor 3 in intensity.
+"""
+
+[conditions]
+method = "2 m He-Ne laser with a 1 m gain tube Zeeman-broadened by 500 G, Fox-Smith mode selector, 90 cm intracavity 127I2 cell; inverted Lamb dips recorded in derivative form (0.5 MHz scan at 500 Hz); frequency scale from a 1 m evacuated spherical etalon with a cubic dispersion fit per spectrum"
+cell_length_mm = 900
+iodine_pressure_Pa = 1.3
+link_iodine_pressure_Pa = 4.0
+intracavity_power_mW = 100
+pressure_basis = "10 mTorr for Table I and about 30 mTorr for the link (p. 507-508)"

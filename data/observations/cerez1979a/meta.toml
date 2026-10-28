@@ -1,0 +1,59 @@
+id = "cerez1979a"
+citation = "P. Cérez and S. J. Bennett, \"Helium-neon laser stabilized by saturated absorption in iodine at 612 nm\", Appl. Opt. 18, 1079-1083 (1979), Table 1"
+source = "https://doi.org/10.1364/ao.18.001079 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1364/ao.18.001079"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 1081), "Hyperfine Structure of the R 47 9-2 Iodine 127 Line": the "Measured" column, positions of the
+21 components a-u of 127I2 R(47) 9-2 relative to component i, in MHz. Read digit by digit from a 300 dpi rendering
+of p. 1081 (the OCR layer drops decimal points and letters: "27752" is 277.52, "9" is g, "1" is l, and the j row
+has lost its letter). 20 rows (i itself is the reference). Method (pp. 1079, 1081): two He-Ne lasers at 612 nm with
+10 cm internal 127I2 cells; "the separations of the 21 peaks ... have been determined by measuring the beat
+frequency between the two lasers when they are locked to adjacent lines".
+
+Labels: the letters run down in frequency (a = +305.55 MHz, u = -606.76 MHz), as in the MEP 612 nm table
+(bipm2003d, x column: u = a1 ... o = a7 ... i = a13 ... a = a21), so letter number n (a = 0) is rank 21 - n:
+a = a21, b = a20, ..., i = a13, ..., o = a7, ..., u = a1. Every row is an interval to a13.
+
+The "Calculated" column (first-order diagonalization with Delta eQq = -1947 MHz and mu_G/I = 32.5 kHz, as printed)
+is kept in each row's note with obs - calc; it is not entered. Check: obs - calc is below 1 MHz in magnitude for
+every component except s (-1.58 MHz), as the text states.
+
+Model-free checks against held sets, all re-referenced to a13 (Cerez minus other, kHz): bipm2003d (MEP 612 nm
+Table 1) mean -21, rms 66, range -167 (a6) to +90 (a16); razet1991a rms 67; glaser1987a rms 68; dschao1980a rms 63;
+balling1999a rms 63 (-177 kHz on a3, which that set holds only from a 2f record corrected for its neighbours). The
+largest differences recur against every set (a6 -121 to -167, a8 -85 to -150, a7 -76 to -80, a5 -60 to -86 kHz),
+so they are this paper's. The ranks are unambiguous: neighbouring components are 10-200 MHz apart.
+
+Not entered: the calculated column; the absorption coefficient (7.3e-2 m-1 Pa-1 at 612 nm, 7.2e-3 m-1 Pa-1 per
+component), dipole moment and line strength (p. 1080); Figs. 2-5 (power and contrast against pressure, Allan
+deviation, modulation shift of component n, spectra of the frequency modulation).
+"""
+
+uncertainty = """
+None printed. 0.1 MHz is taken as 1 sigma for every row: the values are printed to 0.01 MHz, but the peaks were
+power broadened to about 7 MHz FWHM (pp. 1079, 1081), the lock point of component n moves by up to about 40 kHz with
+the modulation amplitude (Fig. 4), and the rows scatter by 63-68 kHz rms (largest 177 kHz) from five other held
+sets with the same intervals (see transcription). The text says the measured position of s (a3) "is affected
+by the proximity of components of the adjacent P 48 11-3 line"; against the held sets a3 is within 50 kHz, so it is
+given no extra allowance. One pair of lasers and one cell type, so one group.
+"""
+
+notes = """
+A source of the 612 nm hyperfine tables of the CIPM recommendations: the MEP 2001 R(47) 9-2 table (Quinn,
+Metrologia 40, 103 (2003), Table 39) cites this paper as ref. [156], and the 1983 table (Metrologia 19, 163 (1984),
+Table 5) as ref. [9]. bipm2003d (the MEP 612 nm document, a training set) does not yet declare it; the proposed
+declaration is a "mean" limited to 127I2 R(47) 9-2, as for glaser1987a there.
+
+The wavelength of the i component measured with the same kind of laser is bennett1979a. The earlier Bennett & Cérez
+1978 paper (Opt. Commun. 25, 343) shows the spectrum but prints no measured intervals.
+"""
+
+[conditions]
+method = "two He-Ne lasers at 612 nm (dispersion prism in the cavity) with 10 cm internal 127I2 cells, locked to adjacent hyperfine components; beat frequencies"
+cell_length_cm = 10
+pressure_note = "not stated for Table 1; Fig. 1 at 2.8 Pa, the stability measurements at about 2 Pa"
+linewidth_MHz_FWHM = 7

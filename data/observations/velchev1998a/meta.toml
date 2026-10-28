@@ -16,8 +16,8 @@ in that PDF, not text, so it was read visually from the extracted bitmap at nati
 "t" hyperfine component with the paper's own estimated accuracy in parentheses, both in MHz.
 
 Component identification. The paper labels components a-u following Gerstenkorn & Luc, as adopted by
-Sansonetti (1997); "t" is the component the authors calibrate. Section 4 states that all "t"
-components are red-shifted by approximately 483 MHz from the centre of gravity. Computing the
+Sansonetti (1997); "t" is the component the authors calibrate. Section 3 (p. 25) states that all "t"
+components are red-shifted by approximately 483 MHz from the center of gravity. Computing the
 hyperfine structure of four of these lines places that component at -482.9 and -482.3 MHz for odd J''
 (21 main components) and -482.1 and -479.1 MHz for even J'' (15 main components), i.e. rank 2 by
 frequency for odd J'' and rank 1 for even J''. Those are the ranks recorded here, as "t2" and "t1".
@@ -31,20 +31,23 @@ consistent; the stated uncertainty is 1.1 MHz either way.
 
 Not transcribed: the 1584 predicted "t" component positions the abstract refers to. Those were
 published only as supplementary data, which no longer exists (see data-we-cannot-get.md); they are
-predictions of the authors' own parametrisation rather than measurements, so they would not be fit
+predictions of the authors' own parametrization rather than measurements, so they would not be fit
 data in any case. Also not transcribed: previously published lines the paper included in its
 analysis but deliberately excluded from Table 1 (refs 7, 8, 9, 11, 18, 20).
 """
 
 uncertainty = """
 As printed, per row, in parentheses: the paper's estimated absolute accuracy in MHz, combining the
-measurement error with the uncertainty of the reference line used. Section 4 gives the ranges: under
-1.0 MHz for lines referenced to Sansonetti, and 1.5-4.5 MHz for lines calibrated for this paper.
-Treated here as standard (1 sigma) uncertainties.
+measurement error with the uncertainty of the reference line used (1.0-4.5 MHz in Table 1). Section 3
+(p. 25) gives under 1.0 MHz for Sansonetti's own lines, which entered the authors' fits but are not in
+Table 1, and 1.5-4.5 MHz for the lines calibrated in this paper. Treated here as standard (1 sigma)
+uncertainties. But the follow-up paper (Xu et al. 2000, p. 256) says of this one "in Ref. (3) we used 2 sigma
+for the uncertainty", so these may be twice the standard uncertainty (noted 2026-10-22 on checking the
+publisher PDF; halving them would change the fit weights, so it is left open).
 """
+
+notes = "Absolute frequencies, not intervals; each row is independent apart from the shared reference-line calibration, recorded in the group column."
 
 [conditions]
 cell = "sealed I2 cell at room temperature"
 method = "Doppler-free saturated absorption, etalon-calibrated against previously measured reference lines"
-
-notes = "Absolute frequencies, not intervals; each row is independent apart from the shared reference-line calibration, recorded in the group column."

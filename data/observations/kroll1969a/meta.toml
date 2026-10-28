@@ -1,0 +1,51 @@
+id = "kroll1969a"
+citation = "M. Kroll, \"Hyperfine structure in the visible molecular-iodine absorption spectrum\", Phys. Rev. Lett. 23, 631-633 (1969), Table I"
+source = "https://doi.org/10.1103/PhysRevLett.23.631 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1103/PhysRevLett.23.631"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 631), "Assignments of the observed transition J' = 128 <- J'' = 127", read from a 600 dpi render (the
+scan's native 612 dpi); the text layer drops the letter column and several F labels. The table prints, for the 14
+features a-n of the R(127) line of the 11-5 band (633 nm He-Ne laser) observed by G. R. Hanes and C. E. Dahlstrom
+(Appl. Phys. Lett. 14, 362 (1969), "ref. 2"; not held), their position relative to feature i (nu_obs), and the
+author's calculated eigenvalue lambda_127, F label and positions (quadrupole only; quadrupole plus a magnetic term).
+
+Entered: the 13 observed positions relative to i, as intervals to a13; group kroll1969a. The calculated columns are
+in each row's note. This set is a reprint: the primary (Hanes and Dahlstrom 1969) is not held, and this table is
+the only held copy of its numbers.
+
+Labels: Hanes and Dahlstrom's letters run down in frequency (a highest), as in the later 633 nm convention (hanes1971a,
+bipm2003a: letters a ... u = ranks a21 ... a1, i = a13). With 21 components for odd J'' the 14 observed are the 14 highest:
+a-n = a21-a8, i = a13. Checked model-free against bipm2003a's R(127) 11-5 intervals taken to a13: a-n there are
++299.9, 291.1, 283.0, 165.1, 152.3, 138.9, 125.7, 21.9, 0, -21.6, -130.0, -138.0, -153.8, -162.8 MHz, against
++297.3, 288.5, 280.7, 166.9, 153.6, 139.7, 126.3, 22.3, 0, -22.0, -129.3, -137.1, -152.3, -162.0 here: the same pattern
+rank for rank, differences -2.6 to +1.8 MHz (the outermost a-c read 0.8-0.9 % small).
+Not entered: the seven unobserved components the paper calculates (-261.9 ... -606.2 MHz) and Table II (eigenvalues
+of a model operator).
+
+Fitted constants (text, not rows): Delta eQq = eQq' - eQq'' = -958 +- 15 MHz (0.032 cm-1) and a magnetic constant K =
+500 +- 100 MHz in the excited state. Kroll and Innes 1970 (J. Mol. Spectrosc. 36, 295, footnote 2) correct the sign
+convention: in the usual notation the result reads Delta eQq = +1939 MHz and eQq' ~ -600 MHz.
+"""
+
+uncertainty = """
+1.5 MHz for every interval, assumed: neither paper as quoted here states the experimental error of the positions.
+Kroll says the quadrupole-only calculation misses h and j (obs - calc +12.0 and -12.4 MHz) by "about ten times the
+experimental error" and that with the magnetic term all lines but d and e (obs - calc +2.4, +1.8) agree "within the
+experimental error"; that brackets the error at about 1.2-2 MHz. The lines are saturated-absorption features about 2 MHz
+wide. The frequency scale of the 1969 measurement is common to all rows (group kroll1969a).
+"""
+
+notes = """
+The first hyperfine-resolved iodine saturated-absorption spectrum (Hanes and Dahlstrom 1969, 633 nm intracavity cell),
+historically the origin of the 633 nm standard's component lettering. The positions are superseded by every later
+633 nm measurement (hanes1971a's link, hanes1973a, landsberg1976a, bipm2003a and others). hanes1971a's meta quotes a
+refit of these positions (Delta eQq = 1926.2(3.0) MHz) by Hanes et al. 1971. Not in the catalog.
+"""
+
+[conditions]
+method = "saturated absorption (inverted Lamb dips) of 127I2 in the cavity of a 633 nm He-Ne laser (Hanes and Dahlstrom 1969), iodine vapor about 0.04 Torr; positions as reprinted by Kroll 1969"
+iodine_pressure_Pa = 5.3

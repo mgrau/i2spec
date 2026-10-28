@@ -1,0 +1,85 @@
+id = "inard1999"
+citation = "D. Inard, D. Cerny, M. Nota, R. Bacis, S. Churassy and V. Skorokhodov, \"E0g+ -> A1u and E0g+ -> B''1u laser-induced fluorescence in molecular iodine recorded by Fourier-transform spectroscopy\", Chem. Phys. 243, 305-321 (1999)"
+source = "https://doi.org/10.1016/s0301-0104(99)00077-4 (publisher PDF)"
+doi = "10.1016/s0301-0104(99)00077-4"
+retrieved = "2026-10-22"
+unit = "cm-1; A for distances; Cn in the units of their column names"
+state = "B''1u (1Piu) and A1u (3Piu), both to I(2P3/2) + I(2P3/2); the ion-pair E0g+ levels pumped"
+isotopologue = "127I2"
+files = ["table2_levels.csv", "table3_dunham_B1u.csv", "table4_rkr_B1u.csv", "table4_footnote_constants.csv", "table5_fcf_E_B1u.csv", "table6_longrange_B1u.csv", "table7_extrapolated_B1u.csv", "table8_longrange_coefficients.csv", "table1_D0u_populations.csv", "text_constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Every table (1-8) and the constants of the text and captions. Table 2 was parsed from the PDF text layer (born-digital: the minus sign is a
+glyph "y", parentheses "Z" and ".") and every row compared with 200 dpi renders; Tables 3-8 were typed from 200-300
+dpi renders and checked against the text layer.
+
+table2_levels.csv: Table 2, the per-level constants of the global fit of 1723 lines (rms 0.012 cm-1): E0g+ v' = 0, 1,
+3, 5, 7, 8, 11 (T, B, D, H); B''1u v = 0-20 (T, two B rows, D, H, L, M); A1u v = 3-20 and 22-34 (the same). T is the
+term value above X(v'' = 0, J'' = 0) of 127I2, with T[A1u(v = 9)] = 11536.910 cm-1 fixed at the value computed from
+Appadoo et al. 1996 (footnote a). Scaled columns keep the printed digits: B x 10, D x 10^D_exp, H x 10^H_exp and so
+on (E0g+: D x 1e8, H x 1e15; B''1u: D x 1e7, H x 1e11, L x 1e15, M x 1e19; A1u: D x 1e7, H x 1e12, L x 1e17,
+M x 1e22). Uncertainties are 2 SD; the printed "(n) in the last digits" is converted to the column's units
+(0.3583 (2100) -> 0.2100). Values without one were fixed in the fit. For E0g+ the B_row1_x10 column holds B x 10.
+
+The two B rows. The footnote says "first row Be x 10, second row Bf x 10". The text says the opposite: "The A1u
+(Be - Bf) are always positive" (Sect. 4) and "In the A1u state ... Bf < Be" (Sect. 6), and the Fig. 7 caption fits
+B''1u Be(v) - Bf(v) = [-19.8(3.6) + 1.96(30) v] x 1e-6 cm-1. Table 2 gives row1 - row2 negative at every A1u level
+(-2.3 to -15.8e-6 cm-1) and, for B''1u, +19.8 - 1.96 v (the Fig. 7 fit with the sign reversed, zero at v = 10.1).
+So either the footnote swaps the rows or the text and Fig. 7 swap the sign. The columns are therefore named row1 and
+row2, as printed, and not assigned to e and f here.
+
+table3_dunham_B1u.csv: Table 3, T(v) = C + sum_k Yk0 (v + 1/2)^k and B(v) = sum_k Yk1 (v + 1/2)^k for v = 0-20,
+C = 12237.693(30). Misprint, not corrected: Y50 is printed 0.4148671E-04 but must be E-05 (see the row's note).
+table4_rkr_B1u.csv: Table 4, RKR turning points v = 0-20, G above the B''1u minimum (it includes Y00 = -0.010).
+table4_footnote_constants.csv: Table 4 footnote (Y00, we, wexe, Be, alpha_e from v = 0-3; re; the inner-wall A).
+table5_fcf_E_B1u.csv: Table 5, E0g+(v') - B''1u(v'') Franck-Condon factors x 1e4, "*" marking observed bands, "-"
+as printed (the v'' = 0 label is missing in print).
+table6_longrange_B1u.csv: Table 6, fits I-V of V(R) = De - sum Cn/R^n (positive C attractive) and the near-
+dissociation expressions, plus the Fig. 10 caption.
+table7_extrapolated_B1u.csv: Table 7, v = 21-22 from the extrapolated curve.
+table8_longrange_coefficients.csv: Table 8, C5, C6 (theory) and C5, C6, C8 (measured) for X0g+, A'2u and B''1u.
+table1_D0u_populations.csv: Table 1, relative populations of D0u+ (vt, Jt) after E0g+(v' = 1, J' = 25) + I2
+collisions (error < 10 %), with Delta E = E(D) - E(E).
+text_constants.csv: Te, De and the other numbers of the abstract, Sects. 3-5 and the captions.
+
+Checks (model-free):
+- Te(B''1u) = C + 107.111 + Y00(B'') - Y00(X) = 12237.693 + 107.111 - 0.010 + 0.0101 = 12344.804 (Eq. 4);
+  De(B''1u) = De(X) - Te = 12547.335 - 12344.804 = 202.531 (Eq. 3); 202.53 - G(20) = 0.978, the abstract's distance
+  of v = 20 below the limit.
+- Table 3 with Y50 = 0.4148671E-05 reproduces Table 2 T(v) - C to 7 mK rms and Table 4 G(v) to 0.3 mK (with
+  Y00 = -0.010); the B polynomial reproduces the mean of the two B rows to 1e-5 to 9e-5 cm-1 (a smoothing fit).
+- re = 4.2648 A from Be = 0.0146070 and mu = 63.4522 u (footnote: 4.26475).
+- Fit II (De 202.53, C5 -0.49e5, C6 1.00e6, C8 0.40e8) at the Table 4 outer turning points gives V within 8-17 mK
+  of G(v) for v = 18-20 and the Table 7 G(v) of v = 21 and 22 at their Rmax to the printed digits (fit I gives
+  202.203 and 202.466); so Table 7 follows fit II, although the text names fit I.
+- Table 8, theory columns: Saute and Aubert-Frécon 1982 (held in data/theory/saute1982) with the sign reversed:
+  X0g+ (0.045, -2.11), 2u (-2.09, -1.95) and the 1u with C5 = +0.907, C6 = -1.78. This identifies Saute's 1u
+  (+0.907) as B''1u, so the other ground-limit 1u (-0.595, -2.01) is A1u.
+- Table 5: the starred bands are exactly the E levels of Table 2 (v' = 0, 1, 3, 5, 7, 11), except v' = 8, which has
+  none (its J' = 98, 107 lines are in the fit).
+
+Not entered: the pump-line positions in the captions of Figs. 3 and 5 (B-X P(25) 23-0 18146.04, R(32) 21-0 17941.03;
+E-B R(24) 1-23 23298.92, P(33) 7-21 24063.73 cm-1, figure annotations to 0.01 cm-1); Figs. 6-11 (digitized only
+in the text: Be - Bf fit of Fig. 7; Fig. 8 De = 202.6(1), C6 = 0.5(1)e6; Fig. 9 C6 = 0.45(5)e6, vD = 23.4(1)).
+The line list itself is not printed (1723 lines; Inard's 1997 thesis, ref. 35).
+"""
+
+uncertainty = "2 SD throughout, as printed (Table 2 footnote, Tables 6 and 8 footnotes; Table 4 footnote: statistical only). Values printed without one were fixed in the fit. Global fit rms 0.012 cm-1 at 0.150 cm-1 resolution; the absolute scale rests on A1u v = 9 fixed to Appadoo et al. 1996."
+
+notes = """
+data/other_states holds measured levels and constants of electronic states other than X and B (no loader reads
+it). data/b_levels holds B0u+ (and, in jewsbury1993, the c1g and H1u constants that perturb B v = 59), and
+data/theory holds calculations; neither fits measured A1u and B''1u levels.
+
+Why it matters here. B''1u(1Piu) is the 1u state that crosses B (data/theory/teichteil1994) and drives its
+gyroscopic predissociation; this paper gives its only experimental potential: RKR turning points v = 0-20, the
+extrapolated long range (fits I-III), Te = 12344.804(40), De = 202.53(4) cm-1 and re = 4.265 A. The held ab
+initio B''1u constants differ: data/theory/dejong1997 gives De = 0.032 eV (258 cm-1) and re = 4.031 A (its
+experimental column, from an older source: 0.022 eV and 4.2 A). The A1u levels v = 3-34 overlap Appadoo et al. 1996
+(catalog appadoo1996), to which they agree within 2 SD (Fig. 6). X-state numbers are reprints: De(X) =
+12547.335(18) cm-1 from Cerny et al. 1997 and X(0, 0) at 107.111(2) cm-1 above the X minimum (without Y00 =
+-0.010) from Gerstenkorn and Luc 1985, which give D0(X) = 12547.335 - 107.101 = 12440.234 cm-1 (derived here; the
+paper prints no D0).
+king1981's 127I2 E levels lie 0.64-1.44 cm-1 below these.
+"""

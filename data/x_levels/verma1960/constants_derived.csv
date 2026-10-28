@@ -1,0 +1,59 @@
+state,quantity,value,uncertainty,unit,source,note
+X,B_v c0 (Be),0.03734,,cm-1,"Eq. (1) (abstract) = Eq. (10)","B_v = c0 + c1 (v+1/2) + c2 (v+1/2)^2 + c3 (v+1/2)^3 + c4 (v+1/2)^4: averages of the series I, II and III solutions (Eqs. 7'-8''')"
+X,B_v c1 (-alpha_e),-0.0001208,,cm-1,"Eq. (1) = Eq. (10)",
+X,B_v c2 (gamma_e),0.444e-6,,cm-1,"Eq. (1) = Eq. (10)",
+X,B_v c3 (delta_e),-1.839e-8,,cm-1,"Eq. (1) = Eq. (10)",
+X,B_v c4 (phi_e),-0.057e-10,,cm-1,"Eq. (1) = Eq. (10)",
+X,D_v d0 (De),1.99e-9,,cm-1,"Eq. (2) (abstract) = Eq. (11)","D_v = d0 + d1 (v+1/2); E = B_v J(J+1) - D_v J^2(J+1)^2"
+X,D_v d1 (beta_e),1.236e-10,,cm-1,"Eq. (2) = Eq. (11)",
+X,dnu(v) series I a0,13.037,,cm-1,Eq. (4),"empirical doublet spacing of series I, dnu = a0 + a1 v + a2 v^2 + a3 v^3 + a4 v^4 (v = v''); Table I dnu_calc"
+X,dnu(v) series I a1,-0.0428,,cm-1,Eq. (4),
+X,dnu(v) series I a2,1.52e-4,,cm-1,Eq. (4),
+X,dnu(v) series I a3,-6.5e-6,,cm-1,Eq. (4),
+X,dnu(v) series I a4,-0.20e-8,,cm-1,Eq. (4),
+X,dnu(v) series II a0,6.932,,cm-1,Eq. (5),Table II dnu_calc
+X,dnu(v) series II a1,-2.25e-2,,cm-1,Eq. (5),
+X,dnu(v) series II a2,0.756e-4,,cm-1,Eq. (5),
+X,dnu(v) series II a3,-3.43e-6,,cm-1,Eq. (5),"the text layer reads the exponent as -11; the scan prints 10^-6"
+X,dnu(v) series III a0,7.380,,cm-1,Eq. (6),Table III dnu_calc
+X,dnu(v) series III a1,-2.40e-2,,cm-1,Eq. (6),
+X,dnu(v) series III a2,0.81e-4,,cm-1,Eq. (6),
+X,dnu(v) series III a3,-3.60e-6,,cm-1,Eq. (6),
+X,dnu(v) series IVa a0,3.355,,cm-1,Eq. (12),"curve of Fig. 6, computed from Eqs. (10)-(11); no dnu_calc column in Table IV"
+X,dnu(v) series IVa a1,-1.083e-2,,cm-1,Eq. (12),
+X,dnu(v) series IVa a2,3.751e-5,,cm-1,Eq. (12),
+X,dnu(v) series IVa a3,-1.641e-6,,cm-1,Eq. (12),
+X,dnu(v) series IVb a0,3.805,,cm-1,Eq. (13),curve of Fig. 7
+X,dnu(v) series IVb a1,-1.226e-2,,cm-1,Eq. (13),
+X,dnu(v) series IVb a2,4.251e-5,,cm-1,Eq. (13),
+X,dnu(v) series IVb a3,-1.859e-6,,cm-1,Eq. (13),
+X,(4J'+2)[Be - (2J'^2+2J'+2)De] series I,13.0584,,cm-1,Eq. (7),J' = 87
+X,(4J'+2)[alpha_e + (2J'^2+2J'+2)beta_e] series I,0.042937,,cm-1,Eq. (8),
+X,(4J'+2) gamma_e series I,1.61947e-4,,cm-1,Eq. (9),
+X,(4J'+2) delta_e series I,6.496e-6,,cm-1,Eq. (9),
+X,(4J'+2) phi_e series I,0.20e-8,,cm-1,Eq. (9),
+X,Be - 15314 De (series I),0.037309797,,cm-1,Eq. (7'),15314 = 2J'^2+2J'+2 for J' = 87; 13.0584/350 = 0.0373097
+X,alpha_e + 15314 beta_e (series I),0.000122677,,cm-1,Eq. (8'),0.042937/350 = 0.00012268
+X,Be - 4326 De (series II),0.03732933,,cm-1,Eq. (7''),J' = 46
+X,alpha_e + 4326 beta_e (series II),0.000121239,,cm-1,Eq. (8''),
+X,Be - 4902 De (series III),0.03733362,,cm-1,Eq. (7'''),J' = 49
+X,alpha_e + 4902 beta_e (series III),0.000121483,,cm-1,Eq. (8'''),
+X,Be (input),0.037364,,cm-1,p. 743,"Rank and Baldwin, J. Chem. Phys. 19, 1210 (1951) (reprint): gives 4J'+2 = 349.5, J' = 86.9, so J' = 87 for series I"
+X,J' series I,87,,,p. 743,"R(86), P(88); upper level v_(n+4)' (Fig. 2 relations)"
+X,J' series II,46,,,p. 743,"R(45), P(47); upper level v_(n+1)'"
+X,J' series III,49,,,p. 743,"R(48), P(50); upper level v_(n+1)'"
+X,J' series IVa,22,,,p. 743,"R(21), P(23); upper level v_n'"
+X,J' series IVb,25,,,p. 743,"R(24), P(26); upper level v_n'"
+upper,omega_n',43.13,,cm-1,p. 744,"upper state of the resonance series, vibrational numbering unknown (n); from the three excited levels v_n', v_(n+1)', v_(n+4)' (the abstract prints v_(n+0)', a misprint)"
+upper,(omega x)_n',0.19,,cm-1,p. 744,
+upper,B_n',0.01243,,cm-1,p. 744,"= B0''/3 from 48 B0'' = 144 B_n' (p. 740)"
+X,omega_e,214.52,,cm-1,p. 746,"from the Table VI Delta G values; Rank and Baldwin's 214.248 is a miscalculation from their own equation and should be 214.518 (p. 746, footnote 8)"
+X,convergence limit of series IVb,42201.41,,cm-1,p. 744 and Table V,"the last Table V member, (115); Table V lines are NO gamma (0,1), not I2 (Verma and Le Roy 1974)"
+X,B_v of the first three Table V members,0.00696; 0.00588; 0.00490,,cm-1,p. 744,"(R - P)/102 of the members assigned v'' = 98, 99, 100; NO lines (Verma and Le Roy 1974)"
+X,F''(24) at v'' = 0,22.4,,cm-1,p. 744,used in the D0 sum
+X,exciting line,54632.9,,cm-1,p. 744,"I atomic line 1830.4 A; printed 54 632.93 in Tables I-III"
+X,D0 upper limit,12453.9,,cm-1,p. 744,"= 54632.9 - 42201.4 + 22.4"
+X,D0 lower limit,12451.0,,cm-1,p. 744,"upper limit minus 2.94 cm-1, the J = 24 rotational energy for B_v = 0.00490"
+X,D0,12452.5,1.5,cm-1,"abstract, p. 744","half range of the two limits; invalidated by Verma and Le Roy 1974 (it rests on the convergence limit of the NO lines). The sum of Table VI, G(115) - G(0), is 12 451.04 cm-1, the lower limit"
+X,D0 (previous value quoted),12439,8,cm-1,"abstract, p. 744","earlier value from the convergence limit of the visible absorption bands (W. G. Brown, Phys. Rev. 38, 709 (1931)); a reprint"
+X,van der Waals constant c (C6),3.7e6,,cm-1 A^6,"abstract, p. 747","the RKR curve follows c/r^6 between r = 4.6 and 6.4 A, fitted within +-3 cm-1; outer points above v'' = 84 rest on the NO lines"

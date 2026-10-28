@@ -1,0 +1,13 @@
+source_line,source_A,line,lambda_A,note
+Ne I,6328.17,P(33) 6-3,6328.19,"air wavelength; Fig. 1: the mismatch of 0.02 A prevents single-mode excitation"
+Ne I,6328.17,R(39) 6-3,6328.13,
+Ne I,6328.17,P(119) 9-4,6328.11,
+Ar II,5145.36,P(12) 43-0,5145.422,"the J of this paper's 43-0 assignment; the modern assignment of the 5145 A excitation is P(13) and R(15) 43-0 (see notes)"
+Ar II,5145.36,R(14) 43-0,5145.426,
+Ar II,5145.36,P(64) 45-0,5145.38,
+Ar II,5145.36,R(18) 49-1,5145.39,
+Ar II,5145.36,P(39) 50-1,5145.30,
+Cd I,5085.82,R(31) 50-0,5085.68,"calculated from the revised constants (no analysis in this region, p. 205)"
+Cd I,5085.82,P(30) 50-0,5085.84,
+Cd I,5085.82,P(45) 51-0,5085.73,
+Cd I,5085.82,R(64) 53-0,5085.85,

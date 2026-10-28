@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(96) 0-14,a10,frequency,383617264.515,0.049,,,bodermann1998a_wavelength,"Table 2: 383 617 264 515(49) kHz, 781.488 441 03(10) nm; includes the -42 kHz cell correction of the wavelength"
+127I2 P(166) 0-14,a1,frequency,379431381.762,0.048,,,bodermann1998a_wavelength,"Table 2: 379 431 381 762(48) kHz, 790.109 812 76(10) nm; includes the -42 kHz cell correction of the wavelength"
+127I2 R(96) 0-15,a10,frequency,377796992.463,0.048,,,bodermann1998a_wavelength,"Table 2: 377 796 992 463(48) kHz, 793.527 910 44(10) nm; includes the -42 kHz cell correction of the wavelength"
+127I2 R(96) 0-15,a1,interval,-587.968,0.020,,a10,bodermann1998a_beats,"Table 3: -587 968(20) kHz from R(96) 0-15 a10"
+127I2 R(96) 0-15,a15,interval,294.116,0.030,,a10,bodermann1998a_beats,"Table 3: 294 116(30) kHz from R(96) 0-15 a10"
+127I2 P(228) 1-14,b10,interval,-546.041,0.063,127I2 R(96) 0-15,a10,bodermann1998a_beats,"Table 3: -546 041(63) kHz from R(96) 0-15 a10"
+127I2 P(166) 0-14,a15,interval,882.176,0.030,,a1,bodermann1998a_beats,"Table 3: 882 176(30) kHz from P(166) 0-14 a1"
+127I2 R(19) 0-15,b2,interval,159.564,0.040,127I2 P(166) 0-14,a1,bodermann1998a_beats,"Table 3: 159 564(40) kHz from P(166) 0-14 a1"
+127I2 R(19) 0-15,b15,interval,826.333,0.045,127I2 P(166) 0-14,a1,bodermann1998a_beats,"Table 3: 826 333(45) kHz from P(166) 0-14 a1"
+127I2 R(96) 0-14,a1,interval,-588.224,0.009,,a10,bodermann1998a_beats,"Table 3: -588 224(9) kHz from R(96) 0-14 a10"
+127I2 R(96) 0-14,a8,interval,-142.721,0.011,,a10,bodermann1998a_beats,"Table 3: -142 721(11) kHz from R(96) 0-14 a10"
+127I2 R(96) 0-14,a15,interval,294.249,0.011,,a10,bodermann1998a_beats,"Table 3: 294 249(11) kHz from R(96) 0-14 a10"

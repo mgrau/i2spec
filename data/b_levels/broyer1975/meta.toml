@@ -1,0 +1,87 @@
+id = "broyer1975"
+citation = "M. Broyer, J. Vigué and J. C. Lehmann, \"Direct evidence of the natural predissociation of the I2 B state through systematic measurements of lifetimes\", J. Chem. Phys. 63, 5428-5431 (1975)"
+source = "https://doi.org/10.1063/1.431275 (publisher PDF: a 300 dpi scan with a text layer)"
+doi = "10.1063/1.431275"
+retrieved = "2026-10-23"
+unit = "ns (tau0); 1e6 s-1 (1/tau0, Gamma_rad); s-1 (k_v); A^2 (sigma0)"
+state = "B"
+isotopologue = "127I2"
+files = ["table1_lifetimes.csv", "table2_rates.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I and II (pp. 5429-5430), every row and column, read from 300 dpi renders and checked against the text layer
+(which is right except for the +- signs and the column headers).
+
+table1_lifetimes.csv: Table I, "The whole set of results. For every studied level defined by its vibrational and
+rotational quantum numbers v', J', we give the lifetime tau0, its inverse 1/tau0, and the collision cross section
+for the destruction of the population sigma(0)": 28 levels, v' = 9-20, J' = 8-126 ("about 30 individual vibrational
+rotational levels", p. 5428). tau0 is the lifetime extrapolated to zero iodine pressure (4-150 mTorr), sigma(0) the
+I2-I2 cross section from the slope of the same Stern-Volmer plot (Fig. 3). Values and +- as printed (the v' printed
+once per group is repeated on every row). Misprint, not corrected: v' = 9, J' = 33 and 39 print the error of 1/tau0 as
+0.9 (tau0 errors of 30 ns imply 0.085 and 0.093, so 0.09 is meant).
+
+table2_rates.csv: Table II, "the values of Gamma_rad deduced from this work, those obtained by the method of Ref. 3,
+and, finally, those of Tellinghuisen. The same comparison is made for k_v'": one row per v' and column group (method
+= decay, orientation or Tellinghuisen), with the footnotes in source: a = Ref. 3 (Vigué, Broyer and Lehmann, J. Chem.
+Phys. 62, 4941 (1975)), b = this work (Sect. IV), c = Refs. 4 and 5 (Broyer, Vigué and Lehmann, J. Phys. (Paris) 36,
+235 (1975); Paisner and Wallenstein, J. Chem. Phys. 61, 4317 (1974)), d = Ref. 1 (Tellinghuisen, J. Chem. Phys. 57,
+2397 (1972), predictions). Entries printed without a footnote in the orientation columns (Gamma_rad at v' = 6, 21, 40;
+k_18 = 13 +- 5, which the text attributes to Ref. 3) are marked in the note. k_v_limit holds the printed "<" (v' = 18,
+"< 10") and "~" (Tellinghuisen's k_v).
+
+The paper's decay law: 1/tau0 = Gamma_rad + Gamma_pred with, at zero field, Gamma_pred = k_v' J'(J'+1) (natural, gyroscopic
+predissociation through the 1u state); for 9 <= v' <= 13 the slope of 1/tau0 against J'(J'+1) gives k_v' and the
+intercept Gamma_rad (Fig. 4).
+
+Checks (model-free):
+- 1/tau0 = 1000/tau0(ns) to the printed digits in all 28 rows.
+- Straight lines through Table I: v' = 10, 12, 13 give Gamma_rad = 1.41, 0.86, 0.79 (1e6 s-1) and k_v = 95, 40, 15 s-1
+  (printed 1.4, 0.86, 0.79 and 95, 39, 13); v' = 11 without J' = 112 and 126 (the two points Fig. 4 shows off the line)
+  gives 1.08 and 66 (printed 1.09 and 67); v' = 9 gives 1.51 and 157 against the printed 1.6 +- 0.08 and 130 +- 10
+  (Fig. 4 draws the v' = 9 line from 1.6).
+- Sect. IV: delta = 0.38 +- 0.05 for v' = 11, J' = 128 gives k11 J'(J'+1) = (0.8 +- 0.1) Gamma_rad; with 1/tau0 =
+  (2.5 +- 0.2)e6 s-1 this is k11 = 68 +- 10 s-1 and Gamma_rad = 1.37 +- 0.2, the "b" row of Table II.
+
+Not entered: Figs. 2-3 (decay curve and pressure plot of v' = 18, J' = 104), Fig. 4 (the plot of Table I for v' =
+9-13), Figs. 5-6 (Gamma_rad and k_v' against the vibrational energy, rough interpolations through Tables I-II and Ref.
+3). Shotton and Chapman's tau0 = 410 ns for the v' = 11 level excited by the He-Ne line (Ref. 10) is quoted in the text
+only.
+"""
+
+uncertainty = "As printed, +- with the convention not stated. Experiment: N2-laser-pumped dye laser (7 ns pulses, 1 GHz width with the intracavity etalon), tuned to +-0.2 cm-1 onto computed B-X lines (constants of Singh and Tellinghuisen 1973 for B, Le Roy 1970 for X); the excited level identified from the fluorescence spectrum with a monochromator of resolving power 10 000 (J' to 10 %, 'assigned without ambiguity'); decays recorded with 20 ns electronics response; each lifetime extrapolated to zero pressure. The Hanle signal of v' = 62, J' = 27 (tau0 about 14 +- 3 us, Ref. 4) checked the cell for foreign gases."
+
+notes = """
+Why b_levels. data/ has no lifetime or predissociation set: a search of data/ for lifetime, predissociation and
+gyroscopic finds only mentions (data/other_states/inard1999 on the B''1u state that drives the gyroscopic
+predissociation, data/theory/chang1967, the catalog entries) and no tabulated lifetimes, and no loader or code reads
+such data. Lifetimes, radiative rates and the predissociation constant k_v' are properties of individual B levels
+(v', J'), as are the term values and constants of the other b_levels sets, so this set is a b_levels set. No loader
+reads data/b_levels.
+
+What the paper is. The first systematic level-by-level lifetime measurements in I2 B showing the J'(J'+1) law of the
+natural (gyroscopic) predissociation, with k_v' about ten times smaller than Tellinghuisen's 1972 predictions but of
+the same shape against v', and Gamma_rad varying strongly with v' (maxima at very small v' and near v' = 25, against
+the slow decrease assumed by Tellinghuisen). The decay-method k11 agrees with the magnetic-field orientation method of
+Ref. 3, which the authors take as further proof that one 1u state causes both the magnetic and the natural
+predissociation. The v' = 11 points at J' = 112 and 126 and the Gamma_rad of the two methods at v' = 11 (1.09 against
+1.37e6 s-1) suggest a slight J' dependence of Gamma_rad when it varies strongly with v' (p. 5430); for v' = 18 no J'
+dependence appears (k18 <= 10 s-1), perhaps by a compensating J' dependence of Gamma_rad.
+
+Use. Natural widths of B levels: Gamma_nat/(2 pi) = (1/tau0)/(2 pi), e.g. 1.12e6 s-1 -> 0.18 MHz at v' = 20, J' = 40,
+2.56e6 s-1 -> 0.41 MHz at v' = 11, J' = 126 (computed here). These are zero-pressure, zero-field values; the hyperfine
+predissociation (Broyer, Vigué and Lehmann 1976, catalog broyer1976) is not separated.
+"""
+
+[columns]
+table1_lifetimes = """
+isotopologue, v, J: the B level (v', J'). tau0_ns, tau0_unc_ns: zero-pressure lifetime and its error, ns.
+inv_tau0_1e6_s, inv_tau0_unc_1e6_s: 1/tau0, 1e6 s-1, as printed. sigma0_A2, sigma0_unc_A2: the I2-I2 cross section for
+the destruction of the population, A^2. note: misprints and figure references.
+"""
+table2_rates = """
+isotopologue, v: the B level v'. method: decay (this work, Table I), orientation (orientation by predissociation:
+Ref. 3, this work's Sect. IV, and Refs. 4-5 for some Gamma_rad), Tellinghuisen (Ref. 1, predictions).
+Gamma_rad_1e6_s, Gamma_rad_unc_1e6_s: radiative decay rate, 1e6 s-1. k_v_s, k_v_unc_s: natural predissociation constant
+k_v' in Gamma_pred = k_v' J'(J'+1), s-1. k_v_limit: "<" or "~" as printed. source: footnote reference. note.
+"""

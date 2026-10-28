@@ -1,0 +1,49 @@
+id = "tellinghuisen1997"
+citation = "J. Tellinghuisen, \"The electronic transition moment function for the B0u+(3Pi) <-> X 1Sigmag+ transition in I2\", J. Chem. Phys. 106, 1305-1308 (1997), Eq. (11) and text"
+source = "https://doi.org/10.1063/1.473971 (publisher PDF, typeset text with figure images)"
+doi = "10.1063/1.473971"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:tellinghuisen1997"
+unit = "D^2 and A (mu_e^2 = c1 exp[-c2 (R - c3)^2] R^-2 with c1 in D^2 A^2, c2 in A^-2, c3 in A)"
+state = "B-X"
+isotopologue = "127I2"
+files = ["moment_function.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Eq. (11) and its coefficients (p. 1307), the peak values of fits A and B (p. 1307) and the abstract, read from the text
+layer and checked against a 300 dpi render of p. 1307 (the text layer garbles +- as "6" and = as "5").
+
+moment_function.csv (6 rows): fit C, mu_e^2 = c1 exp[-c2 (R - c3)^2] R^-2 with c1 = 21.5 +- 2.1, c2 = 1.73 +- 0.37,
+c3 = 3.49 +- 0.12 ("units D^2 and A"), peak 1.85 D^2 near 3.30 A; and the peak heights of fits A (A_T data alone,
+quartic in R, 3.3(8) D^2) and B (A_T plus the absorption points of Tellinghuisen 1982, 1.85(16) D^2), whose
+coefficients are not printed.
+
+What the paper measures: nothing new. It inverts the total radiative decay rates A_T(v') of Vigue, Broyer and Lehmann
+(J. Phys. France 42, 961 (1981); not held) with the sum rule A_T = (64 pi^4/3h) <v'|nu^3(R) mu_e^2(R)|v'> evaluated
+classically, nu(R) the B-X difference potential, adding the Table III absorption points of tellinghuisen1982 in fits B
+and C. The A_T values are shown only in Fig. 2 and are not printed. Figs. 1-4 (literature functions, decay rates, error
+bands) are plots only.
+
+Checks (model-free): with the printed c1, c2, c3 the function peaks at R = 3.31 A with 1.855 D^2 (printed 1.85 near
+3.30 A), and gives 1.00 D^2 at 2.70 A (the text: "rises from 1.0 D^2 in the absorption region (R ~ 2.7 A)") and
+3.5e-4 x the peak at 5.5 A ("declines by three orders of magnitude as R increases to 5.5 A").
+"""
+
+uncertainty = """
+c1, c2, c3: 1 sigma from the least-squares fit (inverse-Hessian method). The paper stresses model error: fits of
+comparable variance give maxima within 0.1 D^2 and 0.1 A, but fit A's peak (3.3(8) D^2) shows how weakly the decay
+rates constrain the 3-5 A region. The paper notes A_T values are "seldom known to better than ~3 %"; those of Ref. 7 (Brewer and Tellinghuisen 1972) were estimated at about 20 %.
+"""
+
+notes = """
+Same functional form as Tellinghuisen 2011 (src/i2spec/intensity.py, mu_tellinghuisen2011: c1 = 21.5, c2 = 1.18,
+c3 = 3.65 in these units). This 1997 fit has the same c1 but a narrower Gaussian (c2 = 1.73) centered at shorter R
+(3.49 A); the 2011 analysis of absorption spectra superseded it. Range of validity: the absorption points (2.55-2.82
+A) and the radiative decay rates (sensitive mainly near 2.9 and 5.6 A); Brewer and Tellinghuisen 1972, Koffend et al.
+1979 (koffend1979), Bhale et al. 1985 (bhale1985), Lamrini et al. 1994 and Kirillov 1983 are compared in Fig. 4.
+Radzykewycz (thesis 1996, quoted) observed fluorescence to R = 3.25 A peaking at 1.6 D^2 near 3.0 A.
+"""
+
+[columns]
+moment_function = "fit (A, B or C as in the paper), form, parameter, value, uncertainty (1 sigma), unit, note."

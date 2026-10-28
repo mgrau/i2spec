@@ -1,0 +1,9 @@
+isotopologue,method,n_assignments,v_range,J_range,note
+127I2,3P1C,188,51-102,6-139,
+127I2,3P2C,130,52-65,2-98,
+127I2,3P2C,117,78-86,0-118,
+129I2,3P1C,115,52-96,8-145,
+129I2,3P2C,23,57-62,0-93,
+total,3P1C,303,,,printed total; 188 + 115
+total,3P2C,270,,,printed total; 130 + 117 + 23
+total,all,573,,,printed: 303 + 270 = 573

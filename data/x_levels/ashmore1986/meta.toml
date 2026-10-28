@@ -1,0 +1,99 @@
+id = "ashmore1986"
+citation = "J. G. Ashmore and J. Tellinghuisen, \"Combined polynomial and near-dissociation representations for diatomic spectral data: Cl2(X) and I2(X)\", J. Mol. Spectrosc. 119, 68-82 (1986), Table II"
+source = "https://doi.org/10.1016/0022-2852(86)90202-x (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(86)90202-x"
+retrieved = "2026-10-23"
+unit = "cm-1"
+isotopologue = "127I2"
+state = "X"
+files = ["constants.csv", "upper_levels.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table II, "Spectroscopic parameters (cm-1) for the X state of 127I2" (p. 79), every entry, read from a 300 dpi
+render with 2x zoomed crops and checked against the OCR text layer (which drops exponents and signs, e.g.
+"I.596" for 1.598 and "lo@" for 10^-6). The forms are Eqs. (12) and (13) (p. 72), read from the render:
+
+  v <= 85 (polynomial):  G_v = sum_{i=1..11} c_i (v + 1/2)^i,   B_v = sum_{i=0..6} c_i (v + 1/2)^i
+  v > 85 (near-dissociation expansion, NDE, for a -C6/R^6 long range):
+                         G_v = De - X0 (vD - v)^3 F_G,           F_G = 1 + sum_{i=1..5} a_i (vD - v)^i
+                         B_v = X1 (vD - v) F_B,                  F_B = exp(sum_{i=1..4} a_i (vD - v)^i)
+
+with the switchover at v_s = 85 ("For the final MXR fit tabulated below, we have adopted v_s = 85", p. 78) and G_v
+and B_v continuous with continuous first derivatives there (exact Lagrange-multiplier constraints). G_v has no
+c0: it is measured from the X potential minimum (Y00 not separated). The table labels the dissociation energy
+"De" (script D in the text); vD is printed once, in the G_v column, and serves both expansions.
+
+constants.csv: one row per printed parameter. uncertainty: footnote a, "Where given, figures in parentheses are the
+least-squares standard errors in the last digits", converted to the parameter's units (214.52429 (188) -> 0.00188;
+3.73684 (33) x 10^-2 -> 3.3e-6). fixed = yes for footnote b, "Quantities held fixed in fit, based on Ref. (27)
+(see text)": X0, X1 and De. Footnote a also says "D_v and H_v are fixed as in Ref. (16)" (Tellinghuisen, McKeever
+and Sur 1980); they are not printed.
+
+upper_levels.csv: the "UPPER STATE" rows of Table II: the fitted energies of the five emitting D 0u+ (ion-pair)
+levels (J' = 87, 46, 49, 22, 25) of the D -> X fluorescence excited at 1830 A, with their standard errors. They
+are free parameters of the same fit (one per fluorescence series), on the energy scale of the polynomial levels
+(above the X minimum). The table gives no v'.
+
+Checks (model-free):
+- Continuity at v_s = 85 from the printed digits: G_v 12173.4495 (polynomial) and 12173.4514 (NDE), dG/dv 39.8568 and
+  39.8564; B_v 0.0182710 and 0.0182727, dB/dv -4.8819e-4 and -4.8830e-4. The constraints make these equal before
+  rounding. At v = 85 the terms of the G polynomial cancel heavily (c8 to c11 contribute +35 526, -56 648, +40 083
+  and -10 710 cm-1), so the printed set holds together to 2 mK only through the authors' round-and-refit procedure,
+  and any misread digit, sign or exponent would break the continuity by far more than shown.
+- Against data/x_levels/martin1986 (and martin1983 for v = 109), G_v - G_0 minus Martin's G: -0.002 (v = 8), -0.017
+  (20), +0.05 to +0.12 (40-84), -0.05 to +0.04 (85-95), +0.54 (99), +0.86 (100), +2.4 to +2.5 (104-105), +1.5 cm-1
+  (109). This reproduces the solid curve of Fig. 5 ("present value minus the FT value", about +0.07 at v = 70, +0.11
+  at 82, -0.04 at 87, -0.07 at 94 on its x10 scale, +2.6 near v = 105). The text (p. 80) says the predicted G_v "are in
+  error by as much as -2 cm-1"; the figure, the numbers above and the smaller vD all give the opposite sign
+  (these G_v lie above Martin's). B_v: within 1.5e-5 cm-1 of Martin's up to v = 95, then 0.0002-0.0022 cm-1 below at
+  v = 99-109 ("For B_v the predictions are even poorer").
+"""
+
+uncertainty = "As printed: least-squares standard errors (footnote a) for c1, c2 of G_v and c0, c1 of B_v only. The paper does not tabulate the errors of the high-order parameters, which are 'generally 5-10%' and 'useless without the rest of the variance-covariance matrix' (p. 75, for Cl2; the same procedure for I2); X0, X1 and De are fixed. The input data are the D -> X fluorescence measurements of Tellinghuisen, McKeever and Sur 1980 (about 0.1 cm-1 absolute, v'' up to 99), with heavily weighted artificial series from absorption constants at low v. The authors find those data within 0.1 cm-1 of Martin et al.'s FTS levels, 'with slight systematic errors in some regions', and attribute part of the high-v wiggles of the NDE to them."
+
+notes = """
+Dissociation energy and long range (the numbers asked for in a check of derived constants):
+- De(X) = 12547.19 cm-1 above the X minimum, fixed in the fit ("based on Ref. (27)", Martin et al. 1983,
+  data/x_levels/martin1983). It is not a result of this paper.
+- D0(X) is not printed. De - G_0 with G_0 = G_v(v = 0) = 107.1096 cm-1 from the Table II polynomial gives D0(X) =
+  12440.080 cm-1 above X(v = 0, J = 0) (derived here). It equals Martin et al. 1983's D0 = 12440.083(145) by
+  construction (their D0 and zero-point energy behind the fixed De), so it is no independent determination.
+- vD = 111.786 (fitted, no error printed), the non-integral v at dissociation. The text (p. 80): "our fitted vD is
+  2-3 quanta smaller than indicated by analysis of the data at still higher v (27)" (martin1983: vD = 113.93(17),
+  n = 6.09(11)); the extrapolation from v = 99 to the limit (50 cm-1) misses Martin's levels by up to 2.5 cm-1 (G)
+  and 0.002 cm-1 (B), see Checks.
+- X0 = 0.0111 (G) and X1 = 7.65e-4 (B), fixed. The text says the final fit adopts "the theoretical X0 and X1 values"
+  (Ref. 30, Saute and Aubert-Frécon 1982, data/theory/saute1982) after finding equal fits with X0, X1 from the observed
+  near-dissociation behavior (Ref. 27); footnote b names Ref. 27. With the Le Roy-Bernstein relation (n = 6, mu =
+  63.452 u; computed here), X0 = 0.0111 corresponds to C6 = 2.0e6 cm-1 A^6 (1.98-2.02e6 within the rounding of X0),
+  near the theoretical 2.11e6 of saute1982 (X0 = 0.0108) and above Martin et al. 1986's fitted 1.40(10)e6 (X0 = 0.0133).
+- Low-v constants: we = c1 = 214.52429(188), wexe = -c2 = 0.609818(803), Be = c0 = 0.0373684(33), alpha_e = -c1(B) =
+  1.1449(39)e-4 cm-1.
+
+What the paper is. A test of "mixed representations" (MXR) on two data sets that sample nearly the whole X well,
+not new measurements. For I2 it refits the D -> X fluorescence data analyzed earlier in the same laboratory (Ref. 16)
+and uses Martin et al.'s FTS results (Refs. 27, 29) only to judge consistency and extrapolation. Fit facts from the
+text: five more parameters than the earlier polynomial analysis (including vD), 20 % lower variance, residuals above
+0.1 cm-1 down from 11 to 3; the switchover point v_s was varied with no clear optimum; ten NDE parameters are needed
+for v = 86-99, an outcome the authors do not trace to the ~0.1 cm-1 systematic errors of the data (a "corrected" data
+set gave the same).
+
+Cl2 (not entered: no iodine content). Table I, 35Cl2 X state from the VUV resonance fluorescence of Douglas and Hoy
+1975 (four excited levels, v'' up to 59, within 16 cm-1 of dissociation): polynomial G_v (c1 559.7548(39), c2
+-2.69878(98), c3 = 0, to c10) and B_v (c0 0.243964(28), to c7) for v <= 50, a mixed D_v and NDE H_v, L_v; vD = 63.273,
+X0 = 0.153 and X1 = 0.0106 fixed from the theoretical C6 = 5.021e5 A^6 cm-1 of Saute, Bussery and Aubert-Frécon 1984,
+De = 20276.49 cm-1 fixed at "the accepted value" (Douglas and Hoy: D0 = 19997.28 cm-1), and the four upper-state levels J' = 10, 14, 20, 28 (73655.682(14),
+73667.599(13), 74374.981(14), 74447.111(23) cm-1). Figs. 1-4 are Cl2 plots.
+Tellinghuisen, McKeever and Sur 1980 is held as data/x_levels/tellinghuisen1980; upper_levels.csv here is a refit of
+its Table VIII (0.001-0.028 cm-1 apart).
+"""
+
+[columns]
+constants = """
+function: G (G_v) or B (B_v). representation: polynomial (v <= 85) or NDE (v > 85), see transcription.
+parameter: c_i, vD, X0, X1, a_i or De as printed (the table writes X for X0 and X1).
+value: cm-1 (vD dimensionless). uncertainty: printed standard error in the parameter's units, empty where none
+printed. fixed: yes where footnote b marks the parameter as held fixed. note: definitions.
+"""
+upper_levels = "J_upper: J' of the emitting D 0u+ level. E_cm1, E_unc: its fitted energy above the X minimum and standard error. note."

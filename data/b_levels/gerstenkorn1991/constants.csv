@@ -1,0 +1,25 @@
+isotopologue,state,quantity,value,uncertainty,unit,source,note
+127I2,X,G0,107.101,,cm-1,Table 3,"zero-point energy G0'' of X, above the X potential minimum; includes Y00'' = -0.010"
+127I2,B,G0,62.620,,cm-1,Table 3,"zero-point energy G0' of B, above the B potential minimum; includes Y00' = -0.026; the first digit carries a speck in the scan"
+127I2,B,T0,15724.587,,cm-1,Table 3,"B(v' = 0, J' = 0) above X(v'' = 0, J'' = 0): Te + G0' - G0''"
+127I2,X,D0,12440.239,,cm-1,Table 3,"X dissociation energy from X(v'' = 0): De'' - G0''"
+127I2,B,D0,4318.629,,cm-1,Table 3,"B dissociation energy from B(v' = 0): De' - G0'"
+127I129I,X,G0,106.686,,cm-1,Table 3,
+127I129I,B,G0,62.378,,cm-1,Table 3,"as read; the last digit carries a smudge. D0' (De' - G0' = 4318.871), T0 (Te + G0' - G0'' = 15724.760) and the Table 1 coefficients (62.3774) all point to 62.377; not corrected"
+127I129I,B,T0,15724.759,,cm-1,Table 3,
+127I129I,X,D0,12440.654,,cm-1,Table 3,
+127I129I,B,D0,4318.872,,cm-1,Table 3,
+129I2,X,G0,106.268,,cm-1,Table 3,
+129I2,B,G0,62.134,,cm-1,Table 3,
+129I2,B,T0,15724.934,,cm-1,Table 3,
+129I2,X,D0,12441.072,,cm-1,Table 3,
+129I2,B,D0,4319.115,,cm-1,Table 3,
+all,B,De,4381.249,0.001,cm-1,Sect. 2,"B well depth De', from ref. 10 (Gerstenkorn, Luc and Amiot, J. Phys. 46, 355 (1985)); assumed the same for all three species; includes the second-order WKB (Kaiser) correction Y00'"
+all,X,De,12547.340,0.006,cm-1,Sect. 2,"X well depth De''; assumed the same for all three species; equals Te + De' - (2P1/2 - 2P3/2) = 12547.340"
+all,B,Te,15769.068,0.002,cm-1,Sect. 2,"B electronic term value, from ref. 1 (Gerstenkorn and Luc, J. Phys. 46, 867 (1985)); the same for all three species"
+all,atom,2P1/2-2P3/2,7602.977,0.002,cm-1,Sect. 2,"distance between the B and X potential asymptotes, the I atom spin-orbit splitting, from ref. 11 (Luc-Koenig, Morillon and Vergès, Physica 70, 175 (1973))"
+all,B,Y00,-0.026,,cm-1,Sect. 2,"second-order WKB (Kaiser) correction Y00', 'identical (to this accuracy) for these three isotopomers'"
+all,X,Y00,-0.010,,cm-1,Sect. 2,"Y00''"
+127I2,,mu,63.4522378,,u,Sect. 2,"reduced mass used for the isotope relations, from ref. 5 (Wapstra and Bos 1971)"
+127I129I,,mu,63.948454,,u,Sect. 2,
+129I2,,mu,64.452495,,u,Sect. 2,

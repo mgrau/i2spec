@@ -1,0 +1,105 @@
+id = "brand1993a"
+citation = "U. Brand, \"Frequency stabilization of a HeNe laser at 543.5 nm wavelength using frequency-modulation spectroscopy\", Opt. Commun. 100, 361-373 (1993), Table 2 and Sect. 7"
+source = "https://doi.org/10.1016/0030-4018(93)90598-y (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1016/0030-4018(93)90598-y"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+PTB, two internal-mirror He-Ne lasers at 543.5 nm ("C" and "D"), each locked by FM spectroscopy (10 MHz phase
+modulation, beta = 1; pump beam chopped and shifted +-40 MHz by an AOM) to an external 500 mm 127I2 cell at
+1.44 Pa. Read from 300 dpi renderings of pp. 369-372; the OCR layer loses minus signs and subscripts.
+
+Group brand1993a, Table 2 (p. 371), the "measured" column: one laser on a9 of R(12) 26-0, the other on each
+component in turn, 5000 s averages; R(12) 26-0 a6-a8, a10-a15 and R(106) 28-0 b1-b10, all from R(12) 26-0 a9,
+19 rows. The column is headed "f_m = f_a9 - f_ai", but the values are f_ai - f_a9 (a6, below a9, is -116.495;
+b10 - a9 = +679.420 as in the MEP), so the heading's sign is reversed and the values are entered as printed. The
+fitted column (A. Morinaga's fit, ref. [26]) and f_m - f_c are kept in each row's note; check: f_m - f_c equals the
+difference of the printed columns in all 19 rows. The fitted a6 is printed "116.492" without its minus sign (the
+difference -3 kHz requires -116.492).
+
+Groups brand1993a_544 and brand1993a_515, Sect. 7 (p. 370): in the PTB Michelson interferometer the laser on a9 was
+compared simultaneously with a He-Ne laser on R(127) 11-5 i (internal cell) and an Ar+ laser on P(13) 43-0 a3
+(external cell), the measurement the paper cites as its ref. [14] (Bönsch, Nicolaus & Brand, PTB annual report
+1991, not held):
+  lambda_515/lambda_633 = 0.813 081 295 86 x (1 +- 8e-11)
+  lambda_544/lambda_633 = 0.858 647 265 30 x (1 +- 8e-11)
+  lambda_544/lambda_515 = 1.056 041 099 06 x (1 +- 6e-11)
+Each of the first two is entered as an absolute frequency, f(i) / ratio, with f(i) = 473 612 214.712 MHz (CIPM
+2001, bipm2003a, as bonsch1983a): f(a9, R(12) 26-0) = 551 579 483.0448 MHz and f(a3, P(13) 43-0) =
+582 490 603.4901 MHz. The third ratio is not entered: the quotient of the first two is 1.056 041 099 054, 6e-12 from
+it, so it adds nothing within rounding. The printed lambda_544 = 543.516 332 9 nm (3.5e-10) is the second ratio times
+the 1983 lambda_633 (632.991 398 1 nm gives 543.516 332 93 nm) and is not entered. The MEP 2001 (Quinn, Metrologia
+40, 103 (2003), source data 2.3 [73] and 2.4-1) converts the same two ratios to 582 490 603 490 and
+551 579 483 045 kHz, as here.
+
+Labels: a_i (R(12) 26-0) and b_i (R(106) 28-0), both 15 components, are ranks by frequency, as in bipm2003b and
+lin1994a.
+
+Model-free checks (this set minus other, kHz, from a9): lin1994a group lin1994a_brand, all 19 intervals identical
+after re-referencing to b8 (that column is this table reprinted); bipm2003b -9 (a14) to +6 (b1), rms 3.4;
+cheng2001a rms 10, its known outliers a10 (-23) and b1 (+30) aside within 10; lin1994a_glaser rms 20; chartier1989a
+rms 78 (its b3-b5 at 0.1-0.2 MHz). f(a9) as derived is 65 and 69 kHz above the comb values of ma2006a (PLG2) and
+balling2007a_543, 1.5 sigma (4 kHz more after the pressure correction); f(a3) is 48 kHz above the CIPM value
+(bipm2005a) and 59 kHz above grieser1994a, 1.0-1.3 sigma.
+
+Not entered: the comparison columns of Table 2, "measured [13]" (Gläser, PTB-Bericht PTB-Opt-25) and "measured
+[9]" (Chartier et al. 1989): re-referenced to b8 and to a10 they equal lin1994a's lin1994a_glaser group and
+chartier1989a digit for digit in every row, so both are held already. Table 1 and Table 3 (see notes); the
+stability, reproducibility and shift results of Sects. 3-5 (in [conditions] and notes).
+"""
+
+uncertainty = """
+Table 2: the printed "estimated standard uncertainty", 8-20 kHz, taken as 1 sigma. The beat statistics were below
+400 Hz; the uncertainty is dominated by line asymmetry for components closer than 15 MHz to a neighbour (b3, b4,
+a11, a12 estimated at 10 kHz, b2, b6, b7, a13-a15 at 5 kHz) and by the scatter of successive measurements (p. 370).
+The a9 reference itself is printed 0.000(8). The pump-beam AOM offsets (+-40 MHz, stable to 1 Hz) are removed in the
+beat (p. 367).
+Absolutes: the printed relative uncertainties, "the single standard deviation", 8e-11 of each ratio, 44.1 kHz at
+544 nm and 46.6 kHz at 515 nm. The 515 nm laser's conditions are not given and that row is not corrected.
+"""
+
+notes = """
+Not cited by the MEP 2001 543 nm tables (Quinn 2003, Tables 36-37, refs. [147-153]); the paper is cited there only
+for its pressure coefficient (-3.0 kHz/Pa, ref. [76]). Its intervals nevertheless agree with bipm2003b to 3.4 kHz rms,
+closer than any other held set, so they probably reach the MEP through ref. [153] (Simonsen, Brand & Riehle,
+Metrologia 31, 341 (1994/95)), not held; no declaration is proposed until that is settled. The two ratios are the
+PTB 1991 source data of the MEP 1992 and 2001 values at 543 and 515 nm.
+
+Table 1 (p. 370), measured natural linewidths (kHz; pressure and transit broadening extrapolated to zero, 1.44 Pa,
+0.7 mm waist): a5 206, a6 143, a7 153, a8 125, a9 163, a10 141, a11 139, a12 146, a13 133, a14 143; b1 193, b2 103,
+b4 241, b5 453, b6 134, b7 149, b8 329, b9 370. The "fitted" column there is from the paper's ref. [26]. Pressure
+broadening below 2 Pa 90, 92 and 88 kHz/Pa for a6, a9, b5 (mean 90(2) kHz/Pa used for the others); above 3 Pa
+17, 56 and 37 kHz/Pa for a6, a9, b5; transit broadening 40 kHz.
+
+Table 3 (p. 372), hyperfine constant differences (upper minus lower) fitted by A. Morinaga to Table 2 with the X
+state held at eQq'' = -2452.580 MHz, C'' = Ds'' = 0.0, Dt'' = 2.48 kHz (Hackel et al. 1975); Dt tensor, Ds scalar
+spin-spin; fit standard deviations 5.6 and 5.4 kHz:
+  R(12) 26-0:  Delta eQq 1917.76(1) MHz, Delta C 59.13(1) kHz, Delta Dt -28.3(3) kHz, Delta Ds -8.7(2) kHz
+  R(106) 28-0: Delta eQq 1914.422(7) MHz, Delta C 70.30(1) kHz, Delta Dt "-34.(14)" kHz (so printed: -34.1(4) or
+               -34(14) cannot be told apart), Delta Ds -8.6(3) kHz
+Not put in data/hyperfine_parameters because of that misprint and because C'' and Ds'' are held at zero; the
+columns for refs. [13] and [41] are other papers' fits.
+
+Other results (Sects. 3-5): two-sample deviation 3e-11 / sqrt(tau), minimum 2.7e-13 at 10 000 s; beat between the
+two lasers on a9 over two months +0.4 +- 0.8 kHz (13 measurements, +1.8 to -0.8 kHz); no shift with detection phase
+(+-25 deg), modulation index (0.35-1) or pump power (35-90 uW) within 0.5 kHz; |a6 - a9| measured with the
+reference exchanged differs by 200 Hz, |b5 - a9| by 9.7 kHz (residual background at b5).
+"""
+
+[conditions]
+method = "two internal-mirror He-Ne lasers at 543.5 nm (Siemens LGK 7770), FM spectroscopy (EOM phase modulation at 10 MHz, beta = 1) with the pump beam chopped (15.6 kHz) and shifted +-40 MHz by an AOM; external 500 mm 127I2 cell; beam waist 0.25 mm"
+cell_length_mm = 500
+pressure_Pa = 1.44
+probe_power_uW = "28 (laser C), 37 (laser D)"
+pump_power_uW = "73 (C), 90 (D)"
+pressure_shift_kHz_per_Pa = -3.0
+wavelength_comparison = "PTB vacuum Michelson interferometer, 3.8 m displacement; references He-Ne on R(127) 11-5 i (internal cell) and Ar+ on P(13) 43-0 a3 (external cell)"
+
+[shift_correction]
+groups = ["brand1993a_544"]
+pressure_Pa = 1.44
+pressure_kHz_per_Pa = -3.0
+pressure_kHz_per_Pa_unc = 1.5
+basis = "Paper p. 367: pressure shift -3 kHz/Pa (Fig. 9, linear above 1.4 Pa), laser at 1.44 Pa; the MEP 2001 (source data 2.4-1) gives the wavelength measurement's cold finger as -10 C (1.4 Pa). Slope uncertainty 50 % (assumed; the paper notes nonlinearity below 1.4 Pa). Shift +4.3(2.2) kHz. The 515 nm row (Ar+ laser, conditions not given) is not corrected."

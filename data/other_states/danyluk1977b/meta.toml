@@ -1,0 +1,105 @@
+id = "danyluk1977b"
+citation = "M. D. Danyluk and G. W. King, \"Two photon sequential absorption spectroscopy of the iodine molecule\", Chem. Phys. 22, 59-70 (1977), Tables 1-5"
+source = "https://doi.org/10.1016/0301-0104(77)85208-7 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0301-0104(77)85208-7"
+retrieved = "2026-10-26"
+unit = "cm-1 (term values and constants); A for re"
+state = "five ion-pair states near 5 eV labeled alpha, beta, gamma, delta and epsilon (as printed; gamma and epsilon 0g+, the others 0g+ or 1g); epsilon is the E 0g+ state (v_E = v_epsilon + 12, data/other_states/king1981); reached from B 0u+ levels v_B = 59-78"
+isotopologue = "127I2"
+files = ["table1_pump_levels.csv", "table2_gamma2_rotational.csv", "table3_gamma_levels.csv", "table4_epsilon_levels.csv", "table5_constants.csv", "text_constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Every number of Tables 1-5 (pp. 63, 66, 68; PDF pages 5, 8, 10) and the constants of the text, read from 300 dpi
+renders of the scan with 600 dpi crops of the tables, and compared with the OCR text layer (right for most digits of
+Tables 1-3, garbled in Tables 4-5: "42132.63" for 42732.63, "10-S" for 10^-3, the +- signs).
+
+The measurement: two pulsed dye lasers pumped by one nitrogen laser, counterpropagating in a 0.25 Torr iodine cell. A
+pressure-scanned laser (bandwidth < 0.07 cm-1) pumps a B <- X line from X v'' = 0; a grating-scanned laser (about 1.5
+cm-1 wide) probes transitions from the pumped B level to states near 5 eV ("E"), detected by their E -> B fluorescence
+below 4000 A. Pump frequencies: relative to +-0.005 cm-1 against a 0.556 cm-1 etalon, absolute to +-0.05 cm-1 "by
+interpolation between the frequencies of the stronger unblended rotational lines of I2 identified from the molecular
+constants for the B <- X transition of Barrow and Yee" (p. 62). Probe: calibrated to +-0.2 cm-1 against Fe/Ne lines.
+Upper term T(v', J') = sigma1 + sigma2 + F0''(J''), with F0'' from Le Roy's X constants (p. 66).
+
+table1_pump_levels.csv: Table 1, "Pumped B <- X transitions and B state levels of iodine which were chiefly used in
+  sequential absorption studies. The B state level energies are relative to v'' = 0, J'' = 0 in the X state. The level
+  energy equals the transition energy plus F0''(J'')": six pump lines (printed X_vB(J) = branch_vB(J'')), sigma1, the
+  pumped level J_vB and its energy T(v_B, J_B).
+table2_gamma2_rotational.csv: Table 2, "Rotational analysis of the band gamma_2": 11 rows of pump line, F0''(J), sigma1,
+  J'(gamma_2), sigma2 and T'(2, J'); footnote a on the first row, "Mean of unresolved P and R lines".
+table3_gamma_levels.csv: Table 3, "Molecular constants (cm-1) for the gamma excited state of I2": T0(v', J = 0) and 1e2
+  B_v, v' = 0-12, the +- in units of the last digits (41561.23 +- 49 is +-0.49; 1.9764 +- 73 is +-0.0073), the
+  convention of the same authors' Chem. Phys. 25 tables (data/b_levels/danyluk1977) and the only reading that matches
+  the stated +-0.2 cm-1 calibration. Footnote a: "The perturbed v' = 6 level is excluded from the fit for Be and Te."
+table4_epsilon_levels.csv: Table 4, the same for the epsilon state, v' = 0-10. E_v_king1981 gives the E-state v of the
+  same level in king1981's numbering (v + 12).
+table5_constants.csv: Table 5, "Vibrational constants (cm-1) for the alpha, beta, gamma, delta and epsilon excited
+  state": Te (footnote a: "Relative to v'' = 0, J'' = 0 in the X state", not the X minimum), we, wexe, weye (delta: "-").
+  The text (p. 69): they "assume that the first observed band is the origin band, and this could be in error".
+text_constants.csv: the Be and alpha_e printed under Tables 3 and 4, the re of the text, the first-member T0 of each
+  progression given in the text, and the B-state numbers of the text (one a reprint, labeled).
+
+Checks (model-free):
+- Table 1: T_B - sigma1 = F0''(J'') gives 2.09, 17.25, 64.27, 70.62, 165.00, 407.13 cm-1, smooth in J''(J'' + 1) (B0'' =
+  0.03733 cm-1), and R74(41) and P74(43) give the same level, 20040.92, as the text says. Against held data: T_B equals
+  the barrow1973 term value G + B J(J + 1) - D J^2(J + 1)^2 of the same level to 0.001 cm-1 for v = 59 (J = 22), 74 (42)
+  and 76 (65) (19905.659, 20040.920, 20053.770), so these Table 1 numbers are Barrow and Yee's calculated values, or
+  calibrated onto them to the printed digit (the text's calibration procedure); v = 63, J = 103 is 0.18 cm-1 above
+  barrow1973 (20061.392), and J78(8) = 20039.86 agrees with data/b_levels/danyluk1977 (G(78) + B(78) x 72 = 20039.866).
+  The atlas data/atlas_lines/orsay1983_part4 has R(7) 78-0, R(21) 59-0, R(41) 74-0 and P(43) 74-0 at 20037.790,
+  19888.394, 19976.699 and 19970.359: sigma1 - atlas = -0.02, +0.02, -0.05, -0.06 cm-1, about the stated +-0.05 (the
+  atlas authors give 0.002 cm-1 absolute). P76(66) and P63(104) are not among the assigned atlas lines.
+- Table 2: F0'' + sigma1 + sigma2 = T' to the printed 0.1 cm-1 in every row; T' - (T0(2) + B_2 J'(J' + 1)) with the
+  Table 3 v' = 2 constants is -0.49 to +0.47 cm-1, within the +-0.2 cm-1 probe calibration plus the 0.1 cm-1 rounding.
+- Tables 3-4 against Table 5: Te + we x - wexe x^2 + weye x^3 (x = v + 1/2) reproduces T0 of gamma to -0.21 to +0.43
+  cm-1 (v' = 6, excluded: +1.18) and of epsilon to -0.79 to +0.33; it gives T0(v = 0) of alpha, beta, gamma, delta,
+  epsilon = 40334.1, 40977.1, 41561.3, 41733.1, 42541.6, against the text's 40334.5, 40976.9, 41561.2, (none), 42541.8.
+  B_v - (Be - alpha_e (v + 1/2)) is within +-0.021 (gamma) and +-0.075 (epsilon) in 1e2 B_v.
+- re from Be (re = (16.857629 / (mu Be))^1/2, mu = 63.4522 u): 3.6757 A (gamma) and 3.5128 A (epsilon), the printed
+  3.676 and 3.513.
+- Against data/other_states/king1981 (the same group, 1981, both isotopologues): gamma 127I2 v = 0-12, this - king1981 =
+  -0.59 to +0.90 cm-1 in T0 (+0.90 at the perturbed v' = 6) and -0.019 to +0.008 in 1e2 B_v; epsilon v = E v + 12 (v_E
+  = 12-22), -0.73 to +1.33 cm-1 in T0 and 7-15 % higher B_v (mean 11 %; king1981: "about 8 % too high", from "only a
+  few rotational terms for each level"). king1981 keeps the beta, gamma and delta numberings; its alpha numbering is
+  shifted by 7 (its lowest 127I2 band, v = 8 at 40438.0, lies one quantum above the 1977 first member, 40334.5).
+
+Not entered: Figs. 1-5 (apparatus; the pump scan of Fig. 2 with the E <- B signal; the gamma progression of Fig. 3; the
+low-dispersion spectrum of Fig. 4 with all five progressions, pumped by R78(7); the epsilon band structure of Fig. 5
+with the pump-line labels J''-J_B-J' and the candidate pump lines P66(24), P65(16), P67(29), P78(45), R68(33) named in
+the text). The probe line frequencies other than those of Table 2 are not printed.
+"""
+
+uncertainty = "As printed: the +- of Tables 3-4 (in units of the last digits; standard errors of the per-level linear fits of T against J'(J' + 1), convention not stated). The term values carry the probe calibration (+-0.2 cm-1, which 'was not sufficient to give reliable centrifugal distortion constants', p. 66) and the pump calibration (+-0.05 cm-1). king1981 finds the epsilon B_v about 8 % too high. Table 5 has no errors; its Te depend on the assumed origin bands (alpha and epsilon were later renumbered). Table 1 and 2 values are printed to 0.01 and 0.1 cm-1 with no errors."
+
+notes = """
+What the paper is. The first sequential two-photon (two-laser) spectrum of I2: pump B <- X from v'' = 0, probe from the
+pumped B level to five progressions of ion-pair states near 5 eV, labeled alpha-epsilon in order of the first observed
+member. gamma and epsilon are rotationally analysed (Delta J = +-1 only, so 0g+); alpha, beta, delta only from low-J
+pump levels near the B limit (unresolved bands), so 0g+ or 1g. The paper reassigns Wieland's E -> B emission (data/
+other_states/wieland1972) to gamma, epsilon and delta -> B; king1981 reverses this by identifying epsilon with E.
+
+State labels. epsilon = E 0g+ with v_E = v_epsilon + 12 (king1981, p. 149; the E of wieland1972, king1981 and inard1999).
+alpha-delta are kept as printed; their later identification is not made here (see king1981 for the D' 2g discussion).
+
+Relation to data/b_levels/danyluk1977. That set is a different paper of the same authors and technique, Chem. Phys. 25,
+343-351 (1977), "Energy levels of iodine near the B state dissociation limit": per-level G_v and B_v of B v = 77-83 from
+the B <- X pump spectra, detected through the same E -> B fluorescence. This paper (Chem. Phys. 22, received November
+1976) is about the upper ion-pair states. No row of either set reprints the other: the six B levels of Table 1 here are
+single (v_B, J_B) energies (three of them Barrow-Yee values, above), and the one in the Chem. Phys. 25 range, J78(8) =
+20039.86, is consistent with that paper's v = 78 constants. Both quote D = 20043.122 cm-1 of the preliminary note
+(Chem. Phys. Lett. 43, 1 (1976)); Chem. Phys. 25 refines it to 20043.063.
+
+B and X. No measured B or X constants: the B levels of Table 1 follow Barrow and Yee (data/b_levels/barrow1973) and F0''
+Le Roy's X constants. Not compared with any model.
+
+data/other_states holds measured levels and constants of electronic states other than X and B (no loader reads it).
+"""
+
+[columns]
+table1_pump_levels = "transition: printed pump line (branch, v_B, J'' of X v'' = 0). branch, v_B, J_X: parsed from it. sigma1_cm1: transition energy (cm-1). J_B: J of the pumped B level. T_B_cm1: its energy above X(0, 0) (cm-1). note: checks."
+table2_gamma2_rotational = "pump_line; F0_X_cm1 (F0''(J), cm-1); sigma1_cm1 (pump); J_upper (J' of gamma_2); sigma2_cm1 (probe); T_upper_cm1 (T'(2, J') above X(0, 0)); note."
+table3_gamma_levels = "table, page, state, v (v'), T0_cm1 and T0_unc (T0(v', J = 0) above X(0, 0), cm-1), B_x100 and B_x100_unc (1e2 B_v, cm-1), E_v_king1981 (empty for gamma), note."
+table4_epsilon_levels = "As table3_gamma_levels, for epsilon; E_v_king1981 = v + 12, the E 0g+ level of king1981."
+table5_constants = "state; Te_cm1 (above X(0, 0)); we_cm1; wexe_cm1; weye_cm1 (empty where printed '-'); note."
+text_constants = "state, quantity, value (as printed), unit, source (page or table), note (reprints labeled)."

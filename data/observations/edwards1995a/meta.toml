@@ -1,0 +1,65 @@
+id = "edwards1995a"
+citation = "C. S. Edwards, G. P. Barwood, P. Gill and W. R. C. Rowley, \"Absolute frequency stabilisation of a 637 nm laser diode using Doppler-free I2 spectra\", Electron. Lett. 31, 796-797 (1995), p. 797"
+source = "https://doi.org/10.1049/el:19950535 (publisher PDF: a page scan without a text layer)"
+doi = "10.1049/el:19950535"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The PDF has no text layer; read from 200 dpi renderings of pp. 796-797. A 637 nm extended-cavity diode laser
+(SDL-7501-G1, Littrow grating) locked by third-derivative saturated absorption (10 MHz p-p at 530 Hz) in a 100 mm
+external 127I2 cell, cell wall 20 +- 1 C, cold finger marginally cooler, about 27 Pa. The locked laser was measured
+with a wavemeter (p. 797): "Excluding b (which is strongly perturbed), the measured frequency values were (1 sigma
+uncertainty)
+  nu(1188-a) = 470 767 105 (10) MHz,  nu(1188-t) = 470 766 216 (10) MHz,
+  nu(1191-a) = 470 783 830 (10) MHz,  nu(1191-o) = 470 782 956 (10) MHz".
+Four rows, group edwards1995a.
+
+Assignments: the paper names the lines by their atlas numbers 1188 and 1191 (Gerstenkorn & Luc), with 21 and 15
+expected components (J'' odd and even; Fig. 2 labels the extremes "u" to "a" and "o" to "a", frequency rising).
+Edwards et al. 1996 (edwards1996a, p. 97) assign 1188 and 1191 as 7-4 R(39) and 7-4 P(32), and print the ranks of
+1188 beside these letters ("a2 and a21 (formerly designated 't' and 'a')"). So 1188 a, t = R(39) 7-4 a21, a2, and
+1191 a, o = P(32) 7-4 a15, a1 (the letters a-o name all 15 expected components).
+
+Not entered: the centers of gravity estimated from the measured components (470 766 695 and 470 783 441 MHz) and the
+atlas values quoted for comparison (470 766 747 and 470 783 469 MHz); the stability estimate (Fig. 3: 1.3e-10 up
+to about 2 s, 6e-11 at 10 s).
+
+Checks (model-free): edwards1996a's absolute and intervals put R(39) 7-4 a21 at 470 767 106.80 MHz and a2 at
+470 766 214.14 MHz: -1.8 and +1.9 MHz from these. The paper's centers of gravity sit on the held FTS atlases:
+R(39) 7-4 at 15 703.0867 cm-1 here against 15 703.0866 (salami_ross_2005) and 15 703.0868 (apo_nist_2009); P(32)
+7-4 at 15 703.6453 cm-1 here against 15 703.6453 (salami_ross_2005) and 15 703.6450 (apo_nist_2009).
+"""
+
+uncertainty = "10 MHz, the printed 1 sigma (the wavemeter's accuracy; edwards1996a, p. 98: \"an accuracy (1 sigma) of 10 MHz\")."
+
+notes = """
+Edwards et al. 1996 (edwards1996a) remeasured R(39) 7-4 with an etalon against a He-Ne/I2 standard to 0.10 MHz and
+call these values "preliminary frequency measurements", made to fix the etalon order; it does not print them. The
+two R(39) 7-4 rows are therefore declared "superseded" by edwards1996a. Nothing held covers P(32) 7-4 at the
+hyperfine level. simonsen1997a compares its 633 nm results with this paper (its ref. [5]).
+
+[shift_correction] follows edwards1996a (the same group, line, cell type and modulation depth): 27 Pa at
+-10(2) kHz/Pa and 10 MHz modulation at 0(10) kHz/MHz; +270 kHz with 114 kHz uncertainty, against 10 MHz.
+"""
+
+[conditions]
+method = "extended-cavity diode laser (SDL-7501-G1, 1200 g/mm grating in Littrow), side-of-fringe locked to a 1 GHz reference cavity and third-derivative locked to saturated absorption in a 100 mm external 127I2 cell (10 MHz p-p at 530 Hz, about 600 uW one way); frequency read with a wavemeter"
+cell_length_mm = 100
+cell_wall_C = 20.0
+iodine_pressure_Pa = 27
+modulation_MHz_pp = 10.0
+saturating_power_uW = 600
+
+[shift_correction]
+pressure_Pa = 27.0
+pressure_kHz_per_Pa = -10.0
+pressure_kHz_per_Pa_unc = 2.0
+modulation_MHz = 10.0
+modulation_kHz_per_MHz = 0.0
+modulation_kHz_per_MHz_unc = 10.0
+basis = "Paper p. 796: cell wall 20(1) C, cold finger marginally cooler, about 27 Pa, 10 MHz p-p. No coefficients are given; edwards1996a's are used (same group and line): -10(2) kHz/Pa and 0(10) kHz/MHz. Shift +270 kHz, uncertainty 114 kHz, against 10 MHz."
+
+[overlaps]
+edwards1996a = { relation = "superseded", lines = ["127I2 R(39) 7-4"] }   # pending until admitted; the 1996 paper calls these preliminary

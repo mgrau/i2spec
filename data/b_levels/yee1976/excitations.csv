@@ -1,0 +1,43 @@
+table,isotopologue,exciting_source,laser_A,laser_cm1,line,branch,J_lower,v_upper,v_lower,sigma_meas,sigma_meas_mark,sigma_calc,marks,refs,note
+6,127I2,Ar+ laser,5017,19926.04,R(49) 67-0,R,49,67,0,19925.97,,19925.94,c,"2-5, 11, 32, 33",
+6,127I2,Ar+ laser,5017,19926.04,R(39) 64-0,R,39,64,0,19925.97,,19925.96,c,,
+6,127I2,Ar+ laser,5017,19926.04,R(26) 62-0,R,26,62,0,19925.97,,19926.00,"c, d",,
+6,127I2,Ar+ laser,5145,19429.73,R(15) 43-0,R,15,43,0,19429.81,,19429.81,"c, d","2-4, 6-11, 32",calculated value printed '19 429 81' (decimal point missing)
+6,127I2,Ar+ laser,5145,19429.73,P(13) 43-0,P,13,43,0,19429.81,,19429.80,"c, d",,
+6,127I2,Kr+ laser,5208,19194.73,R(76) 40-0,R,76,40,0,,,19194.67,"c, d","11, 12",no measured value printed
+6,127I2,Kr+ laser,5309,18831.94,P(107) 35-0,P,107,35,0,18832.05,,18832.03,,,
+6,127I2,Kr+ laser,5309,18831.94,P(89) 34-0,P,89,34,0,18831.93,,18831.92,,,
+6,127I2,Kr+ laser,5309,18831.94,R(67) 33-0,R,67,33,0,18831.77,,18831.76,,,
+6,127I2,Kr+ laser,5309,18831.94,R(13) 32-0,R,13,32,0,18831.82,,18831.83,"c, d","11, 12",
+6,127I2,Kr+ laser,5309,18831.94,P(10) 32-0,P,10,32,0,18831.82,,18831.85,"c, d",,
+6,127I2,Kr+ laser,5682,17594.93,P(117) 21-1,P,117,21,1,17594.85,,17594.86,"c, d",11-14,
+6,127I2,Kr+ laser,5682,17594.93,R(121) 21-1,R,121,21,1,17594.93,,17594.94,c,,
+6,127I2,Kr+ laser,5682,17594.93,P(96) 18-0,P,96,18,0,17594.93,,17594.96,c,,
+6,127I2,Kr+ laser,5682,17594.93,P(37) 17-0,P,37,17,0,17594.93,,17594.94,c,,
+6,127I2,Kr+ laser,6471,15449.58,R(98) 11-7,R,98,11,7,,,15449.59,c,12,no measured value printed
+6,127I2,Se+/He laser,4993,20023.3,R(18) 75-0,R,18,75,0,20023.31,,20023.33,,,expected excitation (text p. 2122)
+6,127I2,Se+/He laser,4993,20023.3,P(12) 73-0,P,12,73,0,20023.31,,20023.29,,,expected excitation (text p. 2122)
+6,127I2,Se+/He laser,5069,19723.6,P(32) 52-0,P,32,52,0,19723.48,,19723.47,,,expected excitation (text p. 2122)
+6,127I2,Se+/He laser,5305,18843.5,R(61) 33-0,R,61,33,0,18843.45,,18843.45,,,expected excitation (text p. 2122)
+6,127I2,Xe+ laser,5045,19816.39,R(15) 55-0,R,15,55,0,19816.44,,19816.45,,,expected excitation (text p. 2122)
+6,127I2,Xe+ laser,5045,19816.39,P(14) 55-0,P,14,55,0,19816.31,,19816.30,,,expected excitation (text p. 2122)
+6,127I2,Ne laser,6118,16340.66,P(48) 11-3,P,48,11,3,16340.63,,16340.62,,,
+6,127I2,Ne laser,6118,16340.66,R(47) 9-2,R,47,9,2,16340.63,,16340.65,,,
+6,127I2,Ne laser,6328,15798.02,R(39) 6-3,R,39,6,3,15798.11,,15798.12,,,
+6,127I2,Ne laser,6328,15798.02,R(127) 11-5,R,127,11,5,,,15798.03,"c, d",,no measured value printed
+6,127I2,Ne laser,6328,15798.02,P(33) 6-3,P,33,6,3,15797.97,,15797.98,"c, d","7, 15-21",
+6,127I2,Ne laser,6401,15618.07,R(16) 8-5,R,16,8,5,,,15618.09,,,no measured value printed
+6,127I2,Ne laser,6401,15618.07,P(10) 8-5,P,10,8,5,,,15618.07,,,no measured value printed
+6,127I2,Ne laser,6401,15618.07,R(106) 7-4,R,106,7,4,15618.02,,15618.03,,,
+6,127I2,Cd I,5086,19657.02,R(40) 50-0,R,40,50,0,19656.90,,19656.89,,"2, 22",
+6,127I2,Cd I,5086,19657.02,P(9) 49-0,P,9,49,0,19656.98,,19657.00,,,
+6,127I2,Hg I,5461,18307.48,R(33) 25-0,R,33,25,0,,,18307.53,,23-25,no measured value printed
+6,127I2,Na I,5890,16973.38,R(105) 16-2,R,105,16,2,16973.52,e,16973.64,,,"measured value from ref. 26 (Brown and Klemperer 1964), footnote e"
+6,127I2,Na I,5890,16973.38,P(38) 15-2,P,38,15,2,,,16973.48,,26,no measured value printed
+6,127I2,Na I,5890,16973.38,R(43) 15-2,R,43,15,2,,,16973.39,,,no measured value printed
+6,127I2,Na I,5890,16973.38,P(107) 14-1,P,107,14,1,16973.26,e,16973.20,,,"measured value from ref. 26 (Brown and Klemperer 1964), footnote e"
+6,127I2,Na I,5896,16956.18,P(114) 14-1,P,114,14,1,16956.20,e,16956.10,,26,"measured value from ref. 26 (Brown and Klemperer 1964), footnote e"
+7,129I2,Ar+ laser,5145,19429.73,R(67) 52-1,R,67,52,1,,,19429.82,c,11,"Table 7 prints calculated values only; footnote c of Table 7: single-mode excitation, hyperfine structure observed"
+7,129I2,Ar+ laser,5145,19429.73,R(109) 50-0,R,109,50,0,,,19429.82,c,,Table 7 prints calculated values only
+7,129I2,Kr+ laser,5208,19194.73,R(71) 40-0,R,71,40,0,,,19194.68,c,11,Table 7 prints calculated values only
+7,129I2,Kr+ laser,5682,17594.93,P(20) 17-0,P,20,17,0,,,17594.80,c,11,Table 7 prints calculated values only

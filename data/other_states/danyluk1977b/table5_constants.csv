@@ -1,0 +1,6 @@
+state,Te_cm1,we_cm1,wexe_cm1,weye_cm1,note
+alpha,40281.8,104.83,0.324,3.9e-3,"Te relative to v'' = 0, J'' = 0 of X (footnote a), the first observed band taken as v = 0 (p. 69); king1981 numbers that band alpha v = 7 (its lowest 127I2 band, v = 8, is at 40438.0)"
+beta,40925.1,104.07,0.219,8.6e-5,"king1981 keeps the numbering (beta v = 0 at 40975.7)"
+gamma,41513.6,95.53,0.310,6.7e-3,"v' = 6 excluded (Table 3 footnote a); king1981 keeps the numbering"
+delta,41682.9,100.41,0.180,,"weye printed '-'; king1981 keeps the (arbitrary) numbering"
+epsilon,42493.7,95.75,0.0265,-7.4e-3,"king1981: epsilon v = E 0g+ v + 12, so these describe E v = 12-22 about a shifted origin"

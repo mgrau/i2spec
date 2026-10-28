@@ -1,0 +1,45 @@
+id = "matsunaga2024a"
+citation = "S. Matsunaga, Y. Isawa, D. Akamatsu, F.-L. Hong, \"Optical frequency references at 1542 nm: precision spectroscopy of the R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, and P(71)46-0 lines of 127I2 at 514 nm\", Photonics 11, 770 (2024), Table 4"
+source = "https://doi.org/10.3390/photonics11080770 (publisher PDF, open access, CC BY 4.0)"
+doi = "10.3390/photonics11080770"
+retrieved = "2026-10-22"
+catalog = "data/catalog/precision.yaml#matsunaga2024a"
+unit = "MHz"
+kind = "B-state (v' = 45-50) effective hyperfine parameters, one row per four-term fit; the paper prints the B - X differences only, and the values here add back X-state values the paper does not print (taken from its cited procedure)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 4 (p. 6), "Hyperfine constants obtained from fitting": DeltaeqQ (MHz), DeltaC, Deltad, Deltadelta (kHz) of
+the six lines, "the differences in the hyperfine constants between the upper and lower states" (p. 5). Read from
+the text layer and checked digit by digit against a 220 dpi rendering of p. 6. (The text layer of pp. 2 and 5
+also carries a hidden, garbled duplicate of the review version's text; the rendered pages and the tables are
+unaffected.)
+
+X-state values. This paper prints none: "The detailed procedure and parameters of the fitting are described
+elsewhere [18,19]" (p. 5). Its ref. [19] (Sakagami et al., J. Opt. Soc. Am. B 37, 1027 (2020), p. 1031) varies
+eqQ', C', d', delta' with eqQ'' from the formula of Hong et al. 2001 (hong2001b), eqQ''(J) = -2452.556 -
+0.000164 J(J+1) - 0.000000005 J^2(J+1)^2 MHz, and C'', d'', delta'' fixed at 3.154, 1.524, 3.705 kHz; the same group's
+two earlier 514 nm papers, of which this one is "a continuation" (ikeda2022a, yoshiki2023a), state the same
+values. Ref. [18] (Kobayashi et al. 2016) uses the same scheme (eqQ'' from a J'' formula, C'', d'', delta'' at
+v'' = 0 values; its numbers not checked here). These values are assumed and added back: eqQ' = DeltaeqQ +
+eqQ''(J''), rounded to 1 Hz; C' = DeltaC + 3.154 kHz, d' = Deltad + 1.524 kHz, delta' = Deltadelta + 3.705 kHz,
+converted to MHz exactly. The printed differences and the eqQ'' used are in the note column, so the rows can be
+recomputed if the assumption is wrong. Uncertainties are the printed parenthesized digits of the differences.
+fit_sd_kHz is the SD row of Tables 2-3 (p. 4).
+"""
+
+uncertainty = "As printed, from the nonlinear least-squares fits (ROOT); statistical only. The paper does not state the coverage; taken as 1 sigma. The larger fit standard deviations of R(106) 50-0 and R(100) 49-0 (8.6, 5.0 kHz) come from overlap with weaker lines (p. 5)."
+
+notes = """
+Four-term effective Hamiltonian (eqQ, C, d, delta), main components only. The fitted splittings are
+data/observations/matsunaga2024a (Tables 2-3); the starred a2 of R(100) 49-0, b7, b8 of R(59) 45-0 and a6, a7 of
+P(82) 47-0, not in the fits, are not held there either.
+
+Scale of eqQ'. As in ikeda2022a: the fits determine the differences, and eqQ' sits on the assumed eqQ''(J'') scale,
+here extrapolated from J'' <= 56 to J'' = 59-106 (the J^2(J+1)^2 term alone is -0.643 MHz at J'' = 106). For
+comparison with other B-state values, DeltaeqQ plus one's own eqQ''(J'') is the better-determined combination.
+
+Model-free checks against held sets: R(59) 45-0 continues yoshiki2023a's R(58) 45-0 (C' 0.330 kHz higher for one
+J step, against 0.333 kHz from the J'(J'+1) slope of chen2004a's v' = 45 values); its C' lies 0.04 kHz below a
+linear interpolation between chen2004a's R(52) 45-0 and P(69) 45-0.
+"""

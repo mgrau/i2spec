@@ -1,0 +1,9 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(48) 11-3,b15,interval,-160.317,0.005,127I2 R(47) 9-2,a7,glaser1986a,"Table 2: b15, Delta f = -160.317 MHz from R(47) 9-2 a7, s = 0.005 MHz"
+127I2 R(47) 9-2,a4,interval,-86.165,0.010,,a7,glaser1986a,"Table 2: a4, Delta f = -86.165 MHz from R(47) 9-2 a7, s = 0.010 MHz; Delta f* - Delta f = -0.015 MHz (Delta f* from ref. [11], the 1983 recommended table)"
+127I2 R(47) 9-2,a5,interval,-47.276,0.005,,a7,glaser1986a,"Table 2: a5, Delta f = -47.276 MHz from R(47) 9-2 a7, s = 0.005 MHz; Delta f* - Delta f = -0.024 MHz (Delta f* from ref. [11], the 1983 recommended table)"
+127I2 R(47) 9-2,a6,interval,-36.774,0.005,,a7,glaser1986a,"Table 2: a6, Delta f = -36.774 MHz from R(47) 9-2 a7, s = 0.005 MHz; Delta f* - Delta f = -0.066 MHz (Delta f* from ref. [11], the 1983 recommended table)"
+127I2 R(47) 9-2,a8,interval,81.450,0.005,,a7,glaser1986a,"Table 2: a8, Delta f = 81.450 MHz from R(47) 9-2 a7, s = 0.005 MHz; Delta f* - Delta f = 0.010 MHz (Delta f* from ref. [11], the 1983 recommended table)"
+127I2 R(47) 9-2,a9,interval,99.103,0.003,,a7,glaser1986a,"Table 2: a9, Delta f = 99.103 MHz from R(47) 9-2 a7, s = 0.003 MHz; Delta f* - Delta f = 0.027 MHz (Delta f* from ref. [11], the 1983 recommended table)"
+127I2 R(47) 9-2,a10,interval,107.466,0.003,,a7,glaser1986a,"Table 2: a10, Delta f = 107.466 MHz from R(47) 9-2 a7, s = 0.003 MHz; Delta f* - Delta f = 0.054 MHz (Delta f* from ref. [11], the 1983 recommended table)"
+127I2 R(47) 9-2,a11,interval,119.048,0.010,,a7,glaser1986a,"Table 2: a11, Delta f = 119.048 MHz from R(47) 9-2 a7, s = 0.010 MHz; Delta f* - Delta f = 0.072 MHz (Delta f* from ref. [11], the 1983 recommended table)"

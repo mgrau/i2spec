@@ -1,0 +1,82 @@
+id = "tellinghuisen1980"
+citation = "J. Tellinghuisen, M. R. McKeever and A. Sur, \"Reanalysis of the D -> X fluorescence spectrum of I2\", J. Mol. Spectrosc. 82, 225-245 (1980), Table VIII and Eq. (13)"
+source = "https://doi.org/10.1016/0022-2852(80)90113-7 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(80)90113-7"
+retrieved = "2026-10-26"
+unit = "cm-1"
+state = "ion-pair D 1Sigmau+ (as printed; D 0u+), the five levels excited at 1830 A from X(v'' = 0)"
+isotopologue = "127I2"
+files = ["table8_D_levels.csv", "table8_correlations.csv", "text_constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The D-state results of the paper: Table VIII (p. 241, PDF page 17) and Eq. (13) with the constants of the text (pp.
+238-242), read from 300 dpi renders of the scan and checked against the OCR text layer (which garbles the table's
+parentheses and subscripts). The measured lines and the X-state results (Tables I-VII) are the set
+data/x_levels/tellinghuisen1980; the lines are held there only (one record per measurement), and the E' here are free
+parameters of the same least-squares fit.
+
+table8_D_levels.csv: Table VIII, "D-state energies and correlation coefficients from least-squares analysis of assigned
+lines in D -> X fluorescence spectrum, together with related quantities discussed in text": for each of the five
+series, E' (cm-1, above the X potential minimum, the zero of the fitted G_v; estimated standard deviation as printed
+in parentheses, converted: 55 019.440 (49) -> 0.049), (v', J') with v' "relative to Wieland's formula. The absolute v'
+numbering is unknown, but is likely within 15 of the listed values" (footnote a), the X level (v'', J'') of the exciting
+transition, y of Eq. (12), and (E' - E'')b, "calculated wavenumbers of exciting transitions at 1830 A. The E'' values
+were calculated from the constants in Table VII" (footnote b). Series 1-5 = Verma's series I, II, III, IVa, IVb.
+
+table8_correlations.csv: the ten correlation coefficients c_ij of the E' values (Table VIII, right-hand columns).
+
+text_constants.csv: Eq. (13), the correlated three-parameter fit of the five E' to Eq. (12),
+  y = E'(v', J') - (T' + G'_v) + D_v [J'(J' + 1)]^2 = Delta T_n + B_n J'(J' + 1) - alpha_n (v' - n) J'(J' + 1),
+with T' + G'_v from Wieland's vibrational formula (unpublished, quoted by Mulliken, J. Chem. Phys. 55, 288 (1971), Eq.
+12; not printed here) and D_v = 4.8e-9 cm-1 calculated from the D potential of the McLennan-band analysis; also the
+numbering (n = 204), the 0.88 cm-1 statement, and two reprinted atomic-line numbers (labeled as reprints).
+
+Checks (model-free):
+- The exciting wavenumbers: E' minus the Table VII X level (v'' = 0, J'' = 86, 47, 48, 23, 24) gives 54633.419, .330,
+  .207, .382, .360, as printed; they span 0.21 cm-1 as the text says, around the tabulated atomic line 54633.46.
+- Eq. (13) against y: Delta T_n + B_n K' - alpha_n (v' - n) K' gives 198.126, 132.411, 135.897, 112.382 and 114.130
+  for the five rows (printed y 198.122, 132.418, 135.882, 112.367, 114.137): residuals of 0.004-0.015 cm-1, as a
+  three-parameter fit to five correlated points should leave.
+- E' - y + D_v K'^2 (= T' + G'_v of Wieland's formula) is the same for the two series that share a vibrational level:
+  54692.200 for II and III (v' = 205) and 54648.725 for IVa and IVb (v' = 204), equal to 0.001 cm-1; so E', y, D_v and
+  the J' are mutually consistent. Their difference, 43.475 cm-1, is the D-state interval G'(205) - G'(204) of the
+  formula used (Verma's omega_n' = 43.13 cm-1, data/x_levels/verma1960).
+- E' - G_0 (G_0 = 107.115, Table VII) gives the upper terms above X(0, 0), 54912.325, 54717.481, 54720.938, 54653.976
+  and 54655.745 cm-1; the lines of data/x_levels/tellinghuisen1980 combined with the independent held X levels of
+  data/x_levels/martin1986 give 54912.361, 54717.455, 54720.922, 54653.971 and 54655.717 (within 0.04 cm-1).
+
+Not entered: the D-state constants of earlier work quoted in passing (Verma's B estimate; the head analysis of D <- X
+absorption by Wieland, refs. 20-21).
+"""
+
+uncertainty = "As printed: estimated standard deviations from the least-squares fit (E', p. 231 Eqs. 7-9; Eq. (13) 'estimated standard deviations are given in parentheses'). The authors consider their error bands 'optimistic by perhaps a factor of 2' because model dependence (the order of the G_v and B_v polynomials) is not included (p. 237). The E' errors include the 0.5 cm-1 width of the exciting line only through their being free parameters (the five exciting transitions spread over 0.21 cm-1). E' is on the X scale of Table VII, so its absolute value carries the line calibration (+-0.06 cm-1) and the X representation; data/x_levels/ashmore1986 refits the same lines and gets E' up to 0.03 cm-1 higher."
+
+notes = """
+What the set is. The five D 0u+ ion-pair levels (J' = 87, 46, 49, 22, 25) excited by the I 1830 A atomic line, whose
+D -> X fluorescence reaches X v'' = 99; their energies come out of the X-state fit as free parameters (one per series),
+because the 0.5 cm-1 width of the atomic line lets the five exciting transitions differ by 0.21 cm-1. The local D-state
+constants (Eq. 13) need an assumed vibrational formula (Wieland's, from D <- X band heads) and hold only near v' = n.
+
+State labels. The paper writes D 1Sigmau+ (0u+), the modern D 0u+ ion-pair state (correlating with I+(3P2) + I-(1S0));
+it is the upper state of Verma's series (data/x_levels/verma1960, whose upper state that paper left unidentified) and
+the state that data/other_states/king1989 reaches tentatively at v3 = 169-213 by three-photon excitation (with
+Tellinghuisen's later numbering, Can. J. Phys. 62, 1933 (1984)). v' here is Wieland's numbering (n = 204), "likely
+within 15" of the absolute one; it need not equal later numberings.
+
+Relation to other sets. data/x_levels/ashmore1986 (upper_levels.csv) holds a refit of the same five energies (55019.441,
+54824.607, 54828.064, 54761.119, 54762.885 cm-1), from the same lines with a different X representation: a refit, not a
+reprint; the two agree to 0.001-0.028 cm-1. Not compared with any model.
+
+data/other_states holds measured levels and constants of electronic states other than X and B (no loader reads it).
+"""
+
+[columns]
+table8_D_levels = """
+series: 1-5 as printed. verma_series: I, II, III, IVa, IVb. E_cm1, E_unc: E' above the X potential minimum and its
+estimated standard deviation (cm-1). v_upper_wieland, J_upper: (v', J') as printed, v' in Wieland's numbering.
+v_lower, J_lower: the X level of the exciting transition. y_cm1: y of Eq. (12). exciting_calc_cm1: (E' - E'')
+calculated wavenumber of the exciting transition. note.
+"""
+table8_correlations = "i, j: series 1-5. c_ij: correlation coefficient of E'_i and E'_j as printed."
+text_constants = "state, quantity, value, uncertainty (estimated standard deviation, cm-1), unit, source (equation or page), note (reprints labeled as such)."

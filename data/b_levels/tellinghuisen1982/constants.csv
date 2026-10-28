@@ -1,0 +1,18 @@
+quantity,value,uncertainty,unit,source,note
+total extinction at Ne 6096 A (380 K),30.0,0.4,L mol-1 cm-1,p. 4738,"pressure-dependent series; used to fix the cell pressure"
+total extinction at Ne 6717 A (380 K),40.3,0.4,L mol-1 cm-1,p. 4738,
+I2 pressure with all iodine vaporized,15.1,0.2,Torr,p. 4738,
+cell temperature,107,3,C,p. 4738,"T = 380 K in the tables"
+cell length,96,,mm,p. 4738,"l = 9.6 cm"
+|Me|^2 of the 1Pi_u - X continuum,0.136,,D^2,p. 4741,"constant, fitted to calculated spectra; f = 2.6e-3, about 11 % below the 1973 estimate"
+oscillator strength of 1Pi_u - X,2.6e-3,,1,p. 4741,
+|Me|^2 of A - X,0.0407,,D^2,p. 4741,"7 % below the 1973 estimate; peak near 6730 A"
+1Pi_u potential (Eq. 14) coefficient C in V = C/R^9.5,8.61e7,,cm-1 A^9.5,Eq. (14),"repulsive 1Pi_u curve that reproduces the experimental eps_Pi points"
+B-X linear fit |mu_e| = a R + b: a,0.884,,D/A,p. 4742,"weighted fit to the revised Table III points, R-centroid 2.55-2.82 A; deviations systematic and larger than the errors"
+B-X linear fit |mu_e| = a R + b: b,-1.388,,D,p. 4742,
+eps_Pi from the I* photodissociation laser thresholds (4910 and 5015 A),157,5,L mol-1 cm-1,footnote 37,"from Davis's threshold wavelengths assuming I*:I = 1:2"
+|Me|^2 B-X from Brown and Klemperer P(45) 15-3 (5967 A) reprocessed,1.4,,D^2,footnote 44,reanalysis of earlier line-absorption data
+|Me|^2 B-X from Brown and Klemperer P(114) 14-3 (6047 A) reprocessed,1.9,,D^2,footnote 44,"may be raised 10-20 % by the 13-3 P(60) line 0.04 cm-1 away"
+continuum extinction from Hanes et al. 1971 (6-3 P(33) region),37,,L mol-1 cm-1,footnote 43,"against 32 here"
+J''avg at 300 K,67,,1,p. 4740,rotational averaging level
+J''avg at 380 K,74,,1,p. 4740,

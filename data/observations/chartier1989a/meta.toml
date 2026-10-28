@@ -1,0 +1,62 @@
+id = "chartier1989a"
+citation = "J.-M. Chartier, S. Fredin-Picard and L. Robertsson, \"Frequency-stabilized 543 nm HeNe laser systems: a new candidate for the realization of the metre?\", Opt. Commun. 74, 87-92 (1989), Table 1"
+source = "https://doi.org/10.1016/0030-4018(89)90496-3 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1016/0030-4018(89)90496-3"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+BIPM, two sealed 543 nm He-Ne lasers (G.1, G.2; PMS LSGR 0050, 0.34 m, inhomogeneous magnetic field against
+polarization flips), each with an external 0.5 m 127I2 cell at 2.2 Pa (cold finger -6 C), third-derivative locking
+(1 kHz modulation), an 80 MHz AOM against feedback; beat frequencies with both lasers locked to different
+components.
+
+Table 1 (p. 90), "Fitted termvalues of relative hyperfine component positions": the relative frequencies of R(12)
+26-0 a7-a9, a11-a15 and R(106) 28-0 b1-b6 from R(12) 26-0 a10, 14 rows, with I, F - J, the number of measurements
+and the footnotes kept in each row's note. Read from a 300 dpi rendering of p. 90; the text layer agrees except for
+footnote b, whose "a11 to a14" it reads as "all to a14". a9-b4 come from matrix measurements and a least-squares fit
+of each laser separately, the values being the mean of the two lasers; a7 and a8 (footnote b) were "calculated
+considering a11 to a14 fixed and correcting for the frequency difference between the lasers"; b5 and b6 (footnote
+c) were measured once against b2 at an initial stage. a10 was chosen as origin for its isolation, intensity and its
+7 kHz standard deviation in the fit.
+
+Labels: a (R(12) 26-0) and b (R(106) 28-0) "using the nomenclature proposed by Gläser et al." (ref. [20]); the
+table is in increasing frequency and a_k, b_k are ranks, as in bipm2003b (a7-a10 = -156.25, b2-b1 = 253.30 MHz
+there). The interleaved order a10 < b1 < a11 ... < b2 < a15 < b3 is the paper's.
+
+Model-free checks (kHz, this set minus other, from a10): fredinpicard1990a, every row identical (its R(106) rows
+re-referenced to b1 agree to 2 kHz, its own rounding); brand1993a's "measured [9]" column (Opt. Commun. 100, 361,
+Table 2, from a9) reproduces all 15 values to the digit; bipm2003b rms 64, within 44 kHz for every component
+printed with an uncertainty of 50 kHz or less, while b3-b5 differ by -84, -131 and +181 kHz, inside their printed
+0.11-0.20 MHz.
+
+Not entered: the G.1 - G.2 frequency difference, (14 +- 5) kHz (both cells at -6 C, 4 MHz modulation, 24
+measurements over 5 days); the shift coefficients, (-0.4 +- 1.8) kHz/MHz modulation and (-0.4 +- 1.2) kHz/K, i.e.
+(-1.3 +- 4.0) kHz/Pa (in [conditions]); the zero-modulation FWHM, 1.8 MHz; the upper-state constants computed from
+Gläser's empirical formulae (eqQ'(106;28) = -540 MHz, C' = 0.074 MHz; eqQ'(12;26) = -536 MHz, C' = 0.066 MHz,
+with eqQ'' = -2452 MHz, C'' = 0), which are estimates, not fits; Fig. 3 (spectrum, approximate scale).
+"""
+
+uncertainty = """
+As printed in parentheses (6 kHz to 0.20 MHz), "the standard deviation of a single measurement in a series of
+measurements, except for b5 and b6 which only were measured once at an initial stage. For these components, the
+uncertainties include an estimation of an unknown off-set" (p. 90). Taken as 1 sigma; for the matrix-fitted
+components (12 measurements each) it is a conservative choice. One pair of lasers, one group.
+"""
+
+notes = """
+The primary of the 543 nm intervals in fredinpicard1990a (Tables 2-3 there, which print these values as "Obs.",
+R(106) re-referenced to b1 and the a10-b1 link dropped); declared "same" there. Cited by the MEP 543 nm tables
+(Quinn, Metrologia 40, 103 (2003), Tables 36-37, ref. [149]; bipm2003b's ref. [5]), whose values are weighted means;
+bipm2003b (a training set) does not yet declare it.
+"""
+
+[conditions]
+method = "two sealed 543 nm He-Ne lasers with external 0.5 m 127I2 cells (Brewster windows), third-derivative locking at 1 kHz modulation frequency, beam expander (about 5 mW/cm2); beat frequencies"
+cell_length_m = 0.5
+cold_finger_C = -6.0
+pressure_Pa = 2.2
+modulation_MHz = "3.5 (Fig. 3); 4 for the G.1 - G.2 comparison"
+modulation_shift_kHz_per_MHz = "-0.4 +- 1.8 (range 1-6 MHz)"
+pressure_shift_kHz_per_Pa = "-1.3 +- 4.0 (-0.4 +- 1.2 kHz/K)"

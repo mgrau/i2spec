@@ -1,0 +1,33 @@
+id = "koffend1978"
+citation = "J. B. Koffend, S. Goldstein, R. Bacis, R. W. Field and S. Ezekiel, \"Doppler-free stimulated-emission spectroscopy and secondary frequency standards using an optically pumped laser\", Phys. Rev. Lett. 41, 1040-1044 (1978), p. 1043 and footnote 14"
+source = "https://doi.org/10.1103/PhysRevLett.41.1040 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1103/PhysRevLett.41.1040"
+retrieved = "2026-10-26"
+unit = "eqQ in MHz; C in kHz"
+isotopologue = "127I2"
+state = "X"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The fitted X-state hyperfine constants of the letter, read from a 400 dpi render of pp. 1043-1044 and the text layer
+(which is right): eqQ'' = -1550.1 +- 0.5 MHz and C'' = 59 +- 5 kHz for v'' = 83, J'' = 13, from a least-squares fit to 49
+measured separations of the (43,83) P(13) hyperfine components (the printed 15 are data/observations/koffend1978a)
+with the B v' = 43 constants held at Hackel et al. 1975; and footnote 14, a refit of Hackel's (43,0) P(13) data giving
+C''(v'' = 0) = 0 +- 5 kHz ("an upper limit"). The letter compares with eqQ'' = -2448.025 MHz and C'' = 0 for v'' = 0
+(Hackel's values, reprinted; not a row).
+
+Check: with these constants an independent hyperfine calculation reproduces the printed separations (see
+koffend1978a); the quadrupole-only fit's standard deviation 3.19 MHz against 0.82 MHz with C'' shows C'' is needed.
+"""
+
+uncertainty = "As printed, the convention not stated; taken as 1 sigma of the fit. eqQ'' depends on the fixed eqQ' (v' = 43) of Hackel et al. 1975 (-554.094 MHz): a different eqQ' shifts eqQ'' (bacis1980 re-reduces it with -558.6 MHz to -1556 +- 1 MHz)."
+
+notes = """
+Columns as data/x_hyperfine/bacis1980 where they apply (v, eqQ, eqQ_unc), plus J, C in kHz, the fit and the source.
+bacis1980 Table II prints this v'' = 83 value as -1556 +- 1 MHz "taken from Ref. 15" (this letter), corrected to its
+eqQ_B(v' = 43) = -558.6 MHz: that row is a corrected reprint, not an independent measurement. The nonzero C'' at v'' =
+83 is attributed to the interaction of X with a repulsive 1g state of the same asymptote (footnote 15).
+"""
+
+[columns]
+data = "v, J: the X level. eqQ, eqQ_unc: MHz (empty for the v'' = 0 row). C_kHz, C_unc_kHz: spin-rotation constant C'', kHz. fit, source, note."

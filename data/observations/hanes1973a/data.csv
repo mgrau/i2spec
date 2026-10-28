@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a18,interval,12.847,0.020,,a17,hanes1973a,"Table I: d-e = fitted 12.846 MHz (best values d 0, e 12846 kHz below d) + deviation matrix (measured - fitted) +1 kHz"
+127I2 R(127) 11-5,a18,interval,26.206,0.020,,a16,hanes1973a,"Table I: d-f = fitted 26.215 MHz (best values d 0, f 26215 kHz below d) + deviation matrix (measured - fitted) -9 kHz"
+127I2 R(127) 11-5,a18,interval,39.378,0.020,,a15,hanes1973a,"Table I: d-g = fitted 39.370 MHz (best values d 0, g 39370 kHz below d) + deviation matrix (measured - fitted) +8 kHz"
+127I2 R(127) 11-5,a17,interval,13.371,0.020,,a16,hanes1973a,"Table I: e-f = fitted 13.369 MHz (best values e 12846, f 26215 kHz below d) + deviation matrix (measured - fitted) +2 kHz"
+127I2 R(127) 11-5,a17,interval,26.521,0.020,,a15,hanes1973a,"Table I: e-g = fitted 26.524 MHz (best values e 12846, g 39370 kHz below d) + deviation matrix (measured - fitted) -3 kHz"
+127I2 R(127) 11-5,a16,interval,13.167,0.020,,a15,hanes1973a,"Table I: f-g = fitted 13.155 MHz (best values f 26215, g 39370 kHz below d) + deviation matrix (measured - fitted) +12 kHz"
+127I2 R(127) 11-5,a16,interval,116.907,0.020,,a14,hanes1973a,"Table I: f-h = fitted 116.926 MHz (best values f 26215, h 143141 kHz below d) + deviation matrix (measured - fitted) -19 kHz"
+127I2 R(127) 11-5,a15,interval,125.710,0.020,,a13,hanes1973a,"Table I: g-i = fitted 125.690 MHz (best values g 39370, i 165060 kHz below d) + deviation matrix (measured - fitted) +20 kHz"
+127I2 R(127) 11-5,a14,interval,21.919,0.020,,a13,hanes1973a,"Table I: h-i = fitted 21.919 MHz (best values h 143141, i 165060 kHz below d) + deviation matrix (measured - fitted) +0 kHz"
+127I2 R(127) 11-5,a14,interval,43.472,0.020,,a12,hanes1973a,"Table I: h-j = fitted 43.491 MHz (best values h 143141, j 186632 kHz below d) + deviation matrix (measured - fitted) -19 kHz"
+127I2 R(127) 11-5,a13,interval,21.591,0.020,,a12,hanes1973a,"Table I: i-j = fitted 21.572 MHz (best values i 165060, j 186632 kHz below d) + deviation matrix (measured - fitted) +19 kHz"
+127I2 R(127) 11-5,a13,frequency,473612214.869,2.94,,,hanes1973a_kr,"abstract and p. 1604: i, vacuum wavelength 632 991.398 +- 0.003 pm against 86Kr (weighted mean of the 1968, 1969 and 1972 series); c / lambda; uncertainty hypot(2.24 MHz, 4e-9) (see meta.toml)"

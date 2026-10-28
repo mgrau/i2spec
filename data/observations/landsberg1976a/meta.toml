@@ -35,10 +35,13 @@ Table 2 is Hackel et al. 1975's measurement, which hackel1980a also prints (decl
 the kHz except s - o = a3 - a7, -254.996 here and -254.994 there. Table 1 is the only copy of the Hanes 1973
 separations held. Residuals against an earlier version of the model (obs - model): Table 1 rms 29 kHz (mean -18 kHz, largest -46 kHz
 at f - h), Table 2 rms 10 kHz (-27 kHz at a21 - a7). Checked against the model only.
+Table 1 reprints Hanes, Baird & DeRemigis 1973, now held as hanes1973a (the eleven measured intervals, each its
+fitted value plus deviation, digit for digit); declared "same" below for group landsberg1976a_hanes1973.
 """
 
 [overlaps]
 hackel1980a = { relation = "same", lines = ["127I2 P(13) 43-0"] }
+hanes1973a = { relation = "same", groups = ["landsberg1976a_hanes1973"] }   # pending until admitted
 
 [conditions]
 method = "Table 1: beats between He-Ne/I2 lasers at 633 nm locked to different components (Hanes et al. 1973); Table 2: saturated absorption at 514.5 nm (Hackel et al. 1975)"

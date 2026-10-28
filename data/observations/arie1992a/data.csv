@@ -1,0 +1,9 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a2,interval,259.9,1.0,,a1,arie1992a,"Fig. 2 label: 259.9 MHz from the lowest component"
+127I2 R(56) 32-0,a5,interval,310.8,1.0,,a1,arie1992a,"Fig. 2 label: 310.8 MHz from the lowest component"
+127I2 R(56) 32-0,a6,interval,402.8,1.0,,a1,arie1992a,"Fig. 2 label: 402.8 MHz from the lowest component"
+127I2 R(56) 32-0,a7,interval,416.7,1.0,,a1,arie1992a,"Fig. 2 label: 416.7 MHz from the lowest component"
+127I2 R(56) 32-0,a8,interval,440.6,1.0,,a1,arie1992a,"Fig. 2 label: 440.6 MHz from the lowest component"
+127I2 R(56) 32-0,a9,interval,454.7,1.0,,a1,arie1992a,"Fig. 2 label: 454.7 MHz from the lowest component"
+127I2 R(56) 32-0,a10,interval,572.1,1.0,,a1,arie1992a,"Fig. 2 label: 572.1 MHz from the lowest component"
+127I2 R(56) 32-0,a15,interval,858.7,1.0,,a1,arie1992a,"Fig. 2 label: 858.7 MHz from the lowest component"

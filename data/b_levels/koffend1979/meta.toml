@@ -1,0 +1,72 @@
+id = "koffend1979"
+citation = "J. B. Koffend, R. Bacis and R. W. Field, \"The electronic transition moment of the B 0u+ - X 1Sigmag+ system of I2 through gain measurements of an I2 optically pumped laser\", J. Chem. Phys. 70, 2366-2372 (1979), Tables I and II and Sect. V A"
+source = "https://doi.org/10.1063/1.437744 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1063/1.437744"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:koffend1979a"
+unit = "D^2 (transition strengths); cm-1 (wavenumbers); A (R-centroids); gains dimensionless (I = I0 exp(g), round trip)"
+state = "B-X"
+isotopologue = "127I2"
+files = ["gain.csv", "gain_ratios.csv", "moment_function.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I and II (pp. 2368, 2370) and the two linear moment functions of Sect. V A (p. 2369), read from 400 dpi renders
+of the scan (the PDF has a cover page). The OCR text layer is right except for some commas and footnote marks.
+
+The measurement: an Ar+ 514.5 nm single-mode laser pumps B v' = 43 (J' = 12 and 16 via 43-0 P(13) and R(15)) in a
+242 cm cell at 84 +- 3 mTorr; the cw I2 laser oscillates on (43, v'') bands; the gain of each band is the intracavity
+loss at threshold, set by tilting a Brewster plate (Fresnel loss) with the mirror transmittances known; four mirror
+sets cover 600-1460 nm; three determinations per band. Ratios of gains for equal pump power and pressure give relative
+|<v'|mu|v''>|^2 (Eq. 3), divided by the calculated FCF (RKR of Wei and Tellinghuisen 1974 for B; Bacis et al. and Luc and
+Gerstenkorn for X) to give |M(R-centroid)|^2, scaled to 1.10 +- 0.05 D^2 at R = 2.8 A (Tellinghuisen 1973).
+
+gain.csv (18 rows): Table I, 16 bands used, the rejected (43,66) band (printed in footnote e), and the (43,84) upper
+limit (footnote f; "<" in gain_limit and M2_limit). q_calc_x1e2 is 10^2 q as printed; q and R-centroid are calculated.
+gain_ratios.csv (3 rows): Table II, ratios g(78)/g(79), g(78)/g(81), g(79)/g(81) under three conditions.
+moment_function.csv (2 rows): the two linear segments M(R) = +-[1.62(15) R - 3.51(44)] for 2.8 < R < 3.1 A and
+M(R) = +-[-0.781(23) R + 3.74(9)] for 3.3-4.6 A (R in A, M in D), the second's sign fixed relative to the first.
+
+Not entered: Fig. 2 (Table I and the two segments plotted). The fourth-order polynomial attempt (5 parameters) is
+described as insufficient; no coefficients are printed.
+
+Checks (model-free): |M|^2 = K g/(nu q) with K fixed by the v'' = 15 calibration row reproduces every printed |M|^2 of
+Table I to the printed digits (largest difference 0.006 D^2, v'' = 71, within the rounding of q and g) across all four
+mirror sets, so the strengths are Eq. (3) applied with nu^1 and no other factor. Table I gains reproduce Table II's
+first row: 0.159/0.195 = 0.815, 0.159/0.441 = 0.361, 0.195/0.441 = 0.442 (printed 0.814, 0.360, 0.442). The segments
+give |M|^2 = 1.05 at 2.8 A, 2.29 at 3.1 A, 1.35 at 3.3 A, 0.162 at 4.27 A (Table I: 0.143) and 0.022 at 4.6 A (< 0.04).
+No misprint found.
+"""
+
+uncertainty = """
+Table I: numbers in parentheses are 1 sigma (footnote c) from the reproducibility of three gain determinations; about
+5 % on the gains. Systematic: absorbed pump power 500 +- 15 mW per mirror set (up to 3 % on the gains of one set
+against another), linewidth changes up to 3 %, losses other than the output coupling below 0.3 % (3 % of the gain in
+the worst case). The absolute scale rests on 1.10 +- 0.05 D^2 at 2.8 A from absorption (Tellinghuisen 1973). The authors
+quote the relative precision of |M|^2 as about 10 %. Tellinghuisen 1982 (data/b_levels/tellinghuisen1982, footnote 52)
+estimates a double-pass continuum absorption of about 10 % near 6000 A, comparable to the v'' = 15 and 17 gains used
+for the calibration, which could bias the scale; and (p. 4742) that the curve needs a further upward adjustment of
+about 10 % to match his absorption values.
+"""
+
+notes = """
+Relation to the code's form. Tellinghuisen 1997 and 2011 use mu_e^2 = c1 exp[-c2 (R - c3)^2] / R^2 (2011's values are
+in src/i2spec/intensity.py, mu_tellinghuisen2011). This paper's function is piecewise linear in mu_e with a gap at
+3.1-3.3 A (Tellinghuisen 1982 bridged it with a straight segment to compute radiative rates) and a peak of about
+2.4 D^2 near 3.2 A; it is the first determination at R-centroids beyond 2.85 A. Tellinghuisen 1997 (p. 1308, footnote
+32) inverted synthetic decay rates generated from this function as a test of his method.
+
+Overlap: the v' = 43 FCFs differ from Tellinghuisen 1978's Table 7 (data/theory/tellinghuisen1978, J = 14) at the
+1-10 % level (different constants). Bhale et al. 1985 (data/b_levels/bhale1985) measured the same v' = 43 progression in
+spontaneous fluorescence (v'' = 1-42). The companion paper on the laser itself is catalog koffend1979b.
+"""
+
+[columns]
+gain = """
+v_upper, v_lower: the band (43, v''). mirror_set: 1 = 600-700 nm, 2 = 700-860, 3 = 1050-1250, 4 = 1220-1460 nm.
+wavenumber_cm1: band wavenumber as printed. q_calc_x1e2: 10^2 x FCF (calculated). gain, gain_unc, gain_limit: round-trip
+gain coefficient (84 mTorr, 500 mW absorbed), 1 sigma, "<" for an upper limit. rcentroid_calc_A: R-centroid (calculated).
+M2_D2, M2_unc_D2, M2_limit: |M(R)|^2, D^2, 1 sigma. status: used, rejected or upper limit. note.
+"""
+gain_ratios = "Conditions (I2 pressure, absorbed pump power, as printed) and the three gain ratios with 1 sigma."
+moment_function = "segment, R range (A), form, slope (D/A) and intercept (D) with their printed 1 sigma. M is the moment, not its square."

@@ -1,0 +1,9 @@
+isotopologue,state,quantity,value,uncertainty,unit,source,note
+127I2,B,D_0,6.20e-9,,cm-1,"Table 3; Eq. (6)","D_v = sum_{n=0..4} D_n (v + 1/2)^n for 0 <= v <= 53: least-squares fit to the Kratzer D_e, the RKR-calculated D_v of v = 0-43 (Table 2) and the experimental D_v of v = 44-72 (Barrow and Yee 1973, data/b_levels/barrow1973); calculated"
+127I2,B,D_1,1.089e-10,,cm-1,"Table 3; Eq. (6)",
+127I2,B,D_2,3.645e-12,,cm-1,"Table 3; Eq. (6)",
+127I2,B,D_3,-9.269e-14,,cm-1,"Table 3; Eq. (6)",
+127I2,B,D_4,4.730e-15,,cm-1,"Table 3; Eq. (6)",
+129I2,B,rho,0.99221,,,"p. 2120, Eqs. (7)-(9)","(mu(127I2)/mu(129I2))^(1/2) from the atomic masses of Wapstra and Gove (1971). 129G(v) = sum_{n=1..5} rho^n G_n (v + 1/2)^n (0 <= v <= 50), 129B_v = sum_{n=0..4} rho^(n+2) B_n (v + 1/2)^n (0 <= v <= 77), 129D_v = sum_{n=0..4} rho^(n+4) D_n (v + 1/2)^n (0 <= v <= 53), with G_n and B_n of 127I2 from Barrow and Yee 1973 (Table 4 there; not reprinted here) and D_n above"
+129I2,B,T0_offset,15662.75,,cm-1,"Table 5, footnote a","T_{v,J=0} = G(v) + 15 662.75 cm-1: the 129I2 B-state term value above X(v = 0, J = 0), with G(v) above the B-state minimum; i.e. Te minus the 129I2 X zero-point energy"
+127I2,X,H_e,-0.65e-15,,cm-1,"p. 2116, Eq. (5)","theoretical value of H0 from H0 ~ H_e = 2 D_e (12 B_e^2 - alpha_e omega_e) / (3 omega_e^2), compared with the RKR value H0 = -0.67e-15 (Table 1); calculated. The text also says D_{v=0} = 4.55e-9 (Table 1) agrees with the Kratzer value, which it does not print"

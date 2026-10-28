@@ -1,0 +1,85 @@
+id = "gerstenkorn1977"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "atlas line positions"
+citation = """S. Gerstenkorn, P. Luc and A. Perrin, Rotational analysis of the 5350 A band of iodine by means of Fourier transform spectroscopy, J. Mol. Spectrosc. 64, 56-69 (1977), Tables I-IV and Eqs. (1)-(2)"""
+doi = "10.1016/0022-2852(77)90339-3"
+source = "https://doi.org/10.1016/0022-2852(77)90339-3 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+catalog = "broadband.yaml:gerstenkorn1977"
+retrieved = "2026-10-26"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+instrument = """Fourier transform absorption spectrum (the Connes-Michel spectrometer of Laboratoire Aime Cotton): 13-cm cell
+at room-temperature vapor pressure, 40-W tungsten-iodine lamp, a filter limiting the range to about 2500 cm-1 (the (29,0)
+and (30,0) bands at the top of the response); 4e5-point interferograms (28.5 cm path difference, steps of 9/8 of the
+He-Ne reference wavelength), instrumental width about 0.025 cm-1, matched to the line width (resolution about 700 000);
+about 4 h per interferogram; vacuum wavenumbers."""
+calibration = """Uranium hollow-cathode lines superimposed on the spectrum (Fig. 8; the uranium wavenumbers known to about
+0.004 cm-1). The paper states that the calibration may shift the whole spectrum by up to +-0.004 cm-1 ('X' in Table III);
+no correction is applied. Against the FTS atlases held here the 30-0 lines read +3.6 mK (salami_ross_2005), +4.9 mK
+(apo_nist_2009) and +7.0 mK (debus_2023) high (medians of 160-164 selected lines; scatter 0.5 mK), within that
+statement and of the size of the -0.0056 cm-1 correction later found for the authors' 1978 atlas (catalog
+gerstenkorn1979a)."""
+tables = """II: the P and R branches of the (30,0) band, J'' = 4-165 (P to 164), pp. 62-64; I: intensity ratios of
+P(106)-P(116), p. 60; III: rotational constants (p. 67); IV: comparison with calculated and earlier constants (p. 67)."""
+files = ["gerstenkorn1977.csv", "gerstenkorn1977_assigned.csv", "gerstenkorn1977_constants.csv", "gerstenkorn1977_intensity.csv"]
+n_lines = 318
+n_assignments = 323
+
+columns = """
+gerstenkorn1977.csv, one row per observed line (wavenumber order, high to low): line (running number here), sigma_cm1
+(observed vacuum wavenumber), width_mK (width at half intensity, 1e-3 cm-1; blank where none is printed, 'strong blend'),
+intensity (depth, scale 1-100; blank where none is printed), n_assignments (1, or 2 for the five unresolved R(J+3)/P(J)
+doublets near J = 129-134 printed twice with identical values).
+
+gerstenkorn1977_assigned.csv, one row per printed table entry: line (the row of gerstenkorn1977.csv), sigma_cm1, v_upper
+(30), v_lower (0), J_lower, branch, calc_minus_obs_mK (Table II CAL-MES, 1e-3 cm-1; the table's footnote says 'between
+measured and calculated' but the column heading is CAL-MES), sigma_cal (sigma_cm1 + calc_minus_obs, derived here),
+selected (1 = marked '+' in Table II: symmetric, normal width 0.030-0.050 cm-1 and normal intensity, the lines used in the
+fits; 169 of 323), note.
+
+gerstenkorn1977_constants.csv: Tables III and IV (this work and the reprinted/calculated columns of other authors),
+Eqs. (1)-(2) (doublet separation polynomials), and the mean intensity ratio of Sect. 3.2.
+gerstenkorn1977_intensity.csv: Table I, the half widths l1, l2 (1e-3 cm-1), l1 - l2, l1 + l2 and the surface ratio rho
+of consecutive P lines J = 106-116.
+"""
+
+transcription = """
+Tables I-IV (pp. 60-67) read from 450-900 dpi renderings of the scan (the typewritten Table II is clean; the OCR text
+layer garbles many digits, e.g. '18514.5615' for 18 514.5675, '18392.1891' for 18 392.7897, '-41.7' for -47.7, '-0.9' for
+-8.9), every entry entered: 162 R and 161 P entries, 323 in all, of which 10 (the five doublets R(131)-R(135) = P(128)-
+P(132)) share 5 observed values, so 318 distinct lines. Widths printed '0' with intensity '0' (P(69), P(70), P(77)) are
+entered as printed; blank width or intensity cells stay blank.
+
+Checks (no model involved):
+- The calculated wavenumbers (observed + CAL-MES) were fitted with nu0 + F'(J') - F''(J'') (B, D, H for both states): rms
+  5.6e-5 cm-1 over all 323 entries (the rounding of CAL-MES to 1e-4 cm-1), and the fit returns Table III (B30' 0.0228367,
+  1e9 D30' 14.81, 1e15 H30' -37.3, B0'' 0.0373116, 1e9 D0'' 4.55, 1e15 H0'' -0.71). Only two entries depart by more than
+  1.5e-4: P(28) (-0.76e-3 cm-1: printed obs 18 684.6596 with CAL-MES -0.4) and R(55) (+0.30e-3), both checked on the image
+  and entered as printed. A fit of the 169 '+' lines to their observed values gives rms 0.0007 cm-1, the printed S.D.
+- The large CAL-MES values (up to -47.7e-3) coincide line by line with large departures from the other FTS atlases held
+  here (apo_nist_2009: R(162) +48, R(163) -33, P(133) +34 mK after the common offset), i.e. they are real blends, not
+  reading errors. Selected lines agree with apo_nist_2009 to 0.5 mK (median absolute deviation) after the +4.9 mK offset.
+- Table I: l1 - l2 and l1 + l2 agree with l1, l2 in every row; the mean of the seven ratios not involving lines 112 and
+  113 is 1.401 (text 1.40 +- 0.08) and of all ten 1.352 (text 1.35).
+- The R(J+3) - P(J) doublets close at J = 128-131 as the text says (identical printed values), and Eq. (1) gives +0.002
+  cm-1 at J = 129.
+
+Not entered: Figs. 1-9 (set-up, low-resolution spectrum, band head, branch intensities with perturbed lines a, b, c...,
+line profiles, reproducibility, uranium calibration, doublet shapes).
+"""
+
+uncertainty = """
+Single-line precision: the S.D. of the selected lines about the fit is 0.0007 cm-1; two interferograms agree to better
+than 0.001 cm-1; photon noise alone gives at least +-0.0005 cm-1. Absolute: the uranium calibration may shift the whole
+spectrum by up to +-0.004 cm-1 (stated), and the comparison with later atlases shows the spectrum 3.6-7.0 mK high. Lines
+not marked '+' are asymmetric, too wide or too intense (blends) and can be off by tens of mK (CAL-MES up to 47.7e-3).
+The constants' errors in Table III are as printed (one sigma, last digits for B).
+"""
+
+notes = """
+The first published Fourier-transform analysis of an I2 band from the Orsay group (the precursor of the 1978 atlas and of
+data/b_levels/luc1980): one band, (30,0) at 5350 A, J up to 165, the first determination of the H constants. 'Perturbed'
+lines a, b, c... of Fig. 4 are not identified in Table II. Table IV reprints constants of Le Roy, Brown et al., Barrow
+and Yee (data/b_levels/barrow1973) and Wei and Tellinghuisen (data/b_levels/wei1974), labeled there as reprints or
+calculated. Not compared with any model.
+"""

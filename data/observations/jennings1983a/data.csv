@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a15,frequency,473612340.492,0.074,,,jennings1983a,"abstract and Table 1: g, 473 612 340.492 MHz, total uncertainty 74 kHz (1.6e-10); I2 cell at 20 C, 6 MHz modulation, 13.4 mW standing-wave power"
+127I2 R(127) 11-5,a13,frequency,473612214.789,0.074,,,jennings1983a,"abstract and Table 1: i, 473 612 214.789 MHz, total uncertainty 74 kHz (1.6e-10), as measured (the adjusted 473 612 214.830 MHz is not entered)"
+127I2 P(62) 17-1,a1,frequency,520206808.546,0.078,,,jennings1983a_pollock1983,"Table 1: ""I2/2, 260 THz"", 260 103 404.273 MHz (25 kHz measurement, 30 kHz CH4), doubled: the o component of P(62) 17-1 as measured by Pollock et al. 1983 (ref. 4; pollock1983a, 520 206 808.547 MHz)"

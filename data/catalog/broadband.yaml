@@ -226,7 +226,7 @@
   likely_in_knockel2004: unknown
   priority: low
   verified: true
-  notes: "Earlier constants from the same FTS data, superseded by Gerstenkorn & Luc 1985. Content not checked."
+  notes: "Earlier constants from the same FTS data, superseded by Gerstenkorn & Luc 1985. Content not checked. Transcribed 2026-10-26 as data/b_levels/luc1980 (levels v'=1-62, 60 Dunham parameters, 140 band fits from 14 116 lines; pending)."
 - id: gerstenkorn1980a
   citation: "S. Gerstenkorn, P. Luc, J. Sinzelle, Study of the iodine absorption spectrum by means of Fourier spectroscopy in the region 12 600–14 000 cm⁻¹, J. Phys. (Paris) 41, 1419–1430 (1980)"
   doi: "10.1051/jphys:0198000410120141900"
@@ -274,7 +274,7 @@
   likely_in_knockel2004: unknown
   priority: low
   verified: true
-  notes: "Early FTS band analysis preceding the atlas; its data are subsumed in the atlas."
+  notes: "Early FTS band analysis preceding the atlas; its data are subsumed in the atlas. Transcribed 2026-10-26 as data/atlas_lines/gerstenkorn1977 (318 lines, 323 assignments; pending)."
 - id: gerstenkorn1979b
   citation: "S. Gerstenkorn, P. Luc, Assignments of several groups of iodine (I2) lines in the B-X system, J. Mol. Spectrosc. 77, 310–321 (1979)"
   doi: "10.1016/0022-2852(79)90111-5"
@@ -283,22 +283,22 @@
   group: "Laboratoire Aimé Cotton, CNRS, Orsay"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "Assignment of FTS absorption lines"
+  technique: "Assignment of the 1978 FTS atlas lines (Doppler-limited absorption) near six laser lines, with wavenumbers calculated from band-by-band constants"
   observable: "line positions"
-  range_nm: null
-  range_cm1: null
-  transitions: "Not extracted"
-  n_items: null
-  uncertainty: "Not extracted"
+  range_nm: [514.6, 612.1]
+  range_cm1: [16337.99, 19431.91]
+  transitions: "Tables I–VI, windows of 3–4 cm⁻¹ around Ar⁺ 5145 Å (19 428.8–19 431.9 cm⁻¹), Ar⁺ 5287 Å (18 907.0–18 911.0), Kr⁺ 5208 Å (19 191.9–19 195.9), Kr⁺ 5308 Å (18 830.1–18 833.9), Kr⁺ 5683 Å (17 593.0–17 596.8) and He–Ne 6119 Å (16 338.0–16 342.0): 219 observed lines (atlas number, wavenumber, intensity; 108 with atlas numbers, 19 unassigned) and 315 assignment rows with calculated wavenumbers, 115 of them calculated-only rows printed beneath an observed line; 67 bands, v′ 7–61, v″ 0–4, J″ 1–174, including the (v′,2) bands v′ = 40–46 found near 5287 and 5308 Å after a search over 28 ≤ v′ ≤ 46. Table VII: calculated wavenumbers near 5145 Å from three sets of constants (Wei–Tellinghuisen, Barrow–Yee, the authors' global fit), with five (v′,2) lines calculated only. Table VIII: six fluorescence doublet splittings, Fabry–Perot against the atlas."
+  n_items: 219
+  uncertainty: "No uncertainty is stated for the wavenumbers. The observed values are the 1978 atlas's (Table VII cites ref. 1 for them), uncorrected: the paper (received October 1978) mentions no correction, so the −0.0056 cm⁻¹ of gerstenkorn1979a is not applied. Line half-widths up to 0.040 cm⁻¹ near 5145 Å, resolving power about 10⁶, lines with S/N > 4 assigned. Calculated minus observed for the 128 lines with one assignment on their row: median −1.0 mK, rms 4.7 mK (2.8 mK for intensity ≥ 60)."
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Paywalled (Elsevier)"
+  data_availability: "Tables I–VI in the paper (publisher PDF, an image scan whose text layer is garbled); transcribed as data/atlas_lines/gerstenkorn1979 (pending)"
   machine_readable: false
   likely_in_knockel2004: unknown
   priority: low
   verified: true
-  notes: "Assignments of selected atlas lines (often those near laser lines used in metrology); superseded by the 1980 Complément."
+  notes: "Read in full (2026-10-23). Transcribed as data/atlas_lines/gerstenkorn1979.{toml,csv} and gerstenkorn1979_assigned.csv: every row of Tables I–VI, held out as pending; Tables VII–VIII not entered. The calculated values come from band-by-band constants, not from the global fit (Luc, ref. 5); Table VII's global-fit column differs from Table I for 43,0 R(16) (.2672 against .2679), 52,0 R(119) (.3900 against .3965) and 58,1 P(97) (.176 against .1634). The (43,1) R-branch calculated values of Table III are not smooth (one misprinted by about 0.009 cm⁻¹). Atlas numbers are the atlas's own; Tables V–VI do not continue the series of Tables I–IV, so a number identifies a line only together with its table. The earlier note that the 1980 Complément supersedes these assignments was not checked."
 - id: gerstenkorn1981a
   citation: "S. Gerstenkorn, P. Luc, The iodine absorption spectrum around 5915 Å. Calibration and assignments, Opt. Commun. 36, 322–326 (1981)"
   doi: "10.1016/0030-4018(81)90384-9"
@@ -400,49 +400,49 @@
   doi: "10.1016/j.jms.2022.111668"
   url: "https://doi.org/10.1016/j.jms.2022.111668"
   year: 2022
-  group: "L. G. Marcassa group, São Carlos, Brazil (affiliation not checked)"
+  group: "Instituto de Física de São Carlos, Universidade de São Paulo, Brazil (L. G. Marcassa)"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "Doppler-limited laser absorption"
+  technique: "Doppler-limited diode-laser absorption (TOPTICA DL pro), 2 m cell at 70 °C in double pass (4 m), frequency read by a HighFinesse WS7 wavemeter calibrated to a diode laser locked to 85Rb 5S1/2 F=3 → 5P3/2 F′=4; 0.5 cm-1 scans in 0.001 cm-1 steps, more than 250 spectra; peaks found with scipy.signal.find_peaks after Savitzky–Golay smoothing"
   observable: "line positions"
   range_nm: [679.8, 684.9]
   range_cm1: [14600, 14710]
-  transitions: "Not extracted"
+  transitions: "Unassigned absorption peaks (B–X hot bands): 648 peaks, 410 also found in Salami & Ross 2005 by the same procedure, 238 new; Gerstenkorn & Luc list 365 lines in the range. No line table is printed: the only table gives the find_peaks parameters"
   n_items: 648
-  uncertainty: "Not extracted"
+  uncertainty: "Stated 'about 3 × 10⁻³ cm-1' per line (wavemeter and scan step), convention not stated; wavemeter absolute uncertainty 0.002 cm-1 (60 MHz). Mean difference Gerstenkorn & Luc (or Salami & Ross) minus this work about −3.5 × 10⁻³ cm-1 (≈105 MHz, this work higher). Mean FWHM ≈ 29 × 10⁻³ cm-1 (unresolved hyperfine structure)"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Paywalled (Elsevier); supplementary material not checked"
+  data_availability: "Journal article (Elsevier). The paper offers the transmission spectrum as ASCII supplementary data (publisher site not checked) and at fotonica.ifsc.usp.br/pagina/home/repository, which on 2026-10-23 listed one file, Iodine_spectrum_14600-14710_cm-1.pdf, with no license stated. The full spectrum was also shared by the authors on request and is kept privately (data/external, not redistributed)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "Counts come from a search-engine rendering of the abstract, not the full text: 648 absorption lines observed, 410 in excellent agreement with previous studies, 238 new. The calibration method and uncertainty are unknown. It lies in the 667–776 nm region where the Knöckel model is weakest (2σ up to 60 MHz), so it is valuable if its absolute accuracy is good."
+  notes: "Read in full (4 pp.). The paper prints no line positions: Table 1 (find_peaks parameters) is its only table, so there is nothing to transcribe as a public set; the peak list exists only in the authors' (or our) processing of the spectrum. Strongest peak 14 688.56 cm-1 (≈55 % absorption). A temperature test at 14 616.93 cm-1 (190 °C, single pass) gives an absorbance 32 times Salami & Ross's, where the cell lengths predict 4. Lies in the 667–776 nm region where the Knöckel model is weakest (2σ up to 60 MHz). Companion: rodriguezfernandez2023."
 - id: rodriguezfernandez2023
   citation: "D. Rodríguez Fernández, M. A. Lefrán Torres, M. R. Cardoso, J. D. M. Kondo, L. G. Marcassa, High resolution laser spectroscopy of iodine molecule in the 14 400–14 600 cm⁻¹ range, J. Mol. Spectrosc. 395, 111789 (2023)"
   doi: "10.1016/j.jms.2023.111789"
   url: "https://doi.org/10.1016/j.jms.2023.111789"
   year: 2023
-  group: "L. G. Marcassa group, São Carlos, Brazil (affiliation not checked)"
+  group: "Instituto de Física de São Carlos, Universidade de São Paulo, Brazil (L. G. Marcassa), with Universidade Federal de Santa Catarina (J. D. M. Kondo)"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "Doppler-limited laser absorption"
+  technique: "Doppler-limited diode-laser absorption, the setup of torres2022 with a new laser (45 mW at 690 nm): 2 m cell at 70 °C in double pass, WS7 wavemeter calibrated to 85Rb D2; 0.5 cm-1 scans in 0.001 cm-1 steps, more than 400 spectra; peaks found with scipy.signal.find_peaks after Savitzky–Golay smoothing"
   observable: "line positions"
   range_nm: [684.9, 694.4]
   range_cm1: [14400, 14600]
-  transitions: "Not extracted"
-  n_items: null
-  uncertainty: "Not extracted"
+  transitions: "Unassigned absorption peaks (B–X hot bands): 1204 peaks, 787 also found in Salami & Ross 2005, 417 new; Gerstenkorn & Luc list 521 lines in the range. IodineSpec5 spectra treated the same way give 1045 peaks here and 606 in 14 600–14 710 cm-1, about 12 % fewer than observed, with positions within about 5 × 10⁻³ cm-1. No line table is printed: the only table gives the find_peaks parameters"
+  n_items: 1204
+  uncertainty: "Stated 'about 3 × 10⁻³ cm-1' per line, as in torres2022 (wavemeter and scan step), convention not stated; wavemeter absolute uncertainty 0.002 cm-1 (60 MHz). Mean difference Gerstenkorn & Luc (or Salami & Ross) minus this work about −5 × 10⁻³ cm-1 (≈150 MHz, this work higher). Mean FWHM ≈ 29 × 10⁻³ cm-1"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Paywalled (Elsevier); supplementary material not checked"
+  data_availability: "Journal article (Elsevier). The paper says the transmission spectrum is ASCII supplementary material 'at [26]', the group repository fotonica.ifsc.usp.br/pagina/home/repository, which on 2026-10-23 listed nothing for this paper. The full spectrum was shared by the authors on request and is kept privately (data/external, not redistributed)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "Companion to torres2022. A search-engine summary describes it as Doppler-limited laser absorption spectroscopy. Line count, calibration and uncertainty were not accessible. Author name order follows Crossref."
+  notes: "Read in full (5 pp.). Like torres2022 it prints no line positions (Table 1, the find_peaks parameters, is the only table), so there is nothing to transcribe as a public set. Strongest peak 14 513.29 cm-1 (≈54 % absorption). Author name order as printed. Companion: torres2022."
 - id: williamson2013
   citation: "J. C. Williamson, T. S. Kuntzleman, R. A. Kafader, A molecular iodine spectral data set for rovibronic analysis, J. Chem. Educ. 90, 383–385 (2013)"
   doi: "10.1021/ed300455n"
@@ -730,7 +730,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Method paper establishing the use of FTS iodine templates in forward-modelled RVs. Included for provenance of the astronomical FTS iodine scans; the FTS details were not extracted."
+  notes: "Method paper establishing the use of FTS iodine templates in forward-modelled RVs. Included for provenance of the astronomical FTS iodine scans. Read 2026-10-23: the I2 reference spectra (and the Sun) were taken with the McMath FTS at a resolution of 400 000 with noise below 0.1 % (citing Marcy & Butler 1992, PASP 104, 270, which describes the Lick cell: 10 cm, sealed with the iodine pressure set by a 34.8 C water bath, run at 50.0(1) C, about 0.01 atm, and its FTS transmission spectrum); an incandescent lamp through an I2 cell at 50 C was the reference at Lick and Keck. No line data; it is background for kitt_peak_1993."
 - id: vaughan2008
   citation: "S. Vaughan, T. Gherman, A. Ruth, J. Orphal, Incoherent broad-band cavity-enhanced absorption spectroscopy of the marine boundary layer species I2, IO and OIO, Phys. Chem. Chem. Phys. 10, 4471 (2008)"
   doi: "10.1039/b802618a"
@@ -931,49 +931,49 @@
   doi: "10.1016/0022-2852(86)90202-x"
   url: "https://doi.org/10.1016/0022-2852(86)90202-x"
   year: 1986
-  group: "Vanderbilt University (Tellinghuisen); inferred"
+  group: "Department of Chemistry, Vanderbilt University, Nashville (Tellinghuisen)"
   isotopologues: ["127I2"]
   system: "X"
-  technique: "Re-analysis: mixed polynomial / near-dissociation-expansion representation of X-state data"
+  technique: "Re-analysis: mixed representation (MXR) of G_v and B_v, polynomials in v + 1/2 for v ≤ 85 joined smoothly (Lagrange-multiplier constraints) to near-dissociation expansions for v > 85, fitted to D → X fluorescence data"
   observable: "other"
   range_nm: null
   range_cm1: null
-  transitions: "X state (input data set not retrieved)"
-  n_items: null
-  uncertainty: "n/a (analysis)"
+  transitions: "X 0g+ v = 0–99: Table II gives G_v (c1–c11) and B_v (c0–c6) polynomials, the NDE parameters vD = 111.786, X0 = 0.0111 and X1 = 7.65e-4 (fixed), a1–a5 (G) and a1–a4 (B), De = 12547.19 cm-1 (fixed), and the energies of the five emitting D 0u+ levels. Input: the 1830 Å D → X fluorescence data of Tellinghuisen, McKeever & Sur 1980 (v'' up to 99), not the Lyon FTS data, which serve only as a comparison (Fig. 5)"
+  n_items: 36
+  uncertainty: "Least-squares standard errors only for the low-order terms: ωe = c1 = 214.52429(188), c2 = −0.609818(803), Be = c0 = 0.0373684(33), c1(B) = −1.1449(39)e-4 cm-1; X0, X1 and De held fixed. Input data about 0.1 cm-1 absolute"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article (Elsevier, paywalled)"
+  data_availability: "Journal article (Elsevier); all parameters printed in Table II"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "An analysis paper with no new data. It cites Martin 1986 (OpenAlex forward citation), so it was probably based on the Lyon LIF-FTS data, but that is inferred. Useful as a cross-check of extrapolating the X state toward dissociation."
+  notes: "Read in full. Transcribed as data/x_levels/ashmore1986 (held out as pending): Table II (31 parameters and the 5 upper levels). D0(X) is not printed; De = 12547.19 cm-1 is fixed 'based on Ref. (27)' (Martin et al. 1983), so De − G0 = 12547.19 − 107.1096 = 12440.080 cm-1 (derived) repeats Martin's 12440.083(145) by construction and is no independent value. The fitted vD = 111.786 is 2–3 quanta below Martin's 113.93, and the extrapolated G_v exceed Martin's levels by up to 2.5 cm-1 near v = 104–105 (Fig. 5; the text says −2 cm-1, the opposite sign). X0 = 0.0111 corresponds to C6 ≈ 2.0e6 cm-1 Å^6 (Le Roy–Bernstein, computed here), close to the theoretical 2.11e6 of Saute & Aubert-Frécon 1982 that the text says was adopted. The Cl2 X-state analysis (Douglas & Hoy 1975 data; Table I) is not transcribed."
 - id: verma1960
   citation: "R. D. Verma, Ultraviolet Resonance Spectrum of the Iodine Molecule, J. Chem. Phys. 32, 738–749 (1960)"
   doi: "10.1063/1.1730793"
   url: "https://doi.org/10.1063/1.1730793"
   year: 1960
-  group: "not verified"
+  group: "Laboratory of Molecular Structure and Spectra, Department of Physics, University of Chicago"
   isotopologues: ["127I2"]
   system: "X (UV resonance fluorescence)"
-  technique: "High-resolution photographic spectroscopy (21-ft vacuum grating) of UV resonance series excited by the I 1830.4 Å atomic line in discharges"
-  observable: "term values"
+  technique: "High-resolution photographic spectroscopy (21-ft vacuum grating, 2nd and 3rd order, Ge/Cu/Fe atomic standards, vacuum wavenumbers) of UV resonance series excited by the I 1830.4 Å atomic line in a 2450 Mc/s discharge"
+  observable: "line positions"
   range_nm: [183.0, 237.0]
-  range_cm1: [42194, 54645]
-  transitions: "Five doublet resonance series from five rotational levels of X v''=0; ground-state ΔG(v+1/2) from v''=0 up to the dissociation limit; RKR curve to the limit"
-  n_items: null
-  uncertainty: "D0 = 12452.5 ± 1.5 cm-1 as stated (later revised; see leroy1970)"
+  range_cm1: [42201, 54640]
+  transitions: "Five doublet resonance series (I: J'=87, II: 46, III: 49, IVa: 22, IVb: 25) from five rotational levels of X v''=0 into three levels v_n', v_(n+1)', v_(n+4)' of an unidentified upper state; lines to X v''=0–84 (Tables I–IV, 42 736.80–54 640.09 cm-1), 18 Table V lines at 42 201.41–42 289.41 cm-1 assigned to IVb near the limit (NO, see notes); ΔG(v+1/2) of X for v''=0–114 (Table VI); RKR curve v=0–112 (Table VII); X B_v and D_v polynomials (Eqs. 1–2)"
+  n_items: 400
+  uncertainty: "±1 mÅ for sharp lines, ±3–6 mÅ for weak or overlapped lines (stated), about ±0.02–0.03 and ±0.05–0.18 cm-1; the lines scatter by 0.17 cm-1 rms about the LIF-FTS X levels of martin1986. D0 = 12452.5 ± 1.5 cm-1 as stated (invalid, see notes)"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article (AIP, paywalled)"
+  data_availability: "Tables I–VII in the paper (publisher PDF, a scan with an OCR text layer); transcribed as data/x_levels/verma1960 (pending)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Historical. LeRoy (1970) showed that one resonance series ends on a state other than X, so Verma's near-dissociation assignments and D0 are unreliable. Verma & Le Roy, J. Chem. Phys. 61, 438 (1974), doi:10.1063/1.1681666, re-photographed the spectrum: the lines of Table V assigned to doublet series IVb are NO impurity lines (0-1 band of the gamma system), so X levels are observed only up to v'' = 84, and the reassignment to a 0g+ state is withdrawn too. The LIF-FTS work supersedes it."
+  notes: "Read in full (2026-10-23). Historical. LeRoy (1970) showed that one resonance series ends on a state other than X, so Verma's near-dissociation assignments and D0 are unreliable. Verma & Le Roy, J. Chem. Phys. 61, 438 (1974), doi:10.1063/1.1681666, re-photographed the spectrum: the lines of Table V assigned to doublet series IVb are NO impurity lines (0-1 band of the gamma system), so X levels are observed only up to v'' = 84, and the reassignment to a 0g+ state is withdrawn too. The LIF-FTS work supersedes it. Transcribed as data/x_levels/verma1960 (held out as pending): 226 doublet rows (400 printed wavenumbers; the 18 Table V rows flagged as NO), Table VI (115 ΔG values) and, labeled derived, Table VII (34 RKR points) and the constants. n_items counts the printed line wavenumbers. Printed misprints: Table I v''=35 P(88) 47 998.28 (R−P and the series imply 47 988.28); Table V interval 1.07 between (113) and (114) (positions differ by 1.17). Table VI is a smoothed curve whose sum runs up to 6 cm-1 above the line positions near v''=50."
 - id: leroy1970
   citation: "R. J. LeRoy, Spectroscopic Reassignment and Ground-State Dissociation Energy of Molecular Iodine, J. Chem. Phys. 52, 2678–2682 (1970)"
   doi: "10.1063/1.1673357"
@@ -1080,20 +1080,20 @@
   system: "B-X (emission)"
   technique: "Three-level laser spectroscopy: frequency-doubled cw Nd:YAG pump locked to an absorption HFS component, ECDL probe (968–998 nm) locked to an emission HFS component sharing the upper level; Ti:sapphire fs-comb frequency measurement"
   observable: "absolute hyperfine component frequencies"
-  range_nm: [982.0, 985.0]
-  range_cm1: [10152.3, 10183.3]
-  transitions: "R56(32-48) a1, P58(32-48) a1, P85(33-48) a1, R87(33-48) a1, R88(33-48) a10, and all 15 components of R86(33-48): X v''=48"
+  range_nm: [981.4, 985.0]
+  range_cm1: [10152.37, 10189.48]
+  transitions: "Table 1 (20 rows): P58(32-48) a1, R56(32-48) a1, R87(33-48) a1, P85(33-48) a1, P88(33-48) a10, and all 15 components of R86(33-48): X v''=48. The abstract and text call the a10 line R88(33-48); the table prints the a15 row of R86 as (32-48). The lines lie at 981.4–985.0 nm, partly outside the 982–985 nm of the title"
   n_items: 20
-  uncertainty: "relative 7e-10 (stated; limited by diode-laser frequency instability)"
+  uncertainty: "relative 7e-10 (stated; limited by diode-laser frequency instability); Table 1 prints statistical figures of 3–65 kHz per line; the authors call the data preliminary, uncertainty within 200 kHz, pressure shift (about -45 kHz) not corrected"
   uncertainty_MHz: 0.21
   absolute: true
   hyperfine_resolved: true
-  data_availability: "Journal article (paywalled); abstract on OSTI; numeric results printed in tables (not verified)"
+  data_availability: "Table 1 in the paper (checked against the publisher PDF, 2026-10-22)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "The abstract (OSTI) lists the transitions. Because the upper levels (v'=32, 33) are shared with the well-known 532 nm lines, the emission frequencies give X v''=48 term values (J≈55–89) to ~0.2 MHz, far above Knöckel's v''<=17 range. uncertainty_MHz is 7e-10 × ~304.6 THz. This is also absolute-frequency data (the other agent may list it)."
+  notes: "Because the upper levels (v'=32, 33) are shared with the well-known 532 nm lines, the emission frequencies give X v''=48 term values (J≈55–89) to ~0.2 MHz, far above Knöckel's v''<=17 range. uncertainty_MHz is 7e-10 × ~304.6 THz. Also catalogued as precision.yaml matyugin2012a. Transcribed as data/observations/matyugin2012: 18 of the 20 rows; R87(33-48) a1 and P85(33-48) a1 are left out because their printed labels do not fit the other rows."
 - id: nesterenko2019
   citation: "M. I. Nesterenko, S. M. Ignatovich, S. A. Kuznetsov, Yu. A. Matyugin, M. N. Skvortsov, Absolute frequency measurements for emission transitions of molecular iodine in the range of 1053–1068 nm, Quantum Electron. 49, 633–640 (2019)"
   doi: "10.1070/qel16890"
@@ -1190,6 +1190,30 @@
   priority: medium
   verified: true
   notes: "Full title and authors (single initials) from Crossref. The v' range comes from Tromp et al. (1983), who found these data consistent with near-dissociation predictions. Barrow & Yee and Danyluk & King are the only sources for B v'≈63–82 apart from sub-Doppler and hyperfine work near 500 nm."
+- id: steinfeld1965
+  citation: "J. I. Steinfeld, R. N. Zare, L. Jones, M. Lesk, W. Klemperer, Spectroscopic constants and vibrational assignment for the B 3Π0u+ state of iodine, J. Chem. Phys. 42, 25–33 (1965)"
+  doi: "10.1063/1.1695685"
+  url: "https://doi.org/10.1063/1.1695685"
+  year: 1965
+  group: "Department of Chemistry, Harvard University (Klemperer)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Photographic B–X absorption at high resolution (10-m Littrow grating spectrograph, resolving power about 500 000, thorium reference lines, room temperature and about 100 °C); photoelectric B–X fluorescence intensities; RKR potentials, Franck–Condon factors and radiative lifetimes calculated"
+  observable: "term values"
+  range_nm: null
+  range_cm1: null
+  transitions: "719 lines of the 3-6, 4-7, 5-4, 7-5, 11-1, 12-2, 13-2, 25-0 and 29-0 bands (the list deposited as ADI Document No. 8187, not printed); B_v' of v'=3–29 (Table I, 25 values of 16 levels, 8 of them reprints of Mecke 1923, Loomis 1927, Brown 1963 and Brown & Griffiths 1961); X B_v'' of v''=0, 1, 2, 5, 7 (Table II); J=0 term values of 11 B levels above the X potential minimum (Table III); B constants (ωe to ωeze, Be to δe, Te = 15 770.59 cm-1, De ≈ 4391 cm-1); RKR turning points v'=0–44 (Table IV, calculated); calculated and observed fluorescence intensities from v'=25 (Hg 5460.75 Å, R(33)), 14, 15, 23, 24, 26, 27 (Table VI); radiative lifetimes of v'=14, 15, 25 (Table VII, calculated). Revised B numbering: v' one less than Mecke and Loomis (the modern numbering)"
+  n_items: 719
+  uncertainty: "B_v' better than ±0.00004 cm-1 (stated, this work), ±0.0001 cm-1 for Brown & Griffiths; J=0 term values about 0.1 cm-1 or less; lines: comparator 0.002 cm-1, plate-to-plate ±0.03 cm-1; constants with correlated least-squares error limits"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "Tables I–VII in the paper (publisher PDF, a scan with an OCR text layer); the 719-line list and the Franck–Condon factors only as ADI Document No. 8187 (Library of Congress), not found online; tables transcribed as data/b_levels/steinfeld1965 (pending)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full (2026-10-23). The paper that set the modern B-state vibrational numbering: the Mecke/Loomis v' is decreased by one so that calculated Franck–Condon intensities match the observed fluorescence (confirmed by isotope shifts in Brown & James, J. Chem. Phys. 42, 33 (1965)); the Hg 5460.75 Å level becomes v'=25, J'=34. Table III minus the barrow1973 levels is 107.02–107.24 cm-1 (the X zero-point energy) at all nine common levels, so its numbering is the modern one. barrow1973 re-used five of these bands (11-1, 12-2, 13-2, 25-0, 29-0) 'with slight revisions'; its v'=12, 13, 25, 29 rest on them. n_items counts the measured lines, which are not printed. Transcribed: 18 level rows, 5 X B_v'', 19 constants, 116 observed and 86 calculated intensities, and the calculated Tables IV, V, VII. Te + G(v) from the printed constants lies 0.5–0.8 cm-1 above Table III (the text's 548.46 cm-1 for G(4) is not reproduced: 549.02). Misprints: Table VI(c) '26-6' for 24-6; 'P(144)' (Table VI) against 'P(114)' (Table VII) for v'=14. Also Category 4 (intensities, lifetimes). A different paper from steinfeld1969."
 - id: steinfeld1969
   citation: "J. I. Steinfeld, J. D. Campbell, N. A. Weiss, Spectroscopy of I2 at the dissociation limit, J. Mol. Spectrosc. 29, 204–215 (1969)"
   doi: "10.1016/0022-2852(69)90100-3"
@@ -1213,7 +1237,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Abstract content from a search-engine snippet of the ScienceDirect page. Historical; superseded by the FTS atlases."
+  notes: "Abstract content from a search-engine snippet of the ScienceDirect page. Historical; superseded by the FTS atlases. Transcribed 2026-10-26 as data/b_levels/steinfeld1969 (621 lines, pending); the green 43-0 and 49-1 rows are misassigned blends."
 - id: danyluk1977
   citation: "M. D. Danyluk, G. W. King, Energy levels of iodine near the B state dissociation limit, Chem. Phys. 25, 343–351 (1977)"
   doi: "10.1016/0301-0104(77)85144-6"
@@ -1318,22 +1342,22 @@
   group: "Laboratoire Aimé Cotton, Orsay, and University of Waterloo"
   isotopologues: ["127I129I", "129I2"]
   system: "B-X"
-  technique: "Analysis of B–X absorption spectra of the radioactive isotopologues (molecular constants)"
+  technique: "Calculation: first-order (WKB, Born–Oppenheimer) isotope scaling of the 127I2 B–X constants of Gerstenkorn & Luc 1985, tested against measured lines and levels of the radioactive isotopologues"
   observable: "other"
   range_nm: null
   range_cm1: null
-  transitions: "B–X absorption of 127I129I and 129I2 (coverage not retrieved)"
-  n_items: null
-  uncertainty: "not retrieved"
+  transitions: "Dunham Y_l0 and Y_l1 of X (v'' = 0–19) and B (v' = 0–80) for 127I129I and 129I2 (Tables 1–2, 90 coefficients); G0, T0 and D0 of X and B for 127I2, 127I129I and 129I2 (Table 3); calculated B levels near the limit (129I2 v' = 71–79, 127I129I v' = 70, 73) against King et al. 1980 (Table 6); calculated lines near 633, 612 and 502 nm (Tables 4, 5, 7, 8)"
+  n_items: 90
+  uncertainty: "Calculated, no uncertainties. Tests: rms 0.0022 cm-1 against six laser-measured 129I2 lines (Table 4) and 0.032 cm-1 against King et al.'s B levels (Table 6). Input constants: De' = 4381.249(1), De'' = 12547.340(6), Te = 15769.068(2) and 2P1/2–2P3/2 = 7602.977(2) cm-1"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article (Canadian Science Publishing, paywalled)"
+  data_availability: "Journal article (Canadian Science Publishing, paywalled); tables printed in full"
   machine_readable: false
   likely_in_knockel2004: true
   priority: medium
   verified: true
-  notes: "Abstract from Crossref. It also describes a public interactive program producing assigned transition lists with Franck–Condon and Boltzmann factors. Knöckel 2004 Table 4 cites it (ref. 48) for the fixed asymptotes De(X) = 12547.340 cm-1 and De(B) = 20150.317 cm-1. Also Category 3."
+  notes: "Read in full. No new measurements: the constants are pure mass scaling with no Born–Oppenheimer-breakdown terms, and the centrifugal constants (Hutson's method) are only in the program, which produced assigned transition lists with Franck–Condon and Boltzmann factors. n_items counts the Dunham coefficients. Table 3: D0'' = 12440.239, 12440.654, 12441.072 cm-1 and D0' = 4318.629, 4318.872, 4319.115 cm-1 for 127I2, 127I129I, 129I2, so the B limit lies 20043.216, 20043.631, 20044.049 cm-1 above X(0,0). Knöckel 2004 Table 4 cites it (ref. 48) for the fixed asymptotes De(X) = 12547.340 cm-1 and De(B) = 20150.317 cm-1 (= Te + De'). Table 3 prints G0' = 62.378 cm-1 for 127I129I where the other columns imply 62.377. Also Category 3."
 - id: pique1986
   citation: "J. P. Pique, F. Hartmann, S. Churassy, R. Bacis, Hyperfine interactions in homonuclear diatomic molecules and u-g perturbations. II. Experiments on I2, J. Phys. (Paris) 47, 1917–1929 (1986)"
   doi: "10.1051/jphys:0198600470110191700"
@@ -1435,25 +1459,25 @@
   doi: "10.1016/s0301-0104(99)00077-4"
   url: "https://doi.org/10.1016/s0301-0104(99)00077-4"
   year: 1999
-  group: "Lyon (Bacis, Churassy) with V. Skorokhodov; affiliations inferred"
+  group: "Laboratoire de Spectrométrie Ionique et Moléculaire, Université Lyon I (Bacis, Churassy), with V. Skorokhodov (St. Petersburg State University)"
   isotopologues: ["127I2"]
   system: "ion-pair E 0g+ → A 1u and B″ 1u (fluorescence)"
-  technique: "Direct optical–optical double resonance to E 0g+, fluorescence recorded by FTS at 0.150 cm-1 resolution"
+  technique: "cw optical–optical double resonance E 0g+ ← B 0u+ ← X 0g+ (two single-mode ring dye lasers), fluorescence recorded by FTS (Bomem DA3) at 0.150 cm-1 resolution"
   observable: "term values"
   range_nm: [316.5, 349.7]
   range_cm1: [28600, 31600]
-  transitions: "B″ 1u levels up to v=20 (0.978 cm-1 below its dissociation limit) and A 1u levels"
-  n_items: null
-  uncertainty: "resolution 0.150 cm-1; e.g. Te(B″) = 12344.804(40) cm-1, De(B″) = 202.53(4) cm-1, C5 = -0.49(28)e5 cm-1 Å^5, C6 = 1.00(33)e6 cm-1 Å^6, C8 = 0.40(6)e8 cm-1 Å^8 (as quoted in the publisher abstract)"
+  transitions: "Per-level T, B (two parity rows), D–M (Table 2) of B″ 1u v = 0–20 (776 lines, J 4–73; v = 20 lies 0.978 cm-1 below the limit), A 1u v = 3–20 and 22–34 (947 lines, J 4–108) and E 0g+ v' = 0, 1, 3, 5, 7, 8, 11; B″ 1u Dunham expansion, RKR turning points, E–B″ Franck–Condon factors and long-range fits (Tables 3–7); C5, C6, C8 of X, A′ 2u and B″ 1u (Table 8)"
+  n_items: 59
+  uncertainty: "2 SD throughout: level energies T ±0.004–0.034 cm-1 (Table 2; ±0.120 printed at A 1u v = 29); global-fit rms 0.012 cm-1 over 1723 lines; Te(B″) = 12344.804(40) cm-1, De(B″) = 202.53(4) cm-1, C5 = -0.49(28)e5 cm-1 Å^5, C6 = 1.00(33)e6 cm-1 Å^6, C8 = 0.40(6)e8 cm-1 Å^8 (V = De - ΣCn/R^n). The energy scale is fixed by A 1u v = 9 = 11536.910 cm-1 above X(0,0), computed from Appadoo et al. 1996"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article (Elsevier, paywalled)"
+  data_availability: "Journal article (Elsevier, paywalled); level constants printed in full, line list not printed"
   machine_readable: false
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "The first rotational analysis of the weakly bound B″ 1u (1Πu) state, which causes the natural (gyroscopic) predissociation of B. Ω-doubling is interpreted through interactions with the two 0u- states. The numbers come from the ScienceDirect abstract as shown in a search-engine snippet and should be checked against the paper. Found via the forward citation search from Martin 1986."
+  notes: "Read in full; the abstract numbers are confirmed. The first rotational analysis of the weakly bound B″ 1u (1Πu) state, which causes the natural (gyroscopic) predissociation of B. Ω-doubling is interpreted through interactions with the two 0u- states. n_items counts the levels of Table 2. Misprints: Table 3 prints Y50 = 0.4148671E-04 where the other tables need E-05; the Table 2 footnote calls the first B row Be and the second Bf, while the text and Fig. 7 imply the reverse. Reprints: De(X) = 12547.335(18) cm-1 (Cerny et al. 1997), X(0,0) at 107.111(2) cm-1 above the X minimum without Y00 (Gerstenkorn & Luc 1985), measured C5, C6, C8 of X (bacis1986) and A′ 2u (cerny1997), and Saute & Aubert-Frécon 1982 theory. The A 1u levels agree with Appadoo et al. 1996 within 2 SD (Fig. 6). Found via the forward citation search from Martin 1986."
 - id: cerny1997
   citation: "D. Cerny, R. Bacis, S. Churassy, D. Inard, M. Lamrini, M. Nota, Analysis of the D′2g-A′2u transition in the molecular iodine by laser-induced-fluorescence Fourier-transform spectrometry, Chem. Phys. 216, 207–226 (1997)"
   doi: "10.1016/s0301-0104(97)00008-6"
@@ -1822,49 +1846,49 @@
   doi: "10.1016/0022-2852(72)90123-3"
   url: "https://doi.org/10.1016/0022-2852(72)90123-3"
   year: 1972
-  group: "Wieland / Tellinghuisen (affiliations not verified)"
+  group: "Physikalisches Institut der Universität Basel and Lawrence Radiation Laboratory, University of California, Berkeley (the 129I2 work in L. Brewer's laboratory)"
   isotopologues: ["127I2", "129I2"]
-  system: "ion-pair (E->B, F->X)"
-  technique: "emission band spectroscopy (vibrational analysis)"
-  observable: "line positions"
-  range_nm: [253.0, 436.0]
-  range_cm1: [22936, 39526]
-  transitions: "E->B (400-436 nm) and F->X (253-274 nm) band systems of both isotopologues"
-  n_items: null
-  uncertainty: "not extracted (band-resolution data)"
+  system: "ion-pair E 3Πg(0g+)? → B 0u+ and F 1Σu+(0u+) → X (emission)"
+  technique: "Emission band spectroscopy of iodine discharges with added inert gas (band heads; instrument not described); vibrational analysis with 129I2 isotope shifts"
+  observable: "other"
+  range_nm: [250.9, 435.7]
+  range_cm1: [22953, 39855]
+  transitions: "Band heads of red-degraded bands: E → B (Table I) 89 heads of 127I2 and 67 of 129I2, v' = 0–20, B v'' = 6–32; F → X (Table II) 108 heads of 127I2 and 111 of 129I2, v' = 0–19, X v'' = 42–78; 94 paired isotope shifts ν(129I2) − ν(127I2), observed and calculated; Table III Te, ωe, ωexe, re of E and F and ν00 of the three systems"
+  n_items: 375
+  uncertainty: "None stated. Heads printed to 0.5 cm-1 (0.1 for some); printed o−c −6.0 to +6.6 cm-1, rms about 1.5 cm-1. Heads, not band origins. E: Te = 41411.8, ωe = 101.59, ωexe = 0.2380 cm-1; F: Te = 47217.8, ωe = 95.955, ωexe = 0.3623 cm-1 (no errors printed)"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "printed journal article"
+  data_availability: "Journal article (Elsevier); all heads printed in Tables I–II"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Vibrational isotope shifts in ion-pair systems that terminate on B and X; marginal for B-X modeling."
+  notes: "Read in full. Transcribed as data/other_states/wieland1972 (held out as pending): Tables I–III, 375 heads. The B and X constants of Table III are reprints (Steinfeld, Campbell & Weiss 1969; Le Roy 1970) and the 129I2 constants are the 127I2 ones scaled by ρ = 0.99221: the paper derives no B or X term values or constants for either isotopologue. Its 129I2 heads end on B v'' = 6–32 and X v'' = 43–77 and agree with mass-scaled B constants (gerstenkorn1991) and the measured 129I2 X levels of Cerny et al. 1986 to 0.1–0.2 cm-1 after a constant head offset, so they test 129I2 mass scaling only at the 1 cm-1 level. One printed shift is inconsistent (Table I, 1-18: 23760.5 − 23748. = 12.5, printed 11.5). Also discusses E ↔ B of Br2 and Cl2 (Tables IV–V, Cl2 heads), not transcribed."
 - id: king1989
   citation: "G. W. King, T. D. McLean, The three-photon absorption spectrum of 127I2 and 129I2 in the region 16 500-18 500 cm-1, J. Mol. Spectrosc. 135, 207-222 (1989)"
   doi: "10.1016/0022-2852(89)90151-3"
   url: "https://doi.org/10.1016/0022-2852(89)90151-3"
   year: 1989
-  group: "G. W. King group (affiliation not verified)"
+  group: "Department of Chemistry, McMaster University, Hamilton, Ontario (G. W. King)"
   isotopologues: ["127I2", "129I2"]
-  system: "ion-pair (three-photon excitation from X)"
-  technique: "three-photon absorption spectroscopy"
+  system: "ion-pair F 0u+ (3P0) and F′ 0u+ (1D), three-photon excitation from X through B 0u+ (also tentative D 0u+)"
+  technique: "Resonance-enhanced three-photon absorption with one (3P1C) or two (3P2C) pulsed dye lasers (0.7 and 0.12 cm-1 widths), fluorescence detection at 310 nm; calibration by Ne optogalvanic lines, the Gerstenkorn–Luc B–X atlas and Fe/Ne spectrograph plates"
   observable: "term values"
-  range_nm: [540.5, 606.1]
-  range_cm1: [16500, 18500]
-  transitions: "three-photon transitions from X to states near 49 500-55 500 cm-1 (my arithmetic: 3 x the photon energy); details not extracted"
-  n_items: null
-  uncertainty: "not extracted"
+  range_nm: [539.1, 608.1]
+  range_cm1: [16443, 18550]
+  transitions: "Table I: 65 strong low-resolution 3P1C features (16 443.8–18 549.2 cm-1); Table II: 26 3P2C heads with their F/F′ 0u+ term values T3 (51 594.9–53 768.5 cm-1 above the X minimum: F 0u+ v3 = 52–81, F′ 0u+ v3 = 0–4); Table III: 573 F 0u+ assignments (127I2 v3 = 51–102, J 0–139; 129I2 v3 = 52–96, J 0–145); Tables IV–V: combined-isotope Dunham constants of F 0u+ (valid v3 = 51–102) and F′ 0u+ (v3 = 0–11). The line lists are not printed (McLean thesis, 1986; data on request)"
+  n_items: 91
+  uncertainty: "Dunham errors as printed (convention not stated); σ_fit 0.46 (F 0u+) and 0.41 (F′ 0u+). F 0u+ Y00 = 47 282(4) cm-1 is an extrapolation from v3 ≥ 51; F′ 0u+ Y00 = 51 706.129(59), Y10 = 130.932(26) cm-1. Heads and features printed to 0.1 cm-1, no error stated"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "printed journal article"
+  data_availability: "Journal article (Elsevier); Tables I–V printed, line lists not"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Isotopologue data on high-lying states; not directly relevant to B-X absorption."
+  notes: "Read in full. Transcribed as data/other_states/king1989 (held out as pending): Tables I–V. Reinterprets the 'Goodman bands' (17 600–18 100 cm-1) as three-photon transitions to F 0u+, not two-photon transitions to a bound state near 35 000 cm-1. n_items counts the Table I features and Table II heads. The T3 of Table II are σ(BDL) + 2σ(NDL) (type I) or 2σ(BDL) + σ(NDL) (type II) plus the X zero-point energy (107.1 and 106.3 cm-1) in every row. The 129I2 constants are the 127I2 ones scaled by ρ^(l+2m); Table IV prints Y10 = 85.95 for 129I2 where the scaling (and the 129I2 levels of Table II) need 85.28, a misprint. No B or X constants or term values are derived; the B and X levels used are Hutson et al. 1982 and Tromp & Le Roy 1985."
 - id: salumbides2006
   citation: "E. J. Salumbides, K. S. E. Eikema, W. Ubachs, U. Hollenstein, H. Knöckel, E. Tiemann, The hyperfine structure of 129I2 and 127I129I in the B3Π0u+ - X1Σg+ band system, Mol. Phys. 104, 2641-2652 (2006)"
   doi: "10.1080/00268970600747696"
@@ -1984,7 +2008,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Found 129I2 contamination in some 127I2 cells and tied observed frequency shifts to impurities. Relevant when modeling real cells: isotopic impurity lines and foreign-gas shifts."
+  notes: "Found 129I2 contamination in some 127I2 cells and tied observed frequency shifts to impurities. Relevant when modeling real cells: isotopic impurity lines and foreign-gas shifts. The library holds the BIPM report version (Rapport BIPM-92/4, same title and authors, 53 pp; read 2026-10-23), not the Metrologia article: Table 1 lists, for ten laboratories (Dec. 1990 - May 1991), each cell's 633 nm beat shift against the BIPM reference lasers (e.g. +1.6(2.7) to -40.1(1.7) kHz) and its LIF impurity coefficient Ko (Pa); most cells lie within +-10 kHz. These are cell-quality data, not line frequencies, so nothing is entered in data/; they are context for the 5 kHz cell-impurity allowance the CIPM quotes."
 # ====================================================================================================
 # Category 4: intensity/lifetimes/vapor pressure
 # ====================================================================================================
@@ -2131,7 +2155,7 @@
   likely_in_knockel2004: unknown
   priority: medium
   verified: true
-  notes: "Stated: reassesses 1Πu<-X, B<-X, A<-X transition strengths in light of new 1Πu and A potentials; adds between-the-lines absorption measurements corrected for residual B-X absorption using spectroscopic constants. Superseded by tellinghuisen2011a/b for the B-X moment."
+  notes: "Stated: reassesses 1Πu<-X, B<-X, A<-X transition strengths in light of new 1Πu and A potentials; adds between-the-lines absorption measurements corrected for residual B-X absorption using spectroscopic constants. Superseded by tellinghuisen2011a/b for the B-X moment. Transcribed 2026-10-26 as data/b_levels/tellinghuisen1982 (pending)."
 - id: tellinghuisen2011a
   citation: "J. Tellinghuisen, Intensity analysis of overlapped discrete and continuous absorption by spectral simulation: The electronic transition moment for the B-X system in I2, J. Chem. Phys. 134, 084301 (2011) [absorption spectrum]"
   doi: "10.1063/1.3555623"
@@ -2473,16 +2497,16 @@
   doi: "10.1063/1.1725425"
   url: "https://doi.org/10.1063/1.1725425"
   year: 1964
-  group: "R. N. Zare"
+  group: "R. N. Zare (Lawrence Radiation Laboratory, UC Berkeley)"
   isotopologues: ["127I2"]
   system: "B-X"
   technique: "Franck-Condon / intensity calculation compared with resonance-fluorescence series"
   observable: "transition moment"
   range_nm: null
   range_cm1: null
-  transitions: "B-X resonance (fluorescence) series (details not extracted)"
+  transitions: "Calculated (RKR and Morse) relative intensities of the B v' = 15 P(114), v' = 16 P(45) and v' = 26 J' = 34 fluorescence series to X v'' = 0-69 (Table IX), radiative lifetimes (Table X), RKR tests (Tables I-V). Measured intensities printed for comparison are other authors': Table VI, v' = 26 series v'' = 0-39 (Lenz 1924, Arnot & McDowell 1958, Oldenberg 1927, visual or densitometer estimates); Table VII, v' = 15 and 16 series v'' = 0-9 (R. L. Brown, Harvard thesis 1962, photometric, +-30 %); Table VIII, three intensity ratios (Brown, +-10 %)"
   n_items: null
-  uncertainty: null
+  uncertainty: "Measured intensities +-30-50 % (as stated for the reprinted data); Brown's ratios +-10-20 %"
   uncertainty_MHz: null
   absolute: false
   hyperfine_resolved: false
@@ -2491,7 +2515,7 @@
   likely_in_knockel2004: unknown
   priority: low
   verified: true
-  notes: "Historical FC/intensity work (Crossref title truncated; full title reconstructed from Crossref record)."
+  notes: "Historical FC/intensity work (Crossref title truncated; full title reconstructed from Crossref record). Read from the publisher scan 2026-10-23 (its first page also carries the end of the preceding article). Nothing entered in data/: there is no directory for relative fluorescence intensities, and the measured values are reprints, the only copy held of Brown's 1962 thesis data. A constant transition moment is assumed; the paper finds RKR overlaps reproduce the internal-diffraction pattern within the experimental error."
 - id: tellinghuisen1978
   citation: "J. Tellinghuisen, Intensity factors for the I2 B<->X band system, J. Quant. Spectrosc. Radiat. Transfer 19, 149-161 (1978)"
   doi: "10.1016/0022-4073(78)90074-2"
@@ -2515,7 +2539,7 @@
   likely_in_knockel2004: unknown
   priority: low
   verified: true
-  notes: "Content inferred from title; superseded by modern potentials (i2spec will recompute FC factors from its own potentials)."
+  notes: "Content inferred from title; superseded by modern potentials (i2spec will recompute FC factors from its own potentials). Transcribed 2026-10-26 as data/theory/tellinghuisen1978 (Tables 1, 2, 4, 7; 894 values; pending)."
 - id: koffend1979a
   citation: "J. B. Koffend, R. Bacis, R. W. Field, The electronic transition moment of the B 0u+ - X 1Σg+ system of I2 through gain measurements of an I2 optically pumped laser, J. Chem. Phys. 70, 2366-2372 (1979)"
   doi: "10.1063/1.437744"
@@ -2539,7 +2563,7 @@
   likely_in_knockel2004: unknown
   priority: medium
   verified: true
-  notes: "Companion paper on the X-state long range (J. Mol. Spectrosc. 77, 202 (1979)) belongs to Category 2. Inferred: samples the TDM at large R-centroid via emission to high v''."
+  notes: "Companion paper on the X-state long range (J. Mol. Spectrosc. 77, 202 (1979)) belongs to Category 2. Inferred: samples the TDM at large R-centroid via emission to high v''. Transcribed 2026-10-26 as data/b_levels/koffend1979 (18 gains, 3 gain ratios, the two-piece transition moment; pending)."
 - id: bhale1985
   citation: "G. L. Bhale, S. A. Ahmad, S. G. Reddy, A study of variation of electronic transition moment of the B-X system of I2 from its laser-excited fluorescence spectrum, J. Phys. B 18, 645-655 (1985)"
   doi: "10.1088/0022-3700/18/4/012"
@@ -2563,7 +2587,7 @@
   likely_in_knockel2004: unknown
   priority: low
   verified: true
-  notes: "Author initials partly from Crossref (G., S., S.); middle initials not verified. Relative TDM variation."
+  notes: "Author initials partly from Crossref (G., S., S.); middle initials not verified. Relative TDM variation. Authors are S. F. Ahmad and S. Paddi Reddy (Memorial Univ. Newfoundland). Transcribed 2026-10-26 as data/b_levels/bhale1985 (38 intensity rows, quartic moment; pending); the constant term is -500.358 (abstract), misprinted -500.258 on p. 649."
 - id: lamrini1994
   citation: "M. Lamrini, R. Bacis, D. Cerny, S. Churassy, P. Crozet, A. J. Ross, The electronic transition dipole moment of the B0u+ -> X0g+ transition in iodine, J. Chem. Phys. 100, 8780-8783 (1994)"
   doi: "10.1063/1.466732"
@@ -2611,7 +2635,7 @@
   likely_in_knockel2004: unknown
   priority: medium
   verified: true
-  notes: "Stated: qualitative agreement with prior studies but quantitative consistency rated poor. Links lifetimes (4c) to absorption intensities; superseded in precision by tellinghuisen2011b within its R range."
+  notes: "Stated: qualitative agreement with prior studies but quantitative consistency rated poor. Links lifetimes (4c) to absorption intensities; superseded in precision by tellinghuisen2011b within its R range. Transcribed 2026-10-26 as data/b_levels/tellinghuisen1997 (pending): c1 = 21.5(2.1) D2 A2, c2 = 1.73(37) A-2, c3 = 3.49(12) A."
 - id: teichteil1994
   citation: "C. Teichteil, M. Pelissier, Relativistic calculations of excited states of molecular iodine, Chem. Phys. 180, 1-18 (1994)"
   doi: "10.1016/0301-0104(93)E0395-C"
@@ -2683,7 +2707,7 @@
   likely_in_knockel2004: unknown
   priority: medium
   verified: true
-  notes: "The only ab initio B-X TDM found; useful for extrapolating the empirical TDM outside the experimentally sampled R range and for the A-X and 1u-X contributions. Title uses B' for the 1u state (usually labelled B'' in I2)."
+  notes: "The only ab initio B-X TDM found; useful for extrapolating the empirical TDM outside the experimentally sampled R range and for the A-X and 1u-X contributions. Title uses B' for the 1u state (usually labelled B'' in I2). Transcribed 2026-10-26 as data/theory/zaitsevskii2000 (pending)."
 - id: dube2004
   citation: "P. Dubé, M. Trinczek, Hyperfine-structure splittings and absorption strengths of molecular-iodine transitions near the trapping frequencies of francium, J. Opt. Soc. Am. B 21, 1113-1126 (2004)"
   doi: "10.1364/JOSAB.21.001113"
@@ -2905,25 +2929,25 @@
   doi: "10.1063/1.431275"
   url: "https://doi.org/10.1063/1.431275"
   year: 1975
-  group: "ENS Paris (J.-C. Lehmann)"
+  group: "Laboratoire de Spectroscopie Hertzienne de l'ENS (CNRS), Université Pierre et Marie Curie, Paris (J.-C. Lehmann)"
   isotopologues: ["127I2"]
   system: "B (predissociation)"
-  technique: "Fluorescence decay of individual rovibrational levels"
+  technique: "Fluorescence decay of single rovibrational levels excited by an N2-laser-pumped dye laser (Rhodamine 6G and B, 1 GHz width), extrapolated to zero pressure (4–150 mTorr); one orientation-by-predissociation measurement (v' = 11, J' = 128, He–Ne 632.8 nm)"
   observable: "lifetimes"
   range_nm: null
   range_cm1: null
-  transitions: "Systematic set of individual B-state rovibrational levels (v', J' coverage not extracted)"
-  n_items: null
-  uncertainty: null
+  transitions: "Table I: tau0, 1/tau0 and the I2–I2 quenching cross section sigma(0) of 28 levels, v' = 9–20, J' = 8–126; Table II: Gamma_rad (v' = 9–20) and k_v' (v' = 9–13; < 10 s-1 at v' = 18) from 1/tau0 = Gamma_rad + k_v' J'(J'+1), with the orientation values of Vigué et al. 1975 (v' = 6–62) and Tellinghuisen's 1972 predictions"
+  n_items: 28
+  uncertainty: "As printed (convention not stated): tau0 ±25–60 ns (4–9 %); Gamma_rad ±0.04–0.08e6 s-1; k_v' ±4–10 s-1 (130 ± 10 at v' = 9 down to 13 ± 4 at v' = 13); sigma(0) ±3–6 Å^2"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article only"
+  data_availability: "Journal article (AIP); Tables I–II printed"
   machine_readable: false
   likely_in_knockel2004: unknown
   priority: high
   verified: true
-  notes: "Stated: demonstrates the J'(J'+1) dependence of the inverse lifetime due to gyroscopic predissociation, consistent with magnetic-predissociation results. Core input for a natural-linewidth model Gamma(v',J') = A_rad(v') + k_pred(v')J'(J'+1) (+ hyperfine term)."
+  notes: "Read in full. Transcribed as data/b_levels/broyer1975 (held out as pending): Tables I–II (data/ had no lifetime set; lifetimes are B-level properties). Demonstrates the J'(J'+1) dependence of the inverse lifetime from gyroscopic predissociation; k_v' is about ten times smaller than Tellinghuisen predicted, with the same v' shape; Gamma_rad varies strongly with v'. The decay-method k11 = 67 ± 6 s-1 agrees with orientation by predissociation (68 ± 10), but Gamma_rad differs (1.09 vs 1.37e6 s-1), suggesting a slight J' dependence of Gamma_rad. Misprint: 1/tau0 errors of v' = 9, J' = 33 and 39 are printed 0.9 for 0.09. Natural widths 1/(2 pi tau0) = 0.12–0.42 MHz (computed). Core input for a natural-linewidth model Gamma(v',J') = Gamma_rad(v') + k_v' J'(J'+1) (+ hyperfine term)."
 - id: broyer1976
   citation: "M. Broyer, J. Vigué, J. C. Lehmann, Hyperfine predissociation of molecular iodine, J. Chem. Phys. 64, 4793-4794 (1976)"
   doi: "10.1063/1.432067"
@@ -3193,16 +3217,16 @@
   doi: "10.1021/ja01302a050"
   url: "https://doi.org/10.1021/ja01302a050"
   year: 1936
-  group: "L. J. Gillespie (MIT, inferred)"
+  group: "Research Laboratory of Physical Chemistry, MIT"
   isotopologues: ["127I2"]
-  system: "n/a (solid-vapour equilibrium)"
-  technique: "Gas-current (saturation) method (cf. Gerry & Gillespie, Phys. Rev. 40, 269 (1932))"
+  system: "n/a (solid-vapor equilibrium)"
+  technique: "Static method: a platinum-rhodium diaphragm null gauge balancing the iodine vapor against dry air, the air pressure measured with a compression manometer"
   observable: "other"
   range_nm: null
   range_cm1: null
-  transitions: "Temperature range not extracted (full text not accessible)"
-  n_items: null
-  uncertainty: null
+  transitions: "Table I: vapor pressure of solid iodine at 29.967, 40.017, 50.154 and 60.119 C = 0.46709, 1.02614, 2.21318 (rejected by the authors) and 4.30723 mm Hg. Recommended: eq. (1), log10 p(atm) = -3512.830/T - 2.013 log10 T + 13.3740 (T = 273.1 + t), Gerry & Gillespie's fit of Baxter et al.'s gas-current data, which these points confirm (Table II, mean deviation 0.16 %)"
+  n_items: 4
+  uncertainty: "0.16 % mean, 0.22 % largest deviation of the accepted points from eq. (1); diaphragm sensitivity 0.001-0.004 mm Hg"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
@@ -3211,7 +3235,7 @@
   likely_in_knockel2004: false
   priority: high
   verified: true
-  notes: "Standard reference for crystalline-iodine vapour pressure near room temperature, widely used for cold-finger iodine cells (usage statement based on general literature practice, not verified per-paper here). Needed to convert cold-finger temperature to I2 number density for absolute absorption and pressure-broadening modeling. Method paper: Gerry & Gillespie, Phys. Rev. 40, 269 (1932), doi 10.1103/PhysRev.40.269."
+  notes: "Standard reference for crystalline-iodine vapor pressure near room temperature, used for cold-finger iodine cells. Eq. (1) with the 3512.830 coefficient is the 'Gillespie & Fraser' pressure in the [shift_correction] blocks of data/observations (e.g. 7.45 Pa at 6 C, 17.28 Pa at 15 C); the code's own vapor_pressure() uses Tellinghuisen 2011 eq. 8, which is 0.35 % lower at 15 C. Latent heat of sublimation at 25 C from the data: 14880.8(8) cal/mol. Read from the publisher PDF 2026-10-22. Method of the earlier fit: Gerry & Gillespie, Phys. Rev. 40, 269 (1932), doi 10.1103/PhysRev.40.269."
 - id: stull1947
   citation: "D. R. Stull, Vapor pressure of pure substances. Organic and inorganic compounds, Ind. Eng. Chem. 39, 517-550 (1947)"
   doi: "10.1021/ie50448a022"
@@ -3248,9 +3272,9 @@
   observable: "other"
   range_nm: null
   range_cm1: null
-  transitions: "n/a"
+  transitions: "Table I: heat capacity of solid iodine, 13.62-327 K; Table II: Cp, S, -(F-H0)/T, (H-H0)/T at 10-330 K; Table III: heat of sublimation and vapor pressure, 273.15-368.15 K, from the vapor pressures of Baxter et al. (1907, 1915) with the measured entropy (e.g. 0.03051 mm Hg at 273.15 K, 0.3080 at 298.15 K)"
   n_items: null
-  uncertainty: null
+  uncertainty: "Delta H0(sublimation) = 15658 +- 3 cal/mol (spread of Table III); S(298.15 K, solid) = 27.76 cal/(K mol); Delta H(298.15 K) = 14922 cal/mol"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
@@ -3259,7 +3283,7 @@
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "Thermodynamic data allowing a Clausius-Clapeyron/third-law extrapolation of the vapour pressure to cold-finger temperatures below ~0 °C."
+  notes: "Thermodynamic data allowing a Clausius-Clapeyron/third-law extrapolation of the vapor pressure to cold-finger temperatures below ~0 °C: Delta H0 and the tabulated -(F-H0)/T of solid and gas give ln p at any T. Read from a reprint of the published paper (pp. 4778-4779) 2026-10-22."
 - id: honig1960
   citation: "R. E. Honig, H. O. Hook, Vapor pressure data for some common gases, RCA Review 21, 360-368 (1960)"
   doi: null
@@ -3331,7 +3355,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Impurity quenching changes effective linewidths/fluorescence yields in real cells; context for cell modeling. See also Chartier et al., Metrologia 29, 361 (1992), doi 10.1088/0026-1394/29/5/006."
+  notes: "Impurity quenching changes effective linewidths/fluorescence yields in real cells; context for cell modeling. See also Chartier et al., Metrologia 29, 361 (1992), doi 10.1088/0026-1394/29/5/006. The library holds the BIPM report version (Rapport BIPM-89/5, 'A study of 127I2 cells using laser induced fluorescence techniques', 40 pp; read 2026-10-23): the Stern-Volmer impurity parameter Ko of six 127I2 cells (relative uncertainty <= 2 %) against their 633 nm beat shifts, linear for shifts below about 60 kHz. Cell-quality data only; nothing entered in data/."
 # ====================================================================================================
 # Category 5: line shape
 # ====================================================================================================
@@ -3364,25 +3388,25 @@
   doi: "10.1016/j.saa.2003.11.044"
   url: "https://doi.org/10.1016/j.saa.2003.11.044"
   year: 2004
-  group: "Hardwick group, University of Oregon (inferred from the Wolf thesis)"
+  group: "Hardwick group, Department of Chemistry, University of Oregon"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "diode-laser wavelength-modulation spectroscopy (Doppler-limited)"
-  observable: "other"
-  range_nm: null
-  range_cm1: null
-  transitions: "I2 lines near 675 nm (not extracted; abstract unavailable)"
-  n_items: null
-  uncertainty: "not extracted"
-  uncertainty_MHz: null
-  absolute: false
+  technique: "diode-laser wavelength-modulation spectroscopy (Doppler-limited), 1f detection, 1 m cells at 18 C"
+  observable: "line positions (deconvolved Doppler-limited centers), Delta eQq per line, relative intensities, pressure broadening and shift coefficients"
+  range_nm: [674.80, 674.86]
+  range_cm1: [14818.0, 14819.3]
+  transitions: "Table 1: 12 lines, R(76), P(69), R(75) 5-7; R(174) 5-6; R(43), P(36), R(42), P(35) 3-6; P(122) 4-6; R(113), P(106) 2-5; P(133) 6-7 (14818.1507-14819.3694 cm-1). Tables 2-3: Ar, H2O and air broadening and shift coefficients of P(69) 5-7 and P(122) 4-6."
+  n_items: 12
+  uncertainty: "Line centers: printed statistical 0.0003-0.0020 cm-1, but the scale is a linear fit to three blended Gerstenkorn-Luc atlas features with sd 0.008 cm-1 (obs-calc +0.0015 to -0.0095 cm-1); the authors say the absolute positions are compromised. Blend separations R(43)-P(36) and R(42)-P(35) 3-6 to about 10 MHz. Broadening 1-3 %, shifts 2-7 % (statistical)."
+  uncertainty_MHz: 240
+  absolute: true
   hyperfine_resolved: false
-  data_availability: "printed journal article"
+  data_availability: "Tables 1-3 in paper"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Included at the coordinator's request. Whether it reports broadening coefficients is unconfirmed; the full broadening study is wolf2009."
+  notes: "Read 2026-10-23; nothing entered. The line centers are below the held atlases: salami_ross_2005 holds R(76), R(43), P(69) and R(75) at 0.0008-0.0013 cm-1, and this paper reads +0.0060, +0.0073, +0.0012 and +0.0075 cm-1 from it, as its own calibration sd says. The Delta eQq values (Doppler-limited fits, X and B constants not separated) and the qualitative intensities have no home in data/. The full broadening study is wolf2009a."
 - id: fletcher1995
   citation: "D. G. Fletcher, J. C. McDaniel, Collisional shift and broadening of iodine spectral lines in air near 543 nm, J. Quant. Spectrosc. Radiat. Transfer 54, 837-850 (1995)"
   doi: "10.1016/0022-4073(95)00105-t"
@@ -3550,7 +3574,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Attributes the non-linear shifts partly to a condensable impurity gas in one cell, a caution for interpreting apparent self-shift coefficients."
+  notes: "Attributes the non-linear shifts partly to a condensable impurity gas in one cell, a caution for interpreting apparent self-shift coefficients. Transcribed 2026-10-26 as data/observations/glaser1982a (13 zero-pressure R(127) 11-5 g-f and d-f rows, pending); pressure, modulation and low-pressure coefficients in its meta."
 - id: bipm2003
   citation: "BIPM Consultative Committee for Length, Mise en pratique of the definition of the metre - recommended radiations: Iodine documents for λ ≈ 515, 532, 543, 576, 612, 633 and 640 nm (MeP 2003; 532 nm file last updated 2012) and 127I2 at 531 nm (2015)"
   doi: null

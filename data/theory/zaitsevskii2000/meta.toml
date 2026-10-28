@@ -1,0 +1,34 @@
+id = "zaitsevskii2000"
+citation = "A. Zaitsevskii, E. A. Pazyuk, A. V. Stolyarov, Ch. Teichteil and V. Vallet, \"Theoretical spectroscopy of molecular iodine. 1. Ab initio study on the B0u+ - X0g+, A1u - X0g+ and B'1u - X0g+ radiative transition intensities\", Mol. Phys. 98, 1973-1979 (2000), Table 1"
+source = "https://doi.org/10.1080/00268970009483400 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1080/00268970009483400"
+retrieved = "2026-10-26"
+catalog = "broadband.yaml:zaitsevskii2000"
+unit = "atomic units: r in bohr, transition dipole moments in e a0 (1 au = 2.541746 D; 1 bohr = 0.529177 A)"
+kind = "ab initio quasirelativistic transition dipole moment functions (relativistic effective core potentials, MPPT correlation, finite-field transition moments)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 1976), "Calculated transition dipole moments (atomic units are used throughout)", 14 internuclear
+distances 4.600-8.200 bohr, read from a 400 dpi render (the PDF has a cover page; p. 1976 is PDF page 5) and checked
+against the text layer, which is right. Columns as printed: B 0u+ - X 0g+, "A 1u - X 0g+" and "B'1u - X 0g+"; the
+paper's B' 1u is the 1Pi_u state that the other sets call B''1u (C 1u in some works). The A and B' columns end at
+7.700 bohr; 8.200 has the B-X value only. No conversion is applied: r_A = 0.529177 r_bohr, D in debye = 2.541746 x au.
+
+Not entered: Figs. 1-6 (difference potentials, comparison with empirical moment functions, radiative decay rates of B,
+relative intensities from v' = 6 and 43, continuum extinction 4000-7800 A): plots only.
+
+Checks: the B-X maximum is at 5.950 bohr (0.486 au) with 0.482 at 6.200, consistent with the text's peak "6.0 au, or
+3.18 A"; A-X and B'-X decrease monotonically beyond 4.85 bohr as stated. The text's empirical-peak range 5.35-6.2 au is
+quoted from other work.
+"""
+
+uncertainty = "Calculated. The authors report the transition moments stable within about 1 % against enlarging the spin-orbit subspace (p. 1975); no other error estimate."
+
+notes = """
+In debye and A the B-X maximum is 1.235 D (|mu|^2 = 1.53 D^2) at 3.149 A. The functional forms fitted to experiment
+(koffend1979 piecewise linear; bhale1985 quartic; tellinghuisen1997 and Tellinghuisen 2011, the code's
+mu_tellinghuisen2011, mu^2 = c1 exp[-c2 (R - c3)^2]/R^2) can be compared pointwise with this table over 2.43-4.34 A.
+The paper's radiative rates disagree with Vigue et al.'s at low v', which the authors attribute to underestimated
+predissociation in the experimental decomposition. The only ab initio A-X and 1Pi_u-X moment functions held.
+"""

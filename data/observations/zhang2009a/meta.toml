@@ -1,5 +1,5 @@
 id = "zhang2009a"
-citation = "J. Zhang, Z. H. Lu and L. J. Wang, \"Absolute frequency measurement of the molecular iodine hyperfine components near 560 nm with a solid-state laser source\", Appl. Opt. 48(29), 5629-5634 (2009)"
+citation = "J. Zhang, Z. H. Lu and L. J. Wang, \"Absolute frequency measurement of the molecular iodine hyperfine components near 560 nm with a solid-state laser source\", Appl. Opt. 48(29), 5629-5635 (2009)"
 source = "https://doi.org/10.1364/ao.48.005629 (publisher PDF)"
 doi = "10.1364/ao.48.005629"
 retrieved = "2026-09-27"
@@ -16,7 +16,7 @@ were recomputed from the printed numbers and agree (-1419, -1262, -1280, +2388 k
 
 No correction applied. The values are the means of ten 300 s sessions at a cold-finger temperature of
 12.00 C (about 13 Pa), pump 7.6 mW, probe 0.4 mW; the paper neither measures nor corrects the pressure
-or power shift of the line centres (the pressure study in section 3 is of the a10 linewidth only).
+or power shift of the line centers (the pressure study in section 3 is of the a10 linewidth only).
 
 Labels: the paper's a1, a10, a15 are taken as frequency ranks among the main components (R(34), odd
 J'', 21 components; P(144), even J'', 15 components). No hyperfine intervals are printed, so none are

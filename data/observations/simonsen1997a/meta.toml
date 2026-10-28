@@ -1,0 +1,49 @@
+id = "simonsen1997a"
+citation = "H. R. Simonsen, \"Iodine-stabilized extended cavity diode laser at lambda = 633 nm\", IEEE Trans. Instrum. Meas. 46, 141-144 (1997), Table I"
+source = "https://doi.org/10.1109/19.571796 (publisher PDF)"
+doi = "10.1109/19.571796"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 143), "Measured frequency intervals f_ECL between the hyperfine components of P(33)6-3 of 127I2 ... The
+frequencies are given relative to the b21-component. The digits in parentheses in column 2 represent the
+experimental standard uncertainty (1 sigma)". The table is an image without a text layer; typed from a 400 dpi
+rendering of p. 143. Entered: the "Measured f_ECL" column, b1-b20 relative to b21, 20 rows; group simonsen1997a.
+The extended-cavity diode laser was locked (3f) to each component in turn while the reference He-Ne laser DK2 was
+locked to a15 (g) of R(127) 11-5; 100 s averages, typically 10 kHz standard deviation.
+Labels: b1-b21 by rank in frequency, as printed (the MEP convention).
+
+Not entered: the CIPM column (the MEP 1992 values, Quinn 1994 and razet1993a) and the difference column; the
+b21 - a15 interval, which the paper withholds ("from time-to-time, a large shift in beat frequencies of roughly
+100 kHz ... therefore we give no value for the b21 - a15 frequency difference"); Figs. 3-5 (pressure shift,
+modulation shift, Allan deviation; see [conditions]).
+
+Checks (model-free): the difference column is f_ECL - f_CIPM for 19 rows; b12 prints 13 kHz where the two values
+give 12 (-347.348 + 347.360). The measured value is confirmed by edwards1999a_6mhz's DFM column, which reprints
+this table (its ref. [6]): all 20 values and uncertainties agree digit for digit (by script), b12 -347 348 (10) kHz.
+Against razet1993a the intervals differ by -19 to +47 kHz (mean +14 kHz), against edwards1999a by 0 to +36 kHz
+(mean +14 kHz) and against simonsen2000a by +2 to +39 kHz (mean +17 kHz): a common offset of about +14 kHz, as
+from a shift of b21 itself, plus 10-20 kHz scatter.
+"""
+
+uncertainty = "As printed, the experimental standard uncertainty (1 sigma), 4-22 kHz. The common offset of about +14 kHz seen in the checks is not added."
+
+notes = """
+The MEP 633 nm P(33) 6-3 table (bipm2003a) cites this paper (Quinn 2003, ref. [116]); its values are weighted means
+of six sources. edwards1999a_6mhz prints this table as its DFM column (not entered there, so nothing is declared).
+simonsen2000a is a later, independent measurement of the
+same intervals by the same laboratory (differences +2 to +39 kHz), not a reprint.
+"""
+
+[conditions]
+method = "extended-cavity diode laser (SDL-7501-G1, AR-coated, 1200 g/mm holographic grating in Littman), third-harmonic locking (2777 Hz, 6 MHz p-p) to saturated absorption in a 20 cm external 127I2 cell; beats against the He-Ne/I2 laser DK2 on R(127) 11-5 a15"
+cell_length_mm = 200
+cold_finger_C = 15.0
+pressure_Pa = 17.3
+modulation_MHz_pp = 6.0
+pump_power_mW = 1.0
+pressure_shift_kHz_per_Pa = -7.2
+pressure_shift_range = "cold finger 0-20 C, 4.0-26.7 Pa (Fig. 3)"
+modulation_shift = "less than 10 kHz below 7 MHz p-p, rising strongly above (3-9 MHz, Fig. 4)"

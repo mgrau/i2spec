@@ -1,0 +1,143 @@
+id = "tellinghuisen1980"
+citation = "J. Tellinghuisen, M. R. McKeever and A. Sur, \"Reanalysis of the D -> X fluorescence spectrum of I2\", J. Mol. Spectrosc. 82, 225-245 (1980), Tables I-VII"
+source = "https://doi.org/10.1016/0022-2852(80)90113-7 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(80)90113-7"
+retrieved = "2026-10-26"
+unit = "cm-1 (vacuum wavenumbers, residuals, G_v, B_v, D_v, H_v); Table VI coefficients in the units of their functions"
+isotopologue = "127I2"
+state = "X (lower state of the D 0u+ -> X fluorescence excited by the I 1830 A line); the upper levels are in data/other_states/tellinghuisen1980"
+files = ["data.csv", "table6_parameters.csv", "table7_levels.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-VII (pp. 232-239; PDF pages 8-15), every row and column, read from 300 dpi renders of the scan, with 600 dpi
+crops for doubtful glyphs, and compared number by number with the OCR text layer (which is right for most digits; it
+misreads four line positions, see the notes column, one G - G0 value and many row labels). The D-state part of the
+paper (Table VIII, Eq. (13)) is the set data/other_states/tellinghuisen1980.
+
+The measurement: the UV fluorescence of I2 (30 mTorr, a He microwave lamp with I2) excited by the iodine atomic line
+at 1830 A, which pumps five rotational levels of one or two D 0u+ vibrational levels from X(v'' = 0); photographed
+1960-2370 A on Kodak SWR film with a 1.5 m Czerny-Turner spectrometer (3600 grooves/mm holographic grating, first and
+second order, resolution above 300 000 in second order), measured on a Grant comparator against Fe lines (Crosswhite),
+standard air wavelengths converted to vacuum wavenumbers with Edlen's formula. The same five series as Verma 1960
+(data/x_levels/verma1960): I (v' = n + 4, J' = 87), II (n + 1, 46), III (n + 1, 49), IVa (n, 22), IVb (n, 25), each
+line ending on X(v'', J'' = J' - 1 (R) or J' + 1 (P)).
+
+data.csv: Tables I-V, "Measured wavenumbers (cm-1) and least-squares residuals (calculated - observed) for unblended
+lines in D -> X fluorescence from v' = ..., J' = ...": one row per printed v'' (227 rows, 354 line values: Table I 78,
+II 82, III 81, IV 55, V 58), v'' = 19-99. R and P are the measured vacuum wavenumbers, R_calc_minus_obs and
+P_calc_minus_obs the printed residuals of the final fit (calculated minus observed, as printed). Blank = not printed
+(blended or not measured). Table V prints its v'' = 45 R and P lines on two rows, both labeled 45; they are one row
+here. Five printed wavenumbers appear in two series (doubly assigned lines, which the text says were retained, p. 236:
+"a few sharp, doubly assigned lines"): 42352.75 (II R(45) and III R(48), v'' = 95), 42336.78 (II P(47) and III P(50),
+v'' = 96), 42309.33 (IVa R(21) and IVb R(24), v'' = 95), 42308.11 (IVa P(23) and IVb P(26), v'' = 95), 42293.44 (IVa
+P(23) and IVb P(26), v'' = 96); shared_with names the other assignment. So 349 distinct measured wavenumbers.
+
+table6_parameters.csv: Table VI (p. 237), the least-squares expansion parameters "valid for v = 0-99": G_v = sum_j c_j
+x^j (j = 1-15) and B_v = sum_k c_k x^(k-1) (k = 1-8), x = v + 1/2 (Eqs. 2-3); ln(D_v x 1e9) and ln(-H_v x 1e16) as
+polynomials in x (Eq. 10; 4 and 5 terms; these are smooth fits to D_v and H_v calculated from the RKR potential, not
+free parameters). The values are entered with the printed digits (E notation as printed). Footnote a: "The numbers of
+digits included are adequate to ensure consistency with the original least-squares results within 0.01 cm-1 in the
+calculated energies of all levels having v < 100 and J < 100." G_v has no constant term: energies above the potential
+minimum.
+
+table7_levels.csv: Table VII (pp. 238-239), "Vibrational energies, rotational constants, and distortion constants for
+v = 0-100 in the X state of I2, as calculated from the parameters in Table VI": G_v (above the minimum), G_v - G_0,
+B_v x 1e2, D_v x 1e9 and -H_v x 1e16. v = 100 lies outside the stated range of validity (v = 0-99; the last measured
+level is v'' = 99). Term values E(v, J) = G_v + B_v K - D_v K^2 + H_v K^3, K = J(J + 1) (Eq. 1); H_v is negative.
+
+Reading notes: Table VII v = 67, -H x 1e16 is printed "309." with the last digit cut off at the scan edge; 6 is entered
+(Table VI gives 309.647). Table VII v = 11, G - G0 = 2277.425 (the text layer has 2271.425). The row labels 18 and 19
+of Table VII and 51 of Table III are garbled in the text layer and clear in the scan.
+
+Checks (model-free):
+- Residuals: every printed residual of Tables I-V was recomputed as E'(series) - E''(v'', J'') - obs, with E' from
+  Table VIII (data/other_states/tellinghuisen1980) and E'' from the Table VII G, B, D, H as printed. All 354 agree with
+  the printed calc - obs to 0.006 cm-1 (mean -0.0002, sd 0.003: the rounding of Table VII), so every transcribed line
+  position and residual is confirmed digit by digit (including the four the text layer misreads). The same Table VII
+  levels give the Table VIII exciting-line wavenumbers 54633.419, .330, .207, .382, .360 exactly.
+- Table VII from Table VI: G_v, B_v, D_v and H_v recomputed from the Table VI parameters (exact arithmetic) reproduce
+  every printed entry to its last digit (largest differences 0.0005 cm-1 in G, 5e-8 in B, half a unit in D and H); G_v
+  - G_0 to 0.0007 (both columns rounded from unrounded values). G_0 = 107.115 cm-1.
+- Fig. 1 caption (p. 227): at v'' = 40 "the two narrow doublets are split by 0.4 cm-1" and P(23), R(24) "with a
+  separation of 0.12 cm-1": II P(47) 47177.22 and III R(48) 47177.62 (0.40), IVa R(21) 47170.90 and III P(50) 47171.30
+  (0.40), IVa P(23) 47168.08 and IVb R(24) 47168.20 (0.12).
+- Counts: 9 printed residuals exceed 0.10 cm-1 in magnitude (5 more equal 0.10), the largest 0.15 (III R(48), v'' =
+  83), as the text says ("the maximum residual in these tables is 0.15 cm-1, and only about a dozen lines show
+  residuals greater than 0.1 cm-1", p. 236; p. 228 says 11 of 360 unblended lines). The tables print 354 line entries
+  (349 distinct), not 360; the paper does not explain the difference.
+- Against the held FTS levels data/x_levels/martin1986 (v'' = 19-96 where it has the level): nu + E''(v'', J'')
+  should be one constant per series. It is, with sd 0.064, 0.058, 0.055, 0.057 and 0.065 cm-1 for series I, II, III,
+  IVa, IVb (largest deviation 0.18 cm-1); the implied upper terms above X(0, 0), 54912.361, 54717.455, 54720.922,
+  54653.971 and 54655.717, agree with Table VIII E' - G_0 (54912.325, 54717.481, 54720.938, 54653.976, 54655.745) to
+  0.04 cm-1. Relative to the series constants, most lines at v'' = 80-86 sit 0.04-0.18 cm-1 low and those at v'' =
+  88-96 up to 0.14 cm-1 high.
+- Against data/x_levels/verma1960 (the same spectrum, photographed in 1960): 208 lines in common (v'' = 19-84); median
+  difference (this - Verma) -0.05 cm-1, 115 differ by more than 0.1 cm-1, as the text says ("often differ from
+  Verma's by more than 0.1 cm-1 and occasionally by as much as 0.5 cm-1"). Larger: Verma's Table I v'' = 35 P(88)
+  (47998.28 there, 47988.30 here: verma1960's suspected misprint, see its notes), Verma's Table IV v'' = 46 row (2.96 and
+  3.07 cm-1 above IVa R(21) and IVb P(26) here; verma1960 flags that row as probably misidentified), and v'' = 26 and
+  28, where Verma's lines are 0.3-0.8 cm-1 lower than these.
+- Table VII against martin1986 (levels relative to X(0, 0)): G_v - G_0 minus Martin's G is -0.04 to +0.08 cm-1 for
+  v'' = 8-79, +0.05 to +0.16 at v'' = 80-88, -0.13 to -0.01 at 89-96, +0.58 at 99 and +1.54 at v = 100; B_v within
+  -1.8e-5 to +5.3e-5 cm-1 up to v'' = 96, 2.1e-4 below at 99. This is the comparison of the paper's Fig. 3 ("our G_v values lie
+  slightly above the FTS values for most v, with significant differences near v = 85 and v = 92", p. 237).
+
+Not entered: Figs. 1-7 (densitometer trace, the iteration scheme, the comparisons of G_v, B_v, D_v, H_v with Le Roy,
+a refit of Verma's lines and the preliminary FTS results, the RKR difference curve, Franck-Condon factors from B v' = 43);
+the RKR curve and the recalculated B -> X Franck-Condon factors (not tabulated). The blended lines (assigned for v'' =
+89-99 in series II and III and 88-96 in IVa and IVb, p. 236), the lines not listed by Verma that were not used, and the
+unassigned lines of the high-pressure spectra are not printed.
+"""
+
+uncertainty = """
+No per-line uncertainty is printed. The text (p. 228): unblended lines measurable to 1 um on the film, 0.04 cm-1 in first
+order and 0.02 cm-1 in second order (v'' = 19-31 and selected higher lines in second order), with film-to-film
+differences two or three times larger; every feature was measured at least twice, and "our final average measurements
+have an absolute accuracy of +-0.06 cm-1". The fit residuals (sd 0.05 cm-1, max 0.15) and the scatter about the held
+martin1986 levels (sd 0.055-0.065 cm-1 per series) support about +-0.06 cm-1 per line. Table VI carries no errors (the
+paper computes error bands of G_v and B_v from the full variance-covariance matrix, shown only in Figs. 3-4, and
+judges them "optimistic by perhaps a factor of 2", p. 237). Table VII is calculated from Table VI.
+"""
+
+notes = """
+What the paper is. A re-recording and reanalysis of Verma's 1830 A-excited D -> X resonance fluorescence, fitted
+directly to G_v and B_v polynomials (15 and 8 terms) with the five upper-level energies E' as free parameters and
+centrifugal distortion D_v, H_v held at values computed from the RKR curve (energy-derivative method) and iterated
+(Fig. 2). Data in the fit besides the lines here: the Hg 5461 A-excited B -> X interferometric data of Rank et al.
+(v'' up to 22; weight 200) and two artificial series (J' = 1 and 50) built from the Gerstenkorn-Luc FTS constants for
+v'' = 0-9 (weights 1000 to 550). So G_v and B_v at low v (below v'' = 19, the first line here) are not measured here;
+they follow the absorption constants. The analysis confirms Verma's assignments, extends them from v'' = 84 to 99
+(97 % to 99.6 % of the well depth), and resolves the disagreement between Le Roy's 1970 constants and the early FTS
+results, which the authors trace to Le Roy's too-large D_v.
+
+Numbers of the text not tabulated: maximum H_v correction -0.13 cm-1 at (v'', J'') = (86, 88); fitted D_v and H_v depart
+from the calculated input by at most 1.4e-9 cm-1 (v = 90) and 1.9e-15 cm-1 (v = 95); below v = 80 the final D_v differ
+from the initial estimates by at most 2e-10 cm-1; the raw calculated D_v and H_v at v = 0 and 5 give De = 4.534e-9 and
+He = -5.22e-16 cm-1, against the Dunham values De = 4.535e-9 and He = -5.15e-16 cm-1 (Herzberg; reprinted); maximum
+residuals of the green-line data and of the artificial series 0.011 and 0.0021 cm-1.
+
+Relation to other sets. The lines remeasure those of data/x_levels/verma1960 (same five series; v'' = 19-84 in common,
+85-99 new). data/x_levels/ashmore1986 (Ashmore and Tellinghuisen 1986) refits these same data (its Ref. 16, with D_v and
+H_v fixed as here) with a polynomial plus near-dissociation representation; its five upper-level energies (54761.119,
+54762.885 cm-1 for IVa, IVb) differ from Table VIII here by up to 0.03 cm-1 because the X representation differs: they
+are a refit, not a reprint. The held FTS sets data/x_levels/martin1986 and martin1983 supersede these X levels (more
+than an order of magnitude more precise, to v'' = 109), as the paper anticipates (p. 242). Not compared with any model.
+"""
+
+[columns]
+data = """
+table: I-V. page: printed page. series: Verma's series I, II, III, IVa, IVb. J_upper: J' of the emitting D level. v: v''.
+R_J, R, R_calc_minus_obs: J'' (= J' - 1), measured vacuum wavenumber (cm-1) and printed residual (calculated - observed,
+  cm-1) of the R line. P_J, P, P_calc_minus_obs: the same for the P line (J'' = J' + 1). Blank where not printed.
+shared_with: the other series in which the same printed wavenumber is assigned (doubly assigned line).
+note: reading notes and comparisons with verma1960.
+"""
+table6_parameters = """
+function: G_v, B_v, ln(D_v x 1e9) or ln(-H_v x 1e16). index: the parameter's position in its printed column (1 = top).
+power_of_x: the power of x = v + 1/2 it multiplies. value: as printed (cm-1 for G_v and B_v; dimensionless for the logs).
+"""
+table7_levels = """
+v: v''. G: G_v above the potential minimum (cm-1). G_minus_G0: G_v - G_0 (cm-1), i.e. relative to X(0, 0). B_x100: B_v x
+1e2 (cm-1). D_x1e9: D_v x 1e9 (cm-1). negH_x1e16: -H_v x 1e16 (cm-1). page: printed page. note: reading notes.
+"""

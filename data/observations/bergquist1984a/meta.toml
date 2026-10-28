@@ -1,0 +1,60 @@
+id = "bergquist1984a"
+citation = "J. C. Bergquist and H.-U. Daniel, \"A wideband frequency-offset-locked dye laser spectrometer using a Schottky barrier mixer\", Opt. Commun. 48, 327-333 (1984)"
+source = "https://doi.org/10.1016/0030-4018(84)90309-2 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1016/0030-4018(84)90309-2"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+NBS/MPQ, two single-mode ring dye lasers near 633 nm; the probe laser frequency-offset-locked to the reference
+laser and scanned (first-derivative saturated absorption by the double-probe-beam method in an external 127I2 cell,
+cold finger about 300 K, 3 MHz modulation width, pump 2.2 mW into about 200 um, about 7 W/cm2). Which iodine
+intervals it measured (pp. 330-331, read from 300 dpi renderings; the text layer agrees): "While one dye laser was
+locked to the component r of the P(33) 6-3 line, the other was frequency-offset-locked to it and scanned across the
+components f through j of P(33) 6-3 and h, i, j of R(127) 11-5." Only two results are printed, both relative to
+R(127) 11-5 i:
+- "The measured splitting of P(33) 6-3, j to R(127) 11-5, i is 741.5 +- 0.3 MHz" (p. 330);
+- the frequency difference between P(33) 6-3, r and R(127) 11-5, i, 1053.8 +- 0.2 MHz (p. 331).
+2 rows. Sign: P(33) 6-3 lies below R(127) 11-5 (Fig. 3 puts j at 473 611 473.3 MHz = 473 612 214.8 - 741.5), so
+both are entered negative.
+
+Labels: the paper uses the CCDM letters (a the highest component). For the 21-component P(33) 6-3, j and r are
+b12 and b4, for R(127) 11-5 i is a13, as in the MEP 633 nm tables (bipm2003a, x column: b12 = j, b13 = i, b4 = r;
+a13 = i). The neighbouring ranks are 37 MHz (b13) and 49 MHz (b5) away, and the paper's comparison values (Morinaga
+& Tanaka's 740.8 MHz for j - i, Goldsmith et al.'s 1053.9 MHz for r - i) fit these ranks.
+
+Model-free checks against bipm2003a (MEP 633 nm: b12 - a13 = -347.354 - 532.42 + 138.892 = -740.882 MHz, b4 - a13 =
+-1054.028 MHz): -618 kHz (2.1 sigma) and +228 kHz (1.1 sigma). Through talvitie1998a's b21 - a15 link and its own
+b12, b4 the differences are -597 and +247 kHz. The paper's r - j, 312.3 MHz, is thus 0.85 MHz below the MEP's
+313.15 MHz; the authors report only "general agreement" with Morinaga & Tanaka for the splittings within P(33).
+
+Not entered: the splitting between "the intermediate hfs component of 129I2" (unassigned: no line or component is
+given) and R(127) 11-5 i, 233 552.6 MHz (p. 331, about 6e-10 relative uncertainty); the 20Ne 1s5-2p8 frequency,
+473 143 828.0 +- 0.6 MHz (from f(i) = 473 612 214.8 MHz) and the Ne - 129I2 difference 234 834.2 MHz, which are not
+iodine intervals; the relative splittings of P(33) 6-3 f-j and R(127) 11-5 h-j, which are described but not printed;
+the footnote values of Hanes et al. (344.6 MHz for j - a, 394 +- 4 MHz for a - i) and Morinaga & Tanaka (393.5 MHz),
+which are other papers'.
+"""
+
+uncertainty = """
+As printed, +-0.3 and +-0.2 MHz, taken as 1 sigma (the paper does not say). Both intervals come from the same
+dye-laser pair in the same cell; one group. The cell at about 300 K (some 40-50 Pa) and the 3 MHz modulation shift the
+two lines differently by an unknown amount, small beside these uncertainties.
+"""
+
+notes = """
+The MEP 2001 P(33) 6-3 table (Quinn, Metrologia 40, 103 (2003), Table 21, refs. [108, 113-117]) cites this paper as
+ref. [115]. Every row of that table in bipm2003a is relative to b21, and its link to R(127) 11-5 is b21 - a16, so no
+row of bipm2003a is reachable from these two intervals; no [overlaps] declaration is needed. Morinaga & Tanaka 1978
+(morinaga1978a: a - i = 393.5 +- 0.1 MHz is its link row, and j - i = 740.8 +- 0.2 MHz follows from its rows) measures
+the same intervals independently, so no overlap is declared; Goldsmith et al. 1979 (r - i = 1053.9 +- 0.3 MHz) is not
+held.
+"""
+
+[conditions]
+method = "two ring dye lasers, frequency-offset lock up to 234 GHz via a GaAs Schottky barrier mixer and a Q-band klystron; first-derivative saturated absorption (double probe beam) in an external 127I2 cell (H. Layer's temperature-regulated cell)"
+cold_finger_K = 300
+modulation_MHz = 3
+pump_power_mW = 2.2
+pump_intensity_W_per_cm2 = 7

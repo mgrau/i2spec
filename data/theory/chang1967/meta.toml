@@ -1,0 +1,61 @@
+id = "chang1967"
+citation = "T. Y. Chang, \"Moderately long-range interatomic forces\", Rev. Mod. Phys. 39, 911-942 (1967), Tables II, IV and VII"
+source = "https://doi.org/10.1103/RevModPhys.39.911 (publisher PDF: a 612 dpi scan with an OCR text layer)"
+doi = "10.1103/RevModPhys.39.911"
+retrieved = "2026-10-22"
+unit = "dimensionless angular coefficients (energies follow in atomic units, see transcription)"
+kind = "first-order quadrupole-quadrupole angular coefficients for two like 2P atoms in (Ja, Jb) coupling: the relations between the C5 of all molecular states at I(2P3/2) + I(2P3/2) and at I(2P3/2) + I(2P1/2)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The review treats atoms in general and has no iodine-specific number. What applies to I2 is the (Ja, Jb)-coupling
+column for 2P atoms, valid for (np) and (np)5 alike, of three tables, read from 110-400 dpi renders of the scan
+(the OCR text layer garbles the tables):
+  Table II (p. 926), alpha(Ja Jb Omega) for like atoms in the same level, column Ja = Jb = 1.5: the ten states of
+    2P3/2 + 2P3/2. First-order energy (Eq. 3.56a): E = alpha D2(Ja Ja) D2(Jb Jb) <r2>^2 / R^5.
+  Table VII (p. 931), alpha'(Ja Jb Omega) for like atoms in the same configuration and term but different J,
+    column "(np), (np)5; 2P, Ja = 1.5, Jb = 0.5": the ten states of 2P3/2 + 2P1/2. Here D2(Ja Jb) D2(Jb Ja)
+    cannot be factored out and E = alpha' <r2>^2 / R^5 (Eq. 3.57).
+  Table IV (p. 930), D2(JJ) and C2(LL) for np; "for the shells which are complete except for e missing electrons,
+    C2(LL) and D2(JJ) have the opposite sign", so for iodine (5p5) D2(3/2, 3/2) = +0.44721 and D2(1/2, 1/2) = 0.
+E is in hartree when R is in bohr and <r2> (the mean-square radius of the open p shell) in bohr^2; positive E is
+repulsive, the sign convention of data/theory/saute1982 (V = C5/R^5). One row per printed value.
+
+g/u and +/- labels. Table VII prints them (0g+, 0g-, 0u-, 0u+). Table II prints u or g with a or b: a is "+" if
+d = 1 and "-" if d = -1, b the reverse, with d = omega_a omega_b (-1)^(Ja + Jb) (Table I caption, p. 924). For two
+I(2P3/2) atoms (odd parity each) d = -1, so the a states are 0u- and the b states 0g+: the 0g+, 0g+, 0u-, 0u- of
+the ground limit, as expected.
+
+Not entered: Table V (p. 931) and Table VI give <r2> for first- to third-row atoms only (Br 4p5: 5.2216 a0^2, Cl:
+4.0602 a0^2), none for iodine; the (Lambda, S)-coupling coefficients (Table I) and the half-integral-J columns of
+other configurations; the intermediate-coupling curves (Figs. 1-5, B2 and CO); the dispersion (C6) and magnetic
+estimates of Sect. IV (Tables IX-X, first-row atoms); the predissociation analysis of Sect. III D (CO, HgH, N2).
+"""
+
+notes = """
+Check against data/theory/saute1982 (computed here). Calibrate <r2>^2 on the B 0u+ C5 of Saute and Aubert-Frécon,
+-3.59e5 cm-1 A^5 = -0.96 <r2>^2: <r2>^2 = 3.740e5 cm-1 A^5 = 41.06 hartree bohr^4 (1 hartree bohr^5 = 9107.3 cm-1
+A^5), so <r2>(I 5p) = 6.41 bohr^2 (a fit to the ten ground-limit states alone gives 6.39). With that single number
+the Table VII coefficients give every C5 of the 2P3/2 + 2P1/2 states of saute1982 to its printed digits: 0g+ +3.590,
+B0u+ -3.590, 1'g -2.393, 1'u +2.393, 2g +0.598, 2u -0.598, 0g-, 0u-, 1''g and 1''u zero (Saute: +3.59, -3.59, -2.39,
++2.38, +0.599, -0.602, 0, -0.0039, -0.0069, +0.0061, the small ones being admixture of other limits in their
+23-state diagonalization). The Table II coefficients with D2^2 = 0.2 give the ground-limit C5 to 2 %: 0u- +2.393 and
+-0.598 (Saute +2.38, -0.569), 0g+ +1.795 and 0 (a' +1.76, X +0.045), 1u +0.897 and -0.598 (+0.907, -0.595), a1g
+-1.197 (-1.20), 2u -2.094 (-2.09), 2g +0.299 (+0.300), 3u +0.897 (+0.898). So saute1982's C5 are, to first order,
+these angular factors times one atomic <r2>^2; the saute1982 notes reach the same result for the 2P3/2 + 2P1/2 limit
+from the separated-atom algebra.
+
+Relations at the B-state limit, first order (from Table VII): C5(1'u) = -(2/3) C5(B0u+), C5(1'g) = +(2/3) C5(B0u+),
+C5(2u) = +(1/6) C5(B0u+) = -C5(2g), C5(0g+) = -C5(B0u+), and zero for 0g-, 0u-, 1''g and 1''u. In the convention
+V = D - C5/R^5 used for B by Barrow and Yee 1973, Tromp et al. 1983 and Le Roy (positive C5 attractive), a measured
+B-state C5 of +2.88e5 cm-1 A^5 implies -1.92e5 for the repulsive 1'u = 1u(3Sigmau+) and +1.92e5 for 1'g = 1g(1Pig).
+At the ground limit B''1u (Table II, +1.2) and A1u (-0.8) have C5 in the ratio -3:2. Inard et al. 1999 (catalog
+inard1999) measure C5(B''1u) = -0.49(28)e5 in the attractive-positive convention, against the first-order -0.897e5
+(Saute -0.907e5).
+
+Chang's abstract: (Lambda, S) and intermediate coupling matter only for B, C, O, Al, Si and Sc at relatively short
+R; for other atoms the (Ja, Jb) coupling "will give satisfactory results throughout the long-range region". For
+iodine (spin-orbit splitting 7603 cm-1) the coefficients above are therefore the long-range first-order result. The
+review also finds, for first-row atoms, the second-order dispersion energy about as large as the quadrupole-
+quadrupole energy at twice the sum of the atomic radii, so C5 alone does not describe a curve at such R.
+"""

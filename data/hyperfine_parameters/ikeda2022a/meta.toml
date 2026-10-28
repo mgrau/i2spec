@@ -1,0 +1,52 @@
+id = "ikeda2022a"
+citation = "K. Ikeda, T. Kobayashi, M. Yoshiki, D. Akamatsu, F.-L. Hong, \"Hyperfine structure and absolute frequency of 127I2 transitions at 514 nm for wavelength standards at 1542 nm\", J. Opt. Soc. Am. B 39, 2264-2271 (2022), Table 5"
+source = "https://doi.org/10.1364/josab.465499 (publisher PDF)"
+doi = "10.1364/josab.465499"
+retrieved = "2026-10-22"
+catalog = "data/catalog/precision.yaml#ikeda2022a"
+unit = "MHz"
+kind = "B-state (v' = 45, 46, 48) effective hyperfine parameters, one row per four-term fit; the paper prints the B - X differences, and the values here add back the X-state values its fits held fixed"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 5 (p. 2269), "Fitted Hyperfine Constants": DeltaeqQ (MHz), DeltaC, Deltad, Deltadelta (kHz) of P(57)45-0,
+P(91)48-0 and R(73)46-0, read from the text layer and checked digit by digit against a 200 dpi rendering of
+p. 2269. The paper defines Delta = (B state) - (X state), eqs. (3)-(6).
+
+What is entered. The fits (p. 2269) varied eqQ', C', d' and delta' with the X state held fixed: eqQ'' from eq. (7),
+quoted from Hong et al. 2001 (hong2001b),
+  eqQ''(J) = -2452.556(2) - 0.000164(5) J(J+1) - 0.000000005(2) J^2(J+1)^2 MHz, at J = J'',
+and C'' = 3.154, d'' = 1.524, delta'' = 3.705 kHz (the paper's ref. [19], Bodermann, Knoeckel & Tiemann 2002). The
+fitted B-state parameters are therefore the printed differences plus these fixed values, and that is what the
+columns hold: eqQ' = DeltaeqQ + eqQ''(J''), with eqQ''(57) = -2453.15283218, eqQ''(91) = -2454.27945992 and
+eqQ''(73) = -2453.58783602 MHz, rounded to 1 Hz; C' = DeltaC + 3.154 kHz, d' = Deltad + 1.524 kHz, delta' =
+Deltadelta + 3.705 kHz, converted to MHz exactly. The printed differences are in the note column, so the
+conversion can be undone. Uncertainties are the printed parenthesized digits of the differences (the X-state
+values were fixed and carry none). fit_sd_kHz is the standard deviation printed under Tables 2-4 (1.6, 3.6 and
+2.5 kHz).
+
+The fitted splittings are data/observations/ikeda2022a (Tables 2-4); the fits gave weight 0 to the a20/b1 blend
+of P(57)/P(91) and to the unmeasured b3, b4 of P(91), the components that set leaves out.
+
+Not entered: Table 1's acetylene reference and frequency intervals, and the discussion's corrected value of the
+earlier R(73)46-0 a1 measurement (see data/observations/ikeda2020a and ikeda2022a).
+"""
+
+uncertainty = "As printed, from the least-squares fit (procedure of the paper's ref. [26], Kobayashi et al. 2016); statistical only. The paper does not state the coverage; taken as 1 sigma."
+
+notes = """
+Four-term effective Hamiltonian (eqQ, C, d, delta), eq. (1); quadrupole coupling with Delta J up to +-4;
+rotational energies from B, D, H of Gerstenkorn & Luc 1985, eq. (2). Main components only.
+
+Scale of eqQ'. The paper says (p. 2269) the fit gives "accurate values for DeltaeqQ, DeltaC, Deltad, and
+Deltadelta, but only a rough estimate of the absolute values". eq. (7) was fitted to J'' = 13, 15, 54 and 56 and
+is extrapolated here to J'' = 57-91; its J^2(J+1)^2 term alone is -0.055, -0.146 and -0.350 MHz at J'' = 57, 73
+and 91. eqQ' therefore sits on eq. (7)'s X-state scale; for comparison with other B-state values, DeltaeqQ plus
+one's own eqQ''(J'') is the better-determined combination (as for hong2001b). C'' = 3.154 kHz is BKT02's v'' = 0
+value (chen2004a holds C_X at 3.15478 kHz) and d'', delta'' are chen2004a's, so C', d' and delta' compare
+directly with chen2004a's.
+
+Model-free check against held sets: C' of P(57) 45-0, 0.230702 MHz, lies 0.06 kHz below a linear interpolation in
+J'(J'+1) between chen2004a's R(52) 45-0 and P(69) 45-0; eqQ' lies 44 kHz above it, of which about 25 kHz is the
+difference between chen2004a's X scale (BKT02) and eq. (7) at J'' = 56.
+"""

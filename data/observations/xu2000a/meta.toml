@@ -13,7 +13,7 @@ bitmaps at native resolution, upscaled 3x and read with tesseract (--psm 6); eve
 checked against the model, and the rows that failed were re-read visually from the bitmap.
 
 Each row gives the absolute frequency of the "t" hyperfine component in MHz, a calculated hyperfine
-shift from the centre of gravity, and the deviation of the centre of gravity from the paper's own
+shift from the center of gravity, and the deviation of the center of gravity from the paper's own
 fit. Only the line assignment and the frequency are transcribed here; the other two columns are
 derived quantities of the paper's analysis, not measurements.
 
@@ -25,7 +25,7 @@ residuals confirm the assignment: a wrong band would be wrong by GHz.
 
 Component identification: "t" is the same component as in velchev1998a (same group, same convention),
 i.e. rank 2 by frequency among the main components for odd J'' and rank 1 for even J'', recorded here
-as "t2" and "t1". Xu's own hyperfine-shift column is 485-488 MHz throughout, matching the -483 MHz
+as "t2" and "t1". Xu's own hyperfine-shift column is 482.6-489.0 MHz for the t rows, matching the -483 MHz
 that identified the component in velchev1998a.
 
 Quality: the 473 rows kept agree with the model at 0.93 MHz rms, and 472 of 473 are within 3 MHz.
@@ -34,18 +34,23 @@ so that is a real deviation of the published model rather than a transcription e
 """
 
 partial = """
-473 of the paper's 481 t components are here.
+Corrected 2026-10-22 after a row-by-row check against the publisher PDF (two OCR passes, every
+disagreement settled on the table images; all 473 rows here match the print). Tables 1-15 have 521 rows:
+481 measured in this paper, 30 with footnote a (Sansonetti 1997), 8 with footnote b (Shiner 1993), one with
+c (Quinn 1993) and one with d (Edwards 1996). Here: 446 of the 481 own rows and 27 of the 30 footnote-a rows.
+The other 35 own rows, which the first OCR pass did not recover, are in xu2000a_recovered (pending). The three
+footnote-a rows not here (P(72) 6-5, R(89) 8-4, R(48) 9-4) are in sansonetti1997a.
 
-Excluded (4): rows carrying footnote b, "From Ref. (8); various components used" - taken from Shiner
-et al. (1993) and not necessarily the t component. R(79) 11-2 proves the point: its printed hyperfine
-shift is 507.5 MHz rather than the 486 MHz of its neighbours, and it sits 21.9 MHz from the model as
-a t component. The others are R(40) 11-2, R(80) 11-2 and P(114) 12-2.
+Excluded: the 8 footnote-b rows, "From Ref. (8); various components used", taken from Shiner et al. (1993)
+and not necessarily the t component: R(40), R(79), R(80) 11-2, P(114) 12-2, P(49) 11-2, R(73) 11-2,
+R(66) 13-2 and a second R(9) 11-2 row (496 963 234.0 MHz, hyperfine shift 411.0 MHz). R(79) 11-2 proves the
+point: its printed hyperfine shift is 507.5 MHz rather than the 486 MHz of its neighbours. Also not entered:
+footnote c, P(48) 11-3 at 489 879 902.7 MHz, which is the MEP 612 nm a7 value minus the b10 interval
+(452.2 MHz), already in the BIPM sets; footnote d, R(39) 7-4 "r" (rank 4) at 470 766 455.5 MHz, a reprint
+of Edwards 1996 to 0.1 MHz.
 
-Not recovered (about 4): rows whose line label or frequency was too damaged in the scan for the OCR,
-and which therefore matched no band. They are not guessed at.
-
-Footnotes c (Quinn 1993) and d (Edwards 1996, "r"-component measured) appear in the printed tables
-but no row carrying them survived parsing, so none is included.
+P(17) 7-3 (477 293 709.7 MHz, as printed) sits 1.0 MHz off the curve that the paper's own band fit draws
+through frequency + hyperfine shift - (o-c); either the frequency or its o-c is misprinted.
 """
 
 uncertainty = """
@@ -53,8 +58,13 @@ uncertainty = """
 listed separately but they are all within 1 MHz (1 sigma)." No per-row uncertainties are printed.
 """
 
+notes = """
+Rows marked with footnote a are from Sansonetti 1997 (ref. 11) rather than measured here; they carry
+group = sansonetti1997a. These 27 rows repeat sansonetti1997a (within 0.1 MHz) and both sets are fitted. No
+[overlaps] is declared yet, because that would change the training data (open). The entry would be
+sansonetti1997a = { relation = "same", groups = ["sansonetti1997a"] }.
+"""
+
 [conditions]
 cell = "I2 cell, Doppler-free saturated absorption"
 laser = "cw ring dye laser, 1 MHz bandwidth"
-
-notes = "Rows marked with footnote a are from Sansonetti 1997 (ref. 11) rather than measured here; they carry group = sansonetti1997a so a fit can avoid double-counting them against a future Sansonetti data set."

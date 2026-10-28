@@ -11,8 +11,9 @@ Table 1 (i) (p. 194), typed from the text layer and checked against the page: th
 of the 15 hyperfine components of 127I2 P(62) 17-1 at 576 nm, in kHz from a1 ("o"), with uncertainties.
 They are the measurements of G. P. Barwood and W. R. C. Rowley (NPL), Metrologia 20, 19-23 (1984), "made with two
 dye lasers stabilized onto the hyperfine components ... with cells placed outside the laser cavities and with
-third-harmonic locking", printed here for the first time to the kHz with Barwood and Rowley's cooperation; that
-paper is not held, so the rows are entered here.
+third-harmonic locking", printed here for the first time to the kHz with Barwood and Rowley's cooperation.
+(2026-10-22: that paper is now held as barwood1984a. Its Table 1 already prints the same ten values and
+uncertainties in MHz to the kHz, so these rows are its measurement printed again, declared below as "same".)
 Labels: "each hyperfine component is labelled by an index n which increases with the frequency", so n is the
 rank (a1-a15); the letters run the other way (o = 1, a = 15), as in the MEP.
 Not entered: the calculated column (iii) and the fitted constant differences (ii) (Delta eqQ = 1 933 304(12) kHz,
@@ -32,6 +33,7 @@ eight rms 17 kHz. Checked against the model only.
 
 [overlaps]
 reinhardt2006a = "superseded"
+barwood1984a = "same"   # Barwood & Rowley 1984, Table 1: the same digits; pending until admitted
 
 [conditions]
 method = "two dye lasers at 576 nm stabilized by third-harmonic saturated absorption in external cells; modulation 6 MHz p-p, one-way power density about 2e4 W/m2, cold finger 11.5 C (Barwood & Rowley 1984)"

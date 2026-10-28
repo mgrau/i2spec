@@ -1,0 +1,64 @@
+id = "yoshiki2023a"
+citation = "M. Yoshiki, S. Matsunaga, K. Ikeda, D. Akamatsu, F.-L. Hong, \"Rotation dependence of v' = 44 excited-state hyperfine constants obtained via precise measurements of the hyperfine structures of 127I2 lines near 514 nm\", Eur. Phys. J. D 77, 140 (2023), Tables 4 and 6"
+source = "https://doi.org/10.1140/epjd/s10053-023-00712-7 (publisher PDF)"
+doi = "10.1140/epjd/s10053-023-00712-7"
+retrieved = "2026-10-22"
+catalog = "data/catalog/precision.yaml#yoshiki2023a"
+unit = "MHz"
+kind = "B-state (v' = 44, 45) effective hyperfine parameters, one row per four-term fit; five rows add back to the printed B - X differences the X-state values the fits held fixed, two are printed as B-state values"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Two tables, read from the text layer and checked digit by digit against a 200 dpi rendering of p. 7:
+
+Table 4 (p. 7), "Hyperfine constants obtained from fitting": DeltaeqQ (MHz), DeltaC, Deltad, Deltadelta (kHz) of
+R(38)44-0, P(36)44-0, R(37)44-0, P(35)44-0 and R(36)44-0, with Delta = (B state) - (X state), eqs. (3)-(6). The fits
+(p. 6) varied eqQ', C', d' and delta' with the X state held fixed: eqQ'' from eq. (1), quoted from Hong et al. 2001
+(hong2001b), eqQ''(J) = -2452.556(2) - 0.000164(5) J(J+1) - 0.000000005(2) J^2(J+1)^2 MHz at J = J'', and C'' = 3.154,
+d'' = 1.524, delta'' = 3.705 kHz (the paper's ref. [27], Bodermann, Knoeckel & Tiemann 2002). The paper says (p. 6)
+that the B-state constants "can be calculated using the hyperfine constants in Table 4 and the ground-state
+hyperfine constants", and plots them so (Fig. 3). Entered as such: eqQ' = DeltaeqQ + eqQ''(J''), rounded to 1 Hz;
+C' = DeltaC + 3.154 kHz, d' = Deltad + 1.524 kHz, delta' = Deltadelta + 3.705 kHz, converted to MHz exactly. The
+printed differences and the eqQ'' used are in the note column.
+
+Table 6 (p. 7), "Hyperfine constants of the P(34)44-0 and R(58)45-0 lines", the two "HFS fitting" columns: eqQ'
+(MHz), C', d', delta' (kHz), printed as B-state values from the fits of Tables 7-8 (the same fixed X state).
+Entered as printed, converted to MHz. Not entered: the "This study" column (P(34) 44-0 constants predicted from the
+Table 5 formulas) and the two "Ref. [27]" columns (constants from the 2002 interpolation formulas), which are
+predictions, not fits.
+
+Uncertainties are the printed parenthesized digits (of the differences, for the Table 4 rows). fit_sd_kHz is the
+standard deviation printed in the SD rows of Tables 2-3 (Table 4 rows) and Tables 7-8 ("Obs-Cal", Table 6 rows).
+
+eqQ'' reading. The worked example on p. 6, "eQq'' was calculated to be -2452.751 MHz using J'' = 34", is eq. (1)
+without its J^2(J+1)^2 term (with it: -2452.758 MHz). The full eq. (1) is used here, as printed and as the same
+group states it in ikeda2022a and in its ref. [18] (Sakagami et al. 2020), because it reproduces Table 5 better:
+a weighted linear fit in J'(J'+1) of the five Table 4 rows plus the P(34) 44-0 "HFS fitting" value gives eqQ'0 =
+-559.683 MHz and alpha = -2.01e-4 MHz (printed, "With P(34)44-0": -559.680(10), -2.03(7)e-4); without the term,
+-559.691 and -1.89e-4. For the five rows alone both readings give eqQ'0 = -559.666 (printed -559.660(11)) and
+alpha = -2.13e-4 (full) or -2.06e-4 (printed -2.16(8)e-4). The two readings differ by 7-11 kHz in eqQ' at
+J'' = 34-38. The same fit of C', d', delta' reproduces Table 5 within its uncertainties (C'0 = 205.40 kHz,
+alpha 2.28e-3 kHz; d'0 = -108.70 kHz, alpha -1.70e-3 kHz), which confirms B = Delta + X with these X values.
+
+Not entered: Table 5 (coefficients of the v' = 44 rotation dependence) and eqs. (11)-(13), derived from these rows.
+"""
+
+uncertainty = "As printed, from the nonlinear least-squares fits (procedure of the paper's ref. [26], Kobayashi et al. 2016); statistical only. The paper does not state the coverage; taken as 1 sigma."
+
+notes = """
+Four-term effective Hamiltonian (eqQ, C, d, delta), eq. (2), fitted to the main components only. The fitted
+splittings are data/observations/yoshiki2023a (Tables 2-3; the starred a3, a4 of P(36) and a5, a6 of P(35) were
+not in the fits) and data/observations/yoshiki2023a_p34r58 (Tables 7-8; a3, a4, a5 of P(34) and b7 of R(58) were
+not in the fits).
+
+Scale of eqQ'. As in ikeda2022a: the fits determine the differences; eqQ' sits on eq. (1)'s X-state scale (eq. (1)
+was fitted to J'' = 13, 15, 54, 56). For comparison with other B-state values, DeltaeqQ plus one's own eqQ''(J'') is
+the better-determined combination. C'' = 3.154 kHz is BKT02's v'' = 0 value and d'', delta'' are chen2004a's, so C',
+d' and delta' compare directly with chen2004a's.
+
+Model-free checks against held sets: the R(58) 45-0 row agrees with matsunaga2024a's R(59) 45-0 (same v', J' one
+higher; same group and X state) to the expected J step: C' 0.231687 against 0.232017 MHz (0.330 kHz, against
+0.333 kHz from the J'(J'+1) slope of chen2004a's v' = 45 values), d' -0.12450(19) against -0.12487(7), delta' 0.0072(2) against
+0.00751(5) MHz. C' of R(58) 45-0 lies 0.04 kHz below a linear interpolation between chen2004a's R(52) 45-0 and
+P(69) 45-0.
+"""

@@ -1,0 +1,63 @@
+id = "bonsch1983a"
+citation = "G. Bönsch, \"Precision wavelength comparisons of iodine-stabilized lasers\", Metrologia 19, 93-96 (1983)"
+source = "https://doi.org/10.1088/0026-1394/19/3/002 (publisher PDF)"
+doi = "10.1088/0026-1394/19/3/002"
+retrieved = "2026-10-22"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the text layer and checked against 200 dpi renderings of pp. 94-95. The paper prints two wavelength
+ratios to a He-Ne laser on component i (= a13) of 127I2 R(127) 11-5, measured with a vacuum Michelson
+interferometer (380 mm displacement) at PTB:
+  p. 94: lambda(a3, P(13) 43-0) / lambda(i) = 0.813 081 2954 x (1 +- 5e-10)   (Ar+ laser, 515 nm, 46 measurements)
+  p. 95: lambda(o, R(47) 9-2) / lambda(i) = 0.966 791 6050 x (1 +- 3e-10)     (He-Ne laser, 612 nm, 25 measurements)
+The paper prints no frequencies. Each row is derived here as f(i) / ratio, with f(i) = f(a16) + (a13 - a16) =
+473 612 353 604 - 138 892 kHz = 473 612 214 712 kHz from the CIPM 2001 633 nm values (bipm2003a), the
+same reference value the CIPM documents use to convert such ratios (MEP 576 nm and 612 nm, section 2):
+  P(13) 43-0 a3: 582 490 603 819.6 kHz;  R(47) 9-2 a7: 489 880 355 045.1 kHz.
+The uncertainty of f(i) (2.2e-11) is negligible beside the ratios'.
+
+Labels: "o" of R(47) 9-2 is a7, the component of the CIPM 612 nm standard (bipm2003d's letters run u, t, s, r,
+q, p from a1 to a6, so o = a7).
+For the 515 nm comparison the reference laser was locked to f (a16) and the ratio converted to i with
+f(f) - f(i) = 138.8911 MHz (p. 94); the current interval, 138.892 MHz, differs by 0.9 kHz (2e-12 of the ratio).
+
+Not entered: the two wavelengths (lambda(a3) = 514 673 466.7 fm, lambda(o) = 611 970 770.6 fm, 4e-9), which are
+the ratios times the 1973 adopted wavelength of the 633 nm standard and carry no further information; Table 1,
+the uncertainty budget.
+"""
+
+uncertainty = """
+The paper's total relative uncertainties, Table 1 (p. 95), listed "corresponding to a 1 sigma level": 5e-10 of
+the 515/633 ratio (alignment 3.5, diffraction 2.5, optical imperfections 2.0, reference reproducibility 1.0,
+others below 1, in parts in 1e10) and 3e-10 of the 612/633 ratio. As frequencies: 291 kHz and 147 kHz.
+"""
+
+notes = """
+Not a source of the CIPM 2001 values: the MEP 612 nm document (bipm2003d) averages five later ratios and
+frequencies (its ref. [3] is a 1986 PTB ratio for b15 of P(48) 11-3, not this one), and the 515 nm value
+(bipm2005a) rests on comb measurements. The paper says the 515 nm ratio was reported to the CCDM in 1979 and
+used for the 1983 recommended value. So no [overlaps] apply.
+
+The 515 nm ratio was remeasured by the same laboratory in 1993 (grieser1994a, 0.813 081 295 93(7e-11)):
+the two differ by 6.5e-10, 1.3 times this paper's uncertainty.
+
+Groups: bonsch1983a_515 (Ar+ laser, external cell, cold point 12 C) and bonsch1983a_612 (He-Ne laser, internal
+cell, cold point -10 C). [shift_correction] takes one set of conditions, so it is applied to the 515 nm row
+only. The 612 nm row stays as measured at -10 C (1.44 Pa by Gillespie & Fraser); a typical -8 kHz/Pa slope
+would shift it by about -12 kHz, under a tenth of its uncertainty.
+"""
+
+[conditions]
+method = "vacuum Michelson interferometer, servo-locked to interference minima; wavelength ratio to a He-Ne laser on R(127) 11-5 i (cold point 15 C, 6 MHz p-p, 3f)"
+laser_515 = "Ar+ laser, external iodine cell, cold point 12 C"
+laser_612 = "He-Ne laser, internal iodine cell, cold point -10 C, 6 MHz p-p"
+reference = "He-Ne 633 nm, R(127) 11-5 i (a13); converted here with the CIPM 2001 value 473 612 214 712 kHz"
+
+[shift_correction]
+groups = ["bonsch1983a_515"]
+pressure_Pa = 13.14
+pressure_kHz_per_Pa = -2.5
+pressure_kHz_per_Pa_unc = 0.5
+basis = "Paper p. 94: Ar+ cell cold point 12 C, no pressure or coefficient printed. 13.14 Pa from Gillespie & Fraser at 285.15 K; slope -2.5(0.5) kHz/Pa for P(13) 43-0 a3 as in jones2002a (Spieweck 1980 gives -2.9 kHz/Pa). Shift +32.9 kHz. Power and modulation conditions are not given. The 612 nm row (cold point -10 C) is not corrected; see notes."

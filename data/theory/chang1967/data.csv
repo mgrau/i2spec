@@ -1,0 +1,24 @@
+state,limit,quantity,value,source,saute1982_state,note
+0g+,P3/2+P3/2,alpha,2.4,Table II,a'0g+ (C5 1.76),"printed 2.4gb; Ja = Jb = 1.5"
+0g+,P3/2+P3/2,alpha,0.0,Table II,X0g+ (C5 0.045),"printed 0.0gb"
+0u-,P3/2+P3/2,alpha,3.2,Table II,0u- (C5 2.38),"printed 3.2ua"
+0u-,P3/2+P3/2,alpha,-0.8,Table II,0u- (C5 -0.569),"printed -0.8ua"
+1g,P3/2+P3/2,alpha,-1.6,Table II,a1g (C5 -1.20),"printed -1.6g"
+1u,P3/2+P3/2,alpha,1.2,Table II,1u (C5 0.907),"printed 1.2u; B''1u by Inard et al. 1999, Table 8"
+1u,P3/2+P3/2,alpha,-0.8,Table II,1u (C5 -0.595),"printed -0.8u; the other 1u, A1u by elimination"
+2g,P3/2+P3/2,alpha,0.4,Table II,2g (C5 0.300),"printed 0.4g"
+2u,P3/2+P3/2,alpha,-2.8,Table II,2u (C5 -2.09),"printed -2.8u; A'2u by Inard et al. 1999, Table 8"
+3u,P3/2+P3/2,alpha,1.2,Table II,3u (C5 0.898),"printed 1.2u"
+0g+,P3/2+P1/2,alpha_prime,0.96,Table VII,0g+ (C5 3.59),"column (np), (np)5; 2P, Ja = 1.5, Jb = 0.5"
+0g-,P3/2+P1/2,alpha_prime,0.0,Table VII,0g- (C5 0),
+0u-,P3/2+P1/2,alpha_prime,0.0,Table VII,0u- (C5 -0.00393),
+B0u+,P3/2+P1/2,alpha_prime,-0.96,Table VII,B0u+ (C5 -3.59),"printed for 0u+"
+1g,P3/2+P1/2,alpha_prime,0.0,Table VII,1g (C5 -0.00692),"1''g = 1g(3Sigmag-) in the saute1982 labels"
+1g,P3/2+P1/2,alpha_prime,-0.64,Table VII,1g (C5 -2.39),"1'g = 1g(1Pig)"
+1u,P3/2+P1/2,alpha_prime,0.64,Table VII,1u (C5 2.38),"1'u = 1u(3Sigmau+), repulsive"
+1u,P3/2+P1/2,alpha_prime,0.00,Table VII,1u (C5 0.00605),"1''u = C:1u(3Sigmau+); printed 0.00"
+2g,P3/2+P1/2,alpha_prime,0.16,Table VII,2g (C5 0.599),
+2u,P3/2+P1/2,alpha_prime,-0.16,Table VII,2u (C5 -0.602),
+2P1/2,atom,D2,0.0,Table IV,,"np; the same for np5 (zero)"
+2P3/2,atom,D2,-0.44721,Table IV,,"np; for np5 (iodine) the sign is opposite, +0.44721 (Table IV caption)"
+2P,atom,C2,-0.63246,Table IV,,"np; for np5 the sign is opposite, +0.63246"

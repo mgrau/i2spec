@@ -1,0 +1,43 @@
+id = "felder2005a"
+citation = "R. Felder, \"Practical realization of the definition of the metre, including recommended radiations of other optical frequency standards (2003)\", Metrologia 42, 323-325 (2005): Recommendation 1 (CI-2003) and the updated recommended radiations of stabilized lasers, 2003 (pp. 324-325)"
+source = "https://doi.org/10.1088/0026-1394/42/4/018 (publisher PDF)"
+doi = "10.1088/0026-1394/42/4/018"
+retrieved = "2026-10-26"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+transcription = """
+The CIPM 2003 update of the recommended radiations (Recommendation 1 (CI-2003)), which lists only the six
+radiations it changed; the full lists, source data and hyperfine tables are in the BIPM files, which the report
+does not reprint. Read from the PDF text layer (typeset) and checked against the page image (p. 324). The three
+iodine radiations, entered as frequencies:
+  127I2 P(13) 43-0 a3 (515 nm): f = 582 490 603 442 kHz, lambda = 514 673 466.368 fm, u_r = 1.8e-11
+  127I2 R(56) 32-0 a10 (532 nm): f = 563 260 223 513 kHz, lambda = 532 245 036.104 fm, u_r = 8.9e-12
+  127I2 R(106) 28-0 b10 (543 nm): f = 551 580 162 400 kHz, lambda = 543 515 663.608 fm, u_r = 4.5e-11
+Only relative uncertainties are printed; u = u_r x f, rounded to 0.1 kHz (10.5, 5.0 and 24.8 kHz).
+
+Not entered: the 171Yb+, 88Sr+ and 13C2H2 radiations of the same update, which are not iodine.
+
+Checks (model-free): lambda x f = c to the printed rounding (0.3-0.7 am). The 543 nm entry is the bipm2003b
+recommended value (551 580 162 400(25) kHz) and the 532 nm entry the bipm2012a value (563 260 223 513(5) kHz),
+digit for digit. The 515 nm value equals bipm2005a's to the kHz, but the 2005 BIPM file reduces its uncertainty
+"from the 10 kHz 2003 value to 5 kHz" (MEP 2005, 515 nm, section 2), which confirms the 10.5 kHz entered here.
+"""
+uncertainty = "Relative standard uncertainties as printed (1 sigma), converted with the printed frequencies: 10.5 kHz (515 nm), 5.0 kHz (532 nm), 24.8 kHz (543 nm). Operating conditions, where printed, are tolerances, not uncertainties (footnote 3)."
+notes = """
+The report says that the complete updated lists are the BIPM files; it prints the 2003 values again. The 532 and
+543 nm entries are therefore declared "same" as the BIPM files that hold those values (bipm2012a, bipm2003b), so
+the record keeps one copy; the 515 nm entry is declared superseded by bipm2005a, which kept the value and halved
+its uncertainty. The 515 nm value of 2003 is the mean of the JILA comb value (jones2002a) and the LPL value
+(goncharov2004a) behind bipm2005a; it is not declared here (the row is superseded). No [shift_correction]:
+three lasers, conditions in [conditions].
+"""
+
+[conditions]
+nm515 = "external iodine cell, cold point -5 +- 2 C (I2 pressure 2.4 +- 0.5 Pa), saturating beam intensity < 40 mW/cm2"
+nm532 = "frequency-doubled Nd:YAG laser with external iodine cell, cold finger -15 +- 1 C, modulation 1 +- 0.2 MHz p-p for 3f detection, saturating beam intensity 17 +- 11 mW/cm2"
+nm543 = "external iodine cell, cold point 0 +- 2 C, modulation 2.0 +- 0.5 MHz p-p"
+
+[overlaps]
+bipm2003b = { relation = "same", lines = ["127I2 R(106) 28-0"] }   # the MEP 2003 file, 543 nm
+bipm2012a = { relation = "same", lines = ["127I2 R(56) 32-0"] }    # the 532 nm file (2007, value of 2003)
+bipm2005a = { relation = "superseded", lines = ["127I2 P(13) 43-0"] }   # MEP 2005: same value, 5 kHz

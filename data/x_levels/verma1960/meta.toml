@@ -1,0 +1,163 @@
+id = "verma1960"
+citation = "R. D. Verma, \"Ultraviolet resonance spectrum of the iodine molecule\", J. Chem. Phys. 32, 738-749 (1960)"
+source = "https://doi.org/10.1063/1.1730793 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1063/1.1730793"
+retrieved = "2026-10-23"
+unit = "cm-1 (vacuum wavenumbers, intervals, constants); A (turning points)"
+isotopologue = "127I2"
+state = "X (lower state of the resonance series; the upper state is not identified)"
+files = ["data.csv", "delta_g.csv", "rkr_derived.csv", "constants_derived.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-VII (pp. 739-746; PDF pages 3-10, PDF page 1 is the publisher's cover sheet), the abstract's Eqs. (1)-(2) and
+the constants of the text, read from the scan's native 300 dpi page images (rendered at 400-600 dpi for reading). The
+OCR text layer has most table digits right but garbles marks, superscripts and exponents ("43 578.8U", "SO" for 50,
+"1O-S", the footnote marks); every number was checked against the images.
+
+The measurement: the UV resonance fluorescence of I2 in a 2450 Mc/s discharge, 1830-2370 A, photographed with a 21-ft
+vacuum grating spectrograph (1700-2060 A in third order against Ge atomic lines; 2000-2400 A in second order against Cu
+and Fe lines; vacuum wavelengths, the standards above 2000 A converted with Edlen's table). One I atomic line, 1830.4 A
+(54 632.93 cm-1), excites five doublet series from five rotational levels of X v'' = 0 into three vibrational levels
+v_n', v_(n+1)', v_(n+4)' of an unidentified upper state (Fig. 2): series I, J' = 87 (R(86), P(88)), in v_(n+4)'; II,
+J' = 46 (R(45), P(47)), and III, J' = 49 (R(48), P(50)), in v_(n+1)'; IVa, J' = 22 (R(21), P(23)), and IVb, J' = 25
+(R(24), P(26)), in v_n'. Each line ends on X(v'', J'' = J' - 1 or J' + 1).
+
+data.csv: one row per printed doublet, 226 rows holding 434 line values (400 printed wavenumbers; the Table IV middle
+column is entered twice):
+  Table I    series I, v'' = 0-84, 46 rows;
+  Table II   series II, v'' = 0-82, 47 rows (v'' = 2: R(45) masked by the 1844.5 A atomic line, footnote a, no dnu);
+  Table III  series III, v'' = 0-82, 45 rows;
+  Table IV   series IVa and IVb, v'' = 2-74, 35 rows each. The middle column of Table IV, headed "P(23) R(24)", is one
+             printed number for the unresolved P(23) of IVa and R(24) of IVb (resolved only at v'' = 74, the last member
+             identified: 43 185.81 and 43 186.58); it is entered in both rows with the mark blend_IVa_IVb. v'' = 7 has no
+             R(21), v'' = 23 no P(26);
+  Table V    series IVb "at convergence limit": 18 members with v'' printed in parentheses, (98)-(115); R and P for (98)-
+             (100), one "R, P" value for (101)-(115) (entered under R, mark RP_unresolved), and the 17 intervals
+             Delta E^J(v + 1/2) between successive members (printed between the rows; entered in the lower member's
+             row as dE_next). These are NOT I2 lines (notes).
+  Below v'' = 43, P(47) of II and R(48) of III are unresolved and printed with the same number in both tables (Table II
+  footnote c, Table III asterisk): mark blend_II_III. At v'' = 0, R(86) of I, P(47) of II and R(48) of III are the
+  exciting line (mark exciting). dnu_obs is the printed doublet spacing (Delta nu_obs; Delta nu_RP in Table IV), dnu_calc
+  the printed Delta nu_calc of Tables I-III (Eqs. (4)-(6) evaluated at v''). shared_with lists other printed lines with
+  the identical wavenumber.
+
+delta_g.csv: Table VI, Delta G(v + 1/2) of X for v'' = 0-114 (115 values). For v'' <= 83 they come from the series III
+  P(50) lines through Eq. (15'), Delta G = Delta E^J + J(J+1)(B_v - B_(v+1)) with B_v from Eq. (10); P lines missing
+  from Table III were read from a graph of P against v''. Above v'' = 83 the values were read off the Delta G curve
+  after it was adjusted to seven Delta G values from the Table V members and to D0 (text p. 745); they are printed to
+  0.1 cm-1 from v'' = 85 (v'' = 84 is printed 40.50).
+
+rkr_derived.csv: Table VII, the author's RKR curve of X (derived): U(v) above the potential minimum, r_min and r_max in A,
+  34 levels v = 0-112 (v = 0, 2, every 4th from 6 to 82, then 85, 89, 91, ..., 107, 112). Above v'' = 84, r_min is a
+  short extrapolation and r_max = r_min + 2f (p. 747).
+
+constants_derived.csv (58 rows): Eqs. (1)-(2) = (10)-(11), the X B_v and D_v polynomials in v + 1/2; the doublet-spacing
+  polynomials Eqs. (4)-(6), (12), (13); the intermediate Eqs. (7)-(9) and (7')-(8'''); the J' of the five series; the
+  upper-state constants omega_n' = 43.13, (omega x)_n' = 0.19 and B_n' = 0.01243 cm-1; omega_e = 214.52 cm-1; the D0
+  derivation (convergence limit 42 201.41 cm-1, D0 = 12 452.5 +- 1.5 cm-1); the van der Waals constant c = 3.7e6 cm-1
+  A^6 (4.6-6.4 A). All derived by the author from the lines.
+
+Checks (model-free):
+- R - P equals dnu_obs to 0.01 cm-1 in every doublet of Tables I-IV with both lines printed (205 of 208) except
+  Table I v'' = 35 (below). The Table V
+  intervals equal the differences of successive R values in 16 of 17 cases, and Table V (R - P)/102 at (98)-(100) gives
+  the text's B_v, 0.00696, 0.00588 and 0.00490 cm-1.
+- dnu_calc of Tables I-III equals Eqs. (4)-(6) to the printed 0.01 (largest deviation 0.006, Table I v'' = 6) and agrees
+  with (4J'+2)[B_v - (2J'^2+2J'+2)D_v] from Eqs. (1)-(2) to 0.014 (I), 0.027 (II) and 0.061 cm-1 (III). Eqs. (7')-(8')
+  are Eqs. (7)-(8) divided by 4J'+2 = 350; 15314, 4326 and 4902 are 2J'^2+2J'+2 for J' = 87, 46 and 49; B_n' = B0''/3.
+- Every Table II footnote-c value equals the Table III asterisk value at the same v'' (22 pairs).
+- Against the held X levels data/x_levels/martin1986 (v'' = 8-84; each series' upper term nu + E''(v'', J'') should be
+  constant): 373 lines; leaving out the 9 outliers listed below (beyond 0.6 cm-1), they scatter by 0.14-0.19 cm-1 rms
+  per branch, 0.17 cm-1 overall. The implied upper terms,
+  54 912.4, 54 717.5, 54 721.0, 54 654.0 and 54 655.6 cm-1 above X(0, 0) for I, II, III, IVa and IVb, satisfy the
+  Fig. 2 relations with the printed omega_n', (omega x)_n' and B_n' to about 0.2 cm-1, which confirms the J' and the
+  upper-level assignment. Outliers: Table I v'' = 35 P (+10.05 cm-1), Table I v'' = 12 (both lines, -1.1 and -1.2),
+  Table IV v'' = 46 (all four lines, +2.9 to +3.1), Table I v'' = 28 P (-0.73, shared with II R(45)) and Table III
+  v'' = 26 R (-0.61).
+- Table VI against the lines: the Delta G of the 17 consecutive pairs of series III P(50) lines agree with Table VI to
+  -0.21 to +0.26 cm-1, and Table VI is smooth (second differences within +-0.4 cm-1). But the sum of Table VI is not tied
+  to the lines. Table VI minus the martin1986 Delta G is +0.1 to +0.27 cm-1 at most v'' between 15 and 52 and -0.1 to
+  -0.23 at v'' = 55-66 and 74-83, so Table VI summed from v'' = 8 exceeds martin1986 G(v'') - G(8) by 0.7 cm-1 at
+  v'' = 20, 4.8 at 40, 6.1 at 52, 4.2-4.6 at 64-72 and 2.6 at 84, while the lines agree with martin1986 (above). The same
+  excess, up to 6.5-7.4 cm-1 near v'' = 50, appears against every series' own line differences from v'' = 0. Table VI
+  is a smoothed curve with a systematic error that accumulates in G(v''); use the lines, not the sum of Table VI.
+- Table VII U(v) - U(0) equals the sum of Table VI to 0.005 cm-1 up to v = 85 and departs from it above (+0.1 at v = 89,
+  +8.1 at v = 99, -1.7 at v = 112; listed in the note column). U(0) = 102.08 cm-1 as printed (U(2) - U(0) = 425.36 =
+  213.31 + 212.05).
+- The sum of all of Table VI, 12 451.04 cm-1, is the lower D0 limit of p. 744 (12 451.0).
+
+Misprints and reading notes (all entered as printed):
+- Table I v'' = 35: P(88) is printed 47 998.28, but R - P = 1.41 against the printed dnu_obs 11.41, and the line lies
+  10.05 cm-1 off the series: P(88) is probably 47 988.28.
+- Table V: the interval printed between (113) and (114) is 1.07; the printed positions differ by 1.17.
+- Table IV v'' = 46: all four lines lie 2.9-3.1 cm-1 off both series, R(21) equals Table III P(50) at v'' = 46
+  (46 275.47), and the two Delta nu_RP (2.74, 2.78) fit their neighbors: the row is probably misidentified (shifted by
+  one line).
+- Table I v'' = 12: R(86) equals II R(45) and P(88) equals IVb P(26) at v'' = 12; both lie 1.1-1.2 cm-1 off the series.
+- The abstract prints the upper levels as (v_n', v_(n+0)', v_(n+4)'); p. 740 has v_(n+1)'.
+- Eq. (5): the text layer reads the last exponent as -11; the scan has 10^-6, which the Table II dnu_calc confirm.
+
+Not entered: Figs. 1-10 (microphotometer traces, the energy-level diagram, the dnu and Delta G plots, the RKR curve);
+which Table VI points were obtained directly (marked in Fig. 8 only).
+"""
+
+uncertainty = """
+No per-line uncertainties are printed. The stated measuring accuracy (p. 738): +-1 mA for sharp lines and +-3 to +-6 mA
+for weak lines and lines overlapped by others, about +-0.02-0.03 and +-0.05-0.18 cm-1 at 1830-2370 A. The lines scatter
+by 0.17 cm-1 rms about the held martin1986 X levels (above), so about +-0.2 cm-1 per line is realistic. The Table VI
+values are smoothed (printed to 0.01 cm-1 at v'' <= 84, 0.1 above) and carry the systematic error described above. No
+uncertainty is printed for the RKR points or the constants, except D0 (+-1.5 cm-1, half the range of its two limits).
+"""
+
+notes = """
+Later corrections. Le Roy, J. Chem. Phys. 52, 2678 (1970) (catalog leroy1970) reassigned the lower state of series IVb
+near the limit to a shallow 0g+ state and gave D0 = 12 440.9 +- 1.1 cm-1. Verma and Le Roy, J. Chem. Phys. 61, 438
+(1974), re-photographed the spectrum with the 35-ft vacuum spectrograph of the NRC laboratories in Ottawa and showed that
+the lines of Table V, assigned here to the convergence of doublet series IVb, are NO impurity lines (the 0-1 band of the
+gamma system). X levels of I2 are therefore observed here only up to v'' = 84, the D0 of this paper and the uppermost
+part of its RKR curve are invalid, and the 1970 reassignment is withdrawn; the 1974 note casts no doubt on the rest of
+the resonance data. In data.csv the 18 Table V rows carry lower_state = "not I2: NO gamma (0,1) band (Verma and Le Roy
+1974)" and keep their parenthesized v'' (v_status); they are kept because the record keeps everything, but they are not
+I2 data. The IVb rows of Table IV (v'' = 2-74) are I2 lines and are not affected. In delta_g.csv the rows v'' >= 84, in
+rkr_derived.csv the rows above v'' = 84 and in constants_derived.csv the D0, the convergence limit and the Table V B_v
+rest on the NO lines. Model-free, at the assigned v'' = 101-108 the Table V intervals are 1.4-2.8 cm-1 and Table VI 1.7-3.2
+cm-1 larger than the martin1983 Delta G, and Table VI is 0.8-2.2 cm-1 below the martin1986 Delta G at v'' = 84-88.
+
+Blends. Besides the flagged II/III and IVa/IVb blends (and the exciting line), 15 printed wavenumbers are shared by
+lines of two different series at the same or nearby v'', and four of the II/III blend values are printed a third time
+in another series (shared_with column; e.g. Table I R(86) v'' = 4 = IVa R(21) v'' = 4, Table I P(88) v'' = 84 = II
+R(45) v'' = 82, Table III P(50) v'' = 38, 40 and 46 = IVa R(21)). The paper flags none of these. The author drew the dnu
+curves ignoring points "too far off" (very weak or blended lines, p. 742) without saying which.
+
+What the set is. The only I2 X-state levels to v'' = 84 before laser-induced fluorescence: absolute vacuum wavenumbers
+of resonance-fluorescence lines, calibrated against atomic standards on the same plates. The upper state is not
+identified (p. 749 discusses 0u+ candidates; its vibrational numbering is unknown). Superseded for X by
+data/x_levels/martin1986 and martin1983 (LIF Fourier-transform levels to v'' = 109). Steinfeld et al. 1965
+(data/b_levels/steinfeld1965) quote this paper's dissociation energy as De'' = 12 559.6 +- 1.5 cm-1. Not compared with
+any model.
+Later work: Tellinghuisen, McKeever and Sur 1980 (data/x_levels/tellinghuisen1980) re-photographed the spectrum,
+confirmed the assignments and extended them to v'' = 99. It measures P(88) of v'' = 35 at 47 988.30 cm-1, supporting
+the Table I correction, and IVa R(21) 46 272.51 and IVb P(26) 46 266.88 cm-1 at v'' = 46, 2.96 and 3.07 cm-1 below
+Table IV's row there: that row is misidentified.
+"""
+
+[columns]
+data = """
+table: I-V. series: I, II, III, IVa, IVb. J_upper: J' of the series' upper level. v: v'' as printed (Table V: the
+  parenthesized value). v_status: empty, or "tentative" for Table V.
+R_J, R, R_mark: J'' (= J' - 1) and vacuum wavenumber (cm-1) of the R line, and its mark. P_J, P, P_mark: the same for the
+  P line (J'' = J' + 1). Marks: exciting (the I 1830.4 A line), masked (Table II v'' = 2), blend_II_III, blend_IVa_IVb,
+  RP_unresolved (Table V single value).
+dnu_obs: printed R - P (cm-1). dnu_calc: printed Delta nu_calc of Tables I-III (cm-1). dE_next: Table V interval to the
+  next member (cm-1).
+lower_state: X, or the Verma and Le Roy 1974 reassignment (NO) for Table V.
+shared_with: other printed lines with the identical wavenumber (series, branch, v'').
+note: misprints and reading notes.
+"""
+delta_g = "v: v''. dG: Delta G(v + 1/2) = G(v + 1) - G(v), cm-1, as printed. basis: how the author obtained it. note: reading notes."
+rkr_derived = "v: v''. U: energy above the potential minimum, cm-1. r_min_A, r_max_A: turning points, A. note: extrapolation and consistency notes."
+constants_derived = """
+state: X or upper. quantity, value (as printed; two values separated by ';' where the text gives a list), uncertainty
+(only for D0 and the earlier D0), unit, source (equation or page), note.
+"""

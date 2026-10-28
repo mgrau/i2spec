@@ -1,0 +1,15 @@
+quantity,k,value_cm1,unc_2sd,note
+C,,0.122376932E+05,0.030,"T(v) = C + sum_{k=1..6} Yk0 (v+1/2)^k, origin X(v''=0,J''=0); C = 12237.693(30) printed below the table"
+Yk0,1,0.198304919E+02,,
+Yk0,2,-0.48132052E+00,,
+Yk0,3,-0.42675E-04,,
+Yk0,4,-0.130185532E-03,,
+Yk0,5,0.4148671E-04,,"as printed; a misprint for 0.4148671E-05: with E-05 the polynomial gives Table 2 T(v) - C to 7 mK rms (within the printed 2 SD at 18 of the 20 levels that carry one) and Table 4 G(v) = poly + Y00 to 0.3 mK; with E-04 it is off by 135 cm-1 at v = 20"
+Yk0,6,0.761472E-07,,
+Yk1,0,0.14654E-01,,"B(v) = sum_{k=0..6} Yk1 (v+1/2)^k; valid 0 <= v <= 20"
+Yk1,1,-0.38860E-03,,
+Yk1,2,0.480545E-04,,
+Yk1,3,-0.1116295E-04,,
+Yk1,4,0.105944E-05,,
+Yk1,5,-0.48580E-07,,
+Yk1,6,0.84066E-09,,

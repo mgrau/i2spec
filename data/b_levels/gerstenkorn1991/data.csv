@@ -1,0 +1,12 @@
+isotopologue,v,G,G_unc,B_x100,B_x100_unc,G_calc,G_calc_king1980,note
+129I2,71,,,,,20018.286,20018.243,"Table 6: measured (King et al. 1980, data/b_levels/king1980) 20 018.295(7), Delta +9 mK (this work), +52 mK (King's prediction)"
+129I2,72,,,,,20022.994,20022.972,"Table 6: measured 20 023.002(7), Delta +8, +30 mK"
+129I2,73,,,,,20027.061,20027.055,"Table 6: measured 20 027.110(5), Delta +49, +55 mK"
+129I2,74,,,,,20030.540,20030.544,"Table 6: measured 20 030.574(6), Delta +34, +30 mK"
+129I2,75,,,,,20033.482,20033.493,"Table 6: measured 20 033.487(6), Delta +5, -6 mK"
+129I2,76,,,,,20035.941,20035.952,"Table 6: measured 20 035.919(5), Delta -22, -33 mK"
+129I2,77,,,,,20037.965,20037.973,"Table 6: measured 20 037.994(5), Delta +29, +21 mK"
+129I2,78,,,,,20039.603,20039.603,"Table 6: measured 20 039.633(10), Delta +30, +30 mK"
+129I2,79,,,,,20040.903,20040.890,"Table 6: measured 20 040.885(29), Delta -18, -5 mK"
+127I129I,70,,,,,20014.035,20013.976,"Table 6: measured 20 014.075(23), Delta +40, +99 mK"
+127I129I,73,,,,,20027.705,20027.705,"Table 6: measured 20 027.766(10), Delta +61, +61 mK; King et al. print 20 027.7659 +- 94, so (10) is their 0.0094 rounded up"

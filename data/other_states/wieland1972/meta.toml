@@ -1,0 +1,110 @@
+id = "wieland1972"
+citation = "K. Wieland, J. B. Tellinghuisen and A. Nobs, \"The band systems E -> B (4000-4360 A) and F -> X (2530-2740 A) of 127I2 and 129I2, and the corresponding system E <-> B of Br2 and Cl2\", J. Mol. Spectrosc. 41, 69-83 (1972)"
+source = "https://doi.org/10.1016/0022-2852(72)90123-3 (publisher PDF: a 300 dpi scan with an OCR text layer)"
+doi = "10.1016/0022-2852(72)90123-3"
+retrieved = "2026-10-23"
+unit = "cm-1; A for re"
+state = "ion-pair E 3Pig(0g+) (label printed with a question mark) and F 1Sigmau+(0u+); the lower states are B 0u+ (E -> B) and X 0g+ (F -> X)"
+isotopologue = "127I2 and 129I2"
+files = ["table1_E_B_heads.csv", "table2_F_X_heads.csv", "table3_constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-III (pp. 71-76), every row and column, read from 300 dpi renders of the scan, with 2-4x zoomed crops for
+doubtful glyphs; the OCR text layer garbles most of the typewritten Tables I and II. Band heads of red-degraded
+emission bands of iodine excited in a discharge with added inert gas.
+
+table1_E_B_heads.csv: Table I, "Transition E -> B(3Piu) (4000-4360 A.U.). Heads of red degraded bands in cm-1"
+(pp. 71-72). table2_F_X_heads.csv: Table II, "Transition F -> X(1Sigmag+) (2530-2740 A.U.)" (pp. 73-75). The tables
+print a 127I2 and a 129I2 block side by side (I, App., v'-v'', nu, o-c each) and the isotope shift
+nu(129I2) - nu(127I2), observed and calculated, where the same band was measured in both. One CSV row per printed
+entry (long format); page and row give the printed line, so the two isotopologues of one line share them, and the
+printed shifts sit on the 129I2 row. As printed:
+- head_cm1: the table prints the leading digits only where they change (25118.5, then 100.5, 072.); they are
+  restored. Heads end in "." or ".5" for most bands and carry one decimal for some; the trailing "." is dropped.
+- band: v'-v'' as printed; "-" = no assignment (o-c "-"); parentheses = uncertain assignment (tentative = yes;
+  the paper does not explain them). v_upper and v_lower are parsed from it; v_lower is the B level in Table I and
+  the X level in Table II.
+- Ten entries print a v'-v'' and an o-c but no wavenumber, on the line under another head of the same isotopologue
+  (Table I: 8-18 of 127I2, 4-16 of 129I2; Table II, 129I2: 4-56, 15-65, 19-70, 15-68, 16-70; 127I2: 7-69). They are
+  second assignments of that head, which is repeated in head_cm1 and named in the note.
+- intensity: I, "estimated intensity in visual scale 0 - 10" (footnote 1). appearance: "us = unsharp; L = line
+  like; (N2), (CN) = impurity lines" (footnote 2); s(N2), s(CN) and L(CN) as printed.
+Reading notes: Table II p. 75, 127I2 8-72 is printed "595." with an illegible mark after the point (entered
+36595); the calculated shift of 2-62 (p. 75) is printed "50.?" with an illegible last digit (left empty, observed
+50.9 kept); Table II p. 73, the intensity of 129I2 (9-54) is a broken "2".
+
+table3_constants.csv: Table III, "Constants of systems E -> B and F -> X of 127I2" (p. 76): Te, we, wexe, re and
+nu00 of X, B, E and F. The X and B rows are reprints (Refs. 14 and 13; see the source column). Footnote a: "The
+constants for 129I2 are obtained with the isotopic factor rho = (mu127/mu129)^1/2 = 0.99221" (p. 71: rho =
+(126.9045/128.9050)^1/2); footnote b: the B and X levels behind the calculated heads come from the complete
+formulas of those references. The paper prints no 129I2 constants and no term values of B or X.
+
+Checks (model-free):
+- Leading digits: the restored heads fall monotonically down every printed column (156 entries in Table I, 219 in
+  Table II).
+- Isotope shifts: 94 printed Delta nu_o (42 in Table I, 52 in Table II) equal nu(129I2) - nu(127I2) of the same line
+  to the printed digit, all but one: Table I p. 72, 1-18: 23760.5 - 23748. = 12.5, printed 11.5 (Delta nu_c 11.4).
+  One of the three numbers is misprinted; all are entered as printed. Each paired line carries the same band in
+  both blocks.
+- o-c: the calculated heads were rebuilt from the Table III upper-state constants (Te + we(v+1/2) - wexe(v+1/2)^2,
+  with rho and rho^2 for 129I2) and lower levels from other held sets: 127I2 B from data/b_levels/barrow1973,
+  127I2 X from data/x_levels/martin1986, 129I2 B from the mass-scaled Dunham coefficients of
+  data/b_levels/gerstenkorn1991, 129I2 X from data/x_levels/cerny1986_129I2 (its origin moved to X(0,0) with
+  G0 = 106.27). After one constant per block (0.09, 0.33, 0.05 and 0.35 cm-1: the head-origin separation and the
+  difference of the reference levels), obs - this calculation reproduces the printed o-c with rms 0.14 cm-1 (45
+  rows, Table I 127I2), 0.13 (63, Table I 129I2), 0.15 (103, Table II 127I2) and 0.24 (98, Table II 129I2), all within
+  0.8 cm-1 except Table II 129I2 15-68 (printed 0.6, a second assignment of the 37580.3 head; 2.5 here) and 12-73
+  (-0.9). The three 129I2 v'' = 47 rows (0-47, 1-47, 3-47) are 1000 cm-1 off because cerny1986_129I2 holds its
+  printed v'' = 47 misprint (9564.6417 for 8564.6417, see its notes); the heads here confirm 8564.64.
+- Table III: nu00 = Te(upper) + G'(0) - Te(lower) - G''(0) from the printed constants gives 25630.45, 47158.6 and
+  15724.96, the printed 25630.5, 47158.6 and 15724.95.
+
+Not entered: Fig. 1 (emission spectra, 2600-5400 A), the Br2 and Cl2 parts (Sects. III-IV: the E <-> B equations of
+79,81Br2, nu00 = 35724.0, Te = 51634.0 cm-1, and of 35Cl2, nu00 = 40140.0, Te = 57816.5 cm-1; Fig. 4, the Br2
+Deslandres array; Table IV, Cl2 transient-absorption heads 2130-2500 A; Table V, Cl2 emission heads excited by
+active nitrogen). No line positions are printed.
+"""
+
+uncertainty = "None stated. The heads are printed to 0.5 cm-1 for most bands (0.1 cm-1 for some) and the o-c columns spread over -6 to +6.6 cm-1 (rms about 1.5 cm-1), so the heads are good to about +-1 cm-1. Band heads, not band origins: the head of these red-degraded bands lies a fraction of a cm-1 above the origin (see the constant offsets under Checks)."
+
+notes = """
+What the paper is. A vibrational analysis of two ion-pair emission systems of iodine, E -> B and F -> X, redone with
+129I2: band heads of both isotopologues, their vibrational assignment and isotope shifts, and vibrational constants
+(Te, we, wexe) of the upper states E and F. The observed isotope shifts of the four states involved agree with those
+calculated from first-order mass scaling (rho = 0.99221); the paper stresses this against "a possible isotope
+anomaly in system D" (3100-3460 A), whose earlier vibrational analysis it declares untenable and leaves for later.
+
+B and X. The paper derives no B or X constants or term values for either isotopologue: Table III reprints the B
+constants of Steinfeld, Campbell and Weiss 1969 and the X constants of Le Roy 1970, and the 129I2 constants are those
+times rho^l. The 129I2 heads end on B v'' = 6-32 (E -> B) and X v'' = 43-77 (F -> X), and the 127I2 heads on B v'' =
+9-31 and X v'' = 42-78. They test 129I2 mass scaling of B and X only at the 1 cm-1 level of a band head, and the
+check above finds them consistent with the mass-scaled 127I2 B constants of data/b_levels/gerstenkorn1991 and the
+measured 129I2 X levels of data/x_levels/cerny1986_129I2 to 0.1-0.2 cm-1 rms (o-c rebuilt, a constant offset
+removed). The held 129I2 X levels of cerny1986_129I2 (Fourier-transform fluorescence, v'' = 4-108) are about 1000
+times more precise over the same range.
+
+Upper-state constants. E: Te = 41411.8, we = 101.59, wexe = 0.2380 cm-1 (v' = 0-20); F: Te = 47217.8, we = 95.955,
+wexe = 0.3623 cm-1 (v' = 0-19). These are the band-head constants of the early 1970s; later laser work on the ion-pair
+states (e.g. data/other_states/king1989 for F 0u+ at v = 51-102 and F' 0u+) extends them to far higher v.
+
+data/other_states holds measured levels and constants of electronic states other than X and B (no loader reads it).
+"""
+
+[columns]
+table1_E_B_heads = """
+table: 1. page: printed page (71-72). row: printed line on that page (a 127I2 and a 129I2 entry of one line share it).
+isotopologue: 127I2 or 129I2 (the block the entry is printed in).
+intensity: I, visual estimate 0-10. appearance: us (unsharp), L (line like), s(N2), s(CN), L(CN) (impurity lines).
+band: v'-v'' as printed, "-" unassigned, parentheses uncertain. v_upper: E level. v_lower: B level. tentative: yes
+  where the band is printed in parentheses.
+head_cm1: band head, cm-1. obs_minus_calc_cm1: printed o-c, cm-1 (empty where printed "-").
+shift_obs_cm1, shift_calc_cm1: printed Delta nu_o and Delta nu_c = nu(129I2) - nu(127I2), on the 129I2 row.
+note: second assignments and reading notes.
+"""
+table2_F_X_heads = "As table1_E_B_heads, for Table II (pp. 73-75): v_upper is the F level, v_lower the X level."
+table3_constants = """
+state: as printed. Te_cm1: above the X minimum. we_cm1, wexe_cm1: vibrational constants. re_A: printed re (E and F:
+printed with ~, approximate r0). transition, nu00_cm1: the (0,0) band origin of the system. source: table and the
+reference of reprinted rows. note: definitions.
+"""
