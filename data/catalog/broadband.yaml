@@ -33,14 +33,14 @@
   uncertainty_MHz: 21
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Printed atlas only (Éditions du CNRS 1978; ISBN 978-2-222-02247-3 per OpenLibrary). No official electronic line list found. Salami & Ross (2005) is a digital spectrum of nearly the same range."
+  data_availability: "Printed atlas (Éditions du CNRS 1978; ISBN 978-2-222-02247-3 per OpenLibrary). A PDF scan of the whole volume is held (547 pp., 300 dpi bilevel page images, no text layer). No official electronic line list found. Salami & Ross (2005) is a digital spectrum of nearly the same range."
   machine_readable: false
   likely_in_knockel2004: true
   priority: high
   verified: true
-  status: "not useful: line positions superseded by the digital FTS spectra already held"
-  transcription: "n/a: not held"
-  notes: "Existence confirmed by an ADS record, an OpenLibrary ISBN record (1978, 546 pp.) and Knöckel 2004 ref. [1]. Knöckel ref. [1] lists the series as separate Laboratoire Aimé Cotton volumes: 14 000–15 600 cm⁻¹ (1978), 15 600–17 600 cm⁻¹ (1977) and 17 500–20 000 cm⁻¹ (1977). Knöckel Table 3 ('atlas III', 14 800–20 000 cm⁻¹) gives a cell temperature of 250 °C, instrument widths of 660 MHz (rectangular, estimated) and 450 MHz (sinc), and a shift of the line maximum from the pure rovibronic frequency of −8.2(2.0)e-4 cm⁻¹ for odd J″ (zero for even J″). Knöckel used atlas lines only to fill gaps (514–526 nm and 667–776 nm; most data for 8 ≤ v″ ≤ 11). To use it in a new fit, the line list must be digitized (OCR) or its lines re-measured by profile fitting of the Salami & Ross spectrum."
+  status: "held"
+  transcription: null
+  notes: "Transcribed 2026-10-29 as data/atlas_lines/gerstenkorn1978 (pending): all 24 001 numbered lines of the three parts. Scan read 2026-10-29 (front matter, pp. I-XXX, French and English). Three parts on one volume: I 14 800-15 750 cm-1 (2781 numbered lines), II 15 600-17 600 (9000), III 17 500-20 000 (11 069); 22 850 numbered ('ticked') lines with s/n > 4 of about 46 700 recorded. Each plate (about 16 cm-1) faces a table of N, vacuum wavenumber (4 decimals), noise uncertainty (1e-3 cm-1) and central depth; no assignments are printed. Cells of three lengths at room-temperature vapor pressure, 40 W tungsten-iodine lamp, resolving limit 0.005 cm-1. Strong and medium lines +-0.001 cm-1 internally (5e-8); the scale is set by a superposed uranium hollow-cathode spectrum, delta about 3e-7, so the whole spectrum may be shifted by up to +-0.006 cm-1; +-10 cm-1 around the He-Ne monitor line (15 798.0 cm-1) is lost in parts I-II. Table 4 gives band origins sigma(0,v') for v' = 2-62 and a 9-term G(v') with T0,0 = 15 724.518 and Te = 15 768.947 cm-1; Table 5 the X levels v'' = 0-6. Existence confirmed by an ADS record, an OpenLibrary ISBN record (1978, 546 pp.) and Knöckel 2004 ref. [1]. Knöckel ref. [1] lists the series as separate Laboratoire Aimé Cotton volumes: 14 000–15 600 cm⁻¹ (1978), 15 600–17 600 cm⁻¹ (1977) and 17 500–20 000 cm⁻¹ (1977). Knöckel Table 3 ('atlas III', 14 800–20 000 cm⁻¹) gives a cell temperature of 250 °C, instrument widths of 660 MHz (rectangular, estimated) and 450 MHz (sinc), and a shift of the line maximum from the pure rovibronic frequency of −8.2(2.0)e-4 cm⁻¹ for odd J″ (zero for even J″). Knöckel used atlas lines only to fill gaps (514–526 nm and 667–776 nm; most data for 8 ≤ v″ ≤ 11). The transcription's counts per part (3221, 8676, 12 104) differ from these Table 3 totals."
 - id: gerstenkorn1978b
   citation: "S. Gerstenkorn, P. Luc, Atlas du spectre d'absorption de la molécule d'iode, 14 000–15 600 cm⁻¹ (Laboratoire Aimé Cotton, CNRS II, Orsay, 1978)"
   doi: null
@@ -66,7 +66,7 @@
   verified: true
   status: "unobtainable for now: printed atlas only; a scan of this volume is expected (data collection ended 2026-10-28 with this one exception)"
   transcription: "n/a: not held"
-  notes: "Existence and year are taken from Knöckel 2004 ref. [1]. A secondary web source dates a 14 000–15 600 cm⁻¹ Gerstenkorn–Luc volume to 1980, so the year should be checked against a library record. The volume covers 641–714 nm, part of the 667–776 nm region where Knöckel had to rely on atlas data (prediction 2σ up to 60 MHz there). It is also the only broadband source for 14 000–14 250 cm⁻¹, below the start of the Salami & Ross file."
+  notes: "Existence and year are taken from Knöckel 2004 ref. [1]. A secondary web source and the reference lists of Lukashov et al. 2018 (lukashov2018) date the 14 000–15 600 cm⁻¹ Gerstenkorn–Luc volume to 1980 (CNRS II, Orsay), so the year should be checked against the volume's title page. The volume covers 641–714 nm, part of the 667–776 nm region where Knöckel had to rely on atlas data (prediction 2σ up to 60 MHz there). It is also the only broadband source for 14 000–14 250 cm⁻¹, below the start of the Salami & Ross file."
 - id: gerstenkorn1982
   citation: "S. Gerstenkorn, J. Vergès, J. Chevillard, Atlas du spectre d'absorption de la molécule d'iode, 11 000-14 000 cm-1 (Laboratoire Aimé Cotton, CNRS II, Orsay, 1982)"
   doi: null
@@ -2703,31 +2703,31 @@
   transcription: "not needed: low priority narrow-window study; numbers not extracted and absolute scale unchecked"
   notes: "Narrow-window laser absorption/fluorescence study; possible small-scale intensity cross-check near 588 nm. Absolute nature of intensities not checked."
 - id: lukashov2018
-  citation: "S. S. Lukashov, A. N. Petrov, A. M. Pravilov, Electronic states of iodine molecule and optical transitions between them, in: The Iodine Molecule (Springer, Cham, 2018), pp. 21-56"
-  doi: "10.1007/978-3-319-70072-4_3"
-  url: "https://doi.org/10.1007/978-3-319-70072-4_3"
+  citation: "S. S. Lukashov, A. N. Petrov, A. M. Pravilov, The Iodine Molecule: Insights into Intra- and Intermolecular Perturbation in Diatomic Molecules (Springer, Cham, 2018), 209 pp."
+  doi: "10.1007/978-3-319-70072-4"
+  url: "https://doi.org/10.1007/978-3-319-70072-4"
   year: 2018
-  group: "St. Petersburg State University (inferred)"
+  group: "Saint Petersburg State University"
   isotopologues: ["127I2"]
   system: "all valence and ion-pair states"
   technique: "Review / compilation"
   observable: "other"
   range_nm: null
   range_cm1: null
-  transitions: "Review of states and transition moments"
+  transitions: "Review of the valence, ion-pair and Rydberg states, their nonadiabatic perturbations, collision-induced transitions and RgI2 van der Waals complexes; the B-X system only in Sect. 3.2.1 (pp. 27-29), 4.2.1 (B predissociation, pp. 63-65), 4.3.1.1 (B ~ valence-state couplings, pp. 67-69) and 5.3.1 (collision-induced predissociation of B, p. 95)"
   n_items: null
   uncertainty: null
   uncertainty_MHz: null
   absolute: false
   hyperfine_resolved: false
-  data_availability: "Springer book chapter"
+  data_availability: "Springer book; publisher PDF with a text layer"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  status: "not useful: tier 3 (review chapter; no line data)"
-  transcription: "n/a: not held"
-  notes: "Recent review; companion chapter on intramolecular perturbations is 10.1007/978-3-319-70072-4_4 (seen in search results, not separately verified). Useful bibliography for TDM and predissociation data. Author middle initials not verified."
+  status: "held"
+  transcription: "not needed: a review; it prints no primary data for B-X"
+  notes: "Read 2026-10-29 (the B-X sections, the appendix and the reference lists). Everything it gives for B and X is quoted from sources in this catalog. Appendix Table A1 (pp. 192-193) lists Te, omega_e, omega_e x_e, Be, Re, D0 and radiative lifetimes for about 30 states: X from Gerstenkorn & Luc 1985 and Martin et al. 1986 (D0 12440.23 cm-1, Be 3.736794e-2 cm-1), B from Barrow & Yee 1973 (Te 15769.0485, Be 2.903876e-2, D0 4318.853 cm-1). Sect. 4.2.1 quotes the gyroscopic and hyperfine predissociation of B (kv up to about 250 s-1; hyperfine predissociation rate (0.4-1.7)e6 s-1 for vB = 5-40, following the B/C Franck-Condon density with maxima at vB = 5 and about 24) from Vigue, Broyer & Lehmann 1981. Sect. 4.3.1.1 quotes the B ~ c1g coupling near dissociation (vB = 77-78, essentially magnetic dipole; Pique et al. 1984, 1986), the B 59 ~ c 14 matrix element of about 0.1 cm-1 (Jewsbury et al. 1993, against 0.206 cm-1 from Pique et al.), further resonant levels at vB = 57-59, 63, 69, 71, 74 and 76, and B ~ B''(0u-) couplings (Motohiro et al. 2002, J. Chem. Phys. 117, 9777, no matrix elements given). Its reference lists date the 14 000-15 600 cm-1 atlas to 1980 (CNRS II, Orsay) and list a Vol. O, 7220-11 200 cm-1 (Gerstenkorn, Luc, Verges, 1993). References not in this catalog that bear on B are about the weakly bound states of the ab and bb limits (Baturo et al. 2015, J. Phys. B 48, 055101; Akopyan et al. 2013-2014, J. Phys. B 46, 055101 and 47, 055101) and Motohiro et al. 2002; they are not fetched (data collection ended 2026-10-28). Middle initials follow the chapter record."
 - id: sakurai1971
   citation: "K. Sakurai, G. Capelle, H. P. Broida, Measurements of lifetimes and quenching cross sections of the B 3Π0u+ state of iodine using a tunable dye laser, J. Chem. Phys. 54, 1220-1223 (1971)"
   doi: "10.1063/1.1674958"

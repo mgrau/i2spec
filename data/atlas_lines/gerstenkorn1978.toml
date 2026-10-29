@@ -1,0 +1,52 @@
+id = "gerstenkorn1978"
+catalog = "broadband:gerstenkorn1978a"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "atlas line positions"
+source = "PDF scan of the printed volume (547 pp., 300 dpi bilevel page images, no text layer)"
+retrieved = "2026-10-29"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+instrument = """Fourier transform absorption spectrum (the step-scanning Fourier spectrometer of Laboratoire Aime Cotton,
+maximum path difference 2 m, resolving limit 0.005 cm-1); absorption cells of three lengths (differing by factors of
+about 4) at room-temperature vapor pressure, a 40 W tungsten-iodine lamp; vacuum wavenumbers. Three parts: I 14 800-15
+750 cm-1, II 15 600-17 600 cm-1, III 17 500-20 000 cm-1 (pp. XVII-XXX)."""
+calibration = """The atlas's own 1978 scale, as printed. A uranium hollow-cathode spectrum superimposed on the iodine
+spectrum sets sigma = sigma_m (1 + delta) with delta about 3e-7; the authors give an internal coherence of 5e-8
+(+-0.001 cm-1 for strong and medium lines) and state that the whole spectrum may be shifted by up to +-0.006 cm-1
+(p. XXIV). No correction is applied: neither the -0.0056 cm-1 of Gerstenkorn and Luc 1979 (catalog gerstenkorn1979a)
+nor the Knoeckel et al. 2004 recalibration (nu_corr = nu_atlas (1 + 1.7e-7) - 8.1e-3 cm-1). eps_mk is the authors'
+noise-only uncertainty (systematic uncertainties excluded, p. XXVII)."""
+extraction = """Every line table of the three parts (265 table pages; the facing plates were not transcribed),
+read from the 300 dpi page images (research scripts). Each page was deskewed and cut into its columns, each column
+in two at a gap between blocks of rows. Reading 1: tesseract on each column crop, its lines placed on the printed rows
+by vertical position. Reading 2: a model reading each column crop by eye. Rows where the two agree (18 605) stand.
+The others (5 279) were read a second time blind by a model, from images of the single rows: 5 243 agree with
+reading 2, 28 with reading 1. The remaining 8, the 9 rows of p. 341 that were read again in full (reading 2 had
+renumbered them), and one row where readings 1 and 2 agreed on a digit that breaks the order (N 2607, part II) were
+settled on the image. Seven pages whose columns were first cut between fields (pp. 243, 251, 269, 323, 327, 495, 517)
+were cut again and read again; the six lines of pp. 149 and 159 (three each, on otherwise empty pages) and the one of
+p. 147 were read on the image. Audit: an independent full reading of 13 pages (every twentieth, 1279 rows) differs
+from this transcription in no digit (one digit the audit could not read is printed broken). Checks: the line numbers
+step by one within each numbering series, and the wavenumbers increase within each series."""
+tables = """Parts I-III, the numbered ('ticked', s/n > 4) lines: N, sigma (vacuum cm-1, 4 decimals), eps (1e-3 cm-1)
+and I (central depth, normalized to the local continuum). Not entered: the plates, and the front-matter tables
+(band origins sigma(0,v') for v' = 2-62, a 9-term G(v') with T0,0 = 15 724.518 and Te = 15 768.947 cm-1, and the X
+levels v'' = 0-6, pp. XXVIII-XXIX), which Gerstenkorn and Luc 1985 supersede."""
+files = ["gerstenkorn1978.csv"]
+n_lines = 24001
+
+columns = """
+gerstenkorn1978.csv, one row per printed line, in printed order: part (1-3), series (the line numbers restart
+within a part: part I has 4 series, part II 2, part III 4), N (the printed line number), sigma_cm1, eps_mk (1e-3
+cm-1; blank where *** is printed or the character is unreadable), depth (blank where unreadable), pdf_page (page of
+the PDF scan), basis (how the row was established: ocr+haiku, the two first readings agree; haiku+haiku, the model
+readings agree; ocr+haiku2, OCR and the second model reading agree; sonnet+ocr, sonnet+haiku, sonnet+eye, the full
+rereading of p. 341 and three other columns against OCR, the first reading or the image; settled, eye: read on the
+image), note.
+
+The series overlap: each new series and each part starts a few lines below where the last one ended, and 94
+wavenumbers are printed twice (noted 'also printed as ...' on the second). Part II's numbering jumps from 232 to 556
+across 15 786-15 807 cm-1, where the He-Ne monitor line obscures the spectrum and no lines are printed; line 4097 of
+part II is not printed. The counts per part (3221, 8676, 12 104) differ from the totals of the authors' Table 3
+(2781, 9000, 11 069).
+"""
