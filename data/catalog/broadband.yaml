@@ -503,7 +503,7 @@
   observable: "other"
   range_nm: [511.2, 521.9]
   range_cm1: [19160, 19560]
-  transitions: "Dense rovibronic spectrum around 19 240 cm⁻¹ (comb spectrum centred at 19 360 cm⁻¹, spanning 400 cm⁻¹)"
+  transitions: "Dense rovibronic spectrum around 19 240 cm⁻¹ (comb spectrum centered at 19 360 cm⁻¹, spanning 400 cm⁻¹)"
   n_items: null
   uncertainty: "Not stated as line-position accuracy (demonstration)"
   uncertainty_MHz: null
@@ -1993,22 +1993,22 @@
   group: "BIPM"
   isotopologues: ["127I2", "129I2"]
   system: "B-X"
-  technique: "beat-frequency comparison of He-Ne lasers using 39 cells at 633 nm; LIF purity measurement at 502 nm"
+  technique: "beat-frequency comparison of 633 nm He-Ne lasers (BIPM7, BIPM11 vs BIPM4, 3f, d-e-f-g matrices) using 39 cells from 10 laboratories plus BIPM; LIF Stern-Volmer K0 at 501.7 nm"
   observable: "other"
-  range_nm: [502.0, 632.99]
-  range_cm1: [15798.0, 19920.3]
-  transitions: "127I2 R(127) 11-5 lock components (633 nm); LIF excitation at 502 nm"
-  n_items: 39
-  uncertainty: "more than half of the 39 cells reproduce within 10 kHz (2e-11)"
+  range_nm: [501.7, 632.99]
+  range_cm1: [15798.0, 19932.2]
+  transitions: "127I2 R(127)11-5 d, e, f, g (633 nm); 129I2 P(54)8-4 component k vs 127I2 R(127)11-5 component i; LIF excitation at 501.7 nm"
+  n_items: 63
+  uncertainty: "cell shifts e.g. +1.6(2.7) to -286.4(6.7) kHz; K0 0.94-6.30 Pa; f(k, 129I2 P(54)8-4) - f(i, 127I2 R(127)11-5) = 95.81 MHz (12 C) and 95.84 MHz (15 C) vs reference 95.90(4) MHz"
   uncertainty_MHz: null
   absolute: false
   hyperfine_resolved: true
-  data_availability: "printed journal article (Metrologia)"
+  data_availability: "Table 1 (34 frequency shifts, 27 K0 values, with sd); text (two 129I2-127I2 intervals); d, f, g deviations per cell in Fig. 2 only"
   machine_readable: false
   likely_in_knockel2004: false
-  priority: low
+  priority: medium
   verified: true
-  notes: "Found 129I2 contamination in some 127I2 cells and tied observed frequency shifts to impurities. Relevant when modeling real cells: isotopic impurity lines and foreign-gas shifts. The library holds the BIPM report version (Rapport BIPM-92/4, same title and authors, 53 pp; read 2026-10-23), not the Metrologia article: Table 1 lists, for ten laboratories (Dec. 1990 - May 1991), each cell's 633 nm beat shift against the BIPM reference lasers (e.g. +1.6(2.7) to -40.1(1.7) kHz) and its LIF impurity coefficient Ko (Pa); most cells lie within +-10 kHz. These are cell-quality data, not line frequencies, so nothing is entered in data/; they are context for the 5 kHz cell-impurity allowance the CIPM quotes."
+  notes: "Read the Metrologia article 2026-10-28 (the earlier note was based on the 53-page Rapport BIPM-92/4). 22 of 34 cells lie within +/-10 kHz and 16 of 27 have K0 < 2 Pa; a pure cell has K0 = 0.7 Pa (calculated). Five cells (NIM II, III, IMGC2, INM6, INM LAC) showed anomalous fluorescence; KRISS 4 and 5 contained no detectable iodine. Irregular d-e-f-g patterns in PTB16/89, PTB7/90 and NRC7/12 (-286.4 kHz) are attributed to traces of 129I2 via 127I129I P(33)6-3 coincidences. Repeat values: BIPM35 K0 4.70 Pa and -39.2 kHz here vs 4.97 Pa and 52.0 kHz (magnitude) in fredinpicard1989; JAEGER 6.30 Pa, -133.8 kHz vs 6.42 Pa, 186.8 kHz. New numbers relevant to line data: the 129I2 k - 127I2 i interval measured with cell NRC9/2, 95.81 and 95.84 MHz at 12 and 15 C (no uncertainty given), 0.06-0.09 MHz below the CCDM 1983 value 95.90(4) MHz; worth recording as an isotopologue cross-check if that interval is ever fitted. Otherwise cell-quality data that support the 5 kHz cell-impurity allowance; nothing entered in data/."
 # ====================================================================================================
 # Category 4: intensity/lifetimes/vapor pressure
 # ====================================================================================================
@@ -2113,25 +2113,25 @@
   doi: "10.1063/1.1680103"
   url: "https://doi.org/10.1063/1.1680103"
   year: 1973
-  group: "J. Tellinghuisen (Vanderbilt University)"
+  group: "Laboratory of Molecular Structure and Spectra, Department of Physics, University of Chicago (J. Tellinghuisen)"
   isotopologues: ["127I2"]
   system: "B-X (bound-free)"
-  technique: "Absorption analysis"
+  technique: "Analysis: Franck-Condon densities (energy-normalized continuum, J = 0 and 100) used to split the room-temperature broadband B <- X extinction coefficient into discrete and continuum parts near D0"
   observable: "cross sections"
-  range_nm: null
-  range_cm1: null
-  transitions: "Region below the B-X convergence limit (title); details not extracted"
+  range_nm: [496.0, 516.0]
+  range_cm1: [19380, 20160]
+  transitions: "B <- X absorption from X v'' = 0-2 near the convergence limit D0 = 4988 A (D1 = 5041 A, D2 = 5096 A); Fig. 2 covers 19 000-20 500 cm-1, Fig. 3 about 4960-5160 A (ranges read from the figure axes, inferred)"
   n_items: null
-  uncertainty: null
+  uncertainty: "total extinction curve 'estimated to be accurate within 10% in this region' (taken from tellinghuisen1973a)"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article only"
+  data_availability: "Fig. 3 only (epsilon, epsilon_b, epsilon_c in liter mole-1 cm-1 vs wavelength); text has a few incidental values (rotational barrier heights 0.15, 2.6, 11.5 cm-1 for J = 20, 51, 80; the 5061 A continuum split 400 total vs about 170 B <- X; 75-0 FCF about 5.2e-4)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Content summarized from title only (abstract not accessible). Inferred relevance: bound-free B<-X absorption from vibrationally excited X levels below the convergence limit contributes to the 'continuum' under the discrete B-X lines near 500 nm."
+  notes: "Read in full (4 pages). Shows that absorption from thermally excited X levels extends the B <- X continuum well below D0: near D0 the bound (epsilon_b) and continuum (epsilon_c) parts vary almost linearly with frequency, epsilon_b going to zero at D0 with slope about epsilon/kT, and the continuum is largest exactly at D0 in I2 (unlike Br2 and Cl2). The B-X continuum supplies about 170 of the 400 liter mole-1 cm-1 measured at 5061 A (Ar line) in tellinghuisen1973a, and the 1Pi_u <- X transition supplies about 40% of the absorption at D0. Revises Brewer and Tellinghuisen (brewer1972) and tellinghuisen1972: direct B <- X dissociation at 5010 and 5091 A was underestimated there, so their predissociation rates for high v' were too high and radiative rates too low; the increase in total decay rate near D0 (Capelle thesis 1972) is attributed to a higher radiative rate (possibly infrared emission to a second 0g+ state near 6 A). Proposes a Franck-Condon-density route to FCFs for levels just below D0. Potentials from tellinghuisen1973a; barrier heights from the long-range B constants in that paper's footnote 52. Relevant to modeling the smooth background under the discrete lines near 500 nm in a broadband cross-section fit. Not worth transcribing (figure only); reproduce with a modern potential if needed."
 - id: tellinghuisen1982
   citation: "J. Tellinghuisen, Transition strengths in the visible-infrared absorption spectrum of I2, J. Chem. Phys. 76, 4736-4744 (1982)"
   doi: "10.1063/1.442791"
@@ -2949,29 +2949,29 @@
   verified: true
   notes: "Read in full. Transcribed as data/b_levels/broyer1975 (held out as pending): Tables I–II (data/ had no lifetime set; lifetimes are B-level properties). Demonstrates the J'(J'+1) dependence of the inverse lifetime from gyroscopic predissociation; k_v' is about ten times smaller than Tellinghuisen predicted, with the same v' shape; Gamma_rad varies strongly with v'. The decay-method k11 = 67 ± 6 s-1 agrees with orientation by predissociation (68 ± 10), but Gamma_rad differs (1.09 vs 1.37e6 s-1), suggesting a slight J' dependence of Gamma_rad. Misprint: 1/tau0 errors of v' = 9, J' = 33 and 39 are printed 0.9 for 0.09. Natural widths 1/(2 pi tau0) = 0.12–0.42 MHz (computed). Core input for a natural-linewidth model Gamma(v',J') = Gamma_rad(v') + k_v' J'(J'+1) (+ hyperfine term)."
 - id: broyer1976
-  citation: "M. Broyer, J. Vigué, J. C. Lehmann, Hyperfine predissociation of molecular iodine, J. Chem. Phys. 64, 4793-4794 (1976)"
+  citation: "M. Broyer, J. Vigue, J. C. Lehmann, Hyperfine predissociation of molecular iodine, J. Chem. Phys. 64, 4793-4794 (1976)"
   doi: "10.1063/1.432067"
   url: "https://doi.org/10.1063/1.432067"
   year: 1976
-  group: "ENS Paris (J.-C. Lehmann)"
+  group: "Laboratoire de Spectroscopie Hertzienne de l'ENS (CNRS), Paris (J.-C. Lehmann)"
   isotopologues: ["127I2"]
   system: "B (predissociation)"
-  technique: "Lifetime measurements (communication)"
+  technique: "Fluorescence decay of single rovibrational levels excited by 3 ns pulses of an N2-laser-pumped dye laser (rhodamine B, 1 GHz width, all hyperfine sublevels excited together)"
   observable: "lifetimes"
   range_nm: null
   range_cm1: null
-  transitions: "Selected B-state levels (details not extracted)"
-  n_items: null
-  uncertainty: null
+  transitions: "14 rotational levels of B v' = 7 (excited in the 7-2 band), ortho and para; total decay rate vs J'(J'+1) in Fig. 2"
+  n_items: 3
+  uncertainty: "Gamma_rad,7 = (1.1 +/- 0.1) x 10^6 s-1; |a_7|^2 = (280 +/- 50) x 10^3 s-1; k_7 = (165 +/- 15) s-1"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article only"
+  data_availability: "text, 3 values (v' = 7 constants); Fig. 2 (decay rates of 14 levels vs J(J+1), graph only); Fig. 1 (Gamma_rad,v and k_v curves from broyer1975b)"
   machine_readable: false
   likely_in_knockel2004: unknown
-  priority: low
+  priority: medium
   verified: true
-  notes: "First report of hyperfine predissociation; superseded by vigue1981a-c."
+  notes: "Read in full (2-page communication). First identification of hyperfine predissociation: the apparent radiative rate of broyer1975b follows the v dependence of k_v, so it contains a hyperfine term; Gamma_v,J,F = Gamma_rad + k_v J(J+1) + Gamma_hf + Gamma_int, with Gamma_int = -2 a_v c_v I.J. Predicts and observes (i) a strong ortho/para alternation of the averaged decay rate and (ii) non-exponential decays increasing with J. Gamma_rad,7 agrees with Tellinghuisen's prediction and k_7 with broyer1975b. Extended by vigue1977 (hyperfine-resolved fluorescence yields) and vigue1981a-c (full theory and v-dependence). Worth transcribing the three v' = 7 constants as part of a predissociation set alongside broyer1975b; Fig. 2 could be digitized (14 points) if per-level rates are needed."
 - id: vigue1981a
   citation: "J. Vigué, M. Broyer, J. C. Lehmann, Natural hyperfine and magnetic predissociation of the I2 B state I. - Theory, J. Phys. (Paris) 42, 937-947 (1981)"
   doi: "10.1051/jphys:01981004207093700"
@@ -3073,25 +3073,25 @@
   doi: "10.1016/0009-2614(83)80502-8"
   url: "https://doi.org/10.1016/0009-2614(83)80502-8"
   year: 1983
-  group: "MIT (S. Ezekiel)"
+  group: "Research Laboratory of Electronics, MIT (S. Ezekiel)"
   isotopologues: ["127I2"]
   system: "B (predissociation)"
-  technique: "Two-photon resonant scattering (sub-Doppler, inferred)"
+  technique: "Two-photon (folded three-level) resonant scattering, backward-scattered geometry: stabilized Ar+ 514.5 nm pump on 43-0 P(13)/R(15) hyperfine components, dye-laser probe on 43-11 P(13)/R(15) near 582.8 nm locked through an evacuated transfer cavity; 150 cm cell, 5 passes, 0.4-7 mTorr"
   observable: "lifetimes"
-  range_nm: null
-  range_cm1: null
-  transitions: "Selected hyperfine components (details not extracted)"
-  n_items: null
-  uncertainty: null
-  uncertainty_MHz: null
+  range_nm: [514.67, 583.00]
+  range_cm1: [17152.7, 19429.9]
+  transitions: "Hyperfine sublevels of B v' = 43, J' = 12 (via 43-0 P(13) and 43-11 P(13); lines a1-a7) and J' = 16 (via 43-0 R(15) and 43-11 R(15); lines b1-b7); Table 2 gives calculated natural widths of all 42 components a1-a21, b1-b21 of 43-0 P(13) and R(15)"
+  n_items: 17
+  uncertainty: "|a_v|^2 = 3.36 +/- 0.09 kHz, |c_v|^2 = 4.67 +/- 0.51 Hz (1 sigma), a_v c_v < 0; radiative width Gamma_r = 51 +/- 4 kHz; individual linewidths 1-3 kHz; fit standard deviation 3.1 kHz; calculated Gamma_p uncertainty +/- 5 %"
+  uncertainty_MHz: 0.003
   absolute: true
   hyperfine_resolved: true
-  data_availability: "Journal article only"
+  data_availability: "Table 1 (14 measured backward-scattered linewidths at 2.1 mTorr with fitted values); text (3 constants; b2 corrected width 56 +/- 4 kHz); Table 2 (42 calculated Gamma_p and Gamma_nat with epsilon', J', F')"
   machine_readable: false
   likely_in_knockel2004: unknown
-  priority: low
+  priority: high
   verified: true
-  notes: "hyperfine_resolved=true is inferred from the title/technique, not confirmed from full text. Bibliographic data via OpenAlex."
+  notes: "Read in full. Hyperfine-resolved natural widths of the upper level of the 514.5 nm standard lines: the differences between hyperfine linewidths at 2.1 mTorr (pressure-independent up to about 2 mTorr) are fitted with Gamma_p = sum |alpha|^2 gamma_IJF (hyperfine Hamiltonian with eqQ and spin-rotation only) to give the hyperfine and gyroscopic predissociation constants of v' = 43; Gamma_r from the zero-pressure extrapolation of b2. Agrees with a molecular-beam time-domain result of Churassy (private communication: |a|^2 = 3.21 +/- 0.25 kHz, |c|^2 = 5.45 +/- 1.23 Hz, Gamma_r = 50 +/- 3 kHz) and with Gamma_r = 56 +/- 8 kHz of Ezekiel & Weiss 1968; smaller than the Borde, Camy & Decomps 1979 estimates (5.9 kHz, 5.6 Hz) and larger than |a|^2 = 2 +/- 1 kHz of vigue1981c. A footnote compares total decay rates 50 kHz, 69.8 +/- 2.4 kHz (paisner1974) and 74.7 +/- 5.3 kHz (Sakurai et al. 1976). Calculated natural widths (Table 2) range 56-112 kHz (component a3, the CIPM reference component of P(13), 107 kHz). Misprint: Table 1 b1 calculated width printed 216 kHz with residual +4 against measured 320, so 316 kHz (inferred). Worth transcribing: the three constants (|a_43|^2, |c_43|^2, Gamma_r) and Table 1 (14 widths) as a direct test of the model's hyperfine-dependent natural widths; Table 2 is derived and need not be transcribed. Companion: hackel1979 (same lab, technique)."
 - id: martinez1988
   citation: "E. Martínez, M. T. Martínez, F. Castaño, Iodine B3Π(0+) state predissociation: evaluation of the interaction mechanisms for predissociated levels of the B state, J. Mol. Spectrosc. 128, 554-563 (1988)"
   doi: "10.1016/0022-2852(88)90170-1"
@@ -3163,7 +3163,7 @@
   likely_in_knockel2004: unknown
   priority: medium
   verified: true
-  notes: "Stated: wavelength dependence of hyperfine linewidth mapped; narrowest ~4 kHz near 508 nm. Observable is linewidth (natural + transit + pressure). Errata DOI 10.1364/OL.27.001076. Line positions/hfs are in the the scope of the precision catalog. Same paper as precision.yaml cheng2002a; linewidths only."
+  notes: "Stated: wavelength dependence of hyperfine linewidth mapped; narrowest 43 kHz half width near 508 nm (the abstract's ~4 kHz is corrected by the erratum). Observable is linewidth (natural + transit + pressure). Errata DOI 10.1364/OL.27.001076. Line positions/hfs are in the the scope of the precision catalog. Same paper as precision.yaml cheng2002a; linewidths only."
 - id: baxter1907
   citation: "G. P. Baxter, C. H. Hickey, W. C. Holmes, The vapor pressure of iodine, J. Am. Chem. Soc. 29, 127-136 (1907)"
   doi: "10.1021/ja01956a004"
@@ -3340,22 +3340,22 @@
   group: "BIPM"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "LIF (fluorescence quenching by impurities)"
+  technique: "LIF Stern-Volmer slope K0 vs iodine pressure (multimode Ar+ 501.7 nm, mainly R(26)62-0); 633 nm He-Ne beat-frequency cell shifts (BIPM7 vs BIPM2)"
   observable: "other"
-  range_nm: null
-  range_cm1: null
-  transitions: "n/a"
-  n_items: null
-  uncertainty: null
+  range_nm: [501.7, 632.99]
+  range_cm1: [15798.0, 19932.2]
+  transitions: "excitation of R(49)67-0, R(39)64-0, R(26)62-0 (dominant), R(54)70-0, R(55)71-0 at 501.7 nm; 633 nm R(127)11-5 for the shifts"
+  n_items: 12
+  uncertainty: "K0 relative uncertainty <= 2 %; BIPM52 K0 = 3.12 Pa, sd 0.06 Pa over 30 runs; shifts 2.0(1.8) to 186.8(9.8) kHz"
   uncertainty_MHz: null
   absolute: false
-  hyperfine_resolved: false
-  data_availability: "Journal article only"
+  hyperfine_resolved: true
+  data_availability: "six cells' K0 and shifts printed as labels in Figs. 4a-4b (JAEGER 6.42(22) Pa, 186.8(9.8) kHz; BIPM35 4.97(3), 52.0(3.3); BIPM71 4.35(10), 39.9(2.7); BIPM52 3.12(6), 21.6(1.7); BIPM64 1.99(3), 10.7(1.5); BIPM81 1.08(3), 2.0(1.8)); text"
   machine_readable: false
   likely_in_knockel2004: false
-  priority: low
+  priority: medium
   verified: true
-  notes: "Impurity quenching changes effective linewidths/fluorescence yields in real cells; context for cell modeling. See also Chartier et al., Metrologia 29, 361 (1992), doi 10.1088/0026-1394/29/5/006. The library holds the BIPM report version (Rapport BIPM-89/5, 'A study of 127I2 cells using laser induced fluorescence techniques', 40 pp; read 2026-10-23): the Stern-Volmer impurity parameter Ko of six 127I2 cells (relative uncertainty <= 2 %) against their 633 nm beat shifts, linear for shifts below about 60 kHz. Cell-quality data only; nothing entered in data/."
+  notes: "Read the Metrologia article 2026-10-28 (the earlier note was based on Rapport BIPM-89/5). The shift vs K0 relation is nonlinear; extrapolating to zero shift gives K0 = 0.8 Pa for an uncontaminated cell (the reference point used by lazar2007a/2009a). Shift is proportional to sigma_x p_x v_x for low contamination; with N2 as the only impurity a good cell (K0 = 1 Pa) implies p_x ~ 1 Pa and a bad one (K0 = 6 Pa) 32 Pa. Method valid for shifts below about 60 kHz; data above 12.5 Pa dropped for K0 < 2 Pa cells. Uses the Gillespie-Fraser formula log p(atm) = -3512.830/T - 2.013 log T + 13.374 and tau = 14 us for the excited level. Shifts are printed without sign; chartier1992 gives the same cells as negative. hyperfine_resolved changed to true because the shifts are hyperfine-locked beat measurements. Cell-quality data only; nothing entered in data/."
 # ====================================================================================================
 # Category 5: line shape
 # ====================================================================================================
@@ -3456,29 +3456,29 @@
   verified: true
   notes: "Starting point for the aerodynamics I2-LIF literature: 63 citing works found, mostly flow diagnostics. Companion measurement: Hiller & Hanson, Appl. Opt. 27, 33 (1988), doi:10.1364/ao.27.000033, which uses pressure broadening of an I2 line to measure pressure in flows. | Merged duplicate (also reviewed under intensity/lifetimes/vapor pressure): Engineering-oriented compilation; useful bibliography for quenching and broadening parameters."
 - id: phillips2008
-  citation: "G. T. Phillips, G. P. Perram, Pressure broadening by argon in the hyperfine resolved P(10) and P(70) (17,1) transitions of I2 X1Σ(0g+) -> B3Π(0u+) using sub-Doppler laser saturation spectroscopy, J. Quant. Spectrosc. Radiat. Transfer 109, 1875-1885 (2008)"
+  citation: "G. T. Phillips, G. P. Perram, Pressure broadening by argon in the hyperfine resolved P(10) and P(70) (17,1) transitions of I2 X1Sigma(0g+) -> B3Pi(0u+) using sub-Doppler laser saturation spectroscopy, J. Quant. Spectrosc. Radiat. Transfer 109, 1875-1885 (2008)"
   doi: "10.1016/j.jqsrt.2007.12.011"
   url: "https://doi.org/10.1016/j.jqsrt.2007.12.011"
   year: 2008
-  group: "Air Force Institute of Technology (AFIT), G. P. Perram group"
+  group: "Department of Engineering Physics, Air Force Institute of Technology (AFIT), G. P. Perram group"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "sub-Doppler saturation spectroscopy with Ar buffer gas"
+  technique: "Sub-Doppler saturated absorption (chopped pump 1.3 W/cm2, counter-propagating probe, lock-in) with a ring dye laser (< 0.5 MHz), plus Doppler-limited side fluorescence; 41.5 cm cell, 50-200 mTorr I2, Ar 0.01-1.2 Torr (side fluorescence to 30 Torr)"
   observable: "pressure broadening/shift"
-  range_nm: null
-  range_cm1: null
-  transitions: "hyperfine-resolved P(10) and P(70) lines of the (17,1) band"
-  n_items: null
-  uncertainty: "not extracted (abstract unavailable from Crossref, OpenAlex and Semantic Scholar)"
-  uncertainty_MHz: null
+  range_nm: [574.79, 576.71]
+  range_cm1: [17339.8, 17397.7]
+  transitions: "P(70) 17-1 and P(10) 17-1, each with 15 hyperfine components (labels b-t after Sansonetti 1997); spectrum of R(67) 17-1 and R(118) 18-1 blended with P(51) 19-2 near 17341.45 cm-1 shown in Fig. 4"
+  n_items: 21
+  uncertainty: "Ar broadening (FWHM): P(70) 8.3 +/- 0.3 MHz/Torr (intercept 8.7 +/- 0.2 MHz), P(10) 10.7 +/- 0.4 MHz/Torr (intercept 7.7 +/- 0.1 MHz); Doppler-limited P(70) 8.5 +/- 0.5 MHz/Torr (intercept 16.8 +/- 8.6 MHz); hyperfine center fits one standard deviation 0.3-2.5 MHz"
+  uncertainty_MHz: 1.0
   absolute: false
   hyperfine_resolved: true
-  data_availability: "printed journal article"
+  data_availability: "Table 1 (P(70) 17-1: 15 components with F-J, (2F+1)/(2J+1), observed relative intensity, high-J and matrix calculated and observed intervals from component i in GHz); Table 2 (3 broadening rates and 3 intercepts); Figs. 5-10"
   machine_readable: false
   likely_in_knockel2004: false
   priority: medium
   verified: true
-  notes: "The only hyperfine-resolved foreign-gas broadening study found; compares J''=10 and 70. A related AFIT/DTIC report (G. T. Phillips 2012, cross-beam Doppler-limited saturation spectroscopy temperature diagnostic) turned up in citation lists but was not examined."
+  notes: "Read in full. No significant variation of the Ar broadening rate among the 15 hyperfine components, so one common rate per line is reported; P(10) broadens about 30 % faster than P(70), attributed to inelastic rotational transfer; low-pressure intercepts (7.7-8.7 MHz) are power/saturation dominated, not natural widths. A broad Gaussian pedestal from velocity-changing collisions depends strongly on J (large for J'' = 67, small for J'' = 118). Table 1 also gives observed hyperfine intervals of P(70) 17-1 relative to component i (magnitudes only, 10 kHz digits, about 1.3 MHz systematically larger than the matrix calculation) and observed relative intensities, which show self-absorption distortion in the wings. Inconsistencies: Fig. 3 is described for odd J'' although both studied lines have even J''; intervals for components g-b are printed without sign. No pressure shifts are reported. Overlaps the Ar/rare-gas broadening set (Astill et al. 1985 on P(46) 17-1, fletcher1995, Kireev 1995) and cites titov1997a for self-broadening at 633 nm. Worth transcribing Table 2 (three rates and three intercepts) (foreign-gas line-shape systematics); the Table 1 intervals (15 values at about 1 MHz) are a weak hyperfine check for X v'' = 1 / B v' = 17 at J = 70 and could be added at low weight. The related AFIT dissertation (Phillips 2006, AFIT/DS/ENP/06-03) is the source of the apparatus."
 - id: schweitzer1973b
   citation: "W. G. Schweitzer Jr., E. G. Kessler Jr., R. D. Deslattes, H. P. Layer, J. R. Whetstone, Description, performance, and wavelengths of iodine stabilized lasers, Appl. Opt. 12, 2927-2938 (1973)"
   doi: "10.1364/ao.12.002927"
@@ -3532,25 +3532,25 @@
   doi: "10.1143/jjap.18.1199"
   url: "https://doi.org/10.1143/JJAP.18.1199"
   year: 1979
-  group: "Japan (affiliation not verified)"
+  group: "National Research Laboratory of Metrology (NRLM), Tokyo, and Keio University, Yokohama"
   isotopologues: ["127I2"]
   system: "B-X"
-  technique: "saturated absorption at 633 nm"
-  observable: "pressure broadening/shift"
+  technique: "intracavity-cell He-Ne/I2 laser (10 cm cell, 33 cm resonator), third-derivative (3f) detection; modulation amplitude from the beat spectrum against an unmodulated laser; homogeneous width fitted with Arndt's 3f line-shape formula (M = 2-14 MHz)"
+  observable: "pressure and power broadening of saturated-absorption (sub-Doppler) linewidths"
   range_nm: [632.99, 632.99]
   range_cm1: [15798.0, 15798.0]
-  transitions: "127I2 hyperfine components at 633 nm (R(127) 11-5 presumed; not confirmed)"
-  n_items: null
-  uncertainty: "not extracted (paper not accessible)"
+  transitions: "127I2 R(127)11-5 h, i, j (a14, a13, a12)"
+  n_items: 4
+  uncertainty: "pressure broadening 2pi x 69.6 (9.29), 2pi x 71.3 (9.52) and 2pi x 71.1 (9.49) kHz/Pa (MHz/Torr) for h, i, j; power broadening about 34.3 kHz/microW at 10.3 Pa; no uncertainties stated"
   uncertainty_MHz: null
   absolute: false
   hyperfine_resolved: true
-  data_availability: "printed journal article"
+  data_availability: "text, 4 values (3 pressure-broadening coefficients, 1 power-broadening slope); Figs. 1-2 only for the widths (FWHM about 3-5.5 MHz over 5-27 Pa at 32 microW)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: low
   verified: true
-  notes: "Self-pressure broadening of sub-Doppler resonances at 633 nm."
+  notes: "Read in full (two-page short note, scanned; values read from the page images). The paper measures broadening only, not pressure shifts. Widths are fitted to W = (1/pi)(1/(2 tau0) + kappa P) sqrt(1 + s/(1/(2 tau0) + kappa P)^2); the printed coefficients are labeled 'kappa s' in the text, but the units (kHz/Pa, MHz/Torr) show they are the pressure-broadening coefficients kappa (inferred). The h, i, j widths are ordered h > i > j at every pressure, with adjacent differences about constant at 500 kHz, a finding the authors leave open (hyperfine-dependent or technical). Stated to agree with NPL, NRC and LHA results. The widths include the intracavity saturation and the laser's own noise broadening (about 500 kHz), so they are laser-specific. Compare titov1997b and hu1997a in the precision catalog for later 633 nm line-shape work. Not worth transcribing beyond the three coefficients as context."
 - id: glaser1982
   citation: "M. Gläser, Frequency shifts at low iodine pressure of 127I2-stabilized He-Ne lasers at 633 nm wavelength, Metrologia 18, 53-58 (1982)"
   doi: "10.1088/0026-1394/18/2/002"
@@ -3791,30 +3791,6 @@
   priority: low
   verified: true
   notes: "Same paper as precision.yaml chen2023a (data/observations/chen2023a, excluded: its printed frequencies are 30-840 MHz off). About ten times larger than other I2 self-shift coefficients (-1 to -8 kHz/Pa). My inference: lock-point, modulation or impurity effects are possible, so treat as an outlier. The paper uses its own vapor-pressure formula (log P = -3512.830/T - 2.013 log T + 18.37971)."
-- id: hrabina2014
-  citation: "J. Hrabina, M. Šarbort, O. Acef, F. Du Burck, N. Chiodo, M. Holá, O. Číp, J. Lazar, Spectral properties of molecular iodine in absorption cells filled to specified saturation pressure, Appl. Opt. 53, 7435 (2014)"
-  doi: "10.1364/ao.53.007435"
-  url: "https://doi.org/10.1364/AO.53.007435"
-  year: 2014
-  group: "ISI CAS Brno / LNE-SYRTE / LPL Paris 13"
-  isotopologues: ["127I2"]
-  system: "B-X"
-  technique: "sub-Doppler (third-derivative) spectroscopy of borosilicate and fused-silica cells"
-  observable: "pressure broadening/shift"
-  range_nm: [532.25, 532.25]
-  range_cm1: [18788.4, 18788.4]
-  transitions: "127I2 hyperfine components near 532 nm (details not extracted)"
-  n_items: null
-  uncertainty: "not extracted"
-  uncertainty_MHz: null
-  absolute: false
-  hyperfine_resolved: true
-  data_availability: "journal article"
-  machine_readable: false
-  likely_in_knockel2004: false
-  priority: low
-  verified: true
-  notes: "Proposes hyperfine linewidth as a cell-purity metric. Companion paper Hrabina et al., Meas. Sci. Rev. 14, 213 (2014), doi:10.2478/msr-2014-0029 (open access) compares linewidths at 514.7 and 532 nm; one table gives 410 and 440 kHz at 0.8 MHz modulation, 0.49 Pa (column-to-wavelength assignment not verified). See also Lazar et al., Metrologia 46, 450 (2009), doi:10.1088/0026-1394/46/5/008 (contamination vs absolute frequency shift). | Merged duplicate (also reviewed under intensity/lifetimes/vapor pressure): Relevant to modeling unsaturated/fixed-fill cells (iodine density fixed by fill temperature rather than cold-finger temperature). Companion: Hrabina et al., Meas. Sci. Rev. 14, 213 (2014), doi 10.2478/msr-2014-0029 (514.7 vs 532 nm spectral properties)."
 - id: hrabina2017
   citation: "J. Hrabina, M. Zucco, C. Philippe, T. Pham Minh, M. Holá, O. Acef, J. Lazar, O. Číp, Iodine absorption cells purity testing, Sensors 17, 102 (2017)"
   doi: "10.3390/s17010102"
@@ -3863,3 +3839,506 @@
   priority: low
   verified: true
   notes: "Newest self-broadening-vs-pressure data, in the high-v' region (v'=51)."
+
+# Added 2026-10-28
+- id: tellinghuisen1976a
+  citation: "J. Tellinghuisen, Reassignment of I2 B-X transitions near 5145 A, J. Mol. Spectrosc. 62, 294-295 (1976)"
+  doi: "10.1016/0022-2852(76)90358-1"
+  url: "https://doi.org/10.1016/0022-2852(76)90358-1"
+  year: 1976
+  group: "Department of Chemistry, Vanderbilt University, Nashville (Tellinghuisen)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Calculated line positions from the Wei-Tellinghuisen 31-parameter constants, compared with Ar+ 514.5 nm laser-excitation wavenumbers estimated from Patterson et al. 1975"
+  observable: "assignments"
+  range_nm: [514.66, 514.68]
+  range_cm1: [19429.5, 19430.1]
+  transitions: "Table I: 12 calculated lines with J'' < 110 in 19429.5-19430.1 cm-1: 44-0 P(48), 60-2 P(48), 49-0 P(103), 61-2 R(54), 43-0 P(13), 43-0 R(15), 50-1 P(46), 58-1 R(98), 47-0 P(88), 49-1 R(28), 46-0 P(78), 62-2 R(58); laser wavenumbers given for the 8 excited ones"
+  n_items: 20
+  uncertainty: "calculated-minus-laser discrepancies below 0.1 cm-1 except 58-1 R(98) (0.22 cm-1), attributed to neglected higher-order centrifugal distortion (-0.15 to -0.30 cm-1)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "Journal note (Elsevier); Table I printed (12 calculated wavenumbers, 8 laser wavenumbers to 0.01 cm-1)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full (two-page note, scanned; the text layer is OCR and garbled, so values were read from the page image). Corrects misassignments by Patterson, Dworetsky & Hozack, J. Mol. Spectrosc. 55, 175 (1975), who misevaluated the logarithmic D_v' polynomial of Wei & Tellinghuisen, J. Mol. Spectrosc. 50, 317 (1974) (e.g. D_58' = 6.126e-9 cm-1). The laser column is estimated from Patterson et al. with 19429.77 cm-1 taken as the gain-profile center (Abe 1973), so it is not a measurement of line positions. The P(87) excitation of Patterson is reassigned to 47-0 P(88), for which Barrow & Yee constants (barrow1973) give 19429.92 cm-1; 61-2 R(54) was probably seen by Kroll & Swanson 1971. The 43-0 P(13)/R(15) pair is the 514.5 nm standard line (held at sub-kHz level in the precision catalog), and the other Ar+ coincidences are covered by bacis1980 and later sub-Doppler work. Useful only as a historical assignment check for the 514.5 nm coincidences; not worth transcribing."
+
+# Added 2026-10-28: lifetimes, quenching, predissociation and line shape (read in full)
+
+- id: vanvleck1932
+  citation: "J. H. Van Vleck, The theory of the magnetic quenching of iodine fluorescence and of Lambda-doubling in 3Pi0 states, Phys. Rev. 40, 544-568 (1932)"
+  doi: "10.1103/physrev.40.544"
+  url: "https://doi.org/10.1103/physrev.40.544"
+  year: 1932
+  group: "J. H. Van Vleck (University of Wisconsin)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Theory (symmetry selection rules and secular determinants for 0u+/0u- mixing in a magnetic field)"
+  observable: "other"
+  range_nm: null
+  range_cm1: null
+  transitions: "No lines; B 3Pi(0u+) levels mixed by a magnetic field with a repulsive 0u- state (3Pi0u-, or possibly 3Sigma0u+)"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "none: theory paper (no data tables)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full (25 pages; most of the paper is general Lambda-doubling theory for 3Pi0 states, with side discussions of ICl, Br2 and other halogens). Gives the theoretical basis for Turner's proposal that magnetic quenching of the I2 B-X fluorescence is a predissociation: a magnetic field has Delta J = +/-1 matrix elements between the 0u+ (B) and 0u- components of 3Pi0u, which rotation (Kronig predissociation) and a uniform electric field cannot couple; collision-induced quenching is attributed to the strong inhomogeneous fields of the collision partner. Predicts quenching independent of J' and a field dependence b H^2/(a + b H^2). Quotes Turner's observations: no effect for excitation below 17 300 cm-1, maximum (almost 50% at 12 500 gauss) near 18 500 cm-1. Historical foundation of magnetic predissociation (followed experimentally by Degenkolb et al. 1969, chapman1972, vigue1975, broyer1976). No numbers to transcribe; not worth transcribing."
+
+- id: turner1932
+  citation: "L. A. Turner, Optical dissociation of iodine and enhancement of predissociation by collisions, Phys. Rev. 41, 627-634 (1932)"
+  doi: "10.1103/physrev.41.627"
+  url: "https://doi.org/10.1103/physrev.41.627"
+  year: 1932
+  group: "L. A. Turner (Palmer Physical Laboratory, Princeton University)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Atomic-line absorption (vacuum fluorite spectrograph) to detect I atoms; photographic fluorescence and discharge emission spectra of I2 with and without argon"
+  observable: "other"
+  range_nm: null
+  range_cm1: null
+  transitions: "Broadband (carbon-arc, tungsten-lamp) excitation of the B-X system, filters above and below 5100 A; I-atom absorption lines at 1830, 1783, 1642, 1618, 1583 and 1515 A used as the atom probe"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "none: qualitative (photographic plates in Figs. 2-3)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full. Shows that excitation at wavelengths longer than 5100 A (bound B levels only) produces I atoms in I2-argon mixtures (0.3 mm I2, about 50 mm Ar), and that argon quenches the fluorescence more strongly for higher v'; on microphotometer traces the stronger quenching sets in near 5710 A (fluorescence) and 5900 A (discharge emission), correcting an earlier visual estimate of v' = 29. The abstract puts the onset at about v' = 12 in the old (Mecke) numbering, i.e. about v' = 11 in the modern numbering (inferred from the one-unit renumbering of steinfeld1965). Interprets the effect as collision-enhanced predissociation; footnote on why pressure broadening increases absorbed energy without changing the integrated absorption (the effect later shown by ogryzlo1965 to explain the foreign-gas absorption enhancement). Historical only; no numbers worth transcribing."
+
+- id: brewer1963
+  citation: "L. Brewer, R. A. Berg, G. M. Rosenblatt, Radiative lifetime of I2 fluorescence, B 3Pi0+u -> X 1Sigma0+g, J. Chem. Phys. 38, 1381-1388 (1963)"
+  doi: "10.1063/1.1733862"
+  url: "https://doi.org/10.1063/1.1733862"
+  year: 1963
+  group: "Department of Chemistry and Lawrence Radiation Laboratory, University of California, Berkeley (L. Brewer)"
+  isotopologues: ["127I2"]
+  system: "B"
+  technique: "Phase-shift fluorometry (60 kHz and 5.2 MHz modulation), Hg 5461 A excitation, equilibrium vapor 1e-4 to 5 mm Hg and a molecular beam; Stern-Volmer extrapolation"
+  observable: "lifetimes"
+  range_nm: [546.1, 546.1]
+  range_cm1: [18307, 18307]
+  transitions: "Single level excited by the Hg green line, labeled v' = 26 in the old numbering (= v' = 25, J' = 34 in the modern numbering, per steinfeld1965 and chutjian1967)"
+  n_items: 3
+  uncertainty: "tau = (7.2 +/- 1.0)e-7 sec; individual phase readings about +/-0.4e-7 sec; the best points have 'a probable uncertainty of +/-10% or less'"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "text, 3 values (tau0, Stern-Volmer constant a = 2.87e7 sec-1 mm Hg-1, self-quenching collision diameter 11.3 A); Table I compares earlier lifetime estimates"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full. First reliable direct I2 B-state lifetime: replaces Hupfeld's 1.0e-8 s (1929). The paper's v' = 26 is the old Mecke/Loomis numbering; the level is modern v' = 25, J' = 34 (inferred from the renumbering; chutjian1967 Table II gives the same level as 25, 26, 28 and J' = 34). Also gives a scattered-light correction for phase lifetimes (Eq. 4, Appendix) and compares with absorption-derived lifetimes (6.3e-7 to 1.1e-6 s, Table I, assuming a mean fluorescence wavenumber of 13 300 cm-1). Superseded by chutjian1967 (same laboratory and method, tau0 = 7.13 +/- 0.25e-7 s for the same level), which shows that the 11.3 A diameter (sigma^2 = 128 A^2) is about twice too large (63 A^2) because the earlier quenching plot spanned too little pressure; and later by single-level laser lifetimes (capelle1973, paisner1974, broyer1975). Natural width 1/(2 pi tau) = 0.22 MHz (computed). Not worth transcribing separately; at most cite as the historical v' = 25 value."
+
+- id: ogryzlo1965
+  citation: "E. A. Ogryzlo, G. E. Thomas, Pressure dependence of the visible absorption bands of molecular iodine, J. Mol. Spectrosc. 17, 198-202 (1965)"
+  doi: "10.1016/0022-2852(65)90159-1"
+  url: "https://doi.org/10.1016/0022-2852(65)90159-1"
+  year: 1965
+  group: "Chemistry Department, University of British Columbia, Vancouver (E. A. Ogryzlo)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Low-resolution difference absorption (Cary-14, 11-cm cells, I2 at 30 C with and without 1 atm Ar), grating spectrograph with 11 and 200 cm paths, and a 1-m Ebert spectrophotometer (resolving power about 200 000) for rotational lines"
+  observable: "pressure broadening/shift"
+  range_nm: [450.0, 630.0]
+  range_cm1: [15873, 22222]
+  transitions: "B-X band envelope 4500-6000 A (Fig. 1) and rotational lines in every band 5000-6300 A"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "Fig. 1 only (spectra); one order-of-magnitude linewidth in text"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full. Shows that the apparent increase of I2 visible absorption on adding inert gas is a saturation (curve-of-growth) artifact: the difference spectrum is banded, absent in the continuum (< 5000 A) and above 6000 A, and the low-pressure band shape changes with path length alone, so it is neither a collision-induced transition to a repulsive 0u- state (contra Goy and Pritchard 1964) nor an enhanced B-X transition probability. At high resolution the same broadening is seen for rotational lines in every band 5000-6300 A, i.e. no v'-selective predissociation broadening; estimated collision width of order 0.1 cm-1 (about 3 GHz) at 1 atm, 'very near the experimental value'. Useful only as a caution for interpreting low-resolution cross sections (relevant to rabinowitch1936 and the Category 4 cross-section sets); no quantitative broadening coefficient. Not worth transcribing."
+
+- id: steinfeld1966
+  citation: "J. I. Steinfeld, Wavelength dependence of the quenching of iodine fluorescence, J. Chem. Phys. 44, 2740-2749 (1966)"
+  doi: "10.1063/1.1727121"
+  url: "https://doi.org/10.1063/1.1727121"
+  year: 1966
+  group: "Department of Chemistry, Harvard University (J. I. Steinfeld)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Steady-state Stern-Volmer quenching of fluorescence excited by a xenon arc through a monochromator (40-50 A FWHM), photomultiplier detection"
+  observable: "other"
+  range_nm: [505.0, 630.0]
+  range_cm1: [15873, 19802]
+  transitions: "Seven excitation bands: 5050 A (v' = 50-60), 5460 A (v' = 25), 5620 A (v' = 18-22), 5890 A (v' = 15), 6100 A (v' = 10-14), 6220 A (v' = 8-10), 6300 A (v' = 6-8); quenchers I2, He, Xe, CO2, NO, C2H4, C6H6"
+  n_items: 26
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "Table I (26 gas/band rows: Q', Q, sigma_Q^2, sigma^2(G.K.), 1/Z); Table II (calculated vs experimental cross sections for He, Ne, Ar, Kr, Xe, I2); text: five lifetimes scaled by Franck-Condon factors"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full (table read from the page image). Uses the modern v' numbering (v' = 25 at 5460 A). Quenching cross sections drop sharply below v' about 7 ('unquenchable' levels, deviation from Stern-Volmer by vibrational relaxation into them), which places repulsive states crossing B near v' = 7 and (for the 0u- magnetic quenching state, from Turner's data) near v' = 15. Rates are converted to cross sections with tau(25') = 7.2e-7 s (brewer1963) and Franck-Condon-scaled lifetimes tau(20', 15', 12', 9', 7') = 6.6, 6.3, 6.1, 5.95, 5.85e-7 s, which the paper itself notes conflict with Brewer and Chutjian's finding that tau(15') and tau(50') exceed tau(25'); so every cross section except at 5460 A inherits a lifetime error (chutjian1967 later measured tau0(v' 13-16) = 11.4-11.9e-7 s and tau0(v' 47-54) = 42-53e-7 s). chutjian1967 also shows that Brown-Klemperer-style I2 self-quenching analyses (including this one) are biased high by exciting-light attenuation. Table I prints the I2 Q' with an explicit x1e6 only in some rows (e.g. 1.37 at 6220 A, inferred to mean 1.37e6), and the 6300 A I2 row carries question marks. Foreign-gas quenching is irrelevant to the low-pressure line-shape model; superseded for self-quenching by chutjian1967 and capelle1973. Not worth transcribing."
+
+- id: chutjian1967
+  citation: "A. Chutjian, J. K. Link, L. Brewer, Measurement of lifetimes and quenching cross sections of the B state of I2, J. Chem. Phys. 46, 2666-2675 (1967)"
+  doi: "10.1063/1.1841097"
+  url: "https://doi.org/10.1063/1.1841097"
+  year: 1967
+  group: "Inorganic Materials Research Division, Lawrence Radiation Laboratory and Department of Chemistry, University of California, Berkeley (L. Brewer)"
+  isotopologues: ["127I2"]
+  system: "B"
+  technique: "Phase-shift fluorometry (359 kHz modulation), atomic-line (Hg 5461 A, Na D, Cd 5086 A) and filtered-continuum excitation, I2 pressure 0.020-0.282 torr, Stern-Volmer extrapolation; method checked on Hg 3P1"
+  observable: "lifetimes"
+  range_nm: [501.1, 604.0]
+  range_cm1: [16556, 19956]
+  transitions: "Table II: 11 excitation regions, v' = 10-14, 13-16, 14-16, 20-24, 25-27, 25/26/28, 34-36, 41-44, 47-54, 49-50 and about 100; atomic-line levels: Hg green v' = 25, J' = 34; Na D v' = 14 J' = 113, v' = 15 J' = 44 and 37, v' = 16 J' = 106; Cd blue v' = 49 J' = 8 and v' = 50 J' = 43"
+  n_items: 22
+  uncertainty: "Table II as printed, e.g. tau0 = 7.13 +/- 0.25e-7 s (Hg green), 11.9 +/- 0.7e-7 s (Na D), 53.2 +8/-6e-7 s (Cd blue); sigma^2 = 60-79 A^2 with +/-3-5 A^2. Errors come from high/low-slope lines about the least-squares fit, 'a measure of the random variation of the data' (not stated as 1-sigma)"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "Table II (11 rows: v' region, number of points, tau0, sigma^2); Table I (filters); Table III (lifetimes from Brown-Klemperer absorption A values, recalculated); Hg 3P1 lifetime (1.10 +/- 0.05)e-7 s in text"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Read in full. First measurement of the strong v' dependence of the B lifetime: tau0 rises from 6.8e-7 s (v' 10-14) and 11.9e-7 s (v' 14-16) to 24e-7 s (v' 41-44) and 42-53e-7 s (v' 47-54), and falls to 17.5e-7 s near v' = 100 (v' assignment there only an estimate); self-quenching sigma^2 is nearly constant (60-79 A^2). Uses the modern v' numbering. Concludes that either the transition moment varies with R or spontaneous predissociation competes with radiation (the latter confirmed by chutjian1969, tellinghuisen1972 and broyer1975). Halves the brewer1963 quenching cross section (63 vs 128 A^2) and corrects Brown and Klemperer's (1964) cross sections and A values (decimal-point error). Inconsistency: the Cd-blue lifetime was later remeasured by P. T. Cunningham (UCRL-18419, 1968) as a total rate of 6.58e5 s-1 (tau = 15e-7 s), about 3.5 times shorter than 53.2e-7 s here (quoted in chutjian1969, footnote 12). Values are averages over several (v', J') levels, so they are superseded for a natural-linewidth model by single-level laser lifetimes (capelle1973, paisner1974, broyer1975). Worth transcribing only as a low-weight cross-check: Table II (11 tau0 and 11 sigma^2) with the stated level populations; the three atomic-line rows (Hg, Na D, Cd) are the closest to single-level values."
+
+- id: wasserman1968
+  citation: "E. Wasserman, W. E. Falconer, W. A. Yager, Direct predissociation of I2 B(3Pi0u+), J. Chem. Phys. 49, 1971-1972 (1968)"
+  doi: "10.1063/1.1670340"
+  url: "https://doi.org/10.1063/1.1670340"
+  year: 1968
+  group: "Bell Telephone Laboratories, Murray Hill (E. Wasserman)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "EPR detection of ground-state I(2P3/2) atoms produced by xenon-arc (above or below 5000 A) or Hg 5460 A irradiation; I2 pressure 2e-4 to 0.3 torr, light intensity varied over two decades"
+  observable: "other"
+  range_nm: null
+  range_cm1: null
+  transitions: "Banded B-X region and the continuum below 5000 A (broadband); Hg 5460 A line"
+  n_items: null
+  uncertainty: null
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "none: letter, qualitative (bound 'at least 30%')"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full (letter, 1.5 pages). Atom concentration follows the square root of light intensity and has the same pressure dependence for banded and continuum excitation down to 1e-4 torr, where collisions are negligible; the magnetic field of the EPR spectrometer (3-6 kG, expected 2-8% magnetic dissociation) shows no effect. Concludes that at least 30%, possibly much more, of B-state molecules undergo spontaneous (direct) predissociation. A fuller account is in Ber. Bunsenges. Phys. Chem. 72, 248 (1968) (cited by chutjian1969). Historical evidence for natural predissociation, superseded quantitatively by broyer1975 and vigue1975. Not worth transcribing."
+
+- id: chutjian1969
+  citation: "A. Chutjian, Calculation of predissociation rates of the B 3Pi0+u state of I2, J. Chem. Phys. 51, 5414-5419 (1969)"
+  doi: "10.1063/1.1671964"
+  url: "https://doi.org/10.1063/1.1671964"
+  year: 1969
+  group: "Department of Chemistry, University of Southern California, Los Angeles (A. Chutjian)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Analysis: heterogeneous (Kronig) predissociation rates from RKR bound and energy-normalized continuum wavefunctions (Numerov) for an r^-12 repulsive 1u state, fitted to nonradiative rates (total minus radiative decay) of three excitation regions"
+  observable: "other"
+  range_nm: [500.0, 578.0]
+  range_cm1: [17300, 20000]
+  transitions: "Table I: Na D region 14-1 P(107)/P(114), 15-2 R(43)/P(38), 16-2 R(105); Hg green region 25-0 R(33), 26-0 R(85), 28-1 R(50); Cd blue region 50-0 R(31)/P(30), 51-0 P(45), 53-0 R(64), with fractional populations"
+  n_items: 15
+  uncertainty: "measured nonradiative rates 'about +/-15%'"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "Table I (fractional populations, weighted J(J+1)); Table II (9 bound-continuum overlaps, measured and calculated relative and absolute rates for 3 regions); text: |Re|^2 = 0.00258, repulsive-curve crossing 2.835 A (sigma = 8.651e8)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full. First quantitative model of spontaneous B-state predissociation through the 1u (B'') state, with the J'(J'+1) dependence included; places the repulsive curve about 50 cm-1 above B at re'' and identifies it with Mulliken's 1Pi1u, and attributes the continuum under the B-X bands to it (1Pi1u <- X G'D = (116 +/- 58)e-4 A^2). Measured nonradiative rates 2.76, 9.50 and 3.39e6 s-1 for the v' about 14, 25 and 50 regions come from total rates (chutjian1967; Davis and Grimes, unpublished; Cunningham 1968 for the Cd region) minus radiative rates (Chutjian and James, J. Chem. Phys. 51, 1242 (1969)). Inconsistency: 2.76e6 s-1 at v' about 14 exceeds the total decay rate 1/tau0 = 0.84e6 s-1 measured for the Na D region in chutjian1967, so the inputs are not the 1967 lifetimes; the source of the total rates should be checked before any use. Region-averaged and model-dependent; superseded by the single-level gyroscopic rates k_v' of broyer1975 and vigue1975 (13-130 s-1 times J'(J'+1) for v' = 9-13) and by tellinghuisen1972. Not worth transcribing."
+
+- id: chapman1972
+  citation: "G. D. Chapman, P. R. Bunker, Magnetic quenching of iodine fluorescence excited by a 6328 A He/Ne laser, J. Chem. Phys. 57, 2951-2959 (1972)"
+  doi: "10.1063/1.1678689"
+  url: "https://doi.org/10.1063/1.1678689"
+  year: 1972
+  group: "Division of Physics, National Research Council of Canada, Ottawa (G. D. Chapman, P. R. Bunker)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Fluorescence intensity vs magnetic field (to 1.6 T) and I2 pressure (0.020-0.270 torr), single-mode-scanned 632.8 nm He-Ne excitation, interference-filter selection of v' = 6 or v' = 11 emission; 12-6 repulsive-curve fit of Franck-Condon factors"
+  observable: "other"
+  range_nm: [632.8, 632.8]
+  range_cm1: [15798, 15798]
+  transitions: "B v' = 6, J' = 32 via P(33) and v' = 11, J' = 128 via R(127) (the 6-3 P(33) and 11-5 R(127) He-Ne lines; band labels inferred, the paper names only the branches); Table I adds v' = 14-48 reanalyzed from Degenkolb et al. (1969) broadband data"
+  n_items: 22
+  uncertainty: "b(v'=6) = (4.95 +/- 0.06)e6 T-2 s-1, b(v'=11) = (0.93 +/- 0.01)e6 T-2 s-1; 'all uncertainties quoted in this section are one standard deviation'; reanalyzed levels carry only the +/-10 A^2 collision-radius uncertainty"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "Table I (v' = 0-6, 11, 14, 16, 18, 21, 24, 28, 32, 38, 48: Franck-Condon factor, calculated b, observed b for 11 levels, natural lifetime tau for 11 levels); text: |geff| = 0.33, 12-6 repulsive curve Eq. (12)"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: medium
+  verified: true
+  notes: "Read in full. Magnetic predissociation constants b(v') (k_mag = b H^2) and a 0u- (3Pi(0u-)) repulsive curve crossing the outer limb of B near v' = 3, so v' = 6 is quenched about five times more strongly than v' = 11. The quenching ratio is independent of laser frequency across the P(33) profile (no hyperfine or Zeeman-scanning effect) and of polarization. Natural lifetimes for v' = 6 J' = 32 (0.310 +/- 0.010 us) and v' = 11 J' = 128 (0.410 +/- 0.015 us) are taken from Shotton and Chapman, J. Chem. Phys. 56, 1012 (1972) (not in the catalog; worth adding as the source of single-level lifetimes and self-quenching, sigma^2 = 64 A^2, for the 633 nm standard levels); the other nine lifetimes (0.44-2.3 us) are intercepts from Degenkolb's data with an assumed sigma^2 = 70 +/- 10 A^2 and a corrected 300 K cell temperature, v' assigned +/-1. Overlaps broyer1975 and vigue1975, which also measured v' = 11 J' = 128 by orientation and decay. The degenkolb reference is printed as J. Chem. Phys. 51, 615 (1969) here and as 51, 516 in chutjian1969; one of them is a misprint. Note added in proof quotes Broyer and Lehmann: gJ about -2 nuclear magnetons and tau about 10 us for v' = 62 J' = 27; gJ = -0.31 and tau = 2.9 us for v' = 43 J' = 12, 16. Relevant only to field-dependent (Zeeman) modeling and, through the two He-Ne-level lifetimes, to natural widths of the 633 nm lines (0.39-0.51 MHz, computed). Worth transcribing Table I (11 observed b and 11 tau) only if magnetic predissociation is modeled; otherwise transcribe the two He-Ne-level lifetimes from Shotton and Chapman."
+
+- id: couillaud1977
+  citation: "B. Couillaud, A. Ducasse, Direct experimental evidence of the hyperfine predissociation of molecular iodine using a saturated absorption experiment, Opt. Commun. 21, 199-204 (1977)"
+  doi: "10.1016/0030-4018(77)90262-0"
+  url: "https://doi.org/10.1016/0030-4018(77)90262-0"
+  year: 1977
+  group: "Laboratoire de Spectroscopie Moleculaire, Universite de Bordeaux I (B. Couillaud, A. Ducasse)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Saturated absorption (crossed-polarization pump/probe, electro-optic modulation) with a frequency- and intensity-stabilized cw rhodamine 6G dye laser; I2 cell at 10-200 mTorr"
+  observable: "other"
+  range_nm: [610.4, 622.6]
+  range_cm1: [16062, 16382]
+  transitions: "14 lines in the 9-3, 10-3, 11-3, 11-4 and 12-3 bands: P(92) 12-3; R(54), R(56) 11-4; R(51) 11-3; P(52), P(75) 10-3; R(46), P(49), R(49), P(63), R(71), R(82), P(84), P(92) 9-3. Relative intensities of hyperfine groups (ortho a-b-c triplet, para b-c-d-e quadruplet) compared with 2F+1"
+  n_items: null
+  uncertainty: "relative intensities reproducible to about 5 %; hyperfine linewidth 1.1 MHz at 10 mTorr; laser drift about 2 MHz/min when locked"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "Figs. 3-5 (spectra) only; no tables or numerical intensities"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "Read in full. Qualitative first observation, in saturated absorption, of hyperfine predissociation: for v' = 12-10 the hyperfine-group intensities follow 2F+1, while in the 9-3 band the components with the largest |F' - J'| (F' = J' +/- 5 ortho, J' +/- 4 para) are strongly perturbed, the effect grows with J' (J' = 46-84 studied) and is insensitive to pressure (10-200 mTorr) and to the pump/probe polarization. Line positions and line shapes were deliberately not analyzed (laser drift). Wavelengths printed for R(51) 11-3 (6117 A), P(92) 12-3 (6102.8 A), R(49) 9-3 (6198.5 A), P(84) 9-3 (6216.7 A) and R(82) 9-3 (6213.9 A), all air, all consistent with the model line positions (inferred). The quantitative hyperfine predissociation constants come from broyer1976, vigue1977 and vigue1981b; tench1983 gives hyperfine-resolved natural widths. Not worth transcribing: no numbers, only a qualitative check that the model's hyperfine-dependent widths should matter near v' = 9."
+
+- id: vigue1977
+  citation: "J. Vigue, M. Broyer, J. C. Lehmann, Fluorescence yield of individual hyperfine components in the B state of I2: a test of hyperfine predissociation, J. Phys. B: Atom. Mol. Phys. 10, L379-L383 (1977)"
+  doi: "10.1088/0022-3700/10/10/004"
+  url: "https://doi.org/10.1088/0022-3700/10/10/004"
+  year: 1977
+  group: "Laboratoire de Spectroscopie Hertzienne de l'ENS (CNRS), Paris (J.-C. Lehmann)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Laser-induced fluorescence of a collimated I2 molecular beam (residual Doppler width about 5 MHz) excited by a single-mode cw rhodamine 6G dye laser; relative fluorescence yield of individual hyperfine sublevels"
+  observable: "other"
+  range_nm: [565, 580]
+  range_cm1: [17240, 17700]
+  transitions: "49 B rovibrational levels (stated), e.g. 16-0 R(105) (Fig. 1, printed as '0-16 R(105)'), 15-0 R(29), R(121), 20-1 R(29), P(121) (Fig. 2); analysis uses the F' = J'-5, J', J'+5 triplet of ortho levels; v' about 8-22 in Fig. 4"
+  n_items: 2
+  uncertainty: "v' = 20 as printed: |a_v|^2/Gamma_rad = (50 +/- 15) x 10^-6, |C_v|^2/Gamma_rad = (80 +/- 30) x 10^-3 (probably swapped, see notes); laser jitter 10-15 MHz, observed linewidth about 15 MHz"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "text, 2 values (v' = 20); Fig. 3 (intensity ratios I(F=J+/-5)/I(F=J) vs J' for v' = 20); Fig. 4 (|a_v|^2/Gamma_rad and |C_v|^2/Gamma_rad vs v' for about 15 levels, graph only)"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Read in full (5-page letter; values read from the page images). Fluorescence yield of the F = J-5, J, J+5 hyperfine sublevels measures the hyperfine predissociation |a_v|^2, the gyroscopic term |C_v|^2 and the sign of their interference (a_v C_v < 0; the cancellation affects F = J-5). Effects negligible at v' = 15, large at v' = 20. Inconsistency: the text values appear swapped relative to Fig. 4 and to broyer1976: Fig. 4 labels the x10^-6-scale panel C_v^2/Gamma_rad and the x10^-3-scale panel a_v^2/Gamma_rad, and broyer1976 gives |a_7|^2/Gamma_rad about 0.25 versus |c_7|^2/Gamma_rad about 1.5e-4 (tench1983 likewise has |a|^2 much larger than |c|^2 at v' = 43); so at v' = 20 probably |a_v|^2/Gamma_rad = (80 +/- 30)e-3 and |C_v|^2/Gamma_rad = (50 +/- 15)e-6 (inferred). The full per-v' analysis of natural and hyperfine predissociation is in vigue1981b (same group). Fig. 1 label '0-16 R(105)' must be 16-0 R(105) (574.8 nm; 0-16 would be at 807 nm, outside the rhodamine 6G range; inferred). Worth transcribing only if the linewidth model needs per-v' hyperfine predissociation constants not already in vigue1981b: digitize Fig. 4 (both panels, about 30 points) and take the two v' = 20 values from the text."
+
+- id: hackel1979
+  citation: "R. P. Hackel, S. Ezekiel, Observation of subnatural linewidths by two-step resonant scattering in I2 vapor, Phys. Rev. Lett. 42, 1736-1739 (1979)"
+  doi: "10.1103/physrevlett.42.1736"
+  url: "https://doi.org/10.1103/physrevlett.42.1736"
+  year: 1979
+  group: "Research Laboratory of Electronics, MIT (S. Ezekiel)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Two-step (folded three-level) resonant scattering: Ar+ 514.5 nm pump on 43-0 R(15) hyperfine components, collinear cw dye-laser probe on 43-11 R(15) near 582.8 nm, 80 cm cell (3 passes), Fabry-Perot frequency markers"
+  observable: "hyperfine constants"
+  range_nm: [514.67, 588.0]
+  range_cm1: [17005, 19429.9]
+  transitions: "Pump 43-0 R(15) (514.5 nm); probe 43-11 R(15) hyperfine components (16 of 21 shown), components labeled by |J'' I'' F''> e.g. |15,5,20>, |15,1,15>; Stark-splitting check with the probe on v'' = 10 (576.1 nm) and v'' = 12 (587.9 nm)"
+  n_items: 6
+  uncertainty: "X v'' = 11: eQq'' = -2455.6 +/- 1.3 MHz, C'' = 7.9 +/- 1.0 kHz (fit standard deviation 690 kHz); two-step linewidth 80 kHz; pressure broadening of the two-step line 22 kHz/mTorr; pump transition matrix element 0.057 +/- 0.008 D"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "text, 6 values (eQq'' and C'' for X v'' = 11; 80 kHz width; 22 kHz/mTorr two-step broadening; 12 kHz/mTorr single-step estimate for 43-0 R(15); 0.057 D transition moment); spectra in Figs. 1-3 only"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Read in full (4-page letter; the eQq'' sign was read from the page image). First sub-natural (80 kHz) I2 lines via two-step scattering; the companion precision work is tench1983 (same lab, same scheme, natural widths). The X v'' = 11 hyperfine constants are described as preliminary and 'consistent with measurements utilizing an optically pumped I2 laser' (Koffend et al., PRL 41, 1040, 1978). They are a direct test of the model's X-state eQq(v) at v'' = 11, but at 1.3 MHz they are much weaker than modern comb-based X-state constants. The pressure broadening (22 kHz/mTorr, two-step; 12 kHz/mTorr single-step, from Camy et al. 1977) and the transition moment (0.057 D for 43-0 R(15) from the ac Stark splitting) are useful cross-checks of line-shape and intensity modeling at 514.5 nm. Natural width of the single-step line quoted as 141 kHz, predicted two-step width 16.5 kHz. Worth transcribing the two X v'' = 11 hyperfine constants (eQq'', C'') as a low-weight check, and the 0.057 D moment as an intensity cross-check."
+
+- id: sullivan1980
+  citation: "B. J. Sullivan, D. A. Dows, Electric field-induced predissociation of I2(B 3Pi0+u), Chem. Phys. 46, 231-236 (1980)"
+  doi: "10.1016/0301-0104(80)85097-x"
+  url: "https://doi.org/10.1016/0301-0104(80)85097-x"
+  year: 1980
+  group: "Department of Chemistry, University of Southern California, Los Angeles (D. A. Dows)"
+  isotopologues: ["127I2"]
+  system: "B (predissociation)"
+  technique: "Electric-field-modulated laser-induced fluorescence (dc + 400 Hz ac field up to 20 kV/cm, lock-in detection); broadband (about 1 cm-1) cw dye laser 580-640 nm; 8 mTorr I2"
+  observable: "other"
+  range_nm: [580, 640]
+  range_cm1: [15625, 17240]
+  transitions: "Band heads of B-X bands exciting v' = 4-19 (v'' = 2-4), e.g. 12-0, 14-1, 16-1 (Fig. 2); Table 1 lists about 30 (v', v'') excitations, Table 2 one weighted value per v' (15 rows)"
+  n_items: 15
+  uncertainty: "alpha(v') (field-induced predissociation coefficient, k_Q = alpha E^2) e.g. v' = 4: (4.2 +/- 0.7) x 10^-5 s-1 cm2 V-2; uncertainties subjective (noise and band overlap), about 15-30 %; derived B-to-repulsive transition dipole 0.03-0.04 D"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "Table 1 (alpha/k_T per excitation band, about 30 values), Table 2 (weighted alpha/k_T, lifetime used, alpha for 15 v' values), Fig. 3"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "Read in full. Field-induced predissociation rates of order 1e3 s-1 (0.1 % of the decay rate); the v' dependence (strong peak at v' = 4, minimum at v' = 10) is taken as evidence of a repulsive state (probably 0g+) crossing the outer limb of B between v' = 3 and 4. Lifetimes are not measured: tau(v') are taken from Broyer et al. 1975 (broyer1975b) and from Sakurai et al. 1971 scaled by a correction factor for 4 <= v' <= 9. Misprint: Table 2 has two rows labeled v' = 15 (the second, alpha/k_T = 7.9 +/- 1.6, tau = 1.23 us, matches the Table 1 v' = 16 entry and is v' = 16; inferred); v' = 18 is absent. Relevant only to Stark/field effects and to locating gerade repulsive states, not to zero-field line positions, intensities or widths. Not worth transcribing for the model."
+
+- id: kirillov1983
+  citation: "D. Kirillov, Intensity of overtones in resonant Raman scattering in I2 vapor, J. Mol. Spectrosc. 99, 228-230 (1983)"
+  doi: "10.1016/0022-2852(83)90306-5"
+  url: "https://doi.org/10.1016/0022-2852(83)90306-5"
+  year: 1983
+  group: "Electronic Sciences Laboratory, University of Southern California, Los Angeles (D. Kirillov; R. W. Hellwarth group)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Resonance Raman (resonance fluorescence) overtone intensities excited by a single-mode Ar+ laser tuned to the center of 43-0 P(13); double-grating spectrometer, S-20 photomultiplier and Ge detector, black-body response calibration; 250 mTorr I2"
+  observable: "transition moment"
+  range_nm: [514.5, 1200]
+  range_cm1: [8333, 19430]
+  transitions: "Resonance Raman doublets from B v' = 43, J' = 12 (excited on 43-0 P(13)) to X v'' = 1-83; results similar for 43-0 R(15)"
+  n_items: null
+  uncertainty: "graphs only; |M(R)|^2 scaled to 1.10 D^2 at R-centroid 2.8 A (from Koffend, Bacis & Field 1979)"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: false
+  data_availability: "Fig. 1 (I_n/I_1 for 83 harmonics; I_0/I_1 = 4.5 in text) and Fig. 2 (|M(R)|^2 vs R-centroid) only"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: low
+  verified: true
+  notes: "Read in full (3-page note). Measures relative intensities of 83 vibrational overtones of the 514.5 nm resonance Raman/fluorescence progression and derives the B-X transition strength |M(R)|^2 versus R-centroid, peaking at R = 3.31 A and falling to very small values at large R, in qualitative agreement with Brewer & Tellinghuisen 1972 (brewer1972) and the Koffend, Bacis & Field 1979 laser-gain data (koffend1979a). Odd overtones unobserved for n = 40-60. Agreement with Balasubramanian et al. 1981 (34 harmonics) and Fouche & Chang 1972 (45 harmonics). Superseded for the model by later tabulated transition-moment functions (e.g. tellinghuisen1982, tellinghuisen2011a-c). A digitized Fig. 1 could test the model's B v' = 43 emission intensities to high v'', but the error bars are large and only graphs exist; not worth transcribing."
+
+- id: wakasugi1989
+  citation: "M. Wakasugi, M. Koizumi, T. Horiguchi, H. Sakata, Y. Yoshizawa, Rotational-quantum-number dependence of hyperfine transition intensity near the B(v' = 14)-X(v'' = 1) bandhead of 127I2, J. Opt. Soc. Am. B 6, 1660-1664 (1989)"
+  doi: "10.1364/josab.6.001660"
+  url: "https://doi.org/10.1364/josab.6.001660"
+  year: 1989
+  group: "Department of Physics, Hiroshima University (Y. Yoshizawa group)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Laser-induced fluorescence of a rotationally cooled supersonic molecular beam (T_rot about 85 K, collimation about 100) crossed by a cw ring dye laser; Fabry-Perot calibration (FSR 297.7 and 81.6 MHz set by La hyperfine splittings); 5 MHz FWHM lines; photon counting"
+  observable: "other"
+  range_nm: [584.70, 585.11]
+  range_cm1: [17091.0, 17102.7]
+  transitions: "55 rovibronic lines of the 14-1 band, P and R branches J = 0-30 near the band head (overlapping pairs R(8)/P(3), R(14)/P(9), R(18)/P(13), R(28)/P(23)); allowed (Delta F = Delta J) and forbidden (Delta F = 0, Delta F = -Delta J) hyperfine components"
+  n_items: null
+  uncertainty: "not stated numerically; saturation of forbidden components above about 4 mW/cm2, so the J study used 0.8 mW/cm2"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "Figs. 2-6 only (spectra; R(5) power dependence; P(9) relative line strengths of allowed and forbidden components vs F''; forbidden/allowed ratios vs J for F-J = -5, -4, 1, 2); hyperfine splittings measured but not tabulated"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Read in full. Relative line strengths of forbidden hyperfine components are comparable with allowed ones for J <= 5, fall rapidly with J and vanish above about J = 25-30, in agreement with the J-mixing (J, J+/-2) line-strength theory; the earlier intensity anomaly reported for the 13-1 band head (Wakasugi et al., JOSA B 5, 2298, 1988) is attributed to partial saturation. Direct test of the model's hyperfine-resolved line strengths (forbidden components from second-order J mixing), but only as graphs. Despite the abstract, no splitting values are printed. Assignments used the Gerstenkorn-Luc atlas. Companion 13-1 band-head paper (JOSA B 5, 2298, 1988) is not in the catalog and probably holds hyperfine splittings; worth fetching. For this paper, transcription would mean digitizing Fig. 5 (P(9), about 30 relative strengths) and Fig. 6 (ratio vs J), useful only as a qualitative check of forbidden-component strengths; medium-low value."
+
+- id: goncharov1990
+  citation: "A. N. Goncharov, M. N. Skvortsov, V. P. Chebotayev, Study of relaxation of molecular iodine by the method of saturated absorption spectroscopy, Appl. Phys. B 51, 108-115 (1990)"
+  doi: "10.1007/bf00326009"
+  url: "https://doi.org/10.1007/bf00326009"
+  year: 1990
+  group: "Institute of Thermophysics, Siberian Branch of the USSR Academy of Sciences, Novosibirsk (V. P. Chebotayev)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Saturated absorption with fluorescence detection in counter-propagating and co-propagating (unidirectional) waves, two offset-locked Ar+ lasers (5 kHz linewidth, 1 cm beams, 5 kHz transit broadening); pulsed-excitation fluorescence decay and pump-probe of the lower level; I2 pressure 0.1-150 mTorr"
+  observable: "pressure broadening/shift"
+  range_nm: [514.67, 514.67]
+  range_cm1: [19429.8, 19429.8]
+  transitions: "43-0 P(13) at 514.5 nm (X v'' = 0, J'' = 13 -> B v' = 43, J' = 12); shift measured on component a2, a3 is the CIPM standard component"
+  n_items: 15
+  uncertainty: "transition HWHM broadening 15 +/- 1 kHz/mTorr (low pressure) and 7.5 +/- 1 kHz/mTorr (high pressure); lower level 12.5 +/- 1 and 5 +/- 1 kHz/mTorr; upper level (inelastic) 10 +/- 2 kHz/mTorr; quenching 1.5 kHz/mTorr; shift about 0.4 kHz/mTorr (nonlinear, recoil-dominated below 1 mTorr); cross sections sigma_tot = (3.3 +/- 0.2)e-14 cm2, sigma_in = (1.6 +/- 0.2)e-14 cm2, sigma1_tot = (2.7 +/- 0.2)e-14, sigma1_in = (1.1 +/- 0.2)e-14, sigma2_in = (2.2 +/- 0.4)e-14 cm2"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "text, about 15 values (broadening rates, cross sections, typical scattering angle 1.3e-3 rad, minimum lower-level halfwidth 10 kHz, recoil shift parameter 3 kHz, shift model Gamma2 = 47 kHz + 17.5 kHz/mTorr, Gamma1 = 5 kHz + 12.5 kHz/mTorr); Figs. 3, 4, 7, 8 (width, decay time, lower-level width and shift vs pressure) graphs only"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Read in full. Separates upper- and lower-level relaxation for the 514.5 nm standard line: nonlinear pressure dependence of width and shift explained by small-angle elastic (velocity-changing, phase-preserving) collisions; upper-level inelastic cross section twice the lower-level one. The shift (about 400 Hz/mTorr) is much smaller than the broadening (about 10 kHz/mTorr). Width convention: halfwidths (HWHM), so FWHM rates are twice the quoted values (inferred). Overlaps hackel1979 (12 kHz/mTorr single-step estimate for 43-0 R(15)) and the 514.5 nm pressure-shift data in the precision catalog. Worth transcribing as line-shape systematics for 43-0 P(13): the text values listed above (one record per quantity, HWHM convention flagged); no line positions."
+
+- id: titov1997a
+  citation: "A. Titov, I. Malinovsky, M. Erin, Determination of saturation parameter in iodine and precise molecular linewidth measurements in He-Ne/I2 standard at 633 nm, Opt. Commun. 136, 327-334 (1997)"
+  doi: "10.1016/s0030-4018(96)00685-2"
+  url: "https://doi.org/10.1016/s0030-4018(96)00685-2"
+  year: 1997
+  group: "TUBITAK Ulusal Metroloji Enstitusu (UME), Gebze-Kocaeli (A. Titov)"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "Beat-frequency measurement of the side-zero interval of the 5th-harmonic discriminant of an intracavity He-Ne/I2 laser (locked to component i, reference on h), FFT measurement of the modulation width, fit with Gaussian-beam high-intensity (Stenholm-Lamb rate-equation) line shape"
+  observable: "pressure broadening/shift"
+  range_nm: [632.99, 632.99]
+  range_cm1: [15798.0, 15798.0]
+  transitions: "633 nm standard line R(127) 11-5 (line not named in the paper; inferred), hyperfine component i (and h as reference)"
+  n_items: 8
+  uncertainty: "zero-pressure homogeneous linewidth 2Gamma0 = 784 kHz +/- 15 %; self-broadening 126.5 kHz/Pa +/- 10 % (FWHM); at 7.1 Pa 2Gamma0 = 1640 +/- 20 kHz; power-broadened 2Gamma = 3669 kHz (sigma 4.8 kHz) at I0 = 16"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "text, about 8 values (784 kHz and 126.5 kHz/Pa; 2Gamma/2Gamma0 pairs at 7.1 Pa: 3669/1659 kHz at I0 = 16, 3688/1637 at 17, 3649/1682 at 15 for 66.6 uW; 2795/1658 at I0 = 6 and 2821/1609 at 7 for 23.3 uW; 2232-2213 kHz at 7.6 uW); Figs. 7-10 graphs (2Gamma vs pressure 7.1-23.5 Pa; saturation parameter vs power)"
+  machine_readable: false
+  likely_in_knockel2004: unknown
+  priority: medium
+  verified: true
+  notes: "Read in full. First determination of the saturation parameter in a He-Ne/I2 standard; shows that the Lorentzian approximation underestimates the homogeneous width at high intracavity power (spread 530 kHz versus 4.8 kHz with the Gaussian-beam line shape). The zero-pressure intercept 784 kHz FWHM is attributed to radiative decay (transit time negligible), but it is far above the natural width implied by the B v' = 11 lifetime (about 0.15-0.4 MHz from broyer1975b); it likely contains residual broadening (inferred). HWHM below 1 MHz observed at 4.86 Pa. Cited by phillips2008 as the self-broadening reference for the 633 nm line. Overlaps schweitzer1973b (129I2, 13 MHz/Torr = 98 kHz/Pa) and cerez1974 (127I2 R(127) 11-5). Worth transcribing the self-broadening coefficient (126.5 kHz/Pa FWHM, +/- 10 %) and the zero-pressure intercept for the 633 nm line as line-shape systematics; the saturation-parameter results are laser-specific."
+
+- id: goncharov1991
+  citation: "A. N. Goncharov, S. V. Gateva-Kosteva, M. N. Skvortsov, V. P. Chebotayev, Direct observation of the anomalous Zeeman effect at the X -> B transition of molecular iodine by the method of nonlinear laser spectroscopy, Appl. Phys. B 52, 311-314 (1991)"
+  doi: "10.1007/bf00325411"
+  url: "https://doi.org/10.1007/bf00325411"
+  year: 1991
+  group: "Institute of Thermophysics, Siberian Branch of the USSR Academy of Sciences, Novosibirsk (V. P. Chebotayev); Institute of Electronics, Bulgarian Academy of Sciences, Sofia"
+  isotopologues: ["127I2"]
+  system: "B-X"
+  technique: "saturated absorption (2f detection) in a 70 cm external cell in a longitudinal magnetic field up to 780 Oe, circularly polarized light, offset-locked Ar+ laser heterodyne spectrometer (10 kHz linewidth), about 10 mTorr I2, field reversal to separate linear and quadratic shifts"
+  observable: "Zeeman g-factors and quadratic Zeeman shift of hyperfine components"
+  range_nm: [514.67, 514.68]
+  range_cm1: [19429.8, 19429.8]
+  transitions: "43-0 P(13) (J'' = 13 -> J' = 12) components a1, a2, a3, a4 and 43-0 R(15) (J'' = 15 -> J' = 16) component b1, X v'' = 0; g-factors from a1, a4, b1 (Table 1 gives F', F'' and pseudospin epsilon = 5, 1, 5, 5, 5)"
+  n_items: 13
+  uncertainty: "Table 2 g_F'I / g_F''I: a1 -1.64 / -0.67, a4 -1.16 / -0.43, b1 -1.19 / -0.52, each 0.01 (printed with -/+ signs); g_I' = 0.34 +/- 0.12, g_J' = -0.44 +/- 0.04, g_I'' = 0.02 +/- 0.13, g_J'' = -0.44 +/- 0.04; Delta g_J = g_J' - g_J'' = -0.36 +/- 0.02, Delta g_I = g_I' - g_I'' = 0.48 +/- 0.08; quadratic shift 150 kHz at 780 Oe, Delta k = k' - k'' = about -0.25 Hz/Oe^2"
+  uncertainty_MHz: null
+  absolute: false
+  hyperfine_resolved: true
+  data_availability: "Tables 1-2 and text, 13 values; Figs. 2-4 (line shapes in field, shift versus M'') graphs only"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: low
+  verified: true
+  notes: "Read in full. Placed here (Category 5, line shape) rather than in the precision catalog: it gives g-factors in nuclear magnetons and a field-quadratic estimate, not zero-field line positions or intervals, and the shifts were measured at 780 Oe, far above any laser-standard field; the magnetic components were not fully resolved, so only peak positions were analyzed. Its metrology conclusion is that the quadratic effect is below 1e-15 at about 1 Oe, while the linear effect with circular polarization can reach 1e-12 in an unshielded cell; compare barbarat2019a (linear Zeeman shift about 1 kHz/G on R(34)44-0 at 514 nm, tripled 1542 nm laser). Inconsistency: the separate g_J' and g_J'' are both printed -0.44 +/- 0.04, yet Delta g_J = -0.36 +/- 0.02, and g_I' - g_I'' = 0.32 differs from Delta g_I = 0.48 +/- 0.08; the paper says the differences come from the extreme magnetic components and are the more precise, so the individual values should not be combined (inferred). Upper-level g-factors are said to agree with Broyer, Lehmann, Vigue, J. Phys. 36, 235 (1975) (Hanle effect, not in the catalog). Same line and group as goncharov1990 (relaxation study). Nothing feeds the zero-field model; transcribe only if field-dependent modeling is ever needed, as the 6 g_F values, the 2 differences and Delta k."
+
+- id: shotton1972
+  citation: "K. C. Shotton, G. D. Chapman, Lifetimes of 127I2 molecules excited by the 632.8 nm He/Ne laser, J. Chem. Phys. 56, 1012-1013 (1972)"
+  doi: "10.1063/1.1677205"
+  url: "https://doi.org/10.1063/1.1677205"
+  year: 1972
+  group: "Division of Physics, National Research Council of Canada, Ottawa (K. C. Shotton, G. D. Chapman)"
+  isotopologues: ["127I2"]
+  system: "B"
+  technique: "Time-correlated single-photon counting of fluorescence after 50 ns (FWHM) cavity-dumped 632.8 nm He-Ne pulses; grating spectrometer isolating one band (6-5 at 650.0 nm, 11-3 at 617.0 nm); exponential fit from 300 ns after the pulse peak; Stern-Volmer extrapolation over 12 pressures"
+  observable: "lifetimes"
+  range_nm: [632.8, 632.8]
+  range_cm1: [15798, 15798]
+  transitions: "B v'=6 J'=32 (excited via P(33)6-3) and B v'=11 J'=128 (via R(127)11-5), the two He-Ne-coincident lines"
+  n_items: 4
+  uncertainty: "v'=6: tau0 = 310 +/- 10 nsec, sigma^2 = 0.64 +/- 0.03 nm2 (0.025-0.280 torr); v'=11: tau0 = 410 +/- 15 nsec, sigma^2 = 0.65 +/- 0.05 nm2 (0.018-0.180 torr); 'The quoted uncertainties are one standard deviation.'"
+  uncertainty_MHz: null
+  absolute: true
+  hyperfine_resolved: false
+  data_availability: "text (2 zero-pressure lifetimes, 2 self-quenching collision radii squared); Fig. 1 one decay curve"
+  machine_readable: false
+  likely_in_knockel2004: false
+  priority: high
+  verified: true
+  notes: "Read in full (letter, 2 pages). Single rotational-level lifetimes: high-resolution fluorescence showed no rotational relaxation, so the values belong to J'=32 (v'=6) and J'=128 (v'=11). These are the source of the two He-Ne-level lifetimes and the 64 A^2 self-quenching radius used in chapman1972 (same group; its Table I quotes 0.310 +/- 0.010 and 0.410 +/- 0.015 us), which in turn derived the other nine lifetimes from Degenkolb's data; the numbers agree exactly. Natural widths 1/(2 pi tau0) = 0.51 MHz (v'=6) and 0.39 MHz (v'=11) (inferred), relevant to the 633 nm standard lines. Cross-check (inferred): broyer1975b gives Gamma_rad = 1.09e6 s-1 and k11 = 67 s-1 for v'=11, so 1/tau = 1.09e6 + 67 x 128 x 129 = 2.20e6 s-1, tau about 0.45 us, against 0.410(15) us here (about 2.7 sigma); vigue1975 also studied v'=11 J'=128. The paper notes its lifetimes are much shorter than the broadband-dye-laser values of sakurai1971 (a mixture of levels), and a private communication from Capelle that later work (capelle1973) also found a shorter v'=6 lifetime. Worth transcribing: the two lifetimes (with J') and two self-quenching radii into the lifetime set beside broyer1975b, as single-level inputs to the natural and collisional linewidths of P(33)6-3 and R(127)11-5."
