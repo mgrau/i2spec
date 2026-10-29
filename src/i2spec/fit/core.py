@@ -3,7 +3,8 @@
 Objective: sum of (w_i (prediction_i - value_i))^2 over the rows, plus physical penalties and two priors.
 
   weights   w_i = sqrt(min(1, 1000/n_c)) / sqrt(sigma_i^2 + f_c^2), n_c the rows of the category, f_c its floor
-            (0.5 MHz for comb and Doppler-free rows, 20 MHz for emission, 0 for the atlases and level constants)
+            (0.5 MHz for comb and Doppler-free rows, 20 MHz for emission, 0.1 MHz for other isotopologues' lines,
+            0 for the atlases and level constants)
   shape     on a dense grid (X 1.8-6 A, B 2.0-6 A, then to 40 A, plus the extra nodes of the shape audit): the
             slope of -ln(Morse factor) must be positive (single well; scale 1e-5), V >= Te, f(R) >= 0.2
   priors    De(X) = 12547.340 +- `dissociation_prior` cm-1, and Te + De(B) - De(X) = the atomic splitting
@@ -15,7 +16,8 @@ Solved by damped Gauss-Newton (optimize.damped_gauss_newton) with Hellmann-Feynm
 from __future__ import annotations
 
 import json
-from dataclasses import asdict, dataclass, field
+import os
+from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 
 import numpy as np
@@ -28,9 +30,10 @@ from .levels import Levels
 from .optimize import damped_gauss_newton
 
 ROOT = Path(__file__).resolve().parents[3]
-CORE_RELEASE = ROOT / "src" / "i2spec" / "data" / "research" / "20261018" / "balanced"
-FLOORS = dict(comb=.5, doppler=.5, emission=20., atlas_sr=0., atlas_apo=0., orsay1=0., orsay4=0., martin=0.,
-              martin_dissoc=0.)
+# a rebuild of a new model form points the fit stages (and their worker processes) at its own core and floor
+CORE_RELEASE = Path(os.environ.get("I2SPEC_FIT_CORE") or ROOT / "src" / "i2spec" / "data" / "research" / "20261018" / "balanced")
+FLOORS = dict(comb=float(os.environ.get("I2SPEC_FIT_COMB_FLOOR", .5)), doppler=.5, emission=20., atlas_sr=0., atlas_apo=0., orsay1=0., orsay4=0., martin=0.,
+              martin_dissoc=0., isotopologue=.1)
 DE_X_CENTER = 12547.340         # cm-1, the published De(X) the prior is centered on
 ATOMIC_GAP_SIGMA = .0065        # cm-1, the atomic splitting's uncertainty
 EXCLUSION = "127I2 P(13) 43-0"
@@ -50,6 +53,8 @@ class Settings:
     max_nfev: int = 400
     ftol: float = 1e-10
     gtol: float = 1e-6
+    #: power of the B isotope shift fitted with the other isotopologues' lines among the rows (curves.Config.iso_shift)
+    isotope_shift: int | None = None
 
 
 def weights(rows, floors=FLOORS, category_cap=1000.):
@@ -216,17 +221,17 @@ class Problem:
 
 
 def start(names, spec=None):
-    """The released core coefficients as a parameter vector over `names`."""
+    """The released core coefficients as a parameter vector over `names` (0 for a term the release lacks)."""
     spec = spec or release_spec()
-    return np.array([spec["values"][s][n] for s, n in names])
+    return np.array([spec["values"][s].get(n, 0.) for s, n in names])
 
 
 def fit(rows=None, settings: Settings | None = None, theta=None, verbose=False):
     """Fit the core. Defaults: the release's core training rows, settings and coefficients (as the start).
     Returns the problem and the solver's result (result.theta: every named coefficient)."""
     spec = release_spec()
-    config = Config.from_spec(spec["config"])
     settings = settings or Settings()
+    config = replace(Config.from_spec(spec["config"]), iso_shift=settings.isotope_shift)
     rows = rows if rows is not None else training.release("core")
     values, names, lower, upper, _ = initial(config)
     prob = Problem(rows, config, values, names, settings, shape_nodes())

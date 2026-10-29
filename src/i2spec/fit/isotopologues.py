@@ -279,6 +279,28 @@ def fit_shift(rows=None):
     return out
 
 
+def core_rows(data):
+    """fit_shift's line centers (its "data") as core-fit rows (category "isotopologue"): with
+    core.Settings.isotope_shift the core fit sees the other isotopologues, which fix the split between the potential's
+    shape and q(R) that the 127I2 lines leave open."""
+    from . import rows as training
+    cols = {k: [] for k in training.COLUMNS}
+    levels = []
+    for x in data:
+        iso, label = x["isotopologue"], x["line"].split(" ", 1)[1]
+        branch, J = label[0], int(label[2:label.index(")")])
+        vu, vl = map(int, label.split()[1].split("-"))
+        row = dict(id=f"cipm:{x['line']}", source="cipm", kind="abs", category="isotopologue", isotopologue=iso,
+                   branch=branch, J_lower=J, v_upper=vu, v_lower=vl, isotopologue2="", branch2="", J_lower2=-1,
+                   v_upper2=-1, v_lower2=-1, state="", v=-1, J=-1, value=x["measured_center_MHz"],
+                   sigma=x["sigma_MHz"], sigma_stated=x["sigma_MHz"], n_components=x["n_components"],
+                   nu=x["measured_center_MHz"]/MHZ_PER_CM, new=False)
+        for k in training.COLUMNS:
+            cols[k].append(row[k])
+        levels.append(tuple(training.line_levels(iso, branch, J, vu, vl)))
+    return training.Rows({k: np.array(v) for k, v in cols.items()}, levels)
+
+
 def domains(extension):
     """Each isotopologue's v range: the levels whose 127I2 equivalent lies in 127I2's (X 108, B 80)."""
     base = ResearchModel("balanced_expanded")

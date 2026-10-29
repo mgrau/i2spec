@@ -36,6 +36,9 @@ class Config:
     ref_b: float = 1.5
     mapped_x: bool = True
     mapped_alpha: bool = True
+    #: power p of the B isotope shift (1 - rho)(1 - y)^p (iso0 + iso1 y), y = (R - Re)/(R + Re), seen only by the
+    #: other isotopologues (isotopologues.py's form); None: no shift terms (the release)
+    iso_shift: int | None = None
 
     @classmethod
     def from_spec(cls, spec: dict):
@@ -83,6 +86,9 @@ def initial(config: Config):
                                                                   -100., 100., .1)
         for i in range(config.nalpha(state)):
             v[f"alpha{i}"], lo[f"alpha{i}"], hi[f"alpha{i}"], sc[f"alpha{i}"] = 0., -.1, .1, 1e-4
+        if state == "B" and config.iso_shift is not None:
+            for i in range(2):
+                v[f"iso{i}"], lo[f"iso{i}"], hi[f"iso{i}"], sc[f"iso{i}"] = 0., -100., 100., .1
         values[state] = v
         for key in v:
             names.append((state, key)); lower.append(lo[key]); upper.append(hi[key]); scales.append(sc[key])
@@ -137,7 +143,18 @@ class Curve:
         if m:
             envelope, w = self._rotation(values, R)
             f = 1+ratio*envelope*chebval(w, [values[f"alpha{i}"] for i in range(m)])
-        return self.potential_values(values, R), f
+        V = self.potential_values(values, R)
+        if ratio != 1. and self._shifted():
+            V = V+(1-ratio)*self._iso_basis(values, R)@[values["iso0"], values["iso1"]]
+        return V, f
+
+    def _shifted(self):
+        return self.state == "B" and self.config.iso_shift is not None
+
+    def _iso_basis(self, values, R):
+        re = np.exp(values["logRe"])
+        y = (R-re)/(R+re)
+        return np.stack([(1-y)**self.config.iso_shift, (1-y)**self.config.iso_shift*y], axis=-1)
 
     def derivatives(self, values, R, ratio, names):
         """dV/dp and df/dp on R for the parameters `names` (columns)."""
@@ -165,6 +182,9 @@ class Curve:
                 dV[:, col] = 1.
             elif name.startswith("alpha"):
                 df[:, col] = ratio*envelope*chebval(w, [0.]*int(name[5:])+[1.])
+            elif name.startswith("iso"):
+                if ratio != 1.:
+                    dV[:, col] = (1-ratio)*self._iso_basis(values, R)[:, int(name[3:])]
             else:
                 h = max(abs(values[name])*1e-7, 1e-6)
                 plus, minus = dict(values), dict(values)

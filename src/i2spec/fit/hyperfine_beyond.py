@@ -28,6 +28,7 @@ from __future__ import annotations
 from concurrent.futures import ProcessPoolExecutor
 import hashlib
 import json
+import os
 from multiprocessing import get_context
 from pathlib import Path
 import pickle
@@ -49,7 +50,7 @@ from .core import release_spec as core_spec
 CACHE = Path.home()/'.cache'/'i2spec'/'second_order'
 POTENTIAL = 'fjc_dec6'
 PARAMS = ('eqQ', 'C', 'd', 'delta')
-ORDERS = dict(eqQ=5, C=5, d=3, delta=1)            # the core fit's B radial functions
+ORDERS = {p: len(c) for p, c in core_spec()['hyperfine']['coefficients']['B'].items()}   # the core fit's B radial functions
 KNOT = 4.45                                        # A, the B potential's outer knot (core edge)
 # Separated-atom limits of the first-order couplings (R -> infinity): eqQ_B = B(2P3/2)/2 = -573.2 MHz (Bacis et
 # al. 1980 Table I; their extrapolation -574 +- 3). Outside the knot a coupling with a limit continues as
@@ -546,8 +547,13 @@ FIT_OVERRIDES = {"1g(1Pig)": dict(C5=-155350.0), "(3)0u-": dict(C5=0.)}
 
 
 def potential():
-    """(curves, values) of the B continuation the hyperfine stage was fitted on (frozen with the release)."""
-    frozen = json.loads((training.TRAINING/training.RELEASE/"hyperfine_potential.json").read_text())["parameters"]
+    """(curves, values) of the B continuation the hyperfine stage was fitted on: frozen with the release, or the
+    current continuation when a rebuild names one (I2SPEC_FIT_CONTINUATION)."""
+    if os.environ.get("I2SPEC_FIT_CONTINUATION"):
+        from .continuation import release_spec
+        frozen = {f"{s}:{n}": z for s, v in release_spec()["values"].items() for n, z in v.items()}
+    else:
+        frozen = json.loads((training.TRAINING/training.RELEASE/"hyperfine_potential.json").read_text())["parameters"]
     curves = build_curves()
     values = {s: dict(c.values) for s, c in curves.items()}
     for name, z in frozen.items():

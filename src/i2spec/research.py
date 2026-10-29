@@ -15,6 +15,8 @@ from importlib import resources
 import json
 import math
 from numbers import Integral
+import os
+from pathlib import Path
 from threading import RLock
 
 import numpy as np
@@ -29,6 +31,9 @@ from .observations import component_rank
 
 _RELEASE = "20261018"
 _RELEASES = (_RELEASE, "20261020", "20261021")
+#: A candidate release (a folder with its own manifest.json) searched before the installed ones, so that its models
+#: take over their roles: for rebuilding the fit stages on a new core and continuation. Never set for users.
+_CANDIDATE = os.environ.get("I2SPEC_RESEARCH_CANDIDATE")
 #: Lines whose components a model keeps, the oldest dropped first. One is quick to compute again from its two
 #: levels, which stay cached; the components of a whole line list would take several GB (a 127I129I line
 #: has about a thousand).
@@ -36,6 +41,8 @@ _LINE_CACHE = 256
 
 
 def _data(release=_RELEASE):
+    if os.path.isabs(release):
+        return Path(release)
     return resources.files("i2spec").joinpath("data", "research", release)
 
 
@@ -46,7 +53,7 @@ def _manifest(release=_RELEASE):
 
 def _entries():
     """Every release's models in release order, each entry tagged with its release."""
-    return [dict(value, release=release) for release in _RELEASES if _data(release).joinpath("manifest.json").is_file()
+    return [dict(value, release=release) for release in ((_CANDIDATE,) if _CANDIDATE else ())+_RELEASES if _data(release).joinpath("manifest.json").is_file()
             for value in _manifest(release)["models"]]
 
 

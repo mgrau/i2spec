@@ -16,6 +16,7 @@ Solved by Levenberg-Marquardt, then undamped Gauss-Newton to convergence.
 from __future__ import annotations
 
 import json
+import os
 from math import comb, factorial
 from pathlib import Path
 from types import SimpleNamespace
@@ -33,7 +34,7 @@ from .levels import Levels
 from .optimize import gauss_newton, marquardt
 
 ROOT = Path(__file__).resolve().parents[3]
-RELEASE = ROOT / "src" / "i2spec" / "data" / "research" / "20261020" / "balanced_expanded"
+RELEASE = Path(os.environ.get("I2SPEC_FIT_CONTINUATION") or ROOT / "src" / "i2spec" / "data" / "research" / "20261020" / "balanced_expanded")
 CORE_V = dict(X=17, B=43)
 CORE_J = dict(X=200, B=201)
 DATA_V = dict(X=108, B=80)
@@ -332,13 +333,14 @@ def release_start(problem, spec=None):
     return problem.compress(np.array(full))
 
 
-def fit(rows=None, structure=None, start=None, max_nfev=1, finish=40, fixed=None, initial=None):
+def fit(rows=None, structure=None, start=None, max_nfev=1, finish=40, fixed=None, initial=None, core=None):
     """Fit the tail terms. Defaults: the release's continuation rows and structure, started from (and, with
     max_nfev=1 and finish=40, the settings of) the release's own final run. `fixed`: {(state, name): value} held;
-    `initial`: {state: {name: value}} starting values in place of the release's (e.g. `project`'s)."""
+    `initial`: {state: {name: value}} starting values in place of the release's (e.g. `project`'s); `core`: a core
+    model record ({"config", "values"}) to build on in place of the released core."""
     spec = release_spec()
     structure = structure or spec["structure"]
-    curves = build_curves(structure)
+    curves = build_curves(structure, core)
     rows = rows if rows is not None else training.release("continuation")
     every = [(s, n) for s, c in curves.items() for n in c.tail_names]
     values = initial or spec["values"]
