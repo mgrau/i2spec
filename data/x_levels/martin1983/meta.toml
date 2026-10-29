@@ -1,10 +1,13 @@
 id = "martin1983"
 catalog = "broadband:martin1983"
+tables = "Table II (data.csv); Tables III-VI (table3-table6 CSVs)"
 source = "scanned PDF"
 retrieved = "2026-10-20"
 unit = "cm-1"
 isotopologue = "127I2"
 state = "X"
+files = ["data.csv", "table3_a1g_constants.csv", "table4_a0p_constants.csv", "table5_rkr_a0p.csv", "table6_xa1g_perturbations.csv"]
+pending_files = ["table3_a1g_constants.csv", "table4_a0p_constants.csv", "table5_rkr_a0p.csv", "table6_xa1g_perturbations.csv"]   # added 2026-10-28: held out of every fit, benchmark and the explorer until scored in a blind test, like every new table
 
 transcription = """
 Table II, "Rotation-vibration constants for the near-dissociation levels of 127I2 X 0g+", printed p. 3728
@@ -28,6 +31,32 @@ Columns, as printed:
   observation        the table's Observations column
 
 Term values: E(v, J) = T + B x - D x^2 + H x^3, x = J(J+1) (signs as in Martin 1986, Hutson's convention).
+
+Tables III-VI (added with the same copy, Martin et al. 1983, pp. 3729-3731; PDF pages 6-8), read from 200 dpi page
+images. Every number was read from the image; the OCR text layer was used only to locate the tables and it garbles
+several (e.g. "O. 007261", "12413,9693"). Table I and Tables VII-IX are not entered (the D0 and C5/C6/C8 fits are
+dissociation parameters, not level constants).
+
+table3_a1g_constants.csv: Table III, a 1g v = 23, 13, 8, 5 (rotation-vibration constants from X 0g+ ~ a 1g
+deperturbation). Uncertainties are 2 sigma as printed (table note: "2 sigma uncertainties in the last digit"), converted
+to absolute units in the *_unc columns. A blank uncertainty means the constant was held fixed (footnote b): T and B
+of v = 13 and 5, H of v = 23, 13, 8 (held_fixed column lists which). D and H in 10^-7 and 10^-12 cm-1 as printed.
+
+table4_a0p_constants.csv: Table IV, a' 0g+ v = 9, 8, 7, 6. Two rows for v = 7 (printed as two fits: the first from
+61, 62 lines, the second from 67, 68 lines, rms 0.26 vs 0.74 10^-3 cm-1). The printed "Perturbed by X v = 101"
+applies to v = 7 (footnote b: low-J and high-J lines give slightly different constants). H of v = 7 (both rows) and
+v = 8 and 9 constants held fixed as footnoted (v = 7 H: 0 and -4.5, fixed). The v = 6 row has only T and B as printed
+(no D, H, uncertainties or rms). Printed uncertainties 2 sigma as in Table III.
+
+table5_rkr_a0p.csv: Table V, RKR inner and outer turning points (Rmin, Rmax in Angstrom) for a' 0g+ v = 0-9, as printed.
+It is the potential extension referred to in the text (v = 5-9 newly extended via Table IV).
+
+table6_xa1g_perturbations.csv: Table VI, fitted rotational perturbations X 0g+ ~ a 1g: eta (cm-1, the perturbation
+parameter; printed uncertainty in parentheses, last digit, taken here as absolute), q_half = |<v_X|v_a>| (q^1/2), RC =
+r centroid in Angstrom, Bvv_x1e3_cm1 = B_vv' x 10^3 in cm-1 as printed, eta_e1 = eta_e1 (dimensionless, printed).
+The fourth row (X v = 106 ~ a 1g v = 23) has only eta printed; its q, RC, B and eta_e1 entries are blank. Table
+footnote: the matrix element is <0g+|H|1g e> = -[J(J+1)]^1/2 eta, and eta = 2^1/2 B_vv' eta_e1. The text gives
+the X-a' 0g+ matrix element as bounded (< 0.2 cm-1), not fitted; it is not entered.
 """
 
 notes = """

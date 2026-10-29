@@ -1,0 +1,5 @@
+detuning_MHz,alpha_Pa-1_m-1,unc_Pa-1_m-1,kind,note
+190,0.059,0.006,measured,"from a1 component; printed (5.9 +/- 0.6) x 10^-2 Pa^-1 m^-1, p. 4 right column"
+290,0.075,0.008,measured,"from a1 component; printed (7.5 +/- 0.8) x 10^-2 Pa^-1 m^-1, p. 4 right column"
+0,0.086,,evaluated,"line centre, from the two measured values with the formulas of ref. 15; printed 8.6 x 10^-2 Pa^-1 m^-1 with no uncertainty"
+0,0.0031,,evaluated,"per hf component (line centre divided by the number of components); printed 3.1 x 10^-3 Pa^-1 m^-1, no uncertainty"

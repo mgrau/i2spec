@@ -848,7 +848,7 @@
   priority: medium
   verified: true
   status: "held"
-  transcription: "to do: check what X term values of the 514.5 and 501.7 nm fluorescence series are printed (no transcription found in data/)"
+  transcription: "not needed: it prints only fluorescence band positions and intensities of B v'=43 -> X v''=79-86 (Table I), no term values"
   notes: "Precursor to Martin 1986. It also gives X-state eQq'' and the first evidence that the a 1g and a′ 0g+ states perturb the highest X levels (see churassy1981, martin1983). The abstract text came from a search-engine snippet of the AIP abstract page. uncertainty_MHz is just the 1 mK precision converted; the confidence level isn't stated."
 - id: bacis1986
   citation: "R. Bacis, D. Cerny, F. Martin, Laser-induced-fluorescence Fourier transform spectrometry of the XOg+ state of I2: Tests of the long-range behavior for three isotopes of iodine, J. Mol. Spectrosc. 118, 434–447 (1986)"
@@ -1761,7 +1761,7 @@
   priority: low
   verified: true
   status: "held"
-  transcription: "to do: one 127I129I line absorption coefficient near 612 nm (1 value, low priority)"
+  transcription: null
   notes: "The abstract says the absorption coefficient of this 127I129I transition was also measured, which is rare intensity information for the mixed isotopologue."
 - id: glaser1985
   citation: "M. Gläser, Identification of hyperfine structure components of the iodine molecule at 640 nm wavelength, Opt. Commun. 54, 335-342 (1985)"

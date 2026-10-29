@@ -1,0 +1,6 @@
+v,T_cm1,T_unc_cm1,B_cm1,B_unc_cm1,Dx1e7_cm1,Dx1e7_unc_1e7cm1,Hx1e12_cm1,Hx1e12_unc_1e12cm1,n_lines,sampled_from_B_v,rms_x1e3_cm1,note
+9,12421.6169,0.0016,0.008547,0.000009,0.99,0.13,-0.12,0.05,8,61 62 64,0.34,
+8,12414.5987,0.0026,0.009074,0.000012,0.67,0.17,-0.7,0.6,16,61 62 64,0.53,
+7,12406.0870,0.0020,0.009656,0.000010,0.93,0.10,0,,16,61 62,0.74,H held fixed; perturbed by X v=101 (first of two sets)
+7,12406.37,0.18,0.009715,0.000137,2.09,0.20,-4.5,,4,67 68,0.26,H held fixed; second set for v=7 (low-J vs high-J lines), see note
+6,12396.405,,0.01013,,,,,,2,61,,two lines; T and B as printed, no D, H, uncertainties or rms

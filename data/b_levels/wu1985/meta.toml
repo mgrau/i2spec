@@ -1,0 +1,35 @@
+id = "wu1985"
+catalog = "broadband:wu1985"
+tables = "Text, p. 4 (linear absorption coefficient); Table 2 (possible transitions) not entered"
+source = "publisher PDF (scanned; values read from the 200 dpi page image)"
+retrieved = "2026-10-28"
+unit = "Pa^-1 m^-1 for alpha; MHz for detuning from the a1 component (as printed)"
+state = "B-X, 127I129I near 612 nm (16340.7 cm-1)"
+isotopologue = "127I129I"
+files = ["absorption.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The linear absorption coefficient of the 127I129I transition used for the hyperfine work, from the text on p. 4 (right
+column, after Table 4), read from the page image. The two measured values are printed with uncertainties:
+(5.9 +/- 0.6) x 10^-2 Pa^-1 m^-1 at +190 MHz and (7.5 +/- 0.8) x 10^-2 Pa^-1 m^-1 at +290 MHz, both detunings from the
+a1 component. Entered as 0.059 and 0.075 Pa^-1 m^-1 (uncertainties 0.006 and 0.008).
+
+The line-centre value 8.6 x 10^-2 Pa^-1 m^-1 and the per-hf-component value 3.1 x 10^-3 Pa^-1 m^-1 are evaluated by the
+authors from the two measurements with the formulas of their ref. 15. They are printed without uncertainty and are
+entered with kind = "evaluated" and no uncertainty column value.
+
+Not entered: Table 2 (possible 127I129I transitions, J < 200, v'' < 9, v' < 20, 16340.67-16340.70 cm-1). It lists
+candidate lines, not measurements, and the paper says the observed transition could not be identified unambiguously
+among six candidates (Table 4 gives six fits with comparable residuals). Table 3 (line separations of the 127I129I
+hyperfine structure, a1-a22) and Table 4 (fitted eqQ and C for 127I and 129I) are hyperfine results, not levels;
+Table 3 is the hyperfine pattern of the observed line. Neither is entered here.
+"""
+
+uncertainty = "Printed as +/- 1 sigma values at the two detunings only (the paper does not state the confidence level). The centre and per-component values have no uncertainty printed."
+
+notes = """
+Only the absorption coefficient is held here. The catalog entry (wu1985) records the line and its hyperfine splittings.
+The per-component value is derived from the line-centre value, not measured independently, and should not be used as
+an independent measurement.
+"""
