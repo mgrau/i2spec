@@ -1,0 +1,80 @@
+id = "titov1997b"
+citation = "A. Titov, I. Malinovsky and M. Erin, \"Asymmetry studies of iodine resonances and realization of unperturbed molecular transition in a laser standard at 633 nm\", Opt. Commun. 137, 165-173 (1997), Table 1 and Sect. 3"
+source = "https://doi.org/10.1016/s0030-4018(96)00765-1 (publisher PDF)"
+doi = "10.1016/s0030-4018(96)00765-1"
+retrieved = "2026-10-28"
+catalog = "data/catalog/precision.yaml#titov1997b"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+One row: the absolute frequency of the i component (a13) of 127I2 R(127) 11-5 at zero pressure and zero line asymmetry,
+473 612 214 858.5 +- 12.7 kHz, Sect. 3, p. 171 (PDF page 7), read from the page image at 200 dpi. Printed as 473612214858.5
+kHz, entered as 473612214.8585 MHz. This is an extrapolation, not an operating-condition value, see uncertainty and notes.
+
+How it is reached (p. 171). The intercept of the linear fit to the asymmetry-corrected C values against iodine pressure
+(Fig. 7) is 21 787.76 kHz (text, p. 171; Fig. 7 box f = 21 787.76 kHz), relative to the h component of the same laser (i
+against h, Table 1 heading). Corrections for the gas-lens effect (810 Hz at the lowest pressure, 4.86 Pa, with the paper's
+estimate of the lens shift), the first-order Doppler (wavefront curvature, 370 to 400 Hz at 4.86 Pa) and the second-order
+Doppler shift (-98 Hz at 15 C) give 21 787.45 kHz, relative to the h component of the UME-L2 standard. The absolute value
+comes from the comparison of UME-L3 with the BIPM4 standard (ref. 20 there). Only the final 473 612 214 858.5 kHz is entered.
+
+Table 1 (p. 170, PDF page 6), "Iodine pressure dependence. The beat-frequency data is corrected for the line asymmetry": C
+values of the i component, against h, and the linear fit, kHz, with the deviation delta (kHz) from the fit. Pressure (Pa),
+C (kHz), linear fit (kHz), delta (kHz):
+  4.684   21 809.569   21 809.379   +0.190
+  7.102   21 819.126   21 819.328   -0.202
+  17.29   21 864.585   21 864.619   -0.034
+  23.48   21 892.183   21 892.136   -0.047
+Not entered as rows (they are beats between two lasers on i and h, not absolute frequencies; see notes). The table gives
+4.684 Pa for the lowest pressure, but the text gives 4.86 Pa for the same point (p. 170 and p. 171). The table value is
+entered as printed; the paper does not say which is correct.
+
+Other values entered in [conditions]: the Lorentzian pressure shift 4.45 +- 0.03 kHz/Pa (Fig. 7 slope, p. 170); the
+asymmetry parameter A = -0.078 (Fig. 9 caption); the B coefficient, 173.2 kHz at 17.29 Pa and 64 microW (p. 171) and the
+quadratic fit of Fig. 8 (y = 0.3215 x^2 + 2.9138 x + 5.9197 kHz, x in Pa, the fit's box, Fig. 8).
+
+Not entered: the Fig. 7 point values, the linewidths and saturation parameters (companion paper: Titov, Malinovsky, Erin,
+Opt. Commun. 136, 327 (1997), not held), and Figs. 2 to 6 and 9.
+"""
+
+uncertainty = """
+As printed: 12.7 kHz on the absolute value (p. 171), which the paper says is "mainly" the accepted CIPM uncertainty (it
+includes the gas-contamination term of the sealed cell and the uncertainty of the absolute measurement of this laser
+type). For the paper's own cell the impurity term is believed much smaller, since its resonances lie within 1.5 kHz of
+the mean of many comparisons (p. 171); that is not included. The intercept's own uncertainty is 350 Hz (p. 171; from the
+accuracy at the smallest pressure, 224 Hz), and that is an accuracy of the method for this cell only. The C-value
+uncertainties are 221 Hz at the lowest pressure and about 3 kHz at the highest (p. 170). Recorded as 0.0127 MHz.
+"""
+
+notes = """
+EXTRAPOLATED VALUE. The entry is the zero-pressure, zero-asymmetry frequency of the i component, reached by removing the
+pressure shift (Lorentzian term, 4.45 kHz/Pa) and the line-asymmetry shift, and by the gas-lens, Doppler and second-order
+Doppler corrections (sect. 3). It is not an operating-condition value. It must not be compared with values at the
+recommended conditions without the shifts.
+
+Model-free size check (not a validation). The recommended-condition values of the same component, in kHz as printed:
+smith2007a 473 612 214 712.96 +- 0.66 kHz (corrected to CIPM conditions), balling2007a_633 (SMU-1, May 2006) 473 612
+214 712 kHz plus 5.3 kHz, diddams2000a 473 612 214 714.2 kHz. The difference of this entry from smith2007a is +145.5 kHz,
+about 11 times the quoted 12.7 kHz. That difference is the size the paper gives for the removed pressure and asymmetry
+shifts so it is a
+consistency of the correction, not a check of the absolute value. The paper's absolute value relies on its own
+comparison with BIPM4 (ref. 20 there), which is not held here.
+
+Other points of the paper. The C values are beats between two lasers (the reference's own shifts are not removed), so
+they are not hyperfine intervals: they are kept in the transcription only. The B coefficient (asymmetry) grows
+quadratically with pressure (Fig. 8); the paper attributes it to small-angle elastic collisions. The paper says the sealed
+cell may be offset by impurities, and that a molecular beam or evacuated cell is needed for a better unperturbed frequency.
+
+Component labels: i = a13 (the paper's i component) as in the held sets ye2000a (x = i, a13) and balling2007a_633 (component
+i printed as a13). h = a14 is inferred from the rank order (the paper gives no label for h).
+"""
+
+[conditions]
+method = "intracavity He-Ne/I2 standard UME-L3 at 633 nm, 3f and 5f locking on main and side zeros, digital lock-ins; modulation-width and pressure series with an asymmetric (Lorentzian plus dispersive) line-shape model, corrected for asymmetry and lens/Doppler effects"
+pressure_Pa = [4.684, 7.102, 17.29, 23.48]
+pressure_shift_kHz_per_Pa = 4.45
+pressure_shift_kHz_per_Pa_unc = 0.03
+asymmetry_A = -0.078
+output_power_uW = [34, 64]
+linewidth_kHz_at_17_29_Pa = 2210

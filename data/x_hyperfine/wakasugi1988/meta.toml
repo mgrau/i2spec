@@ -1,0 +1,69 @@
+id = "wakasugi1988"
+citation = "M. Wakasugi, T. Horiguchi, M. Koizumi and Y. Yoshizawa, \"Hyperfine structure near the 13-1 band head in the B-X transition of 127I2\", J. Opt. Soc. Am. B 5, 2298-2304 (1988), Table 1 (p. 2302) and Fig. 6 (p. 2302)"
+source = "https://doi.org/10.1364/josab.5.002298 (publisher PDF)"
+doi = "10.1364/josab.5.002298"
+retrieved = "2026-10-28"
+unit = "eqQ'' in MHz (constants.csv)"
+isotopologue = "127I2"
+state = "X"
+files = ["constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 2302), column 1Sigma g eQq'' (X v'' = 1), rows J = 0 to 10 and the average, read from a 300 dpi render and a
+450 dpi crop of the table (the text layer is clean). Entered per J: eqQ'' in MHz with the printed (+-) uncertainty.
+J = 0 is pure quadrupole (footnote b); its eqQ'' = -2462.5 (4.0) is entered. The average -2459.9 (1.4) is not a row.
+
+Fig. 6(b) (p. 2302): the X v'' = 1, J'' = 5 hyperfine level diagram from R(5) of the 13-1 band (the only line where all
+levels are resolved), with 17 printed splittings in MHz (88.1, 154.6, 198.4, 154.3, 243.5, 369.7, 256.9, 328.8, 107.8,
+248.4, 203.4, 345.1, 15.4, 209.9, 43.4, 57.1, 316.1) and 3 parenthesized values (5.4, 288.9, 570.7) that are calculated
+from the fitted constants, not measured; the parenthesized values are not entered. The paper's text says the relative
+frequency of each hyperfine line is typically 2 MHz; that is used as the uncertainty of each splitting (the paper does
+not print uncertainties on the figure). The catalog expected 18 splittings per state; the figure shows 17 for the X
+state and 17 for the B state (catalog count not matched, see the B-state note in meta).
+
+Not entered as data: the figure gives the F values only as positions on the level staircase, so the F pair of each
+splitting cannot be read unambiguously, and a splitting with a guessed F pair would mislead a fit. The printed values
+are kept in this text as a record. The sign is not printed.
+The X v'' = 1 level is also a singlet/doublet/triplet mix (the epsilon labels in square brackets on Fig. 6b); the
+epsilon of each splitting is not assigned here.
+"""
+
+uncertainty = """
+Table 1: as printed (+-, the paper's convention is not stated; taken as 1 sigma). Splittings: 2 MHz per line (the paper
+states "the relative frequency of each hyperfine line is typically 2 MHz"; taken as 1 sigma). Frequency scale: the
+relative frequency scale is set by a commercial 300 MHz free spectral range Fabry-Perot (nominal, no calibration printed
+in this paper; the paper's FSR is 300 MHz, Tropel 216V-B). The catalog entry for the 1989 companion paper (wakasugi1989) records a calibration of
+its etalons at 297.7 MHz (not re-read here), so the scale may be about 0.8 % off. A common scale error of that size shifts every splitting and every
+eqQ'' by the same fraction: about 3 MHz on a 370 MHz splitting and about 20 MHz on eqQ'' = -2460 MHz. These uncertainties
+do not include it.
+"""
+
+notes = """
+Method. Molecular beam (effusive, collimation ratio about 100, room temperature) crossed at a right angle by a cw ring dye
+laser (Rhodamine 6G, 200 mW); laser-induced fluorescence photon counting; scan 30 GHz at 50 MHz/s; line FWHM 5 MHz
+(resolving power about 108). Frequency markers from a 300 MHz FSR Fabry-Perot; polynomial correction of the scan nonlinearity.
+Assignment from the Gerstenkorn-Luc constants. Hamiltonian H = H_NEQ + H_SR + H_TSS + H_SSS + H_NMO (eq. 1), coupling
+constants eQq, mu G/I, Dt, Ds; the paper's text: "the values of mu G''/I, Dt'' and Ds'' of the X state were set to zero" (footnote
+a), so the X constants in Table 1 are eqQ'' only. Line strengths from eqs. (3)-(5); forbidden components (Delta F = 0 and
+Delta F = -Delta J) observed at low J.
+
+Frequency scale. The paper calls the 300 MHz FSR nominal in the text (Tropel 216V-B); the scale error is as stated in
+uncertainty. Not a correction applied here. The paper's eqQ'' (-2459.9 MHz average) is about 7 MHz more negative than the
+X v'' = 0 values of wallerand1999 and borde2002 (-2452.6 MHz); this could come from the v'' = 1 vs 0 change or from the scale
+error; the paper and this entry do not decide between them.
+
+Related sets. The B v' = 13 constants of the same Table 1 (eQq', mu G'/I, Dt', Ds' per J) are in
+data/hyperfine_parameters/wakasugi1988a (not this folder). The 17 X splittings are listed in transcription only (not entered); the 17 B splittings of Fig. 6(a)
+are described in the wakasugi1988a meta (no B level-splitting folder exists). Overlap: the same molecular-beam group's 1989
+paper wakasugi1989 (14-1 band head line strengths; catalog) shares the apparatus.
+"""
+
+[columns]
+data = """
+(The splittings of Fig. 6b are not entered; see transcription.)
+"""
+constants = """
+v, J: the X level. quantity: eqQ (X spin-rotation and tensor/scalar spin-spin are zero by the paper's assumption). value,
+uncertainty, unit: as printed. table: Table 1. note: the printed row.
+"""

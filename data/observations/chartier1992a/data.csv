@@ -1,0 +1,3 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+129I2 P(54) 8-4,a28,interval,95.81,0.005,127I2 R(127) 11-5,a13,chartier1992a_12C,"Section 3 (i), p. 365: f(k, 8-4 P(54), 129I2) - f(i, 11-5 R(127), 127I2) = 95,81 MHz at a cold finger of 12 C, as printed; no uncertainty printed. k = a28 by position (see meta)"
+129I2 P(54) 8-4,a28,interval,95.84,0.005,127I2 R(127) 11-5,a13,chartier1992a_15C,"Section 3 (ii), p. 365: f(k, 8-4 P(54), 129I2) - f(i, 11-5 R(127), 127I2) = 95,84 MHz at a cold finger of 15 C, as printed; no uncertainty printed. k = a28 by position (see meta)"

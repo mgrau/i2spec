@@ -1,0 +1,62 @@
+id = "chartier1992a"
+citation = "J.-M. Chartier, S. Picard-Fredin and A. Chartier, \"International comparison of iodine cells\", Metrologia 29, 361-367 (1992), Section 3 (p. 365, the 129I2 measurement with cell NRC9/2)"
+source = "https://doi.org/10.1088/0026-1394/29/5/006 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0026-1394/29/5/006"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Section 3, p. 365 (PDF page 6), the two numbers of the NRC9/2 measurement, read from a 200 dpi rendering of the page
+and checked against the text layer (which prints the decimal comma: "95,81" and "95,84"). The paper gives
+f(k, 8-4 P(54), 129I2) - f(i, 11-5 R(127), 127I2) = 95.81 MHz at a cold finger of 12 C (i) and 95.84 MHz at 15 C (ii).
+The 129I2 measurement uses cell NRC9/2 with the BIPM7 laser, compared with the BIPM4 laser; the 127I2 i
+component is the BIPM reference line. Entered as printed, no rounding or correction.
+
+Labels. The paper's i is the 127I2 R(127) 11-5 component i, the same letter as the BIPM 633 nm tables, where i is
+a13 (bipm2003a, Table 1: a13 = -138.892 MHz from a16, x = i). The paper's k is the 129I2 P(54) 8-4 component k. By
+position, k = a28: bipm2003a gives f(a28) - f(a16) = -42.99 MHz (Table 3 note) and f(a13) - f(a16) = -138.892 MHz
+(Table 1), so f(a28) - f(a13) = 95.902 MHz. No other held component of 129I2 P(54) 8-4 lies within 50 MHz of that
+interval (the nearest, a27, is at 54.66 MHz from a13), so the match is unique. The label is also confirmed by
+bipm1984a (App. M5 Table 10), which prints "x = k" for the same 95.90 (4) MHz interval, with a28 as the component.
+
+Model-free check (same line pair, re-referenced to a13): bipm2003a gives 95.902 MHz, so this paper minus bipm2003a
+is -0.092 MHz at 12 C and -0.062 MHz at 15 C. The MEP 1983 value of 95.90 (4) MHz, held in bipm1984a, quinn1994a and
+quinn1999a, gives the same differences. schweitzer1973a (beat measurement, a28 - a13 = 96.0399 (98) MHz) is 0.23 and
+0.20 MHz higher. The catalog notes this as 0.06-0.09 MHz below the 1983 value, which is what the table shows.
+
+Not entered: the cell-shift table. Table 1 holds 34 frequency shifts (kHz, with sd) and 27 K0 values (Pa, with sd) for the cells of the comparison,
+as the catalog entry (chartier1992) summarizes; the table was not transcribed here. It is a list of per-cell
+corrections, not line data, so no rows are entered from it. Also not entered: the Fig. 2 deviations of d, f and g per cell (plotted only), Fig. 3
+(shift against impurity fraction), the 129I2 P(69) 12-6 and 127I129I P(33) 6-3 comparisons described in the
+text (other sets hold them), and the BIPM rapport values cited in the text.
+"""
+
+uncertainty = """
+None printed for either value. 0.005 MHz is taken as 1 sigma for both, from the paper's statement that the
+frequency reproducibility of the BIPM lasers is +-5 kHz, "including the installation of a new gain tube for the
+BIPM2 laser" (p. 365). That is a laser reproducibility, not a measurement error of the cell comparison, so the
+figure is an assignment, not a quoted uncertainty. The reference value 95.90 (4) MHz (CCDM 1983, cited as ref. [2])
+is not part of these rows.
+"""
+
+notes = """
+Both rows come from one cell (NRC9/2, 129I2-filled) in one series of comparisons, with the same laser pair and
+the same reference: they are two temperatures of one measurement, so they are correlated and should not be averaged
+as independent. The two groups are kept apart so that a fit can give each its own offset if it chooses.
+
+Relation to held sets: the same interval is held as the 1983 MEP reference value (bipm1984a, quinn1994a, quinn1999a,
+all 95.90 (4)) and as the BIPM 2003 table value (bipm2003a, a28 minus a13 from its Tables 1 and 3). This set is
+about 0.06-0.09 MHz below both, and it is the only held measurement of this interval with a temperature dependence.
+The paper notes that a laser locked to a 129I2 cell usually has worse reproducibility than one with a 127I2 cell,
+and that other frequency perturbations were already seen on the k component (ref. 21, BIPM Rapport 82/10). It does
+not attribute the 0.06-0.09 MHz difference to a cause.
+
+The isotope-shift sign: the paper's f(k) - f(i) is +95.81 MHz, the BIPM tables' f(a28) - f(a16) is -42.99 MHz; both
+are consistent once i = a13 is used (a13 lies 138.9 MHz below a16).
+"""
+
+[conditions]
+method = "beat-frequency comparison of the BIPM7 He-Ne laser (633 nm, iodine-stabilized) against the BIPM4 laser, with cell NRC9/2 (129I2) in the BIPM7 laser"
+cold_finger_C = [12, 15]
+cell = "NRC9/2 (129I2-filled, Section 3)"

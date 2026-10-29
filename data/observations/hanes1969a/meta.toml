@@ -1,0 +1,50 @@
+id = "hanes1969a"
+citation = "G. R. Hanes and C. E. Dahlstrom, \"Iodine hyperfine structure observed in saturated absorption at 633 nm\", Appl. Phys. Lett. 14, 362-364 (1969), Table I"
+source = "https://doi.org/10.1063/1.1652687 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1063/1.1652687"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 364), "Frequency separation Delta nu of iodine hyperfine components relative to component i": 13
+rows, components a-h and j-n of 127I2 R(127) 11-5 at 633 nm, in MHz. Read from the 200 dpi page image (the OCR
+layer drops the letters and misplaces the table's f row as a second "j"; the image shows f = 139.7). Signs as
+printed: a-h are above i, j-n below.
+
+Labels: the letters run down in frequency, as in bipm2003a (x column of Table 1, relative to a16). Letter n
+(a = 0) maps to rank 21 - n: a = a21, b = a20, c = a19, d = a18, e = a17, f = a16, g = a15, h = a14, i = a13,
+j = a12, k = a11, l = a10, m = a9, n = a8. Every row is an interval to a13 (the paper's component i). Confirmed by
+position against bipm2003a: the differences (Hanes minus BIPM, MHz) are a -2.6, b -2.6, c -2.3, d +1.8, e +1.3,
+f +0.8, g +0.6, h +0.4, j -0.4, k +0.7, l +0.9, m +1.5, n +0.8. Every difference is inside the printed limits, and
+the rank order matches the x letters of bipm2003a one for one.
+
+Unit conversion: none. The paper gives MHz to 0.1 MHz.
+
+Not entered: the text's wavelength shift and pressure and field tests (no frequency values; the shift is "< 2 MHz
+at 1 Torr"), the 0.9 GHz displacement from the neon line, the 4.5 MHz HWHM and the 2.3 MHz homogeneous width.
+
+Consistency check (model-free): the 13 rows against bipm2003a re-referenced to a13 (differences above): mean
++0.06 MHz, rms 1.5 MHz, largest -2.6 MHz (a, b). The differences are inside the printed error limits (1 MHz + 1%,
+i.e. 1.2 MHz for h to 4.0 MHz for a); the two largest are the same sign for a-c and the rest are mostly positive.
+"""
+
+uncertainty = """
+Printed: "Estimated error limits +/- 1 MHz +/- 1%" in the table caption (the text on p. 364 says "+/- 1 MHz +/- 0.5%";
+the caption is taken as the stated value). Entered per row as 1 MHz + 1% of the row's |value|, i.e. treated as
+a linear-sum error limit and not converted to a 1-sigma value. The rows are a single set taken in one
+apparatus (sigma would be smaller if the limits are a 2-sigma or 3-sigma bound).
+"""
+
+notes = """
+The first observation of the R(127) 11-5 hyperfine structure at 633 nm (the origin of the letters a-n used by
+later tables, see the catalog). The paper does not define component i beyond "the measurement of component i"
+and uses it as the reference, so it is the a13 of the BIPM labels. Relation to held sets: overlaps bipm2003a
+(the MEP 633 nm table, far more precise, same components) and cerez1974a, where the letters a-j relative to i
+are also given. Data set is a low-weight historical check, not a precision anchor.
+"""
+
+[conditions]
+method = "intracavity saturated absorption in a single-frequency 633 nm He-Ne laser, 90 cm absorption cell at about 40 mTorr; first-derivative detection; beat against a second laser via an rf marker"
+cell_length_cm = 90
+pressure_note = "about 40 mTorr (normal operating pressure); the pressure test at 1 Torr is not tabulated"

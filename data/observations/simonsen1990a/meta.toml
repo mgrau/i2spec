@@ -1,0 +1,55 @@
+id = "simonsen1990a"
+citation = "H. Simonsen, O. Poulsen, \"Frequency stabilization of an internal mirror HeNe laser at 543.5 nm to I2-saturated absorptions\", Appl. Phys. B 50, 7-12 (1990), Tables 1 and 2"
+source = "https://doi.org/10.1007/bf00330085 (publisher PDF with a text layer; the table values were checked against the page image)"
+doi = "10.1007/bf00330085"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Only the v_beat column of Table 1 (R(12) 26-0, p. 10) and Table 2 (R(106) 28-0, p. 11) is entered: 3 + 9 = 12 rows.
+These are the beat frequencies between the two locked lasers (Melles Griot tube locked to b15 of R(106) 28-0, Siemens
+tube locked to each component), and they are the only measured values the paper gives at the 0.3 MHz level.
+The text (p. 11) says the splittings in both tables are "relative to components a1 and b1 respectively", so the v_beat
+values are entered as printed, as intervals to a1 (R(12) 26-0) and to b1 (R(106) 28-0). The conversion from the
+laser-to-laser beat to a1 or b1 is the authors' (the beat is against b15, not against a1 or b1, so the conversion
+uses the calculated splittings; this is inferred from the text, not printed).
+
+Entered (MHz, printed): R(12) 26-0 a13 738.9, a14 752.7, a15 856.7; R(106) 28-0 b2 253.8, b3 282.7, b4 292.1,
+b5 320.6, b6 401.6, b7 415.0, b8 446.7, b9 459.5, b10 573.5. The v_beat values were checked against the text layer,
+which agrees with the page image for all 12.
+
+Not entered: the v_exp column (saturated absorption scan, Fig. 5; standard deviation 2.6 MHz for R(12) and 5.6 MHz
+for R(106)); the v_theory column (the authors' calculation, NEQ + SR, 1st/2nd order); the F'' column; the a1-a12 and
+b11-b15 rows of Tables 1 and 2 that have no v_beat (dashes in the printed table); Figs. 2-4 and 6 (emission profiles,
+error signal). The b15 beat (the reference laser's component) is not printed as a value.
+
+Labels: a = R(12) 26-0, b = R(106) 28-0, as in the held 543 nm sets (bipm2003b, cheng2001a). The mapping is confirmed
+by the v_theory column: the printed theory values a13 738.9, a14 752.3, a15 856.2 match the held a13 739.01, a14
+752.23, a15 856.33 MHz (bipm2003b, relative to b10 minus a1) to 0.1 MHz, and the b_k values follow the same order.
+The paper's own labels are the same as the held sets', so no relabelling was needed.
+
+Model-free check against held sets (cheng2001a and bipm2003b, referenced to a1 or b1 by subtraction of the held
+b1 = -573.765 and a1 = -1162.24 MHz to b10 and a1): Simonsen minus held, MHz: a13 -0.11, a14 +0.47, a15 +0.37;
+b2 +0.50, b3 +0.53, b4 +0.48, b5 +0.51, b6 +0.53, b7 +0.66, b8 +0.70, b9 +0.31, b10 -0.27. So the b2-b9 values sit
+about +0.5 MHz above the held values, the common offset that the reference conversion would produce, and b10 sits
+about 0.8 MHz below the others relative to b2-b9. The catalog note calls the b10 beat "about 0.7 MHz high"; in these
+differences it is low, relative to the other b values. Entered as printed; this is a comparison, not a correction.
+"""
+
+uncertainty = """
+As printed: the v_beat standard deviation between calculated and measured splittings is 0.3 MHz for both lines
+(Tables 1 and 2 footnotes; p. 11). Each entry is given 0.3 MHz, 1 sigma. The v_exp standard deviations (2.6 and 5.6 MHz)
+are not used.
+"""
+
+notes = """
+One pair of locked lasers (the Melles Griot tube and the Siemens tube, 700 MHz APD bandwidth) for both lines, so one
+group. The set adds nothing at the kHz level: the same components are held at 5-30 kHz in cheng2001a and bipm2003b
+(see the catalog entry), and this set is the 0.3 MHz historical record. It does not overlap the 633 nm sets.
+"""
+
+[conditions]
+method = "internal-mirror green He-Ne (543.5 nm), doubly-differential saturated absorption in an external cell (cold finger 0 C), first-harmonic lock; heterodyne beat between two locked lasers"
+cold_finger_C = 0
+modulation_note = "the paper does not state a modulation amplitude for the lock"

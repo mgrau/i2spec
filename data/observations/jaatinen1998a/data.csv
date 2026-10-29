@@ -1,0 +1,5 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(12) 26-0,a13,interval,-13.244,0.021,,a14,jaatinen1998a,"Table 1: Grene3 a13 minus Grene2 a14, measured -13244(21) kHz, corrected for the -40.0005 MHz AOM shift; expected -13204(30) kHz"
+127I2 R(12) 26-0,a13,interval,62.398,0.024,,a11,jaatinen1998a,"Table 1: Grene3 a13 minus Grene2 a11, measured 62398(24) kHz; expected 62397(40) kHz"
+127I2 R(12) 26-0,a12,interval,9.255,0.021,,a11,jaatinen1998a,"Table 1: Grene3 a12 minus Grene2 a11, measured 9255(21) kHz; expected 9268(45) kHz"
+127I2 R(12) 26-0,a10,interval,83.290,0.014,,a9,jaatinen1998a,"Table 1: Grene3 a10 minus Grene2 a9, measured 83290(14) kHz; expected 83283(15) kHz"

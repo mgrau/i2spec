@@ -1,0 +1,67 @@
+id = "robertsson2001b"
+citation = "L. Robertsson, L.-S. Ma and S. Picard, \"Improved iodine-stabilized Nd:YAG lasers\", Proc. SPIE 4269, Laser Frequency Stabilization, Standards, Measurement, and Applications, 268-271 (2001), Table 1"
+source = "https://doi.org/10.1117/12.424482 (publisher PDF)"
+doi = "10.1117/12.424482"
+retrieved = "2026-10-28"
+catalog = "data/catalog/precision.yaml#robertsson2001b"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 270, PDF page 3), "Observed f_obs and calculated f_calc hyperfine components for the #1110 line relative to
+component a1": the f_obs column, the separations of the 13 components from a1 (F', I' columns not entered), in MHz as
+printed (four decimals, 100 Hz steps). Read from the page image at 200 dpi and checked against the text layer.
+Twelve rows: a2, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14 and a15 (the a1 row is zero). a3 and a4 are not in the table
+(the text says that a1 to a15 were measured; the catalog notes the gap). Labels: a_n ranked by frequency, a1 lowest, as in
+i2spec. The line, R(56) 32-0 (#1110), upper F' = 57 (the a1 row of the table is F' = 57, I' = 2), lower J'' = 56.
+
+Beat frequencies: laser B locked to a10, laser A locked to each component, so the separations are beat-note differences
+of the BIPM laser pair, not spectrometer scans. The paper's calculated column (f_calc, from its Table 2 constants) and the
+residuals (f_obs - f_calc, MHz, from -0.0005 to +0.0007) are kept in the note of each row. The rows are as printed; the
+a10 row (571.5426 MHz, the reference of the BIPM-NRLM line) is entered as an interval from a1 like the others.
+
+Re-referenced to a10 (f_n - f_a10, which is how picard2003a prints them), checked in notes: all 12 agree with the BIPM
+column of picard2003a within 0.1 kHz, which is the printed precision of this table.
+
+Not entered: the calculated column (see the note of each row); the fitted and fixed constants of Table 2 (see the
+hyperfine_parameters set robertsson2001b); the frequency-difference data of Fig. 1 and Fig. 2 (laser A minus laser B,
+-63 Hz mean over 10 days); the stability figures.
+"""
+
+uncertainty = """
+The paper prints no uncertainty per component. Table 2 gives the standard uncertainty of the fit as 400 Hz (u_c), with all
+components weighted equally, and that is taken as 1 sigma for every row (0.0004 MHz). It is a fit residual, not a
+measurement error per component, so the 0.1 kHz printed precision is smaller and is not used. The text says the
+standard uncertainty of the laser-to-laser offset is 161 Hz over 10 days (not used here: that belongs to the laser pair,
+not to the intervals).
+"""
+
+notes = """
+BIPM primary record of the twelve R(56) 32-0 intervals. This is the original source of the "BIPM" column of
+picard2003a Table 5 (its ref. 19, which picard2003a marks as not held).
+
+[overlaps] NOT declared here, on purpose. src/i2spec/observations.py reads [overlaps] in the set that prints the other
+set's measurements: the declaring set is the compilation, and its rows that another set determines are dropped from the fit
+(and, with record, kept as citations). Declaring picard2003a = "same" in this meta would make this set's rows the ones
+dropped and picard2003a's BIPM column the one kept, which is backwards. The declaration belongs in picard2003a's meta,
+where the other reprints are already declared (hong2001b, arie1993a, jungner1995b, each with a groups list):
+
+  robertsson2001b = { relation = "same", groups = ["picard2003a_bipm"] }   # the BIPM column
+
+picard2003a's own transcription states that its BIPM column cites this paper "until that one is transcribed"; with this
+set held, that citation should move to robertsson2001b. That edit is in picard2003a's meta and is not made here.
+
+Other held sets with the same line: hong2001b (absolute hyperfine constants, Table 3), arie1993a (A and B column, the
+same values, re-referenced in picard2003a), ye1999a and bipm2012a (R(56) 32-0 intervals). Not compared here beyond the
+picard2003a column.
+
+The paper's text (p. 270) says a1 to a15 were each locked and measured, but Table 1 lists 13 components, without a3 and a4, so those two are not in this set and the paper does not say why.
+"""
+
+[conditions]
+method = "two frequency-doubled Nd:YAG lasers stabilized by modulation transfer spectroscopy (modulation 350 kHz, index about 1.4); laser A commercial 532 nm source, laser B 1064 nm laser with cavity-enhanced MgO:LiNbO3 doubling; heterodyne beats"
+cell_length_cm = 50
+cold_finger_C = -14.5
+pressure_Pa = 0.9
+pump_power_mW = 4
+probe_power_mW = 0.3

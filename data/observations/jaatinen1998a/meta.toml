@@ -1,0 +1,48 @@
+id = "jaatinen1998a"
+citation = "E. Jaatinen, J.-M. Chartier, \"Possible influence of residual amplitude modulation when using modulation transfer with iodine transitions at 543 nm\", Metrologia 35, 75-81 (1998), Table 1"
+source = "https://doi.org/10.1088/0026-1394/35/2/2 (publisher PDF with a text layer; Table 1 checked against the page image)"
+doi = "10.1088/0026-1394/35/2/2"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 77), "The measured frequency difference between the two lasers, when each was locked to the component
+listed", with the -40.0005 MHz AOM shift of Grene3 already removed by the authors. Printed in kHz; entered in MHz
+(divided by 1000). Four hyperfine intervals are entered: 127I2 R(12) 26-0 a13 - a14 (-13.244 MHz), a13 - a11 (62.398),
+a12 - a11 (9.255) and a10 - a9 (83.290). The first component of each row is the Grene3 lock (the laser locked to
+the component listed first in the table), and the second is the Grene2 lock; the value is f(Grene3 component) -
+f(Grene2 component), entered as component = Grene3, ref_component = Grene2, value = the printed measured frequency
+difference.
+
+Sign and labels: the sign is fixed by the "expected" column, which is the held-set interval in the same sense. The
+held R(12) 26-0 intervals relative to R(106) b10 (bipm2003b, cheng2001a) give f(a13) - f(a14) = -13.22 MHz, f(a13)
+- f(a11) = 62.38 MHz, f(a12) - f(a11) = 9.26 MHz and f(a10) - f(a9) = 83.29 MHz. The measured values agree with these
+to 24, 18, -5 and 4 kHz. The labels are those of the held sets (the paper's own labels for these four rows; the
+paper does not map them to the lines, so the mapping is inferred from the agreement and the catalog).
+
+Not entered: the two same-component rows, a13 - a13 (-9 kHz, expected 0) and b5 - b5 (-32 kHz, expected 0). These are
+the frequency difference between the two lasers when they were locked to the same component. They measure the laser
+offset of the method, not a hyperfine interval, so they are described here and left out of the data set. The
+"expected" column (Quinn 1993/94 values, 15-45 kHz uncertainties) is not entered. The Figs. 2-3 spectrum and the Allan
+variance are not entered.
+
+Model-free check: the four entered intervals against the held sets (above), residuals -24, 18, -5, 4 kHz; rms 15 kHz,
+within the printed 14-24 kHz uncertainties.
+"""
+
+uncertainty = """
+As printed (kHz, converted): a13 - a14 21 kHz, a13 - a11 24 kHz, a12 - a11 21 kHz, a10 - a9 14 kHz. Entered as 0.021,
+0.024, 0.021 and 0.014 MHz, 1 sigma.
+"""
+
+notes = """
+One pair of lasers (Grene3, the modulation-transfer 543 nm He-Ne in a 500 mm external cell at -2.8 C, and the BIPM
+Grene2, 3f locked), so one group. The four intervals are held at 1-5 kHz in bipm2003b and cheng2001a, so this set is a
+low-weight check of those intervals. Its uncertainties (14-24 kHz) are much larger than the held ones; the catalog
+sets its weight accordingly. The paper says the two lasers differ by 12 kHz on average from the expected values.
+"""
+
+[conditions]
+method = "modulation transfer (EOM 800 kHz, 0.4 rad; AOM -40.0005 MHz on Grene3) in a 500 mm external cell at -2.8 C, against a 3f-locked BIPM laser; beats below 60 MHz only (two longitudinal modes)"
+cell_temperature_C = -2.8

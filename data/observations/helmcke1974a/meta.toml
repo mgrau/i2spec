@@ -1,0 +1,63 @@
+id = "helmcke1974a"
+citation = "J. Helmcke and F. Bayer-Helms, \"He-Ne laser stabilized by saturated absorption in I2\", IEEE Trans. Instrum. Meas. IM-23, 529-531 (1974), Fig. 8"
+source = "https://doi.org/10.1109/tim.1974.4314348 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1109/tim.1974.4314348"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Fig. 8 (p. 531), "Beat frequencies of 127I2 and 129I2 components": the 3x3 table of beat frequencies between
+127I2 h, i, j (rows) and 129I2 A, B, C (columns), in MHz. Read from the 200 dpi page image and checked against the
+text layer; the digits agree. The printed differences h - i 21.957, i - j 21.588, B - A 19.782 and C - B 17.842 MHz
+are reproduced exactly by the nine beats (for example 968.598 - 946.641 = 21.957, 1009.968 - 990.186 = 19.782,
+1027.810 - 1009.968 = 17.842), so the transcription is internally consistent.
+
+Labels: the 129I2 P(33) 6-3 peaks A, B, C are e1, e2, e3, and the 127I2 R(127) 11-5 components h, i, j are a14,
+a13, a12. Both match the held sets: bipm2003a (Table 6 of the MEP 633 nm document, x = A, B, C for e1, e2, e3,
+relative to e2; and x = h, i, j for a14, a13, a12 of Table 1), bipm1984a (App. M5 Tables 8 and 13) and quinn1994a
+and quinn1999a (App. M3 Tables 12-27). Same letters in every one of them: e1 = A, e2 = B, e3 = C. The spacings
+e2 - e1 (19.82 MHz) and e3 - e2 (17.83 MHz) agree with the beats here (B - A 19.782, C - B 17.842).
+
+Each beat is entered as an interval: line = 129I2 P(33) 6-3 component e1/e2/e3, ref_line = 127I2 R(127) 11-5
+component a14/a13/a12, value = f(129I2 e) - f(127I2 a) as printed. The sign convention is the paper's own and is
+confirmed by the held sets: B - i = 988.380 here, and f(e2) - f(a13) = 988.29 from bipm1984a (849.4 MHz from a16
+in bipm2003a, plus the 138.892 MHz offset of a13 from a16). The four derived differences are not entered as rows;
+they follow from the nine beats (in the same group) and would count the balanced readings twice.
+
+Consistency check (model-free, held sets re-referenced): the differences of the nine beats against bipm1984a
+and quinn1994a (App. M3): B - i 988.380 against 988.29 (+0.09 MHz, within the 0.2 MHz of those sets); B - A 19.782
+against 19.82 (-0.04); C - B 17.842 against 17.83 (+0.01); i - h 21.957 against 21.939 (+0.02); i - j 21.588 against
+21.565 (+0.02). All inside the printed uncertainties.
+
+Not entered: the derived differences above; the Allan variance (Fig. 6), the spectral density (Fig. 7), the
+beat record of Fig. 5 (129I2 A - B, drift 2.7 kHz in 13 h); the third-harmonic signals (Figs. 3 and 4); the
+half-width values in the text (2.65 MHz for 129I2 B, 1.55 MHz for 127I2 i).
+"""
+
+uncertainty = """
+Printed: "+/- 0.04 (standard deviation 0.012)" under Fig. 8, and "the uncertainty has been estimated to be in the
+order of 10^-10 relative to the laser frequency" (about 47 kHz at 0.47 THz, so the 0.04 MHz is of that order). Entered as
+0.04 MHz for each beat, as printed. The 0.012 MHz standard deviation is the printed scatter of the readings and is
+not used as the uncertainty. The nine beats were balanced to equal differences (see notes), so their errors are
+correlated; the group is one set for that reason.
+"""
+
+notes = """
+Anchor value between the two isotopologues. Helmcke & Bayer-Helms give B - i = 988.380 MHz with 0.04 MHz, which is
+about five times tighter than the MEP's e2 - a16 (849.4 (2) MHz in bipm2003a, 988.29 (20) in bipm1984a and quinn1994a).
+The MEP values were used by this set only as a check, not as an input. Helmcke's differences agree with the held
+sets within their uncertainties: B - A 19.782 against 19.82 (0.05) in bipm2003a; C - B 17.842 against 17.83 (0.03);
+i - h 21.957 against 21.939 (0.005); i - j 21.588 against 21.565 (0.005) in bipm1984a.
+
+Pressures (from the text): 129I2 at 5 N/m2 (38 mTorr), 127I2 at 15.3 N/m2 (115 mTorr), chosen for a flat background
+on B and i. Not corrected for pressure or for modulation (third-harmonic, amplitudes 0.8-7.8 MHz, Figs. 3 and 4). The paper's own references
+[1], [3], [5] and [8] (Hanes & Dahlstrom 1969, hanes1969a, among them) are said to agree with these values within
+the reproducibility of the krypton comparison; this set was not compared with them beyond the checks above.
+"""
+
+[conditions]
+method = "3He-20Ne (127I2) and 3He-22Ne (129I2) He-Ne lasers, third-harmonic detection, beat-frequency counting between the two systems; each set at least 10 readings of 10 s"
+pressure_127I2_N_per_m2 = 15.3
+pressure_129I2_N_per_m2 = 5
+modulation_note = "modulation amplitudes 0.8-7.8 MHz (Figs. 3 and 4); the beats are not corrected for pressure or modulation"

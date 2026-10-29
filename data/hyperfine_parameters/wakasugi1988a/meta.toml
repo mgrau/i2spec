@@ -1,0 +1,45 @@
+id = "wakasugi1988a"
+citation = "M. Wakasugi, T. Horiguchi, M. Koizumi and Y. Yoshizawa, \"Hyperfine structure near the 13-1 band head in the B-X transition of 127I2\", J. Opt. Soc. Am. B 5, 2298-2304 (1988), Table 1 (p. 2302)"
+source = "https://doi.org/10.1364/josab.5.002298 (publisher PDF)"
+doi = "10.1364/josab.5.002298"
+catalog = "data/catalog/precision.yaml#wakasugi1988a"
+retrieved = "2026-10-28"
+unit = "MHz"
+kind = "B-state (v' = 13) effective hyperfine parameters, one row per rotational level J' (the B-state column of Table 1)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 2302), B v' = 13 columns eQq' (MHz), mu G'/I, Dt' and Ds' (kHz), rows J = 1 to 10, read from a 300 dpi render
+and a 450 dpi crop; converted to MHz exactly (C = mu G'/I in kHz divided by 1000; the paper's Dt' and Ds' in kHz).
+Uncertainties are the printed (+-) values. The J = 0 row (eQq' = -493.6 (34.2) MHz, pure quadrupole, footnote b) has no
+C, d or delta, so it is not in data.csv (the loader needs all eight values); it is recorded here only.
+The average row (eQq' = -510.3 (0.5), mu G'/I = 32.5 (0.6), Dt' = -30.2 (2.3), Ds' = -9.9 (1.6) kHz) is not a row.
+
+Line naming (one row per level J' is printed, but the paper names lines only in Fig. 6): the B level J' is the upper level
+of an R(J'-1) line from J'' = J' - 1 (Fig. 6(a) is labelled "B v' = 13, J' = 6" for R(5), which fixes the rule for J' = 6),
+so row J' = J is named "127I2 R(J-1) 13-1". For J' = 1 this is R(0). The table also gives the X state's J'' = J rows
+(wakasugi1988 constants.csv); the paper does not say which of its lines each X row comes from. This line naming is the
+paper's Fig. 6 convention, not a printed statement for every J, and it is flagged as a doubt in the report below.
+"""
+
+uncertainty = """
+As printed: the parenthesized values in Table 1 (the paper gives no convention). Frequency scale: the paper's 300 MHz
+etalon FSR is nominal, so the whole scale may be about 0.8 % off (the catalog records 297.7 MHz for the 1989 companion, not re-read here).
+A common error of that size changes every eQq' by about 4 MHz (on -510 MHz) and every C' by about 0.3 kHz (on 32.5 kHz);
+not included in the values above.
+"""
+
+notes = """
+Parameter mapping. The paper's Hamiltonian is H = H_NEQ + H_SR + H_TSS + H_SSS + H_NMO with coupling constants Dt
+(tensor spin-spin) and Ds (scalar spin-spin). As in every other set here (d the tensor and delta the scalar
+spin-spin constant: hong2001b d' = -42.7, delta' = -6.9 kHz at B v' = 32), d = Dt' and delta = Ds'. The paper's averages
+Dt' = -30.2 and Ds' = -9.9 kHz at v' = 13 follow the same pattern. Each row's note keeps the paper's own names. C = mu G'/I, the
+spin-rotation constant as the paper names it (mu G'/I, not a separate definition).
+
+Fig. 6(a) (p. 2302): the B v' = 13, J' = 6 level diagram from R(5) of the 13-1 band, 17 printed splittings in MHz (30.4,
+37.1, 39.1, 12.3, 45.4, 83.5, 56.4, 61.0, 48.2, 79.0, 9.5, 73.0, 17.6, 37.4, 41.0, 21.8, 6.0) and 3 calculated values in
+parentheses (63.2, 1.5, 113.0), not entered. These are B-state splittings with no level-splitting folder in this repository
+and are not entered in data/x_hyperfine; they are recorded here. The catalog expected 18; 17 are legible on the figure.
+
+Method and checks: see data/x_hyperfine/wakasugi1988/meta.toml (same paper).
+"""

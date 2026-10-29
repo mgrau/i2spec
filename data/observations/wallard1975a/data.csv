@@ -1,0 +1,4 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a18,interval,39.442,0.017,,a15,wallard1975a,"Table 4: mean of the swapped beats g(NPL)-d(BIPM) 39.457 and d(NPL)-g(BIPM) 39.427 MHz; +/- 17 kHz as printed; sign from BIPM ordering (d above g)"
+127I2 R(127) 11-5,a16,interval,13.209,0.023,,a15,wallard1975a,"Table 4: mean of the swapped beats g-f 13.232 and f-g 13.186 MHz; +/- 23 kHz as printed; sign from BIPM ordering (f above g)"
+127I2 R(127) 11-5,a17,interval,26.564,0.017,,a15,wallard1975a,"Table 4: mean of the swapped beats g-e 26.581 and e-g 26.547 MHz; +/- 17 kHz as printed; sign from BIPM ordering (e above g)"

@@ -1,0 +1,36 @@
+id = "robertsson2001b"
+citation = "L. Robertsson, L.-S. Ma and S. Picard, \"Improved iodine-stabilized Nd:YAG lasers\", Proc. SPIE 4269, Laser Frequency Stabilization, Standards, Measurement, and Applications, 268-271 (2001), Table 2"
+source = "https://doi.org/10.1117/12.424482 (publisher PDF)"
+doi = "10.1117/12.424482"
+retrieved = "2026-10-28"
+catalog = "data/catalog/precision.yaml#robertsson2001b"
+unit = "MHz"
+kind = "B-state (v' = 32, J' = 57) absolute hyperfine parameters for R(56) 32-0, one row, four-term fit with the X state held fixed"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 2 (p. 270, PDF page 3), "Hyperfine constants for the fit with all components weighted equally": the upper-state
+fitted column eqQ' = -544.747(1) MHz, C' = 89.654(1) kHz, d' = -42.73(4) kHz, delta' = -6.90(4) kHz, and the fit's
+standard uncertainty u_c = 400 Hz. Read from the page image at 200 dpi. C', d' and delta' are converted from kHz to MHz
+exactly, and each uncertainty is the printed last-digit value in the same unit (eqQ' 0.001 MHz; C' 0.000001 MHz;
+d' 0.04 kHz; delta' 0.04 kHz).
+
+The lower state (fixed, not fitted) is printed as eqQ'' = -2453.130 MHz, C'' = 3.306 kHz, d'' = 1.524 kHz,
+delta'' = 3.705 kHz. The text (p. 270) says eqQ'' and C'' "were maintained at the values obtained by Hong et al." (hong2001b,
+Table 3, J'' = 56, eqQ'' = -2453.132(11) MHz and C'' = 3.306(21) kHz), and d'' and delta'' at the Wallerand et al. 1999
+Raman values (the same values hong2001b holds fixed). The printed eqQ'' is 2 kHz from hong2001b's fitted J'' = 56 value, a
+rounding difference at the printed precision. Lower-state constants are in notes, not in the row.
+
+Fit: all 13 components weighted equally; fit standard uncertainty 400 Hz, which the paper calls the best agreement between
+theory and experiment in iodine presented to date. The fit gave the largest residual on a10 (+0.7 kHz).
+"""
+
+uncertainty = "As printed (last digits in parentheses) from the least-squares fit; statistical only. The fit standard uncertainty 400 Hz is in fit_sd_kHz."
+
+notes = """
+Four-term effective Hamiltonian (eqQ, C, d, delta) with the first-order perturbation method of Borde et al. 1981 (ref. 11
+there). The data are the twelve intervals of data/observations/robertsson2001b (Table 1, referenced to a1), which are the
+beat measurements of laser A against a10 held by laser B.
+
+Comparison with hong2001b (R(56) 32-0, upper J' = 57, with its own X-state values fitted or held as described there): eqQ' -544.751(11) against -544.747(1) MHz (4 kHz apart), C' 89.656(21) against 89.654(1) kHz, d' -42.701(78) against -42.73(4) kHz, delta' -6.943(86) against -6.90(4) kHz. All four agree within the larger of the two printed uncertainties. Hong's absolute eqQ' depends on the eqQ'' it fitted, so for a like-for-like comparison use eqQ' + eqQ'' of each set.
+"""

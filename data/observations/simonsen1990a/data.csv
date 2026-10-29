@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(12) 26-0,a13,interval,738.9,0.3,,a1,simonsen1990a,"Table 1, v_beat column: 738.9 MHz relative to a1 (printed); vtheory 738.9; beat taken against b15 of the Melles Griot laser"
+127I2 R(12) 26-0,a14,interval,752.7,0.3,,a1,simonsen1990a,"Table 1, v_beat column: 752.7 MHz relative to a1 (printed); vtheory 752.3"
+127I2 R(12) 26-0,a15,interval,856.7,0.3,,a1,simonsen1990a,"Table 1, v_beat column: 856.7 MHz relative to a1 (printed); vtheory 856.2"
+127I2 R(106) 28-0,b2,interval,253.8,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 253.8 MHz relative to b1 (printed); vtheory 253.8"
+127I2 R(106) 28-0,b3,interval,282.7,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 282.7 MHz relative to b1 (printed); vtheory 281.9"
+127I2 R(106) 28-0,b4,interval,292.1,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 292.1 MHz relative to b1 (printed); vtheory 291.8"
+127I2 R(106) 28-0,b5,interval,320.6,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 320.6 MHz relative to b1 (printed); vtheory 320.2"
+127I2 R(106) 28-0,b6,interval,401.6,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 401.6 MHz relative to b1 (printed); vtheory 401.3"
+127I2 R(106) 28-0,b7,interval,415.0,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 415.0 MHz relative to b1 (printed); vtheory 414.3"
+127I2 R(106) 28-0,b8,interval,446.7,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 446.7 MHz relative to b1 (printed); vtheory 446.0"
+127I2 R(106) 28-0,b9,interval,459.5,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 459.5 MHz relative to b1 (printed); vtheory 459.2"
+127I2 R(106) 28-0,b10,interval,573.5,0.3,,b1,simonsen1990a,"Table 2, v_beat column: 573.5 MHz relative to b1 (printed); vtheory 573.6"

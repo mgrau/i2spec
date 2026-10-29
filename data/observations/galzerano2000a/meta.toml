@@ -1,0 +1,51 @@
+id = "galzerano2000a"
+citation = "G. Galzerano, F. Bertinetto, E. Bava, \"Characterization of the modulation transfer spectroscopy method by means of He-Ne lasers and 127I2 absorption lines at lambda = 612 nm\", Metrologia 37, 149-154 (2000), Table 1"
+source = "https://doi.org/10.1088/0026-1394/37/2/7 (publisher PDF)"
+doi = "10.1088/0026-1394/37/2/7"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 153), hyperfine splitting of the 9-2 R(47) 127I2 line at 612 nm, two columns of measured intervals relative
+to a7 (a7 = 0), read from a 200 dpi rendering of p. 153 (the text layer is not used for the digits). Entered in MHz
+by moving the decimal point (exact): -357 173 kHz is -357.173 MHz.
+- group galzerano2000a_mts: the "MTS method/kHz" column, 9 rows: a1, a2, a4, a5, a6, a8, a9, a10, a11. Standard
+  uncertainty printed as (7), i.e. 7 kHz (uncertainty 0.007 MHz).
+- group galzerano2000a_fms: the "FMS method/kHz" column, the same 9 rows. Standard uncertainty printed as (2), i.e.
+  2 kHz (0.002 MHz). Table 1 footnote 1 gives the FMS reference as Bisi and Bertinetto [8]; the nine values are
+  identical to Table 5 of bisi1997a.
+a3 is marked unresolved (*) in both columns and is not entered.
+
+Not entered: the CCL recommended column (the MeP 612 nm values, as in bipm2003d); the four Delta constants of each
+method (MTS: Delta eqQ 1948.06(4) MHz, Delta C 25.172(6) kHz, Delta delta -15.5(5) kHz, Delta d -18.9(6) kHz; FMS:
+1948.00(2) MHz, 25.162(4), -16.2(3), -18.3(4) kHz), which are derived quantities; the pressure shifts (a7 -10.7(8)
+kHz/Pa MTS, -8.1(1) kHz/Pa FMS; b15 -9.1(4), -7.1(2) kHz/Pa; from the text, not printed in Table 1); the modulation
+index coefficients (MTS 8(7), 0.7(8) kHz/rad; FMS -4(4), 2.4(6) kHz/rad, from the text).
+"""
+
+uncertainty = """
+As printed in Table 1: MTS 7 kHz and FMS 2 kHz, each row 1 sigma (the parenthesized figures refer to the last digits
+of the quoted result). The text puts the cell-impurity contribution at about 1.5 kHz and the standard repeatability
+of frequency within about 2 kHz.
+"""
+
+notes = """
+MTS and FMS columns of the same 612 nm R(47) 9-2 intervals, measured by the same authors with two He-Ne lasers
+and external 50 cm cells. The FMS column is the Bisi and Bertinetto (1997) values (bisi1997a, the primary record),
+declared as overlap below; both groups are entered so that the MTS data can be used with its own uncertainty.
+
+Suspect: the MTS a1 and a2 values (-357.173 and -333.987 MHz) differ from the FMS ones by -17 and -21 kHz (2.3 and 2.9
+sigma, inferred from the printed uncertainties). The authors (text, p. 153) attribute the disagreement to an
+unwanted electronic offset in the MTS system from residual amplitude modulation (their ref. [12]). The mean MTS minus
+FMS difference over the components is -6.4 +/- 7.3 kHz. Treat the MTS a1 and a2 rows with caution in any comparison.
+
+The CCL column (MeP 612 nm table, bipm2003d) is the same line and is declared in that set, not here. The overlap
+with cerez1979a (same line, 612 nm) is not declared in this folder.
+"""
+
+[conditions]
+method = "612 nm He-Ne lasers with external 50 cm iodine cells; modulation transfer spectroscopy (MTS) and frequency modulation spectroscopy (FMS) on the same R(47) 9-2 components; beat-frequency counting"
+
+[overlaps]
+bisi1997a = { relation = "same", groups = ["galzerano2000a_fms"] }

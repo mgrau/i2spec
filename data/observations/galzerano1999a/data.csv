@@ -1,0 +1,9 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(54) 32-0,a2,interval,260.99385,0.003,,a1,galzerano1999a,"Table 1: a2 measured 260.99385 MHz from a1; calculated 260.99377, calc - meas -0.08 kHz"
+127I2 P(54) 32-0,a5,interval,310.07174,0.003,,a1,galzerano1999a,"Table 1: a5 measured 310.07174 MHz from a1; calculated 310.07132, calc - meas -0.42 kHz"
+127I2 P(54) 32-0,a6,interval,402.24920,0.003,,a1,galzerano1999a,"Table 1: a6 measured 402.24920 MHz from a1; calculated 402.25122, calc - meas +2.02 kHz"
+127I2 P(54) 32-0,a7,interval,417.67155,0.003,,a1,galzerano1999a,"Table 1: a7 measured 417.67155 MHz from a1; calculated 417.66865, calc - meas -2.90 kHz"
+127I2 P(54) 32-0,a8,interval,438.91882,0.003,,a1,galzerano1999a,"Table 1: a8 measured 438.91882 MHz from a1; calculated 438.92047, calc - meas +1.65 kHz"
+127I2 P(54) 32-0,a9,interval,454.56720,0.003,,a1,galzerano1999a,"Table 1: a9 measured 454.56720 MHz from a1; calculated 454.56665, calc - meas -0.55 kHz"
+127I2 P(54) 32-0,a10,interval,571.53694,0.003,,a1,galzerano1999a,"Table 1: a10 measured 571.53694 MHz from a1; calculated 571.53688, calc - meas -0.06 kHz"
+127I2 P(54) 32-0,a15,interval,857.96357,0.003,,a1,galzerano1999a,"Table 1: a15 measured 857.96357 MHz from a1; calculated 857.96370, calc - meas +0.13 kHz"

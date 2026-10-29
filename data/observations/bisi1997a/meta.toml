@@ -1,0 +1,45 @@
+id = "bisi1997a"
+citation = "M. Bisi, F. Bertinetto, \"Frequency reproducibility of He-Ne lasers at lambda = 612 nm using the frequency modulation spectroscopy technique\", Metrologia 34, 451-457 (1997), Table 5"
+source = "https://doi.org/10.1088/0026-1394/34/6/1 (publisher PDF)"
+doi = "10.1088/0026-1394/34/6/1"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 5 (p. 456), "Measured frequency/kHz" column: the measured intervals of 127I2 R(47) 9-2 relative to a7 (a7 = 0),
+for laser A (EOM 2.5 MHz, FMS). Read from a 200 dpi rendering of p. 456 and checked digit by digit against the
+text layer (they agree). Entered in MHz by moving the decimal point (exact, no rounding): -357 156 kHz is -357.156
+MHz. 12 rows: a1, a2, a4, a5, a6, a8, a9, a10, a11, a12, a13, a14.
+
+Not entered: a7 (the reference, 0); a3 (blank in the measured column; the text says it is masked by b11 and b12);
+the "Transition frequency (delta F = delta J)" column, which is the calculated spectrum from Picard's algorithm (the
+printed calculated values are kept in each row's note, as a check); the delta F = 0 and cross-over columns; Table 4
+(error budget) and Table 6 (four Delta constants: eqQ 1948.00(2) MHz, C 25.162(4) kHz, delta -16.2(3) kHz, d -18.3(4)
+kHz, as the catalog records them and as galzerano2000a repeats them); Table 3 (pressure shifts for six cells).
+
+Consistency check, model-free: against cerez1979a (same line, the Table 1 "measured" column, re-referenced from
+a13 to a7 by subtracting its a7 value, -249.68 MHz). Cerez minus Bisi over the 12 rows: mean +42 kHz, rms 71 kHz,
+range -83 kHz (a6) to +117 kHz (a14). Both sets are one-cell FMS-type measurements at 612 nm and this is the size
+of the scatter between independent 612 nm R(47) 9-2 tables; not used to set the uncertainty.
+"""
+
+uncertainty = """
+None printed per interval. The text gives the standard deviation of one measurement as 300 Hz to 700 Hz, the cell
+purity as 1.1 kHz and the reproducibility as 1.2 kHz. Assigned 2 kHz (0.002 MHz) 1 sigma to every row: it is above
+the per-measurement scatter and comparable with the shared 1.1 kHz cell-purity term, and it is the figure that
+galzerano2000a attaches to the same numbers (its FMS column, Table 1). The catalog entry gives the same assignment.
+"""
+
+notes = """
+Primary record of these R(47) 9-2 FMS intervals. galzerano2000a Table 1 (FMS column, ref. [8]) reprints the nine
+intervals a1, a2, a4, a5, a6, a8, a9, a10, a11, and they are identical here; galzerano2000a gives no a12-a14, which
+are entered only from this paper. The calculated column of Table 5 agrees with the measured column within 3 kHz.
+
+The pressure and modulation coefficients (Tables 3 and 6 text), the modulation-frequency and power shifts, and the
+pressure broadening are not entered; they are systematics for the derived constants, not line positions.
+"""
+
+[conditions]
+pressure_Pa = 3
+method = "frequency modulation spectroscopy on laser A (2.5 MHz EOM modulation) at 612 nm, He-Ne with an external iodine cell; the Table 5 spectrum is for R(47) 9-2 laser A"

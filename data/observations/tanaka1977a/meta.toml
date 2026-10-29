@@ -1,0 +1,65 @@
+id = "tanaka1977a"
+citation = "K. Tanaka, T. Sakurai, T. Kurosawa, \"Frequency stability and reproducibility of an iodine stabilized He-Ne laser\", Jpn. J. Appl. Phys. 16, 2071-2072 (1977), Table I"
+source = "https://doi.org/10.1143/jjap.16.2071 (publisher PDF: a scan with no text layer, read from the page image)"
+doi = "10.1143/jjap.16.2071"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 2072), "Frequency differences (in MHz) between two lasers locked at seven absorption lines of 127I2 gas":
+the 7x7 matrix of beats between the NRLM laser (No. 1, rows d-j) and the BIPM laser (No. 2, columns d-j), all
+R(127) 11-5. Read from a 200 dpi rendering of p. 2072. The 42 off-diagonal entries are entered as printed in the
+upper figure, one row per entry (row = NRLM lock line, column = BIPM lock line). Each entry is the measured beat
+v(BIPM, column) - v(NRLM, row), so it is entered as kind "interval" with component = column line and ref_component
+= row line, value = the printed beat. The check is the sign: d-e, column e, reads -12.8852 MHz, and f(a17) - f(a18)
+from the held 633 nm sets is -12.86 MHz (bipm1984a, blabla1993a).
+
+Labels: d = a18, e = a17, f = a16, g = a15, h = a14, i = a13, j = a12 (catalog; the letters run down in frequency
+as in the held sets, where a13 = i is the reference, and the held sets give f(a18) - f(a13) = 165.12 MHz).
+
+Not entered: the 7 diagonal elements (-0.0064, 0.0038, -0.0076, -0.0041, 0.0163, 0.0063, -0.0174 MHz). These are
+calculated values, not measurements, and they are the NRLM-minus-BIPM lock offsets of each component.
+Not entered: the lower figures of every cell (the last four digits, e.g. 8680 under -12.8852). The caption says
+these are parts of full figures from a least-squares adjustment (the calculated Omega values), not measurements.
+The adjusted values are not used because the paper gives them only as a model output.
+
+Misprint: the h-f cell (row h, column f) reads "11619653". Its upper figure is taken as 116.9653 MHz: the leading
+"1" is an extra digit and the decimal point is lost, and the calculated lower figure 9613 follows the decimals
+of 116.9653. The reversed cell (row f, column h) reads -116.9405, and the pair agrees with 116.9653 to 25 kHz (pair
+sum 0.0248 MHz). Entered as 116.9653; the printed text is in the note.
+
+Caption misprint: "127I1" for 127I2. The text says "frequency reproducibility ... +5e-11" for the Fig. 1 spread and
+"+6e-11" for the final estimate; not entered.
+
+Check (model-free, against the 633 nm R(127) 11-5 table of held sets, a13 = i as reference, interval = f(column) -
+f(row), with the reference values from bipm1984a Table 8 for the 633 nm components): 42 entries, mean -1 kHz, rms 23
+kHz, range -76 kHz (row f, column j) to +58 kHz (row i, column d). The rms is at the 25 kHz spread the paper
+gives for symmetric pairs (Fig. 1); the -76 kHz outlier is the f-j cell (row f, column j, -160.5326 MHz) and the paper
+does not single it out.
+"""
+
+uncertainty = """
+None printed per entry. 0.02 MHz is taken as 1 sigma for every entry: the paper gives a spread of +/- 25 kHz for the
+symmetric pairs (Fig. 1) and +/- 30 kHz for measured minus calculated (Fig. 2), and a final reproducibility of
++/- 6e-11 (about 28 kHz at 633 nm). The rms of 23 kHz against the held sets is the same scale. This is the catalog
+value (uncertainty_MHz 0.02); it is my reading, not a printed one.
+"""
+
+notes = """
+One pair of lasers (NRLM No. 1 at 15 C, BIPM No. 2 at 15 C), so one group. The table is a single matrix, so no
+sub-groups are declared. Each entry is a beat between two locked lasers, so the component offsets are not removed in
+this set. The laser lock offsets (the diagonal) are the NRLM-minus-BIPM offsets per component, and they are the
+largest systematic in the matrix (cf. the 25 kHz symmetric-pair spread). The paper does not map the lines to labels; the
+mapping d-j = a18-a12 comes from the catalog.
+
+Overlaps (catalog): rowley1973a, hanes1973a, cerez1974a and bipm2003a use the same d-j intervals, and wallard1975a
+gives g-d as 39.457 MHz (here 39.3948 and 39.4571, both shown). The catalog says the set is worth transcribing at
+medium weight; the held sets already carry the same lines at the kHz level, so this set adds the beat data.
+"""
+
+[conditions]
+method = "two He-Ne lasers at 633 nm (NRLM No. 1: 10 cm 127I2 cell, cold finger 15 C; BIPM No. 2: 9.5 cm cell, cold finger 15 C); third-derivative locking; beat frequency with a marker oscillator; 2 MHz modulation deviation"
+cell_length_cm = "10 (NRLM), 9.5 (BIPM)"
+cold_finger_C = 15
+transition = "R(127) 11-5"

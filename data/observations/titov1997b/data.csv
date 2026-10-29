@@ -1,0 +1,2 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(127) 11-5,a13,frequency,473612214.8585,0.0127,,,titov1997b,"Sect. 3 (p. 171): unperturbed i component, 473 612 214 858.5 +- 12.7 kHz, zero pressure and asymmetry-corrected extrapolation (the intercept 21 787.45 kHz against h, Doppler and lens corrections applied, transferred to absolute by the UME-L3 vs BIPM4 comparison)"

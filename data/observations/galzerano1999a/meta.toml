@@ -1,0 +1,56 @@
+id = "galzerano1999a"
+citation = "G. Galzerano, C. Svelto, E. Bava and F. Bertinetto, \"High-frequency-stability diode-pumped Nd:YAG lasers with the FM sidebands method and Doppler-free iodine lines at 532 nm\", Appl. Opt. 38, 6962-6966 (1999), Table 1"
+source = "https://doi.org/10.1364/ao.38.006962 (publisher PDF)"
+doi = "10.1364/ao.38.006962"
+retrieved = "2026-10-28"
+catalog = "data/catalog/precision.yaml#galzerano1999a"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 6965, PDF page 4), "Hyperfine Frequency Splittings Measurement and Fit for P(54)32-0": the
+"Measured Frequency" column, the separations of components a2 to a15 from a1, in MHz as printed (five decimals,
+10 Hz steps). Read from the text layer and checked against a 200 dpi rendering of the table, digit by digit.
+Eight rows are measured: a2, a5, a6, a7, a8, a9, a10 and a15. a3 and a4 are "not resolved" (printed as a dash),
+and a11 to a14 have calculated values only; those are not entered. Labels: the paper's a1 to a15 are ranked
+by frequency, a1 lowest, as in i2spec, so no relabelling. Line 127I2 P(54) 32-0 (J'' = 54, v' = 32, v'' = 0).
+
+Entered as interval rows, f(a_n) - f(a1), each with ref_component a1. Each row's note carries the printed
+"Calculated" frequency and the printed "Calculated versus Measured" difference (kHz, calculated minus measured),
+which are not entered as data.
+
+Model-free comparison, re-referenced to a1 (this paper minus ye1999a, kHz, ye1999a's P(54) rows as printed):
+a2 +1.45, a5 +5.33, a6 -0.26, a7 +3.88, a8 +0.26, a9 +3.80, a10 +0.49, a15 +2.77 (rms 2.9 kHz).
+Against the nevsky2001a absolute frequencies, a10 - a1 and a15 - a1 (their extrapolated values, 571.5367 and
+857.9606 MHz): this paper +0.24 and +2.97 kHz. The differences are not random in sign, and the paper's own
+standard deviation (below 100 Hz) cannot be the measurement error against the other two sets.
+
+Not entered: the calculated column; the fitted hyperfine constants (see the hyperfine_parameters set, which
+has no row: its meta has the Delta values and the reason); the 532 nm wavelength and the Allan deviation figures (Figs. 2 and 3); the
+laser power and spectrum figure (Fig. 4).
+"""
+
+uncertainty = """
+The paper prints no per-component uncertainty. It states (p. 6965) that the measured separations "have a
+standard deviation lower than 100 Hz", from five 10 s averages per matrix element. That is statistical only
+and is not used. 3 kHz is taken as 1 sigma for every row, a judgement from two checks: the eight values
+differ from ye1999a by up to 5.3 kHz (rms 2.9 kHz), and the paper's own fit residuals reach 2.9 kHz (the a7
+row, Table 1). This follows the catalog note on the same set.
+"""
+
+notes = """
+Independent measurement by a different technique: frequency-modulation sideband spectroscopy (10 MHz
+modulation, Doppler-free), not the modulation transfer or MTS methods of ye1999a and the JILA or BIPM sets.
+Same line as ye1999a (its Table I, a2-a15, East spectrometer only) and nevsky2001a (its gaps and extrapolated
+absolute values). No [overlaps] declared: neither ye1999a nor nevsky2001a prints this paper's values, and this
+set is not a compilation. Overlaps with the BIPM 532 nm tables (bipm2012a) are through ye1999a, not here.
+
+The paper's a1 is the reference of the table, and this paper's "absolute" a1 is not given; the catalog's
+statement that a1 is known to 2 kHz from a10 of R(56) 32-0 refers to the nevsky2001a gap, not to a value here.
+"""
+
+[conditions]
+method = "frequency-doubled Nd:YAG (Lightwave 142) with FM sidebands spectroscopy (10 MHz modulation, index about 1), two independent lock systems offset to +40 and -40 MHz, beat-note matrix of the two lasers"
+cell_length_cm = 50
+cold_finger_C = -15.0
+pressure_Pa = 1.36

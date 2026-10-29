@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(47) 9-2,a1,interval,-357.156,0.002,,a7,bisi1997a,"Table 5 measured frequency -357 156 kHz (calc -357 155 kHz)"
+127I2 R(47) 9-2,a2,interval,-333.966,0.002,,a7,bisi1997a,"Table 5 measured frequency -333 966 kHz (calc -333 968 kHz)"
+127I2 R(47) 9-2,a4,interval,-86.162,0.002,,a7,bisi1997a,"Table 5 measured frequency -86 162 kHz (calc -86 163 kHz)"
+127I2 R(47) 9-2,a5,interval,-47.278,0.002,,a7,bisi1997a,"Table 5 measured frequency -47 278 kHz (calc -47 278 kHz)"
+127I2 R(47) 9-2,a6,interval,-36.777,0.002,,a7,bisi1997a,"Table 5 measured frequency -36 777 kHz (calc -36 775 kHz)"
+127I2 R(47) 9-2,a8,interval,81.448,0.002,,a7,bisi1997a,"Table 5 measured frequency 81 448 kHz (calc 81 450 kHz)"
+127I2 R(47) 9-2,a9,interval,99.102,0.002,,a7,bisi1997a,"Table 5 measured frequency 99 102 kHz (calc 99 102 kHz)"
+127I2 R(47) 9-2,a10,interval,107.464,0.002,,a7,bisi1997a,"Table 5 measured frequency 107 464 kHz (calc 107 466 kHz)"
+127I2 R(47) 9-2,a11,interval,119.048,0.002,,a7,bisi1997a,"Table 5 measured frequency 119 048 kHz (calc 119 049 kHz)"
+127I2 R(47) 9-2,a12,interval,219.607,0.002,,a7,bisi1997a,"Table 5 measured frequency 219 607 kHz (calc 219 604 kHz); not in galzerano2000a"
+127I2 R(47) 9-2,a13,interval,249.598,0.002,,a7,bisi1997a,"Table 5 measured frequency 249 598 kHz (calc 249 598 kHz); not in galzerano2000a"
+127I2 R(47) 9-2,a14,interval,284.303,0.002,,a7,bisi1997a,"Table 5 measured frequency 284 303 kHz (calc 284 303 kHz); not in galzerano2000a"

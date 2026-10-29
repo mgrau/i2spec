@@ -1,0 +1,71 @@
+id = "borde2002"
+citation = "C. J. Borde, F. du Burck and A. N. Goncharov, \"A new accurate fit of the hyperfine structure of molecular iodine\", in Frequency Standards and Metrology: Proceedings of the Sixth Symposium, ed. P. Gill (World Scientific, Singapore, 2002), pp. 524-526, Table on p. 524 and constants on p. 525"
+source = "https://doi.org/10.1142/9789812777713_0069 (publisher PDF, image-only scan)"
+doi = "10.1142/9789812777713_0069"
+scan = "image-only scan (ABBYY text layer, garbled); every value read from a 400 dpi render"
+retrieved = "2026-10-28"
+unit = "splittings (data.csv) in kHz; eqQ in MHz, C, d and delta in kHz (constants.csv)"
+isotopologue = "127I2"
+state = "X"
+files = ["data.csv", "constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+p. 524, the two tables of Raman splittings of X v'' = 0 (the only new data of the paper): 10 values for J'' = 26
+(R(26) 62-0 at 501.7 nm), 16 for J'' = 54 (R(54) 70-0) and 7 for J'' = 55 (R(55) 71-0): 33 values in all. The
+catalog's count (30: 10, 13, 7) is not what the page shows; 16 rows are printed for J'' = 54 and were all entered.
+Each row was read from a 400 dpi crop of the J = 54 table and a 200 dpi render of the other two tables, and agrees
+with the ABBYY text layer digit by digit. Printed as "(I,F) -> (I,F)" with the frequency in kHz; the uncertainty in
+parentheses is in the last printed digit: for J = 26 the frequency has two decimals, so "(16)" is 0.16 kHz; for J = 54 and 55 it has one decimal, so "(11)" is 1.1 kHz.
+eps is the I label of the upper level in the printed notation (the paper labels levels by I and F); the lower
+level's I is kept in the note where it differs (e.g. 4,52 -> 2,53). Values entered as printed, sign included.
+
+Sign. The paper does not define the sign of a splitting. Entered as printed, with the same convention as
+wallerand1999 (value = E(first level) - E(second level)); a different sign convention would flip every row.
+
+Constants p. 525: the four-term fit (eqQ, C, d, delta) for J'' = 26, 54 and 55, entered in constants.csv. The J'' = 13
+and 15 constants on the same page are Wallerand et al. 1999's values (Table 3 there), already in
+data/x_hyperfine/wallerand1999; they are not entered again. The B v' = 43 constants (J' = 12 and 16) are derived from
+the saturation data of Borde et al. 1981 and are not entered. J'' = 55 has eqQ only: the paper prints C, d and delta
+as "fixed" without their values.
+
+Check (model-free, no i2spec code). The paper's eqQ(J'') law, eqQ = -2452.54774(7) MHz + a J''(J''+1), a = -2.0553(12)e-4 MHz,
+reproduces the printed eqQ'' of all five J values to within their uncertainties: J'' = 13 (residual -0.00001 MHz),
+15 (-0.00008), 26 (+0.00008 against 0.0004), 54 (-0.00016 against 0.002), 55 (-0.00077 against 0.004). Splittings
+could not be checked by loops: the (I,F) labels mix I (the printed I of a level is not an exact quantum number, as the
+paper says for the Raman pairs), so no closed loop of printed pairs with matching labels was found. The sign and
+the one-to-one reading of the 33 rows are therefore not tested by this check.
+"""
+
+uncertainty = """
+As printed. Splittings: 1 sigma per row, from the printed parenthesis (the paper does not state the convention; the
+size of the scatter of the J'' = 26 rows is not reported). Constants: as printed, 1 sigma assumed (the paper gives no
+convention). No systematic term is included for the frequency scale of the Raman measurement, which the paper does not
+discuss.
+"""
+
+notes = """
+Method. Stimulated Raman spectroscopy: the two Raman components of a splitting share one optical frequency at the Ar+
+line (501.7 nm; the R(26) 62-0, R(54) 70-0 and R(55) 71-0 transitions are in coincidence with it), so the difference
+is a ground-state splitting.
+
+Fit. The four-term Hamiltonian H = eqQ H_Q + C H_SR + d H_SSs + delta H_SST (d and delta as printed; their magnitudes, about 1.5 and 3.7 kHz, match
+wallerand1999's d and delta, so the naming is the same as in every other set here).
+Constants of the fit for J'' = 26, 54 and 55 are in constants.csv; J'' = 55 has eqQ only.
+
+Related sets. The 33 splittings are X-state intervals of the same kind as wallerand1999 (J'' = 13, 15). Overlaps: the
+X v'' = 0 eqQ(J'') law overlaps data/hyperfine_parameters/hong2001b (eqQ'' for J'' = 54, 56, which the paper of
+Hong et al. fits with the X values free). The paper states that the same R(26) 62-0 line is used by goncharov2007a and
+duburck2005a on the B-state side (not entered here). The B v' = 43 constants are derived from the 1981 saturation
+data, so they are not an independent set.
+"""
+
+[columns]
+data = """
+v, J: the X level (v'' = 0; J'' = 26, 54 or 55). eps: the printed I label of the upper level. F_from, F_to: the printed
+F values. value_kHz: printed frequency. uncertainty_kHz: printed uncertainty. table: page and table. note: the printed row.
+"""
+constants = """
+v, J: the X level. quantity: eqQ, C, d or delta (as the paper's four-term Hamiltonian). value, uncertainty, unit: as
+printed, with uncertainties in the units of the value. table: Table on p. 525. note: the printed row.
+"""

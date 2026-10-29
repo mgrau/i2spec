@@ -1,0 +1,10 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 P(10) 8-5,a8,interval,-62.01,0.13,,a9,bennett1984a,"Table 1 component h, measured -62.01 MHz from g; = MEP a8 (-61.85), zhao A a8 (-61.998)"
+127I2 P(10) 8-5,a10,interval,77.85,0.13,,a9,bennett1984a,"Table 1 component f, measured 77.85 MHz from g; = MEP a10 (77.84), zhao A a10 (77.862)"
+127I2 P(10) 8-5,a11,interval,186.20,0.13,,a9,bennett1984a,"Table 1 component e, measured 186.20 MHz from g; = MEP a11 (186.22), zhao A a11 (186.213)"
+127I2 P(10) 8-5,a12,interval,199.54,0.13,,a9,bennett1984a,"Table 1 component d, measured 199.54 MHz from g; = MEP a12 (199.51), zhao A a12 (199.468)"
+127I2 P(10) 8-5,a13,interval,256.39,0.13,,a9,bennett1984a,"Table 1 component c, measured 256.39 MHz from g; = MEP a13 (256.6), zhao A a13 (256.428)"
+127I2 P(10) 8-5,a14,interval,272.69,0.13,,a9,bennett1984a,"Table 1 component b, measured 272.69 MHz from g; = MEP a14 (272.75), zhao A a14 (272.689)"
+127I2 R(16) 8-5,b1,interval,62.83,0.13,127I2 P(10) 8-5,a9,bennett1984a,"Table 1 component o, measured 62.83 MHz from P(10) g; = MEP b1 (62.834), zhao A b1 (62.831)"
+127I2 R(16) 8-5,b2,interval,330.09,0.13,127I2 P(10) 8-5,a9,bennett1984a,"Table 1 component n, measured 330.09 MHz from P(10) g; = MEP b2 (329.8), zhao A b2 (329.818); largest difference (+0.29 MHz from MEP)"
+127I2 R(16) 8-5,b3,interval,336.01,0.13,127I2 P(10) 8-5,a9,bennett1984a,"Table 1 component m, measured 336.01 MHz from P(10) g; = MEP b3 (335.99), zhao A b3 (335.997)"

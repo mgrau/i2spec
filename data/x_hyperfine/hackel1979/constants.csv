@@ -1,0 +1,3 @@
+v,J,quantity,value,uncertainty,unit,table,note
+11,15,eqQ,-2455.6,1.3,MHz,"text, p. 1737",eQq'' = -2455.6 +- 1.3 MHz (printed; minus sign read from the page image); fit standard deviation 690 kHz; J'' = 15 inferred from the probe 43-11 R(15) (the letter does not print J'' for the level fitted)
+11,15,C,7.9,1.0,kHz,"text, p. 1737",C'' = 7.9 +- 1.0 kHz (printed); same fit as eqQ''

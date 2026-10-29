@@ -1,0 +1,10 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+129I2 P(33) 6-3,e1,interval,946.641,0.04,127I2 R(127) 11-5,a14,helmcke1974a,"Fig. 8: beat 129I2 A - 127I2 h = 946.641 MHz as printed"
+129I2 P(33) 6-3,e2,interval,966.423,0.04,127I2 R(127) 11-5,a14,helmcke1974a,"Fig. 8: beat 129I2 B - 127I2 h = 966.423 MHz as printed"
+129I2 P(33) 6-3,e3,interval,984.265,0.04,127I2 R(127) 11-5,a14,helmcke1974a,"Fig. 8: beat 129I2 C - 127I2 h = 984.265 MHz as printed"
+129I2 P(33) 6-3,e1,interval,968.598,0.04,127I2 R(127) 11-5,a13,helmcke1974a,"Fig. 8: beat 129I2 A - 127I2 i = 968.598 MHz as printed"
+129I2 P(33) 6-3,e2,interval,988.380,0.04,127I2 R(127) 11-5,a13,helmcke1974a,"Fig. 8: beat 129I2 B - 127I2 i = 988.380 MHz as printed; held sets give 988.29 (bipm1984a, quinn1994a)"
+129I2 P(33) 6-3,e3,interval,1006.222,0.04,127I2 R(127) 11-5,a13,helmcke1974a,"Fig. 8: beat 129I2 C - 127I2 i = 1006.222 MHz as printed"
+129I2 P(33) 6-3,e1,interval,990.186,0.04,127I2 R(127) 11-5,a12,helmcke1974a,"Fig. 8: beat 129I2 A - 127I2 j = 990.186 MHz as printed"
+129I2 P(33) 6-3,e2,interval,1009.968,0.04,127I2 R(127) 11-5,a12,helmcke1974a,"Fig. 8: beat 129I2 B - 127I2 j = 1009.968 MHz as printed"
+129I2 P(33) 6-3,e3,interval,1027.810,0.04,127I2 R(127) 11-5,a12,helmcke1974a,"Fig. 8: beat 129I2 C - 127I2 j = 1027.810 MHz as printed"

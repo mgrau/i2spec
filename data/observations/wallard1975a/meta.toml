@@ -1,0 +1,58 @@
+id = "wallard1975a"
+citation = "A. J. Wallard, J. M. Chartier, J. Hamon, \"Wavelength measurements of the iodine stabilized helium-neon laser\", Metrologia 11, 89-95 (1975), Table 4"
+source = "https://doi.org/10.1088/0026-1394/11/2/007 (publisher PDF: a scan with an OCR text layer)"
+doi = "10.1088/0026-1394/11/2/007"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 4 (p. 93), "Intercomponent separations measured between the lasers equipped with NPL and BIPM filled iodine
+cells": beat frequencies, in MHz, between an NPL-tube laser locked to one 127I2 R(127) 11-5 component and a
+BIPM-tube laser locked to another, with the lasers' roles swapped for each pair. Read from the 400 dpi crop of the
+page; the OCR text layer garbles the g-e value (it reads 20.581 for 26.581), and the image is as given here. Values: g with d 39.457 and d with g 39.427 (+/- 17 kHz from the mean); g with f 13.232 and f with g
+13.186 (+/- 23 kHz); g with e 26.581 and e with g 26.547 (+/- 17 kHz).
+
+Labels: the letters are the paper's own (the defg group of the R(127) 11-5 line, as in its text). The held sets'
+a-labels are d = a18, e = a17, f = a16, g = a15 (bipm2003a, Table 1, x = d, e, f, g for the same components). Each pair is entered as one interval, the mean of the two swapped beats:
+  d - g (a18 - a15): mean of 39.457 and 39.427 = 39.442 MHz, uncertainty 0.017 (the printed +/- 17 kHz)
+  f - g (a16 - a15): mean of 13.232 and 13.186 = 13.209 MHz, uncertainty 0.023
+  e - g (a17 - a15): mean of 26.581 and 26.547 = 26.564 MHz, uncertainty 0.017
+The sign is not printed (the table gives magnitudes). It is set here by the BIPM ordering: d, e, f lie above g
+(bipm2003a: d = +26.224, e = +13.363, f = 0, g = -13.198 MHz from a16), so each interval is positive. The
+held-set check below uses the same sign.
+
+Not entered, as the assignment asks: the Kr-referenced wavelengths and absolute frequencies (Table 1: d = 632.9911790(2)
+nm against the 86Kr standard, mean of 10 wavelengths; Table 2: i wavelength of seven laboratories,
+i = 632 991 399.7 (2) fm). They are on the krypton length standard, now obsolete, and the absolute value of i that
+they imply is about 1.1 MHz below the modern value (see notes). Also not entered: the same-component discrepancies of
+Table 3 (36, 0.4, 9.3 and 0.9 kHz; cell-to-cell offsets), the pressure broadening (Fig. 7, 87 kHz/Pa FWHM), the 200 kHz shift on cooling the BIPM cell to 287 K, and
+the 15 kHz reproducibility figure quoted in the text.
+
+Consistency check (model-free, against bipm2003a re-referenced to a16): d - g 39.442 against 39.422 (+0.020 MHz);
+f - g 13.209 against 13.198 (+0.011); e - g 26.564 against 26.561 (+0.003). All three inside the printed uncertainties
+(0.017 to 0.023 MHz) and close to the 15 kHz reproducibility the paper quotes for the lasers.
+"""
+
+uncertainty = """
+As printed: "+/- 17" and "+/- 23" and "+/- 17" kHz, one value per pair of swapped beats, given as the difference of
+the beat from the mean. Entered as 0.017, 0.023 and 0.017 MHz for the three averaged intervals. These are printed
+figures, not converted to sigma. Text: "reproducibility of all the settings is 15 kHz or 3e-11". Note: for d - g the
+two swapped beats differ by 30 kHz, so half that difference is 15 kHz, not the printed 17 kHz; the printed value
+is kept.
+"""
+
+notes = """
+The paper's absolute frequencies are not used. Table 1 and Table 2 give Kr-referenced wavelengths (d 632.9911790(2) nm,
+i 632 991 399.7 (2) fm). Those values depend on the 86Kr length standard, which was superseded in 1983. Converted to
+frequency they imply f(i) = 473 612 213.6 MHz (c / lambda), about 1.1 MHz below the modern value of i, which is
+473 612 214.7 MHz (bipm2003a a16 = 473 612 353.604 MHz less 138.892 MHz). That
+is within the Kr realization limit of 4e-9 quoted by the paper, so it is a property of the old standard, not an error
+in the beats. The beats in Table 4 need no such conversion: they are differences between components on one laser
+scale. Relation to held sets: overlaps rowley1973a (same NPL group, d-g intervals) and bipm2003a. The three
+averaged beats are a low-weight historical check, not a precision anchor.
+"""
+
+[conditions]
+method = "NPL and BIPM He-Ne lasers with internal 127I2 cells (NPL tube, BIPM tube), third-harmonic locking; beat frequency counted with a reversible counter that gives a true count through zero; each figure the average of more than 10 measurements of 10 s"
+cell_note = "NPL tube and BIPM tube (cell-to-cell offsets 0.4-36 kHz, Table 3); BIPM tube cooled to 287 K shifted the lock by about 200 kHz (not in these beats)"

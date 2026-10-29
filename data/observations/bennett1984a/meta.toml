@@ -1,0 +1,64 @@
+id = "bennett1984a"
+citation = "S. J. Bennett, P. Mills-Baker, \"Iodine stabilised 640 nm helium-neon laser\", Opt. Commun. 51, 322-324 (1984), Table 1"
+source = "https://doi.org/10.1016/0030-4018(84)90019-1 (publisher PDF)"
+doi = "10.1016/0030-4018(84)90019-1"
+retrieved = "2026-10-28"
+unit = "MHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 323), "Measured hfs [MHz]" column: the hyperfine intervals of 127I2 P(10) 8-5 (components b-h) and R(16) 8-5
+(components m-o), relative to component g of P(10) 8-5 (g = 0), read from a 200 dpi rendering of p. 323. Nine rows.
+Printed values: h -62.01, f 77.85, e 186.20, d 199.54, c 256.39, b 272.69 (P(10)); o 62.83, n 330.09, m 336.01
+(R(16)). Entered as printed (two decimals). The paper's Fig. 1 labels the same components.
+
+Label mapping (letter to the a/b labels of the MEP 640 nm table, bipm2003e, and of zhao1985a, both relative to a9 of
+P(10) 8-5). Evidence: each letter's interval agrees with the same-rank component of the other two sets to within
+0.3 MHz, and the order is unambiguous (the rows are ordered by frequency as in the figure):
+  letter  label  Bennett  bipm2003e  zhao1985a A  zhao1985a B
+  h       a8     -62.01  -61.85     -61.998      -61.947
+  f       a10     77.85   77.84      77.862       77.852
+  e       a11    186.20  186.22     186.213      186.242
+  d       a12    199.54  199.51     199.468      199.380
+  c       a13    256.39  256.6      256.428      (not measured)
+  b       a14    272.69  272.75     272.689      (not measured)
+  o       b1      62.83   62.834    62.831       62.837    (R(16))
+  n       b2     330.09  329.8      329.818      (not measured)  (R(16))
+  m       b3     336.01  335.99     335.997      (not measured)  (R(16))
+Letter g = a9 (the reference, 0). Letter i (a7) is in Fig. 1 but was not measured, and is not entered.
+Differences from bipm2003e (Bennett minus MEP): h -0.16, f +0.01, e -0.02, d +0.03, c -0.21, b -0.06, o 0.00, n +0.29,
+m +0.02 MHz. Differences from zhao1985a A: h -0.01, f -0.01, e -0.01, d +0.07, c -0.04, b 0.00, o 0.00, n +0.27, m
++0.01 MHz. The zhao laser B agrees within 0.1 MHz for the components it measured.
+
+Not entered: the wavelength of g, which is text, not a frequency (see notes). The 560.4 MHz line-center separation of
+the two lines (text, from o - g and the calculated structure). The Dschao (Ref. [8] columns) measured and calculated
+columns, which are a private communication (Dschao, 1983) per the catalog: measured h -61.97, f 77.86, e 186.21,
+d 199.44, c 256.64, b 272.67; calculated h -61.89, f 77.87, e 186.27, d 199.46, c 256.70, b 272.74 (MHz, as printed).
+Those are in the paper, not in another held set, so they are recorded here as text only.
+"""
+
+uncertainty = """
+None printed per interval. Assigned 0.13 MHz 1 sigma to every row: the rms of the nine differences from the MEP
+(bipm2003e) above, which includes the MEP's own uncertainties (0.01 to 0.2 MHz). The largest deviation (n, +0.29 MHz)
+is about two sigma on this basis. The paper's measurement method (beat frequency with each laser reversed on the
+peaks, to remove pressure, power and modulation shifts) is not a per-row error budget.
+"""
+
+notes = """
+Wavelength of component g of 127I2 P(10) 8-5, as printed in section 4 (p. 323): 640.283 468 6 nm, measured against
+the iodine-stabilized 633 nm laser (wavelength 632.991 398 1 nm, 1982 recommendation). Relative uncertainty of the
+combined value 3.6e-10 (1 sigma). This corresponds to about 468 218 332.5 MHz, against the CIPM value 468 218 332.4(2)
+MHz (bipm2003e, the absolute reference). It is not entered as a frequency row and is not converted here.
+
+The 640 nm laser is the 3He-22Ne transition coinciding with the 8-5 P(10) and R(16) lines (text, p. 322). The
+separation of the centers of P(10) g and R(16) o is 560.4 MHz (from o - g and the calculated hyperfine structures),
+against 555.8 MHz from the Luc constants (text, p. 323); not entered.
+
+Overlaps: zhao1985a (PTB, same lines and same reference component a9) and bipm2003e (MEP, which compiles data of this
+kind) cover the same components and are not declared here; the comparison above is the only cross-check.
+"""
+
+[conditions]
+pressure_Pa = 16
+modulation_MHz_pp = 7
+method = "two 3He-22Ne lasers at 640 nm with intracavity 127I2 cells; beats between the lasers, each locked to a different peak and measured again with the lasers reversed"

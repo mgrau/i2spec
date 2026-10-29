@@ -1,0 +1,2 @@
+line,eqQ,eqQ_unc,C,C_unc,d,d_unc,delta,delta_unc,fit_sd_kHz,note
+127I2 R(56) 32-0,-544.747,0.001,0.089654,0.000001,-0.04273,0.00004,-0.00690,0.00004,0.4,"Table 2 (p. 270): upper state fitted; eqQ' = -544.747(1) MHz, C' = 89.654(1) kHz, d' = -42.73(4) kHz, delta' = -6.90(4) kHz; lower state fixed at eqQ'' = -2453.130 MHz, C'' = 3.306 kHz, d'' = 1.524 kHz, delta'' = 3.705 kHz; fit standard uncertainty 400 Hz"

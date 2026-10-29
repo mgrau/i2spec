@@ -1,0 +1,13 @@
+line,component,kind,value,uncertainty,ref_line,ref_component,group,note
+127I2 R(56) 32-0,a2,interval,259.6979,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a2 f_obs 259.6979 MHz from a1; f_calc 259.6974, obs - calc +0.0005 MHz"
+127I2 R(56) 32-0,a5,interval,311.3664,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a5 f_obs 311.3664 MHz from a1; f_calc 311.3663, obs - calc +0.0001 MHz"
+127I2 R(56) 32-0,a6,interval,401.4786,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a6 f_obs 401.4786 MHz from a1; f_calc 401.4791, obs - calc -0.0005 MHz"
+127I2 R(56) 32-0,a7,interval,416.9942,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a7 f_obs 416.9942 MHz from a1; f_calc 416.9947, obs - calc -0.0005 MHz"
+127I2 R(56) 32-0,a8,interval,439.6270,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a8 f_obs 439.6270 MHz from a1; f_calc 439.6269, obs - calc +0.0001 MHz"
+127I2 R(56) 32-0,a9,interval,455.3436,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a9 f_obs 455.3436 MHz from a1; f_calc 455.3439, obs - calc -0.0003 MHz"
+127I2 R(56) 32-0,a10,interval,571.5426,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a10 f_obs 571.5426 MHz from a1; f_calc 571.5419, obs - calc +0.0007 MHz (the largest residual; the paper's reference component)"
+127I2 R(56) 32-0,a11,interval,698.0553,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a11 f_obs 698.0553 MHz from a1; f_calc 698.0554, obs - calc -0.0001 MHz"
+127I2 R(56) 32-0,a12,interval,702.7543,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a12 f_obs 702.7543 MHz from a1; f_calc 702.7541, obs - calc +0.0002 MHz"
+127I2 R(56) 32-0,a13,interval,726.0306,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a13 f_obs 726.0306 MHz from a1; f_calc 726.0305, obs - calc +0.0002 MHz"
+127I2 R(56) 32-0,a14,interval,732.2075,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a14 f_obs 732.2075 MHz from a1; f_calc 732.2076, obs - calc +0.0000 MHz"
+127I2 R(56) 32-0,a15,interval,857.9542,0.0004,,a1,robertsson2001b,"Table 1 (p. 270): a15 f_obs 857.9542 MHz from a1; f_calc 857.9544, obs - calc -0.0002 MHz"
