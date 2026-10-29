@@ -1,10 +1,8 @@
 id = "kobayashi2015a"
-citation = "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, \"Compact iodine-stabilized laser operating at 531 nm with stability at the 10^-12 level and using a coin-sized laser module\", Opt. Express 23, 20749-20759 (2015)"
 source = "Opt. Express 23(16), 20749-20759 (2015), published 30 Jul 2015; https://doi.org/10.1364/OE.23.020749 (checked against the earlier arXiv:1506.06323 preprint, from which the set was first typed)"
-doi = "10.1364/oe.23.020749"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:kobayashi2015a"
+catalog = "precision:kobayashi2015a"
 
 transcription = """
 One value: the absolute frequency of the a1 component of 127I2 R(36) 32-0, 564 074 632 419(8) kHz,

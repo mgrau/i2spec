@@ -1,7 +1,7 @@
 id = "shotton1972a"
-citation = "K. C. Shotton and G. D. Chapman, \"Lifetimes of 127I2 molecules excited by the 632.8 nm He/Ne laser\", J. Chem. Phys. 56, 1012-1013 (1972), text (two lifetimes and two self-quenching cross sections)"
-source = "https://doi.org/10.1063/1.1677205 (publisher PDF: a scan with an OCR text layer; values read from the page images)"
-doi = "10.1063/1.1677205"
+catalog = "broadband:shotton1972"
+tables = "text (two lifetimes and two self-quenching cross sections)"
+source = "publisher PDF: a scan with an OCR text layer; values read from the page images"
 retrieved = "2026-10-28"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

@@ -1,10 +1,8 @@
 id = "demelo2024a"
-citation = "Á. M. G. de Melo, H. Letellier, A. Apoorva, A. Glicenstein and R. Kaiser, \"Laser frequency stabilization by modulation transfer spectroscopy and balanced detection of molecular iodine for laser cooling of 174Yb\", Opt. Express 32, 6204 (2024)"
-source = "https://doi.org/10.1364/oe.512281; values read from the arXiv preprint arXiv:2311.08542v1 (14 Nov 2023), ; the published version was not compared"
-doi = "10.1364/oe.512281"
+source = "values read from the arXiv preprint arXiv:2311.08542v1 (14 Nov 2023), ; the published version was not compared"
 retrieved = "2026-10-20"
 unit = "MHz"
-catalog = "precision.yaml:demelo2024a"
+catalog = "precision:demelo2024a"
 exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """

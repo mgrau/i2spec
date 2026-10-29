@@ -1,0 +1,2 @@
+method,sigma_500nm_1e18_cm2,unc_500nm_1e18_cm2,method_class,source_as_printed,note
+this work (Spietz et al. 2006),2.186,0.021,independent of vapour pressure,this work,"final value: weighted average (2.186 +- 0.009) plus wavelength-calibration uncertainty (+-0.012), as printed in the text"

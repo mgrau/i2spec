@@ -1,8 +1,7 @@
 id = "bipm2003c"
-citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 576 nm), ¹²⁷I₂ a1 component, P(62) 17-1 (MEP 2003)"
 source = "https://www.bipm.org/documents/20126/41549542/M-e-P_I2_576.pdf/bd97f28c-f030-c38f-f1be-a380eea5129d"
 retrieved = "2026-09-14"
-catalog = "data/catalog/precision.yaml#bipm2003c"
+catalog = "precision:bipm2003c"
 unit = "MHz"
 transcription = """
 Page 1: adopted f(a1, P(62) 17-1) = 520 206 808.4 (2) MHz, the CIPM recommended value. Typed by hand.

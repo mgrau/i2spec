@@ -1,10 +1,8 @@
 id = "hong2004a"
-citation = "F.-L. Hong, S. Diddams, R. Guo, Z.-Y. Bi, A. Onae, H. Inaba, J. Ishikawa, K. Okumura, D. Katsuragi, J. Hirata, T. Shimizu, T. Kurosu, Y. Koga and H. Matsumoto, \"Frequency measurements and hyperfine structure of the R(85)33-0 transition of molecular iodine with a femtosecond optical comb\", J. Opt. Soc. Am. B 21, 88-95 (2004)"
-source = "https://doi.org/10.1364/josab.21.000088 (publisher PDF)"
-doi = "10.1364/josab.21.000088"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hong2004a"
+catalog = "precision:hong2004a"
 
 transcription = """
 Three sources in the paper, kHz converted to MHz exactly:

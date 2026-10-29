@@ -1,10 +1,8 @@
 id = "bodermann1998b"
-citation = "B. Bodermann, M. Klug, H. Knöckel, E. Tiemann, T. Trebst and H. R. Telle, \"Frequency measurement of I₂ lines in the NIR using Ca and CH₄ optical frequency standards\", Appl. Phys. B 67, 95-99 (1998)"
-source = "https://doi.org/10.1007/s003400050480 (PDF obtained 2026-09-16)"
-doi = "10.1007/s003400050480"
+source = "PDF obtained 2026-09-16"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:bodermann1998b"
+catalog = "precision:bodermann1998b"
 
 transcription = """
 Absolute frequencies from the results section of the publisher PDF, read 2026-09-16. The paper prints

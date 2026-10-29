@@ -1,0 +1,58 @@
+id = "tellinghuisen2011c"
+source = "publisher PDF: born-digital, text layer"
+retrieved = "2026-10-28"
+catalog = "broadband:tellinghuisen2011c"
+tables = "Tables I and II"
+unit = "L mol-1 cm-1 (Table II, computed molar absorptivity); debye (|mu_e| of Table I); cm-1 (potential and energy parameters); nm (wavelengths)"
+state = "B-X (Table I, B column only), with A-X and C-X in the same fit"
+isotopologue = "127I2"
+files = ["constants_table1.csv", "computed_absorptivity_table2.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I and II (p. 054301-9, read from the 200 dpi page image of the single page 10 where both tables print; the text layer
+agrees). Table I: the least-squares result for the A, B and C states (potential parameters of Eq. 4, transition moments
+|mu_e| = mu0 + mu1 z + mu2 z^2 with z = R - 2.7 A, and for B the predissociation rate P), entered as printed, with the
+standard errors in parentheses as printed (footnote b). Only the B column is B-X; the A and C columns are A-X and C-X and
+are kept because the B-X fit is the same least-squares fit. Table II: the computed molar absorptivity of I2 (g) at 0 C and
+35 C, 390-900 nm in 5 nm steps (103 rows), entered as printed. Table II is a model output (the B-X, A-X and C-X
+spectrum computed from Table I; the paper's supplement holds the component bands, not held here), not a measurement.
+
+Not entered: the component bands (supplementary material 25, not in the PDF), Figs. 1-12 (figures: Fig. 10 gives the
+error of the B-state results, not printed numerically); the 64 C spectrum appears only through its scale factor (Table I footnote b).
+The fitted C-state bound-free and predissociation data are in the text of Sect. C, not tabulated (not entered).
+
+Checks (model-free): all 103 Table II wavelengths present once; the two temperatures agree with the text statement that
+the two computed spectra intersect at 487 nm with epsilon = 416 l mol-1 cm-1 (the 0 C and 35 C columns cross between 485
+and 490 nm, at about 416; checked against the printed rows, not re-computed). Table I: the B-column mu0 = 1.0055 D and
+mu1 = 0.72 D give |mu_e| = 1.0055 + 0.72 (R - 2.7) at R = 2.85 A = 1.1135 D, against 1.1123 D of tellinghuisen2011
+(Eq. 9 there, from the 520-635 nm absorption): a 0.1 % difference at 2.85 A
+(the B state is a pseudocontinuum model, not a spectral-simulation of the same spectra).
+"""
+
+uncertainty = """
+Table I: standard errors in parentheses in units of the final digits, as printed (footnote b). Table I footnote b also
+gives the wavelength corrections (-0.14(7) nm present data) and the intensity scale factors (1.00 fixed at 35 C, 0.9963(8) at
+64 C). The text adds about 0.5 % to the Fig. 10 error for intensity-scale uncertainty. Table II: no uncertainty printed;
+it is computed from Table I.
+"""
+
+notes = """
+Relation to held sets. The B-column transition moment (mu0 = 1.0055 D, mu1 = 0.72 D/A, mu2 = -0.17 D/A^2 in z = R - 2.7 A)
+is the 2011 recommended B-X function of the C(1Pi_u) paper; the absorption fit of tellinghuisen2011 (Table II there, Eq. 9)
+is the same B-X quantity from 520-635 nm spectra. The two agree at R = 2.85 A to about 0.1 %. The predissociation rate
+P = 3.22e10 s-1 T^-2 is the B-state predissociation of the same fit.
+Table II is a computed spectrum of the I2 continuum and bands, useful as a check on a model's absorptivity; it
+is not an experimental strength. The paper states that the error plotted in its Fig. 10 is a guide to statistical reliability only.
+"""
+
+[columns]
+constants_table1 = """
+parameter: as printed (A0, B0, a1, a2, a3, a5 potential parameters of Eq. 4; mu0, mu1, mu2 transition moments; chi_nu2; P).
+A_state, B_state, C_state: the three columns of Table I (A-X, B-X, C-X). Values as printed, with standard errors in
+parentheses. unit: as in footnote b unless stated. note: footnotes a-e.
+"""
+computed_absorptivity_table2 = """
+lambda_nm: wavelength (nm). eps_0C_L_per_mol_cm, eps_35C_L_per_mol_cm: computed molar absorptivity at 0 C and 35 C (Table II).
+Computed, not measured.
+"""

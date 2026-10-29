@@ -1,9 +1,7 @@
 id = "ye1999a"
-citation = "J. Ye, L. Robertsson, S. Picard, L.-S. Ma, J. L. Hall, \"Absolute frequency atlas of molecular I2 lines at 532 nm\", IEEE Trans. Instrum. Meas. 48, 544-549 (1999)"
-source = "https://doi.org/10.1109/19.769654 (IEEE Xplore PDF)"
-doi = "10.1109/19.769654"
+source = "IEEE Xplore PDF"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#ye1999a"
+catalog = "precision:ye1999a"
 unit = "MHz"
 transcription = """
 Page 547 of the PDF carries the data, and both items on it are scanned bitmaps (300 dpi CCITT images);

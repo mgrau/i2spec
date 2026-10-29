@@ -1,9 +1,8 @@
 id = "glaser1982a"
-citation = "M. Gläser, \"Frequency shifts at low iodine pressure of 127I2-stabilized He-Ne lasers at 633 nm wavelength\", Metrologia 18, 53-58 (1982), Table 1"
-source = "https://doi.org/10.1088/0026-1394/18/2/002 (publisher PDF: a scan with an OCR text layer)"
-doi = "10.1088/0026-1394/18/2/002"
+source = "publisher PDF: a scan with an OCR text layer"
 retrieved = "2026-10-26"
-catalog = "broadband.yaml:glaser1982"
+catalog = "broadband:glaser1982"
+tables = "Table 1"
 unit = "MHz"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

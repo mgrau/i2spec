@@ -1,0 +1,6 @@
+quantity,value,uncertainty,unit,source,note
+mu2e linear fit: intercept at R = 2.85 A,1.1123,0.0032,D,Eq. (9),"mu_e(R) = 1.1123(32) D + 0.712(24) D/A (R - 2.85 A); reduced chi2 1.52 for 36 df; 1.31 without the 590 nm point"
+mu2e linear fit: slope,0.712,0.024,D/A,Eq. (9),"linear in R for mu_e; the slope is quoted as mu_e, not mu_e^2"
+mu2e Gaussian form: c1,21.5,1.9,D^2,Eq. (10); parameters quoted as Eq. (11) in the text,"mu_e^2 = c1 exp[-c2 (R - c3)^2] R^-2; fit of 18 A-T values (Ref. 37) and 37 Table II values with three points omitted (open points at small v and the 590 nm value); reduced chi2 1.10 after omission (1.51 with all)"
+mu2e Gaussian form: c2,1.18,0.12,A^-2,Eq. (10) and text after Fig. 11,see c1
+mu2e Gaussian form: c3,3.65,0.09,A,Eq. (10) and text after Fig. 11,see c1

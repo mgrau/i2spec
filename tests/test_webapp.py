@@ -63,8 +63,10 @@ def test_measurements_carry_every_row():
 
 
 def test_every_dataset_has_a_doi_or_a_document():
+    from i2spec.catalog import entry_of
     for ds in load_all():
-        assert ds.meta.get("doi") or "http" in ds.meta["source"] or ds.id == "bodermann1998c", ds.id
+        e = entry_of(ds.meta)
+        assert e.get("doi") or "http" in str(e.get("url") or "") + ds.meta["source"] or ds.id == "bodermann1998c", ds.id
 
 
 def test_build_copies_the_site(tmp_path):

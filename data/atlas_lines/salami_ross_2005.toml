@@ -1,10 +1,10 @@
 id = "salami_ross_2005"
+catalog = "broadband:salami2005"
+tables = "doi:10.1016/j.jms.2005.06.002 (Elsevier supplementary file mmc1)"
 unit = "cm-1"
 isotopologue = "127I2"
-doi = "10.1016/j.jms.2005.06.002"
 
 kind = "atlas line positions"
-citation = """H. Salami, A. J. Ross, A molecular iodine atlas in ascii format, J. Mol. Spectrosc. 233, 157-159 (2005), doi:10.1016/j.jms.2005.06.002 (Elsevier supplementary file mmc1)"""
 instrument = """FTS, 50 cm cell, instrumental resolution 0.02 cm-1, 0.005 cm-1 sampling"""
 calibration = """+/-0.003 cm-1 stated; our own check against the precision sets is in the table below"""
 extraction = """Line positions fitted from the transmission spectrum by a research script:

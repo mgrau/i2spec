@@ -1,10 +1,8 @@
 id = "huet2013a"
-citation = "N. Huet, S. Krins, P. Dubé and T. Bastin, \"Hyperfine-structure splitting of the 716 nm R(90)3-10 molecular iodine transition\", J. Opt. Soc. Am. B 30, 1317-1322 (2013)"
-source = "https://doi.org/10.1364/JOSAB.30.001317 (PDF obtained 2026-09-16)"
-doi = "10.1364/JOSAB.30.001317"
+source = "PDF obtained 2026-09-16"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:huet2013a"
+catalog = "precision:huet2013a"
 
 transcription = """
 Table 1, "Hyperfine Splitting Frequencies of the 716 nm R(90) 3-10 Molecular Iodine Transition",

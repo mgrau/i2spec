@@ -1,9 +1,7 @@
 id = "bodermann2000a"
-citation = "B. Bodermann, M. Klug, U. Winkelhoff, H. Knöckel, E. Tiemann, Precise frequency measurements of I₂ lines in the near infrared by Rb reference lines, Eur. Phys. J. D 11, 213-225 (2000)"
-source = "https://doi.org/10.1007/s100530070086"
-doi = "10.1007/s100530070086"
+source = "publisher version"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#bodermann2000a"
+catalog = "precision:bodermann2000a"
 unit = "MHz"
 transcription = """
 Local PDF (13 pages = journal pp. 213-225), typed by hand from the pdftotext text layer and then

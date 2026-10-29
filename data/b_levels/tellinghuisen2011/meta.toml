@@ -1,0 +1,69 @@
+id = "tellinghuisen2011"
+source = "publisher PDF: born-digital, text layer"
+retrieved = "2026-10-28"
+catalog = "broadband:tellinghuisen2011a"
+tables = "Tables I and II, Eqs. (9)-(10) and the fitted constants of the text"
+unit = "D^2 (|mu_e|^2) and D (|mu_e|); L mol-1 cm-1 (continuum absorptivity epsilon_c); nm (wavelengths); cm-1 (Table I line profiles); C (temperatures); A (R, in the fit forms)"
+state = "B-X (with the continuum epsilon_c of the C-X and A-X systems in the same fit)"
+isotopologue = "127I2"
+files = ["results_table2.csv", "line_profiles_table1.csv", "moment_fit.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Printed tables and equations of the paper, read from the 200 dpi page images of pp. 084301-4, -6 (Table I, Table II) and
+the text layer checked against them. Table II (38 rows) is one row per spectrum: nominal short-wavelength limit lambda1
+(0.05 nm grid), points, side-tube temperature t2, the fitted |mu_e|^2 with its estimated standard error, the continuum
+absorptivity epsilon_c with its standard error, and the absorbance standard deviation sA. Most wavelengths appear twice
+(two spectra per wavelength, from two recording days); they are kept as separate rows, as printed.
+Table I: the six-component line-profile parameters (f, delta, S1-S6, nominal Doppler width) for P83 33-0 and R56 32-0,
+the lines used as the spectral-simulation profiles. They are inputs of the simulation, not strengths; kept here because
+they are printed and the fitted |mu_e|^2 depends on them. Units as printed.
+moment_fit.csv: the linear fit of Eq. (9) with its standard errors, and the Gaussian-in-R form of Eq. (10) with the
+parameters c1, c2, c3 quoted in the text (after Fig. 11; the text calls them the parameters of Eq. (11)).
+
+Not entered: the absolute absorption spectra themselves (about 2300 points at 0.05 nm, 294-300 K, with per-point standard
+deviations). The paper does not print them; they are the MPI-Mainz atlas file cited in the catalog entry, which is not
+in the PDF library and not transcribed here. Figs. 1, 2, 4-7, 8-11 are figures; Fig. 8 is the same numbers as Table II
+(not re-entered), Fig. 10 combines Table II with 18 A-T values of Ref. 37 that are not printed in this paper. The journal
+supplement was not part of the PDF.
+
+Checks (model-free, no fit repeated): Eq. (9) and the Eq. (10) form with the quoted c1, c2, c3 agree to 1 % in |mu_e| over
+R = 2.6-3.0 A (for example at R = 2.85 A: 1.1123 against 1.115 from Eq. (10); at 2.6 A: 0.934 against 0.931). Table I
+strengths: S1-S6 are printed as entered; the six-component model reproduces the two profiles with an average deviation below 0.05 % of the peak values (text, p. 084301-4).
+Table II: all 38 printed rows transcribed from the text layer; checked against the 200 dpi page image by eye for every row
+(not a row-by-row machine comparison).
+"""
+
+uncertainty = """
+Table II: estimated standard errors in parentheses (footnote c) for |mu_e|^2 and epsilon_c; sA the fit's standard deviation
+in absorbance (footnote d). The text states the |mu_e|^2 relative standard errors are about 1 % and that the error bars are
+1-sigma; the text also states the reduced chi2 of the Eq. (9) fit is 1.52 for 36 df (1.31 without the 590 nm point), so the
+standard errors are "optimistic" by the author's own account. Systematic: an absolute calibration uncertainty of the
+instrument "less than 1 % but unknown" (p. 084301-7), a 2.7 % effect from the odd-J line profile in one spectrum.
+Eq. (9): standard errors 0.0032 D and 0.024 D/A as printed. Gaussian constants: 1.9, 0.12 and 0.09 as printed.
+"""
+
+notes = """
+Relation to held sets. This is the most precise absolute B-X strength in the held data: about 1 % per point over R =
+2.6-3.0 A (520-635 nm). The Eq. (9) fit gives |mu_e| = 1.1123 D at R = 2.85 A with slope 0.712 D/A. The paper states that the rise of |mu_e|^2
+with R is weaker by 20 % than in its 1982 assessment (tellinghuisen1982); its Fig. 10 compares the result with the
+Tellinghuisen 1997 analysis (tellinghuisen1997) and a theoretical estimate.
+The continuum epsilon_c is low relative to the 1982 estimate at shorter wavelengths, and the paper infers a weaker C-X
+transition; epsilon_c is entered as printed in Table II and is not a B-X strength.
+The 1-sigma errors of the 127I2 scale (Table II) are about 1 % at 590 nm and about 6 % at 633 nm, where the spectra are weak.
+"""
+
+[columns]
+results_table2 = """
+lambda1_nm: nominal short wavelength limit of the spectrum (footnote a). points: number of data points in the fit.
+t2_C: side-tube temperature (footnote b). mu2e_D2, mu2e_unc_D2: |mu_e|^2 and its standard error (footnote c).
+epsc_L_per_mol_cm, epsc_unc_L_per_mol_cm: continuum molar absorptivity and standard error. sA: standard deviation in
+absorbance from the fit (footnote d).
+"""
+line_profiles_table1 = """
+parameter: as printed (f, delta, S1-S6). P83_33-0 and R56_32-0: the two line profiles of Table I (columns as printed).
+unit: cm-1 for frequencies; the strengths are unitless. note: footnotes a-c of Table I.
+"""
+moment_fit = """
+quantity: as named. value, uncertainty: as printed. unit. source: equation or text location. note: forms and checks.
+"""

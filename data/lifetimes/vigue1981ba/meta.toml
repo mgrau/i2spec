@@ -1,7 +1,7 @@
 id = "vigue1981ba"
-citation = "J. Vigue, M. Broyer, J. C. Lehmann, \"Natural hyperfine and magnetic predissociation of the I2 B state. II. Experiments on natural and hyperfine predissociation\", J. Phys. (Paris) 42, 949-959 (1981), Tables I and II"
-source = "https://doi.org/10.1051/jphys:01981004207094900 (publisher PDF: a scan with a text layer; Tables I and II read from the 200 dpi page images pp. 953-954)"
-doi = "10.1051/jphys:01981004207094900"
+catalog = "broadband:vigue1981b"
+tables = "Tables I and II"
+source = "publisher PDF: a scan with a text layer; Tables I and II read from the 200 dpi page images pp. 953-954"
 retrieved = "2026-10-28"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

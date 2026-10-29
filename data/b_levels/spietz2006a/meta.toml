@@ -1,0 +1,51 @@
+id = "spietz2006a"
+source = "publisher PDF: born-digital, text layer; Table 2 checked on the page image"
+retrieved = "2026-10-28"
+catalog = "broadband:spietz2006a"
+tables = "Table 2 and the Discussion text (values)"
+unit = "10^-18 cm2 (absorption cross section of I2 at 500 nm, standard air, 298 K)"
+state = "B-X continuum (500 nm)"
+isotopologue = "127I2"
+files = ["table2_500nm.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 2 (p. 2190), read from the 200 dpi page image: the absorption cross section of I2 at 500 nm from this work and the
+three published determinations it compares with, and the weighted average. All five rows are entered as printed (the
+printed guard digit of this work's value, 2.186 with the subscript 6, is the third decimal). The table's caption: the
+average uses the inverse squared error of each measurement as weight; the error is from error propagation.
+
+Text values (Discussion, p. 2190), not a table, so not in the CSV: the two independent series from this work give
+(2.194 +- 0.010) and (2.158 +- 0.018) x 10^-18 cm2, and the wavelength-calibration uncertainty of one pixel is +-0.012 x
+10^-18 cm2. The final value is (2.186 +- 0.021) x 10^-18 cm2 (regression uncertainty plus wavelength uncertainty added).
+
+Not entered: Table 1 (DOAS configuration sensitivity: effect of the reference column density on the retrieved columns;
+not a cross section), the 0.25 nm and 0.59 nm FWHM spectra and the two reference spectra (ACP supplement zip, not
+in the PDF; the catalog's spietz2006b entry), and Fig. 1-7 (plots).
+
+Checks: the weighted average of the five printed rows with inverse-squared-error weights is not re-derived here (the paper's
+Table 2 rows are the inputs to the printed average; the average 2.191 lies within the this-work value's uncertainty). The
+this-work value 2.186 is the same as held in the catalog (spietz2006a: 2.186 +- 0.021 at 298 K).
+"""
+
+uncertainty = """
+As printed: this work 2.186 +- 0.021 (regression plus wavelength uncertainty; the 1-sigma of the regression alone is in the
+text as 2.194 +- 0.010 and 2.158 +- 0.018 for the two series). Other rows as printed: Tellinghuisen (1973) 0.07, Saiz-Lopez et al.
+(2004) 0.27, Bauer et al. (2004) 0.09, weighted average 0.02. The paper states a 1-sigma error for the weighted mean.
+"""
+
+notes = """
+Only this paper's own value is entered. Table 2 also reprints Tellinghuisen 1973 (2.20 +- 0.07), Saiz-Lopez et al.
+2004 (2.29 +- 0.27, catalog saizlopez2004) and Bauer et al. 2004 (2.25 +- 0.09) and their weighted average
+(2.191 +- 0.02); those belong to their own sources and are not repeated here.
+
+The value is a single absolute I2 cross section at 500 nm (about 1 percent). Compare
+data/b_levels/tellinghuisen1982 and tellinghuisen2011 (visible B-X absorption at 520-635 nm, and the 500 nm continuum). The paper's conclusion is that the retrieval bias of a
+high-column reference spectrum is 12-13 % at 1 nm FWHM and up to 45 % at low pressure; neither is a strength here.
+"""
+
+[columns]
+table2_500nm_comparison = """
+method: as printed in Table 2 (weighted average row has no method). sigma_500nm_1e18_cm2 and unc_500nm_1e18_cm2: 10^-18 cm2,
+as printed. method_class: vapour pressure or independent, as printed. note: text references.
+"""

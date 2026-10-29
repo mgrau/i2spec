@@ -1,9 +1,7 @@
 id = "holzwarth2001a"
-citation = "R. Holzwarth, A. Yu. Nevsky, M. Zimmermann, Th. Udem, T. W. Haensch, J. von Zanthier, H. Walther, J. C. Knight, W. J. Wadsworth, P. St. J. Russell, M. N. Skvortsov, S. N. Bagayev, \"Absolute frequency measurement of iodine lines with a femtosecond optical synthesizer\", Appl. Phys. B 73, 269-271 (2001)"
-source = "https://doi.org/10.1007/s003400100633 (publisher PDF)"
-doi = "10.1007/s003400100633"
+source = "publisher PDF"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#holzwarth2001a"
+catalog = "precision:holzwarth2001a"
 unit = "MHz"
 transcription = """
 Table 1 (p. 271): absolute frequencies of 17 hyperfine components of 16 lines, kHz, converted to MHz

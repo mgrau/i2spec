@@ -1,10 +1,8 @@
 id = "reinhardt2006a"
-citation = "S. Reinhardt, G. Saathoff, S. Karpuk, C. Novotny, G. Huber, M. Zimmermann, R. Holzwarth, T. Udem, T. W. Hänsch and G. Gwinner, \"Iodine hyperfine structure and absolute frequency measurements at 565, 576, and 585 nm\", Opt. Commun. 261, 282-290 (2006)"
-source = "https://doi.org/10.1016/j.optcom.2005.12.029 (publisher PDF, ; values re-checked against it on 2026-09-29)"
-doi = "10.1016/j.optcom.2005.12.029"
+source = "publisher PDF, ; values re-checked against it on 2026-09-29"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:reinhardt2006a"
+catalog = "precision:reinhardt2006a"
 
 transcription = """
 Tables 1-5 (p. 286-287, hyperfine splittings of five lines), the comb absolute frequencies of Sect. 3.3

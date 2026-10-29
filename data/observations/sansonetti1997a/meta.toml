@@ -1,9 +1,8 @@
 id = "sansonetti1997a"
-citation = "C. J. Sansonetti, Precise measurements of hyperfine components in the spectrum of molecular iodine, J. Opt. Soc. Am. B 14, 1913-1920 (1997); transcribed from the report version, UCRL-CR-125216 (NIST/LLNL, 1996); the journal prints the same 102-line table with revised uncertainties (see uncertainty)"
 source = "https://www.osti.gov/servlets/purl/464573"
-doi = "10.1364/josab.14.001913"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#sansonetti1997a"
+catalog = "precision:sansonetti1997a"
+tables = "transcribed from the report version, UCRL-CR-125216 (NIST/LLNL, 1996); the journal prints the same 102-line table with revised uncertainties (see uncertainty)"
 unit = "cm-1"
 transcription = """
 Table 1 (report pp. 18-25), all 102 lines: the measured wave number of one hyperfine component per

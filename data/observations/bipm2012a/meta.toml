@@ -1,8 +1,7 @@
 id = "bipm2012a"
-citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 532 nm), ¹²⁷I₂ a10 component, R(56) 32-0 (approved by the CIPM in October 2007; file last updated August 2012)"
 source = "https://www.bipm.org/documents/20126/41549514/M-e-P_I2_532.pdf/16c7ddb8-4854-9f16-34cc-5bcebe299ce8"
 retrieved = "2026-09-14"
-catalog = "data/catalog/precision.yaml#bipm2012a"
+catalog = "precision:bipm2012a"
 unit = "MHz"
 transcription = """
 Page 1: recommended f(a10, R(56) 32-0). Pages 2-3: intervals f(a1 or a21 of each line) - f(a10, R(56) 32-0),

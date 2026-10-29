@@ -1,7 +1,7 @@
 id = "chutjian1967a"
-citation = "A. Chutjian, J. K. Link, L. Brewer, \"Measurement of lifetimes and quenching cross sections of the B state of I2\", J. Chem. Phys. 46, 2666-2675 (1967), Table II (11 excitation regions)"
-source = "https://doi.org/10.1063/1.1841097 (publisher PDF: a scan with an OCR text layer; Table II read from the 200 dpi page image)"
-doi = "10.1063/1.1841097"
+catalog = "broadband:chutjian1967"
+tables = "Table II (11 excitation regions)"
+source = "publisher PDF: a scan with an OCR text layer; Table II read from the 200 dpi page image"
 retrieved = "2026-10-28"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

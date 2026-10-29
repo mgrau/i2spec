@@ -1,9 +1,7 @@
 id = "sakamoto2024a"
-citation = "Y. Sakamoto, Y. Kawai, D. Akamatsu and F.-L. Hong, \"Precision spectroscopy of iodine absorption lines near the ¹S₀-³P₂ transition of Yb atoms at 507 nm\", Jpn. J. Appl. Phys. 63, 032006 (2024)"
-source = "https://doi.org/10.35848/1347-4065/ad30a1 (YNU repository accepted manuscript, the version read)"
-doi = "10.35848/1347-4065/ad30a1"
+source = "YNU repository accepted manuscript, the version read"
 retrieved = "2026-09-26"
-catalog = "data/catalog/precision.yaml#sakamoto2024a"
+catalog = "precision:sakamoto2024a"
 unit = "MHz"
 transcription = """
 Table II (accepted manuscript): the a1 absolute frequencies of P(40)52-0 and P(52)53-0, 8 kHz each.

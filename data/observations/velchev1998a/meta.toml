@@ -1,10 +1,8 @@
 id = "velchev1998a"
-citation = "I. Velchev, R. van Dierendonck, W. Hogervorst and W. Ubachs, \"A Dense Grid of Reference Iodine Lines for Optical Frequency Calibration in the Range 571-596 nm\", J. Mol. Spectrosc. 187, 21-27 (1998)"
 source = "https://research.vu.nl/ws/files/1800731/144648.pdf"
-doi = "10.1006/jmsp.1997.7480"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:velchev1998a"
+catalog = "precision:velchev1998a"
 
 transcription = """
 Table 1 ("Measured Frequencies in This Study"), page 24 of the journal pagination, transcribed

@@ -1,10 +1,8 @@
 id = "hong2001a"
-citation = "F.-L. Hong, J. Ishikawa, A. Onae, H. Matsumoto, \"Rotation dependence of the excited-state electric quadrupole hyperfine interaction by high-resolution laser spectroscopy of 127I2\", J. Opt. Soc. Am. B 18, 1416-1422 (2001)"
-source = "https://doi.org/10.1364/josab.18.001416 (publisher PDF)"
-doi = "10.1364/josab.18.001416"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hong2001a"
+catalog = "precision:hong2001a"
 
 transcription = """
 Tables 2, 3 and 4 (all p. 1419), "Obs." column only: hyperfine intervals f(a_n) - f(a1) of

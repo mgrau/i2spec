@@ -1,10 +1,8 @@
 id = "powel2021a"
-citation = "R. Powel, M. Koble, J. Palmes, N. Everett, P. Imgram, K. König, J. Lantis, K. Minamisono, W. Nörtershäuser, R. Parker, S. Pineda, F. Sommer and A. Klose, \"Improved wavelength meter calibration in near infrared region via Doppler-free spectroscopy of molecular iodine\", Appl. Phys. B 127, 104 (2021)"
 source = "Appl. Phys. B 127:104 (2021), published 29 June 2021; https://doi.org/10.1007/s00340-021-07650-5 (publisher PDF)"
-doi = "10.1007/s00340-021-07650-5"
 retrieved = "2026-10-20"
 unit = "MHz"
-catalog = "precision.yaml:powel2021a"
+catalog = "precision:powel2021a"
 exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"
 
 transcription = """

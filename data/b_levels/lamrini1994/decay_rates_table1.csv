@@ -1,0 +1,6 @@
+v_prime,gamma_rad_ref20c_e4_per_s,gamma_rad_this_work_e4_per_s,gamma_obs_e4_per_s,tau_obs_e6_s,tau_rad_ref20c_e6_s,tau_rad_this_work_e6_s,note
+15,72(7),57.5(86),71-83,1.2-1.4 (Refs. 15 17 18),1.39(14),1.74(26),"as printed; gamma_obs from tau_obs"
+40,38(10),35.4(53),63-71,1.4-1.6 (Refs. 15 17 18),2.63(69),2.8(4),"as printed"
+43,35(5),31.4(18),43.9(15) and 46.9(33),2.28(8) and 2.13(5) (Refs. 17 19),2.86(41),3.18(18),"this work value marked * in Table I: used to set the absolute calibration (taken as the reference from Pique et al.)"
+62,<=8(1),10.3(15),7-18,8-14 (Ref. 16),12.5(16),9.7(14),"ref20c value is an upper limit as printed"
+70,<=4(1),4.1(0.6),,,>25(6),24(4),"ref20c value is an upper limit as printed; this work printed 4.1(0.6)"

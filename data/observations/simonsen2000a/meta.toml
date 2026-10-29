@@ -1,10 +1,8 @@
 id = "simonsen2000a"
-citation = "H. R. Simonsen and F. Rose, \"Absolute measurement of the hyperfine splittings of six molecular 127I2 lines around the He-Ne/I2 wavelength at λ ≈ 633 nm\", Metrologia 37, 651-658 (2000)"
-source = "https://doi.org/10.1088/0026-1394/37/6/2 (IOPscience PDF, downloaded 2026-09-29 per its cover page)"
-doi = "10.1088/0026-1394/37/6/2"
+source = "IOPscience PDF, downloaded 2026-09-29 per its cover page"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:simonsen2000a"
+catalog = "precision:simonsen2000a"
 
 transcription = """
 All numbers are frequency intervals, in kHz, converted to MHz exactly; the paper gives no frequency in Hz

@@ -1,10 +1,8 @@
 id = "huang2018a"
-citation = "Y.-C. Huang, Y.-C. Guan, T.-H. Suen, J.-T. Shy and L.-B. Wang, \"Absolute frequency measurement of molecular iodine hyperfine transitions at 647 nm\", Appl. Opt. 57, 2102 (2018)"
 source = "Appl. Opt. 57(9), 2102-2106 (2018), published 14 March 2018; https://doi.org/10.1364/AO.57.002102 (checked against the earlier arXiv:1710.09533v2 preprint, from which the set was first typed)"
-doi = "10.1364/ao.57.002102"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:huang2018a"
+catalog = "precision:huang2018a"
 
 transcription = """
 From the published Appl. Opt. version, Table 2 (p. 2105), "Measured" column: absolute frequencies of the a1, a10 and a15 components of 127I2 P(46) 5-4,

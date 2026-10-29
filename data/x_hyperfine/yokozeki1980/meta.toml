@@ -1,0 +1,71 @@
+id = "yokozeki1980"
+catalog = "precision:yokozeki1980a"
+tables = "Tables I-III and text"
+source = "publisher PDF: born-digital; text layer and page images checked"
+retrieved = "2026-10-28"
+unit = "kHz (transition frequencies, data.csv); MHz for eqQ and Bo, kHz for C1, C3, C4, Omega_octupole_kHz, ehH and sigma_fit (constants.csv)"
+isotopologue = "127I2"
+state = "X"
+files = ["data.csv", "constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (journal p. 3799, PDF page 5): the 20 rf hyperfine transitions observed in X v = 0, J = 13, as printed in the
+"I,F <-> I',F'" format. The table was read from a 200 dpi page image, and each row was checked against the text layer,
+which agrees in all 20 rows. The frequency, its uncertainty (printed in parentheses in units of 0.1 kHz, so 100 892.7(4)
+is 0.4 kHz) and the printed residual Calc. - Obs. (kHz, from the Table III column 1 constants) are entered as printed.
+The frequencies are positive as printed; the paper does not state a sign convention for a transition, so the pair order
+is kept as printed (the first label is the first column of the table). The transitions are rf (I, F) to (I', F')
+within the J = 13 manifold of X; cross-manifold pairs (I differs) are included, as in the table.
+
+data.csv: 20 rows, columns v, J, eps_from, F_from, eps_to, F_to, value_kHz, uncertainty_kHz, residual_calc_minus_obs_kHz,
+table, note. eps is the paper's I label (1, 3 or 5), which the paper says is only approximately valid as a quantum
+number and "used only as a label" (Table II footnote).
+
+constants.csv: Table III, all five fit columns, long format (fit = 1..5 as printed, left to right). Column 1 is the
+reference fit: its residuals are the Table I column. The parameter names follow the paper; the mapping onto the names
+used for the same constants elsewhere is C1 = C (spin-rotation), C3 = d (tensor spin-spin), C4 = delta (scalar
+spin-spin), as the values quoted in data/hyperfine_parameters/eickhoff1994thesis (C'' = 0.003162, d'' = 0.00158,
+delta'' = 0.00366 MHz) and in data/x_hyperfine/wallerand1999 (C, d, delta) show. Fixed parameters (underlined in the
+paper) are entered with an empty uncertainty and a note. The fit standard deviation is the row sigma_fit (footnote c). Bo is the rotational constant of v = 0: fixed (underlined) at 1118.57 MHz in columns 1, 3, 4 and 5 (column 1 from the
+Fourier-transform value of Barrow and Yee 1973, ref. 25; the same value in columns 3-5), and fitted (1118.56(18) MHz)
+in column 2 only. Omega_octupole_kHz is the nuclear
+magnetic octupole interaction Omega (kHz) and ehH the nuclear electric hexadecupole interaction (kHz), the two
+higher-order terms of the paper (text, p. 3800, and the table row labels).
+
+Checks (model-free).
+(1) Internal: the residuals are the paper's own; they are all within 1.5 kHz and within the uncertainties of Table I
+at about 1 sigma (largest 1.5 kHz at 1,12 - 5,11, uncertainty 1.3 kHz).
+(2) Against data/x_hyperfine/wallerand1999 (Raman splittings of the same J = 13 levels): ten of the 20 transitions
+join the same manifold (same I) and the same level pair, and are compared by magnitude (the two papers' sign
+conventions differ). The differences are 0.02-0.85 kHz (largest 5,16 - 5,17 at -0.85 kHz with
+uncertainties 1.6 and 0.03 kHz), all inside the printed uncertainty of this set. So the frequencies agree with the
+Raman set on the ten shared levels, and no row is misprinted at the 1 kHz level.
+(3) The constants: the four free constants of column 1 and the printed residuals are in the same units as Table I.
+Not re-diagonalized here; the residuals are the paper's.
+
+Not entered: Table IV (the B 3Pi0u+ state, v = 43, J = 12, the excited-state constants of Ref. 8 and this work; the
+X state is not there), Table V (a summary of the X and B constants of this work and of Ref. 8, of which the X column is
+Table III column 1 and the B column is Table IV), Table II (the calculated energies of the 21 hyperfine levels of
+v = 0, J = 13, which are derived from the fit and not measured; the paper's F labels are in the same table), and
+Figs. 1-2 (spectra and the 129 MHz trace).
+
+The paper reports the X state for one rovibrational level only: v = 0, J = 13. There is no X-state data for other v
+or J in this paper.
+"""
+
+uncertainty = """
+Table I: the printed reproducibility of each frequency (parentheses, units of 0.1 kHz), as printed. Table III: one
+standard deviation in units of the last digit as printed; the last row (a) gives the standard deviation of each fit,
+0.63-0.73 kHz (rows sigma_fit in constants.csv). Fixed parameters have no uncertainty.
+"""
+
+notes = """
+Relation to held sets. data/hyperfine_parameters/eickhoff1994thesis quotes the column-1 X constants (eqQ'' = -2452.5837,
+C'' = 0.003162, d'' = 0.00158, delta'' = 0.00366 MHz) as fixed inputs of its B-state fits, and data/x_hyperfine/
+wallerand1999 says it compares with this paper's J'' = 13 values without reprinting them. This set is the first
+machine-readable copy of Tables I and III: no row or constant of it is held elsewhere as data.
+
+The molecular-beam measurement is an independent technique from the Raman set (the same levels, a different
+apparatus). Its Table I transitions are rf frequencies, not a copy of the Raman splittings.
+"""

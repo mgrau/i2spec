@@ -1,10 +1,8 @@
 id = "badr2006a"
-citation = "T. Badr, M. D. Plimmer, P. Juncar, M. E. Himbert, Y. Louyer and D. J. E. Knight, \"Observation by two-photon laser spectroscopy of the 4d10 5s 2S1/2 -> 4d9 5s2 2D5/2 clock transition in atomic silver\", Phys. Rev. A 74, 062509 (2006)"
-source = "https://doi.org/10.1103/physreva.74.062509 (publisher PDF)"
-doi = "10.1103/physreva.74.062509"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:badr2006a"
+catalog = "precision:badr2006a"
 
 transcription = """
 The paper is about two-photon spectroscopy of atomic silver; its only iodine number is the calibration of

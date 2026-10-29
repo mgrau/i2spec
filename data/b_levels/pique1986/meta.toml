@@ -1,0 +1,71 @@
+id = "pique1986"
+catalog = "broadband:pique1986"
+tables = "Tables I-IV"
+source = "https://hal.science/jpa-00210388v1 (HAL open-access copy of the journal article; doi 10.1051/jphys:0198600470110191700)"
+retrieved = "2026-10-28"
+unit = "MHz for eqQ', C', delta' and d' (as printed); r+ in Angstrom; v' is the B-state vibrational level"
+state = "B 0u+ of 127I2, near the 2P1/2 + 2P3/2 limit, v' = 71-82"
+isotopologue = "127I2"
+files = ["table1_eqQ_contributions.csv", "table2_C_contributions.csv", "table3_delta_contributions.csv", "table4_d_contributions.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-IV (pp. 1923-1924, PDF pages 8-9), read from 200 dpi page images. Every entry was read from the image; the
+text layer was not used for the numbers. The text layer of the HAL copy was used only to confirm the table captions
+and the level range.
+
+Scope and what is NOT printed. The abstract says more than 10,000 hyperfine lines were recorded. No line list, no
+line-position table and no per-line hyperfine fit appears in the paper: the printed tables are per vibrational level
+v' (71-82) and give only the effective hyperfine parameters eqQ', C', delta' and d' (theory contributions and
+experimental values). The 10,000 lines are therefore not printed and are not entered. The hyperfine_parameters
+schema (one row per rovibronic line and four-term fit, with J') does not fit these per-level, J'-free effective
+constants, so this set is archived in b_levels rather than in hyperfine_parameters.
+
+table1_eqQ_contributions.csv: Table I, eqQ' (quadrupole, MHz) per v'. Columns: r+ (Angstrom), the contributions of
+the 0g-, 0u+, 0u-, 1g'', 1g', 1u', 1u'' states (theory, MHz, as printed), the theory total eqQ_th (the paper adds the
+first-order term eqQ'_0 = -573 MHz to the sum), and the experimental eqQ_exp. The Omega = 1 states give two
+contributions: the first printed line is eqQ'_11 and the second is eqQ'_12 + eqQ'_21; these are entered as
+g1pp_a / g1pp_b and u1pp_a / u1pp_b (a = first printed line, b = second). Printed "-- 552" for v' = 72 is read as
+-552 (the sign is a typo of the printed dash). Rows 76-78 have no experimental value. Printed uncertainties: +/- 2 to
++/- 20 MHz (the paper gives no separate convention in the caption; see uncertainty).
+
+table2_C_contributions.csv: Table II, C' (spin-rotation, MHz) from the 1u states. Columns: r+, the 1u' and 1u'' (two
+Omega = 1 u states; CD' neglected, ref. 8a) contributions, C_th and C_exp. Rows 77 and 78 have no experimental value.
+
+table3_delta_contributions.csv: Table III, delta' (MHz) per v', contributions of the states as in Table I (single
+values for the Omega = 1 states here), delta_th and delta_exp with its uncertainty as printed (+/- 0.04 to +/- 10).
+Rows 76-78 have no experimental value.
+
+table4_d_contributions.csv: Table IV, d' (MHz) per v', the same state columns, with d'_D = 0 (ref. 8a), d_th and d_exp.
+Rows 76-78 have no experimental value.
+
+Checks (model-free), each printed theory column against the sum of the printed contributions:
+- Table I: eqQ_th = -573 + sum of all printed contributions, both Omega = 1 lines included (the first and second
+  printed lines of 1g'' and 1u'' both enter). Agreement within rounding for v' = 71, 73, 75, 76, 77, 78, 79, 81, 82
+  (differences <= 0.6 MHz). Not reproduced: v' = 72 (sum -556.4 against printed -555) and v' = 74 (-548.1 against
+  -549); these two rows are flagged, not corrected.
+- Table II: C_th against 1u' + 1u'' as printed: agreement within 0.04 MHz for every v' except v' = 71, where
+  1.38 + 0.88 = 2.26 against printed 2.20 (difference 0.06, beyond the rounding of the entries).
+- Table III: delta_th = sum of the printed contributions. Agreement within rounding for v' = 71-74, 76-80. Differences
+  of 0.06 (v' = 75, sum 6.28 against 6.34), 0.4 (v' = 81) and 0.7 (v' = 82) are of the size of the rounding of the
+  three-significant-figure entries (113., 117., 189., -141.) but are not fully explained; flagged.
+- Table IV: d_th = sum. Agreement for v' = 71-78 and 81-82. Not reproduced: v' = 79 (sum -7.33 against printed -7.13)
+  and v' = 80 (-11.05 against -10.9); both differ by more than the printed precision. Flagged, not corrected.
+- The experimental blanks follow the paper's split: in Table I blanks at v' = 76-78, Table II blanks at v' = 77-78
+  (v' = 76 has a C' value), Tables III and IV blanks at v' = 76-78. The paper says the weak second-order treatment
+  covers the other levels and that v' = 76-78 need the full matrix (the abstract names v' = 76, 77 and 78 as the strong
+  perturbation cases).
+"""
+
+uncertainty = "Printed as +/- values in the experimental columns. A figure caption in section 3 (on the d' value of v' = 76) states error bars as +/- two standard deviations in the fits; the tables themselves do not state the convention. Entries are kept as printed; treat the convention as the caption's, not as confirmed for each column."
+
+notes = """
+data/b_levels holds per-paper archives of B 0u+ constants and levels; this set is the hyperfine (eqQ', C', delta',
+d') companion to the u-g perturbation of the B state, and the level range v' = 71-82 is the region where the B state
+is strongly hyperfine-perturbed by the 1g state (v' = 76-78 in the paper's strong-perturbation analysis).
+The companion theory paper is part I, J. Phys. (Paris) 47, 1909 (1986), doi 10.1051/jphys:0198600470110190900
+(catalog entry pique1986 cites it); the first report of the u-g effect is Pique et al., Phys. Rev. Lett. 52, 267 (1984)
+(this paper's ref. 18, catalog entry as recorded). The paper's own level split is kept in the transcription.
+Relation to held hyperfine sets: data/hyperfine_parameters/ holds line-based sets for other levels; the B-state
+per-level values of this paper are not duplicated there.
+"""

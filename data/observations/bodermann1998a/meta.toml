@@ -1,10 +1,8 @@
 id = "bodermann1998a"
-citation = "B. Bodermann, G. Bönsch, H. Knöckel, A. Nicolaus and E. Tiemann, \"Wavelength measurements of three iodine lines between 780 nm and 795 nm\", Metrologia 35, 105-113 (1998)"
-source = "https://doi.org/10.1088/0026-1394/35/2/5 (publisher PDF)"
-doi = "10.1088/0026-1394/35/2/5"
+source = "publisher PDF"
 retrieved = "2026-10-23"
 unit = "MHz"
-catalog = "precision.yaml:bodermann1998a"
+catalog = "precision:bodermann1998a"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 
 transcription = """

@@ -1,0 +1,60 @@
+id = "gerstenkorn1980"
+catalog = "broadband:gerstenkorn1980a"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "constants of the B-X system from Fourier absorption of the hot-band region (no line positions printed)"
+source = "publisher PDF, image scan with OCR text layer; HAL copy jpa-00208967"
+retrieved = "2026-10-28"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+instrument = """Fourier transform absorption spectrum of a 2 m cell heated to 250 C (iodine pressure about 5 torr), 12 600-14 000 cm-1, with a 100 W tungsten lamp; instrumental width 0.020 cm-1; wavenumber reference a helium-neon laser stabilized on the Lamb dip (p. 1420)."""
+calibration = """The 1980 wavenumbers are on the authors' own 1978 atlas scale, as printed, with no correction applied in the fitted constants. The paper cites the -0.0056 cm-1 correction of gerstenkorn1979a only for a comparison: its extrapolated T0,0 is 15 724.5894 - 0.0056 = 15 724.5838 cm-1 (p. 1427), against the fitted 15 724.586 (Table VII). The fit itself does not subtract it, so the constants in gerstenkorn1980_constants.csv are NOT corrected; anyone who applies the -0.0056 cm-1 shift must apply it to T0,0 and the band origins, not to the printed G differences."""
+tables = """I: number of assigned lines per band (R and P) for 12 bands (not entered: no per-line data, see transcription); III: global fit, H'' = 0, 31 parameters, 1564 lines; IV: Dunham Y_i0, Y_i1 (X, 0 <= v'' <= 25) and calculated Y_i2, Y_i3 (X, 0 <= v'' <= 19); V: calculated D, H, L of X v'' = 10-14 (a: from Table IV; b: from Tellinghuisen et al. 1980; c: adopted by Tellinghuisen et al.); VII: global fit with H'' and L' calculated from the RKR wavefunctions, 1564 lines, sd 0.003 36 cm-1."""
+files = ["gerstenkorn1980_constants.csv"]
+n_lines = 0
+n_assignments = 1564
+
+columns = """
+gerstenkorn1980_constants.csv, one row per printed value: table (III, IV, V, VII), quantity, column (the printed column
+heading), value (as printed, in the unit of the column's multiplier: the x10, x1e-8, x1e-14 etc. factors are kept as printed
+and named in the unit column), uncertainty (the printed standard error, blank where none printed, the bracketed value in
+note), unit, note (which band or level, and any asterisk or bracket).
+"""
+
+transcription = """
+What the paper prints: NO line positions. The 1564 assigned B-X lines (12 bands, J up to 168) are not listed anywhere
+in the paper or its PDF; Table I gives only the number of assigned lines per band (R and P branches) and the min and max
+J of each. The hot-band line positions the catalog asked for are therefore not in this source. Nothing was entered for
+them. The 1564 positions are not on any supplement page of the HAL copy (13 pages, all of the paper).
+
+Read from the page images (200-220 dpi renders of the scan, PDF pages 7, 8, 10; the OCR text layer was checked against
+them): Table III (p. 1424), Table IV (p. 1425), Table V (p. 1425), Table VII (p. 1427). Every value of Tables III, IV, V
+and VII was read from the image; the text-layer copies agree on the digits that could be checked. Not entered: Table I
+(band counts, p. 1422), Table II (correlation matrix extract, p. 1423), Table VI (Dunham constants of the B state, p. 1426),
+Table VIII (Franck-Condon factors and Boltzmann factors, p. 1428). Tables VI and VIII and Table I are printed and are a
+candidate for a later pass; they were not part of this assignment's constant values.
+
+Checks (no model involved): Table V column a agrees with the D and H of Table VII to the printed digits (D 0.4836,
+0.4871, 0.4907, 0.4946, 0.4984 against 0.483609, 0.487178, 0.490717, 0.494564, 0.498379; H -0.781 to -0.938 against
+-0.7808 to -0.9375). Table III and Table VII band origins agree to 0.0015 cm-1 (v'=0), 0.0009 (v'=1) and 0.0003 (v'=2); the
+G(v'') values for v''=10-14 differ by up to 0.0045 cm-1 (v''=13) between the two fits. The B(v'=0) values differ by 6e-7
+cm-1 between the fits (10B 0.2892582 against 0.2892525).
+"""
+
+uncertainty = """
+Printed standard errors: Table III, G 1.5e-3 cm-1, 10 B 1e-6, 1e8 D 4e-11, H'(v'=0,1,2) as printed (98, 45, 83 in the last
+digits of 1e-14). Table VII prints no standard errors; the paper says (p. 1426) that the errors of Table VII are those of
+the all-free fit (1.5e-3 cm-1 for G, 1e-6 for 10B, 4e-11 for D). The residual sd is 0.003 0 cm-1 (Table III) and
+0.003 36 cm-1 (Table VII); the paper states the line uncertainties are 0.002-0.004 cm-1 (p. 1421).
+"""
+
+notes = """
+Relation to held sets: the B-state constants of this fit overlap luc1980 (Tables V and VII of Luc 1980 cover the visible region
+v' = 1-62 from the same kind of fit; the paper says its independent visible-region values for v' = 1 and 2 agree with its own within one or two standard errors (p. 1426-1427)) and the X-state Yi0 and Yi1 coefficients of Table IV of this paper are the Vergès fluorescence data (v'' to 25),
+not a fit to the lines of this paper. X v'' = 10-14 constants of Table III/VII are not duplicated in held sets checked
+for this entry (grep of DOI and surname in meta.toml files found the same Dunham coefficients only, in luc1980 and
+tellinghuisen1980). The Table V column b is Tellinghuisen et al. 1980's Dunham set (x_levels/tellinghuisen1980 holds its
+X-state data, not its Dunham coefficients).
+
+Asterisks and brackets as printed: a calculated (not fitted) constant is marked * in Table VII (D, H, L of the X state and D, H
+of the B state), and bracketed values are the visible-region fit of Luc 1980 (ref. 9), for comparison.
+"""

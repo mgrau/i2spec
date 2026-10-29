@@ -1,10 +1,8 @@
 id = "morinaga1989a"
-citation = "A. Morinaga, K. Sugiyama, N. Ito and J. Helmcke, \"Hyperfine structure of low-lying vibrational levels in the B electronic state of molecular iodine\", J. Opt. Soc. Am. B 6, 1656-1659 (1989)"
-source = "https://doi.org/10.1364/JOSAB.6.001656 (PDF obtained 2026-09-16)"
-doi = "10.1364/JOSAB.6.001656"
+source = "PDF obtained 2026-09-16"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:morinaga1989a"
+catalog = "precision:morinaga1989a"
 
 transcription = """
 Table 1, "Frequency Separations of Components of the R(69) Line in the 3-4 Band", read from the text

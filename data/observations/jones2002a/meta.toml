@@ -1,10 +1,8 @@
 id = "jones2002a"
-citation = "R. J. Jones, W.-Y. Cheng, K. W. Holman, L. Chen, J. L. Hall and J. Ye, \"Absolute-frequency measurement of the iodine-based length standard at 514.67 nm\", Appl. Phys. B 74, 597-601 (2002)"
-source = "https://doi.org/10.1007/s003400200846 (publisher PDF)"
-doi = "10.1007/s003400200846"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:jones2002a"
+catalog = "precision:jones2002a"
 
 transcription = """
 The paper has no tables. Two absolute frequencies are printed, both as offsets from a CIPM value, and

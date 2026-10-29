@@ -1,10 +1,8 @@
 id = "xu2000a"
-citation = "S. C. Xu, R. van Dierendonck, W. Hogervorst and W. Ubachs, \"A Dense Grid of Reference Iodine Lines for Optical Frequency Calibration in the Range 595-655 nm\", J. Mol. Spectrosc. 201, 256-266 (2000)"
 source = "https://research.vu.nl/ws/files/2465453/224367.pdf"
-doi = "10.1006/jmsp.2000.8085"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:xu2000a"
+catalog = "precision:xu2000a"
 
 transcription = """
 Tables 1-15, one per vibrational band, transcribed 2026-09-16 from the VU Research Portal copy of the

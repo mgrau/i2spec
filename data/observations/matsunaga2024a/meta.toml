@@ -1,9 +1,7 @@
 id = "matsunaga2024a"
-citation = "S. Matsunaga, Y. Isawa, D. Akamatsu, F.-L. Hong, Optical frequency references at 1542 nm: precision spectroscopy of the R(106)50-0, R(100)49-0, R(84)47-0, R(59)45-0, P(82)47-0, and P(71)46-0 lines of 127I2 at 514 nm, Photonics 11, 770 (2024)"
-source = "https://doi.org/10.3390/photonics11080770"
-doi = "10.3390/photonics11080770"
+source = "publisher version"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#matsunaga2024a"
+catalog = "precision:matsunaga2024a"
 unit = "MHz"
 transcription = """
 Table 1 (p. 3): absolute frequencies of the a1 (b1) component of six lines, kHz, 5.6 kHz each.

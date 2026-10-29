@@ -58,7 +58,7 @@ def test_chen2004_agrees_with_bkt02_where_it_is_valid(chen):
 def test_loader_rejects_bad_files(tmp_path):
     d = tmp_path / "x2000"
     d.mkdir()
-    (d / "meta.toml").write_text('id = "x2000"\ncitation = "c"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n')
+    (d / "meta.toml").write_text('id = "x2000"\ncatalog = "precision:chen2004a"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n')
     (d / "data.csv").write_text("line,eqQ\n127I2 R(1) 1-0,1\n")
     with pytest.raises(ValueError, match="columns"):
         load_hyperfine_parameters(d)
@@ -66,14 +66,14 @@ def test_loader_rejects_bad_files(tmp_path):
                                 "127I2 R(1) 1-0,-500,0,1,1,1,1,1,1,,\n")
     with pytest.raises(ValueError, match="positive"):
         load_hyperfine_parameters(d)
-    (d / "meta.toml").write_text('id = "other"\ncitation = "c"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n')
+    (d / "meta.toml").write_text('id = "other"\ncatalog = "precision:chen2004a"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n')
     with pytest.raises(ValueError, match="directory name"):
         load_hyperfine_parameters(d)
 
 
 def test_excluded_parameter_sets_skipped(tmp_path):
     header = "line,eqQ,eqQ_unc,C,C_unc,d,d_unc,delta,delta_unc,fit_sd_kHz,note\n127I2 R(1) 1-0,-500,1,1,1,1,1,1,1,,\n"
-    meta = 'id = "{}"\ncitation = "c"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n'
+    meta = 'id = "{}"\ncatalog = "precision:chen2004a"\nsource = "s"\nretrieved = "r"\nunit = "MHz"\ntranscription = "t"\n'
     for name, extra in (("a2000", ""), ("b2000", 'exclude = "pending"\n')):
         (tmp_path / name).mkdir()
         (tmp_path / name / "meta.toml").write_text(meta.format(name) + extra)

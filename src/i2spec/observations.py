@@ -22,11 +22,11 @@ from .constants import ISOTOPOLOGUES, MHZ_PER_CM
 KINDS = ("frequency", "interval")
 UNITS = {"MHz": 1.0, "cm-1": MHZ_PER_CM}  # MHz per unit
 COLUMNS = ("line", "component", "kind", "value", "uncertainty", "ref_line", "ref_component", "group", "note")
-META_REQUIRED = ("id", "citation", "source", "retrieved", "unit", "transcription")
+META_REQUIRED = ("id", "catalog", "source", "retrieved", "unit", "transcription")
 DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "observations"
 PARAMETERS_DIR = Path(__file__).resolve().parents[2] / "data" / "hyperfine_parameters"
 PARAMETER_COLUMNS = ("line", "eqQ", "eqQ_unc", "C", "C_unc", "d", "d_unc", "delta", "delta_unc", "fit_sd_kHz", "note")
-PARAMETER_META_REQUIRED = ("id", "citation", "source", "retrieved", "unit", "transcription")
+PARAMETER_META_REQUIRED = ("id", "catalog", "source", "retrieved", "unit", "transcription")
 _LINE = re.compile(r"^(\S+) ([PR])\((\d+)\) (\d+)-(\d+)$")
 _COMPONENT = re.compile(r"^[a-z](\d+)$")
 

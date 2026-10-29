@@ -1,0 +1,11 @@
+parameter,P83_33-0,R56_32-0,unit,note
+fc,0.01797,0.01628,cm-1,"central frequency f (Table I footnote a: components at f, f +/- delta, f +/- 2 delta, f - 3 delta)"
+delta,0.006188,0.005336,cm-1,component spacing
+S1,0.1232,0.0705,,component strength 1 (lowest frequency)
+S2,0.0514,0.0189,,component strength 2
+S3,0.2411,0.3857,,component strength 3
+S4,0.1920,0.1322,,component strength 4
+S5,0.2095,0.2229,,component strength 5
+S6,0.1828,0.1697,,component strength 6 (highest frequency)
+dv_half_nominal,0.01485,0.01485,cm-1,"nominal Doppler FWHM used in all simulations (footnote b); actual widths 4.494e-8 * v * sqrt(T)"
+peak_position,0.0191,0.0149,cm-1,"actual peak of the profile (footnote c)"

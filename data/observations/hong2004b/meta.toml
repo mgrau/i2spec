@@ -1,10 +1,8 @@
 id = "hong2004b"
-citation = "F.-L. Hong, J. Ishikawa, Y. Zhang, R. Guo, A. Onae and H. Matsumoto, \"Frequency reproducibility of an iodine-stabilized Nd:YAG laser at 532 nm\", Opt. Commun. 235, 377-385 (2004)"
-source = "https://doi.org/10.1016/j.optcom.2004.02.044 (publisher PDF)"
-doi = "10.1016/j.optcom.2004.02.044"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hong2004b"
+catalog = "precision:hong2004b"
 
 transcription = """
 The paper reports one absolute frequency: f(a10, R(56) 32-0) = 563 260 223 507 897 (58) Hz for laser Y3

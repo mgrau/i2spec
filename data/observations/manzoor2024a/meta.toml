@@ -1,10 +1,8 @@
 id = "manzoor2024a"
-citation = "S. Manzoor, M. Chiarotti, S. A. Meek, G. Santambrogio and N. Poli, \"Precision spectroscopy and frequency determination of the hyperfine components of the P(63) 4-4 transition of molecular iodine near 652 nm\", Opt. Express 32, 44683 (2024)"
 source = "Opt. Express 32(25), 44683-44693 (2024), published 22 Nov 2024; https://doi.org/10.1364/OE.539192 (checked against the earlier arXiv:2410.03305v1 preprint, from which the set was first typed)"
-doi = "10.1364/oe.539192"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:manzoor2024a"
+catalog = "precision:manzoor2024a"
 
 transcription = """
 Table 1 (published p. 44690, PDF p. 8), column "Absolute Frequency (This Work)" only: nine comb-measured absolute

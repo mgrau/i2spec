@@ -1,10 +1,8 @@
 id = "matyugin2012"
-citation = "Yu. A. Matyugin, S. M. Ignatovich, S. A. Kuznetsov, M. I. Nesterenko, M. V. Okhapkin, V. S. Pivtsov, M. N. Skvortsov and S. N. Bagayev, \"Absolute frequency measurement for the emission transitions of molecular iodine in the 982-985 nm range\", Quantum Electron. 42, 250-257 (2012)"
-source = "https://doi.org/10.1070/QE2012v042n03ABEH014799 (PDF obtained 2026-09-16)"
-doi = "10.1070/QE2012v042n03ABEH014799"
+source = "PDF obtained 2026-09-16"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:matyugin2012"
+catalog = "precision:matyugin2012a"
 
 transcription = """
 Table 1, "Measurement data for iodine transition frequencies", read 2026-09-16. The table is set

@@ -1,10 +1,10 @@
 id = "apo_nist_2009"
+catalog = "broadband:apo_nist_2009"
+tables = "doi:10.1051/0004-6361/202244441"
 unit = "cm-1"
 isotopologue = "127I2"
-doi = "10.1051/0004-6361/202244441"
 url = "https://github.com/jaklusmeyer/APO_pyodine"
 kind = "atlas line positions"
-citation = """NIST 2-m Fourier transform spectrometer scan of the APO iodine cell (sample AS-17), 21 July 2009, distributed in the iodine_atlas/ directory of https://github.com/jaklusmeyer/APO_pyodine; the reduction code is that of Heeren et al., Astron. Astrophys. 674, A164 (2023), doi:10.1051/0004-6361/202244441"""
 instrument = """NIST 2-m FTS, RESOLUTN 0.018 cm-1, 32 scans, Xe lamp; air wavelengths converted here"""
 calibration = """HeNe-referenced FTS scale; agrees with Salami & Ross to <= 5e-8 in earlier checks"""
 extraction = """Line positions fitted from the transmission spectrum by a research script:

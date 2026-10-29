@@ -1,11 +1,9 @@
 id = "chen2023a"
-citation = "Y. T. Chen, N. C. Xin, H. R. Qin, S. N. Miao, Y. Zheng, J. W. Zhang, L. J. Wang, \"Absolute frequency measurement of molecular iodine hyperfine transitions at 554 nm and its application to stabilize a 369 nm laser for Yb+ ions cooling\", Chin. J. Phys. 88, 485-492 (2024)"
 source = "https://arxiv.org/abs/2309.05932 (arXiv v1, 12 Sep 2023). The journal version (doi:10.1016/j.cjph.2023.12.007) is paywalled and was not seen; its numbers could differ from the preprint."
-doi = "10.1016/j.cjph.2023.12.007"
 retrieved = "2026-09-29"
 unit = "MHz"
 exclude = "All nine printed frequencies disagree with the model and the APO/NIST atlas by 30-840 MHz; the residuals fall on a comb-ambiguity pattern (printed - true = +35 or -105 MHz modulo 250 MHz; see transcription) that cannot be undone from the published information. The EFTF 2024 companion (doi:10.1109/eftf61992.2024.10722760) repeats only the R(146) 25-0 a15 value unchanged and does not resolve it."
-catalog = "data/catalog/precision.yaml#chen2023a (also data/catalog/broadband.yaml#chen2024, the pressure-shift entry for the same paper)"
+catalog = "precision:chen2023a"
 
 transcription = """
 From the arXiv preprint (2309.05932v1), Table 2 (p. 8), "Measured" column: absolute frequencies of one

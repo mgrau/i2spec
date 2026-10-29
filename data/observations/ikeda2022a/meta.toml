@@ -1,9 +1,7 @@
 id = "ikeda2022a"
-citation = "K. Ikeda, T. Kobayashi, M. Yoshiki, D. Akamatsu, F.-L. Hong, Hyperfine structure and absolute frequency of 127I2 transitions at 514 nm for wavelength standards at 1542 nm, J. Opt. Soc. Am. B 39, 2264-2271 (2022)"
-source = "https://doi.org/10.1364/josab.465499 (publisher PDF)"
-doi = "10.1364/josab.465499"
+source = "publisher PDF"
 retrieved = "2026-09-27"
-catalog = "data/catalog/precision.yaml#ikeda2022a"
+catalog = "precision:ikeda2022a"
 unit = "MHz"
 transcription = """
 Table 1 (p. 2266): absolute frequencies of P(57)45-0 a1, P(91)48-0 b2 and R(73)46-0 a1, kHz, 5.4 kHz

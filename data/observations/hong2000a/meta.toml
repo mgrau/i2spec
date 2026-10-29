@@ -1,10 +1,8 @@
 id = "hong2000a"
-citation = "F.-L. Hong and J. Ishikawa, \"Hyperfine structures of the R(122)35-0 and P(84)33-0 transitions of 127I2 near 532 nm\", Opt. Commun. 183, 101-108 (2000)"
-source = "https://doi.org/10.1016/s0030-4018(00)00870-1 (publisher PDF)"
-doi = "10.1016/s0030-4018(00)00870-1"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hong2000a"
+catalog = "precision:hong2000a"
 
 transcription = """
 Tables 2 and 3 (p. 105), "Observed" column only: hyperfine intervals a2-a15 relative to a1 of 127I2

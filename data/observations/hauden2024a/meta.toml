@@ -1,10 +1,8 @@
 id = "hauden2024a"
-citation = "M. Hauden, J. Millo, M. Matusko, F. Ponciano Ojeda, Y. Kersale, M. Delehaye, \"Offset sideband locking to iodine for laser cooling on the 1S0 -> 3P1 transition of 171Yb\", Opt. Express 33, 12519-12529 (2025)"
 source = "Opt. Express 33(6), 12519-12529 (2025), published 11 Mar 2025; https://doi.org/10.1364/OE.547123 (checked against the earlier arXiv:2503.12895 preprint, from which the set was first typed; the id keeps the preprint catalog year)"
-doi = "10.1364/oe.547123"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hauden2024a"
+catalog = "precision:hauden2024a"
 
 transcription = """
 Table 2 (p. 12526 of the published Optics Express version): absolute frequencies of all 21 hyperfine components a1-a21 of

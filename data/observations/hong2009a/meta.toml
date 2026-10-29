@@ -1,10 +1,8 @@
 id = "hong2009a"
-citation = "F.-L. Hong, H. Inaba, K. Hosaka, M. Yasuda and A. Onae, \"Doppler-free spectroscopy of molecular iodine using a frequency-stable light source at 578 nm\", Opt. Express 17, 1652-1659 (2009)"
-source = "https://doi.org/10.1364/oe.17.001652 (publisher PDF; same value as the arXiv manuscript 0902.0463, from which the set was first typed)"
-doi = "10.1364/oe.17.001652"
+source = "publisher PDF; same value as the arXiv manuscript 0902.0463, from which the set was first typed"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hong2009a"
+catalog = "precision:hong2009a"
 
 transcription = """
 The paper reports a single measured number: the absolute frequency of the a1 component of 127I2

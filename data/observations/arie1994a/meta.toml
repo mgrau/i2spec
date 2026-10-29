@@ -1,10 +1,8 @@
 id = "arie1994a"
-citation = "A. Arie and R. L. Byer, \"The hyperfine structure of the 127I2 P(119)35-0 transition\", Opt. Commun. 111, 253-258 (1994); erratum Opt. Commun. 127, 382 (1996)"
-source = "https://doi.org/10.1016/0030-4018(94)90461-8 (publisher PDF, scanned with an OCR text layer); erratum Opt. Commun. 127, 382 (1996), doi:10.1016/0030-4018(96)00208-8, read 2026-10-26: it corrects only the G(v') coefficient of Eq. (2) (0.023501 -> 0.023051); no entered value changes"
-doi = "10.1016/0030-4018(94)90461-8"
+source = "(publisher PDF, scanned with an OCR text layer); erratum Opt. Commun. 127, 382 (1996), doi:10.1016/0030-4018(96)00208-8, read 2026-10-26: it corrects only the G(v') coefficient of Eq. (2) (0.023501 -> 0.023051); no entered value changes"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:arie1994a"
+catalog = "precision:arie1994a"
 
 transcription = """
 Table 1 (p. 256), "Measured" column: hyperfine intervals a2-a21 of 127I2 P(119) 35-0 relative to a1, in MHz

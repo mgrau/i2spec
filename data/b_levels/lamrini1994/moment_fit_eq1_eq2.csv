@@ -1,0 +1,8 @@
+equation,range_Rc_A,term,coefficient_as_printed,exponent_as_printed,std_dev_log10_mu2,note
+Eq. (1),2.633-3.9,constant,-134.0416,0,0.150,"log10|mu_e|^2 = constant + ...; standard deviation Delta|mu_e|^2 = 0.150 |mu_e|^2"
+Eq. (1),2.633-3.9,R_c,166.1989,1,0.150,
+Eq. (1),2.633-3.9,R_c^2,-75.81764,2,0.150,
+Eq. (1),2.633-3.9,R_c^4 (as typeset),15.12918,4,0.150,"typeset as R_c^4 after the R_c^2 term; the fit has no R_c^3 term as printed"
+Eq. (1),2.633-3.9,last term (as typeset),-1.12537,2,0.150,"printed as -1.12537 R_c^2, a second R_c^2 term; read literally the expansion diverges (about 500 at R_c = 2.66 A). The only reading that gives log10|mu_e|^2 = 0 at R_c = 2.66 A (the paper's |mu_e|^2 = 1.0 D^2 scaling point) and continuity with Eq. (2) is R_c^3 for the 15.12918 term and R_c^4 for this term (a superscript misprint). Entered as printed; not corrected here"
+Eq. (2),3.9-6.035,constant,2.6642,0,0.545,"log10|mu_e|^2 = 2.6642 - 1.1635 R_c; standard deviation Delta|mu_e|^2 = 0.545 |mu_e|^2 (55 % error bar at these small values)"
+Eq. (2),3.9-6.035,R_c,-1.1635,1,0.545,

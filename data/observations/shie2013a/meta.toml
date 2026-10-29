@@ -1,10 +1,8 @@
 id = "shie2013a"
-citation = "N.-C. Shie, S.-E. Chen, C.-Y. Chang, W.-F. Hsieh and J.-T. Shy, \"Absolute frequency measurements of the molecular iodine hyperfine transitions at 535 nm\", J. Opt. Soc. Am. B 30, 2022-2026 (2013)"
-source = "https://doi.org/10.1364/josab.30.002022 (publisher PDF)"
-doi = "10.1364/josab.30.002022"
+source = "publisher PDF"
 retrieved = "2026-09-27"
 unit = "MHz"
-catalog = "precision.yaml:shie2013a"
+catalog = "precision:shie2013a"
 
 transcription = """
 Table 1 (p. 2025), "Measured" column only: absolute frequencies of the a1, a10 and a15 components of

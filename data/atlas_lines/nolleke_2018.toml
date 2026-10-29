@@ -1,9 +1,9 @@
 id = "nolleke_2018"
+catalog = "precision:nolleke2018a"
+tables = "doi:10.17632/cvr6vv2zps.1"
 unit = "cm-1"
 isotopologue = "127I2"
 kind = "unassigned atlas line positions and absorptions"
-citation = """C. Nölleke, C. Raab, R. Neuhaus, S. Falke, Absolute frequency atlas from 915 nm to 985 nm based on laser absorption spectroscopy of iodine, J. Mol. Spectrosc. 346, 19-22 (2018), doi:10.1016/j.jms.2017.12.013. Data: C. Nölleke et al., Laser absorption spectroscopy of iodine between 915 and 985 nm, Mendeley Data, V1 (2017), doi:10.17632/cvr6vv2zps.1"""
-doi = "10.1016/j.jms.2017.12.013"
 url = "https://doi.org/10.17632/cvr6vv2zps.1"
 licence = "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): cite the paper and the data set"
 instrument = """Doppler-limited absorption of a mode-hop-free tunable diode laser, wavemeter referenced; 225 cm path, cell body at

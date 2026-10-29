@@ -1,10 +1,8 @@
 id = "yoshii2019a"
-citation = "K. Yoshii, H. Sakagami, H. Yamamoto, S. Okubo, H. Inaba and F.-L. Hong, \"High-resolution spectroscopy and laser frequency stabilization using a narrow-linewidth planar-waveguide external cavity diode laser at 1063 nm\", Opt. Lett. 45, 129-132 (2020)"
-source = "https://doi.org/10.1364/ol.45.000129 (publisher PDF)"
-doi = "10.1364/ol.45.000129"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:yoshii2019a"
+catalog = "precision:yoshii2019a"
 
 transcription = """
 One value: the absolute frequency of the a10 component of 127I2 R(38) 32-0, 564 010 092 161(6) kHz,

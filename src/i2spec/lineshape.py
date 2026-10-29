@@ -21,7 +21,7 @@ from .observations import Line
 ROOT = Path(__file__).resolve().parents[2] / "data"
 WIDTHS_DIR = ROOT / "widths"
 LIFETIMES_DIR = ROOT / "lifetimes"
-META_REQUIRED = ("id", "citation", "source", "retrieved", "transcription", "uncertainty")
+META_REQUIRED = ("id", "catalog", "source", "retrieved", "transcription", "uncertainty")
 
 #: quantity -> unit. Widths are full widths at half maximum in linear frequency.
 WIDTH_UNITS = {

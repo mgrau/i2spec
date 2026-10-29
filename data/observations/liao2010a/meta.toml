@@ -1,9 +1,7 @@
 id = "liao2010a"
-citation = "C.-C. Liao, K.-Y. Wu, Y.-H. Lien, H. Knöckel, H.-C. Chui, E. Tiemann and J.-T. Shy, Precise frequency measurements of ¹²⁷I₂ lines in the wavelength region 750-780 nm, J. Opt. Soc. Am. B 27, 1208-1214 (2010)"
-source = "https://doi.org/10.1364/JOSAB.27.001208"
-doi = "10.1364/JOSAB.27.001208"
+source = "publisher version"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#liao2010a"
+catalog = "precision:liao2010a"
 unit = "MHz"
 transcription = """
 Typed from the PDF text layer and checked digit by digit against 300 dpi renders of the page

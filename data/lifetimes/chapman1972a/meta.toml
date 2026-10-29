@@ -1,7 +1,7 @@
 id = "chapman1972a"
-citation = "G. D. Chapman and P. R. Bunker, \"Magnetic quenching of iodine fluorescence excited by a 6328 A He/Ne laser\", J. Chem. Phys. 57, 2951-2959 (1972), Table I (zero-field lifetimes)"
-source = "https://doi.org/10.1063/1.1678689 (publisher PDF: a scan with an OCR text layer; Table I read from the page image)"
-doi = "10.1063/1.1678689"
+catalog = "broadband:chapman1972"
+tables = "Table I (zero-field lifetimes)"
+source = "publisher PDF: a scan with an OCR text layer; Table I read from the page image"
 retrieved = "2026-10-28"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

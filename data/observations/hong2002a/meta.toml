@@ -1,10 +1,8 @@
 id = "hong2002a"
-citation = "F.-L. Hong, Y. Zhang, J. Ishikawa, A. Onae, H. Matsumoto, \"Vibration dependence of the tensor spin-spin and scalar spin-spin hyperfine interactions by precision measurement of hyperfine structures of 127I2 near 532 nm\", J. Opt. Soc. Am. B 19, 946-953 (2002)"
-source = "https://doi.org/10.1364/josab.19.000946 (publisher PDF)"
-doi = "10.1364/josab.19.000946"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hong2002a"
+catalog = "precision:hong2002a"
 
 transcription = """
 Tables 2 and 3 (p. 949) and Table 4 (p. 950), "Observed" column only: hyperfine intervals f(a_n) - f(a1) of

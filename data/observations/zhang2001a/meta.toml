@@ -1,10 +1,8 @@
 id = "zhang2001a"
-citation = "Y. Zhang, J. Ishikawa, F.-L. Hong, \"Accurate frequency atlas of molecular iodine near 532 nm measured by an optical frequency comb generator\", Opt. Commun. 200, 209-215 (2001)"
-source = "https://doi.org/10.1016/s0030-4018(01)01624-8 (publisher PDF)"
-doi = "10.1016/s0030-4018(01)01624-8"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:zhang2001a"
+catalog = "precision:zhang2001a"
 
 transcription = """
 Table 1 (p. 213, a rotated full-page table), column "Measured frequency interval (Delta f_Exp) (kHz)"

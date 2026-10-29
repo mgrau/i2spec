@@ -1,10 +1,8 @@
 id = "cheng2001a"
-citation = "W.-Y. Cheng and J.-T. Shy, \"Wavelength standard at 543 nm and the corresponding 127I2 hyperfine transitions\", J. Opt. Soc. Am. B 18, 363-369 (2001)"
-source = "https://doi.org/10.1364/josab.18.000363 (publisher PDF with text layer)"
-doi = "10.1364/josab.18.000363"
+source = "publisher PDF with text layer"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:cheng2001a"
+catalog = "precision:cheng2001a"
 
 transcription = """
 Table 1 (p. 366), "This Work" column only: hyperfine intervals of 127I2 R(12) 26-0 (a9-a15) and R(106) 28-0

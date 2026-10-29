@@ -1,9 +1,8 @@
 id = "tellinghuisen1978"
-citation = "J. Tellinghuisen, \"Intensity factors for the I2 B<->X band system\", J. Quant. Spectrosc. Radiat. Transfer 19, 149-161 (1978), Tables 1, 2, 4 and 7"
-source = "https://doi.org/10.1016/0022-4073(78)90074-2 (publisher PDF: a 300 dpi scan with an OCR text layer)"
-doi = "10.1016/0022-4073(78)90074-2"
+source = "publisher PDF: a 300 dpi scan with an OCR text layer"
 retrieved = "2026-10-26"
-catalog = "broadband.yaml:tellinghuisen1978"
+catalog = "broadband:tellinghuisen1978"
+tables = "Tables 1, 2, 4 and 7"
 unit = "FCF dimensionless; R-centroid in A"
 kind = "calculated Franck-Condon factors and R-centroids of B-X from RKR potentials (Wei and Tellinghuisen 1974 constants for B and low X; Le Roy 1970 for X in the fluorescence series)"
 files = ["fcf_absorption.csv", "fcf_fluorescence.csv"]

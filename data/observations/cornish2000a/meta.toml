@@ -1,10 +1,8 @@
 id = "cornish2000a"
-citation = "S. L. Cornish, Y.-W. Liu, I. C. Lane, P. E. G. Baird, G. P. Barwood, P. Taylor and W. R. C. Rowley, \"Interferometric measurements of ¹²⁷I₂ reference frequencies for 1S-2S spectroscopy in muonium, hydrogen, and deuterium\", J. Opt. Soc. Am. B 17, 6-10 (2000)"
 source = "https://opg.optica.org/josab/abstract.cfm?uri=josab-17-1-6 (PDF obtained 2026-09-16)"
-doi = "10.1364/josab.17.000006"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:cornish2000a"
+catalog = "precision:cornish2000a"
 
 transcription = """
 Table 2, "Iodine Transition Frequencies", read from the text layer of the publisher PDF on

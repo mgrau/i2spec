@@ -1,9 +1,8 @@
 id = "titov1997b"
-citation = "A. Titov, I. Malinovsky and M. Erin, \"Asymmetry studies of iodine resonances and realization of unperturbed molecular transition in a laser standard at 633 nm\", Opt. Commun. 137, 165-173 (1997), Table 1 and Sect. 3"
-source = "https://doi.org/10.1016/s0030-4018(96)00765-1 (publisher PDF)"
-doi = "10.1016/s0030-4018(96)00765-1"
+source = "publisher PDF"
 retrieved = "2026-10-28"
-catalog = "data/catalog/precision.yaml#titov1997b"
+catalog = "precision:titov1997b"
+tables = "Table 1 and Sect. 3"
 unit = "MHz"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

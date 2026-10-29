@@ -1,0 +1,14 @@
+parameter,A_state,B_state,C_state,unit,note
+A0,-226.70,-1783.226,-211.0 (2.5),cm-1,"potential curve parameter (Eq. 4); standard error in last digits as printed; A and B potentials use R0 = 2.7 A, C uses R0 = 2.83 A"
+B0,3401.305,4408.223,4599.3 (2.5),cm-1,"potential curve parameter (Eq. 4); footnote b: units cm-1, A and debye, energies relative to Te (A, B) or the dissociation asymptote (C)"
+a1,-6.36(17),-4.63 (11),-3.297 (23),see footnote b,potential curve parameter (Eq. 4)
+a2,-4.0 (1.1),,0.505 (49),,potential curve parameter (no a2 for B)
+a3,,,-0.46 (11),,potential curve parameter (C only)
+a5,,,-0.33 (7),,"footnote d: fourth-order term absent, dropped for statistical insignificance (original fitted value -0.07(94))"
+mu0,0.2845 (11),1.0055 (12),0.4714 (32),debye,"transition moment |mu_e| = mu0 + mu1 z + mu2 z^2, z = R - 2.7 A; footnote e: for A-X and C-X divide mu0 and mu1 by sqrt(2) for electronic degeneracy"
+mu1,-0.048 (33),0.72 (3),-0.16 (11),debye (per A of z),see mu0
+mu2,,-0.17 (42),,debye (per A^2 of z),see mu0 (B only)
+chi_nu2,,1.186,,,reduced chi-squared of the fit (B column only as printed)
+predissociation rate coefficient P,,3.22(3) x 10^10,,s-1 T^-2 as printed,"footnote c: predissociative rate coefficient P in Eq. 3 (B state only)"
+wavelength correction,,,,nm,"footnote b: -0.14(7) for present data, 0.80(9) for Ref. 26 (both as printed; not a B-X constant)"
+intensity scale factor,,,,,"footnote b: 1.00 for present data at 35 C and 0.99 for Ref. 26 (both fixed); 0.9963(8) for 64 C"

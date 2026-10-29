@@ -104,16 +104,19 @@ def _short(source_id):
     return f"{name} {m[2]}" + (f", {m[4]} nm" if m[4] else "")      # balling2007a_532: "Balling 2007, 532 nm"
 
 
-def _link(meta):
-    doi = meta.get("doi")
-    if doi:
-        return f"https://doi.org/{doi}"
-    for key in ("url", "source"):
-        text = meta.get(key, "")
-        found = re.search(r"https?://\S+", text)
+def _bib(meta):
+    """(citation, doi, link) of a data set, from its catalog entry: the bibliography is stored only there."""
+    from .catalog import entry_of
+    e = entry_of(meta)
+    citation = _one_line(e["citation"]) + (f", {meta['tables']}" if meta.get("tables") else "")
+    doi = e.get("doi")
+    link = f"https://doi.org/{doi}" if doi else None
+    for text in ([] if link else [e.get("url") or "", meta.get("source", "")]):
+        found = re.search(r"https?://\S+", str(text))
         if found:
-            return found[0].rstrip(").,")
-    return None
+            link = found[0].rstrip(").,")
+            break
+    return citation, doi, link
 
 
 def _one_line(text):
@@ -136,12 +139,13 @@ def sources():
         lines = {str(o.line) for o in ds.observations} | {str(o.ref_line) for o in ds.observations if o.ref_line}
         freq = [o for o in ds.observations if o.kind == "frequency"]
         short = _short(ds.id)
-        band = re.search(r"λ ≈ (\d+) nm", ds.meta["citation"])
+        citation, doi, link = _bib(ds.meta)
+        band = re.search(r"λ ≈ (\d+) nm", citation)
         if ds.id.startswith("bipm") and band:          # six BIPM documents, one per wavelength
             short = f"BIPM {band[1]} nm"
         return dict(
-            id=ds.id, kind="precision", short=short, citation=_one_line(ds.meta["citation"]),
-            doi=ds.meta.get("doi"), link=_link(ds.meta), n_rows=n_rows, n_lines=len(lines),
+            id=ds.id, kind="precision", short=short, citation=citation,
+            doi=doi, link=link, n_rows=n_rows, n_lines=len(lines),
             n_absolute=len(freq) if n_rows else 0, n_intervals=len(ds) - len(freq) if n_rows else 0,
             n_also=also[ds.id], isotopologues=sorted({line.split()[0] for line in lines}),
             nu=[round(min(o.value * scale for o in freq) / MHZ_PER_CM, 3),
@@ -158,9 +162,10 @@ def sources():
         meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
         rows = _atlas_rows(name)
         nu = [r[4] for r in rows]
+        citation, doi, link = _bib(meta)
         out.append(dict(
-            id=name, kind="atlas", short=_short(name), citation=_one_line(meta["citation"]), doi=meta.get("doi"),
-            link=_link(meta), n_rows=len(rows), n_lines=len({r[:4] for r in rows}), n_absolute=len(rows),
+            id=name, kind="atlas", short=_short(name), citation=citation, doi=doi,
+            link=link, n_rows=len(rows), n_lines=len({r[:4] for r in rows}), n_absolute=len(rows),
             n_intervals=0, n_also=0, isotopologues=["127I2"], nu=[round(min(nu), 3), round(max(nu), 3)],
             u_MHz=float(np.median([r[5] for r in rows])), uncertainty=_one_line(meta.get("calibration", "")),
             fit=name in FITTED_ATLASES))

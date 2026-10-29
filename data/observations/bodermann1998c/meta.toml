@@ -1,8 +1,8 @@
 id = "bodermann1998c"
-citation = "B. Bodermann, Untersuchung zur Realisierung eines durchstimmbaren, hochpräzisen Frequenzstandards im NIR und zur Erweiterung des Spektralbereiches mit Hilfe des 127I2-Moleküls, Dissertation, Universität Hannover (1998); Referent E. Tiemann"
 source = "Doctoral thesis, Universität Hannover (1998); TIB Hannover, PPN 25410990X (294 pages)"
 retrieved = "2026-09-24"
-catalog = "data/catalog/precision.yaml#bodermann1998c"
+catalog = "precision:bodermann1998c"
+tables = "Referent E. Tiemann"
 unit = "MHz"
 transcription = """
 Two tables, read from the PDF text layer and checked digit by digit against 200 dpi renders of PDF

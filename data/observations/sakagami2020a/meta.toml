@@ -1,10 +1,8 @@
 id = "sakagami2020a"
-citation = "H. Sakagami, K. Yoshii, T. Kobayashi and F.-L. Hong, \"Absolute frequency and hyperfine structure of 127I2 transitions at 531.5 nm by precision spectroscopy using a narrow-linewidth diode laser\", J. Opt. Soc. Am. B 37, 1027-1034 (2020)"
-source = "https://doi.org/10.1364/josab.385779 (publisher PDF)"
-doi = "10.1364/josab.385779"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:sakagami2020a"
+catalog = "precision:sakagami2020a"
 
 transcription = """
 Sources, all "Obs." (measured) values; kHz converted to MHz exactly:

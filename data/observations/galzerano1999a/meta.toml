@@ -1,9 +1,8 @@
 id = "galzerano1999a"
-citation = "G. Galzerano, C. Svelto, E. Bava and F. Bertinetto, \"High-frequency-stability diode-pumped Nd:YAG lasers with the FM sidebands method and Doppler-free iodine lines at 532 nm\", Appl. Opt. 38, 6962-6966 (1999), Table 1"
-source = "https://doi.org/10.1364/ao.38.006962 (publisher PDF)"
-doi = "10.1364/ao.38.006962"
+source = "publisher PDF"
 retrieved = "2026-10-28"
-catalog = "data/catalog/precision.yaml#galzerano1999a"
+catalog = "precision:galzerano1999a"
+tables = "Table 1"
 unit = "MHz"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

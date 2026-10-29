@@ -1,9 +1,7 @@
 id = "kobayashi2016a"
-citation = "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, Absolute frequency measurements and hyperfine structures of the molecular iodine transitions at 578 nm, J. Opt. Soc. Am. B 33, 725 (2016)"
 source = "https://arxiv.org/abs/1603.07416"
-doi = "10.1364/josab.33.000725"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#kobayashi2016a"
+catalog = "precision:kobayashi2016a"
 unit = "MHz"
 transcription = """
 From the arXiv version (1603.07416). Table 2: absolute frequencies of the a1 component of R(37)16-1,

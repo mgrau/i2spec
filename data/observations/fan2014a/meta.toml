@@ -1,10 +1,8 @@
 id = "fan2014a"
-citation = "I. Fan, C.-Y. Chang, L.-B. Wang, S. L. Cornish, J.-T. Shy and Y.-W. Liu, \"Refined determination of the muonium-deuterium 1S-2S isotope shift through improved frequency calibration of iodine lines\", Phys. Rev. A 89, 032513 (2014)"
-source = "Phys. Rev. A 89, 032513 (2014), published 20 March 2014, corrected 27 March 2014; https://doi.org/10.1103/PhysRevA.89.032513 (checked against the earlier arXiv:1310.1660v1 preprint, \"New Determination of Muonium-Deuterium 1S-2S Isotope Shift\")"
-doi = "10.1103/physreva.89.032513"
+source = "Phys. Rev. A 89, 032513 (2014), published 20 March 2014, corrected 27 March 2014; https://doi.org/10.1103/PhysRevA.89.032513 (checked against the earlier arXiv:1310.1660v1 preprint, \\\"New Determination of Muonium-Deuterium 1S-2S Isotope Shift\\\")"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:fan2014a"
+catalog = "precision:fan2014a"
 
 partial = """
 1 of 2 measured iodine values. The deuterium reference, a19-21 of R(137) 5-12 (411 121 767.58(07) MHz),

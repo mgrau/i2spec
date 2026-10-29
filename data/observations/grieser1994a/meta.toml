@@ -1,10 +1,8 @@
 id = "grieser1994a"
-citation = "R. Grieser, G. Bönsch, S. Dickopf, G. Huber, R. Klein, P. Merz, A. Nicolaus and H. Schnatz, \"Precision measurement of two iodine lines at 585 nm and 549 nm\", Z. Phys. A 348, 147-150 (1994)"
 source = "Z. Phys. A 348, 147-150 (1994), received 8 November 1993, revised 3 February 1994; https://doi.org/10.1007/BF01289603 (file , scanned). Checked against the earlier CERN preprint CERN-PPE/93-215 (12 November 1993), from which the set was first typed."
-doi = "10.1007/bf01289603"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:grieser1994a"
+catalog = "precision:grieser1994a"
 
 transcription = """
 Read from 250 dpi renderings of the four pages of the published paper (pp. 147-150); the OCR text layer

@@ -1,10 +1,8 @@
 id = "hong2002b"
-citation = "F.-L. Hong, Y. Zhang, J. Ishikawa, A. Onae, H. Matsumoto, \"Hyperfine structure and absolute frequency determination of the R(121)35-0 and P(142)37-0 transitions of 127I2 near 532 nm\", Opt. Commun. 212, 89-95 (2002)"
-source = "https://doi.org/10.1016/s0030-4018(02)01997-1 (publisher PDF)"
-doi = "10.1016/s0030-4018(02)01997-1"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:hong2002b"
+catalog = "precision:hong2002b"
 
 transcription = """
 Tables 1 and 2 (p. 92), "Observed" column only: hyperfine intervals f(a_n) - f(a1) of

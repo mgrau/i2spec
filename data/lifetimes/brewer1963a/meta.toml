@@ -1,7 +1,7 @@
 id = "brewer1963a"
-citation = "L. Brewer, R. A. Berg, G. M. Rosenblatt, Radiative lifetime of I2 fluorescence, B 3Pi0+u -> X 1Sigma0+g, J. Chem. Phys. 38, 1381-1388 (1963), abstract and text (one lifetime, one self-quenching diameter)"
-source = "https://doi.org/10.1063/1.1733862 (publisher PDF: a scan with an OCR text layer; values read from the page image)"
-doi = "10.1063/1.1733862"
+catalog = "broadband:brewer1963"
+tables = "abstract and text (one lifetime, one self-quenching diameter)"
+source = "publisher PDF: a scan with an OCR text layer; values read from the page image"
 retrieved = "2026-10-28"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

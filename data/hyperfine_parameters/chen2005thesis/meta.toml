@@ -1,5 +1,5 @@
 id = "chen2005thesis"
-citation = "L. Chen, \"High-Precision Spectroscopy of Molecular Iodine: From Optical Frequency Standards to Global Descriptions of Hyperfine Interactions and Associated Electronic Structure\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. Ye), 2005, Appendix B, Tables B.46, B.48, B.57, B.58, B.79"
+catalog = "precision:chen2005thesis"
 source = "the thesis PDF (pdfTeX, 272 pages, with a text layer)"
 retrieved = "2026-10-21"
 unit = "MHz"

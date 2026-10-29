@@ -1,10 +1,8 @@
 id = "sharma2023a"
-citation = "L. Sharma, A. Roy, S. Panja, S. De, \"Stabilizing frequency of a diode laser to a reference transition of molecular iodine through modulation transfer spectroscopy\", Atoms 11, 83 (2023)"
-source = "https://doi.org/10.3390/atoms11050083 (publisher PDF, open access)"
-doi = "10.3390/atoms11050083"
+source = "publisher PDF, open access"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:sharma2023a"
+catalog = "precision:sharma2023a"
 
 exclude = """
 Wavelength-meter values at 60 MHz that carry no information beyond the model (which agrees with the

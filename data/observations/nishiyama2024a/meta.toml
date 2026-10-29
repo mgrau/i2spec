@@ -1,9 +1,7 @@
 id = "nishiyama2024a"
-citation = "A. Nishiyama, S. Okubo, T. Kobayashi, A. Kawasaki, H. Inaba, Measurement of transition frequencies and hyperfine constants of molecular iodine at 520.2 nm, J. Opt. Soc. Am. B 41, 2290 (2024)"
 source = "https://arxiv.org/abs/2409.16522"
-doi = "10.1364/josab.531115"
 retrieved = "2026-09-15"
-catalog = "data/catalog/precision.yaml#nishiyama2024a"
+catalog = "precision:nishiyama2024a"
 unit = "MHz"
 transcription = """
 From the arXiv version (2409.16522). Table 1: absolute frequencies of the a1 component of P(34)39-0,

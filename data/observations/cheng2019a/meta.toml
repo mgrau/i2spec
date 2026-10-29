@@ -1,10 +1,8 @@
 id = "cheng2019a"
-citation = "F. Cheng, K. Deng, K. Liu, H. Liu, J. Zhang and Z. Lu, \"Absolute frequency measurement of molecular iodine hyperfine transition at 534 nm\", J. Opt. Soc. Am. B 36(7), 1816-1822 (2019)"
-source = "https://doi.org/10.1364/josab.36.001816 (publisher PDF)"
-doi = "10.1364/josab.36.001816"
+source = "publisher PDF"
 retrieved = "2026-09-27"
 unit = "MHz"
-catalog = "precision.yaml:cheng2019a"
+catalog = "precision:cheng2019a"
 
 transcription = """
 Table 1 (p. 1820: comb-measured absolute frequencies of 19 hyperfine components of 127I2 R(53) 31-0,

@@ -1,8 +1,7 @@
 id = "bipm2005a"
-citation = "BIPM/CIPM, Recommended values of standard frequencies: iodine (λ ≈ 515 nm), ¹²⁷I₂ a3 component, P(13) 43-0 (MEP 2005)"
 source = "https://www.bipm.org/documents/20126/41549496/M-e-P_I2_515.pdf/63b35d2c-379d-aa88-8480-7a44395637b5"
 retrieved = "2026-09-14"
-catalog = "data/catalog/precision.yaml#bipm2005a"
+catalog = "precision:bipm2005a"
 unit = "MHz"
 transcription = """
 Page 1: adopted f(a3, P(13) 43-0) = 582 490 603 442 (5) kHz, the CIPM recommended value. Typed by hand.

@@ -1,10 +1,8 @@
 id = "zhang2009a"
-citation = "J. Zhang, Z. H. Lu and L. J. Wang, \"Absolute frequency measurement of the molecular iodine hyperfine components near 560 nm with a solid-state laser source\", Appl. Opt. 48(29), 5629-5635 (2009)"
-source = "https://doi.org/10.1364/ao.48.005629 (publisher PDF)"
-doi = "10.1364/ao.48.005629"
+source = "publisher PDF"
 retrieved = "2026-09-27"
 unit = "MHz"
-catalog = "precision.yaml:zhang2009a"
+catalog = "precision:zhang2009a"
 
 transcription = """
 Table 1 (p. 5632), "Measured" column only: comb-referenced absolute frequencies of R(34) 20-0 a1, a10,

@@ -1,10 +1,8 @@
 id = "goncharov2004a"
-citation = "A. Goncharov, A. Amy-Klein, O. Lopez, F. du Burck and C. Chardonnet, \"Absolute frequency measurement of the iodine-stabilized Ar+ laser at 514.6 nm using a femtosecond optical frequency comb\", Appl. Phys. B 78, 725-731 (2004)"
-source = "https://doi.org/10.1007/s00340-004-1487-5 (publisher PDF)"
-doi = "10.1007/s00340-004-1487-5"
+source = "publisher PDF"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:goncharov2004a"
+catalog = "precision:goncharov2004a"
 
 transcription = """
 The paper has no tables and measures one frequency. Read from the PDF text layer and checked digit by

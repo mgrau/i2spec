@@ -1,10 +1,8 @@
 id = "nesterenko2019"
-citation = "M. I. Nesterenko, S. M. Ignatovich, S. A. Kuznetsov, Yu. A. Matyugin and M. N. Skvortsov, \"Absolute frequency measurements for emission transitions of molecular iodine in the range 1053-1068 nm\", Quantum Electron. 49, 633-640 (2019)"
-source = "https://doi.org/10.1070/QEL16890 (PDF obtained 2026-09-16)"
-doi = "10.1070/QEL16890"
+source = "PDF obtained 2026-09-16"
 retrieved = "2026-09-16"
 unit = "MHz"
-catalog = "precision.yaml:nesterenko2019"
+catalog = "precision:nesterenko2019a"
 
 transcription = """
 Table 2, "Frequency measurement results for iodine emission transitions", read from the text layer of

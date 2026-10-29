@@ -1,10 +1,8 @@
 id = "yang2011a"
-citation = "T. Yang, F. Meng, Y. Zhao, Y. Peng, Y. Li, J. Cao, C. Gao, Z. Fang and E. Zang, \"Hyperfine structure and absolute frequency measurements of 127I2 transitions with monolithic Nd:YAG 561-nm lasers\", Appl. Phys. B 106, 613-618 (2012; published online 11 October 2011)"
-source = "https://doi.org/10.1007/s00340-011-4750-6 (publisher PDF)"
-doi = "10.1007/s00340-011-4750-6"
+source = "publisher PDF"
 retrieved = "2026-09-27"
 unit = "MHz"
-catalog = "precision.yaml:yang2011a"
+catalog = "precision:yang2011a"
 
 transcription = """
 Tables 1-3 (pp. 615-616, hyperfine splittings) and the three absolute frequencies of Sect. 3 (p. 617,

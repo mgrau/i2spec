@@ -1,0 +1,67 @@
+id = "gerstenkorn1985a"
+source = "open-access HAL copy of the article; born-digital PDF, page images read"
+retrieved = "2026-10-28"
+catalog = "broadband:gerstenkorn1985a"
+tables = "Table III and text"
+unit = "cm-1 (Y_lm, as printed in mantissa and power-of-ten form)"
+state = "X and B"
+isotopologue = "127I2"
+files = ["dunham.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table III (journal p. 872, PDF page 7): the Dunham coefficients of the 127I2 B state (valid for 0 <= v' <= 80) and
+X state (valid for 0 <= v'' <= 19). The table is not in the text layer. It was read from 400 dpi crops of the page
+image, one crop per state, and the exponents of the right-hand column were read from a second crop because the first
+cut them off. All 45 printed coefficients are entered as printed (mantissa and power of ten, D form converted to e).
+
+dunham.csv: 45 rows, columns isotopologue, state, l, m, Y_cm1, table. The paper's y_il is written here as Y_lm with
+l the power of (v + 1/2) and m = 0 for G_v and m = 1 for B_v, the convention of data/b_levels/gerstenkorn1991.
+  X state, G_v: Y10 to Y70 (7 rows; the paper's i = 1..7 in column y_i0).
+  X state, B_v: Y01 to Y51 (6 rows; the paper's column y_i1, i = 0..5).
+  B state, G_v: Y10 to Y16,0 (16 rows).
+  B state, B_v: Y01 to Y15,1 (16 rows).
+The printed header of the B-state rows says "0 <= v' <= 80" and the X rows "0 <= v'' <= 19". Y00 is not in the table
+and is not entered here.
+
+Readings: the printed digit strings were read from the image. The third digit of the B-state Y_21 coefficient is
+smudged in the scan ("-.126 0399161 87D-05" as read, 12 digits); it is entered as read, and the check below agrees
+with it to six figures.
+
+Checks (model-free, against the held set data/b_levels/gerstenkorn1991, a different transcription of different tables):
+the 127I129I coefficients of Table 1 there are the 127I2 values of this table times rho^(l + 2m), with rho =
+[mu(127,127)/mu(127,129)]^(1/2) from the printed reduced masses (63.4522378 and 63.948454 u). For all 45 coefficients the
+ratio agrees with a single common rho to within 5e-7 relative, and the deviation is a constant offset of about 3e-8 in rho
+(the 1991 set's own rho, from its internal masses, differs in the eighth figure). So no coefficient is misread
+at the level that matters here.
+
+Not entered: Table IV (the centrifugal-distortion Dunham coefficients D'' and H'' and the exponential coefficients of
+the B-state D, H, L, M), Table V (the smoothed E(v) and B(v) of 0 <= v <= 80 and the X levels), Table VI (uncertainty
+of each vibrational energy), Tables I, II and VII (assignment and line tables), and Figs. 1-9. The centrifugal
+coefficients are not part of the 45 Dunham coefficients that the paper says reproduce the (B-X) spectrum.
+"""
+
+uncertainty = "None printed for the coefficients. The paper gives the overall standard error of the fit, 0.002 cm-1 over 17 800 lines, and an uncertainty of the vibrational energies in Table VI (not entered)."
+
+notes = """
+What the paper is. A Dunham analysis of the complete Orsay Fourier-transform absorption data for the (B-X) system of
+127I2, 17 800 assigned lines between 11 000 and 20 040 cm-1, with a compact representation of 45 Dunham coefficients that
+recalculates the whole (B-X) spectrum. The abstract's count of 46 constants is these 45 coefficients plus the
+empirical scaling factor k = 2.2 of the effective M* = k M constants (Sect. 3.3, not a Dunham coefficient, not entered
+here). The fit is unweighted and the standard error 0.002 cm-1 is of the whole data set; the residuals are not normal
+(Sect. 3.3), and the high-J and high-v ends are less accurate.
+
+Relation to held sets. data/b_levels/gerstenkorn1991 holds the isotopologue versions (127I129I, 129I2) obtained from
+these coefficients by mass scaling, and its own check gives the 127I2 constants back. data/observations/gerstenkorn1983a
+(the 1983 Gerstenkorn and Luc analysis) predates this fit; the paper's own comparison is with the 1983 metre data.
+"""
+
+[columns]
+dunham = """
+isotopologue: 127I2.
+state: X (valid 0 <= v'' <= 19) or B (valid 0 <= v' <= 80).
+l: power of (v + 1/2) in the expansion G_v (m = 0) or B_v (m = 1). For G_v, l = 1..7 (X) or 1..16 (B).
+m: 0 for G_v, 1 for B_v (the X state's B_v row runs l = 0..5, the B state's l = 0..15 for m = 1).
+Y_cm1: the coefficient in cm-1 as printed (mantissa and power of ten).
+table: III (the table of the paper).
+"""

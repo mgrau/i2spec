@@ -1,11 +1,10 @@
 id = "kitt_peak_1993"
+catalog = "broadband:kitt_peak_1993"
+tables = "doi:10.1086/133755."
 unit = "cm-1"
 isotopologue = "127I2"
 url = "https://nispdata.nso.edu/ftp/FTS_cdrom/"
 kind = "atlas line positions"
-citation = """Kitt Peak McMath-Pierce 1-m FTS, 17 March 1993 (observer Marcy), NSO Digital Library
-volume FTS33, file 930317R0.003: Iodine Cell, Keck Cell, 50.0C, 100mm, 5000 - 6300A. The RV cell templates of Butler et al., PASP 108, 500
-(1996), doi:10.1086/133755."""
 instrument = """McMath-Pierce 1-m FTS, RESOLUTN 0.037 cm-1, 0.01409 cm-1 per point, 10 co-added scans,
 DZE lamp, 8 mm aperture, evacuated tank; vacuum wavenumbers (AIRCORR = No), WAVCORR = 0 (no scale
 correction applied in the archive). Keck cell, 100 mm, 50.0 C; useful band 15 875-20 000 cm-1."""

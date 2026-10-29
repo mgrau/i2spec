@@ -1,7 +1,7 @@
 id = "pique1983a"
-citation = "J. P. Pique, R. Bacis, F. Hartmann, N. Sadeghi, S. Churassy, \"Hyperfine predissociation in the B state of iodine investigated through lifetime measurements of individual hyperfine sublevels\", J. Phys. (Paris) 44, 347-351 (1983), Table I and the fitted constants"
-source = "https://doi.org/10.1051/jphys:01983004403034700 (publisher PDF: a scan with a text layer; Table I and constants read from the 200 dpi page image p. 349)"
-doi = "10.1051/jphys:01983004403034700"
+catalog = "broadband:pique1983"
+tables = "Table I and the fitted constants"
+source = "publisher PDF: a scan with a text layer; Table I and constants read from the 200 dpi page image p. 349"
 retrieved = "2026-10-28"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

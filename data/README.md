@@ -22,6 +22,16 @@ not, is in `catalog/`.
 Line positions and intensities from spectra whose terms do not allow redistribution are kept in a private
 companion repository (`i2spec_data`, see `external/README.md`) until they do.
 
+## One source for each fact
+
+Each number and each bibliographic fact is stored once. A data set's `meta.toml` points to its source with
+`catalog = "<file>:<id>"`; the citation, DOI and description of the source live only in that catalog entry, and
+the set keeps only what is specific to the transcription (`tables`, `source` for the copy that was read,
+`transcription`, `uncertainty`, conditions). The data sets of a source are found from those pointers
+(`i2spec.catalog.datasets()`), never listed in the catalog. A compilation that reprints another source's
+measurement keeps its rows as printed and declares them in `[overlaps]`, so the record shows each measurement once.
+Combined tables (one CSV of every line, one of every set) are generated from these files, not stored.
+
 ## Terms
 
 The repository's code and the data derived in this work (fits, assignments, transcriptions) are under its

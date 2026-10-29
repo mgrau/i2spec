@@ -1,0 +1,69 @@
+id = "churassy1981"
+catalog = "broadband:churassy1981"
+tables = "Tables I-IV, and the eQq values of Table III and the perturbation bound in the text"
+source = "publisher PDF"
+retrieved = "2026-10-28"
+unit = "cm-1 for term values, B and Dunham constants; 2 sigma as printed unless the column says sd or 1 sd; eQq in MHz"
+state = "a 1g (I2 a1g, weakly bound gerade) and a' 0g+ (I2 a'0g+), levels v = 0-4, 6-8, 10-14 (a 1g, 13 levels) and v = 0-4, 8, 9 (a' 0g+, 7 levels), seen in B 0u+ - a and B - a' fluorescence from B v' = 43"
+isotopologue = "127I2"
+files = ["table1_a1g_levels.csv", "table2_aprime0g_levels.csv", "table3_eQq_aprime.csv", "table4_dunham.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Tables I-IV and the eQq values printed in the text, read from 200 dpi page images (paper pages 4864-4866, PDF pages 3-5)
+and checked against the text layer. Every printed number of Tables I-IV and III was compared with the image; the
+text layer garbled the Table I parity labels and the decimal points of the B column, which were taken from the image.
+
+table1_a1g_levels.csv: Table I, term values T (relative to X 1g+ v = 0, J = 0; T(B 43) = 19433.6780 from ref. 20 is
+used for the transition-to-term conversion), and the e- and f-parity rotational constants Be (P and R branches) and
+Bf (Q branch), D x 1e7, the standard deviation of the fit (x 1e3 cm-1) and the numbers of lines N_e and N_f (the
+two printed entries per row, upper = e, lower = f). Row v = 10: only one B value is printed, on the e-parity line,
+and it is entered as Be with Bf empty; the text says that v = 10 was not used in the B fit (only four lines). The
+"<" entries in D are upper limits as printed (no uncertainty printed).
+
+table2_aprime0g_levels.csv: v = 1 T was first entered as 12326.9212 and corrected to 12328.9212(41) after an independent re-read of the 300 dpi image of Table II (the printed value; the T(1) - T(0) spacing of about 16.8 cm-1 agrees with Table IV).
+table2_aprime0g_levels.csv: Table II, a' 0g+ term values, B (no e/f split), D x 1e6 (only v = 8 and 9 have a D entry),
+SD x 1e3, N. Row v = 8 and 9: SD is printed as "..." and entered empty.
+
+table3_eQq_aprime.csv: Table III, the quadrupole hyperfine parameter eQq(a' 0g+) in MHz, 1 sigma as printed (footnote
+a), v = 0-3, positive sign as printed. The text says eQq(a') decreases with v; the authors take it as possible evidence
+of requantization to the quadrupole-quadrupole basis.
+
+table4_dunham.csv: Table IV in long form (state, coefficient, value, 2 sigma). Coefficients are Y_kl in the notation
+of the paper: T00 = Te, Y10 = we, Y20 = -wexe, Y30, Y40, Y50 (Y_k0), Be, Y11 = -alpha_e, and Y21, Y31, Y41, Y51 (Y_k1).
+Scaling: the printed mantissas and exponents were expanded to plain cm-1 (for example Y30 = -0.1963(508) x 10^-2 is
+entered as -1.963e-3 +/- 5.08e-4). Table IV footnote a: for a 1g the Dunham fit uses v = 0-4, 6-8, 11-14 (not v = 5, 9, 10); for a' 0g+ v = 0-4 are fitted. Footnote d: the a 1g Be row is obtained from f-parity levels only.
+Footnote c: R_e(a 1g) = 4.311 A, R_e(a' 0g+) = 4.641 A.
+
+Printed upper bound on a perturbation (text, Perturbations section): the matrix element between a 1g v = 12 and
+a' 0g+ v = 3 (J = 15 levels, separation about 0.010 cm-1) is < 0.009 cm-1 (with the vibrational factor 1.06e-5 cm-1
+and an electronic factor < 50 at R = 4.5 A). The authors state there is no significant a 1g - a' 0g+ perturbation in
+the explored levels and that the a' 0g+ and X states, both of e symmetry, could only give n-type doubling of a 1g,
+which is not detectable (Table I, e and f values agree within 2 sigma). This is the only B-state perturbation
+information in the paper: no shift of B 0u+ levels is printed, and the B - a and B - a' lines are used as printed
+(no B-state constants are tabulated; the upper state is held fixed at Luc's (ref. 19) T43 = 19433.6780, B43 = 0.01874453,
+D43 = 0.25893e-7, H43 = -0.1350e-12 cm-1 for the fits).
+
+Hyperfine note: the a' 0g+ lines are broadened by hyperfine structure (FWHM 0.022 cm-1 against 0.015 cm-1 for a 1g
+lines); the printed term values for a' use the authors' correction for the red-violet HWHM shift (text).
+
+Checks (model-free):
+- Table IV Dunham at v = 0 reproduces Table I T(v = 0) = 12152.8673 to 0.0009 cm-1 (within its 2 sigma, 0.0023) and
+  a' 0g+ at v = 0 reproduces Table II T(v = 0) = 12312.1367 to 0.0001 cm-1.
+- Two a 1g levels (v = 3 and v = 12 at J = 15) lie 0.010 cm-1 apart, which the authors cite as the observed
+  no-perturbation case; this is not independently re-derived.
+"""
+
+uncertainty = "2 sigma (2 standard errors) for Tables I, II and IV, as printed; 1 sigma for Table III (footnote a). Upper limits as printed; the D column of Table I has no uncertainty for the '<' entries. The text gives no uncertainty for the 0.009 cm-1 perturbation bound beyond its being an upper limit."
+
+notes = """
+data/other_states holds measured levels and constants of electronic states other than X and B. The a 1g and
+a' 0g+ states are weakly bound gerade states that lie near the B state's limit region: they are reached by
+B 0u+ - a and B - a' fluorescence (data/observations are not used for this set), and they can perturb high
+v levels of B, which is why the perturbation bound is printed in meta. The high-resolution B - X study by the same
+group (martin1983, data/x_levels/martin1983) and Churassy's own near-dissociation work give the X-state side.
+inard1999 (data/other_states/inard1999) measures E 0g+ and B'' 1u levels by the same LIF-FTS route; no overlap of
+levels is claimed here.
+The upper-state constants used in this paper's fits are Luc's (ref. 19); the B-state values in this set are only the
+fixed T43, B43, D43, H43 listed above.
+"""

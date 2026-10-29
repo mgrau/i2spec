@@ -1,7 +1,6 @@
 id = "borde1981a"
-citation = "Ch. J. Bordé, G. Camy, B. Decomps, J.-P. Descoubes and J. Vigué, \"High precision saturation spectroscopy of 127I2 with argon lasers at 5145 Å and 5017 Å: I - Main resonances\", J. Phys. (Paris) 42, 1393-1411 (1981)"
+catalog = "precision:borde1981a"
 source = "J. Phys. 42 (10), 1393-1411 (1981); https://doi.org/10.1051/jphys:0198100420100139300; HAL jpa-00209331 (open access scan)"
-doi = "10.1051/jphys:0198100420100139300"
 retrieved = "2026-10-20"
 unit = "MHz"
 exclude = "pending: transcribed 2026-10-20 and held out of every fit, benchmark and the explorer until it is scored in a blind test or admitted to the fit; delete this line to admit it"

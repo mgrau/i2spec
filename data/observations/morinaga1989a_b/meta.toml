@@ -1,9 +1,8 @@
 id = "morinaga1989a_b"
-citation = "A. Morinaga, K. Sugiyama, N. Ito and J. Helmcke, \"Hyperfine structure of low-lying vibrational levels in the B electronic state of molecular iodine\", J. Opt. Soc. Am. B 6, 1656-1659 (1989), Table 2 and pp. 1657, 1659"
-source = "https://doi.org/10.1364/JOSAB.6.001656 (publisher PDF)"
-doi = "10.1364/JOSAB.6.001656"
+source = "publisher PDF"
 retrieved = "2026-10-23"
-catalog = "precision.yaml:morinaga1989a"
+catalog = "precision:morinaga1989a"
+tables = "Table 2 and pp. 1657, 1659"
 unit = "MHz"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

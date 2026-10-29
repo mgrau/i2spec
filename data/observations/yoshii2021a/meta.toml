@@ -1,10 +1,9 @@
 id = "yoshii2021a"
-citation = "K. Yoshii, C. Chen, H. Sakagami, F.-L. Hong, \"Hyperfine structure of molecular iodine measured using a light source with a laser linewidth at the megahertz level\", OSA Continuum 4, 1452-1460 (2021) (Negative Results article)"
-source = "https://doi.org/10.1364/osac.420628 (publisher PDF, open access)"
-doi = "10.1364/osac.420628"
+source = "publisher PDF, open access"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:yoshii2021a"
+catalog = "precision:yoshii2021a"
+tables = "(Negative Results article)"
 
 exclude = """
 The paper's own conclusion is that these measurements are biased: with a MHz-linewidth coin-sized

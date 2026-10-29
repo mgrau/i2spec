@@ -1,10 +1,8 @@
 id = "edwards1999a"
-citation = "C. S. Edwards, G. P. Barwood, P. Gill and W. R. C. Rowley, \"A 633 nm iodine-stabilized diode-laser frequency standard\", Metrologia 36, 41-45 (1999)"
-source = "https://doi.org/10.1088/0026-1394/36/1/7 (IOPscience PDF, downloaded 2015-08-19 per its cover page)"
-doi = "10.1088/0026-1394/36/1/7"
+source = "IOPscience PDF, downloaded 2015-08-19 per its cover page"
 retrieved = "2026-09-27"
 unit = "MHz"
-catalog = "precision.yaml:edwards1999a"
+catalog = "precision:edwards1999a"
 
 transcription = """
 Table 1 (p. 44, 2 MHz modulation depth) and Table 2 (p. 45, 6 MHz modulation depth), both f(bn - b21) of

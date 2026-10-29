@@ -1,10 +1,8 @@
 id = "tanabe2022a"
-citation = "Y. Tanabe, Y. Sakamoto, T. Kohno, D. Akamatsu, F.-L. Hong, \"Frequency references based on molecular iodine for the study of Yb atoms using the 1S0-3P1 intercombination transition at 556 nm\", Opt. Express 30, 46487-46500 (2022)"
-source = "https://doi.org/10.1364/oe.478917 (publisher PDF, open access)"
-doi = "10.1364/oe.478917"
+source = "publisher PDF, open access"
 retrieved = "2026-09-29"
 unit = "MHz"
-catalog = "precision.yaml:tanabe2022a"
+catalog = "precision:tanabe2022a"
 
 transcription = """
 Table 2 (p. 46493): absolute frequencies of the a1 component of 127I2 R(53) 24-1, P(49) 24-1 and

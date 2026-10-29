@@ -1,7 +1,7 @@
 id = "broyer1976a"
-citation = "M. Broyer, J. Vigue, J. C. Lehmann, \"Hyperfine predissociation of molecular iodine\", J. Chem. Phys. 64, 4793-4794 (1976), v' = 7 constants (text)"
-source = "https://doi.org/10.1063/1.432067 (publisher PDF: a scan with a text layer; values read from the 200 dpi page image p. 4794)"
-doi = "10.1063/1.432067"
+catalog = "broadband:broyer1976"
+tables = "v' = 7 constants (text)"
+source = "publisher PDF: a scan with a text layer; values read from the 200 dpi page image p. 4794"
 retrieved = "2026-10-28"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

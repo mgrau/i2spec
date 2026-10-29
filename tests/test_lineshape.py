@@ -5,7 +5,7 @@ import pytest
 from i2spec.lineshape import (LIFETIME_COLUMNS, WIDTH_COLUMNS, load_all_lifetimes, load_all_widths, load_lifetimes,
                               load_widths)
 
-META = 'id = "{id}"\ncitation = "c"\nsource = "s"\nretrieved = "2026-10-28"\ntranscription = "t"\nuncertainty = "u"\n'
+META = 'id = "{id}"\ncatalog = "broadband:tench1983"\nsource = "s"\nretrieved = "2026-10-28"\ntranscription = "t"\nuncertainty = "u"\n'
 
 
 def _set(tmp_path, name, columns, rows, extra=""):

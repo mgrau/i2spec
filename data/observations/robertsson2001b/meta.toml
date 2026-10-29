@@ -1,9 +1,8 @@
 id = "robertsson2001b"
-citation = "L. Robertsson, L.-S. Ma and S. Picard, \"Improved iodine-stabilized Nd:YAG lasers\", Proc. SPIE 4269, Laser Frequency Stabilization, Standards, Measurement, and Applications, 268-271 (2001), Table 1"
-source = "https://doi.org/10.1117/12.424482 (publisher PDF)"
-doi = "10.1117/12.424482"
+source = "publisher PDF"
 retrieved = "2026-10-28"
-catalog = "data/catalog/precision.yaml#robertsson2001b"
+catalog = "precision:robertsson2001b"
+tables = "Table 1"
 unit = "MHz"
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
 

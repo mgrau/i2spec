@@ -1,0 +1,69 @@
+id = "lamrini1994"
+source = "publisher PDF: born-digital, text layer; page 4 read as an image"
+retrieved = "2026-10-28"
+catalog = "broadband:lamrini1994"
+tables = "Table I, Eqs. (1)-(2) and Fig. 4"
+unit = "s-1 x 10^-4 (decay rates, Table I); s x 10^-6 (lifetimes, Table I); log10 of |mu_e|^2 in D^2 (Eqs. 1-2); A (R_c); D^2 (|mu_e|^2 scaling point)"
+state = "B-X"
+isotopologue = "127I2"
+files = ["decay_rates_table1.csv", "moment_fit_eq1_eq2.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+The paper prints no table of |mu_e| against R-centroid. Its moment function is given as two fitted polynomials in
+log10|mu_e|^2 against R-centroid (Eqs. 1 and 2, pp. 8782) and as a plot (Figs. 3 and 4). These are the printed numbers
+entered here, with the decay-rate table (Table I, p. 8782) as printed.
+
+moment_fit_eq1_eq2.csv: Eq. (1) (2.633-3.9 A, fourth-order polynomial) and Eq. (2) (3.9-6.035 A, linear) with their
+standard deviations as printed (0.150 and 0.545 relative in |mu_e|^2). Eq. (1) is printed with the exponents
+2 and 4 on its last two terms (R_c^2 and R_c^4 typeset as 'R_c^2' and '15.129 18R_c^4' and '-1.125 37R_c^2'); see the note
+in that file. Entered as printed.
+decay_rates_table1.csv: Table I, the B-state decay rates from the paper's Ref. 20(c) (as printed), this work
+(Gamma_rad, calibrated), the observed decay rates from tau_obs, and the lifetimes from Ref. 20(c) and this work. The
+v' = 43 value 31.4(18) is marked * in the paper: it is the reference used to calibrate the absolute scale (Pique et al.,
+f_rad = (31.4 +- 1.8) x 10^4 s-1). Entries with "<=" are upper limits as printed.
+
+Scaling (printed in the text, p. 8783): |mu_e|^2(R_c = 2.65 A)/|mu_e|^2(R_c = 6.035 A) = (2.3 +- 1.3) x 10^4, and
+|mu_e|^2(R_c = 2.66 A) = 2.00 +- 0.11 D^2 after the calibration by the v' = 43 level (the text also gives 1.0 D^2 at 2.66 A as
+the Tellinghuisen absorption scale used to normalize the figures). Both are printed; neither is entered as a separate row.
+
+Not entered: Fig. 2 and Fig. 3 (data points of the three excited levels, plotted, not printed as numbers), Fig. 4 (plot of
+the experimental points, not tabulated).
+
+Checks: Eq. (1) with the R_c^3 and R_c^4 reading gives log10|mu_e|^2 = -0.0007 at R_c = 2.66 A (|mu_e|^2 = 1.00 D^2, the
+normalization point) and -1.95 at 3.9 A, against Eq. (2) at 3.9 A: -1.87, so the two branches join within about 0.08 in log10
+(not a fit check; a consistency check of the exponent misprint). Read as printed (R_c^2 twice), Eq. (1) gives log10 values
+near 500 at 2.6 A and cannot be the fit.
+"""
+
+uncertainty = """
+Table I: standard errors in parentheses in units of the last digit (as printed; the paper's caption). Eq. (1) and (2)
+standard deviations as printed (0.150 and 0.545 in relative |mu_e|^2). The R_c scaling ratio (2.3 +- 1.3) x 10^4 as printed.
+The text says the 55 % error bar of Eq. (2) reflects the very small values at large R_c; the Tellinghuisen scale
+uncertainty of the absolute value is not stated by the paper.
+"""
+
+notes = """
+Relation to held sets. This paper gives the widest experimental R-centroid range of the B-X transition moment, 2.633-6.035 A,
+and reports a decrease of about four orders of magnitude in |mu_e|^2 (the paper's own statement). It does not find the
+maximum near 2.8-3.2 A reported in earlier work (koffend1979, tellinghuisen1982 and others). The Eq. (2) region at R_c > 3.9 A
+is the least constrained part (the paper states the scarcity of points). The decay-rate table is the paper's own comparison
+with the Ref. 20(c) rates; not compared with other held sets here. Absolute scale: the paper normalizes to the Tellinghuisen (1982) absorption value at R_c = 2.66 A, |mu_e|^2 = 1.0 D^2,
+so the absolute scale is inherited, not independent.
+"""
+
+[columns]
+decay_rates_table1 = """
+v_prime: upper vibrational level v' of the B state (Table I).
+gamma_rad_ref20c_e4_per_s: radiative decay rate from Ref. 20(c), x 10^-4 s-1, as printed (with error in last digits).
+gamma_rad_this_work_e4_per_s: this work, x 10^-4 s-1 (v' = 43 is the calibration reference, marked * in the paper).
+gamma_obs_e4_per_s: observed decay rate from the lifetimes (x 10^-4 s-1); the paper's "Gamma_obs" column.
+tau_obs_e6_s, tau_rad_ref20c_e6_s, tau_rad_this_work_e6_s: lifetimes, x 10^-6 s, as printed. Refs. as printed.
+note: as printed, plus the * calibration marker.
+"""
+moment_fit_eq1_eq2 = """
+equation: Eq. (1) or (2) of the paper. range_Rc_A: validity range printed in the text (A).
+term: polynomial term in R_c (the R_c of the printed equations is the R-centroid, A).
+coefficient_as_printed: as printed. exponent_as_printed: the power of R_c as typeset (see the Eq. (1) note).
+std_dev_log10_mu2: the printed relative standard deviation of |mu_e|^2 (0.150 for Eq. 1, 0.545 for Eq. 2).
+"""

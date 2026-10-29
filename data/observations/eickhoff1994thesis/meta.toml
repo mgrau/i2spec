@@ -1,5 +1,5 @@
 id = "eickhoff1994thesis"
-citation = "M. L. Eickhoff, \"Two new methods for real-time precision refractometry and a precise test of the hyperfine Hamiltonian via modulation transfer spectroscopy of molecular iodine at 532 nm\", Ph.D. thesis, University of Colorado, Boulder (JILA, advisor J. L. Hall), 1994, Chapter X, Tables 10.2-10.8 (pp. 209-215)"
+catalog = "precision:eickhoff1994thesis"
 source = "dissertation scan (UMI order number 9518616, 283 pages, image only)"
 retrieved = "2026-10-21"
 unit = "MHz"
