@@ -1,0 +1,14 @@
+isotopologue,state,v,J,sublevel,quantity,value,uncertainty,group,note
+127I2,B,43,,F'-J'=-5,lifetime,1980,99,pique1983a,"Table I p. 349: component a1 (F'-J' = -5, I~' = 5): 1.98 us +- 5 %, entered as 1980 +- 99 ns; calc 1.89 us (not entered); J' not assigned (12 or 16)"
+127I2,B,43,,F'-J'=-5,lifetime,1970,99,pique1983a,"Table I: component b1 (F'-J' = -5, I~' = 5): 1.97 us +- 5 %, 1970 +- 99 ns; calc 1.97 us"
+127I2,B,43,,F'-J'=0,lifetime,2900,145,pique1983a,"Table I: component a2 (F'-J' = 0, I~' = 1): 2.90 us +- 5 %, 2900 +- 145 ns; calc 2.92 us"
+127I2,B,43,,F'-J'=0,lifetime,2730,137,pique1983a,"Table I: component b2 (F'-J' = 0, I~' = 1): 2.73 us +- 5 %, 2730 +- 137 ns; calc 2.62 us"
+127I2,B,43,,F'-J'=5,lifetime,1470,74,pique1983a,"Table I: component a3 (F'-J' = 5, I~' = 5): 1.47 us +- 5 %, 1470 +- 74 ns; calc 1.51 us"
+127I2,B,43,,F'-J'=5,lifetime,1490,75,pique1983a,"Table I: component b3 (F'-J' = 5, I~' = 5): 1.49 us +- 5 %, 1490 +- 75 ns; calc 1.45 us"
+127I2,B,43,,F'-J'=-4,lifetime,1860,93,pique1983a,"Table I: component a4 (F'-J' = -4, I~' = 5): 1.86 us +- 5 %, 1860 +- 93 ns; calc 1.96 us"
+127I2,B,43,,F'-J'=1,lifetime,2750,138,pique1983a,"Table I: component a5 (F'-J' = 1, I~' = 3): 2.75 us +- 5 %, 2750 +- 138 ns; calc 2.63 us"
+127I2,B,43,,F'-J'=-3,lifetime,2300,115,pique1983a,"Table I: component a7 (F'-J' = -3, I~' = 5): 2.3 us (one figure printed) +- 5 %, 2300 +- 115 ns; calc 2.08 us"
+127I2,B,43,,F'-J'=0,lifetime,2320,116,pique1983a,"Table I: component b20 (F'-J' = 0, I~' = 5): 2.32 us +- 5 %, 2320 +- 116 ns; calc 2.40 us"
+127I2,B,43,,,radiative_rate,314000,18000,pique1983a,p. 349 fit: Gamma_rad = (0.314 +- 0.018) x 10^6 s^-1 (fitted to all sublevels; J not assigned)
+127I2,B,43,,,gyroscopic_predissociation_c2,34.2,7.6,pique1983a,"p. 349 fit: c_v = (5.85 +- 0.65) s^-1/2, so c_v^2 = 34.2 +- 7.6 s^-1 (= Hz). c_v is the GYROSCOPIC (rotational) coefficient, Gamma_rot = c_v^2 J(J+1), not the quadrupole term named in the schema text (see meta)"
+127I2,B,43,,,hyperfine_predissociation_a2,20164,1420,pique1983a,"p. 349 fit: a_v = (-142 +- 5) s^-1/2, so a_v^2 = 20164 +- 1420 s^-1 = 20.2 +- 1.4 x 10^3 s^-1; entered in s-1"

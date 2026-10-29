@@ -1,0 +1,4 @@
+line,component,quantity,value,uncertainty,pressure_Pa,temperature_K,perturber,group,note
+127I2 P(13) 43-0,,broadening,225.0,15.0,,,self,goncharov1990a,p. 112: low-pressure Delta Gamma/Delta P = 15 +/- 1 kHz/mTorr HWHM; FWHM = 2 x 15 = 30 kHz/mTorr; x 1000/133.322 = 225.0 kHz/Pa; uncertainty 2 x 1 kHz/mTorr = 15.0 kHz/Pa; whole line (component not stated for widths)
+127I2 P(13) 43-0,,broadening,112.5,15.0,,,self,goncharov1990a,p. 112: high-pressure Delta Gamma/Delta P = 7.5 +/- 1 kHz/mTorr HWHM; FWHM = 2 x 7.5 = 15 kHz/mTorr; x 1000/133.322 = 112.5 kHz/Pa; uncertainty 15.0 kHz/Pa; whole line
+127I2 P(13) 43-0,a2,shift,-3.0,0.75,,,self,goncharov1990a,"p. 112-113: shift about 400 Hz/mTorr = 0.4 kHz/mTorr printed (no sign in text), x 1000/133.322 = 3.0 kHz/Pa; measured on a2; uncertainty 0.1 kHz/mTorr assigned = 0.75 kHz/Pa; sign not printed in the text, taken from Fig. 8 (the measured shift decreases with pressure, about -0.35 kHz/mTorr)"

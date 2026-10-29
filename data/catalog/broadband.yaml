@@ -3342,8 +3342,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: three v' = 7 hyperfine predissociation constants (Gamma_rad, k_7 and the hyperfine terms); not in data/b_levels/broyer1975 (no v' = 7 rows); Fig. 2 has 14 optional points"
+  data: ["data/lifetimes/broyer1976a"]
+  transcription: "done"
   notes: "Read in full (2-page communication). First identification of hyperfine predissociation: the apparent radiative rate of broyer1975b follows the v dependence of k_v, so it contains a hyperfine term; Gamma_v,J,F = Gamma_rad + k_v J(J+1) + Gamma_hf + Gamma_int, with Gamma_int = -2 a_v c_v I.J. Predicts and observes (i) a strong ortho/para alternation of the averaged decay rate and (ii) non-exponential decays increasing with J. Gamma_rad,7 agrees with Tellinghuisen's prediction and k_7 with broyer1975b. Extended by vigue1977 (hyperfine-resolved fluorescence yields) and vigue1981a-c (full theory and v-dependence). Worth transcribing the three v' = 7 constants as part of a predissociation set alongside broyer1975b; Fig. 2 could be digitized (14 points) if per-level rates are needed."
 - id: vigue1981a
   citation: "J. Vigué, M. Broyer, J. C. Lehmann, Natural hyperfine and magnetic predissociation of the I2 B state I. - Theory, J. Phys. (Paris) 42, 937-947 (1981)"
@@ -3396,8 +3396,8 @@
   priority: high
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: natural and hyperfine predissociation rates vs v' (per-level values; count not extracted)"
+  data: ["data/lifetimes/vigue1981ba"]
+  transcription: "done"
   notes: "Main experimental source for natural and hyperfine predissociation rates vs v'. Numbers not extracted (publisher/HAL pages blocked from this environment); fetch the open-access PDF when building the linewidth model. | Merged duplicate (also reviewed under fluorescence/term values/other states): Abstract (HAL): 'all presently available experimental results on the natural predissociation', analyzed with J-dependent Franck–Condon densities. Theory paper I: doi:10.1051/jphys:01981004207093700. The gyroscopic/hyperfine predissociation rates set the natural linewidths of B–X hyperfine components (overlaps Category 4)."
 - id: vigue1981c
   citation: "J. Vigué, M. Broyer, J. C. Lehmann, Natural hyperfine and magnetic predissociation of the I2 B state III. - Experiments on magnetic predissociation, J. Phys. (Paris) 42, 961-978 (1981)"
@@ -3450,8 +3450,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: hyperfine-sublevel lifetimes within single B levels (levels not extracted; count unknown)"
+  data: ["data/lifetimes/pique1983a"]
+  transcription: "done"
   notes: "Direct test of hyperfine-dependent natural widths within one rovibrational level."
 - id: tench1983
   citation: "R. E. Tench, S. Ezekiel, Precision measurements of hyperfine predissociation in I2 vapor using a two-photon resonant scattering technique, Chem. Phys. Lett. 96, 253-258 (1983)"
@@ -3477,9 +3477,9 @@
   priority: high
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: 17 hyperfine linewidths of B v' = 43 at J' = 12 and 16, plus fitted Gamma_p and Gamma_r constants"
-  notes: "Read in full. Hyperfine-resolved natural widths of the upper level of the 514.5 nm standard lines: the differences between hyperfine linewidths at 2.1 mTorr (pressure-independent up to about 2 mTorr) are fitted with Gamma_p = sum |alpha|^2 gamma_IJF (hyperfine Hamiltonian with eqQ and spin-rotation only) to give the hyperfine and gyroscopic predissociation constants of v' = 43; Gamma_r from the zero-pressure extrapolation of b2. Agrees with a molecular-beam time-domain result of Churassy (private communication: |a|^2 = 3.21 +/- 0.25 kHz, |c|^2 = 5.45 +/- 1.23 Hz, Gamma_r = 50 +/- 3 kHz) and with Gamma_r = 56 +/- 8 kHz of Ezekiel & Weiss 1968; smaller than the Borde, Camy & Decomps 1979 estimates (5.9 kHz, 5.6 Hz) and larger than |a|^2 = 2 +/- 1 kHz of vigue1981c. A footnote compares total decay rates 50 kHz, 69.8 +/- 2.4 kHz (paisner1974) and 74.7 +/- 5.3 kHz (Sakurai et al. 1976). Calculated natural widths (Table 2) range 56-112 kHz (component a3, the CIPM reference component of P(13), 107 kHz). Misprint: Table 1 b1 calculated width printed 216 kHz with residual +4 against measured 320, so 316 kHz (inferred). Worth transcribing: the three constants (|a_43|^2, |c_43|^2, Gamma_r) and Table 1 (14 widths) as a direct test of the model's hyperfine-dependent natural widths; Table 2 is derived and need not be transcribed. Companion: hackel1979 (same lab, technique)."
+  data: ["data/widths/tench1983a", "data/lifetimes/tench1983a"]
+  transcription: "done"
+  notes: "Read in full. Hyperfine-resolved natural widths of the upper level of the 514.5 nm standard lines: the differences between hyperfine linewidths at 2.1 mTorr (pressure-independent up to about 2 mTorr) are fitted with Gamma_p = sum |alpha|^2 gamma_IJF (hyperfine Hamiltonian with eqQ and spin-rotation only) to give the hyperfine and gyroscopic predissociation constants of v' = 43; Gamma_r from the zero-pressure extrapolation of b2. Agrees with a molecular-beam time-domain result of Churassy (private communication: |a|^2 = 3.21 +/- 0.25 kHz, |c|^2 = 5.45 +/- 1.23 Hz, Gamma_r = 50 +/- 3 kHz) and with Gamma_r = 56 +/- 8 kHz of Ezekiel & Weiss 1968; smaller than the Borde, Camy & Decomps 1979 estimates (5.9 kHz, 5.6 Hz) and larger than |a|^2 = 2 +/- 1 kHz of vigue1981c. A footnote compares total decay rates 50 kHz, 69.8 +/- 2.4 kHz (paisner1974) and 74.7 +/- 5.3 kHz (Sakurai et al. 1976). Calculated natural widths (Table 2) range 56-112 kHz (component a3, the CIPM reference component of P(13), 107 kHz). Table 1 b1 calculated width is 316 kHz (residual +4 against measured 320); an earlier reading of 216 was a text-layer error, not a misprint. Worth transcribing: the three constants (|a_43|^2, |c_43|^2, Gamma_r) and Table 1 (14 widths) as a direct test of the model's hyperfine-dependent natural widths; Table 2 is derived and need not be transcribed. Companion: hackel1979 (same lab, technique)."
 - id: martinez1988
   citation: "E. Martínez, M. T. Martínez, F. Castaño, Iodine B3Π(0+) state predissociation: evaluation of the interaction mechanisms for predissociated levels of the B state, J. Mol. Spectrosc. 128, 554-563 (1988)"
   doi: "10.1016/0022-2852(88)90170-1"
@@ -3558,8 +3558,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: hyperfine linewidths vs wavelength over 523-498 nm (narrowest 43 kHz near 508 nm); count unknown"
+  data: ["data/widths/cheng2002a"]
+  transcription: "done"
   notes: "Stated: wavelength dependence of hyperfine linewidth mapped; narrowest 43 kHz half width near 508 nm (the abstract's ~4 kHz is corrected by the erratum). Observable is linewidth (natural + transit + pressure). Errata DOI 10.1364/OL.27.001076. Line positions/hfs are in the the scope of the precision catalog. Same paper as precision.yaml cheng2002a; linewidths only."
 - id: baxter1907
   citation: "G. P. Baxter, C. H. Hickey, W. C. Holmes, The vapor pressure of iodine, J. Am. Chem. Soc. 29, 127-136 (1907)"
@@ -3775,7 +3775,7 @@
   verified: true
   status: "held"
   data: []
-  transcription: "to do: 12 pressure-shift values vs K0 for R lines at 501.7 nm and R(127) 11-5 at 633 nm"
+  transcription: "not needed: cell-dependent shifts against the contamination parameter K0, not per-line coefficients"
   notes: "Read the Metrologia article 2026-10-28 (the earlier note was based on Rapport BIPM-89/5). The shift vs K0 relation is nonlinear; extrapolating to zero shift gives K0 = 0.8 Pa for an uncontaminated cell (the reference point used by lazar2007a/2009a). Shift is proportional to sigma_x p_x v_x for low contamination; with N2 as the only impurity a good cell (K0 = 1 Pa) implies p_x ~ 1 Pa and a bad one (K0 = 6 Pa) 32 Pa. Method valid for shifts below about 60 kHz; data above 12.5 Pa dropped for K0 < 2 Pa cells. Uses the Gillespie-Fraser formula log p(atm) = -3512.830/T - 2.013 log T + 13.374 and tau = 14 us for the excited level. Shifts are printed without sign; chartier1992 gives the same cells as negative. hyperfine_resolved changed to true because the shifts are hyperfine-locked beat measurements. Cell-quality data only; nothing entered in data/."
 # ====================================================================================================
 # Category 5: line shape
@@ -3804,8 +3804,8 @@
   priority: high
   verified: true
   status: "held"
-  data: []
-  transcription: "to do (line shape): foreign-gas broadening and shift coefficients for 12 gases, if line-shape data are added to data/"
+  data: ["data/widths/wolf2009a"]
+  transcription: "done"
   notes: "The most complete foreign-gas broadening and shift dataset found for I2 B-X: He, Ne, Ar, Kr, Xe, H2, D2, N2, CO2, N2O, air and H2O at 292 K; temperature dependence for Ar (292, 348, 388 K) and for He and CO2 (292, 388 K). The printed low-J range is probably a typo for 14 846.17-14 850.29 cm-1 (my inference), and range_cm1 uses that reading. Precursor: eng2004."
 - id: eng2004
   citation: "J. A. Eng, J. L. Hardwick, J. A. Raasch, E. N. Wolf, Diode laser wavelength modulated spectroscopy of I2 at 675 nm, Spectrochim. Acta A 60, 3413-3419 (2004)"
@@ -3831,8 +3831,8 @@
   priority: low
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: 12 Delta eQq values per line (Table 1) and pressure coefficients; line centers are inferior to the held salami_ross_2005 atlas"
+  data: ["data/widths/eng2004a"]
+  transcription: "done"
   notes: "Read 2026-10-23; nothing entered. The line centers are below the held atlases: salami_ross_2005 holds R(76), R(43), P(69) and R(75) at 0.0008-0.0013 cm-1, and this paper reads +0.0060, +0.0073, +0.0012 and +0.0075 cm-1 from it, as its own calibration sd says. The Delta eQq values (Doppler-limited fits, X and B constants not separated) and the qualitative intensities have no home in data/. The full broadening study is wolf2009a."
 - id: fletcher1995
   citation: "D. G. Fletcher, J. C. McDaniel, Collisional shift and broadening of iodine spectral lines in air near 543 nm, J. Quant. Spectrosc. Radiat. Transfer 54, 837-850 (1995)"
@@ -3859,7 +3859,7 @@
   verified: true
   status: "held"
   data: []
-  transcription: "to do: pressure shift and broadening coefficients at 293 K for R(97) 28-0 and P(60) 27-0 near 543 nm (2 lines)"
+  transcription: "not possible: the printed coefficients are global air values not tied to a named line"
   notes: "At 293 K the coefficients equal about -1.09 MHz/torr shift and about 10.0 MHz/torr broadening (my conversion; width convention not checked). Measured T^-0.7 scaling, contradicting the T^-0.5 assumed in hiller1990. Air only. range_nm is approximate."
 - id: hiller1990
   citation: "B. Hiller, R. K. Hanson, Properties of the iodine molecule relevant to laser-induced fluorescence experiments in gas flows, Exp. Fluids 10, 1-11 (1990)"
@@ -3912,8 +3912,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: 21 values, pressure-broadening rates of 15 hyperfine components each for P(70) and P(10) 17-1 plus shift intercepts"
+  data: ["data/widths/phillips2008a"]
+  transcription: "done"
   notes: "Read in full. No significant variation of the Ar broadening rate among the 15 hyperfine components, so one common rate per line is reported; P(10) broadens about 30 % faster than P(70), attributed to inelastic rotational transfer; low-pressure intercepts (7.7-8.7 MHz) are power/saturation dominated, not natural widths. A broad Gaussian pedestal from velocity-changing collisions depends strongly on J (large for J'' = 67, small for J'' = 118). Table 1 also gives observed hyperfine intervals of P(70) 17-1 relative to component i (magnitudes only, 10 kHz digits, about 1.3 MHz systematically larger than the matrix calculation) and observed relative intensities, which show self-absorption distortion in the wings. Inconsistencies: Fig. 3 is described for odd J'' although both studied lines have even J''; intervals for components g-b are printed without sign. No pressure shifts are reported. Overlaps the Ar/rare-gas broadening set (Astill et al. 1985 on P(46) 17-1, fletcher1995, Kireev 1995) and cites titov1997a for self-broadening at 633 nm. Worth transcribing Table 2 (three rates and three intercepts) (foreign-gas line-shape systematics); the Table 1 intervals (15 values at about 1 MHz) are a weak hyperfine check for X v'' = 1 / B v' = 17 at J = 70 and could be added at low weight. The related AFIT dissertation (Phillips 2006, AFIT/DS/ENP/06-03) is the source of the apparatus."
 - id: schweitzer1973b
   citation: "W. G. Schweitzer Jr., E. G. Kessler Jr., R. D. Deslattes, H. P. Layer, J. R. Whetstone, Description, performance, and wavelengths of iodine stabilized lasers, Appl. Opt. 12, 2927-2938 (1973)"
@@ -3939,8 +3939,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: 129I2 hyperfine-component pressure shifts and widths near 633 nm; count unknown"
+  data: ["data/widths/schweitzer1973ba"]
+  transcription: "done"
   notes: "My conversions: 13 MHz/Torr = 98 kHz/Pa; 2e-9 ν/Torr = about -0.95 MHz/Torr = about -7 kHz/Pa. The saturated-resonance width relates to the homogeneous (Lorentzian) width by roughly a factor of 2, and power/transit broadening is folded in. This is the only self-broadening number found for 129I2."
 - id: cerez1974
   citation: "P. Cérez, A. Brillet, F. Hartmann, Metrological properties of the R(127) line of iodine studied by laser saturated absorption, IEEE Trans. Instrum. Meas. 23, 526-528 (1974)"
@@ -3993,8 +3993,8 @@
   priority: low
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: 4 broadening coefficients of R(127) 11-5 components h, i, j (a14, a13, a12)"
+  data: ["data/widths/sakurai1979a"]
+  transcription: "done"
   notes: "Read in full (two-page short note, scanned; values read from the page images). The paper measures broadening only, not pressure shifts. Widths are fitted to W = (1/pi)(1/(2 tau0) + kappa P) sqrt(1 + s/(1/(2 tau0) + kappa P)^2); the printed coefficients are labeled 'kappa s' in the text, but the units (kHz/Pa, MHz/Torr) show they are the pressure-broadening coefficients kappa (inferred). The h, i, j widths are ordered h > i > j at every pressure, with adjacent differences about constant at 500 kHz, a finding the authors leave open (hyperfine-dependent or technical). Stated to agree with NPL, NRC and LHA results. The widths include the intracavity saturation and the laser's own noise broadening (about 500 kHz), so they are laser-specific. Compare titov1997b and hu1997a in the precision catalog for later 633 nm line-shape work. Not worth transcribing beyond the three coefficients as context."
 - id: glaser1982
   citation: "M. Gläser, Frequency shifts at low iodine pressure of 127I2-stabilized He-Ne lasers at 633 nm wavelength, Metrologia 18, 53-58 (1982)"
@@ -4075,7 +4075,7 @@
   verified: true
   status: "held"
   data: []
-  transcription: "to do: one pressure-shift coefficient for R(56) 32-0 a10 (second-hand from MeP)"
+  transcription: "not needed: its one pressure coefficient is quoted from the BIPM document"
   notes: "The absolute frequencies are the the scope of the precision catalog; only the pressure-shift coefficient is cataloged here, taken second-hand from the MeP."
 - id: eickhoff1995
   citation: "M. L. Eickhoff, J. L. Hall, Optical frequency standard at 532 nm, IEEE Trans. Instrum. Meas. 44, 155-158 (1995)"
@@ -4128,8 +4128,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: self-broadening coefficient(s) for R(56) 32-0 a10; count not extracted; the held fang2006a is a different paper per the source check"
+  data: ["data/widths/fang2006b"]
+  transcription: "done"
   notes: "Dedicated self-broadening study of the most-used I2 component. Online 2005 (OpenAlex year 2005), issue 2006."
 - id: kobayashi2015
   citation: "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, Compact iodine-stabilized laser operating at 531 nm with stability at the 10^-12 level and using a coin-sized laser module, Opt. Express 23, 20749 (2015)"
@@ -4290,8 +4290,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: 12 pressure-broadening and shift values for R(56) 32-0 a10 at 0.8-4.14 Pa; values came from an unverified summary, check against full text"
+  data: ["data/widths/hrabina2017a"]
+  transcription: "done"
   notes: "Values come from a WebFetch summary of the PMC full text. The -3.4 kHz/Pa may be quoted from earlier ISI work rather than newly measured (not checked). Shows that foreign-gas contamination dominates residual widths in real cells."
 - id: weller2026
   citation: "M. Weller, K. Rostan, A. Friedrich, J. Wüst, M. Oswald, F. Kuschewski, T. Schuldt, C. Braxmaier, Molecular iodine at 508 nm: hyperfine spectroscopy and operating regimes for optical frequency references, Opt. Express 34, 31567 (2026)"
@@ -4432,8 +4432,8 @@
   priority: low
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: one lifetime (v' = 25, J' = 34), same level as chutjian1967 Table II"
+  data: ["data/lifetimes/brewer1963a"]
+  transcription: "done"
   notes: "Read in full. First reliable direct I2 B-state lifetime: replaces Hupfeld's 1.0e-8 s (1929). The paper's v' = 26 is the old Mecke/Loomis numbering; the level is modern v' = 25, J' = 34 (inferred from the renumbering; chutjian1967 Table II gives the same level as 25, 26, 28 and J' = 34). Also gives a scattered-light correction for phase lifetimes (Eq. 4, Appendix) and compares with absorption-derived lifetimes (6.3e-7 to 1.1e-6 s, Table I, assuming a mean fluorescence wavenumber of 13 300 cm-1). Superseded by chutjian1967 (same laboratory and method, tau0 = 7.13 +/- 0.25e-7 s for the same level), which shows that the 11.3 A diameter (sigma^2 = 128 A^2) is about twice too large (63 A^2) because the earlier quenching plot spanned too little pressure; and later by single-level laser lifetimes (capelle1973, paisner1974, broyer1975). Natural width 1/(2 pi tau) = 0.22 MHz (computed). Not worth transcribing separately; at most cite as the historical v' = 25 value."
 
 - id: ogryzlo1965
@@ -4516,8 +4516,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: about 22 lifetimes (Table II, 11 excitation regions, v' 10-100); self-quenching values not needed"
+  data: ["data/lifetimes/chutjian1967a"]
+  transcription: "done"
   notes: "Read in full. First measurement of the strong v' dependence of the B lifetime: tau0 rises from 6.8e-7 s (v' 10-14) and 11.9e-7 s (v' 14-16) to 24e-7 s (v' 41-44) and 42-53e-7 s (v' 47-54), and falls to 17.5e-7 s near v' = 100 (v' assignment there only an estimate); self-quenching sigma^2 is nearly constant (60-79 A^2). Uses the modern v' numbering. Concludes that either the transition moment varies with R or spontaneous predissociation competes with radiation (the latter confirmed by chutjian1969, tellinghuisen1972 and broyer1975). Halves the brewer1963 quenching cross section (63 vs 128 A^2) and corrects Brown and Klemperer's (1964) cross sections and A values (decimal-point error). Inconsistency: the Cd-blue lifetime was later remeasured by P. T. Cunningham (UCRL-18419, 1968) as a total rate of 6.58e5 s-1 (tau = 15e-7 s), about 3.5 times shorter than 53.2e-7 s here (quoted in chutjian1969, footnote 12). Values are averages over several (v', J') levels, so they are superseded for a natural-linewidth model by single-level laser lifetimes (capelle1973, paisner1974, broyer1975). Worth transcribing only as a low-weight cross-check: Table II (11 tau0 and 11 sigma^2) with the stated level populations; the three atomic-line rows (Hg, Na D, Cd) are the closest to single-level values."
 
 - id: wasserman1968
@@ -4600,8 +4600,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: about 11 zero-field lifetimes in Table I (including the 0.310 and 0.410 us values); magnetic constants not needed"
+  data: ["data/lifetimes/chapman1972a"]
+  transcription: "done"
   notes: "Read in full. Magnetic predissociation constants b(v') (k_mag = b H^2) and a 0u- (3Pi(0u-)) repulsive curve crossing the outer limb of B near v' = 3, so v' = 6 is quenched about five times more strongly than v' = 11. The quenching ratio is independent of laser frequency across the P(33) profile (no hyperfine or Zeeman-scanning effect) and of polarization. Natural lifetimes for v' = 6 J' = 32 (0.310 +/- 0.010 us) and v' = 11 J' = 128 (0.410 +/- 0.015 us) are taken from Shotton and Chapman, J. Chem. Phys. 56, 1012 (1972) (not in the catalog; worth adding as the source of single-level lifetimes and self-quenching, sigma^2 = 64 A^2, for the 633 nm standard levels); the other nine lifetimes (0.44-2.3 us) are intercepts from Degenkolb's data with an assumed sigma^2 = 70 +/- 10 A^2 and a corrected 300 K cell temperature, v' assigned +/-1. Overlaps broyer1975 and vigue1975, which also measured v' = 11 J' = 128 by orientation and decay. The degenkolb reference is printed as J. Chem. Phys. 51, 615 (1969) here and as 51, 516 in chutjian1969; one of them is a misprint. Note added in proof quotes Broyer and Lehmann: gJ about -2 nuclear magnetons and tau about 10 us for v' = 62 J' = 27; gJ = -0.31 and tau = 2.9 us for v' = 43 J' = 12, 16. Relevant only to field-dependent (Zeeman) modeling and, through the two He-Ne-level lifetimes, to natural widths of the 633 nm lines (0.39-0.51 MHz, computed). Worth transcribing Table I (11 observed b and 11 tau) only if magnetic predissociation is modeled; otherwise transcribe the two He-Ne-level lifetimes from Shotton and Chapman."
 
 - id: couillaud1977
@@ -4657,7 +4657,7 @@
   verified: true
   status: "held"
   data: []
-  transcription: "to do: per-level hyperfine predissociation constants |a_v|^2, |C_v|^2 and their sign for v' = 15 and 20 (2 sets); notes make this conditional on need"
+  transcription: "not possible: the printed values are ratios to a radiative rate the paper does not give"
   notes: "Read in full (5-page letter; values read from the page images). Fluorescence yield of the F = J-5, J, J+5 hyperfine sublevels measures the hyperfine predissociation |a_v|^2, the gyroscopic term |C_v|^2 and the sign of their interference (a_v C_v < 0; the cancellation affects F = J-5). Effects negligible at v' = 15, large at v' = 20. Inconsistency: the text values appear swapped relative to Fig. 4 and to broyer1976: Fig. 4 labels the x10^-6-scale panel C_v^2/Gamma_rad and the x10^-3-scale panel a_v^2/Gamma_rad, and broyer1976 gives |a_7|^2/Gamma_rad about 0.25 versus |c_7|^2/Gamma_rad about 1.5e-4 (tench1983 likewise has |a|^2 much larger than |c|^2 at v' = 43); so at v' = 20 probably |a_v|^2/Gamma_rad = (80 +/- 30)e-3 and |C_v|^2/Gamma_rad = (50 +/- 15)e-6 (inferred). The full per-v' analysis of natural and hyperfine predissociation is in vigue1981b (same group). Fig. 1 label '0-16 R(105)' must be 16-0 R(105) (574.8 nm; 0-16 would be at 807 nm, outside the rhodamine 6G range; inferred). Worth transcribing only if the linewidth model needs per-v' hyperfine predissociation constants not already in vigue1981b: digitize Fig. 4 (both panels, about 30 points) and take the two v' = 20 values from the text."
 
 - id: hackel1979
@@ -4796,8 +4796,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: 15 pressure-width and shift values for 43-0 P(13) at 514.5 nm"
+  data: ["data/widths/goncharov1990a"]
+  transcription: "done"
   notes: "Read in full. Separates upper- and lower-level relaxation for the 514.5 nm standard line: nonlinear pressure dependence of width and shift explained by small-angle elastic (velocity-changing, phase-preserving) collisions; upper-level inelastic cross section twice the lower-level one. The shift (about 400 Hz/mTorr) is much smaller than the broadening (about 10 kHz/mTorr). Width convention: halfwidths (HWHM), so FWHM rates are twice the quoted values (inferred). Overlaps hackel1979 (12 kHz/mTorr single-step estimate for 43-0 R(15)) and the 514.5 nm pressure-shift data in the precision catalog. Worth transcribing as line-shape systematics for 43-0 P(13): the text values listed above (one record per quantity, HWHM convention flagged); no line positions."
 
 - id: titov1997a
@@ -4824,8 +4824,8 @@
   priority: medium
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: about 8 values: self-broadening coefficient (126.5 kHz/Pa), zero-pressure intercept (784 kHz FWHM) and related 633 nm values"
+  data: ["data/widths/titov1997a"]
+  transcription: "done"
   notes: "Read in full. First determination of the saturation parameter in a He-Ne/I2 standard; shows that the Lorentzian approximation underestimates the homogeneous width at high intracavity power (spread 530 kHz versus 4.8 kHz with the Gaussian-beam line shape). The zero-pressure intercept 784 kHz FWHM is attributed to radiative decay (transit time negligible), but it is far above the natural width implied by the B v' = 11 lifetime (about 0.15-0.4 MHz from broyer1975b); it likely contains residual broadening (inferred). HWHM below 1 MHz observed at 4.86 Pa. Cited by phillips2008 as the self-broadening reference for the 633 nm line. Overlaps schweitzer1973b (129I2, 13 MHz/Torr = 98 kHz/Pa) and cerez1974 (127I2 R(127) 11-5). Worth transcribing the self-broadening coefficient (126.5 kHz/Pa FWHM, +/- 10 %) and the zero-pressure intercept for the 633 nm line as line-shape systematics; the saturation-parameter results are laser-specific."
 
 - id: goncharov1991
@@ -4880,8 +4880,8 @@
   priority: high
   verified: true
   status: "held"
-  data: []
-  transcription: "to do: two zero-field lifetimes (J' = 32 at v' = 6; J' = 128 at v' = 11) with uncertainties, 4 values"
+  data: ["data/lifetimes/shotton1972a"]
+  transcription: "done"
   notes: "Read in full (letter, 2 pages). Single rotational-level lifetimes: high-resolution fluorescence showed no rotational relaxation, so the values belong to J'=32 (v'=6) and J'=128 (v'=11). These are the source of the two He-Ne-level lifetimes and the 64 A^2 self-quenching radius used in chapman1972 (same group; its Table I quotes 0.310 +/- 0.010 and 0.410 +/- 0.015 us), which in turn derived the other nine lifetimes from Degenkolb's data; the numbers agree exactly. Natural widths 1/(2 pi tau0) = 0.51 MHz (v'=6) and 0.39 MHz (v'=11) (inferred), relevant to the 633 nm standard lines. Cross-check (inferred): broyer1975b gives Gamma_rad = 1.09e6 s-1 and k11 = 67 s-1 for v'=11, so 1/tau = 1.09e6 + 67 x 128 x 129 = 2.20e6 s-1, tau about 0.45 us, against 0.410(15) us here (about 2.7 sigma); vigue1975 also studied v'=11 J'=128. The paper notes its lifetimes are much shorter than the broadband-dye-laser values of sakurai1971 (a mixture of levels), and a private communication from Capelle that later work (capelle1973) also found a shorter v'=6 lifetime. Worth transcribing: the two lifetimes (with J') and two self-quenching radii into the lifetime set beside broyer1975b, as single-level inputs to the natural and collisional linewidths of P(33)6-3 and R(127)11-5."
 
 # Added 2026-10-28: sources transcribed in data/ that had no catalog entry (written from the data sets' meta files)

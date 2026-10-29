@@ -1,0 +1,76 @@
+id = "vigue1981ba"
+citation = "J. Vigue, M. Broyer, J. C. Lehmann, \"Natural hyperfine and magnetic predissociation of the I2 B state. II. Experiments on natural and hyperfine predissociation\", J. Phys. (Paris) 42, 949-959 (1981), Tables I and II"
+source = "https://doi.org/10.1051/jphys:01981004207094900 (publisher PDF: a scan with a text layer; Tables I and II read from the 200 dpi page images pp. 953-954)"
+doi = "10.1051/jphys:01981004207094900"
+retrieved = "2026-10-28"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 953), from the non-exponential decays of v' = 7, 8, 9, 10 (20 points per curve, hyperfine sublevels fitted
+together with eqs. 9-10): Gamma_rad (10^6 s^-1), C_v^2 (s^-1), a_v^2 (10^3 s^-1), printed with 3 sd errors. Entered
+for each v': radiative_rate (x 10^6 s^-1), hyperfine_predissociation_c2 (C_v^2, Hz = s^-1), and
+hyperfine_predissociation_a2 (a_v^2, 10^3 s^-1 = kHz under the convention of broyer1976a). J is empty (fitted over
+all J of each v'). Numbers of levels: 14 (v' = 7), 11 (8), 13 (9), 4 (10).
+  v' 7:  Gamma_rad 1.05 +- 0.09;  C^2 287 +- 21;  a^2 324 +- 26
+  v' 8:  Gamma_rad 0.95 +- 0.08;  C^2 187 +- 13;  a^2 232 +- 18
+  v' 9:  Gamma_rad 0.97 +- 0.06;  C^2 141 +- 6;   a^2 143 +- 11
+  v' 10: Gamma_rad 0.78 +- 0.09;  C^2 93 +- 7;    a^2 112 +- 17
+Table II (p. 954), Gamma_rad and C_v^2 from lifetime measurements of single levels, v' = 11-21, with the J' values
+listed (J column of the table; the row is a set of levels, so J is empty; the list is in the note). An asterisk
+means C^2/Gamma_rad was held fixed at the value from Table III, so that C^2 is not an independent fit: those rows
+(v' = 14-21) are entered with the asterisk in the note. For v' = 14 and 15 the printed errors are asymmetric
+(+5 -1 and +15 -4): entered as the larger half. The Table II values, with the J lists:
+  v' 11 (J 8, 76, 90, 102, 112, 126): Gamma_rad 0.75 +- 0.10; C^2 50 +- 7 (fitted)
+  v' 12 (J 32, 64, 97): 0.74 +- 0.09; 20 +- 7 (fitted)
+  v' 13 (J 11, 73): 0.78 +- 0.06; 3 +- 1.5 (fitted)
+  v' 14 (J 53): 0.76 +- 0.03; 1 (+5 -1)* 
+  v' 15 (J 63): 0.72 +- 0.07; 4 (+15 -4)*
+  v' 16 (J 57): 0.73 +- 0.07; 15 +- 12*
+  v' 17 (J 27): 0.74 +- 0.05; 24 +- 5*
+  v' 18 (J 37, 58, 85, 104): 0.78 +- 0.06; 32 +- 6*
+  v' 19 (J 96): 0.68 +- 0.08; 44 +- 6*
+  v' 20 (J 40): 0.73 +- 0.10; 54 +- 11*
+  v' 21 (J 116, from ref. 35): 0.70 +- 0.25; 65 +- 21*
+Table III (p. 955, molecular beam fluorescence yields, 10^6 C^2/Gamma_rad, 10^3 a^2/Gamma_rad, Y^2): NOT entered. Its
+entries are ratios to Gamma_rad, and the paper prints no Gamma_rad for that fit (it refers to Table II for the
+rates); v' = 9 to 22, with fixed entries at v' = 9 (C^2/Gamma = 145 fixed from Table I). Described here only.
+Not entered: Fig. 5a-b (decay curve and gamma against F and I), Fig. 6 (Gamma against J(J+1) for v' = 11, 12, 13, 18:
+graph only).
+"""
+
+uncertainty = """
+As printed: errors are 3 standard deviations ("the quoted error bars are, in all cases, 3 standard deviations",
+p. 953; for Table III, "3 standard deviations ... approximately 30 %"). Entered as printed, unchanged. Schema
+uncertainties are read as the same kind of number; a 1-sigma reading would be a third of these.
+"""
+
+notes = """
+Units (2026-10-28): the schema enters |a_v|^2 and |c_v|^2 as decay rates in s-1 (gyroscopic_predissociation_c2 is
+the coefficient of J(J+1)). The printed rates are entered unchanged in s-1 (a_v^2 = printed 10^3 s-1 x 1000). Statements above about entering these constants in kHz or Hz describe the
+first transcription and are superseded by this paragraph and the rows.
+
+Read in full (12 pages, the experiment part of the three-paper series; theory in vigue1981a and the magnetic part
+in vigue1981c). Table I fits C_v^2 and a_v^2 with the product a_v C_v taken negative and sigma = 70 +- 5 A^2 for the
+collision cross section (p. 953); Y^2 = a_v^2/C_v^2 is 1010-1240 for v' = 7-10 (Table I). The paper notes that Gamma_rad
+decreases with v' and that Y^2 is reasonably constant, as expected from factorization.
+
+Cross-checks against held data (model-free, not duplicated):
+- broyer1976a (v' = 7): Gamma_rad 1.05 +- 0.09 here against 1.1 +- 0.1 (1e6 s^-1), a^2 324 +- 26 kHz against 280 +- 50
+  kHz. Consistent within the errors.
+- data/b_levels/broyer1975 (Table II, decay method) gives Gamma_rad: v' = 9 1.6 (here 0.97), v' = 10 1.4 (here 0.78),
+  v' = 11 1.09 (here 0.75), v' = 12 0.86 (here 0.74), v' = 13 0.79 (here 0.78), v' = 14 0.76 (here 0.76), v' = 17 0.87
+  (here 0.74), v' = 18 1.03 (here 0.78), v' = 19 1.09 (here 0.68), v' = 20 1.12 (here 0.73). Agreement at v' = 13, 14
+  only; this paper is systematically lower at v' = 17-20, and by a factor 1.6 at v' = 9. The two papers fit different
+  models (broyer1975: Gamma_rad plus k J(J+1) only; here: plus the hyperfine and interference terms), so the
+  disagreement is not a data error and is recorded here as a finding.
+- pique1983a (v' = 43): the Gamma_rad of that set (0.314e6 s^-1) is not comparable (a different level).
+- vigue1977a: the v' = 20 values there are ratios; the Table II/III values here (v' = 20: C^2/Gamma = 74 x 10^-6,
+  a^2/Gamma = 92 x 10^-3 from Table III) settle that the 1977 labels are swapped.
+"""
+
+[conditions]
+method = "lifetime measurements of single rovibrational (and hyperfine) levels by fluorescence decay (Table I: non-exponential decays of the hyperfine sublevels, pulsed dye laser); molecular-beam fluorescence yields (Table III, not entered)"
+temperature = "not stated for the decay experiments"
+pressure_range = "30 mtorr I2 at 25 C (Table I cell); molecular beam for Table III"
+cell = "fluorescence cell (Table I); molecular beam (Table III)"
+perturber = "self (I2)"

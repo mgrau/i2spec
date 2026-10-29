@@ -1,0 +1,47 @@
+id = "shotton1972a"
+citation = "K. C. Shotton and G. D. Chapman, \"Lifetimes of 127I2 molecules excited by the 632.8 nm He/Ne laser\", J. Chem. Phys. 56, 1012-1013 (1972), text (two lifetimes and two self-quenching cross sections)"
+source = "https://doi.org/10.1063/1.1677205 (publisher PDF: a scan with an OCR text layer; values read from the page images)"
+doi = "10.1063/1.1677205"
+retrieved = "2026-10-28"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Text of the letter (pp. 1012-1013), read from 200 dpi renders of pp. 1012-1013; the text layer garbles the +-
+signs and the "310" (read correctly from the image). Four values:
+- v' = 6, J' = 32: zero-pressure lifetime tau0 = 310 +- 10 nsec (Stern-Volmer intercept over 12 pressures from
+  0.025 to 0.280 torr, 300 nsec and later after the pulse peak, fluorescence of the 6-5 band at 650.0 nm).
+- v' = 6, J' = 32: square of the self-quenching collision radius 0.64 +- 0.03 nm^2 (slope), entered as 64 +- 3 A^2
+  (1 nm^2 = 100 A^2).
+- v' = 11, J' = 128: tau0 = 410 +- 15 nsec (11-3 band at 617.0 nm, 12 pressures from 0.018 to 0.180 torr).
+- v' = 11, J' = 128: square of the self-quenching collision radius 0.65 +- 0.05 nm^2, entered as 65 +- 5 A^2.
+The paper states the levels are the single rotational levels J' = 32 (v' = 6) and J' = 128 (v' = 11), because the
+high-resolution fluorescence showed no rotational relaxation. Excitation: cavity-dumped 632.8 nm He-Ne pulses (50 ns
+FWHM), P(33) 6-3 and R(127) 11-5. Not entered: Fig. 1 (one decay curve of the 6-5 band at 95 mTorr).
+Model-free cross-check: the two zero-pressure lifetimes are the ones quoted in chapman1972 Table I (footnote c,
+from Ref. 7 = this letter); chapman1972a therefore does not repeat them.
+"""
+
+uncertainty = """
+As printed: "The quoted uncertainties are one standard deviation" (p. 1013). Lifetimes +- 10 and +- 15 nsec; the
+cross-section values as printed, +- 0.03 and +- 0.05 nm^2, entered in A^2 as +- 3 and +- 5.
+"""
+
+notes = """
+The two lifetimes are single-rotational-level values, so they are the inputs to the 632.8 nm standard-line natural
+widths (computed elsewhere as 1/(2 pi tau): 0.51 MHz for v' = 6 and 0.39 MHz for v' = 11).
+
+Cross-checks (model-free, no rows duplicated):
+- broyer1975 (data/b_levels/broyer1975/table1_lifetimes.csv) has v' = 11, J' = 126 at tau0 = 390 +- 30 ns and J' =
+  112 at 478 +- 25 ns; with the J'(J'+1) law of Table I the J' = 128 value is about 386 ns, so the 410 +- 15 ns here is
+  consistent within 1 sigma. Shotton and Chapman are cited there as ref. 10 with tau0 = 410 ns.
+- The letter says Capelle reported a shorter v' = 6 lifetime in later, unpublished work; no value is given.
+- The letter says the earlier broadband values of Sakurai, Capelle and Broida (ref. 7) are much longer, because they
+  excited a mixture of levels.
+"""
+
+[conditions]
+method = "time-correlated single-photon counting of fluorescence after cavity-dumped 632.8 nm He-Ne pulses (50 ns FWHM); grating spectrometer isolating one band (6-5 at 650.0 nm, 11-3 at 617.0 nm)"
+temperature = "not stated"
+pressure_range = "I2 0.025-0.280 torr (v' = 6); 0.018-0.180 torr (v' = 11); zero-pressure intercept"
+cell = "cylindrical Pyrex, 10-100 ml, sealed or on a vacuum line"
+perturber = "self (I2)"

@@ -1,0 +1,2 @@
+line,component,quantity,value,uncertainty,pressure_Pa,temperature_K,perturber,group,note
+127I2 R(20) 50-0,,width,86,10,,,self,cheng2002a,"p. 572: ~43 kHz HWHM (natural linewidth, zero pressure) for R(20)50-0:b5 at 508.077 nm, x2 = 86 kHz FWHM; erratum 1076 confirms 43 kHz; uncertainty assigned (see meta)"

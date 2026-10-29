@@ -1,0 +1,74 @@
+id = "pique1983a"
+citation = "J. P. Pique, R. Bacis, F. Hartmann, N. Sadeghi, S. Churassy, \"Hyperfine predissociation in the B state of iodine investigated through lifetime measurements of individual hyperfine sublevels\", J. Phys. (Paris) 44, 347-351 (1983), Table I and the fitted constants"
+source = "https://doi.org/10.1051/jphys:01983004403034700 (publisher PDF: a scan with a text layer; Table I and constants read from the 200 dpi page image p. 349)"
+doi = "10.1051/jphys:01983004403034700"
+retrieved = "2026-10-28"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table I (p. 349), "Experimental and theoretical lifetimes of some hyperfine sublevels of the v' = 43, J' = 12 and 16
+levels": for 10 components (label, F'-J', I-tilde', measured lifetime in microseconds +- 5 %, calculated lifetime in
+microseconds). Entered as the measured lifetime in ns (x 1000), uncertainty 5 % of the value, sublevel = "F'-J'=<value>"
+(F'-J' as printed), with the component label in the note. The printed components and values:
+  a1  (F'-J' = -5, I~' = 5): 1.98 us   (calc 1.89)
+  b1  (-5, 5): 1.97 us (calc 1.97)
+  a2  (0, 1): 2.90 us (calc 2.92)
+  b2  (0, 1): 2.73 us (calc 2.62)
+  a3  (5, 5): 1.47 us (calc 1.51)
+  b3  (5, 5): 1.49 us (calc 1.45)
+  a4  (-4, 5): 1.86 us (calc 1.96)
+  a5  (1, 3): 2.75 us (calc 2.63)
+  a7  (-3, 5): 2.3 us (calc 2.08)
+  b20 (0, 5): 2.32 us (calc 2.40)
+Fitted constants (p. 349, eqs. 1-2, Abstract): Gamma_rad = (0.314 +- 0.018) x 10^6 s^-1; c_v = (5.85 +- 0.65) s^-1/2,
+so c_v^2 = 34.2 +- 7.6 s^-1; a_v = (-142 +- 5) s^-1/2, so a_v^2 = 20164 +- 1420 s^-1 = 20.2 +- 1.4 x 10^3 s^-1.
+These three constants are entered as radiative_rate, hyperfine_predissociation_c2 (c_v^2, see note) and
+hyperfine_predissociation_a2 (a_v^2, see uncertainty). The constants are printed to 3 digits: 34.2 +- 7.6 and 20.2 +-
+1.4 as above.
+Not entered: the calculated lifetimes (in the table's last column: entered only in the note of each row), Fig. 2a
+(the excitation spectrum of the 43-0 R(15) region), Fig. 2b (decays of F-J = -J, 0, +J sublevels; graph only), Table
+II (the calculated gyroscopic, hyperfine and interference contributions for the P(13) 43-0 line: these are calculated
+values, not measurements).
+"""
+
+uncertainty = """
+Lifetimes: "+- 5 %" as printed, entered as 5 % of each value (the error of the measurement; the paper says the
+calculated and measured lifetimes agree "within the estimated experimental error (+- 5 %)"). Constants: +- values as
+printed, taken as 1 sigma; the c_v^2 and a_v^2 uncertainties are propagated from c_v and a_v (2 c sigma_c and 2 a
+sigma_a). Unit: a_v is printed in s^-1/2 (rate units), so a_v^2 is a rate, entered as kHz under the convention
+1 s^-1 = 1 Hz (no factor 2 pi), as in broyer1976a.
+"""
+
+notes = """
+Units (2026-10-28): the schema enters |a_v|^2 and |c_v|^2 as decay rates in s-1 (gyroscopic_predissociation_c2 is
+the coefficient of J(J+1)). The printed rates are entered unchanged in s-1: a_v^2 = 20 164 +- 1 420 s-1, c_v^2 = 34.2 +- 7.6 s-1. Statements above about entering these constants in kHz or Hz describe the
+first transcription and are superseded by this paragraph and the rows.
+
+Read in full (5-page letter). Direct lifetime measurement of individual hyperfine sublevels in one rovibrational level
+(v' = 43, reached by the 43-0 R(15) and P(13) lines; Ref. 8 of the paper is the source of the 43-0 transitions). The result is the first lifetime-based test of hyperfine predissociation: the sublevel lifetimes differ by up
+to a factor 2 (1.47 us against 2.9 us in the table) within one level.
+
+J' is not stated per row. The caption says the components belong to "v' = 43, J' = 12 and 16 rotational levels" (Sect. 3, "the hyperfine sublevels belonging to the v' = 43, J' = 12 and 16 rotational levels"), but the table has
+one component column without the J', so the row for each sublevel is not assigned to J' = 12 or J' = 16. The J column
+is therefore empty for every row.
+
+The constants (Gamma_rad, c_v and a_v) are fitted to the whole set of sublevel decays (non-linear least squares,
+p. 349). Convention in the paper (eq. 1-2): Gamma_rot = c_v^2 [1 + p_v J(J+1)] J(J+1), i.e. c_v^2 is the coefficient of
+the gyroscopic (rotational) term, not the electric-quadrupole term that the schema's description of
+hyperfine_predissociation_c2 names; the entered c_v^2 is the gyroscopic coefficient (Vigue's C_v^2 and Broyer's k_v
+in the same role). a_v is the hyperfine predissociation coefficient of Gamma_hf = (1/3) a_v^2 (...). This mismatch
+with the schema text is flagged for the schema owner, not resolved here.
+
+Cross-checks against held data (model-free, not duplicated):
+- broyer1976 (catalog; not in held data for v' = 43) gives the rates by Tellinghuisen only; the Gamma_rad of 0.4e6 s^-1
+  for v' = 43 printed in b_levels/broyer1975 table2_rates.csv (orientation method, Refs 4-5 of that paper) is about 25 %
+  higher than the 0.314e6 s^-1 here, within the scatter of the methods.
+- vigue1981ba Table II (v' = 11-21) does not reach v' = 43, so the constants cannot be compared with its C_v^2.
+"""
+
+[conditions]
+method = "lifetimes of individual hyperfine sublevels by fluorescence decay after pulsed excitation (acousto-optic modulator, 200 ns response); supersonic molecular beam, no collisions"
+temperature = "supersonic beam (rotational temperature not stated)"
+pressure_range = "collision-free (molecular beam)"
+cell = "molecular beam apparatus"
+perturber = "none (molecular beam)"

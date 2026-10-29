@@ -1,0 +1,51 @@
+id = "goncharov1990a"
+citation = "A. N. Goncharov, M. N. Skvortsov, V. P. Chebotayev, \"Study of relaxation of molecular iodine by the method of saturated absorption spectroscopy\", Appl. Phys. B 51, 108-115 (1990), pp. 112-114 (Fig. 8 and text, eqs. 1-4, Sect. 2.3)"
+source = "https://doi.org/10.1007/bf00326009 (publisher PDF; numbers read from the page images)"
+doi = "10.1007/bf00326009"
+retrieved = "2026-10-28"
+unit = "kHz/Pa"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+127I2 P(13) 43-0 at 514.5 nm, saturated absorption in oppositely travelling waves, I2 pressure 0.1-150 mTorr.
+Transition broadening (p. 112, after eq. 3): Delta Gamma / Delta P = 15 +/- 1 kHz/mTorr at
+low pressure and 7.5 +/- 1 kHz/mTorr at high pressure. These are HALFWIDTHS (eq. 1: Gamma = N v (...) + Gamma_0 is the
+halfwidth, eq. 3 "transition halfwidth"), so the FWHM coefficients are twice these: 30 and 15 kHz/mTorr. Converted with
+x 1000/133.322 (1 Torr = 133.322 Pa): 30 -> 225.0 kHz/Pa (low, uncertainty 2 kHz/mTorr = 15.0 kHz/Pa) and 15 -> 112.5 kHz/Pa
+(high, uncertainty 15.0 kHz/Pa).
+Shift (p. 112-113, p. 113 text and text): about 400 Hz/mTorr, printed as "~400 Hz/mTorr" (no
+sign printed in the text), measured on hyperfine component a2 (p. 111, the reference laser is stabilized to a2 at 3
+mTorr). 0.4 kHz/mTorr / 0.133322 = 3.0 kHz/Pa. Entered as printed magnitude; the sign is not printed (Fig. 8 lower panel
+falls to about -50 kHz at 150 mTorr, a figure-only reading that is not entered).
+Not entered: the lower and upper level coefficients listed in notes, which are level rates, not the transition width.
+"""
+
+uncertainty = """
+Broadening: the text gives +/-1 kHz/mTorr (HWHM) for each slope, entered as 2 kHz/mTorr FWHM (15.0 kHz/Pa). Shift: none
+printed; assigned 0.1 kHz/mTorr (0.75 kHz/Pa) for the "about 400 Hz/mTorr" value, since the text gives it only to one
+significant figure.
+"""
+
+notes = """
+Relaxation parameters (kept here, not entered as rows; all printed in the text, p. 112-114):
+lower level: Delta Gamma_1 / Delta P = 12.5 +/- 1 kHz/mTorr at low pressure and 5 +/- 1 kHz/mTorr at high pressure (HWHM
+level width, p. 113); lower-level total and inelastic cross sections sigma_1,tot = (2.7 +/- 0.2) x 10^-14 cm2 and
+sigma_1,in = (1.1 +/- 0.2) x 10^-14 cm2 (p. 114).
+upper level: Delta Gamma_2 / Delta P (inelastic) = 10 +/- 2 kHz/mTorr (p. 114, eq. 8 text), inelastic cross section
+sigma_2,in = (2.2 +/- 0.4) x 10^-14 cm2; quenching contribution (Delta Gamma_2 / Delta P) about 1.5 kHz/mTorr (p. 114, from the
+luminescence decay of Fig. 4).
+transition: sigma_tot = (3.3 +/- 0.2) x 10^-14 cm2 and sigma_in = (1.6 +/- 0.2) x 10^-14 cm2 (p. 112, from the broadening
+rates); typical scattering angle theta_typ = 1.3 x 10^-3 rad.
+Shift model (p. 113 text): Omega = delta (Gamma2 - Gamma1)/(Gamma2 + Gamma1) + (0.2 kHz/mTorr) P with delta = 3 kHz
+(recoil shift), Gamma2 = 47 kHz + 17.5 kHz/mTorr P, Gamma1 = 5 kHz + 12.5 kHz/mTorr P (the printed fit; these are
+halfwidth model terms, not entered).
+Overlaps hackel1979 (12 kHz/mTorr single-step estimate for 43-0 R(15)) and the 514.5 nm pressure-shift data in the
+precision catalog. Lifetime of the lower level (Fig. 7, figure-only) not entered.
+"""
+
+[conditions]
+temperature = "not stated"
+pressure_range = "0.1-150 mTorr (I2)"
+cell = "127I2 cell, 1 cm beams; separate luminescent cell for pulsed measurements"
+method = "saturated absorption with fluorescence detection, counter-propagating and unidirectional waves; two offset-locked Ar+ lasers (5 kHz linewidth)"
+perturber = "self (I2)"

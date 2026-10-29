@@ -1,0 +1,49 @@
+id = "broyer1976a"
+citation = "M. Broyer, J. Vigue, J. C. Lehmann, \"Hyperfine predissociation of molecular iodine\", J. Chem. Phys. 64, 4793-4794 (1976), v' = 7 constants (text)"
+source = "https://doi.org/10.1063/1.432067 (publisher PDF: a scan with a text layer; values read from the 200 dpi page image p. 4794)"
+doi = "10.1063/1.432067"
+retrieved = "2026-10-28"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Letter p. 4794, "The results fit Eqs. (2), (3), and (4) with the following values": Gamma_rad,7 = (1.1 +- 0.1) x 10^6 s^-1;
+|a_7|^2 = (280 +- 50) x 10^3 s^-1; k_7 = (165 +- 15) s^-1. Read from the image (p. 4794, right column). Entered as
+three rows for v' = 7 (J empty; the fit is over 14 rotational levels with a J dependence, so no single J):
+- radiative_rate 1.1e6 +- 0.1e6 s^-1 (printed as Gamma_rad,7, the apparent radiative rate with the J-dependent
+  predissociation of Eq. (1) removed by the fit).
+- predissociation_rate 165 +- 15 s^-1: the printed k_7 is the coefficient of J(J+1) in Gamma = Gamma_rad + k_v J(J+1)
+  (Eq. 1, p. 4793). It is a coefficient, not the rate of one level; the note says so.
+- hyperfine_predissociation_a2: |a_7|^2 = 280 +- 50 x 10^3 s^-1 printed; entered as 280 +- 50 kHz (see uncertainty).
+Not entered: Fig. 2 (the total decay rate against J(J+1) for 14 levels of v' = 7, ortho and para; graph only; a
+digitized reading would be a figure-only datum).
+"""
+
+uncertainty = """
+As printed (+- values, convention not stated; taken as 1 sigma). Unit: the paper gives |a_7|^2 in s^-1 (rate units,
+not in the Hz of a frequency). The schema's a2 unit is kHz, so the printed number is entered as kHz with the
+convention 1 s^-1 = 1 Hz (no factor 2 pi), the same convention used for every a2 row in this folder family. If the
+intended unit is 2 pi times that, all a2 values change by 2 pi.
+"""
+
+notes = """
+Units (2026-10-28): the schema enters |a_v|^2 and |c_v|^2 as decay rates in s-1 (gyroscopic_predissociation_c2 is
+the coefficient of J(J+1)). The printed rates are entered unchanged in s-1: |a_7|^2 = 280 000 +- 50 000 s-1, and k_7 = 165 +- 15 s-1 as the gyroscopic coefficient. Statements above about entering these constants in kHz or Hz describe the
+first transcription and are superseded by this paragraph and the rows.
+
+Read in full (2-page communication). First identification of hyperfine predissociation in B: the apparent radiative
+rate of broyer1975 (catalog broyer1975b) follows the v dependence of k_v, so it contains a hyperfine term. The
+decay rate is Gamma_v,J,F = Gamma_rad + Gamma_hf + Gamma_int + k_v J(J+1), with Gamma_hf = |a_v|^2/3 (I^2 + ...) and
+Gamma_int = -sqrt(2) a_v c_v I.J (Eqs. 2-4). Note the paper's k_v and c_v: k_v = |c_v|^2 (p. 4793).
+Gamma_rad,7 agrees with Tellinghuisen's prediction (catalog tellinghuisen1972) and k_7 with broyer1975 (v' = 7 is
+not in data/b_levels/broyer1975, which has v' = 9-20 only). Extended by vigue1977 (per-level values) and vigue1981
+(Tables I-III: v' = 7-22, see vigue1981ba).
+Cross-check: vigue1981ba Table I gives Gamma_rad,7 = 1.05 +- 0.09 x 10^6 s^-1 and a_7^2 = 324 +- 26 kHz (fit with a
+gyroscopic term and a Gamma_coll); consistent with 1.1 +- 0.1 x 10^6 s^-1 and 280 +- 50 kHz here within the errors.
+"""
+
+[conditions]
+method = "fluorescence decay of single rovibrational levels excited by 3 ns pulses of an N2-laser-pumped dye laser (rhodamine B, 1 GHz width, all hyperfine sublevels excited together); decays of 14 rotational levels of v' = 7 (ortho and para)"
+temperature = "not stated"
+pressure_range = "not stated (Stern-Volmer collision rate is not in this letter); the decays are fitted as zero-pressure"
+cell = "not stated"
+perturber = "self (I2)"

@@ -1,0 +1,46 @@
+id = "fang2006b"
+citation = "H.-M. Fang, S. C. Wang and J.-T. Shy, \"Pressure and power broadening of the a10 component of R(56) 32-0 transition of molecular iodine at 532 nm\", Opt. Commun. 257, 76-83 (2006), text PDF p. 7 and Fig. 5 slope"
+source = "https://doi.org/10.1016/j.optcom.2005.07.016 (publisher PDF; the library file is Fang2005_Opt_Commun_257_76.pdf, title and journal volume/pages match the catalog citation)"
+doi = "10.1016/j.optcom.2005.07.016"
+retrieved = "2026-10-28"
+unit = "kHz/Pa"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Text PDF p. 7 (section 3) and the caption of Fig. 5: "The pressure broadened linewidth is quite linear with a slope of
+63 +/- 2 kHz/Pa", and "The slope of the linear fit is 63 +/- 2 kHz/Pa for FWHM linewidth". Read from 200 dpi images of the
+text and the figure caption, matched to the text layer. The printed value is already in kHz/Pa and is the FWHM
+coefficient (the paper states FWHM); no conversion applied. One row: broadening of 127I2 R(56) 32-0 a10 by iodine
+vapor itself (self-broadening).
+
+Context printed in the text, not entered as a row: the FWHM linewidth varies from 1.657 to 2.219 MHz over the vapor
+pressure range 1.74 to 10.86 Pa (Fig. 5, measured at 4.75 mW pump power); the pressure-broadened linewidth is 63 kHz/Pa
+(fit line), not an absolute width. The pump-power extrapolation gives a zero-power width of 1.772 MHz (1.952 - 0.18 MHz)
+at a fixed vapor pressure, and a saturation-parameter fit of c = 0.74 +/- 0.007 MHz, Ps = 7.65 +/- 0.56 mW at 3.9 Pa
+(Fig. 6). These are power-broadening and fit-model numbers, not pressure-broadening, and are not entered.
+For comparison the paper cites a1 at 148 kHz/Pa [11] and b15 of P(48) 11-3 at 106 kHz/Pa [10].
+
+Not entered: Figs. 2-4 (the third-derivative and saturation spectra) and Fig. 6 (power dependence, figure-only).
+Consistency check (model-free): the a10 slope is 63 kHz/Pa; the paper's own comparison a1 (148 kHz/Pa, from [11]) is a
+different component and was not transcribed. The printed slope and the Hrabina 2017 linewidth slope for the same line
+(242 kHz/Pa of contamination, see hrabina2017a) are not the same quantity and are not compared.
+"""
+uncertainty = """
+Printed: 63 +/- 2 kHz/Pa (1 sigma, from the linear fit, Fig. 5). The paper gives no systematic term for the cell
+pressure; the vapor pressure is from the cell cold-finger temperature (Fig. 5), so the pressure scale carries the
+cell's temperature calibration (not stated).
+"""
+notes = """
+Self-broadening of the a10 component, the most-used I2 component at 532 nm. Overlaps no held set in data/widths (first
+set in that folder). The catalog's note that the held fang2006a is a different paper is consistent with this set id
+being fang2006b (fang2006a already exists in data/observations/ for another paper). The printed values are from the
+PAM (phase-sensitive amplitude modulation) and the saturation fits, which agree within the stated errors (paper PDF p. 7).
+""" 
+
+[conditions]
+method = "sub-Doppler saturation spectroscopy at 532 nm, Nd:YAG (frequency doubled); PAM (phase-sensitive amplitude modulation) and conventional saturation spectroscopy with Lorentzian fits"
+wavelength_nm = 532.25
+pressure_range_Pa = "1.74-10.86 (Fig. 5)"
+cell_temperature_C = "-8.32 to 10 (cold finger, Fig. 5; 0.58 C at 3.9 Pa for Fig. 6)"
+pump_power_mW = 4.75
+perturber_gas = "self (I2)"

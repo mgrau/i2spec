@@ -1,0 +1,10 @@
+isotopologue,state,v,J,sublevel,quantity,value,uncertainty,group,note
+127I2,B,14,,,lifetime,440,100,chapman1972a,"Table I p. 2958: tau = 0.44 +- 0.1 us (printed in microseconds, x1000 to ns); intercept from Degenkolb data with squared collision radius 70 +- 10 A^2 (footnote c); J not stated"
+127I2,B,16,,,lifetime,1100,100,chapman1972a,"Table I: tau = 1.1 +- 0.1 us; intercept, Degenkolb data, footnote c; J not stated"
+127I2,B,18,,,lifetime,620,100,chapman1972a,"Table I: tau = 0.62 +- 0.1 us; intercept, Degenkolb data, footnote c; J not stated; a factor 1.6 below broyer1975 v'=18 (see meta)"
+127I2,B,21,,,lifetime,550,100,chapman1972a,"Table I: tau = 0.55 +- 0.1 us; intercept, Degenkolb data, footnote c; J not stated"
+127I2,B,24,,,lifetime,650,100,chapman1972a,"Table I: tau = 0.65 +- 0.1 us; intercept, Degenkolb data, footnote c; J not stated"
+127I2,B,28,,,lifetime,550,100,chapman1972a,"Table I: tau = 0.55 +- 0.1 us; intercept, Degenkolb data, footnote c; J not stated"
+127I2,B,32,,,lifetime,640,100,chapman1972a,"Table I: tau = 0.64 +- 0.1 us; intercept, Degenkolb data, footnote c; J not stated"
+127I2,B,38,,,lifetime,830,100,chapman1972a,"Table I: tau = 0.83 +- 0.1 us; intercept, Degenkolb data, footnote c; J not stated"
+127I2,B,48,,,lifetime,2300,300,chapman1972a,"Table I: tau = 2.3 +- 0.3 us; intercept, Degenkolb data, footnote c; J not stated"

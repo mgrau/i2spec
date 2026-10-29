@@ -1,0 +1,3 @@
+isotopologue,state,v,J,sublevel,quantity,value,uncertainty,group,note
+127I2,B,25,34,,lifetime,720,100,brewer1963a,"abstract and text p. 1381: (7.2 +- 1.0) x 10^-7 s = 720 +- 100 ns, paper's v'=26 (old numbering) = v'=25; J'=34 from chutjian1967 (Hg green line)"
+127I2,B,25,34,,quenching_cross_section,127.7,11,brewer1963a,"text p. 1385: self-quenching collision diameter 11.3 A, squared 127.7 A^2 (diameter squared, the sigma^2 convention of the other sets); +-11 from an assumed +-0.5 A in the diameter"

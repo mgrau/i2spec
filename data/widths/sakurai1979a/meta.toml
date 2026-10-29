@@ -1,0 +1,42 @@
+id = "sakurai1979a"
+citation = "T. Sakurai, S. Iwasaki, T. Oshida, K. Tanaka, \"Pressure and power broadenings of the saturated absorption lines of iodine at 633 nm\", Jpn. J. Appl. Phys. 18, 1199-1200 (1979), p. 1200 (eq. 2 and text)"
+source = "https://doi.org/10.1143/jjap.18.1199 (publisher PDF: scanned, image only; values read from the page images)"
+doi = "10.1143/jjap.18.1199"
+retrieved = "2026-10-28"
+unit = "kHz/Pa"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+p. 1200, text after eq. (2): the printed optimum pressure-broadening values are written "2 pi x 69.6 (9.29), 2 pi x 71.3
+(9.52), and 2 pi x 71.1 (9.49) kHz/Pa (MHz/Torr)" for the h, i and j components of R(127) 11-5. The bracketed numbers are the
+same coefficients in MHz/Torr. The 2 pi in front is the paper's angular notation; the bracketed MHz/Torr values
+show that the coefficients are linear-frequency rates (9.29 MHz/Torr = 69.7 kHz/Pa), so the linear values are the
+printed kHz/Pa numbers. Conversion from the MHz/Torr values: x 1000/133.322 (1 Torr = 133.322 Pa):
+9.29 -> 69.68 kHz/Pa (h), 9.52 -> 71.41 kHz/Pa (i), 9.49 -> 71.18 kHz/Pa (j). Entered as "broadening" (d(FWHM)/dp).
+Components: h = a14, i = a13, j = a12 (catalog mapping, consistent with the Titov component i = a13).
+Not entered: the power-broadening slope (about 34.3 kHz/microW at 10.3 Pa, p. 1200, Fig. 2), which is a power
+coefficient, recorded here only.
+"""
+
+uncertainty = """
+None printed. Assigned 2 % (about 1.4 kHz/Pa) for each coefficient, from the spread between the three printed values
+and the paper's statement that they agree with NPL, NRC and LHA results (1-2). Fig. 1 widths are figure-only and not
+entered.
+"""
+
+notes = """
+Scanned page: the values are printed in the text and were read from the image at 200 dpi. The paper's fit form is
+W = (1/pi)(1/(2 tau0) + kappa P) sqrt(1 + s/(1/(2 tau0) + kappa P)^2) (eq. 2), with the optimum pressure-broadening
+values printed as "kappa s" in the text. The units (kHz/Pa, MHz/Torr) show these are the pressure-broadening coefficients
+kappa (inferred). The h, i and j widths are ordered h > i > j at every pressure, with adjacent differences near 500 kHz
+(the noise broadening of the lasers is about 500 kHz). The widths include intracavity saturation and laser noise, so
+the coefficients are laser-specific. Pressure shifts are not measured in this paper. Compare titov1997a (self-broadening of the
+same line, 126.5 kHz/Pa FWHM, from a different method).
+"""
+
+[conditions]
+temperature = "not stated"
+pressure_range = "about 5-27 Pa (Fig. 1 and text); power-broadening data at 10.3 Pa"
+cell = "127I2, 10 cm inner cell in a 33 cm He-Ne resonator"
+method = "third-derivative (3f) detection of the intracavity saturated absorption; Arndt line-shape fit"
+perturber = "self (I2)"

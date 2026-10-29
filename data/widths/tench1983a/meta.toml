@@ -1,0 +1,49 @@
+id = "tench1983a"
+citation = "R. E. Tench and S. Ezekiel, \"Precision measurements of hyperfine predissociation in I2 vapor using a two-photon resonant scattering technique\", Chem. Phys. Lett. 96, 253-258 (1983), Table 1 (p. 256), Table 2 (p. 257) and text pp. 256-257"
+source = "https://doi.org/10.1016/0009-2614(83)80502-8 (publisher PDF; the OCR text layer drops decimals and letters, so every number was read from the page images)"
+doi = "10.1016/0009-2614(83)80502-8"
+retrieved = "2026-10-28"
+unit = "kHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 1 (p. 256): measured backward-scattered linewidths (FWHM, kHz) at P = 2.1 mTorr, 14 components: a1-a7 of
+127I2 P(13) 43-0 (upper level J' = 12) and b1-b7 of 127I2 R(15) 43-0 (J' = 16). The "Measured" column is entered as
+printed; the paper states these are corrected for dye-laser jitter and for a broad background (p. 256). The
+"Calculated" column is not entered (it is the paper's fit to eq. 3 with the three fitted constants); the printed
+residuals were checked, measured minus calculated, and all 14 agree with the printed values.
+Label mapping: Table 1 letters are the paper's own numbering a1-a21 (J' = 12) and b1-b21 (J' = 16), the same
+numbering as the held sets bipm2005a / bipm1984a (127I2 P(13) 43-0 a1-a21 and R(15) 43-0 b1-b21). The paper's
+Table 2 gives, for each label, the upper-level (epsilon', F') pair; for a1-a7 these are (5,7), (1,12), (5,17), (5,8),
+(3,13), (3,11), (5,9), and for b1-b7 they are (5,11), (1,16), (5,21), (5,12), (3,17), (3,15), (5,13). The
+identity of label and the a3 anchor (Table 2 gives a3 the largest natural width, 107 kHz, and the text of the
+catalog calls a3 the CIPM reference component) were used to confirm the mapping; it is inferred from the
+shared numbering, not from positions, because the paper prints no level energies.
+Row b2 (p. 257): the corrected zero-pressure natural width of b2, Gamma2 = Gamma_r + Gamma_p = 56 +/- 4 kHz (FWHM),
+with Gamma_p = 5 kHz for this line, so Gamma_r = 51 +/- 4 kHz. Entered as a zero-pressure width (pressure empty).
+Not entered: Table 2 (the calculated Gamma_p and Gamma_nat of the 42 components, derived from the constants).
+Misprint check: the catalog reports Table 1 b1 calculated printed as 216 kHz. The printed value on the page image is
+316 kHz (residual +4 against measured 320), so no misprint is visible on this scan; the catalog's inference is
+not supported by this page.
+"""
+
+uncertainty = """
+Table 1: the text says the uncertainty in the linewidth measurements is estimated to be +/-3 kHz (p. 256), entered as
+the uncertainty of each row. Row b2 zero-pressure: +/-4 kHz as printed (p. 257). The fit standard deviation of the
+Table 1 widths is 3.1 kHz (caption).
+"""
+
+notes = """
+The Table 1 widths are backward-scattered two-photon resonance widths (eq. 1: Gamma_s+ approximately 1.9 Gamma2, with the
+collisional term Gamma' fitted in eq. 3), not the natural width of each component. The rows are a test of the
+predicted hyperfine-dependent widths through the model only after the paper's eq. 3 reduction, not direct natural widths.
+The b2 row (56 kHz) is the natural width. Lifetime constants (|a_v|^2, |c_v|^2, Gamma_r for v' = 43) are in data/lifetimes/tench1983a.
+Companion: hackel1979 (same lab and technique, catalog).
+"""
+
+[conditions]
+temperature = "not stated"
+pressure_range = "0.4-7 mTorr; widths at 2.1 mTorr (Table 1), 0.27998 Pa"
+cell = "127I2, 150 cm, 5 passes, about 1 cm beams"
+method = "two-photon backward-scattered resonance: Ar+ 514.5 nm pump on 43-0 P(13) and R(15), dye-laser probe on 43-11 near 582.8 nm locked through a transfer cavity"
+perturber = "self (I2)"

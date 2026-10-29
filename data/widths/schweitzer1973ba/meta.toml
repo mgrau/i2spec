@@ -1,0 +1,49 @@
+id = "schweitzer1973ba"
+citation = "W. G. Schweitzer, Jr., E. G. Kessler, Jr., R. D. Deslattes, H. P. Layer and J. R. Whetstone, \"Description, performance, and wavelengths of iodine stabilized lasers\", Appl. Opt. 12, 2927-2938 (1973), abstract and PDF pp. 1, 5-7 (text values)"
+source = "https://doi.org/10.1364/AO.12.002927 (publisher PDF)"
+doi = "10.1364/AO.12.002927"
+retrieved = "2026-10-28"
+unit = "kHz (width), kHz/Pa (broadening and shift)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Printed values: the pressure values were read from 200 dpi images of PDF p. 5 (Fig. 9 page) and PDF p. 7 (Fig. 12 page), and checked against the text layer; the abstract (PDF p. 1) was read from the text layer only. The paper's pressure data are figures (Fig. 9: absorption-peak width against iodine pressure, k and B
+peaks; Fig. 12: frequency shift against iodine cell pressure) with no printed table, so only the printed numbers are
+entered:
+- width: zero-pressure intercept 2.6 MHz (abstract; the text on PDF p. 5 prints it as "~2.6 MHz").
+- broadening: 13 MHz/Torr (abstract and PDF p. 5: "2.4 MHz for 180 mTorr or 13 MHz/Torr"), converted x1000/133.322.
+- shift: -1.8 x 10-9 nu per Torr (PDF p. 7, linear fit to the Fig. 12 data, "roughly -1.8 x 10-9 v/Torr"), and
+  2 x 10-9 nu per Torr to the red (abstract), each converted with nu = c/632.991 nm = 473.6 THz:
+  2e-9 x 473.6e12 Hz = 0.947 MHz/Torr = 7.10 kHz/Pa (red, negative); 1.8e-9 gives 6.39 kHz/Pa.
+Also printed in the text and not entered: temperature coefficient of the shift, -1e-11 nu per C (PDF p. 7), and the power broadening (about 10 % over a fivefold power increase; PDF p. 5).
+
+Line: 129I2 P(54) 8-4 (the 633 nm 129 reference line, as in the held set schweitzer1973a, which uses the same line).
+The paper states its measurements on the k and B peaks of 129I2 (k is the reference peak used in the wavelength
+measurements). The printed pressure values are not given per peak, so component is empty. The mapping of the k peak
+to an a-label of the held sets is not attempted here.
+
+Not entered: the wavelengths and beat notes (pPDF pp. 7-8), the absorption and power-dependence figures (Figs. 2-8),
+and the 127I2 i-peak comparison. Nothing in the paper is a hyperfine width or shift per component.
+
+Consistency check (model-free): the printed 2.4 MHz at 180 mTorr gives 13.3 MHz/Torr, matching the stated 13 MHz/Torr; the -1.8e-9 and -2e-9 shifts (6.39 and 7.10 kHz/Pa) are the two printed values, not checked against each other.
+"""
+uncertainty = """
+Not printed for any value. Assigned 1 sigma: width intercept 300 kHz (about 10 % of 2.6 MHz, since the intercept is a
+linear fit extrapolated from a few points and the paper gives it to one decimal); broadening 1 MHz/Torr (about 8 %
+of the "about 13 MHz/Torr"); shifts 1 kHz/Pa each (about 15 % of 6.4 to 7.1 kHz/Pa, the text calls the scatter "quite
+large"). These are judgments, not numbers from the paper.
+"""
+notes = """
+The only self-broadening number found for 129I2 at 633 nm, per the catalog. The saturated-resonance width relates to the
+homogeneous width by roughly a factor of 2 (catalog); the printed "width" here is the paper's own FWHM intercept, with
+power broadening folded in, so it is not a natural width. The 13 MHz/Torr and 2.6 MHz are for the k peak; the text also
+says "results for the B peak were about the same" (PDF p. 5), which is not separately tabulated.
+"""
+
+[conditions]
+method = "intracavity saturated absorption in 129I2-stabilized He-Ne lasers (3He-22Ne:129I2 and 3He-20Ne:127I2 pairs)"
+wavelength_nm = 632.991
+pressure_range_mTorr = "about 6 to 200 mTorr vapor (Fig. 9, and the 'vapor pressure in 3 cm cell' curves)"
+cell_length_cm = 3
+perturber_gas = "129I2 (self)"
+temperature_note = "cell temperature set by a cold finger, -11 to 18 C (top axis of Fig. 9, PDF p. 5)"

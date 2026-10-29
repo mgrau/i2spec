@@ -1,0 +1,13 @@
+line,component,quantity,value,uncertainty,pressure_Pa,temperature_K,perturber,group,note
+127I2 P(69) 5-7,,broadening,58.01,0.67,,291.15,Ar,eng2004a,"Table 2 (5,7) P(69) Ar: 258(3)e-6 cm-1/Torr FWHMx 2.99792458e7 kHz/cm-1 /133.322 = 58.01 kHz/Pa; uncertainty 3.0e-06 cm-1/Torr"
+127I2 P(69) 5-7,,broadening,87.02,1.57,,291.15,H2O,eng2004a,"Table 2 (5,7) P(69) H2O: 387(7)e-6 cm-1/Torr FWHMx 2.99792458e7 kHz/cm-1 /133.322 = 87.02 kHz/Pa; uncertainty 7.0e-06 cm-1/Torr"
+127I2 P(69) 5-7,,broadening,67.91,0.45,,291.15,air,eng2004a,"Table 2 (5,7) P(69) air: 302(2)e-6 cm-1/Torr FWHMx 2.99792458e7 kHz/cm-1 /133.322 = 67.91 kHz/Pa; uncertainty 2.0e-06 cm-1/Torr"
+127I2 P(69) 5-7,,shift,-8.84,0.18,,291.15,Ar,eng2004a,"Table 3 (5,7) P(69) Ar: -3.93e-05 cm-1/Torr (printed sign, negative = red) -> x 2.99792458e7 /133.322 = -8.84 kHz/Pa; uncertainty 8.0e-07 cm-1/Torr"
+127I2 P(69) 5-7,,shift,-8.39,0.45,,291.15,H2O,eng2004a,"Table 3 (5,7) P(69) H2O: -3.73e-05 cm-1/Torr (printed sign, negative = red) -> x 2.99792458e7 /133.322 = -8.39 kHz/Pa; uncertainty 2.0e-06 cm-1/Torr"
+127I2 P(69) 5-7,,shift,-8.75,0.11,,291.15,air,eng2004a,"Table 3 (5,7) P(69) air: -3.89e-05 cm-1/Torr (printed sign, negative = red) -> x 2.99792458e7 /133.322 = -8.75 kHz/Pa; uncertainty 5.0e-07 cm-1/Torr"
+127I2 P(122) 4-6,,broadening,57.79,0.67,,291.15,Ar,eng2004a,"Table 2 (4,6) P(122) Ar: 257(3)e-6 cm-1/Torr FWHMx 2.99792458e7 kHz/cm-1 /133.322 = 57.79 kHz/Pa; uncertainty 3.0e-06 cm-1/Torr"
+127I2 P(122) 4-6,,broadening,90.17,1.57,,291.15,H2O,eng2004a,"Table 2 (4,6) P(122) H2O: 401(7)e-6 cm-1/Torr FWHMx 2.99792458e7 kHz/cm-1 /133.322 = 90.17 kHz/Pa; uncertainty 7.0e-06 cm-1/Torr"
+127I2 P(122) 4-6,,broadening,65.21,0.90,,291.15,air,eng2004a,"Table 2 (4,6) P(122) air: 290(4)e-6 cm-1/Torr FWHMx 2.99792458e7 kHz/cm-1 /133.322 = 65.21 kHz/Pa; uncertainty 4.0e-06 cm-1/Torr"
+127I2 P(122) 4-6,,shift,-9.78,0.18,,291.15,Ar,eng2004a,"Table 3 (4,6) P(122) Ar: -4.35e-05 cm-1/Torr (printed sign, negative = red) -> x 2.99792458e7 /133.322 = -9.78 kHz/Pa; uncertainty 8.0e-07 cm-1/Torr"
+127I2 P(122) 4-6,,shift,-7.22,0.49,,291.15,H2O,eng2004a,"Table 3 (4,6) P(122) H2O: -3.21e-05 cm-1/Torr (printed sign, negative = red) -> x 2.99792458e7 /133.322 = -7.22 kHz/Pa; uncertainty 2.2e-06 cm-1/Torr"
+127I2 P(122) 4-6,,shift,-9.42,0.20,,291.15,air,eng2004a,"Table 3 (4,6) P(122) air: -4.19e-05 cm-1/Torr (printed sign, negative = red) -> x 2.99792458e7 /133.322 = -9.42 kHz/Pa; uncertainty 9.0e-07 cm-1/Torr"

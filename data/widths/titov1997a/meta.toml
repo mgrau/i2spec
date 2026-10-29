@@ -1,0 +1,39 @@
+id = "titov1997a"
+citation = "A. Titov, I. Malinovsky, M. Erin, \"Determination of saturation parameter in iodine and precise molecular linewidth measurements in He-Ne/I2 standard at 633 nm\", Opt. Commun. 136, 327-334 (1997), pp. 333 (Figs. 9-10 text) and 332"
+source = "https://doi.org/10.1016/s0030-4018(96)00685-2 (publisher PDF; numbers read from the page images)"
+doi = "10.1016/s0030-4018(96)00685-2"
+retrieved = "2026-10-28"
+unit = "kHz (width), kHz/Pa (broadening)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+p. 333: the zero-pressure intercept of the homogeneous linewidth 2 Gamma (power-unbroadened, from the linear fit of
+2 Gamma_0 against iodine pressure, Figs. 9-10) is 784 kHz +/- 15 %, and the slope is 126.5 kHz/Pa +/- 10 %, the
+self-broadening coefficient of 127I2 at 633 nm (correlation coefficient 0.9978). Both are entered as printed; no
+conversion is needed because the paper's linewidth is already a full width (2 Gamma, the paper's notation) in kHz,
+and the slope is in kHz/Pa. The zero-pressure width is entered with an empty pressure (the source extrapolated to
+zero pressure, as the text says: linewidth of radiative decay nature, 784 kHz). Component: the laser is locked to
+hyperfine component i (catalog; i = a13 by the sakurai1979 mapping), so the rows are placed on a13. Other values
+(2 Gamma_0 = 1640 kHz at 7.1 Pa, the pairs at I0 = 6-17 and the saturation parameters) are power-broadening
+corrections and are not entered.
+"""
+
+uncertainty = """
+As printed: 784 kHz +/-15 % (117.6 kHz, rounded) and 126.5 kHz/Pa +/-10 % (12.7 kHz/Pa, rounded), both quoted as
+percentages in the text.
+"""
+
+notes = """
+The paper's 2 Gamma_0 zero-pressure value (784 kHz) is far above the natural width implied by the B v' = 11 lifetime
+(about 0.15-0.4 MHz, broyer1975b); the paper attributes it to radiative decay with negligible transit time, and the
+catalog note says it likely contains residual broadening (inferred). Overlaps schweitzer1973b (129I2, 13 MHz/Torr =
+98 kHz/Pa) and cerez1974 (127I2 R(127) 11-5). The saturation-parameter results (Figs. 7-8, 10) are laser-specific
+and are not entered.
+"""
+
+[conditions]
+temperature = "not stated"
+pressure_range = "7.1-23.5 Pa (zero-pressure intercept by linear fit)"
+cell = "intracavity He-Ne/I2 laser standard"
+method = "beat frequency with the 5th-harmonic discriminant; Gaussian-beam high-intensity (Stenholm-Lamb) lineshape fit"
+perturber = "self (I2)"

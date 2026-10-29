@@ -1,0 +1,49 @@
+id = "phillips2008a"
+citation = "G. T. Phillips and G. P. Perram, \"Pressure broadening by argon in the hyperfine resolved P(10) and P(70) (17,1) transitions of I2 X1Sigma(0g+) -> B3Pi(0u+) using sub-Doppler laser saturation spectroscopy\", J. Quant. Spectrosc. Radiat. Transfer 109, 1875-1885 (2008), Table 2 (and Table 1 for the intervals, not entered)"
+source = "https://doi.org/10.1016/j.jqsrt.2007.12.011 (publisher PDF)"
+doi = "10.1016/j.jqsrt.2007.12.011"
+retrieved = "2026-10-28"
+unit = "kHz (width), kHz/Pa (broadening)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table 2 (p. 1883), "Rates for pressure broadening by argon": six printed numbers, read from a 200 dpi image of p. 1883
+(page 9 of the PDF) and checked against the text (abstract: 8.3 and 10.7 MHz/Torr; p. 1883: 8.5 +/- 0.5 MHz/Torr and
+b = 16.8 +/- 8.6 MHz). Entered: gamma (saturated P(70), P(10); Doppler-limited P(70)) as broadening rates, and the
+intercepts b as widths at zero pressure (saturated P(70) 8.7 +/- 0.2 MHz, P(10) 7.7 +/- 0.1 MHz; Doppler-limited
+P(70) 16.8 +/- 8.6 MHz). Conversion: MHz/Torr x 1000/133.322 = kHz/Pa. The paper's widths are FWHM (abstract, "widths
+(FWHM)"); the saturated lineshapes are Lorentzian fits, so no HWHM factor is applied.
+
+Labels: the lines are 127I2 P(70) 17-1 and P(10) 17-1 (catalog transitions; the paper's Table 2 has no component
+column). The paper reports one rate per line: "No significant variation in broadening rates is observed for the 15
+hyperfine components", so the rows carry component empty (whole line). No per-component mapping is needed or
+attempted.
+
+Not entered: Table 1 (the 15 hyperfine intervals of P(70) 17-1 relative to component i, in GHz, and the observed
+relative intensities; the paper prints them as magnitudes only, (the catalog notes an about 1.3 MHz offset from the matrix calculation, not re-checked here), and some intervals for components g-b have no sign). Those are hyperfine intervals, not widths,
+and belong in observations if at all. Figs. 5-10 (line profiles, Doppler fits, the polarizability comparison of Fig.
+10) are figure-only and not entered. No pressure shifts are reported.
+
+Consistency check (model-free, within the paper): the saturated P(70) rate (8.3 MHz/Torr) and the Doppler-limited
+rate (8.5 MHz/Torr) agree to 0.2 MHz/Torr, within their 0.3 and 0.5 uncertainties, as the paper states (p. 1883).
+The P(10) rate is 29 % larger than P(70) (10.7 vs 8.3); the paper attributes this to inelastic rotational transfer.
+"""
+uncertainty = """
+As printed, 1 sigma: gamma P(70) saturated +/- 0.3 MHz/Torr, P(10) +/- 0.4 MHz/Torr, P(70) Doppler +/- 0.5 MHz/Torr;
+intercepts +/- 0.2, +/- 0.1 and +/- 8.6 MHz. Converted to kHz/Pa and kHz by the same factor. The paper prints no
+separate systematic term.
+"""
+notes = """
+One argon-broadening set for 127I2 P(70) and P(10) 17-1, the same lines as the paper's Fig. 10 comparison (Ar
+polarizability). Overlaps the rare-gas broadening set of the catalog (Astill et al. 1985 on P(46) 17-1, fletcher1995,
+Kireev 1995, not yet transcribed); the paper states the Ar rate for P(70) is 20-30 % larger than those earlier results.
+The paper's intercepts are reported as "b" and are extrapolations to zero pressure; they are not natural widths.
+"""
+
+[conditions]
+method = "sub-Doppler laser saturation spectroscopy, chopped pump (1.3 W/cm2), counter-propagating probe, lock-in; ring dye laser (< 0.5 MHz); plus Doppler-limited side fluorescence"
+cell_length_cm = 41.5
+pressure_range_Torr = "0.2-1.2 Ar (saturated); up to 30 Torr for the Doppler-limited fit (Fig. 8)"
+iodine_pressure = "50-200 mTorr"
+perturber_gas = "Ar"
+temperature_note = "room temperature, not stated numerically in Table 2"

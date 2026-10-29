@@ -1,0 +1,59 @@
+id = "chutjian1967a"
+citation = "A. Chutjian, J. K. Link, L. Brewer, \"Measurement of lifetimes and quenching cross sections of the B state of I2\", J. Chem. Phys. 46, 2666-2675 (1967), Table II (11 excitation regions)"
+source = "https://doi.org/10.1063/1.1841097 (publisher PDF: a scan with an OCR text layer; Table II read from the 200 dpi page image)"
+doi = "10.1063/1.1841097"
+retrieved = "2026-10-28"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Table II (p. 2671), "Lifetimes and cross sections for emission from various v' regions of the B state of I2": wavelength
+of the excitation, v' region, number of data points, tau0 (10^-7 s), sigma^2 (A^2). Read from the 200 dpi page image;
+the OCR layer garbles one value (the 5087 A region sigma^2 reads 65.8 +- 4 in the image, not 68.8); the asymmetric
+errors agree with the text layer; the image values are entered. All 11 rows entered as lifetime (ns = 100 x tau0) and
+quenching_cross_section (A^2), with the representative v' in column v, J empty (the paper gives the average over
+several levels of each region).
+
+Representative v' (rule: midpoint of the region rounded down; for the atomic-line rows the level named in the text):
+  6040 A, v' 10-14 -> 12;  5895 A (Na D continuum), 13-16 -> 14;  5890 A (Na D), 14-16 -> 15;  5592 A, 20-24 -> 22;
+  5461 A continuum, 25-27 -> 26;  5461 A (Hg green), 25, 26, 28 -> 25 (text: the excited level is v' = 25, J' = 34);
+  5277 A, 34-36 -> 35;  5168 A, 41-44 -> 42;  5087 A continuum, 47-54 -> 50;  5086 A (Cd blue), 49-50 -> 49 (text:
+  v' = 49, J' = 8 and v' = 50, J' = 43);  5011 A, about 100 -> 100 (the text calls this assignment only an estimate).
+Asymmetric printed errors (5168, 5087, 5086 A): entered as the larger of the two (the upper value), as the schema
+takes one uncertainty; the printed values are in each row's note.
+Not entered: the text (Discussion, radiation entrapment, the Stern-Volmer checks), Table I (filters), Table III
+(lifetimes from Brown and Klemperer absorption A values, recalculated; those are not measurements), Fig. 6 (plot of
+sigma^2 against v').
+"""
+
+uncertainty = """
+Table II errors as printed, not stated as 1 sigma: "The assignment of errors was made by drawing high- and low-slope
+lines about the least-squares lines ... the errors are a measure of the random variation of the data". Entered as
+printed, with the larger of the two asymmetric halves where the table prints two.
+"""
+
+notes = """
+Read in full. Uses the modern v' numbering (the Brown and James isotope-shift numbering; the paper's Table II notes
+that the new numbering replaces the old). Averages over several (v', J') levels per region, so the values are
+superseded for a natural-linewidth model by single-level measurements (capelle1973, paisner1974, broyer1975, which
+has single-level Table I rows; see data/b_levels/broyer1975). The three atomic-line rows (Hg green, Na D, Cd blue)
+are the closest to single-level values.
+
+The Cd blue (5086 A) lifetime was later remeasured by P. T. Cunningham (UCRL-18419, 1968) as a total rate of
+6.58e5 s^-1, i.e. tau = 15e-7 s, about 3.5 times shorter than the 53.2e-7 s printed here (quoted in chutjian1969,
+footnote 12). The 5320 ns row is therefore doubtful; the note on that row says so.
+
+Cross-checks against held data (model-free, not duplicated):
+- data/b_levels/chutjian1969/decay_rates.csv reprints the total depopulation rates from this paper (phase shift)
+  for the 13-16 and 25-27 regions: 8.77e5 s^-1 (= 1/11.4e-7 s, this table) and 13.0e5 s^-1 (= 1/7.69e-7 s, this
+  table). These match the printed tau0 exactly, so no value has been changed.
+- Hg green (25, 26, 28): 713 +- 25 ns against brewer1963 (720 +- 100 ns, same level, v' = 25 J' = 34 by the
+  modern numbering).
+- The 1/tau0 values at 14.3e5 s^-1 (mean of the two reprints) and the 1/tau of the Hg level are consistent.
+"""
+
+[conditions]
+method = "phase-shift fluorometry (359 kHz modulation), atomic-line (Hg 5461 A, Na D, Cd 5086 A) and filtered-continuum excitation; Stern-Volmer extrapolation"
+temperature = "22 C (0.238 torr); 8 C for the trial measurements"
+pressure_range = "I2 0.020-0.282 torr"
+cell = "cylindrical cell, 14 cm and other lengths tested for entrapment (see the paper)"
+perturber = "self (I2)"

@@ -1,0 +1,4 @@
+line,component,quantity,value,uncertainty,pressure_Pa,temperature_K,perturber,group,note
+127I2 R(127) 11-5,a14,broadening,69.68,1.4,,,self,sakurai1979a,"p. 1200 optimum pressure broadening h component: printed 2 pi x 69.6 (9.29) kHz/Pa (MHz/Torr); 9.29 x 1000/133.322 = 69.68 kHz/Pa; h = a14 (catalog)"
+127I2 R(127) 11-5,a13,broadening,71.41,1.4,,,self,sakurai1979a,"p. 1200 optimum pressure broadening i component: printed 2 pi x 71.3 (9.52) kHz/Pa (MHz/Torr); 9.52 x 1000/133.322 = 71.41 kHz/Pa; i = a13 (catalog)"
+127I2 R(127) 11-5,a12,broadening,71.18,1.4,,,self,sakurai1979a,"p. 1200 optimum pressure broadening j component: printed 2 pi x 71.1 (9.49) kHz/Pa (MHz/Torr); 9.49 x 1000/133.322 = 71.18 kHz/Pa; j = a12 (catalog)"

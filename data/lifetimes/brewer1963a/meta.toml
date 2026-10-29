@@ -1,0 +1,42 @@
+id = "brewer1963a"
+citation = "L. Brewer, R. A. Berg, G. M. Rosenblatt, Radiative lifetime of I2 fluorescence, B 3Pi0+u -> X 1Sigma0+g, J. Chem. Phys. 38, 1381-1388 (1963), abstract and text (one lifetime, one self-quenching diameter)"
+source = "https://doi.org/10.1063/1.1733862 (publisher PDF: a scan with an OCR text layer; values read from the page image)"
+doi = "10.1063/1.1733862"
+retrieved = "2026-10-28"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Abstract (p. 1381, read from the 150 dpi page image) and text: the radiative lifetime of the B state fluorescence
+excited by the Hg 5461 A green line, "B 3Pi0+u (v' = 26) -> X 1Sigma0+g", is (7.2 +- 1.0) x 10^-7 s by the phase
+fluorometer (60 kHz and 5.2 MHz modulation). Entered as 720 +- 100 ns. The paper's v' = 26 is the old numbering of the
+level that modern numbering labels v' = 25 (Table I of chutjian1967 and steinfeld1965); J' = 34 is the level
+absorbing the Hg green line (chutjian1967, Discussion, "for a narrow Hg 5461-A line, the excited level is v' = 25,
+J' = 34"). J is therefore taken from chutjian1967, not from this paper.
+Self-quenching: a Stern-Volmer plot (Fig. 6) gives a = 2.87 x 10^7 s^-1 mm Hg^-1 and a self-quenching collision
+diameter for I2 of 11.3 A (text, Stern-Volmer section). The diameter is converted by squaring, 11.3^2 = 127.7 A^2, in the convention of
+the squared collision radius used for the other sets (chutjian1967 and shotton1972 print sigma^2 in A^2 and
+chutjian1967 notes that Brewer's diameter gives sigma^2 about twice too large). Entered as 127.7 A^2.
+Not entered: the equilibrium-vapor and molecular-beam curves (Figs. 3-5, 7; the molecular-beam lifetimes are not
+extrapolated), Table I (earlier lifetime estimates), the absorption-derived lifetimes.
+"""
+
+uncertainty = """
+Lifetime: as printed, (7.2 +- 1.0) x 10^-7 s, taken as 1 sigma (the text says the best points have "a probable
+uncertainty of +-10 % or less", which is compatible). Cross section: the diameter is printed to 0.1 A with no
+uncertainty; the assigned +-0.5 A in the diameter gives +-2 x 11.3 x 0.5 = +-11 A^2 in the squared value.
+"""
+
+notes = """
+Superseded for the same level by chutjian1967 (same laboratory and method): tau0 = 7.13 +- 0.25 x 10^-7 s for the
+Hg green level, and the 11.3 A diameter is about twice too large (sigma^2 about 63 A^2 there). The b_levels set
+chutjian1969 reprints the same single-level total depopulation (1/tau = 14.3e5 s^-1 at zero pressure for v' = 25,
+phase-shift and direct decay), consistent with both values. Natural width 1/(2 pi tau) = 0.22 MHz (computed).
+Cross-check: the 720 +- 100 ns here agrees with chutjian1967 (713 +- 25 ns) within the stated errors.
+"""
+
+[conditions]
+method = "phase-shift fluorometry, Hg 5461 A excitation, phase readings with a 60 kHz modulation; scattered light corrected analytically"
+temperature = "cell in the equilibrium-vapor experiments (not stated per point); molecular-beam experiments separate"
+pressure_range = "1e-4 to 5 mm Hg (equilibrium vapor); Stern-Volmer extrapolation to zero pressure"
+cell = "glass cell with lower bulb of solid iodine, cooled by a CaCl2-H2O slush"
+perturber = "self (I2)"

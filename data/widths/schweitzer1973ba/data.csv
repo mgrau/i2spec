@@ -1,0 +1,5 @@
+line,component,quantity,value,uncertainty,pressure_Pa,temperature_K,perturber,group,note
+129I2 P(54) 8-4,,width,2600,300,,,129I2 self,schweitzer1973ba,"Text PDF p. 5 and abstract: zero-pressure intercept 2.6 MHz (printed as '~2.6 MHz' with no sign on PDF p. 5 (the text layer's minus sign was an artifact). 2600 kHz at zero pressure, pressure_Pa empty. Uncertainty not printed: 300 kHz assigned (about 10 %, see uncertainty)"
+129I2 P(54) 8-4,,broadening,97.51,7.50,,,129I2 self,schweitzer1973ba,Text (PDF p. 5) and abstract: about 13 MHz/Torr ('2.4 MHz for 180 mTorr') -> x1000/133.322 = 97.51 kHz/Pa; uncertainty assigned 1 MHz/Torr = 7.50 kHz/Pa
+129I2 P(54) 8-4,,shift,-6.39,1.00,,,129I2 self,schweitzer1973ba_fit,"Text (PDF p. 7, Fig. 12 fit): -1.8e-9 nu per Torr, 'to the red' -> 0.853 MHz/Torr = -6.39 kHz/Pa (nu = 473.6 THz at 632.991 nm; x 1e-9 nu / 133.322); uncertainty assigned 1 kHz/Pa (scatter 'quite large', text)"
+129I2 P(54) 8-4,,shift,-7.10,1.00,,,129I2 self,schweitzer1973ba_abstract,"Abstract: 'roughly 2 x 10-9 nu/Torr to the red' -> 0.947 MHz/Torr = -7.10 kHz/Pa (same conversion); uncertainty assigned 1 kHz/Pa (rounded value, no uncertainty printed)"

@@ -1,0 +1,5 @@
+isotopologue,state,v,J,sublevel,quantity,value,uncertainty,group,note
+127I2,B,6,32,,lifetime,310,10,shotton1972a,"Shotton and Chapman 1972 text p. 1013: tau0 = 310 +- 10 nsec (1 sd), zero-pressure intercept; J' = 32 (single rotational level)"
+127I2,B,6,32,,quenching_cross_section,64,3,shotton1972a,"text p. 1013: square of the self-quenching collision radius 0.64 +- 0.03 nm^2, converted: 1 nm^2 = 100 A^2 -> 64 +- 3 A^2"
+127I2,B,11,128,,lifetime,410,15,shotton1972a,"text p. 1013: tau0 = 410 +- 15 nsec (1 sd), 617.0 nm 11-3 band; J' = 128 (single rotational level)"
+127I2,B,11,128,,quenching_cross_section,65,5,shotton1972a,"text p. 1013: square of the self-quenching collision radius 0.65 +- 0.05 nm^2 -> 65 +- 5 A^2"

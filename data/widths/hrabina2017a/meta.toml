@@ -1,0 +1,46 @@
+id = "hrabina2017a"
+citation = "J. Hrabina, M. Zucco, C. Philippe, T. Pham Minh, M. Hola, O. Acef, J. Lazar and O. Cip, \"Iodine absorption cells purity testing\", Sensors 17, 102 (2017), Sections 4.2-4.4, Eq. (4), Table 2 (not entered), Table 3"
+source = "https://doi.org/10.3390/s17010102 (publisher PDF, MDPI open access; the library file is Hrabina2017_Sensors17_102.pdf, the INRIM repository version of the same article)"
+doi = "10.3390/s17010102"
+retrieved = "2026-10-28"
+unit = "kHz (width), kHz/Pa (broadening and shift), with Pa the Stern-Volmer K0 contamination pressure"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Read from the full text (PDF pp. 8-10) with 200 dpi images of PDF p. 9 (Fig. 3 and the Eq. text); PDF p. 10 from the text layer, replacing the summary the catalog's values came from.
+Printed values entered, all for R(56) 32-0 a10 and all as functions of the Stern-Volmer contamination coefficient K0
+(not of iodine pressure):
+- Eq. (4) and p. 9: linewidth = 177 kHz + 242 kHz/Pa x K0, fit to 12 test cells (correlation 0.978); the offset
+  177 +/- 12 kHz and slope 242 +/- 12 kHz/Pa. The offset is entered as a width at zero K0 (pressure_Pa empty).
+- PDF p. 10 (Table 3 and Eq. (4)): df/dK0 = (-3.4 +/- 0.6) kHz/Pa, sign as printed. This ratio is taken from the earlier
+  work [20] (INRIM, modulation-transfer), not measured in this paper.
+Conversion: none needed (printed values are kHz and kHz/Pa of K0, the FWHM of the Lorentzian linewidth, see p. 9).
+
+Not entered: the 12 cell-by-cell linewidth and K0 values, which are printed only as points of Figure 3 (PDF p. 9), with
+the LIF Stern-Volmer K0 on the horizontal axis (figure-only, not read off the plot); the cell table (Table 1, cell
+descriptions) and Table 2 (INRIM and ISI LIF Stern-Volmer values for the 10 cells, K0 in Pa), which describe the cells
+and the LIF method rather than widths.
+
+Label: 127I2 R(56) 32-0 a10, component a10 (the paper's own label, with the reference cell at a6 (-170.064 MHz from
+a10), the laser locked to a6 and the scan of a10 by AOM tuning, p. 9).
+Consistency check (arithmetic only): the Eq. (4) slope -71 +/- 13 equals 242 / 3.4 = 71 from the two printed numbers.
+"""
+uncertainty = """
+Printed as k=2 (95 %) in the abstract for the width offset and slope (177 +/- 12 kHz, 242 +/- 12 kHz/Pa) ; the shift -3.4 +/- 0.6 kHz/Pa has no k stated in the paper. The entries use the printed numbers as
+printed; the k factor is not divided out, and this is recorded here so that the uncertainties are not compared with
+1 sigma values from the other sets without conversion.
+"""
+notes = """
+Relation to other sets: the -3.4 kHz/Pa shift is the modulation-transfer value of the earlier INRIM work (ref. [20]
+in the paper), not a new measurement; a held set of that work would overlap this row. The 242 kHz/Pa slope is a
+contamination coefficient, not a pressure-broadening rate, so it is not comparable with the iodine self-broadening of
+fang2006b (63 kHz/Pa) without a further relation. The paper's purity method is the 3f sub-Doppler linewidth, which
+gives a Lorentzian FWHM.
+""" 
+
+[conditions]
+method = "sub-Doppler saturated absorption with 3f detection (frequency-doubled Nd:YAG, 532 nm), laser locked to a6 (-170.064 MHz from a10), a10 scanned by double-pass AOM (85 +/- 2 MHz); compared with LIF Stern-Volmer K0 (Ar-ion 502 nm)"
+wavelength_nm = 532.25
+pressure_range_Pa = "iodine pressure 0.8-4.14 (text, catalog); K0 contamination 0.5-3 Pa in Fig. 3"
+cell_count = 12
+perturber_gas = "impurity (K0; not a single gas)"

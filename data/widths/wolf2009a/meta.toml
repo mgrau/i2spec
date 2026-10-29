@@ -1,0 +1,48 @@
+id = "wolf2009a"
+citation = "E. N. Wolf, Pressure broadening and pressure shift of diatomic iodine at 675 nm, Ph.D. dissertation, University of Oregon (June 2009), Tables 6.2, 6.3, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10 (pp. 201-212); arXiv:0910.5053"
+source = "https://arxiv.org/abs/0910.5053 (the PDF filed under this identifier is the 2009 Oregon dissertation, 298 pages, not a preprint; the tables are on thesis pp. 201-212)"
+doi = "10.48550/arXiv.0910.5053"
+retrieved = "2026-10-28"
+unit = "kHz/Pa (broadening and shift); converted from MHz/Torr"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Coefficients of the B-X 675 nm I2 lines (B-X, v' = 4-6, v'' = 6-7 for the six features) in the buffer gases,
+read from page images of the thesis (text layer checked against them). Lines per feature (Table 6.1, p. 198):
+E = 127I2 P(69) 5-7, I = R(75) 5-7, B = R(76) 5-7, F = P(122) 4-6, A = R(129) 4-6, H = P(133) 6-7 (Wolf's (v', v'')
+order, which is the modern numbering; v' is the upper state). Component is empty: each row is for a whole line.
+
+Entered: room temperature (292 K) FWHM broadening (Bp, Tables 6.2, 6.6, 6.5) and pressure shift (Sp, Tables 6.3,
+6.7, 6.5) per feature and perturber, with the printed value kept in each row's note; temperature-dependence rows for
+Ar at 348 and 388 K and at 292 K from the second apparatus (Table 6.8, Philips diode laser), He at 388 K (Table 6.9)
+and CO2 at 388 K (Table 6.10). Missing features are blank in the paper and are not entered.
+
+Conversion: printed MHz/Torr x 1000/133.322 = kHz/Pa (1 Torr = 133.322 Pa). The broadening is the FWHM coefficient
+(Wolf's Bp is "based on FWHM", so no factor 2). Shift sign as printed (negative: red shift with pressure).
+
+Not entered: the average rows (six-feature averages, Tables 6.2, 6.3, 6.6, 6.7, 6.8) since they are derived values;
+the ratio columns (Bp/Sp, Table 6.4 and 6.5); Table 6.4 (argon with a New Focus laser, other lines near 14 946
+to 14 950 cm-1, which are not the six features); the 292 K He and CO2 rows of Tables 6.9 and 6.10, which repeat
+Tables 6.2 and 6.6 (the paper calls them redundant); the cross sections (Tables 6.11-6.15); the figures.
+Checks: the printed average He Bp 8.34 matches the mean of its six entered values (8.338); CO2 Bp 292 K average 9.86
+matches (9.863); Ar Sp average -1.32 matches (-1.315).
+"""
+
+uncertainty = """
+As printed: the fit standard error in parentheses, in units of the last significant figure, converted with the value
+(e.g. 8.37(13) MHz/Torr -> 62.78(98) kHz/Pa). The paper's own average-row uncertainties are not used.
+"""
+
+notes = """
+The source is a dissertation (University of Oregon), with a line range in its text for 14 817.95-14 819.45 cm-1 (the
+catalog notes a probable misprint of the low-J range). The catalog names eng2004 as the precursor paper. The thesis
+compares its air coefficients with Fletcher and McDaniel (1995) at 543 nm, a different line; that comparison is the
+paper's, not entered here.
+"""
+
+[conditions]
+temperature_K = 292
+pressure_range = "gas cell from 0 to about 100 Torr (thesis text; not checked against the table captions)"
+cell = "I2 cell at ambient temperature with the buffer gas admitted at constant volume (Oregon work)"
+method = "Doppler-limited diode laser wavelength-modulation spectroscopy at 675 nm; Voigt/Gauss-Lorentz fits including the hyperfine superposition"
+perturber = "He, Ne, Ar, Kr, Xe, H2, D2, N2, CO2, N2O, air, H2O (Table 6.5 for air and H2O: two lines only)"

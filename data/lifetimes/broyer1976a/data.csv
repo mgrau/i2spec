@@ -1,0 +1,4 @@
+isotopologue,state,v,J,sublevel,quantity,value,uncertainty,group,note
+127I2,B,7,,,radiative_rate,1100000,100000,broyer1976a,"text p. 4794: Gamma_rad,7 = (1.1 +- 0.1) x 10^6 s^-1, read from the image; the apparent radiative rate of the fit (14 levels, J-dependence removed)"
+127I2,B,7,,,gyroscopic_predissociation_c2,165,15,broyer1976a,"text p. 4794: k_7 = (165 +- 15) s^-1 printed; this is the coefficient of J(J+1) in Gamma = Gamma_rad + k_v J(J+1) (Eq. 1), not a single-level rate; entered as the gyroscopic coefficient"
+127I2,B,7,,,hyperfine_predissociation_a2,280000,50000,broyer1976a,text p. 4794: |a_7|^2 = (280 +- 50) x 10^3 s^-1 printed; entered in s-1

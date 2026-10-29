@@ -1,0 +1,7 @@
+line,component,quantity,value,uncertainty,pressure_Pa,temperature_K,perturber,group,note
+127I2 P(70) 17-1,,broadening,62.26,2.25,,,Ar,saturation,"Table 2 (p. 1883): gamma = 8.3 +/- 0.3 MHz/Torr FWHM (saturated absorption, 0.2-1.2 Torr Ar) -> x1000/133.322 = 62.26 kHz/Pa"
+127I2 P(10) 17-1,,broadening,80.26,3.00,,,Ar,saturation,Table 2: gamma = 10.7 +/- 0.4 MHz/Torr FWHM (saturated) -> x1000/133.322 = 80.26 kHz/Pa
+127I2 P(70) 17-1,,broadening,63.76,3.75,,,Ar,doppler,"Table 2: gamma = 8.5 +/- 0.5 MHz/Torr (Doppler-limited side fluorescence, p. 1883) -> x1000/133.322 = 63.76 kHz/Pa"
+127I2 P(70) 17-1,,width,8700,200,,,Ar,saturation,"Table 2: intercept b = 8.7 +/- 0.2 MHz (saturated, zero Ar pressure) -> 8700 +/- 200 kHz; extrapolated to zero pressure, pressure_Pa empty. Paper: low-pressure intercepts are power/saturation dominated, not natural widths"
+127I2 P(10) 17-1,,width,7700,100,,,Ar,saturation,"Table 2: intercept b = 7.7 +/- 0.1 MHz (saturated, zero Ar pressure) -> 7700 +/- 100 kHz; extrapolated to zero pressure, pressure_Pa empty"
+127I2 P(70) 17-1,,width,16800,8600,,,Ar,doppler,"Table 2: intercept b = 16.8 +/- 8.6 MHz (Doppler-limited fit) -> 16800 +/- 8600 kHz; extrapolated to zero pressure, pressure_Pa empty"

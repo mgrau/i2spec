@@ -1,0 +1,42 @@
+id = "tench1983a"
+citation = "R. E. Tench and S. Ezekiel, \"Precision measurements of hyperfine predissociation in I2 vapor using a two-photon resonant scattering technique\", Chem. Phys. Lett. 96, 253-258 (1983), abstract, pp. 256-257"
+source = "https://doi.org/10.1016/0009-2614(83)80502-8 (publisher PDF; numbers read from the page images)"
+doi = "10.1016/0009-2614(83)80502-8"
+retrieved = "2026-10-28"
+unit = "s-1 (all rates, |a_v|^2 and |c_v|^2 included)"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Abstract and p. 256-257: the fitted constants for B v' = 43 (J' = 12 and 16 fitted together, so J is left empty):
+|a_v|^2 = 3.36 +/- 0.09 kHz, |c_v|^2 = 4.67 +/- 0.51 Hz (both 1 sigma, p. 256), with a_v c_v < 0; and the radiative
+width Gamma_r = 51 +/- 4 kHz (p. 257, from the zero-pressure b2 width 56 +/- 4 kHz minus Gamma_p = 5 kHz).
+Conversion of the radiative width (FWHM in linear frequency, eq. 1 convention) to a decay rate: gamma = 2 pi x Gamma,
+so 2 pi x 51e3 = 3.2044e5 s-1, uncertainty 2 pi x 4e3 = 2.513e4 s-1. The paper's Gamma is a width in kHz; it is
+not an angular quantity.
+Not entered: the calculated natural widths of Table 2 (derived from these constants).
+"""
+
+uncertainty = """
+As printed, 1 sigma: |a_v|^2 +/-0.09 kHz; |c_v|^2 +/-0.51 Hz; Gamma_r +/-4 kHz (converted to s-1 as above). The paper
+states that its Gamma_r agrees with time-domain values (50 +/- 3 kHz, Churassy, private communication) and with 56 +/- 8 kHz
+(Ezekiel and Weiss 1968).
+"""
+
+notes = """
+Units (2026-10-28): the schema enters |a_v|^2 and |c_v|^2 as decay rates in s-1 (gyroscopic_predissociation_c2 is
+the coefficient of J(J+1)). The paper's kHz and Hz are widths Gamma/2pi, so the rows are 2 pi times the printed values: |a|^2 = 21 112 +- 565 s-1, |c|^2 = 29.34 +- 3.20 s-1. Statements above about entering these constants in kHz or Hz describe the
+first transcription and are superseded by this paragraph and the rows.
+
+Values are for the v' = 43 level of B (both J' = 12 and 16 in the fit). The predissociation constants and Gamma_r are the
+paper's fitted results (eq. 2 and 3), not zero-pressure widths of single lines. Comparison values quoted by the paper:
+Borde, Camy and Decomps 1979 |a|^2 = 5.9 kHz and |c|^2 = 5.6 Hz; vigue1981c |a|^2 = 2 +/- 1 kHz. The total decay rates
+(50 kHz, 69.8 +/- 2.4 kHz, 74.7 +/- 5.3 kHz, p. 257 footnote) include hyperfine contributions and are not Gamma_r.
+Sign: the paper gives a_v c_v < 0; the sign convention for a_v and c_v is the paper's.
+"""
+
+[conditions]
+temperature = "not stated"
+pressure_range = "0.4-7 mTorr; constants from the fit of the 2.1 mTorr widths (Table 1), Gamma_r by zero-pressure extrapolation"
+cell = "127I2, 150 cm, 5 passes"
+method = "two-photon backward-scattered resonance"
+perturber = "self (I2)"

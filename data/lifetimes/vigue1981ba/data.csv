@@ -1,0 +1,35 @@
+isotopologue,state,v,J,sublevel,quantity,value,uncertainty,group,note
+127I2,B,7,,,radiative_rate,1050000,90000,vigue1981ba,"Table I p. 953: Gamma_rad = 1.05 +- 0.09 x 10^6 s^-1 (3 sd); fit over 14 levels, J empty"
+127I2,B,7,,,gyroscopic_predissociation_c2,287,21,vigue1981ba,Table I p. 953: C_v^2 = 287 +- 21 s^-1 (3 sd) = Hz; fitted over all J
+127I2,B,7,,,hyperfine_predissociation_a2,324000,26000,vigue1981ba,Table I p. 953: a_v^2 = 324 +- 26 x 10^3 s^-1 (3 sd); entered in s-1
+127I2,B,8,,,radiative_rate,950000,80000,vigue1981ba,Table I p. 953: Gamma_rad = 0.95 +- 0.08 x 10^6 s^-1 (3 sd); 11 levels
+127I2,B,8,,,gyroscopic_predissociation_c2,187,13,vigue1981ba,Table I: C_v^2 = 187 +- 13 s^-1
+127I2,B,8,,,hyperfine_predissociation_a2,232000,18000,vigue1981ba,Table I: a_v^2 = 232 +- 18 x 10^3 s^-1; entered in s-1
+127I2,B,9,,,radiative_rate,970000,60000,vigue1981ba,Table I p. 953: Gamma_rad = 0.97 +- 0.06 x 10^6 s^-1; 13 levels. Disagrees with broyer1975 (1.6 +- 0.08) at v'=9; see meta
+127I2,B,9,,,gyroscopic_predissociation_c2,141,6,vigue1981ba,Table I: C_v^2 = 141 +- 6 s^-1
+127I2,B,9,,,hyperfine_predissociation_a2,143000,11000,vigue1981ba,Table I: a_v^2 = 143 +- 11 x 10^3 s^-1; entered in s-1
+127I2,B,10,,,radiative_rate,780000,90000,vigue1981ba,Table I p. 953: Gamma_rad = 0.78 +- 0.09 x 10^6 s^-1; 4 levels. Disagrees with broyer1975 (1.4 +- 0.07) at v'=10; see meta
+127I2,B,10,,,gyroscopic_predissociation_c2,93,7,vigue1981ba,Table I: C_v^2 = 93 +- 7 s^-1
+127I2,B,10,,,hyperfine_predissociation_a2,112000,17000,vigue1981ba,Table I: a_v^2 = 112 +- 17 x 10^3 s^-1; entered in s-1
+127I2,B,11,,,radiative_rate,750000,100000,vigue1981ba,"Table II p. 954: Gamma_rad = 0.75 +- 0.10 x 10^6 s^-1; J = 8, 76, 90, 102, 112, 126 (lifetime fit)"
+127I2,B,11,,,gyroscopic_predissociation_c2,50,7,vigue1981ba,"Table II: C_v^2 = 50 +- 7 s^-1 (fitted, no asterisk); J = 8, 76, 90, 102, 112, 126"
+127I2,B,12,,,radiative_rate,740000,90000,vigue1981ba,"Table II: Gamma_rad = 0.74 +- 0.09 x 10^6 s^-1; J = 32, 64, 97"
+127I2,B,12,,,gyroscopic_predissociation_c2,20,7,vigue1981ba,"Table II: C_v^2 = 20 +- 7 s^-1 (fitted); J = 32, 64, 97"
+127I2,B,13,,,radiative_rate,780000,60000,vigue1981ba,"Table II: Gamma_rad = 0.78 +- 0.06 x 10^6 s^-1; J = 11, 73"
+127I2,B,13,,,gyroscopic_predissociation_c2,3,1.5,vigue1981ba,"Table II: C_v^2 = 3 +- 1.5 s^-1 (fitted); J = 11, 73"
+127I2,B,14,,,radiative_rate,760000,30000,vigue1981ba,Table II: Gamma_rad = 0.76 +- 0.03 x 10^6 s^-1; J = 53
+127I2,B,14,,,gyroscopic_predissociation_c2,1,5,vigue1981ba,"Table II: C_v^2 = 1 (+5 -1) s^-1, entered as the larger half; asterisk: C^2/Gamma_rad held fixed from Table III, not an independent fit; J = 53"
+127I2,B,15,,,radiative_rate,720000,70000,vigue1981ba,Table II: Gamma_rad = 0.72 +- 0.07 x 10^6 s^-1; J = 63
+127I2,B,15,,,gyroscopic_predissociation_c2,4,15,vigue1981ba,"Table II: C_v^2 = 4 (+15 -4) s^-1, entered as the larger half; asterisk: fixed from Table III; J = 63"
+127I2,B,16,,,radiative_rate,730000,70000,vigue1981ba,Table II: Gamma_rad = 0.73 +- 0.07 x 10^6 s^-1; J = 57
+127I2,B,16,,,gyroscopic_predissociation_c2,15,12,vigue1981ba,Table II: C_v^2 = 15 +- 12 s^-1; asterisk: fixed from Table III; J = 57
+127I2,B,17,,,radiative_rate,740000,50000,vigue1981ba,Table II: Gamma_rad = 0.74 +- 0.05 x 10^6 s^-1; J = 27
+127I2,B,17,,,gyroscopic_predissociation_c2,24,5,vigue1981ba,Table II: C_v^2 = 24 +- 5 s^-1; asterisk: fixed from Table III; J = 27
+127I2,B,18,,,radiative_rate,780000,60000,vigue1981ba,"Table II: Gamma_rad = 0.78 +- 0.06 x 10^6 s^-1; J = 37, 58, 85, 104 (the decay rate is almost independent of J, text)"
+127I2,B,18,,,gyroscopic_predissociation_c2,32,6,vigue1981ba,"Table II: C_v^2 = 32 +- 6 s^-1; asterisk: fixed from Table III; J = 37, 58, 85, 104"
+127I2,B,19,,,radiative_rate,680000,80000,vigue1981ba,Table II: Gamma_rad = 0.68 +- 0.08 x 10^6 s^-1; J = 96
+127I2,B,19,,,gyroscopic_predissociation_c2,44,6,vigue1981ba,Table II: C_v^2 = 44 +- 6 s^-1; asterisk: fixed from Table III; J = 96
+127I2,B,20,,,radiative_rate,730000,100000,vigue1981ba,Table II: Gamma_rad = 0.73 +- 0.10 x 10^6 s^-1; J = 40
+127I2,B,20,,,gyroscopic_predissociation_c2,54,11,vigue1981ba,Table II: C_v^2 = 54 +- 11 s^-1; asterisk: fixed from Table III; J = 40
+127I2,B,21,,,radiative_rate,700000,250000,vigue1981ba,Table II: Gamma_rad = 0.70 +- 0.25 x 10^6 s^-1; J = 116 (J from ref. 35 of the paper)
+127I2,B,21,,,gyroscopic_predissociation_c2,65,21,vigue1981ba,Table II: C_v^2 = 65 +- 21 s^-1; asterisk: fixed from Table III; J = 116

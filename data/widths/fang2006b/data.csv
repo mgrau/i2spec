@@ -1,0 +1,2 @@
+line,component,quantity,value,uncertainty,pressure_Pa,temperature_K,perturber,group,note
+127I2 R(56) 32-0,a10,broadening,63,2,,,self,fang2006b,"Text PDF p. 7 and Fig. 5 caption: slope 63 +/- 2 kHz/Pa for the FWHM linewidth, printed value already in kHz/Pa, no conversion; pressure range 1.74-10.86 Pa"

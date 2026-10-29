@@ -1,0 +1,4 @@
+isotopologue,state,v,J,sublevel,quantity,value,uncertainty,group,note
+127I2,B,43,,,hyperfine_predissociation_a2,21112,565,tench1983a,"Abstract and p. 256: |a_v|^2 = 3.36 +/- 0.09 kHz (1 sigma), a_v c_v < 0; v' = 43, J left empty (J' = 12 and 16 fitted together); converted to a decay rate: 2 pi x 3.36 kHz = 21 112 s-1 (the paper's kHz are widths Gamma/2pi; pique1983a gives 20 164 s-1 for the same level)"
+127I2,B,43,,,gyroscopic_predissociation_c2,29.34,3.20,tench1983a,"Abstract and p. 256: |c_v|^2 = 4.67 +/- 0.51 Hz (1 sigma); v' = 43, J left empty; converted to a decay rate: 2 pi x 4.67 Hz = 29.34 s-1 (pique1983a: 34.2 +- 7.6 s-1)"
+127I2,B,43,,,radiative_rate,320442,25133,tench1983a,"p. 257: Gamma_r = 51 +/- 4 kHz (FWHM, linear frequency); converted gamma = 2 pi x Gamma: 2 pi x 51e3 = 3.2044e5 s-1, uncertainty 2 pi x 4e3 = 2.513e4 s-1"

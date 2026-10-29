@@ -1,0 +1,44 @@
+id = "cheng2002a"
+citation = "W.-Y. Cheng, L. Chen, T. H. Yoon, J. L. Hall, J. Ye, Sub-Doppler molecular-iodine transitions near the dissociation limit (523-498 nm), Opt. Lett. 27, 571-573 (2002), p. 572; errata Opt. Lett. 27, 1076 (2002)"
+source = "https://doi.org/10.1364/OL.27.000571 (publisher PDF; text layer checked against page 572 image)"
+doi = "10.1364/OL.27.000571"
+retrieved = "2026-10-28"
+unit = "kHz"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+One printed linewidth: p. 572, column 2, first paragraph of the Fig. 3 discussion: "The narrowest natural linewidth
+that we have found so far is ~43 kHz HWHM for R(20)50-0:b5 at 508.077 nm." Entered as one width row:
+127I2 R(20) 50-0, width = 2 x 43 = 86 kHz FWHM (HWHM x 2 for linear frequency; the printed value is kept in the note).
+The errata (Opt. Lett. 27, 1076: the abstract's "~4 kHz" is wrong and the correct value is 43 kHz, as in the text)
+confirm 43 kHz; the abstract figure is not used.
+Component: the paper labels it "b5", its own hyperfine label; no held set has R(20) 50-0, so the component is left empty
+(whole line) and the label is kept here, not mapped to an a-label.
+Pressure: the value is a zero-pressure (natural) linewidth from a Voigt deconvolution of pressure-fitted curves
+(0.4-4 Pa), so pressure_Pa is empty.
+Not entered: Fig. 3(b), the zero-pressure linewidths of the other lines vs wavelength (figure only, 523-498 nm,
+with the 543 nm and 532 nm points for comparison); the dashed 37 kHz line in that figure is a technical limit
+(wavefront curvature and transit time ~24 kHz, laser linewidth ~8 kHz, recoil ~5 kHz), not a measured line width.
+The text says other lines differ "by as much as 40 kHz" at nearly the same wavelength; no values are printed for them.
+Fig. 2 spectra and the hyperfine patterns are not entered.
+"""
+
+uncertainty = """
+None printed for the 43 kHz value (the text gives "~43 kHz HWHM"). Assigned 5 kHz (1 sigma, HWHM) for the approximate
+value: the Voigt deconvolution uses a measured profile with a remediable 37 kHz technical contribution and a laser
+width of ~8 kHz (p. 572), so a few kHz of systematic uncertainty is plausible. The row's uncertainty is 2 x 5 = 10 kHz
+FWHM.
+"""
+
+notes = """
+Same paper as precision.yaml cheng2002a (positions and hyperfine patterns are there and are not in this set). The
+erratum fixes the abstract only. The "~" in the printed value means the number is approximate, which is why the
+uncertainty was assigned rather than taken from the paper.
+"""
+
+[conditions]
+method = "sub-Doppler modulation-transfer or frequency-modulation spectroscopy with a frequency-doubled Ti:sapphire laser at 523-498 nm; zero-pressure linewidths from pressure fits"
+cell_length_cm = 8
+pressure_Pa = "0.4 to 4 (zero-pressure extrapolation; spectra at 4.12 Pa)"
+temperature_K = ""
+perturber = "self"
