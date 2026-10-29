@@ -1,0 +1,41 @@
+id = "gerstenkorn1980b"
+catalog = "broadband:gerstenkorn1980b"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "assigned atlas line positions (a sample of pages) and level constants"
+source = "phone photographs of the printed volume: the front matter from p. XXVII and 20 assignment pages chosen by hand (39 photos)"
+retrieved = "2026-10-29"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+calibration = """MESUR. is the atlas wavenumber recalibrated by the authors, sigma_mes = sigma_ATLAS (1 + delta) with
+delta = -3.8e-7, against 38 hyperfine-resolved laser lines (centre of gravity against line maximum); a possible
+systematic of +0.002 cm-1 remains (front matter, sect. 4). ATLAS is the 1978 atlas's own scale (catalog
+gerstenkorn1978a). CALCUL. is the authors' calculation from the constants of Table I."""
+extraction = """Each assignment page was cut into its two blocks of seven columns and each block into halves; two
+independent model readings of every crop, aligned row by row, agree on 2818 of 2841 rows; the other 23 were settled
+on the image (two of them overturn both readings: R 115(48-0), and R 58(60-1) / R 110(69-0)). Every block holds 71
+printed rows. Table I was read twice independently; the readings differ in 3 of 566 numbers, settled on the photo.
+The front matter (text, Tables II-XIV, figures, references) is in the transcription record, not in this set.
+research scripts."""
+tables = """The assignment table (pp. 1 onward of the volume): per printed row N (atlas line number, part numbering of
+the 1978 atlas), ATLAS, MESUR., I, the assignment (branch, J'', v', v''), CALCUL. and DIF. (1e-3 cm-1). Rows without
+N or ATLAS are further components or assignments of the line above (on some pages N and ATLAS are repeated on
+every row of a line); rows with only an assignment and CALCUL. are lines calculated but not observed; rows with
+MESUR. and no assignment are unassigned. Table I (pp. XXX-XXXI): E_v, B_v, D_v, H_v of X v'' = 0-19, and E_v, B_v,
+D_v, -H_v, -L_v, -M_v of B v' = 0-80, as printed."""
+files = ["gerstenkorn1980b.csv", "gerstenkorn1980b_table1.csv"]
+n_rows = 2841
+n_assigned = 2713
+
+columns = """
+gerstenkorn1980b.csv, one row per printed row, in printed order: photo (the photo's place in the set; the pages are a
+sample, about 15 036-19 850 cm-1, not contiguous), block (L or R block of the page), row (its place in the block),
+N, atlas_cm1, mesur_cm1, intensity, branch, J_lower, v_upper, v_lower, calcul_cm1, dif_mk (as printed, blank where
+nothing is printed), basis (two readings: the two readings agree; settled: read on the image), note.
+
+DIF. is MESUR. - CALCUL. on 1888 rows; on 112 (further components of a line) it is printed with the opposite
+sign. Printed errors kept as printed and noted: J'' 65 of N 3614 (the printed CALCUL. is that of P(55) 24-0), v''
+'.0' of N 28 on photo 18.
+
+gerstenkorn1980b_table1.csv: state, v, E_cm1, B_cm1, D_cm1, H_cm1 (X, signed as printed), minus_H_cm1,
+minus_L_cm1, minus_M_cm1 (B, as printed under the headings -H, -L, -M); the printed D exponents written as E.
+"""
