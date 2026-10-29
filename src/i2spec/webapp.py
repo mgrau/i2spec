@@ -59,7 +59,7 @@ ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c"
 FITTED_ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"levels measured": "good", "levels interpolated": "warn", "levels extrapolated": "bad",
-              "outside the fitted domain": "warn"}
+              "outside the fitted domain": "warn", "quasi-bound": "warn"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
                "orsay": "Gerstenkorn, Vergès & Chevillard", "borde": "Bordé", "demelo": "de Melo"}
 #: Names that the prefix alone gets wrong; the four parts of the 1982 atlas are told apart by their numbers
@@ -542,7 +542,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
 
 def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, catalog, reasons, C2, nuclear_spin_weight,
                          Line):
-    from .lookup import uncertainty
+    from .lookup import QUASI_BOUND, QUASI_NOTE, b_limit, uncertainty
 
     lines = master.at(300.0, S_min=0.0)              # every line, in the master's order
     keys = np.array([line_key("R" if b > 0 else "P", int(j), int(u), int(v))
@@ -589,11 +589,14 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     sig, status, cls = pf.preferred(iso).uncertainties(np.where(br > 0, "R", "P"), jl, vu, vl)
     held = status >= 0
     u_line[held] = sig[held]
-    for st, c in set(zip(status[held].tolist(), cls[held].tolist())):
-        w = reasons.setdefault((pf.basis(st, c, iso), pf.flags(st, c)), len(reasons))
-        w_line[held & (status == st) & (cls == c)] = w
+    qb = el+nu > b_limit(iso)                       # quasi-bound upper level (lookup.quasi_bound)
+    for st, c, q in set(zip(status[held].tolist(), cls[held].tolist(), qb[held].tolist())):
+        w = reasons.setdefault((pf.basis(st, c, iso)+(QUASI_NOTE if q else ""),
+                                pf.flags(st, c)+((QUASI_BOUND,) if q else ())), len(reasons))
+        w_line[held & (status == st) & (cls == c) & (qb == q)] = w
     for k in np.flatnonzero(~held):
-        line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]), 0.0, 0.0, 300.0)
+        line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]), 0.0, float(el[k]),
+                    300.0)
         u_line[k], why = uncertainty(line)
         w_line[k] = reasons.setdefault((why, line.flags), len(reasons))
     # the published 2008 model's position of every line, as its difference from this model's (MHz)

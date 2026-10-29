@@ -546,10 +546,17 @@ class ExpandedUncertainty:
             base["inherited_potential_coefficients"][s][power] *= np.exp(delta)
         elif n in base["values"].get(s, {}):
             base["values"][s][n] += delta
+            if base.get("asymptote") == "tied":     # De(B) follows De(X) and Te (the B limit = D0(X) + splitting)
+                from .named import tie
+                tie(base)
         else:
             for t in (("X", "B") if n == "dDe" else (s,)):
                 values[t][n] += delta
         return _ExpandedPotential(state, base, self.structure, values)
+
+    def _tied(self, name, state):
+        """Whether the tie carries a parameter of the other state into this one (De(X) into De(B))."""
+        return self.base.get("asymptote") == "tied" and state == "B" and name == "X:logDe"
 
     def _stepsize(self, name):
         s, n = name.split(":", 1)
@@ -568,7 +575,7 @@ class ExpandedUncertainty:
             dV, dq = np.zeros((len(R), len(self.names))), np.zeros((len(R), len(self.names)))
             for j, name in enumerate(self.names):
                 s, n = name.split(":", 1)
-                if s == "calibration" or (s != state and n != "dDe"):
+                if s == "calibration" or (s != state and n != "dDe" and not self._tied(name, state)):
                     continue
                 h = self._stepsize(name)
                 plus, minus = self._perturbed(state, name, h), self._perturbed(state, name, -h)

@@ -130,7 +130,17 @@ class Jacobian:
         self.tie = {"B:dDe": "X:dDe"}
         keys = sorted(self.rows.level_set() | set(extra_keys))
         engine = Levels(keys, joins={s: c.joins for s, c in curves.items()}, box_padding=.6, refine_x=True)
-        self.E, self.D = engine.evaluate(curves, self.theta, self.names, jac=True)
+        if core_spec().get("asymptote") == "tied":
+            # De(B) = De(X) + the atomic splitting - Te is no free parameter: its column folds into theirs
+            de_b = ("B", "logDe")
+            theta = np.r_[self.theta, curves["B"].values.get("logDe", curves["B"].frozen.get("logDe"))]
+            self.E, D = engine.evaluate(curves, theta, self.names+[de_b], jac=True)
+            dx, db = np.exp(theta[self.names.index(("X", "logDe"))]), np.exp(theta[-1])
+            D[:, self.names.index(("X", "logDe"))] += D[:, -1]*dx/db
+            D[:, self.names.index(("B", "Te"))] -= D[:, -1]/db
+            self.D = D[:, :-1]
+        else:
+            self.E, self.D = engine.evaluate(curves, self.theta, self.names, jac=True)
         self.keys, self.index = engine.keys, engine.index
         rr, cc, vv = [], [], []
         for i, lv in enumerate(self.rows.levels):

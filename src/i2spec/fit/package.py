@@ -299,12 +299,13 @@ HF_FITTED = ["B theta_u (1u mixing)", "B gamma (eqQ continuation curvature)",
              "1g(1Pig) C5 scale (selected by training cost)", "X eqQ lambda", "X eqQ p", "X C slope"]
 
 
-def inventory(values, curve_constants):
-    """(inventory, detail) of the continued model: the core's 61/18/4, the tails, the hyperfine beyond the core."""
+def inventory(values, curve_constants, base_fitted=61):
+    """(inventory, detail) of the continued model: the core's fitted (61 in the release)/18/4, the tails, the
+    hyperfine beyond the core."""
     new_terms = sorted({f"{s}:{n}" for s in "XB" for n in values[s]}-{"B:dDe"})
     n_perturber = sum(len([k for k in c if k in ("C5", "C6", "De", "re", "we")]) for c in curve_constants.values())
     n_inherited = 18+3+n_perturber+1+6
-    inv = dict(fitted_molecular=61+len(new_terms)+len(HF_FITTED), inherited_molecular=n_inherited,
+    inv = dict(fitted_molecular=base_fitted+len(new_terms)+len(HF_FITTED), inherited_molecular=n_inherited,
                fitted_calibration=5, line_specific=0, level_specific=0)
     return inv, new_terms, n_perturber
 
@@ -312,9 +313,10 @@ def inventory(values, curve_constants):
 def model_record(structure, values, orsay4_offset, fit, curve_constants, counts, base_entry, derived=None):
     """model.json of the continued model (the release's schema 3). derived: the counts of the hyperfine
     coefficients set by inherited or core numbers (B background, X eqQ and C polynomials)."""
-    inv, new_terms, n_perturber = inventory(values, curve_constants)
+    base_fitted = base_entry.get("inventory", {}).get("fitted_molecular", 61)
+    inv, new_terms, n_perturber = inventory(values, curve_constants, base_fitted)
     detail = dict(
-        base=dict(model=base_entry["id"], fitted_molecular=61, inherited_molecular=18, fitted_calibration=4),
+        base=dict(model=base_entry["id"], fitted_molecular=base_fitted, inherited_molecular=18, fitted_calibration=4),
         potential_tails=dict(fitted=len(new_terms), names=new_terms,
                              note="B:dDe is X:dDe (one shared dissociation-energy change keeps the atomic splitting)"),
         hyperfine_fitted=dict(count=len(HF_FITTED), names=HF_FITTED,

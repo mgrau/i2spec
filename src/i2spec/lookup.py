@@ -11,6 +11,7 @@ from __future__ import annotations
 import math
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
 import numpy as np
 
@@ -151,9 +152,9 @@ class Line:
         p = _held(self)
         if p is None:
             from .preferred import OUTSIDE
-            return (OUTSIDE,)
+            return (OUTSIDE, QUASI_BOUND) if quasi_bound(self) else (OUTSIDE,)
         from .preferred import flags
-        return flags(p[1], p[2])
+        return flags(p[1], p[2])+((QUASI_BOUND,) if quasi_bound(self) else ())
 
 
 def _held(line):
@@ -166,6 +167,23 @@ def _held(line):
 
 #: The 1-sigma quoted for a line the model's tables do not hold (MHz): a rough bound, not an estimate
 OUTSIDE_SIGMA_MHZ = 1000.0
+#: The flag of a line whose B level lies above the dissociation limit, held only by the centrifugal barrier
+QUASI_BOUND = "quasi-bound"
+QUASI_NOTE = ("; the upper level lies above the rotationless B dissociation limit, held by the centrifugal barrier "
+              "(quasi-bound), and the model treats it as bound, with no tunneling lifetime or broadening")
+
+
+@lru_cache(maxsize=None)
+def b_limit(isotopologue):
+    """The B dissociation limit above X(0, 0) (cm-1) of the released model."""
+    from .research import ResearchModel
+    levels = ResearchModel("i2spec", isotopologue)._levels_x
+    return float(levels.asymptote["B"]-levels.energy("X", 0, 0))
+
+
+def quasi_bound(line):
+    """Whether the line's upper level lies above the B dissociation limit (it is then behind the barrier)."""
+    return line.E_lower+line.nu > b_limit(line.isotopologue)
 
 
 def uncertainty(line: Line):
@@ -173,7 +191,11 @@ def uncertainty(line: Line):
     p = _held(line)
     if p is not None:
         from .preferred import basis
-        return round(p[0], 3), basis(p[1], p[2], line.isotopologue)
+        return round(p[0], 3), basis(p[1], p[2], line.isotopologue)+(QUASI_NOTE if quasi_bound(line) else "")
+    if quasi_bound(line):
+        return OUTSIDE_SIGMA_MHZ, ("Outside the fitted domain: the upper level lies above the rotationless B dissociation "
+                                   "limit, held by the centrifugal barrier (quasi-bound); the model treats it as bound, "
+                                   "with no tunneling lifetime or broadening, and the uncertainty is a rough bound")
     return OUTSIDE_SIGMA_MHZ, ("Outside the fitted domain: the model's level tables do not hold a level of this line "
                                "(beyond its centrifugal-barrier rule, B v′ > 80, or J″ > 445); the position comes from "
                                "the same potentials, and the uncertainty is a rough bound")

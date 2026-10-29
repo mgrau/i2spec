@@ -27,6 +27,7 @@ from .bspline import BSplineSolver
 from .constants import MHZ_PER_CM, reduced_mass
 from .hyperfine import HyperfineParameters, level_structure, line_components
 from .lookup import parse_label
+from . import named
 from .observations import component_rank
 
 _RELEASE = "20261018"
@@ -236,7 +237,7 @@ class ResearchModel:
             raise ValueError("research models support only 127I2")
         self._entry = _entry(model)
         self.info = _info(self._entry)
-        self._spec = _read(self._entry, "model.json")
+        self._spec = named.to_native(_read(self._entry, "model.json"))     # a file in named coordinates loads natively
         self._validate()
         self.isotopologue = isotopologue
         self.parameters = self.info.id
@@ -432,13 +433,16 @@ class _ExpandedModel(ResearchModel):
         base = self._spec["base"]
         if _entry(base["model"])["files_sha256"]["model.json"] != base["model_sha256"]:
             raise ValueError("the continued model's base coefficients differ from the frozen core release")
+        core = ResearchModel(base["model"])
+        if self._spec.get("coordinates") == "named":     # D0(X) of the whole model, from the core's own
+            self._spec = named.continued_to_native(self._spec, core._spec["named"])
         self._validate()
         self.isotopologue = isotopologue
         self.parameters = self.info.id
         self._solvers, self._radial, self._structures, self._lines = {}, {}, {}, {}
         self._lock = RLock()
         reference = _reference_model(self._entry["id"]) if isotopologue != "127I2" else None
-        research_expanded.install(self, self._spec, tables, ResearchModel(base["model"]), self._extension,
+        research_expanded.install(self, self._spec, tables, core, self._extension,
                                   isotopologue, reference)
         self._unc = None
 
