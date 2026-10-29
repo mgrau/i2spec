@@ -2,7 +2,7 @@
  "schema_version": 2,
  "created_utc": "2026-10-21T13:28:23.978348+00:00",
  "status": "frozen",
- "decision": "Matt, 2026-10-21: \"let's keep all new data as a blind test for now for this model\" - the pending sets no earlier registry holds stay out of every fit and are used only to score these frozen predictions and uncertainties",
+ "decision": "Decision, 2026-10-21: all new data stay a blind test for this model; the pending sets no earlier registry holds stay out of every fit and are used only to score these frozen predictions and uncertainties",
  "primary_model": "balanced_expanded",
  "models": {
   "balanced_expanded": {

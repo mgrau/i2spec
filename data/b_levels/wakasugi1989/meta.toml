@@ -1,0 +1,75 @@
+id = "wakasugi1989"
+catalog = "broadband:wakasugi1989"
+tables = "Fig. 5 (p. 1663, relative line strengths in P(9)); Fig. 6 (p. 1664, forbidden-to-allowed ratio vs J); no printed values"
+source = "publisher PDF (scanned, 400 dpi bilevel page images, extracted at native resolution with pdfimages); values digitized from the figures"
+retrieved = "2026-10-28"
+unit = "dimensionless: Fig. 5 relative line strength with F'' = 14 - F' = 13 of P(9) set to 100; Fig. 6 ratio of forbidden to allowed line strength"
+state = "B-X, 127I2, 14-1 band near the band head (584.7-585.1 nm), P branch, lower level X v'' = 1"
+isotopologue = "127I2"
+files = ["line_strengths.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Every value is DIGITIZED FROM A FIGURE; the paper prints no numbers for these quantities.
+
+line_strengths.csv, 39 rows:
+- Fig. 5 (p. 1663), P(9) 14-1 (J'' = 9): 10 allowed components (Delta F = Delta J = -1, so F' = F'' - 1; filled circles)
+  and 9 forbidden components (Delta F = 0, so F' = F''; open circles), against F'' of the X state. The paper normalizes
+  to F'' = 14 - F' = 13, which is entered as 100 (the digitized value of that point, 100.45, served as a check). Two
+  allowed points are plotted at F'' = 8, three forbidden at F'' = 9 and two forbidden at F'' = 10; they are other
+  components with the same F'' (different epsilon, the total nuclear spin), which the figure does not label. They are
+  told apart in the note column only by their order on the plot (upper, middle, lower). The paper's dotted lines (the
+  theory of its Eq. (2)) are not entered.
+- Fig. 6 (p. 1664), panels (a)-(d): the ratio R(eps J F, eps* J-1 F*) of Eq. (4), forbidden to allowed line strength
+  from the same lower level, for odd J'' of the P branch, with F'' - J'' = -5, -4, +1 and +2. 4 + 4 + 8 + 4 = 20 points.
+  F_lower = J'' + (F'' - J''). The forbidden component's F* (F'' or F'' + 1 for the P branch) and the epsilon labels are
+  not given per point, so F_upper is left empty. The dotted theory curves are not entered.
+
+Method. The figures were read from the native 400 dpi page images (1 px = 0.0635 mm on the page). Axis calibration:
+the vertical axes are logarithmic; each axis was fitted, log10(value) linear in pixel row, to all its labeled and minor
+ticks (Fig. 5: 19 ticks from 1 to 100, 342.5 px per decade, rms residual 0.002 decade; Fig. 6: 19 ticks per panel from
+0.01 to 1, 243-247 px per decade, rms 0.002-0.003 decade). The horizontal axes were fitted to the integer ticks (Fig. 5:
+F'' = 4-14, 83.1 px per unit, rms 0.006; Fig. 6: J = 5-25 per panel, 39.3 px per unit, rms 0.01-0.02). The scans are
+slightly rotated (axis lines tilt 0.2-0.6 %, measured from edge fits along each axis line), and positions were
+corrected for that tilt before applying the calibration. Marker centers were measured on the pixels (filled circles by
+centroid after removing error bars and dotted lines with a morphological opening; open circles after filling their
+centers), and error-bar ends by following the bar from the marker edge. All digitized x positions fall within 0.05 of an
+integer F'' or J except one (below).
+
+Verification: a second, independent pass re-derived the tick positions (with a different peak finder), fitted the
+horizontal axes with the axis origin included, modeled the scan tilt as a pure rotation instead of separate shears,
+and re-located the markers by a least-squares circle fit to their outer edges. The two passes agree to 1.0 % or better
+for every point except the partly hidden upper allowed point at F'' = 8 in Fig. 5 (1.4 %). The value entered is the
+mean of the two passes, and half their difference is folded into read_unc (below).
+"""
+
+uncertainty = """
+Two columns. `unc` is the half-length of the error bar drawn by the authors, read from the figure (mean of the two
+passes, half of the top-to-bottom span in linear units; the bars are symmetric in linear units, as checked on the
+longest ones). The paper does not state what the error bars represent. For Fig. 5 allowed points at F'' >= 7 the bars
+do not extend beyond the markers, so `unc` is empty and the note gives the bound (below about 7 % of the value). For two
+Fig. 6 points (panel (b) J = 21, panel (c) J = 25) the lower end of the bar reaches the panel's lower axis at 0.01, and
+`unc` is the upper half-length.
+
+`read_unc` is the digitization uncertainty: the quadrature sum of +/-1 px in the marker center (+/-2.5 px for the partly
+hidden F'' = 8 upper point), the rms residual of the axis calibration, and half the difference between the two passes,
+expressed in the units of the value. It is about 0.8 % of the value for Fig. 5 and 1.1-1.2 % for Fig. 6 (1.9 % for the
+hidden F'' = 8 point), much smaller than the plotted error bars (9-50 %).
+"""
+
+notes = """
+Conditions: supersonic molecular beam (rotational temperature about 85 K), laser power density 0.8 mW/cm2, below the
+about 4 mW/cm2 where the paper finds the forbidden components saturate (Fig. 4). Fig. 4 (power dependence of three
+forbidden components in R(5), normalized to F'' = 10 - F' = 11) is not entered; its low-power points are the paper's
+evidence that 0.8 mW/cm2 is unsaturated.
+
+Doubts. (1) The highest forbidden point near F'' = 11 in Fig. 5 is plotted at F'' = 11.3, as are the ends of the
+dotted theory lines through it; F'' must be an integer, so it is entered as F'' = 11. The ratio of this point to the
+F'' = 11 allowed point (0.134) is close to the Fig. 6 (d) value at J = 9, F'' - J'' = +2, i.e. F'' = 11 (0.130), which
+supports F'' = 11. (2) The other Fig. 5 / Fig. 6 (J = 9) pairs do not reproduce each other simply as forbidden over
+allowed at the same F'', because Eq. (4) pairs particular epsilon components that the figures do not label. (3) Fig. 5
+labels the forbidden points Delta F = 0 only; the paper's text also mentions Delta F = -Delta J forbidden components,
+but none are marked in Fig. 5. (4) The lines are labeled P(J) as the figure captions state; in this region P(9)
+overlaps R(14), P(3) overlaps R(8), P(13) overlaps R(18) and P(23) overlaps R(28) (Fig. 3).
+Companion: x_hyperfine/wakasugi1988 and hyperfine_parameters/wakasugi1988a (same group and apparatus, 13-1 band).
+"""

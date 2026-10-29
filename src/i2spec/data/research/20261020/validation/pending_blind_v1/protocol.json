@@ -2,7 +2,7 @@
  "schema_version": 1,
  "created_utc": "2026-10-20T20:24:59.059624+00:00",
  "status": "frozen",
- "decision": "Matt, 2026-10-20: \"let's keep everything blind for now\" - the pending sets stay out of every fit and are used only to score these frozen predictions",
+ "decision": "Decision, 2026-10-20: all new data stay blind for now; the pending sets stay out of every fit and are used only to score these frozen predictions",
  "primary_model": "balanced_expanded",
  "models": {
   "balanced_expanded": {

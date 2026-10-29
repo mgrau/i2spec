@@ -1,0 +1,70 @@
+id = "appadoo1996"
+catalog = "broadband:appadoo1996"
+source = "publisher PDF: an AIP scan (2003 download) with an OCR text layer"
+retrieved = "2026-10-28"
+unit = "cm-1 (Table VIII also A for R_e; Tables III, V, VI as dimensionless or cm-1 per the quantity, see [columns]); values stored as printed, with digit-group spaces removed and 'x 10^n' written as e-notation"
+state = "A 3Pi1u (A-X system; the X state constants are held fixed at Tromp and Le Roy 1985 / Gerstenkorn and Luc 1985 and are not printed here)"
+isotopologue = "127I2"
+files = ["table1_conditions.csv", "table2_band_ranges.csv", "table3_dunham.csv", "table4_sigma.csv", "table5_nde_parameters.csv", "table6_cdc_nde.csv", "table7_levels.csv", "table8_constants.csv"]
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Every numbered table of the paper (I-VIII, pp. 904-911). The line list is NOT printed: the paper reports "some 9552
+lines of some 79 bands" (v' = 0-35, v'' = 3-17) and prints only the fitted constants of the A state. The 9552-member
+data set, with the constants and the NDE subroutines, was offered by e-mail request to R. J. Le Roy / P. F. Bernath
+or by anonymous ftp (pub/leroy/I2A on theochem.uwaterloo.ca, p. 911 and note 43); it was not deposited with AIP (no
+PAPS / EPAPS statement). So the lines themselves are not in the record and cannot be transcribed from this source.
+
+table1_conditions.csv: Table I, experimental conditions of Spectra A and B (range, cell and side-arm temperatures,
+iodine pressure, signal-to-noise ratio; from the Iodine Atlas, ref. 15): 5 rows.
+table2_band_ranges.csv: Table II, the A v' ranges of the assigned A-X bands for each X v'' = 3-17, Q branch and P & R
+branches (ranges kept as the printed text): 15 rows.
+table3_dunham.csv: Table III, the empirical Dunham coefficients Y_l,m of the A state (and Te, Q_0,1, Q_1,1) with the
+95 % limits in parentheses: 47 rows (Te, 44 Y_l,m, 2 Q); sigma-bar = 1.33.
+table4_sigma.csv: Table IV, dimensionless standard errors of the global fits by m_max (4-7): 4 rows.
+table5_nde_parameters.csv: Table V, the recommended NDE parameters (vibrational and rotational, k7, Q_0,1, Q_1,1);
+29 rows; sigma-bar = 1.38.
+table6_cdc_nde.csv: Table VI, the exponential-NDE parameters of the centrifugal distortion constants m = 2-6
+(X_m(5,C5) and p_i^m, i = 1-12): 13 rows x 5.
+table7_levels.csv: Table VII, G(v), B_v, D_v, H_v, I_v, M_v, N_v for A v = 0-50 (levels v = 36-50 are extrapolated
+past the last observed level, v' = 35): 51 rows. D_v and H_v are kept in their column units (x 1e-9, x 1e-14); I, M,
+N are given as e-notation values.
+table8_constants.csv: Table VIII, comparison of molecular constants (Ashby; Viswanathan et al.; this work's Dunham
+and NDE) for Te, T0, De, D0, we, wexe, Be, alpha_e, Re: 36 rows.
+
+Checks. Two independent reads: (1) typed from 250-300 dpi renders of every table (Table III is rotated 90 degrees on
+p. 906, read from a rotated render); (2) a machine parse of the PDF text layer (Tables V, VI, VII, compared value by
+value after decoding the layer's glyph mapping, "2" for the minus sign, "3" for the multiplication sign; Table III
+compared by the printed mantissa digits and uncertainties; Tables I, II, IV, VIII compared by eye against the layer).
+Diff: 4 Table V values had lost a trailing digit in the first read (p4, p6, p7 of the vibrational set, p1_5 of the
+rotational set); fixed. All Table VII entries (rows 1-50 by script, row 0 by eye because the layer garbles its exponents) and all 60 Table VI
+values then agree. Table III exponents were checked by eye only (the layer scatters them in a rotated page).
+Not entered: the figures, and Table VII's O_v column (not tabulated; O_v = 0.0404 N_v / (vD - v)^2 by Eq. 10).
+"""
+
+uncertainty = "As printed: the Table III parenthesized values are 95 % confidence limits of the linear least-squares fit in cm-1 (sigma-bar = 1.33, about 0.0066 cm-1); Table V gives only vD = 55.570(+-0.01) and states that the NDE parameters have no physical significance and no uncertainties (sigma-bar = 1.38); Table VIII gives the Ashby, Viswanathan and Dunham uncertainties where printed. Line positions of the underlying atlas: typical accuracy +-0.005 cm-1 (p. 904)."
+
+notes = """
+What the paper is. A Dunham and a near-dissociation-expansion (NDE) analysis of 9552 A 3Pi1u - X lines of 127I2
+(79 bands, v' = 0-35, v'' = 3-17, rotational levels up to J = 200 with the cell at 800 K), taken from the Orsay
+Iodine Atlas (7200-11 200 cm-1, about 16 450 lines in all, FTS, 1.5 m cell). The X state is held fixed at the
+published constants (Gerstenkorn and Luc 1985, ref. 4), so no X constants are derived. A-state: D = D0(X) =
+12 440.243 cm-1 (fixed from the B-state extrapolation), vD = 55.570, Te = 10 907.416(9) (Dunham) / 10 907.436 (NDE),
+we = 92.946, Be = 0.027 398 cm-1; Table VII lists the levels v = 0-50, of which v = 36-50 lie beyond the data. The A
+lambda-doubling is the two-term expansion Q_0,1 + Q_1,1 (v + 1/2). One local perturbation (v_A = 32 / v = 43 of A',
+J = 77, 0.04 cm-1) is noted.
+
+Not in the record. The 9552 assigned lines are not printed, nor are band origins or per-band term values; only the
+constants above are. The line list was not deposited with AIP; the authors offered it by e-mail and anonymous ftp.
+Table VII is the model's own G(v), B_v from the NDE fit, not measurements.
+"""
+
+[columns]
+table1_conditions = "spectra (A or B), range_cm1 (printed range), T1_K cell, T2_K side arm, P_Torr, signal_to_noise."
+table2_band_ranges = "v_lower: X v''; v_upper_Q_branch and v_upper_P_and_R_branches: the A v' of the assigned bands, as printed text (blank where none)."
+table3_dunham = "quantity: Te, Y (Y_l,m of Eqs. 2-4) or Q (Q_l,1 of the lambda-doubling); l, m: indices; value_printed, unc_printed: the entry and its 95 % limit in cm-1 as e-notation (Y_0,1 = 2.739 831 8 x 10^-2 is 2.7398318e-2)."
+table4_sigma = "m_max; unconstrained_dunham (column 'Dunham fit', note a); constrained_dunham_Kcalc (Dunham with K_max = K_max^calc); nde_Kmax_eq_Kcalc and nde_Kmax_from_eq10 (NDE with the K_max forms)."
+table5_nde_parameters = "group: vibrational or rotational; name (p1_i = p_i^1 of Eq. 7, q2, q3, X0, X1, k7, Q0_1, Q1_1, vD, D = D0(X) in cm-1); value_printed, unc_printed (only vD has one)."
+table6_cdc_nde = "name: X_m(5,C5) (cm-1) or p_i of Eq. 7 (p1 = p_1^m, ...); m2-m6: the value for each distortion constant K_m, e-notation."
+table7_levels = "v; G_cm1; B_cm1 (digit groups joined); D_x1e-9_cm1 (D_v/10^-9); H_x1e-14_cm1 (H_v/10^-14); I_cm1, M_cm1, N_cm1 (the printed x 10^n entries)."
+table8_constants = "quantity (Te, T0, De, D0, we, wexe, Be, ae in cm-1; Re in A); source_column (Ashby, Viswanathan, Dunham, NDE); value_printed, unc_printed."

@@ -1,0 +1,40 @@
+figure,panel,line,J_lower,F_lower,F_upper,component,quantity,value,unc,read_unc,note
+Fig. 5,,127I2 P(9) 14-1,9,4,3,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),21.8,3.1,0.18,
+Fig. 5,,127I2 P(9) 14-1,9,5,4,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),28,3.5,0.23,
+Fig. 5,,127I2 P(9) 14-1,9,6,5,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),41.1,3.8,0.34,
+Fig. 5,,127I2 P(9) 14-1,9,7,6,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),41.8,,0.35,error bar not visible outside the marker (half-width below about 7% of the value)
+Fig. 5,,127I2 P(9) 14-1,9,8,7,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),44.7,,0.37,lower of two; error bar not visible outside the marker (half-width below about 7% of the value)
+Fig. 5,,127I2 P(9) 14-1,9,8,7,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),49.6,,0.93,upper of two (partly hidden behind the lower marker); error bar not visible outside the marker (half-width below about 7% of the value)
+Fig. 5,,127I2 P(9) 14-1,9,9,8,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),57.8,,0.49,error bar not visible outside the marker (half-width below about 7% of the value)
+Fig. 5,,127I2 P(9) 14-1,9,10,9,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),64.4,,0.54,error bar not visible outside the marker (half-width below about 7% of the value)
+Fig. 5,,127I2 P(9) 14-1,9,11,10,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),70.9,,0.6,error bar not visible outside the marker (half-width below about 7% of the value)
+Fig. 5,,127I2 P(9) 14-1,9,14,13,allowed (Delta F = Delta J),relative line strength (F'' = 14 - F' = 13 = 100),100,,,"normalization point, 100 by definition (digitized 100.45, a check of the calibration); no error bar"
+Fig. 5,,127I2 P(9) 14-1,9,4,4,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),3.71,0.56,0.031,
+Fig. 5,,127I2 P(9) 14-1,9,5,5,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),7.52,1.2,0.062,
+Fig. 5,,127I2 P(9) 14-1,9,6,6,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),2.04,0.47,0.017,
+Fig. 5,,127I2 P(9) 14-1,9,9,9,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),8.05,1.1,0.067,highest of three
+Fig. 5,,127I2 P(9) 14-1,9,9,9,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),3.91,0.52,0.033,middle of three
+Fig. 5,,127I2 P(9) 14-1,9,9,9,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),1.95,0.26,0.016,lowest of three
+Fig. 5,,127I2 P(9) 14-1,9,10,10,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),8.75,1.2,0.074,upper of two
+Fig. 5,,127I2 P(9) 14-1,9,10,10,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),2.24,0.44,0.019,lower of two
+Fig. 5,,127I2 P(9) 14-1,9,11,11,forbidden (Delta F = 0),relative line strength (F'' = 14 - F' = 13 = 100),9.49,1.4,0.081,plotted at F'' = 11.3 (see notes)
+Fig. 6,(a),127I2 P(7) 14-1,7,2,,"ratio forbidden/allowed, F'' - J'' = -5","R(eps J F, eps* J-1 F*)",0.456,0.08,0.0053,
+Fig. 6,(a),127I2 P(9) 14-1,9,4,,"ratio forbidden/allowed, F'' - J'' = -5","R(eps J F, eps* J-1 F*)",0.136,0.023,0.0016,
+Fig. 6,(a),127I2 P(13) 14-1,13,8,,"ratio forbidden/allowed, F'' - J'' = -5","R(eps J F, eps* J-1 F*)",0.0482,0.0097,0.00056,
+Fig. 6,(a),127I2 P(15) 14-1,15,10,,"ratio forbidden/allowed, F'' - J'' = -5","R(eps J F, eps* J-1 F*)",0.0325,0.008,0.00038,
+Fig. 6,(b),127I2 P(7) 14-1,7,3,,"ratio forbidden/allowed, F'' - J'' = -4","R(eps J F, eps* J-1 F*)",0.4,0.085,0.0042,
+Fig. 6,(b),127I2 P(9) 14-1,9,5,,"ratio forbidden/allowed, F'' - J'' = -4","R(eps J F, eps* J-1 F*)",0.222,0.042,0.0023,
+Fig. 6,(b),127I2 P(15) 14-1,15,11,,"ratio forbidden/allowed, F'' - J'' = -4","R(eps J F, eps* J-1 F*)",0.0569,0.014,0.0006,
+Fig. 6,(b),127I2 P(21) 14-1,21,17,,"ratio forbidden/allowed, F'' - J'' = -4","R(eps J F, eps* J-1 F*)",0.0149,0.0074,0.00017,lower end of the error bar reaches the axis at 0.01; half-width taken from the upper half
+Fig. 6,(c),127I2 P(3) 14-1,3,4,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.207,0.023,0.0023,
+Fig. 6,(c),127I2 P(9) 14-1,9,10,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.0775,0.019,0.00085,
+Fig. 6,(c),127I2 P(13) 14-1,13,14,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.0615,0.015,0.00069,
+Fig. 6,(c),127I2 P(15) 14-1,15,16,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.0521,0.012,0.00059,
+Fig. 6,(c),127I2 P(17) 14-1,17,18,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.0317,0.0097,0.00036,
+Fig. 6,(c),127I2 P(19) 14-1,19,20,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.0331,0.01,0.00038,
+Fig. 6,(c),127I2 P(21) 14-1,21,22,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.0211,0.0062,0.00024,
+Fig. 6,(c),127I2 P(25) 14-1,25,26,,"ratio forbidden/allowed, F'' - J'' = +1","R(eps J F, eps* J-1 F*)",0.0157,0.0048,0.00019,lower end of the error bar reaches the axis at 0.01; half-width taken from the upper half
+Fig. 6,(d),127I2 P(7) 14-1,7,9,,"ratio forbidden/allowed, F'' - J'' = +2","R(eps J F, eps* J-1 F*)",0.185,0.025,0.0021,
+Fig. 6,(d),127I2 P(9) 14-1,9,11,,"ratio forbidden/allowed, F'' - J'' = +2","R(eps J F, eps* J-1 F*)",0.13,0.022,0.0014,
+Fig. 6,(d),127I2 P(23) 14-1,23,25,,"ratio forbidden/allowed, F'' - J'' = +2","R(eps J F, eps* J-1 F*)",0.0189,0.005,0.00025,
+Fig. 6,(d),127I2 P(25) 14-1,25,27,,"ratio forbidden/allowed, F'' - J'' = +2","R(eps J F, eps* J-1 F*)",0.0186,0.0051,0.00026,

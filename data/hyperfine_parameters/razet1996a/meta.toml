@@ -1,0 +1,50 @@
+id = "razet1996a"
+source = "publisher PDF"
+retrieved = "2026-10-28"
+catalog = "precision:razet1996a"
+tables = "Tables 23-25, 28, 31-37 (pp. 25-27)"
+unit = "MHz"
+kind = "B-X hyperfine difference constants (upper minus lower: Delta eqQ, Delta C, Delta d, Delta delta) from fits compiled in a tabulation, one row per fitted set, for lines with no interval data elsewhere in the repository"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+
+transcription = """
+Delta eqQ (MHz), Delta C, Delta d and Delta delta (kHz) and the calculated standard deviation s (kHz), as printed, for the
+lines whose measured intervals are not in the repository. Printed decimal commas are written as points; kHz values are
+divided by 1000 exactly (C, d, delta in MHz) and each uncertainty is the printed last-digit value in the same unit. The
+tables give Delta constants and the primed and double-primed constants separately; only the Delta rows are entered
+(eqQ = Delta eqQ, C = Delta C, d = Delta d, delta = Delta delta). s is in fit_sd_kHz. Comments a-j are in the paper's list on
+p. 21 (a: lower state fixed at the Yokozeki-Muenter X v''=0 J''=13 values; e: standard deviation from experimental and
+calculated frequencies).
+
+Rows in data.csv (the loader needs all four constants with a printed uncertainty): Table 24 (605 nm R(161) 9-0), Table 25
+(612 nm R(34) 17-6), Table 28 (612 nm R(48) 15-5), Table 31 columns 1 and 3 (640 nm P(10) 8-5), Table 35 (793 nm R(92) 0-15).
+
+Printed but not in data.csv because a constant or an uncertainty is missing or the line is not a single line (recorded here):
+Table 23 (589 nm, J = 0-10, 13-1, averaged over R(0)-R(10) and P(1)-P(5), comment g; measurement [26]): Delta eqQ = 1949,6(9)
+MHz, Delta C = 32,5(6) kHz, Delta delta = -9,9(2) kHz, Delta d = -30,2(2) kHz; s blank.
+Table 31 column 2 (640 nm P(10) 8-5, [40], comments a, d): Delta eqQ = 1950,48 MHz (no uncertainty), Delta C = 23,89(1),
+Delta delta = -19,77(4), Delta d = -8,11(9) kHz, s = 70 kHz.
+Table 32 (640 nm R(16) 8-5, [28, 40-42], comments a, e): Delta eqQ = 1949,99(2) MHz, Delta C = 27,86(7) kHz, Delta delta =
+-3,66 and Delta d = -1,58 kHz (printed without uncertainty), s = 5 kHz.
+Table 33 (657 nm R(69) 3-4, [45], comment e): Delta eqQ = 1961(1) MHz, Delta C = 22(1) kHz, Delta delta and Delta d blank,
+s = 820 kHz.
+Table 34 (657 nm P(84) 5-5, [45], comment e): Delta eqQ = 1956(1) MHz, Delta C = 22(2) kHz, Delta delta and Delta d blank,
+s = 1200 kHz.
+Table 36 (1.28 um P(13) 43-76, [47]): Delta eqQ = 1224(2) MHz, Delta C = 159(4) kHz, Delta delta and Delta d blank, s = 520 kHz.
+Table 37 (1.34 um P(13) 43-83, [48]): Delta eqQ = 996,0(5) MHz, Delta C = 128(5) kHz, Delta delta and Delta d blank, s = 820 kHz.
+
+Verification: read once from 130 and 220 dpi page images, then a second independent pass from 300 dpi crops of Tables 25,
+28, 31, 32, 33, 34, 35 compared against data.csv without reference to it while reading; no discrepancies found. Tables 23,
+24, 36 and 37 then got an independent blind second read at 400 dpi on 2026-10-28 (typed from page crops before opening
+this folder, then compared value by value, including uncertainties, s, labels, comments and blank cells); no
+discrepancies found and no corrections were needed.
+"""
+
+uncertainty = "As printed (last digits in parentheses) from each source's least-squares fit; statistical only. s is the calculated standard deviation of the fit."
+
+notes = """
+Four-term effective Hamiltonian (eqQ, C, d, delta). These are fitted constants compiled from other works (measurement and
+calculation source numbers are in each row's note), not new measurements. The lower-state constants are usually fixed
+(comment a), so the Delta constants, not the separate upper-state columns, are the quantity to compare. Several lines have
+more than one fitted set in the paper; every complete one is a row.
+"""

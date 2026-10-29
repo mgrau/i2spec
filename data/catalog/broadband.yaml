@@ -211,7 +211,7 @@
   range_cm1: [12600, 14000]
   transitions: "12 new bands of the (0,v″), (1,v″) and (2,v″) progressions with 10 ≤ v″ ≤ 14; G(v″), B(v″) and D(v″) up to v″ = 14"
   n_items: null
-  uncertainty: "T(0,0) = 15 724.586 ± 0.003 cm⁻¹ quoted; line uncertainties not extracted"
+  uncertainty: "T(0,0) = 15 724.586 ± 0.003 cm⁻¹ quoted; line uncertainties 0.002-0.004 cm⁻¹ (p. 1421), fit sd 0.0030 cm⁻¹; the paper prints no line positions, only constants"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
@@ -611,7 +611,7 @@
   priority: medium
   verified: true
   status: "held"
-  transcription: "to do: relative line depths per band from 632 FTS spectra at 23-66 C plus apparent RV shifts vs cell temperature; count of tabulated values unknown"
+  transcription: "not needed: no tables and no per-line values; the line depths and assignments stay inside the authors' pipeline. The figures show cell diagnostics against temperature or time (line counts, number of fitted bands, RV precision, transmissivity, fitted temperature, RV shifts; Figs 3, 5-9), a calculated Boltzmann curve for illustration (Fig. 1), and three overplotted 500-625 nm spectra too dense to read line by line (Fig. 4)"
   notes: "632 FTS spectra at cell temperatures of 23–66 °C, taken 26–27 March 2015. The effective molecular temperature was found from rotational line-depth distributions. Found an apparent RV shift of about 1 m s⁻¹ K⁻¹ and 50 m s⁻¹ jumps when the cell crossed the iodine dew point. A rare multi-temperature FTS series, useful for validating temperature-dependent intensities (Category 4). Volume and pages were not in Crossref."
 - id: schmidt2025
   citation: "T. Schmidt, A. Reiners, M. Murphy, G. Lo Curto, C. Martins, P. Huke, Validation of the ESPRESSO wavelength calibration using iodine absorption cell spectra, Mon. Not. R. Astron. Soc. 539, 3301–3318 (2025)"
@@ -1407,21 +1407,21 @@
   technique: "High-resolution FTS absorption"
   observable: "line positions"
   range_nm: null
-  range_cm1: null
+  range_cm1: [7200, 11200]
   transitions: "79 bands of A 3Π1u–X, v'=0–35, v''=3–17"
   n_items: 9552
-  uncertainty: "not stated in abstract"
+  uncertainty: "+-0.005 cm-1 typical line-position accuracy of the atlas (p. 904); fit sigma-bar 1.33 (about 0.0066 cm-1)"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Journal article (AIP); availability of the line list as supplementary material (e.g. AIP/EPAPS) not verified"
+  data_availability: "Journal article (AIP): Tables I-VIII printed (constants only). The 9552-line data set was available on request by e-mail (Le Roy, Bernath) or anonymous ftp (theochem.uwaterloo.ca, pub/leroy/I2A); no AIP deposit"
   machine_readable: false
   likely_in_knockel2004: false
   priority: medium
   verified: true
   status: "held"
-  transcription: "to do: about 9,552 A-X lines (79 bands, v' 0-35, v'' 3-17) if the line list is printed; not confirmed from the notes"
-  notes: "Abstract from Crossref. The fit used previously determined X constants. A–X lines lie in the near IR among B–X hot bands (the region of the Gerstenkorn–Vergès–Chevillard atlases), so they are needed to flag blends and they give independent X v''=3–17 combination differences. The spectral range isn't stated in the abstract; the spectra probably come from the Orsay heated-cell FTS atlases (inferred). Middle initials follow common usage; Crossref lists single initials."
+  transcription: null
+  notes: "Read in full (11 pages). The 9,552 A-X lines are NOT printed and were not deposited with AIP: the authors offered the data set, constants and NDE subroutines by e-mail (Le Roy, Bernath) or anonymous ftp (pub/leroy/I2A on theochem.uwaterloo.ca), so no line list is in the record. Printed: Tables I-VIII, transcribed as data/other_states/appadoo1996 (held out as pending): conditions, A v' ranges per X v'', empirical Dunham constants of the A state, fit standard errors, the NDE parameters, the A-state G(v), B_v, D_v, H_v, I_v, M_v, N_v for v = 0-50 (v = 36-50 extrapolated), and a comparison of constants. The spectra are the Orsay Iodine Atlas (7200-11 200 cm-1, about 16 450 lines, +-0.005 cm-1; absorption cell 1.5 m, 623-773 K, iodine 5-15 Torr, FTS), from which 9552 lines were assigned; J up to 200. The fit used previously determined X constants (Gerstenkorn and Luc 1985), held fixed. A–X lines lie in the near IR among B–X hot bands (the region of the Gerstenkorn–Vergès–Chevillard atlases), so they are needed to flag blends and they give independent X v''=3–17 combination differences. The spectra are the Orsay atlas (Vol. O, 7200-11 200 cm-1). Middle initials follow common usage; Crossref lists single initials."
 - id: tellinghuisen2003
   citation: "J. Tellinghuisen, On the efficient representation of comprehensive, precise spectroscopic data sets: The A state of I2, J. Chem. Phys. 118, 3532–3537 (2003)"
   doi: "10.1063/1.1539849"
@@ -3996,7 +3996,7 @@
   priority: medium
   verified: true
   status: "held"
-  transcription: "to do: about 30 relative hyperfine line strengths from Fig. 5 (P(9)) and the ratio vs J from Fig. 6; no printed values"
+  transcription: null
   notes: "Read in full. Relative line strengths of forbidden hyperfine components are comparable with allowed ones for J <= 5, fall rapidly with J and vanish above about J = 25-30, in agreement with the J-mixing (J, J+/-2) line-strength theory; the earlier intensity anomaly reported for the 13-1 band head (Wakasugi et al., JOSA B 5, 2298, 1988) is attributed to partial saturation. Direct test of the model's hyperfine-resolved line strengths (forbidden components from second-order J mixing), but only as graphs. Despite the abstract, no splitting values are printed. Assignments used the Gerstenkorn-Luc atlas. Companion 13-1 band-head paper (JOSA B 5, 2298, 1988) is not in the catalog and probably holds hyperfine splittings; worth fetching. For this paper, transcription would mean digitizing Fig. 5 (P(9), about 30 relative strengths) and Fig. 6 (ratio vs J), useful only as a qualitative check of forbidden-component strengths; medium-low value."
 
 - id: goncharov1990
