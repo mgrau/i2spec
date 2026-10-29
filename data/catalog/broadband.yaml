@@ -59,14 +59,14 @@
   uncertainty_MHz: 21
   absolute: true
   hyperfine_resolved: false
-  data_availability: "Printed only"
+  data_availability: "Printed only. Phone photographs of the whole volume are held (title page, pp. I-IX, all 92 table pages)."
   machine_readable: false
   likely_in_knockel2004: true
   priority: high
   verified: true
-  status: "unobtainable for now: printed atlas only; a scan of this volume is expected (data collection ended 2026-10-28 with this one exception)"
-  transcription: "n/a: not held"
-  notes: "Existence and year are taken from Knöckel 2004 ref. [1]. A secondary web source and the reference lists of Lukashov et al. 2018 (lukashov2018) date the 14 000–15 600 cm⁻¹ Gerstenkorn–Luc volume to 1980 (CNRS II, Orsay), so the year should be checked against the volume's title page. The volume covers 641–714 nm, part of the 667–776 nm region where Knöckel had to rely on atlas data (prediction 2σ up to 60 MHz there). It is also the only broadband source for 14 000–14 250 cm⁻¹, below the start of the Salami & Ross file."
+  status: "held"
+  transcription: null
+  notes: "Transcribed 2026-10-29 as data/atlas_lines/gerstenkorn1978b (pending): all 4831 numbered lines of pp. 1-92, from phone photographs of the volume. The title page reads 1978 (S. Gerstenkorn & P. Luc, Laboratoire Aimé Cotton, CNRS II, Orsay), so the 1980 date in the reference lists of Lukashov et al. 2018 (lukashov2018) is wrong. Front matter (pp. I-IX): the spectrometer of the 14 800-20 000 cm⁻¹ atlas, one 2 m cell at about 250 °C with the iodine pressure held at its room-temperature value (about 0.25 Torr), a 28 W tungsten-halogen lamp; 95 plates of 20 cm⁻¹; 4733 ticked lines of about 21 000 with s/n > 3; internal coherence 5e-8 (±0.001 cm⁻¹ for strong lines), absolute values assured only to better than ±0.006 cm⁻¹. The line numbers restart at 1 six times (14 000, 14 200, 14 300, 14 400, 14 700, 14 900 cm⁻¹). Existence was first taken from Knöckel 2004 ref. [1]. The volume covers 641–714 nm, part of the 667–776 nm region where Knöckel had to rely on atlas data (prediction 2σ up to 60 MHz there). It is also the only broadband source for 14 000–14 250 cm⁻¹, below the start of the Salami & Ross file."
 - id: gerstenkorn1982
   citation: "S. Gerstenkorn, J. Vergès, J. Chevillard, Atlas du spectre d'absorption de la molécule d'iode, 11 000-14 000 cm-1 (Laboratoire Aimé Cotton, CNRS II, Orsay, 1982)"
   doi: null

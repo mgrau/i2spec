@@ -1,0 +1,49 @@
+id = "gerstenkorn1978b"
+catalog = "broadband:gerstenkorn1978b"
+unit = "cm-1"
+isotopologue = "127I2"
+kind = "atlas line positions"
+source = "phone photographs of the printed volume (118 photos: the title page, pp. I-IX, the 92 table pages and some plates)"
+retrieved = "2026-10-29"
+exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+instrument = """Fourier transform absorption spectrum, the spectrometer of the 14 800-20 000 cm-1 atlas (catalog
+gerstenkorn1978a; no resolution is restated here). A single 2 m absorption cell heated to about 250 C, the iodine
+pressure held at its room-temperature value (about 0.25 Torr) by side arms in water at about 20 C; a 28 W
+tungsten-halogen lamp; a photomultiplier. Vacuum wavenumbers, 14 000-15 600 cm-1, on 95 plates of 20 cm-1 each
+(pp. I-IV, Figs. 1-2)."""
+calibration = """The atlas's own 1978 scale, as printed. The internal coherence of the wavenumbers is 5e-8 on average, so
++-0.001 cm-1 for strong unperturbed lines; the absolute values are assured only to better than +-0.006 cm-1 over the
+whole spectrum (p. VIII). No reference standard or correction is stated in the front matter. No correction is
+applied here (Knöckel et al. 2004 give a recalibration rule for this part, catalog knockel2004a). eps_mk is the
+authors' noise-only uncertainty of the line pointing (p. IV)."""
+extraction = """Every line table (pp. 1-92), read from the photographs (research scripts). Each photo was turned
+upright (the rotation in which OCR finds the most table rows), its lighting flattened, the background outside the
+paper and ink larger than a character (the spine, the facing page's edge, plate show-through) blanked; each page was
+cut into its four columns at the left edge of the next column's line numbers (rows are not segmented: curl and
+perspective slant them differently in each column). Two independent model readings of every column crop, matched by
+line number: they agree on 4820 of 4831 rows (2842 of these also agree with tesseract's reading). The other 11 rows
+have a character one or both readings marked unreadable: 8 were read again on the image and agree with one reading
+(settled); 3 depths were read on the printed page. The last columns were cut again with a wider margin after the first
+readings and read again, twice. Checks: an independent blind reading of 9 pages (596 rows) differs in one character (N
+68 of series 4, a broken digit; read on the printed page as the two readings have it); a blind reading of the 24 rows
+where OCR's wavenumber differed from the two readings in one digit and still fitted the order agrees with the two
+readings in all 24; the line numbers step by one within each numbering series and the wavenumbers increase within each
+series."""
+tables = """The numbered ('repérées', ticked) lines: N, sigma (vacuum cm-1, 4 decimals), eps (1e-3 cm-1, noise only)
+and I (depth of the line, normalized to the continuum). The front matter gives 4733 ticked lines of about 21 000
+with s/n > 3. Not entered: the plates."""
+files = ["gerstenkorn1978b.csv"]
+n_lines = 4831
+
+columns = """
+gerstenkorn1978b.csv, one row per printed line, in printed order: series (the line numbers restart at 1 six times:
+series 1 from 14 000.1 cm-1, 2 from 14 200.3, 3 from 14 300.7, 4 from 14 400.3, 5 from 14 700.0, 6 from 14 900.0),
+N (the printed line number), sigma_cm1, eps_mk (1e-3 cm-1), depth, page (the
+printed table page), photo (the photo's place in the set, in the order taken), basis (haiku+haiku: the two
+readings agree; haiku+haiku+ocr: tesseract agrees too; settled: read again on the image, agreeing with one
+reading; printed page: read on the printed volume, where the photo left a character in doubt), note.
+
+Each new series starts a little below where the last one ended, and 54 wavenumbers are printed twice (noted 'also
+printed as ...' on the second). Without the repeats there are 4777 lines, 44 more than the 4733 the front matter
+states. The depths of N 1114-1129 of series 6 (p. 75) are printed as single digits.
+"""
