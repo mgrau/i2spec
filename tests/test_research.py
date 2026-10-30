@@ -13,10 +13,13 @@ from i2spec.research import _Potential, _entries, _entry, _info, _read
 
 def test_releases_and_ledgers():
     models = [_info(entry) for entry in _entries()]
-    assert [m.role for m in models] == ["balanced", "balanced_expanded", "i2spec"]
+    assert [m.role for m in models] == ["balanced", "balanced_expanded", "i2spec"]*2
     assert [(m.inventory.fitted_molecular, m.inventory.inherited_molecular, m.inventory.fitted_calibration)
-            for m in models] == [(61, 18, 4), (105, 73, 5), (107, 75, 5)]
-    assert DEFAULT_PARAMETERS == _entry("i2spec")["id"]
+            for m in models] == [(61, 18, 4), (105, 73, 5), (107, 75, 5), (63, 18, 4), (106, 73, 5), (106, 75, 5)]
+    # release 20261029 (the final form) is reached by id; each role resolves to the first release that has it
+    assert [_entry(m.role)["id"] for m in models[:3]] == [m.id for m in models[:3]]
+    assert [m.id for m in models[3:]] == [f"research-20261029-{n}" for n in ("core", "expanded", "i2spec")]
+    assert DEFAULT_PARAMETERS == _entry("i2spec")["id"] == "research-20261021-i2spec"
     assert all(m.inventory.line_specific == m.inventory.level_specific == 0 for m in models)
     with pytest.raises(FrozenInstanceError):
         models[0].inventory.fitted_molecular = 1

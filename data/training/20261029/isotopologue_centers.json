@@ -1,0 +1,47 @@
+{
+ "note": "CIPM isotopologue line centers (fit_shift data), components reduced with the released model's hyperfine",
+ "data": [
+  {
+   "isotopologue": "127I129I",
+   "line": "127I129I P(33) 6-3",
+   "n_components": 38,
+   "measured_center_MHz": 473612496.0286963,
+   "sigma_MHz": 0.06262539599874799
+  },
+  {
+   "isotopologue": "129I2",
+   "line": "129I2 P(110) 10-2",
+   "n_components": 28,
+   "measured_center_MHz": 489880319.6892126,
+   "sigma_MHz": 0.15933640513077985
+  },
+  {
+   "isotopologue": "129I2",
+   "line": "129I2 P(33) 6-3",
+   "n_components": 1,
+   "measured_center_MHz": 473613545.3049957,
+   "sigma_MHz": 0.20352380751155383
+  },
+  {
+   "isotopologue": "129I2",
+   "line": "129I2 P(54) 8-4",
+   "n_components": 1,
+   "measured_center_MHz": 473612067.0777458,
+   "sigma_MHz": 0.05497217681700444
+  },
+  {
+   "isotopologue": "129I2",
+   "line": "129I2 P(69) 12-6",
+   "n_components": 27,
+   "measured_center_MHz": 473612767.36124,
+   "sigma_MHz": 0.06262539599874799
+  },
+  {
+   "isotopologue": "129I2",
+   "line": "129I2 R(113) 14-4",
+   "n_components": 15,
+   "measured_center_MHz": 489879920.02774256,
+   "sigma_MHz": 0.3359882289604801
+  }
+ ]
+}
