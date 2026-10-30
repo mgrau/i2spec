@@ -1,0 +1,85 @@
+{
+ "schema_version": 3,
+ "created_utc": "2026-10-30T00:57:44.401785+00:00",
+ "status": "frozen",
+ "decision": "Decision, 2026-10-28, scope set 2026-10-29: the one blind test of the final form (release 20261029, fitted to the training data of release 20261021) before any pending set is added to a fit. It holds every pending set of data/observations no earlier registry holds, and every pending set of data/hyperfine_parameters and data/x_hyperfine; the sets of the two earlier registries are forecast again in the partition read_before. Not scored: the pending atlas line lists (assigned to training) and the level, width, lifetime, intensity, other-state and theory tables (no forecast of the model, or one that needs a convention); they go to the split into train, calibrate and locked test",
+ "primary_model": "research-20261029-i2spec",
+ "models": {
+  "research-20261029-i2spec": {
+   "id": "research-20261029-i2spec",
+   "coefficients": "3cd4af2aa59fb6feb1216b08e7cff16f0a5ad7104014768c693de3145a63baa1",
+   "files_sha256": {
+    "20261029": {
+     "model.json": "9fed03560130a3d7be30e7b798a361bade514e3ca68e2259b94297c9308658d9",
+     "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
+     "reference_predictions.json": "a9d31cbb8428a5337eeeddf036b1339535e6e22ca984d3c5411559bab1b7f855",
+     "uncertainty.json": "60cbb429808556b1f8cc423eeff9d6b6a420971bcc2fd4ccff4dec35a6cff372"
+    }
+   }
+  },
+  "i2spec": {
+   "id": "research-20261021-i2spec",
+   "coefficients": "1711b9caa5619027391f66c1b6323a9b968842f8d8eedc4969b002fada12d2aa",
+   "files_sha256": {
+    "20261021": {
+     "isotopologues.json": "89c3bc0736ac90fffd0ea1546a366ddc99bc9ae295fa79fc6d16f7c818f364e9",
+     "reference_predictions.json": "3052a140cd50076108d9c48e633b18af229ff8cb16b62b86be14af330cd7f22c"
+    },
+    "20261020": {
+     "model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
+     "hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
+     "reference_predictions.json": "1c4a0b15b546cf62bdc608d793f8a1d805d2dcdf8d5afa289fabd34ec14ac52b",
+     "audits.json": "7f64811d0ec0021cbd7c76b5b05ee3b980601e45a67d711db524c961b60c0e7d",
+     "validation.json": "6b92ef97abe751cdeab6c9f1afa97f53d2190a54ad7f47443db294d24ecad5ff",
+     "selection.json": "f978d066f941a33779d7ca7c4097095230d5fc9bbba98b12cd40fe36ed3e4dcf",
+     "provenance.json": "649082a620b0c81db9723cb23f6267fcbe650cf74c160678690c5ca82b7f5cbb",
+     "verification.json": "5962ee5ae8b4976fef2a0b1cd411b555a7cb5b0310e66e77e5a14962142258c1",
+     "uncertainty.json": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f",
+     "uncertainty_references.json": "a5eb298b4662e07157c615b2e5e070e2373246488a1e0ec2c346cd4c3c6db7f8"
+    }
+   }
+  }
+ },
+ "comparisons": {
+  "all": [
+   "research-20261029-i2spec",
+   "i2spec"
+  ]
+ },
+ "outcome_rule": "values are read only by score_registry, after this registry exists; no refit, no model or setting selection, no exclusion of targets after scoring. A data correction found later is reported beside, not instead of, these scores",
+ "exclusion": "127I2 P(13) 43-0: diagnostic target only, never in a headline score",
+ "partitions": {
+  "blind": "nothing of this measurement is in any training set or an earlier registry",
+  "scored_before": "an [overlaps] declaration ties it to a set of an earlier registry, whose values were read when that registry was scored",
+  "seen": "an active set prints this measurement or a mean that contains it ([overlaps] same/mean)",
+  "superseded": "an active set holds the same quantity re-measured or re-evaluated by the same authors ([overlaps] superseded)",
+  "read_before": "a set of an earlier registry, whose values were read when that registry was scored; forecast again, never fitted, and never in a blind score"
+ },
+ "kinds": {
+  "absolute": "a component frequency",
+  "intraline": "component minus component of the same line (hyperfine only)",
+  "interline": "component (or center) of one line minus that of another",
+  "hf_constant": "an effective hyperfine constant (eqQ, C, d or delta) of a line's B level, or of B minus X where the set's meta.toml kind says the source printed differences",
+  "x_constant": "an effective hyperfine constant of an X level",
+  "x_interval": "the energy of one hyperfine sublevel of an X level minus another's, E(I, F) - E(I', F'); sublevels are labeled (I, F) by a one-to-one assignment within each F (the largest total weight of each I on the level's own J); a set that prints magnitudes is scored on |forecast|"
+ },
+ "rescored_registries": [
+  "src/i2spec/data/research/20261020/validation/pending_blind_v1",
+  "src/i2spec/data/research/20261020/validation/pending_blind_v2"
+ ],
+ "constants_scope": "eqQ, C, d and delta of every row (a quantity a source did not print is not scored); summaries per kind and quantity",
+ "disclosure": "While this registry was designed (2026-10-29), after release 20261029 was frozen and committed, values of some of its rows were displayed in a terminal, never compared with any model: yoshiki2023a (hyperfine_parameters, all 7 rows, and two values quoted in its meta.toml), borde2002 (x_hyperfine: 11 interval rows and 3 constants), wallerand1999 (one interval quoted in its meta.toml), koffend1978 (the v'' = 83 eqQ), robertsson2001b (eqQ', quoted in its meta.toml). The forecasts cannot depend on them; the quantity, sign and labeling rules were set from meta.toml text and identity columns",
+ "metrics": {
+  "residual": "observed - predicted (MHz), observed at zero pressure and power",
+  "scores": "per model, partition, kind and set: n, rms, median |r|, mean, rms of r/sigma, fraction within each threshold; paired on targets every compared model predicts",
+  "thresholds_MHz": [
+   0.01,
+   0.03,
+   0.1,
+   0.3,
+   1.0,
+   3.0
+  ]
+ },
+ "uncertainty_note": "sigma is the measurement uncertainty alone; |r|/sigma describes disagreement with the measurement, not model confidence. The primary forecasts also carry the model's frozen 1-sigma (sigma_model_MHz); coverage uses z = r / sqrt(sigma_model^2 + sigma^2)"
+}

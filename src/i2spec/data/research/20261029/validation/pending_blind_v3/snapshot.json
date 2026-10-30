@@ -1,0 +1,677 @@
+{
+ "data": {
+  "arie1992a": {
+   "data.csv": "5d86fd4519a2ea88b9ecc0a96c80e85e42e2a6abcd6e445276739fdd8d8f51b5"
+  },
+  "barwood1984a": {
+   "data.csv": "b7e594e972c5f197c730806e4bb6122bba5582384f86ff860ac579e8b562428c"
+  },
+  "bennett1979a": {
+   "data.csv": "720988a7deb7a8bc84b3f76839312f7df47c5f6f7acab3909997cf691e60b48b"
+  },
+  "bennett1984a": {
+   "data.csv": "d9f831d94be831def0e17ed8ed639ec1178d2693bac6c965d4d4b6c667c27494"
+  },
+  "bergquist1984a": {
+   "data.csv": "e27d1f5c351cb34cdad869cec0aca5376ff47b5277e0ccb9adfd1e300a0d5ed9"
+  },
+  "bipm1984a": {
+   "data.csv": "e8db9c6127c388442b19297ef6aa2c68e5f568095cdc08a469f6edd7fdc21dc4"
+  },
+  "bisi1997a": {
+   "data.csv": "74f2fd0b2a7f170f57026a20043a4b1a4267990280f68ed38118cb9c29371c23"
+  },
+  "bodermann1998a": {
+   "data.csv": "b8279e28f1b41637305fba28ea1fe1f80eabe11404a5f706c43c3cb63ca9b3d2"
+  },
+  "bonsch1983a": {
+   "data.csv": "93b2884c60d50eaf5cd0f4b523277d2db47b1d281bb3bc5f7959eb32e2e30fa2"
+  },
+  "brand1993a": {
+   "data.csv": "bd2994dcbdb4132c6625febee33fb23b814b0e228e99893c460518ff008fba6d"
+  },
+  "cerez1979a": {
+   "data.csv": "55eccc65c985d507f9dd618d26a5c20449d1a9b3ebdd16cd57fb5285a1aaf5ad"
+  },
+  "chartier1989a": {
+   "data.csv": "54980e5c6a36146e9c6f8e4e71f81c7ee492aa643b50656316fcbfdd782a179d"
+  },
+  "chartier1992a": {
+   "data.csv": "546cba8ff43f110650770f275617f8aaa3f78a415be8d7b7c8722c3906e92149"
+  },
+  "chen2005thesis_a": {
+   "data.csv": "257b1bc47b14ac64b668db88715c1fc236a92d98c58f152e96109ea923676045"
+  },
+  "chen2005thesis_b": {
+   "data.csv": "31b8652303918eb0d966f767cfef53a52384b8b9dc2d516d0329c22feaa88b20"
+  },
+  "cruz1994a": {
+   "data.csv": "673f75037c53f058551db5f2dc4453ce7fda0a8e6de5b20d2b5ecebdb8b545ea"
+  },
+  "duburck2005a": {
+   "data.csv": "772e0cb2b615d3bab9efafa16bebdadb48747d2dc0a294b7978caa8ed9a2cc49"
+  },
+  "edwards1995a": {
+   "data.csv": "8b728d738a33218eb8fc4ce9a5a42e10f4556aeabd9331b41da36050494da837"
+  },
+  "edwards1996a": {
+   "data.csv": "aa1914bb1a764cd7520aad9a15f6e141bf18e2c1968d30bb734031644584f43c"
+  },
+  "edwards1999a_6mhz": {
+   "data.csv": "4aa4e62e3bd9f6c798ac126d4fc6bbd37f95859a73834ac6614d8ab6f6cfddef"
+  },
+  "eickhoff1994thesis": {
+   "data.csv": "fafbb35c670880b68f7a80982bd0797605fcfb8344adea7ab14a5c6422d86995"
+  },
+  "felder2005a": {
+   "data.csv": "ce5ad4fb873ec25863a621adfe4a90b84fceadc1c07ec3b6a4e4fa410fae2555"
+  },
+  "galzerano1999a": {
+   "data.csv": "20d329b5ba26b19e0ac03a0d3d10ef80cd5c0bdfaf8e6e5e74d9352aa30f05eb"
+  },
+  "galzerano2000a": {
+   "data.csv": "75cb0b6f6506ba9d7f692c8c9009b1c4f6855c7112297cbbacb83644f6b42d98"
+  },
+  "gerstenkorn1983a": {
+   "data.csv": "60d07f2a2431df524fc2e8f21bf433528b40024c030ef73f2051020d1a1ce058"
+  },
+  "glaser1982a": {
+   "data.csv": "b7b6593818c7ae47d9a615a294ee94f21a4fcd1626020f3c1e5ed5b911e30401"
+  },
+  "glaser1986a": {
+   "data.csv": "cb55d7a88d23efc8041a59b886ddf2c3b301de55c454e97b472063be4fd1e628"
+  },
+  "hanes1969a": {
+   "data.csv": "8b0e0229824d7f05590acafc501d1551da427daa435dd297f157e747fedc71d5"
+  },
+  "hanes1971a": {
+   "data.csv": "66666d0c19bfba076d16d565d568ed8ac8b8b664ccd3397ce6309cfaae1a9e18"
+  },
+  "hanes1973a": {
+   "data.csv": "80e266da7b3a1897ac1eea1fba7cbaeb4f22db2e70898b1dcbec76c02ee94362"
+  },
+  "helmcke1974a": {
+   "data.csv": "e46c925dfc2b46a5a9e6c9839ad1b7a4b90c99792e8a66b093445b305d8b912b"
+  },
+  "himbert1991a": {
+   "data.csv": "d0d52e264c587d08123f49d3561665180abb79247b8de8d89d14f6b73f41c133"
+  },
+  "hong2003a": {
+   "data.csv": "aecc3807b7a6f8afadec1712fefbeb51c8a89b2ca22ea6e82b93b12189a5737a"
+  },
+  "jaatinen1998a": {
+   "data.csv": "4a18561877ec9de63e9c079efe10be0447651b98099e5d09c8ebbb3d6b7d6da5"
+  },
+  "jennings1983a": {
+   "data.csv": "44d4fe71ddcdb66abb80dc1f99bf04e23a17f1d906710972c9c7bf69d271a270"
+  },
+  "koffend1978a": {
+   "data.csv": "76c16efb7d3d016260e9fd22a3ae19260cc90cc3e4165328da34cb4f57a7788a"
+  },
+  "kompanets1979a": {
+   "data.csv": "b24559e5a2149a850f59a541dfe100b8eaf8da1aa9f97c9a85dcc49eea5c80a8"
+  },
+  "kondo2025a": {
+   "data.csv": "62919c79436516609c0bc00bd718c550fead2d6f156a575a6aa413b484f6b5e0"
+  },
+  "kroll1969a": {
+   "data.csv": "b6478afad98aac424e494d0d17ceb3605df25ec70021774acb8b2e9b4d6d26e4"
+  },
+  "morinaga1978a": {
+   "data.csv": "db49a0b9aebc746dc6fc40fa42c640baf4bd6158e033858a2ae254862678635c"
+  },
+  "morinaga1984a": {
+   "data.csv": "e0cf46fd4261c73aea87bf9e3f38df8be3165619b03dc3158f7c0a61f6452ea6"
+  },
+  "morinaga1989a_b": {
+   "data.csv": "7c507502b749a908f4105f351642f5b78dd9e4cb88ec19e9d7a4ca96bfd9ceb8"
+  },
+  "pique1981a": {
+   "data.csv": "75590f5d7a66fc60ff6d703a27a1bfd7f6bb92c9264fb7d6fb76180beae9654b"
+  },
+  "quinn1994a": {
+   "data.csv": "816b15e4c180c28393272007b93d5d2e21e092956044d478b3101a5430140c4e"
+  },
+  "quinn1999a": {
+   "data.csv": "1af83f63590d6084903d5f7bab796cce91fc0a00c267151eb1cfcbec742ba00b"
+  },
+  "robertsson2001b": {
+   "data.csv": "ff3977a3b84c9856695126380bd05cd3402d9866ed88654d0df7fbc30458e927"
+  },
+  "rowley1973a": {
+   "data.csv": "75e89a45fe4862caea13fbc5e91ecb0f703cc55fedb65f8bc23e1ef0223e9a2b"
+  },
+  "simonsen1990a": {
+   "data.csv": "69ff61292ff2db4dc34ea28e31bf5b4c753b1d7c876b37eeca97e933f8c37e51"
+  },
+  "simonsen1997a": {
+   "data.csv": "66e8bda87480f3aa5de5e4d54fe82b395a9898ce2c0e2401412b1128cdb50354"
+  },
+  "spieweck1980a": {
+   "data.csv": "7a064a23fd2cf03d77af7d795a77161f5a45b6dffd6092ff6a24a1420c63db06"
+  },
+  "talvitie1998a": {
+   "data.csv": "b230d8b6987e19d4a2b5684d792fdbc6eacb9270b58705b65889e9f15f8f8657"
+  },
+  "tanaka1977a": {
+   "data.csv": "49105feb4ee3b9c6f97c48765ca338264202d189a8cd9a96e97427b2161ca0f8"
+  },
+  "titov1997b": {
+   "data.csv": "b50a054dd310aeee04e3ac7d773dcae5c09a4b48229618b7d9cb5b000599175f"
+  },
+  "wallard1975a": {
+   "data.csv": "a6abf69fb7d785ca4b7e1be87bab2c6f1b9f9b06359cf3342c16d6e6a993d427"
+  },
+  "xu2000a_recovered": {
+   "data.csv": "58180c0658cf771dd93bae2a60a51dc551445f248118e366f061a3d030e0b081"
+  },
+  "yoshiki2023a_p34r58": {
+   "data.csv": "893327426579cb0251bb9161fb837326b4deaf3aef2ead4d51a09c7620e70d36"
+  },
+  "acef1993a": {
+   "data.csv": "f7f69737b6ada12de26f0e30c88bfdcc8dd282db39a994f2c8f7c0ad42b1b3f1"
+  },
+  "baird1979a": {
+   "data.csv": "2a64f82d6eba1ef392d3e22eb9d85c47e03ce9cc34d94f06ab25df29cffa237c"
+  },
+  "balling1999a": {
+   "data.csv": "08d84b7fa27ae3bff675babf5e0b8009445068483c6ddafb38544e16d6420b86"
+  },
+  "balling2007a_532": {
+   "data.csv": "19f0d8fb4e8cc47be3c4caede70f5aaa2c67d6ce00fcccee8c7b61a1fc3bb28d"
+  },
+  "balling2007a_543": {
+   "data.csv": "2eb5b1f4a9c72084d8f96944d315a2f009a66c322790c7fe1fd8e4e7c47e659d"
+  },
+  "balling2007a_633": {
+   "data.csv": "af2fa86b372380f88658e6ad1f11a7c6c82e39dc339422941a7ce5d40da52a56"
+  },
+  "bernard2001a": {
+   "data.csv": "62dba43bb10a443ee042bf7e0696198c62dc86ac5c108988b0d214c593a782bd"
+  },
+  "bertinetto1987a": {
+   "data.csv": "6a5c586694568b7b0717f35b390b017464eee20ef2f9ede1bc8f57fce2ab976d"
+  },
+  "blabla1993a": {
+   "data.csv": "036c57a2c6f6a0e7019dfc146a67e76b611692ecf6852d754239579a9b6542fd"
+  },
+  "borde1981a": {
+   "data.csv": "48a3f1f4cd4691f3dd548117130b117011982b42f9ac37c882ca2c42ed701fa9"
+  },
+  "cerez1974a": {
+   "data.csv": "2c23414d7e4f1ae4fbc7937263d488871986fac83157ad81c9651ba4318674ac"
+  },
+  "chen1998a": {
+   "data.csv": "63febed59bb2c7e91dc7c9d6a34216c12792b94f96b95105e607dbeb6600a9bd"
+  },
+  "cheng2021a": {
+   "data.csv": "21e42fcff9b6d7728d5e0efc9ea991005f5798e96bcc8ffa7de41669e00ad488"
+  },
+  "ciddor1980a": {
+   "data.csv": "0032b9c33d3b6420597c09ec2f1f59f19900f30dd791fd930852b0020065d6e3"
+  },
+  "demelo2024a": {
+   "data.csv": "891358db9a1cefa2532a2f20cc5bc30ed519537c98ced819d44848af04fa8f6a"
+  },
+  "diddams2000a": {
+   "data.csv": "ffe0a89ab885013d630944c41b2f703d13d86fe5fec352aafe4b89e2fb9f9c91"
+  },
+  "dschao1980a": {
+   "data.csv": "d444c83addda93b61e22db23f0753d934ba93527b7aa6218a49e8b16d16c040d"
+  },
+  "eickhoff1995a": {
+   "data.csv": "97a0d5ed088b172d8a02c24277a08701e4e7fcbdcaa0b1608c2f3c0f81c0cf24"
+  },
+  "fang2007a": {
+   "data.csv": "5f54c237bfd58bca9476d2056d52d02b44625eca0ba56ea56e56964b558c660c"
+  },
+  "foth1979a": {
+   "data.csv": "2d0c221b3af9ac19051dd11b7a74bd2db4eababf4613ec622d0e270868f29bf6"
+  },
+  "fredinpicard1990a": {
+   "data.csv": "c51129b4f33174d6565da6591cedf89ce7fb2a3fb89974ca134f8f8d19b7c78e"
+  },
+  "glaser1981a": {
+   "data.csv": "62542bf52f3a20e0b042b010a823a68c5873342a71aef10683063b602e188943"
+  },
+  "glaser1987a": {
+   "data.csv": "4e70b209c27cc9894c7a6bb9e7fdc6b06dddeb96e038333d599199521c6ca633"
+  },
+  "hackel1980a": {
+   "data.csv": "94d8365936ce3aca12df76b6bf24e66215ab87774df79b8460820f4101b48086"
+  },
+  "hamid2006a": {
+   "data.csv": "ced6327a27a19ae2a624a08a491134750d32b1358892860c430735c303a0885c"
+  },
+  "ikeda2018a": {
+   "data.csv": "7f58d611ade68a4992076bb1715f004ca5068b4143518034c6c323a5a73bb6a7"
+  },
+  "ikeda2020a": {
+   "data.csv": "934356e2464ea18375b911062490f213eaaea49968152ce59cc85c02d8480d17"
+  },
+  "juncar1981a": {
+   "data.csv": "a227634561f850d315c30e84b80e2ef6ba84d88cbdc15b30ab289121aa8d25c6"
+  },
+  "jungner1995a": {
+   "data.csv": "0179eab6ae4fe6cfe7b50ecf42ee721c441beea3195706b715094c2475a0ad40"
+  },
+  "jungner1995b": {
+   "data.csv": "a08aac5d92e11762cbea1e2b31ac08c13330dbd69351f989916ed0df3296e286"
+  },
+  "knox1971a": {
+   "data.csv": "f417c40c3b9fe2db7e7c996d76ab110ab7dc29d11974faa36d80def95629b181"
+  },
+  "kremser1994a": {
+   "data.csv": "694457588a5cb01284d857805bb69fc1f7209b57ea06efa5b6f27de5062d7335"
+  },
+  "landsberg1976a": {
+   "data.csv": "5ee92151299dd42bfd842c0b6274dfcee28f46c917a92aae8687370c67e90100"
+  },
+  "lea2003a": {
+   "data.csv": "450c96dad620ef837f60d3e1358981a2e65b0b5d0a8120d12e22498e7ed5faf4"
+  },
+  "lin1994a": {
+   "data.csv": "e02adc639f3ad1792d013c3de5a13be693d9a66afb7c39d471ceb5a61e30b6c6"
+  },
+  "ma2006a": {
+   "data.csv": "948e4b376425e283d757dc3f96b1a1cdab3ed55ad1f11c826db8e08d8eba8717"
+  },
+  "macfarlane1999a": {
+   "data.csv": "cbcf08238c6cc0fc7036be6338c6e7c7ef1d1551256eda0b388d32a31e989101"
+  },
+  "madej2004a": {
+   "data.csv": "2dc715a1fe8404bf3a1fd28d3767d81c12c83347c98b84cf1048d3c051148b4a"
+  },
+  "magyar1980a": {
+   "data.csv": "6528148196b1ac451c12e54b58f4fc84fe7bae279afd911206bb0b4c7c267ee3"
+  },
+  "merimaa2008a": {
+   "data.csv": "9e0e96dec7915a5f02ca5dba156861e3a8627e66f97001fbb92fbb4009bcc347"
+  },
+  "morinaga1990a": {
+   "data.csv": "5fb33f9584d30b7a8615559cba9429e376c16e489c8b72bd6bd52ff6ca41c748"
+  },
+  "nevsky2001a": {
+   "data.csv": "eb5162e77aaf7345143b30d237c78df77f1609c3c989e513a41f55305b39dfae"
+  },
+  "nishiyama2013a": {
+   "data.csv": "2c2b241509e00a0003c7ffcf4b2ae060896a3141946cf2f06ffa0b54f65ddaad"
+  },
+  "picard1996a": {
+   "data.csv": "572017469fe39cbde3faadeeac0b8241c851b65a5f2bd9cae75ddf5813093f79"
+  },
+  "picard2003a": {
+   "data.csv": "33d87ed5a5dcf0ec854cc28c397799d8f6b52a0b07810bb911d2ed14531229a6"
+  },
+  "pollock1983a": {
+   "data.csv": "d67b66f26251869157cfe214792d58746e1e85b6b8a4e8cb1e6f4c1bd1d9d15e"
+  },
+  "powel2021a": {
+   "data.csv": "07f9a6380efd4981fbdfad4ccac620f434bfba31b1472181c70d5abf61f05bb1"
+  },
+  "rakowsky1989a": {
+   "data.csv": "34324875aaf92d975f132c49ecf68eaf58de22027dac94b48825d2d00bfdd587"
+  },
+  "razet1991a": {
+   "data.csv": "1b1c2fff6c29fccd61fa3845666c1ad0614e0621051e527a758c3ac1e8757dde"
+  },
+  "razet1993a": {
+   "data.csv": "c48e3dde0de225937fdfe9ce781ee70ccaa05c328c6b78207c4bf32c87e39bed"
+  },
+  "razet1993b": {
+   "data.csv": "2888c5380f46f55f0926f96dca90e62e17453fe1a7b8082151da2efced6d3dd7"
+  },
+  "rong1993a": {
+   "data.csv": "50eecb6d6cc8758ee29b007d46f5ad5ebb1390d94392f1e5b860f73ce8416d84"
+  },
+  "rovera2002a": {
+   "data.csv": "1c23c6fb9964077f395464cf7da5fdf15cd86090bfa937d584b37df458412d46"
+  },
+  "ruben1973a": {
+   "data.csv": "60ef52ede2ce6ea2903d4f24b617fa38d5735bf3c41cec9cc70b6e136ce8dc20"
+  },
+  "samoudi2012a": {
+   "data.csv": "0d35914279871829a8c6be5eb38d877db8f594adbb9170aa81ca63f4a746cd44"
+  },
+  "sansonetti1990a": {
+   "data.csv": "219eac83b6fb1f578427ef9c43168482212ff6e5fac9dd84e1ef025ceca0f39a"
+  },
+  "schweitzer1973a": {
+   "data.csv": "3017747cdf620f2f2e418bc253055ff010fc436456766ec453200046eb22faad"
+  },
+  "shiner1993a": {
+   "data.csv": "6f38837ec69dd1a54661c18ce7e09d8771e50c99f93596cc65d57da0df34558a"
+  },
+  "smith2007a": {
+   "data.csv": "d4f23281f14f97f05cf6f8e3942b6ecdba1689e4f64762f920a8f7f75eafd736"
+  },
+  "sorem1971a": {
+   "data.csv": "ba17198497c40016f22b38e7f408fc036e207b66180eaf4768d9f56887f47686"
+  },
+  "sugiyama1988a": {
+   "data.csv": "0f8f18e27127e7e433120d8c43fffb228d23dcd483c5183dd7b5307cfe440043"
+  },
+  "tesic1975a": {
+   "data.csv": "ac860df1a71731a7420cf0eabbff1fe6ebb66a65038498623ddf45407121c52c"
+  },
+  "thang2012a": {
+   "data.csv": "32a5eb5e408577c1817ebaf56ee7058290d6ccf77bcd979e0683d72ccb02b0d3"
+  },
+  "wallerand2006a": {
+   "data.csv": "9397b091d04860a9592bf5d33b37a534b377f8fc2fb443b1e3be0af15e3149e3"
+  },
+  "weller2026a": {
+   "data.csv": "30a56b3bf7040568955dd8e112ead968673b22534222170dc28895329564f62a"
+  },
+  "ye2000a": {
+   "data.csv": "ee5b9fc2f411455bde5b4da114f1b7e6e59082ccf0722f03de0f1b5b81ae9fb3"
+  },
+  "ye2001a": {
+   "data.csv": "e6c789005974fab9aeeafa29dc514937247aee2e88939b03a268beaba71f779a"
+  },
+  "yoon2001a": {
+   "data.csv": "b6d759f531c765a20cd1e47665409b3bb7fca1aa2a5d7a64224b2d52b417a936"
+  },
+  "zhang1999a": {
+   "data.csv": "b5bb7b90d11267009af8dec630c571f1201c5f188f393ca73574c2ed401a9ec5"
+  },
+  "zhang2024a": {
+   "data.csv": "d0b78496a9b70702fb3a774aa7ea64c84fc234d51cbbb29ef688216c37705017"
+  },
+  "zhao1985a": {
+   "data.csv": "0d4030acf253e82430cb2a8d03f0fff3ac493e84da4a4c5fc6f97bd4559cbf5b"
+  }
+ },
+ "meta_informational": {
+  "arie1992a": "859825a2ae3974ca46835ea239feef58c70c96decd057fe1ec1403116d81a593",
+  "barwood1984a": "52795d5be7a840c553d532fcc2e3d58534b90d834e48f73c1287761e9f5ce739",
+  "bennett1979a": "7d43f4fc5e7f4ea5ddeb2d61fbf8b311fdc5e5d3fc564de196787162eef4bf4d",
+  "bennett1984a": "e4f89b057c8cd62c9f3090ff33a84d474554d842f561bc855f2f62dfd0ca606d",
+  "bergquist1984a": "e47926d64d0ddb0cb68d18b1ec7f9d12385f03e88a1aca3bb028149c4230fa66",
+  "bipm1984a": "273509631782b964495cdc3cb855a84c5245d9e5d03d1ab8739c54411c12644b",
+  "bisi1997a": "5d228f052cdb44e21c94d19292e9adde3784e635666adefd33219d1ae0e92726",
+  "bodermann1998a": "350087f1e9f63717e62fbabd7ffcc4bb24335e8e6e531df1033ed80f38c74939",
+  "bonsch1983a": "b72e737cb40f948ba2e0c90cbf04f417b7e2b9f26747a87f1005633d121a6921",
+  "brand1993a": "c79e646de3739e70625c0270ddf99ecfc468a9c0047c018e5670958856554737",
+  "cerez1979a": "ecc65f5152eef5aa507dcf6566869895ff9fabe19d7644b7d77ec9496351fa7f",
+  "chartier1989a": "6cf4d573255d9a04021fc4c1a2d04074b867659a3952f063ce7e3f1852c50ace",
+  "chartier1992a": "b8e3128ca5066882796669edea733a4dfe9792d93f4080bd9cd50bde314ad8e6",
+  "chen2005thesis_a": "c9c8978b6b69f05dfbeb94591d0293dbdcc5bbfc72a09b4fb46d1929ae131585",
+  "chen2005thesis_b": "525dd105c7f373465c6781b230e042d516999cffcb576a0f14748e7ffde54980",
+  "cruz1994a": "6ad1fec03c0cdcdf37ce623823364605f345662021937dcb43028ae1a0c97400",
+  "duburck2005a": "cb43cdba0d30cef8f0397b3cb6fc0dced9142e08b304c0e5155dfaf0bab2a72e",
+  "edwards1995a": "ad3982c7ffc779eb3a2d6be1e598abb87941018f277ecff3c348122a51e6acc3",
+  "edwards1996a": "8b96559a7443c3a716de778e46c9244e52ad6beb4acc5fdab59bcf69a41f3fa7",
+  "edwards1999a_6mhz": "d84a58243fb9dc40f11c3fa8b286a81b3508f293f449a5ea47982b162869d9bb",
+  "eickhoff1994thesis": "c806e3a33cc33b76120ddc9a37826924ed64aa7edcc060cc44304d3d53aec68c",
+  "felder2005a": "23dd94198f3fd0216953062148fca99e4a3fc4ab8966a4f8efefa5d763b8113a",
+  "galzerano1999a": "cfa6081aaf9ec2e097cdfffc9fc31c03b80f1ddb251a1b5c9433d5cae2f08b97",
+  "galzerano2000a": "add6230760ee2569355a670c63b12b675bbe6b8b45936ae9d242389586b931d8",
+  "gerstenkorn1983a": "3aebd6e40fcbeb6228f8933747c6dee53dccdab8ace2c3170e6ef914dfb6b4da",
+  "glaser1982a": "3aaa4e97200da21bf307e6cb2db51317f5a81e80b6c7cff764d0791ee17ebaa7",
+  "glaser1986a": "1c6040bff456948a48bc05fffb3a4bd2c7ec7b3ff3de4f7ef69503f87f8b5ad9",
+  "hanes1969a": "1a79ff35e592d0e7be3ad791d14a59ca10c1af88de79c21cbe5bdd1e0ccdc4a8",
+  "hanes1971a": "5af1e334378c60111ce841289facf36b61a28e5c5eddec0ee3fd8d067bcaef8f",
+  "hanes1973a": "ad88e179ba928d0df9f9bd0d559088672dd3577d0c03579f46e04d739333c540",
+  "helmcke1974a": "0363f8944f0ff609ef9cbf5c3f1d82b5681fdd94015ea557f629e6180805e4e8",
+  "himbert1991a": "8ac2e4a7220746298327600c6fc399b295dbddfdde4d25dd56d91e1e5b6c0c96",
+  "hong2003a": "ce06f58a0fe488a9070651e875cd199cedfd54e440afef85f52a1b42f8d679d2",
+  "jaatinen1998a": "c63bd67f276b79360ea4bd905ddbb2fc6e084ed5775f02dffff9b83895759cbf",
+  "jennings1983a": "56a74b70ea04defefe9ae16578ff65c7887b2295d3db4bec3346dbc8d9b7c0eb",
+  "koffend1978a": "582ed7a8e5c4a32845a57d536f20a6cef01cfb75e4c708cfa1c833c792240cea",
+  "kompanets1979a": "519b8a906745d170ad5677e8bf4a25a49c2cf6402ff8c6229884590f4bf6d7d5",
+  "kondo2025a": "b9a3fd3fb01f3ec498484ecd6bc1a1f42e17ea796c97b765288c25baf33756e4",
+  "kroll1969a": "6ebb0e43d081c37e54c092f3cae800c989e069e73a0a8779aedaf5ba0ce3a138",
+  "morinaga1978a": "a1882b1a36fdb7ff621edf743739fcacc0dffa47d3a25f181653c5bb5bdc3825",
+  "morinaga1984a": "45efea2b664aff0f7625b8d47ad45ce1c71d1ac0d3e215541dd036d360d3ef63",
+  "morinaga1989a_b": "0c20fa35b249909e3857fc0d0900db4818a1bedd924caca10d8198c4b5d99c38",
+  "pique1981a": "dee76d99c9d38342ac7f1bdb12ec9188018638012a471daacac186e94b52f404",
+  "quinn1994a": "7e922f1ae63911f5b820a76dfefe62babc4526b25ab2ae3cf7d18e15ebd8e47d",
+  "quinn1999a": "21327a4dda4fc66ce8868a39a1bff26e3c14a1c649143f4da63bc74cffee4c8c",
+  "robertsson2001b": "21ddbf7223d5e446578177a503f6aa426f4950d683cb0ae83307fb96f37e26e8",
+  "rowley1973a": "28b8f89a3240052d3021b0f05c2773f3cfb6d9e73ca5f98bebc73fd4e36372ec",
+  "simonsen1990a": "42bfe6201c49d27b9222294a1ad11376ac9ab7a21b15a44addf8e6ecc9cb10e5",
+  "simonsen1997a": "eba276f07f70dfd329b678b543d6e92a1cee09aa1ae74075a9a106061637f536",
+  "spieweck1980a": "389f36af979c65815998a3f47f063eff2ee77484c44059185dc84b07410a81fe",
+  "talvitie1998a": "3fee7b9f90464bc72211b55928f7eaccda2cea9724d2f9a04941f6fbd8547222",
+  "tanaka1977a": "be695704d89ac13fe7bedb8598609fb2ff7e49908a3cdff1827a31edd6c3eb74",
+  "titov1997b": "3ec23889c65be014ee1978360acf7109d1e75841dd6a2a335c6c5ac0dab89ad6",
+  "wallard1975a": "2c66a0164be2695254cbcb466951be39562ac1c106931a293562ea0f70d5c2f8",
+  "xu2000a_recovered": "460c39f209b15e5e18810a113f8386bcba9708afcb75e945d23f41060ac1ce81",
+  "yoshiki2023a_p34r58": "e5a2547bd6e3c98564c68190e3dcf0c51203b5c5bfe98938dc37ef685beaafb2",
+  "acef1993a": "5019efabfe934379b8d5d578b2e0dfda4d1b87989577d3a38e05c409e8bfd9aa",
+  "baird1979a": "3d6cd80a73a01a69802eae2c62e04aa95a1cfb1339d377ca8478557dd1ec0e67",
+  "balling1999a": "40d9fcc4c986251c90d7734d8be88737bfc887e6dc3d4fa651ee635ab087ce83",
+  "balling2007a_532": "557732a2f024a4e1f2e0dd2bf09cb9fa1be53cdbcb9de0333a5ddc396360bbed",
+  "balling2007a_543": "6a50e0a20033e28cb2d76ab37d0052ede2d984699ad027fffc76ce679b04a09c",
+  "balling2007a_633": "6e646470d606eaa54a11e78110dd4ba782c8d57821569b738e41cc3add8272e6",
+  "bernard2001a": "2c78b275abb415f92b0d954346dffe96ea1301e2a83fbc89940704ed5b424384",
+  "bertinetto1987a": "316aa93ae7468902d28fd914db67deff8f01ac9a662acfdccd0f20f40ee6a4a1",
+  "blabla1993a": "f856431aa4d73637e70c23c5d173e683b5626cf9e1ffce84f40380241199eb32",
+  "borde1981a": "9ac9db78739ad0dce37db668698075c208197677149a032690042efa3c70d3a0",
+  "cerez1974a": "6386d513ab7d64af9bdc4fe3bc471cd2f45dbd8340e0c224345f2b052d0d8155",
+  "chen1998a": "d7129c0d931e74b73c712b57bd8ad9a9d868dda82c8b3722bf524bf75ec4d238",
+  "cheng2021a": "877c462f148e1268d408767eac4b64ebc46d10d2c72933244a889f15b649cca2",
+  "ciddor1980a": "23de3b49bb5ba99d4532a5dbf5eb4b4e2462fb2ef813163202798ff32de0fb24",
+  "demelo2024a": "be9fd29bb078b4f7b22b1b22bdce901e9e03bc79c618ee4dc5bee8fca6d3ec56",
+  "diddams2000a": "b53b9537809289a78d90ad9c974eaf25e929c4c5631ecce5c653af185ad9023d",
+  "dschao1980a": "bc690856302c2ad2e14ce6bb59ece94a693b38c077d0c31202d256a2568ff3eb",
+  "eickhoff1995a": "3ca6c5326de630a4fa33014fe016c2fd9f0c710d094e61d5f4faef7990d8c8c9",
+  "fang2007a": "3b7fa73aa7e5fefaad9d3647d2d2c1c268ac0add9a9840987baee49ad01ba728",
+  "foth1979a": "7b0af5ccdac57107a50095a10cc965e953046fb70f7dd1af6cec66774bce1a12",
+  "fredinpicard1990a": "96b371570d19e170f6f1e3f219ac431c9153d210087015db86f4bbbc7aa7c9a0",
+  "glaser1981a": "5542b7afb409dbd8a6d5c92009b2f5c8f62c0969043d4a857f17a2ad199d9a14",
+  "glaser1987a": "c7b422af29fd341e433062f34e98e4fb3075e1a57be68843604629aed20910e7",
+  "hackel1980a": "30ffdbf99b0c841fd75e5151a889c03f121fc1cac2474dfea70d9451db56c8c6",
+  "hamid2006a": "a5751d38f8214c326cb5c81eca25724f636af794c174fc26fc69342290cfca28",
+  "ikeda2018a": "58b677721101f65fc60edf2c31c0373d441ce30aed0b579f980f3816146fc754",
+  "ikeda2020a": "51267c4128e75841fed0980561564d0e4e9f68060157ba72221280676ece9e0c",
+  "juncar1981a": "5ba387e1506c45a40936ce522e05186b843d2232db600a6a0dcb68d7d3c5ff8b",
+  "jungner1995a": "d79d27aeade4b0168646d260c253401f8cd6bde539532ee312fb39de230da42d",
+  "jungner1995b": "92bd69fd78f737d316a3188620e17e2d7e2d9841c502e8f775728ba73aeac44b",
+  "knox1971a": "3b7adf29db7e8e16304e9d7f79ffcaa30550bbadad67411a353debeacffbd52f",
+  "kremser1994a": "020fa98e0c5f0c6fe9dceb5b6d9fcea9186bda4cee80b636974684454c5fb97d",
+  "landsberg1976a": "9c9f4df3b57d474ac99201b0457a4ad92fd634bc4daea749871afabd2c189fb5",
+  "lea2003a": "c228391eb871d4b8de5a78ef2286e0c98b1b67aef967551b84a0e2e622444b8f",
+  "lin1994a": "61cffe029c0cedce87eff4b2180c28921f45ffd4a3cd65a488f5113bc296edf7",
+  "ma2006a": "4a1abedfcc0d83d2e1e691ab49136ddcda7fd9b1ba67664579d3d8ee6e016675",
+  "macfarlane1999a": "95053afe18f9d42018db0e9237e2642a27b007556ebf98502600ac4145598561",
+  "madej2004a": "28ea9ddca5c737975879e427d28e2619c340f08ddaf0da711b4f1e416b0aad41",
+  "magyar1980a": "3f1fb1cf04bd0d2665429a6d9372c2ac3d856fb89e9eb1e5fc3cc8e38e52b75e",
+  "merimaa2008a": "f3576e4decb2e3052003f9150621543cefd62e2aa084dcc5e23a3ab56c2531df",
+  "morinaga1990a": "faa1c0e046bc443b65769bd097f3da21d5d12f2317dab4e583d993c97bea657b",
+  "nevsky2001a": "28bbe9882f59fa578a113e18d128b76061d11bb6f4328483a567fbabd61675a7",
+  "nishiyama2013a": "e2c35e6997f2b09b9326bd2a8918de4a580cf6b41bdde4c39f0df1917b053f24",
+  "picard1996a": "c9f489efe327d2186a968e27d2c537d3dba362e4f22312df2ad457f40fdc3a47",
+  "picard2003a": "84952deee6fae3133d9b342bcf075f5d45b6a4198d4ebff1555866412b0269e3",
+  "pollock1983a": "2b47bc25be3abfeb4b59c79480e007ddae58bd596040de3450b34fd4c30897c3",
+  "powel2021a": "33cf13b293e5d7a8ef76d67a2b2677966b66ccbd639cadcaeb05acce923d7b98",
+  "rakowsky1989a": "dff3921469b8ef0681c8047a824fb804041f6ff7ab6b9eeb292d0bb3424c3a85",
+  "razet1991a": "841e5f314669f9515aa6b6740ceb7019d5b1e661c9b303fa58edd589c018510b",
+  "razet1993a": "9d53274dfcffb5228d8082442d4406ca1dd37a25291da5ae36abc8b888e164a8",
+  "razet1993b": "cfde144e71f62d67a43c5dc6093acf770adbbada9df5224552224af2c37cfdc4",
+  "rong1993a": "a882ec7a4b6b83cf3c466c2189bd439b5d27a79def19bda9a028a3cbf2e6332e",
+  "rovera2002a": "7412ad57e98a61ea2492681688ca66d610abf41e134cdff84592cf7a85443dea",
+  "ruben1973a": "ce41a0feb9c72f47e3819ec8101a3e358f090b733018b07b2659ccca239f2299",
+  "samoudi2012a": "542d98b3b6b9b1cf820d5bf7eb13d6593484ca9b38a7c55f6b599496179898b9",
+  "sansonetti1990a": "65ee1925104bdf27e9c5f8a6183da8be762badd5b498c1b5bd403e387d0c3930",
+  "schweitzer1973a": "33ff075ae17bda644e5bd27abda5e7283a1d6ec11c345cfe7b87e85347c16ab7",
+  "shiner1993a": "a6e698354c955cb8d86ae78a4257395dee1a155d7620dbc462f750d281234ea2",
+  "smith2007a": "90679495464b3f586b3bfffb628f3160f51f8a0b3cdd6bce8b887a98e0c16ff2",
+  "sorem1971a": "67a560c19cbbd905b68fda0128782bbe15896cf5a212c7c468da5364648616f8",
+  "sugiyama1988a": "414865777770ccdc72709e37c0deb55360d9e158ceacb7aafcf183523550273e",
+  "tesic1975a": "f3f7fa3379bf09b7c86b6d1ff9a1785ab69ed9a91656aca6a1f92f038a516719",
+  "thang2012a": "421740fb0a25127a581418eb48f31e2417e1bd84161a8285c30f98ddc0f90e60",
+  "wallerand2006a": "a66df47641459f7247646bee63f47cdf72630f98f06a2f84076dedaed2136cd4",
+  "weller2026a": "32237ecd3ec68305f63148b96466c87110b632f494099ac46872ff893b758d1f",
+  "ye2000a": "da78e193efc0dd60fad1efec6dbe700b303cc5f6b71e348c7526097ffb006c4e",
+  "ye2001a": "9e09eaa7dc5937379236887b8812daebdabde1d8c6aa816d9e872126f3f44c7c",
+  "yoon2001a": "ccdf3fc070e1e25b9e813731b98cacd0197c0fdbfc75e53d922ba84e6348a5a1",
+  "zhang1999a": "a13b26bce6cf97da54309670649ba374366a02caa8f01b8178c1f189a3ea33d3",
+  "zhang2024a": "3548bf132e85dd3376f52cd618a84d61b25bc73876aba7897ef6742547a10982",
+  "zhao1985a": "a744ed8fad790c984983c263b67856fe5e19a948b8405aa94dc1d5578dc22939"
+ },
+ "earlier_registries": [
+  "src/i2spec/data/research/20261020/validation/pending_blind_v1",
+  "src/i2spec/data/research/20261020/validation/pending_blind_v2"
+ ],
+ "earlier_sets": [
+  "acef1993a",
+  "baird1979a",
+  "balling1999a",
+  "balling2007a_532",
+  "balling2007a_543",
+  "balling2007a_633",
+  "bernard2001a",
+  "bertinetto1987a",
+  "blabla1993a",
+  "borde1981a",
+  "cerez1974a",
+  "chen1998a",
+  "cheng2021a",
+  "ciddor1980a",
+  "demelo2024a",
+  "diddams2000a",
+  "dschao1980a",
+  "eickhoff1995a",
+  "fang2007a",
+  "foth1979a",
+  "fredinpicard1990a",
+  "glaser1981a",
+  "glaser1987a",
+  "hackel1980a",
+  "hamid2006a",
+  "ikeda2018a",
+  "ikeda2020a",
+  "juncar1981a",
+  "jungner1995a",
+  "jungner1995b",
+  "knox1971a",
+  "kremser1994a",
+  "landsberg1976a",
+  "lea2003a",
+  "lin1994a",
+  "ma2006a",
+  "macfarlane1999a",
+  "madej2004a",
+  "magyar1980a",
+  "merimaa2008a",
+  "morinaga1990a",
+  "nevsky2001a",
+  "nishiyama2013a",
+  "picard1996a",
+  "picard2003a",
+  "pollock1983a",
+  "powel2021a",
+  "rakowsky1989a",
+  "razet1991a",
+  "razet1993a",
+  "razet1993b",
+  "rong1993a",
+  "rovera2002a",
+  "ruben1973a",
+  "samoudi2012a",
+  "sansonetti1990a",
+  "schweitzer1973a",
+  "shiner1993a",
+  "smith2007a",
+  "sorem1971a",
+  "sugiyama1988a",
+  "tesic1975a",
+  "thang2012a",
+  "wallerand2006a",
+  "weller2026a",
+  "ye2000a",
+  "ye2001a",
+  "yoon2001a",
+  "zhang1999a",
+  "zhang2024a",
+  "zhao1985a"
+ ],
+ "earlier_manifests_sha256": {
+  "src/i2spec/data/research/20261020/validation/pending_blind_v1": "dc3d28f4296a4f0103e7638060346ddf78ac07a97a7920c486eab44466a38d16",
+  "src/i2spec/data/research/20261020/validation/pending_blind_v2": "5cc34b57b3bc3965abc1faab177fd7e8d39ff7024e0bf2d24d8edeb4134e8ed3"
+ },
+ "code": {
+  "src/i2spec/research.py": "bd4191bd06310cbd23384bd0699d1de48bb1e3b5581e381502f97526ba30a730",
+  "src/i2spec/research_expanded.py": "9a6e71ecdbadb3308f22c3694a7bdb3b319cd71856c7f41a4ea72d9c39ff4e1c",
+  "src/i2spec/hyperfine.py": "a13189ff53c0630ec0c9b2db00870035f67e358f6b17dea258e910bb589963ab",
+  "src/i2spec/bspline.py": "2b521cfba8bef42f6849d06c5fe9770156b8f5a63139a6cda890f15ecf9db42e",
+  "src/i2spec/wigner.py": "d46fb5d679905c7a6e9e06792037164c44d26248b482460a42af87c23e5d3967",
+  "src/i2spec/lookup.py": "ac577bc7a48920fe00711eed366fcb675dfe093f4aa223f87cc887c0d210e2f5",
+  "src/i2spec/constants.py": "12da1efb0e02a160d391c1210ebf480b17fcc08fa1ec00b01d6246d7a167320e",
+  "src/i2spec/observations.py": "63369bf693d8a8d38605cd9f67f622634d88ba5c82aaa88e041ba5dd06912cda",
+  "src/i2spec/fit/registry.py": "19d91af244eee7da557386b45f51de8f95c566469397995982c34e49b6b1daa6",
+  "src/i2spec/data/research/20261020/manifest.json": "356640b39c4d5a7f7b392f477e06f92904a01f300b874ae3a2e44a9245641889",
+  "src/i2spec/data/research/20261021/manifest.json": "e2e80fc3b490f4840257aa6feec09eaffc683c35c5608134f4796077a873a675",
+  "src/i2spec/data/research/20261029/manifest.json": "a88d712328f471d0f9d5b5f28cbcdf3ea936473c187eace11b34f42023fd2353"
+ },
+ "data_other": {
+  "hyperfine_parameters/chen2005thesis": {
+   "data.csv": "c108d8fd11fcbd3e1e882cbc47e6985c9b5a63cc351f56d651da9e134f4ebfbd"
+  },
+  "hyperfine_parameters/eickhoff1994thesis": {
+   "data.csv": "f101df88055820daaa92c1d0fddea5887e96e240e1483214cb7c546fdddd60bb"
+  },
+  "hyperfine_parameters/ikeda2022a": {
+   "data.csv": "6dd9fae36053d0d4f62bbaf9cd7db4a02fec6d460fb9781b0749409dcea965a7"
+  },
+  "hyperfine_parameters/matsunaga2024a": {
+   "data.csv": "90947690fe490b455ccfcda1848358dd79067aca897e6511f4a19cc2c1006eb1"
+  },
+  "hyperfine_parameters/razet1996a": {
+   "data.csv": "3236436027b6a97a79121a8d1a1f2d6f8e0a7e5ef0d7a32ae6e48ed3c39501f8"
+  },
+  "hyperfine_parameters/robertsson2001b": {
+   "data.csv": "3f43a38b04f42b828b00904f64c9cbca4431eb36e168fa85bb0a055135e3f558"
+  },
+  "hyperfine_parameters/wakasugi1988a": {
+   "data.csv": "72ee86a3c94c2fe592ccd83a6abcc5ad582210a0ac991edd3e33677640be853c"
+  },
+  "hyperfine_parameters/wallerand2000": {
+   "data.csv": "49b08202c5ba3a40eab737ac62db30bdb2065a306111bcf0395ddada213448b1"
+  },
+  "hyperfine_parameters/yoshiki2023a": {
+   "data.csv": "ce0c2d3ca0d26f0bb68b2580f6cda80d4a19d28bad11fe8b270c9e096d38096c"
+  },
+  "x_hyperfine/borde2002": {
+   "constants.csv": "e689357d56283ed289f64916d6a1012ada1a83d6d634cb5b65cd744f9df4415d",
+   "data.csv": "4c8a2df717cbc883ba4d5b739ceddc8eaccd9f2e8080f93d7aa5a7f4a6e9f038"
+  },
+  "x_hyperfine/hackel1979": {
+   "constants.csv": "5d9a05aff93a8a91bb4b388f3b8b09f9eba31c3534792444364907e71f27c1cd"
+  },
+  "x_hyperfine/koffend1978": {
+   "data.csv": "58d8093b165ddac9cd1b12cb7d063ad830e016bf33cb4c2a3c32a4d44120c9b0"
+  },
+  "x_hyperfine/wakasugi1988": {
+   "constants.csv": "98be436399e49b778499c05ceda2adb29c1af3dc62b77d6c4b67688711ae8ebd"
+  },
+  "x_hyperfine/wallerand1999": {
+   "constants.csv": "2bb173c909d1cfefb073ba2990883f192d61446d4c14fff1a1c0e7f249b35ab7",
+   "data.csv": "8ad1dbda4d7c5fbe229ea0d3960959b1228b8b392ff867227583ccd758eb22bb"
+  },
+  "x_hyperfine/yokozeki1980": {
+   "constants.csv": "bfe12302a0bbf7ba51f17ad85a640f3978eb8fe083da43e58502ffb073a6b8a0",
+   "data.csv": "372e72876fe663ba1504aba1d4b01de5d24ced498c327fb3fa02d8e3224b1788"
+  }
+ },
+ "meta_informational_other": {
+  "hyperfine_parameters/chen2005thesis": "a5303f8b04c072d28c184d8ce9377924ef03e0ead81da92317ef98e91eecf507",
+  "hyperfine_parameters/eickhoff1994thesis": "6f8ac3db66416f2fcab416bc2ea0e9e80b4f10835ea6e782169788eccae67cdc",
+  "hyperfine_parameters/ikeda2022a": "7ff086b9eb7541195362a629bac3bed32049191aab3fba810962c01905c83dda",
+  "hyperfine_parameters/matsunaga2024a": "98bad6b80300e2ffbe8036f0c938b2f4e373e33170f90f63d3ee9f5a025eed13",
+  "hyperfine_parameters/razet1996a": "4073284106851885f6d55c56347e16e3212195be62ff0b51d4a94762141f7c6a",
+  "hyperfine_parameters/robertsson2001b": "f541c29e1849a35f4124870b6861a68ccd7fa26b721fdc8825b1a93c33b1675a",
+  "hyperfine_parameters/wakasugi1988a": "459d9f0b36fb9bdb27aa4aeec16a5e9d579089f00ab162a3e0567942c0a765c6",
+  "hyperfine_parameters/wallerand2000": "e6cfbcdb4b6f606996e380a842880dc330c76d8f44c7dcddd26883bf8ac42c31",
+  "hyperfine_parameters/yoshiki2023a": "1184d2234b48ecb9d563544ecb0356836672dd62838ead2b58b4d4539b2ac88e",
+  "x_hyperfine/borde2002": "3ad5a132576d8dc5cacf6beaf1346ab0fff0591bfd72ee431406bba17a3aaed0",
+  "x_hyperfine/hackel1979": "ffdb3c65797a4478980e3b0929bda4ff8a1d36db121b34942570ca14ff37176d",
+  "x_hyperfine/koffend1978": "43d48a616f1d00a602193a0b6a44d977d1fdf100c5d4fa081ec68d7040ff8e69",
+  "x_hyperfine/wakasugi1988": "b0fc91b64496a2369d52c2c7cf92bc648945d43fac3aaa36be190da6e04d09f7",
+  "x_hyperfine/wallerand1999": "58425288b4d5fd76f5f5d472e0d81d33bc0c9f610e98c0a16ebf96e5ce3ab415",
+  "x_hyperfine/yokozeki1980": "946d783b08927219a0672866f5f23dcc1b83aa407475368c84c476eb9d15d879"
+ },
+ "data_other_root": "data"
+}
