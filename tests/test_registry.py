@@ -193,3 +193,57 @@ def test_refreezing_v2_reproduces_its_uncertainties_but_for_one_band_intervals(r
     one_band = {t["id"] for t in targets if t["kind"] == "interline" and t["component"] and t["ref_component"]
                 and t["isotopologue"] == "127I2" and band(t["line"]) == band(t["ref_line"])}
     assert changed == one_band and len(changed) == 7
+
+
+def _pending_set(folder, name, files, meta=""):
+    path = folder / name
+    path.mkdir(parents=True)
+    (path / "meta.toml").write_text(f'id = "{name}"\nexclude = "pending: test"\n{meta}')
+    for file, text in files.items():
+        (path / file).write_text(text)
+
+
+def test_constants_are_registered_from_identity_columns_and_scored(tmp_path):
+    """Hyperfine constants and X intervals: freezing reads no value (the value columns hold text here), and
+    scoring reads them, per quantity, with the second sublevel's I from a printed label in the note."""
+    data, empty = tmp_path / "data", tmp_path / "observations"
+    empty.mkdir()
+    hf = "line,eqQ,eqQ_unc,C,C_unc,d,d_unc,delta,delta_unc,fit_sd_kHz,note\n"
+    _pending_set(data / "hyperfine_parameters", "hfa", {"data.csv": hf + "127I2 R(56) 32-0,x,x,x,x,x,x,x,x,,\n"})
+    _pending_set(data / "hyperfine_parameters", "hfb", {"data.csv": hf + "127I2 R(56) 32-0,x,x,x,x,x,x,x,x,,\n"},
+                 'kind = "B-X hyperfine difference constants"\n')
+    xi = "v,J,eps,F_from,F_to,value_kHz,uncertainty_kHz,table,note\n"
+    _pending_set(data / "x_hyperfine", "xa", {
+        "constants.csv": "v,J,quantity,value,uncertainty,unit,table,note\n0,13,eqQ,x,x,MHz,,\n0,13,C1,x,x,kHz,,\n0,13,Bo,x,x,MHz,,\n",
+        "data.csv": xi + "0,13,3,14,13,x,x,,\n0,13,3,14,13,x,x,,\"printed 3,14 -> 5,13\"\n"})
+    folder = tmp_path / "registry"
+    registry.freeze_registry(folder, [], models=("research-20261029-i2spec", "i2spec"), root=empty, constants=True,
+                             constants_root=data)
+    _, targets, forecasts, snapshot, _ = registry.read_registry(folder)
+    assert [(t["kind"], t["quantity"]) for t in targets] == [("hf_constant", q) for q in registry.HF_QUANTITIES]*2 + [
+        ("x_constant", "eqQ"), ("x_constant", "C"), ("x_interval", None), ("x_interval", None)]
+    assert [t["convention"] for t in targets[:8:4]] == ["B", "B - X"]
+    from i2spec import ResearchModel
+    model = ResearchModel("research-20261029-i2spec")
+    p = {f["target"]: f for f in forecasts if f["model"] == "research-20261029-i2spec"}
+    B, X = model.level_hyperfine("B", 32, 57), model.level_hyperfine("X", 0, 56)
+    assert p["hyperfine_parameters/hfa:0:C"]["predicted_MHz"] == pytest.approx(B.C*1e-3)
+    assert p["hyperfine_parameters/hfb:0:eqQ"]["predicted_MHz"] == pytest.approx(B.eqQ-X.eqQ)
+    # the values written after freezing: scoring reads them (strict=False: the data files changed)
+    (data / "hyperfine_parameters" / "hfa" / "data.csv").write_text(
+        hf + "127I2 R(56) 32-0,-544.7,0.01,0.2,0.0001,-0.1,0.001,0.005,0.001,,\n")
+    (data / "hyperfine_parameters" / "hfb" / "data.csv").write_text(hf + "127I2 R(56) 32-0,1908,0.01,,,,,,,,\n")
+    (data / "x_hyperfine" / "xa" / "constants.csv").write_text(
+        "v,J,quantity,value,uncertainty,unit,table,note\n0,13,eqQ,-2452.6,0.01,MHz,,\n0,13,C1,3.1,0.1,kHz,,\n0,13,Bo,1,1,MHz,,\n")
+    (data / "x_hyperfine" / "xa" / "data.csv").write_text(xi + "0,13,3,14,13,1000,1,,\n0,13,3,14,13,2000,1,,\"printed 3,14 -> 5,13\"\n")
+    result = registry.score_registry(folder, tmp_path / "results.json", root=empty, strict=False)
+    rows = {r["id"]: r for r in result["rows"]}
+    assert rows["x_hyperfine/xa:constants.csv:1:C"]["observed_MHz"] == pytest.approx(3.1e-3)
+    alt = {f["target"]: f["alternatives_MHz"] for f in forecasts if f["model"] == "research-20261029-i2spec"
+           and "alternatives_MHz" in f}
+    second = rows["x_hyperfine/xa:data.csv:1"]
+    assert second["I_to_printed"] == 5
+    assert second["residual_MHz"]["research-20261029-i2spec"] == pytest.approx(2.-alt["x_hyperfine/xa:data.csv:1"]["5"])
+    assert sorted(result["not_printed"]) == [f"hyperfine_parameters/hfb:0:{q}" for q in ("C", "d", "delta")]
+    assert "blind | hf_constant eqQ | all" in result["summary"] and "blind | x_interval | all" in result["summary"]
+    assert "hyperfine_parameters/hfa | C" in result["by_set"]

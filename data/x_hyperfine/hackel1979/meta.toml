@@ -42,3 +42,6 @@ two-step; 12 kHz/mTorr single-step estimate from Carny et al. 1977) are line-sha
 matrix element 0.057 +- 0.008 D (43-0 R(15), from the ac Stark splitting of the probe, the Omega_s/Omega_p dependence of
 eq. 2 checked to 8 % at v'' = 10 and 12) is an intensity cross-check. None of those are entered as data.
 """
+
+[overlaps]
+bacis1980 = { relation = "same", v = [11] }   # the same v'' = 11 constants (above)

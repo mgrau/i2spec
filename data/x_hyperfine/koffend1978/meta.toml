@@ -31,3 +31,6 @@ eqQ_B(v' = 43) = -558.6 MHz: that row is a corrected reprint, not an independent
 
 [columns]
 data = "v, J: the X level. eqQ, eqQ_unc: MHz (empty for the v'' = 0 row). C_kHz, C_unc_kHz: spin-rotation constant C'', kHz. fit, source, note."
+
+[overlaps]
+bacis1980 = { relation = "same", v = [83] }   # Table II prints the v'' = 83 eqQ as a corrected reprint (above)

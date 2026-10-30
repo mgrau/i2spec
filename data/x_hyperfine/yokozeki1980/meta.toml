@@ -8,6 +8,7 @@ isotopologue = "127I2"
 state = "X"
 files = ["data.csv", "constants.csv"]
 exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+interval_sign = "magnitude"   # the paper prints transition frequencies as positive numbers, no convention
 
 transcription = """
 Table I (journal p. 3799, PDF page 5): the 20 rf hyperfine transitions observed in X v = 0, J = 13, as printed in the

@@ -335,6 +335,17 @@ class ResearchModel:
             center, components = self._line((branch, J_lower, v_upper, v_lower))
             return center, [replace(component) for component in components]
 
+    def level_hyperfine(self, state, v, J):
+        """The effective hyperfine constants of one level (HyperfineParameters: eqQ in MHz; C, d, delta in kHz)."""
+        with self._lock:
+            return self._couplings(state, v, J)
+
+    def hyperfine_levels(self, state, v, J):
+        """The hyperfine sublevels of one level (HyperfineLevel: F, dominant I, energy in MHz from the
+        hyperfine-free level), with its J +- 2 couplings."""
+        with self._lock:
+            return list(self._structure(state, v, J))
+
     def cache_clear(self):
         """Forget the levels' hyperfine structures and the lines' components: a pass over a whole line list, a
         window of J at a time, needs only the levels of the current window."""
