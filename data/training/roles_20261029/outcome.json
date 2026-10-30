@@ -1,0 +1,352 @@
+{
+ "schema_version": 1,
+ "created": "2026-10-30",
+ "decision": "Decision 2, step 3b (Matt, 2026-10-30): the train-role sets were added to the fits block by block and each block judged by the paired rule; a block not added goes to calibrate. Rules for the fit: a measurement printed in two places enters once, from the more current record; separate measurements both enter.",
+ "paired_rule": "a block is added only if some region's held-out error improves by more than 2 SE and none worsens by more than 2 SE; held-out errors are grouped one value per held-out level (or level group)",
+ "roles_json_sha256": "61cbb828a636dc85435f24e034ea8711f46dd26fabbaee29f96c8fccc2cf838f",
+ "blocks": [
+  {
+   "block": "near dissociation (B v' 61-80 positions)",
+   "sets": [
+    "gerstenkorn1983a",
+    "pique1981a",
+    "duburck2005a"
+   ],
+   "fit": "continuation",
+   "added": false,
+   "variants": [
+    {
+     "variant": "all rows",
+     "flagged": {
+      "X v48-60": {
+       "flag": "better",
+       "mean": -0.0002,
+       "se": 0.0001,
+       "groups": 91
+      },
+      "X v61-89": {
+       "flag": "better",
+       "mean": -0.0001,
+       "se": 0.0001,
+       "groups": 191
+      },
+      "X v90+": {
+       "flag": "worse",
+       "mean": 0.4463,
+       "se": 0.2195,
+       "groups": 44
+      },
+      "B v73-77": {
+       "flag": "worse",
+       "mean": 0.9104,
+       "se": 0.2442,
+       "groups": 14
+      },
+      "B v78+": {
+       "flag": "better",
+       "mean": -1.0262,
+       "se": 0.4023,
+       "groups": 3
+      }
+     }
+    },
+    {
+     "variant": "B C5, C6 fitted (decision 8's alternative)",
+     "flagged": {
+      "B v73-77": {
+       "flag": "worse",
+       "mean": 0.8943,
+       "se": 0.2373,
+       "groups": 14
+      },
+      "B v78+": {
+       "flag": "better",
+       "mean": -0.9455,
+       "se": 0.414,
+       "groups": 3
+      }
+     }
+    },
+    {
+     "variant": "gerstenkorn1983a Fourier rows out (a duplicate)",
+     "flagged": {
+      "X v48-60": {
+       "flag": "better",
+       "mean": -0.0002,
+       "se": 0.0001,
+       "groups": 91
+      },
+      "X v61-89": {
+       "flag": "better",
+       "mean": -0.0001,
+       "se": 0.0,
+       "groups": 191
+      },
+      "X v90+": {
+       "flag": "worse",
+       "mean": 0.3461,
+       "se": 0.1654,
+       "groups": 44
+      },
+      "B v73-77": {
+       "flag": "worse",
+       "mean": 0.6539,
+       "se": 0.2086,
+       "groups": 14
+      },
+      "B v78+": {
+       "flag": "better",
+       "mean": -1.0111,
+       "se": 0.3728,
+       "groups": 3
+      }
+     }
+    },
+    {
+     "variant": "... and the (80,0) rows out",
+     "flagged": {
+      "X v48-60": {
+       "flag": "better",
+       "mean": -0.0002,
+       "se": 0.0001,
+       "groups": 91
+      },
+      "B v73-77": {
+       "flag": "worse",
+       "mean": 0.4611,
+       "se": 0.1671,
+       "groups": 14
+      },
+      "B v78+": {
+       "flag": "better",
+       "mean": -0.8246,
+       "se": 0.2839,
+       "groups": 3
+      }
+     }
+    },
+    {
+     "variant": "... and pique1981a's interferometer intervals only",
+     "flagged": {
+      "X v48-60": {
+       "flag": "better",
+       "mean": -0.0001,
+       "se": 0.0,
+       "groups": 91
+      },
+      "B v78+": {
+       "flag": "better",
+       "mean": -0.5486,
+       "se": 0.1885,
+       "groups": 3
+      }
+     }
+    },
+    {
+     "variant": "Fourier rows out, pique1981a intervals only, (80,0) rows kept",
+     "flagged": {
+      "X v48-60": {
+       "flag": "better",
+       "mean": -0.0001,
+       "se": 0.0,
+       "groups": 91
+      },
+      "X v61-89": {
+       "flag": "better",
+       "mean": -0.0001,
+       "se": 0.0001,
+       "groups": 191
+      },
+      "X v90+": {
+       "flag": "worse",
+       "mean": 0.21,
+       "se": 0.0985,
+       "groups": 44
+      },
+      "B v73-77": {
+       "flag": "worse",
+       "mean": 0.2202,
+       "se": 0.0937,
+       "groups": 14
+      },
+      "B v78+": {
+       "flag": "better",
+       "mean": -0.9019,
+       "se": 0.3157,
+       "groups": 3
+      }
+     }
+    }
+   ],
+   "note": "Settled on the last variant, whose two exclusions were documented at transcription (2026-10-21) before any block ran; the (80,0) exclusion rested on a reason found after the results (only 6 of the 10 rows carry the printed upper-bound uncertainty) and was not used. B v' 73-80 is stated as a limit of the model."
+  },
+  {
+   "block": "B hyperfine beyond the core",
+   "sets": [
+    "chen2005thesis_a",
+    "chen2005thesis_b",
+    "foth1979a",
+    "sorem1971a",
+    "weller2026a",
+    "yoshiki2023a_p34r58",
+    "ikeda2022a",
+    "matsunaga2024a"
+   ],
+   "fit": "hyperfine (beyond the core)",
+   "added": false,
+   "variants": [
+    {
+     "variant": "all rows and constants",
+     "flagged": {
+      "v59-61": {
+       "flag": "worse",
+       "mean": 967.4243,
+       "se": 292.0599,
+       "groups": 9
+      },
+      "v65-70": {
+       "flag": "worse",
+       "mean": 1659.45,
+       "se": 234.1658,
+       "groups": 7
+      },
+      "v71-75": {
+       "flag": "better",
+       "mean": -1087.1377,
+       "se": 204.4148,
+       "groups": 2
+      }
+     }
+    }
+   ],
+   "note": "Its own rows predict worse once trained on: the model form beyond the core cannot absorb them."
+  },
+  {
+   "block": "other isotopologues",
+   "sets": [
+    "bipm1984a",
+    "chartier1992a",
+    "ciddor1980a",
+    "magyar1980a",
+    "dschao1980a",
+    "glaser1981a",
+    "helmcke1974a",
+    "schweitzer1973a"
+   ],
+   "fit": "core",
+   "added": true,
+   "variants": [
+    {
+     "variant": "all rows",
+     "flagged": {
+      "isotopologue rows (z^2, lab left out)": {
+       "flag": "better",
+       "mean": -1.92,
+       "se": 0.89,
+       "groups": 24
+      }
+     }
+    }
+   ],
+   "note": "Judged one value per held-out level, as the other blocks were (chosen after the results). Per line, held-out B v'33, B v'39 (4 lines, -1.33 to -1.41 MHz) and sakagami2020a are worse; the isotopologue rows predicted with their lab left out improve (z^2 -1.92 +- 0.89, 24 groups)."
+  },
+  {
+   "block": "atlas line lists",
+   "sets": [
+    "gerstenkorn1977",
+    "gerstenkorn1978",
+    "gerstenkorn1978b"
+   ],
+   "fit": "core and continuation",
+   "added": true,
+   "variants": [
+    {
+     "variant": "printed assignments (1977, 1979, the Complement's sample)",
+     "flagged": {
+      "cont B v63-72": {
+       "flag": "worse",
+       "mean": 1955.5314,
+       "se": 505.5036,
+       "groups": 45
+      },
+      "cont B v73-77": {
+       "flag": "worse",
+       "mean": 957.1517,
+       "se": 296.1969,
+       "groups": 14
+      },
+      "core folds absolute": {
+       "flag": "worse",
+       "mean": 2.7604,
+       "se": 1.0414,
+       "groups": 7
+      }
+     }
+    },
+    {
+     "variant": "model assignments (1978 volumes, 1978b); 1977 printed labels within 120 MHz",
+     "flagged": {
+      "cont B v63-72": {
+       "flag": "better",
+       "mean": -0.0025,
+       "se": 0.0012,
+       "groups": 45
+      }
+     }
+    }
+   ],
+   "note": "The printed assignments miss the model by more than 5 sigma on 20 % of the Complement's lines and fail the measured-line check on 16 %; the model assignments sit at the measured line of their label within 3 sigma for 93.5 % (1978) and 96.5 % (1978b) of the lines the precision rows share, and close X combination differences for 97.7 % and 98.7 % of pairs. Each source on its own scale (one offset, the median against the precision rows): 1977 +127.0, 1978 +170.9, 1978b +189.4 MHz; sigma 30 MHz. Known and kept: the 1978 offset drifts about 30 MHz across the range (+191 MHz near 15 000 cm-1, +159 near 17 500, +171 near 18 500).",
+   "assignments_sha256": {
+    "gerstenkorn1978_assigned.csv": "3da3b1cf413847cf9524b4a8029939e733c31fec02a6949b3010e42db91d7a1d",
+    "gerstenkorn1978b_assigned.csv": "99de7d4001762d1b5cb62b7240c2f3a49abf5e4a7a18e8972a60483d260db891"
+   }
+  }
+ ],
+ "final_roles": {
+  "bipm1984a": "train",
+  "chartier1992a": "train",
+  "chen2005thesis_a": "calibrate",
+  "chen2005thesis_b": "calibrate",
+  "ciddor1980a": "train",
+  "dschao1980a": "train",
+  "duburck2005a": "calibrate",
+  "foth1979a": "calibrate",
+  "gerstenkorn1977": "train",
+  "gerstenkorn1978": "train",
+  "gerstenkorn1978b": "train",
+  "gerstenkorn1979": "record",
+  "gerstenkorn1980b": "record",
+  "gerstenkorn1983a": "calibrate",
+  "glaser1981a": "train",
+  "helmcke1974a": "train",
+  "ikeda2020a": "record",
+  "ikeda2022a": "calibrate",
+  "koffend1978a": "calibrate",
+  "magyar1980a": "train",
+  "matsunaga2024a": "calibrate",
+  "pique1981a": "calibrate",
+  "schweitzer1973a": "train",
+  "sorem1971a": "calibrate",
+  "wallerand2006a": "calibrate",
+  "weller2026a": "calibrate",
+  "yoshiki2023a_p34r58": "calibrate"
+ },
+ "row_records": [
+  {
+   "set": "gerstenkorn1983a",
+   "group": "gerstenkorn1983a_fourier",
+   "reason": "the Orsay Partie IV atlas lines printed again (43 of 44 to the last digit, with the same uncertainties); the atlas, already in training, is the record that enters"
+  },
+  {
+   "set": "pique1981a",
+   "group": "pique1981a_lambdameter",
+   "reason": "a common offset of about -120 MHz (four times the stated accuracy), the instrument's: the same offset sets the Orsay Partie IV atlas scale (-200.8 ppb), which the fits correct"
+  }
+ ],
+ "counts": {
+  "calibrate": 108,
+  "locked test": 17,
+  "record": 72,
+  "train": 11
+ }
+}
