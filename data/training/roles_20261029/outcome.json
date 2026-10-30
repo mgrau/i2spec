@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "created": "2026-10-30",
- "decision": "Decision 2, step 3b (Matt, 2026-10-30): the train-role sets were added to the fits block by block and each block judged by the paired rule; a block not added goes to calibrate. Rules for the fit: a measurement printed in two places enters once, from the more current record; separate measurements both enter.",
+ "decision": "Decision 2, step 3b (Matt, 2026-10-30): the train-role sets were added to the fits block by block and each block judged by the paired rule; a block not added goes to calibrate. Rules for the fit: a measurement printed in two places enters once, from the more current printing; a primary is superior to a mean that combines it (the primary enters, the mean's row leaves); separate measurements both enter.",
  "paired_rule": "a block is added only if some region's held-out error improves by more than 2 SE and none worsens by more than 2 SE; held-out errors are grouped one value per held-out level (or level group)",
  "roles_json_sha256": "61cbb828a636dc85435f24e034ea8711f46dd26fabbaee29f96c8fccc2cf838f",
  "blocks": [
@@ -234,7 +234,7 @@
     "schweitzer1973a"
    ],
    "fit": "core",
-   "added": true,
+   "added": false,
    "variants": [
     {
      "variant": "all rows",
@@ -246,9 +246,13 @@
        "groups": 24
       }
      }
+    },
+    {
+     "variant": "each measurement once (14 rows): primaries for the CIPM means they enter, the later printing of a measurement printed twice, superseded rows out; with them the CIPM 2003 isotopologue rows that no held primary gives",
+     "flagged": {}
     }
    ],
-   "note": "Judged one value per held-out level, as the other blocks were (chosen after the results). Per line, held-out B v'33, B v'39 (4 lines, -1.33 to -1.41 MHz) and sakagami2020a are worse; the isotopologue rows predicted with their lab left out improve (z^2 -1.92 +- 0.89, 24 groups)."
+   "note": "The first variant passed on one value per held-out level (chosen after the results) with the isotopologue rows predicted with their lab left out improving (z^2 -1.92 +- 0.89, 24 rows), but its 24 rows held several measurements two or three times: bipm1984a's CIPM 1983 means beside their primaries, and values the CIPM 2003 tables print again. Each measurement once, the same reading gives +6.7 +- 13.8 kHz per held-out level and z^2 -2.83 +- 1.48 (14 rows), not beyond 2 SE. Not added (Matt, 2026-10-30: decided before the second variant ran, to accept its verdict)."
   },
   {
    "block": "atlas line lists",
@@ -320,12 +324,12 @@
   }
  ],
  "final_roles": {
-  "bipm1984a": "train",
-  "chartier1992a": "train",
+  "bipm1984a": "calibrate",
+  "chartier1992a": "calibrate",
   "chen2005thesis_a": "calibrate",
   "chen2005thesis_b": "calibrate",
-  "ciddor1980a": "train",
-  "dschao1980a": "train",
+  "ciddor1980a": "calibrate",
+  "dschao1980a": "calibrate",
   "duburck2005a": "calibrate",
   "foth1979a": "calibrate",
   "gerstenkorn1977": "calibrate",
@@ -334,15 +338,15 @@
   "gerstenkorn1979": "record",
   "gerstenkorn1980b": "record",
   "gerstenkorn1983a": "calibrate",
-  "glaser1981a": "train",
-  "helmcke1974a": "train",
+  "glaser1981a": "calibrate",
+  "helmcke1974a": "calibrate",
   "ikeda2020a": "record",
   "ikeda2022a": "calibrate",
   "koffend1978a": "calibrate",
-  "magyar1980a": "train",
+  "magyar1980a": "calibrate",
   "matsunaga2024a": "calibrate",
   "pique1981a": "calibrate",
-  "schweitzer1973a": "train",
+  "schweitzer1973a": "calibrate",
   "sorem1971a": "calibrate",
   "wallerand2006a": "calibrate",
   "weller2026a": "calibrate",
@@ -360,10 +364,195 @@
    "reason": "a common offset of about -120 MHz (four times the stated accuracy), the instrument's: the same offset sets the Orsay Partie IV atlas scale (-200.8 ppb), which the fits correct"
   }
  ],
+ "held_out_in_training": {
+  "locked_test": [
+   {
+    "set": "borde1981a",
+    "lines": [
+     "127I2 P(13) 43-0",
+     "127I2 R(15) 43-0"
+    ],
+    "via": "bipm2005a (mean)"
+   },
+   {
+    "set": "borde1981a",
+    "lines": [
+     "127I2 R(98) 58-1"
+    ],
+    "via": "bipm1984a (mean, App. Table 3), printed again in bipm2005a"
+   },
+   {
+    "set": "knox1971a",
+    "lines": [
+     "129I2 P(54) 8-4"
+    ],
+    "via": "bipm2003a (mean)"
+   },
+   {
+    "set": "landsberg1976a",
+    "lines": [
+     "127I2 R(127) 11-5"
+    ],
+    "via": "bipm2003a (mean)"
+   }
+  ],
+  "calibrate": [
+   {
+    "set": "bernard2001a",
+    "lines": [
+     "127I2 R(127) 11-5"
+    ],
+    "via": "bipm2003a (mean)"
+   },
+   {
+    "set": "cerez1974a",
+    "lines": [
+     "127I2 R(127) 11-5"
+    ],
+    "via": "bipm2003a (mean)"
+   },
+   {
+    "set": "ye2000a",
+    "lines": [
+     "127I2 R(127) 11-5"
+    ],
+    "via": "bipm2003a (mean)"
+   },
+   {
+    "set": "razet1993a",
+    "lines": [
+     "127I2 P(33) 6-3"
+    ],
+    "via": "bipm2003a (mean)"
+   },
+   {
+    "set": "magyar1980a",
+    "lines": [
+     "129I2 P(54) 8-4",
+     "129I2 P(69) 12-6",
+     "127I129I P(33) 6-3"
+    ],
+    "via": "bipm2003a (mean)"
+   },
+   {
+    "set": "schweitzer1973a",
+    "lines": [
+     "129I2 P(33) 6-3"
+    ],
+    "via": "bipm1984a (mean, App. Table 13), printed again in bipm2003a"
+   },
+   {
+    "set": "fredinpicard1990a",
+    "lines": "all",
+    "via": "bipm2003b (mean)"
+   },
+   {
+    "set": "chartier1989a",
+    "lines": "all",
+    "via": "fredinpicard1990a (printed again), in bipm2003b"
+   },
+   {
+    "set": "lin1994a",
+    "lines": "all",
+    "via": "bipm2003b (mean)"
+   },
+   {
+    "set": "brand1993a",
+    "lines": "those lin1994a prints",
+    "via": "lin1994a (printed again), in bipm2003b"
+   },
+   {
+    "set": "pollock1983a",
+    "lines": "all",
+    "via": "bipm2003c (mean)"
+   },
+   {
+    "set": "razet1993b",
+    "lines": "all",
+    "via": "bipm2003c (printed again)"
+   },
+   {
+    "set": "barwood1984a",
+    "lines": "all",
+    "via": "razet1993b (printed again), in bipm2003c"
+   },
+   {
+    "set": "razet1991a",
+    "lines": "all",
+    "via": "bipm2003d (mean)"
+   },
+   {
+    "set": "dschao1980a",
+    "lines": "all",
+    "via": "bipm2003d (mean)"
+   },
+   {
+    "set": "glaser1987a",
+    "lines": [
+     "127I2 R(47) 9-2",
+     "127I2 P(48) 11-3"
+    ],
+    "via": "bipm2003d (mean)"
+   },
+   {
+    "set": "ciddor1980a",
+    "lines": [
+     "129I2 P(110) 10-2",
+     "129I2 R(113) 14-4"
+    ],
+    "via": "bipm2003d (mean)"
+   },
+   {
+    "set": "glaser1981a",
+    "lines": [
+     "129I2 P(110) 10-2",
+     "129I2 R(113) 14-4"
+    ],
+    "via": "bipm2003d (mean)"
+   },
+   {
+    "set": "zhao1985a",
+    "lines": "all",
+    "via": "bipm2003e (mean)"
+   },
+   {
+    "set": "spieweck1980a",
+    "lines": [
+     "127I2 P(13) 43-0"
+    ],
+    "via": "bipm1984a (mean, App. Table 1), printed again in bipm2005a"
+   },
+   {
+    "set": "hackel1980a",
+    "lines": [
+     "127I2 P(13) 43-0"
+    ],
+    "via": "bipm1984a (mean, App. Table 1), printed again in bipm2005a"
+   },
+   {
+    "set": "foth1979a",
+    "lines": [
+     "127I2 R(98) 58-1"
+    ],
+    "via": "bipm1984a (mean, App. Table 3), printed again in bipm2005a"
+   },
+   {
+    "set": "diddams2000a",
+    "lines": "all",
+    "via": "bipm2012a (mean)"
+   },
+   {
+    "set": "eickhoff1995a",
+    "lines": [
+     "127I2 R(106) 34-0"
+    ],
+    "via": "bipm2012a (printed again)"
+   }
+  ]
+ },
  "counts": {
-  "calibrate": 111,
+  "calibrate": 119,
   "locked test": 17,
-  "record": 72,
-  "train": 8
+  "record": 72
  }
 }
