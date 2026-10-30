@@ -71,9 +71,11 @@ SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983",
 
 # --- sources and measurements -----------------------------------------------------------------------
 
-#: The frozen blind tests whose data sets are shown (v1 scored 2026-10-20, v2 2026-10-21) though no fit uses
-#: them: they keep their ``exclude`` line. Sets added later stay out of the export until a blind test scores them.
-BLIND_REGISTRIES = (("20261020", "pending_blind_v1"), ("20261020", "pending_blind_v2"))
+#: The frozen blind tests whose data sets are shown (v1 scored 2026-10-20, v2 2026-10-21, v3 2026-10-29) though no
+#: fit uses them: they keep their ``exclude`` line. Sets added later stay out of the export until a blind test scores
+#: them.
+BLIND_REGISTRIES = (("20261020", "pending_blind_v1"), ("20261020", "pending_blind_v2"),
+                    ("20261029", "pending_blind_v3"))
 
 
 @functools.lru_cache(maxsize=1)
@@ -84,7 +86,8 @@ def blind_scored():
     for release, name in BLIND_REGISTRIES:
         folder = resources.files("i2spec").joinpath("data", "research", release, "validation", name)
         if folder.joinpath("results.json").is_file():
-            out.update(t["set"] for t in json.loads(folder.joinpath("targets.json").read_text()))
+            out.update(t["set"] for t in json.loads(folder.joinpath("targets.json").read_text())
+                       if "folder" not in t)          # data/observations only
     return frozenset(out)
 
 

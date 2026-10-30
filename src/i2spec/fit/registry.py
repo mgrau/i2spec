@@ -324,6 +324,8 @@ class Forecaster:
         """An X interval's forecast with each I the second sublevel may have ({I: MHz}): a source may print the
         second level's I only in its note (borde2002), which is read when the registry is scored."""
         levels = _labeled(self.model("127I2").hyperfine_levels("X", t["v"], t["J"]), t["J"])
+        if (t["I_from"], t["F_from"]) not in levels:
+            return {}
         return {str(I): levels[(t["I_from"], t["F_from"])] - e for (I, F), e in sorted(levels.items())
                 if F == t["F_to"]}
 
@@ -378,10 +380,12 @@ def forecasts(targets, models):
         for t in targets:
             try:
                 row = dict(model=name, target=t["id"], predicted_MHz=f.predict(t))
-                if t["kind"] == "x_interval":
-                    row["alternatives_MHz"] = f.alternatives(t)
             except (ValueError, KeyError, IndexError) as e:
-                out.append(dict(model=name, target=t["id"], predicted_MHz=None, reason=str(e)[:200]))
+                row = dict(model=name, target=t["id"], predicted_MHz=None, reason=str(e)[:200])
+            if t["kind"] == "x_interval":           # also when the same-I pair has no forecast (a printed
+                row["alternatives_MHz"] = f.alternatives(t)     # label may name another I)
+            elif row["predicted_MHz"] is None:
+                out.append(row)
                 continue
             out.append(row | (f.sigma(t) if with_sigma else {}))
     return built, out
@@ -595,7 +599,7 @@ def score_registry(folder, out=None, *, root=DATA_DIR, strict=True):
             forecast = {}
             for m in models:
                 p = pred[(m, t["id"])]
-                if t["kind"] == "x_interval" and p is not None:
+                if (m, t["id"]) in alternatives:
                     p = alternatives[(m, t["id"])].get(str(I_to))
                     p = abs(p) if t["magnitude"] and p is not None else p
                 forecast[m] = p

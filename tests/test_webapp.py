@@ -14,9 +14,10 @@ def test_every_source_is_cited_and_linked():
     assert {s["kind"] for s in sources} == {"precision", "atlas"}
     for s in sources:
         assert len(s["citation"]) > 30 and s["n_lines"] > 0
-    # the thesis and the printed Orsay Partie IV volume are the only sources with no online copy
+    # the theses and the printed Orsay Partie IV volume are the only sources with no online copy
     unlinked = [s["id"] for s in sources if not s["link"]]
-    assert unlinked == ["bodermann1998c", "orsay1983_part4"]
+    assert unlinked == ["bodermann1998c", "chen2005thesis_a", "chen2005thesis_b", "eickhoff1994thesis",
+                        "orsay1983_part4"]
     assert all(s["link"].startswith("https://doi.org/") for s in sources if s["doi"])
 
 
@@ -50,7 +51,8 @@ def test_measurements_carry_every_row():
     jones = next(e for e in r56 if sources[e["s"]]["id"] == "jones2002a")
     assert [sources[c]["id"] for c in jones["c"]] == ["bipm2012a"]
     cipm = next(e for e in r56 if sources[e["s"]]["id"] == "bipm2012a")
-    assert [f[1] for f in cipm["f"]] == [563260223.513] and "c" not in cipm
+    # the 2005 CIPM list (shown since the third blind test) prints the same value: cited on the CIPM record
+    assert [f[1] for f in cipm["f"]] == [563260223.513] and [sources[c]["id"] for c in cipm["c"]] == ["felder2005a"]
     a10 = next(f for f in jones["f"] if f[0] == "a10")
     assert a10[1] == a10[3] == 563260223.5144
     assert a10[4] is None                                # no published model given

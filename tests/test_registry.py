@@ -215,13 +215,14 @@ def test_constants_are_registered_from_identity_columns_and_scored(tmp_path):
     xi = "v,J,eps,F_from,F_to,value_kHz,uncertainty_kHz,table,note\n"
     _pending_set(data / "x_hyperfine", "xa", {
         "constants.csv": "v,J,quantity,value,uncertainty,unit,table,note\n0,13,eqQ,x,x,MHz,,\n0,13,C1,x,x,kHz,,\n0,13,Bo,x,x,MHz,,\n",
-        "data.csv": xi + "0,13,3,14,13,x,x,,\n0,13,3,14,13,x,x,,\"printed 3,14 -> 5,13\"\n"})
+        "data.csv": xi + "0,13,3,14,13,x,x,,\n0,13,3,14,13,x,x,,\"printed 3,14 -> 5,13\"\n"
+                    "0,13,1,12,11,x,x,,\"printed 1,12 -> 3,11\"\n"})
     folder = tmp_path / "registry"
     registry.freeze_registry(folder, [], models=("research-20261029-i2spec", "i2spec"), root=empty, constants=True,
                              constants_root=data)
     _, targets, forecasts, snapshot, _ = registry.read_registry(folder)
     assert [(t["kind"], t["quantity"]) for t in targets] == [("hf_constant", q) for q in registry.HF_QUANTITIES]*2 + [
-        ("x_constant", "eqQ"), ("x_constant", "C"), ("x_interval", None), ("x_interval", None)]
+        ("x_constant", "eqQ"), ("x_constant", "C"), ("x_interval", None), ("x_interval", None), ("x_interval", None)]
     assert [t["convention"] for t in targets[:8:4]] == ["B", "B - X"]
     from i2spec import ResearchModel
     model = ResearchModel("research-20261029-i2spec")
@@ -235,7 +236,8 @@ def test_constants_are_registered_from_identity_columns_and_scored(tmp_path):
     (data / "hyperfine_parameters" / "hfb" / "data.csv").write_text(hf + "127I2 R(56) 32-0,1908,0.01,,,,,,,,\n")
     (data / "x_hyperfine" / "xa" / "constants.csv").write_text(
         "v,J,quantity,value,uncertainty,unit,table,note\n0,13,eqQ,-2452.6,0.01,MHz,,\n0,13,C1,3.1,0.1,kHz,,\n0,13,Bo,1,1,MHz,,\n")
-    (data / "x_hyperfine" / "xa" / "data.csv").write_text(xi + "0,13,3,14,13,1000,1,,\n0,13,3,14,13,2000,1,,\"printed 3,14 -> 5,13\"\n")
+    (data / "x_hyperfine" / "xa" / "data.csv").write_text(xi + "0,13,3,14,13,1000,1,,\n0,13,3,14,13,2000,1,,\"printed 3,14 -> 5,13\"\n"
+                                                           "0,13,1,12,11,3000,1,,\"printed 1,12 -> 3,11\"\n")
     result = registry.score_registry(folder, tmp_path / "results.json", root=empty, strict=False)
     rows = {r["id"]: r for r in result["rows"]}
     assert rows["x_hyperfine/xa:constants.csv:1:C"]["observed_MHz"] == pytest.approx(3.1e-3)
@@ -244,6 +246,12 @@ def test_constants_are_registered_from_identity_columns_and_scored(tmp_path):
     second = rows["x_hyperfine/xa:data.csv:1"]
     assert second["I_to_printed"] == 5
     assert second["residual_MHz"]["research-20261029-i2spec"] == pytest.approx(2.-alt["x_hyperfine/xa:data.csv:1"]["5"])
+    # at J = 13, (1, 11) does not exist (I = 1 has F = 12-14): the same-I pair has no forecast, but the pair the
+    # note prints, (1, 12) -> (3, 11), is forecast and scored
+    third = {f["model"]: f for f in forecasts if f["target"] == "x_hyperfine/xa:data.csv:2"}
+    assert third["research-20261029-i2spec"]["predicted_MHz"] is None
+    assert rows["x_hyperfine/xa:data.csv:2"]["residual_MHz"]["research-20261029-i2spec"] == pytest.approx(
+        3.-third["research-20261029-i2spec"]["alternatives_MHz"]["3"])
     assert sorted(result["not_printed"]) == [f"hyperfine_parameters/hfb:0:{q}" for q in ("C", "d", "delta")]
     assert "blind | hf_constant eqQ | all" in result["summary"] and "blind | x_interval | all" in result["summary"]
     assert "hyperfine_parameters/hfa | C" in result["by_set"]
