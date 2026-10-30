@@ -1,0 +1,3317 @@
+{
+ "schema_version": 1,
+ "created": "2026-10-29",
+ "decision": "Decision, 2026-10-28 (refined 2026-10-29): every pending set, by set and lab and never by row, gets one role before any residual is used for training: train, calibrate (sets the uncertainty), locked test (used once, at the end) or record (no fit or uncertainty uses it now)",
+ "rules": {
+  "record": "the level and constants tables, widths, lifetimes, other states and theory; sets whose rows the third blind test marks mostly seen or superseded (an active set prints them); constants fitted to intervals held as an observation set; the atlas constants tables",
+  "train": "the atlas line lists; every set beyond the core (B v' > 43 or X v'' > 17), whose blind test is pending_blind_v3; the sets of other isotopologues not drawn for the locked test",
+  "locked_test": "lab families with no data in training and not a compilation, in the seeded random order below, each with all its open sets, while every stratum it touches stays within 20 % and one is under 15 %; beyond-core families are skipped. Target: 15-20 % of the rows of the non-compilation sets in the core and isotopologue strata",
+  "calibrate": "the remaining core sets"
+ },
+ "seed": "i2spec decision 2 locked test, drawn 2026-10-29",
+ "draw_order": [
+  "INPHYNI Nice",
+  "Yale",
+  "Simonsen (affiliation not verified)",
+  "Lyon",
+  "CEM (Spain)",
+  "Univ. Rochester",
+  "Pao (Cleveland)",
+  "Augustana Univ. / MSU (FRIB) / TU Darmstadt",
+  "Kompanets, Mikhailov (affiliation not verified)",
+  "Aarhus (Denmark)",
+  "MIT (Ezekiel)",
+  "Hiroshima",
+  "Cruz, Scalabrin and Pereira (affiliation not checked)",
+  "TU / FU Berlin",
+  "Chen, Zhang, Zang, Akimoto, Kasahara, Sakamoto, Inaba (affiliation not verified)",
+  "Nishiyama, Ishikawa, Misono (affiliation not checked)",
+  "DLR / Ulm University (affiliation not verified)",
+  "Orsay LAC",
+  "Landsberg (affiliation not checked)",
+  "Thang, Thu, Xuan, Suh, Hoi (Vietnam Metrology Institute; KRISS comb measurement)",
+  "Paris (Borde)"
+ ],
+ "families_with_training_data": [
+  "BIPM",
+  "China",
+  "DFM (Denmark)",
+  "FEMTO-ST / Univ. Franche-Comte",
+  "Hannover",
+  "Heidelberg",
+  "INRIM",
+  "JILA-NIST",
+  "LNE-BNM",
+  "LPL Paris 13",
+  "MPL Erlangen / Univ. Erlangen-Nuernberg",
+  "MPQ",
+  "NMIJ",
+  "NPL",
+  "NRC",
+  "Novosibirsk",
+  "PTB",
+  "Stanford",
+  "Taiwan",
+  "Vrije Universiteit Amsterdam (Ubachs)",
+  "YNU (Hong)"
+ ],
+ "sets": [
+  {
+   "folder": "observations",
+   "set": "acef1993a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "LPTF / BNM-INM (Paris)",
+   "lab_families": [
+    "LNE-BNM"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/acef1993a/data.csv": "f7f69737b6ada12de26f0e30c88bfdcc8dd282db39a994f2c8f7c0ad42b1b3f1"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "arie1992a",
+   "role": "record",
+   "reason": "duplicate: an active set prints these measurements (v3 seen/superseded)",
+   "lab": "Stanford University (Byer group)",
+   "lab_families": [
+    "Stanford"
+   ],
+   "stratum": "core intervals",
+   "rows": 8,
+   "files_sha256": {
+    "data/observations/arie1992a/data.csv": "5d86fd4519a2ea88b9ecc0a96c80e85e42e2a6abcd6e445276739fdd8d8f51b5"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "baird1979a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NRC Canada and NBS Boulder",
+   "lab_families": [
+    "JILA-NIST",
+    "NRC"
+   ],
+   "stratum": "core intervals",
+   "rows": 10,
+   "files_sha256": {
+    "data/observations/baird1979a/data.csv": "2a64f82d6eba1ef392d3e22eb9d85c47e03ce9cc34d94f06ab25df29cffa237c"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "balling1999a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "CMI (Balling, Blabla)",
+   "lab_families": [
+    "CMI"
+   ],
+   "stratum": "core intervals",
+   "rows": 118,
+   "files_sha256": {
+    "data/observations/balling1999a/data.csv": "08d84b7fa27ae3bff675babf5e0b8009445068483c6ddafb38544e16d6420b86"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "balling2007a_532",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "CMI (Czech Metrology Institute)",
+   "lab_families": [
+    "CMI"
+   ],
+   "stratum": "core absolute",
+   "rows": 13,
+   "files_sha256": {
+    "data/observations/balling2007a_532/data.csv": "19f0d8fb4e8cc47be3c4caede70f5aaa2c67d6ce00fcccee8c7b61a1fc3bb28d"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "balling2007a_543",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "CMI (Czech Metrology Institute)",
+   "lab_families": [
+    "CMI"
+   ],
+   "stratum": "core absolute",
+   "rows": 22,
+   "files_sha256": {
+    "data/observations/balling2007a_543/data.csv": "2eb5b1f4a9c72084d8f96944d315a2f009a66c322790c7fe1fd8e4e7c47e659d"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "balling2007a_633",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "CMI (Czech Metrology Institute)",
+   "lab_families": [
+    "CMI"
+   ],
+   "stratum": "core absolute",
+   "rows": 14,
+   "files_sha256": {
+    "data/observations/balling2007a_633/data.csv": "af2fa86b372380f88658e6ad1f11a7c6c82e39dc339422941a7ce5d40da52a56"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "barwood1984a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NPL (Barwood, Rowley)",
+   "lab_families": [
+    "NPL"
+   ],
+   "stratum": "core intervals",
+   "rows": 11,
+   "files_sha256": {
+    "data/observations/barwood1984a/data.csv": "b7e594e972c5f197c730806e4bb6122bba5582384f86ff860ac579e8b562428c"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bennett1979a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Bennett, Cerez, Hamon, Chartier (BIPM)",
+   "lab_families": [
+    "BIPM",
+    "Cerez"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/bennett1979a/data.csv": "720988a7deb7a8bc84b3f76839312f7df47c5f6f7acab3909997cf691e60b48b"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bennett1984a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NPL",
+   "lab_families": [
+    "NPL"
+   ],
+   "stratum": "core intervals",
+   "rows": 9,
+   "files_sha256": {
+    "data/observations/bennett1984a/data.csv": "d9f831d94be831def0e17ed8ed639ec1178d2693bac6c965d4d4b6c667c27494"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bergquist1984a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NBS (Boulder) and MPQ (Garching)",
+   "lab_families": [
+    "JILA-NIST",
+    "MPQ"
+   ],
+   "stratum": "core intervals",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/bergquist1984a/data.csv": "e27d1f5c351cb34cdad869cec0aca5376ff47b5277e0ccb9adfd1e300a0d5ed9"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bernard2001a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NRC Canada",
+   "lab_families": [
+    "NRC"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/bernard2001a/data.csv": "62dba43bb10a443ee042bf7e0696198c62dc86ac5c108988b0d214c593a782bd"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bertinetto1987a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Bertinetto, Cordiale, Fontana and Picotto",
+   "lab_families": [
+    "INRIM"
+   ],
+   "stratum": "core intervals",
+   "rows": 17,
+   "files_sha256": {
+    "data/observations/bertinetto1987a/data.csv": "6a5c586694568b7b0717f35b390b017464eee20ef2f9ede1bc8f57fce2ab976d"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bipm1984a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "BIPM / CCDM",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "iso",
+   "rows": 292,
+   "files_sha256": {
+    "data/observations/bipm1984a/data.csv": "e8db9c6127c388442b19297ef6aa2c68e5f568095cdc08a469f6edd7fdc21dc4"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bisi1997a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "IMGC (Istituto di Metrologia G. Colonnetti), Turin (Italy)",
+   "lab_families": [
+    "INRIM"
+   ],
+   "stratum": "core intervals",
+   "rows": 12,
+   "files_sha256": {
+    "data/observations/bisi1997a/data.csv": "74f2fd0b2a7f170f57026a20043a4b1a4267990280f68ed38118cb9c29371c23"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "blabla1993a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "CMI (Blabla, Picard-Fredin, Razet)",
+   "lab_families": [
+    "CMI",
+    "LNE-BNM"
+   ],
+   "stratum": "core intervals",
+   "rows": 26,
+   "files_sha256": {
+    "data/observations/blabla1993a/data.csv": "036c57a2c6f6a0e7019dfc146a67e76b611692ecf6852d754239579a9b6542fd"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bodermann1998a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Hannover / PTB",
+   "lab_families": [
+    "PTB",
+    "Hannover"
+   ],
+   "stratum": "core intervals",
+   "rows": 12,
+   "files_sha256": {
+    "data/observations/bodermann1998a/data.csv": "b8279e28f1b41637305fba28ea1fe1f80eabe11404a5f706c43c3cb63ca9b3d2"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "bonsch1983a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Bonsch (PTB)",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/bonsch1983a/data.csv": "93b2884c60d50eaf5cd0f4b523277d2db47b1d281bb3bc5f7959eb32e2e30fa2"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "borde1981a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Borde, Camy, Decomps, Descoubes, Vigue (Paris)",
+   "lab_families": [
+    "Paris (Borde)"
+   ],
+   "stratum": "core intervals",
+   "rows": 60,
+   "files_sha256": {
+    "data/observations/borde1981a/data.csv": "48a3f1f4cd4691f3dd548117130b117011982b42f9ac37c882ca2c42ed701fa9"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "brand1993a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "PTB",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "core intervals",
+   "rows": 21,
+   "files_sha256": {
+    "data/observations/brand1993a/data.csv": "bd2994dcbdb4132c6625febee33fb23b814b0e228e99893c460518ff008fba6d"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "cerez1974a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Cérez/Brillet, France (affiliation not verified)",
+   "lab_families": [
+    "Cerez"
+   ],
+   "stratum": "core intervals",
+   "rows": 9,
+   "files_sha256": {
+    "data/observations/cerez1974a/data.csv": "2c23414d7e4f1ae4fbc7937263d488871986fac83157ad81c9651ba4318674ac"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "cerez1979a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Cerez, Bennett (affiliations not checked)",
+   "lab_families": [
+    "Cerez"
+   ],
+   "stratum": "core intervals",
+   "rows": 20,
+   "files_sha256": {
+    "data/observations/cerez1979a/data.csv": "55eccc65c985d507f9dd618d26a5c20449d1a9b3ebdd16cd57fb5285a1aaf5ad"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "chartier1989a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BIPM (Chartier, Fredin-Picard, Robertsson)",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "core intervals",
+   "rows": 14,
+   "files_sha256": {
+    "data/observations/chartier1989a/data.csv": "54980e5c6a36146e9c6f8e4e71f81c7ee492aa643b50656316fcbfdd782a179d"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "chartier1992a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "BIPM",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "iso",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/chartier1992a/data.csv": "546cba8ff43f110650770f275617f8aaa3f78a415be8d7b7c8722c3906e92149"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "chen1998a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Chen, Zhang, Zang, Akimoto, Kasahara, Sakamoto, Inaba (affiliation not verified)",
+   "lab_families": [
+    "Chen, Zhang, Zang, Akimoto, Kasahara, Sakamoto, Inaba (affiliation not verified)"
+   ],
+   "stratum": "core intervals",
+   "rows": 25,
+   "files_sha256": {
+    "data/observations/chen1998a/data.csv": "63febed59bb2c7e91dc7c9d6a34216c12792b94f96b95105e607dbeb6600a9bd"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "chen2005thesis_a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "JILA (advisor J. Ye)",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "beyond",
+   "rows": 1119,
+   "files_sha256": {
+    "data/observations/chen2005thesis_a/data.csv": "257b1bc47b14ac64b668db88715c1fc236a92d98c58f152e96109ea923676045"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "chen2005thesis_b",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "JILA (advisor J. Ye)",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "beyond",
+   "rows": 68,
+   "files_sha256": {
+    "data/observations/chen2005thesis_b/data.csv": "31b8652303918eb0d966f767cfef53a52384b8b9dc2d516d0329c22feaa88b20"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "cheng2021a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "HUST (Wuhan)",
+   "lab_families": [
+    "China"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/cheng2021a/data.csv": "21e42fcff9b6d7728d5e0efc9ea991005f5798e96bcc8ffa7de41669e00ad488"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "ciddor1980a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Ciddor & Brown, Australia (affiliation not verified)",
+   "lab_families": [
+    "Australia"
+   ],
+   "stratum": "iso",
+   "rows": 51,
+   "files_sha256": {
+    "data/observations/ciddor1980a/data.csv": "0032b9c33d3b6420597c09ec2f1f59f19900f30dd791fd930852b0020065d6e3"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "cruz1994a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Cruz, Scalabrin and Pereira (affiliation not checked)",
+   "lab_families": [
+    "Cruz, Scalabrin and Pereira (affiliation not checked)"
+   ],
+   "stratum": "core intervals",
+   "rows": 20,
+   "files_sha256": {
+    "data/observations/cruz1994a/data.csv": "673f75037c53f058551db5f2dc4453ce7fda0a8e6de5b20d2b5ecebdb8b545ea"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "demelo2024a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "INPHYNI Nice",
+   "lab_families": [
+    "INPHYNI Nice"
+   ],
+   "stratum": "core intervals",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/demelo2024a/data.csv": "891358db9a1cefa2532a2f20cc5bc30ed519537c98ced819d44848af04fa8f6a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "diddams2000a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / NIST / MPQ",
+   "lab_families": [
+    "JILA-NIST",
+    "MPQ"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/diddams2000a/data.csv": "ffe0a89ab885013d630944c41b2f703d13d86fe5fec352aafe4b89e2fb9f9c91"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "dschao1980a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "PTB Braunschweig",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "iso",
+   "rows": 39,
+   "files_sha256": {
+    "data/observations/dschao1980a/data.csv": "d444c83addda93b61e22db23f0753d934ba93527b7aa6218a49e8b16d16c040d"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "duburck2005a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "LPL / LNE-INM",
+   "lab_families": [
+    "LNE-BNM",
+    "LPL Paris 13"
+   ],
+   "stratum": "beyond",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/duburck2005a/data.csv": "772e0cb2b615d3bab9efafa16bebdadb48747d2dc0a294b7978caa8ed9a2cc49"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "edwards1995a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Edwards, Barwood, Gill, Rowley (NPL)",
+   "lab_families": [
+    "NPL"
+   ],
+   "stratum": "core absolute",
+   "rows": 4,
+   "files_sha256": {
+    "data/observations/edwards1995a/data.csv": "8b728d738a33218eb8fc4ce9a5a42e10f4556aeabd9331b41da36050494da837"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "edwards1996a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Edwards, Barwood, Gill, Rodriguez-Llorente, Rowley",
+   "lab_families": [
+    "NPL"
+   ],
+   "stratum": "core intervals",
+   "rows": 21,
+   "files_sha256": {
+    "data/observations/edwards1996a/data.csv": "aa1914bb1a764cd7520aad9a15f6e141bf18e2c1968d30bb734031644584f43c"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "edwards1999a_6mhz",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NPL",
+   "lab_families": [
+    "NPL"
+   ],
+   "stratum": "core intervals",
+   "rows": 21,
+   "files_sha256": {
+    "data/observations/edwards1999a_6mhz/data.csv": "4aa4e62e3bd9f6c798ac126d4fc6bbd37f95859a73834ac6614d8ab6f6cfddef"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "eickhoff1994thesis",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA (Eickhoff; advisor J. L. Hall)",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core intervals",
+   "rows": 77,
+   "files_sha256": {
+    "data/observations/eickhoff1994thesis/data.csv": "fafbb35c670880b68f7a80982bd0797605fcfb8344adea7ab14a5c6422d86995"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "eickhoff1995a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / NIST",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core intervals",
+   "rows": 15,
+   "files_sha256": {
+    "data/observations/eickhoff1995a/data.csv": "97a0d5ed088b172d8a02c24277a08701e4e7fcbdcaa0b1608c2f3c0f81c0cf24"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "fang2007a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NIM China",
+   "lab_families": [
+    "China"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/fang2007a/data.csv": "5f54c237bfd58bca9476d2056d52d02b44625eca0ba56ea56e56964b558c660c"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "felder2005a",
+   "role": "record",
+   "reason": "duplicate: an active set prints these measurements (v3 seen/superseded)",
+   "lab": "BIPM / CCL",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "core absolute",
+   "rows": 3,
+   "files_sha256": {
+    "data/observations/felder2005a/data.csv": "ce5ad4fb873ec25863a621adfe4a90b84fceadc1c07ec3b6a4e4fa410fae2555"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "foth1979a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Foth and Spieweck (affiliation not checked)",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "beyond",
+   "rows": 13,
+   "files_sha256": {
+    "data/observations/foth1979a/data.csv": "2d0c221b3af9ac19051dd11b7a74bd2db4eababf4613ec622d0e270868f29bf6"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "fredinpicard1990a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Fredin-Picard, Razet (affiliation not verified)",
+   "lab_families": [
+    "LNE-BNM"
+   ],
+   "stratum": "core intervals",
+   "rows": 13,
+   "files_sha256": {
+    "data/observations/fredinpicard1990a/data.csv": "c51129b4f33174d6565da6591cedf89ce7fb2a3fb89974ca134f8f8d19b7c78e"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "galzerano1999a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Politecnico di Milano / IMGC-CNR",
+   "lab_families": [
+    "INRIM"
+   ],
+   "stratum": "core intervals",
+   "rows": 8,
+   "files_sha256": {
+    "data/observations/galzerano1999a/data.csv": "20d329b5ba26b19e0ac03a0d3d10ef80cd5c0bdfaf8e6e5e74d9352aa30f05eb"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "galzerano2000a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "IMGC-CNR / Milan (Italy)",
+   "lab_families": [
+    "INRIM"
+   ],
+   "stratum": "core intervals",
+   "rows": 18,
+   "files_sha256": {
+    "data/observations/galzerano2000a/data.csv": "75cb0b6f6506ba9d7f692c8c9009b1c4f6855c7112297cbbacb83644f6b42d98"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "gerstenkorn1983a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Laboratoire Aime Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "beyond",
+   "rows": 85,
+   "files_sha256": {
+    "data/observations/gerstenkorn1983a/data.csv": "60d07f2a2431df524fc2e8f21bf433528b40024c030ef73f2051020d1a1ce058"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "glaser1981a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "PTB Braunschweig (inferred from co-authors)",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "iso",
+   "rows": 44,
+   "files_sha256": {
+    "data/observations/glaser1981a/data.csv": "62542bf52f3a20e0b042b010a823a68c5873342a71aef10683063b602e188943"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "glaser1982a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "PTB Braunschweig",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "core intervals",
+   "rows": 13,
+   "files_sha256": {
+    "data/observations/glaser1982a/data.csv": "b7b6593818c7ae47d9a615a294ee94f21a4fcd1626020f3c1e5ed5b911e30401"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "glaser1986a",
+   "role": "record",
+   "reason": "duplicate: an active set prints these measurements (v3 seen/superseded)",
+   "lab": "Glaser (affiliation not checked)",
+   "lab_families": [
+    "Glaser"
+   ],
+   "stratum": "core intervals",
+   "rows": 8,
+   "files_sha256": {
+    "data/observations/glaser1986a/data.csv": "cb55d7a88d23efc8041a59b886ddf2c3b301de55c454e97b472063be4fd1e628"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "glaser1987a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Glaser (affiliation not checked); BIPM lasers",
+   "lab_families": [
+    "BIPM",
+    "Glaser"
+   ],
+   "stratum": "core intervals",
+   "rows": 19,
+   "files_sha256": {
+    "data/observations/glaser1987a/data.csv": "4e70b209c27cc9894c7a6bb9e7fdc6b06dddeb96e038333d599199521c6ca633"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "hackel1980a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Hackel, Hackel, Ezekiel",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "core intervals",
+   "rows": 28,
+   "files_sha256": {
+    "data/observations/hackel1980a/data.csv": "94d8365936ce3aca12df76b6bf24e66215ab87774df79b8460820f4101b48086"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "hamid2006a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "UME (Turkey) / BIPM",
+   "lab_families": [
+    "BIPM",
+    "UME"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/hamid2006a/data.csv": "ced6327a27a19ae2a624a08a491134750d32b1358892860c430735c303a0885c"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "hanes1969a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NRC Ottawa",
+   "lab_families": [
+    "NRC"
+   ],
+   "stratum": "core intervals",
+   "rows": 13,
+   "files_sha256": {
+    "data/observations/hanes1969a/data.csv": "8b0e0229824d7f05590acafc501d1551da427daa435dd297f157e747fedc71d5"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "hanes1971a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Hanes, Lapierre, Bunker, Shotton (affiliation not checked)",
+   "lab_families": [
+    "NRC"
+   ],
+   "stratum": "core intervals",
+   "rows": 21,
+   "files_sha256": {
+    "data/observations/hanes1971a/data.csv": "66666d0c19bfba076d16d565d568ed8ac8b8b664ccd3397ce6309cfaae1a9e18"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "hanes1973a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NRC Canada (Hanes, Baird, DeRemigis)",
+   "lab_families": [
+    "NRC"
+   ],
+   "stratum": "core intervals",
+   "rows": 12,
+   "files_sha256": {
+    "data/observations/hanes1973a/data.csv": "80e266da7b3a1897ac1eea1fba7cbaeb4f22db2e70898b1dcbec76c02ee94362"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "helmcke1974a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "PTB Braunschweig",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "iso",
+   "rows": 9,
+   "files_sha256": {
+    "data/observations/helmcke1974a/data.csv": "e46c925dfc2b46a5a9e6c9839ad1b7a4b90c99792e8a66b093445b305d8b912b"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "himbert1991a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "LPTF / BIPM (authors' affiliations not checked)",
+   "lab_families": [
+    "BIPM",
+    "LNE-BNM"
+   ],
+   "stratum": "core absolute",
+   "rows": 5,
+   "files_sha256": {
+    "data/observations/himbert1991a/data.csv": "d0d52e264c587d08123f49d3561665180abb79247b8de8d89d14f6b73f41c133"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "hong2003a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NMIJ/AIST with JILA (Hong, Ishikawa, Sugiyama, Onae, Matsumoto, Ye, Hall)",
+   "lab_families": [
+    "JILA-NIST",
+    "NMIJ",
+    "YNU (Hong)"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/hong2003a/data.csv": "aecc3807b7a6f8afadec1712fefbeb51c8a89b2ca22ea6e82b93b12189a5737a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "ikeda2018a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Ikeda, Hisai, Yoshii, Kosaka, Hong, Horikiri (YNU)",
+   "lab_families": [
+    "YNU (Hong)"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/ikeda2018a/data.csv": "7f58d611ade68a4992076bb1715f004ca5068b4143518034c6c323a5a73bb6a7"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "ikeda2020a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "AIST/NMIJ / Yokohama National Univ.",
+   "lab_families": [
+    "NMIJ",
+    "YNU (Hong)"
+   ],
+   "stratum": "beyond",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/ikeda2020a/data.csv": "934356e2464ea18375b911062490f213eaaea49968152ce59cc85c02d8480d17"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "jaatinen1998a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "CSIRO National Measurement Laboratory, Lindfield, and BIPM, Sevres",
+   "lab_families": [
+    "BIPM",
+    "Australia"
+   ],
+   "stratum": "core intervals",
+   "rows": 4,
+   "files_sha256": {
+    "data/observations/jaatinen1998a/data.csv": "4a18561877ec9de63e9c079efe10be0447651b98099e5d09c8ebbb3d6b7d6da5"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "jennings1983a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NBS, Boulder (Jennings et al.)",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core absolute",
+   "rows": 3,
+   "files_sha256": {
+    "data/observations/jennings1983a/data.csv": "44d4fe71ddcdb66abb80dc1f99bf04e23a17f1d906710972c9c7bf69d271a270"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "juncar1981a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BIPM (Juncar, Pinard, Hamon, Chartier)",
+   "lab_families": [
+    "BIPM",
+    "LNE-BNM"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/juncar1981a/data.csv": "a227634561f850d315c30e84b80e2ef6ba84d88cbdc15b30ab289121aa8d25c6"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "jungner1995a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / NIST",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/jungner1995a/data.csv": "0179eab6ae4fe6cfe7b50ecf42ee721c441beea3195706b715094c2475a0ad40"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "jungner1995b",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / NIST",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core intervals",
+   "rows": 13,
+   "files_sha256": {
+    "data/observations/jungner1995b/data.csv": "a08aac5d92e11762cbea1e2b31ac08c13330dbd69351f989916ed0df3296e286"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "knox1971a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Y.-H. Pao group, Cleveland (affiliation not verified)",
+   "lab_families": [
+    "Pao (Cleveland)"
+   ],
+   "stratum": "iso",
+   "rows": 30,
+   "files_sha256": {
+    "data/observations/knox1971a/data.csv": "f417c40c3b9fe2db7e7c996d76ab110ab7dc29d11974faa36d80def95629b181"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "koffend1978a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Koffend, Goldstein, Bacis, Field, Ezekiel",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "beyond",
+   "rows": 15,
+   "files_sha256": {
+    "data/observations/koffend1978a/data.csv": "76c16efb7d3d016260e9fd22a3ae19260cc90cc3e4165328da34cb4f57a7788a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "kompanets1979a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Kompanets, Mikhailov (affiliation not verified)",
+   "lab_families": [
+    "Kompanets, Mikhailov (affiliation not verified)"
+   ],
+   "stratum": "iso",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/kompanets1979a/data.csv": "b24559e5a2149a850f59a541dfe100b8eaf8da1aa9f97c9a85dcc49eea5c80a8"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "kondo2025a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "F.-L. Hong group (Japan)",
+   "lab_families": [
+    "YNU (Hong)"
+   ],
+   "stratum": "core intervals",
+   "rows": 15,
+   "files_sha256": {
+    "data/observations/kondo2025a/data.csv": "62919c79436516609c0bc00bd718c550fead2d6f156a575a6aa413b484f6b5e0"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "kremser1994a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Hannover",
+   "lab_families": [
+    "Hannover"
+   ],
+   "stratum": "core intervals",
+   "rows": 10,
+   "files_sha256": {
+    "data/observations/kremser1994a/data.csv": "694457588a5cb01284d857805bb69fc1f7209b57ea06efa5b6f27de5062d7335"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "kroll1969a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "M. Kroll (reprints the Hanes and Dahlstrom 1969 positions)",
+   "lab_families": [
+    "NRC"
+   ],
+   "stratum": "core intervals",
+   "rows": 13,
+   "files_sha256": {
+    "data/observations/kroll1969a/data.csv": "b6478afad98aac424e494d0d17ceb3605df25ec70021774acb8b2e9b4d6d26e4"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "landsberg1976a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Landsberg (affiliation not checked)",
+   "lab_families": [
+    "Landsberg (affiliation not checked)"
+   ],
+   "stratum": "core intervals",
+   "rows": 26,
+   "files_sha256": {
+    "data/observations/landsberg1976a/data.csv": "5ee92151299dd42bfd842c0b6274dfcee28f46c917a92aae8687370c67e90100"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "lea2003a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NPL / BIPM",
+   "lab_families": [
+    "BIPM",
+    "NPL"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/lea2003a/data.csv": "450c96dad620ef837f60d3e1358981a2e65b0b5d0a8120d12e22498e7ed5faf4"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "lin1994a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NTHU (Lin, Liu, Cheng, Shy)",
+   "lab_families": [
+    "Taiwan"
+   ],
+   "stratum": "core intervals",
+   "rows": 56,
+   "files_sha256": {
+    "data/observations/lin1994a/data.csv": "e02adc639f3ad1792d013c3de5a13be693d9a66afb7c39d471ceb5a61e30b6c6"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "ma2006a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Ma, Picard, Zucco, Chartier, Robertsson et al. (BIPM and partner laboratories)",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "core absolute",
+   "rows": 10,
+   "files_sha256": {
+    "data/observations/ma2006a/data.csv": "948e4b376425e283d757dc3f96b1a1cdab3ed55ad1f11c826db8e08d8eba8717"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "macfarlane1999a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NPL",
+   "lab_families": [
+    "NPL"
+   ],
+   "stratum": "core intervals",
+   "rows": 30,
+   "files_sha256": {
+    "data/observations/macfarlane1999a/data.csv": "cbcf08238c6cc0fc7036be6338c6e7c7ef1d1551256eda0b388d32a31e989101"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "madej2004a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NRC / BIPM",
+   "lab_families": [
+    "BIPM",
+    "NRC"
+   ],
+   "stratum": "core absolute",
+   "rows": 7,
+   "files_sha256": {
+    "data/observations/madej2004a/data.csv": "2dc715a1fe8404bf3a1fd28d3767d81c12c83347c98b84cf1048d3c051148b4a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "magyar1980a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Magyar & Brown, Australia (affiliation not verified)",
+   "lab_families": [
+    "Australia"
+   ],
+   "stratum": "iso",
+   "rows": 46,
+   "files_sha256": {
+    "data/observations/magyar1980a/data.csv": "6528148196b1ac451c12e54b58f4fc84fe7bae279afd911206bb0b4c7c267ee3"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "merimaa2008a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "MIKES (Finland)",
+   "lab_families": [
+    "MIKES"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/merimaa2008a/data.csv": "9e0e96dec7915a5f02ca5dba156861e3a8627e66f97001fbb92fbb4009bcc347"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "morinaga1978a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Morinaga and Tanaka (Japan; affiliation not checked)",
+   "lab_families": [
+    "Morinaga"
+   ],
+   "stratum": "core intervals",
+   "rows": 29,
+   "files_sha256": {
+    "data/observations/morinaga1978a/data.csv": "db49a0b9aebc746dc6fc40fa42c640baf4bd6158e033858a2ae254862678635c"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "morinaga1984a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "A. Morinaga (table adopts CCDM 1982 intervals from Morinaga and Tanaka 1978 and Hanes et al. 1971)",
+   "lab_families": [
+    "BIPM",
+    "NRC",
+    "Morinaga"
+   ],
+   "stratum": "core intervals",
+   "rows": 20,
+   "files_sha256": {
+    "data/observations/morinaga1984a/data.csv": "e0cf46fd4261c73aea87bf9e3f38df8be3165619b03dc3158f7c0a61f6452ea6"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "morinaga1989a_b",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "PTB / NRLM",
+   "lab_families": [
+    "PTB",
+    "NMIJ"
+   ],
+   "stratum": "core intervals",
+   "rows": 9,
+   "files_sha256": {
+    "data/observations/morinaga1989a_b/data.csv": "7c507502b749a908f4105f351642f5b78dd9e4cb88ec19e9d7a4ca96bfd9ceb8"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "morinaga1990a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Morinaga, Ito, Sugiyama (affiliations not checked)",
+   "lab_families": [
+    "Morinaga"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/morinaga1990a/data.csv": "5fb33f9584d30b7a8615559cba9429e376c16e489c8b72bd6bd52ff6ca41c748"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "nevsky2001a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "MPQ / PTB / ILP Novosibirsk",
+   "lab_families": [
+    "PTB",
+    "MPQ",
+    "Novosibirsk"
+   ],
+   "stratum": "core absolute",
+   "rows": 7,
+   "files_sha256": {
+    "data/observations/nevsky2001a/data.csv": "eb5162e77aaf7345143b30d237c78df77f1609c3c989e513a41f55305b39dfae"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "nishiyama2013a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Nishiyama, Ishikawa, Misono (affiliation not checked)",
+   "lab_families": [
+    "Nishiyama, Ishikawa, Misono (affiliation not checked)"
+   ],
+   "stratum": "core absolute",
+   "rows": 15,
+   "files_sha256": {
+    "data/observations/nishiyama2013a/data.csv": "2c2b241509e00a0003c7ffcf4b2ae060896a3141946cf2f06ffa0b54f65ddaad"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "picard1996a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Picard, Razet, Edwards, Rodriguez-Llorente",
+   "lab_families": [
+    "NPL",
+    "LNE-BNM"
+   ],
+   "stratum": "core intervals",
+   "rows": 20,
+   "files_sha256": {
+    "data/observations/picard1996a/data.csv": "572017469fe39cbde3faadeeac0b8241c851b65a5f2bd9cae75ddf5813093f79"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "picard2003a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BIPM / MIKES / CMI / BNM-INM",
+   "lab_families": [
+    "BIPM",
+    "CMI",
+    "LNE-BNM",
+    "MIKES"
+   ],
+   "stratum": "core intervals",
+   "rows": 83,
+   "files_sha256": {
+    "data/observations/picard2003a/data.csv": "33d87ed5a5dcf0ec854cc28c397799d8f6b52a0b07810bb911d2ed14531229a6"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "pique1981a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Lyon (Pique, Hartmann, Bacis, Churassy; affiliation inferred)",
+   "lab_families": [
+    "Lyon"
+   ],
+   "stratum": "beyond",
+   "rows": 14,
+   "files_sha256": {
+    "data/observations/pique1981a/data.csv": "75590f5d7a66fc60ff6d703a27a1bfd7f6bb92c9264fb7d6fb76180beae9654b"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "pollock1983a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NBS Boulder (Pollock, Jennings, Petersen, Wells, Drullinger, Beaty, Evenson)",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/pollock1983a/data.csv": "d67b66f26251869157cfe214792d58746e1e85b6b8a4e8cb1e6f4c1bd1d9d15e"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "powel2021a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Augustana Univ. / MSU (FRIB) / TU Darmstadt",
+   "lab_families": [
+    "Augustana Univ. / MSU (FRIB) / TU Darmstadt"
+   ],
+   "stratum": "core absolute",
+   "rows": 3,
+   "files_sha256": {
+    "data/observations/powel2021a/data.csv": "07f9a6380efd4981fbdfad4ccac620f434bfba31b1472181c70d5abf61f05bb1"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "quinn1994a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BIPM / CCL (compilation)",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "core intervals",
+   "rows": 364,
+   "files_sha256": {
+    "data/observations/quinn1994a/data.csv": "816b15e4c180c28393272007b93d5d2e21e092956044d478b3101a5430140c4e"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "quinn1999a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BIPM / CCL (compilation)",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "core intervals",
+   "rows": 502,
+   "files_sha256": {
+    "data/observations/quinn1999a/data.csv": "1af83f63590d6084903d5f7bab796cce91fc0a00c267151eb1cfcbec742ba00b"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "rakowsky1989a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "TU / FU Berlin",
+   "lab_families": [
+    "TU / FU Berlin"
+   ],
+   "stratum": "core absolute",
+   "rows": 17,
+   "files_sha256": {
+    "data/observations/rakowsky1989a/data.csv": "34324875aaf92d975f132c49ecf68eaf58de22027dac94b48825d2d00bfdd587"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "razet1991a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Razet, Millerioux, Juncar (BNM-INM)",
+   "lab_families": [
+    "LNE-BNM"
+   ],
+   "stratum": "core intervals",
+   "rows": 36,
+   "files_sha256": {
+    "data/observations/razet1991a/data.csv": "1b1c2fff6c29fccd61fa3845666c1ad0614e0621051e527a758c3ac1e8757dde"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "razet1993a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "INM/CNAM (Paris)",
+   "lab_families": [
+    "LNE-BNM"
+   ],
+   "stratum": "core intervals",
+   "rows": 22,
+   "files_sha256": {
+    "data/observations/razet1993a/data.csv": "c48e3dde0de225937fdfe9ce781ee70ccaa05c328c6b78207c4bf32c87e39bed"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "razet1993b",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Razet (Paris); measurements of Barwood and Rowley (NPL)",
+   "lab_families": [
+    "NPL",
+    "LNE-BNM"
+   ],
+   "stratum": "core intervals",
+   "rows": 10,
+   "files_sha256": {
+    "data/observations/razet1993b/data.csv": "2888c5380f46f55f0926f96dca90e62e17453fe1a7b8082151da2efced6d3dd7"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "robertsson2001b",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BIPM",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "core intervals",
+   "rows": 12,
+   "files_sha256": {
+    "data/observations/robertsson2001b/data.csv": "ff3977a3b84c9856695126380bd05cd3402d9866ed88654d0df7fbc30458e927"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "rong1993a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Heidelberg",
+   "lab_families": [
+    "Heidelberg"
+   ],
+   "stratum": "core intervals",
+   "rows": 16,
+   "files_sha256": {
+    "data/observations/rong1993a/data.csv": "50eecb6d6cc8758ee29b007d46f5ad5ebb1390d94392f1e5b860f73ce8416d84"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "rovera2002a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BNM-SYRTE / BNM-INM",
+   "lab_families": [
+    "LNE-BNM"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/rovera2002a/data.csv": "1c23c6fb9964077f395464cf7da5fdf15cd86090bfa937d584b37df458412d46"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "rowley1973a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NPL (Rowley, Wallard)",
+   "lab_families": [
+    "NPL"
+   ],
+   "stratum": "core intervals",
+   "rows": 11,
+   "files_sha256": {
+    "data/observations/rowley1973a/data.csv": "75e89a45fe4862caea13fbc5e91ecb0f703cc55fedb65f8bc23e1ef0223e9a2b"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "ruben1973a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Ruben, Kukolich, Hackel, Youmans, Ezekiel (affiliations not checked)",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "core intervals",
+   "rows": 41,
+   "files_sha256": {
+    "data/observations/ruben1973a/data.csv": "60ef52ede2ce6ea2903d4f24b617fa38d5735bf3c41cec9cc70b6e136ce8dc20"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "samoudi2012a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "CEM (Spain)",
+   "lab_families": [
+    "CEM (Spain)"
+   ],
+   "stratum": "core absolute",
+   "rows": 7,
+   "files_sha256": {
+    "data/observations/samoudi2012a/data.csv": "0d35914279871829a8c6be5eb38d877db8f594adbb9170aa81ca63f4a746cd44"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "sansonetti1990a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NIST (Sansonetti); LLNL contract",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core absolute",
+   "rows": 52,
+   "files_sha256": {
+    "data/observations/sansonetti1990a/data.csv": "219eac83b6fb1f578427ef9c43168482212ff6e5fac9dd84e1ef025ceca0f39a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "schweitzer1973a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "NBS (now NIST), Gaithersburg",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "iso",
+   "rows": 3,
+   "files_sha256": {
+    "data/observations/schweitzer1973a/data.csv": "3017747cdf620f2f2e418bc253055ff010fc436456766ec453200046eb22faad"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "shiner1993a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Yale",
+   "lab_families": [
+    "Yale"
+   ],
+   "stratum": "core absolute",
+   "rows": 10,
+   "files_sha256": {
+    "data/observations/shiner1993a/data.csv": "6f38837ec69dd1a54661c18ce7e09d8771e50c99f93596cc65d57da0df34558a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "simonsen1990a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Aarhus (Denmark)",
+   "lab_families": [
+    "Aarhus (Denmark)"
+   ],
+   "stratum": "core intervals",
+   "rows": 12,
+   "files_sha256": {
+    "data/observations/simonsen1990a/data.csv": "69ff61292ff2db4dc34ea28e31bf5b4c753b1d7c876b37eeca97e933f8c37e51"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "simonsen1997a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Simonsen (affiliation not verified)",
+   "lab_families": [
+    "Simonsen (affiliation not verified)"
+   ],
+   "stratum": "core intervals",
+   "rows": 20,
+   "files_sha256": {
+    "data/observations/simonsen1997a/data.csv": "66e8bda87480f3aa5de5e4d54fe82b395a9898ce2c0e2401412b1128cdb50354"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "smith2007a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / NIST",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/smith2007a/data.csv": "d4f23281f14f97f05cf6f8e3942b6ecdba1689e4f64762f920a8f7f75eafd736"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "sorem1971a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Stanford University (Schawlow group; inferred)",
+   "lab_families": [
+    "Stanford"
+   ],
+   "stratum": "beyond",
+   "rows": 14,
+   "files_sha256": {
+    "data/observations/sorem1971a/data.csv": "ba17198497c40016f22b38e7f408fc036e207b66180eaf4768d9f56887f47686"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "spieweck1980a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "PTB (Spieweck)",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "core intervals",
+   "rows": 12,
+   "files_sha256": {
+    "data/observations/spieweck1980a/data.csv": "7a064a23fd2cf03d77af7d795a77161f5a45b6dffd6092ff6a24a1420c63db06"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "sugiyama1988a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NRLM, Japan (per the paper's text)",
+   "lab_families": [
+    "NMIJ"
+   ],
+   "stratum": "core intervals",
+   "rows": 11,
+   "files_sha256": {
+    "data/observations/sugiyama1988a/data.csv": "0f8f18e27127e7e433120d8c43fffb228d23dcd483c5183dd7b5307cfe440043"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "talvitie1998a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Talvitie, Merimaa, Ikonen",
+   "lab_families": [
+    "MIKES"
+   ],
+   "stratum": "core intervals",
+   "rows": 16,
+   "files_sha256": {
+    "data/observations/talvitie1998a/data.csv": "b230d8b6987e19d4a2b5684d792fdbc6eacb9270b58705b65889e9f15f8f8657"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "tanaka1977a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NRLM (Japan) with a BIPM laser",
+   "lab_families": [
+    "BIPM",
+    "NMIJ"
+   ],
+   "stratum": "core intervals",
+   "rows": 42,
+   "files_sha256": {
+    "data/observations/tanaka1977a/data.csv": "49105feb4ee3b9c6f97c48765ca338264202d189a8cd9a96e97427b2161ca0f8"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "tesic1975a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Y.-H. Pao group, Cleveland (affiliation not verified)",
+   "lab_families": [
+    "Pao (Cleveland)"
+   ],
+   "stratum": "iso",
+   "rows": 30,
+   "files_sha256": {
+    "data/observations/tesic1975a/data.csv": "ac860df1a71731a7420cf0eabbff1fe6ebb66a65038498623ddf45407121c52c"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "thang2012a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Thang, Thu, Xuan, Suh, Hoi (Vietnam Metrology Institute; KRISS comb measurement)",
+   "lab_families": [
+    "Thang, Thu, Xuan, Suh, Hoi (Vietnam Metrology Institute; KRISS comb measurement)"
+   ],
+   "stratum": "core absolute",
+   "rows": 3,
+   "files_sha256": {
+    "data/observations/thang2012a/data.csv": "32a5eb5e408577c1817ebaf56ee7058290d6ccf77bcd979e0683d72ccb02b0d3"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "titov1997b",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "TUBITAK National Metrology Institute (UME), Gebze",
+   "lab_families": [
+    "UME"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/titov1997b/data.csv": "b50a054dd310aeee04e3ac7d773dcae5c09a4b48229618b7d9cb5b000599175f"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "wallard1975a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "NPL / BIPM",
+   "lab_families": [
+    "BIPM",
+    "NPL"
+   ],
+   "stratum": "core intervals",
+   "rows": 3,
+   "files_sha256": {
+    "data/observations/wallard1975a/data.csv": "a6abf69fb7d785ca4b7e1be87bab2c6f1b9f9b06359cf3342c16d6e6a993d427"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "wallerand2006a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "BIPM / LNE-INM (CNAM) / ECNU",
+   "lab_families": [
+    "BIPM",
+    "LNE-BNM",
+    "China"
+   ],
+   "stratum": "beyond",
+   "rows": 21,
+   "files_sha256": {
+    "data/observations/wallerand2006a/data.csv": "9397b091d04860a9592bf5d33b37a534b377f8fc2fb443b1e3be0af15e3149e3"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "weller2026a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "DLR / Ulm University (affiliation not verified)",
+   "lab_families": [
+    "DLR / Ulm University (affiliation not verified)"
+   ],
+   "stratum": "beyond",
+   "rows": 20,
+   "files_sha256": {
+    "data/observations/weller2026a/data.csv": "30a56b3bf7040568955dd8e112ead968673b22534222170dc28895329564f62a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "xu2000a_recovered",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Vrije Universiteit Amsterdam (Ubachs)",
+   "lab_families": [
+    "Vrije Universiteit Amsterdam (Ubachs)"
+   ],
+   "stratum": "core absolute",
+   "rows": 35,
+   "files_sha256": {
+    "data/observations/xu2000a_recovered/data.csv": "58180c0658cf771dd93bae2a60a51dc551445f248118e366f061a3d030e0b081"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "ye2000a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / NIST / NRC / BIPM",
+   "lab_families": [
+    "JILA-NIST",
+    "BIPM",
+    "NRC"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/ye2000a/data.csv": "ee5b9fc2f411455bde5b4da114f1b7e6e59082ccf0722f03de0f1b5b81ae9fb3"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "ye2001a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / NIST",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/ye2001a/data.csv": "e6c789005974fab9aeeafa29dc514937247aee2e88939b03a268beaba71f779a"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "yoon2001a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "JILA / BIPM",
+   "lab_families": [
+    "JILA-NIST",
+    "BIPM"
+   ],
+   "stratum": "core absolute",
+   "rows": 2,
+   "files_sha256": {
+    "data/observations/yoon2001a/data.csv": "b6d759f531c765a20cd1e47665409b3bb7fca1aa2a5d7a64224b2d52b417a936"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "yoshiki2023a_p34r58",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Yokohama National Univ.",
+   "lab_families": [
+    "YNU (Hong)"
+   ],
+   "stratum": "beyond",
+   "rows": 24,
+   "files_sha256": {
+    "data/observations/yoshiki2023a_p34r58/data.csv": "893327426579cb0251bb9161fb837326b4deaf3aef2ead4d51a09c7620e70d36"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "zhang1999a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Zhang, Chen, Zang (China) with Akimoto, Kasahara, Sakamoto, Inaba (Japan)",
+   "lab_families": [
+    "China"
+   ],
+   "stratum": "core intervals",
+   "rows": 25,
+   "files_sha256": {
+    "data/observations/zhang1999a/data.csv": "b5bb7b90d11267009af8dec630c571f1201c5f188f393ca73574c2ed401a9ec5"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "zhang2024a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "PGMF, China (HUST group)",
+   "lab_families": [
+    "China"
+   ],
+   "stratum": "core absolute",
+   "rows": 1,
+   "files_sha256": {
+    "data/observations/zhang2024a/data.csv": "d0b78496a9b70702fb3a774aa7ea64c84fc234d51cbbb29ef688216c37705017"
+   }
+  },
+  {
+   "folder": "observations",
+   "set": "zhao1985a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "PTB (per the paper's text)",
+   "lab_families": [
+    "PTB"
+   ],
+   "stratum": "core intervals",
+   "rows": 20,
+   "files_sha256": {
+    "data/observations/zhao1985a/data.csv": "0d4030acf253e82430cb2a8d03f0fff3ac493e84da4a4c5fc6f97bd4559cbf5b"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "chen2005thesis",
+   "role": "record",
+   "reason": "constants fitted to intervals held as an observation set",
+   "lab": "JILA (advisor J. Ye)",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core",
+   "rows": 6,
+   "files_sha256": {
+    "data/hyperfine_parameters/chen2005thesis/data.csv": "c108d8fd11fcbd3e1e882cbc47e6985c9b5a63cc351f56d651da9e134f4ebfbd"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "eickhoff1994thesis",
+   "role": "record",
+   "reason": "constants fitted to intervals held as an observation set",
+   "lab": "JILA (Eickhoff; advisor J. L. Hall)",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "core",
+   "rows": 7,
+   "files_sha256": {
+    "data/hyperfine_parameters/eickhoff1994thesis/data.csv": "f101df88055820daaa92c1d0fddea5887e96e240e1483214cb7c546fdddd60bb"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "ikeda2022a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Yokohama National Univ. / AIST",
+   "lab_families": [
+    "NMIJ",
+    "YNU (Hong)"
+   ],
+   "stratum": "core",
+   "rows": 3,
+   "files_sha256": {
+    "data/hyperfine_parameters/ikeda2022a/data.csv": "6dd9fae36053d0d4f62bbaf9cd7db4a02fec6d460fb9781b0749409dcea965a7"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "matsunaga2024a",
+   "role": "train",
+   "reason": "a region where the model extrapolates",
+   "lab": "Yokohama National Univ.",
+   "lab_families": [
+    "YNU (Hong)"
+   ],
+   "stratum": "core",
+   "rows": 6,
+   "files_sha256": {
+    "data/hyperfine_parameters/matsunaga2024a/data.csv": "90947690fe490b455ccfcda1848358dd79067aca897e6511f4a19cc2c1006eb1"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "razet1996a",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "BNM-INM/CNAM (Paris); BIPM (Sevres)",
+   "lab_families": [
+    "BIPM",
+    "LNE-BNM"
+   ],
+   "stratum": "core",
+   "rows": 6,
+   "files_sha256": {
+    "data/hyperfine_parameters/razet1996a/data.csv": "3236436027b6a97a79121a8d1a1f2d6f8e0a7e5ef0d7a32ae6e48ed3c39501f8"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "robertsson2001b",
+   "role": "record",
+   "reason": "constants fitted to intervals held as an observation set",
+   "lab": "BIPM",
+   "lab_families": [
+    "BIPM"
+   ],
+   "stratum": "core",
+   "rows": 1,
+   "files_sha256": {
+    "data/hyperfine_parameters/robertsson2001b/data.csv": "3f43a38b04f42b828b00904f64c9cbca4431eb36e168fa85bb0a055135e3f558"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "wakasugi1988a",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Department of Physics, Hiroshima University (Y. Yoshizawa group)",
+   "lab_families": [
+    "Hiroshima"
+   ],
+   "stratum": "core",
+   "rows": 10,
+   "files_sha256": {
+    "data/hyperfine_parameters/wakasugi1988a/data.csv": "72ee86a3c94c2fe592ccd83a6abcc5ad582210a0ac991edd3e33677640be853c"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "wallerand2000",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Wallerand, Millerioux, Chagniot, Guerandel, Himbert (affiliation not verified)",
+   "lab_families": [
+    "LNE-BNM"
+   ],
+   "stratum": "core",
+   "rows": 1,
+   "files_sha256": {
+    "data/hyperfine_parameters/wallerand2000/data.csv": "49b08202c5ba3a40eab737ac62db30bdb2065a306111bcf0395ddada213448b1"
+   }
+  },
+  {
+   "folder": "hyperfine_parameters",
+   "set": "yoshiki2023a",
+   "role": "record",
+   "reason": "constants fitted to intervals held as an observation set",
+   "lab": "Yokohama National Univ.",
+   "lab_families": [
+    "YNU (Hong)"
+   ],
+   "stratum": "core",
+   "rows": 7,
+   "files_sha256": {
+    "data/hyperfine_parameters/yoshiki2023a/data.csv": "ce0c2d3ca0d26f0bb68b2580f6cda80d4a19d28bad11fe8b270c9e096d38096c"
+   }
+  },
+  {
+   "folder": "x_hyperfine",
+   "set": "borde2002",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "LPL Villetaneuse (Universite Paris-Nord)",
+   "lab_families": [
+    "LPL Paris 13"
+   ],
+   "stratum": "core",
+   "rows": 42,
+   "files_sha256": {
+    "data/x_hyperfine/borde2002/constants.csv": "e689357d56283ed289f64916d6a1012ada1a83d6d634cb5b65cd744f9df4415d",
+    "data/x_hyperfine/borde2002/data.csv": "4c8a2df717cbc883ba4d5b739ceddc8eaccd9f2e8080f93d7aa5a7f4a6e9f038"
+   }
+  },
+  {
+   "folder": "x_hyperfine",
+   "set": "hackel1979",
+   "role": "record",
+   "reason": "duplicate: an active set prints these measurements (v3 seen/superseded)",
+   "lab": "Research Laboratory of Electronics, MIT (S. Ezekiel)",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "core",
+   "rows": 2,
+   "files_sha256": {
+    "data/x_hyperfine/hackel1979/constants.csv": "5d9a05aff93a8a91bb4b388f3b8b09f9eba31c3534792444364907e71f27c1cd"
+   }
+  },
+  {
+   "folder": "x_hyperfine",
+   "set": "koffend1978",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Koffend, Goldstein, Bacis, Field, Ezekiel",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "core",
+   "rows": 2,
+   "files_sha256": {
+    "data/x_hyperfine/koffend1978/data.csv": "58d8093b165ddac9cd1b12cb7d063ad830e016bf33cb4c2a3c32a4d44120c9b0"
+   }
+  },
+  {
+   "folder": "x_hyperfine",
+   "set": "wakasugi1988",
+   "role": "locked test",
+   "reason": "independent lab family drawn at random",
+   "lab": "Department of Physics, Hiroshima University (Y. Yoshizawa group)",
+   "lab_families": [
+    "Hiroshima"
+   ],
+   "stratum": "core",
+   "rows": 11,
+   "files_sha256": {
+    "data/x_hyperfine/wakasugi1988/constants.csv": "98be436399e49b778499c05ceda2adb29c1af3dc62b77d6c4b67688711ae8ebd"
+   }
+  },
+  {
+   "folder": "x_hyperfine",
+   "set": "wallerand1999",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Laboratoire de Physique des Lasers, Universite Paris-Nord (Villetaneuse); Institute of Laser Physics, Novosibirsk",
+   "lab_families": [
+    "LPL Paris 13",
+    "Novosibirsk"
+   ],
+   "stratum": "core",
+   "rows": 40,
+   "files_sha256": {
+    "data/x_hyperfine/wallerand1999/constants.csv": "2bb173c909d1cfefb073ba2990883f192d61446d4c14fff1a1c0e7f249b35ab7",
+    "data/x_hyperfine/wallerand1999/data.csv": "8ad1dbda4d7c5fbe229ea0d3960959b1228b8b392ff867227583ccd758eb22bb"
+   }
+  },
+  {
+   "folder": "x_hyperfine",
+   "set": "yokozeki1980",
+   "role": "calibrate",
+   "reason": "precise data in the densely covered core",
+   "lab": "Univ. Rochester",
+   "lab_families": [
+    "Univ. Rochester"
+   ],
+   "stratum": "core",
+   "rows": 60,
+   "files_sha256": {
+    "data/x_hyperfine/yokozeki1980/constants.csv": "bfe12302a0bbf7ba51f17ad85a640f3978eb8fe083da43e58502ffb073a6b8a0",
+    "data/x_hyperfine/yokozeki1980/data.csv": "372e72876fe663ba1504aba1d4b01de5d24ced498c327fb3fa02d8e3224b1788"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "barrow1973",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Oxford (Barrow); inferred",
+   "lab_families": [
+    "Oxford (Barrow); inferred"
+   ],
+   "stratum": "b_levels",
+   "rows": 58,
+   "files_sha256": {
+    "data/b_levels/barrow1973/data.csv": "fd48612dcfd8c68ad2c57e0e053092387d92581918c74777db9f02717e8ff803"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "bhale1985",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "G. L. Bhale et al. (institution not verified)",
+   "lab_families": [
+    "G. L. Bhale et al. (institution not verified)"
+   ],
+   "stratum": "b_levels",
+   "rows": 43,
+   "files_sha256": {
+    "data/b_levels/bhale1985/intensity_obs.csv": "4f7552fbb890c34c83333dcc13a692ee2374735f4c376cda2101a060617755fa",
+    "data/b_levels/bhale1985/moment_function.csv": "4291e695b8a5619aff2d84cd00718010561e5554f9c10df6c219c6c488b341d7"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "broyer1975",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Laboratoire de Spectroscopie Hertzienne de l'ENS (CNRS), Université Pierre et Marie Curie, Paris (J.-C. Lehmann)",
+   "lab_families": [
+    "Laboratoire de Spectroscopie Hertzienne de l'ENS (CNRS), Université Pierre et Marie Curie, Paris (J.-C. Lehmann)"
+   ],
+   "stratum": "b_levels",
+   "rows": 61,
+   "files_sha256": {
+    "data/b_levels/broyer1975/table1_lifetimes.csv": "f4a5d093d881814231327378d2701d5a27509e8c7a70c14d980b820d80709da5",
+    "data/b_levels/broyer1975/table2_rates.csv": "6b0af587c86a87f813475815bcf7ce74933f4fdd9b9e227895887c48ca475553"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "chutjian1969",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "University of California, Berkeley (L. Brewer group)",
+   "lab_families": [
+    "University of California, Berkeley (L. Brewer group)"
+   ],
+   "stratum": "b_levels",
+   "rows": 25,
+   "files_sha256": {
+    "data/b_levels/chutjian1969/decay_rates.csv": "52f6e305792e3f99c88a9700bfca810947da2900c038c199365e9334fbfc92f3",
+    "data/b_levels/chutjian1969/line_strengths.csv": "178dd3feaead4025be6a1e29bf38459a2bfec6f2c06cc8db81e3ad7d212e23c2",
+    "data/b_levels/chutjian1969/results.csv": "30291421db2015065c139ee22df56d5aa832a032cb94a633e7a0e8b5a7c5e0fe"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "danyluk1977",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "McMaster University (King); inferred",
+   "lab_families": [
+    "McMaster University (King); inferred"
+   ],
+   "stratum": "b_levels",
+   "rows": 7,
+   "files_sha256": {
+    "data/b_levels/danyluk1977/data.csv": "704252cf55de5fe5c462e4a360ca99f88b97d6bd8078b120ffc05246545fd4a9"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "gerstenkorn1983",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Laboratoire Aime Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "b_levels",
+   "rows": 8,
+   "files_sha256": {
+    "data/b_levels/gerstenkorn1983/data.csv": "6e61b04e5709f3dee04667ea98cc3d2f76e202bac7adbc1c611d06562f59def5"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "gerstenkorn1985a",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "b_levels",
+   "rows": 45,
+   "files_sha256": {
+    "data/b_levels/gerstenkorn1985a/dunham.csv": "d6cc3e02c06665cb552e561c7aef66fcc08c1100b2a5c5f6a62e19e5ecc54b5e"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "gerstenkorn1991",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Laboratoire Aimé Cotton, Orsay, and University of Waterloo",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "b_levels",
+   "rows": 155,
+   "files_sha256": {
+    "data/b_levels/gerstenkorn1991/constants.csv": "dd939fe13c0e0325a8178775f112223f5c369d7ca198d1987c012d405cfb23a6",
+    "data/b_levels/gerstenkorn1991/data.csv": "6d520087fdbc03d9ab338cba8c9929c2195686153f9c630ba49816765a4d49f4",
+    "data/b_levels/gerstenkorn1991/dunham.csv": "51ee6dd16587b08d551374ce07df0a0fffe39485237c36ce2e276887a1ce4d56",
+    "data/b_levels/gerstenkorn1991/lines_calc.csv": "1cd75fd50b6f26cf1a4f7380f91c65fbc33d77f79dc279b0d190553403ba3dee"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "jewsbury1993",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Jewsbury, Ridley, Lawley, Donovan",
+   "lab_families": [
+    "Jewsbury, Ridley, Lawley, Donovan"
+   ],
+   "stratum": "b_levels",
+   "rows": 42,
+   "files_sha256": {
+    "data/b_levels/jewsbury1993/c1g_potential.csv": "ba3c1324f4c5c4c95700923035e5b48cb50b758136fd4cc1501a506d667fc9f7",
+    "data/b_levels/jewsbury1993/constants.csv": "0ee6f06a45533bb6791989b69da48f66af542d4a79e2347259918afb9f3c4867",
+    "data/b_levels/jewsbury1993/data.csv": "247f80bb3030b0c32ef7e31e47b03abd0894b01c2e826b3f1bd7dabc8a49f703"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "king1980",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "King, Littlewood, Robins, Wijeratne (affiliation not verified)",
+   "lab_families": [
+    "King, Littlewood, Robins, Wijeratne (affiliation not verified)"
+   ],
+   "stratum": "b_levels",
+   "rows": 12,
+   "files_sha256": {
+    "data/b_levels/king1980/data.csv": "a088e0105e1e8c6910f9a91fdfee9f6f1495d1b642e1213dc2491ce31cd03a6d"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "koffend1979",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "MIT (R. W. Field) with R. Bacis (Lyon) (affiliations inferred)",
+   "lab_families": [
+    "Lyon",
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "b_levels",
+   "rows": 23,
+   "files_sha256": {
+    "data/b_levels/koffend1979/gain.csv": "a03861ab72c9635fa1a780806a6fdafdf2b3d3f24e3b7f9793d9e56fcc0ab6c9",
+    "data/b_levels/koffend1979/gain_ratios.csv": "98c8b518ad10ba78a0b1f498ebafd281e25870bc3e92a4a4ca58a4745ccc2840",
+    "data/b_levels/koffend1979/moment_function.csv": "d7749655a07b40dfc0326c6b37fd1ad03efea0c9d036813812b4ed466752948e"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "lamrini1994",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Université Lyon I (LASIM; R. Bacis, A. J. Ross)",
+   "lab_families": [
+    "Lyon"
+   ],
+   "stratum": "b_levels",
+   "rows": 12,
+   "files_sha256": {
+    "data/b_levels/lamrini1994/decay_rates_table1.csv": "9f135ca73f3dcce20a895e8dfbd397674afa8b597c945139c611267e07237cf4",
+    "data/b_levels/lamrini1994/moment_fit_eq1_eq2.csv": "2219c52cac15602eac9b33a8ba59d1353c44acda6caddc935349f320b03f1622"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "luc1980",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "b_levels",
+   "rows": 281,
+   "files_sha256": {
+    "data/b_levels/luc1980/bands.csv": "aad4ef8c44bcfefd8b3df363f6d715cbda91a7c5b411fe72a240f3321ed373b2",
+    "data/b_levels/luc1980/constants.csv": "0557726e2559bed583123dc815b9fec852642454ab90ec2f6a11bea8f8d6dce7",
+    "data/b_levels/luc1980/data.csv": "7ffa8da3ace0a18cc87ac24901f97e00b53091b9072b373335b2d92542b39d30",
+    "data/b_levels/luc1980/dunham.csv": "45d010fd77408bd0bae9a0aaefdff5b95208d89341eefe3d9630ee0e83522e96",
+    "data/b_levels/luc1980/x_levels.csv": "da4affb02b71a95cd147fa568a6d8873d9acbd6d550098dabc0a20c5c623d1ae"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "pique1986",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Lyon (Bacis, Churassy)",
+   "lab_families": [
+    "Lyon"
+   ],
+   "stratum": "b_levels",
+   "rows": 48,
+   "files_sha256": {
+    "data/b_levels/pique1986/table1_eqQ_contributions.csv": "152127d719304eb9574032c149b6f39fcb527960a33ce53f3e2a3db9973ddfd8",
+    "data/b_levels/pique1986/table2_C_contributions.csv": "2212698c19d52a633e1ae368849c544099584c74fa5b625a54054a3be275191c",
+    "data/b_levels/pique1986/table3_delta_contributions.csv": "9bdcf49de8257f8c374cfc76a3be87753fedc991ba7a73b68980379a7d865ffc",
+    "data/b_levels/pique1986/table4_d_contributions.csv": "c54a343f3296c5ddf1a76150acbe00f7defdd73bccd41e3838134a2a865819a5"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "spietz2006a",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Institute of Environmental Physics (IUP), University of Bremen (J. P. Burrows)",
+   "lab_families": [
+    "Institute of Environmental Physics (IUP), University of Bremen (J. P. Burrows)"
+   ],
+   "stratum": "b_levels",
+   "rows": 1,
+   "files_sha256": {
+    "data/b_levels/spietz2006a/table2_500nm.csv": "2a9987cd3c94123ec8b236e9f359846182f873ec5b35137d84ef4890b4af75db"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "steinfeld1965",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Department of Chemistry, Harvard University (Klemperer)",
+   "lab_families": [
+    "Department of Chemistry, Harvard University (Klemperer)"
+   ],
+   "stratum": "b_levels",
+   "rows": 295,
+   "files_sha256": {
+    "data/b_levels/steinfeld1965/constants.csv": "cf1954897e4c4632b2213dfa447fd381c0bdcbe38bacdcdebc57e6ae87729126",
+    "data/b_levels/steinfeld1965/data.csv": "17289594d837ccf7621152eb62274a3756848e47f8f2f48c965e714f3fa11046",
+    "data/b_levels/steinfeld1965/intensity_calc.csv": "a8d005df5eeac78aea66b7edfde2849082c144d815e7343b8919387a288d9e33",
+    "data/b_levels/steinfeld1965/intensity_obs.csv": "01ea4c62c158aff694360466a714835d3e2531f18fc5de95cefddeed474a370c",
+    "data/b_levels/steinfeld1965/lifetimes_calc.csv": "1fe9a2c1ac36398bac1060a2539bf3f3a1539dbb4a87b0abdb1776a3b85b92ba",
+    "data/b_levels/steinfeld1965/rkr_calc.csv": "4265271024cc234d1ae6b2066412b72ec5ba632963b72ea484bc23c58579443e",
+    "data/b_levels/steinfeld1965/sensitivity_calc.csv": "393d34ef5e717f97fd8d50dae050427c91f92f7332848ea360d635c1a1ff655b",
+    "data/b_levels/steinfeld1965/x_B.csv": "a9ab22155f81bb35e85c598f56f31dceee2ace04b69429813a0a63c0da650877"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "steinfeld1969",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "MIT (Steinfeld); inferred",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "b_levels",
+   "rows": 704,
+   "files_sha256": {
+    "data/b_levels/steinfeld1969/coincidences.csv": "c3d9e273330d355b16b85510a5c658f8e2afd934df36ad57f62a6b670f8abf1a",
+    "data/b_levels/steinfeld1969/constants.csv": "79aef6509c7c3cb7aaaf710fa66b417b627086b0ce065818069d9065f9ab965c",
+    "data/b_levels/steinfeld1969/heads.csv": "cccfccf4fe5b3978eab843bb14d7b4206fd44662f411f00f65578f0fd9ab96e1",
+    "data/b_levels/steinfeld1969/levels_calc.csv": "7aa043725adbba0dc424c06836e496cb21db1b114df99821e522cd9aecc93af4",
+    "data/b_levels/steinfeld1969/lines.csv": "5508e49ecc4c01191002eb3ff570b63d6ab4663c19c76fe293859ba8936e95f2",
+    "data/b_levels/steinfeld1969/potential.csv": "e319624a4b3efc735f396cfb2030c1844b0b758e610dceca1cb4bdac55ce5672"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen1982",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "J. Tellinghuisen (Vanderbilt University)",
+   "lab_families": [
+    "J. Tellinghuisen (Vanderbilt University)"
+   ],
+   "stratum": "b_levels",
+   "rows": 92,
+   "files_sha256": {
+    "data/b_levels/tellinghuisen1982/absorption_resolution.csv": "65bb3aebca8c9f98bfcbf5b124300244b9bef717dbe40d83dc6736756cb4fc34",
+    "data/b_levels/tellinghuisen1982/constants.csv": "3190ba4ac698a4a5acaf0c9ab3acf0b74277e54db6dd45ad1a6425d5d8173f51",
+    "data/b_levels/tellinghuisen1982/continuum_obs.csv": "069bce24de9cfc447e3a9c7a3edee7bbfb73923643f801e525702febf3ef520e",
+    "data/b_levels/tellinghuisen1982/line_coincidence_calc.csv": "2d44837ae7ca75fa82cc05b0721aa9d66d4d1a56a1c30d481b2c8c0781601e95"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen1997",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "J. Tellinghuisen (Vanderbilt University)",
+   "lab_families": [
+    "J. Tellinghuisen (Vanderbilt University)"
+   ],
+   "stratum": "b_levels",
+   "rows": 6,
+   "files_sha256": {
+    "data/b_levels/tellinghuisen1997/moment_function.csv": "7ef11cd98b006edb7894b3eccc1e00ab086c2c889dbac9f76b517193eebdbcc0"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen2011",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "J. Tellinghuisen (Vanderbilt University)",
+   "lab_families": [
+    "J. Tellinghuisen (Vanderbilt University)"
+   ],
+   "stratum": "b_levels",
+   "rows": 53,
+   "files_sha256": {
+    "data/b_levels/tellinghuisen2011/line_profiles_table1.csv": "0858677a86d7625297d673c56664a2d294e3a94f6bb244ddf730e0f6844947e6",
+    "data/b_levels/tellinghuisen2011/moment_fit.csv": "bdfaa454aafd75c09d0510d69e463c452871328dc74d6fc1e4adeba8914f0cd5",
+    "data/b_levels/tellinghuisen2011/results_table2.csv": "460285321f1d87f1c24769448a763d40a17a4a7d21db5de91ae62a4a1d918a59"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen2011c",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "J. Tellinghuisen (Vanderbilt University)",
+   "lab_families": [
+    "J. Tellinghuisen (Vanderbilt University)"
+   ],
+   "stratum": "b_levels",
+   "rows": 116,
+   "files_sha256": {
+    "data/b_levels/tellinghuisen2011c/computed_absorptivity_table2.csv": "e10d1ec3e8fa02cbd62c52249137b66cde979f00d1738ac7b8a790a1e8d0ce85",
+    "data/b_levels/tellinghuisen2011c/constants_table1.csv": "df17cb5c14b7b5aea0c67c1e6be698fe687caebf6cb88f9565660ee262807ee0"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "tromp1983",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "University of Waterloo (Le Roy) and Laboratoire Aimé Cotton, Orsay (Gerstenkorn, Luc)",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "b_levels",
+   "rows": 6,
+   "files_sha256": {
+    "data/b_levels/tromp1983/data.csv": "2af631fddb56e1e0422f73a56e56568569d8fffe9ff4857f1096369c377a4c1d"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "wakasugi1989",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Department of Physics, Hiroshima University (Y. Yoshizawa group)",
+   "lab_families": [
+    "Hiroshima"
+   ],
+   "stratum": "b_levels",
+   "rows": 39,
+   "files_sha256": {
+    "data/b_levels/wakasugi1989/line_strengths.csv": "0fdd90ac7a054bd0258654504d3c7f6ed8b6c1aff93a5afae4398ae3e5cd5e68"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "wei1974",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "Wei and Tellinghuisen (affiliation not checked)",
+   "lab_families": [
+    "Wei and Tellinghuisen (affiliation not checked)"
+   ],
+   "stratum": "b_levels",
+   "rows": 52,
+   "files_sha256": {
+    "data/b_levels/wei1974/bands.csv": "b6b2adbe18a2679cf07627137fb4aeee6e1918d30540891fb7bb65cd040ad72a",
+    "data/b_levels/wei1974/constants.csv": "9542d29bc1ec19336bd1b010c4083dbd152653a4f6eb1286092ebd47a240e808"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "wu1985",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "not verified",
+   "lab_families": [
+    "not verified"
+   ],
+   "stratum": "b_levels",
+   "rows": 4,
+   "files_sha256": {
+    "data/b_levels/wu1985/absorption.csv": "43205d9d590a09fc659da287bed53bcb66212ee524072f71286c8217062d538f"
+   }
+  },
+  {
+   "folder": "b_levels",
+   "set": "yee1976",
+   "role": "record",
+   "reason": "b_levels: no fit or sigma uses this kind",
+   "lab": "K. K. Yee",
+   "lab_families": [
+    "K. K. Yee"
+   ],
+   "stratum": "b_levels",
+   "rows": 232,
+   "files_sha256": {
+    "data/b_levels/yee1976/constants.csv": "b12d6554b40b40060b8745d7ceead7c0e25e2d38d1326df65b9a5dd9f01cf447",
+    "data/b_levels/yee1976/data.csv": "6b226a57c7722408c9a319f93f7c975f1322bbd1e2a90985d04ee475946f4987",
+    "data/b_levels/yee1976/excitations.csv": "5abd53cf2d75bb3ff65bcc554ba8f0b2b175f680f4f27bea91079e88e5fbfd2f"
+   }
+  },
+  {
+   "folder": "x_levels",
+   "set": "ashmore1986",
+   "role": "record",
+   "reason": "x_levels: no fit or sigma uses this kind",
+   "lab": "Department of Chemistry, Vanderbilt University, Nashville (Tellinghuisen)",
+   "lab_families": [
+    "Department of Chemistry, Vanderbilt University, Nashville (Tellinghuisen)"
+   ],
+   "stratum": "x_levels",
+   "rows": 36,
+   "files_sha256": {
+    "data/x_levels/ashmore1986/constants.csv": "c894d1678cc85499a2467f2e21e6aa4c6a775eb9c6d3aeca055d410c0d68ff83",
+    "data/x_levels/ashmore1986/upper_levels.csv": "8aa932c48d9960c0f909fdb77b0a83b15257152446f2fe039382d7070e178ce3"
+   }
+  },
+  {
+   "folder": "x_levels",
+   "set": "rank1964",
+   "role": "record",
+   "reason": "x_levels: no fit or sigma uses this kind",
+   "lab": "D. H. Rank and B. S. Rao",
+   "lab_families": [
+    "D. H. Rank and B. S. Rao"
+   ],
+   "stratum": "x_levels",
+   "rows": 141,
+   "files_sha256": {
+    "data/x_levels/rank1964/constants.csv": "b48c87fe5aa1822a179b88b79470d80674d352f9948dca4105c1d109d2683c63",
+    "data/x_levels/rank1964/green_series.csv": "6ed1636070894590955c3981bcad355afd48aa9fb0812ea821edc5bcdb87a89d",
+    "data/x_levels/rank1964/uv_residuals.csv": "5cfa2c65923c74ad1124e58c18d0a3addff090bfb291636fa548c927c57bdc44"
+   }
+  },
+  {
+   "folder": "x_levels",
+   "set": "tellinghuisen1980",
+   "role": "record",
+   "reason": "x_levels: no fit or sigma uses this kind",
+   "lab": "Tellinghuisen, McKeever, Sur (affiliations not checked)",
+   "lab_families": [
+    "Tellinghuisen, McKeever, Sur (affiliations not checked)"
+   ],
+   "stratum": "x_levels",
+   "rows": 360,
+   "files_sha256": {
+    "data/x_levels/tellinghuisen1980/data.csv": "ed1095feb240a1347aba230c5e94b8421f3fdd593b720cf757aa9c6c689d25b4",
+    "data/x_levels/tellinghuisen1980/table6_parameters.csv": "9c062666024581f59e2b3b7ed060cf7b3aff71612b54279dde5b412a2637eee4",
+    "data/x_levels/tellinghuisen1980/table7_levels.csv": "466ad8eb462238cdd8a1d0f19bbf3e26e7241d6e54e4b9463f478cbbbd33f283"
+   }
+  },
+  {
+   "folder": "x_levels",
+   "set": "verma1960",
+   "role": "record",
+   "reason": "x_levels: no fit or sigma uses this kind",
+   "lab": "Laboratory of Molecular Structure and Spectra, Department of Physics, University of Chicago",
+   "lab_families": [
+    "Laboratory of Molecular Structure and Spectra, Department of Physics, University of Chicago"
+   ],
+   "stratum": "x_levels",
+   "rows": 433,
+   "files_sha256": {
+    "data/x_levels/verma1960/constants_derived.csv": "2274e5ec242cc945bacf64cfe05eb44b819ba4e21dc3689d14c21f1898405a0e",
+    "data/x_levels/verma1960/data.csv": "1b1caf7a10c56b7c5fec85c54c7f08507aedfd76ea8b8f4616561dcb315e681e",
+    "data/x_levels/verma1960/delta_g.csv": "304cb37d8dda1b804e10db09584e04728a8f4dd2b1c8e486577aab2d4327f841",
+    "data/x_levels/verma1960/rkr_derived.csv": "cac47d2c9492bddc13f6b5044fd8771edbbee7fb7d3ab138d73bc3a84da4c9c1"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "cheng2002a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "JILA / NIST",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "widths",
+   "rows": 1,
+   "files_sha256": {
+    "data/widths/cheng2002a/data.csv": "50c52e3ef49c3b180e3518f8cc211ea6b5aa206c3bd5034d935de4a8d0c82c82"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "eng2004a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "Hardwick group, Department of Chemistry, University of Oregon",
+   "lab_families": [
+    "Hardwick group, Department of Chemistry, University of Oregon"
+   ],
+   "stratum": "widths",
+   "rows": 12,
+   "files_sha256": {
+    "data/widths/eng2004a/data.csv": "1c26e847a0a4cabf422490c6dda71516124c233a9c1d5c24e13088eb5b669770"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "fang2006b",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "NTHU / NCTU (Taiwan)",
+   "lab_families": [
+    "Taiwan"
+   ],
+   "stratum": "widths",
+   "rows": 1,
+   "files_sha256": {
+    "data/widths/fang2006b/data.csv": "b78926179039acd7c4c93d748ab7b3720aa83b428ef7ae4af5999d86b25f6d7b"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "goncharov1990a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "Institute of Thermophysics, Siberian Branch of the USSR Academy of Sciences, Novosibirsk (V. P. Chebotayev)",
+   "lab_families": [
+    "Novosibirsk"
+   ],
+   "stratum": "widths",
+   "rows": 3,
+   "files_sha256": {
+    "data/widths/goncharov1990a/data.csv": "8fccda1ffe54dbbf5301e9a94cce57fb91e43ff5036dfb58d97f2a7f5629d94d"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "hrabina2017a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "ISI Brno / INRIM / LNE-SYRTE",
+   "lab_families": [
+    "LNE-BNM",
+    "INRIM"
+   ],
+   "stratum": "widths",
+   "rows": 3,
+   "files_sha256": {
+    "data/widths/hrabina2017a/data.csv": "0e34869f6b10fdd954728d8bcc405b36d56e0f007469e50a01c4c8a0555aeccc"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "phillips2008a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "Department of Engineering Physics, Air Force Institute of Technology (AFIT), G. P. Perram group",
+   "lab_families": [
+    "Department of Engineering Physics, Air Force Institute of Technology (AFIT), G. P. Perram group"
+   ],
+   "stratum": "widths",
+   "rows": 6,
+   "files_sha256": {
+    "data/widths/phillips2008a/data.csv": "16c95175ebf80fb943cbfc310653b034efe3b40f90e0b5927bc02c756d5531ff"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "sakurai1979a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "National Research Laboratory of Metrology (NRLM), Tokyo, and Keio University, Yokohama",
+   "lab_families": [
+    "NMIJ",
+    "YNU (Hong)"
+   ],
+   "stratum": "widths",
+   "rows": 3,
+   "files_sha256": {
+    "data/widths/sakurai1979a/data.csv": "5469ef9570bbc8f31ac69a8e950997980aedf9b94c043bdd1bad7c885f969d51"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "schweitzer1973ba",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "NBS (now NIST), Gaithersburg",
+   "lab_families": [
+    "JILA-NIST"
+   ],
+   "stratum": "widths",
+   "rows": 4,
+   "files_sha256": {
+    "data/widths/schweitzer1973ba/data.csv": "bc6cdbc93d7482770cf65c235412d57c9215da9a6ec381def94dbc3b6ed2f944"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "tench1983a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "Research Laboratory of Electronics, MIT (S. Ezekiel)",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "widths",
+   "rows": 15,
+   "files_sha256": {
+    "data/widths/tench1983a/data.csv": "803a8ad28dc5e6bbf8ed5a6730e05a9a8973e8c3a2652fc06c3af69ed9798d75"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "titov1997a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "TUBITAK Ulusal Metroloji Enstitusu (UME), Gebze-Kocaeli (A. Titov)",
+   "lab_families": [
+    "UME"
+   ],
+   "stratum": "widths",
+   "rows": 2,
+   "files_sha256": {
+    "data/widths/titov1997a/data.csv": "43da06fab34fda936b130c32f8c6237061dce705aa29c94b8a71823972989ad8"
+   }
+  },
+  {
+   "folder": "widths",
+   "set": "wolf2009a",
+   "role": "record",
+   "reason": "widths: no fit or sigma uses this kind",
+   "lab": "Univ. Oregon",
+   "lab_families": [
+    "Univ. Oregon"
+   ],
+   "stratum": "widths",
+   "rows": 174,
+   "files_sha256": {
+    "data/widths/wolf2009a/data.csv": "268a0584e433a5f37b5a7afbc3722d91ef230d8987c298116883dd2bbc7eb6fe"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "brewer1963a",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "Department of Chemistry and Lawrence Radiation Laboratory, University of California, Berkeley (L. Brewer)",
+   "lab_families": [
+    "Department of Chemistry and Lawrence Radiation Laboratory, University of California, Berkeley (L. Brewer)"
+   ],
+   "stratum": "lifetimes",
+   "rows": 2,
+   "files_sha256": {
+    "data/lifetimes/brewer1963a/data.csv": "1c6bcff96f018088158b8407324fc55f98d8b520ce734a4a7c4cce653a6e878e"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "broyer1976a",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "Laboratoire de Spectroscopie Hertzienne de l'ENS (CNRS), Paris (J.-C. Lehmann)",
+   "lab_families": [
+    "Laboratoire de Spectroscopie Hertzienne de l'ENS (CNRS), Paris (J.-C. Lehmann)"
+   ],
+   "stratum": "lifetimes",
+   "rows": 3,
+   "files_sha256": {
+    "data/lifetimes/broyer1976a/data.csv": "d6daa77f8a54f36e5dd0955e47b9efa0f3bdf3e197265fbf45bea2541a374882"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "chapman1972a",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "Division of Physics, National Research Council of Canada, Ottawa (G. D. Chapman, P. R. Bunker)",
+   "lab_families": [
+    "NRC"
+   ],
+   "stratum": "lifetimes",
+   "rows": 9,
+   "files_sha256": {
+    "data/lifetimes/chapman1972a/data.csv": "a0e27e8a6c0207a814ba15b24930404aaa674328a4d5665fa0a68d5ebcc7e24d"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "chutjian1967a",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "Inorganic Materials Research Division, Lawrence Radiation Laboratory and Department of Chemistry, University of California, Berkeley (L. Brewer)",
+   "lab_families": [
+    "Inorganic Materials Research Division, Lawrence Radiation Laboratory and Department of Chemistry, University of California, Berkeley (L. Brewer)"
+   ],
+   "stratum": "lifetimes",
+   "rows": 22,
+   "files_sha256": {
+    "data/lifetimes/chutjian1967a/data.csv": "69a20a0d27b4b0047171c9b0d25778895aeedbb96298915ac2fef0b665a42099"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "pique1983a",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "Grenoble / Lyon (J. P. Pique, R. Bacis)",
+   "lab_families": [
+    "Lyon"
+   ],
+   "stratum": "lifetimes",
+   "rows": 13,
+   "files_sha256": {
+    "data/lifetimes/pique1983a/data.csv": "e1ec8316a22c72231622377b2fe2788e220d32e4aeff740a27fc76e71b738689"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "shotton1972a",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "Division of Physics, National Research Council of Canada, Ottawa (K. C. Shotton, G. D. Chapman)",
+   "lab_families": [
+    "NRC"
+   ],
+   "stratum": "lifetimes",
+   "rows": 4,
+   "files_sha256": {
+    "data/lifetimes/shotton1972a/data.csv": "32ce0b54ff99f9dd1dffc608ff5f13bfebdb95d9943ef75774168113aeb25eab"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "tench1983a",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "Research Laboratory of Electronics, MIT (S. Ezekiel)",
+   "lab_families": [
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "lifetimes",
+   "rows": 3,
+   "files_sha256": {
+    "data/lifetimes/tench1983a/data.csv": "1f996d1dec8c2df14df9b762c2d75bce3abd6383ea47e83737192700dcc2db25"
+   }
+  },
+  {
+   "folder": "lifetimes",
+   "set": "vigue1981ba",
+   "role": "record",
+   "reason": "lifetimes: no fit or sigma uses this kind",
+   "lab": "ENS Paris (J.-C. Lehmann)",
+   "lab_families": [
+    "ENS Paris (J.-C. Lehmann)"
+   ],
+   "stratum": "lifetimes",
+   "rows": 34,
+   "files_sha256": {
+    "data/lifetimes/vigue1981ba/data.csv": "daafb0656d0f0ee9fb3a6c27f8dff360a2ed8296b41195e3b7053b391cf09189"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "appadoo1996",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "University of Waterloo (Le Roy, Bernath) and Laboratoire Aimé Cotton, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "other_states",
+   "rows": 200,
+   "files_sha256": {
+    "data/other_states/appadoo1996/table1_conditions.csv": "83f40b26f4689759432a49f979b82f77bb173f1d8e49e58b3394eedb939ef09f",
+    "data/other_states/appadoo1996/table2_band_ranges.csv": "f2bb59a07055a9607a970356e26034738b77f917a013d5624cd8552bec131ca1",
+    "data/other_states/appadoo1996/table3_dunham.csv": "e9e82be0cce24d942ae67d12b5527f356290feadc5e3fa4df7c0dceec15ca6e2",
+    "data/other_states/appadoo1996/table4_sigma.csv": "a548b47ef7f4b016b71629949441a6b5f1e66ca254f1cac816c8c518460150f2",
+    "data/other_states/appadoo1996/table5_nde_parameters.csv": "80789c22f81f904a7fc85b5da91f4b49c895e6765012932d96b43f8f860ce7d3",
+    "data/other_states/appadoo1996/table6_cdc_nde.csv": "e91e7480d4ff35a484eacc0817ae67a1dbb2d4e16309ea4e34c06ff3f9465596",
+    "data/other_states/appadoo1996/table7_levels.csv": "593e6d3197513cd42f3f48342c3a23ea825c283ce8b2dcab2e6a93d69b841370",
+    "data/other_states/appadoo1996/table8_constants.csv": "ea27f2dbac30112ecbfec1f42d95d7d72c245487a8bd03bf890b17828a553105"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "churassy1981",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "Lyon / Laboratoire Aimé Cotton / MIT (affiliations inferred)",
+   "lab_families": [
+    "Lyon",
+    "MIT (Ezekiel)"
+   ],
+   "stratum": "other_states",
+   "rows": 44,
+   "files_sha256": {
+    "data/other_states/churassy1981/table1_a1g_levels.csv": "709fe4253da86b013af790576f6953a14fdf5bbf774528ec66bff4b668d05b1f",
+    "data/other_states/churassy1981/table2_aprime0g_levels.csv": "93a99f53ed057ed2bf0ed5101e47635b0f6d1f3fa2f8233697cb6fb33376f1d6",
+    "data/other_states/churassy1981/table3_eQq_aprime.csv": "f2b2e46593e721ae44cf7e1bca27668404117061f6eceabcedcf2b3428d97602",
+    "data/other_states/churassy1981/table4_dunham.csv": "158cca738ad7cee62d2fa90d7f1925b2c3f6e8c3403edb1c26bca3123b5672b5"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "danyluk1977b",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "Danyluk and King",
+   "lab_families": [
+    "Danyluk and King"
+   ],
+   "stratum": "other_states",
+   "rows": 62,
+   "files_sha256": {
+    "data/other_states/danyluk1977b/table1_pump_levels.csv": "4a447ae63285ac39237fbcab07f5d53cf3b9c017a22920f0cfa994e626c67862",
+    "data/other_states/danyluk1977b/table2_gamma2_rotational.csv": "fdc09afa435d3d15ec42aa9f7f527e448c2313542c103efb27ad4ce79ad9f41d",
+    "data/other_states/danyluk1977b/table3_gamma_levels.csv": "4b7d738c8990aa36feadba0f5886a6ed7bd85ea9c56ca7757bfa3fac04feeb38",
+    "data/other_states/danyluk1977b/table4_epsilon_levels.csv": "c88e1641a8587a09680ba4a57b16fe6a74e13aaece3a03cab5cf78a2576b657a",
+    "data/other_states/danyluk1977b/table5_constants.csv": "9eb376670e2746adfad4bfb333ceb79dfc449652c478ecec4df28f4da3a6e774",
+    "data/other_states/danyluk1977b/text_constants.csv": "609e3e7c326416bf954cc0206207e67a5f5e818ef2d70082f87d4fbe202aae79"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "inard1999",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "Laboratoire de Spectrométrie Ionique et Moléculaire, Université Lyon I (Bacis, Churassy), with V. Skorokhodov (St. Petersburg State University)",
+   "lab_families": [
+    "Lyon"
+   ],
+   "stratum": "other_states",
+   "rows": 157,
+   "files_sha256": {
+    "data/other_states/inard1999/table1_D0u_populations.csv": "0d02694bfd0f7bfd2e6a73c67c83b47e1cb28a3dc06d4953b50f791b9d1d8a9d",
+    "data/other_states/inard1999/table2_levels.csv": "0b6c4bc58a21e118545743314b027e87969c3aa4c98880b03810f9c87b54735d",
+    "data/other_states/inard1999/table3_dunham_B1u.csv": "7748a4b39811485cc9994577a369b4e17a9660de9ab9b65c66b06b28ffc57eb3",
+    "data/other_states/inard1999/table4_footnote_constants.csv": "f6f97748b421ea32f19c05a4099896b970a136f6d7860ea790460c2d9be12b0c",
+    "data/other_states/inard1999/table4_rkr_B1u.csv": "3b913a23daf5b2f59330fa37353e61984937dd2168def57a8c055533ccf87bed",
+    "data/other_states/inard1999/table5_fcf_E_B1u.csv": "cda307de7c735dd90f9a501f8ae4cd95da5912b642c621ad7fadd4a76f75bc78",
+    "data/other_states/inard1999/table6_longrange_B1u.csv": "bf6d845f9ecc7691a45d31a3df202536404b1759163780620a34b2ee185eb20e",
+    "data/other_states/inard1999/table7_extrapolated_B1u.csv": "9c67a524068bfee72c69dddf93cdfe15d3dce51801132c4c7c0e3b6e2c010020",
+    "data/other_states/inard1999/table8_longrange_coefficients.csv": "05057a40c282c4dfdbc0f1d3cecf12c93ee120980e8978ec8ecd9c030770cd8c",
+    "data/other_states/inard1999/text_constants.csv": "25a6c70f267789d21b43c95894f845eda740f430401bdde8e78769f356cf7ee5"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "king1981",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "King, Littlewood, Robins (affiliation not verified)",
+   "lab_families": [
+    "King, Littlewood, Robins (affiliation not verified)"
+   ],
+   "stratum": "other_states",
+   "rows": 229,
+   "files_sha256": {
+    "data/other_states/king1981/table11_rkr_E.csv": "fccb69adfaf6eba324426872b86ec3bd8e411d090d2f0a61623762c9f0bbbcae",
+    "data/other_states/king1981/table1_E_levels.csv": "3aa7bba43cb44854709e97623c2886c8bba16a28f23670a6bf339445c794a297",
+    "data/other_states/king1981/table2_4_6_8_10_constants.csv": "dbfd065f64b04a8e1041a3b4fd0e2c0c20adef65c79b64706ec5009774fb8ace",
+    "data/other_states/king1981/table3_gamma_levels.csv": "248ea6b19047e7619e4be62c67fea3189165c35448f2f9dd91c8f3533e5b5833",
+    "data/other_states/king1981/table5_beta_levels.csv": "7da3c19bc269672621396900f426d4e38c8f416aa140e456885dad9b03ba5373",
+    "data/other_states/king1981/table7_alpha_levels.csv": "2603f85f893b54b5703096689abe695f1d09fa5609afa955bf1feba1af31bd88",
+    "data/other_states/king1981/table9_delta_levels.csv": "66d84bd8054ff4cf34ccf2c48817ca5d5f8c5004e174562625fa6ed92dacf0ee",
+    "data/other_states/king1981/text_constants.csv": "fd1922618299f01814184673f9beff3f1c5c7ad5d2f13bca4900d89f59842dd5"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "king1989",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "Department of Chemistry, McMaster University, Hamilton, Ontario (G. W. King)",
+   "lab_families": [
+    "Department of Chemistry, McMaster University, Hamilton, Ontario (G. W. King)"
+   ],
+   "stratum": "other_states",
+   "rows": 127,
+   "files_sha256": {
+    "data/other_states/king1989/table1_3P1C_features.csv": "b2a6f5cd18a44d8cea6e148eda111dee6d4291143e2b7723487fdfaeddb0b3f5",
+    "data/other_states/king1989/table2_3P2C_heads.csv": "05bdcfbcb9b07f80ad28a100b9ee1535b349399849722d2e7cd8d240093cb1ff",
+    "data/other_states/king1989/table3_assignment_summary.csv": "5d4bebeec48bdb0fe8feb438d2e5b65df158718bdc47749895972898fe15ace7",
+    "data/other_states/king1989/table4_5_dunham.csv": "9a813f21762eefe7f5c275a5ba28c40bdad5401e3d9ec3e178e88ddfe2b57d3b"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "tellinghuisen1980",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "Tellinghuisen, McKeever, Sur (affiliations not checked)",
+   "lab_families": [
+    "Tellinghuisen, McKeever, Sur (affiliations not checked)"
+   ],
+   "stratum": "other_states",
+   "rows": 23,
+   "files_sha256": {
+    "data/other_states/tellinghuisen1980/table8_D_levels.csv": "117380584da5c9fcb59f86bc78d6b3c42118af15a47ad72b71b25b44c8205c50",
+    "data/other_states/tellinghuisen1980/table8_correlations.csv": "eb09d81a3c31f14c010d2416d0ddf680efc9d351ebb9dfb78801bc8aa2bf0e51",
+    "data/other_states/tellinghuisen1980/text_constants.csv": "f10c0dd98bc8c3bace138c6de631a92ee66be366a3fe21511718ae15c2062741"
+   }
+  },
+  {
+   "folder": "other_states",
+   "set": "wieland1972",
+   "role": "record",
+   "reason": "other_states: no fit or sigma uses this kind",
+   "lab": "Physikalisches Institut der Universität Basel and Lawrence Radiation Laboratory, University of California, Berkeley (the 129I2 work in L. Brewer's laboratory)",
+   "lab_families": [
+    "Physikalisches Institut der Universität Basel and Lawrence Radiation Laboratory, University of California, Berkeley (the 129I2 work in L. Brewer's laboratory)"
+   ],
+   "stratum": "other_states",
+   "rows": 379,
+   "files_sha256": {
+    "data/other_states/wieland1972/table1_E_B_heads.csv": "f4550b7964fd99ae663b756fcc089ac1e05c6ebf458cebd12681462df15661c5",
+    "data/other_states/wieland1972/table2_F_X_heads.csv": "d201c2e49dc2f675010a61f8a731c9eb8fb45f41b8b6cb4270e831cdae13bcfc",
+    "data/other_states/wieland1972/table3_constants.csv": "55fabc88ef9accb9b94bef7a99c877ab594fe7e062571c05a9ca2a78f3dca3fa"
+   }
+  },
+  {
+   "folder": "theory",
+   "set": "chang1967",
+   "role": "record",
+   "reason": "theory: no fit or sigma uses this kind",
+   "lab": "T. Y. Chang (theory)",
+   "lab_families": [
+    "T. Y. Chang (theory)"
+   ],
+   "stratum": "theory",
+   "rows": 23,
+   "files_sha256": {
+    "data/theory/chang1967/data.csv": "676ddb7d1e5becd508e6e2debeba030315589b8d12512a2d400076b73aadd82c"
+   }
+  },
+  {
+   "folder": "theory",
+   "set": "tellinghuisen1978",
+   "role": "record",
+   "reason": "theory: no fit or sigma uses this kind",
+   "lab": "J. Tellinghuisen (Vanderbilt University)",
+   "lab_families": [
+    "J. Tellinghuisen (Vanderbilt University)"
+   ],
+   "stratum": "theory",
+   "rows": 894,
+   "files_sha256": {
+    "data/theory/tellinghuisen1978/fcf_absorption.csv": "f114fc2d304f5526da6f005f311f31122f0dc0110805ce09f4b9bbdb2f4c00f5",
+    "data/theory/tellinghuisen1978/fcf_fluorescence.csv": "d965cf7a1e0306cda8d06ba901da200d3a7c1de69a7e71b55e2bc123c4e08d8a"
+   }
+  },
+  {
+   "folder": "theory",
+   "set": "zaitsevskii2000",
+   "role": "record",
+   "reason": "theory: no fit or sigma uses this kind",
+   "lab": "Moscow State University / Université Paul Sabatier, Toulouse",
+   "lab_families": [
+    "Moscow State University / Université Paul Sabatier, Toulouse"
+   ],
+   "stratum": "theory",
+   "rows": 14,
+   "files_sha256": {
+    "data/theory/zaitsevskii2000/data.csv": "f9531c3d747cc6cd98da45dc8bea572b89c859b3ae7728079d675a8f69f6e1ec"
+   }
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1977",
+   "role": "train",
+   "reason": "atlas line list",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "atlas_lines",
+   "rows": 713,
+   "files_sha256": {
+    "data/atlas_lines/gerstenkorn1977.csv": "5d6ad3fe4392e41606bc9fb1159842a504d290a1213a1f8dfa4cf44e43b35eff",
+    "data/atlas_lines/gerstenkorn1977_assigned.csv": "de827448a9b4d33ca45fca5d0169ff438993f6dbe9a26803347e6cfdeef4881c",
+    "data/atlas_lines/gerstenkorn1977_constants.csv": "d2b727b68257f24c8534476150bf9bc09ab2750cc96b082b7b66d443f0b48e82",
+    "data/atlas_lines/gerstenkorn1977_intensity.csv": "af806b37f76ea0d46118385835ce7fc634a8d0ce9e0bb512e20d3c19df618928"
+   }
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1978",
+   "role": "train",
+   "reason": "atlas line list",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "atlas_lines",
+   "rows": 28832,
+   "files_sha256": {
+    "data/atlas_lines/gerstenkorn1978.csv": "7d62ef7fadf891bda258cc1859ad84163c874b74f079a3b9ff2eeacdff26d2d8"
+   }
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1978b",
+   "role": "train",
+   "reason": "atlas line list",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "atlas_lines",
+   "rows": 4831,
+   "files_sha256": {
+    "data/atlas_lines/gerstenkorn1978b.csv": "ef660a606f8bedc2e7c94793c4224a03cdb8604726c54f41c64b0b2c26c70cc1"
+   }
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1979",
+   "role": "train",
+   "reason": "atlas line list",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "atlas_lines",
+   "rows": 534,
+   "files_sha256": {
+    "data/atlas_lines/gerstenkorn1979.csv": "1148e067988f1195fffbd965669dc8f602ea23c809263393050d3c3435d8d5d6",
+    "data/atlas_lines/gerstenkorn1979_assigned.csv": "dc5e93dd2683163f2a69fe448dcc6b561c552942f3d3957ad61a4f16bb48c050"
+   }
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1980",
+   "role": "record",
+   "reason": "atlas constants tables",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "atlas_lines",
+   "rows": 3116,
+   "files_sha256": {
+    "data/atlas_lines/gerstenkorn1980_constants.csv": "82077100de45f0befbac793bb9e449e9db38ed9ad25fbda3291fff4fd151f1e4",
+    "data/atlas_lines/gerstenkorn1980_table1_bands.csv": "f518867616f14694c24d2fb3da859e930411155cdfb08960532d7d477d175c18"
+   }
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1980b",
+   "role": "train",
+   "reason": "atlas line list",
+   "lab": "Laboratoire Aimé Cotton, CNRS, Orsay",
+   "lab_families": [
+    "Orsay LAC"
+   ],
+   "stratum": "atlas_lines",
+   "rows": 2942,
+   "files_sha256": {
+    "data/atlas_lines/gerstenkorn1980b.csv": "5e339ff34c177cdf7189dad10b68e4871300b60d92bc29070a3ff209d72ab616",
+    "data/atlas_lines/gerstenkorn1980b_table1.csv": "6b760f3c7198587894d9b818ef2e3f76a7b0bcdb9e77d29d91820ebed7c6f5c2"
+   }
+  }
+ ]
+}
