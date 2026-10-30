@@ -26,7 +26,7 @@ not added goes to calibrate. Every variant tried is listed with the regions it f
 | near dissociation (B v' 61-80) | gerstenkorn1983a, pique1981a, duburck2005a | calibrate; B v' 73-80 is a limit of the model |
 | B hyperfine beyond the core | 8 sets (6 of lines, 2 of constants) | calibrate |
 | other isotopologues | 8 sets | train (core fit) |
-| atlas line lists | gerstenkorn1977, gerstenkorn1978, gerstenkorn1978b | train, with model assignments |
+| atlas line lists | gerstenkorn1977, gerstenkorn1978, gerstenkorn1978b | calibrate (no variant gains; one pulls the comb rows of B v' 44-50) |
 
 wallerand2006a and koffend1978a, in no block, go to calibrate; ikeda2020a (superseded by ikeda2022a), gerstenkorn1979
 and gerstenkorn1980b (1978 atlas lines printed again) are record. Two groups of otherwise-used sets are record:
@@ -36,7 +36,7 @@ record; separate measurements both enter.
 
 | role | sets |
 |---|---|
-| train | 11 |
-| calibrate | 108 |
+| train | 8 |
+| calibrate | 111 |
 | locked test | 17 |
 | record | 72 |
