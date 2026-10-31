@@ -116,11 +116,15 @@ def test_one_record_per_measurement():
 
 def test_a_set_left_out_has_no_say():
     """borde1981a and the MEP 1997 list (quinn1999a) are left out: until they are admitted, the BIPM 515 nm tables they
-    determine (a mean of borde1981a's lines; R(15) 43-0 and R(98) 58-1 printed again from the 1997 list) stay in the
-    fit. Admitted, they leave 4 rows of P(13) 43-0 as the 2005 list's own."""
-    count = lambda sets: len(next(d for d in sets if d.id == "bipm2005a").observations)   # noqa: E731
+    determine (means of borde1981a's lines; rows printed again from the 1997 list) stay in the fit. Admitted, every row
+    of the 2005 list is determined by them or by its other sources; in the record its new value of P(13) 43-0 a3, which
+    the 1997 list does not print, stays its own."""
+    count = lambda sets: sum(len(d.observations) for d in sets if d.id == "bipm2005a")   # noqa: E731
     assert count(load_all()) == 56
-    assert count(load_all(include_excluded=True)) == 4
+    assert count(load_all(include_excluded=True)) == 0
+    record = next(d for d in load_all(include_excluded=True, record=True) if d.id == "bipm2005a")
+    assert [(str(o.line), o.component, o.value) for o in record.observations if o.kind == "frequency"] == \
+        [("127I2 P(13) 43-0", "a3", 582490603.442)]
 
 
 def test_a_paper_that_also_prints_others_keeps_its_own():

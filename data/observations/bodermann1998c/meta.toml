@@ -72,3 +72,6 @@ pressure_Pa = 27.0
 pressure_kHz_per_Pa = -5.1
 pressure_kHz_per_Pa_unc = 1.0
 basis = "Thesis Sect. 4: absolute measurements at side arm 20 C (27.0 Pa, as bodermann2000a); pressure shift -5.1(1.0) kHz/Pa (budget table; Table 4.1 cell J5 at 600 C -5.1/-5.0 kHz/Pa, linear in P). Applies to the three Table 6.12 frequencies only."
+
+[overlaps]
+bodermann1998a = { relation = "same", rows = [0, 1, 2, 3, 4] }   # the Metrologia paper (Table 2 and 3) prints these measurements: the paper is the record, the thesis cited on it (duplicate-table audit, 2026-10-31)

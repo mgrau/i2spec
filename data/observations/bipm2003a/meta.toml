@@ -73,7 +73,7 @@ basis = "MEP 633 nm, p. 1 (conditions) and p. 2, section 2.2 (coefficients). Rec
 # (razet1993a) and Edwards et al. 1999 [34] (edwards1999a, training data, not declared here: declaring it would
 # move the Table 2 rows out of the fit).
 [overlaps]
-quinn1999a = { relation = "same", lines = ["127I129I P(33) 6-3", "129I2 P(69) 12-6", "129I2 R(60) 8-4"] }   # these lines printed again from quinn1999a, every row identical (duplicate-table audit, 2026-10-31)
+quinn1999a = { relation = "same", rows = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 71, 72, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 138, 139, 150, 151, 152, 153, 154, 155, 156, 157] }   # rows (data.csv index) printed again from quinn1999a, re-referenced at most; the others are this list's own (duplicate-table audit, 2026-10-31)
 ye2000a = { relation = "mean", lines = ["127I2 R(127) 11-5"] }   # pending until admitted
 bernard2001a = { relation = "mean", lines = ["127I2 R(127) 11-5"] }   # pending until admitted; the NRC chain of the April 2000 comparison
 landsberg1976a = { relation = "mean", lines = ["127I2 R(127) 11-5"] }   # pending until admitted

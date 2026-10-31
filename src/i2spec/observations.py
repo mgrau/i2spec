@@ -228,6 +228,17 @@ def _path(graph, a, b):
     return None
 
 
+def _determined(observations, path, a, b):
+    """f(a) - f(b) from a source's rows along a path that joins the two nodes (f(a) for b = _ABSOLUTE)."""
+    total, node = 0.0, a
+    for k in path:
+        x, y = _ends(observations[k])                    # observations[k].value = f(x) - f(y)
+        total, node = (total + observations[k].value, y) if node == x else (total - observations[k].value, x)
+    if node != b:
+        raise ValueError("the path does not join the two nodes")
+    return total
+
+
 def _overlaps(datasets):
     """Resolve the [overlaps] of every set in ``datasets``, keyed by (set id, row index): the rows the fit
     leaves out (a source also determines them), the rows that are a source's measurement printed again (no
@@ -236,23 +247,26 @@ def _overlaps(datasets):
     by_id = {d.id: d for d in datasets}
     graphs = {}
     unfit, merged, cited, reprints = set(), set(), defaultdict(set), {}
+    into = {}                          # a merged row -> the source rows it is printed from
     for d in datasets:
         sources = []
         for sid, spec in d.meta.get("overlaps", {}).items():
             spec = {"relation": spec} if isinstance(spec, str) else spec
-            if spec.get("relation") not in RELATIONS or set(spec) - {"relation", "lines", "groups"}:
+            if spec.get("relation") not in RELATIONS or set(spec) - {"relation", "lines", "groups", "rows"}:
                 raise ValueError(f"{d.id}: overlaps.{sid} must be one of {RELATIONS}, or a table of relation, "
-                                 "lines and groups")
+                                 "lines, groups and rows")
             if sid in by_id:
                 lines = spec.get("lines")
-                # groups: only these rows print the source, where the set also holds its own measurements
-                sources.append((sid, spec["relation"], lines and {Line.parse(s) for s in lines}, spec.get("groups")))
+                # groups (or rows, by their index in data.csv): only these rows print the source, where the set also
+                # holds its own measurements
+                sources.append((sid, spec["relation"], lines and {Line.parse(s) for s in lines}, spec.get("groups"),
+                                set(spec["rows"]) if "rows" in spec else None))
                 if sid not in graphs:
                     graphs[sid] = _graph(by_id[sid].observations)
         for k, o in enumerate(d.observations):
             a, b = _ends(o)
-            found = [(sid, relation, path) for sid, relation, lines, groups in sources
-                     if (not lines or o.line in lines) and (not groups or o.group in groups)
+            found = [(sid, relation, path) for sid, relation, lines, groups, rows in sources
+                     if (not lines or o.line in lines) and (not groups or o.group in groups) and (rows is None or k in rows)
                      for path in [_path(graphs[sid], a, b)] if path]
             if not found:
                 continue
@@ -270,6 +284,19 @@ def _overlaps(datasets):
                     for j, o in enumerate(by_id[sid].observations):
                         if frozenset(_ends(o)) in ends:
                             cited[(sid, j)].add(d.id)
+                            if (d.id, k) in merged:
+                                into.setdefault((d.id, k), set()).add((sid, j))
+    # a reprint of a reprint: the citations of a merged row go on to the rows it is printed from, down to the
+    # measurement itself, so a list that prints another list's value is cited on the primary's row
+    changed = True
+    while changed:
+        changed = False
+        for row, targets in into.items():
+            carried = cited.get(row, set()) | {row[0]}
+            for t in targets:
+                if not carried <= cited[t] | {t[0]}:
+                    cited[t] |= carried - {t[0]}
+                    changed = True
     return unfit, merged, cited, reprints
 
 

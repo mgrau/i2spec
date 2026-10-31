@@ -35,7 +35,7 @@ cell = "external"
 # (R(98) 58-1) is Foth & Spieweck 1979 alone, so borde1981a's R(98) rows are independent of it. borde1981a is
 # pending (exclude), and a set left out has no say until it is admitted.
 [overlaps]
-quinn1999a = { relation = "same", lines = ["127I2 R(15) 43-0", "127I2 R(98) 58-1"] }   # these lines printed again from quinn1999a, every row identical (duplicate-table audit, 2026-10-31)
+quinn1999a = { relation = "same", rows = [1, 2, 11, 15, 19, 20, 25, 27, 29, 30, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56] }   # rows (data.csv index) printed again from quinn1999a, re-referenced at most; the others are this list's own (duplicate-table audit, 2026-10-31)
 jones2002a = "mean"
 goncharov2004a = "mean"
 borde1981a = { relation = "mean", lines = ["127I2 P(13) 43-0", "127I2 R(15) 43-0"] }
