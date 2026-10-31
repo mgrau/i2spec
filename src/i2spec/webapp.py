@@ -76,11 +76,12 @@ SHORT_IDS = {"orsay1983_part4": "Gerstenkorn & Luc 1983",
 
 # --- sources and measurements -----------------------------------------------------------------------
 
-#: The frozen blind tests whose data sets are shown (v1 scored 2026-10-20, v2 2026-10-21, v3 2026-10-29) though no
+#: The frozen blind tests whose data sets are shown (v1 scored 2026-10-20, v2 2026-10-21, v3 2026-10-29, v4 2026-10-31,
+#: the level and line tables) though no
 #: fit uses them: they keep their ``exclude`` line. Sets added later stay out of the export until a blind test scores
 #: them.
 BLIND_REGISTRIES = (("20261020", "pending_blind_v1"), ("20261020", "pending_blind_v2"),
-                    ("20261029", "pending_blind_v3"))
+                    ("20261029", "pending_blind_v3"), ("20261030", "pending_blind_v4"))
 
 
 @functools.lru_cache(maxsize=1)
@@ -111,7 +112,8 @@ LEVEL_FOLDERS = ("hyperfine_parameters", "x_hyperfine", "x_levels", "b_levels", 
 
 @functools.lru_cache(maxsize=1)
 def scored_constants():
-    """(folder, set) of the sets outside data/observations that a scored registry holds (hyperfine constants)."""
+    """(folder, set) of the sets outside data/observations that a scored registry holds: its targets' sets (hyperfine
+    constants, level and line tables) and the sets it registered without a forecast."""
     from importlib import resources
     out = set()
     for release, name in BLIND_REGISTRIES + (("20261030", "locked_test"),):
@@ -119,7 +121,13 @@ def scored_constants():
         if folder.joinpath("results.json").is_file():
             out.update((t["folder"], t["set"]) for t in json.loads(folder.joinpath("targets.json").read_text())
                        if "folder" in t)
+            protocol = json.loads(folder.joinpath("protocol.json").read_text())
+            out.update((h["folder"], h["set"]) for h in protocol.get("held_without_forecast", ()))
     return frozenset(out)
+
+
+#: X level tables beside a set's data.csv (luc1980's Table IV, tellinghuisen1980's Table 7)
+LEVEL_TABLES_X = ("x_levels.csv", "table7_levels.csv")
 
 
 def _level_sets(folder):
@@ -349,38 +357,43 @@ def level_data():
     # level constants of X and B by v, as printed; for X the model's term value (from the set's own origin: v = 0
     # or the potential minimum, whichever its lowest level matches) and B(v) = (E(v, 2) - E(v, 0))/6
     from . import preferred
-    for folder, state in (("x_levels", "X"), ("b_levels", "B")):
-        for sid, meta in _level_sets(folder):
-            iso = meta.get("isotopologue", "127I2")
-            rows = _level_constants(ROOT / "data" / folder / sid / "data.csv")
-            model = None
-            if state == "X":
-                mod = preferred.model(iso)
+    tables = [(folder, state, sid, meta, f) for folder, state in (("x_levels", "X"), ("b_levels", "B"))
+              for sid, meta in _level_sets(folder) for f in ("data.csv",)
+              if (ROOT / "data" / folder / sid / f).exists()]
+    tables += [(folder, "X", sid, meta, f) for folder in ("x_levels", "b_levels") for sid, meta in _level_sets(folder)
+               for f in LEVEL_TABLES_X if (ROOT / "data" / folder / sid / f).exists()]
+    for folder, state, sid, meta, file in tables:
+        iso = meta.get("isotopologue", "127I2")
+        iso = iso if iso in ("127I2", "129I2", "127I129I") else "127I2"
+        rows = _level_constants(ROOT / "data" / folder / sid / file)
+        model = None
+        if state == "X":
+            mod = preferred.model(iso)
 
-                def energy(v, J, mod=mod):
-                    try:
-                        return mod._energy("X", v, J)
-                    except (ValueError, IndexError, KeyError):
-                        return None
-                terms = [(v, x) for v, q, x, u in rows if q in ("G(v)", "T(v)")]
-                origin = 0.0
-                if terms and energy(0, 0) is not None and energy(min(terms)[0], 0) is not None:
-                    v0, x0 = min(terms)
-                    origin = energy(0, 0) if abs(energy(v0, 0) - energy(0, 0) - x0) < abs(energy(v0, 0) - x0) else 0.0
-
-                def model(v, q, energy=energy, origin=origin):
-                    e0, e2 = energy(v, 0), energy(v, 2)
-                    if q in ("G(v)", "T(v)") and e0 is not None:
-                        return float(f"{e0 - origin:.10g}")
-                    if q == "B(v)" and e0 is not None and e2 is not None:
-                        return float(f"{(e2 - e0) / 6:.8g}")
+            def energy(v, J, mod=mod):
+                try:
+                    return mod._energy("X", v, J)
+                except (ValueError, IndexError, KeyError):
                     return None
-            for v, q, value, u in rows:
-                entry = dict(s=src(folder, sid, meta), q=q, v=float(f"{value:.10g}"),
-                             u=None if u is None else float(f"{u:.3g}"), unit="cm⁻¹")
-                if model is not None and (mv := model(v, q)) is not None:
-                    entry["m"] = mv
-                out[iso]["levels"][f"{state}:{v}"].append(entry)
+            terms = [(v, x) for v, q, x, u in rows if q in ("G(v)", "T(v)")]
+            origin = 0.0
+            if terms and energy(0, 0) is not None and energy(min(terms)[0], 0) is not None:
+                v0, x0 = min(terms)
+                origin = energy(0, 0) if abs(energy(v0, 0) - energy(0, 0) - x0) < abs(energy(v0, 0) - x0) else 0.0
+
+            def model(v, q, energy=energy, origin=origin):
+                e0, e2 = energy(v, 0), energy(v, 2)
+                if q in ("G(v)", "T(v)") and e0 is not None:
+                    return float(f"{e0 - origin:.10g}")
+                if q == "B(v)" and e0 is not None and e2 is not None:
+                    return float(f"{(e2 - e0) / 6:.8g}")
+                return None
+        for v, q, value, u in rows:
+            entry = dict(s=src(folder, sid, meta), q=q, v=float(f"{value:.10g}"),
+                         u=None if u is None else float(f"{u:.3g}"), unit="cm⁻¹")
+            if model is not None and (mv := model(v, q)) is not None:
+                entry["m"] = mv
+            out[iso]["levels"][f"{state}:{v}"].append(entry)
     # line widths and pressure coefficients (per line or component); lifetimes and decay rates (per level)
     for sid, meta in _level_sets("widths"):
         for w in load_widths(ROOT / "data" / "widths" / sid).rows:

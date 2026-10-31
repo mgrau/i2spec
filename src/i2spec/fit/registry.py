@@ -837,7 +837,7 @@ def score_registry(folder, out=None, *, root=DATA_DIR, strict=True):
             res, s_m = r["residual_MHz"][primary], sig.get(r["id"])
             if res is None or s_m is None:
                 continue
-            r["z_coverage"] = res/float(np.hypot(s_m, r["sigma_MHz"]))
+            r["z_coverage"] = res/float(np.hypot(s_m, r["sigma_MHz"] or 0.))   # no printed sigma: the model's alone
             for key in (r["status"], f"{r['status']} | {r['kind']}", f"{r['status']} | {r['set']}"):
                 cov.setdefault(key, []).append(r["z_coverage"])
         results["coverage"] = {k: dict(n=len(z), within_1sigma=float(np.mean(np.abs(z) <= 1)),
