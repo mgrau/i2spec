@@ -38,7 +38,6 @@ const state = {
   kinds: new Set(["model", "atlas", "precision", "band"]),   // the show toggles: kinds of line, and the band
   show: "all",             // the same as a key: "all", or the toggles on, e.g. "atlas,precision"
   filter: "all",           // what the toggles keep, a key for the caches: state.show, and the band when it counts
-  laser: null,             // {value, unit, n, nu}: a fundamental laser and the harmonic of it iodine sees
   sub: {fwhm: P.SUB_DOPPLER_FWHM, harmonic: 0, modulation: 1.0},   // the sub-Doppler display
   band: null,              // {vu, vl}: a vibrational band whose P and R branches the plot picks out
   selectedComps: null,     // the hyperfine components the detail pane shows, for the CSV export
@@ -995,8 +994,8 @@ function drawPlot() {
   if (W < 40 || H < 40) return;
   const narrow = W < 700;
   // on a phone the vertical axis is labelled inside the plot, so the spectrum gets the full width
-  // the top margin holds the legend, a row for the cursor readout (#readout, desktop only) and the top axis
-  const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 58, b: 50};
+  // the top margin holds the legend (with the cursor readout beside it, #readout) and the top axis
+  const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 42, b: 50};
   // zoomed in on measured lines: a strip of measured − model under the spectrum. It takes its height from the
   // line list, not from the spectrum: the plot grows by the strip (the --strip of main, in index.html)
   const groups = residualsShown() ? byComponent(residualPoints(state.lo, state.hi)) : [];
@@ -1305,7 +1304,11 @@ function drawPlot() {
     g.fillStyle = ink("--ink-2");
     g.beginPath(); g.moveTo(lx + 5, 5.5); g.lineTo(lx + 9, 10); g.lineTo(lx + 5, 14.5); g.lineTo(lx + 1, 10); g.closePath(); g.fill();
     g.fillText("measured", lx + 14, 10.5);
+    lx += 14 + g.measureText("measured").width;
   }
+  // the room the cursor readout has on the legend's row: from the legend to the top axis's name at the right
+  g.font = '11px "IBM Plex Mono", ui-monospace, monospace';
+  const readoutRow = [lx + 16, m.l + pw - g.measureText(UNIT_TITLE[secondUnit($("#unit").value)]).width - 16];
   g.textBaseline = "alphabetic"; g.textAlign = "left";
   g.strokeStyle = ink("--rule"); g.lineWidth = 1;
   g.beginPath(); g.moveTo(m.l, m.t + ph + 0.5); g.lineTo(m.l + pw, m.t + ph + 0.5); g.stroke();
@@ -1326,23 +1329,6 @@ function drawPlot() {
       g.strokeText(name, lx, m.t + 4);                                   // a halo over the trace
       g.fillStyle = ink("--pick"); g.fillText(name, lx, m.t + 4);
       g.textBaseline = "alphabetic";
-    }
-  }
-  if (state.laser) {
-    // the harmonic of the laser: dashed, labelled at the foot of the plot so it clears the selected line's label
-    const x = xPix(state.laser.nu);
-    if (x >= m.l && x <= m.l + pw) {
-      g.strokeStyle = ink("--accent"); g.lineWidth = 1.5; g.setLineDash([2, 3]);
-      g.beginPath(); g.moveTo(x, m.t); g.lineTo(x, m.t + ph); g.stroke();
-      g.setLineDash([]);
-      const text = "laser";
-      g.font = '500 11px "IBM Plex Mono", ui-monospace, monospace'; g.textBaseline = "bottom";
-      g.textAlign = x > m.l + pw - 80 ? "right" : "left";
-      const tx = x + (g.textAlign === "right" ? -4 : 4);
-      g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
-      g.strokeText(text, tx, m.t + phs - 4);
-      g.fillStyle = ink("--accent"); g.fillText(text, tx, m.t + phs - 4);
-      g.textBaseline = "alphabetic"; g.textAlign = "left";
     }
   }
   // lines whose strength was not computed (emission lines, X v'' >= 48) draw nothing; when they are all the
@@ -1374,7 +1360,7 @@ function drawPlot() {
     tc.style.opacity = "1"; ghost.style.opacity = "0";
   }
   // the view as drawn: the pointer maps onto it, not state's; and where the measurement dots are
-  state.geom = {m, pw, ph, y, flip, lo, hi, hits, xPix};
+  state.geom = {m, pw, ph, y, flip, lo, hi, hits, xPix, readoutRow};
   keepFrame(canvas, {lo, hi, iso, m, pw, ph, W, H, dpr, flip, narrow});
 }
 
@@ -1515,14 +1501,8 @@ function renderTable() {
   setStatus(`${fmt(state.lines.length)} line${state.lines.length === 1 ? "" : "s"} in view: ` +
     `${fmt(counts.precision)} precision, ${fmt(counts.atlas)} atlas, ${fmt(counts.model)} model only` +
     (pool.length > 500 ? `; ${state.sort.key === "S" ? "strongest" : "first"} 500 listed` : "") +
-    ` · ${state.manifest.isotopologues[state.iso].label} · ${state.T} K` + (state.laser ? " · " + laserText() : "") +
+    ` · ${state.manifest.isotopologues[state.iso].label} · ${state.T} K` +
     (stillLoading() ? ` · loading the line list (${stillLoading()} parts to come)…` : ""));
-}
-
-/** "laser 563.261000 THz (532.2450 nm vac)". */
-function laserText() {
-  const {nu} = state.laser;
-  return `laser ${P.fromWavenumber(nu, "THz").toFixed(6)} THz (${(1e7 / nu).toFixed(4)} nm vac)`;
 }
 
 const byWavelength = () => state.sort.key === "nu";
@@ -1625,7 +1605,6 @@ function pushURL() {
     if (state.sub.fwhm !== P.SUB_DOPPLER_FWHM) q.set("gamma", String(state.sub.fwhm));
     if (state.sub.harmonic) { q.set("det", state.sub.harmonic + "f"); q.set("mod", String(state.sub.modulation)); }
   }
-  if (state.laser) { q.set("laser", String(state.laser.value)); q.set("lunit", state.laser.unit); }
   if (state.band) q.set("band", `${state.band.vu}-${state.band.vl}`);
   history.replaceState(null, "", "?" + q);
 }
@@ -1694,12 +1673,6 @@ function drawHyperfine(canvas, comps, line) {
   g.textAlign = "center"; g.fillText(subNote || `Doppler FWHM ${fwhm.toFixed(0)} MHz`, W / 2, H - 6);
 }
 
-/** How far a position (cm⁻¹) is from the laser, as a row of the detail pane. */
-function laserRow(nu) {
-  const d = (nu - state.laser.nu) * P.MHZ_PER_CM;
-  return `<dt>− laser</dt><dd>${d >= 0 ? "+" : "−"}${fmt(Math.abs(d), Math.abs(d) < 100 ? 2 : 1)} MHz</dd>`;
-}
-
 /** The picked component of the selected line: where it is, its 1σ and strength. */
 function componentHTML(line, comps, i) {
   const o = comps.o[i], f = line.nu * P.MHZ_PER_CM + o, nu = f / P.MHZ_PER_CM, lam = 1e7 / nu;
@@ -1712,7 +1685,6 @@ function componentHTML(line, comps, i) {
     <dt>offset</dt><dd>${o >= 0 ? "+" : "−"}${Math.abs(o).toFixed(3)} MHz from the center</dd>
     ${u !== null ? `<dt>u (1σ)</dt><dd>± ${fmtU(u)} MHz</dd>` : ""}
     <dt>rel. strength</dt><dd>${comps.s[i].toFixed(4)}</dd>
-    ${state.laser ? laserRow(nu) : ""}
   </dl>`;
 }
 
@@ -1740,7 +1712,6 @@ async function select(line, comp = null) {
       <dt>S</dt><dd>${line.s0 > 0 ? `${S.toExponential(3)} cm at ${state.T} K` : "not computed: no thermal absorption (measured in emission)"}</dd>
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
-      ${state.laser ? laserRow(line.nu) : ""}
     </dl>
     <p class="note">${sentence(why)}</p>
     <div id="compbox"></div>
@@ -1842,7 +1813,6 @@ function csvHeader(what) {
       `view ${Math.min(a, b).toFixed(d)} to ${Math.max(a, b).toFixed(d)} ${unit}; shown: ${state.show || "none"}` +
       (bandOn() ? ` (band ${state.band.vu}-${state.band.vl})` : ""),
   ];
-  if (state.laser) out.push(`# ${laserText()}`);
   out.push(`# link: ${location.href}`);
   return out;
 }
@@ -1869,18 +1839,16 @@ const fileStem = () => {
  */
 function exportLines() {
   const pool = [...shownLines()].sort(tableOrder());
-  const q = partitionAt(state.iso, state.T), laser = state.laser;
+  const q = partitionAt(state.iso, state.T);
   const withHfs = pool.some(l => hfsOf(l));
   const head = ["line", "isotopologue", "lambda_vac_nm", "lambda_air_nm", "wavenumber_cm-1", "frequency_MHz",
     `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "domain", "class", "measured_by"];
-  if (laser) head.push("minus_laser_MHz");
   if (withHfs) head.push("hfs_offsets_MHz_dJ0", "hfs_strengths_permille_dJ0");
   const rows = pool.map(l => {
     const lam = 1e7 / l.nu;
     const cells = [label(l), l.iso, lam.toFixed(7), P.vacToAir(lam).toFixed(7), l.nu.toFixed(6),
       (l.nu * P.MHZ_PER_CM).toFixed(2), P.strengthAt(l, q, state.T).toExponential(4), l.el.toFixed(2), l.u,
       domainOf(l), KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : ""];
-    if (laser) cells.push(((l.nu - laser.nu) * P.MHZ_PER_CM).toFixed(2));
     if (withHfs) {
       const h = hfsOf(l);
       cells.push(h ? h.o.join(" ") : "", h ? h.s.join(" ") : "");
@@ -1904,11 +1872,9 @@ function exportHyperfine() {
   if (!line || !sc) return;
   const {comps, approx} = sc, f0 = line.nu * P.MHZ_PER_CM;
   const head = ["component", "offset_MHz", "frequency_MHz", "lambda_vac_nm", "wavenumber_cm-1", "relative_strength"];
-  if (state.laser) head.push("minus_laser_MHz");
   const rows = comps.o.map((o, i) => {
     const f = f0 + o, nu = f / P.MHZ_PER_CM;
     const cells = [comps.l[i] || "", o.toFixed(3), f.toFixed(3), (1e7 / nu).toFixed(8), nu.toFixed(7), comps.s[i]];
-    if (state.laser) cells.push((f - state.laser.nu * P.MHZ_PER_CM).toFixed(3));
     return csvRow(cells);
   });
   const name = `i2spec_${line.iso}_${label(line).replace(/[()\s]+/g, "_").replace(/_+$/, "")}_hyperfine.csv`;
@@ -2228,9 +2194,6 @@ function wire() {
   for (const id of ["#gamma", "#mod"]) $(id).oninput = readSub;
   $("#det").onchange = readSub;
 
-  $("#laser").addEventListener("keydown", e => { if (e.key === "Enter") { applyLaser(); closeOptions(); } });
-  $("#lasergo").onclick = () => { applyLaser(); closeOptions(); };
-  $("#lunit").onchange = () => { if ($("#laser").value.trim()) applyLaser(); };
   $("#csv").onclick = exportLines;
   $("#csvhfs").onclick = exportHyperfine;
 
@@ -2256,10 +2219,12 @@ function wire() {
     ro.textContent = `${P.fromWavenumber(nu, unit).toFixed(P.DIGITS[unit])} ${unit === "cm-1" ? "cm⁻¹" : unit}   ${second}` +
       (hit ? " · " + describeHit(hit) : comp ? ` · ${label(comp.line)} ${comp.comp}` : "");
     plot.style.cursor = (hit || comp) && !plot.classList.contains("grabbing") ? "pointer" : "";
-    // in its own row of the top margin, between the legend and the top axis's labels: off the spectrum
-    ro.style.top = (m.t - 40) + "px";
-    ro.style.left = m.l + "px";
-    ro.style.maxWidth = pw + "px";
+    // on the legend's row, off the spectrum: centered over the plot where it fits, else just right of the legend
+    const [a, b] = state.geom.readoutRow;
+    ro.style.maxWidth = Math.max(0, b - a) + "px";
+    const w = Math.min(ro.scrollWidth, b - a);
+    ro.style.left = Math.max(a, Math.min(m.l + pw / 2 - w / 2, b - w)) + "px";
+    ro.style.top = "3px";
     const cross = $("#crosshair");
     const x = e.clientX - plot.getBoundingClientRect().left;
     cross.style.left = x + "px";
@@ -2426,7 +2391,6 @@ function wire() {
   addEventListener("keydown", e => {
     if (e.defaultPrevented || e.target.matches("input, select")) return;   // a table row has handled it
     if (e.key === "/") { e.preventDefault(); $("#find").focus(); }
-    if (e.key === "l" || e.key === "L") { e.preventDefault(); $("#laser").focus(); $("#laser").select(); }
     if ((e.key === "ArrowDown" || e.key === "ArrowUp") && state.shown && state.shown.length) {
       // not already inside the table: jump into it rather than scrolling the page
       e.preventDefault();
@@ -2468,39 +2432,6 @@ function setMode(mode) {
   else redrawAll();
   pushURL();
 }
-
-/** ±0.1 nm around a laser; ±0.04 nm for a closer sub-Doppler view. */
-const laserHalfSpan = () => state.mode === "sub" ? 0.4 * HFS_SPAN_NM : HFS_SPAN_NM;
-
-/**
- * The laser field: a wavelength or frequency in its own unit. Jumps to ±0.1 nm around it unless told not to (a
- * shared link keeps its own view), and marks it on the plot. An empty field forgets the laser.
- */
-async function applyLaser({jump = true} = {}) {
-  const text = $("#laser").value.trim();
-  if (!text) {
-    state.laser = null;
-    redrawAll(); renderTable(); pushURL();
-    if (state.selected) select(state.selected, state.selectedComp);
-    return;
-  }
-  const value = Number(text), unit = $("#lunit").value;
-  if (!Number.isFinite(value) || value <= 0) { setStatus(`"${text}" is not a number; give the laser in ${unit}`); return; }
-  const nu = P.toWavenumber(value, unit);
-  state.laser = {value, unit, nu};
-  const info = state.manifest.isotopologues[$("#iso").value];
-  if (nu < info.nu_min || nu > info.nu_max) {
-    renderTable(); drawPlot(); pushURL();
-    setStatus(`${laserText()}: outside the exported range, ${(1e7 / info.nu_max).toFixed(1)}–${(1e7 / info.nu_min).toFixed(1)} nm`);
-    return;
-  }
-  if (jump) {
-    await show(...laserView());
-  } else { renderTable(); drawPlot(); pushURL(); }
-  if (state.selected) select(state.selected, state.selectedComp);   // the detail pane shows the line from the laser
-}
-/** The view around the laser: ±laserHalfSpan() nm of vacuum wavelength. */
-const laserView = () => P.harmonicView(state.laser.value, state.laser.unit, 1, laserHalfSpan());
 
 function redrawAll() {
   drawPlot();
@@ -2550,23 +2481,16 @@ async function start() {
   const band = parseBand(q.get("band"));
   if (band) state.band = band;
   syncShow();
-  // a laser: its field, and its marker; the view is the link's own when it has one
-  let laser = Number(q.get("laser"));
-  if (laser > 0) {
-    let unit = P.UNITS.includes(q.get("lunit")) ? q.get("lunit") : "nm";
-    // an older link names a fundamental and a harmonic order n: the laser is that harmonic, in vacuum nm
-    const n = Number(q.get("n"));
-    if ([2, 3, 4].includes(n)) { laser = +P.fromWavenumber(P.harmonicWavenumber(laser, unit, n), "nm").toFixed(6); unit = "nm"; }
-    $("#laser").value = String(laser); $("#lunit").value = unit;
-    state.laser = {value: laser, unit, nu: P.toWavenumber(laser, unit)};
-  }
+  // an older link that names a laser (and a harmonic order n) but no range opens on it: ±0.1 nm, ±0.04 nm sub-Doppler
+  const laser = Number(q.get("laser")), lunit = P.UNITS.includes(q.get("lunit")) ? q.get("lunit") : "nm";
+  const harmonic = [2, 3, 4].includes(Number(q.get("n"))) ? Number(q.get("n")) : 1;
   const from = Number(q.get("from")), to = Number(q.get("to"));
   let initialLine = null;
   if (Number.isFinite(from) && Number.isFinite(to) && from !== to) {
     const a = P.toWavenumber(from, $("#unit").value), b = P.toWavenumber(to, $("#unit").value);
     await show(Math.min(a, b), Math.max(a, b));
-  } else if (state.laser) {
-    await show(...laserView());
+  } else if (laser > 0) {
+    await show(...P.harmonicView(laser, lunit, harmonic, state.mode === "sub" ? 0.4 * HFS_SPAN_NM : HFS_SPAN_NM));
   } else {
     // Usually one shard contains the target. Resolve its actual model position
     // without indexing the whole list; other isotopes can use the label index.

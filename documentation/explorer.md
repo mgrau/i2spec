@@ -125,15 +125,6 @@ band's lines, measured or not: switch off model, atlas and precision to see the 
 the table, or keep atlas or precision on to see the band against those measured lines. Highlighting a band
 switches the toggle on.
 
-## Laser
-
-The **laser** field takes the wavelength or frequency of a laser: vacuum or air wavelength in nm, cm⁻¹, THz or
-MHz. Enter (or **Go**) shows ±0.1 nm of vacuum wavelength around it (±0.04 nm in sub-Doppler mode). The laser
-is marked in the spectrum by a dotted line labeled *laser*, and the status bar gives its frequency and vacuum
-wavelength, for example `laser 563.260526 THz (532.2447 nm vac)`. For the selected line, and its selected
-component, the detail panel adds the distance from the laser: the tuning the laser needs to reach it. Clearing
-the field removes the laser.
-
 ## Export
 
 The **export CSV** buttons download:
@@ -142,18 +133,17 @@ The **export CSV** buttons download:
   in the table, in the table's order. The columns are the label, isotopologue, vacuum and air
   wavelength, wavenumber, frequency, line strength at the current temperature, E″, the 1σ position
   uncertainty, the domain (fitted, or outside for lines the fit does not yet cover), the class (precision,
-  atlas, model only) and the measuring sources. With a laser set, the distance from the laser is added; below
+  atlas, model only) and the measuring sources; below
   0.1 nm, where they are loaded, the ΔJ = 0 hyperfine offsets and strengths of each line.
 - **hyperfine of selected**: the hyperfine components of the selected line as the detail panel shows
-  them, with offsets, absolute frequencies, wavelengths and relative strengths (and, with a laser set, each
-  component's distance from it).
+  them, with offsets, absolute frequencies, wavelengths and relative strengths.
 
 For ¹²⁷I₂ lines with the full hyperfine calculation (the strongest lines and every measured line), the detail
 panel's hyperfine table also gives each component's 1σ: the center's uncertainty combined with the hyperfine
 model's own (see [Uncertainty estimates](uncertainty.md)). `i2spec line` gives it for any line.
 
 Each file starts with comment lines (`#`) giving the model version, git revision and
-export date of the data, the download time, isotopologue, temperature, view, laser, and a link that
+export date of the data, the download time, isotopologue, temperature, view, and a link that
 reopens the same view.
 
 ## Rendering
@@ -203,7 +193,6 @@ the model does not hold say *outside the fitted domain*.
 | click on the spectrum | select the nearest line, or, zoomed in far enough, the hyperfine component under the pointer |
 | ↑ / ↓ | move through the table |
 | `/` | search for a line by its label, e.g. `R(56) 32-0` |
-| `L` | enter a laser wavelength or frequency |
 
 On a phone or narrow window the spectrum takes the upper half of the screen and the line table the
 lower half; the settings are in a panel opened with **Options**. On a touch screen, drag with one finger to
@@ -216,8 +205,9 @@ round tick values and their power of ten given once above it.
 The address bar always contains the current range, isotopologue, temperature and selected line (and component,
 `comp=a10`), so that a view can be shared as a link. The range applies as it is typed, on Enter or on leaving
 the field. The address also records the y axis (`y=sigma`, `y=trans` or `y=sub`), the sub-Doppler settings
-(`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz), the laser (`laser` and its unit
-`lunit`), and a highlighted band (`band=32-0`). A link with a laser but no range opens on the laser.
+(`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz) and a highlighted band (`band=32-0`).
+To go to a wavelength or frequency, type the range or pick a preset; an older link that names a laser (`laser`,
+`lunit`) but no range still opens on it.
 
 !!! note "Limitations"
     The line explorer shows one isotopologue at a time and does not include the bound–free continuum,
