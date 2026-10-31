@@ -161,6 +161,11 @@ let shownCache = {lines: null, show: null, out: null};
 /** Lines whose center lies within this margin (cm⁻¹) outside the view still draw there: their hyperfine
  * components (up to ~1 GHz from the center) and Doppler wings reach in. About 1.5 GHz. */
 const PLOT_PAD_CM = 0.05;
+/** The trace is drawn this fraction of the view's width beyond each side, hidden by its clip until a zoom out or a
+ * pan brings it in: a zoom out of up to 1 + 2 OVERSCAN, or a pan of OVERSCAN, shows no blank margin before the
+ * redraw. The lines it needs are loaded with the view's (padOf). */
+const OVERSCAN = 0.25;
+const padOf = (lo, hi) => Math.max(PLOT_PAD_CM, OVERSCAN * (hi - lo));
 let plotCache = {lines: null, show: null, out: null};
 /** The lines the plot draws: the view's, plus those just outside it (state.plotLines), filtered as shown. */
 const plotLines = () => {
@@ -219,7 +224,8 @@ function loadInBackground(iso, shards) {
     fetching.add(s.file);
     getJSON(s.file, state.shards).catch(() => null).then(() => {
       fetching.delete(s.file);
-      if (state.iso !== iso || s.nu1 < state.lo - PLOT_PAD_CM || s.nu0 > state.hi + PLOT_PAD_CM || arrivalTimer) return;
+      const pad = padOf(state.lo, state.hi);
+      if (state.iso !== iso || s.nu1 < state.lo - pad || s.nu0 > state.hi + pad || arrivalTimer) return;
       arrivalTimer = setTimeout(() => { arrivalTimer = null; fadeNext = true; refreshView(); }, 150);
     });
   }
@@ -1020,9 +1026,10 @@ function drawPlot() {
   // The trace layer: a canvas the size of the plot, inside a box clipped to the plot area. A zoom or
   // pan in progress moves it with a CSS transform, which the compositor does without redrawing.
   const tc = $("#trace"), clip = $("#traceclip");
-  if (tc.width !== canvas.width || tc.height !== canvas.height) {
-    tc.width = canvas.width; tc.height = canvas.height;
-    tc.style.width = W + "px"; tc.style.height = H + "px";
+  const pp = Math.round(OVERSCAN * pw);              // the overscan on each side, CSS px
+  if (tc.width !== Math.round((W + 2 * pp) * dpr) || tc.height !== canvas.height) {
+    tc.width = Math.round((W + 2 * pp) * dpr); tc.height = canvas.height;
+    tc.style.width = (W + 2 * pp) + "px"; tc.style.height = H + "px";
   }
   Object.assign(clip.style, {left: m.l + "px", width: pw + "px", height: H + "px"});
   // A picture stretched by a zoom in progress, or one about to fill in with arriving lines, fades into the new
@@ -1039,13 +1046,13 @@ function drawPlot() {
   } else Object.assign(ghost.style, {transition: "none", opacity: "0"});
   if (ghost.width !== tc.width || ghost.height !== tc.height) {
     ghost.width = tc.width; ghost.height = tc.height;
-    ghost.style.width = W + "px"; ghost.style.height = H + "px";
+    ghost.style.width = tc.style.width; ghost.style.height = H + "px";
   }
-  Object.assign(tc.style, {left: -m.l + "px", transform: "none", transformOrigin: `${m.l}px 0`, transition: "none",
-                           opacity: fade ? "0" : "1"});
+  Object.assign(tc.style, {left: -(m.l + pp) + "px", transform: "none", transformOrigin: `${m.l + pp}px 0`,
+                           transition: "none", opacity: fade ? "0" : "1"});
   const gt = tc.getContext("2d");
-  gt.setTransform(dpr, 0, 0, dpr, 0, 0);
-  gt.clearRect(0, 0, W, H);
+  gt.setTransform(dpr, 0, 0, dpr, pp * dpr, 0);      // drawn in the plot's coordinates, the overscan at x < m.l
+  gt.clearRect(-pp, 0, W + 2 * pp, H);
   const lines = plotLines();
   const phs = rh ? Math.max(40, ph - rh - RESIDUAL_GAP) : ph;
   if (groups.some(g => g[0].comp) && !state.hfs.has(iso) && !state.hfsAsked.has(iso)) {
@@ -1054,26 +1061,30 @@ function drawPlot() {
     getJSON(state.manifest.isotopologues[iso].hfs, state.hfs, iso).then(drawPlot, () => {});
   }
   const nb = Math.max(2, Math.round(pw * dpr));        // one bin per canvas pixel
+  // ... over the view and its overscan: nbE bins from loE to hiE, the view's nb of them from index nbPad
+  const nbPad = Math.round(OVERSCAN * nb), nbE = nb + 2 * nbPad, dnuBin = (state.hi - state.lo) / nb;
+  const loE = state.lo - nbPad * dnuBin, hiE = state.hi + nbPad * dnuBin;
+  const visible = arr => arr.subarray ? arr.subarray(nbPad, nbPad + nb) : arr.slice(nbPad, nbPad + nb);
   // one binned cross section per kind of line: their sum is the model, the measured kinds are drawn over it
   const withHfs = hyperfineShown();
   const subOn = state.mode === "sub" && withHfs;
   // the pixel cross section, unless the trace is drawn from something else: the sub-Doppler signal, or a
   // resolved transmission (transmissionOnPixels bins on its own finer grid)
   const pixelSigma = !subOn && !(state.mode === "trans" && withHfs);
-  const {parts, sticks} = pixelSigma ? binned(lines, lo, hi, nb, T, iso, withHfs, (state.plotLines || state.lines).slices) :
-    {parts: KINDS.map(() => new Float64Array(nb)), sticks: []};
-  const sub = subOn ? subDopplerBins(lines, lo, hi, nb, T, iso) : null;
+  const {parts, sticks} = pixelSigma ? binned(lines, loE, hiE, nbE, T, iso, withHfs, (state.plotLines || state.lines).slices) :
+    {parts: KINDS.map(() => new Float64Array(nbE)), sticks: []};
+  const sub = subOn ? subDopplerBins(lines, loE, hiE, nbE, T, iso) : null;
   // the highlighted band, by branch: drawn over the kinds in the cross section and sub-Doppler views
-  const band = !bandOn() || state.mode === "trans" ? null : sub ? sub.band : bandBins(lo, hi, nb, T, iso, withHfs);
+  const band = !bandOn() || state.mode === "trans" ? null : sub ? sub.band : bandBins(loE, hiE, nbE, T, iso, withHfs);
   const bandInk = {P: ink("--band-p"), R: ink("--band-r")};
-  const sigma = new Float64Array(nb);
-  for (const p of parts) for (let k = 0; k < nb; k++) sigma[k] += p[k];
+  const sigma = new Float64Array(nbE);
+  for (const p of parts) for (let k = 0; k < nbE; k++) sigma[k] += p[k];
 
   let y, ylabel, ticks, top = 1, subY = null;
   if (sub) {
     // relative: the resonances of each line scale with its strength squared (the bilinear limit)
-    let peak = 0;
-    for (const v of sub.bins) peak = Math.max(peak, Math.abs(v));
+    let peak = 0;                                    // scaled to the view, not its overscan
+    for (const v of visible(sub.bins)) peak = Math.max(peak, Math.abs(v));
     peak = peak || 1;
     subY = sub.harmonic ? v => 0.5 + 0.5 * v / (peak * 1.08) : v => v / (peak * 1.08);
     if (sub.harmonic) {
@@ -1088,12 +1099,12 @@ function drawPlot() {
   } else if (state.mode === "trans") {
     // the coldest point of the cell sets the vapor pressure
     const N = P.numberDensity(Math.min(Number($("#cold").value) + 273.15, T), T) * Number($("#path").value);
-    y = transmissionOnPixels(sigma, lines, lo, hi, nb, T, iso, withHfs, N);
+    y = transmissionOnPixels(sigma, lines, loE, hiE, nbE, T, iso, withHfs, N);
     ylabel = "transmission";
     ticks = [0, 0.25, 0.5, 0.75, 1].map(v => [v, v.toFixed(2)]);
   } else {
     top = 0;
-    for (const v of sigma) top = Math.max(top, v);
+    for (const v of visible(sigma)) top = Math.max(top, v);
     top = top > 0 ? top * 1.08 : 1e-20;
     y = Array.from(sigma, s => s / top);
     ylabel = "cross section (cm²)";
@@ -1138,17 +1149,17 @@ function drawPlot() {
   if (!narrow) { g.save(); g.translate(15, m.t + phs / 2); g.rotate(-Math.PI / 2); g.fillText(ylabel, 0, 0); g.restore(); }
 
   g = gt;                      // from here to the marker strip: the trace layer
-  const xAt = k => m.l + (k + 0.5) * pw / nb;
-  const at = (arr, k) => arr[flip ? nb - 1 - k : k];
+  const xAt = k => m.l + (k - nbPad + 0.5) * pw / nb;   // k over the overscan too: 0 .. nbE - 1
+  const at = (arr, k) => arr[flip ? nbE - 1 - k : k];
   if (sub) {
     // as the cross section: the model's signal, every line in it, filled; then each highlighted kind of measured
     // line's own share of it, in its color. A derivative (harmonic) signal is signed, so it fills to its zero.
     const base = subY(0);
     const curve = vals => {
       g.beginPath();
-      for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(subY(at(vals, k)))) : g.lineTo(xAt(k), yPix(subY(at(vals, k))));
+      for (let k = 0; k < nbE; k++) k === 0 ? g.moveTo(xAt(k), yPix(subY(at(vals, k)))) : g.lineTo(xAt(k), yPix(subY(at(vals, k))));
     };
-    const toBase = () => { g.lineTo(xAt(nb - 1), yPix(base)); g.lineTo(xAt(0), yPix(base)); g.closePath(); };
+    const toBase = () => { g.lineTo(xAt(nbE - 1), yPix(base)); g.lineTo(xAt(0), yPix(base)); g.closePath(); };
     if (state.kinds.has("model")) {
       curve(sub.bins); toBase();
       g.fillStyle = ink("--cls-model"); g.globalAlpha = 0.45; g.fill(); g.globalAlpha = 1;
@@ -1171,17 +1182,17 @@ function drawPlot() {
     }
   } else if (state.mode === "trans") {
     g.beginPath();
-    for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
+    for (let k = 0; k < nbE; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(y, k))) : g.lineTo(xAt(k), yPix(at(y, k)));
     g.strokeStyle = ink("--ink-2"); g.lineWidth = 1.6; g.lineJoin = "round"; g.stroke();
   } else {
     // the model's cross section, every line in it, filled; then each highlighted kind of measured line's
     // own share of it, drawn from the baseline over the model in its color
     const curve = vals => {
       g.beginPath();
-      for (let k = 0; k < nb; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(vals, k) / top)) : g.lineTo(xAt(k), yPix(at(vals, k) / top));
+      for (let k = 0; k < nbE; k++) k === 0 ? g.moveTo(xAt(k), yPix(at(vals, k) / top)) : g.lineTo(xAt(k), yPix(at(vals, k) / top));
     };
     if (state.kinds.has("model")) {
-      curve(sigma); g.lineTo(xAt(nb - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
+      curve(sigma); g.lineTo(xAt(nbE - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
       g.fillStyle = ink("--cls-model"); g.globalAlpha = 0.45; g.fill(); g.globalAlpha = 1;
     }
     curve(sigma);
@@ -1189,14 +1200,14 @@ function drawPlot() {
     for (const kind of ["atlas", "precision"]) {
       const part = parts[KIND_INDEX[kind]];
       if (!highlighted(kind) || !part.some(v => v > 0)) continue;
-      curve(part); g.lineTo(xAt(nb - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
+      curve(part); g.lineTo(xAt(nbE - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
       g.fillStyle = kindInk[kind]; g.globalAlpha = 0.35; g.fill(); g.globalAlpha = 1;
       curve(part); g.strokeStyle = kindInk[kind]; g.lineWidth = 1.4; g.stroke();
     }
     for (const br of BRANCHES) {
       const part = band && band[br];
       if (!part || !part.some(v => v > 0)) continue;
-      curve(part); g.lineTo(xAt(nb - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
+      curve(part); g.lineTo(xAt(nbE - 1), yPix(0)); g.lineTo(xAt(0), yPix(0)); g.closePath();
       g.fillStyle = bandInk[br]; g.globalAlpha = 0.4; g.fill(); g.globalAlpha = 1;
       curve(part); g.strokeStyle = bandInk[br]; g.lineWidth = 1.6; g.stroke();
     }
@@ -1970,16 +1981,17 @@ async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
     await getJSON(state.manifest.isotopologues[state.iso].partition, state.partitions, state.iso);
     // A view that needs more than a few shards not yet here is drawn at once: coarse where they are missing
     // (the overview, small and fetched first), filling in as they arrive. A narrow view waits for its own.
-    const missing = info.shards.filter(s => s.nu1 >= state.lo - PLOT_PAD_CM && s.nu0 <= state.hi + PLOT_PAD_CM &&
+    const pad = padOf(state.lo, state.hi);           // the view and its overscan
+    const missing = info.shards.filter(s => s.nu1 >= state.lo - pad && s.nu0 <= state.hi + pad &&
                                             !state.shards.has(s.file)).length;
     const progressive = deferTable || missing > 2;
     if (missing > 2 && info.overview) await getJSON(info.overview, state.overviews, state.iso).catch(() => null);
     const lines = await linesIn(state.iso, state.lo, state.hi, {loadedOnly: progressive});
-    const padded = await linesIn(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM, {loadedOnly: progressive});
+    const padded = await linesIn(state.iso, state.lo - pad, state.hi + pad, {loadedOnly: progressive});
     // a wide view: fetch the rest of the list in the background, so zooming out finds it loaded
     if (state.hi - state.lo > 0.2 * (info.nu_max - info.nu_min)) loadInBackground(state.iso, info.shards);
     if (token !== state.busy) return;                    // a newer view won
-    if (hyperfineShown()) await loadHfs(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM);
+    if (hyperfineShown()) await loadHfs(state.iso, state.lo - pad, state.hi + pad);
     if (token !== state.busy) return;
     // zoomed in to the hyperfine structure, a line belongs to the view when any of its components does, so a
     // component in view can be picked though its line's center lies outside
@@ -2239,7 +2251,9 @@ function wire() {
     const ro = $("#readout");
     const hit = hitAt(e.clientX, e.clientY, 8);         // a measurement's dot: what it says, under the position
     const c = !hit && componentAt(e.clientX), comp = c && c.near && c;   // else a hyperfine component a click picks
-    ro.textContent = `${P.fromWavenumber(nu, unit).toFixed(P.DIGITS[unit])} ${unit}   ${nu.toFixed(5)} cm⁻¹` +
+    // the chosen unit, then wavenumber (or, when the chosen unit is wavenumber, vacuum wavelength)
+    const second = unit === "cm-1" ? `${(1e7 / nu).toFixed(6)} nm` : `${nu.toFixed(5)} cm⁻¹`;
+    ro.textContent = `${P.fromWavenumber(nu, unit).toFixed(P.DIGITS[unit])} ${unit === "cm-1" ? "cm⁻¹" : unit}   ${second}` +
       (hit ? " · " + describeHit(hit) : comp ? ` · ${label(comp.line)} ${comp.comp}` : "");
     plot.style.cursor = (hit || comp) && !plot.classList.contains("grabbing") ? "pointer" : "";
     // in its own row of the top margin, between the legend and the top axis's labels: off the spectrum
@@ -2447,7 +2461,10 @@ function setMode(mode) {
   $$(".modonly").forEach(el => el.hidden = state.mode !== "sub" || !state.sub.harmonic);
   // sub-Doppler needs the hyperfine patterns, which a wider view has not loaded
   if (!(state.manifest && state.hi > state.lo)) return;      // before the first view: show() draws it
-  if (state.mode === "sub" && hyperfineShown()) loadHfs(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM).then(redrawAll);
+  if (state.mode === "sub" && hyperfineShown()) {
+    const pad = padOf(state.lo, state.hi);
+    loadHfs(state.iso, state.lo - pad, state.hi + pad).then(redrawAll);
+  }
   else redrawAll();
   pushURL();
 }

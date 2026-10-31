@@ -167,7 +167,9 @@ The line list is stored in 64 parts per isotopologue, loaded as a view first nee
 parts not yet loaded (the whole range, the first time) is drawn at once from a coarse spectrum of every part
 (the strength of its lines of each class summed in 64 bins, at seven cell temperatures between which the
 explorer interpolates). Each part's own lines replace its coarse bins as it arrives. While the view is zoomed
-or moved, the last picture is stretched to the new range and then cross-faded into the redrawn one. A wheel
+or moved, the last picture is stretched to the new range and then cross-faded into the redrawn one. The
+picture is drawn a quarter of the view's width beyond each side, so a zoom out by one wheel step or a short pan
+shows no blank margin before the redraw. A wheel
 zoom or an arrow-key move glides to its new range in about a quarter of a second, keeping the point under the
 cursor in place.
 
