@@ -57,7 +57,7 @@ PER_SHARD_HFS = 80
 ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c", "pyodine_fischer_2022",
            "kitt_peak_1993", "gerstenkorn1977", "gerstenkorn1978", "gerstenkorn1978b",
            "orsay1982_part1", "orsay1982_part2", "orsay1982_part3", "orsay1982_part4", "orsay1983_part4")
-#: Line lists held but not shown: unassigned (nolleke_2018), a reprint of the 1978 atlas's values (gerstenkorn1979),
+#: Line lists held but not shown: lines of the A-X system, which the model does not hold (nolleke_2018), a reprint of the 1978 atlas's values (gerstenkorn1979),
 #: sample pages without v (gerstenkorn1980b), and spectra shared privately (the Rodriguez Fernandez scans).
 #: The atlases the model is fitted to: the core's two, Orsay part I (X v'' 18-25) and Partie IV (B v' 51-80). The
 #: others are shown for comparison, marked as not used in the fit.

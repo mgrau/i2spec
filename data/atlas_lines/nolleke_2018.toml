@@ -13,8 +13,11 @@ extraction = """The authors' line list (iodine_atlas.csv of the data set) with t
 added (a research script). Nothing else is changed. The 192 lines with a water_line entry lie near an
 atmospheric H2O line in the open beam and may be blended with it; reference_lambda_vac_nm is the authors' comparison line
 from their reference [1] where they give one (3664 lines). The raw scans, transmission against vacuum wavelength, are in
-data/spectra/nolleke_2018_scans.csv.gz (the authors' scan_data.csv, gzipped). The lines are not assigned: two attempts
-against the model failed, because they come from X v'' = 24-45, the levels the
-assignment would measure."""
+data/spectra/nolleke_2018_scans.csv.gz (the authors' scan_data.csv, gzipped). The lines are not B-X: a search of 93 hot bands
+(X v'' 14-39 to B v' 0-19) finds none above chance. They are mostly the A 3Pi1u - X system from X v'' 3-8 (A v' 8-19):
+predicted from the A-state constants of appadoo1996 and the model's X levels, 19 bands register at one common shift,
+and 1,494 lines fall on A levels confirmed by ground-state combination differences (419 on levels reached by four or
+more lines). The model holds no A state, so the list is not shown and the assignments are not kept here
+(2026-10-31)."""
 range_cm-1 = [10152.4, 10928.8]
 n_lines = 10162
