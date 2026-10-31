@@ -255,3 +255,21 @@ def test_constants_are_registered_from_identity_columns_and_scored(tmp_path):
     assert sorted(result["not_printed"]) == [f"hyperfine_parameters/hfb:0:{q}" for q in ("C", "d", "delta")]
     assert "blind | hf_constant eqQ | all" in result["summary"] and "blind | x_interval | all" in result["summary"]
     assert "hyperfine_parameters/hfa | C" in result["by_set"]
+
+
+def test_named_constant_sets_and_protocol_fields(tmp_path):
+    """``constants`` may name the sets to register; ``protocol_extra`` is frozen into the hashed protocol."""
+    data, empty = tmp_path / "data", tmp_path / "observations"
+    empty.mkdir()
+    hf = "line,eqQ,eqQ_unc,C,C_unc,d,d_unc,delta,delta_unc,fit_sd_kHz,note\n"
+    for name in ("hfa", "hfb"):
+        _pending_set(data / "hyperfine_parameters", name, {"data.csv": hf + "127I2 R(56) 32-0,x,x,x,x,x,x,x,x,,\n"})
+    (data / "x_hyperfine").mkdir()
+    folder = tmp_path / "registry"
+    registry.freeze_registry(folder, [], models=("i2spec",), root=empty, constants=["hfb"], constants_root=data,
+                             protocol_extra=dict(criteria="fixed"))
+    protocol, targets, *_ = registry.read_registry(folder)
+    assert {t["set"] for t in targets} == {"hfb"} and protocol["criteria"] == "fixed"
+    with pytest.raises(ValueError, match="pending constant sets"):
+        registry.freeze_registry(tmp_path / "other", [], models=("i2spec",), root=empty, constants=["hfc"],
+                                 constants_root=data)

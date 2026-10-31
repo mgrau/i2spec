@@ -1,0 +1,6915 @@
+[
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:0",
+  "predicted_MHz": 71.94361412525177,
+  "sigma_model_MHz": 0.09006519722638175,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09006519722638175
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:1",
+  "predicted_MHz": 131.7836992740631,
+  "sigma_model_MHz": 0.09288243855572907,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09288243855572907
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:2",
+  "predicted_MHz": 207.80678570270538,
+  "sigma_model_MHz": 0.09858303033246334,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09858303033246334
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:3",
+  "predicted_MHz": 335.04795348644257,
+  "sigma_model_MHz": 0.11242272083662473,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11242272083662473
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:4",
+  "predicted_MHz": 372.5814434289932,
+  "sigma_model_MHz": 0.11731048708325088,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11731048708325088
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:5",
+  "predicted_MHz": 386.75729751586914,
+  "sigma_model_MHz": 0.1192343789469134,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1192343789469134
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:6",
+  "predicted_MHz": 470.47266030311584,
+  "sigma_model_MHz": 0.13134234427826633,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.13134234427826633
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:7",
+  "predicted_MHz": 481.4727820158005,
+  "sigma_model_MHz": 0.13301699516446022,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.13301699516446022
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:8",
+  "predicted_MHz": 525.754096031189,
+  "sigma_model_MHz": 0.13992553062994534,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.13992553062994534
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:9",
+  "predicted_MHz": 567.3798435926437,
+  "sigma_model_MHz": 0.1466386279780142,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1466386279780142
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:10",
+  "predicted_MHz": 631.4926596879959,
+  "sigma_model_MHz": 0.15732916860810478,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.15732916860810478
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:11",
+  "predicted_MHz": 719.1423963308334,
+  "sigma_model_MHz": 0.1725033260204545,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1725033260204545
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:12",
+  "predicted_MHz": 748.4968619346619,
+  "sigma_model_MHz": 0.17770421278387033,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17770421278387033
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:13",
+  "predicted_MHz": 792.7020932435989,
+  "sigma_model_MHz": 0.18563166226192002,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.18563166226192002
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:14",
+  "predicted_MHz": 889.3616371154785,
+  "sigma_model_MHz": 0.2033049657126071,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.2033049657126071
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:15",
+  "predicted_MHz": 949.0769889354706,
+  "sigma_model_MHz": 0.21441609373369702,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.21441609373369702
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:16",
+  "predicted_MHz": 69.82167315483093,
+  "sigma_model_MHz": 0.0899945661370075,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.0899945661370075
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:17",
+  "predicted_MHz": 129.1780880689621,
+  "sigma_model_MHz": 0.09272755882907704,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09272755882907704
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:18",
+  "predicted_MHz": 335.88165390491486,
+  "sigma_model_MHz": 0.11252784663086488,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11252784663086488
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:19",
+  "predicted_MHz": 396.42759895324707,
+  "sigma_model_MHz": 0.12056961268388708,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12056961268388708
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:20",
+  "predicted_MHz": 500.65858268737793,
+  "sigma_model_MHz": 0.13597850975376422,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.13597850975376422
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:21",
+  "predicted_MHz": 525.2356297969818,
+  "sigma_model_MHz": 0.13984318716109387,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.13984318716109387
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:22",
+  "predicted_MHz": 566.2963751554489,
+  "sigma_model_MHz": 0.14646145446955264,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.14646145446955264
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:23",
+  "predicted_MHz": 630.8009207248688,
+  "sigma_model_MHz": 0.15721180463235054,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.15721180463235054
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:24",
+  "predicted_MHz": 658.1567257642746,
+  "sigma_model_MHz": 0.16188352766002376,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.16188352766002376
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:25",
+  "predicted_MHz": 725.1509792804718,
+  "sigma_model_MHz": 0.17356349941385868,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17356349941385868
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:26",
+  "predicted_MHz": 739.3761026859283,
+  "sigma_model_MHz": 0.17608253458566894,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17608253458566894
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:27",
+  "predicted_MHz": 791.6806625127792,
+  "sigma_model_MHz": 0.18544728297877067,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.18544728297877067
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:28",
+  "predicted_MHz": 865.4890772104263,
+  "sigma_model_MHz": 0.19890144984648797,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.19890144984648797
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:29",
+  "predicted_MHz": 874.8409374952316,
+  "sigma_model_MHz": 0.20062369468039207,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.20062369468039207
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:30",
+  "predicted_MHz": 892.8585231304169,
+  "sigma_model_MHz": 0.2039519351556274,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.2039519351556274
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:31",
+  "predicted_MHz": 947.2549991607666,
+  "sigma_model_MHz": 0.21407519317765017,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.21407519317765017
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:32",
+  "predicted_MHz": 165.12004840373993,
+  "sigma_model_MHz": 3.890687658186922,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   3.890687658186922
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:33",
+  "predicted_MHz": 265.4659379720688,
+  "sigma_model_MHz": 3.9808627497079967,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   3.9808627497079967
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:34",
+  "predicted_MHz": 295.07440507411957,
+  "sigma_model_MHz": 4.014962163792077,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.014962163792077
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:35",
+  "predicted_MHz": 316.6916706562042,
+  "sigma_model_MHz": 4.041927517730684,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.041927517730684
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:36",
+  "predicted_MHz": 363.56245851516724,
+  "sigma_model_MHz": 4.106211445881129,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.106211445881129
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:37",
+  "predicted_MHz": 396.9561620950699,
+  "sigma_model_MHz": 4.156704136899651,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.156704136899651
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:38",
+  "predicted_MHz": 473.61129105091095,
+  "sigma_model_MHz": 4.286547956568817,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.286547956568817
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:39",
+  "predicted_MHz": 522.8970112800598,
+  "sigma_model_MHz": 4.379650340355594,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.379650340355594
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:40",
+  "predicted_MHz": 559.4109890460968,
+  "sigma_model_MHz": 4.45315229414432,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.45315229414432
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:41",
+  "predicted_MHz": 636.671221613884,
+  "sigma_model_MHz": 4.620463129686442,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.620463129686442
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:42",
+  "predicted_MHz": 659.3556311130524,
+  "sigma_model_MHz": 4.672436112507365,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.672436112507365
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:43",
+  "predicted_MHz": 739.1925954818726,
+  "sigma_model_MHz": 4.864766474245174,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.864766474245174
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:44",
+  "predicted_MHz": 769.6170616149902,
+  "sigma_model_MHz": 4.941667776641872,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   4.941667776641872
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:45",
+  "predicted_MHz": 842.1238611936569,
+  "sigma_model_MHz": 5.132241632706358,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   5.132241632706358
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:46",
+  "predicted_MHz": -412.70243978500366,
+  "sigma_model_MHz": 1.9395448631740662,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.9395448631740662
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:47",
+  "predicted_MHz": -360.9706093072891,
+  "sigma_model_MHz": 1.8775319241818562,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.8775319241818562
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:48",
+  "predicted_MHz": -193.91433906555176,
+  "sigma_model_MHz": 1.7253681011007056,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.7253681011007056
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:49",
+  "predicted_MHz": -159.5505428314209,
+  "sigma_model_MHz": 1.7044232341348424,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.7044232341348424
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:50",
+  "predicted_MHz": -105.50310349464417,
+  "sigma_model_MHz": 1.6793851531175057,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.6793851531175057
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:51",
+  "predicted_MHz": 173.7609075307846,
+  "sigma_model_MHz": 1.712621136477805,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.712621136477805
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:52",
+  "predicted_MHz": 201.2453751564026,
+  "sigma_model_MHz": 1.7303260337674977,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.7303260337674977
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:53",
+  "predicted_MHz": 227.13258361816406,
+  "sigma_model_MHz": 1.7491752473289746,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.7491752473289746
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:54",
+  "predicted_MHz": 255.31645953655243,
+  "sigma_model_MHz": 1.7720133895752572,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.7720133895752572
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:55",
+  "predicted_MHz": 255.93978762626648,
+  "sigma_model_MHz": 1.7725451194046082,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.7725451194046082
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:56",
+  "predicted_MHz": 316.17765486240387,
+  "sigma_model_MHz": 1.8291361234115144,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.8291361234115144
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:57",
+  "predicted_MHz": 428.34290516376495,
+  "sigma_model_MHz": 1.9594978991554133,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   1.9594978991554133
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:58",
+  "predicted_MHz": 483.6637659072876,
+  "sigma_model_MHz": 2.0342129714184813,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   2.0342129714184813
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "borde1981a:59",
+  "predicted_MHz": 512.7293475866318,
+  "sigma_model_MHz": 2.0758860274535555,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   2.0758860274535555
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "validated: held-out intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:0",
+  "predicted_MHz": 2624.628526389599,
+  "sigma_model_MHz": 0.3573828664398184,
+  "sigma_parts_MHz": [
+   0.22328256931537954,
+   0.2284268429049828,
+   0.1602765887618218
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:1",
+  "predicted_MHz": -18.85261380672455,
+  "sigma_model_MHz": 0.08892661357546228,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08892661357546228
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:2",
+  "predicted_MHz": -32.34399628639221,
+  "sigma_model_MHz": 0.08909065174915134,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08909065174915134
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:3",
+  "predicted_MHz": -121.84416198730469,
+  "sigma_model_MHz": 0.09230692377389191,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09230692377389191
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:4",
+  "predicted_MHz": -152.91189497709274,
+  "sigma_model_MHz": 0.0942414506211542,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.0942414506211542
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:5",
+  "predicted_MHz": -174.99668979644775,
+  "sigma_model_MHz": 0.0958520527653371,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.0958520527653371
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:6",
+  "predicted_MHz": -205.8222318291664,
+  "sigma_model_MHz": 0.09840685733212641,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09840685733212641
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:7",
+  "predicted_MHz": -267.7853904366493,
+  "sigma_model_MHz": 0.1045207865949989,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1045207865949989
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:8",
+  "predicted_MHz": -308.37174409627914,
+  "sigma_model_MHz": 0.10914768461732047,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10914768461732047
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:9",
+  "predicted_MHz": -341.8906981945038,
+  "sigma_model_MHz": 0.11329034641029015,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11329034641029015
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:10",
+  "predicted_MHz": -438.3871921300888,
+  "sigma_model_MHz": 0.12656203525416398,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12656203525416398
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:11",
+  "predicted_MHz": -451.29893386363983,
+  "sigma_model_MHz": 0.12846636648241175,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12846636648241175
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:12",
+  "predicted_MHz": -459.13222765922546,
+  "sigma_model_MHz": 0.12963455080650235,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12963455080650235
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:13",
+  "predicted_MHz": -480.7012277841568,
+  "sigma_model_MHz": 0.1328989671716057,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1328989671716057
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:14",
+  "predicted_MHz": -552.3003180623055,
+  "sigma_model_MHz": 0.14418413009019151,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.14418413009019151
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:15",
+  "predicted_MHz": -593.744889318943,
+  "sigma_model_MHz": 0.15098719518552267,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.15098719518552267
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:16",
+  "predicted_MHz": -607.605707347393,
+  "sigma_model_MHz": 0.15330076840248638,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.15330076840248638
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:17",
+  "predicted_MHz": -651.6070588231087,
+  "sigma_model_MHz": 0.16075944209213977,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.16075944209213977
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:18",
+  "predicted_MHz": -870.3461408019066,
+  "sigma_model_MHz": 0.1997954730537202,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1997954730537202
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:19",
+  "predicted_MHz": -893.4667640924454,
+  "sigma_model_MHz": 0.20406451688926222,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.20406451688926222
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:20",
+  "predicted_MHz": -918.3905185461044,
+  "sigma_model_MHz": 0.20868997795587613,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.20868997795587613
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:21",
+  "predicted_MHz": 473599334.84533685,
+  "sigma_model_MHz": 0.21444152259236574,
+  "sigma_parts_MHz": [
+   0.07684594342689702,
+   0.16152216962314755,
+   0.1182812593388885
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:22",
+  "predicted_MHz": 473617201.4359454,
+  "sigma_model_MHz": 0.23622388863540345,
+  "sigma_parts_MHz": [
+   0.1216856155902811,
+   0.16152216962314755,
+   0.12208572906231499
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:23",
+  "predicted_MHz": 473630398.7606349,
+  "sigma_model_MHz": 0.23698125429394917,
+  "sigma_parts_MHz": [
+   0.12669364263817717,
+   0.16152216962314755,
+   0.1184036507969007
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "chen1998a:24",
+  "predicted_MHz": 473634529.3012022,
+  "sigma_model_MHz": 0.23405754016329466,
+  "sigma_parts_MHz": [
+   0.1211260797859567,
+   0.16152216962314755,
+   0.11841449921022973
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:0",
+  "predicted_MHz": -910.6353629827499,
+  "sigma_model_MHz": 0.20724822468558574,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.20724822468558574
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:1",
+  "predicted_MHz": -877.4723922014236,
+  "sigma_model_MHz": 0.20110896075900306,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.20110896075900306
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:2",
+  "predicted_MHz": -845.1482013463974,
+  "sigma_model_MHz": 0.19516840021867835,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.19516840021867835
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:3",
+  "predicted_MHz": -625.2988036870956,
+  "sigma_model_MHz": 0.15627975835982308,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.15627975835982308
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:4",
+  "predicted_MHz": -591.0391511917114,
+  "sigma_model_MHz": 0.1505377143784174,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1505377143784174
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:5",
+  "predicted_MHz": -585.8351227045059,
+  "sigma_model_MHz": 0.14967523303872463,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.14967523303872463
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:6",
+  "predicted_MHz": -552.4542040228844,
+  "sigma_model_MHz": 0.14420905244799875,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.14420905244799875
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:7",
+  "predicted_MHz": -466.2980091571808,
+  "sigma_model_MHz": 0.13071142697031526,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.13071142697031526
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:8",
+  "predicted_MHz": -455.19085597991943,
+  "sigma_model_MHz": 0.12904558050923082,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12904558050923082
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:9",
+  "predicted_MHz": -432.9203181862831,
+  "sigma_model_MHz": 0.12576393406453426,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12576393406453426
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:10",
+  "predicted_MHz": -422.9393776655197,
+  "sigma_model_MHz": 0.12431983184934252,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12431983184934252
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:11",
+  "predicted_MHz": -326.63152092695236,
+  "sigma_model_MHz": 0.11137066728289755,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11137066728289755
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:12",
+  "predicted_MHz": -299.4319637417793,
+  "sigma_model_MHz": 0.10809022456215214,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10809022456215214
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:13",
+  "predicted_MHz": -271.6507956981659,
+  "sigma_model_MHz": 0.10494164727511374,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10494164727511374
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:14",
+  "predicted_MHz": -179.37372595071793,
+  "sigma_model_MHz": 0.09619351501030471,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09619351501030471
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:15",
+  "predicted_MHz": -163.69360369443893,
+  "sigma_model_MHz": 0.09500403850763951,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09500403850763951
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:16",
+  "predicted_MHz": -146.5934510231018,
+  "sigma_model_MHz": 0.09381601531931832,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09381601531931832
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:17",
+  "predicted_MHz": -131.30753427743912,
+  "sigma_model_MHz": 0.09285392336156943,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09285392336156943
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:18",
+  "predicted_MHz": -20.94260537624359,
+  "sigma_model_MHz": 0.08894638212519919,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08894638212519919
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "cruz1994a:19",
+  "predicted_MHz": -10.947089850902557,
+  "sigma_model_MHz": 0.08887059564521924,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08887059564521924
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "demelo2024a:0",
+  "predicted_MHz": 467.81062734127045,
+  "sigma_model_MHz": 0.6704907638239035,
+  "sigma_parts_MHz": [
+   0.5182730643180758,
+   0.40742422278272095,
+   0.12229635262512496
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:0",
+  "predicted_MHz": -14.975591719150543,
+  "sigma_model_MHz": 0.1708884952022341,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708884952022341
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:1",
+  "predicted_MHz": -4.828535079956055,
+  "sigma_model_MHz": 0.17086363561328902,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086363561328902
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:2",
+  "predicted_MHz": -5.785249412059784,
+  "sigma_model_MHz": 0.17086489187675463,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086489187675463
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:3",
+  "predicted_MHz": -15.213853359222412,
+  "sigma_model_MHz": 0.17088938496580547,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17088938496580547
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:4",
+  "predicted_MHz": -3.3701382875442505,
+  "sigma_model_MHz": 0.17086215633150686,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086215633150686
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:5",
+  "predicted_MHz": -17.599643051624298,
+  "sigma_model_MHz": 0.17089906856208836,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17089906856208836
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:6",
+  "predicted_MHz": -3.6344146728515625,
+  "sigma_model_MHz": 0.170862385350742,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.170862385350742
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:7",
+  "predicted_MHz": -11.91743528842926,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:8",
+  "predicted_MHz": -17.59818732738495,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:9",
+  "predicted_MHz": -9.140933215618134,
+  "sigma_model_MHz": 0.17087108840535065,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17087108840535065
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:10",
+  "predicted_MHz": -10.30201506614685,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:11",
+  "predicted_MHz": -19.575260758399963,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:12",
+  "predicted_MHz": -12.639480233192444,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:13",
+  "predicted_MHz": -8.207604587078094,
+  "sigma_model_MHz": 0.17086908526770453,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086908526770453
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:14",
+  "predicted_MHz": -17.104795396327972,
+  "sigma_model_MHz": 0.1708969443448748,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708969443448748
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:15",
+  "predicted_MHz": -6.86602658033371,
+  "sigma_model_MHz": 0.1708665834658723,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708665834658723
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:16",
+  "predicted_MHz": -20.087425231933594,
+  "sigma_model_MHz": 0.17091066513520667,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17091066513520667
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:17",
+  "predicted_MHz": -10.556585311889648,
+  "sigma_model_MHz": 0.1708745380509077,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708745380509077
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:18",
+  "predicted_MHz": -4.478209853172302,
+  "sigma_model_MHz": 0.1708632322471691,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708632322471691
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:19",
+  "predicted_MHz": -7.560554921627045,
+  "sigma_model_MHz": 0.1708678230445227,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708678230445227
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:20",
+  "predicted_MHz": -19.79731285572052,
+  "sigma_model_MHz": 0.1709092339857551,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1709092339857551
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:21",
+  "predicted_MHz": -28.71379166841507,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:22",
+  "predicted_MHz": -6.979474067687988,
+  "sigma_model_MHz": 0.17086677778940634,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086677778940634
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:23",
+  "predicted_MHz": -3.4712461829185486,
+  "sigma_model_MHz": 0.17086224190959304,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086224190959304
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:24",
+  "predicted_MHz": -4.503574073314667,
+  "sigma_model_MHz": 0.1708632604318583,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708632604318583
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:25",
+  "predicted_MHz": -8.307218432426453,
+  "sigma_model_MHz": 0.1708692887886834,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708692887886834
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:26",
+  "predicted_MHz": -18.456489741802216,
+  "sigma_model_MHz": 0.17090288991480748,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17090288991480748
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:27",
+  "predicted_MHz": -15.24898213148117,
+  "sigma_model_MHz": 0.17088951733829488,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17088951733829488
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:28",
+  "predicted_MHz": -4.713239014148712,
+  "sigma_model_MHz": 0.17086349950845878,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086349950845878
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "knox1971a:29",
+  "predicted_MHz": -15.762482821941376,
+  "sigma_model_MHz": 0.1708914871504032,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708914871504032
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "kompanets1979a:0",
+  "predicted_MHz": 17.70258140563965,
+  "sigma_model_MHz": 0.17089951805051767,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17089951805051767
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "kompanets1979a:1",
+  "predicted_MHz": 19.814897000789642,
+  "sigma_model_MHz": 0.1709093201372311,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1709093201372311
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:0",
+  "predicted_MHz": 12.92445832490921,
+  "sigma_model_MHz": 0.08888182260258519,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08888182260258519
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:1",
+  "predicted_MHz": 26.354174494743347,
+  "sigma_model_MHz": 0.08900718966928106,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08900718966928106
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:2",
+  "predicted_MHz": 39.554939448833466,
+  "sigma_model_MHz": 0.08921358299087997,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08921358299087997
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:3",
+  "predicted_MHz": 13.429716169834137,
+  "sigma_model_MHz": 0.0888849894063574,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.0888849894063574
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:4",
+  "predicted_MHz": 26.630481123924255,
+  "sigma_model_MHz": 0.08901066652917133,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08901066652917133
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:5",
+  "predicted_MHz": 13.200764954090118,
+  "sigma_model_MHz": 0.08888353937809917,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08888353937809917
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:6",
+  "predicted_MHz": 116.7882251739502,
+  "sigma_model_MHz": 0.09203021203545107,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09203021203545107
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:7",
+  "predicted_MHz": 125.68503338098526,
+  "sigma_model_MHz": 0.09252438910845605,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09252438910845605
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:8",
+  "predicted_MHz": 22.097573161125183,
+  "sigma_model_MHz": 0.08895819528822513,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08895819528822513
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:9",
+  "predicted_MHz": 43.7125985622406,
+  "sigma_model_MHz": 0.08929557537093591,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08929557537093591
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:10",
+  "predicted_MHz": 21.615025401115417,
+  "sigma_model_MHz": 0.0889531828086092,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.0889531828086092
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:11",
+  "predicted_MHz": 562.3196914196014,
+  "sigma_model_MHz": 0.14581224187955089,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.14581224187955089
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:12",
+  "predicted_MHz": 502.6043395996094,
+  "sigma_model_MHz": 0.13628163958422163,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.13628163958422163
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:13",
+  "predicted_MHz": 405.9447957277298,
+  "sigma_model_MHz": 0.12190109420365661,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12190109420365661
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:14",
+  "predicted_MHz": 361.7395644187927,
+  "sigma_model_MHz": 0.11586699873890167,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11586699873890167
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:15",
+  "predicted_MHz": 332.3850988149643,
+  "sigma_model_MHz": 0.11208804267117897,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11208804267117897
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:16",
+  "predicted_MHz": 180.6225460767746,
+  "sigma_model_MHz": 0.09629225854364348,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09629225854364348
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:17",
+  "predicted_MHz": 138.99679851531982,
+  "sigma_model_MHz": 0.09332589357048887,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09332589357048887
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:18",
+  "predicted_MHz": 94.71548449993134,
+  "sigma_model_MHz": 0.09095157388134689,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09095157388134689
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:19",
+  "predicted_MHz": 83.7153627872467,
+  "sigma_model_MHz": 0.09049424370522892,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09049424370522892
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:20",
+  "predicted_MHz": -14.175854086875916,
+  "sigma_model_MHz": 0.08888988781338854,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08888988781338854
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:21",
+  "predicted_MHz": -51.709344029426575,
+  "sigma_model_MHz": 0.08947603180540832,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08947603180540832
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:22",
+  "predicted_MHz": -178.95051181316376,
+  "sigma_model_MHz": 0.09616018424604297,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09616018424604297
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:23",
+  "predicted_MHz": -254.97359824180603,
+  "sigma_model_MHz": 0.10315736559448418,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10315736559448418
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:24",
+  "predicted_MHz": -314.81368339061737,
+  "sigma_model_MHz": 0.10992243208749007,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10992243208749007
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "landsberg1976a:25",
+  "predicted_MHz": -386.75729751586914,
+  "sigma_model_MHz": 0.1192343789469134,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1192343789469134
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "powel2021a:0",
+  "predicted_MHz": 425624126.260007,
+  "sigma_model_MHz": 0.4990207741849303,
+  "sigma_parts_MHz": [
+   0.40208551494749084,
+   0.28809243074932067,
+   0.06596759115267248
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "powel2021a:1",
+  "predicted_MHz": 425631844.3827085,
+  "sigma_model_MHz": 0.4898524398827444,
+  "sigma_parts_MHz": [
+   0.3779939154729139,
+   0.28809243074932067,
+   0.1186539677780781
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "powel2021a:2",
+  "predicted_MHz": 425601735.5406253,
+  "sigma_model_MHz": 0.4955268172441677,
+  "sigma_parts_MHz": [
+   0.3900325511651581,
+   0.28809243074932067,
+   0.10209890785253756
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:0",
+  "predicted_MHz": 416215208.07126623,
+  "sigma_model_MHz": 0.526308063029634,
+  "sigma_parts_MHz": [
+   0.42415913614676776,
+   0.28809243074932067,
+   0.11870954375357007
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:1",
+  "predicted_MHz": 415549090.65770787,
+  "sigma_model_MHz": 0.48640581648151043,
+  "sigma_parts_MHz": [
+   0.3734950755715672,
+   0.28809243074932067,
+   0.11872151521852273
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:2",
+  "predicted_MHz": 415307680.47902733,
+  "sigma_model_MHz": 0.4896931175739664,
+  "sigma_parts_MHz": [
+   0.37776559321312253,
+   0.28809243074932067,
+   0.11872344894163046
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:3",
+  "predicted_MHz": 414855494.6083149,
+  "sigma_model_MHz": 0.4626365738048723,
+  "sigma_parts_MHz": [
+   0.3419659835604452,
+   0.28809243074932067,
+   0.11872075157442456
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:4",
+  "predicted_MHz": 414169329.00834936,
+  "sigma_model_MHz": 0.45320293028264047,
+  "sigma_parts_MHz": [
+   0.32909222976779734,
+   0.28809243074932067,
+   0.11871795006728773
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:5",
+  "predicted_MHz": 413365901.7230953,
+  "sigma_model_MHz": 0.4565404963149744,
+  "sigma_parts_MHz": [
+   0.33367501072987654,
+   0.28809243074932067,
+   0.11871378746753808
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:6",
+  "predicted_MHz": 411675826.96228796,
+  "sigma_model_MHz": 0.5006955441253547,
+  "sigma_parts_MHz": [
+   0.39192882095378867,
+   0.28809243074932067,
+   0.1187037428125411
+  ],
+  "level_status": "extrapolated",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:7",
+  "predicted_MHz": 409452669.3839286,
+  "sigma_model_MHz": 0.46699483516466334,
+  "sigma_parts_MHz": [
+   0.3478127383177329,
+   0.28809243074932067,
+   0.11879910134062133
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:8",
+  "predicted_MHz": 408462107.3640111,
+  "sigma_model_MHz": 0.3477815327921612,
+  "sigma_parts_MHz": [
+   0.2842072973178036,
+   0.16152216962314755,
+   0.11869623171274574
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:9",
+  "predicted_MHz": 405840892.2588957,
+  "sigma_model_MHz": 0.44877564358008865,
+  "sigma_parts_MHz": [
+   0.32294476712178005,
+   0.28809243074932067,
+   0.11878134114552619
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:10",
+  "predicted_MHz": 404207881.5170399,
+  "sigma_model_MHz": 0.422241284873518,
+  "sigma_parts_MHz": [
+   0.2849246159815975,
+   0.28809243074932067,
+   0.11877885840639484
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:11",
+  "predicted_MHz": 399430872.7129797,
+  "sigma_model_MHz": 0.40221703712384416,
+  "sigma_parts_MHz": [
+   0.2543185842181028,
+   0.28809243074932067,
+   0.11875754299804056
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:12",
+  "predicted_MHz": 397238453.2873733,
+  "sigma_model_MHz": 0.29076291042824426,
+  "sigma_parts_MHz": [
+   0.21060676154781896,
+   0.16152216962314755,
+   0.11873689734566281
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:13",
+  "predicted_MHz": 395666265.97986335,
+  "sigma_model_MHz": 0.26419517152325395,
+  "sigma_parts_MHz": [
+   0.17200876244199995,
+   0.16152216962314755,
+   0.11883881108293004
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:14",
+  "predicted_MHz": 393233129.9534615,
+  "sigma_model_MHz": 0.3583985830470019,
+  "sigma_parts_MHz": [
+   0.17708023882407878,
+   0.28809243074932067,
+   0.11872187958861576
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:15",
+  "predicted_MHz": 391252853.6088606,
+  "sigma_model_MHz": 0.3468957853169213,
+  "sigma_parts_MHz": [
+   0.15247057593181135,
+   0.28809243074932067,
+   0.11871040683366037
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "rakowsky1989a:16",
+  "predicted_MHz": 389306732.15439755,
+  "sigma_model_MHz": 0.2294212961242544,
+  "sigma_parts_MHz": [
+   0.11148875077546742,
+   0.16152216962314755,
+   0.11880647409164911
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "samoudi2012a:0",
+  "predicted_MHz": 473612353.4138842,
+  "sigma_model_MHz": 0.28060482751209287,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.07937017224376959
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "samoudi2012a:1",
+  "predicted_MHz": 473612379.7680587,
+  "sigma_model_MHz": 0.28159218720302875,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.08279320571580637
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "samoudi2012a:2",
+  "predicted_MHz": 473612366.8436004,
+  "sigma_model_MHz": 0.28109535290946286,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.08108731371928488
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "samoudi2012a:3",
+  "predicted_MHz": 473612353.4138842,
+  "sigma_model_MHz": 0.28060482751209287,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.07937017224376959
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "samoudi2012a:4",
+  "predicted_MHz": 473612340.21311927,
+  "sigma_model_MHz": 0.2801483546322917,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.07774095202719435
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "samoudi2012a:5",
+  "predicted_MHz": 473612236.62565905,
+  "sigma_model_MHz": 0.2774634372284056,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.06742784304362433
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "samoudi2012a:6",
+  "predicted_MHz": 473612214.5280859,
+  "sigma_model_MHz": 0.27709926604659374,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.06591326317574625
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:0",
+  "predicted_MHz": 489880604.4698535,
+  "sigma_model_MHz": 0.19874378913168717,
+  "sigma_parts_MHz": [
+   0.09522056150967642,
+   0.16152216962314755,
+   0.06589937104732954
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:1",
+  "predicted_MHz": 489913113.33894765,
+  "sigma_model_MHz": 0.22327063695724486,
+  "sigma_parts_MHz": [
+   0.09897656383502067,
+   0.16152216962314755,
+   0.11816939476419878
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:2",
+  "predicted_MHz": 495162602.7502715,
+  "sigma_model_MHz": 0.21491565402947993,
+  "sigma_parts_MHz": [
+   0.07853254623684482,
+   0.16152216962314755,
+   0.11803375046446715
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:3",
+  "predicted_MHz": 502019757.7731157,
+  "sigma_model_MHz": 0.2145234166543653,
+  "sigma_parts_MHz": [
+   0.07769816176945739,
+   0.16152216962314755,
+   0.11787230663281684
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:4",
+  "predicted_MHz": 495475642.8407052,
+  "sigma_model_MHz": 0.1899866286771457,
+  "sigma_parts_MHz": [
+   0.0752469894332988,
+   0.16152216962314755,
+   0.06590446401848517
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:5",
+  "predicted_MHz": 495209036.130372,
+  "sigma_model_MHz": 0.21677283228191108,
+  "sigma_parts_MHz": [
+   0.07791266905344331,
+   0.16152216962314755,
+   0.12178121996728937
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:6",
+  "predicted_MHz": 496822926.6548012,
+  "sigma_model_MHz": 0.22784714363578612,
+  "sigma_parts_MHz": [
+   0.12470398880034682,
+   0.16152216962314755,
+   0.10135987746885193
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:7",
+  "predicted_MHz": 496549603.8109247,
+  "sigma_model_MHz": 0.2160100301352269,
+  "sigma_parts_MHz": [
+   0.08151412813246389,
+   0.16152216962314755,
+   0.11801003666662022
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:8",
+  "predicted_MHz": 496161498.4270382,
+  "sigma_model_MHz": 0.19118887493084039,
+  "sigma_parts_MHz": [
+   0.07824489317352436,
+   0.16152216962314755,
+   0.06589014577169669
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "shiner1993a:9",
+  "predicted_MHz": 495962116.923464,
+  "sigma_model_MHz": 0.2423729359759083,
+  "sigma_parts_MHz": [
+   0.13689199442119343,
+   0.16152216962314755,
+   0.11796529437593432
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:0",
+  "predicted_MHz": 738.9463266134262,
+  "sigma_model_MHz": 0.17600624442339402,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17600624442339402
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:1",
+  "predicted_MHz": 752.147238612175,
+  "sigma_model_MHz": 0.1783546464071378,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1783546464071378
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:2",
+  "predicted_MHz": 856.2535337209702,
+  "sigma_model_MHz": 0.1972042656889602,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1972042656889602
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:3",
+  "predicted_MHz": 253.27064490318298,
+  "sigma_model_MHz": 0.10297985341232688,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10297985341232688
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:4",
+  "predicted_MHz": 282.1460233926773,
+  "sigma_model_MHz": 0.10610596436495508,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10610596436495508
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:5",
+  "predicted_MHz": 291.6159677505493,
+  "sigma_model_MHz": 0.10718297565829527,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10718297565829527
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:6",
+  "predicted_MHz": 320.1195938587189,
+  "sigma_model_MHz": 0.11056839394494046,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11056839394494046
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:7",
+  "predicted_MHz": 401.0371675491333,
+  "sigma_model_MHz": 0.12121238509724017,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12121238509724017
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:8",
+  "predicted_MHz": 414.3008270263672,
+  "sigma_model_MHz": 0.12308390120425394,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12308390120425394
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:9",
+  "predicted_MHz": 446.0041742324829,
+  "sigma_model_MHz": 0.12768220976266684,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12768220976266684
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:10",
+  "predicted_MHz": 459.19292986392975,
+  "sigma_model_MHz": 0.1296436404039566,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1296436404039566
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1990a:11",
+  "predicted_MHz": 573.7358516454697,
+  "sigma_model_MHz": 0.14768047763767486,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.14768047763767486
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:0",
+  "predicted_MHz": -922.5023653507233,
+  "sigma_model_MHz": 0.20945530599820644,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.20945530599820644
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:1",
+  "predicted_MHz": -895.0756783485413,
+  "sigma_model_MHz": 0.20436238718339758,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.20436238718339758
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:2",
+  "predicted_MHz": -869.8720178604126,
+  "sigma_model_MHz": 0.19970815915994544,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.19970815915994544
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:3",
+  "predicted_MHz": -660.432538330555,
+  "sigma_model_MHz": 0.16227490718331714,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.16227490718331714
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:4",
+  "predicted_MHz": -610.7269351482391,
+  "sigma_model_MHz": 0.1538242308832992,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1538242308832992
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:5",
+  "predicted_MHz": -593.964889228344,
+  "sigma_model_MHz": 0.1510237731368869,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1510237731368869
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:6",
+  "predicted_MHz": -547.5403617620468,
+  "sigma_model_MHz": 0.1434145474597802,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1434145474597802
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:7",
+  "predicted_MHz": -487.0045171380043,
+  "sigma_model_MHz": 0.1338656671246018,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1338656671246018
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:8",
+  "predicted_MHz": -461.2312581539154,
+  "sigma_model_MHz": 0.12994918797807276,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12994918797807276
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:9",
+  "predicted_MHz": -453.27185267210007,
+  "sigma_model_MHz": 0.12875968953525646,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12875968953525646
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:10",
+  "predicted_MHz": -439.1060152053833,
+  "sigma_model_MHz": 0.12666734317712,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.12666734317712
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:11",
+  "predicted_MHz": -347.28212118148804,
+  "sigma_model_MHz": 0.11398153288194109,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.11398153288194109
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:12",
+  "predicted_MHz": -310.2864431142807,
+  "sigma_model_MHz": 0.10937685602798622,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10937685602798622
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:13",
+  "predicted_MHz": -263.67339956760406,
+  "sigma_model_MHz": 0.10407787237384146,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.10407787237384146
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:14",
+  "predicted_MHz": -214.4684688448906,
+  "sigma_model_MHz": 0.09918438992459959,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09918438992459959
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:15",
+  "predicted_MHz": -179.26853972673416,
+  "sigma_model_MHz": 0.09618522466107143,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09618522466107143
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:16",
+  "predicted_MHz": -153.95085513591766,
+  "sigma_model_MHz": 0.09431293576696258,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09431293576696258
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:17",
+  "predicted_MHz": -118.265121281147,
+  "sigma_model_MHz": 0.09210991552567718,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.09210991552567718
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:18",
+  "predicted_MHz": -36.66956251859665,
+  "sigma_model_MHz": 0.08916145482186329,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.08916145482186329
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "simonsen1997a:19",
+  "predicted_MHz": -21.94298553466797,
+  "sigma_model_MHz": 0.0889565774872668,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.0889565774872668
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:0",
+  "predicted_MHz": -14.975591719150543,
+  "sigma_model_MHz": 0.1708884952022341,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708884952022341
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:1",
+  "predicted_MHz": -4.828535079956055,
+  "sigma_model_MHz": 0.17086363561328902,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086363561328902
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:2",
+  "predicted_MHz": -5.785249412059784,
+  "sigma_model_MHz": 0.17086489187675463,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086489187675463
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:3",
+  "predicted_MHz": -15.213853359222412,
+  "sigma_model_MHz": 0.17088938496580547,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17088938496580547
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:4",
+  "predicted_MHz": -3.3701382875442505,
+  "sigma_model_MHz": 0.17086215633150686,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086215633150686
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:5",
+  "predicted_MHz": -17.599643051624298,
+  "sigma_model_MHz": 0.17089906856208836,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17089906856208836
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:6",
+  "predicted_MHz": -3.6344146728515625,
+  "sigma_model_MHz": 0.170862385350742,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.170862385350742
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:7",
+  "predicted_MHz": -11.91743528842926,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:8",
+  "predicted_MHz": -17.59818732738495,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:9",
+  "predicted_MHz": -9.140933215618134,
+  "sigma_model_MHz": 0.17087108840535065,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17087108840535065
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:10",
+  "predicted_MHz": -10.30201506614685,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:11",
+  "predicted_MHz": -19.575260758399963,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:12",
+  "predicted_MHz": -12.639480233192444,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:13",
+  "predicted_MHz": -8.207604587078094,
+  "sigma_model_MHz": 0.17086908526770453,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086908526770453
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:14",
+  "predicted_MHz": -17.104795396327972,
+  "sigma_model_MHz": 0.1708969443448748,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708969443448748
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:15",
+  "predicted_MHz": -6.86602658033371,
+  "sigma_model_MHz": 0.1708665834658723,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708665834658723
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:16",
+  "predicted_MHz": -20.087425231933594,
+  "sigma_model_MHz": 0.17091066513520667,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17091066513520667
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:17",
+  "predicted_MHz": -10.556585311889648,
+  "sigma_model_MHz": 0.1708745380509077,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708745380509077
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:18",
+  "predicted_MHz": -4.478209853172302,
+  "sigma_model_MHz": 0.1708632322471691,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708632322471691
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:19",
+  "predicted_MHz": -7.560554921627045,
+  "sigma_model_MHz": 0.1708678230445227,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708678230445227
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:20",
+  "predicted_MHz": -19.79731285572052,
+  "sigma_model_MHz": 0.1709092339857551,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1709092339857551
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:21",
+  "predicted_MHz": -28.71379166841507,
+  "sigma_model_MHz": null,
+  "sigma_reason": "no 1-sigma of an interval between isotopologues"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:22",
+  "predicted_MHz": -6.979474067687988,
+  "sigma_model_MHz": 0.17086677778940634,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086677778940634
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:23",
+  "predicted_MHz": -3.4712461829185486,
+  "sigma_model_MHz": 0.17086224190959304,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086224190959304
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:24",
+  "predicted_MHz": -4.503574073314667,
+  "sigma_model_MHz": 0.1708632604318583,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708632604318583
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:25",
+  "predicted_MHz": -8.307218432426453,
+  "sigma_model_MHz": 0.1708692887886834,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708692887886834
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:26",
+  "predicted_MHz": -18.456489741802216,
+  "sigma_model_MHz": 0.17090288991480748,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17090288991480748
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:27",
+  "predicted_MHz": -15.24898213148117,
+  "sigma_model_MHz": 0.17088951733829488,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17088951733829488
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:28",
+  "predicted_MHz": -4.713239014148712,
+  "sigma_model_MHz": 0.17086349950845878,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.17086349950845878
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "tesic1975a:29",
+  "predicted_MHz": -15.762482821941376,
+  "sigma_model_MHz": 0.1708914871504032,
+  "sigma_parts_MHz": [
+   0.0,
+   0.0,
+   0.1708914871504032
+  ],
+  "level_status": "interpolated",
+  "hyperfine_status": "validated: 127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "thang2012a:0",
+  "predicted_MHz": 473612353.4138842,
+  "sigma_model_MHz": 0.28060482751209287,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.07937017224376959
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "thang2012a:1",
+  "predicted_MHz": 473612353.4138842,
+  "sigma_model_MHz": 0.28060482751209287,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.07937017224376959
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "thang2012a:2",
+  "predicted_MHz": 473612353.4138842,
+  "sigma_model_MHz": 0.28060482751209287,
+  "sigma_parts_MHz": [
+   0.21529057968549598,
+   0.16152216962314755,
+   0.07937017224376959
+  ],
+  "level_status": "measured",
+  "hyperfine_status": "core"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:eqQ",
+  "predicted_MHz": -512.5945420251312,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:C",
+  "predicted_MHz": 0.033543042707774424,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:d",
+  "predicted_MHz": -0.014546085631645035,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:delta",
+  "predicted_MHz": -0.004935579110887974,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:eqQ",
+  "predicted_MHz": -512.5951923627817,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:C",
+  "predicted_MHz": 0.033543367886319904,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:d",
+  "predicted_MHz": -0.014545788787167542,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:delta",
+  "predicted_MHz": -0.004935579110887973,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:eqQ",
+  "predicted_MHz": -512.5961678783649,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:C",
+  "predicted_MHz": 0.033543855668961425,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:d",
+  "predicted_MHz": -0.014545343530776016,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:delta",
+  "predicted_MHz": -0.004935579110887985,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:eqQ",
+  "predicted_MHz": -512.5974685828129,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:C",
+  "predicted_MHz": 0.03354450607349092,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:d",
+  "predicted_MHz": -0.01454474987485596,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:delta",
+  "predicted_MHz": -0.004935579110887978,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:eqQ",
+  "predicted_MHz": -512.5990944907144,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:C",
+  "predicted_MHz": 0.0335453191236334,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:d",
+  "predicted_MHz": -0.014544007835915758,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:delta",
+  "predicted_MHz": -0.004935579110887975,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:eqQ",
+  "predicted_MHz": -512.6010456202761,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:C",
+  "predicted_MHz": 0.03354629484904317,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:d",
+  "predicted_MHz": -0.014543117434618974,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:delta",
+  "predicted_MHz": -0.004935579110887973,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:eqQ",
+  "predicted_MHz": -512.6033219933897,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:C",
+  "predicted_MHz": 0.03354743328532347,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:d",
+  "predicted_MHz": -0.014542078695734659,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:delta",
+  "predicted_MHz": -0.004935579110887973,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:eqQ",
+  "predicted_MHz": -512.6059236355512,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:C",
+  "predicted_MHz": 0.033548734474004915,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:d",
+  "predicted_MHz": -0.014540891648198561,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:delta",
+  "predicted_MHz": -0.004935579110887968,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:eqQ",
+  "predicted_MHz": -512.6088505759542,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:C",
+  "predicted_MHz": 0.03355019846258003,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:d",
+  "predicted_MHz": -0.014539556325056662,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:delta",
+  "predicted_MHz": -0.004935579110887962,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:eqQ",
+  "predicted_MHz": -512.6121028474023,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:C",
+  "predicted_MHz": 0.03355182530447643,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:d",
+  "predicted_MHz": -0.014538072763522944,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:delta",
+  "predicted_MHz": -0.004935579110887964,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:0:eqQ",
+  "predicted_MHz": -2453.002585,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:1:eqQ",
+  "predicted_MHz": -2453.0029495800004,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:2:eqQ",
+  "predicted_MHz": -2453.00367874,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:3:eqQ",
+  "predicted_MHz": -2453.00477248,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:4:eqQ",
+  "predicted_MHz": -2453.0062308,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:5:eqQ",
+  "predicted_MHz": -2453.0080537,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:6:eqQ",
+  "predicted_MHz": -2453.01024118,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:7:eqQ",
+  "predicted_MHz": -2453.01279324,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:8:eqQ",
+  "predicted_MHz": -2453.01570988,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:9:eqQ",
+  "predicted_MHz": -2453.0189911,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261030-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:10:eqQ",
+  "predicted_MHz": -2453.0226369,
+  "sigma_model_MHz": null,
+  "sigma_reason": "the uncertainty model covers line positions and components, not hyperfine constants or X intervals"
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:0",
+  "predicted_MHz": 71.94361412525177
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:1",
+  "predicted_MHz": 131.7836992740631
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:2",
+  "predicted_MHz": 207.80678570270538
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:3",
+  "predicted_MHz": 335.04795348644257
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:4",
+  "predicted_MHz": 372.5814434289932
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:5",
+  "predicted_MHz": 386.75729751586914
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:6",
+  "predicted_MHz": 470.47266030311584
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:7",
+  "predicted_MHz": 481.4727820158005
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:8",
+  "predicted_MHz": 525.754096031189
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:9",
+  "predicted_MHz": 567.3798435926437
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:10",
+  "predicted_MHz": 631.4926596879959
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:11",
+  "predicted_MHz": 719.1423963308334
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:12",
+  "predicted_MHz": 748.4968619346619
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:13",
+  "predicted_MHz": 792.7020932435989
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:14",
+  "predicted_MHz": 889.3616371154785
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:15",
+  "predicted_MHz": 949.0769889354706
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:16",
+  "predicted_MHz": 69.82167315483093
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:17",
+  "predicted_MHz": 129.1780880689621
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:18",
+  "predicted_MHz": 335.88165390491486
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:19",
+  "predicted_MHz": 396.42759895324707
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:20",
+  "predicted_MHz": 500.65858268737793
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:21",
+  "predicted_MHz": 525.2356297969818
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:22",
+  "predicted_MHz": 566.2963751554489
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:23",
+  "predicted_MHz": 630.8009207248688
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:24",
+  "predicted_MHz": 658.1567257642746
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:25",
+  "predicted_MHz": 725.1509792804718
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:26",
+  "predicted_MHz": 739.3761026859283
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:27",
+  "predicted_MHz": 791.6806625127792
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:28",
+  "predicted_MHz": 865.4890772104263
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:29",
+  "predicted_MHz": 874.8409374952316
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:30",
+  "predicted_MHz": 892.8585231304169
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:31",
+  "predicted_MHz": 947.2549991607666
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:32",
+  "predicted_MHz": 165.12004840373993
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:33",
+  "predicted_MHz": 265.4659379720688
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:34",
+  "predicted_MHz": 295.07440507411957
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:35",
+  "predicted_MHz": 316.6916706562042
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:36",
+  "predicted_MHz": 363.56245851516724
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:37",
+  "predicted_MHz": 396.9561620950699
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:38",
+  "predicted_MHz": 473.61129105091095
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:39",
+  "predicted_MHz": 522.8970112800598
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:40",
+  "predicted_MHz": 559.4109890460968
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:41",
+  "predicted_MHz": 636.671221613884
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:42",
+  "predicted_MHz": 659.3556311130524
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:43",
+  "predicted_MHz": 739.1925954818726
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:44",
+  "predicted_MHz": 769.6170616149902
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:45",
+  "predicted_MHz": 842.1238611936569
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:46",
+  "predicted_MHz": -412.70243978500366
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:47",
+  "predicted_MHz": -360.9706093072891
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:48",
+  "predicted_MHz": -193.91433906555176
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:49",
+  "predicted_MHz": -159.5505428314209
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:50",
+  "predicted_MHz": -105.50310349464417
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:51",
+  "predicted_MHz": 173.7609075307846
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:52",
+  "predicted_MHz": 201.2453751564026
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:53",
+  "predicted_MHz": 227.13258361816406
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:54",
+  "predicted_MHz": 255.31645953655243
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:55",
+  "predicted_MHz": 255.93978762626648
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:56",
+  "predicted_MHz": 316.17765486240387
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:57",
+  "predicted_MHz": 428.34290516376495
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:58",
+  "predicted_MHz": 483.6637659072876
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "borde1981a:59",
+  "predicted_MHz": 512.7293475866318
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:0",
+  "predicted_MHz": 2624.628526389599
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:1",
+  "predicted_MHz": -18.85261380672455
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:2",
+  "predicted_MHz": -32.34399628639221
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:3",
+  "predicted_MHz": -121.84416198730469
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:4",
+  "predicted_MHz": -152.91189497709274
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:5",
+  "predicted_MHz": -174.99668979644775
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:6",
+  "predicted_MHz": -205.8222318291664
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:7",
+  "predicted_MHz": -267.7853904366493
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:8",
+  "predicted_MHz": -308.37174409627914
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:9",
+  "predicted_MHz": -341.8906981945038
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:10",
+  "predicted_MHz": -438.3871921300888
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:11",
+  "predicted_MHz": -451.29893386363983
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:12",
+  "predicted_MHz": -459.13222765922546
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:13",
+  "predicted_MHz": -480.7012277841568
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:14",
+  "predicted_MHz": -552.3003180623055
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:15",
+  "predicted_MHz": -593.744889318943
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:16",
+  "predicted_MHz": -607.605707347393
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:17",
+  "predicted_MHz": -651.6070588231087
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:18",
+  "predicted_MHz": -870.3461408019066
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:19",
+  "predicted_MHz": -893.4667640924454
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:20",
+  "predicted_MHz": -918.3905185461044
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:21",
+  "predicted_MHz": 473599334.84533685
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:22",
+  "predicted_MHz": 473617201.4359454
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:23",
+  "predicted_MHz": 473630398.7606349
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "chen1998a:24",
+  "predicted_MHz": 473634529.3012022
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:0",
+  "predicted_MHz": -910.6353629827499
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:1",
+  "predicted_MHz": -877.4723922014236
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:2",
+  "predicted_MHz": -845.1482013463974
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:3",
+  "predicted_MHz": -625.2988036870956
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:4",
+  "predicted_MHz": -591.0391511917114
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:5",
+  "predicted_MHz": -585.8351227045059
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:6",
+  "predicted_MHz": -552.4542040228844
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:7",
+  "predicted_MHz": -466.2980091571808
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:8",
+  "predicted_MHz": -455.19085597991943
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:9",
+  "predicted_MHz": -432.9203181862831
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:10",
+  "predicted_MHz": -422.9393776655197
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:11",
+  "predicted_MHz": -326.63152092695236
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:12",
+  "predicted_MHz": -299.4319637417793
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:13",
+  "predicted_MHz": -271.6507956981659
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:14",
+  "predicted_MHz": -179.37372595071793
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:15",
+  "predicted_MHz": -163.69360369443893
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:16",
+  "predicted_MHz": -146.5934510231018
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:17",
+  "predicted_MHz": -131.30753427743912
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:18",
+  "predicted_MHz": -20.94260537624359
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "cruz1994a:19",
+  "predicted_MHz": -10.947089850902557
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "demelo2024a:0",
+  "predicted_MHz": 467.81062734127045
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:0",
+  "predicted_MHz": -14.975591719150543
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:1",
+  "predicted_MHz": -4.828535079956055
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:2",
+  "predicted_MHz": -5.785249412059784
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:3",
+  "predicted_MHz": -15.213853359222412
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:4",
+  "predicted_MHz": -3.3701382875442505
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:5",
+  "predicted_MHz": -17.599643051624298
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:6",
+  "predicted_MHz": -3.6344146728515625
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:7",
+  "predicted_MHz": -11.91743528842926
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:8",
+  "predicted_MHz": -17.59818732738495
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:9",
+  "predicted_MHz": -9.140933215618134
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:10",
+  "predicted_MHz": -10.30201506614685
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:11",
+  "predicted_MHz": -19.575260758399963
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:12",
+  "predicted_MHz": -12.639480233192444
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:13",
+  "predicted_MHz": -8.207604587078094
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:14",
+  "predicted_MHz": -17.104795396327972
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:15",
+  "predicted_MHz": -6.86602658033371
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:16",
+  "predicted_MHz": -20.087425231933594
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:17",
+  "predicted_MHz": -10.556585311889648
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:18",
+  "predicted_MHz": -4.478209853172302
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:19",
+  "predicted_MHz": -7.560554921627045
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:20",
+  "predicted_MHz": -19.79731285572052
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:21",
+  "predicted_MHz": -28.71379166841507
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:22",
+  "predicted_MHz": -6.979474067687988
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:23",
+  "predicted_MHz": -3.4712461829185486
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:24",
+  "predicted_MHz": -4.503574073314667
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:25",
+  "predicted_MHz": -8.307218432426453
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:26",
+  "predicted_MHz": -18.456489741802216
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:27",
+  "predicted_MHz": -15.24898213148117
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:28",
+  "predicted_MHz": -4.713239014148712
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "knox1971a:29",
+  "predicted_MHz": -15.762482821941376
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "kompanets1979a:0",
+  "predicted_MHz": 17.70258140563965
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "kompanets1979a:1",
+  "predicted_MHz": 19.814897000789642
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:0",
+  "predicted_MHz": 12.92445832490921
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:1",
+  "predicted_MHz": 26.354174494743347
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:2",
+  "predicted_MHz": 39.554939448833466
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:3",
+  "predicted_MHz": 13.429716169834137
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:4",
+  "predicted_MHz": 26.630481123924255
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:5",
+  "predicted_MHz": 13.200764954090118
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:6",
+  "predicted_MHz": 116.7882251739502
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:7",
+  "predicted_MHz": 125.68503338098526
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:8",
+  "predicted_MHz": 22.097573161125183
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:9",
+  "predicted_MHz": 43.7125985622406
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:10",
+  "predicted_MHz": 21.615025401115417
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:11",
+  "predicted_MHz": 562.3196914196014
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:12",
+  "predicted_MHz": 502.6043395996094
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:13",
+  "predicted_MHz": 405.9447957277298
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:14",
+  "predicted_MHz": 361.7395644187927
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:15",
+  "predicted_MHz": 332.3850988149643
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:16",
+  "predicted_MHz": 180.6225460767746
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:17",
+  "predicted_MHz": 138.99679851531982
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:18",
+  "predicted_MHz": 94.71548449993134
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:19",
+  "predicted_MHz": 83.7153627872467
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:20",
+  "predicted_MHz": -14.175854086875916
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:21",
+  "predicted_MHz": -51.709344029426575
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:22",
+  "predicted_MHz": -178.95051181316376
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:23",
+  "predicted_MHz": -254.97359824180603
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:24",
+  "predicted_MHz": -314.81368339061737
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "landsberg1976a:25",
+  "predicted_MHz": -386.75729751586914
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "powel2021a:0",
+  "predicted_MHz": 425624126.260007
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "powel2021a:1",
+  "predicted_MHz": 425631844.3827085
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "powel2021a:2",
+  "predicted_MHz": 425601735.5406253
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:0",
+  "predicted_MHz": 416215208.07126623
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:1",
+  "predicted_MHz": 415549090.65770787
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:2",
+  "predicted_MHz": 415307680.47902733
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:3",
+  "predicted_MHz": 414855494.6083149
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:4",
+  "predicted_MHz": 414169329.00834936
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:5",
+  "predicted_MHz": 413365901.7230953
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:6",
+  "predicted_MHz": 411675826.96228796
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:7",
+  "predicted_MHz": 409452669.3839286
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:8",
+  "predicted_MHz": 408462107.3640111
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:9",
+  "predicted_MHz": 405840892.2588957
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:10",
+  "predicted_MHz": 404207881.5170399
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:11",
+  "predicted_MHz": 399430872.7129797
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:12",
+  "predicted_MHz": 397238453.2873733
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:13",
+  "predicted_MHz": 395666265.97986335
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:14",
+  "predicted_MHz": 393233129.9534615
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:15",
+  "predicted_MHz": 391252853.6088606
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "rakowsky1989a:16",
+  "predicted_MHz": 389306732.15439755
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "samoudi2012a:0",
+  "predicted_MHz": 473612353.4138842
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "samoudi2012a:1",
+  "predicted_MHz": 473612379.7680587
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "samoudi2012a:2",
+  "predicted_MHz": 473612366.8436004
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "samoudi2012a:3",
+  "predicted_MHz": 473612353.4138842
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "samoudi2012a:4",
+  "predicted_MHz": 473612340.21311927
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "samoudi2012a:5",
+  "predicted_MHz": 473612236.62565905
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "samoudi2012a:6",
+  "predicted_MHz": 473612214.5280859
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:0",
+  "predicted_MHz": 489880604.4698535
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:1",
+  "predicted_MHz": 489913113.33894765
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:2",
+  "predicted_MHz": 495162602.7502715
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:3",
+  "predicted_MHz": 502019757.7731157
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:4",
+  "predicted_MHz": 495475642.8407052
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:5",
+  "predicted_MHz": 495209036.130372
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:6",
+  "predicted_MHz": 496822926.6548012
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:7",
+  "predicted_MHz": 496549603.8109247
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:8",
+  "predicted_MHz": 496161498.4270382
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "shiner1993a:9",
+  "predicted_MHz": 495962116.923464
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:0",
+  "predicted_MHz": 738.9463266134262
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:1",
+  "predicted_MHz": 752.147238612175
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:2",
+  "predicted_MHz": 856.2535337209702
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:3",
+  "predicted_MHz": 253.27064490318298
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:4",
+  "predicted_MHz": 282.1460233926773
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:5",
+  "predicted_MHz": 291.6159677505493
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:6",
+  "predicted_MHz": 320.1195938587189
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:7",
+  "predicted_MHz": 401.0371675491333
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:8",
+  "predicted_MHz": 414.3008270263672
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:9",
+  "predicted_MHz": 446.0041742324829
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:10",
+  "predicted_MHz": 459.19292986392975
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1990a:11",
+  "predicted_MHz": 573.7358516454697
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:0",
+  "predicted_MHz": -922.5023653507233
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:1",
+  "predicted_MHz": -895.0756783485413
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:2",
+  "predicted_MHz": -869.8720178604126
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:3",
+  "predicted_MHz": -660.432538330555
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:4",
+  "predicted_MHz": -610.7269351482391
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:5",
+  "predicted_MHz": -593.964889228344
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:6",
+  "predicted_MHz": -547.5403617620468
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:7",
+  "predicted_MHz": -487.0045171380043
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:8",
+  "predicted_MHz": -461.2312581539154
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:9",
+  "predicted_MHz": -453.27185267210007
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:10",
+  "predicted_MHz": -439.1060152053833
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:11",
+  "predicted_MHz": -347.28212118148804
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:12",
+  "predicted_MHz": -310.2864431142807
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:13",
+  "predicted_MHz": -263.67339956760406
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:14",
+  "predicted_MHz": -214.4684688448906
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:15",
+  "predicted_MHz": -179.26853972673416
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:16",
+  "predicted_MHz": -153.95085513591766
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:17",
+  "predicted_MHz": -118.265121281147
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:18",
+  "predicted_MHz": -36.66956251859665
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "simonsen1997a:19",
+  "predicted_MHz": -21.94298553466797
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:0",
+  "predicted_MHz": -14.975591719150543
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:1",
+  "predicted_MHz": -4.828535079956055
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:2",
+  "predicted_MHz": -5.785249412059784
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:3",
+  "predicted_MHz": -15.213853359222412
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:4",
+  "predicted_MHz": -3.3701382875442505
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:5",
+  "predicted_MHz": -17.599643051624298
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:6",
+  "predicted_MHz": -3.6344146728515625
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:7",
+  "predicted_MHz": -11.91743528842926
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:8",
+  "predicted_MHz": -17.59818732738495
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:9",
+  "predicted_MHz": -9.140933215618134
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:10",
+  "predicted_MHz": -10.30201506614685
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:11",
+  "predicted_MHz": -19.575260758399963
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:12",
+  "predicted_MHz": -12.639480233192444
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:13",
+  "predicted_MHz": -8.207604587078094
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:14",
+  "predicted_MHz": -17.104795396327972
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:15",
+  "predicted_MHz": -6.86602658033371
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:16",
+  "predicted_MHz": -20.087425231933594
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:17",
+  "predicted_MHz": -10.556585311889648
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:18",
+  "predicted_MHz": -4.478209853172302
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:19",
+  "predicted_MHz": -7.560554921627045
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:20",
+  "predicted_MHz": -19.79731285572052
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:21",
+  "predicted_MHz": -28.71379166841507
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:22",
+  "predicted_MHz": -6.979474067687988
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:23",
+  "predicted_MHz": -3.4712461829185486
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:24",
+  "predicted_MHz": -4.503574073314667
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:25",
+  "predicted_MHz": -8.307218432426453
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:26",
+  "predicted_MHz": -18.456489741802216
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:27",
+  "predicted_MHz": -15.24898213148117
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:28",
+  "predicted_MHz": -4.713239014148712
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "tesic1975a:29",
+  "predicted_MHz": -15.762482821941376
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "thang2012a:0",
+  "predicted_MHz": 473612353.4138842
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "thang2012a:1",
+  "predicted_MHz": 473612353.4138842
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "thang2012a:2",
+  "predicted_MHz": 473612353.4138842
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:eqQ",
+  "predicted_MHz": -512.5945420251312
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:C",
+  "predicted_MHz": 0.033543042707774424
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:d",
+  "predicted_MHz": -0.014546085631645035
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:delta",
+  "predicted_MHz": -0.004935579110887974
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:eqQ",
+  "predicted_MHz": -512.5951923627817
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:C",
+  "predicted_MHz": 0.033543367886319904
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:d",
+  "predicted_MHz": -0.014545788787167542
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:delta",
+  "predicted_MHz": -0.004935579110887973
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:eqQ",
+  "predicted_MHz": -512.5961678783649
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:C",
+  "predicted_MHz": 0.033543855668961425
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:d",
+  "predicted_MHz": -0.014545343530776016
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:delta",
+  "predicted_MHz": -0.004935579110887985
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:eqQ",
+  "predicted_MHz": -512.5974685828129
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:C",
+  "predicted_MHz": 0.03354450607349092
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:d",
+  "predicted_MHz": -0.01454474987485596
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:delta",
+  "predicted_MHz": -0.004935579110887978
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:eqQ",
+  "predicted_MHz": -512.5990944907144
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:C",
+  "predicted_MHz": 0.0335453191236334
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:d",
+  "predicted_MHz": -0.014544007835915758
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:delta",
+  "predicted_MHz": -0.004935579110887975
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:eqQ",
+  "predicted_MHz": -512.6010456202761
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:C",
+  "predicted_MHz": 0.03354629484904317
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:d",
+  "predicted_MHz": -0.014543117434618974
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:delta",
+  "predicted_MHz": -0.004935579110887973
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:eqQ",
+  "predicted_MHz": -512.6033219933897
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:C",
+  "predicted_MHz": 0.03354743328532347
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:d",
+  "predicted_MHz": -0.014542078695734659
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:delta",
+  "predicted_MHz": -0.004935579110887973
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:eqQ",
+  "predicted_MHz": -512.6059236355512
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:C",
+  "predicted_MHz": 0.033548734474004915
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:d",
+  "predicted_MHz": -0.014540891648198561
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:delta",
+  "predicted_MHz": -0.004935579110887968
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:eqQ",
+  "predicted_MHz": -512.6088505759542
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:C",
+  "predicted_MHz": 0.03355019846258003
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:d",
+  "predicted_MHz": -0.014539556325056662
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:delta",
+  "predicted_MHz": -0.004935579110887962
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:eqQ",
+  "predicted_MHz": -512.6121028474023
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:C",
+  "predicted_MHz": 0.03355182530447643
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:d",
+  "predicted_MHz": -0.014538072763522944
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:delta",
+  "predicted_MHz": -0.004935579110887964
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:0:eqQ",
+  "predicted_MHz": -2453.002585
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:1:eqQ",
+  "predicted_MHz": -2453.0029495800004
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:2:eqQ",
+  "predicted_MHz": -2453.00367874
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:3:eqQ",
+  "predicted_MHz": -2453.00477248
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:4:eqQ",
+  "predicted_MHz": -2453.0062308
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:5:eqQ",
+  "predicted_MHz": -2453.0080537
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:6:eqQ",
+  "predicted_MHz": -2453.01024118
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:7:eqQ",
+  "predicted_MHz": -2453.01279324
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:8:eqQ",
+  "predicted_MHz": -2453.01570988
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:9:eqQ",
+  "predicted_MHz": -2453.0189911
+ },
+ {
+  "model": "research-20261029-i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:10:eqQ",
+  "predicted_MHz": -2453.0226369
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:0",
+  "predicted_MHz": 71.9670524597168
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:1",
+  "predicted_MHz": 131.76028633117676
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:2",
+  "predicted_MHz": 207.8036139011383
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:3",
+  "predicted_MHz": 335.0517473220825
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:4",
+  "predicted_MHz": 372.58397233486176
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:5",
+  "predicted_MHz": 386.75164675712585
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:6",
+  "predicted_MHz": 470.46640634536743
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:7",
+  "predicted_MHz": 481.449290394783
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:8",
+  "predicted_MHz": 525.7265394926071
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:9",
+  "predicted_MHz": 567.3551269769669
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:10",
+  "predicted_MHz": 631.4791276454926
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:11",
+  "predicted_MHz": 719.1253374814987
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:12",
+  "predicted_MHz": 748.4670711755753
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:13",
+  "predicted_MHz": 792.6735197305679
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:14",
+  "predicted_MHz": 889.336505651474
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:15",
+  "predicted_MHz": 949.0423804521561
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:16",
+  "predicted_MHz": 69.84182941913605
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:17",
+  "predicted_MHz": 129.14768064022064
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:18",
+  "predicted_MHz": 335.88051867485046
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:19",
+  "predicted_MHz": 396.4198033809662
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:20",
+  "predicted_MHz": 500.64024209976196
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:21",
+  "predicted_MHz": 525.2023679018021
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:22",
+  "predicted_MHz": 566.2703983783722
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:23",
+  "predicted_MHz": 630.7832721471786
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:24",
+  "predicted_MHz": 658.1360731124878
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:25",
+  "predicted_MHz": 725.1293001174927
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:26",
+  "predicted_MHz": 739.3398513793945
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:27",
+  "predicted_MHz": 791.6470990180969
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:28",
+  "predicted_MHz": 865.4569202661514
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:29",
+  "predicted_MHz": 874.8015501499176
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:30",
+  "predicted_MHz": 892.8294310569763
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:31",
+  "predicted_MHz": 947.2156497240067
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:32",
+  "predicted_MHz": 164.95551657676697
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:33",
+  "predicted_MHz": 265.56685757637024
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:34",
+  "predicted_MHz": 295.19090235233307
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:35",
+  "predicted_MHz": 316.68880212306976
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:36",
+  "predicted_MHz": 363.657453417778
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:37",
+  "predicted_MHz": 396.8824973106384
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:38",
+  "predicted_MHz": 473.76379692554474
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:39",
+  "predicted_MHz": 522.9997564554214
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:40",
+  "predicted_MHz": 559.658073425293
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:41",
+  "predicted_MHz": 636.8894544839859
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:42",
+  "predicted_MHz": 659.6273585557938
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:43",
+  "predicted_MHz": 739.5091183185577
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:44",
+  "predicted_MHz": 769.8959482908249
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:45",
+  "predicted_MHz": 842.4929810762405
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:46",
+  "predicted_MHz": -412.9489777088165
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:47",
+  "predicted_MHz": -361.00162875652313
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:48",
+  "predicted_MHz": -194.04235291481018
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:49",
+  "predicted_MHz": -159.5694204568863
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:50",
+  "predicted_MHz": -105.55475735664368
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:51",
+  "predicted_MHz": 173.73865950107574
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:52",
+  "predicted_MHz": 201.28365302085876
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:53",
+  "predicted_MHz": 227.1213071346283
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:54",
+  "predicted_MHz": 255.34794962406158
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:55",
+  "predicted_MHz": 255.76748967170715
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:56",
+  "predicted_MHz": 316.1122223138809
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:57",
+  "predicted_MHz": 428.39686155319214
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:58",
+  "predicted_MHz": 483.73034405708313
+ },
+ {
+  "model": "i2spec",
+  "target": "borde1981a:59",
+  "predicted_MHz": 512.7468923330307
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:0",
+  "predicted_MHz": 2624.746079146862
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:1",
+  "predicted_MHz": -18.852834582328796
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:2",
+  "predicted_MHz": -32.3421835899353
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:3",
+  "predicted_MHz": -121.84308856725693
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:4",
+  "predicted_MHz": -152.90990507602692
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:5",
+  "predicted_MHz": -174.99362063407898
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:6",
+  "predicted_MHz": -205.81760597229004
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:7",
+  "predicted_MHz": -267.780837893486
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:8",
+  "predicted_MHz": -308.3679589033127
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:9",
+  "predicted_MHz": -341.8816305398941
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:10",
+  "predicted_MHz": -438.3801172375679
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:11",
+  "predicted_MHz": -451.29318672418594
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:12",
+  "predicted_MHz": -459.12437468767166
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:13",
+  "predicted_MHz": -480.6910479068756
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:14",
+  "predicted_MHz": -552.2909319400787
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:15",
+  "predicted_MHz": -593.7370804548264
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:16",
+  "predicted_MHz": -607.5987591147423
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:17",
+  "predicted_MHz": -651.5922038555145
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:18",
+  "predicted_MHz": -870.3297723531723
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:19",
+  "predicted_MHz": -893.4564814567566
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:20",
+  "predicted_MHz": -918.3690273165703
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:21",
+  "predicted_MHz": 473599334.8250341
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:22",
+  "predicted_MHz": 473617201.3690181
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:23",
+  "predicted_MHz": 473630398.7280094
+ },
+ {
+  "model": "i2spec",
+  "target": "chen1998a:24",
+  "predicted_MHz": 473634529.2912109
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:0",
+  "predicted_MHz": -910.6345790028572
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:1",
+  "predicted_MHz": -877.4856246709824
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:2",
+  "predicted_MHz": -845.1448882222176
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:3",
+  "predicted_MHz": -625.3001493215561
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:4",
+  "predicted_MHz": -591.0477540493011
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:5",
+  "predicted_MHz": -585.8433838486671
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:6",
+  "predicted_MHz": -552.4536978006363
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:7",
+  "predicted_MHz": -466.3003386259079
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:8",
+  "predicted_MHz": -455.1957905292511
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:9",
+  "predicted_MHz": -432.9243920445442
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:10",
+  "predicted_MHz": -422.9399110674858
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:11",
+  "predicted_MHz": -326.6313816308975
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:12",
+  "predicted_MHz": -299.4368185400963
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:13",
+  "predicted_MHz": -271.6496919989586
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:14",
+  "predicted_MHz": -179.37628322839737
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:15",
+  "predicted_MHz": -163.69607549905777
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:16",
+  "predicted_MHz": -146.59523665905
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:17",
+  "predicted_MHz": -131.30931669473648
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:18",
+  "predicted_MHz": -20.94278597831726
+ },
+ {
+  "model": "i2spec",
+  "target": "cruz1994a:19",
+  "predicted_MHz": -10.949843883514404
+ },
+ {
+  "model": "i2spec",
+  "target": "demelo2024a:0",
+  "predicted_MHz": 467.9044780731201
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:0",
+  "predicted_MHz": -14.976656258106232
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:1",
+  "predicted_MHz": -4.829805552959442
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:2",
+  "predicted_MHz": -5.784702360630035
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:3",
+  "predicted_MHz": -15.21161699295044
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:4",
+  "predicted_MHz": -3.3733394145965576
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:5",
+  "predicted_MHz": -17.60426777601242
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:6",
+  "predicted_MHz": -3.6357706785202026
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:7",
+  "predicted_MHz": -11.889711916446686
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:8",
+  "predicted_MHz": -17.6198410987854
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:9",
+  "predicted_MHz": -9.141565024852753
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:10",
+  "predicted_MHz": -10.277828633785248
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:11",
+  "predicted_MHz": -19.591239154338837
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:12",
+  "predicted_MHz": -12.624251186847687
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:13",
+  "predicted_MHz": -8.207933783531189
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:14",
+  "predicted_MHz": -17.102927148342133
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:15",
+  "predicted_MHz": -6.864593803882599
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:16",
+  "predicted_MHz": -20.08989781141281
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:17",
+  "predicted_MHz": -10.558408439159393
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:18",
+  "predicted_MHz": -4.477185547351837
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:19",
+  "predicted_MHz": -7.560329258441925
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:20",
+  "predicted_MHz": -19.78728538751602
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:21",
+  "predicted_MHz": -28.704071879386902
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:22",
+  "predicted_MHz": -6.980385184288025
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:23",
+  "predicted_MHz": -3.4713074564933777
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:24",
+  "predicted_MHz": -4.500418066978455
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:25",
+  "predicted_MHz": -8.30559116601944
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:26",
+  "predicted_MHz": -18.46007388830185
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:27",
+  "predicted_MHz": -15.249211430549622
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:28",
+  "predicted_MHz": -4.7154887318611145
+ },
+ {
+  "model": "i2spec",
+  "target": "knox1971a:29",
+  "predicted_MHz": -15.75521332025528
+ },
+ {
+  "model": "i2spec",
+  "target": "kompanets1979a:0",
+  "predicted_MHz": 17.707959830760956
+ },
+ {
+  "model": "i2spec",
+  "target": "kompanets1979a:1",
+  "predicted_MHz": 19.80545175075531
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:0",
+  "predicted_MHz": 12.923408269882202
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:1",
+  "predicted_MHz": 26.350610852241516
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:2",
+  "predicted_MHz": 39.55013465881348
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:3",
+  "predicted_MHz": 13.427202582359314
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:4",
+  "predicted_MHz": 26.626726388931274
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:5",
+  "predicted_MHz": 13.19952380657196
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:6",
+  "predicted_MHz": 116.79886227846146
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:7",
+  "predicted_MHz": 125.69771444797516
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:8",
+  "predicted_MHz": 22.098375976085663
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:9",
+  "predicted_MHz": 43.70442992448807
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:10",
+  "predicted_MHz": 21.606053948402405
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:11",
+  "predicted_MHz": 562.2907336950302
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:12",
+  "predicted_MHz": 502.58485889434814
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:13",
+  "predicted_MHz": 405.9218729734421
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:14",
+  "predicted_MHz": 361.7154244184494
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:15",
+  "predicted_MHz": 332.37369072437286
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:16",
+  "predicted_MHz": 180.603480219841
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:17",
+  "predicted_MHz": 138.97489273548126
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:18",
+  "predicted_MHz": 94.69764363765717
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:19",
+  "predicted_MHz": 83.71475958824158
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:20",
+  "predicted_MHz": -14.1676744222641
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:21",
+  "predicted_MHz": -51.699899435043335
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:22",
+  "predicted_MHz": -178.94803285598755
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:23",
+  "predicted_MHz": -254.9913604259491
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:24",
+  "predicted_MHz": -314.78459429740906
+ },
+ {
+  "model": "i2spec",
+  "target": "landsberg1976a:25",
+  "predicted_MHz": -386.75164675712585
+ },
+ {
+  "model": "i2spec",
+  "target": "powel2021a:0",
+  "predicted_MHz": 425624126.5790128
+ },
+ {
+  "model": "i2spec",
+  "target": "powel2021a:1",
+  "predicted_MHz": 425631844.45339984
+ },
+ {
+  "model": "i2spec",
+  "target": "powel2021a:2",
+  "predicted_MHz": 425601735.52094203
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:0",
+  "predicted_MHz": 416215208.1444615
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:1",
+  "predicted_MHz": 415549090.7747292
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:2",
+  "predicted_MHz": 415307680.5633977
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:3",
+  "predicted_MHz": 414855494.7639614
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:4",
+  "predicted_MHz": 414169329.19750184
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:5",
+  "predicted_MHz": 413365901.94639283
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:6",
+  "predicted_MHz": 411675827.24091256
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:7",
+  "predicted_MHz": 409452669.63526416
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:8",
+  "predicted_MHz": 408462107.46159476
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:9",
+  "predicted_MHz": 405840892.3813691
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:10",
+  "predicted_MHz": 404207881.64871705
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:11",
+  "predicted_MHz": 399430872.7454369
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:12",
+  "predicted_MHz": 397238453.3699291
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:13",
+  "predicted_MHz": 395666266.06225806
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:14",
+  "predicted_MHz": 393233129.968941
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:15",
+  "predicted_MHz": 391252853.586509
+ },
+ {
+  "model": "i2spec",
+  "target": "rakowsky1989a:16",
+  "predicted_MHz": 389306732.1838733
+ },
+ {
+  "model": "i2spec",
+  "target": "samoudi2012a:0",
+  "predicted_MHz": 473612353.29155505
+ },
+ {
+  "model": "i2spec",
+  "target": "samoudi2012a:1",
+  "predicted_MHz": 473612379.6421659
+ },
+ {
+  "model": "i2spec",
+  "target": "samoudi2012a:2",
+  "predicted_MHz": 473612366.7187576
+ },
+ {
+  "model": "i2spec",
+  "target": "samoudi2012a:3",
+  "predicted_MHz": 473612353.29155505
+ },
+ {
+  "model": "i2spec",
+  "target": "samoudi2012a:4",
+  "predicted_MHz": 473612340.09203124
+ },
+ {
+  "model": "i2spec",
+  "target": "samoudi2012a:5",
+  "predicted_MHz": 473612236.49269277
+ },
+ {
+  "model": "i2spec",
+  "target": "samoudi2012a:6",
+  "predicted_MHz": 473612214.3943168
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:0",
+  "predicted_MHz": 489880604.485477
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:1",
+  "predicted_MHz": 489913113.3184938
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:2",
+  "predicted_MHz": 495162602.731969
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:3",
+  "predicted_MHz": 502019757.7392099
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:4",
+  "predicted_MHz": 495475642.85312957
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:5",
+  "predicted_MHz": 495209036.13060653
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:6",
+  "predicted_MHz": 496822926.6972577
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:7",
+  "predicted_MHz": 496549603.8157918
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:8",
+  "predicted_MHz": 496161498.4294619
+ },
+ {
+  "model": "i2spec",
+  "target": "shiner1993a:9",
+  "predicted_MHz": 495962116.79555434
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:0",
+  "predicted_MHz": 738.9210375547409
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:1",
+  "predicted_MHz": 752.1243159770966
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:2",
+  "predicted_MHz": 856.2256531715393
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:3",
+  "predicted_MHz": 253.2572535276413
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:4",
+  "predicted_MHz": 282.1328159570694
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:5",
+  "predicted_MHz": 291.6077219247818
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:6",
+  "predicted_MHz": 320.12514567375183
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:7",
+  "predicted_MHz": 401.01728117465973
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:8",
+  "predicted_MHz": 414.2810388803482
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:9",
+  "predicted_MHz": 445.993834733963
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:10",
+  "predicted_MHz": 459.18674671649933
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1990a:11",
+  "predicted_MHz": 573.713586807251
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:0",
+  "predicted_MHz": -922.4794588088989
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:1",
+  "predicted_MHz": -895.0636494159698
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:2",
+  "predicted_MHz": -869.8537139892578
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:3",
+  "predicted_MHz": -660.416507422924
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:4",
+  "predicted_MHz": -610.7187126874924
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:5",
+  "predicted_MHz": -593.9560049772263
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:6",
+  "predicted_MHz": -547.5298547148705
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:7",
+  "predicted_MHz": -486.9935081601143
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:8",
+  "predicted_MHz": -461.22262370586395
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:9",
+  "predicted_MHz": -453.2651078104973
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:10",
+  "predicted_MHz": -439.09788912534714
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:11",
+  "predicted_MHz": -347.2724828720093
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:12",
+  "predicted_MHz": -310.28204596042633
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:13",
+  "predicted_MHz": -263.6683614850044
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:14",
+  "predicted_MHz": -214.46334040164948
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:15",
+  "predicted_MHz": -179.26515048742294
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:16",
+  "predicted_MHz": -153.94850212335587
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:17",
+  "predicted_MHz": -118.2638418674469
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:18",
+  "predicted_MHz": -36.66763299703598
+ },
+ {
+  "model": "i2spec",
+  "target": "simonsen1997a:19",
+  "predicted_MHz": -21.943102061748505
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:0",
+  "predicted_MHz": -14.976656258106232
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:1",
+  "predicted_MHz": -4.829805552959442
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:2",
+  "predicted_MHz": -5.784702360630035
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:3",
+  "predicted_MHz": -15.21161699295044
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:4",
+  "predicted_MHz": -3.3733394145965576
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:5",
+  "predicted_MHz": -17.60426777601242
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:6",
+  "predicted_MHz": -3.6357706785202026
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:7",
+  "predicted_MHz": -11.889711916446686
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:8",
+  "predicted_MHz": -17.6198410987854
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:9",
+  "predicted_MHz": -9.141565024852753
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:10",
+  "predicted_MHz": -10.277828633785248
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:11",
+  "predicted_MHz": -19.591239154338837
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:12",
+  "predicted_MHz": -12.624251186847687
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:13",
+  "predicted_MHz": -8.207933783531189
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:14",
+  "predicted_MHz": -17.102927148342133
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:15",
+  "predicted_MHz": -6.864593803882599
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:16",
+  "predicted_MHz": -20.08989781141281
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:17",
+  "predicted_MHz": -10.558408439159393
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:18",
+  "predicted_MHz": -4.477185547351837
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:19",
+  "predicted_MHz": -7.560329258441925
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:20",
+  "predicted_MHz": -19.78728538751602
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:21",
+  "predicted_MHz": -28.704071879386902
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:22",
+  "predicted_MHz": -6.980385184288025
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:23",
+  "predicted_MHz": -3.4713074564933777
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:24",
+  "predicted_MHz": -4.500418066978455
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:25",
+  "predicted_MHz": -8.30559116601944
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:26",
+  "predicted_MHz": -18.46007388830185
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:27",
+  "predicted_MHz": -15.249211430549622
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:28",
+  "predicted_MHz": -4.7154887318611145
+ },
+ {
+  "model": "i2spec",
+  "target": "tesic1975a:29",
+  "predicted_MHz": -15.75521332025528
+ },
+ {
+  "model": "i2spec",
+  "target": "thang2012a:0",
+  "predicted_MHz": 473612353.29155505
+ },
+ {
+  "model": "i2spec",
+  "target": "thang2012a:1",
+  "predicted_MHz": 473612353.29155505
+ },
+ {
+  "model": "i2spec",
+  "target": "thang2012a:2",
+  "predicted_MHz": 473612353.29155505
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:eqQ",
+  "predicted_MHz": -512.5399493160552
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:C",
+  "predicted_MHz": 0.03352834903623015
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:d",
+  "predicted_MHz": -0.013643931565573024
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:0:delta",
+  "predicted_MHz": -0.004834166564547832
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:eqQ",
+  "predicted_MHz": -512.5405864258113
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:C",
+  "predicted_MHz": 0.0335286752981522
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:d",
+  "predicted_MHz": -0.013643597237281205
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:1:delta",
+  "predicted_MHz": -0.004834166564547838
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:eqQ",
+  "predicted_MHz": -512.5415420997332
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:C",
+  "predicted_MHz": 0.03352916470586515
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:d",
+  "predicted_MHz": -0.013643095755542142
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:2:delta",
+  "predicted_MHz": -0.004834166564547842
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:eqQ",
+  "predicted_MHz": -512.5428163489709
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:C",
+  "predicted_MHz": 0.03352981727716772
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:d",
+  "predicted_MHz": -0.013642427133193665
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:3:delta",
+  "predicted_MHz": -0.004834166564547838
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:eqQ",
+  "predicted_MHz": -512.5444091883732
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:C",
+  "predicted_MHz": 0.03353063303578616
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:d",
+  "predicted_MHz": -0.013641591387367782
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:4:delta",
+  "predicted_MHz": -0.004834166564547847
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:eqQ",
+  "predicted_MHz": -512.5463206365173
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:C",
+  "predicted_MHz": 0.03353161201139034
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:d",
+  "predicted_MHz": -0.013640588539473517
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:5:delta",
+  "predicted_MHz": -0.004834166564547852
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:eqQ",
+  "predicted_MHz": -512.5485507156893
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:C",
+  "predicted_MHz": 0.03353275423958529
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:d",
+  "predicted_MHz": -0.013639418615209313
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:6:delta",
+  "predicted_MHz": -0.0048341665645478486
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:eqQ",
+  "predicted_MHz": -512.5510994519177
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:C",
+  "predicted_MHz": 0.03353405976192837
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:d",
+  "predicted_MHz": -0.013638081644549363
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:7:delta",
+  "predicted_MHz": -0.0048341665645478425
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:eqQ",
+  "predicted_MHz": -512.5539668749127
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:C",
+  "predicted_MHz": 0.03353552862590861
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:d",
+  "predicted_MHz": -0.013636577661786053
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:8:delta",
+  "predicted_MHz": -0.004834166564547855
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:eqQ",
+  "predicted_MHz": -512.5571530181443
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:C",
+  "predicted_MHz": 0.03353716088498427
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:d",
+  "predicted_MHz": -0.013634906705478464
+ },
+ {
+  "model": "i2spec",
+  "target": "hyperfine_parameters/wakasugi1988a:9:delta",
+  "predicted_MHz": -0.0048341665645478425
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:0:eqQ",
+  "predicted_MHz": -2453.002585
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:1:eqQ",
+  "predicted_MHz": -2453.0029495800004
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:2:eqQ",
+  "predicted_MHz": -2453.00367874
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:3:eqQ",
+  "predicted_MHz": -2453.00477248
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:4:eqQ",
+  "predicted_MHz": -2453.0062308
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:5:eqQ",
+  "predicted_MHz": -2453.0080537
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:6:eqQ",
+  "predicted_MHz": -2453.01024118
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:7:eqQ",
+  "predicted_MHz": -2453.01279324
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:8:eqQ",
+  "predicted_MHz": -2453.01570988
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:9:eqQ",
+  "predicted_MHz": -2453.0189911
+ },
+ {
+  "model": "i2spec",
+  "target": "x_hyperfine/wakasugi1988:constants.csv:10:eqQ",
+  "predicted_MHz": -2453.0226369
+ }
+]

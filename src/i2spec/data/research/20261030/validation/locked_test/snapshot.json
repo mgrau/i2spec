@@ -1,0 +1,97 @@
+{
+ "data": {
+  "borde1981a": {
+   "data.csv": "48a3f1f4cd4691f3dd548117130b117011982b42f9ac37c882ca2c42ed701fa9"
+  },
+  "chen1998a": {
+   "data.csv": "63febed59bb2c7e91dc7c9d6a34216c12792b94f96b95105e607dbeb6600a9bd"
+  },
+  "cruz1994a": {
+   "data.csv": "673f75037c53f058551db5f2dc4453ce7fda0a8e6de5b20d2b5ecebdb8b545ea"
+  },
+  "demelo2024a": {
+   "data.csv": "891358db9a1cefa2532a2f20cc5bc30ed519537c98ced819d44848af04fa8f6a"
+  },
+  "knox1971a": {
+   "data.csv": "f417c40c3b9fe2db7e7c996d76ab110ab7dc29d11974faa36d80def95629b181"
+  },
+  "kompanets1979a": {
+   "data.csv": "b24559e5a2149a850f59a541dfe100b8eaf8da1aa9f97c9a85dcc49eea5c80a8"
+  },
+  "landsberg1976a": {
+   "data.csv": "5ee92151299dd42bfd842c0b6274dfcee28f46c917a92aae8687370c67e90100"
+  },
+  "powel2021a": {
+   "data.csv": "07f9a6380efd4981fbdfad4ccac620f434bfba31b1472181c70d5abf61f05bb1"
+  },
+  "rakowsky1989a": {
+   "data.csv": "34324875aaf92d975f132c49ecf68eaf58de22027dac94b48825d2d00bfdd587"
+  },
+  "samoudi2012a": {
+   "data.csv": "0d35914279871829a8c6be5eb38d877db8f594adbb9170aa81ca63f4a746cd44"
+  },
+  "shiner1993a": {
+   "data.csv": "6f38837ec69dd1a54661c18ce7e09d8771e50c99f93596cc65d57da0df34558a"
+  },
+  "simonsen1990a": {
+   "data.csv": "69ff61292ff2db4dc34ea28e31bf5b4c753b1d7c876b37eeca97e933f8c37e51"
+  },
+  "simonsen1997a": {
+   "data.csv": "66e8bda87480f3aa5de5e4d54fe82b395a9898ce2c0e2401412b1128cdb50354"
+  },
+  "tesic1975a": {
+   "data.csv": "ac860df1a71731a7420cf0eabbff1fe6ebb66a65038498623ddf45407121c52c"
+  },
+  "thang2012a": {
+   "data.csv": "32a5eb5e408577c1817ebaf56ee7058290d6ccf77bcd979e0683d72ccb02b0d3"
+  }
+ },
+ "meta_informational": {
+  "borde1981a": "9ac9db78739ad0dce37db668698075c208197677149a032690042efa3c70d3a0",
+  "chen1998a": "d7129c0d931e74b73c712b57bd8ad9a9d868dda82c8b3722bf524bf75ec4d238",
+  "cruz1994a": "6ad1fec03c0cdcdf37ce623823364605f345662021937dcb43028ae1a0c97400",
+  "demelo2024a": "be9fd29bb078b4f7b22b1b22bdce901e9e03bc79c618ee4dc5bee8fca6d3ec56",
+  "knox1971a": "3b7adf29db7e8e16304e9d7f79ffcaa30550bbadad67411a353debeacffbd52f",
+  "kompanets1979a": "519b8a906745d170ad5677e8bf4a25a49c2cf6402ff8c6229884590f4bf6d7d5",
+  "landsberg1976a": "9c9f4df3b57d474ac99201b0457a4ad92fd634bc4daea749871afabd2c189fb5",
+  "powel2021a": "33cf13b293e5d7a8ef76d67a2b2677966b66ccbd639cadcaeb05acce923d7b98",
+  "rakowsky1989a": "dff3921469b8ef0681c8047a824fb804041f6ff7ab6b9eeb292d0bb3424c3a85",
+  "samoudi2012a": "542d98b3b6b9b1cf820d5bf7eb13d6593484ca9b38a7c55f6b599496179898b9",
+  "shiner1993a": "a6e698354c955cb8d86ae78a4257395dee1a155d7620dbc462f750d281234ea2",
+  "simonsen1990a": "42bfe6201c49d27b9222294a1ad11376ac9ab7a21b15a44addf8e6ecc9cb10e5",
+  "simonsen1997a": "eba276f07f70dfd329b678b543d6e92a1cee09aa1ae74075a9a106061637f536",
+  "tesic1975a": "f3f7fa3379bf09b7c86b6d1ff9a1785ab69ed9a91656aca6a1f92f038a516719",
+  "thang2012a": "421740fb0a25127a581418eb48f31e2417e1bd84161a8285c30f98ddc0f90e60"
+ },
+ "earlier_registries": [],
+ "earlier_sets": [],
+ "earlier_manifests_sha256": {},
+ "code": {
+  "src/i2spec/research.py": "bb183c2c6641f1d7ee7519adf04cc94985e1d60f2154f1da71e9110035392160",
+  "src/i2spec/research_expanded.py": "78fc62cd02ad92bad7ce7957c263e98adc7e7a9ae02c29a16ac2920a57d7d20b",
+  "src/i2spec/hyperfine.py": "a13189ff53c0630ec0c9b2db00870035f67e358f6b17dea258e910bb589963ab",
+  "src/i2spec/bspline.py": "2b521cfba8bef42f6849d06c5fe9770156b8f5a63139a6cda890f15ecf9db42e",
+  "src/i2spec/wigner.py": "d46fb5d679905c7a6e9e06792037164c44d26248b482460a42af87c23e5d3967",
+  "src/i2spec/lookup.py": "ac577bc7a48920fe00711eed366fcb675dfe093f4aa223f87cc887c0d210e2f5",
+  "src/i2spec/constants.py": "12da1efb0e02a160d391c1210ebf480b17fcc08fa1ec00b01d6246d7a167320e",
+  "src/i2spec/observations.py": "63369bf693d8a8d38605cd9f67f622634d88ba5c82aaa88e041ba5dd06912cda",
+  "src/i2spec/fit/registry.py": "e77537f3dc2031a6aa8ae91f902f80064b101c04dfee040f55a20c35eb0fd129",
+  "src/i2spec/data/research/20261020/manifest.json": "356640b39c4d5a7f7b392f477e06f92904a01f300b874ae3a2e44a9245641889",
+  "src/i2spec/data/research/20261021/manifest.json": "e2e80fc3b490f4840257aa6feec09eaffc683c35c5608134f4796077a873a675",
+  "src/i2spec/data/research/20261029/manifest.json": "a88d712328f471d0f9d5b5f28cbcdf3ea936473c187eace11b34f42023fd2353",
+  "src/i2spec/data/research/20261030/manifest.json": "1fd029d72d31d51872be4d7f6df9b99c85c4778adf02ed09e32bd825976a5655"
+ },
+ "data_other": {
+  "hyperfine_parameters/wakasugi1988a": {
+   "data.csv": "72ee86a3c94c2fe592ccd83a6abcc5ad582210a0ac991edd3e33677640be853c"
+  },
+  "x_hyperfine/wakasugi1988": {
+   "constants.csv": "98be436399e49b778499c05ceda2adb29c1af3dc62b77d6c4b67688711ae8ebd"
+  }
+ },
+ "meta_informational_other": {
+  "hyperfine_parameters/wakasugi1988a": "459d9f0b36fb9bdb27aa4aeec16a5e9d579089f00ab162a3e0567942c0a765c6",
+  "x_hyperfine/wakasugi1988": "b0fc91b64496a2369d52c2c7cf92bc648945d43fac3aaa36be190da6e04d09f7"
+ },
+ "data_other_root": "data"
+}

@@ -1,0 +1,2488 @@
+{
+ "schema_version": 3,
+ "created_utc": "2026-10-31T04:12:48.501188+00:00",
+ "status": "frozen",
+ "decision": "Decision 2 (Matt, 2026-10-31): the locked test of the final form, scored once with release 20261030 (release 20261029's forecasts, the uncertainty refitted on the cross-validation and calibrate sets). The sets are the locked-test sets of data/training/roles_20261029; they stay out of every fit",
+ "primary_model": "research-20261030-i2spec",
+ "models": {
+  "research-20261030-i2spec": {
+   "id": "research-20261030-i2spec",
+   "coefficients": "186af80ec884ffe383852a9664599f4e9752ee1b20934bb7c72b46f58833374d",
+   "files_sha256": {
+    "20261030": {
+     "model.json": "871e8b41ea1b41113e10c1fe76f36d7e756466662a2fedf8f20c9f479f239357",
+     "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
+     "reference_predictions.json": "a9d31cbb8428a5337eeeddf036b1339535e6e22ca984d3c5411559bab1b7f855",
+     "uncertainty.json": "d75398ea71f4f0e262484a8b63b41556a542616913bb7b606c123d4f5869cdde"
+    }
+   }
+  },
+  "research-20261029-i2spec": {
+   "id": "research-20261029-i2spec",
+   "coefficients": "3cd4af2aa59fb6feb1216b08e7cff16f0a5ad7104014768c693de3145a63baa1",
+   "files_sha256": {
+    "20261029": {
+     "model.json": "9fed03560130a3d7be30e7b798a361bade514e3ca68e2259b94297c9308658d9",
+     "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
+     "reference_predictions.json": "a9d31cbb8428a5337eeeddf036b1339535e6e22ca984d3c5411559bab1b7f855",
+     "uncertainty.json": "60cbb429808556b1f8cc423eeff9d6b6a420971bcc2fd4ccff4dec35a6cff372"
+    }
+   }
+  },
+  "i2spec": {
+   "id": "research-20261021-i2spec",
+   "coefficients": "1711b9caa5619027391f66c1b6323a9b968842f8d8eedc4969b002fada12d2aa",
+   "files_sha256": {
+    "20261021": {
+     "isotopologues.json": "89c3bc0736ac90fffd0ea1546a366ddc99bc9ae295fa79fc6d16f7c818f364e9",
+     "reference_predictions.json": "3052a140cd50076108d9c48e633b18af229ff8cb16b62b86be14af330cd7f22c"
+    },
+    "20261020": {
+     "model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
+     "hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
+     "reference_predictions.json": "1c4a0b15b546cf62bdc608d793f8a1d805d2dcdf8d5afa289fabd34ec14ac52b",
+     "audits.json": "7f64811d0ec0021cbd7c76b5b05ee3b980601e45a67d711db524c961b60c0e7d",
+     "validation.json": "6b92ef97abe751cdeab6c9f1afa97f53d2190a54ad7f47443db294d24ecad5ff",
+     "selection.json": "f978d066f941a33779d7ca7c4097095230d5fc9bbba98b12cd40fe36ed3e4dcf",
+     "provenance.json": "649082a620b0c81db9723cb23f6267fcbe650cf74c160678690c5ca82b7f5cbb",
+     "verification.json": "5962ee5ae8b4976fef2a0b1cd411b555a7cb5b0310e66e77e5a14962142258c1",
+     "uncertainty.json": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f",
+     "uncertainty_references.json": "a5eb298b4662e07157c615b2e5e070e2373246488a1e0ec2c346cd4c3c6db7f8"
+    }
+   }
+  }
+ },
+ "comparisons": {
+  "all": [
+   "research-20261030-i2spec",
+   "research-20261029-i2spec",
+   "i2spec"
+  ]
+ },
+ "outcome_rule": "values are read only by score_registry, after this registry exists; no refit, no model or setting selection, no exclusion of targets after scoring. A data correction found later is reported beside, not instead of, these scores",
+ "exclusion": "127I2 P(13) 43-0: diagnostic target only, never in a headline score",
+ "partitions": {
+  "blind": "nothing of this measurement is in any training set or an earlier registry",
+  "scored_before": "an [overlaps] declaration ties it to a set of an earlier registry, whose values were read when that registry was scored",
+  "seen": "an active set prints this measurement or a mean that contains it ([overlaps] same/mean)",
+  "superseded": "an active set holds the same quantity re-measured or re-evaluated by the same authors ([overlaps] superseded)",
+  "read_before": "a set of an earlier registry, whose values were read when that registry was scored; forecast again, never fitted, and never in a blind score"
+ },
+ "kinds": {
+  "absolute": "a component frequency",
+  "intraline": "component minus component of the same line (hyperfine only)",
+  "interline": "component (or center) of one line minus that of another",
+  "hf_constant": "an effective hyperfine constant (eqQ, C, d or delta) of a line's B level, or of B minus X where the set's meta.toml kind says the source printed differences",
+  "x_constant": "an effective hyperfine constant of an X level",
+  "x_interval": "the energy of one hyperfine sublevel of an X level minus another's, E(I, F) - E(I', F'); sublevels are labeled (I, F) by a one-to-one assignment within each F (the largest total weight of each I on the level's own J); a set that prints magnitudes is scored on |forecast|"
+ },
+ "constants_scope": "eqQ, C, d and delta of every row (a quantity a source did not print is not scored); summaries per kind and quantity",
+ "disclosure": "Every set of this registry is in the third blind test (src/i2spec/data/research/20261029/validation/pending_blind_v3): its rows were forecast by release 20261029, whose forecasts are this release's, and scored there on 2026-10-30 against the measurement uncertainty and 20261029's 1-sigma. Those per-set values are in the committed results.json and the aggregate summaries read then contain them; the per-set entries were not read for the roles or for the uncertainty refit of release 20261030, which used none of these rows. Sets in the partition read_before of v3 were also scored in the registries of release 20261020",
+ "locked_test": {
+  "sets": [
+   "borde1981a",
+   "chen1998a",
+   "cruz1994a",
+   "demelo2024a",
+   "knox1971a",
+   "kompanets1979a",
+   "landsberg1976a",
+   "powel2021a",
+   "rakowsky1989a",
+   "samoudi2012a",
+   "shiner1993a",
+   "simonsen1990a",
+   "simonsen1997a",
+   "tesic1975a",
+   "thang2012a",
+   "wakasugi1988",
+   "wakasugi1988a"
+  ],
+  "laboratory_families": {
+   "borde1981a": [
+    "Paris (Borde)"
+   ],
+   "chen1998a": [
+    "Chen, Zhang, Zang, Akimoto, Kasahara, Sakamoto, Inaba (affiliation not verified)"
+   ],
+   "cruz1994a": [
+    "Cruz, Scalabrin and Pereira (affiliation not checked)"
+   ],
+   "demelo2024a": [
+    "INPHYNI Nice"
+   ],
+   "knox1971a": [
+    "Pao (Cleveland)"
+   ],
+   "kompanets1979a": [
+    "Kompanets, Mikhailov (affiliation not verified)"
+   ],
+   "landsberg1976a": [
+    "Landsberg (affiliation not checked)"
+   ],
+   "powel2021a": [
+    "Augustana Univ. / MSU (FRIB) / TU Darmstadt"
+   ],
+   "rakowsky1989a": [
+    "TU / FU Berlin"
+   ],
+   "samoudi2012a": [
+    "CEM (Spain)"
+   ],
+   "shiner1993a": [
+    "Yale"
+   ],
+   "simonsen1990a": [
+    "Aarhus (Denmark)"
+   ],
+   "simonsen1997a": [
+    "Simonsen (affiliation not verified)"
+   ],
+   "tesic1975a": [
+    "Pao (Cleveland)"
+   ],
+   "thang2012a": [
+    "Thang, Thu, Xuan, Suh, Hoi (Vietnam Metrology Institute; KRISS comb measurement)"
+   ],
+   "wakasugi1988": [
+    "Hiroshima"
+   ],
+   "wakasugi1988a": [
+    "Hiroshima"
+   ]
+  },
+  "rows_left_out": {
+   "rule": "before scoring, from identity columns: the diagnostic line, and the lines of outcome.json held_out_in_training (a CIPM mean in the training data contains them); each measurement once: a quantity two locked sets print with the same value keeps the later printing (the identity pairs below; values compared when scored)",
+   "counts": {
+    "borde1981a | a line the training holds inside a CIPM mean": 30,
+    "borde1981a | diagnostic exclusion (127I2 P(13) 43-0)": 16,
+    "knox1971a | a line the training holds inside a CIPM mean": 20,
+    "landsberg1976a | a line the training holds inside a CIPM mean": 11,
+    "landsberg1976a | diagnostic exclusion (127I2 P(13) 43-0)": 15
+   },
+   "targets": [
+    {
+     "id": "borde1981a:0",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:1",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:2",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:3",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:4",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:5",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:6",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:7",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:8",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:9",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:10",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:11",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:12",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:13",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:14",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:15",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "borde1981a:16",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:17",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:18",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:19",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:20",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:21",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:22",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:23",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:24",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:25",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:26",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:27",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:28",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:29",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:30",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:31",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:46",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:47",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:48",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:49",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:50",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:51",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:52",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:53",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:54",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:55",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:56",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:57",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:58",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "borde1981a:59",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:7",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:8",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:10",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:11",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:12",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:13",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:14",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:15",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:16",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:17",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:18",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:21",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:22",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:23",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:24",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:25",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:26",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:27",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:28",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "knox1971a:29",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:0",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:1",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:2",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:3",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:4",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:5",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:6",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:7",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:8",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:9",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:10",
+     "reason": "a line the training holds inside a CIPM mean"
+    },
+    {
+     "id": "landsberg1976a:11",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:12",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:13",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:14",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:15",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:16",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:17",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:18",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:19",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:20",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:21",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:22",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:23",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:24",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    },
+    {
+     "id": "landsberg1976a:25",
+     "reason": "diagnostic exclusion (127I2 P(13) 43-0)"
+    }
+   ],
+   "identity_shared_between_sets": {
+    "intraline | 127I129I P(33) 6-3 | m19 | 127I129I P(33) 6-3 | m20": [
+     "knox1971a:0",
+     "tesic1975a:0"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m18 | 127I129I P(33) 6-3 | m19": [
+     "knox1971a:1",
+     "tesic1975a:1"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m17 | 127I129I P(33) 6-3 | m18": [
+     "knox1971a:2",
+     "tesic1975a:2"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m16 | 127I129I P(33) 6-3 | m17": [
+     "knox1971a:3",
+     "tesic1975a:3"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m15 | 127I129I P(33) 6-3 | m16": [
+     "knox1971a:4",
+     "tesic1975a:4"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m11 | 127I129I P(33) 6-3 | m12": [
+     "knox1971a:5",
+     "tesic1975a:5"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m10 | 127I129I P(33) 6-3 | m11": [
+     "knox1971a:6",
+     "tesic1975a:6"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m6 | 127I129I P(33) 6-3 | m7": [
+     "knox1971a:9",
+     "tesic1975a:9"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m2 | 127I129I P(33) 6-3 | m3": [
+     "knox1971a:19",
+     "tesic1975a:19"
+    ],
+    "intraline | 127I129I P(33) 6-3 | m1 | 127I129I P(33) 6-3 | m2": [
+     "knox1971a:20",
+     "tesic1975a:20"
+    ],
+    "absolute | 127I2 R(127) 11-5 | a16 | None | None": [
+     "samoudi2012a:0",
+     "samoudi2012a:3",
+     "thang2012a:0",
+     "thang2012a:1",
+     "thang2012a:2"
+    ]
+   }
+  },
+  "criteria": {
+   "z": "z = r / sqrt(sigma_model^2 + sigma^2): r observed - predicted, sigma_model the model's frozen 1-sigma (sigma_MHz below; of an interval between isotopologues, the two lines' own 1-sigma in quadrature: the model has no covariance between isotopologues), sigma the measurement's; the laboratory offset of absolute frequencies (0.17 MHz in the core) is measurement error, not in z (reported beside)",
+   "strata": {
+    "all": "every row with a 1-sigma",
+    "absolute": "127I2 component frequencies",
+    "interline": "127I2 intervals between lines",
+    "intraline": "127I2 hyperfine intervals within a line",
+    "isotopologues": "every row of another isotopologue"
+   },
+   "target": "within 2 sigma: 95 %, in all and in each stratum",
+   "floor": "within 2 sigma: 90 %; a stratum below it is stated as a limitation of the release",
+   "small": "a stratum of fewer than 10 rows is reported, not judged (the floor would allow no miss)",
+   "reported": [
+    "within 1 and 2 sigma, rms z, mean z, per stratum, region, set and laboratory family",
+    "the same rows under the 1-sigma of release 20261029 (same forecasts) and 20261021 (its own)",
+    "hyperfine constants (no 1-sigma in the model): rms residual and rms r/sigma, not in any stratum"
+   ],
+   "afterward": "nothing in the model or its uncertainty changes after scoring, whatever the result; the scores are reported as they come out"
+  },
+  "strata_of_targets": {
+   "borde1981a:0": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:1": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:2": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:3": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:4": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:5": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:6": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:7": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:8": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:9": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:10": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:11": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:12": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:13": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:14": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:15": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:16": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:17": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:18": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:19": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:20": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:21": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:22": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:23": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:24": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:25": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:26": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:27": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:28": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:29": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:30": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:31": [
+    "intraline",
+    "core"
+   ],
+   "borde1981a:32": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:33": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:34": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:35": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:36": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:37": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:38": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:39": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:40": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:41": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:42": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:43": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:44": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:45": [
+    "intraline",
+    "B beyond v' 60s"
+   ],
+   "borde1981a:46": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:47": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:48": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:49": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:50": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:51": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:52": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:53": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:54": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:55": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:56": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:57": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:58": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "borde1981a:59": [
+    "intraline",
+    "B beyond v' 50s"
+   ],
+   "chen1998a:0": [
+    "interline",
+    "core"
+   ],
+   "chen1998a:1": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:2": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:3": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:4": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:5": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:6": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:7": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:8": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:9": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:10": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:11": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:12": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:13": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:14": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:15": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:16": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:17": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:18": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:19": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:20": [
+    "intraline",
+    "core"
+   ],
+   "chen1998a:21": [
+    "absolute",
+    "core"
+   ],
+   "chen1998a:22": [
+    "absolute",
+    "core"
+   ],
+   "chen1998a:23": [
+    "absolute",
+    "core"
+   ],
+   "chen1998a:24": [
+    "absolute",
+    "core"
+   ],
+   "cruz1994a:0": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:1": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:2": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:3": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:4": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:5": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:6": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:7": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:8": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:9": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:10": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:11": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:12": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:13": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:14": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:15": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:16": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:17": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:18": [
+    "intraline",
+    "core"
+   ],
+   "cruz1994a:19": [
+    "intraline",
+    "core"
+   ],
+   "demelo2024a:0": [
+    "interline",
+    "core"
+   ],
+   "knox1971a:0": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:1": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:2": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:3": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:4": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:5": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:6": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:7": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:8": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:9": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:10": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:11": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:12": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:13": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:14": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:15": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:16": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:17": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:18": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:19": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:20": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:21": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:22": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:23": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:24": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:25": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:26": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:27": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:28": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "knox1971a:29": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "kompanets1979a:0": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "kompanets1979a:1": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "landsberg1976a:0": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:1": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:2": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:3": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:4": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:5": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:6": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:7": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:8": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:9": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:10": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:11": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:12": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:13": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:14": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:15": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:16": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:17": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:18": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:19": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:20": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:21": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:22": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:23": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:24": [
+    "intraline",
+    "core"
+   ],
+   "landsberg1976a:25": [
+    "intraline",
+    "core"
+   ],
+   "powel2021a:0": [
+    "absolute",
+    "core"
+   ],
+   "powel2021a:1": [
+    "absolute",
+    "core"
+   ],
+   "powel2021a:2": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:0": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:1": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:2": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:3": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:4": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:5": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:6": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:7": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:8": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:9": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:10": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:11": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:12": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:13": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:14": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:15": [
+    "absolute",
+    "core"
+   ],
+   "rakowsky1989a:16": [
+    "absolute",
+    "core"
+   ],
+   "samoudi2012a:0": [
+    "absolute",
+    "core"
+   ],
+   "samoudi2012a:1": [
+    "absolute",
+    "core"
+   ],
+   "samoudi2012a:2": [
+    "absolute",
+    "core"
+   ],
+   "samoudi2012a:3": [
+    "absolute",
+    "core"
+   ],
+   "samoudi2012a:4": [
+    "absolute",
+    "core"
+   ],
+   "samoudi2012a:5": [
+    "absolute",
+    "core"
+   ],
+   "samoudi2012a:6": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:0": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:1": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:2": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:3": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:4": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:5": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:6": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:7": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:8": [
+    "absolute",
+    "core"
+   ],
+   "shiner1993a:9": [
+    "absolute",
+    "core"
+   ],
+   "simonsen1990a:0": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:1": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:2": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:3": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:4": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:5": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:6": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:7": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:8": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:9": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:10": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1990a:11": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:0": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:1": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:2": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:3": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:4": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:5": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:6": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:7": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:8": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:9": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:10": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:11": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:12": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:13": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:14": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:15": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:16": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:17": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:18": [
+    "intraline",
+    "core"
+   ],
+   "simonsen1997a:19": [
+    "intraline",
+    "core"
+   ],
+   "tesic1975a:0": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:1": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:2": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:3": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:4": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:5": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:6": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:7": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:8": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:9": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:10": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:11": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:12": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:13": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:14": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:15": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:16": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:17": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:18": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:19": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:20": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:21": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:22": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:23": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:24": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:25": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:26": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:27": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:28": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "tesic1975a:29": [
+    "isotopologues",
+    "isotopologues"
+   ],
+   "thang2012a:0": [
+    "absolute",
+    "core"
+   ],
+   "thang2012a:1": [
+    "absolute",
+    "core"
+   ],
+   "thang2012a:2": [
+    "absolute",
+    "core"
+   ]
+  },
+  "sigma_MHz": {
+   "research-20261030-i2spec": {
+    "borde1981a:0": 0.09006519722638175,
+    "borde1981a:1": 0.09288243855572907,
+    "borde1981a:2": 0.09858303033246334,
+    "borde1981a:3": 0.11242272083662473,
+    "borde1981a:4": 0.11731048708325088,
+    "borde1981a:5": 0.1192343789469134,
+    "borde1981a:6": 0.13134234427826633,
+    "borde1981a:7": 0.13301699516446022,
+    "borde1981a:8": 0.13992553062994534,
+    "borde1981a:9": 0.1466386279780142,
+    "borde1981a:10": 0.15732916860810478,
+    "borde1981a:11": 0.1725033260204545,
+    "borde1981a:12": 0.17770421278387033,
+    "borde1981a:13": 0.18563166226192002,
+    "borde1981a:14": 0.2033049657126071,
+    "borde1981a:15": 0.21441609373369702,
+    "borde1981a:16": 0.0899945661370075,
+    "borde1981a:17": 0.09272755882907704,
+    "borde1981a:18": 0.11252784663086488,
+    "borde1981a:19": 0.12056961268388708,
+    "borde1981a:20": 0.13597850975376422,
+    "borde1981a:21": 0.13984318716109387,
+    "borde1981a:22": 0.14646145446955264,
+    "borde1981a:23": 0.15721180463235054,
+    "borde1981a:24": 0.16188352766002376,
+    "borde1981a:25": 0.17356349941385868,
+    "borde1981a:26": 0.17608253458566894,
+    "borde1981a:27": 0.18544728297877067,
+    "borde1981a:28": 0.19890144984648797,
+    "borde1981a:29": 0.20062369468039207,
+    "borde1981a:30": 0.2039519351556274,
+    "borde1981a:31": 0.21407519317765017,
+    "borde1981a:32": 3.890687658186922,
+    "borde1981a:33": 3.9808627497079967,
+    "borde1981a:34": 4.014962163792077,
+    "borde1981a:35": 4.041927517730684,
+    "borde1981a:36": 4.106211445881129,
+    "borde1981a:37": 4.156704136899651,
+    "borde1981a:38": 4.286547956568817,
+    "borde1981a:39": 4.379650340355594,
+    "borde1981a:40": 4.45315229414432,
+    "borde1981a:41": 4.620463129686442,
+    "borde1981a:42": 4.672436112507365,
+    "borde1981a:43": 4.864766474245174,
+    "borde1981a:44": 4.941667776641872,
+    "borde1981a:45": 5.132241632706358,
+    "borde1981a:46": 1.9395448631740662,
+    "borde1981a:47": 1.8775319241818562,
+    "borde1981a:48": 1.7253681011007056,
+    "borde1981a:49": 1.7044232341348424,
+    "borde1981a:50": 1.6793851531175057,
+    "borde1981a:51": 1.712621136477805,
+    "borde1981a:52": 1.7303260337674977,
+    "borde1981a:53": 1.7491752473289746,
+    "borde1981a:54": 1.7720133895752572,
+    "borde1981a:55": 1.7725451194046082,
+    "borde1981a:56": 1.8291361234115144,
+    "borde1981a:57": 1.9594978991554133,
+    "borde1981a:58": 2.0342129714184813,
+    "borde1981a:59": 2.0758860274535555,
+    "chen1998a:0": 0.3573828664398184,
+    "chen1998a:1": 0.08892661357546228,
+    "chen1998a:2": 0.08909065174915134,
+    "chen1998a:3": 0.09230692377389191,
+    "chen1998a:4": 0.0942414506211542,
+    "chen1998a:5": 0.0958520527653371,
+    "chen1998a:6": 0.09840685733212641,
+    "chen1998a:7": 0.1045207865949989,
+    "chen1998a:8": 0.10914768461732047,
+    "chen1998a:9": 0.11329034641029015,
+    "chen1998a:10": 0.12656203525416398,
+    "chen1998a:11": 0.12846636648241175,
+    "chen1998a:12": 0.12963455080650235,
+    "chen1998a:13": 0.1328989671716057,
+    "chen1998a:14": 0.14418413009019151,
+    "chen1998a:15": 0.15098719518552267,
+    "chen1998a:16": 0.15330076840248638,
+    "chen1998a:17": 0.16075944209213977,
+    "chen1998a:18": 0.1997954730537202,
+    "chen1998a:19": 0.20406451688926222,
+    "chen1998a:20": 0.20868997795587613,
+    "chen1998a:21": 0.21444152259236574,
+    "chen1998a:22": 0.23622388863540345,
+    "chen1998a:23": 0.23698125429394917,
+    "chen1998a:24": 0.23405754016329466,
+    "cruz1994a:0": 0.20724822468558574,
+    "cruz1994a:1": 0.20110896075900306,
+    "cruz1994a:2": 0.19516840021867835,
+    "cruz1994a:3": 0.15627975835982308,
+    "cruz1994a:4": 0.1505377143784174,
+    "cruz1994a:5": 0.14967523303872463,
+    "cruz1994a:6": 0.14420905244799875,
+    "cruz1994a:7": 0.13071142697031526,
+    "cruz1994a:8": 0.12904558050923082,
+    "cruz1994a:9": 0.12576393406453426,
+    "cruz1994a:10": 0.12431983184934252,
+    "cruz1994a:11": 0.11137066728289755,
+    "cruz1994a:12": 0.10809022456215214,
+    "cruz1994a:13": 0.10494164727511374,
+    "cruz1994a:14": 0.09619351501030471,
+    "cruz1994a:15": 0.09500403850763951,
+    "cruz1994a:16": 0.09381601531931832,
+    "cruz1994a:17": 0.09285392336156943,
+    "cruz1994a:18": 0.08894638212519919,
+    "cruz1994a:19": 0.08887059564521924,
+    "demelo2024a:0": 0.6704907638239035,
+    "knox1971a:0": 0.1708884952022341,
+    "knox1971a:1": 0.17086363561328902,
+    "knox1971a:2": 0.17086489187675463,
+    "knox1971a:3": 0.17088938496580547,
+    "knox1971a:4": 0.17086215633150686,
+    "knox1971a:5": 0.17089906856208836,
+    "knox1971a:6": 0.170862385350742,
+    "knox1971a:7": 0.3350916081377414,
+    "knox1971a:8": 0.33579088737271395,
+    "knox1971a:9": 0.17087108840535065,
+    "knox1971a:10": 0.33548989451373584,
+    "knox1971a:11": 0.33657246151582587,
+    "knox1971a:12": 0.33604830482319425,
+    "knox1971a:13": 0.17086908526770453,
+    "knox1971a:14": 0.1708969443448748,
+    "knox1971a:15": 0.1708665834658723,
+    "knox1971a:16": 0.17091066513520667,
+    "knox1971a:17": 0.1708745380509077,
+    "knox1971a:18": 0.1708632322471691,
+    "knox1971a:19": 0.1708678230445227,
+    "knox1971a:20": 0.1709092339857551,
+    "knox1971a:21": 0.3416230874430191,
+    "knox1971a:22": 0.17086677778940634,
+    "knox1971a:23": 0.17086224190959304,
+    "knox1971a:24": 0.1708632604318583,
+    "knox1971a:25": 0.1708692887886834,
+    "knox1971a:26": 0.17090288991480748,
+    "knox1971a:27": 0.17088951733829488,
+    "knox1971a:28": 0.17086349950845878,
+    "knox1971a:29": 0.1708914871504032,
+    "kompanets1979a:0": 0.17089951805051767,
+    "kompanets1979a:1": 0.1709093201372311,
+    "landsberg1976a:0": 0.08888182260258519,
+    "landsberg1976a:1": 0.08900718966928106,
+    "landsberg1976a:2": 0.08921358299087997,
+    "landsberg1976a:3": 0.0888849894063574,
+    "landsberg1976a:4": 0.08901066652917133,
+    "landsberg1976a:5": 0.08888353937809917,
+    "landsberg1976a:6": 0.09203021203545107,
+    "landsberg1976a:7": 0.09252438910845605,
+    "landsberg1976a:8": 0.08895819528822513,
+    "landsberg1976a:9": 0.08929557537093591,
+    "landsberg1976a:10": 0.0889531828086092,
+    "landsberg1976a:11": 0.14581224187955089,
+    "landsberg1976a:12": 0.13628163958422163,
+    "landsberg1976a:13": 0.12190109420365661,
+    "landsberg1976a:14": 0.11586699873890167,
+    "landsberg1976a:15": 0.11208804267117897,
+    "landsberg1976a:16": 0.09629225854364348,
+    "landsberg1976a:17": 0.09332589357048887,
+    "landsberg1976a:18": 0.09095157388134689,
+    "landsberg1976a:19": 0.09049424370522892,
+    "landsberg1976a:20": 0.08888988781338854,
+    "landsberg1976a:21": 0.08947603180540832,
+    "landsberg1976a:22": 0.09616018424604297,
+    "landsberg1976a:23": 0.10315736559448418,
+    "landsberg1976a:24": 0.10992243208749007,
+    "landsberg1976a:25": 0.1192343789469134,
+    "powel2021a:0": 0.4990207741849303,
+    "powel2021a:1": 0.4898524398827444,
+    "powel2021a:2": 0.4955268172441677,
+    "rakowsky1989a:0": 0.526308063029634,
+    "rakowsky1989a:1": 0.48640581648151043,
+    "rakowsky1989a:2": 0.4896931175739664,
+    "rakowsky1989a:3": 0.4626365738048723,
+    "rakowsky1989a:4": 0.45320293028264047,
+    "rakowsky1989a:5": 0.4565404963149744,
+    "rakowsky1989a:6": 0.5006955441253547,
+    "rakowsky1989a:7": 0.46699483516466334,
+    "rakowsky1989a:8": 0.3477815327921612,
+    "rakowsky1989a:9": 0.44877564358008865,
+    "rakowsky1989a:10": 0.422241284873518,
+    "rakowsky1989a:11": 0.40221703712384416,
+    "rakowsky1989a:12": 0.29076291042824426,
+    "rakowsky1989a:13": 0.26419517152325395,
+    "rakowsky1989a:14": 0.3583985830470019,
+    "rakowsky1989a:15": 0.3468957853169213,
+    "rakowsky1989a:16": 0.2294212961242544,
+    "samoudi2012a:0": 0.28060482751209287,
+    "samoudi2012a:1": 0.28159218720302875,
+    "samoudi2012a:2": 0.28109535290946286,
+    "samoudi2012a:3": 0.28060482751209287,
+    "samoudi2012a:4": 0.2801483546322917,
+    "samoudi2012a:5": 0.2774634372284056,
+    "samoudi2012a:6": 0.27709926604659374,
+    "shiner1993a:0": 0.19874378913168717,
+    "shiner1993a:1": 0.22327063695724486,
+    "shiner1993a:2": 0.21491565402947993,
+    "shiner1993a:3": 0.2145234166543653,
+    "shiner1993a:4": 0.1899866286771457,
+    "shiner1993a:5": 0.21677283228191108,
+    "shiner1993a:6": 0.22784714363578612,
+    "shiner1993a:7": 0.2160100301352269,
+    "shiner1993a:8": 0.19118887493084039,
+    "shiner1993a:9": 0.2423729359759083,
+    "simonsen1990a:0": 0.17600624442339402,
+    "simonsen1990a:1": 0.1783546464071378,
+    "simonsen1990a:2": 0.1972042656889602,
+    "simonsen1990a:3": 0.10297985341232688,
+    "simonsen1990a:4": 0.10610596436495508,
+    "simonsen1990a:5": 0.10718297565829527,
+    "simonsen1990a:6": 0.11056839394494046,
+    "simonsen1990a:7": 0.12121238509724017,
+    "simonsen1990a:8": 0.12308390120425394,
+    "simonsen1990a:9": 0.12768220976266684,
+    "simonsen1990a:10": 0.1296436404039566,
+    "simonsen1990a:11": 0.14768047763767486,
+    "simonsen1997a:0": 0.20945530599820644,
+    "simonsen1997a:1": 0.20436238718339758,
+    "simonsen1997a:2": 0.19970815915994544,
+    "simonsen1997a:3": 0.16227490718331714,
+    "simonsen1997a:4": 0.1538242308832992,
+    "simonsen1997a:5": 0.1510237731368869,
+    "simonsen1997a:6": 0.1434145474597802,
+    "simonsen1997a:7": 0.1338656671246018,
+    "simonsen1997a:8": 0.12994918797807276,
+    "simonsen1997a:9": 0.12875968953525646,
+    "simonsen1997a:10": 0.12666734317712,
+    "simonsen1997a:11": 0.11398153288194109,
+    "simonsen1997a:12": 0.10937685602798622,
+    "simonsen1997a:13": 0.10407787237384146,
+    "simonsen1997a:14": 0.09918438992459959,
+    "simonsen1997a:15": 0.09618522466107143,
+    "simonsen1997a:16": 0.09431293576696258,
+    "simonsen1997a:17": 0.09210991552567718,
+    "simonsen1997a:18": 0.08916145482186329,
+    "simonsen1997a:19": 0.0889565774872668,
+    "tesic1975a:0": 0.1708884952022341,
+    "tesic1975a:1": 0.17086363561328902,
+    "tesic1975a:2": 0.17086489187675463,
+    "tesic1975a:3": 0.17088938496580547,
+    "tesic1975a:4": 0.17086215633150686,
+    "tesic1975a:5": 0.17089906856208836,
+    "tesic1975a:6": 0.170862385350742,
+    "tesic1975a:7": 0.3350916081377414,
+    "tesic1975a:8": 0.33579088737271395,
+    "tesic1975a:9": 0.17087108840535065,
+    "tesic1975a:10": 0.33548989451373584,
+    "tesic1975a:11": 0.33657246151582587,
+    "tesic1975a:12": 0.33604830482319425,
+    "tesic1975a:13": 0.17086908526770453,
+    "tesic1975a:14": 0.1708969443448748,
+    "tesic1975a:15": 0.1708665834658723,
+    "tesic1975a:16": 0.17091066513520667,
+    "tesic1975a:17": 0.1708745380509077,
+    "tesic1975a:18": 0.1708632322471691,
+    "tesic1975a:19": 0.1708678230445227,
+    "tesic1975a:20": 0.1709092339857551,
+    "tesic1975a:21": 0.3416230874430191,
+    "tesic1975a:22": 0.17086677778940634,
+    "tesic1975a:23": 0.17086224190959304,
+    "tesic1975a:24": 0.1708632604318583,
+    "tesic1975a:25": 0.1708692887886834,
+    "tesic1975a:26": 0.17090288991480748,
+    "tesic1975a:27": 0.17088951733829488,
+    "tesic1975a:28": 0.17086349950845878,
+    "tesic1975a:29": 0.1708914871504032,
+    "thang2012a:0": 0.28060482751209287,
+    "thang2012a:1": 0.28060482751209287,
+    "thang2012a:2": 0.28060482751209287
+   },
+   "research-20261029-i2spec": {
+    "borde1981a:0": 0.04592117612664436,
+    "borde1981a:1": 0.04592117612664436,
+    "borde1981a:2": 0.04592117612664438,
+    "borde1981a:3": 0.04592117612664442,
+    "borde1981a:4": 0.04592117612664443,
+    "borde1981a:5": 0.04592117612664444,
+    "borde1981a:6": 0.04592117612664448,
+    "borde1981a:7": 0.04592117612664448,
+    "borde1981a:8": 0.045921176126644515,
+    "borde1981a:9": 0.045921176126644536,
+    "borde1981a:10": 0.04592117612664458,
+    "borde1981a:11": 0.04592117612664465,
+    "borde1981a:12": 0.04592117612664467,
+    "borde1981a:13": 0.0459211761266447,
+    "borde1981a:14": 0.04592117612664479,
+    "borde1981a:15": 0.045921176126644855,
+    "borde1981a:16": 0.04592117612664436,
+    "borde1981a:17": 0.04592117612664436,
+    "borde1981a:18": 0.04592117612664442,
+    "borde1981a:19": 0.045921176126644446,
+    "borde1981a:20": 0.045921176126644495,
+    "borde1981a:21": 0.045921176126644515,
+    "borde1981a:22": 0.045921176126644536,
+    "borde1981a:23": 0.04592117612664458,
+    "borde1981a:24": 0.0459211761266446,
+    "borde1981a:25": 0.04592117612664465,
+    "borde1981a:26": 0.04592117612664466,
+    "borde1981a:27": 0.0459211761266447,
+    "borde1981a:28": 0.04592117612664478,
+    "borde1981a:29": 0.04592117612664478,
+    "borde1981a:30": 0.0459211761266448,
+    "borde1981a:31": 0.045921176126644855,
+    "borde1981a:32": 1.2924474016822245,
+    "borde1981a:33": 2.07381561527116,
+    "borde1981a:34": 2.304571582373821,
+    "borde1981a:35": 2.4730778936734668,
+    "borde1981a:36": 2.8384995086372085,
+    "borde1981a:37": 3.0988888995790793,
+    "borde1981a:38": 3.6966960513154166,
+    "borde1981a:39": 4.0811016403857066,
+    "borde1981a:40": 4.365909046973821,
+    "borde1981a:41": 4.968567666798079,
+    "borde1981a:42": 5.14552111194349,
+    "borde1981a:43": 5.768320425990751,
+    "borde1981a:44": 6.005664425404418,
+    "borde1981a:45": 6.57130713852817,
+    "borde1981a:46": 1.657233382219767,
+    "borde1981a:47": 1.4503651286647086,
+    "borde1981a:48": 0.7839939712572738,
+    "borde1981a:49": 0.6477263560009501,
+    "borde1981a:50": 0.43526049303947695,
+    "borde1981a:51": 0.7040080962252352,
+    "borde1981a:52": 0.8131281866622112,
+    "borde1981a:53": 0.916132477119136,
+    "borde1981a:54": 1.028445531199235,
+    "borde1981a:55": 1.0309310836870063,
+    "borde1981a:56": 1.2713656564031663,
+    "borde1981a:57": 1.7197992211196305,
+    "borde1981a:58": 1.941157508962033,
+    "borde1981a:59": 2.057489746190241,
+    "chen1998a:0": 0.3009379069480715,
+    "chen1998a:1": 0.045921176126644356,
+    "chen1998a:2": 0.045921176126644356,
+    "chen1998a:3": 0.04592117612664436,
+    "chen1998a:4": 0.04592117612664437,
+    "chen1998a:5": 0.04592117612664438,
+    "chen1998a:6": 0.04592117612664438,
+    "chen1998a:7": 0.04592117612664439,
+    "chen1998a:8": 0.04592117612664441,
+    "chen1998a:9": 0.045921176126644425,
+    "chen1998a:10": 0.04592117612664447,
+    "chen1998a:11": 0.04592117612664447,
+    "chen1998a:12": 0.045921176126644474,
+    "chen1998a:13": 0.04592117612664448,
+    "chen1998a:14": 0.04592117612664453,
+    "chen1998a:15": 0.04592117612664456,
+    "chen1998a:16": 0.045921176126644564,
+    "chen1998a:17": 0.04592117612664459,
+    "chen1998a:18": 0.04592117612664478,
+    "chen1998a:19": 0.0459211761266448,
+    "chen1998a:20": 0.04592117612664483,
+    "chen1998a:21": 0.16204801159000465,
+    "chen1998a:22": 0.18751439432931563,
+    "chen1998a:23": 0.19080235355999822,
+    "chen1998a:24": 0.18715177328419405,
+    "cruz1994a:0": 0.04592117612664482,
+    "cruz1994a:1": 0.045921176126644786,
+    "cruz1994a:2": 0.04592117612664475,
+    "cruz1994a:3": 0.04592117612664457,
+    "cruz1994a:4": 0.04592117612664455,
+    "cruz1994a:5": 0.04592117612664455,
+    "cruz1994a:6": 0.04592117612664453,
+    "cruz1994a:7": 0.04592117612664448,
+    "cruz1994a:8": 0.04592117612664447,
+    "cruz1994a:9": 0.04592117612664446,
+    "cruz1994a:10": 0.04592117612664445,
+    "cruz1994a:11": 0.04592117612664442,
+    "cruz1994a:12": 0.04592117612664441,
+    "cruz1994a:13": 0.0459211761266444,
+    "cruz1994a:14": 0.04592117612664438,
+    "cruz1994a:15": 0.04592117612664437,
+    "cruz1994a:16": 0.04592117612664437,
+    "cruz1994a:17": 0.04592117612664436,
+    "cruz1994a:18": 0.045921176126644356,
+    "cruz1994a:19": 0.045921176126644356,
+    "demelo2024a:0": 0.6011912349230055,
+    "knox1971a:0": 0.15300076606623345,
+    "knox1971a:1": 0.15300076606623345,
+    "knox1971a:2": 0.15300076606623345,
+    "knox1971a:3": 0.15300076606623345,
+    "knox1971a:4": 0.15300076606623345,
+    "knox1971a:5": 0.15300076606623345,
+    "knox1971a:6": 0.15300076606623345,
+    "knox1971a:7": 0.2985675262226611,
+    "knox1971a:8": 0.2985675262226611,
+    "knox1971a:9": 0.15300076606623345,
+    "knox1971a:10": 0.2985675262226611,
+    "knox1971a:11": 0.2985675262226611,
+    "knox1971a:12": 0.2985675262226611,
+    "knox1971a:13": 0.15300076606623345,
+    "knox1971a:14": 0.15300076606623345,
+    "knox1971a:15": 0.15300076606623345,
+    "knox1971a:16": 0.15300076606623345,
+    "knox1971a:17": 0.15300076606623345,
+    "knox1971a:18": 0.15300076606623345,
+    "knox1971a:19": 0.15300076606623345,
+    "knox1971a:20": 0.15300076606623345,
+    "knox1971a:21": 0.2985675262226611,
+    "knox1971a:22": 0.15300076606623345,
+    "knox1971a:23": 0.15300076606623345,
+    "knox1971a:24": 0.15300076606623345,
+    "knox1971a:25": 0.15300076606623345,
+    "knox1971a:26": 0.15300076606623345,
+    "knox1971a:27": 0.15300076606623345,
+    "knox1971a:28": 0.15300076606623345,
+    "knox1971a:29": 0.15300076606623345,
+    "kompanets1979a:0": 0.15300076606623345,
+    "kompanets1979a:1": 0.15300076606623345,
+    "landsberg1976a:0": 0.045921176126644356,
+    "landsberg1976a:1": 0.045921176126644356,
+    "landsberg1976a:2": 0.045921176126644356,
+    "landsberg1976a:3": 0.045921176126644356,
+    "landsberg1976a:4": 0.045921176126644356,
+    "landsberg1976a:5": 0.045921176126644356,
+    "landsberg1976a:6": 0.04592117612664436,
+    "landsberg1976a:7": 0.04592117612664436,
+    "landsberg1976a:8": 0.045921176126644356,
+    "landsberg1976a:9": 0.045921176126644356,
+    "landsberg1976a:10": 0.045921176126644356,
+    "landsberg1976a:11": 0.04592117612664453,
+    "landsberg1976a:12": 0.045921176126644495,
+    "landsberg1976a:13": 0.045921176126644446,
+    "landsberg1976a:14": 0.045921176126644425,
+    "landsberg1976a:15": 0.04592117612664442,
+    "landsberg1976a:16": 0.04592117612664438,
+    "landsberg1976a:17": 0.04592117612664436,
+    "landsberg1976a:18": 0.04592117612664436,
+    "landsberg1976a:19": 0.04592117612664436,
+    "landsberg1976a:20": 0.045921176126644356,
+    "landsberg1976a:21": 0.045921176126644356,
+    "landsberg1976a:22": 0.04592117612664438,
+    "landsberg1976a:23": 0.04592117612664439,
+    "landsberg1976a:24": 0.04592117612664441,
+    "landsberg1976a:25": 0.04592117612664444,
+    "powel2021a:0": 0.4561630489264654,
+    "powel2021a:1": 0.43507627608253285,
+    "powel2021a:2": 0.44557530995747696,
+    "rakowsky1989a:0": 0.47573410499150914,
+    "rakowsky1989a:1": 0.43117344230774546,
+    "rakowsky1989a:2": 0.4348779245845463,
+    "rakowsky1989a:3": 0.4041691474961476,
+    "rakowsky1989a:4": 0.3933365754272551,
+    "rakowsky1989a:5": 0.3971787741822103,
+    "rakowsky1989a:6": 0.4472361418417869,
+    "rakowsky1989a:7": 0.4091279345282839,
+    "rakowsky1989a:8": 0.3180063629674646,
+    "rakowsky1989a:9": 0.3882077903476961,
+    "rakowsky1989a:10": 0.35720302723739733,
+    "rakowsky1989a:11": 0.33330152738023905,
+    "rakowsky1989a:12": 0.25438055556343986,
+    "rakowsky1989a:13": 0.223475442489623,
+    "rakowsky1989a:14": 0.278871613573868,
+    "rakowsky1989a:15": 0.26393037415249926,
+    "rakowsky1989a:16": 0.181063526389438,
+    "samoudi2012a:0": 0.2582717420478309,
+    "samoudi2012a:1": 0.2582717420478309,
+    "samoudi2012a:2": 0.2582717420478309,
+    "samoudi2012a:3": 0.2582717420478309,
+    "samoudi2012a:4": 0.2582717420478309,
+    "samoudi2012a:5": 0.2582717420478309,
+    "samoudi2012a:6": 0.2582717420478309,
+    "shiner1993a:0": 0.17152613320809887,
+    "shiner1993a:1": 0.17363933663687023,
+    "shiner1993a:2": 0.16285459728710944,
+    "shiner1993a:3": 0.16245388078300005,
+    "shiner1993a:4": 0.16129590341319705,
+    "shiner1993a:5": 0.16255658411192025,
+    "shiner1993a:6": 0.18948705460221138,
+    "shiner1993a:7": 0.16431315262114643,
+    "shiner1993a:8": 0.16271607894378678,
+    "shiner1993a:9": 0.19772121073804014,
+    "simonsen1990a:0": 0.04592117612664466,
+    "simonsen1990a:1": 0.045921176126644675,
+    "simonsen1990a:2": 0.045921176126644765,
+    "simonsen1990a:3": 0.04592117612664439,
+    "simonsen1990a:4": 0.0459211761266444,
+    "simonsen1990a:5": 0.045921176126644404,
+    "simonsen1990a:6": 0.04592117612664441,
+    "simonsen1990a:7": 0.045921176126644446,
+    "simonsen1990a:8": 0.04592117612664445,
+    "simonsen1990a:9": 0.04592117612664447,
+    "simonsen1990a:10": 0.045921176126644474,
+    "simonsen1990a:11": 0.04592117612664454,
+    "simonsen1997a:0": 0.045921176126644835,
+    "simonsen1997a:1": 0.04592117612664481,
+    "simonsen1997a:2": 0.04592117612664478,
+    "simonsen1997a:3": 0.0459211761266446,
+    "simonsen1997a:4": 0.045921176126644564,
+    "simonsen1997a:5": 0.04592117612664456,
+    "simonsen1997a:6": 0.04592117612664452,
+    "simonsen1997a:7": 0.04592117612664449,
+    "simonsen1997a:8": 0.045921176126644474,
+    "simonsen1997a:9": 0.04592117612664447,
+    "simonsen1997a:10": 0.04592117612664447,
+    "simonsen1997a:11": 0.045921176126644425,
+    "simonsen1997a:12": 0.04592117612664441,
+    "simonsen1997a:13": 0.04592117612664439,
+    "simonsen1997a:14": 0.04592117612664438,
+    "simonsen1997a:15": 0.04592117612664438,
+    "simonsen1997a:16": 0.04592117612664437,
+    "simonsen1997a:17": 0.04592117612664436,
+    "simonsen1997a:18": 0.045921176126644356,
+    "simonsen1997a:19": 0.045921176126644356,
+    "tesic1975a:0": 0.15300076606623345,
+    "tesic1975a:1": 0.15300076606623345,
+    "tesic1975a:2": 0.15300076606623345,
+    "tesic1975a:3": 0.15300076606623345,
+    "tesic1975a:4": 0.15300076606623345,
+    "tesic1975a:5": 0.15300076606623345,
+    "tesic1975a:6": 0.15300076606623345,
+    "tesic1975a:7": 0.2985675262226611,
+    "tesic1975a:8": 0.2985675262226611,
+    "tesic1975a:9": 0.15300076606623345,
+    "tesic1975a:10": 0.2985675262226611,
+    "tesic1975a:11": 0.2985675262226611,
+    "tesic1975a:12": 0.2985675262226611,
+    "tesic1975a:13": 0.15300076606623345,
+    "tesic1975a:14": 0.15300076606623345,
+    "tesic1975a:15": 0.15300076606623345,
+    "tesic1975a:16": 0.15300076606623345,
+    "tesic1975a:17": 0.15300076606623345,
+    "tesic1975a:18": 0.15300076606623345,
+    "tesic1975a:19": 0.15300076606623345,
+    "tesic1975a:20": 0.15300076606623345,
+    "tesic1975a:21": 0.2985675262226611,
+    "tesic1975a:22": 0.15300076606623345,
+    "tesic1975a:23": 0.15300076606623345,
+    "tesic1975a:24": 0.15300076606623345,
+    "tesic1975a:25": 0.15300076606623345,
+    "tesic1975a:26": 0.15300076606623345,
+    "tesic1975a:27": 0.15300076606623345,
+    "tesic1975a:28": 0.15300076606623345,
+    "tesic1975a:29": 0.15300076606623345,
+    "thang2012a:0": 0.2582717420478309,
+    "thang2012a:1": 0.2582717420478309,
+    "thang2012a:2": 0.2582717420478309
+   },
+   "research-20261021-i2spec": {
+    "borde1981a:0": 0.05200100950363551,
+    "borde1981a:1": 0.052099261946149285,
+    "borde1981a:2": 0.052306920713644775,
+    "borde1981a:3": 0.05285843494099075,
+    "borde1981a:4": 0.05306895798330925,
+    "borde1981a:5": 0.05315399496404806,
+    "borde1981a:6": 0.053717793738963474,
+    "borde1981a:7": 0.053799438942133584,
+    "borde1981a:8": 0.054146314920295334,
+    "borde1981a:9": 0.05449798159591736,
+    "borde1981a:10": 0.055086991518733204,
+    "borde1981a:11": 0.055981867546645046,
+    "borde1981a:12": 0.05630387097094624,
+    "borde1981a:13": 0.056809587869800886,
+    "borde1981a:14": 0.05799866368701025,
+    "borde1981a:15": 0.058787802554663524,
+    "borde1981a:16": 0.0519985763461703,
+    "borde1981a:17": 0.05209376885996889,
+    "borde1981a:18": 0.05286285110050173,
+    "borde1981a:19": 0.053213765117667254,
+    "borde1981a:20": 0.05394631171841129,
+    "borde1981a:21": 0.05414204363100734,
+    "borde1981a:22": 0.05448850806360082,
+    "borde1981a:23": 0.055080297145762944,
+    "borde1981a:24": 0.05534836183579605,
+    "borde1981a:25": 0.05604685749806871,
+    "borde1981a:26": 0.0562025261099041,
+    "borde1981a:27": 0.0567975691928827,
+    "borde1981a:28": 0.05769454803812217,
+    "borde1981a:29": 0.057812759684078265,
+    "borde1981a:30": 0.05804370538128501,
+    "borde1981a:31": 0.05876306025752073,
+    "borde1981a:32": 0.8034135617382577,
+    "borde1981a:33": 1.2884325223082054,
+    "borde1981a:34": 1.4314894771225724,
+    "borde1981a:35": 1.5353415223688938,
+    "borde1981a:36": 1.7623166313316152,
+    "borde1981a:37": 1.9229247289228497,
+    "borde1981a:38": 2.294668389064146,
+    "borde1981a:39": 2.5327915592630714,
+    "borde1981a:40": 2.710103647147437,
+    "borde1981a:41": 3.083702532033903,
+    "borde1981a:42": 3.193702911222675,
+    "borde1981a:43": 3.5801733014713615,
+    "borde1981a:44": 3.7271931896512704,
+    "borde1981a:45": 4.0784507807285175,
+    "borde1981a:46": 1.3130023585462172,
+    "borde1981a:47": 1.1486656048329622,
+    "borde1981a:48": 0.6220794162239683,
+    "borde1981a:49": 0.5141262079815728,
+    "borde1981a:50": 0.3467432445884862,
+    "borde1981a:51": 0.5584318567815858,
+    "borde1981a:52": 0.6448156654380165,
+    "borde1981a:53": 0.7260606996231304,
+    "borde1981a:54": 0.8149812126768861,
+    "borde1981a:55": 0.8163038785702653,
+    "borde1981a:56": 1.006773809741082,
+    "borde1981a:57": 1.3618928407218138,
+    "borde1981a:58": 1.53707411905322,
+    "borde1981a:59": 1.6289674635744877,
+    "chen1998a:0": 0.3291096146051198,
+    "chen1998a:1": 0.051962050615126446,
+    "chen1998a:2": 0.0519676298284027,
+    "chen1998a:3": 0.05207899161733525,
+    "chen1998a:4": 0.05214775446739168,
+    "chen1998a:5": 0.05220601895566026,
+    "chen1998a:6": 0.05230032721560034,
+    "chen1998a:7": 0.05253536032377406,
+    "chen1998a:8": 0.052721897208029916,
+    "chen1998a:9": 0.05289514271027912,
+    "chen1998a:10": 0.05348940222208692,
+    "chen1998a:11": 0.05357949512512318,
+    "chen1998a:12": 0.05363533022444111,
+    "chen1998a:13": 0.05379374575252078,
+    "chen1998a:14": 0.05436789613200512,
+    "chen1998a:15": 0.0547334431063296,
+    "chen1998a:16": 0.05486102395695054,
+    "chen1998a:17": 0.05528331439956726,
+    "chen1998a:18": 0.05775606249819631,
+    "chen1998a:19": 0.05805180625425988,
+    "chen1998a:20": 0.05837731803686889,
+    "chen1998a:21": 0.14901619874776617,
+    "chen1998a:22": 0.18514209867063042,
+    "chen1998a:23": 0.18773524635211147,
+    "chen1998a:24": 0.1832133504889831,
+    "cruz1994a:0": 0.05827549582072259,
+    "cruz1994a:1": 0.05784690347947449,
+    "cruz1994a:2": 0.05744115998999867,
+    "cruz1994a:3": 0.05502777757694641,
+    "cruz1994a:4": 0.05470899804736734,
+    "cruz1994a:5": 0.05466197657123974,
+    "cruz1994a:6": 0.054369284616268755,
+    "cruz1994a:7": 0.05368728481911946,
+    "cruz1994a:8": 0.05360720725763717,
+    "cruz1994a:9": 0.053452079774954385,
+    "cruz1994a:10": 0.05338492102852348,
+    "cruz1994a:11": 0.0528141646384784,
+    "cruz1994a:12": 0.05267865359187204,
+    "cruz1994a:13": 0.05255203514216219,
+    "cruz1994a:14": 0.05221850676386313,
+    "cruz1994a:15": 0.052175239750452844,
+    "cruz1994a:16": 0.0521325263400325,
+    "cruz1994a:17": 0.05209830595422921,
+    "cruz1994a:18": 0.05196272257949354,
+    "cruz1994a:19": 0.05196014764353545,
+    "demelo2024a:0": 1.0982266710192983,
+    "knox1971a:0": 0.1538553366077044,
+    "knox1971a:1": 0.1538547882167948,
+    "knox1971a:2": 0.15385481587405198,
+    "knox1971a:3": 0.15385535596233244,
+    "knox1971a:4": 0.1538547556155875,
+    "knox1971a:5": 0.15385557020914914,
+    "knox1971a:6": 0.1538547606347512,
+    "knox1971a:7": 0.2816298603337304,
+    "knox1971a:8": 0.2816463975310364,
+    "knox1971a:9": 0.15385495259572665,
+    "knox1971a:10": 0.2816392742577302,
+    "knox1971a:11": 0.2816649177772973,
+    "knox1971a:12": 0.2816524876855788,
+    "knox1971a:13": 0.1538549083964894,
+    "knox1971a:14": 0.1538555227299843,
+    "knox1971a:15": 0.15385485314746578,
+    "knox1971a:16": 0.15385582586804472,
+    "knox1971a:17": 0.1538550287579779,
+    "knox1971a:18": 0.15385477926172234,
+    "knox1971a:19": 0.15385488053231028,
+    "knox1971a:20": 0.15385579294035917,
+    "knox1971a:21": 0.2817856424382979,
+    "knox1971a:22": 0.15385485752189274,
+    "knox1971a:23": 0.1538547574453231,
+    "knox1971a:24": 0.15385477983084933,
+    "knox1971a:25": 0.1538549127969449,
+    "knox1971a:26": 0.15385565442695642,
+    "knox1971a:27": 0.1538553590870913,
+    "knox1971a:28": 0.15385478523929025,
+    "knox1971a:29": 0.1538554018952967,
+    "kompanets1979a:0": 0.15385558020043347,
+    "kompanets1979a:1": 0.15385579490296583,
+    "landsberg1976a:0": 0.0519605283189069,
+    "landsberg1976a:1": 0.051964788846603084,
+    "landsberg1976a:2": 0.051971815910938406,
+    "landsberg1976a:3": 0.05196063557791723,
+    "landsberg1976a:4": 0.05196490702421282,
+    "landsberg1976a:5": 0.05196058659666769,
+    "landsberg1976a:6": 0.05206928689495842,
+    "landsberg1976a:7": 0.0520866828909009,
+    "landsberg1976a:8": 0.05196312442400709,
+    "landsberg1976a:9": 0.05197460967489016,
+    "landsberg1976a:10": 0.05196295058627044,
+    "landsberg1976a:11": 0.05445389273291642,
+    "landsberg1976a:12": 0.05396149177745691,
+    "landsberg1976a:13": 0.05327387864400386,
+    "landsberg1976a:14": 0.053005785700381725,
+    "landsberg1976a:15": 0.05284423683498138,
+    "landsberg1976a:16": 0.05222205830635951,
+    "landsberg1976a:17": 0.05211499902218672,
+    "landsberg1976a:18": 0.05203158537034674,
+    "landsberg1976a:19": 0.052015772735233785,
+    "landsberg1976a:20": 0.0519608006697992,
+    "landsberg1976a:21": 0.051980770784625235,
+    "landsberg1976a:22": 0.05221727303835744,
+    "landsberg1976a:23": 0.052481904079286275,
+    "landsberg1976a:24": 0.05275372771055929,
+    "landsberg1976a:25": 0.05315399496404806,
+    "powel2021a:0": 0.8050974208141211,
+    "powel2021a:1": 0.7945460730404992,
+    "powel2021a:2": 0.8011845871094257,
+    "rakowsky1989a:0": 0.8224417470154961,
+    "rakowsky1989a:1": 0.7930071992922879,
+    "rakowsky1989a:2": 0.7952892506388048,
+    "rakowsky1989a:3": 0.7756494435204049,
+    "rakowsky1989a:4": 0.768588156509483,
+    "rakowsky1989a:5": 0.7710761773758679,
+    "rakowsky1989a:6": 0.8091650283743315,
+    "rakowsky1989a:7": 0.7767480541306795,
+    "rakowsky1989a:8": 0.3557091832191733,
+    "rakowsky1989a:9": 0.7628047455057159,
+    "rakowsky1989a:10": 0.7438644736934835,
+    "rakowsky1989a:11": 0.7291995991309498,
+    "rakowsky1989a:12": 0.2805910677970039,
+    "rakowsky1989a:13": 0.24255169894660053,
+    "rakowsky1989a:14": 0.7005801132902574,
+    "rakowsky1989a:15": 0.69332643423969,
+    "rakowsky1989a:16": 0.1875973969293331,
+    "samoudi2012a:0": 0.29534396302939636,
+    "samoudi2012a:1": 0.2953626242691924,
+    "samoudi2012a:2": 0.29535322553570653,
+    "samoudi2012a:3": 0.29534396302939636,
+    "samoudi2012a:4": 0.29533535690264523,
+    "samoudi2012a:5": 0.29528500518225664,
+    "samoudi2012a:6": 0.29527821306670254,
+    "shiner1993a:0": 0.16525877573450742,
+    "shiner1993a:1": 0.16883561238827433,
+    "shiner1993a:2": 0.15081001764373045,
+    "shiner1993a:3": 0.15024424822316954,
+    "shiner1993a:4": 0.14848640751646286,
+    "shiner1993a:5": 0.1505496893143256,
+    "shiner1993a:6": 0.1869558071894124,
+    "shiner1993a:7": 0.15307938328988654,
+    "shiner1993a:8": 0.15042194291759434,
+    "shiner1993a:9": 0.18988364077367784,
+    "simonsen1990a:0": 0.05619790125698173,
+    "simonsen1990a:1": 0.056344776720985285,
+    "simonsen1990a:2": 0.05757878246530086,
+    "simonsen1990a:3": 0.05247485332592975,
+    "simonsen1990a:4": 0.05259839187051624,
+    "simonsen1990a:5": 0.05264176320909471,
+    "simonsen1990a:6": 0.05278070496635763,
+    "simonsen1990a:7": 0.05324268110119673,
+    "simonsen1990a:8": 0.05332788112833527,
+    "simonsen1990a:9": 0.05354222417379841,
+    "simonsen1990a:10": 0.05363577854782843,
+    "simonsen1990a:11": 0.05455384464668913,
+    "simonsen1997a:0": 0.05843170852042375,
+    "simonsen1997a:1": 0.05807259008019583,
+    "simonsen1997a:2": 0.057750040450080656,
+    "simonsen1997a:3": 0.05537116445155767,
+    "simonsen1997a:4": 0.05489010389471084,
+    "simonsen1997a:5": 0.054735437458418724,
+    "simonsen1997a:6": 0.0543274469188934,
+    "simonsen1997a:7": 0.0538413213226719,
+    "simonsen1997a:8": 0.05365044356099741,
+    "simonsen1997a:9": 0.05359346957442868,
+    "simonsen1997a:10": 0.053494345314616255,
+    "simonsen1997a:11": 0.05292462090369988,
+    "simonsen1997a:12": 0.05273132566692925,
+    "simonsen1997a:13": 0.05251789206822297,
+    "simonsen1997a:14": 0.05232948671095194,
+    "simonsen1997a:15": 0.052218186326408116,
+    "simonsen1997a:16": 0.0521503201485836,
+    "simonsen1997a:17": 0.05207206331993497,
+    "simonsen1997a:18": 0.05197004119360709,
+    "simonsen1997a:19": 0.05196306917438896,
+    "tesic1975a:0": 0.1538553366077044,
+    "tesic1975a:1": 0.1538547882167948,
+    "tesic1975a:2": 0.15385481587405198,
+    "tesic1975a:3": 0.15385535596233244,
+    "tesic1975a:4": 0.1538547556155875,
+    "tesic1975a:5": 0.15385557020914914,
+    "tesic1975a:6": 0.1538547606347512,
+    "tesic1975a:7": 0.2816298603337304,
+    "tesic1975a:8": 0.2816463975310364,
+    "tesic1975a:9": 0.15385495259572665,
+    "tesic1975a:10": 0.2816392742577302,
+    "tesic1975a:11": 0.2816649177772973,
+    "tesic1975a:12": 0.2816524876855788,
+    "tesic1975a:13": 0.1538549083964894,
+    "tesic1975a:14": 0.1538555227299843,
+    "tesic1975a:15": 0.15385485314746578,
+    "tesic1975a:16": 0.15385582586804472,
+    "tesic1975a:17": 0.1538550287579779,
+    "tesic1975a:18": 0.15385477926172234,
+    "tesic1975a:19": 0.15385488053231028,
+    "tesic1975a:20": 0.15385579294035917,
+    "tesic1975a:21": 0.2817856424382979,
+    "tesic1975a:22": 0.15385485752189274,
+    "tesic1975a:23": 0.1538547574453231,
+    "tesic1975a:24": 0.15385477983084933,
+    "tesic1975a:25": 0.1538549127969449,
+    "tesic1975a:26": 0.15385565442695642,
+    "tesic1975a:27": 0.1538553590870913,
+    "tesic1975a:28": 0.15385478523929025,
+    "tesic1975a:29": 0.1538554018952967,
+    "thang2012a:0": 0.29534396302939636,
+    "thang2012a:1": 0.29534396302939636,
+    "thang2012a:2": 0.29534396302939636
+   }
+  }
+ },
+ "metrics": {
+  "residual": "observed - predicted (MHz), observed at zero pressure and power",
+  "scores": "per model, partition, kind and set: n, rms, median |r|, mean, rms of r/sigma, fraction within each threshold; paired on targets every compared model predicts",
+  "thresholds_MHz": [
+   0.01,
+   0.03,
+   0.1,
+   0.3,
+   1.0,
+   3.0
+  ]
+ },
+ "uncertainty_note": "sigma is the measurement uncertainty alone; |r|/sigma describes disagreement with the measurement, not model confidence. The primary forecasts also carry the model's frozen 1-sigma (sigma_model_MHz); coverage uses z = r / sqrt(sigma_model^2 + sigma^2)"
+}

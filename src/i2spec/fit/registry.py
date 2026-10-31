@@ -392,14 +392,15 @@ def forecasts(targets, models):
 
 
 def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), root=DATA_DIR, decision=None,
-                    rescore=(), constants=False, constants_root=None, disclosure=None):
+                    rescore=(), constants=False, constants_root=None, disclosure=None, protocol_extra=None):
     """Freeze the forecasts of pending sets into the new folder ``destination``; returns the manifest.
 
     ``sets``: pending set ids (default: every pending set the registries ``after`` do not hold). ``models``: the
     releases to forecast with (ResearchModel ids or roles), the first the primary. ``rescore``: registries among
     ``after`` whose sets are forecast again, in the partition read_before. ``constants``: also every pending set of
-    data/hyperfine_parameters and data/x_hyperfine (under ``constants_root``, default data/). ``disclosure``: values
-    of registered sets seen before freezing, stated in the protocol. Every target and forecast is made before the
+    data/hyperfine_parameters and data/x_hyperfine (under ``constants_root``, default data/), or a collection of set
+    ids: only those. ``disclosure``: values of registered sets seen before freezing, stated in the protocol.
+    ``protocol_extra``: further fields of the protocol (a test's criteria, fixed before any value is read). Every target and forecast is made before the
     folder is created; the manifest, written last, marks a complete registry. An existing destination, a set that
     is not pending and a set an earlier registry holds (unless rescored) are refused."""
     destination = Path(destination)
@@ -429,6 +430,11 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
     if constants:
         croot = Path(constants_root) if constants_root is not None else DATA_DIR.parent
         other = {f: pending_sets(croot / f) for f in (HYPERFINE, X_HYPERFINE)}
+        if constants is not True:
+            named = set(constants)
+            if bad := named - {s for ss in other.values() for s in ss}:
+                raise ValueError(f"only pending constant sets can be registered: {sorted(bad)}")
+            other = {f: [s for s in ss if s in named] for f, ss in other.items()}
         targets += hyperfine_targets(other[HYPERFINE], croot / HYPERFINE)
         targets += x_hyperfine_targets(other[X_HYPERFINE], croot / X_HYPERFINE)
     built, rows = forecasts(targets, models)
@@ -450,6 +456,7 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
         **(dict(constants_scope="eqQ, C, d and delta of every row (a quantity a source did not print is not "
                                 "scored); summaries per kind and quantity") if constants else {}),
         **(dict(disclosure=disclosure) if disclosure else {}),
+        **(protocol_extra or {}),
         metrics=dict(residual="observed - predicted (MHz), observed at zero pressure and power",
                      scores="per model, partition, kind and set: n, rms, median |r|, mean, rms of r/sigma, fraction "
                             "within each threshold; paired on targets every compared model predicts",
