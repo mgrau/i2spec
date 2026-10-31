@@ -7,6 +7,7 @@ no pending set outside the two registries is read.
 """
 import hashlib
 import json
+import math
 import shutil
 from pathlib import Path
 
@@ -20,23 +21,29 @@ V1, V2 = VALIDATION / "pending_blind_v1", VALIDATION / "pending_blind_v2"
 #: v1 sets whose meta.toml gained an [overlaps] declaration after freezing; every v1 and v2 meta.toml was since
 #: reworded too (source and exclude lines), so the input-hash check flags all of them
 OVERLAPS_ADDED = ("jungner1995a", "picard2003a", "zhang1999a")
-PREDICTION_TOL_MHZ = 1e-6       # 1 Hz: the forecasts of an unchanged model differ by a few ulp of the line center
-SIGMA_RTOL = 1e-6
+#: The registries were written on one platform; the arithmetic of another differs in the last digits. Forecasts of an
+#: unchanged model differ by a few ulp of the line center (up to 1.1e-6 MHz); the 1-sigma by up to 1.4e-6 of itself,
+#: well under the smallest intended change of v2's band intervals (1.3e-5); rescored results by a few ulp.
+PREDICTION_TOL_MHZ = 1e-5
+SIGMA_RTOL = 5e-6
+SCORE_RTOL = 1e-9
 
 
 def _load(path):
     return json.loads(Path(path).read_text())
 
 
-def _differences(new, old, path=""):
-    """Every leaf where two JSON values differ: (path, new, old)."""
+def _differences(new, old, path="", rel=0.0):
+    """Every leaf where two JSON values differ (floats by more than rel of themselves): (path, new, old)."""
     if isinstance(new, dict) and isinstance(old, dict):
         return [d for k in sorted(set(new) | set(old), key=str)
-                for d in (_differences(new[k], old[k], f"{path}/{k}") if k in new and k in old else
+                for d in (_differences(new[k], old[k], f"{path}/{k}", rel) if k in new and k in old else
                           [(f"{path}/{k}", new.get(k, "<missing>"), old.get(k, "<missing>"))])]
     if isinstance(new, list) and isinstance(old, list):
         head = [(path, f"{len(new)} items", f"{len(old)} items")] if len(new) != len(old) else []
-        return head + [d for i, (a, b) in enumerate(zip(new, old)) for d in _differences(a, b, f"{path}[{i}]")]
+        return head + [d for i, (a, b) in enumerate(zip(new, old)) for d in _differences(a, b, f"{path}[{i}]", rel)]
+    if isinstance(new, float) and isinstance(old, float):
+        return [] if math.isclose(new, old, rel_tol=rel) else [(path, new, old)]
     return [] if new == old else [(path, new, old)]
 
 
@@ -93,7 +100,7 @@ def test_freezing_refuses_existing_folders_and_sets_that_are_not_blind(tmp_path)
 def _check_scores(new, folder):
     old = _load(folder / "results.json")
     diffs = [d for key in old if key not in ("scored_utc", "meta_changed_since_freeze")
-             for d in _differences(new[key], old[key], key)]
+             for d in _differences(new[key], old[key], key, SCORE_RTOL)]
     assert not diffs, diffs[:20]
 
 
@@ -163,11 +170,11 @@ def test_refreezing_v2_reproduces_its_forecasts(refrozen_v2):
     assert len(predicted) == 502 and all(by_id[k]["isotopologue"] == "127I2" for k in predicted)
     # the released model is the same as v2's for 127I2 (J'' <= 150 here): bit-identical forecasts
     assert all(new[("i2spec", k)]["predicted_MHz"] == new[("balanced_expanded", k)]["predicted_MHz"] for k in predicted)
-    # and both match v2's to numerical noise (intervals within a line exactly)
+    # and both match v2's to numerical noise (intervals within a line to 1 mHz)
     for k in predicted:
         assert new[("i2spec", k)]["predicted_MHz"] == pytest.approx(old[k]["predicted_MHz"], abs=PREDICTION_TOL_MHZ)
         if by_id[k]["kind"] == "intraline":
-            assert new[("i2spec", k)]["predicted_MHz"] == old[k]["predicted_MHz"]
+            assert new[("i2spec", k)]["predicted_MHz"] == pytest.approx(old[k]["predicted_MHz"], abs=1e-9)
     # the targets v2 had no forecast of (the other isotopologues) the released model now forecasts
     others = sorted(set(old) - set(predicted))
     assert len(others) == 196 and {by_id[k]["isotopologue"] for k in others} == {"129I2", "127I129I"}
@@ -176,7 +183,7 @@ def test_refreezing_v2_reproduces_its_forecasts(refrozen_v2):
 
 
 def test_refreezing_v2_reproduces_its_uncertainties_but_for_one_band_intervals(refrozen_v2):
-    """The 1-sigma matches v2's to 1e-6 except for intervals between two lines of one band, whose hyperfine part
+    """The 1-sigma matches v2's to SIGMA_RTOL except for intervals between two lines of one band, whose hyperfine part
     takes the pattern-scale error as common to both lines since v2 was frozen (at most 0.2% of the total)."""
     _, targets, forecasts, _, _ = refrozen_v2
     new = {f["target"]: f for f in forecasts if f["model"] == "i2spec"}
