@@ -1,6 +1,6 @@
 """Whole line lists of the released model: positions and uncertainties as table lookups.
 
-The model (release 20261021, ``ResearchModel("i2spec", isotopologue)``) covers ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I up to
+The model (release 20261030, ``ResearchModel("i2spec", isotopologue)``) covers ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I up to
 J'' = 445 and every level bound, or held behind its centrifugal barrier, to B v' = 80 and X v'' = 108. For every line
 whose levels it holds, the apps give its position, hyperfine components and uncertainty
 (``ResearchModel.uncertainty``); a line it does not hold is flagged OUTSIDE.

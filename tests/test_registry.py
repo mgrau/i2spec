@@ -123,10 +123,14 @@ def test_rescoring_v2_reproduces_its_results(tmp_path):
 
 @pytest.fixture(scope="module")
 def refrozen_v2(tmp_path_factory):
-    """The v2 sets frozen again, after v1, with the released model (primary) and the release v2 forecast with."""
+    """The v2 sets frozen again, after v1, with the model released then (release 20261021, primary) and the release
+    v2 forecast with."""
+    from i2spec import research
     folder = tmp_path_factory.mktemp("registry") / "v2"
-    registry.freeze_registry(folder, list(_load(V2 / "snapshot.json")["data"]), after=[V1],
-                             models=("i2spec", "balanced_expanded"))
+    with pytest.MonkeyPatch.context() as patch:
+        patch.setattr(research, "_RELEASED", "20261021")
+        registry.freeze_registry(folder, list(_load(V2 / "snapshot.json")["data"]), after=[V1],
+                                 models=("i2spec", "balanced_expanded"))
     return registry.read_registry(folder)
 
 

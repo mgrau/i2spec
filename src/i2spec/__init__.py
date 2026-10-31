@@ -6,4 +6,4 @@ from .potentials import XRepPotential, load_potentials
 from .research import ResearchModel
 
 __all__ = ["MHZ_PER_CM", "ResearchModel", "RovibronicModel", "XRepPotential", "load_potentials", "reduced_mass"]
-__version__ = "0.0.1"
+__version__ = "1.0.0"

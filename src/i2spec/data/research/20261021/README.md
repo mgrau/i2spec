@@ -1,8 +1,9 @@
-# Frozen release: October 21, 2026 — the released model
+# Frozen release: October 21, 2026 — the released model before version 1.0.0
 
-One model, `research-20261021-i2spec` (role `i2spec`): the model the apps and the documentation present. It is
-the continued model of release 20261020 for every isotopologue and every J the line lists reach. Select it as
-`i2spec.ResearchModel("i2spec", isotopologue)` or through `i2spec.preferred.model(isotopologue)`.
+One model, `research-20261021-i2spec`: the model the apps and the documentation presented before version 1.0.0,
+which presents release 20261030 (`../20261030/`). It is the continued model of release 20261020 for every
+isotopologue and every J the line lists reach. Select it as
+`i2spec.ResearchModel("research-20261021-i2spec", isotopologue)`.
 
 The release holds only what it adds. `model.json`, `hyperfine.json` and `uncertainty.json` are read from
 [`../20261020/balanced_expanded/`](../20261020/README.md), and their SHA256 must match the ones recorded in

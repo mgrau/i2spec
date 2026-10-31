@@ -1,13 +1,17 @@
-# Frozen release: October 30, 2026 — the final form with its uncertainty calibrated
+# Frozen release: October 30, 2026 — the released model (version 1.0.0)
 
 Release 20261029 (the final form) with its uncertainty model refitted. The coefficients, frequencies and reference
-predictions are those of release 20261029; only `expanded/uncertainty.json` differs. Reached by id:
+predictions are those of release 20261029; only `expanded/uncertainty.json` differs. This is the model the apps and
+the documentation present (role `i2spec`, from version 1.0.0; release 20261021 before it):
 
 ```python
+i2spec.ResearchModel("i2spec", isotopologue)        # or i2spec.preferred.model(isotopologue)
 i2spec.ResearchModel("research-20261030-i2spec", isotopologue)
 ```
 
-Release 20261021 stays the default.
+**Known limitation.** On the locked test (below), hyperfine intervals within a line are covered within 2σ for 78 %
+of the measurements, below the 90 % floor set for it; absolute frequencies (98 %) and the other isotopologues
+(100 %) meet the 95 % target. Most of the shortfall comes from one data set.
 
 ## What changed from release 20261029
 

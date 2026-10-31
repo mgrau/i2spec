@@ -1,5 +1,6 @@
-"""Release 20261021, the released model: the continued model of release 20261020 unchanged for 127I2, carried to 129I2 and 127I129I (isotope
-shift fitted to the CIPM isotopologue lines, hyperfine scaled per nucleus) and to J'' = 445."""
+"""The released model (release 20261030; release 20261021 before it): the continued model of its release unchanged for
+127I2, carried to 129I2 and 127I129I (isotope shift fitted to the CIPM isotopologue lines, hyperfine scaled per
+nucleus) and to J'' = 445."""
 import numpy as np
 import pytest
 
@@ -12,10 +13,11 @@ def models():
 
 
 def test_the_release_extends_the_frozen_model_unchanged(models):
-    entry, base = _entry("i2spec"), _entry("balanced_expanded")
-    assert entry["extends"]["id"] == base["id"]
+    entry = _entry("i2spec")
+    base = _entry(entry["extends"]["id"])
+    assert base["release"] == entry["release"] and base["kind"] == "expanded"
     assert all(base["files_sha256"][k] == v for k, v in entry["extends"]["files_sha256"].items())
-    old, new = ResearchModel("balanced_expanded"), models["127I2"]
+    old, new = ResearchModel(base["id"]), models["127I2"]
     for line in ("R(56) 32-0", "R(98) 58-1", "R(20) 70-0", "P(13) 43-0"):
         assert new.frequency(line) == old.frequency(line)
         assert new.frequency(line, "a1") == old.frequency(line, "a1")

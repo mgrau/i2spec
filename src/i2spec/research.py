@@ -3,12 +3,14 @@
 The model is built in three frozen releases under ``i2spec/data/research``: the exact-J core fit of ¹²⁷I₂
 (20261018: MLR potentials and radial hyperfine functions to X v'' <= 17, B v' <= 43, J'' <= 200), its continuation to
 X v'' <= 108 and B v' <= 80 with the uncertainty model (20261020, ``research_expanded``), and the released model
-(20261021): the same for ¹²⁹I₂ and ¹²⁷I¹²⁹I and up to J'' = 445. ``ResearchModel("i2spec", isotopologue)`` is the
-released model; the earlier releases are read only as its parts. No coefficient is specific to a line or level.
-Release 20261029 rebuilds all three parts in their final form on the same training data, for the blind test of the
-pending sets. Its models carry the same roles, and a role resolves to the first release that has it, so they are
-reached by id (``ResearchModel("research-20261029-i2spec", isotopologue)``). Release 20261030 is release 20261029
-with its uncertainty model refitted on the cross-validation and the calibrate sets together (decision 2, step 4).
+(20261021): the same for ¹²⁹I₂ and ¹²⁷I¹²⁹I and up to J'' = 445. Release 20261029 rebuilds all three parts in their
+final form on the same training data, for the blind test of the pending sets, and release 20261030 is release 20261029
+with its uncertainty model refitted on the cross-validation and the calibrate sets together. No coefficient is
+specific to a line or level.
+
+Release 20261030 is the released model (version 1.0.0): the role "i2spec" resolves to it,
+``ResearchModel("i2spec", isotopologue)``. The other roles resolve to the first release that has them (the parts of
+release 20261021, which the fit pipeline rebuilds); every model is also reached by its id.
 """
 from __future__ import annotations
 
@@ -36,6 +38,8 @@ from .observations import component_rank
 
 _RELEASE = "20261018"
 _RELEASES = (_RELEASE, "20261020", "20261021", "20261029", "20261030")
+#: The released model: the role "i2spec" resolves to this release
+_RELEASED, _PUBLIC_ROLE = "20261030", "i2spec"
 #: A candidate release (a folder with its own manifest.json) searched before the installed ones, so that its models
 #: take over their roles: for rebuilding the fit stages on a new core and continuation. Never set for users.
 _CANDIDATE = os.environ.get("I2SPEC_RESEARCH_CANDIDATE")
@@ -63,7 +67,10 @@ def _entries():
 
 
 def _entry(name):
-    for value in _entries():
+    entries = _entries()
+    if name == _PUBLIC_ROLE:          # a candidate first, then the released model
+        entries = sorted(entries, key=lambda e: (e["release"] != _CANDIDATE, e["release"] != _RELEASED))
+    for value in entries:
         if name in (value["id"], value["role"]):
             return value
     choices = ", ".join(value["id"] for value in _entries())

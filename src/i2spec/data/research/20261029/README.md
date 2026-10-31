@@ -9,7 +9,8 @@ release that has it, so these are reached by id:
 i2spec.ResearchModel("research-20261029-i2spec", isotopologue)
 ```
 
-Release 20261021 stays the default.
+Release 20261030 (`../20261030/`) is this release with its uncertainty model refitted, and is the released model
+from version 1.0.0.
 
 ## What changed from release 20261021
 

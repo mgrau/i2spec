@@ -16,12 +16,12 @@ def test_releases_and_ledgers():
     assert [m.role for m in models] == ["balanced", "balanced_expanded", "i2spec"]*3
     assert [(m.inventory.fitted_molecular, m.inventory.inherited_molecular, m.inventory.fitted_calibration)
             for m in models] == [(61, 18, 4), (105, 73, 5), (107, 75, 5)]+[(63, 18, 4), (106, 73, 5), (106, 75, 5)]*2
-    # releases 20261029 (the final form) and 20261030 (its uncertainty refitted) are reached by id; each role
-    # resolves to the first release that has it
-    assert [_entry(m.role)["id"] for m in models[:3]] == [m.id for m in models[:3]]
+    # release 20261030 (the final form, its uncertainty refitted) is the released model: the role "i2spec" resolves
+    # to it; the parts' roles resolve to the first release that has them (release 20261021's, which the fit rebuilds)
+    assert [_entry(m.role)["id"] for m in models[:2]] == [m.id for m in models[:2]]
     assert [m.id for m in models[3:]] == [f"research-{r}-{n}" for r in ("20261029", "20261030")
                                           for n in ("core", "expanded", "i2spec")]
-    assert DEFAULT_PARAMETERS == _entry("i2spec")["id"] == "research-20261021-i2spec"
+    assert DEFAULT_PARAMETERS == _entry("i2spec")["id"] == "research-20261030-i2spec"
     assert all(m.inventory.line_specific == m.inventory.level_specific == 0 for m in models)
     with pytest.raises(FrozenInstanceError):
         models[0].inventory.fitted_molecular = 1

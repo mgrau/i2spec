@@ -10,9 +10,11 @@ B-state hyperfine functions. These are fitted in one problem to every precision 
 Fourier-transform atlases with X v″ ≤ 17 and B v′ ≤ 43, then continued to both dissociation limits
 (X v″ ≤ 108, B v′ ≤ 80) by terms that act only beyond that core. It has no correction to any individual level
 or line. Every prediction comes with a 1σ from a frozen uncertainty model: the fit's covariance, plus the
-error of predicting levels and hyperfine intervals held out of the fit. It predicts held-out comb data to
-0.16 MHz (absolute components) and 0.06 MHz (hyperfine intervals), and on 35 data sets scored blind against
-frozen predictions 90 % of the measurements lie within 2σ.
+error of predicting levels and hyperfine intervals held out of the fit, calibrated on data sets kept out of it.
+It predicts held-out comb data to 0.18 MHz (absolute components) and 0.05 MHz (hyperfine intervals). Scored once
+on 17 locked-test data sets that no fit or calibration used, 88 % of 164 measurements lie within 2σ: 98 % of the
+absolute frequencies and every measurement of the other isotopologues, but only 78 % of the hyperfine intervals,
+most of the shortfall from one data set ([release notes](src/i2spec/data/research/20261030/README.md)).
 
 ¹²⁹I₂ and ¹²⁷I¹²⁹I use the same potentials at their own reduced mass, with a Born–Oppenheimer correction of two
 coefficients fitted to the CIPM isotope shifts (each line predicted from the others to 0.08 MHz) and the
@@ -45,8 +47,8 @@ zoom, `[`/`]` pan, `c` centers on the selected line, `l` toggles a log scale, an
 lower plot between the selected line's Doppler profile and its sub-Doppler trace (Lamb dips and
 crossovers). `s` sorts by strength, `a` shows the weak ΔF ≠ ΔJ components, `/` returns to the search box.
 
-Positions carry a 1σ uncertainty and the reason for it: 0.2–1 MHz in the core, 1–30 MHz for most levels
-beyond it, and 0.1–0.2 GHz for the last X levels; lines whose levels lie beyond the data are flagged
+Positions carry a 1σ uncertainty and the reason for it: 0.2–1 MHz in the core, 1–40 MHz for most levels
+beyond it (to B v′ 70 and X v″ 80), and 0.1–0.4 GHz for the last B and X levels; lines whose levels lie beyond the data are flagged
 *extrapolated*. `i2spec line` also gives each hyperfine component's 1σ. Every measurement of a line is listed
 beside the model, with its own uncertainty.
 
@@ -77,9 +79,9 @@ Pages (Settings → Pages → Source: GitHub Actions).
 from i2spec.preferred import model
 
 m = model()                                        # the model, for 127I2 (model("129I2") for another)
-m.frequency("R(56) 32-0", "a10")                   # ≈ 563 260 223.36 MHz (CIPM: 563 260 223.513 MHz)
-u = m.uncertainty("R(56) 32-0", "a10")             # 1σ 0.42 MHz: statistical, model and hyperfine parts
-m.uncertainty("R(56) 32-0", "a15", "a1").sigma_MHz # 0.058 MHz for an interval within the line
+m.frequency("R(56) 32-0", "a10")                   # ≈ 563 260 223.41 MHz (CIPM: 563 260 223.513 MHz)
+u = m.uncertainty("R(56) 32-0", "a10")             # 1σ 0.39 MHz: statistical, model and hyperfine parts
+m.uncertainty("R(56) 32-0", "a15", "a1").sigma_MHz # 0.20 MHz for an interval within the line
 ```
 
 The published 2008 model (the potentials of Salumbides et al., for comparison):
@@ -109,7 +111,7 @@ uv run i2spec model verify           # replay its frozen reference predictions
 |---|---|
 | `src/i2spec/` | the package: the model, radial solvers, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
 | `src/i2spec/data/` | the published 2008 potentials, for comparison |
-| [`src/i2spec/data/research/`](src/i2spec/data/research/20261021/README.md) | the model's frozen releases: coefficients, hyperfine tables, uncertainty model, audits, reference predictions and the blind tests |
+| [`src/i2spec/data/research/`](src/i2spec/data/research/20261030/README.md) | the model's frozen releases: coefficients, hyperfine tables, uncertainty model, audits, reference predictions and the blind tests |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
 | `data/catalog/` | the literature catalog: every data source found, with DOIs |

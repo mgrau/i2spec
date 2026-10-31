@@ -1,9 +1,9 @@
 # Frozen release: October 20, 2026 — the continued model
 
 The core fit of the [October 18 release](../20261018/README.md) continued to X v'' ≤ 108 and B v' ≤ 80, with its
-uncertainty model (artifact identifier `research-20261020-balanced-expanded`). The released model
-(`../20261021/`) extends it to the other isotopologues and to J'' = 445; select that one, as
-`i2spec.preferred.model(isotopologue)`.
+uncertainty model (artifact identifier `research-20261020-balanced-expanded`). Release 20261021 (`../20261021/`)
+extends it to the other isotopologues and to J'' = 445. The released model is release 20261030 (`../20261030/`),
+as `i2spec.preferred.model(isotopologue)`.
 
 `balanced_expanded/model.json` holds the new terms and settings only. The base coefficients are
 read at load time from `../20261018/balanced/model.json`, and their SHA256 must match the one

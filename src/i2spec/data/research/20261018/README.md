@@ -11,4 +11,4 @@ The files under `balanced/` are byte-for-byte copies of the verified snapshot, c
 `reference_predictions.json` holds 60 absolute and 592 intraline predictions, which the package reproduces within
 1 Hz. These are reproduction checks, not independent predictive validation.
 
-The released model (`../20261021/`) reads these coefficients as its core.
+Release 20261021 (`../20261021/`) reads these coefficients as its core; the released model, release 20261030, has its own core.
