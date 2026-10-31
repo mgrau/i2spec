@@ -64,7 +64,7 @@ table of measured values:
     p(v', J') = \sum_n b_{p,n}\,\langle z^n\rangle_{v'J'},\qquad z = \frac{R^2-R_e^2}{R^2+R_e^2}\Big/0.35, \tag{3}
     $$
 
-    with 5, 5, 3 and 1 coefficients for eqQ, C, d and δ. These 14 coefficients were fitted together with the
+    with 6, 5, 3 and 1 coefficients for eqQ, C, d and δ. These 15 coefficients were fitted together with the
     potentials (see [Rovibrational levels](levels.md)), to the measured hyperfine intervals and the absolute
     frequencies of individual components. A level with no hyperfine data of its own gets its parameters from
     its wavefunction.
@@ -97,7 +97,7 @@ take them from the same functions:
 - **Per nucleus.** eqQ scales with the nuclear quadrupole moment, C with the nuclear g-factor, and d and δ with
   the product of the two g-factors. The ratios for ¹²⁹I against ¹²⁷I are 0.701 213 (Q) and 0.6655 (g), from
   Salumbides *et al.* (2006). In ¹²⁷I¹²⁹I the two nuclei carry different eqQ and C.
-- **At the same energy.** In the core, a B level's parameters are the radial functions of Eq. (4) averaged over
+- **At the same energy.** In the core, a B level's parameters are the radial functions of Eq. (3) averaged over
   its own wavefunction. An X level's come from the formulae of Bodermann *et al.* at the ¹²⁷I₂ vibrational
   quantum number of the same J = 0 energy (not an integer) and at ρ J(J + 1), ρ = μ(¹²⁷I₂)/μ: the same
   rotational stretching. Beyond the core, the tabulated ¹²⁷I₂ constants are interpolated at that equivalent level.
@@ -121,9 +121,10 @@ increasing frequency, as in the BIPM tables.
 </figure>
 
 !!! note "Accuracy of the hyperfine offsets"
-    Every component carries its own 1σ (see [Uncertainty estimates](uncertainty.md#hyperfine-part)). A
-    hyperfine interval within a ¹²⁷I₂ line is good to about 0.06 MHz below v′ = 44, 0.15–1 MHz at
-    v′ = 44–55, and a few MHz near v′ = 60. Beyond that the uncertainty grows to about 1 % of the interval
-    at v′ = 75. These values were fitted to intervals and constants held out of the fit. For ¹²⁹I₂ and
-    ¹²⁷I¹²⁹I a floor of 0.10 MHz per component is added, the excess of the CIPM intervals over their stated
-    uncertainties.
+    Every component carries its own 1σ (see [Uncertainty estimates](uncertainty.md#hyperfine-part)). The
+    widest interval within a ¹²⁷I₂ line, a15 − a1 of R(20), is good to about 0.2 MHz up to v′ = 44, 0.6 MHz at
+    v′ = 50, 1.6 MHz at v′ = 55 and 4 MHz at v′ = 60; beyond that the uncertainty grows to 20 MHz at v′ = 70
+    and 60 MHz at v′ = 75. These values were fitted to intervals and constants held out of the fit. On the
+    locked test the intervals within a line were covered less well than these values claim (see
+    [Uncertainty estimates](uncertainty.md#the-locked-test)). For ¹²⁹I₂ and ¹²⁷I¹²⁹I a floor of 0.10 MHz per
+    component is added, the excess of the CIPM intervals over their stated uncertainties.

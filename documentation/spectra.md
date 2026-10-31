@@ -27,12 +27,12 @@ the transition moment is evaluated on; the line positions and E″ come from the
 Bands whose upper level lies near a node of the overlap with the lower level depend sharply on where each
 potential sits in R, which the line positions alone do not fix (the shape of a potential trades against its
 rotational function). Measured intensities test it. In three Fourier-transform cell spectra (Debus 2023 and
-the two pyodine cells, 20 000–24 000 lines each), the line strength implied by each line's integrated
-absorbance, relative to its spectral window's column density, scatters about the model by 1.3 %, 2.7 % and
-3.8 % (robust standard deviations of the logarithm). The 2008 potentials' wavefunctions give 1.9 %, 3.5 % and
-3.9 %. The v″ = 1 bands near the overlap's node show the difference best: 41-1 lies 8–10 % below the 2008
-potentials' strengths in all three spectra and within 2 % of the model's, and 40-1 does the same in the SONG
-spectrum (−11 % against +1 %), though not in the Fischer spectrum (+4 % against +15 %).
+the two pyodine cells, 28 000–33 000 unblended lines each), the line strength implied by each line's integrated
+absorbance, relative to its spectral window's column density, scatters about the model by 1.7 %, 3.3 % and
+4.5 % (robust standard deviations of the logarithm about its median). The 2008 potentials' wavefunctions give
+2.3 %, 4.1 % and 4.7 %. The v″ = 1 bands near the overlap's node show the difference best: 41-1 lies 7–9 % below
+the 2008 potentials' strengths in all three spectra and within 2 % of the model's, and 40-1 does the same in the
+SONG spectrum (−10 % against +1 %), though not in the Fischer spectrum (+4 % against +16 %).
 Only f depends on temperature. The line list therefore stores the temperature-independent quantity
 S₀ = S Q(T) exp(c₂E″/T), from which S is obtained for any T.
 

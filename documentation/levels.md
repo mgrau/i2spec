@@ -31,12 +31,12 @@ for it there is no adiabatic correction term, and the other isotopologues' corre
 
 | i | α<sub>i</sub>, X ¹Σg⁺ | α<sub>i</sub>, B ³Π(0u⁺) |
 |--:|--:|--:|
-| 0 | 1.311 810 × 10⁻⁵ | −9.546 549 × 10⁻³ |
-| 1 | 2.058 615 × 10⁻⁵ | −1.575 361 × 10⁻² |
-| 2 | | −8.614 338 × 10⁻³ |
-| 3 | | −3.017 776 × 10⁻³ |
-| 4 | | −6.025 725 × 10⁻⁴ |
-| 5 | | −6.359 487 × 10⁻⁵ |
+| 0 | 2.818 354 × 10⁻⁵ | −9.537 547 × 10⁻³ |
+| 1 | 3.398 316 × 10⁻⁵ | −1.576 732 × 10⁻² |
+| 2 | | −8.654 298 × 10⁻³ |
+| 3 | | −3.065 721 × 10⁻³ |
+| 4 | | −6.334 718 × 10⁻⁴ |
+| 5 | | −7.437 785 × 10⁻⁵ |
 
 *Table 1. Coefficients of the rotational function q(R), Eq. (2), from the core fit.*
 
@@ -69,7 +69,8 @@ where y<sup>e</sup> uses r = R<sub>e</sub> and y<sup>ref</sup> uses r = R<sub>re
 scale 0.6 map y<sub>q</sub><sup>ref</sup> = −0.4 … 0.8 onto −1 … 1, as in Eq. (2). For any values of the fitted coefficients
 c<sub>i</sub>, Eq. (3) gives V(R<sub>e</sub>) = T<sub>e</sub> and V(R) → T<sub>e</sub> + D<sub>e</sub> − u(R) at long range. The dispersion
 coefficients C<sub>n</sub> are taken from the literature, so the long-range behavior does not depend on the
-fit. Table 2 gives the settings and the main constants.
+fit. The B potential has no free dissociation energy: its limit is that of X plus the atomic fine-structure
+splitting, 7 602.9762 cm⁻¹, exactly. Table 2 gives the settings and the main constants.
 
 | | X ¹Σg⁺ | B ³Π(0u⁺) |
 |---|---|---|
@@ -77,24 +78,27 @@ fit. Table 2 gives the settings and the main constants.
 | exponent coefficients c<sub>i</sub> | 14 | 20 |
 | rotational coefficients α<sub>i</sub> | 2 | 6 |
 | R<sub>e</sub> | 2.66638 Å | 3.02672 Å |
-| D<sub>e</sub> | 12 547.34 cm⁻¹ | 4 381.25 cm⁻¹ |
+| D<sub>e</sub> | 12 547.34 cm⁻¹ | 4 381.26 cm⁻¹ (from the limit of X) |
 | T<sub>e</sub> | 0 | 15 769.066 cm⁻¹ |
 | C<sub>n</sub> (inherited), cm⁻¹ Åⁿ | C₆ 1.48 × 10⁶, C₈ 3.86 × 10⁷, C₁₀ 1.0 × 10⁸ | C₅ 3.161 × 10⁵, C₆ 1.506 × 10⁶, C₈ 2.48 × 10⁷, C₁₀ 4.2 × 10⁸ |
 
 *Table 2. The MLR potentials of the core fit.*
 
-These potentials, with the B hyperfine functions of the [hyperfine page](hyperfine.md), make up the **core
-fit**. Its 61 coefficients (47 for the potentials, 14 for the B hyperfine functions)
-were fitted in one least-squares problem to two kinds of data:
+These potentials, with the B hyperfine functions of the [hyperfine page](hyperfine.md) and the isotope shift
+of the [last section](#isotopologues), make up the **core fit**. Its 63 coefficients (46 for the potentials,
+2 for the isotope shift, 15 for the B hyperfine functions) were fitted in one least-squares problem to three
+kinds of data:
 
 - every precision measurement of ¹²⁷I₂ with X v″ ≤ 17 and B v′ ≤ 43: frequency-comb and
   Doppler-free absolute frequencies of individual hyperfine components, and hyperfine intervals;
 - the lines of two Fourier-transform atlases (Salami & Ross 2005; the NIST scan of the APO cell). Each
-  atlas's scale was calibrated against the precision data with an offset and a slope.
+  atlas's scale was calibrated against the precision data with an offset and a slope;
+- the six line centers of ¹²⁹I₂ and ¹²⁷I¹²⁹I in the CIPM compilation. They separate the shape of each
+  potential from its rotational function, which the ¹²⁷I₂ levels alone leave open.
 
 The 29 precision data sets transcribed last were held out of the fit as a benchmark. The 515 nm reference line P(13) 43-0 is left out of every fit and score and kept as a
-diagnostic. The core fit predicts the 60 held-out absolute component frequencies to 0.156 MHz rms and the
-592 held-out hyperfine intervals to 0.059 MHz.
+diagnostic. The core fit predicts the 60 held-out absolute component frequencies to 0.18 MHz rms (the 34 lines
+they belong to, to 0.16 MHz) and the 578 held-out hyperfine intervals to 0.049 MHz.
 
 ### Continuation to both dissociation limits
 
@@ -110,36 +114,36 @@ fixed knots:
   term vanish at R → ∞, so the asymptote stays the inherited dispersion series.
     - X: 12 outer terms beyond 3.08 Å, 1 inner term inside 2.42 Å (to the solver's inner end, 2.1 Å) and
       1 rotational term beyond 3.08 Å.
-    - B: 10 outer terms and 3 rotational terms beyond 4.45 Å.
+    - B: 10 outer terms and 2 rotational terms beyond 4.45 Å.
 - **A change of C₆ for X**, switched on beyond its knot as t³: +3.3 %.
 - **A local correction to the X potential**: nine cubic B-splines on knots 4.2, 4.4, …, 6.6 Å, added to
   V(R). Beyond about 5 Å the MLR exponent barely reshapes V, and the levels near the X limit turn there.
 - **One change of the dissociation energy**, shared by X and B so that their limits keep the atomic
-  fine-structure splitting: +0.0135 cm⁻¹, switched on beyond the outer knots.
+  fine-structure splitting: +0.0077 cm⁻¹, switched on beyond the outer knots.
 
-The new terms (38 free, with an offset of the Orsay Partie IV atlas) were fitted to 46 964 rows: every
+The new terms (37 free, with an offset of the Orsay Partie IV atlas) were fitted to 46 964 rows: every
 training row of the core fit, which protects the core, together with the measurements beyond it:
 
 | levels | data | held out, rms |
 |---|---|---|
 | X v″ = 18–25 | 3 700 lines of the Orsay atlas part I (Gerstenkorn, Vergès & Chevillard 1982) | 55 MHz |
-| X v″ = 26–89 | level constants of Martin *et al.* (1986) | 44–122 MHz |
-| X v″ = 48–54 | comb-referenced emission lines (Matyugin 2012, Nesterenko 2019) | 37 MHz |
-| X v″ = 90–108 | levels of Martin *et al.* (1983) at v″ = 93, 97, 102, 103, 106 | 0.66 GHz |
-| B v′ = 44–50 | comb-referenced lines (Matsunaga 2024, Yoshiki 2023, Ikeda 2022, …), APO and Salami & Ross atlases | 1.4 MHz (comb), 22–33 MHz (atlases) |
-| B v′ = 51–62 | comb-referenced lines (Sakamoto 2024, Goncharov 2007, BIPM 2005), APO atlas | 10.5 MHz (comb, 3 rows), 38 MHz (atlas) |
-| B v′ = 51–80 | 2 079 unblended lines of the Orsay atlas Partie IV (Gerstenkorn & Luc 1983) | 62–207 MHz |
+| X v″ = 26–89 | level constants of Martin *et al.* (1986) | 46–122 MHz |
+| X v″ = 48–54 | comb-referenced emission lines (Matyugin 2012, Nesterenko 2019) | 39 MHz |
+| X v″ = 90–108 | levels of Martin *et al.* (1983) at v″ = 93, 97, 102, 103, 106 | 0.68 GHz |
+| B v′ = 44–50 | comb-referenced lines (Matsunaga 2024, Yoshiki 2023, Ikeda 2022, …), APO and Salami & Ross atlases | 1.5 MHz (comb), 22–33 MHz (atlases) |
+| B v′ = 51–62 | comb-referenced lines (Sakamoto 2024, Goncharov 2007, BIPM 2005), APO atlas | 12 MHz (comb, 3 rows), 40 MHz (atlas) |
+| B v′ = 51–80 | 2 079 unblended lines of the Orsay atlas Partie IV (Gerstenkorn & Luc 1983) | 62–198 MHz |
 
 *Table 3. Data beyond the core, and how well a level is predicted when all its rows are held out (four
 folds by v, the final settings).*
 
 The held-out column is the hardest test: every row of a level is removed and the level is predicted from
-its neighbors. Within the core, the continued model reproduces the core fit. Every training row of the final
-fit is reproduced to 1.4 kHz.
+its neighbors. Within the core, the continued model reproduces the core fit. The package reproduces the fit's own
+predictions of 842 line centers, 2 586 components and 1 434 intervals within 2.4 Hz.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/published_vs_mlr.svg" role="img" aria-label="Difference between the 2008 potentials and the model's for X and B"></div>
-<figcaption markdown="span">**Figure 2.** The potentials of Salumbides *et al.* (2008) minus the model's, for X (left) and B (right). The shaded interval is the core, where the model's curves are the frozen core fit. The 2008 X curve was fitted only to v″ ≤ 17; beyond 3.1 Å it differs by up to 340 cm⁻¹, which moves its high levels by up to 20 cm⁻¹. Inside the core the two models give the same B levels (within 0.0003 cm⁻¹ at J = 0, v′ ≤ 43), yet their B potentials differ by up to 2 cm⁻¹: a potential and its rotational function q(R) are not determined separately by the levels, and each model's q(R) takes up part of the shape.</figcaption>
+<figcaption markdown="span">**Figure 2.** The potentials of Salumbides *et al.* (2008) minus the model's, for X (left) and B (right). The shaded interval is the core, where the model's curves are the frozen core fit. The 2008 X curve was fitted only to v″ ≤ 17; beyond 3.1 Å it differs by up to 340 cm⁻¹, which moves its levels above v″ ≈ 60 by 90–190 cm⁻¹. Inside the core the two models give the same B levels (within 0.0005 cm⁻¹ at J = 0, v′ ≤ 43), yet their B potentials differ by up to 2 cm⁻¹ beyond 2.9 Å, and by more on the steep inner wall: a potential and its rotational function q(R) are not determined separately by the levels, and each model's q(R) takes up part of the shape.</figcaption>
 </figure>
 
 ## Numerical solution
@@ -184,28 +188,29 @@ $$
 \Delta V_B(R) = (1-\rho)\,(1-y)^{p}\,(a_0 + a_1\,y),\qquad y = \frac{R-R_e}{R+R_e}, \tag{5}
 $$
 
-with p = 5, R<sub>e</sub> the B equilibrium distance, a₀ = −0.1517 cm⁻¹ and a₁ = −1.761 cm⁻¹. 1 − ρ is 0.015 52 for
-¹²⁹I₂ and 0.007 76 for ¹²⁷I¹²⁹I. No ¹²⁷I₂ coefficient changes.
+with p = 5, R<sub>e</sub> the B equilibrium distance, a₀ = −0.1518 cm⁻¹ and a₁ = −1.757 cm⁻¹. 1 − ρ is 0.015 52 for
+¹²⁹I₂ and 0.007 76 for ¹²⁷I¹²⁹I.
 
-a₀ and a₁ were fitted to the isotope shifts of the CIPM compilation (BIPM 2003): six ¹²⁹I₂ lines at 633 and
-532 nm (v′ = 6–14, J″ = 33–113) and one ¹²⁷I¹²⁹I line at 633 nm, each tied through measured intervals to a measured
-¹²⁷I₂ frequency, with the line centers taken from the model's own hyperfine patterns. Mass scaling alone puts the
-¹²⁹I₂ lines 73–76 MHz above their measured positions and the ¹²⁷I¹²⁹I line 36 MHz above, half as much, as 1 − ρ
-predicts. A constant shift predicts each line from the other six to 1.2 MHz rms; Eq. (6) does so to 0.08 MHz. The
-power p was chosen by that leave-one-line-out rms among p = 0, 3, 5 and 8 (0.18, 0.13, 0.08 and 0.17 MHz).
+a₀ and a₁ are fitted in the core fit, together with the ¹²⁷I₂ coefficients, to the six isotopologue line centers
+of the CIPM compilation (BIPM 2003): five ¹²⁹I₂ lines at 633 and 532 nm (v′ = 6–14, J″ = 33–113) and one ¹²⁷I¹²⁹I
+line at 633 nm, each tied through measured intervals to a measured ¹²⁷I₂ frequency, with the line centers taken
+from the model's own hyperfine patterns. Mass scaling alone puts the ¹²⁹I₂ lines 73–76 MHz above their measured
+positions and the ¹²⁷I¹²⁹I line 36 MHz above, half as much, as 1 − ρ predicts. Eq. (5) predicts each line from
+the other five to 0.08 MHz rms. The power p was chosen by that leave-one-line-out rms among p = 0, 3, 5 and 8
+(0.14, 0.11, 0.08 and 0.22 MHz).
 
 | B v′ | 0 | 14 | 32 | 43 | 60 | 78 |
 |---|---:|---:|---:|---:|---:|---:|
-| ¹²⁹I₂, MHz | −70.8 | −75.2 | −79.5 | −78.7 | −63.6 | −19.5 |
-| spread of the forms p = 3, 8 | 0.1 | 0.3 | 2.7 | 6.8 | 17.5 | 19.4 |
+| ¹²⁹I₂, MHz | −70.8 | −75.1 | −79.4 | −78.6 | −63.6 | −19.5 |
+| spread of the forms p = 3, 8 | 0.1 | 0.5 | 3.2 | 7.7 | 17.8 | 24.6 |
 
 *Table 4. The isotope shift of B levels (J = 0) of ¹²⁹I₂, Eq. (5), and how far the equally good forms with p = 3
 and 8 differ from it; ¹²⁷I¹²⁹I has half these values. The spread is part of each line's uncertainty.*
 
 The ground-state levels that Cerny, Bacis & Vergès (1986) derived from fluorescence, v″ = 4–108, test the X curve
 at the other masses. For ¹²⁹I₂ the term values G(v) − G(8) agree with the model within their stated
-uncertainties (median |z| 0.3–1.3 by range of v). For ¹²⁷I¹²⁹I they lie 0.1–0.4 GHz below the model (median
-|z| 1.2–3.0); an error of the potential would show twice as strongly in ¹²⁹I₂.
+uncertainties (median |z| 0.3–1.4 by range of v). For ¹²⁷I¹²⁹I they lie 0.1–0.4 GHz above the model (median
+|z| 1.2–2.8); an error of the potential would show twice as strongly in ¹²⁹I₂.
 
 The model holds every level with X v″ ≤ 108 (109 for ¹²⁹I₂), B v′ ≤ 80 (81 for ¹²⁹I₂) and J ≤ 446 that is bound
 or held behind its centrifugal barrier.

@@ -61,7 +61,7 @@ def turning_points(V, R, E):
     return R[inside[0]], R[inside[-1]]
 
 
-model = preferred.model()                       # the model (release 20261021), 127I2
+model = preferred.model()                       # the released model, 127I2
 ext = model._levels_x.potentials                # its X and B potentials, V(R) in cm-1
 LIMIT = model._levels_x.asymptote               # their dissociation asymptotes
 CORE = model._spec["core"]                      # the highest levels of the core fit: X 17, B 43

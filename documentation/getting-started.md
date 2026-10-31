@@ -103,7 +103,7 @@ print(nu, nu * MHZ_PER_CM)
 # nu0 and the component offsets in MHz
 nu0, comps = m.hyperfine_components(32, 0, 56, "R")
 a10 = next(c for c in comps if c.label == "a10")
-# 563 260 223.52 MHz (CIPM value: 563 260 223.513 MHz)
+# 563 260 223.43 MHz (CIPM value: 563 260 223.513 MHz)
 print(nu0 + a10.offset)
 ```
 
