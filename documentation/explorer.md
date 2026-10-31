@@ -49,12 +49,19 @@ for every line without the ΔJ = ±2 couplings of the hyperfine Hamiltonian; thi
 offsets by less than 1 MHz (0.9 MHz for R(56) 32–0), which is small compared with the Doppler width.
 The detail panel shows the full calculation, including these couplings, where it is available.
 
+Once the view resolves the components (the one under the pointer is at least 4 pixels nearer than any other), a
+click on the spectrum selects a single main component rather than the nearest line, and hovering names it. The
+spectrum marks it, the detail panel gives its wavelength, frequency, offset from the line center, 1σ and
+relative strength, and its row is highlighted in the hyperfine table and among the measurements. A row of the
+hyperfine table selects its component too. A click on a measurement's dot selects that measurement's component.
+
 ## Measurement against the model
 
 Below the same 0.1 nm, every measured absolute frequency in view is drawn against the model, in two ways:
 
-- **A strip under the spectrum** gives measured − model in MHz for each measured component (or line
-  center, for an atlas line). Each measurement is a dot at the model's position of its component,
+- **A strip under the spectrum** gives measured − model for each measured component (or line center, for an
+  atlas line), on its own vertical scale in MHz (GHz when only atlas lines are in view). The strip takes its
+  height from the line table, so the spectrum keeps its own. Each measurement is a dot at the model's position of its component,
   with its own 1σ as a vertical bar. The gray box behind it is the model's 1σ for that component. Several
   measurements of one component stand side by side. A hollow dot is a source that no fit uses: a set held
   out for the blind tests, or an atlas shown only for comparison. The vertical scale is set by the precision measurements when there are any. An atlas
@@ -90,8 +97,7 @@ the view spans at most 5 cm⁻¹; a wider view shows the cross section with a no
   third harmonics under sinusoidal frequency modulation of the given peak-to-peak width (default 1 MHz).
   The BIPM recommended frequencies are defined at the zero crossings of the 3f signal.
 - A resonance narrower than about three screen pixels is drawn at that width (the modulation widened in
-  proportion, so the shape is kept); the note in the plot gives the width drawn. Zoom in until it
-  equals Γ to see the true line shape.
+  proportion, so the shape is kept). Zoom in until three pixels are less than Γ to see the true line shape.
 - **Crossovers** appear halfway between two components that share a level. The main (ΔF = ΔJ)
   components never share one, so every crossover involves a weak ΔF ≠ ΔJ component. They are large at
   low J (the strongest is 40% of the strongest dip at J = 2, 5% at J = 10) and fade to 0.3% by J ≈ 55.
@@ -106,33 +112,25 @@ calculation with level labels) and to 10⁻⁶ in the line shape.
 
 ## Highlighting a band
 
-The **highlight band** field takes a vibrational band v′–v″, for example `32-0`. Its lines are then
-drawn over the rest in two reds: the P branch (ΔJ = −1) dark, the R branch (ΔJ = +1) light. The B–X
-system is 0u⁺ ← 0g⁺, so it has no Q branch. This works in the cross section and the sub-Doppler views,
-at any span, and the legend counts each branch's lines in view. The band's rows in the table are tinted
-to match. The detail panel of a selected line has a button that highlights its band, or clears it. To
-remove the highlight, clear the field.
+The detail panel of a selected line has a button that highlights its vibrational band v′–v″, or clears the
+highlight. The band's lines are then drawn over the rest in two reds: the P branch (ΔJ = −1) dark, the R
+branch (ΔJ = +1) light. The B–X system is 0u⁺ ← 0g⁺, so it has no Q branch. This works in the cross section
+and the sub-Doppler views, at any span, and the legend counts each branch's lines in view. The band's rows in
+the table are tinted to match.
 
-The **band** show toggle turns the highlight off and on without clearing the field. With **model** off,
-it keeps the band's lines, measured or not: switch off model, atlas and precision to see the band alone,
-in the spectrum and the table, or keep atlas or precision on to see the band against those measured
-lines. Entering a band switches the toggle on.
+The **band** show toggle turns the highlight off and on without clearing it. With **model** off, it keeps the
+band's lines, measured or not: switch off model, atlas and precision to see the band alone, in the spectrum and
+the table, or keep atlas or precision on to see the band against those measured lines. Highlighting a band
+switches the toggle on.
 
-## Laser wavelength and harmonics
+## Laser
 
-The **laser fundamental** field takes the wavelength or frequency of a laser (vacuum or air
-wavelength in nm, cm⁻¹, THz or MHz) and a harmonic order n = 1–4, for example 1064.49 nm and ×2 for a
-frequency-doubled Nd:YAG laser, 1542 nm and ×3 or ×4 for a telecom laser, or 1319, 1111 or 1156 nm
-and ×2. Enter (or **Go**) shows ±0.1 nm of vacuum wavelength around the harmonic (±0.04 nm in
-sub-Doppler mode). Harmonic generation multiplies the optical frequency by n, so an air wavelength is
-converted to vacuum at the fundamental before it is multiplied; the harmonic of 1064 nm in air is not
-532 nm in air.
-
-The harmonic is marked in the spectrum by a dotted line labeled *laser ×n*, and the status bar gives
-both values, for example `laser 2 × 281.630263 THz = 563.260526 THz (1064.4895 nm → 532.2447 nm vac)`.
-For the selected line the detail panel adds its fundamental-equivalent wavelength and frequency (÷ n)
-and its distance from the laser harmonic, both at the harmonic and at the fundamental: the tuning the
-fundamental needs to reach the line. Clearing the field removes the laser.
+The **laser** field takes the wavelength or frequency of a laser: vacuum or air wavelength in nm, cm⁻¹, THz or
+MHz. Enter (or **Go**) shows ±0.1 nm of vacuum wavelength around it (±0.04 nm in sub-Doppler mode). The laser
+is marked in the spectrum by a dotted line labeled *laser*, and the status bar gives its frequency and vacuum
+wavelength, for example `laser 563.260526 THz (532.2447 nm vac)`. For the selected line, and its selected
+component, the detail panel adds the distance from the laser: the tuning the laser needs to reach it. Clearing
+the field removes the laser.
 
 ## Export
 
@@ -142,11 +140,11 @@ The **export CSV** buttons download:
   in the table, in the table's order. The columns are the label, isotopologue, vacuum and air
   wavelength, wavenumber, frequency, line strength at the current temperature, E″, the 1σ position
   uncertainty, the domain (fitted, or outside for lines the fit does not yet cover), the class (precision,
-  atlas, model only), the measuring sources, and the position of the 2008 model as a difference. With a laser set,
-  the fundamental-equivalent wavelength and frequency and the distance from the laser harmonic are
-  added; below 0.1 nm, where they are loaded, the ΔJ = 0 hyperfine offsets and strengths of each line.
+  atlas, model only) and the measuring sources. With a laser set, the distance from the laser is added; below
+  0.1 nm, where they are loaded, the ΔJ = 0 hyperfine offsets and strengths of each line.
 - **hyperfine of selected**: the hyperfine components of the selected line as the detail panel shows
-  them, with offsets, absolute frequencies, wavelengths and relative strengths.
+  them, with offsets, absolute frequencies, wavelengths and relative strengths (and, with a laser set, each
+  component's distance from it).
 
 For ¹²⁷I₂ lines with the full hyperfine calculation (the strongest lines and every measured line), the detail
 panel's hyperfine table also gives each component's 1σ: the center's uncertainty combined with the hyperfine
@@ -162,6 +160,12 @@ Each line profile is averaged over the width of a screen pixel instead of being 
 center, and lines narrower than a pixel are broadened in quadrature to one pixel. The drawn height of
 a line therefore varies smoothly as the view is moved or zoomed, and the integrated cross section is
 preserved.
+
+The line list is stored in 64 parts per isotopologue, loaded as a view first needs them. A wide view that needs
+parts not yet loaded (the whole range, the first time) is drawn at once from a coarse spectrum of every part
+(the strength of its lines of each class summed in 64 bins, at seven cell temperatures between which the
+explorer interpolates). Each part's own lines replace its coarse bins as it arrives. While the view is zoomed
+or moved, the last picture is stretched to the new range and then cross-faded into the redrawn one.
 
 ## Line table
 
@@ -180,17 +184,6 @@ The positions, hyperfine patterns, uncertainties and line strengths of all three
 (see the [model overview](calculation.md)). Each line's flags give the data status of its levels; the few lines
 the model does not hold say *outside the fitted domain*.
 
-## Comparison with the 2008 model
-
-For every line the detail panel also gives the position of the published model of Salumbides *et al.*
-(2008), whose potentials are those of the program IodineSpec, as its difference from this model.
-It is computed here from the published potentials and Born–Oppenheimer corrections, and the measured
-components are compared with the published hyperfine formulae alone, so the measurements table has a
-second residual column, *obs − 2008*. Inside the range the 2008 potentials were fitted to (X v″ ≤ 17,
-B v′ ≤ 43) the models agree to a few MHz; outside it the 2008 curves are extrapolations, and the
-detail panel says so: there the difference reaches tens of GHz. The line-list CSV export carries the same
-difference as a column.
-
 ## Controls
 
 | action | effect |
@@ -200,11 +193,10 @@ difference as a column.
 | mouse wheel over the spectrum | zoom about the cursor position |
 | sideways scroll (trackpad) | move the window |
 | ← / → or `[` / `]` | move the window by a quarter of its width |
-| click on the spectrum | select the nearest line |
+| click on the spectrum | select the nearest line, or, zoomed in far enough, the hyperfine component under the pointer |
 | ↑ / ↓ | move through the table |
 | `/` | search for a line by its label, e.g. `R(56) 32-0` |
-| `L` | enter a laser fundamental |
-| `B` | enter a band to highlight, e.g. `32-0` |
+| `L` | enter a laser wavelength or frequency |
 
 On a phone or narrow window the spectrum takes the upper half of the screen and the line table the
 lower half; the settings are in a panel opened with **Options**. On a touch screen, drag with one finger to
@@ -214,11 +206,11 @@ screen, the line table below it scrolls on its own, and the selected line appear
 bottom that opens to the full detail when tapped. The vertical axis is labeled inside the plot, with
 round tick values and their power of ten given once above it.
 
-The address bar always contains the current range, isotopologue, temperature and selected line, so
-that a view can be shared as a link. It also records the y axis (`y=sigma`, `y=trans` or `y=sub`), the
-sub-Doppler settings (`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz) and
-the laser (`laser`, its unit `lunit` and the harmonic `n`), and a highlighted band (`band=32-0`). A link
-with a laser but no range opens on the laser's harmonic.
+The address bar always contains the current range, isotopologue, temperature and selected line (and component,
+`comp=a10`), so that a view can be shared as a link. The range applies as it is typed, on Enter or on leaving
+the field. The address also records the y axis (`y=sigma`, `y=trans` or `y=sub`), the sub-Doppler settings
+(`gamma` in MHz when not the default, `det=1f` or `det=3f` with `mod` in MHz), the laser (`laser` and its unit
+`lunit`), and a highlighted band (`band=32-0`). A link with a laser but no range opens on the laser.
 
 !!! note "Limitations"
     The line explorer shows one isotopologue at a time and does not include the bound–free continuum,

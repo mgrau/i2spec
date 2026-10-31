@@ -54,14 +54,8 @@ def test_measurements_carry_every_row():
     # the 2005 CIPM list (shown since the third blind test) prints the same value: cited on the CIPM record
     assert [f[1] for f in cipm["f"]] == [563260223.513] and [sources[c]["id"] for c in cipm["c"]] == ["felder2005a"]
     a10 = next(f for f in jones["f"] if f[0] == "a10")
-    assert a10[1] == a10[3] == 563260223.5144
-    assert a10[4] is None                                # no published model given
+    assert a10[1] == a10[3] == 563260223.5144 and len(a10) == 4
     assert any(r is not None for r in calls)             # components are asked for by rank
-    # with the published 2008 model, a second residual against it
-    both = webapp.measurements(model, lambda iso, branch, J, vu, vl, rank: 1.0)
-    jones = next(e for e in both["127I2"]["32-0R56"] if sources[e["s"]]["id"] == "jones2002a")
-    a10 = next(f for f in jones["f"] if f[0] == "a10")
-    assert a10[4] == round(a10[1] - 1.0, 4)
 
 
 def test_every_dataset_has_a_doi_or_a_document():
@@ -172,3 +166,22 @@ def test_manifest_and_shard_bounds(tmp_path):
     assert webapp._floor4(18788.1234) <= 18788.1234 <= webapp._ceil4(18788.1234)
     # the server logs nothing per request
     assert webapp._QuietHandler.log_message is not http.server.SimpleHTTPRequestHandler.log_message
+
+
+def test_overview_sums_each_kind_per_bin_and_temperature():
+    import math
+    import numpy as np
+    from i2spec.intensity import C2
+    nu = np.array([100.5, 100.6, 101.5, 109.9])
+    s0, el, kind = np.array([1e-18, 2e-18, 3e-18, 0.0]), np.array([0.0, 100.0, 200.0, 0.0]), np.array([0, 0, 2, 1])
+    q = [2.0] * len(webapp.OVERVIEW_T)
+    ov = webapp._overview(nu, s0, el, kind, 100.0, 110.0, C2, q)
+    bins = webapp.OVERVIEW_BINS
+    assert len(ov["p"]) == 3 and all(len(rows) == len(webapp.OVERVIEW_T) and len(rows[0]) == bins for rows in ov["p"])
+    T, k0 = webapp.OVERVIEW_T[2], int(0.5 / 10 * bins)              # both model lines fall in one bin
+    S = (1e-18 + 2e-18 * math.exp(-C2 * 100.0 / T)) / 2.0
+    assert ov["p"][0][2][k0] == round(1000 * math.log10(S))
+    assert sum(1 for v in ov["p"][0][2] if v) == 1 and sum(1 for v in ov["p"][2][2] if v) == 1
+    assert not any(ov["p"][1][2])                       # the atlas line has no strength: an empty bin
+    # the atlas line still marks its bin, as the precision line marks its own
+    assert ov["m"][int(9.9 / 10 * bins)] == "1" and ov["m"][int(1.5 / 10 * bins)] == "2" and len(ov["m"]) == bins

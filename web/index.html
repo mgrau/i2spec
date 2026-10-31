@@ -56,7 +56,6 @@ button:disabled { opacity: .45; cursor: default; border-color: var(--rule); }
 button { cursor: pointer; }
 button:hover { border-color: var(--accent); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-#go { background: var(--accent); border-color: var(--accent); color: var(--ground); font-weight: 500; padding: 6px 14px; }
 .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--surface); }
 .seg button { border: 0; border-radius: 0; background: transparent; padding: 6px 11px; font-size: 13px; color: var(--ink-2); }
 .seg button + button { border-left: 1px solid var(--rule); }
@@ -76,7 +75,8 @@ button:hover { border-color: var(--accent); }
 main {
   flex: 1; min-height: 0; display: grid; gap: 1px; background: var(--rule);
   grid-template-columns: minmax(0, 1fr) 372px;
-  grid-template-rows: minmax(190px, 42%) minmax(0, 1fr);
+  /* --strip: the height the plot grows by for the strip of measured − model, taken from the line list */
+  grid-template-rows: minmax(190px, calc(42% + var(--strip, 0px))) minmax(0, 1fr);
 }
 section { background: var(--surface); min-width: 0; min-height: 0; display: flex; flex-direction: column; }
 /* clipped: while a phone's options panel squeezes the plot, the canvases keep their last size */
@@ -87,7 +87,9 @@ section { background: var(--surface); min-width: 0; min-height: 0; display: flex
 #plot.grabbing { cursor: grabbing; }
 /* the trace layer, over the axes: clipped to the plot area and moved by a CSS transform while zooming */
 #traceclip { position: absolute; top: 0; overflow: hidden; pointer-events: none; }
-#trace { position: absolute; top: 0; pointer-events: none; will-change: transform; }
+#trace, #ghost { position: absolute; top: 0; pointer-events: none; will-change: transform, opacity; }
+/* the last picture, fading out under the new one (app.js drawPlot) */
+#ghost { opacity: 0; }
 #crosshair { position: absolute; width: 1px; background: var(--ink-3); opacity: .5; pointer-events: none; }
 #selection { position: absolute; background: color-mix(in srgb, var(--accent) 18%, transparent);
   border-left: 1px solid var(--accent); border-right: 1px solid var(--accent); pointer-events: none; }
@@ -119,6 +121,10 @@ dd { margin: 0; font: 13px var(--mono); font-variant-numeric: tabular-nums; }
 .note { font-size: 12.5px; line-height: 1.5; color: var(--ink-2); margin: 10px 0 0; }
 .note code { font: 12px var(--mono); background: var(--surface-2); padding: 1px 4px; border-radius: 4px; }
 #hfs { width: 100%; display: block; }
+/* the picked hyperfine component, in its table and among the measurements */
+table.sub tr.picked td { background: var(--accent-soft); color: var(--accent); }
+table.sub.pick tbody tr { cursor: pointer; }
+table.sub.pick tbody tr:hover td { background: var(--surface-2); }
 
 .tablewrap { overflow: auto; }
 table { border-collapse: collapse; width: 100%; font: 13px var(--mono); font-variant-numeric: tabular-nums; }
@@ -147,12 +153,7 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
 .sw.k-atlas, #rows tr.k-atlas td:first-child { --k: var(--cls-atlas); }
 .sw.k-model { --k: var(--cls-model); }
 /* a highlighted vibrational band: its P and R branches, in the plot and the table */
-.sw.band-P { --k: var(--band-p); } .sw.band-R { --k: var(--band-r); }
 .sw.k-band { --k: var(--band-p); background: linear-gradient(90deg, var(--band-p) 50%, var(--band-r) 50%); }
-.bandfield { display: flex; align-items: center; gap: 8px; }
-#band { width: 6.5em; }
-.bandkey { display: inline-flex; align-items: center; font: 500 11px var(--mono); color: var(--ink-3); }
-.bandkey .sw { margin: 0 3px 0 6px; }
 #rows tr.band-P:not([aria-selected="true"]) td { background: color-mix(in srgb, var(--band-p) 9%, transparent); }
 #rows tr.band-R:not([aria-selected="true"]) td { background: color-mix(in srgb, var(--band-r) 12%, transparent); }
 .bandrow { margin: 6px 0 2px; }
@@ -199,11 +200,10 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
     max-height: 0; overflow: hidden; border-bottom-width: 0; transition: max-height .25s ease, padding .25s ease; }
   .controls.open { max-height: 70dvh; overflow-y: auto; padding: 12px; border-bottom-width: 1px; }
   .controls .field { min-width: 0; }
-  .controls .field:has(#presets), .controls .field:has(#show), .controls .field:has(#mode), .controls .field:has(#go), .controls .field:has(#laser), .controls .field:has(#csv) { grid-column: 1 / -1; }
+  .controls .field:has(#presets), .controls .field:has(#show), .controls .field:has(#mode), .controls .field:has(#laser), .controls .field:has(#csv) { grid-column: 1 / -1; }
   #laser { flex: 1; min-width: 0; }
   #lo, #hi, #find, #temp, #cold, #path, #unit, #iso { width: 100%; }
-  #go { width: 100%; }
-  main { flex: 1; min-height: 0; grid-template-columns: minmax(0, 1fr); grid-template-rows: 48% minmax(0, 1fr);
+  main { flex: 1; min-height: 0; grid-template-columns: minmax(0, 1fr); grid-template-rows: calc(48% + var(--strip, 0px)) minmax(0, 1fr);
     padding-bottom: 50px; }
   #plotwrap { grid-area: 1 / 1; } .tablewrap { grid-area: 2 / 1; min-height: 0; overflow: auto; overscroll-behavior: contain; }
   /* the selected line: a sheet at the bottom showing its name, which a tap opens to the full detail */
@@ -257,19 +257,13 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
     <option value="nm">nm vacuum</option><option value="nm-air">nm air</option>
     <option value="cm-1">cm⁻¹</option><option value="THz">THz</option><option value="MHz">MHz</option>
   </select></div>
-  <div class="field"><label for="go">&nbsp;</label><button id="go">Show</button></div>
   <div class="field"><label for="find">find a line ( / )</label><input id="find" placeholder="R(56) 32-0"></div>
-  <div class="field"><label for="band">highlight band ( B )</label><span class="bandfield">
-    <input id="band" placeholder="32-0" title="a vibrational band v′–v″: its P and R branches are drawn in two reds (B–X has no Q branch); empty to clear">
-    <span class="bandkey" aria-hidden="true"><i class="sw band-P"></i>P<i class="sw band-R"></i>R</span></span></div>
-  <div class="field"><label for="laser">laser fundamental ( L )</label><span class="laser">
-    <input id="laser" placeholder="1064.49" title="a fundamental laser wavelength or frequency; Enter jumps to its harmonic">
-    <select id="lunit" aria-label="unit of the fundamental">
+  <div class="field"><label for="laser">laser ( L )</label><span class="laser">
+    <input id="laser" placeholder="532.245" title="a laser wavelength or frequency; Enter jumps to it">
+    <select id="lunit" aria-label="unit of the laser">
       <option value="nm">nm vac</option><option value="nm-air">nm air</option>
       <option value="cm-1">cm⁻¹</option><option value="THz">THz</option><option value="MHz">MHz</option></select>
-    <select id="harm" aria-label="harmonic order" title="harmonic order: the frequency iodine sees is n times the fundamental's">
-      <option value="1">×1</option><option value="2" selected>×2</option><option value="3">×3</option><option value="4">×4</option></select>
-    <button id="lasergo" title="show ±0.1 nm around the harmonic (±0.04 nm in sub-Doppler mode)">Go</button></span></div>
+    <button id="lasergo" title="show ±0.1 nm around the laser (±0.04 nm in sub-Doppler mode)">Go</button></span></div>
   <div class="field"><label for="iso">isotopologue</label><select id="iso"></select></div>
   <div class="field"><label for="temp">cell T (K)</label><input id="temp" type="number" value="293.15" step="5" min="200" max="600"></div>
   <div class="field"><label for="mode">y axis</label><span class="seg" id="mode">
@@ -299,7 +293,7 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
 
 <main>
   <section id="plotwrap">
-    <canvas id="plot"></canvas><div id="traceclip"><canvas id="trace"></canvas></div><div id="crosshair" hidden></div><div id="selection" hidden></div>
+    <canvas id="plot"></canvas><div id="traceclip"><canvas id="ghost"></canvas><canvas id="trace"></canvas></div><div id="crosshair" hidden></div><div id="selection" hidden></div>
     <div id="readout"></div>
 
 

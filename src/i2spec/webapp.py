@@ -34,7 +34,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .constants import MHZ_PER_CM, PUBLISHED_PARAMETERS
+from .constants import MHZ_PER_CM
 
 ROOT = Path(__file__).resolve().parents[2]
 WEB = ROOT / "web"
@@ -209,16 +209,15 @@ def line_key(branch, J, v_upper, v_lower):
     return f"{v_upper}-{v_lower}{branch}{J}"
 
 
-def measurements(model_frequency, published_frequency=None):
+def measurements(model_frequency):
     """Every measurement of every line, grouped by isotopologue and line.
 
     ``model_frequency(iso, branch, J, v', v'', component)`` gives the model's value in MHz (component None
     for the hyperfine-free line centre, else a rank) or None when it cannot, so each measurement carries
-    its residual; ``published_frequency``, with the same signature, gives the published 2008 model's, for a
-    second residual. Returns {iso: {key: [{"s": source index, "f": [[component, value, u, obs - model,
-    obs - 2008 model], ...], "i": number of hyperfine intervals, "c": [indices of the compilations that
-    also print them], present only when there are some}, ...]}}: one entry per measurement, under the
-    source that first reported it (observations.load_all with record).
+    its residual. Returns {iso: {key: [{"s": source index, "f": [[component, value, u, obs - model], ...],
+    "i": number of hyperfine intervals, "c": [indices of the compilations that also print them], present
+    only when there are some}, ...]}}: one entry per measurement, under the source that first reported it
+    (observations.load_all with record).
     """
     from .observations import UNITS, component_rank
 
@@ -245,19 +244,15 @@ def measurements(model_frequency, published_frequency=None):
             rank = component_rank(o.component) if o.component else None
             args = (ln.isotopologue, ln.branch, ln.J_lower, ln.v_upper, ln.v_lower, rank)
             model = model_frequency(*args)
-            published = published_frequency(*args) if published_frequency else None
             e["f"].append([o.component or "", round(value, 4), round(o.uncertainty * scale, 4),
-                           None if model is None else round(value - model, 4),
-                           None if published is None else round(value - published, 4)])
+                           None if model is None else round(value - model, 4)])
     for name in ATLASES:
         src = index[name]
         for branch, J, vu, vl, nu, u in _atlas_rows(name):
             model = model_frequency("127I2", branch, J, vu, vl, None)
-            published = published_frequency("127I2", branch, J, vu, vl, None) if published_frequency else None
             value = nu * MHZ_PER_CM
             entry("127I2", line_key(branch, J, vu, vl), src)["f"].append(
-                ["", round(value, 1), round(u, 1), None if model is None else round(value - model, 1),
-                 None if published is None else round(value - published, 1)])
+                ["", round(value, 1), round(u, 1), None if model is None else round(value - model, 1)])
     return {iso: {key: [{k: v for k, v in e.items() if k != "c" or v} for e in by_source.values()]
                   for key, by_source in lines.items()} for iso, lines in out.items()}
 
@@ -481,31 +476,8 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
         except Exception:            # a level beyond every validated grid
             return None
 
-    # the published 2008 model, computed here from its potentials and the hyperfine formulae, so every line and
-    # measurement can be compared with it
-    from .model import RovibronicModel
-    published_models = {}
-
-    def published(iso):
-        if iso not in published_models:
-            published_models[iso] = RovibronicModel(iso, PUBLISHED_PARAMETERS)
-        return published_models[iso]
-
-    @functools.lru_cache(maxsize=None)
-    def published_components(iso, branch, J, vu, vl):
-        nu0, comps = published(iso).hyperfine_components(vu, vl, J, branch)
-        return {int(c.label[1:]): nu0 + c.offset for c in comps if c.label}
-
-    def published_frequency(iso, branch, J, vu, vl, rank):
-        try:
-            if rank is not None:
-                return published_components(iso, branch, J, vu, vl).get(rank)
-            return published(iso).transition(vu, vl, J, branch) * MHZ_PER_CM
-        except Exception:
-            return None
-
     print("  measurements and their residuals ...", flush=True)
-    measured = measurements(model_frequency, published_frequency)
+    measured = measurements(model_frequency)
     refs = sources()
     missing = {iso: sorted(set(lines) - set(centres.get(iso, {}))) for iso, lines in measured.items()}
     (out / "references.json").write_text(json.dumps(
@@ -530,7 +502,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     for iso in isotopologues:
         manifest["isotopologues"][iso] = _export_isotopologue(
             out, iso, masters[iso], s_min, n_shards, n_hfs, measured.get(iso, {}), catalog, reasons,
-            C2, nuclear_spin_weight, Line)
+            C2, nuclear_spin_weight, Line, [s["kind"] for s in refs])
     # each line's `w` indexes this list: why its uncertainty is what it is, and the flags that go with it
     manifest["reasons"] = [{"why": why, "flags": [[f, FLAG_CLASS.get(f, "none")] for f in flags]}
                            for why, flags in reasons]
@@ -544,7 +516,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
 
 
 def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, catalog, reasons, C2, nuclear_spin_weight,
-                         Line):
+                         Line, source_kinds):
     from .lookup import QUASI_BOUND, QUASI_NOTE, b_limit, uncertainty
 
     lines = master.at(300.0, S_min=0.0)              # every line, in the master's order
@@ -602,15 +574,12 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
                     300.0)
         u_line[k], why = uncertainty(line)
         w_line[k] = reasons.setdefault((why, line.flags), len(reasons))
-    # the published 2008 model's position of every line, as its difference from this model's (MHz)
-    from .model import RovibronicModel
-    published = RovibronicModel(iso, PUBLISHED_PARAMETERS)
-    d08 = np.full(len(nu), np.nan)
-    for k in range(len(nu)):
-        try:
-            d08[k] = (published.transition(int(vu[k]), int(vl[k]), int(jl[k]), "R" if br[k] > 0 else "P") - nu[k]) * MHZ_PER_CM
-        except Exception:            # a level the published curves do not hold
-            pass
+    # how each line is known, as the explorer classes it (kindOf): 0 model only, 1 atlas, 2 precision
+    kind = np.zeros(len(nu), dtype=int)
+    for k in np.flatnonzero(is_measured):
+        kinds = {source_kinds[e["s"]] for e in measured[keys[k]]}
+        kind[k] = 2 if "precision" in kinds else 1 if "atlas" in kinds else 0
+    q_grid = [master.partition_function(T) for T in OVERVIEW_T]
 
     # ΔJ = 0 hyperfine patterns for every line, shown by the explorer once the view is narrow enough
     t0 = time.time()
@@ -620,7 +589,7 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     # even slices of the absorption range; zero-strength rows below it (emission lines) join the first
     edges = np.linspace(nu[S > 0].min(), nu.max() + 1e-6, n_shards + 1)
     edges[0] = min(edges[0], nu.min())
-    shards = []
+    shards, overview = [], []
     folder = out / "lines" / iso
     hfs_folder = out / "hfs" / iso
     for f in (folder, hfs_folder):
@@ -642,7 +611,6 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
             "j": [int(j) * (1 if b > 0 else -1) for j, b in zip(jl[sel], br[sel])],  # sign carries the branch
             "u": [float(f"{v:.3g}") for v in u_line[sel]],                         # 1σ position, MHz
             "w": [int(v) for v in w_line[sel]],                                  # ... and why: manifest.reasons
-            "d08": [None if not np.isfinite(v) else round(float(v), 1) for v in d08[sel]],  # 2008 - this, MHz
             "m": rows,                                                            # rows with measurements
             "ms": [measured[keys[sel[i]]] for i in rows],                        # ... and what they are
         }
@@ -656,6 +624,10 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         # the bounds are rounded outward, so they hold every line in the shard at its stored 1e-6 cm-1
         shards.append({"file": f"lines/{iso}/{name}", "hfs": f"hfs/{iso}/{name}", "nu0": _floor4(edges[k]),
                        "nu1": _ceil4(edges[k + 1]), "n": int(sel.size), "n_measured": len(rows)})
+        overview.append(_overview(nu[sel], s0[sel], el[sel], kind[sel], shards[-1]["nu0"], shards[-1]["nu1"], C2,
+                                  q_grid))
+    (out / f"overview_{iso}.json").write_text(json.dumps(
+        {"T": OVERVIEW_T, "bins": OVERVIEW_BINS, "shards": overview}, separators=(",", ":")))
 
     # the partition function needs the X term values and their nuclear-spin weights
     J = np.arange(master.x_levels.shape[0])
@@ -707,7 +679,32 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     return {"label": LABELS[iso], "n_lines": int(len(nu)), "n_measured": int(is_measured.sum()),
             "nu_min": _floor4(nu.min()), "nu_max": _ceil4(nu.max()), "shards": shards,
             "order": "wavelength",           # rows and shards run from short to long wavelength
-            "partition": f"partition_{iso}.json", "hfs": f"hfs_{iso}.json"}
+            "partition": f"partition_{iso}.json", "hfs": f"hfs_{iso}.json", "overview": f"overview_{iso}.json"}
+
+
+#: The coarse spectrum the explorer draws for a shard it has not loaded yet: per shard, the strength of its lines
+#: of each kind summed over OVERVIEW_BINS equal bins, at each cell temperature of OVERVIEW_T (the explorer
+#: interpolates log S linearly in 1/T between them).
+OVERVIEW_T = [200.0, 250.0, 293.15, 350.0, 425.0, 500.0, 600.0]
+OVERVIEW_BINS = 64
+
+
+def _overview(nu, s0, el, kind, nu0, nu1, C2, q_grid):
+    """One shard's coarse spectrum: {"p": [kind][T][bin] as round(1000 log10 S), 0 for an empty bin;
+    "m": per bin, 1 if it holds an atlas line, 2 a precision line, 3 both}."""
+    k = np.clip(((nu - nu0) / (nu1 - nu0) * OVERVIEW_BINS).astype(int), 0, OVERVIEW_BINS - 1)
+    parts = []
+    for c in range(3):
+        sel = kind == c
+        rows = []
+        for T, Q in zip(OVERVIEW_T, q_grid):
+            S = np.bincount(k[sel], weights=s0[sel] * np.exp(-C2 * el[sel] / T) / Q, minlength=OVERVIEW_BINS)
+            rows.append([int(round(1000 * math.log10(v))) if v > 0 else 0 for v in S])
+        parts.append(rows)
+    marks = np.zeros(OVERVIEW_BINS, dtype=int)
+    for c, bit in ((1, 1), (2, 2)):
+        marks[np.unique(k[kind == c])] |= bit
+    return {"p": parts, "m": "".join(str(v) for v in marks)}
 
 
 # --- site and server ---------------------------------------------------------------------------------

@@ -23,6 +23,7 @@ const state = {
   lo: 0, hi: 0,            // the view, in cm-1
   lines: [],               // lines inside the view
   selected: null,
+  selectedComp: null,      // the selected line's hyperfine component ("a10"), picked in the spectrum
   mode: "sub",
   sort: {key: "nu", dir: 1},  // by wavelength, shortest first
   shards: new Map(),       // file -> parsed shard
@@ -31,6 +32,7 @@ const state = {
   hfs: new Map(),          // iso -> patterns (ΔJ = ±2, for the lines the export selected)
   hfsShards: new Map(),    // hyperfine file -> ΔJ = 0 patterns of every row of one shard
   hfsAsked: new Set(),     // isotopologues whose full patterns the plot has asked for (once each)
+  overviews: new Map(),    // iso -> the coarse spectrum drawn for shards not loaded yet
   index: new Map(),        // iso -> label -> line, built only when someone searches by label
   refs: null,              // the measurement sources: index -> {short, citation, link, ...}
   kinds: new Set(["model", "atlas", "precision", "band"]),   // the show toggles: kinds of line, and the band
@@ -40,6 +42,7 @@ const state = {
   sub: {fwhm: P.SUB_DOPPLER_FWHM, harmonic: 0, modulation: 1.0},   // the sub-Doppler display
   band: null,              // {vu, vl}: a vibrational band whose P and R branches the plot picks out
   selectedComps: null,     // the hyperfine components the detail pane shows, for the CSV export
+  stripPx: 0,              // the height the plot has grown by for the strip of measured − model
   busy: 0,
 };
 
@@ -89,7 +92,6 @@ const rowAt = (d, i, iso) => {
   return {
     iso, nu: d.nu[i], s0: d.s0[i], el: d.el[i], vu: d.vu[i], vl: d.vl[i],
     J: Math.abs(d.j[i]), branch: d.j[i] > 0 ? "R" : "P", meas, measured: meas !== null, u: d.u[i], w: d.w[i],
-    d08: d.d08 ? d.d08[i] : null,          // the published 2008 model's position minus this one, MHz
     hfsFile: d._hfsFile, row: i,           // where this line's ΔJ = 0 hyperfine pattern is
   };
 };
@@ -207,14 +209,24 @@ async function loadShards(files, note) {
   await Promise.all(Array.from({length: Math.min(6, missing.length)}, worker));
 }
 
-/** Fetch shards without waiting for them; redraw the view when they arrive if they are in it. */
+const fetching = new Set();              // shard files being fetched in the background
+let arrivalTimer = null;
+/** Fetch shards without waiting for them. While they arrive, the view redraws (at most every 150 ms), so the
+ * coarse spectrum of the parts not yet here fills in with the lines as each part lands. */
 function loadInBackground(iso, shards) {
-  const missing = shards.filter(s => !state.shards.has(s.file));
-  if (!missing.length) return;
-  Promise.all(missing.map(s => getJSON(s.file, state.shards).catch(() => null))).then(() => {
-    if (state.iso === iso && missing.some(s => s.nu1 >= state.lo && s.nu0 <= state.hi)) refreshView();
-  });
+  for (const s of shards) {
+    if (state.shards.has(s.file) || fetching.has(s.file)) continue;
+    fetching.add(s.file);
+    getJSON(s.file, state.shards).catch(() => null).then(() => {
+      fetching.delete(s.file);
+      if (state.iso !== iso || s.nu1 < state.lo - PLOT_PAD_CM || s.nu0 > state.hi + PLOT_PAD_CM || arrivalTimer) return;
+      arrivalTimer = setTimeout(() => { arrivalTimer = null; fadeNext = true; refreshView(); }, 150);
+    });
+  }
 }
+/** How many shards of the view are still on their way. */
+const stillLoading = () => state.manifest.isotopologues[state.iso].shards
+  .filter(s => s.nu1 >= state.lo && s.nu0 <= state.hi && !state.shards.has(s.file)).length;
 
 /** A shard's decoded rows, built once and shared by the view and the label index, so a line is one object. */
 function rowsOf(d, s, iso) {
@@ -360,6 +372,52 @@ function addBinArea(bins, lo, dnu, nu, A) {
 /** Whether binned() draws a shard of the view from its histogram: when the pixels are wide enough for it. */
 const drawnFromHist = (s, dnu, withHfs) => !withHfs && dnu >= HIST_MIN_RATIO * (s.nu1 - s.nu0) / HIST_BINS;
 
+/** Add an area A spread evenly over [a, b] (cm⁻¹) to the pixel bins. */
+function addSpread(bins, lo, dnu, a, b, A) {
+  const k0 = Math.max(0, Math.floor((a - lo) / dnu)), k1 = Math.min(bins.length - 1, Math.floor((b - lo) / dnu));
+  const density = A / (b - a);
+  for (let k = k0; k <= k1; k++) {
+    const overlap = Math.min(b, lo + (k + 1) * dnu) - Math.max(a, lo + k * dnu);
+    if (overlap > 0) bins[k] += density * overlap / dnu;
+  }
+}
+
+/**
+ * The coarse spectrum of each shard (the export's overview_<iso>.json) at T: per kind of line, the strength
+ * summed over equal bins, with log S interpolated linearly in 1/T between the temperatures it was made at.
+ * Returns [shard][kind] -> Float64Array, or null before it has loaded.
+ */
+function overviewAt(iso, T) {
+  const ov = state.overviews.get(iso);
+  if (!ov) return null;
+  if (ov._T === T) return ov._at;
+  const Ts = ov.T, x = 1 / Math.min(Math.max(T, Ts[0]), Ts[Ts.length - 1]);
+  let j = 0;
+  while (j < Ts.length - 2 && 1 / Ts[j + 1] > x) j++;
+  const f = (1 / Ts[j] - x) / (1 / Ts[j] - 1 / Ts[j + 1]);
+  ov._at = ov.shards.map(sh => sh.p.map(rows => Float64Array.from(rows[j],
+    (a, k) => a ? 10 ** ((a * (1 - f) + rows[j + 1][k] * f) / 1000) : 0)));
+  ov._T = T;
+  return ov._at;
+}
+
+/** The shards of the view not loaded yet, drawn from the overview: blocks of a coarse spectrum that each
+ * shard's own lines replace as it arrives. */
+function addOverview(parts, lo, hi, dnu, T, iso) {
+  const at = overviewAt(iso, T);
+  if (!at) return;
+  const keepKind = k => state.kinds.has("model") || state.kinds.has(k);
+  state.manifest.isotopologues[iso].shards.forEach((s, i) => {
+    if (s.nu1 < lo || s.nu0 > hi || state.shards.has(s.file)) return;
+    const w = (s.nu1 - s.nu0) / at[i][0].length;
+    KINDS.forEach((kind, p) => {
+      if (!keepKind(kind)) return;
+      const src = at[i][p];
+      for (let j = 0; j < src.length; j++) if (src[j]) addSpread(parts[p], lo, dnu, s.nu0 + j * w, s.nu0 + (j + 1) * w, src[j]);
+    });
+  });
+}
+
 /** Add the histograms of these shards (slices of a view) to the pixel bins. */
 function addHistograms(parts, slices, lo, dnu, T, iso) {
   for (const {d, s} of slices) {
@@ -400,6 +458,7 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || 
       sticks.push({nu: nuC, peak: Sc / (sigma * root2pi), kind, band: inShownBand(line) ? line.branch : null});
     }
   }
+  addOverview(parts, lo, hi, dnu, T, iso);
   return {parts, sticks};
 }
 
@@ -483,6 +542,39 @@ function componentsOf(line) {
   return [{offset: 0, strength: 1}];
 }
 
+/** A line's main hyperfine components as [label, offset (MHz)]: the full calculation once it has loaded, else
+ * the ΔJ = 0 pattern of its shard; null when neither is here. */
+function mainComponents(line) {
+  const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
+  if (full) return full.l.map((l, k) => [l, full.o[k]]).filter(([l]) => l);
+  const h = hfsOf(line);
+  return h ? h.o.map((o, k) => [`a${k + 1}`, o]) : null;
+}
+
+/** Where the selection is drawn (cm⁻¹): its component when one is picked, else the line's center. */
+function selectedNu() {
+  const l = state.selected, comps = state.selectedComp && mainComponents(l);
+  const c = comps && comps.find(([lab]) => lab === state.selectedComp);
+  return c ? l.nu + c[1] / P.MHZ_PER_CM : l.nu;
+}
+
+/**
+ * The main hyperfine component under the pointer, once the spectrum resolves them: the nearest within 8 px, and
+ * at least 4 px nearer than any other, so that a click between two picks neither (and selects the nearest line).
+ */
+function componentAt(clientX) {
+  if (!hyperfineShown() || !state.geom) return null;
+  const x = clientX - $("#plot").getBoundingClientRect().left, {xPix} = state.geom;
+  let best = null, d1 = Infinity, d2 = Infinity;
+  for (const line of shownLines()) {
+    for (const [comp, o] of mainComponents(line) || []) {
+      const d = Math.abs(xPix(line.nu + o / P.MHZ_PER_CM) - x);
+      if (d < d1) { d2 = d1; d1 = d; best = {line, comp}; } else if (d < d2) d2 = d;
+    }
+  }
+  return best && d1 <= 8 && d2 - d1 >= 4 ? best : null;
+}
+
 /**
  * The saturated-absorption signal on the pixel grid (physics.resonances and physics.addSignal, the model of
  * i2spec/saturation.py). Each line's components are weighted by its strength at T, so the dips of
@@ -498,12 +590,10 @@ function subDopplerBins(lines, lo, hi, nbins, T, iso) {
   const drawn = Math.hypot(fwhm, 3 * dx), widen = drawn / fwhm;
   const parts = KINDS.map(() => new Float64Array(nbins));
   const band = {P: new Float64Array(nbins), R: new Float64Array(nbins), n: {P: 0, R: 0}};
-  let nDips = 0, nCross = 0;
   for (const line of lines) {
     const S = strengthOf(line, q, T), f0 = line.nu * P.MHZ_PER_CM;
     const comps = componentsOf(line).map(c => ({...c, strength: S * c.strength}));
     const {list, total} = P.resonances(comps, P.dopplerFWHM(line.nu, T, iso) * P.MHZ_PER_CM);
-    for (const r of list) if (r.kind === "crossover") nCross++; else nDips++;
     const res = list.map(r => ({offset: f0 + r.offset, amplitude: r.amplitude}));
     const opts = {harmonic, modulation: harmonic ? modulation * widen : 0, scale: total};
     P.addSignal(parts[KIND_INDEX[kindOf(line)]], x0, dx, res, drawn, opts);
@@ -514,7 +604,7 @@ function subDopplerBins(lines, lo, hi, nbins, T, iso) {
   }
   const bins = new Float64Array(nbins);
   for (const p of parts) for (let k = 0; k < nbins; k++) bins[k] += p[k];
-  return {bins, parts, band, harmonic, fwhm, fwhmDrawn: drawn, nDips, nCross};
+  return {bins, parts, band, harmonic};
 }
 
 /**
@@ -618,6 +708,8 @@ function drawXLabels(g, lo, hi, m, pw, H, narrow, flip) {
  */
 let lastFrame = null;
 function keepFrame(canvas, meta) { lastFrame = meta; }
+//: Whether the next picture fades in over the last: set when arriving lines are about to fill in the view.
+let fadeNext = false;
 function drawPreview(lo, hi) {
   const f = lastFrame, canvas = $("#plot");
   const {m, pw, ph, H, dpr, flip, narrow} = f || {};
@@ -626,7 +718,8 @@ function drawPreview(lo, hi) {
   // where a wavenumber was drawn, and where it belongs now: x' = m.l + (x - m.l) sx + tx
   const sx = (f.hi - f.lo) / (hi - lo);
   const tx = pw * (flip ? (hi - f.hi) : (f.lo - lo)) / (hi - lo);
-  $("#trace").style.transform = `translateX(${tx}px) scaleX(${sx})`;
+  Object.assign($("#trace").style, {transform: `translateX(${tx}px) scaleX(${sx})`, transition: "none", opacity: "1"});
+  Object.assign($("#ghost").style, {transition: "none", opacity: "0"});
   const g = canvas.getContext("2d");
   g.setTransform(dpr, 0, 0, dpr, 0, 0);
   g.clearRect(0, m.t + ph + 14, f.W, H - (m.t + ph + 14));        // both axes' labels, redrawn for the new range
@@ -765,7 +858,8 @@ function drawResiduals(ga, gt, groups, {xPix, m, pw, y0, y1, narrow, kindInk}) {
   const ext = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p10;
   const mid = (y0 + y1) / 2, half = (y1 - y0) / 2 - 6;
   const yOf = v => mid - half * Math.max(-1, Math.min(1, v / ext));
-  const tick = v => v === 0 ? "0" : (v > 0 ? "+" : "−") + String(+Math.abs(v).toPrecision(2));
+  const unit = ext >= 1000 ? "GHz" : "MHz", per = ext >= 1000 ? 1000 : 1;     // atlas lines alone can reach GHz
+  const tick = v => v === 0 ? "0" : (v > 0 ? "+" : "−") + String(+(Math.abs(v) / per).toPrecision(2));
 
   // the axes layer: grid at ±ext, the model at zero, the tick labels and what the strip shows
   ga.strokeStyle = ink("--rule-2"); ga.lineWidth = 1;
@@ -784,9 +878,13 @@ function drawResiduals(ga, gt, groups, {xPix, m, pw, y0, y1, narrow, kindInk}) {
   } else {
     ga.textAlign = "right"; ga.textBaseline = "middle";
     for (const v of [ext, 0, -ext]) ga.fillText(tick(v), m.l - 10, yOf(v));
+    // the strip's own vertical axis name, beside the spectrum's: in full where the strip is tall enough
+    const name = ga.measureText(`measured − model (${unit})`).width <= y1 - y0 ? `measured − model (${unit})` : unit;
+    ga.save(); ga.translate(15, mid); ga.rotate(-Math.PI / 2); ga.textAlign = "center"; ga.textBaseline = "alphabetic";
+    ga.fillText(name, 0, 4); ga.restore();
   }
-  const title = narrow ? "measured − model (MHz)" :
-    "measured − model (MHz) · bar: the measurement's 1σ · gray: the model's 1σ · hollow: not used in the fit";
+  const title = narrow ? `measured − model (${unit})` :
+    "measured − model · bar: the measurement's 1σ · gray: the model's 1σ · hollow: not used in the fit";
   // in the gap above the strip, clear of the points
   ga.font = '11px "IBM Plex Sans", system-ui, sans-serif'; ga.textAlign = narrow ? "right" : "left"; ga.textBaseline = "bottom";
   const tx = narrow ? m.l + pw - 4 : m.l + 6;
@@ -863,11 +961,23 @@ function drawPlot() {
   // at most 2 canvas pixels per CSS pixel: a phone's 3x screen would otherwise make every frame
   // fill 2.25 times as many pixels for a difference no one can see in a line plot
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const W = wrap.clientWidth, H = wrap.clientHeight;
+  const W = wrap.clientWidth;
+  let H = wrap.clientHeight;
   if (W < 40 || H < 40) return;
   const narrow = W < 700;
   // on a phone the vertical axis is labelled inside the plot, so the spectrum gets the full width
   const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 42, b: 50};
+  // zoomed in on measured lines: a strip of measured − model under the spectrum. It takes its height from the
+  // line list, not from the spectrum: the plot grows by the strip (the --strip of main, in index.html)
+  const groups = residualsShown() ? byComponent(residualPoints(state.lo, state.hi)) : [];
+  const basePh = H - state.stripPx - m.t - m.b;
+  const rh = groups.length && basePh >= RESIDUAL_MIN_PH ? Math.round(Math.min(150, Math.max(64, 0.3 * basePh))) : 0;
+  const stripH = rh ? rh + RESIDUAL_GAP : 0;
+  if (stripH !== state.stripPx) {
+    state.stripPx = stripH;
+    $("main").style.setProperty("--strip", stripH + "px");
+    H = wrap.clientHeight;                     // the grid's new height, laid out now
+  }
   const pw = W - m.l - m.r, ph = H - m.t - m.b;
   // no room for a plot (a phone with the options panel open): drawing anyway would turn it upside
   // down, so keep the last picture until the plot is resized and redrawn (see wire)
@@ -891,15 +1001,29 @@ function drawPlot() {
     tc.style.width = W + "px"; tc.style.height = H + "px";
   }
   Object.assign(clip.style, {left: m.l + "px", width: pw + "px", height: H + "px"});
-  Object.assign(tc.style, {left: -m.l + "px", transform: "none", transformOrigin: `${m.l}px 0`});
+  // A picture stretched by a zoom in progress, or one about to fill in with arriving lines, fades into the new
+  // one: the old is copied to the ghost layer under the trace, as it stands, and the two cross over.
+  const ghost = $("#ghost");
+  const fade = (fadeNext || (tc.style.transform && tc.style.transform !== "none")) &&
+    !matchMedia("(prefers-reduced-motion: reduce)").matches && ghost.width === tc.width && ghost.height === tc.height;
+  fadeNext = false;
+  if (fade) {
+    const gg = ghost.getContext("2d");
+    gg.setTransform(1, 0, 0, 1, 0, 0); gg.clearRect(0, 0, ghost.width, ghost.height); gg.drawImage(tc, 0, 0);
+    Object.assign(ghost.style, {left: tc.style.left, transform: tc.style.transform, transformOrigin: tc.style.transformOrigin,
+                                transition: "none", opacity: "1"});
+  } else Object.assign(ghost.style, {transition: "none", opacity: "0"});
+  if (ghost.width !== tc.width || ghost.height !== tc.height) {
+    ghost.width = tc.width; ghost.height = tc.height;
+    ghost.style.width = W + "px"; ghost.style.height = H + "px";
+  }
+  Object.assign(tc.style, {left: -m.l + "px", transform: "none", transformOrigin: `${m.l}px 0`, transition: "none",
+                           opacity: fade ? "0" : "1"});
   const gt = tc.getContext("2d");
   gt.setTransform(dpr, 0, 0, dpr, 0, 0);
   gt.clearRect(0, 0, W, H);
   const lines = plotLines();
-  // zoomed in on measured lines: a strip of measured − model under the spectrum, which keeps phs of the height
-  const groups = residualsShown() ? byComponent(residualPoints(lo, hi)) : [];
-  const rh = groups.length && ph >= RESIDUAL_MIN_PH ? Math.round(Math.min(150, Math.max(64, 0.3 * ph))) : 0;
-  const phs = rh ? ph - rh - RESIDUAL_GAP : ph;
+  const phs = rh ? Math.max(40, ph - rh - RESIDUAL_GAP) : ph;
   if (groups.some(g => g[0].comp) && !state.hfs.has(iso) && !state.hfsAsked.has(iso)) {
     // the components' own 1σ are in the full patterns: until they load, each takes its line's
     state.hfsAsked.add(iso);
@@ -1090,6 +1214,17 @@ function drawPlot() {
       for (let j = 0; j < HIST_BINS; j++) if (h.marks[j]) mark(h.lo + (j + 0.5) * h.w, h.marks[j] === 2 ? "precision" : "atlas");
     }
   }
+  // the shards still on their way: where their overview marks measured lines
+  const ov = state.overviews.get(iso);
+  if (ov) state.manifest.isotopologues[iso].shards.forEach((s, i) => {
+    if (s.nu1 < lo || s.nu0 > hi || state.shards.has(s.file)) return;
+    const bits = ov.shards[i].m, w = (s.nu1 - s.nu0) / bits.length;
+    for (let j = 0; j < bits.length; j++) {
+      const b = Number(bits[j]);
+      if (b & 2 && highlighted("precision")) mark(s.nu0 + (j + 0.5) * w, "precision");
+      else if (b & 1 && highlighted("atlas")) mark(s.nu0 + (j + 0.5) * w, "atlas");
+    }
+  });
   for (const k of ["atlas", "precision"]) {
     g.beginPath();
     for (const [x, kind] of seen) {
@@ -1142,17 +1277,19 @@ function drawPlot() {
 
   g = gt;                      // the selected line moves with the trace
   if (state.selected) {
-    const x = xPix(state.selected.nu);
+    const x = xPix(selectedNu());
     if (x >= m.l && x <= m.l + pw) {
       g.strokeStyle = ink("--pick"); g.lineWidth = 2; g.setLineDash([5, 4]);
       g.beginPath(); g.moveTo(x, m.t); g.lineTo(x, m.t + ph); g.stroke();
       g.setLineDash([]);
       g.textAlign = "center"; g.textBaseline = "top";
       g.font = '600 11px "IBM Plex Mono", ui-monospace, monospace';
-      const lx = Math.min(Math.max(x, m.l + 40), m.l + pw - 40);
+      const name = label(state.selected) + (state.selectedComp ? " " + state.selectedComp : "");
+      const half = g.measureText(name).width / 2 + 4;                  // the label stays inside the plot
+      const lx = Math.min(Math.max(x, m.l + half), m.l + pw - half);
       g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
-      g.strokeText(label(state.selected), lx, m.t + 4);                // a halo over the trace
-      g.fillStyle = ink("--pick"); g.fillText(label(state.selected), lx, m.t + 4);
+      g.strokeText(name, lx, m.t + 4);                                   // a halo over the trace
+      g.fillStyle = ink("--pick"); g.fillText(name, lx, m.t + 4);
       g.textBaseline = "alphabetic";
     }
   }
@@ -1163,7 +1300,7 @@ function drawPlot() {
       g.strokeStyle = ink("--accent"); g.lineWidth = 1.5; g.setLineDash([2, 3]);
       g.beginPath(); g.moveTo(x, m.t); g.lineTo(x, m.t + ph); g.stroke();
       g.setLineDash([]);
-      const text = `laser ×${state.laser.n}`;
+      const text = "laser";
       g.font = '500 11px "IBM Plex Mono", ui-monospace, monospace'; g.textBaseline = "bottom";
       g.textAlign = x > m.l + pw - 80 ? "right" : "left";
       const tx = x + (g.textAlign === "right" ? -4 : 4);
@@ -1193,22 +1330,26 @@ function drawPlot() {
     g.strokeText(note, nx, m.t + 6); g.fillStyle = ink("--ink-2"); g.fillText(note, nx, m.t + 6);
     g.textAlign = "left"; g.textBaseline = "alphabetic";
   }
-  if (state.mode === "sub") {
-    // what the sub-Doppler trace is, or why it is not drawn: inside the plot, with a halo; top left, or on a
-    // phone, where the tick labels are inside the plot at the left, top right
-    const note = !sub ? `sub-Doppler: zoom to a span of ${SUB_DOPPLER_SPAN_CM} cm⁻¹ or less` :
-      `${sub.nDips} Lamb dips${sub.nCross ? `, ${sub.nCross} crossovers` : ""} · Γ ${sub.fwhm} MHz` + (sub.fwhmDrawn > sub.fwhm * 1.05 ?
-        ` (drawn ${sub.fwhmDrawn < 10 ? sub.fwhmDrawn.toFixed(1) : sub.fwhmDrawn.toFixed(0)} MHz: zoom in)` : "");
+  if (state.mode === "sub" && !sub) {
+    // why the sub-Doppler trace is not drawn: inside the plot, with a halo; top left, or on a phone, where the
+    // tick labels are inside the plot at the left, top right
+    const note = `sub-Doppler: zoom to a span of ${SUB_DOPPLER_SPAN_CM} cm⁻¹ or less`;
     g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = narrow ? "right" : "left"; g.textBaseline = "top";
     const nx = narrow ? m.l + pw - 4 : m.l + 8;
     g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
     g.strokeText(note, nx, m.t + 6);
-    g.fillStyle = ink(sub ? "--ink-2" : "--warn"); g.fillText(note, nx, m.t + 6);
+    g.fillStyle = ink("--warn"); g.fillText(note, nx, m.t + 6);
     g.textAlign = "left";
     g.textBaseline = "alphabetic";
   }
+  if (fade) {
+    // the new picture is in place at opacity 0: cross over from the ghost (the reflow fixes the start)
+    void tc.offsetWidth;
+    tc.style.transition = ghost.style.transition = "opacity 180ms ease-out";
+    tc.style.opacity = "1"; ghost.style.opacity = "0";
+  }
   // the view as drawn: the pointer maps onto it, not state's; and where the measurement dots are
-  state.geom = {m, pw, ph, y, flip, lo, hi, hits};
+  state.geom = {m, pw, ph, y, flip, lo, hi, hits, xPix};
   keepFrame(canvas, {lo, hi, iso, m, pw, ph, W, H, dpr, flip, narrow});
 }
 
@@ -1349,14 +1490,14 @@ function renderTable() {
   setStatus(`${fmt(state.lines.length)} line${state.lines.length === 1 ? "" : "s"} in view: ` +
     `${fmt(counts.precision)} precision, ${fmt(counts.atlas)} atlas, ${fmt(counts.model)} model only` +
     (pool.length > 500 ? `; ${state.sort.key === "S" ? "strongest" : "first"} 500 listed` : "") +
-    ` · ${state.manifest.isotopologues[state.iso].label} · ${state.T} K` + (state.laser ? " · " + laserText() : ""));
+    ` · ${state.manifest.isotopologues[state.iso].label} · ${state.T} K` + (state.laser ? " · " + laserText() : "") +
+    (stillLoading() ? ` · loading the line list (${stillLoading()} parts to come)…` : ""));
 }
 
-/** "laser 2 × 281.630500 THz = 563.261000 THz (1064.4900 nm → 532.2450 nm)": the fundamental and its harmonic. */
+/** "laser 563.261000 THz (532.2450 nm vac)". */
 function laserText() {
-  const {n, nu} = state.laser;
-  const thz = v => P.fromWavenumber(v, "THz").toFixed(6), nm = v => (1e7 / v).toFixed(4);
-  return `laser ${n} × ${thz(nu / n)} THz = ${thz(nu)} THz (${nm(nu / n)} nm → ${nm(nu)} nm vac)`;
+  const {nu} = state.laser;
+  return `laser ${P.fromWavenumber(nu, "THz").toFixed(6)} THz (${(1e7 / nu).toFixed(4)} nm vac)`;
 }
 
 const byWavelength = () => state.sort.key === "nu";
@@ -1452,15 +1593,14 @@ function pushURL() {
     to: Math.max(P.fromWavenumber(state.lo, unit), P.fromWavenumber(state.hi, unit)).toFixed(P.DIGITS[unit]),
   });
   if (state.selected) q.set("line", label(state.selected));
+  if (state.selected && state.selectedComp) q.set("comp", state.selectedComp);
   if (state.show !== "all") q.set("show", state.show || "none");
   q.set("y", state.mode);
   if (state.mode === "sub") {
     if (state.sub.fwhm !== P.SUB_DOPPLER_FWHM) q.set("gamma", String(state.sub.fwhm));
     if (state.sub.harmonic) { q.set("det", state.sub.harmonic + "f"); q.set("mod", String(state.sub.modulation)); }
   }
-  if (state.laser) {
-    q.set("laser", String(state.laser.value)); q.set("lunit", state.laser.unit); q.set("n", String(state.laser.n));
-  }
+  if (state.laser) { q.set("laser", String(state.laser.value)); q.set("lunit", state.laser.unit); }
   if (state.band) q.set("band", `${state.band.vu}-${state.band.vl}`);
   history.replaceState(null, "", "?" + q);
 }
@@ -1515,8 +1655,9 @@ function drawHyperfine(canvas, comps, line) {
   }
   for (let i = 0; i < comps.o.length; i++) {
     const x = xOf(comps.o[i]), h = (base - top) * comps.s[i] / smax;
-    g.strokeStyle = comps.l[i] ? kindInk : ink("--rule");
-    g.lineWidth = comps.l[i] ? 2 : 1;
+    const picked = state.selected === line && comps.l[i] && comps.l[i] === state.selectedComp;
+    g.strokeStyle = picked ? ink("--pick") : comps.l[i] ? kindInk : ink("--rule");
+    g.lineWidth = picked ? 3 : comps.l[i] ? 2 : 1;
     g.beginPath(); g.moveTo(x, base); g.lineTo(x, base - h); g.stroke();
   }
   g.strokeStyle = ink("--rule"); g.lineWidth = 1;
@@ -1528,29 +1669,32 @@ function drawHyperfine(canvas, comps, line) {
   g.textAlign = "center"; g.fillText(subNote || `Doppler FWHM ${fwhm.toFixed(0)} MHz`, W / 2, H - 6);
 }
 
-/** The published 2008 model (Salumbides et al.) was fitted to these levels; beyond them it extrapolates. */
-const inside2008 = l => l.vu <= 43 && l.vl <= 17;
-/** A signed frequency difference in MHz, or GHz once it is large. */
-const signedMHz = v => {
-  const a = Math.abs(v), s = v >= 0 ? "+" : "−";
-  return a >= 1e4 ? `${s}${fmt(a / 1000, a >= 1e6 ? 0 : 1)} GHz` : `${s}${fmt(a, a < 10 ? 2 : 1)} MHz`;
-};
-function published2008Row(line) {
-  if (line.d08 === null || line.d08 === undefined) return "";
-  const where = inside2008(line) ? "inside its fitted range" : "outside its fitted range (v′ ≤ 43, v″ ≤ 17): extrapolated";
-  return `<dt>2008 model</dt><dd>${signedMHz(line.d08)} from this model <span class="n">· ${where}</span></dd>`;
+/** How far a position (cm⁻¹) is from the laser, as a row of the detail pane. */
+function laserRow(nu) {
+  const d = (nu - state.laser.nu) * P.MHZ_PER_CM;
+  return `<dt>− laser</dt><dd>${d >= 0 ? "+" : "−"}${fmt(Math.abs(d), Math.abs(d) < 100 ? 2 : 1)} MHz</dd>`;
 }
 
-/** The selected line seen from the laser: its fundamental equivalent, and how far the harmonic is from it. */
-function laserRows(line) {
-  const {n, nu} = state.laser, d = (line.nu - nu) * P.MHZ_PER_CM;
-  const signed = v => (v >= 0 ? "+" : "−") + fmt(Math.abs(v), Math.abs(v) < 100 ? 2 : 1);
-  return `<dt>÷ ${n}</dt><dd>${P.fundamentalOf(line.nu, n, "nm").toFixed(6)} nm · ${P.fundamentalOf(line.nu, n, "THz").toFixed(7)} THz</dd>
-    <dt>− laser</dt><dd>${signed(d)} MHz (${signed(d / n)} MHz at the fundamental)</dd>`;
+/** The picked component of the selected line: where it is, its 1σ and strength. */
+function componentHTML(line, comps, i) {
+  const o = comps.o[i], f = line.nu * P.MHZ_PER_CM + o, nu = f / P.MHZ_PER_CM, lam = 1e7 / nu;
+  const u = comps.u ? comps.u[i] : null;
+  return `<h3>Component ${comps.l[i]}</h3><dl>
+    <dt>λ vac</dt><dd>${lam.toFixed(7)} nm</dd>
+    <dt>λ air</dt><dd>${P.vacToAir(lam).toFixed(7)} nm</dd>
+    <dt>ν</dt><dd>${nu.toFixed(7)} cm⁻¹</dd>
+    <dt>f</dt><dd>${fmt(f, 3)} MHz</dd>
+    <dt>offset</dt><dd>${o >= 0 ? "+" : "−"}${Math.abs(o).toFixed(3)} MHz from the center</dd>
+    ${u !== null ? `<dt>u (1σ)</dt><dd>± ${fmtU(u)} MHz</dd>` : ""}
+    <dt>rel. strength</dt><dd>${comps.s[i].toFixed(4)}</dd>
+    ${state.laser ? laserRow(nu) : ""}
+  </dl>`;
 }
 
-async function select(line) {
+/** Select a line, and with comp ("a10") one of its main hyperfine components. */
+async function select(line, comp = null) {
   state.selected = line;
+  state.selectedComp = comp;
   state.selectedComps = null;
   $("#csvhfs").disabled = true;
   renderTable(); drawPlot(); pushURL();
@@ -1559,7 +1703,7 @@ async function select(line) {
   const lam = 1e7 / line.nu;
   const isoLabel = state.manifest.isotopologues[line.iso].label;
   $("#detail").innerHTML = `
-    <h2>${isoLabel} ${label(line)}</h2>
+    <h2>${isoLabel} ${label(line)}${comp ? " " + comp : ""}</h2>
     <div class="chips">${flags.map(([t, c]) => `<span class="chip ${c}">${t}</span>`).join("")}
       <span class="chip kind k-${kindOf(line)}">${line.measured ? "measured: " + KIND_LABEL[kindOf(line)] : "model only"}</span></div>
     <dl>
@@ -1571,12 +1715,12 @@ async function select(line) {
       <dt>S</dt><dd>${line.s0 > 0 ? `${S.toExponential(3)} cm at ${state.T} K` : "not computed: no thermal absorption (measured in emission)"}</dd>
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
-      ${published2008Row(line)}
-      ${state.laser ? laserRows(line) : ""}
+      ${state.laser ? laserRow(line.nu) : ""}
     </dl>
     <p class="note">${sentence(why)}</p>
+    <div id="compbox"></div>
     <p class="bandrow"><button id="bandbtn" type="button"></button></p>
-    ${measurementsHTML(line)}
+    ${measurementsHTML(line, comp)}
     <div id="hfsbox"><p class="note">loading hyperfine structure…</p></div>`;
   bandButton(line);
 
@@ -1603,13 +1747,17 @@ async function select(line) {
   }
   state.selectedComps = {comps, approx};
   $("#csvhfs").disabled = false;
+  const k = comp ? comps.l.indexOf(comp) : -1;
+  if (k >= 0) $("#compbox").innerHTML = componentHTML(line, comps, k);
   box.innerHTML = `<h3>Hyperfine structure</h3><canvas id="hfs"></canvas><div id="hfstable"></div>`;
   drawHyperfine($("#hfs"), comps, line);
   const main = comps.l.map((l, i) => [l, comps.o[i], comps.s[i], comps.u ? comps.u[i] : null]).filter(r => r[0]);
   const f0 = line.nu * P.MHZ_PER_CM, withU = main.some(r => r[3] !== null);
+  // a row picks its component, as a click on it in the spectrum does
+  $("#hfstable").onclick = e => { const tr = e.target.closest("tr[data-comp]"); if (tr) select(line, tr.dataset.comp); };
   $("#hfstable").innerHTML =
-    `<table class="sub"><thead><tr><th>comp</th><th>offset (MHz)</th><th>f (MHz)</th>${withU ? "<th>u (MHz)</th>" : ""}<th>rel. strength</th></tr></thead><tbody>` +
-    main.map(([l, o, s, u]) => `<tr><td>${l}</td><td>${o.toFixed(3)}</td><td>${fmt(f0 + o, 1)}</td>${withU ? `<td>${fmtU(u)}</td>` : ""}<td>${s.toFixed(4)}</td></tr>`).join("") +
+    `<table class="sub pick"><thead><tr><th>comp</th><th>offset (MHz)</th><th>f (MHz)</th>${withU ? "<th>u (MHz)</th>" : ""}<th>rel. strength</th></tr></thead><tbody>` +
+    main.map(([l, o, s, u]) => `<tr data-comp="${l}"${l === comp ? ' class="picked"' : ""}><td>${l}</td><td>${o.toFixed(3)}</td><td>${fmt(f0 + o, 1)}</td>${withU ? `<td>${fmtU(u)}</td>` : ""}<td>${s.toFixed(4)}</td></tr>`).join("") +
     `</tbody></table><p class="note">${main.length} main components (ΔF = ΔJ)${
       comps.o.length > main.length ? `, plus ${comps.o.length - main.length} weaker ones drawn faint above` : ""}.
      ${approx ? "Computed without the J ± 2 couplings (ΔJ = 0), which changes the offsets by less than 1 MHz; " +
@@ -1619,25 +1767,24 @@ async function select(line) {
        " u is the 1σ of each component's frequency: the center's with the hyperfine model's own (a floor and a pattern-scale error, both fitted to held-out intervals)." : ""}</p>`;
 }
 
-function measurementsHTML(line) {
+function measurementsHTML(line, comp = null) {
   if (!line.meas) return "";
   const f0 = line.nu * P.MHZ_PER_CM;
   const rows = [];
   const signed = r => r === null ? "–" : (r >= 0 ? "+" : "−") + Math.abs(r).toFixed(Math.abs(r) < 1 ? 3 : 1);
   for (const e of line.meas) {
     // one heading row per source, carrying its link and the compilations that print the same values, then its values
-    rows.push(`<tr class="srcrow"><td colspan="5">${sourceLink(e.s)}${e.i ?
+    rows.push(`<tr class="srcrow"><td colspan="4">${sourceLink(e.s)}${e.i ?
       ` <span class="n">· ${e.i} hyperfine interval${e.i === 1 ? "" : "s"}</span>` : ""}${e.c ?
       ` <span class="n">· also in ${e.c.map(sourceLink).join(", ")}</span>` : ""}</td></tr>`);
-    for (const [comp, value, u, res, res08] of e.f) {
-      rows.push(`<tr><td>${comp || "center"}</td><td>${fmt(value, u < 0.1 ? 4 : u < 10 ? 2 : 1)}</td>
-        <td>${u < 0.1 ? u.toFixed(4) : u.toFixed(u < 10 ? 2 : 1)}</td><td>${signed(res)}</td>
-        <td>${res08 === undefined || res08 === null ? "–" : Math.abs(res08) >= 1e4 ? signedMHz(res08).replace(" GHz", "&nbsp;G") : signed(res08)}</td></tr>`);
+    for (const [c, value, u, res] of e.f) {
+      rows.push(`<tr${comp && c === comp ? ' class="picked"' : ""}><td>${c || "center"}</td><td>${fmt(value, u < 0.1 ? 4 : u < 10 ? 2 : 1)}</td>
+        <td>${u < 0.1 ? u.toFixed(4) : u.toFixed(u < 10 ? 2 : 1)}</td><td>${signed(res)}</td></tr>`);
     }
   }
   const shown = rows.slice(0, 60);
   return `<h3>Measurements</h3>
-    <div class="measwrap"><table class="sub meas"><thead><tr><th>comp</th><th>f (MHz)</th><th>u (MHz)</th><th>− model</th><th>− 2008</th></tr></thead>
+    <div class="measwrap"><table class="sub meas"><thead><tr><th>comp</th><th>f (MHz)</th><th>u (MHz)</th><th>− model</th></tr></thead>
     <tbody>${shown.join("")}</tbody></table></div>
     <p class="note">${rows.length > shown.length ? `First ${shown.length} of ${rows.length} rows. ` : ""}Each measurement
     is listed once, under the paper that reported it, followed by the compilations (such as the CIPM's) that print
@@ -1646,9 +1793,7 @@ function measurementsHTML(line) {
     (atlas lines are hyperfine-free centers, with the scale fitted to each atlas divided out: its calibration is on the references page);
     Sources marked “blind test” were held out of every fit and used only to test the frozen predictions.
     “− model” is the measured value minus this model's center or component (MHz), ${fmt(f0, 1)} MHz for the center
-    (compare the difference with u above and the measurement's own u);
-    “− 2008” minus the published model of Salumbides <i>et al.</i> (2008), computed here from its potentials and
-    the published hyperfine formulae (MHz; G: GHz).</p>`;
+    (compare the difference with u above and the measurement's own u).</p>`;
 }
 
 // --- CSV export ------------------------------------------------------------------------------------
@@ -1701,18 +1846,15 @@ function exportLines() {
   const q = partitionAt(state.iso, state.T), laser = state.laser;
   const withHfs = pool.some(l => hfsOf(l));
   const head = ["line", "isotopologue", "lambda_vac_nm", "lambda_air_nm", "wavenumber_cm-1", "frequency_MHz",
-    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "domain", "class", "measured_by",
-    "published_2008_minus_model_MHz"];
-  if (laser) head.push(`fundamental_lambda_vac_nm_div${laser.n}`, `fundamental_MHz_div${laser.n}`, "minus_laser_harmonic_MHz");
+    `S_cm_at_${state.T}K`, "E_lower_cm-1", "u_MHz_1sigma", "domain", "class", "measured_by"];
+  if (laser) head.push("minus_laser_MHz");
   if (withHfs) head.push("hfs_offsets_MHz_dJ0", "hfs_strengths_permille_dJ0");
   const rows = pool.map(l => {
     const lam = 1e7 / l.nu;
     const cells = [label(l), l.iso, lam.toFixed(7), P.vacToAir(lam).toFixed(7), l.nu.toFixed(6),
       (l.nu * P.MHZ_PER_CM).toFixed(2), P.strengthAt(l, q, state.T).toExponential(4), l.el.toFixed(2), l.u,
-      domainOf(l), KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : "",
-      l.d08 === null || l.d08 === undefined ? "" : l.d08];
-    if (laser) cells.push(P.fundamentalOf(l.nu, laser.n, "nm").toFixed(7), (l.nu * P.MHZ_PER_CM / laser.n).toFixed(2),
-      ((l.nu - laser.nu) * P.MHZ_PER_CM).toFixed(2));
+      domainOf(l), KIND_LABEL[kindOf(l)], l.meas ? [...new Set(l.meas.map(e => source(e.s).short))].join("; ") : ""];
+    if (laser) cells.push(((l.nu - laser.nu) * P.MHZ_PER_CM).toFixed(2));
     if (withHfs) {
       const h = hfsOf(l);
       cells.push(h ? h.o.join(" ") : "", h ? h.s.join(" ") : "");
@@ -1723,9 +1865,7 @@ function exportLines() {
     ...csvHeader(`${fmt(pool.length)} B-X lines`),
     "# S is the line strength at the cell temperature; u is the model's 1-sigma position uncertainty;" +
       " domain is fitted, or outside for lines whose levels the model does not hold (B v' > 80, J'' > 445 or beyond" +
-      " the centrifugal barrier; their flags say so); class is how the line is known (precision, atlas, model only);" +
-      " published_2008_minus_model is the position of the published model of Salumbides et al. (2008)," +
-      " computed from its potentials, minus this model's",
+      " the centrifugal barrier; their flags say so); class is how the line is known (precision, atlas, model only)",
     ...(withHfs ? ["# hfs_*: main hyperfine components without the J +- 2 couplings (offsets from the center, MHz;" +
       " strengths per mille), space separated"] : []),
     csvRow(head), ...rows]);
@@ -1738,11 +1878,11 @@ function exportHyperfine() {
   if (!line || !sc) return;
   const {comps, approx} = sc, f0 = line.nu * P.MHZ_PER_CM;
   const head = ["component", "offset_MHz", "frequency_MHz", "lambda_vac_nm", "wavenumber_cm-1", "relative_strength"];
-  if (state.laser) head.push(`fundamental_MHz_div${state.laser.n}`);
+  if (state.laser) head.push("minus_laser_MHz");
   const rows = comps.o.map((o, i) => {
     const f = f0 + o, nu = f / P.MHZ_PER_CM;
     const cells = [comps.l[i] || "", o.toFixed(3), f.toFixed(3), (1e7 / nu).toFixed(8), nu.toFixed(7), comps.s[i]];
-    if (state.laser) cells.push((f / state.laser.n).toFixed(3));
+    if (state.laser) cells.push((f - state.laser.nu * P.MHZ_PER_CM).toFixed(3));
     return csvRow(cells);
   });
   const name = `i2spec_${line.iso}_${label(line).replace(/[()\s]+/g, "_").replace(/_+$/, "")}_hyperfine.csv`;
@@ -1812,8 +1952,14 @@ async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
   setStatus("loading…");
   try {
     await getJSON(state.manifest.isotopologues[state.iso].partition, state.partitions, state.iso);
-    const lines = await linesIn(state.iso, state.lo, state.hi, {loadedOnly: deferTable});
-    const padded = await linesIn(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM, {loadedOnly: deferTable});
+    // A view that needs more than a few shards not yet here is drawn at once: coarse where they are missing
+    // (the overview, small and fetched first), filling in as they arrive. A narrow view waits for its own.
+    const missing = info.shards.filter(s => s.nu1 >= state.lo - PLOT_PAD_CM && s.nu0 <= state.hi + PLOT_PAD_CM &&
+                                            !state.shards.has(s.file)).length;
+    const progressive = deferTable || missing > 2;
+    if (missing > 2 && info.overview) await getJSON(info.overview, state.overviews, state.iso).catch(() => null);
+    const lines = await linesIn(state.iso, state.lo, state.hi, {loadedOnly: progressive});
+    const padded = await linesIn(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM, {loadedOnly: progressive});
     // a wide view: fetch the rest of the list in the background, so zooming out finds it loaded
     if (state.hi - state.lo > 0.2 * (info.nu_max - info.nu_min)) loadInBackground(state.iso, info.shards);
     if (token !== state.busy) return;                    // a newer view won
@@ -1823,7 +1969,7 @@ async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
     state.plotLines = padded;
     if (state.selected && (state.selected.iso !== state.iso ||
         state.selected.nu < state.lo || state.selected.nu > state.hi)) {
-      state.selected = null;
+      state.selected = null; state.selectedComp = null;
       $("#detail").innerHTML = EMPTY_DETAIL;
     }
     // while the wheel is turning, redraw only the spectrum; rebuild the table once it stops
@@ -1856,20 +2002,20 @@ async function refresh() {
   if (range) await show(range[0], range[1], {keepInputs: true});
 }
 
-async function findLine(text, {keepView = false} = {}) {
+async function findLine(text, {keepView = false, comp = null} = {}) {
   const m = text.trim().match(/^([PR])\s*\(?\s*(\d+)\s*\)?\s+(\d+)\s*-\s*(\d+)$/i);
   if (!m) { setStatus(`"${text}" is not a line label; write it like R(56) 32-0`); return; }
   const key = `${m[1].toUpperCase()}(${m[2]}) ${m[3]}-${m[4]}`;
   // a shared link names both a view and a line in it: select it without loading the whole list
   const here = keepView && state.iso === $("#iso").value && state.lines.find(l => label(l) === key);
-  if (here) { await select(here); return; }
+  if (here) { await select(here, comp); return; }
   const index = await buildIndex($("#iso").value);
   const line = index.get(key);
   if (!line) { setStatus(`${key} is not in the exported list (it is weaker than the cutoff and has not been measured)`); return; }
   const w = P.dopplerFWHM(line.nu, state.T, line.iso) * 12;
   await show(line.nu - w, line.nu + w);
   const same = state.lines.find(l => l.nu === line.nu) || line;
-  await select(same);
+  await select(same, comp);
 }
 
 /**
@@ -1930,7 +2076,6 @@ function nuAtClientX(clientX) {
 function setBand(band) {
   state.band = band;
   if (band) state.kinds.add("band");
-  $("#band").value = band ? bandText(band) : "";
   syncShow(); syncSummary();
   drawPlot(); renderTable(); pushURL();
   if (state.selected) bandButton(state.selected);
@@ -1947,7 +2092,6 @@ function bandButton(line) {
 }
 
 function wire() {
-  $("#go").onclick = () => { refresh(); closeOptions(); };
   // on a phone the detail pane is a bottom sheet: its heading opens and closes it
   $("#detail").addEventListener("click", e => {
     if (e.target.closest("h2") && matchMedia("(max-width: 880px)").matches) $("#detail").classList.toggle("expanded");
@@ -1958,23 +2102,19 @@ function wire() {
     $("#optbtn").setAttribute("aria-expanded", String(open));
     $("#optbtn").textContent = open ? "Close ▴" : "Options ▾";
   };
-  for (const id of ["#lo", "#hi"]) $(id).addEventListener("keydown", e => { if (e.key === "Enter") refresh(); });
+  // the range applies as it is entered: on Enter, or on leaving the field
+  for (const id of ["#lo", "#hi"]) {
+    $(id).addEventListener("keydown", e => { if (e.key === "Enter") e.target.blur(); });
+    $(id).addEventListener("change", refresh);
+  }
   $("#unit").onchange = () => { syncInputs(); state.unitFlips = $("#unit").value.startsWith("nm"); drawPlot(); };
-  $("#iso").onchange = () => show(state.lo, state.hi);
+  $("#iso").onchange = () => { prefetchOverview(); show(state.lo, state.hi); };
   $("#temp").onchange = async () => {
     await show(state.lo, state.hi);
-    if (state.selected) select(state.selected);          // the detail pane: S, Doppler width and hyperfine at the new T
+    if (state.selected) select(state.selected, state.selectedComp);   // the detail pane: S, Doppler width and hyperfine at the new T
   };
   for (const id of ["#cold", "#path"]) $(id).oninput = drawPlot;
   $("#find").addEventListener("keydown", e => { if (e.key === "Enter") findLine(e.target.value); });
-  const applyBand = () => {
-    const text = $("#band").value.trim(), band = parseBand(text);
-    if (text && !band) { setStatus(`"${text}" is not a band: write v′–v″, e.g. 32-0`); return; }
-    if ((band && inShownBand({vu: band.vu, vl: band.vl})) || (!band && !state.band)) return;   // no change
-    setBand(band);
-  };
-  $("#band").addEventListener("keydown", e => { if (e.key === "Enter") { applyBand(); e.target.blur(); } });
-  $("#band").addEventListener("change", applyBand);
   $$("#show button").forEach(b => b.onclick = () => {
     const k = b.dataset.kind;
     state.kinds.has(k) ? state.kinds.delete(k) : state.kinds.add(k);
@@ -2004,7 +2144,7 @@ function wire() {
   });
   const all = document.createElement("button");
   all.textContent = "all";
-  all.title = "the whole exported range; the first time this loads 15-20 MB of line data";
+  all.title = "the whole exported range: drawn coarse at once, filling in as the line data arrive";
   all.onclick = () => {
     const i = state.manifest.isotopologues[$("#iso").value];
     show(i.nu_min, i.nu_max);
@@ -2026,7 +2166,7 @@ function wire() {
 
   $("#laser").addEventListener("keydown", e => { if (e.key === "Enter") { applyLaser(); closeOptions(); } });
   $("#lasergo").onclick = () => { applyLaser(); closeOptions(); };
-  for (const id of ["#lunit", "#harm"]) $(id).onchange = () => { if ($("#laser").value.trim()) applyLaser(); };
+  $("#lunit").onchange = () => { if ($("#laser").value.trim()) applyLaser(); };
   $("#csv").onclick = exportLines;
   $("#csvhfs").onclick = exportHyperfine;
 
@@ -2046,9 +2186,10 @@ function wire() {
     const k = Math.round((e.clientX - plot.getBoundingClientRect().left - m.l) / pw * y.length);
     const ro = $("#readout");
     const hit = hitAt(e.clientX, e.clientY, 8);         // a measurement's dot: what it says, under the position
+    const comp = !hit && componentAt(e.clientX);         // else a hyperfine component a click would pick
     ro.textContent = `${P.fromWavenumber(nu, unit).toFixed(P.DIGITS[unit])} ${unit}   ${nu.toFixed(5)} cm⁻¹` +
-      (hit ? "\n" + describeHit(hit) : "");
-    plot.style.cursor = hit && !plot.classList.contains("grabbing") ? "pointer" : "";
+      (hit ? "\n" + describeHit(hit) : comp ? `\n${label(comp.line)} ${comp.comp}` : "");
+    plot.style.cursor = (hit || comp) && !plot.classList.contains("grabbing") ? "pointer" : "";
     ro.style.top = (m.t + 6) + "px";      // inside the plot frame, clear of the top axis and its labels
     ro.style.right = (m.r + 6) + "px";
     const cross = $("#crosshair");
@@ -2062,9 +2203,12 @@ function wire() {
   plot.addEventListener("click", e => {
     const pool = shownLines();
     if (!pool.length || dragged || !state.geom) return;
-    // a measurement's dot picks its own line, which is not always the nearest center to a component
+    // a measurement's dot picks its own line and component, which is not always the nearest center to a component
     const hit = hitAt(e.clientX, e.clientY, 12);
-    if (hit) { select(hit.p.line); return; }
+    if (hit) { select(hit.p.line, hit.p.comp || null); return; }
+    // zoomed in far enough to tell the hyperfine components apart: the one under the pointer
+    const comp = componentAt(e.clientX);
+    if (comp) { select(comp.line, comp.comp); return; }
     const nu = nuAtClientX(e.clientX);
     let best = pool[0];
     for (const l of pool) if (Math.abs(l.nu - nu) < Math.abs(best.nu - nu)) best = l;
@@ -2208,12 +2352,12 @@ function wire() {
     if (e.defaultPrevented || e.target.matches("input, select")) return;   // a table row has handled it
     if (e.key === "/") { e.preventDefault(); $("#find").focus(); }
     if (e.key === "l" || e.key === "L") { e.preventDefault(); $("#laser").focus(); $("#laser").select(); }
-    if (e.key === "b" || e.key === "B") { e.preventDefault(); $("#band").focus(); $("#band").select(); }
     if ((e.key === "ArrowDown" || e.key === "ArrowUp") && state.shown && state.shown.length) {
       // not already inside the table: jump into it rather than scrolling the page
       e.preventDefault();
       state.keyNav = true;
-      select(state.selected && state.shown.includes(state.selected) ? state.selected : state.shown[0]);
+      if (state.selected && state.shown.includes(state.selected)) select(state.selected, state.selectedComp);
+      else select(state.shown[0]);
     }
     if (e.key === "[" || e.key === "]" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
       e.preventDefault();
@@ -2247,26 +2391,25 @@ function setMode(mode) {
   pushURL();
 }
 
-/** ±0.1 nm around a laser's harmonic; ±0.04 nm for a closer sub-Doppler view. */
+/** ±0.1 nm around a laser; ±0.04 nm for a closer sub-Doppler view. */
 const laserHalfSpan = () => state.mode === "sub" ? 0.4 * HFS_SPAN_NM : HFS_SPAN_NM;
 
 /**
- * The laser fields: a fundamental in its own unit and a harmonic order. Jumps to ±0.1 nm around the
- * harmonic unless told not to (a shared link keeps its own view), and marks it on the plot. An empty
- * field forgets the laser.
+ * The laser field: a wavelength or frequency in its own unit. Jumps to ±0.1 nm around it unless told not to (a
+ * shared link keeps its own view), and marks it on the plot. An empty field forgets the laser.
  */
 async function applyLaser({jump = true} = {}) {
   const text = $("#laser").value.trim();
   if (!text) {
     state.laser = null;
     redrawAll(); renderTable(); pushURL();
-    if (state.selected) select(state.selected);
+    if (state.selected) select(state.selected, state.selectedComp);
     return;
   }
-  const value = Number(text), unit = $("#lunit").value, n = Number($("#harm").value);
-  if (!Number.isFinite(value) || value <= 0) { setStatus(`"${text}" is not a number; give the fundamental in ${unit}`); return; }
-  const nu = P.harmonicWavenumber(value, unit, n);
-  state.laser = {value, unit, n, nu};
+  const value = Number(text), unit = $("#lunit").value;
+  if (!Number.isFinite(value) || value <= 0) { setStatus(`"${text}" is not a number; give the laser in ${unit}`); return; }
+  const nu = P.toWavenumber(value, unit);
+  state.laser = {value, unit, nu};
   const info = state.manifest.isotopologues[$("#iso").value];
   if (nu < info.nu_min || nu > info.nu_max) {
     renderTable(); drawPlot(); pushURL();
@@ -2274,11 +2417,12 @@ async function applyLaser({jump = true} = {}) {
     return;
   }
   if (jump) {
-    const [lo, hi] = P.harmonicView(value, unit, n, laserHalfSpan());
-    await show(lo, hi);
+    await show(...laserView());
   } else { renderTable(); drawPlot(); pushURL(); }
-  if (state.selected) select(state.selected);           // the detail pane shows the line from the laser
+  if (state.selected) select(state.selected, state.selectedComp);   // the detail pane shows the line from the laser
 }
+/** The view around the laser: ±laserHalfSpan() nm of vacuum wavelength. */
+const laserView = () => P.harmonicView(state.laser.value, state.laser.unit, 1, laserHalfSpan());
 
 function redrawAll() {
   drawPlot();
@@ -2326,16 +2470,17 @@ async function start() {
   if (Number(q.get("mod")) > 0) { state.sub.modulation = Number(q.get("mod")); $("#mod").value = q.get("mod"); }
   setMode(q.get("y") || state.mode);
   const band = parseBand(q.get("band"));
-  if (band) { state.band = band; $("#band").value = bandText(band); }
+  if (band) state.band = band;
   syncShow();
-  // a laser: its fields, and its marker; the view is the link's own when it has one
-  const laser = Number(q.get("laser"));
+  // a laser: its field, and its marker; the view is the link's own when it has one
+  let laser = Number(q.get("laser"));
   if (laser > 0) {
-    $("#laser").value = q.get("laser");
-    if (P.UNITS.includes(q.get("lunit"))) $("#lunit").value = q.get("lunit");
-    if (["1", "2", "3", "4"].includes(q.get("n"))) $("#harm").value = q.get("n");
-    const n = Number($("#harm").value);
-    state.laser = {value: laser, unit: $("#lunit").value, n, nu: P.harmonicWavenumber(laser, $("#lunit").value, n)};
+    let unit = P.UNITS.includes(q.get("lunit")) ? q.get("lunit") : "nm";
+    // an older link names a fundamental and a harmonic order n: the laser is that harmonic, in vacuum nm
+    const n = Number(q.get("n"));
+    if ([2, 3, 4].includes(n)) { laser = +P.fromWavenumber(P.harmonicWavenumber(laser, unit, n), "nm").toFixed(6); unit = "nm"; }
+    $("#laser").value = String(laser); $("#lunit").value = unit;
+    state.laser = {value: laser, unit, nu: P.toWavenumber(laser, unit)};
   }
   const from = Number(q.get("from")), to = Number(q.get("to"));
   let initialLine = null;
@@ -2343,7 +2488,7 @@ async function start() {
     const a = P.toWavenumber(from, $("#unit").value), b = P.toWavenumber(to, $("#unit").value);
     await show(Math.min(a, b), Math.max(a, b));
   } else if (state.laser) {
-    await show(...P.harmonicView(state.laser.value, state.laser.unit, state.laser.n, laserHalfSpan()));
+    await show(...laserView());
   } else {
     // Usually one shard contains the target. Resolve its actual model position
     // without indexing the whole list; other isotopes can use the label index.
@@ -2353,13 +2498,20 @@ async function start() {
     const center = initialLine ? initialLine.nu : near;
     await show(center - halfSpan, center + halfSpan);
   }
-  if (q.get("line")) await findLine(q.get("line"), {keepView: true});
+  if (q.get("line")) await findLine(q.get("line"), {keepView: true, comp: /^a\d+$/.test(q.get("comp") || "") ? q.get("comp") : null});
   else if (initialLine) await select(initialLine);
   else if (state.lines.length) {
     // open on the strongest line in view, so the hyperfine pane shows what this tool is for
     const q = partitionAt(state.iso, state.T), S = l => strengthOf(l, q, state.T);
     await select(state.lines.reduce((a, b) => S(a) >= S(b) ? a : b));
   }
+  prefetchOverview();
+}
+
+/** Fetch the coarse spectrum of the isotopologue shown, so that zooming out to the whole range draws at once. */
+function prefetchOverview() {
+  const info = state.manifest.isotopologues[$("#iso").value];
+  if (info.overview) getJSON(info.overview, state.overviews, $("#iso").value).catch(() => null);
 }
 
 start();
