@@ -613,7 +613,9 @@ def sigma_m(model, state, v, J, line_class="atlas"):
         return model[f"core {line_class}"]["sigma_MHz"]/np.sqrt(2)
     m = model[f"{state} beyond"]
     J = min(J, m["J_clip"])
-    return float(np.exp(m["log_sigma0"]+m["slope_per_v"]*(v-m["v0"])+m["J2_coefficient"]*(J/100)**2))
+    x = v-m["v0"]
+    return float(np.exp(m["log_sigma0"]+m["slope_per_v"]*x+m.get("quadratic_per_v2", 0.)*x*x
+                        + m["J2_coefficient"]*(J/100)**2))
 
 
 def calibration(held, fits, ratios, rows):

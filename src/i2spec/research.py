@@ -7,7 +7,8 @@ X v'' <= 108 and B v' <= 80 with the uncertainty model (20261020, ``research_exp
 released model; the earlier releases are read only as its parts. No coefficient is specific to a line or level.
 Release 20261029 rebuilds all three parts in their final form on the same training data, for the blind test of the
 pending sets. Its models carry the same roles, and a role resolves to the first release that has it, so they are
-reached by id (``ResearchModel("research-20261029-i2spec", isotopologue)``).
+reached by id (``ResearchModel("research-20261029-i2spec", isotopologue)``). Release 20261030 is release 20261029
+with its uncertainty model refitted on the cross-validation and the calibrate sets together (decision 2, step 4).
 """
 from __future__ import annotations
 
@@ -34,7 +35,7 @@ from . import named
 from .observations import component_rank
 
 _RELEASE = "20261018"
-_RELEASES = (_RELEASE, "20261020", "20261021", "20261029")
+_RELEASES = (_RELEASE, "20261020", "20261021", "20261029", "20261030")
 #: A candidate release (a folder with its own manifest.json) searched before the installed ones, so that its models
 #: take over their roles: for rebuilding the fit stages on a new core and continuation. Never set for users.
 _CANDIDATE = os.environ.get("I2SPEC_RESEARCH_CANDIDATE")

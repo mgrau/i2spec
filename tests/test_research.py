@@ -13,12 +13,14 @@ from i2spec.research import _Potential, _entries, _entry, _info, _read
 
 def test_releases_and_ledgers():
     models = [_info(entry) for entry in _entries()]
-    assert [m.role for m in models] == ["balanced", "balanced_expanded", "i2spec"]*2
+    assert [m.role for m in models] == ["balanced", "balanced_expanded", "i2spec"]*3
     assert [(m.inventory.fitted_molecular, m.inventory.inherited_molecular, m.inventory.fitted_calibration)
-            for m in models] == [(61, 18, 4), (105, 73, 5), (107, 75, 5), (63, 18, 4), (106, 73, 5), (106, 75, 5)]
-    # release 20261029 (the final form) is reached by id; each role resolves to the first release that has it
+            for m in models] == [(61, 18, 4), (105, 73, 5), (107, 75, 5)]+[(63, 18, 4), (106, 73, 5), (106, 75, 5)]*2
+    # releases 20261029 (the final form) and 20261030 (its uncertainty refitted) are reached by id; each role
+    # resolves to the first release that has it
     assert [_entry(m.role)["id"] for m in models[:3]] == [m.id for m in models[:3]]
-    assert [m.id for m in models[3:]] == [f"research-20261029-{n}" for n in ("core", "expanded", "i2spec")]
+    assert [m.id for m in models[3:]] == [f"research-{r}-{n}" for r in ("20261029", "20261030")
+                                          for n in ("core", "expanded", "i2spec")]
     assert DEFAULT_PARAMETERS == _entry("i2spec")["id"] == "research-20261021-i2spec"
     assert all(m.inventory.line_specific == m.inventory.level_specific == 0 for m in models)
     with pytest.raises(FrozenInstanceError):
@@ -124,3 +126,22 @@ def test_cli_model_info(capsys):
     assert cli.main(["model"]) == 0
     assert "none specific to a line or level" in capsys.readouterr().out
     assert cli.build_parser().parse_args([]).func is cli.cmd_tui
+
+
+def test_step4_uncertainty_terms_only_in_release_20261030():
+    """Release 20261030 is release 20261029 with the uncertainty refitted: the same frequencies, the two terms beyond
+    the core (the B hyperfine floor's growth, B sigma_model's (v - v0)^2) present and >= 0, absent before."""
+    old, new = ResearchModel("research-20261029-i2spec"), ResearchModel("research-20261030-i2spec")
+    t_old, t_new = old._uncertainty_model().table, new._uncertainty_model().table
+    assert "quadratic_per_v2" not in t_old["model_error"]["B beyond"]
+    assert "a_growth_per_v" not in t_old["hyperfine"]["B beyond"]
+    assert t_new["model_error"]["B beyond"]["quadratic_per_v2"] >= 0
+    assert t_new["hyperfine"]["B beyond"]["a_growth_per_v"] >= 0
+    for line in ("R(56) 32-0", "P(53) 65-0"):
+        assert new.frequency(line) == old.frequency(line)
+    # the floor beyond the core grows with v'; the core's is one value
+    a = [new.uncertainty(f"R(20) {v}-0", "a2", "a1").hyperfine_MHz for v in (45, 60)]
+    assert a[1] > a[0]
+    b = new._uncertainty_model().hyperfine_terms(new._spec["core"], 50, 0)[0]
+    g = t_new["hyperfine"]["B beyond"]
+    assert b == pytest.approx(g["a_MHz"]*np.exp(g["a_growth_per_v"]*6))

@@ -638,13 +638,16 @@ class ExpandedUncertainty:
         return "precise" if self._near("precise", "B", vu, Ju) and self._near("precise", "X", vl, Jl) else "atlas"
 
     def model_sigma(self, core, state, v, J, line_class):
-        """One level's share of sigma_model (MHz)."""
+        """One level's share of sigma_model (MHz). Beyond the core, exp(a + b x + d x^2 + c (J/100)^2) with x = v - v0;
+        d (``quadratic_per_v2``) from release 20261030, 0 before."""
         m = self.table["model_error"]
         if v <= core[state]:
             return m[f"core {'atlas' if line_class == 'beyond' else line_class}"]["sigma_MHz"]/sqrt(2.)
         f = m[f"{state} beyond"]
         J = min(J, f["J_clip"])
-        return float(np.exp(f["log_sigma0"]+f["slope_per_v"]*(v-f["v0"])+f["J2_coefficient"]*(J/100)**2))
+        x = v-f["v0"]
+        return float(np.exp(f["log_sigma0"]+f["slope_per_v"]*x+f.get("quadratic_per_v2", 0.)*x*x
+                            + f["J2_coefficient"]*(J/100)**2))
 
     def kappa(self, core, state, v):
         """Fractional error of the hyperfine pattern's scale from one state's levels (held beyond the validated v)."""
@@ -658,11 +661,17 @@ class ExpandedUncertainty:
         return x["kappa_17"]*np.exp(x["slope_per_v"]*(min(v, x["validated_v"][1])-17))
 
     def hyperfine_terms(self, core, vu, vl):
-        """(a MHz, kappa) of a line: the beyond-core values of each state, the core's for a core line."""
+        """(a MHz, kappa) of a line: the beyond-core values of each state, the core's for a core line. Beyond the
+        core the floor grows as exp(g (v' - 44)) up to the last validated v' (``a_growth_per_v``, release 20261030;
+        0 before)."""
         hf = self.table["hyperfine"]
         kc = hf["core"]["kappa"]
         k2 = self.kappa(core, "B", vu)**2+self.kappa(core, "X", vl)**2-kc**2
-        a = hf["B beyond"]["a_MHz"] if vu > core["B"] else hf["core"]["a_MHz"]
+        if vu > core["B"]:
+            b = hf["B beyond"]
+            a = b["a_MHz"]*float(np.exp(b.get("a_growth_per_v", 0.)*(min(vu, b["v_range"][1])-(core["B"]+1))))
+        else:
+            a = hf["core"]["a_MHz"]
         return a, sqrt(max(k2, kc**2))
 
     def hyperfine_status(self, state, v):

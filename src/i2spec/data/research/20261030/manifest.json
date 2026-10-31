@@ -1,0 +1,201 @@
+{
+ "schema_version": 1,
+ "release": "20261030",
+ "selection_scope": "release 20261029 (the final form on the release 20261021 training data) with its uncertainty model refitted on the cross-validation and the calibrate sets (decision 2, step 4); reachable by id (release 20261021 stays the default)",
+ "models": [
+  {
+   "id": "research-20261030-core",
+   "role": "balanced",
+   "title": "Core fit (final form)",
+   "directory": "core",
+   "architecture": "x14_b20_fixed_x_0_0_6_5_3_1__exact_J (B eqQ order 6); the B limit tied to D0(X) + the atomic splitting; the six CIPM isotopologue line centers in the fit with the B isotope shift (1 - y)^5 (a0 + a1 y); comb rows floored at 0.3 MHz",
+   "inventory": {
+    "fitted_molecular": 63,
+    "inherited_molecular": 18,
+    "fitted_calibration": 4,
+    "line_specific": 0,
+    "level_specific": 0
+   },
+   "domain": {
+    "X_v_max": 17,
+    "B_v_max": 43,
+    "J_max": 200
+   },
+   "isotopologue": "127I2",
+   "exclusion": "127I2 P(13) 43-0",
+   "absolute_rms_MHz": 0.1835330237118599,
+   "intraline_rms_MHz": 0.048818278036673754,
+   "validated_folds": 7,
+   "verification": {
+    "counts": {
+     "absolute": 60,
+     "intraline": 592
+    },
+    "maximum_difference_Hz": {
+     "absolute": 0.0,
+     "intraline": 0.0
+    },
+    "tolerance_Hz": 100.0,
+    "passed": true,
+    "scope": "Numerical reproduction of predictions written by the runtime from these coefficients (a determinism check); the continued model's references, from the fit engine, cover the core's domain"
+   },
+   "files_sha256": {
+    "model.json": "2e1645672093e9035d78d1a8ab932e59d608a8a939f9487bc95bc03ad01bc042",
+    "reference_predictions.json": "2663b73c8bffa9b3d7604bd928318ee46fb9d1cb72243c8ae922d881d146747a"
+   }
+  },
+  {
+   "id": "research-20261030-expanded",
+   "role": "balanced_expanded",
+   "title": "Continued model (final form)",
+   "directory": "expanded",
+   "kind": "expanded",
+   "architecture": "core fit + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 2 rotation), X dC6, X cubic splines 4.2-6.6 A, one shared dissociation energy; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78",
+   "inventory": {
+    "fitted_molecular": 106,
+    "inherited_molecular": 73,
+    "fitted_calibration": 5,
+    "line_specific": 0,
+    "level_specific": 0
+   },
+   "domain": {
+    "X_v_max": 108,
+    "B_v_max": 80,
+    "J_max": 200
+   },
+   "isotopologue": "127I2",
+   "exclusion": "127I2 P(13) 43-0",
+   "validated_folds": 4,
+   "training_fold": "future",
+   "validation_scope": "Core: the reused benchmark (60 absolute, 578 intraline) and seven physical folds refitted; extension: four v folds and the 81-row future comb benchmark held out; hyperfine: ten nested v' folds; pending sets: the one blind registry, frozen with this release before any value is read",
+   "absolute_rms_MHz": 0.1835330237118599,
+   "intraline_rms_MHz": 0.048818278036673754,
+   "verification": {
+    "counts": {
+     "center": 842,
+     "absolute": 2586,
+     "intraline": 1434
+    },
+    "maximum_difference_Hz": {
+     "center": 2.384185791015625,
+     "absolute": 2.384185791015625,
+     "intraline": 0.1641571998334257
+    },
+    "tolerance_Hz": 100.0,
+    "passed": true,
+    "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+   },
+   "files_sha256": {
+    "model.json": "871e8b41ea1b41113e10c1fe76f36d7e756466662a2fedf8f20c9f479f239357",
+    "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
+    "reference_predictions.json": "a9d31cbb8428a5337eeeddf036b1339535e6e22ca984d3c5411559bab1b7f855",
+    "uncertainty.json": "d75398ea71f4f0e262484a8b63b41556a542616913bb7b606c123d4f5869cdde"
+   }
+  },
+  {
+   "id": "research-20261030-i2spec",
+   "role": "i2spec",
+   "title": "The model (final form)",
+   "directory": "i2spec",
+   "kind": "expanded",
+   "extends": {
+    "id": "research-20261030-expanded",
+    "files_sha256": {
+     "model.json": "871e8b41ea1b41113e10c1fe76f36d7e756466662a2fedf8f20c9f479f239357",
+     "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
+     "uncertainty.json": "d75398ea71f4f0e262484a8b63b41556a542616913bb7b606c123d4f5869cdde"
+    }
+   },
+   "architecture": "core fit + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 2 rotation), X dC6, X cubic splines 4.2-6.6 A, one shared dissociation energy; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78; 129I2 and 127I129I: q(R) x rho, B isotope shift (1 - y)^5 (a0 + a1 y), hyperfine scaled per nucleus; levels to J'' = 445",
+   "inventory": {
+    "fitted_molecular": 106,
+    "inherited_molecular": 75,
+    "fitted_calibration": 5,
+    "line_specific": 0,
+    "level_specific": 0
+   },
+   "domain": {
+    "X_v_max": 108,
+    "B_v_max": 80,
+    "J_max": 445
+   },
+   "domains": {
+    "127I2": {
+     "X_v_max": 108,
+     "B_v_max": 80,
+     "J_max": 445
+    },
+    "129I2": {
+     "X_v_max": 109,
+     "B_v_max": 81,
+     "J_max": 445
+    },
+    "127I129I": {
+     "X_v_max": 108,
+     "B_v_max": 80,
+     "J_max": 445
+    }
+   },
+   "isotopologue": "127I2",
+   "isotopologues": [
+    "127I2",
+    "129I2",
+    "127I129I"
+   ],
+   "exclusion": "127I2 P(13) 43-0",
+   "validated_folds": 4,
+   "training_fold": "future",
+   "validation_scope": "As the continued model; isotope shift: fitted with the core to the six CIPM isotopologue line centers, its form chosen by leave one line out of the seven CIPM lines; pending sets: the one blind registry, frozen with this release before any value is read",
+   "absolute_rms_MHz": 0.1835330237118599,
+   "intraline_rms_MHz": 0.048818278036673754,
+   "reference_counts": {
+    "127I2": {
+     "center": 10,
+     "absolute": 168,
+     "intraline": 10
+    },
+    "129I2": {
+     "center": 10,
+     "absolute": 304,
+     "intraline": 10
+    },
+    "127I129I": {
+     "center": 5,
+     "absolute": 240,
+     "intraline": 5
+    }
+   },
+   "verification": {
+    "counts": {
+     "127I2": {
+      "center": 10,
+      "absolute": 168,
+      "intraline": 10
+     },
+     "129I2": {
+      "center": 10,
+      "absolute": 304,
+      "intraline": 10
+     },
+     "127I129I": {
+      "center": 5,
+      "absolute": 240,
+      "intraline": 5
+     }
+    },
+    "passed": true,
+    "maximum_difference_Hz": {
+     "center": 0.0,
+     "absolute": 0.0,
+     "intraline": 0.0
+    },
+    "tolerance_Hz": 100.0,
+    "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
+   },
+   "files_sha256": {
+    "isotopologues.json": "20a43f2bd6e95ef525053bbb28c66d2880f4b94f42eb6da18727808cfb57d971",
+    "reference_predictions.json": "2fae4a9fa5c78c286dc7507893c19293602a858a63d7409341247bac14c40e38"
+   }
+  }
+ ]
+}
