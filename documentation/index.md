@@ -39,34 +39,24 @@ functions are fitted, and to test and calibrate the uncertainty of each predicte
 
 ## The model
 
-The model has seven parts:
+- One Morse/long-range potential for each of X and B, with a fitted rotational function, and radial functions for
+  the B-state hyperfine parameters. They are fitted together, in the **core fit**, to every precision measurement of
+  ¹²⁷I₂ with X v″ ≤ 17 and B v′ ≤ 43, two Fourier-transform atlases and {{ fit.n_iso_centers }} line centers of the
+  other isotopologues. There is no correction to any individual level or line.
+- A **continuation** of both curves to their dissociation limits (X v″ ≤ 108, B v′ ≤ 80), and second-order
+  hyperfine sums near the B limit, with terms that act only beyond the core.
+- ¹²⁹I₂ and ¹²⁷I¹²⁹I on the same potentials at their own reduced mass, with a fitted isotope shift and the
+  hyperfine functions scaled by the moments of each nucleus.
+- An **uncertainty model**: the covariance of the fit, and the errors of predictions of data the fit did not see.
 
-- One Morse/long-range potential for each of X and B, with a fitted rotational function.
-- Radial functions for the B-state hyperfine parameters.
-- One least-squares fit of the potentials and hyperfine functions, the core fit, made to every precision
-  measurement of ¹²⁷I₂ and two Fourier-transform atlases with X v″ ≤ 17 and B v′ ≤ 43, and to the six measured
-  line centers of the other isotopologues. It has no correction to any individual level or line.
-- A continuation of both curves to their dissociation limits (X v″ ≤ 108, B v′ ≤ 80): a few dozen terms
-  that act only beyond the core. They are fitted to the Orsay atlases, the X level constants of Martin
-  *et al.*, emission lines and the comb lines above B v′ = 43.
-- Second-order hyperfine sums for the B levels near their dissociation limit.
-- The other isotopologues on the same potentials at their own reduced mass, with a Born–Oppenheimer correction
-  of two coefficients fitted, in the core fit, to their measured line centers, and the hyperfine functions
-  scaled by the moments of each nucleus.
-- An uncertainty model with three parts: the covariance of the fit, the error of predicting a level from
-  the data around it, and the same for hyperfine intervals. The last two are fitted to held-out measurements
-  and to data sets kept out of the fit for this purpose.
+[The fit](fit.md) lists which data fix which parameters. Line strengths use the transition moment of
+Tellinghuisen (2011) with the model's own vibrational wavefunctions (see [Line intensities and spectra](spectra.md)).
 
-The core fit predicts 60 absolute component frequencies of newer data sets, held out of it, to 0.18 MHz rms
-(0.16 MHz per line), and 578 hyperfine intervals to 0.05 MHz. Beyond the core, a level predicted from its
-neighbors alone reproduces comb lines to 1.5 MHz (B v′ = 44–50), atlas lines to 22–200 MHz (growing towards the
-B limit) and the X level constants to 46–122 MHz. The isotope shifts of ¹²⁹I₂ and ¹²⁷I¹²⁹I are predicted, each
-line from the others, to 0.08 MHz. On 17 data sets kept out of the fit and of the uncertainty model, and scored
-once against criteria recorded beforehand, 88 % of 164 measurements lie within 2σ: 98 % of the absolute
-frequencies and every isotopologue measurement, but only 78 % of the hyperfine intervals within a line, a known
-limitation. See [Uncertainty estimates](uncertainty.md#the-locked-test).
-
-The model gives every line of the three isotopologues whose levels it holds (J″ ≤ 445). Line strengths use the
-transition moment of Tellinghuisen (2011) with the model's own vibrational wavefunctions, which reproduce
-measured cell spectra better than those of earlier potentials (see [Line intensities and spectra](spectra.md)).
-The explorer lists each measurement of a line beside the model, with both uncertainties.
+The core fit predicts the {{ fit.benchmark_absolute }} absolute component frequencies of the newest data sets, held
+out of it, to {{ fit.benchmark_absolute_rms }} MHz rms and {{ fit.benchmark_intraline }} hyperfine intervals to
+{{ fit.benchmark_intraline_rms }} MHz. On {{ fit.locked_sets }} data sets kept out of the fit and of the uncertainty
+model, and scored once against criteria recorded beforehand, {{ unc.locked_2 }} of {{ unc.locked_rows }}
+measurements lie within 2σ: {{ unc.locked_abs_2 }} of the absolute frequencies and every isotopologue measurement,
+but only {{ unc.locked_hf_2 }} of the hyperfine intervals within a line, a known limitation (see
+[Uncertainty estimates](uncertainty.md#the-locked-test)). The [worked example](calculation.md#worked-example)
+follows the 532 nm line R(56) 32–0 through every step of the model.

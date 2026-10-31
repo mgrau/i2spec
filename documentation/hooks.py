@@ -1,6 +1,10 @@
 """MkDocs hooks: the references page is written from the data files at build time, so it always lists
-exactly the sources the model and the explorer use (i2spec.webapp.sources)."""
+exactly the sources the model and the explorer use (i2spec.webapp.sources); and every number of the model a page
+shows, written {{ key }} in its source, is computed from the released model at build time (model_numbers.py)."""
 import html
+import importlib.util
+import re
+from pathlib import Path
 
 MARKER = "<!-- sources -->"
 ISO = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I¹²⁹I"}
@@ -93,7 +97,38 @@ def _tables():
     return "\n".join(out)
 
 
+PLACEHOLDER = re.compile(r"\{\{\s*([A-Za-z0-9_.]+)\s*\}\}")
+_MODULE = None
+
+
+def model_numbers():
+    """documentation/model_numbers.py, loaded once by path (the documentation folder is not a package)."""
+    global _MODULE
+    if _MODULE is None:
+        spec = importlib.util.spec_from_file_location("i2spec_docs_model_numbers",
+                                                      Path(__file__).with_name("model_numbers.py"))
+        _MODULE = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_MODULE)
+    return _MODULE
+
+
+def fill(markdown, where="page"):
+    """Every {{ key }} of a page replaced by its number; an unknown key stops the build. A value of several lines
+    (a table's rows) that stands alone on its line keeps that line's indentation on each of its lines."""
+    if not PLACEHOLDER.search(markdown):
+        return markdown
+    values = model_numbers().numbers()
+
+    def one(match):
+        if match[1] not in values:
+            raise KeyError(f"{where}: no generated number {match[1]!r} (documentation/model_numbers.py)")
+        prefix = markdown[markdown.rfind("\n", 0, match.start()) + 1:match.start()]
+        value = values[match[1]]
+        return value.replace("\n", "\n" + prefix) if not prefix.strip() else value
+    return PLACEHOLDER.sub(one, markdown)
+
+
 def on_page_markdown(markdown, page, config, files):
     if MARKER in markdown:
-        return markdown.replace(MARKER, f'<div class="refs" markdown>\n\n{_tables()}\n\n</div>')
-    return markdown
+        markdown = markdown.replace(MARKER, f'<div class="refs" markdown>\n\n{_tables()}\n\n</div>')
+    return fill(markdown, page.file.src_path)

@@ -81,6 +81,7 @@ def test_build_copies_the_site(tmp_path):
         assert (site / "docs" / f"{page}.html").exists(), page
     assert (site / "docs" / "figures" / "potentials.svg").exists()
     assert not (site / "docs" / "hooks.py").exists() and not (site / "docs" / "figures" / "make_figures.py").exists()
+    assert not (site / "docs" / "model_numbers.py").exists()
     # the references page is written from the data at build time
     refs = (site / "docs" / "references.html").read_text(encoding="utf-8")
     assert "10.1088/0026-1394/44/5/003" in refs and "Salami &amp; Ross 2005" in refs

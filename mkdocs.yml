@@ -12,6 +12,7 @@ use_directory_urls: false
 exclude_docs: |
   figures/*.py
   hooks.py
+  model_numbers.py
   __pycache__/
 # ../index.html is the explorer, next to the docs in the built site but outside documentation/
 validation:
@@ -60,6 +61,7 @@ nav:
       - Hyperfine structure: hyperfine.md
       - Line intensities and spectra: spectra.md
       - Uncertainty estimates: uncertainty.md
+      - The fit: fit.md
   - References:
       - Data and publications: references.md
 

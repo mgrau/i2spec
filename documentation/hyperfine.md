@@ -47,7 +47,7 @@ main components and a line with odd J″ has 21.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/hyperfine_levels.svg" role="img" aria-label="Hyperfine energy levels of the upper and lower levels of R(56) 32-0 and its 15 main transitions"></div>
-<figcaption markdown="span">**Figure 1.** Hyperfine sublevels of the lower level X(v″ = 0, J″ = 56) and the upper level B(v′ = 32, J′ = 57) of R(56) 32–0, and the 15 main transitions a1–a15. Energies are relative to the center of each group. The upper group is drawn with a three times larger vertical scale; the scale bars give 100 MHz (upper) and 500 MHz (lower), and the separation of the two groups is not to scale. The splitting of both levels is dominated by the quadrupole interaction; eQq is −2453 MHz for the lower level and −545 MHz for the upper level, so the lower level is split about 4.5 times more widely (1.1 GHz against 0.25 GHz).</figcaption>
+<figcaption markdown="span">**Figure 1.** Hyperfine sublevels of the lower level X(v″ = 0, J″ = 56) and the upper level B(v′ = 32, J′ = 57) of R(56) 32–0, and the 15 main transitions a1–a15. Energies are relative to the center of each group. The upper group is drawn with a three times larger vertical scale; the scale bars give 100 MHz (upper) and 500 MHz (lower), and the separation of the two groups is not to scale. The splitting of both levels is dominated by the quadrupole interaction; eQq is {{ we.x_eqq }} MHz for the lower level and {{ we.b_eqq }} MHz for the upper level, so the lower level is split about {{ we.eqq_ratio }} times more widely ({{ we.x_spread }} MHz against {{ we.b_spread }} MHz).</figcaption>
 </figure>
 
 ## Parameters
@@ -128,3 +128,38 @@ increasing frequency, as in the BIPM tables.
     locked test the intervals within a line were covered less well than these values claim (see
     [Uncertainty estimates](uncertainty.md#the-locked-test)). For ¹²⁹I₂ and ¹²⁷I¹²⁹I a floor of 0.10 MHz per
     component is added, the excess of the CIPM intervals over their stated uncertainties.
+
+## Worked example
+
+!!! example "R(56) 32–0: the hyperfine components"
+    The parameters of the two levels, from the functions above:
+
+    | level | eqQ, MHz | C, kHz | d, kHz | δ, kHz | from |
+    |---|--:|--:|--:|--:|---|
+    | B(v′ = 32, J′ = 57) | {{ we.b_eqq }} | {{ we.b_c }} | {{ we.b_d }} | {{ we.b_delta }} | Eq. (3), over the level's wavefunction |
+    | X(v″ = 0, J″ = 56) | {{ we.x_eqq }} | {{ we.x_c }} | {{ we.x_d }} | {{ we.x_delta }} | the formulae of Bodermann *et al.* |
+
+    Diagonalized with the J ± 2 couplings, they split the lower level over {{ we.x_spread }} MHz and the upper
+    over {{ we.b_spread }} MHz. J″ = 56 is even, so the line has {{ we.n_main }} main components, which carry
+    {{ we.main_strength }} of its strength; the weak ΔF ≠ ΔJ components carry the rest. a1 lies {{ we.a1 }} MHz
+    from the hyperfine-free position and a15 {{ we.a15 }} MHz (a15 − a1 = {{ we.span }} MHz).
+
+    The reference component a10 lies {{ we.a10 }} MHz from the position of the
+    [previous step](lines.md#worked-example), at **{{ we.comp_MHz }} MHz**. {{ we.measured_short }} measured
+    {{ we.measured }} MHz (± {{ we.measured_sigma }} kHz): the model differs by {{ we.residual }} MHz, within its
+    1σ of {{ we.sigma_comp }} MHz ([uncertainty page](uncertainty.md#worked-example)). That measurement was held
+    out of the fit ([The fit](fit.md#worked-example)).
+
+    ??? note "The offsets of all {{ we.n_main }} main components, MHz"
+        | component | offset |
+        |---|--:|
+        {{ we.offsets_table }}
+
+    ```python
+    from i2spec import ResearchModel
+
+    m = ResearchModel("i2spec")
+    m.level_hyperfine("B", 32, 57).eqQ                  # {{ we.b_eqq_raw }} MHz
+    center, components = m.hyperfine_components(32, 0, 56, "R")
+    m.frequency("R(56) 32-0", "a10")                    # {{ we.comp_MHz_raw }} MHz
+    ```

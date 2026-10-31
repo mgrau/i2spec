@@ -95,20 +95,25 @@ uv run mkdocs serve
 ## Python interface
 
 ```python
-from i2spec import MHZ_PER_CM, RovibronicModel
+from i2spec import MHZ_PER_CM, ResearchModel
 
-m = RovibronicModel("127I2")
+# the released model of ¹²⁷I₂ (also: i2spec.preferred.model())
+m = ResearchModel("i2spec")
 # R(56) 32-0, hyperfine-free position in cm⁻¹
 nu = m.transition(32, 0, 56, "R")
-# 18788.3355 cm⁻¹, 563 260 129 MHz
+# {{ we.nu_raw }} cm⁻¹, {{ we.nu_MHz_raw }} MHz
 print(nu, nu * MHZ_PER_CM)
 
-# nu0 and the component offsets in MHz
+# the position and the component offsets in MHz
 nu0, comps = m.hyperfine_components(32, 0, 56, "R")
 a10 = next(c for c in comps if c.label == "a10")
-# 563 260 223.43 MHz (CIPM value: 563 260 223.513 MHz)
+# {{ we.comp_MHz_raw }} MHz ({{ we.measured_short }}: {{ we.measured }} MHz)
 print(nu0 + a10.offset)
 ```
+
+`RovibronicModel` gives the same levels and positions (`energy`, `transition`) for any isotopologue, but its
+`hyperfine_components` use the published hyperfine formulae, not the model's. The
+[worked example](calculation.md#worked-example) follows this line through every step of the model.
 
 `i2spec.lookup.Catalog` returns line lists at any temperature, `i2spec.spectrum` computes cross
 sections and cell transmission, and `i2spec.continuum` computes the bound–free absorption.

@@ -18,7 +18,7 @@ hyperfine-free position is the center of gravity of the hyperfine components (se
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/fortrat.svg" role="img" aria-label="Fortrat diagram of the 32-0 band"></div>
-<figcaption markdown="span">**Figure 1.** P and R lines of the 32–0 band near the band origin, plotted against J″ (Fortrat diagram). The rotational constant of the upper level, B′ ≈ 0.022 cm⁻¹, is smaller than that of the lower level, B″ ≈ 0.037 cm⁻¹, because the equilibrium distance of B is larger. The R branch therefore reaches a band head at J″ ≈ 1 and then turns toward lower wavenumber. R(56), the 532 nm reference line, lies 46 cm⁻¹ below the band origin.</figcaption>
+<figcaption markdown="span">**Figure 1.** P and R lines of the 32–0 band near the band origin, plotted against J″ (Fortrat diagram). The rotational constant of the upper level, B′ ≈ 0.022 cm⁻¹, is smaller than that of the lower level, B″ ≈ 0.037 cm⁻¹, because the equilibrium distance of B is larger. The R branch therefore reaches a band head at J″ ≈ 1 and then turns toward lower wavenumber. R(56), the 532 nm reference line, lies {{ we.below_origin }} cm⁻¹ below the band origin.</figcaption>
 </figure>
 
 ## The fitted domain
@@ -32,3 +32,28 @@ position from the line list's own grid and carry the flag *outside the fitted do
 
 The model computes wavenumbers in vacuum. Frequencies are ν × 29 979.2458 MHz/cm⁻¹. Air wavelengths
 are computed with the Edlén (1966) dispersion formula for standard air.
+
+## Worked example
+
+!!! example "R(56) 32–0: the line position"
+    With the two levels of the [levels page](levels.md#worked-example), Eq. (1) gives
+
+    | quantity | value |
+    |---|--:|
+    | E<sub>B</sub>(32, 57) − E<sub>X</sub>(0, 56) | {{ we.eb }} − {{ we.ex }} cm⁻¹ |
+    | ν, hyperfine-free | {{ we.nu }} cm⁻¹ = {{ we.nu_MHz }} MHz |
+    | vacuum wavelength | {{ we.nm }} nm |
+    | air wavelength (Edlén 1966) | {{ we.nm_air }} nm |
+    | band origin E<sub>B</sub>(32, 0) − E<sub>X</sub>(0, 0) | {{ we.origin }} cm⁻¹ |
+
+    The line lies {{ we.below_origin }} cm⁻¹ below its band origin. This position is the center of gravity of
+    the {{ we.n_main }} hyperfine components of the [next step](hyperfine.md#worked-example); it is not itself
+    measured.
+
+    ```python
+    from i2spec import MHZ_PER_CM, ResearchModel
+
+    m = ResearchModel("i2spec")         # the released model, ¹²⁷I₂
+    nu = m.transition(32, 0, 56, "R")   # {{ we.nu_raw }} cm⁻¹
+    nu * MHZ_PER_CM                     # {{ we.nu_MHz_raw }} MHz
+    ```

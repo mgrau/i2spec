@@ -75,3 +75,31 @@ where the number density N is determined by the iodine vapor pressure at the col
 
 The Python package also computes sub-Doppler spectra: Lamb dips, crossover resonances between
 components that share a level, and the third-harmonic line shape to which the BIPM frequencies refer.
+
+## Worked example
+
+!!! example "R(56) 32–0: strength and Doppler width at 20 °C"
+    At T = {{ we.T }} K, Eqs. (1)–(3) give for the line:
+
+    | quantity | value |
+    |---|--:|
+    | E″, the [lower level](levels.md#worked-example) above X(0, 0) | {{ we.e_lower }} cm⁻¹ |
+    | nuclear-spin weight g<sub>ns</sub> (even J″) | {{ we.g_ns }} |
+    | Hönl–London factor s = J″ + 1 | {{ we.honl_london }} |
+    | partition function Q(T) | {{ we.Q }} |
+    | fractional population f of X(0, 56) | {{ we.population }} |
+    | line strength S | {{ we.S }} cm per molecule |
+    | Doppler width (FWHM), Eq. (3) | {{ we.doppler }} MHz |
+
+    The strength is shared among the [hyperfine components](hyperfine.md#worked-example): a10 carries a fraction
+    {{ we.comp_strength }} of it. The pattern spans {{ we.span }} MHz, about twice the Doppler width, so the
+    components overlap in a Doppler-limited spectrum and are resolved only by sub-Doppler methods.
+
+    ```python
+    from i2spec.lookup import Catalog
+
+    line = Catalog().line("R(56) 32-0", temperature=293.15)  # the first call builds the line list (minutes)
+    line.strength          # {{ we.S_raw }} cm per molecule
+    line.E_lower           # {{ we.E_strength_raw }} cm⁻¹
+    line.doppler_fwhm_MHz  # {{ we.doppler_raw }} MHz
+    ```

@@ -21,6 +21,7 @@ and stored.
 | 4 | temperature-independent line strengths | [Line intensities and spectra](spectra.md) |
 | 5 | cross section and transmission at a given temperature | [Line intensities and spectra](spectra.md#absorption-spectrum) |
 | 6 | the uncertainty of every position and hyperfine component | [Uncertainty estimates](uncertainty.md) |
+| – | which data fix which parameters | [The fit](fit.md) |
 
 ## Notation and units
 
@@ -35,3 +36,37 @@ and stored.
 
 Energies of both states are measured from the minimum of the X potential. Wavelengths are vacuum
 wavelengths unless stated otherwise.
+
+## Worked example
+
+One line is followed through every step: R(56) 32–0 of ¹²⁷I₂, the 532 nm frequency standard, and its hyperfine
+component a10. Each page of the model ends with a box giving the numbers of its step for this line, computed by the
+package when this site was built.
+
+| step | for R(56) 32–0 | page |
+|---|---|---|
+| 1 | E<sub>X</sub>(0, 56) = {{ we.ex }} cm⁻¹, E<sub>B</sub>(32, 57) = {{ we.eb }} cm⁻¹ | [levels](levels.md#worked-example) |
+| 2 | ν = {{ we.nu }} cm⁻¹ ({{ we.nm }} nm in vacuum) | [line positions](lines.md#worked-example) |
+| 3 | a10 at {{ we.a10 }} MHz from ν: {{ we.comp_MHz }} MHz | [hyperfine](hyperfine.md#worked-example) |
+| 4–5 | S = {{ we.S }} cm per molecule at 20 °C, Doppler width {{ we.doppler }} MHz | [spectra](spectra.md#worked-example) |
+| 6 | 1σ: {{ we.sigma }} MHz for ν, {{ we.sigma_comp }} MHz for a10 | [uncertainty](uncertainty.md#worked-example) |
+| fit | R(56) 32–0's own measurements were held out of the fit | [the fit](fit.md#worked-example) |
+
+The same numbers from Python, with the public interface:
+
+```python
+from i2spec import MHZ_PER_CM, ResearchModel, RovibronicModel
+from i2spec.lookup import Catalog
+
+m = ResearchModel("i2spec")                 # the released model, ¹²⁷I₂
+levels = RovibronicModel("127I2")           # its levels, cm⁻¹ above the X minimum
+
+levels.energy("X", 0, 56)                   # {{ we.ex_raw }}
+levels.energy("B", 32, 57)                  # {{ we.eb_raw }}
+nu = m.transition(32, 0, 56, "R")           # {{ we.nu_raw }} cm⁻¹
+nu * MHZ_PER_CM                             # {{ we.nu_MHz_raw }} MHz
+m.frequency("R(56) 32-0", "a10")            # {{ we.comp_MHz_raw }} MHz
+m.uncertainty("R(56) 32-0").sigma_MHz       # {{ we.sigma_raw }} MHz
+m.uncertainty("R(56) 32-0", "a10")          # {{ we.sigma_comp }} MHz, with its parts
+Catalog().line("R(56) 32-0").strength       # {{ we.S_raw }} cm per molecule at 20 °C
+```
