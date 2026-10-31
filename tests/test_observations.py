@@ -70,7 +70,7 @@ def test_a_reprint_is_its_source_printed_again():
 
     datasets = [load_dataset(p, raw=True) for p in sorted(DATA_DIR.iterdir()) if (p / "meta.toml").exists()]
     by_id = {d.id: d for d in datasets}
-    _, merged, _ = _overlaps(datasets)
+    _, merged, _, _ = _overlaps(datasets)
     assert len(merged) >= 200
     def admits(spec, o):
         spec = {"relation": spec} if isinstance(spec, str) else spec

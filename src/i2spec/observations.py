@@ -235,7 +235,7 @@ def _overlaps(datasets):
     compilation's own mean, whatever its entries say. A source not in ``datasets`` (excluded) has no say."""
     by_id = {d.id: d for d in datasets}
     graphs = {}
-    unfit, merged, cited = set(), set(), defaultdict(set)
+    unfit, merged, cited, reprints = set(), set(), defaultdict(set), {}
     for d in datasets:
         sources = []
         for sid, spec in d.meta.get("overlaps", {}).items():
@@ -261,6 +261,8 @@ def _overlaps(datasets):
             printed = [f for f in found if f[1] != "superseded"]
             if len(printed) == 1 and printed[0][1] == "same":
                 merged.add((d.id, k))
+                if len(printed[0][2]) == 1:               # the very row of the source, printed again
+                    reprints[(d.id, k)] = (printed[0][0], printed[0][2][0])
             for sid, relation, path in found:
                 if relation != "superseded":
                     # every row of the source on each step, so a quantity it measured twice is cited twice
@@ -268,10 +270,16 @@ def _overlaps(datasets):
                     for j, o in enumerate(by_id[sid].observations):
                         if frozenset(_ends(o)) in ends:
                             cited[(sid, j)].add(d.id)
-    return unfit, merged, cited
+    return unfit, merged, cited, reprints
 
 
-def load_all(root=DATA_DIR, include_excluded=False, raw=False, record=False, include=()) -> list[Dataset]:
+def _year(set_id):
+    digits = "".join(c for c in set_id if c.isdigit())
+    return int(digits[:4]) if len(digits) >= 4 else 0
+
+
+def load_all(root=DATA_DIR, include_excluded=False, raw=False, record=False, include=(), later_printing=False,
+             first_printing=()) -> list[Dataset]:
     """Every data set under ``root``, except those whose meta.toml has an ``exclude`` reason (``include`` names
     excluded sets to keep anyway; the other excluded sets still have no say in the overlaps).
 
@@ -279,11 +287,26 @@ def load_all(root=DATA_DIR, include_excluded=False, raw=False, record=False, inc
     By default, for the fit, it loses every row that one of them also determines, so each measurement enters
     once, from its source. ``record`` keeps the compilation's own values instead: it loses only the rows that
     are a source's measurement printed again ("same"), and keeps its means and superseded measurements. Every
-    observation carries its citations, its own set first, then the compilations that print it."""
+    observation carries its citations, its own set first, then the compilations that print it.
+
+    ``later_printing`` (the fit view only): a measurement printed again ("same", the very row) enters from its
+    latest printing rather than its source, as the rule for the fit has it; a mean still gives way to its
+    primaries ("primary is superior to mean"). ``first_printing`` names sources whose rows stay as they are, their
+    reprints left out (a set held out as a benchmark keeps its reprints out of the fit with it)."""
     datasets = [load_dataset(p, raw=raw) for p in sorted(Path(root).iterdir()) if (p / "meta.toml").exists()]
     datasets = [d for d in datasets if include_excluded or "exclude" not in d.meta or d.id in include]
-    unfit, merged, cited = _overlaps(datasets)
-    drop = merged if record else unfit
+    unfit, merged, cited, reprints = _overlaps(datasets)
+    drop = merged if record else set(unfit)
+    if later_printing and not record:
+        latest = {}                                   # source row -> the latest printing of it
+        for row, source in reprints.items():
+            if source[0] in first_printing:
+                continue
+            if source not in latest or _year(row[0]) > _year(latest[source][0]):
+                latest[source] = row
+        for source, row in latest.items():
+            drop.discard(row)
+            drop.add(source)
     for d in datasets:
         d.observations = [replace(o, citations=(d.id, *sorted(cited.get((d.id, k), ()))))
                           for k, o in enumerate(d.observations) if (d.id, k) not in drop]

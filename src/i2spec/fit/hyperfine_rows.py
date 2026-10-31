@@ -16,7 +16,8 @@ import re
 from math import sqrt
 
 from ..constants import MHZ_PER_CM
-from ..observations import Line, component_rank, load_all
+from .data import fit_datasets
+from ..observations import Line, component_rank
 from . import rows as training
 
 EXCLUDED = "127I2 P(13) 43-0"
@@ -30,7 +31,7 @@ PARAMETERS = ("eqQ", "C", "d", "delta")
 
 def intervals(datasets=None):
     rows = []
-    for ds in datasets if datasets is not None else load_all():
+    for ds in datasets if datasets is not None else fit_datasets():
         scale = MHZ_PER_CM if ds.unit == "cm-1" else 1.
         for index, obs in enumerate(ds.observations):
             line = obs.line

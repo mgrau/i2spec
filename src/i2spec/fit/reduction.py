@@ -1,7 +1,7 @@
 """Hyperfine-free line centers from the measurements: the reduction that builds the training table (rows).
 
-Precision rows (comb, Doppler-free, emission): load_all() (excluded and pending sets dropped, compilations giving
-way to their sources, absolute frequencies taken to zero pressure and power with each set's shift corrections,
+Precision rows (comb, Doppler-free, emission): data.fit_datasets() (excluded and pending sets dropped, a mean giving
+way to its primaries and a reprint entering once, the role decision's trained sets in and its row records out, absolute frequencies taken to zero pressure and power with each set's shift corrections,
 whose allowance widens sigma); intervals within one line (pure hyperfine) are left to the hyperfine fits. Each
 component value becomes the hyperfine-free line center with the model's own hyperfine offsets: center = value -
 offset(line, component) [+ offset(ref line, ref component) for intervals]. All components of one line (or pair of
@@ -31,9 +31,10 @@ import numpy as np
 from .. import hfs_params as hp
 from ..constants import MHZ_PER_CM
 from ..hyperfine import HyperfineParameters, level_structure, line_components
-from ..observations import Line, component_rank, load_all
+from ..observations import Line, component_rank
 from . import core_hyperfine, hyperfine_beyond as hb, x_hyperfine as xh
 from . import rows as training
+from .data import fit_datasets
 from .rows import Rows, line_levels, merge
 
 ATLAS = training.ROOT / "data" / "atlas_lines"
@@ -59,8 +60,8 @@ def precision_rows(offset, center, datasets=None, raw=None):
 
     offset(line, component) -> MHz of the component above the line's center; center(line) -> MHz (only the `nu`
     label of interval rows uses it). Rows whose lines `offset` cannot reduce (it returns None) are left out."""
-    datasets = datasets if datasets is not None else load_all()
-    raw = raw if raw is not None else load_all(raw=True)
+    datasets = datasets if datasets is not None else fit_datasets()
+    raw = raw if raw is not None else fit_datasets(raw=True)
     groups, meta, skipped = defaultdict(list), {}, []
     for ds, ds_raw in zip(datasets, raw):
         assert ds.id == ds_raw.id and len(ds) == len(ds_raw), ds.id
@@ -505,8 +506,8 @@ def release_rows(beyond=True, datasets=None, raw=None, cache=None):
     """The training stages rebuilt from the data files with the released hyperfine: (core train, core benchmark,
     continuation train, continuation benchmark, atlas calibrations, offsets). Without `beyond` the rows that need
     hyperfine beyond the core are left out (only the core stage is then complete)."""
-    datasets = datasets if datasets is not None else load_all()
-    raw = raw if raw is not None else load_all(raw=True)
+    datasets = datasets if datasets is not None else fit_datasets()
+    raw = raw if raw is not None else fit_datasets(raw=True)
     offsets = release_offsets(observed_lines(datasets), beyond=beyond, cache=cache)
     rows, calibration, _ = build(offsets, model_center(), datasets, raw)
     return (*stages(offsets.model_sigma(rows), calibration), offsets)
