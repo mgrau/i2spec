@@ -22,10 +22,13 @@ V1, V2 = VALIDATION / "pending_blind_v1", VALIDATION / "pending_blind_v2"
 #: reworded too (source and exclude lines), so the input-hash check flags all of them
 OVERLAPS_ADDED = ("jungner1995a", "picard2003a", "zhang1999a")
 #: The registries were written on one platform; the arithmetic of another differs in the last digits. Forecasts of an
-#: unchanged model differ by a few ulp of the line center (up to 1.1e-6 MHz); the 1-sigma by up to 1.4e-6 of itself,
-#: well under the smallest intended change of v2's band intervals (1.3e-5); rescored results by a few ulp.
+#: unchanged model differ by a few ulp of the line center (up to 1.1e-6 MHz); the model part of the 1-sigma by far
+#: less than the smallest intended change of v2's band intervals (1.3e-5 of itself), which SIGMA_RTOL must stay
+#: under; the statistical part, from finite-difference derivatives, by up to 6e-6 of itself; rescored results by a
+#: few ulp.
 PREDICTION_TOL_MHZ = 1e-5
 SIGMA_RTOL = 5e-6
+STAT_RTOL = 5e-5
 SCORE_RTOL = 1e-9
 
 
@@ -194,7 +197,7 @@ def test_refreezing_v2_reproduces_its_uncertainties_but_for_one_band_intervals(r
             continue
         a, b = new[t["id"]], old[t["id"]]
         assert (a["level_status"], a["hyperfine_status"]) == (b["level_status"], b["hyperfine_status"])
-        assert a["sigma_parts_MHz"][:2] == pytest.approx(b["sigma_parts_MHz"][:2], rel=SIGMA_RTOL)
+        assert a["sigma_parts_MHz"][:2] == pytest.approx(b["sigma_parts_MHz"][:2], rel=STAT_RTOL)
         if a["sigma_model_MHz"] != pytest.approx(b["sigma_model_MHz"], rel=SIGMA_RTOL):
             changed.add(t["id"])
             assert a["sigma_model_MHz"] == pytest.approx(b["sigma_model_MHz"], rel=2e-3)
