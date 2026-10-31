@@ -117,10 +117,10 @@ const escapeHTML = t => String(t).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "
 function sourceLink(k) {
   const s = source(k);
   const name = escapeHTML(s.short);
-  // a data set held out for the blind tests, or an atlas shown only for comparison
-  const blind = s.fit !== false ? "" : s.kind === "atlas" ?
-    ` <span class="n" title="Shown for comparison; the model is not fitted to it.">(not fitted)</span>` :
-    ` <span class="n" title="Held out of every fit; used only to test the model's frozen predictions.">(blind test, not fitted)</span>`;
+  // a source no fit uses: held out for the blind tests, set aside, or shown for comparison; why, on hovering
+  const why = s.why ? sentence(s.why) : s.kind === "atlas" ? "Shown for comparison; the model is not fitted to it." :
+    "Held out of every fit.";
+  const blind = s.fit !== false ? "" : ` <span class="n" title="${escapeHTML(why)}">(not fitted)</span>`;
   return (s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${escapeHTML(s.citation || "")}">${name}</a>`
     : `<span title="${escapeHTML(s.citation || "")}">${name}</span>`) + blind;
 }
@@ -568,20 +568,23 @@ function selectedNu() {
 }
 
 /**
- * The main hyperfine component under the pointer, once the spectrum resolves them: the nearest within 8 px, and
- * at least 4 px nearer than any other, so that a click between two picks neither (and selects the nearest line).
+ * Where the hyperfine structure is drawn, the main component nearest the pointer, of any line listed (lines whose
+ * components reach into the view count, centers off screen or not): {line, comp, near}, near when within
+ * COMPONENT_PX of it. A click there picks the component; farther off, its line. Null when the structure is not
+ * drawn or no pattern is loaded.
  */
+const COMPONENT_PX = 12;
 function componentAt(clientX) {
   if (!hyperfineShown() || !state.geom) return null;
   const x = clientX - $("#plot").getBoundingClientRect().left, {xPix} = state.geom;
-  let best = null, d1 = Infinity, d2 = Infinity;
+  let best = null, d1 = Infinity;
   for (const line of shownLines()) {
     for (const [comp, o] of mainComponents(line) || []) {
       const d = Math.abs(xPix(line.nu + o / P.MHZ_PER_CM) - x);
-      if (d < d1) { d2 = d1; d1 = d; best = {line, comp}; } else if (d < d2) d2 = d;
+      if (d < d1) { d1 = d; best = {line, comp}; }
     }
   }
-  return best && d1 <= 8 && d2 - d1 >= 4 ? best : null;
+  return best && {...best, near: d1 <= COMPONENT_PX};
 }
 
 /**
@@ -962,8 +965,8 @@ function hitAt(clientX, clientY, tol) {
   }
   return best;
 }
-const describeHit = ({p}) => `${label(p.line)} ${p.comp || "center"} · ${source(p.s).short}${p.blind ? " (not fitted)" : ""}\n` +
-  `measured − model ${signedTo(p.res, p.u)} ± ${mhzTo(p.u, p.u)}\nmodel 1σ ${mhzTo(p.sigma, p.sigma)}`;
+const describeHit = ({p}) => `${label(p.line)} ${p.comp || "center"} · ${source(p.s).short}${p.blind ? " (not fitted)" : ""}` +
+  ` · measured − model ${signedTo(p.res, p.u)} ± ${mhzTo(p.u, p.u)} · model 1σ ${mhzTo(p.sigma, p.sigma)}`;
 
 // Reading a CSS variable costs a style lookup, so the colors are read once per draw, not per mark.
 let inkCache = null;
@@ -986,7 +989,8 @@ function drawPlot() {
   if (W < 40 || H < 40) return;
   const narrow = W < 700;
   // on a phone the vertical axis is labelled inside the plot, so the spectrum gets the full width
-  const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 42, b: 50};
+  // the top margin holds the legend, a row for the cursor readout (#readout, desktop only) and the top axis
+  const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 58, b: 50};
   // zoomed in on measured lines: a strip of measured − model under the spectrum. It takes its height from the
   // line list, not from the spectrum: the plot grows by the strip (the --strip of main, in index.html)
   const groups = residualsShown() ? byComponent(residualPoints(state.lo, state.hi)) : [];
@@ -1350,22 +1354,12 @@ function drawPlot() {
     g.strokeText(note, nx, m.t + 6); g.fillStyle = ink("--ink-2"); g.fillText(note, nx, m.t + 6);
     g.textAlign = "left"; g.textBaseline = "alphabetic";
   }
-  if (state.mode === "sub" && !sub) {
-    // why the sub-Doppler trace is not drawn: inside the plot, with a halo; top left, or on a phone, where the
-    // tick labels are inside the plot at the left, top right
-    const note = `sub-Doppler: zoom to a span of ${SUB_DOPPLER_SPAN_CM} cm⁻¹ or less`;
-    g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = narrow ? "right" : "left"; g.textBaseline = "top";
-    const nx = narrow ? m.l + pw - 4 : m.l + 8;
-    g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
-    g.strokeText(note, nx, m.t + 6);
-    g.fillStyle = ink("--warn"); g.fillText(note, nx, m.t + 6);
-    g.textAlign = "left";
-    g.textBaseline = "alphabetic";
-  }
   if (fade) {
-    // the new picture is in place at opacity 0: cross over from the ghost (the reflow fixes the start)
+    // the new picture fades in over the old, which stays opaque until it is nearly covered and then goes: both
+    // fading at once would let the background show through halfway, a flash (the reflow fixes the start)
     void tc.offsetWidth;
-    tc.style.transition = ghost.style.transition = "opacity 180ms ease-out";
+    tc.style.transition = "opacity 160ms ease-out";
+    ghost.style.transition = "opacity 60ms linear 140ms";
     tc.style.opacity = "1"; ghost.style.opacity = "0";
   }
   // the view as drawn: the pointer maps onto it, not state's; and where the measurement dots are
@@ -1811,7 +1805,8 @@ function measurementsHTML(line, comp = null) {
     it again; a compilation's own recommended values and means are listed under it. Each source links to
     its DOI; the <a href="docs/references.html">references</a> page lists them all. Frequencies are as published
     (atlas lines are hyperfine-free centers, with the scale fitted to each atlas divided out: its calibration is on the references page);
-    Sources marked “blind test” were held out of every fit and used only to test the frozen predictions.
+    Sources marked “not fitted” are in no fit: held out for the blind tests, set aside, or shown for comparison
+    (hover over the mark for the reason).
     “− model” is the measured value minus this model's center or component (MHz), ${fmt(f0, 1)} MHz for the center
     (compare the difference with u above and the measurement's own u).</p>`;
 }
@@ -2243,12 +2238,14 @@ function wire() {
     const k = Math.round((e.clientX - plot.getBoundingClientRect().left - m.l) / pw * y.length);
     const ro = $("#readout");
     const hit = hitAt(e.clientX, e.clientY, 8);         // a measurement's dot: what it says, under the position
-    const comp = !hit && componentAt(e.clientX);         // else a hyperfine component a click would pick
+    const c = !hit && componentAt(e.clientX), comp = c && c.near && c;   // else a hyperfine component a click picks
     ro.textContent = `${P.fromWavenumber(nu, unit).toFixed(P.DIGITS[unit])} ${unit}   ${nu.toFixed(5)} cm⁻¹` +
-      (hit ? "\n" + describeHit(hit) : comp ? `\n${label(comp.line)} ${comp.comp}` : "");
+      (hit ? " · " + describeHit(hit) : comp ? ` · ${label(comp.line)} ${comp.comp}` : "");
     plot.style.cursor = (hit || comp) && !plot.classList.contains("grabbing") ? "pointer" : "";
-    ro.style.top = (m.t + 6) + "px";      // inside the plot frame, clear of the top axis and its labels
-    ro.style.right = (m.r + 6) + "px";
+    // in its own row of the top margin, between the legend and the top axis's labels: off the spectrum
+    ro.style.top = (m.t - 40) + "px";
+    ro.style.left = m.l + "px";
+    ro.style.maxWidth = pw + "px";
     const cross = $("#crosshair");
     const x = e.clientX - plot.getBoundingClientRect().left;
     cross.style.left = x + "px";
@@ -2263,9 +2260,10 @@ function wire() {
     // a measurement's dot picks its own line and component, which is not always the nearest center to a component
     const hit = hitAt(e.clientX, e.clientY, 12);
     if (hit) { select(hit.p.line, hit.p.comp || null); return; }
-    // zoomed in far enough to tell the hyperfine components apart: the one under the pointer
+    // where the hyperfine structure is drawn, the nearest component: picked when the pointer is on it, else its
+    // line (never a line center far from what was clicked)
     const comp = componentAt(e.clientX);
-    if (comp) { select(comp.line, comp.comp); return; }
+    if (comp) { select(comp.line, comp.near ? comp.comp : null); return; }
     const nu = nuAtClientX(e.clientX);
     let best = pool[0];
     for (const l of pool) if (Math.abs(l.nu - nu) < Math.abs(best.nu - nu)) best = l;

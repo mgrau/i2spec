@@ -95,10 +95,10 @@ section { background: var(--surface); min-width: 0; min-height: 0; display: flex
   border-left: 1px solid var(--accent); border-right: 1px solid var(--accent); pointer-events: none; }
 #selection::after { content: attr(data-span); position: absolute; top: 2px; left: 50%;
   transform: translateX(-50%); font: 11px var(--mono); color: var(--accent); white-space: nowrap; }
+/* the cursor's position, in a row of the plot's top margin above the top axis (app.js places it) */
 #readout {
-  position: absolute; top: 10px; right: 16px; font: 12px/1.4 var(--mono); color: var(--ink-2);
-  background: color-mix(in srgb, var(--surface) 82%, transparent); padding: 3px 7px; border-radius: 5px;
-  pointer-events: none; white-space: pre;
+  position: absolute; top: 18px; left: 78px; font: 12px/16px var(--mono); color: var(--ink-2);
+  pointer-events: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 #hint { font: 11px var(--body); color: var(--ink-3); }
 #readout:empty { display: none; }
