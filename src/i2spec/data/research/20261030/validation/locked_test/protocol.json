@@ -2,7 +2,7 @@
  "schema_version": 3,
  "created_utc": "2026-10-31T04:12:48.501188+00:00",
  "status": "frozen",
- "decision": "Decision 2 (Matt, 2026-10-31): the locked test of the final form, scored once with release 20261030 (release 20261029's forecasts, the uncertainty refitted on the cross-validation and calibrate sets). The sets are the locked-test sets of data/training/roles_20261029; they stay out of every fit",
+ "decision": "Decision 2 (2026-10-31): the locked test of the final form, scored once with release 20261030 (release 20261029's forecasts, the uncertainty refitted on the cross-validation and calibrate sets). The sets are the locked-test sets of data/training/roles_20261029; they stay out of every fit",
  "primary_model": "research-20261030-i2spec",
  "models": {
   "research-20261030-i2spec": {

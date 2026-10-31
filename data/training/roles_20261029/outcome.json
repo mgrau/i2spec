@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "created": "2026-10-30",
- "decision": "Decision 2, step 3b (Matt, 2026-10-30): the train-role sets were added to the fits block by block and each block judged by the paired rule; a block not added goes to calibrate. Rules for the fit: a measurement printed in two places enters once, from the more current printing; a primary is superior to a mean that combines it (the primary enters, the mean's row leaves); separate measurements both enter.",
+ "decision": "Decision 2, step 3b (2026-10-30): the train-role sets were added to the fits block by block and each block judged by the paired rule; a block not added goes to calibrate. Rules for the fit: a measurement printed in two places enters once, from the more current printing; a primary is superior to a mean that combines it (the primary enters, the mean's row leaves); separate measurements both enter.",
  "paired_rule": "a block is added only if some region's held-out error improves by more than 2 SE and none worsens by more than 2 SE; held-out errors are grouped one value per held-out level (or level group)",
  "roles_json_sha256": "61cbb828a636dc85435f24e034ea8711f46dd26fabbaee29f96c8fccc2cf838f",
  "blocks": [
@@ -252,7 +252,7 @@
      "flagged": {}
     }
    ],
-   "note": "The first variant passed on one value per held-out level (chosen after the results) with the isotopologue rows predicted with their lab left out improving (z^2 -1.92 +- 0.89, 24 rows), but its 24 rows held several measurements two or three times: bipm1984a's CIPM 1983 means beside their primaries, and values the CIPM 2003 tables print again. Each measurement once, the same reading gives +6.7 +- 13.8 kHz per held-out level and z^2 -2.83 +- 1.48 (14 rows), not beyond 2 SE. Not added (Matt, 2026-10-30: decided before the second variant ran, to accept its verdict)."
+   "note": "The first variant passed on one value per held-out level (chosen after the results) with the isotopologue rows predicted with their lab left out improving (z^2 -1.92 +- 0.89, 24 rows), but its 24 rows held several measurements two or three times: bipm1984a's CIPM 1983 means beside their primaries, and values the CIPM 2003 tables print again. Each measurement once, the same reading gives +6.7 +- 13.8 kHz per held-out level and z^2 -2.83 +- 1.48 (14 rows), not beyond 2 SE. Not added (2026-10-30: decided before the second variant ran, to accept its verdict)."
   },
   {
    "block": "atlas line lists",
@@ -316,7 +316,7 @@
      }
     }
    ],
-   "note": "The printed assignments miss the model by more than 5 sigma on 20 % of the Complement's lines and fail the measured-line check on 16 %; the model assignments sit at the measured line of their label within 3 sigma for 93.5 % (1978) and 96.5 % (1978b) of the lines the precision rows share, and close X combination differences for 97.7 % and 98.7 % of pairs. Each source on its own scale (one offset, the median against the precision rows): 1977 +127.0, 1978 +170.9, 1978b +189.4 MHz; sigma 30 MHz. The second variant passed, but in the combined fit its lines (rms 47 MHz against sigma 30, the 1978 offset drifting about 30 MHz across the range) pulled the comb rows of B v' 44-50 from 0.57 to 1.00 MHz rms and held-out B v' 33 and sakagami2020a by about 0.1 MHz. The third, correcting both, failed (B v' 78+ worse; 1978b's slope is extrapolated 570 cm-1 below its shared lines, which reach v'' 7 only). Not added (Matt, 2026-10-30): no variant gains measurably, and the atlas lines calibrate the uncertainty of atlas-class predictions instead.",
+   "note": "The printed assignments miss the model by more than 5 sigma on 20 % of the Complement's lines and fail the measured-line check on 16 %; the model assignments sit at the measured line of their label within 3 sigma for 93.5 % (1978) and 96.5 % (1978b) of the lines the precision rows share, and close X combination differences for 97.7 % and 98.7 % of pairs. Each source on its own scale (one offset, the median against the precision rows): 1977 +127.0, 1978 +170.9, 1978b +189.4 MHz; sigma 30 MHz. The second variant passed, but in the combined fit its lines (rms 47 MHz against sigma 30, the 1978 offset drifting about 30 MHz across the range) pulled the comb rows of B v' 44-50 from 0.57 to 1.00 MHz rms and held-out B v' 33 and sakagami2020a by about 0.1 MHz. The third, correcting both, failed (B v' 78+ worse; 1978b's slope is extrapolated 570 cm-1 below its shared lines, which reach v'' 7 only). Not added (2026-10-30): no variant gains measurably, and the atlas lines calibrate the uncertainty of atlas-class predictions instead.",
    "assignments_sha256": {
     "gerstenkorn1978_assigned.csv": "3da3b1cf413847cf9524b4a8029939e733c31fec02a6949b3010e42db91d7a1d",
     "gerstenkorn1978b_assigned.csv": "99de7d4001762d1b5cb62b7240c2f3a49abf5e4a7a18e8972a60483d260db891"
