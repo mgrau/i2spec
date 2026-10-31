@@ -56,8 +56,8 @@ def _tables():
                    key=lambda s: (year(s), s["short"]))
     atlas = [s for s in src if s["kind"] == "atlas"]
     n = lambda kind: sum(s["n_lines"] for s in src if s["kind"] == kind)  # noqa: E731
-    out = [f'{len(precision)} precision data sets in the fit, {len(blind)} more held out of every fit for the '
-           f'blind test, covering {n("precision"):,} lines together, and {len(atlas)} atlases with '
+    out = [f'{len(precision)} precision data sets in the fit, {len(blind)} more in no fit (held out for the '
+           f'blind tests, or set aside), covering {n("precision"):,} lines together, and {len(atlas)} atlases with '
            f'{n("atlas"):,} assigned lines.', "",
            '## <span class="kind precision"></span>Sub-Doppler and frequency-comb measurements', "",
            "Absolute frequencies of hyperfine components or line centers, and hyperfine intervals, with "
@@ -69,18 +69,21 @@ def _tables():
     for s in precision:
         out.append(f'| {_source(s, _rows(s))} | {s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
     if blind:
-        out += ["", '## <span class="kind precision"></span>Held out for the blind test', "",
-                "Transcribed on October 20 and 21, 2026 and held out of every fit: the model's predictions of them, "
-                "and from the second batch on their uncertainties, were frozen before their values were read, "
-                "then scored once, in two batches (results on the [uncertainty page](uncertainty.md)). "
-                "The explorer shows them, marked “blind test, not fitted”.", "",
+        out += ["", '## <span class="kind precision"></span>In no fit', "",
+                "Most were transcribed after the fit and held out of it for the blind tests: the model's predictions "
+                "of them, and their uncertainties, were frozen before their values were read, then scored once "
+                "(results on the [uncertainty page](uncertainty.md)). The others were set aside, each for the "
+                "reason given under it. The explorer shows them all, marked “not fitted”.", "",
                 "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
         for s in blind:
-            out.append(f'| {_source(s, _rows(s))} | {s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
+            why = "" if "blind tests" in s.get("why", "blind tests") else \
+                f'<br><span class="cite">Set aside: {html.escape(s["why"])}.</span>'
+            out.append(f'| {_source(s, _rows(s))}{why} | {s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
     out += ["", '## <span class="kind atlas"></span>Fourier-transform atlases', "",
             "Doppler-limited line centers, assigned in this work by comparison with the model. The Salami & Ross "
             "and APO atlases are in the core fit; Orsay part I and Partie IV determine the levels beyond it "
-            "(X v″ = 18–25, B v′ = 51–80). The others are shown for comparison and used in no fit. The "
+            "(X v″ = 18–25, B v′ = 51–80). The others are shown for comparison and used in no fit (the 1977 and "
+            "1978 atlases calibrate the uncertainties of atlas-class lines). The "
             "calibration of each atlas is given with it.", "",
             "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
     for s in atlas:

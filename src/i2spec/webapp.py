@@ -55,7 +55,10 @@ PER_SHARD_HFS = 80
 #: it was assigned or calibrated. Partie IV shows its unblended lines only: a blend's one position belongs to none
 #: of its assignments.
 ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c", "pyodine_fischer_2022",
+           "kitt_peak_1993", "gerstenkorn1977", "gerstenkorn1978", "gerstenkorn1978b",
            "orsay1982_part1", "orsay1982_part2", "orsay1982_part3", "orsay1982_part4", "orsay1983_part4")
+#: Line lists held but not shown: unassigned (nolleke_2018), a reprint of the 1978 atlas's values (gerstenkorn1979),
+#: sample pages without v (gerstenkorn1980b), and spectra shared privately (the Rodriguez Fernandez scans).
 #: The atlases the model is fitted to: the core's two, Orsay part I (X v'' 18-25) and Partie IV (B v' 51-80). The
 #: others are shown for comparison, marked as not used in the fit.
 FITTED_ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
@@ -93,10 +96,20 @@ def blind_scored():
     return frozenset(out)
 
 
+def _shown(name, meta):
+    """Whether the explorer shows a data set: every one we hold, but one still pending a blind test (its
+    ``exclude`` reason starts "pending" and no registry has scored it), which stays unseen until one does."""
+    reason = str(meta.get("exclude", ""))
+    return not reason.startswith("pending") or name in blind_scored()
+
+
 def _records():
-    """load_all(record=True) with the scored blind sets admitted; every other excluded set has no say."""
+    """load_all(record=True) with every shown set admitted (_shown: the excluded ones too, but those pending a
+    blind test, which have no say)."""
     from .observations import load_all
-    return load_all(OBSERVATIONS_DIR, record=True, include=blind_scored())
+    shown = [p.name for p in OBSERVATIONS_DIR.iterdir() if (p / "meta.toml").exists()
+             and _shown(p.name, tomllib.loads((p / "meta.toml").read_text(encoding="utf-8")))]
+    return load_all(OBSERVATIONS_DIR, record=True, include=shown)
 
 def _short(source_id):
     """"velchev1998a" -> "Velchev 1998", "salami_ross_2005" -> "Salami & Ross 2005"."""
@@ -128,6 +141,15 @@ def _one_line(text):
     return " ".join(str(text).split())
 
 
+def _why_not_fitted(name, meta):
+    """Why a source is not in the fit, in a sentence: held out for the blind tests, or its own exclude reason."""
+    if name in blind_scored():
+        return "held out of every fit for the blind tests, and scored in one"
+    reason = _one_line(meta.get("exclude", ""))
+    first = re.split(r"(?<=[.;])\s", reason, maxsplit=1)[0].rstrip(".;")
+    return first if len(first) <= 220 else first[:217].rstrip() + "..."
+
+
 def sources():
     """Every data set of measured line positions, with what it covers: its own records (a compilation's
     reprints are cited on their source's rows instead, and counted as ``n_also``).
@@ -156,7 +178,8 @@ def sources():
             nu=[round(min(o.value * scale for o in freq) / MHZ_PER_CM, 3),
                 round(max(o.value * scale for o in freq) / MHZ_PER_CM, 3)] if freq else None,
             u_MHz=float(np.median([o.uncertainty * scale for o in ds.observations])),
-            uncertainty=_one_line(ds.meta.get("uncertainty", "")), fit="exclude" not in ds.meta)
+            uncertainty=_one_line(ds.meta.get("uncertainty", "")), fit="exclude" not in ds.meta,
+            **({} if "exclude" not in ds.meta else {"why": _why_not_fitted(ds.id, ds.meta)}))
 
     out = [entry(ds, len(ds)) for ds in record]
     # a set that only prints again what another reported first (zhang1999a, the paper of chen1998a) keeps no
@@ -173,7 +196,9 @@ def sources():
             link=link, n_rows=len(rows), n_lines=len({r[:4] for r in rows}), n_absolute=len(rows),
             n_intervals=0, n_also=0, isotopologues=["127I2"], nu=[round(min(nu), 3), round(max(nu), 3)],
             u_MHz=float(np.median([r[5] for r in rows])), uncertainty=_one_line(meta.get("calibration", "")),
-            fit=name in FITTED_ATLASES))
+            fit=name in FITTED_ATLASES,
+            **({} if name in FITTED_ATLASES else
+               {"why": _why_not_fitted(name, meta) if "exclude" in meta else "shown for comparison"})))
     # two sources by one author in one year keep their letters: "Bodermann 1998b", "Bodermann 1998c"
     for s in out:
         twins = [t for t in out if t["short"] == s["short"]]
@@ -187,23 +212,32 @@ def sources():
 def _atlas_rows(name):
     """(branch, J'', v', v'', ν cm⁻¹ on the corrected scale, u MHz) for each assigned atlas line.
 
-    An Orsay line without a printed precision gets 150 MHz, as in its fit."""
+    The scale its .toml gives is taken out: an offset (offset_mhz, subtracted), a scale fitted against the model
+    (scale_ppb: observed = true (1 + scale_ppb 1e-9), divided out) or one that varies with ν (scale_ppb_coefficients,
+    a polynomial in (ν - scale_ppb_x0_cm-1)/1000 cm⁻¹). Its scatter_mhz, the scatter of its lines about the model,
+    is added to each line's own precision. An atlas with assignments of its own (<name>_assigned.csv: the Orsay
+    tables, the 1977 and 1978 atlases) lists one line per row, its blends left out; an Orsay line without a printed
+    precision gets 150 MHz, as in its fit. The others are in the observations format (<name>.csv)."""
     from .observations import read_observations
 
-    if name.startswith("orsay"):
-        meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
-        scale = 1 / (1 + float(meta.get("scale_ppb", 0.0)) * 1e-9)
-        with open(ATLAS_DIR / f"{name}_assigned.csv", newline="", encoding="utf-8") as f:
-            return tuple((r["branch"], int(r["J_lower"]), int(r["v_upper"]), int(r["v_lower"]),
-                          float(r["sigma_cm1"]) * scale, (float(r["eps_mk"]) * 1e-3 * MHZ_PER_CM if r["eps_mk"] else 150.0))
-                         for r in csv.DictReader(f) if r.get("n_assignments", "1") == "1")
-    # an atlas on a wavemeter scale carries its fitted offset (offset_mhz in its .toml), subtracted here; one
-    # whose scale was fitted against the model (scale_ppb: observed = true (1 + scale_ppb 1e-9)) has it divided out
     meta = tomllib.loads((ATLAS_DIR / f"{name}.toml").read_text(encoding="utf-8"))
     shift = float(meta.get("offset_mhz", 0.0)) / MHZ_PER_CM
-    scale = 1 + float(meta.get("scale_ppb", 0.0)) * 1e-9
-    return tuple((o.line.branch, o.line.J_lower, o.line.v_upper, o.line.v_lower, o.value / scale - shift,
-                  o.uncertainty * MHZ_PER_CM) for o in read_observations(ATLAS_DIR / f"{name}.csv"))
+    c, x0 = meta.get("scale_ppb_coefficients"), meta.get("scale_ppb_x0_cm-1", 0.0)
+    scatter = float(meta.get("scatter_mhz", 0.0))
+
+    def true(nu):
+        s = sum(ci * ((nu - x0) / 1000) ** i for i, ci in enumerate(c)) if c else float(meta.get("scale_ppb", 0.0))
+        return nu / (1 + s * 1e-9) - shift
+
+    assigned = ATLAS_DIR / f"{name}_assigned.csv"
+    if assigned.exists():
+        with open(assigned, newline="", encoding="utf-8") as f:
+            return tuple((r["branch"], int(r["J_lower"]), int(r["v_upper"]), int(r["v_lower"]), true(float(r["sigma_cm1"])),
+                          math.hypot(float(r["eps_mk"]) * 1e-3 * MHZ_PER_CM if r.get("eps_mk") else (0.0 if scatter else 150.0),
+                                     scatter))
+                         for r in csv.DictReader(f) if r.get("n_assignments", "1") == "1")
+    return tuple((o.line.branch, o.line.J_lower, o.line.v_upper, o.line.v_lower, true(o.value),
+                  math.hypot(o.uncertainty * MHZ_PER_CM, scatter)) for o in read_observations(ATLAS_DIR / f"{name}.csv"))
 
 
 def line_key(branch, J, v_upper, v_lower):
@@ -460,19 +494,17 @@ def _write_atomic(path, text):
 def export_inputs():
     """A digest of everything ``export`` reads, so that the exported data are written again when, and only when,
     one of them changes: the package (but its fit pipeline, which the export never runs), the data sets it loads
-    (_records: those without an ``exclude`` line, and the scored blind sets), the atlases, the catalog of sources
+    (_records: every one but those pending a blind test), the atlases, the catalog of sources
     and the locked dependencies. Pending data sets, the documentation, the explorer's own files and the tests are
     not among them; nor is the strength cutoff, whose change `i2spec web` notes (data_cutoff)."""
     package = ROOT / "src" / "i2spec"
     files = [p for p in package.rglob("*") if p.is_file() and "__pycache__" not in p.parts
              and p.relative_to(package).parts[0] != "fit"]
-    loaded = blind_scored()
     for folder in sorted(OBSERVATIONS_DIR.iterdir()):
         meta = folder / "meta.toml"
         if not folder.is_dir():
             files.append(folder)
-        elif meta.exists() and ("exclude" not in tomllib.loads(meta.read_text(encoding="utf-8"))
-                                or folder.name in loaded):
+        elif meta.exists() and _shown(folder.name, tomllib.loads(meta.read_text(encoding="utf-8"))):
             files += [p for p in folder.rglob("*") if p.is_file()]
     for folder in (ATLAS_DIR, ROOT / "data" / "catalog"):
         files += [p for p in folder.rglob("*") if p.is_file()]

@@ -16,10 +16,11 @@ def test_every_source_is_cited_and_linked():
     assert {s["kind"] for s in sources} == {"precision", "atlas"}
     for s in sources:
         assert len(s["citation"]) > 30 and s["n_lines"] > 0
-    # the theses and the printed Orsay Partie IV volume are the only sources with no online copy
+    # the theses and two printed atlas volumes (the 1978 one photographed, Orsay Partie IV) are the only sources
+    # with no online copy
     unlinked = [s["id"] for s in sources if not s["link"]]
     assert unlinked == ["bodermann1998c", "chen2005thesis_a", "chen2005thesis_b", "eickhoff1994thesis",
-                        "orsay1983_part4"]
+                        "gerstenkorn1978b", "orsay1983_part4"]
     assert all(s["link"].startswith("https://doi.org/") for s in sources if s["doi"])
 
 

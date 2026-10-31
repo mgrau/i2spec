@@ -33,5 +33,7 @@ the APO uncertainty. Excludes the scale curve."""
 scale_ppb_x0_cm-1 = 17900.0
 scale_ppb_coefficients = [-1421.97, -133.49, -14.33]
 scale_ppb_coefficient_uncertainties = [1.59, 1.15, 1.18]
+# the scatter added to each line's fit uncertainty (see uncertainty above), MHz
+scatter_mhz = 6.3
 range_cm-1 = [15876.4, 19640.9]
 n_lines = 5297

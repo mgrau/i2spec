@@ -5,7 +5,12 @@ kind = "atlas line positions"
 source = "publisher PDF: a 300 dpi scan with an OCR text layer"
 catalog = "broadband:gerstenkorn1977"
 retrieved = "2026-10-26"
-exclude = "pending: held out of every fit, benchmark and the explorer until it is scored in a blind test"
+# its role: calibrate (data/training/roles_20261029)
+exclude = "not fitted: a calibration set of the uncertainty model; shown in the explorer on its own scale"
+# On its own scale (data/training/roles_20261029, outcome.json): its offset against the precision rows, subtracted
+# for display, and the robust scatter of its lines about the model, added to each printed precision.
+offset_mhz = 127.0
+scatter_mhz = 30.0
 instrument = """Fourier transform absorption spectrum (the Connes-Michel spectrometer of Laboratoire Aime Cotton): 13-cm cell
 at room-temperature vapor pressure, 40-W tungsten-iodine lamp, a filter limiting the range to about 2500 cm-1 (the (29,0)
 and (30,0) bands at the top of the response); 4e5-point interferograms (28.5 cm path difference, steps of 9/8 of the

@@ -49,8 +49,9 @@ for every line without the ΔJ = ±2 couplings of the hyperfine Hamiltonian; thi
 offsets by less than 1 MHz (0.9 MHz for R(56) 32–0), which is small compared with the Doppler width.
 The detail panel shows the full calculation, including these couplings, where it is available.
 
-Once the view resolves the components (the one under the pointer is at least 4 pixels nearer than any other), a
-click on the spectrum selects a single main component rather than the nearest line, and hovering names it. At
+Where the hyperfine structure is drawn, a click on the spectrum selects the main component under the pointer
+(within 12 pixels), and hovering names it; a click elsewhere selects the line of the nearest component, never a
+line whose center lies far from the click. At
 these spans the table lists every line with a component in view, even when its center lies outside. The
 spectrum marks it, the detail panel gives its wavelength, frequency, offset from the line center, 1σ and
 relative strength, and its row is highlighted in the hyperfine table and among the measurements. A row of the
@@ -65,7 +66,7 @@ Below the same 0.1 nm, every measured absolute frequency in view is drawn agains
   height from the line table, so the spectrum keeps its own. Each measurement is a dot at the model's position of its component,
   with its own 1σ as a vertical bar. The gray box behind it is the model's 1σ for that component. Several
   measurements of one component stand side by side. A hollow dot is a source that no fit uses: a set held
-  out for the blind tests, or an atlas shown only for comparison. The vertical scale is set by the precision measurements when there are any. An atlas
+  out for the blind tests, a set set aside, or an atlas shown only for comparison. The vertical scale is set by the precision measurements when there are any. An atlas
   residual (tens of MHz) then lies off the scale and is drawn as an arrow at the edge, but it shows at
   true scale on the spectrum itself.
 - **On the spectrum, at true scale**, the model's ±1σ is shaded gray around each measured component, and
@@ -86,7 +87,7 @@ Both views take the model's 1σ for each component from the full hyperfine patte
 
 The **sub-Doppler** button of the y-axis control draws the saturated-absorption spectrum that a
 pump–probe experiment records, using the same model as the Python package (`i2spec.saturation`). It needs the hyperfine patterns, so it is drawn only when
-the view spans at most 5 cm⁻¹; a wider view shows the cross section with a note to zoom in.
+the view spans at most 5 cm⁻¹; a wider view shows the cross section.
 
 - Every hyperfine component gives a **Lamb dip** of amplitude proportional to S², the weak-saturation
   (bilinear) limit, where S is the component strength at the cell temperature. Dips of different lines
@@ -178,8 +179,9 @@ wavelengths and the table continues with the following lines. Scrolling beyond t
 to shorter wavelengths. For measured lines the table gives the sources, each linked to its DOI. The
 detail panel lists all measurements of the selected line, each with its own stated uncertainty and its
 difference from the model, beside the model's position and 1σ. A difference several times larger than both
-uncertainties marks a disagreement worth a look. Sources marked “blind test, not fitted” were held out of
-every fit and used only to test the model's frozen predictions.
+uncertainties marks a disagreement worth a look. Sources marked “not fitted” are in no fit: held out for
+the blind tests, set aside for a reason the mark gives on hovering, or atlases shown for comparison. The explorer
+shows every data set we hold except those still waiting for a blind test, which stay unseen until it is scored.
 
 ## The model behind each line
 
