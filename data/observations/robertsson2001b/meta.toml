@@ -39,16 +39,8 @@ notes = """
 BIPM primary record of the twelve R(56) 32-0 intervals. This is the original source of the "BIPM" column of
 picard2003a Table 5 (its ref. 19, which picard2003a marks as not held).
 
-[overlaps] NOT declared here, on purpose. src/i2spec/observations.py reads [overlaps] in the set that prints the other
-set's measurements: the declaring set is the compilation, and its rows that another set determines are dropped from the fit
-(and, with record, kept as citations). Declaring picard2003a = "same" in this meta would make this set's rows the ones
-dropped and picard2003a's BIPM column the one kept, which is backwards. The declaration belongs in picard2003a's meta,
-where the other reprints are already declared (hong2001b, arie1993a, jungner1995b, each with a groups list):
-
-  robertsson2001b = { relation = "same", groups = ["picard2003a_bipm"] }   # the BIPM column
-
-picard2003a's own transcription states that its BIPM column cites this paper "until that one is transcribed"; with this
-set held, that citation should move to robertsson2001b. That edit is in picard2003a's meta and is not made here.
+Its reprint, picard2003a's BIPM column (re-referenced from a1 to a10), is declared in picard2003a's meta, the
+set that prints it: [overlaps] robertsson2001b = { relation = "same", groups = ["picard2003a_bipm"] }.
 
 Other held sets with the same line: hong2001b (absolute hyperfine constants, Table 3), arie1993a (A and B column, the
 same values, re-referenced in picard2003a), ye1999a and bipm2012a (R(56) 32-0 intervals). Not compared here beyond the

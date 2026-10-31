@@ -115,21 +115,25 @@ def test_one_record_per_measurement():
 
 
 def test_a_set_left_out_has_no_say():
-    """borde1981a is pending: until it is admitted, the BIPM 515 nm tables it is averaged into stay in the fit."""
+    """borde1981a and the MEP 1997 list (quinn1999a) are left out: until they are admitted, the BIPM 515 nm tables they
+    determine (a mean of borde1981a's lines; R(15) 43-0 and R(98) 58-1 printed again from the 1997 list) stay in the
+    fit. Admitted, they leave 4 rows of P(13) 43-0 as the 2005 list's own."""
     count = lambda sets: len(next(d for d in sets if d.id == "bipm2005a").observations)   # noqa: E731
     assert count(load_all()) == 56
-    assert count(load_all(include_excluded=True)) == 56 - 32
+    assert count(load_all(include_excluded=True)) == 4
 
 
 def test_a_paper_that_also_prints_others_keeps_its_own():
-    """picard2003a prints hong2001b and arie1993a beside its own lasers, on the same R(56) 32-0 intervals: the
-    "same" entries name those columns' groups, so only they merge and the lasers' rows stay records."""
+    """picard2003a prints hong2001b, arie1993a and robertsson2001b (the BIPM laser) beside its own lasers, on the same
+    R(56) 32-0 intervals: the "same" entries name those columns' groups, so only they merge and the lasers' rows stay
+    records."""
     sets = {d.id: d for d in load_all(include_excluded=True, record=True)}
     groups = {o.group for o in sets["picard2003a"].observations}
-    assert "picard2003a_mikes" in groups and "picard2003a_bipm" in groups
-    assert not groups & {"picard2003a_jilanist2", "picard2003a_arie"}
-    r56 = [o for o in sets["hong2001b"].observations if str(o.line) == "127I2 R(56) 32-0"]
-    assert r56 and all("picard2003a" in o.citations for o in r56)
+    assert {"picard2003a_mikes", "picard2003a_inm", "picard2003a_cmi"} <= groups
+    assert not groups & {"picard2003a_jilanist2", "picard2003a_arie", "picard2003a_bipm"}
+    for source in ("hong2001b", "robertsson2001b"):
+        r56 = [o for o in sets[source].observations if str(o.line) == "127I2 R(56) 32-0"]
+        assert r56 and all("picard2003a" in o.citations for o in r56), source
 
 
 def test_a_quantity_measured_twice_is_cited_twice():

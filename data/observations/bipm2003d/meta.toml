@@ -37,6 +37,7 @@ basis = "MEP 612 nm, p. 1: recommended value applies at cold finger -5 C (cell i
 # Measurements this compilation prints that other sets hold: its hyperfine tables combine razet1991a (127I2 R(47) 9-2, P(48) 11-3, R(48) 15-5; within 1-7 kHz)
 # and dschao1980a (127I2 R(47) 9-2 and 129I2 P(110) 10-2; some rows equal to the printed digit) with other data.
 [overlaps]
+quinn1999a = { relation = "same", lines = ["127I2 P(48) 11-3", "127I2 R(48) 15-5", "129I2 P(110) 10-2", "129I2 R(113) 14-4"] }   # these lines printed again from quinn1999a, every row identical (duplicate-table audit, 2026-10-31)
 razet1991a = "mean"    # pending until admitted
 dschao1980a = "mean"   # pending until admitted
 glaser1987a = { relation = "mean", lines = ["127I2 R(47) 9-2", "127I2 P(48) 11-3"] }   # pending until admitted; Tables 1-2 ref. [12]

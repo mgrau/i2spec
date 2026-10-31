@@ -32,4 +32,5 @@ basis = "MEP 640 nm, p. 1 (conditions) and pp. 1-2, sections 2.1-2.3 (coefficien
 
 # Measurements this compilation prints that other sets hold: its hyperfine tables average zhao1985a's two lasers with other data (R(16) 8-5 b1 is their mean).
 [overlaps]
+quinn1999a = { relation = "same", lines = ["127I2 P(10) 8-5"] }   # these lines printed again from quinn1999a, every row identical (duplicate-table audit, 2026-10-31)
 zhao1985a = "mean"   # pending until admitted

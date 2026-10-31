@@ -31,6 +31,7 @@ basis = "MEP 576 nm, p. 1: recommended value applies at cold finger 6 C (cell in
 # The recommended a1 combines "the NBS value", pollock1983a, with a ratio to the 633 nm standard: a mean.
 # razet1993b prints Barwood's table to the kHz, so the table here is that measurement printed again.
 [overlaps]
+quinn1999a = { relation = "same", lines = ["127I2 P(62) 17-1"] }   # these lines printed again from quinn1999a, every row identical (duplicate-table audit, 2026-10-31)
 reinhardt2006a = "superseded"
 pollock1983a = "mean"   # pending until admitted
 razet1993b = "same"     # pending until admitted

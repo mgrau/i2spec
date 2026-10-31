@@ -10,12 +10,12 @@ transcription = """
 Table I (p. 631), "Assignments of the observed transition J' = 128 <- J'' = 127", read from a 600 dpi render (the
 scan's native 612 dpi); the text layer drops the letter column and several F labels. The table prints, for the 14
 features a-n of the R(127) line of the 11-5 band (633 nm He-Ne laser) observed by G. R. Hanes and C. E. Dahlstrom
-(Appl. Phys. Lett. 14, 362 (1969), "ref. 2"; not held), their position relative to feature i (nu_obs), and the
+(Appl. Phys. Lett. 14, 362 (1969), "ref. 2"; held as hanes1969a), their position relative to feature i (nu_obs), and the
 author's calculated eigenvalue lambda_127, F label and positions (quadrupole only; quadrupole plus a magnetic term).
 
 Entered: the 13 observed positions relative to i, as intervals to a13; group kroll1969a. The calculated columns are
-in each row's note. This set is a reprint: the primary (Hanes and Dahlstrom 1969) is not held, and this table is
-the only held copy of its numbers.
+in each row's note. This set is a reprint of the primary, Hanes and Dahlstrom 1969 (hanes1969a): the same values,
+declared in [overlaps] below.
 
 Labels: Hanes and Dahlstrom's letters run down in frequency (a highest), as in the later 633 nm convention (hanes1971a,
 bipm2003a: letters a ... u = ranks a21 ... a1, i = a13). With 21 components for odd J'' the 14 observed are the 14 highest:
@@ -49,3 +49,6 @@ refit of these positions (Delta eQq = 1926.2(3.0) MHz) by Hanes et al. 1971. Not
 [conditions]
 method = "saturated absorption (inverted Lamb dips) of 127I2 in the cavity of a 633 nm He-Ne laser (Hanes and Dahlstrom 1969), iodine vapor about 0.04 Torr; positions as reprinted by Kroll 1969"
 iodine_pressure_Pa = 5.3
+
+[overlaps]
+hanes1969a = "same"   # Table I prints the positions of Hanes and Dahlstrom 1969 (its ref. 2) again

@@ -11,8 +11,8 @@ R(56) 32-0 transition in 127I2", [f(a_n) - f(a10)] in MHz, typed from the text l
 page. Components 1, 2, 5-9 and 11-15 (a3 and a4 are not given). One group per column:
 - MIKES, BNM-INM and CMI: the lasers MIKESY1, INMY2 and CMIY1, measured in this comparison at the BIPM in May
   2001 (third-harmonic locking, conditions in Table 1). This paper's own measurements.
-- BIPM: the BIPM A laser, credited to Robertsson, Ma and Picard, Proc. SPIE 4269, 268 (2001) (ref. 19), which is
-  not held; entered here, so it cites this paper until that one is transcribed.
+- BIPM: the BIPM A laser, credited to Robertsson, Ma and Picard, Proc. SPIE 4269, 268 (2001) (ref. 19), held as
+  robertsson2001b; declared below as its reprint (re-referenced from a1 to a10).
 - JILA-NIST 2: Hong et al., JOSA B 18, 379 (2001) (ref. 34), which is hong2001b re-referenced to a10, exact to
   0.1 kHz. Declared "same" below.
 - A&B: Arie and Byer 1993 with its 1994 erratum (refs. 37, 38), which is arie1993a re-referenced to a10, exact.
@@ -37,3 +37,4 @@ method = "frequency-doubled Nd:YAG lasers stabilized by third-harmonic locking (
 hong2001b = { relation = "same", groups = ["picard2003a_jilanist2"] }   # the JILA-NIST 2 column
 arie1993a = { relation = "same", groups = ["picard2003a_arie"] }        # the A&B column
 jungner1995b = { relation = "same", groups = ["picard2003a_jilanist1"] }   # the JILA-NIST 1 column (Eickhoff thesis), first printed in Proc. SPIE 2378
+robertsson2001b = { relation = "same", groups = ["picard2003a_bipm"] }   # the BIPM column (Proc. SPIE 4269)
