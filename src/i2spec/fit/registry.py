@@ -38,12 +38,14 @@ import tomllib
 
 import numpy as np
 
+from ..constants import MHZ_PER_CM
 from ..observations import COLUMNS, DATA_DIR, UNITS, Line, _ends, _graph, _observation, _path, load_dataset
 
 ROOT = Path(__file__).resolve().parents[3]
 PACKAGE = ROOT / "src" / "i2spec"
 #: the data folders beside data/observations whose pending sets a registry holds
 HYPERFINE, X_HYPERFINE = "hyperfine_parameters", "x_hyperfine"
+B_LEVELS, X_LEVELS = "b_levels", "x_levels"
 HF_QUANTITIES = ("eqQ", "C", "d", "delta")
 #: printed names of the four constants (yokozeki1980's meta.toml: C1 = C, C3 = d, C4 = delta); other printed
 #: quantities (octupole, the fit's B, sigma) are not the model's and get no target
@@ -63,7 +65,9 @@ PARTITIONS = dict(
     superseded="an active set holds the same quantity re-measured or re-evaluated by the same authors ([overlaps] "
                "superseded)",
     read_before="a set of an earlier registry, whose values were read when that registry was scored; forecast "
-                "again, never fitted, and never in a blind score")
+                "again, never fitted, and never in a blind score",
+    derived="a constant a source derived from its own line data (term values, rotational constants, band origins): "
+            "the table is in no training set or earlier registry, but lines it was derived from may be")
 KINDS = dict(absolute="a component frequency",
              intraline="component minus component of the same line (hyperfine only)",
              interline="component (or center) of one line minus that of another",
@@ -72,7 +76,18 @@ KINDS = dict(absolute="a component frequency",
              x_constant="an effective hyperfine constant of an X level",
              x_interval="the energy of one hyperfine sublevel of an X level minus another's, E(I, F) - E(I', F'); "
                         "sublevels are labeled (I, F) by a one-to-one assignment within each F (the largest total "
-                        "weight of each I on the level's own J); a set that prints magnitudes is scored on |forecast|")
+                        "weight of each I on the level's own J); a set that prints magnitudes is scored on |forecast|",
+             center="a line's hyperfine-free center (Doppler-limited wavenumbers)",
+             level="a term value G (J = 0) or rotational constant B, D, H of an X or B level; the model's B, D, H are "
+                   "the coefficients of E(J) = G + B x - D x^2 + H x^3, x = J(J + 1), fitted to its levels J = 0-20",
+             band="a band origin, E_B(v', 0) - E_X(v'', 0)",
+             fluorescence="a line of a fluorescence series from one upper level to X(v'', J''): forecast -E_X(v'', J'') "
+                          "and scored after the series' offset (the upper level's energy) is removed")
+#: the target kinds of the level and line tables (LEVEL_TABLES), read from and scored in cm-1 converted to MHz
+LEVEL_KINDS = ("center", "level", "band", "fluorescence")
+#: how an offset is removed: the unweighted mean residual of the group's printed rows, per model; a group of one row
+#: is not scored
+OFFSET = "one constant per group, the unweighted mean of its residuals per model; a group of one row is not scored"
 
 
 def _sha(path):
@@ -274,6 +289,115 @@ def x_hyperfine_targets(sets, root):
     return out
 
 
+#: The level and line tables a registry holds, by (folder, set, file). form "level": a column per quantity, as
+#: (quantity, scale to cm-1, origin of G: "X min" = above the X potential minimum, "X(0,0)" = above X v = 0, J = 0,
+#: "offset" = not stated by the table: scored after one offset per set and state); "state": the state, or None for a
+#: state column. "center": the line from the identity columns and the measured column. "band": the origin and the
+#: two levels' B. "fluorescence": R and P lines (J'' and wavenumber columns) of a series from one upper level.
+LEVEL_TABLES = {
+    (B_LEVELS, "barrow1973", "data.csv"): dict(form="level", state="B", columns=dict(
+        G=("G", 1., "offset"), B_x100=("B", 1e-2, None), D_x1e8=("D", 1e-8, None))),
+    (B_LEVELS, "danyluk1977", "data.csv"): dict(form="level", state="B", columns=dict(
+        G=("G", 1., "offset"), B_x100=("B", 1e-2, None))),
+    (B_LEVELS, "gerstenkorn1983", "data.csv"): dict(form="level", state="B", columns=dict(
+        G=("G", 1., "offset"), B_x100=("B", 1e-2, None))),
+    (B_LEVELS, "king1980", "data.csv"): dict(form="level", state="B", columns=dict(
+        G=("G", 1., "offset"), B_x100=("B", 1e-2, None))),
+    (B_LEVELS, "tromp1983", "data.csv"): dict(form="level", state="B", columns=dict(
+        G=("G", 1., "offset"), B_x100=("B", 1e-2, None))),
+    (B_LEVELS, "luc1980", "data.csv"): dict(form="level", state="B", columns=dict(
+        G=("G", 1., "X(0,0)"), B_x100=("B", 1e-2, None), D_x1e8=("D", 1e-8, None), H_x1e14=("H", 1e-14, None))),
+    (B_LEVELS, "luc1980", "x_levels.csv"): dict(form="level", state="X", columns=dict(
+        G=("G", 1., "X(0,0)"), B=("B", 1., None), D_x1e9=("D", 1e-9, None))),
+    (B_LEVELS, "steinfeld1965", "data.csv"): dict(form="level", state="B", columns=dict(
+        T_xmin=("G", 1., "X min"), B_x100=("B", 1e-2, None), B_cd_x100=("B", 1e-2, None))),
+    (X_LEVELS, "tellinghuisen1980", "table7_levels.csv"): dict(form="level", state="X", columns=dict(
+        G=("G", 1., "X min"), G_minus_G0=("G", 1., "X(0,0)"), B_x100=("B", 1e-2, None), D_x1e9=("D", 1e-9, None),
+        negH_x1e16=("H", -1e-16, None))),
+    (B_LEVELS, "wei1974", "bands.csv"): dict(form="band"),
+    (B_LEVELS, "steinfeld1969", "lines.csv"): dict(form="center", value="sigma"),
+    (X_LEVELS, "rank1964", "green_series.csv"): dict(form="center", value="sigma"),
+    (B_LEVELS, "yee1976", "excitations.csv"): dict(form="center", value="sigma_meas"),
+    (B_LEVELS, "gerstenkorn1991", "lines_calc.csv"): dict(form="center", value="sigma_meas"),
+    (X_LEVELS, "verma1960", "data.csv"): dict(form="fluorescence"),
+    (X_LEVELS, "tellinghuisen1980", "data.csv"): dict(form="fluorescence"),
+}
+
+
+def _integer(text):
+    """An integer identity printed perhaps in parentheses ("(45)"); None if there is none."""
+    import re
+    m = re.fullmatch(r"\(?\s*(\d+)\s*\)?", str(text or "").strip())
+    return int(m.group(1)) if m else None
+
+
+def level_targets(tables, root, trained=frozenset()):
+    """Targets of the LEVEL_TABLES entries ``tables`` under ``root`` (the data folder), from identity columns only
+    (isotopologue, state, v, line labels, series, J): the value columns are named, never read. ``trained``: the lines
+    of the fit data (a center target's line_in_training)."""
+    out = []
+    for folder, s, file in tables:
+        spec, path = LEVEL_TABLES[(folder, s, file)], Path(root) / folder / s / file
+        head, meta_iso = _header(path), str(_meta(Path(root) / folder, s).get("isotopologue", "127I2"))
+        default_iso = meta_iso if meta_iso in ("127I2", "129I2", "127I129I") else "127I2"
+
+        def add(k, column, kind, **fields):
+            out.append(_constant_target(f"{folder}/{s}:{file}:{k}:{column}", folder, s, file, k, kind,
+                                        column=column, **fields))
+        if spec["form"] == "level":
+            keys = ("isotopologue", "v", "state")
+            for k, r in enumerate(_identity_rows(path, keys)):
+                v, iso = _integer(r["v"]), r.get("isotopologue") or default_iso
+                state = spec["state"] or r.get("state")
+                if v is None or state not in ("X", "B"):
+                    continue
+                for column, (q, scale, origin) in spec["columns"].items():
+                    if column not in head:
+                        continue
+                    unc = next((u for u in (f"{column}_unc",) if u in head), None)
+                    add(k, column, "level", quantity=q, state=state, v=v, isotopologue=iso, scale=scale,
+                        uncertainty_column=unc, origin=origin, status="derived",
+                        offset_group=f"{folder}/{s}:{file}:{state}:{iso}:G" if origin == "offset" else None)
+        elif spec["form"] == "band":
+            for k, r in enumerate(_identity_rows(path, ("isotopologue", "v_upper", "v_lower"))):
+                vu, vl, iso = _integer(r["v_upper"]), _integer(r["v_lower"]), r.get("isotopologue") or default_iso
+                common = dict(isotopologue=iso, status="derived", offset_group=None, origin=None)
+                add(k, "nu0", "band", quantity="nu0", v_upper=vu, v_lower=vl, scale=1., uncertainty_column="nu0_unc",
+                    **common)
+                for column, state, v in (("Bu_x100", "B", vu), ("Bl_x100", "X", vl)):
+                    add(k, column, "level", quantity="B", state=state, v=v, scale=1e-2,
+                        uncertainty_column=f"{column}_unc", **common)
+        elif spec["form"] == "center":
+            keys = ("isotopologue", "line", "branch", "J_lower", "v_upper", "v_lower")
+            for k, r in enumerate(_identity_rows(path, keys)):
+                iso = r.get("isotopologue") or default_iso
+                try:
+                    if r.get("branch") and r.get("J_lower"):
+                        line = Line.parse(f"{iso} {r['branch']}({int(r['J_lower'])}) {int(r['v_upper'])}-"
+                                          f"{int(r['v_lower'])}")
+                    else:
+                        line = Line.parse(f"{iso} {r['line']}")
+                except (ValueError, TypeError):
+                    continue
+                add(k, spec["value"], "center", component=None, ref_line=None, ref_component=None, line=str(line),
+                    isotopologue=iso, scale=1., uncertainty_column=None, offset_group=None,
+                    line_in_training=str(line) in trained, diagnostic_exclusion=str(line) == EXCLUSION)
+        else:                               # fluorescence: R and P of a series from one upper level
+            keys = ("table", "series", "J_upper", "v", "R_J", "P_J")
+            for k, r in enumerate(_identity_rows(path, keys)):
+                v, Ju = _integer(r["v"]), _integer(r["J_upper"])
+                if v is None or Ju is None:
+                    continue
+                for branch in ("R", "P"):
+                    J = _integer(r.get(f"{branch}_J"))
+                    if J is None:
+                        continue
+                    add(k, branch, "fluorescence", quantity=branch, state="X", v=v, J=J, isotopologue=default_iso,
+                        scale=1., uncertainty_column=None, J_upper=Ju, series=f"{r.get('table')}/{r.get('series')}",
+                        offset_group=f"{folder}/{s}:{file}:{r.get('table')}/{r.get('series')}:J'={Ju}")
+    return out
+
+
 def _label(line):
     return f"{line.branch}({line.J_lower}) {line.v_upper}-{line.v_lower}"
 
@@ -297,9 +421,34 @@ class Forecaster:
             self._models[isotopologue] = self._new(self.name, isotopologue)
         return self._models[isotopologue]
 
+    def energy(self, isotopologue, state, v, J):
+        """E(v, J) of a level, cm-1 above the X potential minimum."""
+        return self.model(isotopologue)._levels_x.energy(state, v, J)
+
+    def rotational(self, isotopologue, state, v):
+        """(G, B, D, H) of a level, cm-1: E(J) = G + B x - D x^2 + H x^3 fitted to the model's levels J = 0-20."""
+        x = np.array([J*(J + 1) for J in range(21)], float)
+        c = np.polynomial.polynomial.polyfit(x, [self.energy(isotopologue, state, v, J) for J in range(21)], 3)
+        return c[0], c[1], -c[2], c[3]
+
+    def level(self, t):
+        """The forecast of a target of a level or line table (LEVEL_KINDS), cm-1."""
+        iso = t["isotopologue"]
+        if t["kind"] == "band":
+            return self.energy(iso, "B", t["v_upper"], 0) - self.energy(iso, "X", t["v_lower"], 0)
+        if t["kind"] == "fluorescence":
+            return -self.energy(iso, "X", t["v"], t["J"])
+        if t["quantity"] == "G":
+            zero = 0. if t["origin"] == "X min" else self.energy(iso, "X", 0, 0)
+            return self.energy(iso, t["state"], t["v"], 0) - zero
+        return dict(zip("GBDH", self.rotational(iso, t["state"], t["v"])))[t["quantity"]]
+
     def predict(self, t):
         """The forecast of a target, MHz: a component (or center) frequency, or the difference of two; a
-        hyperfine constant; or an interval between two hyperfine sublevels of an X level."""
+        hyperfine constant; or an interval between two hyperfine sublevels of an X level; or a quantity of a level or
+        line table, converted from cm-1."""
+        if t["kind"] in ("level", "band", "fluorescence"):
+            return float(self.level(t))*MHZ_PER_CM
         if t["kind"] == "hf_constant":
             line = Line.parse(t["line"])
             m = self.model(line.isotopologue)
@@ -315,7 +464,7 @@ class Forecaster:
             return levels[(t["I_from"], t["F_from"])] - levels[(t["I_to"], t["F_to"])]
         line = Line.parse(t["line"])
         value = self.model(line.isotopologue).frequency(_label(line), t["component"])
-        if t["kind"] != "absolute":
+        if t["kind"] not in ("absolute", "center"):
             ref = Line.parse(t["ref_line"]) if t["ref_line"] else line
             value -= self.model(ref.isotopologue).frequency(_label(ref), t["ref_component"])
         return float(value)
@@ -332,15 +481,16 @@ class Forecaster:
     def sigma(self, t):
         """The 1-sigma of a target's forecast (sigma_model_MHz, its statistical, model and hyperfine parts, and the
         data status), or the reason there is none."""
-        if t["kind"] in ("hf_constant", "x_constant", "x_interval"):
+        if t["kind"] in ("hf_constant", "x_constant", "x_interval", "level", "band", "fluorescence"):
             return dict(sigma_model_MHz=None, sigma_reason="the uncertainty model covers line positions and "
-                                                           "components, not hyperfine constants or X intervals")
+                                                           "components, not constants, X intervals or levels")
         line = Line.parse(t["line"])
         ref = Line.parse(t["ref_line"]) if t["ref_line"] else None
         try:
             if ref is not None and ref.isotopologue != line.isotopologue:
                 raise ValueError("no 1-sigma of an interval between isotopologues")
-            args = (_label(line), t["component"]) + ((t["ref_component"],) if t["kind"] != "absolute" else ()) \
+            args = (_label(line), t["component"]) + ((t["ref_component"],) if t["kind"] not in ("absolute", "center")
+                                                 else ()) \
                 + ((_label(ref),) if t["kind"] == "interline" else ())
             u = self.model(line.isotopologue).uncertainty(*args)
         except (ValueError, KeyError) as e:
@@ -392,7 +542,8 @@ def forecasts(targets, models):
 
 
 def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), root=DATA_DIR, decision=None,
-                    rescore=(), constants=False, constants_root=None, disclosure=None, protocol_extra=None):
+                    rescore=(), constants=False, constants_root=None, disclosure=None, protocol_extra=None,
+                    levels=(), held=()):
     """Freeze the forecasts of pending sets into the new folder ``destination``; returns the manifest.
 
     ``sets``: pending set ids (default: every pending set the registries ``after`` do not hold). ``models``: the
@@ -400,7 +551,10 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
     ``after`` whose sets are forecast again, in the partition read_before. ``constants``: also every pending set of
     data/hyperfine_parameters and data/x_hyperfine (under ``constants_root``, default data/), or a collection of set
     ids: only those. ``disclosure``: values of registered sets seen before freezing, stated in the protocol.
-    ``protocol_extra``: further fields of the protocol (a test's criteria, fixed before any value is read). Every target and forecast is made before the
+    ``protocol_extra``: further fields of the protocol (a test's criteria, fixed before any value is read).
+    ``levels``: (folder, set, file) entries of LEVEL_TABLES to register. ``held``: (folder, set, reason) of pending
+    sets registered without targets (the model forecasts nothing of them); their files are hashed for the record.
+    Every target and forecast is made before the
     folder is created; the manifest, written last, marks a complete registry. An existing destination, a set that
     is not pending and a set an earlier registry holds (unless rescored) are refused."""
     destination = Path(destination)
@@ -417,7 +571,7 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
     again = registered_sets(*rescore) if rescore else []
     pending = pending_sets(root)
     sets = [s for s in pending if s not in prior] if sets is None else list(sets)
-    if (not sets and not constants) or len(set(sets)) != len(sets):
+    if (not sets and not constants and not levels and not held) or len(set(sets)) != len(sets):
         raise ValueError("declare a nonempty list of distinct sets")
     if bad := [s for s in sets if s not in pending or s in prior]:
         raise ValueError(f"only pending sets no earlier registry holds can be registered: {bad}")
@@ -437,6 +591,18 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
             other = {f: [s for s in ss if s in named] for f, ss in other.items()}
         targets += hyperfine_targets(other[HYPERFINE], croot / HYPERFINE)
         targets += x_hyperfine_targets(other[X_HYPERFINE], croot / X_HYPERFINE)
+    lroot = Path(constants_root) if constants_root is not None else DATA_DIR.parent
+    if levels:
+        if bad := [e for e in levels if tuple(e) not in LEVEL_TABLES or e[1] not in pending_sets(lroot / e[0])]:
+            raise ValueError(f"only pending sets of LEVEL_TABLES can be registered: {bad}")
+        from .data import fit_datasets
+        trained = frozenset(str(o.line) for d in fit_datasets() for o in d.observations)
+        targets += level_targets([tuple(e) for e in levels], lroot, trained)
+        for f, s_, _ in levels:
+            other.setdefault(f, [])
+            if s_ not in other[f]:
+                other[f].append(s_)
+        croot = lroot
     built, rows = forecasts(targets, models)
     primary = models[0]
     releases = sorted({r for f in built.values() for r in f.releases})
@@ -456,6 +622,10 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
         **(dict(constants_scope="eqQ, C, d and delta of every row (a quantity a source did not print is not "
                                 "scored); summaries per kind and quantity") if constants else {}),
         **(dict(disclosure=disclosure) if disclosure else {}),
+        **(dict(levels_scope=dict(tables=[list(e) for e in levels], offset=OFFSET,
+                                  rotational="the model's B, D, H: E(J) = G + B x - D x^2 + H x^3 fitted to its "
+                                             "levels J = 0-20, x = J(J + 1); G: E(v, 0) from the origin the table states")) if levels else {}),
+        **(dict(held_without_forecast=[dict(folder=f, set=s_, reason=why) for f, s_, why in held]) if held else {}),
         **(protocol_extra or {}),
         metrics=dict(residual="observed - predicted (MHz), observed at zero pressure and power",
                      scores="per model, partition, kind and set: n, rms, median |r|, mean, rms of r/sigma, fraction "
@@ -478,6 +648,11 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
         snapshot["meta_informational_other"] = {f"{f}/{s}": _sha(croot / f / s / "meta.toml")
                                                 for f, ss in other.items() for s in ss}
         snapshot["data_other_root"] = _relative(croot)
+    if held:
+        hroot = Path(constants_root) if constants_root is not None else DATA_DIR.parent
+        snapshot["held_informational"] = {f"{f}/{s_}": {q.name: _sha(q) for q in sorted(
+            (hroot / f / s_).glob("*") if (hroot / f / s_).is_dir() else (hroot / f).glob(f"{s_}*"))
+            if q.is_file()} for f, s_, _ in held}
     destination.mkdir(parents=True)
     for name, value in zip(FILES, (protocol, targets, rows, snapshot)):
         _write_once(destination / name, value)
@@ -532,6 +707,11 @@ def _observed_constant(t, other):
     import re
     with open(other / t["folder"] / t["set"] / t["file"], newline="", encoding="utf-8") as f:
         row = list(csv.DictReader(f))[t["row"]]
+    if t["kind"] in LEVEL_KINDS:             # cm-1, scaled as printed
+        value = _number(row[t["column"]])
+        sigma = _number(row[t["uncertainty_column"]]) if t["uncertainty_column"] in row else None
+        k = t["scale"]*MHZ_PER_CM
+        return (value*k if value is not None else None), (abs(sigma*k) if sigma is not None else None), None
     if t["kind"] == "hf_constant":
         return _number(row[t["quantity"]]), _number(row[f"{t['quantity']}_unc"]), None
     if t["kind"] == "x_interval":
@@ -598,7 +778,7 @@ def score_registry(folder, out=None, *, root=DATA_DIR, strict=True):
     other = ROOT / snapshot["data_other_root"] if "data_other_root" in snapshot else None
     scored, not_printed = [], []
     for t in targets:
-        if "folder" in t:                       # a hyperfine constant or an X interval
+        if "folder" in t:                       # a hyperfine constant, an X interval or a level or line table
             value, sigma, I_to = _observed_constant(t, other)
             if value is None:
                 not_printed.append(t["id"])
@@ -619,7 +799,23 @@ def score_registry(folder, out=None, *, root=DATA_DIR, strict=True):
             raise ValueError(f"{t['id']}: the data row is not the registered target")
         scored.append(dict(t, observed_MHz=value, sigma_MHz=sigma, residual_MHz={
             m: value-pred[(m, t["id"])] if pred[(m, t["id"])] is not None else None for m in models}))
-    headline = [r for r in scored if not r["diagnostic_exclusion"]]
+    offsets = {}
+    for r in scored:                            # OFFSET: one constant per group removed
+        if r.get("offset_group"):
+            offsets.setdefault(r["offset_group"], []).append(r)
+    single = []
+    for rs in offsets.values():
+        for m in models:
+            got = [r["residual_MHz"][m] for r in rs if r["residual_MHz"][m] is not None]
+            c = float(np.mean(got)) if len(got) > 1 else None
+            for r in rs:
+                r.setdefault("raw_residual_MHz", {})[m] = r["residual_MHz"][m]
+                r.setdefault("offset_MHz", {})[m] = c
+                r["residual_MHz"][m] = r["residual_MHz"][m] - c if c is not None and r["residual_MHz"][m] is not None \
+                    else None
+        if all(r["offset_MHz"][primary] is None for r in rs):
+            single += [r["id"] for r in rs]
+    headline = [r for r in scored if not r["diagnostic_exclusion"] and r["id"] not in set(single)]
 
     def scores(subset, names):
         common = [r for r in subset if all(r["residual_MHz"][m] is not None for m in names)]
@@ -633,6 +829,8 @@ def score_registry(folder, out=None, *, root=DATA_DIR, strict=True):
                    rows=scored)
     if not_printed:
         results["not_printed"] = not_printed
+    if single:
+        results["offset_group_of_one"] = single
     if any(v is not None for v in sig.values()):          # blind coverage of the frozen 1-sigma
         cov = {}
         for r in headline:

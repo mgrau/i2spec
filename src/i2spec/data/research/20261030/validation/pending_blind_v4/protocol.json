@@ -1,0 +1,412 @@
+{
+ "schema_version": 3,
+ "created_utc": "2026-10-31T19:08:26.340997+00:00",
+ "status": "frozen",
+ "decision": "Decision, 2026-10-31 (Matt: 'let's do the blind test'): the blind test of the pending level, line, width, lifetime, other-state and theory tables, which the 20261029 registry left out, with the released model (release 20261030, version 1.0.0) and the 20261021 release as comparator, before any of them is shown. Scored: the term values, rotational constants, band origins, line centers and fluorescence series of LEVEL_TABLES (levels_scope). Registered without a forecast (held_without_forecast): the pending sets of which the model forecasts nothing, with the reason. No set of this registry enters a fit.",
+ "primary_model": "i2spec",
+ "models": {
+  "i2spec": {
+   "id": "research-20261030-i2spec",
+   "coefficients": "186af80ec884ffe383852a9664599f4e9752ee1b20934bb7c72b46f58833374d",
+   "files_sha256": {
+    "20261030": {
+     "model.json": "871e8b41ea1b41113e10c1fe76f36d7e756466662a2fedf8f20c9f479f239357",
+     "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
+     "reference_predictions.json": "a9d31cbb8428a5337eeeddf036b1339535e6e22ca984d3c5411559bab1b7f855",
+     "uncertainty.json": "d75398ea71f4f0e262484a8b63b41556a542616913bb7b606c123d4f5869cdde"
+    }
+   }
+  },
+  "research-20261021-i2spec": {
+   "id": "research-20261021-i2spec",
+   "coefficients": "1711b9caa5619027391f66c1b6323a9b968842f8d8eedc4969b002fada12d2aa",
+   "files_sha256": {
+    "20261021": {
+     "isotopologues.json": "89c3bc0736ac90fffd0ea1546a366ddc99bc9ae295fa79fc6d16f7c818f364e9",
+     "reference_predictions.json": "3052a140cd50076108d9c48e633b18af229ff8cb16b62b86be14af330cd7f22c"
+    },
+    "20261020": {
+     "model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
+     "hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
+     "reference_predictions.json": "1c4a0b15b546cf62bdc608d793f8a1d805d2dcdf8d5afa289fabd34ec14ac52b",
+     "audits.json": "7f64811d0ec0021cbd7c76b5b05ee3b980601e45a67d711db524c961b60c0e7d",
+     "validation.json": "6b92ef97abe751cdeab6c9f1afa97f53d2190a54ad7f47443db294d24ecad5ff",
+     "selection.json": "f978d066f941a33779d7ca7c4097095230d5fc9bbba98b12cd40fe36ed3e4dcf",
+     "provenance.json": "649082a620b0c81db9723cb23f6267fcbe650cf74c160678690c5ca82b7f5cbb",
+     "verification.json": "5962ee5ae8b4976fef2a0b1cd411b555a7cb5b0310e66e77e5a14962142258c1",
+     "uncertainty.json": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f",
+     "uncertainty_references.json": "a5eb298b4662e07157c615b2e5e070e2373246488a1e0ec2c346cd4c3c6db7f8"
+    }
+   }
+  }
+ },
+ "comparisons": {
+  "all": [
+   "i2spec",
+   "research-20261021-i2spec"
+  ]
+ },
+ "outcome_rule": "values are read only by score_registry, after this registry exists; no refit, no model or setting selection, no exclusion of targets after scoring. A data correction found later is reported beside, not instead of, these scores",
+ "exclusion": "127I2 P(13) 43-0: diagnostic target only, never in a headline score",
+ "partitions": {
+  "blind": "nothing of this measurement is in any training set or an earlier registry",
+  "scored_before": "an [overlaps] declaration ties it to a set of an earlier registry, whose values were read when that registry was scored",
+  "seen": "an active set prints this measurement or a mean that contains it ([overlaps] same/mean)",
+  "superseded": "an active set holds the same quantity re-measured or re-evaluated by the same authors ([overlaps] superseded)",
+  "read_before": "a set of an earlier registry, whose values were read when that registry was scored; forecast again, never fitted, and never in a blind score",
+  "derived": "a constant a source derived from its own line data (term values, rotational constants, band origins): the table is in no training set or earlier registry, but lines it was derived from may be"
+ },
+ "kinds": {
+  "absolute": "a component frequency",
+  "intraline": "component minus component of the same line (hyperfine only)",
+  "interline": "component (or center) of one line minus that of another",
+  "hf_constant": "an effective hyperfine constant (eqQ, C, d or delta) of a line's B level, or of B minus X where the set's meta.toml kind says the source printed differences",
+  "x_constant": "an effective hyperfine constant of an X level",
+  "x_interval": "the energy of one hyperfine sublevel of an X level minus another's, E(I, F) - E(I', F'); sublevels are labeled (I, F) by a one-to-one assignment within each F (the largest total weight of each I on the level's own J); a set that prints magnitudes is scored on |forecast|",
+  "center": "a line's hyperfine-free center (Doppler-limited wavenumbers)",
+  "level": "a term value G (J = 0) or rotational constant B, D, H of an X or B level; the model's B, D, H are the coefficients of E(J) = G + B x - D x^2 + H x^3, x = J(J + 1), fitted to its levels J = 0-20",
+  "band": "a band origin, E_B(v', 0) - E_X(v'', 0)",
+  "fluorescence": "a line of a fluorescence series from one upper level to X(v'', J''): forecast -E_X(v'', J'') and scored after the series' offset (the upper level's energy) is removed"
+ },
+ "levels_scope": {
+  "tables": [
+   [
+    "b_levels",
+    "barrow1973",
+    "data.csv"
+   ],
+   [
+    "b_levels",
+    "danyluk1977",
+    "data.csv"
+   ],
+   [
+    "b_levels",
+    "gerstenkorn1983",
+    "data.csv"
+   ],
+   [
+    "b_levels",
+    "king1980",
+    "data.csv"
+   ],
+   [
+    "b_levels",
+    "tromp1983",
+    "data.csv"
+   ],
+   [
+    "b_levels",
+    "luc1980",
+    "data.csv"
+   ],
+   [
+    "b_levels",
+    "luc1980",
+    "x_levels.csv"
+   ],
+   [
+    "b_levels",
+    "steinfeld1965",
+    "data.csv"
+   ],
+   [
+    "x_levels",
+    "tellinghuisen1980",
+    "table7_levels.csv"
+   ],
+   [
+    "b_levels",
+    "wei1974",
+    "bands.csv"
+   ],
+   [
+    "b_levels",
+    "steinfeld1969",
+    "lines.csv"
+   ],
+   [
+    "x_levels",
+    "rank1964",
+    "green_series.csv"
+   ],
+   [
+    "b_levels",
+    "yee1976",
+    "excitations.csv"
+   ],
+   [
+    "b_levels",
+    "gerstenkorn1991",
+    "lines_calc.csv"
+   ],
+   [
+    "x_levels",
+    "verma1960",
+    "data.csv"
+   ],
+   [
+    "x_levels",
+    "tellinghuisen1980",
+    "data.csv"
+   ]
+  ],
+  "offset": "one constant per group, the unweighted mean of its residuals per model; a group of one row is not scored",
+  "rotational": "the model's B, D, H: E(J) = G + B x - D x^2 + H x^3 fitted to its levels J = 0-20, x = J(J + 1); G: E(v, 0) from the origin the table states"
+ },
+ "held_without_forecast": [
+  {
+   "folder": "lifetimes",
+   "set": "brewer1963a",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "lifetimes",
+   "set": "broyer1976a",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "lifetimes",
+   "set": "chapman1972a",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "lifetimes",
+   "set": "chutjian1967a",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "lifetimes",
+   "set": "pique1983a",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "lifetimes",
+   "set": "shotton1972a",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "lifetimes",
+   "set": "tench1983a",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "lifetimes",
+   "set": "vigue1981ba",
+   "reason": "the model forecasts no lifetimes or decay rates"
+  },
+  {
+   "folder": "widths",
+   "set": "cheng2002a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "eng2004a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "fang2006b",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "goncharov1990a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "hrabina2017a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "phillips2008a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "sakurai1979a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "schweitzer1973ba",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "tench1983a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "titov1997a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "widths",
+   "set": "wolf2009a",
+   "reason": "the model forecasts no line widths or pressure coefficients"
+  },
+  {
+   "folder": "other_states",
+   "set": "appadoo1996",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "other_states",
+   "set": "churassy1981",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "other_states",
+   "set": "danyluk1977b",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "other_states",
+   "set": "inard1999",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "other_states",
+   "set": "king1981",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "other_states",
+   "set": "king1989",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "other_states",
+   "set": "tellinghuisen1980",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "other_states",
+   "set": "wieland1972",
+   "reason": "states other than X and B, which the model does not hold"
+  },
+  {
+   "folder": "theory",
+   "set": "chang1967",
+   "reason": "calculations, not measurements"
+  },
+  {
+   "folder": "theory",
+   "set": "tellinghuisen1978",
+   "reason": "calculations, not measurements"
+  },
+  {
+   "folder": "theory",
+   "set": "zaitsevskii2000",
+   "reason": "calculations, not measurements"
+  },
+  {
+   "folder": "b_levels",
+   "set": "bhale1985",
+   "reason": "transition strengths and a moment function: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "broyer1975",
+   "reason": "lifetimes and decay rates: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "chutjian1969",
+   "reason": "decay rates and line strengths: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "gerstenkorn1985a",
+   "reason": "Dunham coefficients (a fit's parametrization, no level-by-level values)"
+  },
+  {
+   "folder": "b_levels",
+   "set": "jewsbury1993",
+   "reason": "calculated perturbation energies and a c 1g potential (the B template columns are empty)"
+  },
+  {
+   "folder": "b_levels",
+   "set": "koffend1979",
+   "reason": "laser gain and a moment function: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "lamrini1994",
+   "reason": "decay rates and a moment function: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "pique1986",
+   "reason": "hyperfine constants by v without J, beside their calculated contributions"
+  },
+  {
+   "folder": "b_levels",
+   "set": "spietz2006a",
+   "reason": "an absorption cross section: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen1982",
+   "reason": "absorption and a moment function: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen1997",
+   "reason": "a moment function: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen2011",
+   "reason": "line profiles and a moment function: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "tellinghuisen2011c",
+   "reason": "computed absorptivities: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "wakasugi1989",
+   "reason": "relative hyperfine line strengths: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "b_levels",
+   "set": "wu1985",
+   "reason": "absorption coefficients: the model's strengths and decay rates have no uncertainty and are not forecast here"
+  },
+  {
+   "folder": "x_levels",
+   "set": "ashmore1986",
+   "reason": "potential parameters and upper-state energies, no X level-by-level values"
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1980",
+   "reason": "an atlas table: not scored, as the atlases of pending_blind_v3"
+  },
+  {
+   "folder": "atlas_lines",
+   "set": "gerstenkorn1980b",
+   "reason": "an atlas table: not scored, as the atlases of pending_blind_v3"
+  }
+ ],
+ "metrics": {
+  "residual": "observed - predicted (MHz), observed at zero pressure and power",
+  "scores": "per model, partition, kind and set: n, rms, median |r|, mean, rms of r/sigma, fraction within each threshold; paired on targets every compared model predicts",
+  "thresholds_MHz": [
+   0.01,
+   0.03,
+   0.1,
+   0.3,
+   1.0,
+   3.0
+  ]
+ },
+ "uncertainty_note": "sigma is the measurement uncertainty alone; |r|/sigma describes disagreement with the measurement, not model confidence. The primary forecasts also carry the model's frozen 1-sigma (sigma_model_MHz); coverage uses z = r / sqrt(sigma_model^2 + sigma^2)"
+}

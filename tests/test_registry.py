@@ -287,3 +287,17 @@ def test_named_constant_sets_and_protocol_fields(tmp_path):
     with pytest.raises(ValueError, match="pending constant sets"):
         registry.freeze_registry(tmp_path / "other", [], models=("i2spec",), root=empty, constants=["hfc"],
                                  constants_root=data)
+
+
+def test_level_tables_are_registered_from_identity_columns():
+    """A level or line table's targets carry identities and the names of their value columns, never a value; the
+    model's G above the X minimum is its level energy, and its B the slope of E(J) at J = 0."""
+    targets = registry.level_targets([("b_levels", "luc1980", "x_levels.csv"), ("x_levels", "verma1960", "data.csv")],
+                                     DATA_DIR.parent)
+    assert targets and all("value" not in t and "observed_MHz" not in t for t in targets)
+    assert {t["kind"] for t in targets} == {"level", "fluorescence"}
+    assert all(t["offset_group"] for t in targets if t["kind"] == "fluorescence")
+    f = registry.Forecaster("i2spec")
+    g = dict(kind="level", quantity="G", origin="X min", state="X", v=0, isotopologue="127I2")
+    assert f.level(g) == pytest.approx(107.099584, abs=1e-6)
+    assert f.level(dict(g, quantity="B")) == pytest.approx(0.0373114, abs=1e-7)

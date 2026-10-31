@@ -1,0 +1,369 @@
+{
+ "data": {},
+ "meta_informational": {},
+ "earlier_registries": [],
+ "earlier_sets": [],
+ "earlier_manifests_sha256": {},
+ "code": {
+  "src/i2spec/research.py": "0a55dd4419d8a287c74be6f4caff861795fb66e5c66c7bbb8eb406ee1e6efa79",
+  "src/i2spec/research_expanded.py": "78fc62cd02ad92bad7ce7957c263e98adc7e7a9ae02c29a16ac2920a57d7d20b",
+  "src/i2spec/hyperfine.py": "a13189ff53c0630ec0c9b2db00870035f67e358f6b17dea258e910bb589963ab",
+  "src/i2spec/bspline.py": "2b521cfba8bef42f6849d06c5fe9770156b8f5a63139a6cda890f15ecf9db42e",
+  "src/i2spec/wigner.py": "d46fb5d679905c7a6e9e06792037164c44d26248b482460a42af87c23e5d3967",
+  "src/i2spec/lookup.py": "ac577bc7a48920fe00711eed366fcb675dfe093f4aa223f87cc887c0d210e2f5",
+  "src/i2spec/constants.py": "c1b3a86c85aca0f7b09f648f467058ab1eedc733095aa5bf33fdd9e43412d981",
+  "src/i2spec/observations.py": "0c59a48c69aa590a490695cc37aa7910619cee5357f8fd99e58e0d1314d18cc7",
+  "src/i2spec/fit/registry.py": "1777d6385c072b8acd19cd823df9b8d972bc4e72e2e9ed0989eea7dd9af722af",
+  "src/i2spec/data/research/20261020/manifest.json": "356640b39c4d5a7f7b392f477e06f92904a01f300b874ae3a2e44a9245641889",
+  "src/i2spec/data/research/20261021/manifest.json": "e2e80fc3b490f4840257aa6feec09eaffc683c35c5608134f4796077a873a675",
+  "src/i2spec/data/research/20261030/manifest.json": "1fd029d72d31d51872be4d7f6df9b99c85c4778adf02ed09e32bd825976a5655"
+ },
+ "data_other": {
+  "b_levels/barrow1973": {
+   "data.csv": "fd48612dcfd8c68ad2c57e0e053092387d92581918c74777db9f02717e8ff803"
+  },
+  "b_levels/danyluk1977": {
+   "data.csv": "704252cf55de5fe5c462e4a360ca99f88b97d6bd8078b120ffc05246545fd4a9"
+  },
+  "b_levels/gerstenkorn1983": {
+   "data.csv": "6e61b04e5709f3dee04667ea98cc3d2f76e202bac7adbc1c611d06562f59def5"
+  },
+  "b_levels/king1980": {
+   "data.csv": "a088e0105e1e8c6910f9a91fdfee9f6f1495d1b642e1213dc2491ce31cd03a6d"
+  },
+  "b_levels/tromp1983": {
+   "data.csv": "2af631fddb56e1e0422f73a56e56568569d8fffe9ff4857f1096369c377a4c1d"
+  },
+  "b_levels/luc1980": {
+   "bands.csv": "aad4ef8c44bcfefd8b3df363f6d715cbda91a7c5b411fe72a240f3321ed373b2",
+   "constants.csv": "0557726e2559bed583123dc815b9fec852642454ab90ec2f6a11bea8f8d6dce7",
+   "data.csv": "7ffa8da3ace0a18cc87ac24901f97e00b53091b9072b373335b2d92542b39d30",
+   "dunham.csv": "45d010fd77408bd0bae9a0aaefdff5b95208d89341eefe3d9630ee0e83522e96",
+   "x_levels.csv": "da4affb02b71a95cd147fa568a6d8873d9acbd6d550098dabc0a20c5c623d1ae"
+  },
+  "b_levels/steinfeld1965": {
+   "constants.csv": "cf1954897e4c4632b2213dfa447fd381c0bdcbe38bacdcdebc57e6ae87729126",
+   "data.csv": "17289594d837ccf7621152eb62274a3756848e47f8f2f48c965e714f3fa11046",
+   "intensity_calc.csv": "a8d005df5eeac78aea66b7edfde2849082c144d815e7343b8919387a288d9e33",
+   "intensity_obs.csv": "01ea4c62c158aff694360466a714835d3e2531f18fc5de95cefddeed474a370c",
+   "lifetimes_calc.csv": "1fe9a2c1ac36398bac1060a2539bf3f3a1539dbb4a87b0abdb1776a3b85b92ba",
+   "rkr_calc.csv": "4265271024cc234d1ae6b2066412b72ec5ba632963b72ea484bc23c58579443e",
+   "sensitivity_calc.csv": "393d34ef5e717f97fd8d50dae050427c91f92f7332848ea360d635c1a1ff655b",
+   "x_B.csv": "a9ab22155f81bb35e85c598f56f31dceee2ace04b69429813a0a63c0da650877"
+  },
+  "b_levels/wei1974": {
+   "bands.csv": "b6b2adbe18a2679cf07627137fb4aeee6e1918d30540891fb7bb65cd040ad72a",
+   "constants.csv": "9542d29bc1ec19336bd1b010c4083dbd152653a4f6eb1286092ebd47a240e808"
+  },
+  "b_levels/steinfeld1969": {
+   "coincidences.csv": "c3d9e273330d355b16b85510a5c658f8e2afd934df36ad57f62a6b670f8abf1a",
+   "constants.csv": "79aef6509c7c3cb7aaaf710fa66b417b627086b0ce065818069d9065f9ab965c",
+   "heads.csv": "cccfccf4fe5b3978eab843bb14d7b4206fd44662f411f00f65578f0fd9ab96e1",
+   "levels_calc.csv": "7aa043725adbba0dc424c06836e496cb21db1b114df99821e522cd9aecc93af4",
+   "lines.csv": "5508e49ecc4c01191002eb3ff570b63d6ab4663c19c76fe293859ba8936e95f2",
+   "potential.csv": "e319624a4b3efc735f396cfb2030c1844b0b758e610dceca1cb4bdac55ce5672"
+  },
+  "b_levels/yee1976": {
+   "constants.csv": "b12d6554b40b40060b8745d7ceead7c0e25e2d38d1326df65b9a5dd9f01cf447",
+   "data.csv": "6b226a57c7722408c9a319f93f7c975f1322bbd1e2a90985d04ee475946f4987",
+   "excitations.csv": "5abd53cf2d75bb3ff65bcc554ba8f0b2b175f680f4f27bea91079e88e5fbfd2f"
+  },
+  "b_levels/gerstenkorn1991": {
+   "constants.csv": "dd939fe13c0e0325a8178775f112223f5c369d7ca198d1987c012d405cfb23a6",
+   "data.csv": "6d520087fdbc03d9ab338cba8c9929c2195686153f9c630ba49816765a4d49f4",
+   "dunham.csv": "51ee6dd16587b08d551374ce07df0a0fffe39485237c36ce2e276887a1ce4d56",
+   "lines_calc.csv": "1cd75fd50b6f26cf1a4f7380f91c65fbc33d77f79dc279b0d190553403ba3dee"
+  },
+  "x_levels/tellinghuisen1980": {
+   "data.csv": "ed1095feb240a1347aba230c5e94b8421f3fdd593b720cf757aa9c6c689d25b4",
+   "table6_parameters.csv": "9c062666024581f59e2b3b7ed060cf7b3aff71612b54279dde5b412a2637eee4",
+   "table7_levels.csv": "466ad8eb462238cdd8a1d0f19bbf3e26e7241d6e54e4b9463f478cbbbd33f283"
+  },
+  "x_levels/rank1964": {
+   "constants.csv": "b48c87fe5aa1822a179b88b79470d80674d352f9948dca4105c1d109d2683c63",
+   "green_series.csv": "6ed1636070894590955c3981bcad355afd48aa9fb0812ea821edc5bcdb87a89d",
+   "uv_residuals.csv": "5cfa2c65923c74ad1124e58c18d0a3addff090bfb291636fa548c927c57bdc44"
+  },
+  "x_levels/verma1960": {
+   "constants_derived.csv": "2274e5ec242cc945bacf64cfe05eb44b819ba4e21dc3689d14c21f1898405a0e",
+   "data.csv": "1b1caf7a10c56b7c5fec85c54c7f08507aedfd76ea8b8f4616561dcb315e681e",
+   "delta_g.csv": "304cb37d8dda1b804e10db09584e04728a8f4dd2b1c8e486577aab2d4327f841",
+   "rkr_derived.csv": "cac47d2c9492bddc13f6b5044fd8771edbbee7fb7d3ab138d73bc3a84da4c9c1"
+  }
+ },
+ "meta_informational_other": {
+  "b_levels/barrow1973": "5da1105e48a3200efbe34fa920a664c624ce80c7d2d6edc180de004e7ca53f71",
+  "b_levels/danyluk1977": "f6dcf348b66d700b9480480c37f9821651e6a720d3d212de8441e7d89592355e",
+  "b_levels/gerstenkorn1983": "e9f3f84f985b49aae1aa90419b2ba020331175ab62ee521f37fb4870b2b5b5a7",
+  "b_levels/king1980": "502f56a2c12f0087b29ae8580da2c914f3641a141172683681748323754e286b",
+  "b_levels/tromp1983": "8af3e15e79725ebd01736862f2da7615d7ac591362422a17a8bd80f3d8cbccc7",
+  "b_levels/luc1980": "6ea8bbebfbe38e4a07c000a1aa9ebb24ed012907ce3b5801290c5c7dadf93af7",
+  "b_levels/steinfeld1965": "4268d961bc56ab129183e581929fb9eb73b5bf7f71e92ea6be9a1a98112aa0e1",
+  "b_levels/wei1974": "666173513a4eb51db8ebd70098bd734d94a295333593c00f8ca8a4edac785de4",
+  "b_levels/steinfeld1969": "df16046c62f7fd16c22c8310c6645349051232e71baf9163b82c13ccdbcda41e",
+  "b_levels/yee1976": "9390e230e9119bec0251e33fd95c112c1c404527c8a34780bcddf62404e04263",
+  "b_levels/gerstenkorn1991": "a2ec959d6c5589ef9335977983f8cc19eebcc0e4924328a2dbcb4fd75d961a18",
+  "x_levels/tellinghuisen1980": "570f55437b2da8ba1fa97da568e4ec123226f1b93dac051dc6d2234993a3e018",
+  "x_levels/rank1964": "5852b24f43a760d002c74b029097ecd85b0fda65c766b5fed120af2824e06570",
+  "x_levels/verma1960": "9c4cab96a5c36a5fd58c1a163a2e7fb92f8f83b21b87db208df051cab38a35f8"
+ },
+ "data_other_root": "data",
+ "held_informational": {
+  "lifetimes/brewer1963a": {
+   "data.csv": "1c6bcff96f018088158b8407324fc55f98d8b520ce734a4a7c4cce653a6e878e",
+   "meta.toml": "7eb344fd6840840d2b4aa780622bc0e45660db3c65b1349d0fe0a9949b46e1a2"
+  },
+  "lifetimes/broyer1976a": {
+   "data.csv": "d6daa77f8a54f36e5dd0955e47b9efa0f3bdf3e197265fbf45bea2541a374882",
+   "meta.toml": "2d64979faad79151f8c84e42a778b0d5a6faf32930ba32b8fcfd5a9ebb971eab"
+  },
+  "lifetimes/chapman1972a": {
+   "data.csv": "a0e27e8a6c0207a814ba15b24930404aaa674328a4d5665fa0a68d5ebcc7e24d",
+   "meta.toml": "f54cf8bc860fb8a461efe5a0e137c3f278c0849ba9a76d31a43f2aba663927b3"
+  },
+  "lifetimes/chutjian1967a": {
+   "data.csv": "69a20a0d27b4b0047171c9b0d25778895aeedbb96298915ac2fef0b665a42099",
+   "meta.toml": "57fc4957af10475b1e4e650a0239f720b52cbda141a634dd94f768de4103adf7"
+  },
+  "lifetimes/pique1983a": {
+   "data.csv": "e1ec8316a22c72231622377b2fe2788e220d32e4aeff740a27fc76e71b738689",
+   "meta.toml": "d0f56b01fcfd39d512b763b65e9d39fc794227608ee02c3d7c1721280894a46b"
+  },
+  "lifetimes/shotton1972a": {
+   "data.csv": "32ce0b54ff99f9dd1dffc608ff5f13bfebdb95d9943ef75774168113aeb25eab",
+   "meta.toml": "40eb92e538483f1ca4feb12ccd37e9fd6c6360880d4d7e891c924b454347a2b8"
+  },
+  "lifetimes/tench1983a": {
+   "data.csv": "1f996d1dec8c2df14df9b762c2d75bce3abd6383ea47e83737192700dcc2db25",
+   "meta.toml": "50469960953de86bc2a80bc34709a1244f574ccb4bfdb9dfb27bbaaa312094c7"
+  },
+  "lifetimes/vigue1981ba": {
+   "data.csv": "daafb0656d0f0ee9fb3a6c27f8dff360a2ed8296b41195e3b7053b391cf09189",
+   "meta.toml": "fd1e16c1c1393415a291bf7cbc2c53278039ddd1efbee1294cd389453928ffb7"
+  },
+  "widths/cheng2002a": {
+   "data.csv": "50c52e3ef49c3b180e3518f8cc211ea6b5aa206c3bd5034d935de4a8d0c82c82",
+   "meta.toml": "a0d73d2d0103931f12e9fd3434db41d11a60c06ac8313d72cb0ca408fb74a30e"
+  },
+  "widths/eng2004a": {
+   "data.csv": "1c26e847a0a4cabf422490c6dda71516124c233a9c1d5c24e13088eb5b669770",
+   "meta.toml": "78befcafd66421141365f38b246625dfec447711973c66138d7492fef9a68c6f"
+  },
+  "widths/fang2006b": {
+   "data.csv": "b78926179039acd7c4c93d748ab7b3720aa83b428ef7ae4af5999d86b25f6d7b",
+   "meta.toml": "f6be275f8651b1672abf91b9b4ac616265c3e8ef0c1848d4285aca79630db1e0"
+  },
+  "widths/goncharov1990a": {
+   "data.csv": "8fccda1ffe54dbbf5301e9a94cce57fb91e43ff5036dfb58d97f2a7f5629d94d",
+   "meta.toml": "3c270660e362cc4f46959f0f9ba2d9241274449bef8710b1ff61d433a1b3cea4"
+  },
+  "widths/hrabina2017a": {
+   "data.csv": "0e34869f6b10fdd954728d8bcc405b36d56e0f007469e50a01c4c8a0555aeccc",
+   "meta.toml": "90114bc4fd5d0f89b774d70159435ed036e502a2514ad55a3bb2c840b8dcc95c"
+  },
+  "widths/phillips2008a": {
+   "data.csv": "16c95175ebf80fb943cbfc310653b034efe3b40f90e0b5927bc02c756d5531ff",
+   "meta.toml": "9a84c6b3c9a4cea9e4009422b598c5986240f9b17693a5320dd8e971084d763d"
+  },
+  "widths/sakurai1979a": {
+   "data.csv": "5469ef9570bbc8f31ac69a8e950997980aedf9b94c043bdd1bad7c885f969d51",
+   "meta.toml": "7a9ae54ca48b265586590038b8326fddd2c330741663848ac89c35f81c417a7a"
+  },
+  "widths/schweitzer1973ba": {
+   "data.csv": "bc6cdbc93d7482770cf65c235412d57c9215da9a6ec381def94dbc3b6ed2f944",
+   "meta.toml": "f10091b9d9666dab59ca7049e155380051eced39f89d68623a77d7ca4d3a86be"
+  },
+  "widths/tench1983a": {
+   "data.csv": "803a8ad28dc5e6bbf8ed5a6730e05a9a8973e8c3a2652fc06c3af69ed9798d75",
+   "meta.toml": "6e99f0fcb91889a67c057b84ba5d12658bdad72964a22ebbb1b5ef32dc952017"
+  },
+  "widths/titov1997a": {
+   "data.csv": "43da06fab34fda936b130c32f8c6237061dce705aa29c94b8a71823972989ad8",
+   "meta.toml": "9404b9252d0b0dd28cc30b82d4abd19980432a2a4f02fb1308c671bf9ebd2ea6"
+  },
+  "widths/wolf2009a": {
+   "data.csv": "268a0584e433a5f37b5a7afbc3722d91ef230d8987c298116883dd2bbc7eb6fe",
+   "meta.toml": "9543eeeaca97907cbf5b5ddb750c9d8ed6313468a41aefc1fba4efb5d278649d"
+  },
+  "other_states/appadoo1996": {
+   "meta.toml": "242ebb70104411f81761ccafa232e9b2b6d6101885ca1eb541791775f4420ce4",
+   "table1_conditions.csv": "83f40b26f4689759432a49f979b82f77bb173f1d8e49e58b3394eedb939ef09f",
+   "table2_band_ranges.csv": "f2bb59a07055a9607a970356e26034738b77f917a013d5624cd8552bec131ca1",
+   "table3_dunham.csv": "e9e82be0cce24d942ae67d12b5527f356290feadc5e3fa4df7c0dceec15ca6e2",
+   "table4_sigma.csv": "a548b47ef7f4b016b71629949441a6b5f1e66ca254f1cac816c8c518460150f2",
+   "table5_nde_parameters.csv": "80789c22f81f904a7fc85b5da91f4b49c895e6765012932d96b43f8f860ce7d3",
+   "table6_cdc_nde.csv": "e91e7480d4ff35a484eacc0817ae67a1dbb2d4e16309ea4e34c06ff3f9465596",
+   "table7_levels.csv": "593e6d3197513cd42f3f48342c3a23ea825c283ce8b2dcab2e6a93d69b841370",
+   "table8_constants.csv": "ea27f2dbac30112ecbfec1f42d95d7d72c245487a8bd03bf890b17828a553105"
+  },
+  "other_states/churassy1981": {
+   "meta.toml": "706b1a10e4844d07ab9535c8f056f3695e653f6aa4e52bf258af7d1e9a118497",
+   "table1_a1g_levels.csv": "709fe4253da86b013af790576f6953a14fdf5bbf774528ec66bff4b668d05b1f",
+   "table2_aprime0g_levels.csv": "93a99f53ed057ed2bf0ed5101e47635b0f6d1f3fa2f8233697cb6fb33376f1d6",
+   "table3_eQq_aprime.csv": "f2b2e46593e721ae44cf7e1bca27668404117061f6eceabcedcf2b3428d97602",
+   "table4_dunham.csv": "158cca738ad7cee62d2fa90d7f1925b2c3f6e8c3403edb1c26bca3123b5672b5"
+  },
+  "other_states/danyluk1977b": {
+   "meta.toml": "94e3b16a9c6749bec7712fb6f1270e77ec82c8b84b49d49a6ce40b645df1c0c7",
+   "table1_pump_levels.csv": "4a447ae63285ac39237fbcab07f5d53cf3b9c017a22920f0cfa994e626c67862",
+   "table2_gamma2_rotational.csv": "fdc09afa435d3d15ec42aa9f7f527e448c2313542c103efb27ad4ce79ad9f41d",
+   "table3_gamma_levels.csv": "4b7d738c8990aa36feadba0f5886a6ed7bd85ea9c56ca7757bfa3fac04feeb38",
+   "table4_epsilon_levels.csv": "c88e1641a8587a09680ba4a57b16fe6a74e13aaece3a03cab5cf78a2576b657a",
+   "table5_constants.csv": "9eb376670e2746adfad4bfb333ceb79dfc449652c478ecec4df28f4da3a6e774",
+   "text_constants.csv": "609e3e7c326416bf954cc0206207e67a5f5e818ef2d70082f87d4fbe202aae79"
+  },
+  "other_states/inard1999": {
+   "meta.toml": "c1aa07aa38d851c20ddefb3162b87cb7d1ea72636daa8a485b16442f514b7d35",
+   "table1_D0u_populations.csv": "0d02694bfd0f7bfd2e6a73c67c83b47e1cb28a3dc06d4953b50f791b9d1d8a9d",
+   "table2_levels.csv": "0b6c4bc58a21e118545743314b027e87969c3aa4c98880b03810f9c87b54735d",
+   "table3_dunham_B1u.csv": "7748a4b39811485cc9994577a369b4e17a9660de9ab9b65c66b06b28ffc57eb3",
+   "table4_footnote_constants.csv": "f6f97748b421ea32f19c05a4099896b970a136f6d7860ea790460c2d9be12b0c",
+   "table4_rkr_B1u.csv": "3b913a23daf5b2f59330fa37353e61984937dd2168def57a8c055533ccf87bed",
+   "table5_fcf_E_B1u.csv": "cda307de7c735dd90f9a501f8ae4cd95da5912b642c621ad7fadd4a76f75bc78",
+   "table6_longrange_B1u.csv": "bf6d845f9ecc7691a45d31a3df202536404b1759163780620a34b2ee185eb20e",
+   "table7_extrapolated_B1u.csv": "9c67a524068bfee72c69dddf93cdfe15d3dce51801132c4c7c0e3b6e2c010020",
+   "table8_longrange_coefficients.csv": "05057a40c282c4dfdbc0f1d3cecf12c93ee120980e8978ec8ecd9c030770cd8c",
+   "text_constants.csv": "25a6c70f267789d21b43c95894f845eda740f430401bdde8e78769f356cf7ee5"
+  },
+  "other_states/king1981": {
+   "meta.toml": "6c6bdd174483b8e695106eb3a7ab78f36b1882bcf239d106aabe9ec4f167108c",
+   "table11_rkr_E.csv": "fccb69adfaf6eba324426872b86ec3bd8e411d090d2f0a61623762c9f0bbbcae",
+   "table1_E_levels.csv": "3aa7bba43cb44854709e97623c2886c8bba16a28f23670a6bf339445c794a297",
+   "table2_4_6_8_10_constants.csv": "dbfd065f64b04a8e1041a3b4fd0e2c0c20adef65c79b64706ec5009774fb8ace",
+   "table3_gamma_levels.csv": "248ea6b19047e7619e4be62c67fea3189165c35448f2f9dd91c8f3533e5b5833",
+   "table5_beta_levels.csv": "7da3c19bc269672621396900f426d4e38c8f416aa140e456885dad9b03ba5373",
+   "table7_alpha_levels.csv": "2603f85f893b54b5703096689abe695f1d09fa5609afa955bf1feba1af31bd88",
+   "table9_delta_levels.csv": "66d84bd8054ff4cf34ccf2c48817ca5d5f8c5004e174562625fa6ed92dacf0ee",
+   "text_constants.csv": "fd1922618299f01814184673f9beff3f1c5c7ad5d2f13bca4900d89f59842dd5"
+  },
+  "other_states/king1989": {
+   "meta.toml": "1f66a592a818df655d90c29e0c2eb96092f817e1bd482fb3dbd35222bf9d726f",
+   "table1_3P1C_features.csv": "b2a6f5cd18a44d8cea6e148eda111dee6d4291143e2b7723487fdfaeddb0b3f5",
+   "table2_3P2C_heads.csv": "05bdcfbcb9b07f80ad28a100b9ee1535b349399849722d2e7cd8d240093cb1ff",
+   "table3_assignment_summary.csv": "5d4bebeec48bdb0fe8feb438d2e5b65df158718bdc47749895972898fe15ace7",
+   "table4_5_dunham.csv": "9a813f21762eefe7f5c275a5ba28c40bdad5401e3d9ec3e178e88ddfe2b57d3b"
+  },
+  "other_states/tellinghuisen1980": {
+   "meta.toml": "e0fb0ca341b96a8ca6f41433a1102b02b3b8f913ee177d3bc57b5a9ecac2f3f8",
+   "table8_D_levels.csv": "117380584da5c9fcb59f86bc78d6b3c42118af15a47ad72b71b25b44c8205c50",
+   "table8_correlations.csv": "eb09d81a3c31f14c010d2416d0ddf680efc9d351ebb9dfb78801bc8aa2bf0e51",
+   "text_constants.csv": "f10c0dd98bc8c3bace138c6de631a92ee66be366a3fe21511718ae15c2062741"
+  },
+  "other_states/wieland1972": {
+   "meta.toml": "a7942907ebbb133cb4580440bb9b7e0e6716f362fa47fe23221882da4002d840",
+   "table1_E_B_heads.csv": "f4550b7964fd99ae663b756fcc089ac1e05c6ebf458cebd12681462df15661c5",
+   "table2_F_X_heads.csv": "d201c2e49dc2f675010a61f8a731c9eb8fb45f41b8b6cb4270e831cdae13bcfc",
+   "table3_constants.csv": "55fabc88ef9accb9b94bef7a99c877ab594fe7e062571c05a9ca2a78f3dca3fa"
+  },
+  "theory/chang1967": {
+   "data.csv": "676ddb7d1e5becd508e6e2debeba030315589b8d12512a2d400076b73aadd82c",
+   "meta.toml": "8b3f31d3bc1e07c5773bc9df791c533611fa6dcd4cd88e1b17e0cc105bdd039c"
+  },
+  "theory/tellinghuisen1978": {
+   "fcf_absorption.csv": "f114fc2d304f5526da6f005f311f31122f0dc0110805ce09f4b9bbdb2f4c00f5",
+   "fcf_fluorescence.csv": "d965cf7a1e0306cda8d06ba901da200d3a7c1de69a7e71b55e2bc123c4e08d8a",
+   "meta.toml": "7cf8ca166c7e3ebc52a2c7d39a6ca443a2b510e714173604c66207e5b1340515"
+  },
+  "theory/zaitsevskii2000": {
+   "data.csv": "f9531c3d747cc6cd98da45dc8bea572b89c859b3ae7728079d675a8f69f6e1ec",
+   "meta.toml": "2896d3b7b872cc3699bf677ee6fa2681b54d443870bc597676bd12dbe0901034"
+  },
+  "b_levels/bhale1985": {
+   "intensity_obs.csv": "4f7552fbb890c34c83333dcc13a692ee2374735f4c376cda2101a060617755fa",
+   "meta.toml": "a152f354d6f833443a2306a64f38b97fc3052eebdd5bf5584aedb42d5440f4db",
+   "moment_function.csv": "4291e695b8a5619aff2d84cd00718010561e5554f9c10df6c219c6c488b341d7"
+  },
+  "b_levels/broyer1975": {
+   "meta.toml": "44623d383f31839e32c191b77dd3e52d7ff7ff28b1d1fe4405c194714d23cc5c",
+   "table1_lifetimes.csv": "f4a5d093d881814231327378d2701d5a27509e8c7a70c14d980b820d80709da5",
+   "table2_rates.csv": "6b0af587c86a87f813475815bcf7ce74933f4fdd9b9e227895887c48ca475553"
+  },
+  "b_levels/chutjian1969": {
+   "decay_rates.csv": "52f6e305792e3f99c88a9700bfca810947da2900c038c199365e9334fbfc92f3",
+   "line_strengths.csv": "178dd3feaead4025be6a1e29bf38459a2bfec6f2c06cc8db81e3ad7d212e23c2",
+   "meta.toml": "4c6ab8dab40974f1281417f07c21b35af0b7531686c6534e2cab3ede46fa8874",
+   "results.csv": "30291421db2015065c139ee22df56d5aa832a032cb94a633e7a0e8b5a7c5e0fe"
+  },
+  "b_levels/gerstenkorn1985a": {
+   "dunham.csv": "d6cc3e02c06665cb552e561c7aef66fcc08c1100b2a5c5f6a62e19e5ecc54b5e",
+   "meta.toml": "1b819bfdda93398ffc91327f863822c81e1f5f6d1d582157e5de86a68ec62317"
+  },
+  "b_levels/jewsbury1993": {
+   "c1g_potential.csv": "ba3c1324f4c5c4c95700923035e5b48cb50b758136fd4cc1501a506d667fc9f7",
+   "constants.csv": "0ee6f06a45533bb6791989b69da48f66af542d4a79e2347259918afb9f3c4867",
+   "data.csv": "247f80bb3030b0c32ef7e31e47b03abd0894b01c2e826b3f1bd7dabc8a49f703",
+   "meta.toml": "327b6c13d1749deff3c5216fbdbcc5b6beb21b72943cca176b5e6fa3c795256d"
+  },
+  "b_levels/koffend1979": {
+   "gain.csv": "a03861ab72c9635fa1a780806a6fdafdf2b3d3f24e3b7f9793d9e56fcc0ab6c9",
+   "gain_ratios.csv": "98c8b518ad10ba78a0b1f498ebafd281e25870bc3e92a4a4ca58a4745ccc2840",
+   "meta.toml": "9c048a538cae668ea216a3e3461d35d3c825f10b273cd9b6aadaa61b90b8048a",
+   "moment_function.csv": "d7749655a07b40dfc0326c6b37fd1ad03efea0c9d036813812b4ed466752948e"
+  },
+  "b_levels/lamrini1994": {
+   "decay_rates_table1.csv": "9f135ca73f3dcce20a895e8dfbd397674afa8b597c945139c611267e07237cf4",
+   "meta.toml": "6d775a9308f27f204d7fa3aeb022949124acd5afd4a9234f7a078531dd22f430",
+   "moment_fit_eq1_eq2.csv": "2219c52cac15602eac9b33a8ba59d1353c44acda6caddc935349f320b03f1622"
+  },
+  "b_levels/pique1986": {
+   "meta.toml": "65012b4608a3097252821c34523f6b040732a24cc8abee67148d6c6ceba272a6",
+   "table1_eqQ_contributions.csv": "152127d719304eb9574032c149b6f39fcb527960a33ce53f3e2a3db9973ddfd8",
+   "table2_C_contributions.csv": "2212698c19d52a633e1ae368849c544099584c74fa5b625a54054a3be275191c",
+   "table3_delta_contributions.csv": "9bdcf49de8257f8c374cfc76a3be87753fedc991ba7a73b68980379a7d865ffc",
+   "table4_d_contributions.csv": "c54a343f3296c5ddf1a76150acbe00f7defdd73bccd41e3838134a2a865819a5"
+  },
+  "b_levels/spietz2006a": {
+   "meta.toml": "81b0771b243684df1f2d9c58eae70647bd1445e08f37d03ecebe0d62940653e0",
+   "table2_500nm.csv": "2a9987cd3c94123ec8b236e9f359846182f873ec5b35137d84ef4890b4af75db"
+  },
+  "b_levels/tellinghuisen1982": {
+   "absorption_resolution.csv": "65bb3aebca8c9f98bfcbf5b124300244b9bef717dbe40d83dc6736756cb4fc34",
+   "constants.csv": "3190ba4ac698a4a5acaf0c9ab3acf0b74277e54db6dd45ad1a6425d5d8173f51",
+   "continuum_obs.csv": "069bce24de9cfc447e3a9c7a3edee7bbfb73923643f801e525702febf3ef520e",
+   "line_coincidence_calc.csv": "2d44837ae7ca75fa82cc05b0721aa9d66d4d1a56a1c30d481b2c8c0781601e95",
+   "meta.toml": "d4891bacc1f1feb78131046de406879488a208ec5a40c0fed6dad060e842a9d1"
+  },
+  "b_levels/tellinghuisen1997": {
+   "meta.toml": "712d8e424a134905f918dae37d5793121dd6607281f78b1a275267944b57ef11",
+   "moment_function.csv": "7ef11cd98b006edb7894b3eccc1e00ab086c2c889dbac9f76b517193eebdbcc0"
+  },
+  "b_levels/tellinghuisen2011": {
+   "line_profiles_table1.csv": "0858677a86d7625297d673c56664a2d294e3a94f6bb244ddf730e0f6844947e6",
+   "meta.toml": "34a1f1e4bcb61b909de3965538e71a8d5958cb5e99fb1848a3ddeee345da2c4d",
+   "moment_fit.csv": "bdfaa454aafd75c09d0510d69e463c452871328dc74d6fc1e4adeba8914f0cd5",
+   "results_table2.csv": "460285321f1d87f1c24769448a763d40a17a4a7d21db5de91ae62a4a1d918a59"
+  },
+  "b_levels/tellinghuisen2011c": {
+   "computed_absorptivity_table2.csv": "e10d1ec3e8fa02cbd62c52249137b66cde979f00d1738ac7b8a790a1e8d0ce85",
+   "constants_table1.csv": "df17cb5c14b7b5aea0c67c1e6be698fe687caebf6cb88f9565660ee262807ee0",
+   "meta.toml": "13d25c522b637c66aa7f4467f4a91fa59dc526c75aa46e6398a1c3d8684d9560"
+  },
+  "b_levels/wakasugi1989": {
+   "line_strengths.csv": "0fdd90ac7a054bd0258654504d3c7f6ed8b6c1aff93a5afae4398ae3e5cd5e68",
+   "meta.toml": "ba1b2476f78e025e94407b5e7a065bc15d7f125eccfeb293567347bc7459afcd"
+  },
+  "b_levels/wu1985": {
+   "absorption.csv": "43205d9d590a09fc659da287bed53bcb66212ee524072f71286c8217062d538f",
+   "meta.toml": "3bca6316593bd6a20fae98158474f0267a101f48de70dfd4899eb2425807aa27"
+  },
+  "x_levels/ashmore1986": {
+   "constants.csv": "c894d1678cc85499a2467f2e21e6aa4c6a775eb9c6d3aeca055d410c0d68ff83",
+   "meta.toml": "2b8d287221ee6d33fcfd8e532118daa55e5506ac4b571c5a15a1f38dcee241bd",
+   "upper_levels.csv": "8aa932c48d9960c0f909fdb77b0a83b15257152446f2fe039382d7070e178ce3"
+  },
+  "atlas_lines/gerstenkorn1980": {
+   "gerstenkorn1980.toml": "2bb75cf73ee779cec875235cf2c73afc014e0023de5da57d76c9da53746786e2",
+   "gerstenkorn1980_constants.csv": "82077100de45f0befbac793bb9e449e9db38ed9ad25fbda3291fff4fd151f1e4",
+   "gerstenkorn1980_table1_bands.csv": "f518867616f14694c24d2fb3da859e930411155cdfb08960532d7d477d175c18",
+   "gerstenkorn1980_table6_dunham_B.csv": "3f93a152e61af195f91c3b7041388562c2dc68882e31254429633b1eaa5272a7",
+   "gerstenkorn1980b.csv": "5e339ff34c177cdf7189dad10b68e4871300b60d92bc29070a3ff209d72ab616",
+   "gerstenkorn1980b.toml": "0ceff1e0014ff35c0ee8ac8a702f022831c25e9e51bde51cb2d673e79f9693a5",
+   "gerstenkorn1980b_table1.csv": "6b760f3c7198587894d9b818ef2e3f76a7b0bcdb9e77d29d91820ebed7c6f5c2"
+  },
+  "atlas_lines/gerstenkorn1980b": {
+   "gerstenkorn1980b.csv": "5e339ff34c177cdf7189dad10b68e4871300b60d92bc29070a3ff209d72ab616",
+   "gerstenkorn1980b.toml": "0ceff1e0014ff35c0ee8ac8a702f022831c25e9e51bde51cb2d673e79f9693a5",
+   "gerstenkorn1980b_table1.csv": "6b760f3c7198587894d9b818ef2e3f76a7b0bcdb9e77d29d91820ebed7c6f5c2"
+  }
+ }
+}
