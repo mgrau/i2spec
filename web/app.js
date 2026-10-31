@@ -551,6 +551,15 @@ function mainComponents(line) {
   return h ? h.o.map((o, k) => [`a${k + 1}`, o]) : null;
 }
 
+/** Whether a line shows in [lo, hi] (cm⁻¹): its center, or, where its pattern is loaded, a main component. */
+function inView(line, lo, hi) {
+  if (line.nu >= lo && line.nu <= hi) return true;
+  return (mainComponents(line) || []).some(([, o]) => {
+    const nu = line.nu + o / P.MHZ_PER_CM;
+    return nu >= lo && nu <= hi;
+  });
+}
+
 /** Where the selection is drawn (cm⁻¹): its component when one is picked, else the line's center. */
 function selectedNu() {
   const l = state.selected, comps = state.selectedComp && mainComponents(l);
@@ -629,6 +638,17 @@ function viewSummary() {
   const lines = state.lines;
   if (summaryCache.lines === lines && summaryCache.show === state.filter) return summaryCache;
   const counts = {precision: 0, atlas: 0, model: 0};
+  if (!lines.slices) {
+    // a narrow view's lines, chosen one by one (show: those whose components reach into it): counted directly
+    const keep = keepLine(), marked = [];
+    for (const l of lines) {
+      if (!keep(l)) continue;
+      const k = kindOf(l);
+      counts[k]++;
+      if (highlighted(k)) marked.push(l);
+    }
+    return (summaryCache = {lines, show: state.filter, counts, nMarked: marked.length, marked});
+  }
   let nMarked = 0;
   const slices = lines.slices || [];
   for (const {d, a, b} of slices) {
@@ -1940,6 +1960,7 @@ function clampView(nuLo, nuHi) {
 
 async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
   if (!(nuLo < nuHi)) return;
+  if (!deferTable) glide = null;                   // a jump (a preset, a search, the range fields) ends a glide
   state.iso = $("#iso").value;
   const info = state.manifest.isotopologues[state.iso];
   [nuLo, nuHi] = clampView(nuLo, nuHi);
@@ -1965,10 +1986,11 @@ async function show(nuLo, nuHi, {keepInputs = false, deferTable = false} = {}) {
     if (token !== state.busy) return;                    // a newer view won
     if (hyperfineShown()) await loadHfs(state.iso, state.lo - PLOT_PAD_CM, state.hi + PLOT_PAD_CM);
     if (token !== state.busy) return;
-    state.lines = lines;
+    // zoomed in to the hyperfine structure, a line belongs to the view when any of its components does, so a
+    // component in view can be picked though its line's center lies outside
+    state.lines = hyperfineShown() ? padded.filter(l => inView(l, state.lo, state.hi)) : lines;
     state.plotLines = padded;
-    if (state.selected && (state.selected.iso !== state.iso ||
-        state.selected.nu < state.lo || state.selected.nu > state.hi)) {
+    if (state.selected && (state.selected.iso !== state.iso || !inView(state.selected, state.lo, state.hi))) {
       state.selected = null; state.selectedComp = null;
       $("#detail").innerHTML = EMPTY_DETAIL;
     }
@@ -2024,7 +2046,7 @@ async function findLine(text, {keepView = false, comp = null} = {}) {
  * with the latest target, so a burst of events costs a few redraws, not one each.
  */
 let target = null, previewPending = false, renderTimer = null, rendering = false, lastReal = 0;
-function requestView(lo, hi) {
+function requestView(lo, hi, settle = 110) {
   target = clampView(lo, hi);
   clearTimeout(tableTimer);                // the table waits until the gesture is over
   // every frame: stretch the last finished picture to the new range, which costs almost nothing ...
@@ -2036,7 +2058,7 @@ function requestView(lo, hi) {
     });
   }
   // ... and redraw properly when the gesture pauses, or every 500 ms while it goes on
-  scheduleReal(performance.now() - lastReal > 500 ? 0 : 110);
+  scheduleReal(performance.now() - lastReal > 500 ? 0 : settle);
 }
 function scheduleReal(delay) {
   clearTimeout(renderTimer);
@@ -2051,6 +2073,41 @@ async function realRender() {
   lastReal = performance.now();
   try { await show(a, b, {deferTable: true}); } finally { rendering = false; }
 }
+/**
+ * Wheel zooms and keyboard pans glide rather than jump: each frame the view moves a fraction of the way to its
+ * target (time constant EASE_MS), scaling about the one point the move leaves in place, so the wavenumber under
+ * the cursor stays under it. Further steps retarget the glide. Drags and pinches follow the pointer directly.
+ */
+const EASE_MS = 65;
+let glide = null;                          // {lo, hi, to: [lo, hi], t}: the view shown and where it is going
+function easeTo(lo, hi) {
+  const to = clampView(lo, hi);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { glide = null; requestView(...to); return; }
+  if (glide) { glide.to = to; return; }
+  const [a, b] = viewNow();
+  glide = {lo: a, hi: b, to, t: performance.now()};
+  requestAnimationFrame(glideFrame);
+}
+function glideFrame(now) {
+  if (!glide) return;
+  const {lo, hi, to: [tlo, thi]} = glide, k = 1 - Math.exp(-(now - glide.t) / EASE_MS);
+  glide.t = now;
+  const s = (thi - tlo) / (hi - lo);
+  let a, b;
+  if (Math.abs(s - 1) < 1e-9) { a = lo + (tlo - lo) * k; b = hi + (thi - hi) * k; }      // a pure pan
+  else {
+    const x = (tlo - lo * s) / (1 - s), f = s ** k;             // the fixed point of the move, and this frame's scale
+    a = x + (lo - x) * f; b = x + (hi - x) * f;
+  }
+  const done = Math.abs(a - tlo) + Math.abs(b - thi) < 1e-3 * (thi - tlo);
+  if (done) [a, b] = [tlo, thi];
+  glide.lo = a; glide.hi = b;
+  requestView(a, b, done ? 40 : 110);
+  if (done) glide = null; else requestAnimationFrame(glideFrame);
+}
+/** The view a new step starts from: where a glide is heading, else the one requested last. */
+const stepFrom = () => glide ? glide.to : viewNow();
+
 /** Redraw the current view properly, e.g. once data for it has arrived. */
 function refreshView() { if (!target) target = [state.lo, state.hi]; scheduleReal(0); }
 /** The view the next redraw will show: the pending target if there is one. */
@@ -2216,18 +2273,23 @@ function wire() {
   });
   plot.addEventListener("wheel", e => {
     e.preventDefault();
-    const [lo, hi] = viewNow();
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
       // a sideways scroll (trackpad, tilt wheel, shift-wheel) pans; the spectrum moves with the fingers
+      glide = null;
+      const [lo, hi] = viewNow();
       const dnu = e.deltaX / (state.geom ? state.geom.pw : 800) * (hi - lo) * (state.geom && state.geom.flip ? -1 : 1);
       requestView(lo + dnu, hi + dnu);
       return;
     }
+    // the wavenumber under the cursor, in the view on screen (mid-glide, where the glide has got to) ...
+    const [slo, shi] = glide ? [glide.lo, glide.hi] : viewNow();
     const frac = state.geom ? Math.min(Math.max((e.clientX - $("#plot").getBoundingClientRect().left - state.geom.m.l) / state.geom.pw, 0), 1) : 0.5;
-    const nu = lo + (hi - lo) * (state.geom && state.geom.flip ? 1 - frac : frac);
-    // scale the step with the wheel delta, so a trackpad's many small events zoom smoothly
+    const nu = slo + (shi - slo) * (state.geom && state.geom.flip ? 1 - frac : frac);
+    // ... stays put as the view where the glide is heading scales about it; the step scales with the wheel
+    // delta, so a trackpad's many small events zoom smoothly and a mouse wheel's notches glide
+    const [lo, hi] = stepFrom();
     const f = Math.pow(1.3, Math.max(-3, Math.min(3, e.deltaY / 100)));
-    requestView(nu - (nu - lo) * f, nu + (hi - nu) * f);
+    easeTo(nu - (nu - lo) * f, nu + (hi - nu) * f);
   }, {passive: false});
 
   // Dragging selects a range on the wavenumber axis and zooms to it, the way a spectrum viewer
@@ -2277,6 +2339,7 @@ function wire() {
 
   plot.addEventListener("pointerdown", e => {
     if (!state.geom) return;
+    glide = null;                                  // a hand on the spectrum stops a glide where it is
     if (e.pointerType === "touch") {
       plot.setPointerCapture(e.pointerId);
       touches.set(e.pointerId, e.clientX);
@@ -2361,11 +2424,11 @@ function wire() {
     }
     if (e.key === "[" || e.key === "]" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
       e.preventDefault();
-      const [lo, hi] = viewNow();
+      const [lo, hi] = stepFrom();
       // ← and [ move to the left of the plot as drawn; with a wavelength axis that is higher wavenumber
       const right = e.key === "]" || e.key === "ArrowRight";
       const w = (hi - lo) * 0.25 * (right ? 1 : -1) * (state.unitFlips ? -1 : 1);
-      requestView(lo + w, hi + w);
+      easeTo(lo + w, hi + w);
     }
   });
 

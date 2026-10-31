@@ -50,7 +50,8 @@ offsets by less than 1 MHz (0.9 MHz for R(56) 32–0), which is small compared w
 The detail panel shows the full calculation, including these couplings, where it is available.
 
 Once the view resolves the components (the one under the pointer is at least 4 pixels nearer than any other), a
-click on the spectrum selects a single main component rather than the nearest line, and hovering names it. The
+click on the spectrum selects a single main component rather than the nearest line, and hovering names it. At
+these spans the table lists every line with a component in view, even when its center lies outside. The
 spectrum marks it, the detail panel gives its wavelength, frequency, offset from the line center, 1σ and
 relative strength, and its row is highlighted in the hyperfine table and among the measurements. A row of the
 hyperfine table selects its component too. A click on a measurement's dot selects that measurement's component.
@@ -165,7 +166,9 @@ The line list is stored in 64 parts per isotopologue, loaded as a view first nee
 parts not yet loaded (the whole range, the first time) is drawn at once from a coarse spectrum of every part
 (the strength of its lines of each class summed in 64 bins, at seven cell temperatures between which the
 explorer interpolates). Each part's own lines replace its coarse bins as it arrives. While the view is zoomed
-or moved, the last picture is stretched to the new range and then cross-faded into the redrawn one.
+or moved, the last picture is stretched to the new range and then cross-faded into the redrawn one. A wheel
+zoom or an arrow-key move glides to its new range in about a quarter of a second, keeping the point under the
+cursor in place.
 
 ## Line table
 
