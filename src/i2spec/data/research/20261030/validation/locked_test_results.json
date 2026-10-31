@@ -1,0 +1,991 @@
+{
+ "registry": "src/i2spec/data/research/20261030/validation/locked_test",
+ "primary": "research-20261030-i2spec",
+ "verdict": {
+  "all": {
+   "n": 164,
+   "within_2sigma": 0.8780487804878049,
+   "result": "below the floor"
+  },
+  "stratum | absolute": {
+   "n": 44,
+   "within_2sigma": 0.9772727272727273,
+   "result": "target met"
+  },
+  "stratum | interline": {
+   "n": 2,
+   "within_2sigma": 1.0,
+   "result": "reported, not judged (fewer than 10 rows)"
+  },
+  "stratum | intraline": {
+   "n": 86,
+   "within_2sigma": 0.7790697674418605,
+   "result": "below the floor"
+  },
+  "stratum | isotopologues": {
+   "n": 32,
+   "within_2sigma": 1.0,
+   "result": "target met"
+  }
+ },
+ "summary": {
+  "all": {
+   "research-20261030-i2spec": {
+    "n": 164,
+    "within_1sigma": 0.6585365853658537,
+    "within_2sigma": 0.8780487804878049,
+    "rms_z": 1.7035188002885984,
+    "mean_z": 0.6056190058305071
+   },
+   "research-20261029-i2spec": {
+    "n": 164,
+    "within_1sigma": 0.5853658536585366,
+    "within_2sigma": 0.8475609756097561,
+    "rms_z": 1.8294654114029043,
+    "mean_z": 0.6616891723966598
+   },
+   "research-20261021-i2spec": {
+    "n": 164,
+    "within_1sigma": 0.573170731707317,
+    "within_2sigma": 0.8597560975609756,
+    "rms_z": 1.8136817830790308,
+    "mean_z": 0.6572669116160706
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 44,
+    "within_1sigma": 0.7045454545454546,
+    "within_2sigma": 0.9772727272727273,
+    "rms_z": 1.0418091249891452,
+    "mean_z": -0.17619778756496188
+   }
+  },
+  "laboratory family | Aarhus (Denmark)": {
+   "research-20261030-i2spec": {
+    "n": 12,
+    "within_1sigma": 0.25,
+    "within_2sigma": 0.8333333333333334,
+    "rms_z": 1.5292899688445831,
+    "mean_z": 1.2825011381106461
+   },
+   "research-20261029-i2spec": {
+    "n": 12,
+    "within_1sigma": 0.16666666666666666,
+    "within_2sigma": 0.8333333333333334,
+    "rms_z": 1.647181806304254,
+    "mean_z": 1.3810588331936942
+   },
+   "research-20261021-i2spec": {
+    "n": 12,
+    "within_1sigma": 0.16666666666666666,
+    "within_2sigma": 0.8333333333333334,
+    "rms_z": 1.6783185785020103,
+    "mean_z": 1.4255032883317769
+   }
+  },
+  "laboratory family | Augustana Univ. / MSU (FRIB) / TU Darmstadt": {
+   "research-20261030-i2spec": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.3916936409908559,
+    "mean_z": 0.21223336429597173
+   },
+   "research-20261029-i2spec": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.41210120145096496,
+    "mean_z": 0.22309610746972344
+   },
+   "research-20261021-i2spec": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.0857670209568501,
+    "mean_z": 0.016058767351922458
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.3791399474869627,
+    "mean_z": 0.20548762319711164
+   }
+  },
+  "laboratory family | CEM (Spain)": {
+   "research-20261030-i2spec": {
+    "n": 7,
+    "within_1sigma": 0.14285714285714285,
+    "within_2sigma": 1.0,
+    "rms_z": 1.332397152094502,
+    "mean_z": 1.3131446867840124
+   },
+   "research-20261029-i2spec": {
+    "n": 7,
+    "within_1sigma": 0.14285714285714285,
+    "within_2sigma": 1.0,
+    "rms_z": 1.4415567083905678,
+    "mean_z": 1.4206874539087142
+   },
+   "research-20261021-i2spec": {
+    "n": 7,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.682077136883243,
+    "mean_z": 1.6692999645180875
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 7,
+    "within_1sigma": 0.2857142857142857,
+    "within_2sigma": 1.0,
+    "rms_z": 1.1428949531033235,
+    "mean_z": 1.1263753727020505
+   }
+  },
+  "laboratory family | Chen, Zhang, Zang, Akimoto, Kasahara, Sakamoto, Inaba (affiliation not verified)": {
+   "research-20261030-i2spec": {
+    "n": 25,
+    "within_1sigma": 0.6,
+    "within_2sigma": 0.88,
+    "rms_z": 1.3904269480041762,
+    "mean_z": 0.5633529522305634
+   },
+   "research-20261029-i2spec": {
+    "n": 25,
+    "within_1sigma": 0.6,
+    "within_2sigma": 0.84,
+    "rms_z": 1.4288441302587744,
+    "mean_z": 0.5945116746555068
+   },
+   "research-20261021-i2spec": {
+    "n": 25,
+    "within_1sigma": 0.6,
+    "within_2sigma": 0.84,
+    "rms_z": 1.412264589641112,
+    "mean_z": 0.5727712844492707
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 4,
+    "within_1sigma": 0.5,
+    "within_2sigma": 0.75,
+    "rms_z": 2.1708473622671822,
+    "mean_z": -1.069480829530525
+   }
+  },
+  "laboratory family | Cruz, Scalabrin and Pereira (affiliation not checked)": {
+   "research-20261030-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.1,
+    "within_2sigma": 0.25,
+    "rms_z": 4.1520784224391445,
+    "mean_z": 3.635439992633991
+   },
+   "research-20261029-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.1,
+    "within_2sigma": 0.25,
+    "rms_z": 4.201721313298089,
+    "mean_z": 3.671895404361309
+   },
+   "research-20261021-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.1,
+    "within_2sigma": 0.25,
+    "rms_z": 4.202051163423582,
+    "mean_z": 3.6727774816175014
+   }
+  },
+  "laboratory family | INPHYNI Nice": {
+   "research-20261030-i2spec": {
+    "n": 1,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.08242483787107442,
+    "mean_z": -0.08242483787107442
+   },
+   "research-20261029-i2spec": {
+    "n": 1,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.08252466142835639,
+    "mean_z": -0.08252466142835639
+   },
+   "research-20261021-i2spec": {
+    "n": 1,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.09696869797519757,
+    "mean_z": -0.09696869797519757
+   }
+  },
+  "laboratory family | Kompanets, Mikhailov (affiliation not verified)": {
+   "research-20261030-i2spec": {
+    "n": 2,
+    "within_1sigma": 0.5,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8257382365376557,
+    "mean_z": 0.26571568634744797
+   },
+   "research-20261029-i2spec": {
+    "n": 2,
+    "within_1sigma": 0.5,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8937605245683411,
+    "mean_z": 0.2890620564281175
+   },
+   "research-20261021-i2spec": {
+    "n": 2,
+    "within_1sigma": 0.5,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8564481465486606,
+    "mean_z": 0.2981848009591763
+   }
+  },
+  "laboratory family | Pao (Cleveland)": {
+   "research-20261030-i2spec": {
+    "n": 30,
+    "within_1sigma": 0.8666666666666667,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6187908356567202,
+    "mean_z": -0.16454300407766306
+   },
+   "research-20261029-i2spec": {
+    "n": 30,
+    "within_1sigma": 0.8333333333333334,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6282963231263098,
+    "mean_z": -0.16499556272475088
+   },
+   "research-20261021-i2spec": {
+    "n": 30,
+    "within_1sigma": 0.8333333333333334,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6267497351471638,
+    "mean_z": -0.16638446283500902
+   }
+  },
+  "laboratory family | Paris (Borde)": {
+   "research-20261030-i2spec": {
+    "n": 14,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.16225123744161557,
+    "mean_z": 0.1367131762842929
+   },
+   "research-20261029-i2spec": {
+    "n": 14,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.30487780785914614,
+    "mean_z": 0.20971524229050068
+   },
+   "research-20261021-i2spec": {
+    "n": 14,
+    "within_1sigma": 0.9285714285714286,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5159657146543406,
+    "mean_z": 0.2964897257423284
+   }
+  },
+  "laboratory family | Simonsen (affiliation not verified)": {
+   "research-20261030-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.9,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5793229705969225,
+    "mean_z": 0.07655338853603362
+   },
+   "research-20261029-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.4,
+    "within_2sigma": 0.8,
+    "rms_z": 1.7133058752095245,
+    "mean_z": 0.3022643680192766
+   },
+   "research-20261021-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.45,
+    "within_2sigma": 0.9,
+    "rms_z": 1.4146998003490692,
+    "mean_z": 0.10401459765606616
+   }
+  },
+  "laboratory family | TU / FU Berlin": {
+   "research-20261030-i2spec": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8200965856103399,
+    "mean_z": -0.7949543236900712
+   },
+   "research-20261029-i2spec": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8201123735108039,
+    "mean_z": -0.794969568980053
+   },
+   "research-20261021-i2spec": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.823221636884231,
+    "mean_z": -0.7982320084253229
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8200865170797079,
+    "mean_z": -0.7949445491250869
+   }
+  },
+  "laboratory family | Thang, Thu, Xuan, Suh, Hoi (Vietnam Metrology Institute; KRISS comb measurement)": {
+   "research-20261030-i2spec": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.4644045569842077,
+    "mean_z": 1.4643771358421844
+   },
+   "research-20261029-i2spec": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.5886751228276828,
+    "mean_z": 1.588645374705168
+   },
+   "research-20261021-i2spec": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.803530944028403,
+    "mean_z": 1.8035108136455238
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.2570211144895367,
+    "mean_z": 1.2569975766260806
+   }
+  },
+  "laboratory family | Yale": {
+   "research-20261030-i2spec": {
+    "n": 10,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6355716599355795,
+    "mean_z": -0.2526509815934537
+   },
+   "research-20261029-i2spec": {
+    "n": 10,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6850327836268634,
+    "mean_z": -0.27489689522486316
+   },
+   "research-20261021-i2spec": {
+    "n": 10,
+    "within_1sigma": 0.9,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6736644675013922,
+    "mean_z": -0.24019771823227837
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 10,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5619234966279759,
+    "mean_z": -0.22328052079936725
+   }
+  },
+  "region | B beyond v' 60s": {
+   "research-20261030-i2spec": {
+    "n": 14,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.16225123744161557,
+    "mean_z": 0.1367131762842929
+   },
+   "research-20261029-i2spec": {
+    "n": 14,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.30487780785914614,
+    "mean_z": 0.20971524229050068
+   },
+   "research-20261021-i2spec": {
+    "n": 14,
+    "within_1sigma": 0.9285714285714286,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5159657146543406,
+    "mean_z": 0.2964897257423284
+   }
+  },
+  "region | core": {
+   "research-20261030-i2spec": {
+    "n": 118,
+    "within_1sigma": 0.5677966101694916,
+    "within_2sigma": 0.8305084745762712,
+    "rms_z": 1.9802088722339928,
+    "mean_z": 0.862816874897102
+   },
+   "research-20261029-i2spec": {
+    "n": 118,
+    "within_1sigma": 0.4745762711864407,
+    "within_2sigma": 0.788135593220339,
+    "rms_z": 2.1276173410268227,
+    "mean_z": 0.9318029970328093
+   },
+   "research-20261021-i2spec": {
+    "n": 118,
+    "within_1sigma": 0.4661016949152542,
+    "within_2sigma": 0.8050847457627118,
+    "rms_z": 2.104252900256922,
+    "mean_z": 0.9155600137947028
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 44,
+    "within_1sigma": 0.7045454545454546,
+    "within_2sigma": 0.9772727272727273,
+    "rms_z": 1.0418091249891452,
+    "mean_z": -0.17619778756496188
+   }
+  },
+  "region | isotopologues": {
+   "research-20261030-i2spec": {
+    "n": 32,
+    "within_1sigma": 0.84375,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6337080908071678,
+    "mean_z": -0.13765183592609362
+   },
+   "research-20261029-i2spec": {
+    "n": 32,
+    "within_1sigma": 0.8125,
+    "within_2sigma": 1.0,
+    "rms_z": 0.648081395355132,
+    "mean_z": -0.13661696152769656
+   },
+   "research-20261021-i2spec": {
+    "n": 32,
+    "within_1sigma": 0.8125,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6435124263238936,
+    "mean_z": -0.13734888384787242
+   }
+  },
+  "set | borde1981a": {
+   "research-20261030-i2spec": {
+    "n": 14,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.16225123744161557,
+    "mean_z": 0.1367131762842929
+   },
+   "research-20261029-i2spec": {
+    "n": 14,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.30487780785914614,
+    "mean_z": 0.20971524229050068
+   },
+   "research-20261021-i2spec": {
+    "n": 14,
+    "within_1sigma": 0.9285714285714286,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5159657146543406,
+    "mean_z": 0.2964897257423284
+   }
+  },
+  "set | chen1998a": {
+   "research-20261030-i2spec": {
+    "n": 25,
+    "within_1sigma": 0.6,
+    "within_2sigma": 0.88,
+    "rms_z": 1.3904269480041762,
+    "mean_z": 0.5633529522305634
+   },
+   "research-20261029-i2spec": {
+    "n": 25,
+    "within_1sigma": 0.6,
+    "within_2sigma": 0.84,
+    "rms_z": 1.4288441302587744,
+    "mean_z": 0.5945116746555068
+   },
+   "research-20261021-i2spec": {
+    "n": 25,
+    "within_1sigma": 0.6,
+    "within_2sigma": 0.84,
+    "rms_z": 1.412264589641112,
+    "mean_z": 0.5727712844492707
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 4,
+    "within_1sigma": 0.5,
+    "within_2sigma": 0.75,
+    "rms_z": 2.1708473622671822,
+    "mean_z": -1.069480829530525
+   }
+  },
+  "set | cruz1994a": {
+   "research-20261030-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.1,
+    "within_2sigma": 0.25,
+    "rms_z": 4.1520784224391445,
+    "mean_z": 3.635439992633991
+   },
+   "research-20261029-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.1,
+    "within_2sigma": 0.25,
+    "rms_z": 4.201721313298089,
+    "mean_z": 3.671895404361309
+   },
+   "research-20261021-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.1,
+    "within_2sigma": 0.25,
+    "rms_z": 4.202051163423582,
+    "mean_z": 3.6727774816175014
+   }
+  },
+  "set | demelo2024a": {
+   "research-20261030-i2spec": {
+    "n": 1,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.08242483787107442,
+    "mean_z": -0.08242483787107442
+   },
+   "research-20261029-i2spec": {
+    "n": 1,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.08252466142835639,
+    "mean_z": -0.08252466142835639
+   },
+   "research-20261021-i2spec": {
+    "n": 1,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.09696869797519757,
+    "mean_z": -0.09696869797519757
+   }
+  },
+  "set | kompanets1979a": {
+   "research-20261030-i2spec": {
+    "n": 2,
+    "within_1sigma": 0.5,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8257382365376557,
+    "mean_z": 0.26571568634744797
+   },
+   "research-20261029-i2spec": {
+    "n": 2,
+    "within_1sigma": 0.5,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8937605245683411,
+    "mean_z": 0.2890620564281175
+   },
+   "research-20261021-i2spec": {
+    "n": 2,
+    "within_1sigma": 0.5,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8564481465486606,
+    "mean_z": 0.2981848009591763
+   }
+  },
+  "set | powel2021a": {
+   "research-20261030-i2spec": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.3916936409908559,
+    "mean_z": 0.21223336429597173
+   },
+   "research-20261029-i2spec": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.41210120145096496,
+    "mean_z": 0.22309610746972344
+   },
+   "research-20261021-i2spec": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.0857670209568501,
+    "mean_z": 0.016058767351922458
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 3,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.3791399474869627,
+    "mean_z": 0.20548762319711164
+   }
+  },
+  "set | rakowsky1989a": {
+   "research-20261030-i2spec": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8200965856103399,
+    "mean_z": -0.7949543236900712
+   },
+   "research-20261029-i2spec": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8201123735108039,
+    "mean_z": -0.794969568980053
+   },
+   "research-20261021-i2spec": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.823221636884231,
+    "mean_z": -0.7982320084253229
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 17,
+    "within_1sigma": 0.8235294117647058,
+    "within_2sigma": 1.0,
+    "rms_z": 0.8200865170797079,
+    "mean_z": -0.7949445491250869
+   }
+  },
+  "set | samoudi2012a": {
+   "research-20261030-i2spec": {
+    "n": 7,
+    "within_1sigma": 0.14285714285714285,
+    "within_2sigma": 1.0,
+    "rms_z": 1.332397152094502,
+    "mean_z": 1.3131446867840124
+   },
+   "research-20261029-i2spec": {
+    "n": 7,
+    "within_1sigma": 0.14285714285714285,
+    "within_2sigma": 1.0,
+    "rms_z": 1.4415567083905678,
+    "mean_z": 1.4206874539087142
+   },
+   "research-20261021-i2spec": {
+    "n": 7,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.682077136883243,
+    "mean_z": 1.6692999645180875
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 7,
+    "within_1sigma": 0.2857142857142857,
+    "within_2sigma": 1.0,
+    "rms_z": 1.1428949531033235,
+    "mean_z": 1.1263753727020505
+   }
+  },
+  "set | shiner1993a": {
+   "research-20261030-i2spec": {
+    "n": 10,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6355716599355795,
+    "mean_z": -0.2526509815934537
+   },
+   "research-20261029-i2spec": {
+    "n": 10,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6850327836268634,
+    "mean_z": -0.27489689522486316
+   },
+   "research-20261021-i2spec": {
+    "n": 10,
+    "within_1sigma": 0.9,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6736644675013922,
+    "mean_z": -0.24019771823227837
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 10,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5619234966279759,
+    "mean_z": -0.22328052079936725
+   }
+  },
+  "set | simonsen1990a": {
+   "research-20261030-i2spec": {
+    "n": 12,
+    "within_1sigma": 0.25,
+    "within_2sigma": 0.8333333333333334,
+    "rms_z": 1.5292899688445831,
+    "mean_z": 1.2825011381106461
+   },
+   "research-20261029-i2spec": {
+    "n": 12,
+    "within_1sigma": 0.16666666666666666,
+    "within_2sigma": 0.8333333333333334,
+    "rms_z": 1.647181806304254,
+    "mean_z": 1.3810588331936942
+   },
+   "research-20261021-i2spec": {
+    "n": 12,
+    "within_1sigma": 0.16666666666666666,
+    "within_2sigma": 0.8333333333333334,
+    "rms_z": 1.6783185785020103,
+    "mean_z": 1.4255032883317769
+   }
+  },
+  "set | simonsen1997a": {
+   "research-20261030-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.9,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5793229705969225,
+    "mean_z": 0.07655338853603362
+   },
+   "research-20261029-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.4,
+    "within_2sigma": 0.8,
+    "rms_z": 1.7133058752095245,
+    "mean_z": 0.3022643680192766
+   },
+   "research-20261021-i2spec": {
+    "n": 20,
+    "within_1sigma": 0.45,
+    "within_2sigma": 0.9,
+    "rms_z": 1.4146998003490692,
+    "mean_z": 0.10401459765606616
+   }
+  },
+  "set | tesic1975a": {
+   "research-20261030-i2spec": {
+    "n": 30,
+    "within_1sigma": 0.8666666666666667,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6187908356567202,
+    "mean_z": -0.16454300407766306
+   },
+   "research-20261029-i2spec": {
+    "n": 30,
+    "within_1sigma": 0.8333333333333334,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6282963231263098,
+    "mean_z": -0.16499556272475088
+   },
+   "research-20261021-i2spec": {
+    "n": 30,
+    "within_1sigma": 0.8333333333333334,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6267497351471638,
+    "mean_z": -0.16638446283500902
+   }
+  },
+  "set | thang2012a": {
+   "research-20261030-i2spec": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.4644045569842077,
+    "mean_z": 1.4643771358421844
+   },
+   "research-20261029-i2spec": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.5886751228276828,
+    "mean_z": 1.588645374705168
+   },
+   "research-20261021-i2spec": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.803530944028403,
+    "mean_z": 1.8035108136455238
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 3,
+    "within_1sigma": 0.0,
+    "within_2sigma": 1.0,
+    "rms_z": 1.2570211144895367,
+    "mean_z": 1.2569975766260806
+   }
+  },
+  "stratum | absolute": {
+   "research-20261030-i2spec": {
+    "n": 44,
+    "within_1sigma": 0.6818181818181818,
+    "within_2sigma": 0.9772727272727273,
+    "rms_z": 1.104171916340771,
+    "mean_z": -0.1385654609972389
+   },
+   "research-20261029-i2spec": {
+    "n": 44,
+    "within_1sigma": 0.6818181818181818,
+    "within_2sigma": 0.9772727272727273,
+    "rms_z": 1.1442117860082774,
+    "mean_z": -0.11730574264840134
+   },
+   "research-20261021-i2spec": {
+    "n": 44,
+    "within_1sigma": 0.6363636363636364,
+    "within_2sigma": 0.9772727272727273,
+    "rms_z": 1.2106704629861436,
+    "mean_z": -0.07049616470295549
+   },
+   "research-20261030-i2spec + laboratory offset": {
+    "n": 44,
+    "within_1sigma": 0.7045454545454546,
+    "within_2sigma": 0.9772727272727273,
+    "rms_z": 1.0418091249891452,
+    "mean_z": -0.17619778756496188
+   }
+  },
+  "stratum | interline": {
+   "research-20261030-i2spec": {
+    "n": 2,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.671537783231014,
+    "mean_z": 0.4318446956699763
+   },
+   "research-20261029-i2spec": {
+    "n": 2,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.706968988596682,
+    "mean_z": 0.4569344130354589
+   },
+   "research-20261021-i2spec": {
+    "n": 2,
+    "within_1sigma": 1.0,
+    "within_2sigma": 1.0,
+    "rms_z": 0.5522942476861673,
+    "mean_z": 0.33902531013958154
+   }
+  },
+  "stratum | intraline": {
+   "research-20261030-i2spec": {
+    "n": 86,
+    "within_1sigma": 0.5697674418604651,
+    "within_2sigma": 0.7790697674418605,
+    "rms_z": 2.1795210433874095,
+    "mean_z": 1.2669717046322873
+   },
+   "research-20261029-i2spec": {
+    "n": 86,
+    "within_1sigma": 0.4418604651162791,
+    "within_2sigma": 0.7209302325581395,
+    "rms_z": 2.3547407509819016,
+    "mean_z": 1.3620505917720613
+   },
+   "research-20261021-i2spec": {
+    "n": 86,
+    "within_1sigma": 0.4418604651162791,
+    "within_2sigma": 0.7441860465116279,
+    "rms_z": 2.3155568212869615,
+    "mean_z": 1.33268277226533
+   }
+  },
+  "stratum | isotopologues": {
+   "research-20261030-i2spec": {
+    "n": 32,
+    "within_1sigma": 0.84375,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6337080908071678,
+    "mean_z": -0.13765183592609362
+   },
+   "research-20261029-i2spec": {
+    "n": 32,
+    "within_1sigma": 0.8125,
+    "within_2sigma": 1.0,
+    "rms_z": 0.648081395355132,
+    "mean_z": -0.13661696152769656
+   },
+   "research-20261021-i2spec": {
+    "n": 32,
+    "within_1sigma": 0.8125,
+    "within_2sigma": 1.0,
+    "rms_z": 0.6435124263238936,
+    "mean_z": -0.13734888384787242
+   }
+  }
+ },
+ "constants": {
+  "hyperfine_parameters/wakasugi1988a | eqQ": {
+   "n": 10,
+   "rms_MHz": 3.4523640195915553,
+   "rms_r_over_sigma": 2.294801687202659
+  },
+  "hyperfine_parameters/wakasugi1988a | C": {
+   "n": 10,
+   "rms_MHz": 0.00589161518860801,
+   "rms_r_over_sigma": 1.0873031389688386
+  },
+  "hyperfine_parameters/wakasugi1988a | d": {
+   "n": 10,
+   "rms_MHz": 0.015592571741558522,
+   "rms_r_over_sigma": 2.19334992893038
+  },
+  "hyperfine_parameters/wakasugi1988a | delta": {
+   "n": 10,
+   "rms_MHz": 0.005097962749512886,
+   "rms_r_over_sigma": 1.0244844328217413
+  },
+  "x_hyperfine/wakasugi1988 | eqQ": {
+   "n": 11,
+   "rms_MHz": 7.883910144459808,
+   "rms_r_over_sigma": 1.6991117476477995
+  }
+ },
+ "printed_again": [
+  {
+   "id": "knox1971a:0",
+   "kept": "tesic1975a:0"
+  },
+  {
+   "id": "knox1971a:1",
+   "kept": "tesic1975a:1"
+  },
+  {
+   "id": "knox1971a:2",
+   "kept": "tesic1975a:2"
+  },
+  {
+   "id": "knox1971a:3",
+   "kept": "tesic1975a:3"
+  },
+  {
+   "id": "knox1971a:4",
+   "kept": "tesic1975a:4"
+  },
+  {
+   "id": "knox1971a:5",
+   "kept": "tesic1975a:5"
+  },
+  {
+   "id": "knox1971a:6",
+   "kept": "tesic1975a:6"
+  },
+  {
+   "id": "knox1971a:9",
+   "kept": "tesic1975a:9"
+  },
+  {
+   "id": "knox1971a:19",
+   "kept": "tesic1975a:19"
+  },
+  {
+   "id": "knox1971a:20",
+   "kept": "tesic1975a:20"
+  }
+ ],
+ "no_sigma": [],
+ "n_rows": 164
+}

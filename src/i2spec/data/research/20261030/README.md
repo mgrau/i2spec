@@ -58,3 +58,36 @@ of their lines beyond the core. With a scatter of 35–51 MHz, they cannot set �
 ## Verification
 
 The references of release 20261029 are replayed by `ResearchModel(id).verify()` and reproduce as they did there.
+
+## Locked test
+
+The locked-test sets of `data/training/roles_20261029` (17 sets, kept out of every fit and of the uncertainty
+refit), scored once with this release in `validation/locked_test`. The registry, with the criteria, strata and
+rows left out in its protocol, was frozen and committed before any value was read; `results.json` is the
+registry's score and `validation/locked_test_results.json` the summary below. Every set was also in the third
+blind test of release 20261029 (same forecasts, the earlier 1-sigma), and its protocol says so.
+
+z = r / √(σ_model² + σ²). Target: 95 % within 2σ; floor: 90 %; a stratum of fewer than 10 rows is reported,
+not judged. Left out before scoring: 127I2 P(13) 43-0 (31 rows) and the lines a training CIPM mean contains (61 rows of
+borde1981a, knox1971a and landsberg1976a); knox1971a's ten intervals that tesic1975a prints again with the same
+values count once.
+
+| stratum | rows | within 1σ / 2σ | rms z | result |
+|---|---|---|---|---|
+| all | 164 | 66 % / 88 % | 1.70 | below the floor |
+| ¹²⁷I₂ absolute frequencies | 44 | 68 % / 98 % | 1.10 | target met |
+| ¹²⁷I₂ intervals between lines | 2 | 100 % / 100 % | 0.67 | not judged |
+| ¹²⁷I₂ hyperfine intervals | 86 | 57 % / 78 % | 2.18 | below the floor |
+| other isotopologues | 32 | 84 % / 100 % | 0.63 | target met |
+
+Under the 1-sigma of release 20261029 the same rows give 59 % / 85 % (all) and 44 % / 72 % (hyperfine intervals).
+
+One set dominates the shortfall. cruz1994a (20 intervals of R(115) 20-1, a scanned Fabry–Perot scale) is within
+2σ for 5 of them: its intervals are 0.88 % smaller than the model's, in proportion to their size (one scale factor
+leaves an rms of 0.61 MHz, the 0.54–0.62 MHz of the paper's own fit). Its printed ΔeqQ, 1911.8(0.9) MHz, is
+0.84 % below the model's 1928.1 MHz. A scale error of the interferometer or an error of the model's eqQ at B v′ 20,
+J′ 116 would each give this; the set cannot tell them apart. The other 144 rows are within 2σ for 96.5 %;
+the hyperfine intervals without cruz1994a for 94 % (62 of 66). These are stated beside the score, not instead of it.
+
+The hyperfine constants of wakasugi1988a and the X eqQ of wakasugi1988 have no 1-sigma in the model: rms residual
+3.5 MHz (B − X eqQ, rms r/σ 2.3), 6 kHz (C), 16 kHz (d), 5 kHz (δ) and 7.9 MHz (X eqQ, rms r/σ 1.7).
