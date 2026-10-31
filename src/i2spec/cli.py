@@ -112,16 +112,26 @@ def cmd_model(args):
 def cmd_web(args):
     from . import webapp
 
+    if args.action == "inputs":                     # the digest of what an export reads (the workflow's cache key)
+        print(webapp.export_inputs())
+        return
     # before any export, which takes minutes: the files the command reads exist only in a source checkout
     webapp.check_checkout(site=args.action != "export", docs=args.action != "export")
     if args.action == "export":
         webapp.export(s_min=args.s_min)
         return
-    if args.rebuild or not webapp.has_data():
-        if args.action == "serve":
+    # the site is built from data exported from the current model and data; serving locally, older data will do
+    stale = webapp.has_data() and webapp.data_inputs() != webapp.export_inputs()
+    if args.rebuild or not webapp.has_data() or (stale and args.action == "build"):
+        if stale and not args.rebuild:
+            print("the model or its data changed since the last export: exporting again ...", flush=True)
+        elif args.action == "serve":
             print("exporting the model for the web app first (a few minutes the first time) ...", flush=True)
         webapp.export(s_min=args.s_min)
     else:
+        if stale:
+            print("i2spec: note: the model or its data changed since the last export; `i2spec web export` writes "
+                  "the data again", file=sys.stderr, flush=True)
         cutoff = webapp.data_cutoff()
         if cutoff is not None and cutoff != args.s_min:
             print(f"i2spec: note: the exported data has --s-min {cutoff:g}, not {args.s_min:g}; "
@@ -180,7 +190,9 @@ def build_parser():
     p.set_defaults(func=cmd_model)
 
     p = sub.add_parser("web", help="the explorer and its documentation: serve locally, export data, build the site")
-    p.add_argument("action", nargs="?", default="serve", choices=("serve", "export", "build"))
+    p.add_argument("action", nargs="?", default="serve", choices=("serve", "export", "build", "inputs"),
+                   help="serve (default); export the data; build the site, exporting first if the model or its data "
+                        "changed; inputs: print the digest of what an export reads")
     p.add_argument("dest", nargs="?", default="site", help="build: the directory to write the site to")
     p.add_argument("--port", type=int, default=8777)
     p.add_argument("--no-browser", action="store_true", help="serve without opening a browser")

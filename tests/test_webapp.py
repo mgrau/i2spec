@@ -1,6 +1,8 @@
 """The web app's export pieces that need no model: sources, measurements, the site build, the CLI."""
 import json
 
+import pytest
+
 from i2spec import webapp
 from i2spec.cli import build_parser
 from i2spec.observations import load_all
@@ -146,11 +148,35 @@ def test_web_build_warns_when_s_min_differs_from_the_export(monkeypatch, capsys)
 
     monkeypatch.setattr(webapp, "has_data", lambda data=None: True)
     monkeypatch.setattr(webapp, "data_cutoff", lambda data=None: 1e-24)
+    monkeypatch.setattr(webapp, "data_inputs", lambda data=None: "same")
+    monkeypatch.setattr(webapp, "export_inputs", lambda: "same")
+    monkeypatch.setattr(webapp, "export", lambda **kw: pytest.fail("exported"))
     monkeypatch.setattr(webapp, "build", lambda dest, **kw: dest)
     assert cli.main(["web", "build", "out"]) == 0
     assert "--s-min" not in capsys.readouterr().err
     assert cli.main(["web", "build", "out", "--s-min", "1e-26"]) == 0
     assert "--s-min 1e-24, not 1e-26" in capsys.readouterr().err
+
+
+def test_web_build_exports_again_only_when_its_inputs_changed(monkeypatch, capsys):
+    from i2spec import cli
+
+    exported = []
+    monkeypatch.setattr(webapp, "has_data", lambda data=None: True)
+    monkeypatch.setattr(webapp, "data_cutoff", lambda data=None: 1e-24)
+    monkeypatch.setattr(webapp, "export_inputs", lambda: "now")
+    monkeypatch.setattr(webapp, "export", lambda **kw: exported.append(kw))
+    monkeypatch.setattr(webapp, "build", lambda dest, **kw: dest)
+    monkeypatch.setattr(webapp, "data_inputs", lambda data=None: "now")
+    assert cli.main(["web", "build", "out"]) == 0 and not exported
+    monkeypatch.setattr(webapp, "data_inputs", lambda data=None: "before")
+    assert cli.main(["web", "build", "out"]) == 0 and len(exported) == 1
+    assert "changed since the last export" in capsys.readouterr().out
+    # serving locally keeps the older data, and says so
+    monkeypatch.setattr(webapp, "serve", lambda **kw: None)
+    assert cli.main(["web", "--no-browser"]) == 0 and len(exported) == 1
+    assert "changed since the last export" in capsys.readouterr().err
+    assert cli.main(["web", "inputs"]) == 0 and capsys.readouterr().out.strip() == "now"
 
 
 def test_manifest_and_shard_bounds(tmp_path):
@@ -185,3 +211,44 @@ def test_overview_sums_each_kind_per_bin_and_temperature():
     assert not any(ov["p"][1][2])                       # the atlas line has no strength: an empty bin
     # the atlas line still marks its bin, as the precision line marks its own
     assert ov["m"][int(9.9 / 10 * bins)] == "1" and ov["m"][int(1.5 / 10 * bins)] == "2" and len(ov["m"]) == bins
+
+
+def test_export_inputs_follow_what_the_export_reads(tmp_path, monkeypatch):
+    # two data sets: one loaded, one pending; only the loaded one is part of the digest
+    for name, meta in (("loaded1999a", 'source = "x"\n'), ("pending1999a", 'source = "x"\nexclude = "pending"\n')):
+        (tmp_path / name).mkdir()
+        (tmp_path / name / "meta.toml").write_text(meta)
+        (tmp_path / name / "data.csv").write_text("a\n1\n")
+    monkeypatch.setattr(webapp, "OBSERVATIONS_DIR", tmp_path)
+    monkeypatch.setattr(webapp, "blind_scored", lambda: frozenset())
+    first = webapp.export_inputs()
+    assert webapp.export_inputs() == first
+    (tmp_path / "pending1999a" / "data.csv").write_text("a\n2\n")
+    assert webapp.export_inputs() == first
+    (tmp_path / "loaded1999a" / "data.csv").write_text("a\n2\n")
+    assert webapp.export_inputs() != first
+    # a scored blind set is loaded, so it counts
+    second = webapp.export_inputs()
+    monkeypatch.setattr(webapp, "blind_scored", lambda: frozenset({"pending1999a"}))
+    assert webapp.export_inputs() != second
+    # the exported data carry the digest they were made from
+    webapp._write_atomic(tmp_path / "manifest.json", json.dumps({"inputs": "abc"}))
+    assert webapp.data_inputs(tmp_path) == "abc" and webapp.data_inputs(tmp_path / "none") is None
+
+
+def test_hyperfine_patterns_are_cached(tmp_path, monkeypatch):
+    monkeypatch.setenv("I2SPEC_CACHE", str(tmp_path))
+    calls = []
+
+    def compute(iso, lines, workers=None):
+        calls.append(list(lines))
+        return [("[1.0]", "[1000]", "null") for _ in lines]
+
+    monkeypatch.setattr(webapp, "_compute_hyperfine_patterns", compute)
+    lines = [("R", 56, 32, 0), ("P", 53, 32, 0)]
+    first = webapp.hyperfine_patterns("127I2", lines)
+    again = webapp.hyperfine_patterns("127I2", lines)
+    assert len(calls) == 1 and [list(p) for p in first] == again        # read back from the cache
+    webapp.hyperfine_patterns("127I2", lines[:1])                        # other lines: another key
+    webapp.hyperfine_patterns("127I2", lines, cache=False)
+    assert len(calls) == 3 and len(list(tmp_path.glob("hfs_patterns_127I2_*.json.gz"))) == 2

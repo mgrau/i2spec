@@ -105,9 +105,10 @@ class Preferred:
     """Whole-list positions and uncertainties of the model for one isotopologue, from its cached level table."""
 
     def __init__(self, isotopologue="127I2", workers=None, cache=True):
-        from .intensity import cache_dir
+        from .intensity import cache_dir, mark_used
         path = cache_dir()/f"preferred_{MODEL}_{isotopologue}_{_key(isotopologue)}.npz"
         if cache and path.exists():
+            mark_used(path)
             z = np.load(path)
             table = {k: z[k] for k in z.files}
         else:

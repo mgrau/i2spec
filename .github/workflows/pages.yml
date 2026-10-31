@@ -1,8 +1,11 @@
 # Builds the web app (the explorer, the documentation and the references page) from the current
-# model and publishes it to GitHub Pages. Line lists and the explorer's exported data are cached
-# between runs, keyed on everything the export reads (the package, its parameter files, the atlas and
-# observation files, the locked dependencies): a push that changes none of them, such as a change to
-# the documentation or the app's JavaScript, reuses the data and only rebuilds the site (a few minutes).
+# model and publishes it to GitHub Pages. The explorer's exported data are cached under the digest of
+# what the export reads (`i2spec web inputs`: the package but its fit pipeline, the data sets it loads,
+# the atlases, the catalog, the locked dependencies), and the manifest records that digest: a push that
+# changes none of them (the documentation, the app's JavaScript, pending data sets, tests) reuses the
+# data, and `i2spec web build` exports again only when the digest differs. The model's computed parts
+# (line lists, solved levels, hyperfine patterns) are cached by the model's own hash in ~/.cache/i2spec,
+# so a code change that leaves the model alone exports in a few minutes.
 #
 # It runs after the test suite passes on a push to main, never on its own push, so a change that fails
 # the tests is not published.
@@ -41,26 +44,58 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-      - name: Restore line lists
-        uses: actions/cache@v6
+      - run: uv sync --locked
+      - name: The digest of what the export reads
+        id: inputs
+        run: echo "digest=$(uv run i2spec web inputs)" >> "$GITHUB_OUTPUT"
+      - name: Restore the model's computed parts
+        # the newest cache of an earlier run (the test workflow's line lists if there is none); its files
+        # are keyed by the model's hash, so files of another model are simply not used
+        id: computed
+        uses: actions/cache/restore@v6
         with:
           path: ~/.cache/i2spec
-          key: i2spec-${{ hashFiles('src/i2spec/**/*.py', 'src/i2spec/data/**') }}
-          restore-keys: i2spec-
+          key: web-cache-${{ github.run_id }}
+          restore-keys: |
+            web-cache-
+            i2spec-
       - name: Restore the explorer's data
-        # an exact key only: `i2spec web build` re-exports when web/data/ is absent, and a stale copy
-        # restored from an older key would be published as it is
+        # an exact hit is data exported from these inputs; else the newest earlier export, which
+        # `i2spec web build` sees is stale (its manifest has another digest) and exports again
         uses: actions/cache@v6
         with:
           path: web/data
-          key: web-data-${{ hashFiles('src/i2spec/**', 'data/atlas_lines/**', 'data/observations/**', 'pyproject.toml', 'uv.lock') }}
-      - run: uv sync --locked
+          key: web-data-${{ steps.inputs.outputs.digest }}
+          restore-keys: web-data-
+      - run: |
+          mkdir -p ~/.cache/i2spec && ls ~/.cache/i2spec | sort > "$RUNNER_TEMP/cache_before"
+          touch "$RUNNER_TEMP/run_start"
       - name: Export the model (only if it changed) and build the site
         run: uv run i2spec web build site
       - name: Check the browser physics against the Python model
         run: |
           uv run python web/make_reference.py > web/reference.json
           node web/test_physics.mjs
+      - name: Keep what this run used or computed
+        # after an export, which reads every computed part of the current model, a file it did not read
+        # (another model's) is dropped; without one, nothing is. The cache is saved only if it changed.
+        id: keep
+        run: |
+          if [ web/data/manifest.json -nt "$RUNNER_TEMP/run_start" ]; then
+            find ~/.cache/i2spec -type f ! -newer "$RUNNER_TEMP/run_start" -delete
+          fi
+          ls ~/.cache/i2spec | sort > "$RUNNER_TEMP/cache_after"
+          if cmp -s "$RUNNER_TEMP/cache_before" "$RUNNER_TEMP/cache_after"; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Save the model's computed parts
+        if: steps.keep.outputs.changed == 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: ~/.cache/i2spec
+          key: web-cache-${{ github.run_id }}
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site

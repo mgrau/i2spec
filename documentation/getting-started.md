@@ -15,7 +15,10 @@ uv run i2spec web
 The first query for an isotopologue solves the model's levels and computes its line list, and caches both
 in `~/.cache/i2spec` (230 MB for all three isotopologues). The first `i2spec web` also exports the data of
 the line explorer to `web/data/` (590 MB): the line lists of all three isotopologues and the hyperfine
-pattern of every line. After that, every query takes under a second. With an empty cache:
+pattern of every line, which are cached as well (150 MB). After that, every query takes under a second. The
+exported data record a digest of what they were made from (`uv run i2spec web inputs`): `i2spec web build`
+exports again when the model or the data it uses change, and `i2spec web` says so and serves the older data.
+With an empty cache:
 
 | first run | Apple M5 Max (18 cores, 128 GB) |
 |---|--:|

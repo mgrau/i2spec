@@ -232,6 +232,15 @@ def cache_dir() -> Path:
     return Path(os.environ.get("I2SPEC_CACHE", Path.home() / ".cache" / "i2spec"))
 
 
+def mark_used(path):
+    """Mark a cached file as used now (its modification time), so that a cache kept between runs can drop the
+    files no run reads any more (the web app's workflow does)."""
+    try:
+        os.utime(path)
+    except OSError:
+        pass
+
+
 @lru_cache(maxsize=None)
 def _parameter_files_digest(name):
     """Hash of the files behind a parameter set, so that changing any of them gives cached line lists a new key: for
@@ -374,6 +383,7 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
     path = cache_dir() / f"linelist_{model.isotopologue}_{key}.npz"
     if cache and path.exists():
         try:
+            mark_used(path)
             return MasterLineList.load(path)
         except (zipfile.BadZipFile, ValueError, OSError, KeyError, EOFError) as e:  # damaged: build it again
             warnings.warn(f"rebuilding the unreadable cached line list {path} ({e})")

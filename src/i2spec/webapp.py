@@ -17,6 +17,8 @@ from __future__ import annotations
 
 import csv
 import functools
+import gzip
+import hashlib
 import http.server
 import itertools
 import json
@@ -330,19 +332,68 @@ def _hfs_chunk(items):
     return out
 
 
-def hyperfine_patterns(iso, lines, workers=None):
+#: The modules a hyperfine pattern depends on: the model's levels and hyperfine Hamiltonian, and the published
+#: formulae for the lines its tables do not hold. With the model's files, the published parameters, the lines and
+#: the functions below that compute the patterns, they make the key of the patterns' cache.
+_HFS_MODULES = ("bspline", "constants", "hfs_params", "hyperfine", "model", "named", "potentials", "preferred",
+                "research", "research_expanded", "solver", "wigner")
+
+
+def _hfs_cache_path(iso, lines):
+    """Where the patterns of these lines are cached (intensity.cache_dir), keyed by everything they depend on."""
+    import inspect
+    from . import preferred
+    from .intensity import cache_dir
+    package = Path(__file__).resolve().parent
+    h = hashlib.sha256(json.dumps([preferred._key(iso), [list(line) for line in lines]]).encode())
+    for name in _HFS_MODULES:
+        h.update((package / f"{name}.py").read_bytes())
+    h.update((package / "data" / "hannover2008.json").read_bytes())
+    for function in (_hfs_init, _hfs_chunk, weak_links):
+        h.update(inspect.getsource(function).encode())
+    return cache_dir() / f"hfs_patterns_{iso}_{h.hexdigest()[:16]}.json.gz"
+
+
+def hyperfine_patterns(iso, lines, workers=None, cache=True):
     """Hyperfine patterns for a list of (branch, J'', v', v'') lines, computed in parallel, each as _hfs_chunk
     gives it (JSON text).
 
     The lines the level tables hold carry the model's full calculation (J ± 2). The others carry the published
     formulae's ΔJ = 0 pattern: leaving out the J ± 2 couplings changes the offsets by under 1 MHz (0.9 MHz for R(56) 32-0), far
     below the 400 MHz Doppler width the explorer draws them under, and makes each pattern twenty times cheaper.
+    The patterns are cached (_hfs_cache_path): an export whose model and lines are unchanged reads them back.
     """
-    import multiprocessing as mp
-    import os
-    from .intensity import _THREAD_VARS, _n_workers
+    from .intensity import mark_used
 
     lines = list(lines)
+    path = _hfs_cache_path(iso, lines) if cache else None
+    if path is not None and path.exists():
+        try:
+            with gzip.open(path, "rt") as f:
+                patterns = json.load(f)
+            if len(patterns) == len(lines):
+                mark_used(path)
+                return patterns
+        except (OSError, ValueError, EOFError):        # damaged: computed again below
+            pass
+    patterns = _compute_hyperfine_patterns(iso, lines, workers)
+    if path is not None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+        try:
+            with gzip.open(tmp, "wt") as f:
+                json.dump(patterns, f, separators=(",", ":"))
+            os.replace(tmp, path)
+        finally:
+            tmp.unlink(missing_ok=True)
+    return patterns
+
+
+def _compute_hyperfine_patterns(iso, lines, workers=None):
+    """hyperfine_patterns without its cache."""
+    import multiprocessing as mp
+    from .intensity import _THREAD_VARS, _n_workers
+
     n = _n_workers() if workers is None else max(1, workers)
     # Nearly all the work is the radial solutions at each level's J (and J ± 2, for the couplings), solved
     # once per J and kept by the worker that needs them. So each chunk is a window of J'' across every band, and
@@ -406,6 +457,40 @@ def _write_atomic(path, text):
         tmp.unlink(missing_ok=True)
 
 
+def export_inputs():
+    """A digest of everything ``export`` reads, so that the exported data are written again when, and only when,
+    one of them changes: the package (but its fit pipeline, which the export never runs), the data sets it loads
+    (_records: those without an ``exclude`` line, and the scored blind sets), the atlases, the catalog of sources
+    and the locked dependencies. Pending data sets, the documentation, the explorer's own files and the tests are
+    not among them; nor is the strength cutoff, whose change `i2spec web` notes (data_cutoff)."""
+    package = ROOT / "src" / "i2spec"
+    files = [p for p in package.rglob("*") if p.is_file() and "__pycache__" not in p.parts
+             and p.relative_to(package).parts[0] != "fit"]
+    loaded = blind_scored()
+    for folder in sorted(OBSERVATIONS_DIR.iterdir()):
+        meta = folder / "meta.toml"
+        if not folder.is_dir():
+            files.append(folder)
+        elif meta.exists() and ("exclude" not in tomllib.loads(meta.read_text(encoding="utf-8"))
+                                or folder.name in loaded):
+            files += [p for p in folder.rglob("*") if p.is_file()]
+    for folder in (ATLAS_DIR, ROOT / "data" / "catalog"):
+        files += [p for p in folder.rglob("*") if p.is_file()]
+    files += [ROOT / "pyproject.toml", ROOT / "uv.lock"]
+    h = hashlib.sha256()
+    for p in sorted(set(files)):
+        h.update(str(p.relative_to(ROOT) if p.is_relative_to(ROOT) else p).encode() + b"\0" + p.read_bytes() + b"\0")
+    return h.hexdigest()[:16]
+
+
+def data_inputs(data=DATA):
+    """The export_inputs the data in ``data`` were exported from, or None (none, or exported before it was kept)."""
+    try:
+        return json.loads((Path(data) / "manifest.json").read_text())["inputs"]
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
 def data_cutoff(data=DATA):
     """The strength cutoff (cm at 300 K) the exported data in ``data`` was written with, or None."""
     try:
@@ -441,6 +526,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     from . import __version__
 
     check_checkout(site=False, docs=False)
+    inputs = export_inputs()                         # before reading them: what the data are exported from
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     # The shards are rewritten in place and the manifest last: without one, has_data() is False until the
@@ -495,6 +581,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
                            "a model change.")},
         "constants": {"c2": C2, "mhz_per_cm": MHZ_PER_CM},
         "cutoff_cm_at_300K": s_min,
+        "inputs": inputs,                              # export_inputs: `i2spec web build` exports again on a change
         "references": "references.json",
         "isotopologues": {},
     }

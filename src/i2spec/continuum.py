@@ -33,7 +33,7 @@ from numpy.polynomial import polynomial as P
 from scipy.optimize import brentq, minimize_scalar
 
 from .constants import HBAR2_2U, ISOTOPOLOGUES, PUBLISHED_PARAMETERS, REFERENCE_ISOTOPOLOGUE, reduced_mass
-from .intensity import C2, S_UNIT, _parameter_files_digest, cache_dir, mu_tellinghuisen2011
+from .intensity import C2, S_UNIT, _parameter_files_digest, cache_dir, mark_used, mu_tellinghuisen2011
 from .potentials import load_potentials
 from .solver import RadialSolver
 
@@ -218,6 +218,7 @@ def continuum_model(isotopologue="127I2", upper_cut=None, *, T_max=600.0, dJ=5, 
     path = cache_dir() / f"continuum_{isotopologue}_{key}.npz"
     if cache and path.exists():
         try:
+            mark_used(path)
             return Continuum.load(path)
         except (zipfile.BadZipFile, ValueError, OSError, KeyError, EOFError) as e:  # damaged: build it again
             warnings.warn(f"rebuilding the unreadable cached continuum {path} ({e})")
