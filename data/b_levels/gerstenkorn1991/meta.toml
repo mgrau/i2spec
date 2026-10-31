@@ -68,6 +68,11 @@ Checks (all model-free):
   Table 8's GHz values are Table 7's sigma times 29.9792458, and Diff. = present - ref. 15.
 - Tables 4 and 5: every printed Delta recomputes; the rms of Table 4 is 0.0022 cm-1, as the text says.
 
+Misprint, corrected in lines_calc.csv (row 23, 2026-10-31): Table 4's second line, printed "R(54), 8-4",
+is P(54) 8-4 of 129I2. R(54) and R(60) of one band cannot lie 0.015 cm-1 apart; the metre documents the table quotes
+(data/observations/bipm1984a) list 129I2 P(54) 8-4, and the model puts that line at 15797.99806 cm-1 (sigma_meas
+15797.9980) and R(54) 8-4 at 15803.92 cm-1 (found when blind registry v4 was scored, 2026-10-31).
+
 Not entered: the centrifugal distortion constants D, H, L, M of the X levels v'' = 0-19 and B levels v' = 0-80,
 computed by Hutson's method from the RKR potentials and available only in the program (not printed), and the
 program's Franck-Condon grid. Footnote 5 gives the J range in which the constants are valid: J <= 200 for

@@ -81,6 +81,13 @@ Its constants were the reference for the X state in several later papers (Steinf
 Tellinghuisen 1974, Luc 1980 Fig. 2). The constants use a sign convention in which every term of G'' and the D_e term of
 F'' carry a plus sign (so x_e omega_e and D_e are printed negative).
 
+Against the model (blind registry v4, scored 2026-10-31): the interferometric lines (v'' = 1-22) lie -0.022 to +0.022
+cm-1 off, from about -0.02 at v'' = 1-5 to +0.01-0.02 at v'' = 18-22 (the scale and drift noted under checks); the grating
+lines (v'' = 23-39) lie -0.15 to +0.86 cm-1 off, +0.25 on average. Those are the two reprinted grating sets (to 0.1 cm-1),
+whose positions the authors' own Eq. (8) also misses by up to 0.79 cm-1; Eq. (8) reproduces the printed calc - obs of
+these rows to the printed 0.01 (checks), so they are entered as printed. A property of the old grating data, not a
+reading error.
+
 Overlap with held sets. The ultraviolet data are Verma's (data/x_levels/verma1960); only residuals are printed here, so
 there is no duplicated measurement. The green-series lines of v'' = 23-39 are reprints of Wood and Kimura 1918 and Rank
 1946 (not held). The B-X absorption line R(33) 25-0 that the Hg line excites is the subject of other held sets

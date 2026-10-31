@@ -32,6 +32,13 @@ the set keeps only what is specific to the transcription (`tables`, `source` for
 measurement keeps its rows as printed and declares them in `[overlaps]`, so the record shows each measurement once.
 Combined tables (one CSV of every line, one of every set) are generated from these files, not stored.
 
+## Corrections found later
+
+A misprint, a reading error or a reassignment found after transcription is corrected in the data file itself, with the
+printed value, the evidence and the date in the set's meta.toml (its `notes`); a column that keeps the label as printed
+(`printed`) is left unchanged. A frozen blind registry that hashed the file before the correction keeps its scores: its
+snapshot shows the file as it was scored.
+
 ## Terms
 
 The repository's code and the data derived in this work (fits, assignments, transcriptions) are under its

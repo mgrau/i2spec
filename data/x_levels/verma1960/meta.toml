@@ -88,7 +88,7 @@ Checks (model-free):
 
 Misprints and reading notes (all entered as printed):
 - Table I v'' = 35: P(88) is printed 47 998.28, but R - P = 1.41 against the printed dnu_obs 11.41, and the line lies
-  10.05 cm-1 off the series: P(88) is probably 47 988.28.
+  10.05 cm-1 off the series: P(88) is 47 988.28 (tellinghuisen1980 measures 47 988.30): corrected in data.csv (row 21, printed 47 998.28, 2026-10-31).
 - Table V: the interval printed between (113) and (114) is 1.07; the printed positions differ by 1.17.
 - Table IV v'' = 46: all four lines lie 2.9-3.1 cm-1 off both series, R(21) equals Table III P(50) at v'' = 46
   (46 275.47), and the two Delta nu_RP (2.74, 2.78) fit their neighbors: the row is probably misidentified (shifted by
@@ -139,6 +139,12 @@ Later work: Tellinghuisen, McKeever and Sur 1980 (data/x_levels/tellinghuisen198
 confirmed the assignments and extended them to v'' = 99. It measures P(88) of v'' = 35 at 47 988.30 cm-1, supporting
 the Table I correction, and IVa R(21) 46 272.51 and IVb P(26) 46 266.88 cm-1 at v'' = 46, 2.96 and 3.07 cm-1 below
 Table IV's row there: that row is misidentified.
+Numbering. Verma's v'' is the modern numbering: Tellinghuisen et al. 1980 keep it, and in blind registry v4 (scored
+2026-10-31) every series of Tables I-IV follows the model's X levels with one upper term per series, to 0.1-0.3 cm-1 at
+most v'', mostly -0.1 to -0.5 at v'' <= 11 (I P(88) v'' = 0: -1.2) and -0.3 to -0.6 at v'' = 26 in every series (where
+tellinghuisen1980 also finds Verma's lines low), with no offset in v''. The large residuals are the rows flagged
+above: Table I v'' = 35 P (+10.04 cm-1), Table I v'' = 12 (-1.1, -1.2), Table IV v'' = 46 (+2.7 to +3.1) and Table V
+(+6.7 to -15.4 cm-1, the NO lines).
 """
 
 [columns]

@@ -65,6 +65,18 @@ levels. The red-band lines are usable Doppler-limited positions (0.05-0.1 cm-1);
 by every later analysis and should not be used as assigned. The dissociation limit 20 162.8 cm-1 rests on Verma's D0''
 (data/x_levels/verma1960), later shown to be wrong; the modern limit is about 20 043 cm-1 above X(0,0).
 
+Against the model (blind registry v4, scored 2026-10-31). The printed values are transcribed correctly: Table I prints
+the full number at each change of leading digits (the 49-1 column opens with 19435.85 and 19435.92, and the 49-1 band head
+is printed 19435.98), and the restored values run smoothly along every branch, so no tens digit is in question. The red
+bands are vacuum wavenumbers (an air value would be about 4.4 cm-1 low here) and give the model's lines with band means of
+-0.03 (8-4), -0.05 (7-3, 9-4), -0.10 (6-3) and -0.11 cm-1 (10-5) and 0.05-0.08 cm-1 sd, residuals falling to -0.15 to
+-0.19 at the highest J: the calibration and blending of the photographic data, not a reading error. The v' numbering of
+the green bands is the modern one, but their J is not: 43-0 as printed lies 1.1-2.0 cm-1 below the model, growing with J
+as the P-line spacing does, and with J'' + 1 (the paper's P(12)/R(14) at the Ar+ line become the modern P(13)/R(15)) it
+lies -0.10 (P) and -0.15 cm-1 (R) off with 0.21-0.24 cm-1 sd, the blends the text describes. The 49-1 rows lie 9.9-11.6
+cm-1 below the model's 49-1 and match no band 43-55 / 0-4 with any J shift to better than 1.6 cm-1 sd: the band is
+misassigned in the paper and left as printed. The 43-0 rows are reassigned in lines.csv (2026-10-31): line and J_lower carry J'' + 1, the printed column keeps the paper's label. The green rows are blends, not usable as single lines.
+
 Overlap with held sets. The constants pool this work with Steinfeld et al. 1965 (data/b_levels/steinfeld1965). Not
 compared with any model.
 """

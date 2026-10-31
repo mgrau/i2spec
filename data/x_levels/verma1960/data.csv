@@ -20,7 +20,7 @@ I,I,87,28,,86,49182.37,,88,49170.35,,12.02,11.81,,X,P=II R(45) v''=28,
 I,I,87,30,,86,48836.42,,88,48824.88,,11.54,11.71,,X,,
 I,I,87,31,,86,48665.78,,88,48654.08,,11.70,11.66,,X,,
 I,I,87,33,,86,48329.16,,88,48317.90,,11.26,11.55,,X,,
-I,I,87,35,,86,47999.69,,88,47998.28,,11.41,11.44,,X,,misprint: R - P = 1.41 against the printed dnu_obs 11.41; P(88) is probably 47 988.28 (the line difference to the other v'' rows agrees then); entered as printed
+I,I,87,35,,86,47999.69,,88,47988.28,,11.41,11.44,,X,,misprint: R - P = 1.41 against the printed dnu_obs 11.41; P(88) is probably 47 988.28 (the line difference to the other v'' rows agrees then); entered as printed
 I,I,87,36,,86,47837.25,,88,47826.02,,11.23,11.39,,X,,
 I,I,87,38,,86,47517.86,,88,47506.68,,11.18,11.27,,X,,
 I,I,87,40,,86,47206.02,,88,47194.70,,11.32,11.15,,X,,

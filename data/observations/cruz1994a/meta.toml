@@ -42,11 +42,22 @@ than 1 MHz" (pp. 156-157) and "precision < 1 MHz" (Table I); the bound is taken 
 two-parameter fit leaves 0.54 MHz rms, so the bound is conservative. Components p and q (a6, a5), 5 MHz apart, were
 resolved only in the 0 C spectra and were given weight 0.5 in the authors' fit; 1.4 MHz (1.0 x sqrt 2) is entered
 for them. The Fabry-Perot free spectral range is a scale common to every row (group cruz1994a); its uncertainty is
-not given.
+not given, and the intervals read 0.88 % small against the model (notes).
 """
 
 notes = """
 No other set holds this line's hyperfine structure, and no compilation prints it. Not in the catalog.
+
+Scale (found when the locked test was scored, 2026-10-31). Every interval is 0.88 % smaller than the model's: a single
+factor 0.99124 applied to the model's intervals leaves 0.61 MHz rms (the authors' own fits leave 0.54 and 0.61 MHz),
+against 4.4 MHz rms unscaled, with the misfit growing in proportion to the interval (+0.6 MHz at b, +6.6 MHz at u). The
+transcription is correct (Table I re-read 2026-10-31; MHz as printed, and the printed obs - calc recompute). The paper
+gives the interferometer only as "a free-spectral-range of 75 MHz" (a home-made confocal Fabry-Perot, ref. 16) and states
+no calibration of it, so the scale of every interval rests on that nominal value: a free spectral range of about
+75.66 MHz (a mirror spacing about 9 mm shorter than the nominal 99.93 cm) would account for the whole 0.88 %. The paper's
+own fitted Delta eqQ, 1911.83 MHz, is likewise 0.75 % and 0.91 % below the empirical predictions it quotes (1926.3 and
+1929.3 MHz), which the authors read as a property of the line. The rows are kept as printed; the scale is a property of
+the measurement (the group cruz1994a shares it), not a transcription error.
 """
 
 [conditions]
