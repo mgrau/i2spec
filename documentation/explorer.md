@@ -66,7 +66,7 @@ Below the same 0.1 nm, every measured absolute frequency in view is drawn agains
   to the baseline. These marks appear only once the difference, the measurement's 1σ or the model's spans
   more than a pixel: an atlas line's at about 0.1 nm, a comb measurement's typically below 10 MHz across the
   plot. Zooming in on one component shows, for example, the 5.2 MHz miss of P(13) 43–0 a3, well outside
-  the model's 1.2 MHz.
+  the model's 1.0 MHz.
 
 The strip needs some height and is left out on a phone held so that the plot is short. Hovering over a
 dot gives the line, component and source, measured − model with the measurement's uncertainty, and the
