@@ -35,6 +35,7 @@ const state = {
   overviews: new Map(),    // iso -> the coarse spectrum drawn for shards not loaded yet
   index: new Map(),        // iso -> label -> line, built only when someone searches by label
   refs: null,              // the measurement sources: index -> {short, citation, link, ...}
+  levels: null,            // the data held by level or by line (levels.json), loaded with the first selection
   kinds: new Set(["model", "atlas", "precision", "band"]),   // the show toggles: kinds of line, and the band
   show: "all",             // the same as a key: "all", or the toggles on, e.g. "atlas,precision"
   filter: "all",           // what the toggles keep, a key for the caches: state.show, and the band when it counts
@@ -1717,8 +1718,10 @@ async function select(line, comp = null) {
     <div id="compbox"></div>
     <p class="bandrow"><button id="bandbtn" type="button"></button></p>
     ${measurementsHTML(line, comp)}
+    <div id="levelbox"></div>
     <div id="hfsbox"><p class="note">loading hyperfine structure…</p></div>`;
   bandButton(line);
+  fillLevelData(line);
 
   let patterns = {};
   try { patterns = await getJSON(state.manifest.isotopologues[line.iso].hfs, state.hfs, line.iso); }
@@ -1761,6 +1764,61 @@ async function select(line, comp = null) {
        : "The ΔF ≠ ΔJ components are omitted below 2% of the peak, where nothing in a spectrum shows them."}
      Offsets are from the hyperfine-free center, which is not itself an observable line.${withU ?
        " u is the 1σ of each component's frequency: the center's with the hyperfine model's own (a floor and a pattern-scale error, both fitted to held-out intervals)." : ""}</p>`;
+}
+
+/** levels.json, once: {sources, isotopologues: {iso: {lines, levels}}} (an older export has none: empty). */
+async function levelData() {
+  if (!state.levels) {
+    try { state.levels = state.manifest.levels ? await getJSON(state.manifest.levels, null) : null; } catch { state.levels = null; }
+    state.levels = state.levels || {sources: [], isotopologues: {}};
+  }
+  return state.levels;
+}
+
+/** A number as printed: to the precision its uncertainty warrants, or 7 figures; very small or large ones in powers. */
+function levelNumber(v, u) {
+  const a = Math.abs(v);
+  if (a !== 0 && (a < 1e-3 || a >= 1e8)) return v.toExponential(u ? Math.max(1, Math.min(8, Math.round(Math.log10(a / u)) + 1)) : 4);
+  const d = u ? Math.max(0, Math.min(10, 1 - Math.floor(Math.log10(u)))) : Math.max(0, 6 - Math.floor(Math.log10(a || 1)));
+  return v.toFixed(d);
+}
+
+/** One table of the level data: the quantity, the measured value with its 1σ, the model's value where it has one,
+ * and the source. */
+function levelTable(title, entries, sources) {
+  if (!entries.length) return "";
+  const rows = entries.map(e => {
+    const s = sources[e.s] || {short: "?"};
+    const name = escapeHTML(s.short);
+    const link = s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${escapeHTML(s.citation || "")}">${name}</a>`
+      : `<span title="${escapeHTML(s.citation || "")}">${name}</span>`;
+    const mark = s.why ? ` <span class="n" title="${escapeHTML(sentence(s.why))}">(not fitted)</span>` : "";
+    const model = e.m === undefined || e.m === null ? "–" : levelNumber(e.m, e.u);
+    return `<tr><td>${escapeHTML(e.q)}</td><td>${levelNumber(e.v, e.u)}</td><td>${e.u ? levelNumber(e.u, e.u) : "–"}</td>
+      <td>${model}</td><td>${escapeHTML(e.unit)}</td><td class="src">${link}${mark}</td></tr>`;
+  });
+  return `<h3>${title}</h3><div class="measwrap"><table class="sub meas"><thead><tr><th>quantity</th><th>measured</th><th>1σ</th>
+    <th>model</th><th>unit</th><th class="src">source</th></tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+}
+
+/** The selected line's data held by line (hyperfine constants fitted to it, widths) and by its two levels (level
+ * constants, X hyperfine constants and intervals, lifetimes), from levels.json. */
+async function fillLevelData(line) {
+  const L = await levelData();
+  if (state.selected !== line) return;
+  const box = $("#levelbox");
+  if (!box) return;
+  const d = L.isotopologues[line.iso] || {lines: {}, levels: {}};
+  const Ju = line.J + (line.branch === "R" ? 1 : -1);
+  const at = keys => keys.flatMap(k => d.levels[k] || []);
+  const upper = at([`B:${line.vu}:${Ju}`, `B:${line.vu}`]), lower = at([`X:${line.vl}:${line.J}`, `X:${line.vl}`]);
+  const html = levelTable("This line", d.lines[hfsKey(line)] || [], L.sources) +
+    levelTable(`Upper level B(v′ = ${line.vu}, J′ = ${Ju})`, upper, L.sources) +
+    levelTable(`Lower level X(v″ = ${line.vl}, J″ = ${line.J})`, lower, L.sources);
+  box.innerHTML = html ? html + `<p class="note">Data held by line and by level: hyperfine constants fitted to this line
+    (of its B level, or B minus X as the source gives them), level constants as printed (G or T from the source's own
+    origin), X-state hyperfine constants and intervals, lifetimes and widths. “model” is this model's value where it has
+    one: its hyperfine constants of the same levels, its term value and B(v) = [E(v, 2) − E(v, 0)]/6.</p>` : "";
 }
 
 function measurementsHTML(line, comp = null) {

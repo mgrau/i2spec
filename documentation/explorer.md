@@ -175,6 +175,15 @@ uncertainties marks a disagreement worth a look. Sources marked “not fitted”
 the blind tests, set aside for a reason the mark gives on hovering, or atlases shown for comparison. The explorer
 shows every data set we hold except those still waiting for a blind test, which stay unseen until it is scored.
 
+## Data by line and by level
+
+Below the measurements, the detail panel lists what we hold about the selected line and its two levels beyond line
+positions: the effective hyperfine constants a source fitted to this line (of its B level, or B minus X as the
+source gives them), X-state hyperfine constants and sublevel intervals, level constants (G or T, B, D, H by v, as
+printed, the term value from the source's own origin), and, where held, lifetimes and line widths. Each is given
+with its 1σ and source and, where the model has one, its value: its hyperfine constants of the same levels, its
+term value and B(v) = [E(v, 2) − E(v, 0)]/6. Data sets still pending a blind test are not shown.
+
 ## The model behind each line
 
 The positions, hyperfine patterns, uncertainties and line strengths of all three isotopologues are the model's

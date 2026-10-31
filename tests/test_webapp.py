@@ -253,3 +253,31 @@ def test_hyperfine_patterns_are_cached(tmp_path, monkeypatch):
     webapp.hyperfine_patterns("127I2", lines[:1])                        # other lines: another key
     webapp.hyperfine_patterns("127I2", lines, cache=False)
     assert len(calls) == 3 and len(list(tmp_path.glob("hfs_patterns_127I2_*.json.gz"))) == 2
+
+
+def test_level_constants_are_read_with_their_printed_scales(tmp_path):
+    path = tmp_path / "data.csv"
+    path.write_text("v,G,G_unc,B_x10,B_x10_unc,D_s,D_s_unc,D_exp,negH_x1e14,page\n"
+                    "4,945.5916,0.0041,0.3628259,0.000017,0.45304,0.0067,8,0.593,471\n")
+    got = {q: (v, value, u) for v, q, value, u in webapp._level_constants(path)}
+    assert got["G(v)"] == (4, 945.5916, 0.0041)
+    assert got["B(v)"][1] == pytest.approx(0.03628259) and got["B(v)"][2] == pytest.approx(1.7e-6)
+    assert got["D(v)"][1] == pytest.approx(0.45304e-8) and got["D(v)"][2] == pytest.approx(0.0067e-8)
+    assert got["H(v)"][1] == pytest.approx(-0.593e-14) and got["H(v)"][2] is None
+
+
+def test_level_data_keep_pending_sets_unseen_and_compare_constants_with_the_model():
+    import tomllib
+    data = webapp.level_data()
+    shown = {(s["folder"], s["id"]) for s in data["sources"]}
+    for folder in webapp.LEVEL_FOLDERS:
+        for p in (webapp.ROOT / "data" / folder).iterdir():
+            meta = p / "meta.toml"
+            if meta.exists() and str(tomllib.loads(meta.read_text()).get("exclude", "")).startswith("pending") \
+                    and (folder, p.name) not in webapp.scored_constants():
+                assert (folder, p.name) not in shown
+    lines = data["isotopologues"]["127I2"]["lines"]
+    eqq = [e for e in lines["42-0P10"] if e["q"] == "eqQ (B)"]
+    assert eqq and abs(eqq[0]["v"] - eqq[0]["m"]) < 1.0                  # MHz: the model's B constants of the level
+    g20 = [e for e in data["isotopologues"]["127I2"]["levels"]["X:20"] if e["q"] == "G(v)"]
+    assert g20 and abs(g20[0]["v"] - g20[0]["m"]) < 0.01                 # cm-1, on the set's own origin

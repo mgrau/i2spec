@@ -103,6 +103,37 @@ def _shown(name, meta):
     return not reason.startswith("pending") or name in blind_scored()
 
 
+#: The folders of data held by level or by line, beside the line positions: the hyperfine constants sources fitted
+#: (per line), the X-state constants and sublevel intervals, the level constants of X and B, the line widths and
+#: pressure coefficients, and the levels' lifetimes and decay rates (level_data).
+LEVEL_FOLDERS = ("hyperfine_parameters", "x_hyperfine", "x_levels", "b_levels", "widths", "lifetimes")
+
+
+@functools.lru_cache(maxsize=1)
+def scored_constants():
+    """(folder, set) of the sets outside data/observations that a scored registry holds (hyperfine constants)."""
+    from importlib import resources
+    out = set()
+    for release, name in BLIND_REGISTRIES + (("20261030", "locked_test"),):
+        folder = resources.files("i2spec").joinpath("data", "research", release, "validation", name)
+        if folder.joinpath("results.json").is_file():
+            out.update((t["folder"], t["set"]) for t in json.loads(folder.joinpath("targets.json").read_text())
+                       if "folder" in t)
+    return frozenset(out)
+
+
+def _level_sets(folder):
+    """(set id, meta) of the sets of a LEVEL_FOLDERS folder the explorer shows: all but those pending a blind test."""
+    root = ROOT / "data" / folder
+    for p in sorted(root.iterdir()):
+        if not (p / "meta.toml").exists():
+            continue
+        meta = tomllib.loads((p / "meta.toml").read_text(encoding="utf-8"))
+        if str(meta.get("exclude", "")).startswith("pending") and (folder, p.name) not in scored_constants():
+            continue
+        yield p.name, meta
+
+
 def _records():
     """load_all(record=True) with every shown set admitted (_shown: the excluded ones too, but those pending a
     blind test, which have no say)."""
@@ -206,6 +237,164 @@ def sources():
             for t in twins:
                 t["short"] += re.match(r".*\d{4}([a-z]?)", t["id"])[1]
     return out
+
+
+#: Level-constant columns of the x_levels and b_levels tables: the quantity, and how the printed number scales.
+_CONSTANT = re.compile(r"^(neg)?(G|T|B|D|H)(?:_?x(1e\d+|\d+))?(?:_cm1)?$")
+_CONSTANT_NAMES = {"G": "G(v)", "T": "T(v)", "B": "B(v)", "D": "D(v)", "H": "H(v)"}
+
+
+def _level_constants(path):
+    """(v, quantity, value cm-1, uncertainty or None) of a level-constant table: G or T, B, D, H by v, each column
+    taken with its printed scale (B_x10: B times 10; D_s with D_exp: D_s 10^-D_exp; neg: the negative printed)."""
+    with open(path, newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    if not rows or "v" not in rows[0]:
+        return []
+    head = list(rows[0])
+    out = []
+    for name in head:
+        m = _CONSTANT.match(name)
+        scaled = name.endswith("_s") and name[:-2].lstrip("neg") in ("D", "H") and f"{name[:-2].lstrip('neg')}_exp" in head
+        if not m and not scaled:
+            continue
+        if scaled:
+            q, neg = name[:-2].lstrip("neg"), name.startswith("neg")
+            factor = lambda r, q=q: 10.0 ** -float(r[f"{q}_exp"]) if r.get(f"{q}_exp") else None   # noqa: E731
+        else:
+            neg, q, x = bool(m.group(1)), m.group(2), m.group(3)
+            factor = lambda r, x=x: 1 / float(x) if x else 1.0                                   # noqa: E731
+        unc = next((u for u in (f"{name}_unc", name.replace("_cm1", "_unc_cm1"), name.replace("_s", "_s_unc"))
+                    if u in head and u != name), None)
+        for r in rows:
+            try:
+                f, value = factor(r), float(r[name])
+                v = int(r["v"])
+            except (TypeError, ValueError):
+                continue
+            if f is None:
+                continue
+            sign = -1.0 if neg else 1.0
+            u = abs(float(r[unc]) * f) if unc and r.get(unc) else None
+            out.append((v, _CONSTANT_NAMES[q], sign * value * f, u))
+    return out
+
+
+def level_data():
+    """The data held by level or by line, for the explorer's detail panel: {"sources": [...], "isotopologues": {iso:
+    {"lines": {line key: [entry]}, "levels": {"X:v" or "X:v:J" / "B:...": [entry]}}}}. An entry is {"s": source index,
+    "q": what, "v": value, "u": uncertainty or None, "unit", and "m": the model's value where it has one}. The hyperfine
+    constants are compared through the blind-test registry's own forecasts (fit.registry), in each source's
+    convention (B, or B minus X); the level constants, widths and lifetimes are shown as printed."""
+    from collections import defaultdict
+    from .fit import registry
+    from .lineshape import load_lifetimes, load_widths
+    from .observations import Line
+    sources, index = [], {}
+    out = defaultdict(lambda: {"lines": defaultdict(list), "levels": defaultdict(list)})
+
+    def src(folder, sid, meta):
+        if (folder, sid) not in index:
+            citation, doi, link = _bib(meta)
+            index[(folder, sid)] = len(sources)
+            sources.append(dict(id=sid, folder=folder, short=_short(sid), citation=citation, link=link,
+                                **({} if "exclude" not in meta else {"why": _why_not_fitted(sid, meta)})))
+        return index[(folder, sid)]
+
+    def key(line):
+        return line_key(line.branch, line.J_lower, line.v_upper, line.v_lower)
+
+    # hyperfine constants of a line's levels (B, or B minus X) and of X levels: observed, and the model's forecast
+    metas = {(f, s): m for f in ("hyperfine_parameters", "x_hyperfine") for s, m in _level_sets(f)}
+    targets = registry.hyperfine_targets([s for f, s in metas if f == "hyperfine_parameters"],
+                                         ROOT / "data" / "hyperfine_parameters")
+    for f, s in metas:
+        if f != "x_hyperfine":
+            continue
+        try:
+            targets += registry.x_hyperfine_targets([s], ROOT / "data" / "x_hyperfine")
+        except KeyError:            # a table by v alone (no J): its constants as printed, by v
+            with open(ROOT / "data" / f / s / "data.csv", newline="", encoding="utf-8") as fh:
+                for r in csv.DictReader(fh):
+                    if r.get("eqQ"):
+                        out[metas[(f, s)].get("isotopologue", "127I2")]["levels"][f"X:{int(r['v'])}"].append(dict(
+                            s=src(f, s, metas[(f, s)]), q="eqQ", v=float(r["eqQ"]),
+                            u=float(r["eqQ_unc"]) if r.get("eqQ_unc") else None, unit="MHz"))
+    _, forecast = registry.forecasts(targets, ["i2spec"])
+    predicted = {r["target"]: r.get("predicted_MHz") for r in forecast}
+    for t in targets:
+        value, sigma, _ = registry._observed_constant(t, ROOT / "data")
+        if value is None:
+            continue
+        s, m = src(t["folder"], t["set"], metas[(t["folder"], t["set"])]), predicted.get(t["id"])
+        if t["kind"] == "hf_constant":
+            q, kHz = t["quantity"], t["quantity"] != "eqQ"
+            scale = 1e3 if kHz else 1.0
+            what = (f"{q} (B)" if t["convention"] == "B" else f"Δ{q} (B − X)").replace("delta", "δ")
+            out[t["isotopologue"]]["lines"][key(Line.parse(t["line"]))].append(dict(
+                s=s, q=what, v=round(value * scale, 6), u=None if sigma is None else round(sigma * scale, 6),
+                unit="kHz" if kHz else "MHz", m=None if m is None else round(m * scale, 6)))
+            continue
+        level = f"X:{t['v']}" + (f":{t['J']}" if t.get("J") is not None else "")
+        if t["kind"] == "x_constant":
+            kHz = t["quantity"] != "eqQ"
+            scale, what = (1e3 if kHz else 1.0), t["quantity"].replace("delta", "δ")
+        else:
+            kHz, scale = True, 1e3
+            what = f"E(I={t['I_from']}, F={t['F_from']}) − E(I={t['I_to']}, F={t['F_to']})" + \
+                (" (magnitude)" if t.get("magnitude") else "")
+        out[t["isotopologue"]]["levels"][level].append(dict(
+            s=s, q=what, v=round(value * scale, 6), u=None if sigma is None else round(sigma * scale, 6),
+            unit="kHz" if kHz else "MHz", m=None if m is None else round(m * scale, 6)))
+    # level constants of X and B by v, as printed; for X the model's term value (from the set's own origin: v = 0
+    # or the potential minimum, whichever its lowest level matches) and B(v) = (E(v, 2) - E(v, 0))/6
+    from . import preferred
+    for folder, state in (("x_levels", "X"), ("b_levels", "B")):
+        for sid, meta in _level_sets(folder):
+            iso = meta.get("isotopologue", "127I2")
+            rows = _level_constants(ROOT / "data" / folder / sid / "data.csv")
+            model = None
+            if state == "X":
+                mod = preferred.model(iso)
+
+                def energy(v, J, mod=mod):
+                    try:
+                        return mod._energy("X", v, J)
+                    except (ValueError, IndexError, KeyError):
+                        return None
+                terms = [(v, x) for v, q, x, u in rows if q in ("G(v)", "T(v)")]
+                origin = 0.0
+                if terms and energy(0, 0) is not None and energy(min(terms)[0], 0) is not None:
+                    v0, x0 = min(terms)
+                    origin = energy(0, 0) if abs(energy(v0, 0) - energy(0, 0) - x0) < abs(energy(v0, 0) - x0) else 0.0
+
+                def model(v, q, energy=energy, origin=origin):
+                    e0, e2 = energy(v, 0), energy(v, 2)
+                    if q in ("G(v)", "T(v)") and e0 is not None:
+                        return float(f"{e0 - origin:.10g}")
+                    if q == "B(v)" and e0 is not None and e2 is not None:
+                        return float(f"{(e2 - e0) / 6:.8g}")
+                    return None
+            for v, q, value, u in rows:
+                entry = dict(s=src(folder, sid, meta), q=q, v=float(f"{value:.10g}"),
+                             u=None if u is None else float(f"{u:.3g}"), unit="cm⁻¹")
+                if model is not None and (mv := model(v, q)) is not None:
+                    entry["m"] = mv
+                out[iso]["levels"][f"{state}:{v}"].append(entry)
+    # line widths and pressure coefficients (per line or component); lifetimes and decay rates (per level)
+    for sid, meta in _level_sets("widths"):
+        for w in load_widths(ROOT / "data" / "widths" / sid).rows:
+            what = w.quantity + (f" ({w.perturber})" if w.perturber else "") + (f", {w.component}" if w.component else "")
+            out[w.line.isotopologue]["lines"][key(w.line)].append(dict(
+                s=src("widths", sid, meta), q=what, v=w.value, u=w.uncertainty, unit=w.unit))
+    for sid, meta in _level_sets("lifetimes"):
+        for d in load_lifetimes(ROOT / "data" / "lifetimes" / sid).rows:
+            level = f"{d.state}:{d.v}" + (f":{d.J}" if d.J is not None else "")
+            out[d.isotopologue]["levels"][level].append(dict(
+                s=src("lifetimes", sid, meta), q=d.quantity + (f" ({d.sublevel})" if d.sublevel else ""), v=d.value,
+                u=d.uncertainty, unit=d.unit))
+    return {"sources": sources, "isotopologues": {iso: {"lines": dict(v["lines"]), "levels": dict(v["levels"])}
+                                                   for iso, v in out.items()}}
 
 
 @functools.lru_cache(maxsize=None)
@@ -498,8 +687,9 @@ def export_inputs():
     and the locked dependencies. Pending data sets, the documentation, the explorer's own files and the tests are
     not among them; nor is the strength cutoff, whose change `i2spec web` notes (data_cutoff)."""
     package = ROOT / "src" / "i2spec"
+    # the fit pipeline is not read, but for the registry the level data compare through (fit/registry.py)
     files = [p for p in package.rglob("*") if p.is_file() and "__pycache__" not in p.parts
-             and p.relative_to(package).parts[0] != "fit"]
+             and (p.relative_to(package).parts[0] != "fit" or p.name == "registry.py")]
     for folder in sorted(OBSERVATIONS_DIR.iterdir()):
         meta = folder / "meta.toml"
         if not folder.is_dir():
@@ -508,6 +698,8 @@ def export_inputs():
             files += [p for p in folder.rglob("*") if p.is_file()]
     for folder in (ATLAS_DIR, ROOT / "data" / "catalog"):
         files += [p for p in folder.rglob("*") if p.is_file()]
+    for folder in LEVEL_FOLDERS:                      # the level data, but the sets pending a blind test
+        files += [p for sid, _ in _level_sets(folder) for p in (ROOT / "data" / folder / sid).rglob("*") if p.is_file()]
     files += [ROOT / "pyproject.toml", ROOT / "uv.lock"]
     h = hashlib.sha256()
     for p in sorted(set(files)):
@@ -602,6 +794,9 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
         {"generated": date.today().isoformat(), "sources": refs,
          "outside_absorption_list": {iso: len(keys) for iso, keys in missing.items()}}, separators=(",", ":")))
 
+    print("  data by level and by line ...", flush=True)
+    (out / "levels.json").write_text(json.dumps(level_data(), separators=(",", ":"), ensure_ascii=False))
+
     from . import preferred as pf
     manifest = {
         "generated": date.today().isoformat(),
@@ -613,7 +808,8 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
                            "a model change.")},
         "constants": {"c2": C2, "mhz_per_cm": MHZ_PER_CM},
         "cutoff_cm_at_300K": s_min,
-        "inputs": inputs,                              # export_inputs: `i2spec web build` exports again on a change
+        "inputs": inputs,
+        "levels": "levels.json",                       # level_data: the data held by level or by line                              # export_inputs: `i2spec web build` exports again on a change
         "references": "references.json",
         "isotopologues": {},
     }
