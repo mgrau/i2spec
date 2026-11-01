@@ -457,9 +457,16 @@ def uncertainty_numbers():
     entry, expanded, core, read = _release()
     u = read(expanded, "uncertainty.json")
     import i2spec.research as research
-    folder = Path(research.__file__).parent / "data" / "research" / entry["id"].split("-")[1] / "validation"
+    # the locked test was scored once, on the release that first carried it: the released one or the latest before
+    releases = [r for r in research._RELEASES if r <= entry["id"].split("-")[1]]
+    root = Path(research.__file__).parent / "data" / "research"
+    folder = next(root / r / "validation" for r in reversed(releases)
+                  if (root / r / "validation" / "locked_test_results.json").is_file())
     locked = json.loads((folder / "locked_test_results.json").read_text())
-    return dict(u=u, locked=locked)
+    # the rows whose prediction and sigma the released version leaves as scored (its manifest's record)
+    changed = json.loads((root / entry["id"].split("-")[1] / "manifest.json").read_text()).get("locked_test", {})
+    return dict(u=u, locked=locked, locked_release=folder.parent.name,
+                locked_unchanged=changed.get("rows_unchanged", locked["summary"]["all"][locked["primary"]]["n"]))
 
 
 def _unc_strings(n):
@@ -511,6 +518,8 @@ def _unc_strings(n):
         "unc.cal_hf_b_1": f"{min(100 * c['refit'][1] for c in late):.0f}–{max(100 * c['refit'][1] for c in late):.0f} %",
         "unc.cal_hf_b_2": f"{min(100 * c['refit'][2] for c in late):.0f}–{max(100 * c['refit'][2] for c in late):.0f} %",
         "unc.locked_rows": str(every["n"]), "unc.locked_2": percent(every["within_2sigma"]),
+        "unc.locked_release": n["locked_release"],
+        "unc.locked_unchanged": str(n["locked_unchanged"]),
         "unc.locked_abs_2": percent(strata["absolute"]["within_2sigma"]),
         "unc.locked_hf_2": percent(strata["intraline"]["within_2sigma"]),
         "unc.locked_table": "\n".join(rows),
@@ -556,6 +565,21 @@ def _typical_strings(rows):
     return {"unc.typical_table": "\n".join(main), "unc.typical_iso_table": "\n".join(other)}
 
 
+def _edge_strings(u):
+    """The release's terms at the edges (release 20261031 on): X near dissociation, B beyond the tables, the
+    tunneling width of quasi-bound levels."""
+    nd = u["model_error"]["X beyond"].get("near_dissociation")
+    edges = u.get("edges") or {}
+    if not nd or not edges:
+        return {}
+    w = edges["B quasi-bound width"]["evidence"]
+    return {"unc.x_nd0": f"{math.exp(nd['log_sigma_add']):.0f}", "unc.x_nd_slope": f"{nd['slope_per_v']:.3f}",
+            "unc.x_nd_n": str(nd["n_cv"]), "unc.b_edge_growth": f"{edges['B above 80']['growth_per_v']:g}",
+            "unc.width_deep": f"{1e3 * w['max_width_more_than_5_cm_below_top_MHz']:.1f} kHz",
+            "unc.width_within": str(w["change_within_width_or_1kHz"]), "unc.width_n": str(w["n_levels"]),
+            "unc.width_worst": f"{w['largest_change_over_width']:.1f}"}
+
+
 def _hf_beyond_strings(hb):
     a = lambda v: hb["a_MHz"] * math.exp(hb["a_growth_per_v"] * (v - 44))  # noqa: E731
     kappa = lambda v: math.exp(hb["log_kappa0"]) * (1 + (v - hb["v_ref"]) / hb["v_scale"]) ** hb["power"]  # noqa: E731
@@ -568,4 +592,5 @@ def numbers():
     """Every key a page may use, formatted as the page shows it."""
     unc = uncertainty_numbers()
     return {**_we_strings(worked_example()), **_fit_strings(fit_counts()), **_unc_strings(unc),
+            **_edge_strings(unc["u"]),
             **_hf_beyond_strings(unc["u"]["hyperfine"]["B beyond"]), **_typical_strings(typical())}

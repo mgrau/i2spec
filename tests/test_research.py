@@ -13,15 +13,16 @@ from i2spec.research import _Potential, _entries, _entry, _info, _read
 
 def test_releases_and_ledgers():
     models = [_info(entry) for entry in _entries()]
-    assert [m.role for m in models] == ["balanced", "balanced_expanded", "i2spec"]*3
+    assert [m.role for m in models] == ["balanced", "balanced_expanded", "i2spec"]*4
     assert [(m.inventory.fitted_molecular, m.inventory.inherited_molecular, m.inventory.fitted_calibration)
-            for m in models] == [(61, 18, 4), (105, 73, 5), (107, 75, 5)]+[(63, 18, 4), (106, 73, 5), (106, 75, 5)]*2
-    # release 20261030 (the final form, its uncertainty refitted) is the released model: the role "i2spec" resolves
-    # to it; the parts' roles resolve to the first release that has them (release 20261021's, which the fit rebuilds)
+            for m in models] == ([(61, 18, 4), (105, 73, 5), (107, 75, 5)]+[(63, 18, 4), (106, 73, 5), (106, 75, 5)]*2
+                                 + [(63, 18, 4), (110, 73, 5), (110, 75, 5)])
+    # release 20261031 (version 1.0.0) is the released model: the role "i2spec" resolves to it; the parts' roles
+    # resolve to the first release that has them (release 20261021's, which the fit rebuilds)
     assert [_entry(m.role)["id"] for m in models[:2]] == [m.id for m in models[:2]]
-    assert [m.id for m in models[3:]] == [f"research-{r}-{n}" for r in ("20261029", "20261030")
+    assert [m.id for m in models[3:]] == [f"research-{r}-{n}" for r in ("20261029", "20261030", "20261031")
                                           for n in ("core", "expanded", "i2spec")]
-    assert DEFAULT_PARAMETERS == _entry("i2spec")["id"] == "research-20261030-i2spec"
+    assert DEFAULT_PARAMETERS == _entry("i2spec")["id"] == "research-20261031-i2spec"
     assert all(m.inventory.line_specific == m.inventory.level_specific == 0 for m in models)
     with pytest.raises(FrozenInstanceError):
         models[0].inventory.fitted_molecular = 1
@@ -145,3 +146,50 @@ def test_step4_uncertainty_terms_only_in_release_20261030():
     b = new._uncertainty_model().hyperfine_terms(new._spec["core"], 50, 0)[0]
     g = t_new["hyperfine"]["B beyond"]
     assert b == pytest.approx(g["a_MHz"]*np.exp(g["a_growth_per_v"]*6))
+
+
+def test_release_20261031_barrier_rule_on_every_grid():
+    """Release 20261031 solves a level that a short box puts above the limit on the long box (its barrier rule):
+    release 20261030 counted standing waves of the 8.6 A box as B v' 46-59 at J' 132-200. At J' = 199 the barrier
+    holds B to v' = 45 (133.03 cm-1 above the limit); release 20261030 listed box states as v' = 46-59."""
+    old, new = ResearchModel("research-20261030-i2spec"), ResearchModel("research-20261031-i2spec")
+    lo, ln = old._levels_x, new._levels_x
+    assert ln.energy("B", 45, 199)-ln.asymptote["B"] == pytest.approx(133.03, abs=0.01)
+    assert ln.energy("B", 45, 199) == pytest.approx(lo.energy("B", 45, 199), abs=1e-9)
+    with pytest.raises(ValueError):
+        ln.energy("B", 46, 199)
+    assert lo.energy("B", 59, 199) > lo.asymptote["B"]          # the box states the old release held
+    for v, J in ((30, 100), (50, 120), (60, 100), (70, 20)):      # bound and long-grid levels: unchanged
+        assert ln.energy("B", v, J) == pytest.approx(lo.energy("B", v, J), abs=1e-9)
+
+
+def test_release_20261031_hyperfine_not_predicted_and_edges():
+    """Where a second-order denominator nearly vanishes the release gives a line's center only; the uncertainty
+    model carries the X near-dissociation term, the rules beyond the tables and the tunneling width."""
+    m = ResearchModel("research-20261031-i2spec")
+    missing = {(r["v"], r["J"]) for r in _read(_entry("research-20261031-expanded"), "hyperfine.json")["B"]["not_predicted"]}
+    assert (71, 20) in missing
+    assert np.isfinite(m.frequency("R(19) 71-0"))
+    with pytest.raises(ValueError, match="does not predict"):
+        m.frequency("R(19) 71-0", "a1")
+    table = m._uncertainty_model().table
+    assert table["model_error"]["X beyond"]["near_dissociation"]["v0"] == 85
+    assert table["edges"]["B above 80"]["growth_per_v"] == 3.0 and table["edges"]["X above 108"]["v_max"] == 113
+    unc = m._uncertainty_model()
+    core = m._spec["core"]
+    s80, s82 = (unc.model_sigma(core, "B", v, 10, "beyond") for v in (80, 82))
+    assert s82 == pytest.approx(9*s80)
+    x84, x90 = (unc.model_sigma(core, "X", v, 10, "beyond") for v in (84, 90))
+    assert x90 > x84
+    assert m._levels_x.width("B", 30, 50) == 0.
+    assert m._levels_x.width("B", 61, 125)*MHZ_PER_CM > 10.
+
+
+def test_release_20261031_core_patterns_unchanged():
+    """In the core the release changes no hyperfine pattern, at any J (above J = 200 a J +- 2 partner beyond the
+    barrier is left out, as before)."""
+    old, new = ResearchModel("research-20261030-i2spec"), ResearchModel("research-20261031-i2spec")
+    for vu, vl, J, branch in ((43, 0, 208, "R"), (32, 0, 56, "R"), (20, 3, 210, "P")):
+        a = [c.offset for c in old.hyperfine_components(vu, vl, J, branch)[1]]
+        b = [c.offset for c in new.hyperfine_components(vu, vl, J, branch)[1]]
+        assert b == pytest.approx(a, abs=1e-6)

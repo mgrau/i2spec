@@ -10,7 +10,9 @@ units of 0.01 cm-1), cubic B-splines on V(X) over 4.2-6.6 A (units of 0.1 cm-1),
 atlas. The settings are the release's `structure` record (research_expanded reads the same one).
 
 Objective: the core fit's weights over every 127I2 training row up to X v''=108, B v'=80, the core rows included (they
-keep the core where it was), plus the single-well penalty (-ln of the Morse factor increasing, to 40 A) and f > 0.2.
+keep the core where it was), plus the single-well penalty (-ln of the Morse factor increasing, to 40 A) and f > 0.2;
+from release 20261031 also a penalty on the spline correction's curvature ripple (structure "window_penalty": the
+second differences of its V'' over the interior knots, divided by the given scale in cm-1/A^2).
 Solved by Levenberg-Marquardt, then undamped Gauss-Newton to convergence.
 """
 from __future__ import annotations
@@ -88,6 +90,8 @@ class TailCurve(Curve):
         self.free_de = st["free_de"][state]
         self.de_unit, self.window_unit, self.new_cn_unit = st["de_unit"], st["window_unit"], st["new_cn_unit"]
         self.window = tuple(st["window_knots"][state]) if st["window_knots"][state] else None
+        #: release 20261031 on: a penalty on the window's curvature ripple, residuals window_curvature_steps / scale
+        self.window_penalty = (st.get("window_penalty") or {}).get(state)
         self.window_names = [f"w{j}" for j in range(1, len(self.window)-4+1)] if self.window else []
         self.dispersion = tuple(int(n) for n in st["dispersion"][state])
         re = np.exp(values["logRe"])
@@ -119,10 +123,19 @@ class TailCurve(Curve):
     def tails(self):
         return self.exponent_tails+[self.rotation_tail]
 
-    def window_basis(self, R):
+    def window_basis(self, R, nu=0):
         k = np.asarray(self.window, float)
-        return np.nan_to_num(np.stack([BSpline.basis_element(k[i:i+5], extrapolate=False)(np.asarray(R, float))
-                                       for i in range(len(k)-4)], axis=-1))
+        return np.nan_to_num(np.stack([BSpline.basis_element(k[i:i+5], extrapolate=False).derivative(nu)(
+            np.asarray(R, float)) if nu else BSpline.basis_element(k[i:i+5], extrapolate=False)(np.asarray(R, float))
+            for i in range(len(k)-4)], axis=-1))
+
+    def window_curvature_steps(self, values):
+        """Second differences of the spline correction's V'' over its interior knots (cm-1/A^2): h times the jumps of
+        its V''' there. A cubic spline's V'' is linear between knots, so these are what a knot-to-knot ripple in the
+        curvature consists of; a smooth correction has them near 0."""
+        k = np.asarray(self.window, float)
+        w2 = self.window_unit*self.window_basis(k[1:-1], 2)@np.array([values[n] for n in self.window_names])
+        return np.diff(w2, 2)
 
     def _exponent(self, values, yq):
         first = self.exponent_tails[0]
@@ -298,6 +311,8 @@ class Problem:
             R = self.grid[s]
             out.append(np.minimum(np.diff(curve.log_shape_values(values[s], R))/np.diff(R), 0.)/1e-5)
             out.append(np.minimum(curve.curves(values[s], R, 1.)[1]-.2, 0.)*1e4)
+            if curve.window and curve.window_penalty:
+                out.append(curve.window_curvature_steps(values[s])/curve.window_penalty)
         return np.concatenate(out)
 
     def predict(self, x, jac=False):

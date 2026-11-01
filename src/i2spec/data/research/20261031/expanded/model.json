@@ -1,0 +1,589 @@
+{
+ "schema_version": 3,
+ "id": "research-20261031-expanded",
+ "kind": "expanded",
+ "isotopologue": "127I2",
+ "base": {
+  "release": "20261031",
+  "model": "research-20261031-core",
+  "model_sha256": "05b0523260d29d2d6d2ef54434f9accfd638726798a416d468e80034bb6a1e42"
+ },
+ "core": {
+  "X": 17,
+  "B": 43
+ },
+ "domain": {
+  "X_v_max": 108,
+  "B_v_max": 80,
+  "J_max": 200,
+  "levels": "a line needs its levels (and their J +- 2 partners) bound or held behind the centrifugal barrier, and hyperfine components need tabulated constants"
+ },
+ "inventory": {
+  "fitted_molecular": 110,
+  "inherited_molecular": 73,
+  "fitted_calibration": 5,
+  "line_specific": 0,
+  "level_specific": 0
+ },
+ "inventory_detail": {
+  "base": {
+   "model": "research-20261031-core",
+   "fitted_molecular": 63,
+   "inherited_molecular": 18,
+   "fitted_calibration": 4
+  },
+  "potential_tails": {
+   "fitted": 37,
+   "names": [
+    "B:ro1",
+    "B:ro2",
+    "B:to1",
+    "B:to10",
+    "B:to2",
+    "B:to3",
+    "B:to4",
+    "B:to5",
+    "B:to6",
+    "B:to7",
+    "B:to8",
+    "B:to9",
+    "X:dC6",
+    "X:dDe",
+    "X:ro1",
+    "X:ti1",
+    "X:to1",
+    "X:to10",
+    "X:to11",
+    "X:to12",
+    "X:to2",
+    "X:to3",
+    "X:to4",
+    "X:to5",
+    "X:to6",
+    "X:to7",
+    "X:to8",
+    "X:to9",
+    "X:w1",
+    "X:w2",
+    "X:w3",
+    "X:w4",
+    "X:w5",
+    "X:w6",
+    "X:w7",
+    "X:w8",
+    "X:w9"
+   ],
+   "note": "B:dDe is X:dDe (one shared dissociation-energy change keeps the atomic splitting)"
+  },
+  "hyperfine_fitted": {
+   "count": 10,
+   "names": [
+    "B theta_u (1u mixing)",
+    "B theta_g (1g mixing)",
+    "B gamma (eqQ continuation curvature)",
+    "B kC (C background curvature past the knot)",
+    "B kd (d background curvature past the knot)",
+    "B kdelta (delta background curvature past the knot)",
+    "1g(1Pig) C5 scale (selected by training cost)",
+    "X eqQ lambda",
+    "X eqQ p",
+    "X C slope"
+   ],
+   "note": "fitted to measured B intra-line intervals out of core (B) and Bacis et al. 1980 X eqQ (X); the X C slope rests on one value (59 kHz at v''83) and is unvalidated",
+   "form": "release 20261031: theta_g and the C, d, delta curvatures fitted, background orders d 5 and delta 4 (anchored to the core fit's own predictions); selected after the blind scores were read"
+  },
+  "hyperfine_derived": {
+   "B_background": 20,
+   "X_eqQ_polynomial": 5,
+   "X_C_polynomial": 5,
+   "note": "anchored to the base model's own core predictions (B) and to BKT02 in the core (X): set by inherited/base numbers, not by new measurements"
+  },
+  "inherited_new": {
+   "atomic": [
+    "A(2P3/2)",
+    "A(2P1/2)",
+    "B(2P3/2)"
+   ],
+   "perturber_curves": 45,
+   "theta_g": "30 deg, the separated-atom quadrupole mixing (Saute 1982)",
+   "resonance": [
+    "dE(77)",
+    "B_1g(77)",
+    "dE(78)",
+    "B_1g(78)",
+    "eqQ(1g)",
+    "C(1g)"
+   ]
+  },
+  "inherited_total": 73,
+  "calibration": {
+   "base": 4,
+   "orsay4_offset_MHz": 4.394477127839158
+  },
+  "structural": {
+   "knots": {
+    "X_out": 3.08,
+    "X_in": 2.42,
+    "X_rot": 3.08,
+    "B_out": 4.45,
+    "B_rot": 4.45
+   },
+   "orders": {
+    "X": {
+     "outer": 12,
+     "inner": 1,
+     "rotation": 1
+    },
+    "B": {
+     "outer": 10,
+     "inner": 0,
+     "rotation": 2
+    }
+   },
+   "window_knots": {
+    "X": [
+     4.2,
+     4.4,
+     4.6,
+     4.8,
+     5.0,
+     5.2,
+     5.4,
+     5.6,
+     5.8,
+     6.0,
+     6.2,
+     6.4,
+     6.6
+    ],
+    "B": null
+   },
+   "grids": "the fit engine's tiers + 0.6 A box, X tiers >= 33 halved",
+   "J_tables": 203
+  }
+ },
+ "structure": {
+  "orders": {
+   "X": {
+    "outer": 12,
+    "inner": 1,
+    "rotation": 1
+   },
+   "B": {
+    "outer": 10,
+    "inner": 0,
+    "rotation": 2
+   }
+  },
+  "knots": {
+   "X_out": 3.08,
+   "X_in": 2.42,
+   "X_rot": 3.08,
+   "B_out": 4.45,
+   "B_rot": 4.45
+  },
+  "continuity": {
+   "X": 2,
+   "B": 1
+  },
+  "rotation_continuity": 1,
+  "vanish": {
+   "X": 2,
+   "B": 2
+  },
+  "inner_end": 2.1,
+  "dispersion": {
+   "X": [
+    6
+   ],
+   "B": []
+  },
+  "new_cn_unit": 100000.0,
+  "de_unit": 0.01,
+  "free_de": {
+   "X": true,
+   "B": true
+  },
+  "shared_de": true,
+  "window_knots": {
+   "X": [
+    4.2,
+    4.4,
+    4.6,
+    4.8,
+    5.0,
+    5.2,
+    5.4,
+    5.6,
+    5.8,
+    6.0,
+    6.2,
+    6.4,
+    6.6
+   ],
+   "B": null
+  },
+  "window_unit": 0.1,
+  "grids": {
+   "X": [
+    [
+     17,
+     {
+      "rmin": 2.1,
+      "rmax": 4.2,
+      "h": 0.01,
+      "order": 10,
+      "nlev": 20
+     }
+    ],
+    [
+     24,
+     {
+      "rmin": 2.1,
+      "rmax": 4.6,
+      "h": 0.01,
+      "order": 10,
+      "nlev": 30
+     }
+    ],
+    [
+     33,
+     {
+      "rmin": 2.1,
+      "rmax": 5.0,
+      "h": 0.005,
+      "order": 10,
+      "nlev": 40
+     }
+    ],
+    [
+     54,
+     {
+      "rmin": 2.1,
+      "rmax": 5.6,
+      "h": 0.005,
+      "order": 10,
+      "nlev": 60
+     }
+    ],
+    [
+     69,
+     {
+      "rmin": 2.1,
+      "rmax": 6.6,
+      "h": 0.005,
+      "order": 10,
+      "nlev": 70
+     }
+    ],
+    [
+     115,
+     {
+      "rmin": 2.1,
+      "rmax": 40.6,
+      "h": 0.005,
+      "order": 10,
+      "nlev": 118,
+      "mesh": [
+       [
+        5.0,
+        0.01
+       ],
+       [
+        8.0,
+        0.025
+       ],
+       [
+        15.0,
+        0.05
+       ]
+      ]
+     }
+    ]
+   ],
+   "B": [
+    [
+     17,
+     {
+      "rmin": 2.35,
+      "rmax": 4.6,
+      "h": 0.01,
+      "order": 10,
+      "nlev": 26
+     }
+    ],
+    [
+     33,
+     {
+      "rmin": 2.35,
+      "rmax": 5.1,
+      "h": 0.01,
+      "order": 10,
+      "nlev": 40
+     }
+    ],
+    [
+     43,
+     {
+      "rmin": 2.35,
+      "rmax": 6.1,
+      "h": 0.01,
+      "order": 10,
+      "nlev": 55
+     }
+    ],
+    [
+     59,
+     {
+      "rmin": 2.35,
+      "rmax": 8.6,
+      "h": 0.01,
+      "order": 10,
+      "nlev": 60
+     }
+    ],
+    [
+     90,
+     {
+      "rmin": 2.35,
+      "rmax": 40.6,
+      "h": 0.01,
+      "order": 10,
+      "nlev": 260,
+      "mesh": [
+       [
+        5.0,
+        0.02
+       ],
+       [
+        8.0,
+        0.05
+       ],
+       [
+        15.0,
+        0.1
+       ]
+      ]
+     }
+    ]
+   ]
+  },
+  "joins": {
+   "X": [
+    2.42,
+    3.08,
+    4.2,
+    6.6
+   ],
+   "B": [
+    4.45
+   ]
+  },
+  "above_limit": "long grid"
+ },
+ "values": {
+  "X": {
+   "to1": 7.971277344596088,
+   "to2": 9.033258406315879,
+   "to3": 9.07877492158343,
+   "to4": 30.112997584213627,
+   "to5": -42.17987291049686,
+   "to6": 207.23440994093716,
+   "to7": -483.0253378180787,
+   "to8": 1137.6911415526747,
+   "to9": -2194.039729526327,
+   "to10": 3892.0147242143707,
+   "to11": -5093.854012123976,
+   "to12": 5128.362451152719,
+   "ti1": -0.006883085844736164,
+   "ro1": -0.011297132964748189,
+   "dC6": 0.032913086539065654,
+   "w1": 7.142313019924525,
+   "w2": 20.995335586579895,
+   "w3": 31.984692692612924,
+   "w4": 30.308977183687865,
+   "w5": 25.94539297659602,
+   "w6": 18.248296133391193,
+   "w7": 16.592583410692573,
+   "w8": 7.785760324711728,
+   "w9": 9.866763710895484,
+   "D0": 12440.25300359158
+  },
+  "B": {
+   "to1": -0.3012669266098171,
+   "to2": -0.31245466826935414,
+   "to3": -0.32912392315477834,
+   "to4": -0.42328845575282853,
+   "to5": -0.2183406536946898,
+   "to6": -1.1202757234682936,
+   "to7": 0.9405022230800518,
+   "to8": -4.105214657324789,
+   "to9": 5.152223980903833,
+   "to10": -14.895771973539635,
+   "ro1": -0.030845149777528454,
+   "ro2": -0.0026648451697230363
+  }
+ },
+ "calibration": {
+  "orsay4_offset_MHz": 4.394477127839158,
+  "note": "Orsay IV atlas offset; the base atlas calibrations are in the base model"
+ },
+ "hyperfine": {
+  "core": "research-final-core: B radial functions and fixed X constants",
+  "beyond": "hyperfine.json: B v'44-80 and X v''18-108 per level; B v'77, 78 with the 1g(1Pig) level diagonalized; levels where a second-order denominator nearly vanishes are not predicted (center only, B not_predicted)",
+  "dJ": 2
+ },
+ "fit": {
+  "cost": 7368.856119604655,
+  "converged": true,
+  "nfev": 25,
+  "training": {
+   "core | atlas_apo": {
+    "n": 25960,
+    "median_abs_MHz": 4.621461898088455,
+    "mean_MHz": -0.9216019880078239,
+    "rms_MHz": 21.97282204958559
+   },
+   "core | atlas_sr": {
+    "n": 13181,
+    "median_abs_MHz": 11.191145181655884,
+    "mean_MHz": 0.7202512159232494,
+    "rms_MHz": 18.75363789697211
+   },
+   "core | comb": {
+    "n": 93,
+    "median_abs_MHz": 0.14522945880889893,
+    "mean_MHz": -0.011769190458389167,
+    "rms_MHz": 0.35894374338060414
+   },
+   "core | doppler": {
+    "n": 691,
+    "median_abs_MHz": 0.36957162618637085,
+    "mean_MHz": -0.09006791685838603,
+    "rms_MHz": 0.9134679455889255
+   },
+   "core | martin": {
+    "n": 70,
+    "median_abs_MHz": 56.350034322589636,
+    "mean_MHz": -68.5717802230801,
+    "rms_MHz": 78.5209418177072
+   },
+   "core | orsay1": {
+    "n": 1586,
+    "median_abs_MHz": 32.12843406200409,
+    "mean_MHz": 17.502215633852334,
+    "rms_MHz": 50.04308819272891
+   },
+   "X v18-25 | martin": {
+    "n": 56,
+    "median_abs_MHz": 42.51250969618559,
+    "mean_MHz": 82.07523547352424,
+    "rms_MHz": 139.05386651364972
+   },
+   "X v18-25 | orsay1": {
+    "n": 1910,
+    "median_abs_MHz": 38.45860341191292,
+    "mean_MHz": 15.928143215709955,
+    "rms_MHz": 55.20020680912382
+   },
+   "X v26-47 | martin": {
+    "n": 154,
+    "median_abs_MHz": 31.894778475165367,
+    "mean_MHz": 15.63221888727956,
+    "rms_MHz": 45.40040197408153
+   },
+   "X v26-47 | orsay1": {
+    "n": 6,
+    "median_abs_MHz": 57.75909096002579,
+    "mean_MHz": -10.508803655703863,
+    "rms_MHz": 66.86313563275525
+   },
+   "X v48-60 | emission": {
+    "n": 10,
+    "median_abs_MHz": 7.169262766838074,
+    "mean_MHz": 7.443553769588471,
+    "rms_MHz": 8.326681960664303
+   },
+   "X v48-60 | martin": {
+    "n": 91,
+    "median_abs_MHz": 45.63428807258606,
+    "mean_MHz": 21.26404087491088,
+    "rms_MHz": 71.01889457198843
+   },
+   "X v61-89 | martin": {
+    "n": 191,
+    "median_abs_MHz": 32.42176574468613,
+    "mean_MHz": 0.39748580355918844,
+    "rms_MHz": 104.07388264474815
+   },
+   "X v90+ | martin_dissoc": {
+    "n": 44,
+    "median_abs_MHz": 191.99673914909363,
+    "mean_MHz": 4.862068566409024,
+    "rms_MHz": 332.20307908726954
+   },
+   "B v44-50 | atlas_apo": {
+    "n": 545,
+    "median_abs_MHz": 9.932635188102722,
+    "mean_MHz": -3.5113504632897334,
+    "rms_MHz": 33.34697454394497
+   },
+   "B v44-50 | atlas_sr": {
+    "n": 39,
+    "median_abs_MHz": 11.117493271827698,
+    "mean_MHz": -6.630258560180664,
+    "rms_MHz": 22.283125159835997
+   },
+   "B v44-50 | comb": {
+    "n": 16,
+    "median_abs_MHz": 0.5667564868927002,
+    "mean_MHz": 0.12444315105676651,
+    "rms_MHz": 0.5656985744070201
+   },
+   "B v51-62 | atlas_apo": {
+    "n": 32,
+    "median_abs_MHz": 17.502504765987396,
+    "mean_MHz": 5.6288677006959915,
+    "rms_MHz": 39.76143067353858
+   },
+   "B v51-62 | comb": {
+    "n": 3,
+    "median_abs_MHz": 0.08441793918609619,
+    "mean_MHz": 0.03780814011891683,
+    "rms_MHz": 0.15774080443369204
+   },
+   "B v51-62 | orsay4": {
+    "n": 863,
+    "median_abs_MHz": 21.345712065696716,
+    "mean_MHz": 2.310378646242798,
+    "rms_MHz": 62.23552843579172
+   },
+   "B v63-72 | orsay4": {
+    "n": 1000,
+    "median_abs_MHz": 33.20133322477341,
+    "mean_MHz": 1.67841750729084,
+    "rms_MHz": 79.66389797372241
+   },
+   "B v73-77 | orsay4": {
+    "n": 195,
+    "median_abs_MHz": 58.80570888519287,
+    "mean_MHz": 5.085799622535705,
+    "rms_MHz": 121.90313985987007
+   },
+   "B v78+ | orsay4": {
+    "n": 21,
+    "median_abs_MHz": 139.50132524967194,
+    "mean_MHz": -114.36922294752938,
+    "rms_MHz": 183.38757513143003
+   }
+  }
+ },
+ "exclusion": "127I2 P(13) 43-0",
+ "training_fold": "future",
+ "reference_counts": {
+  "center": 839,
+  "absolute": 2577,
+  "intraline": 1431
+ },
+ "coordinates": "named"
+}

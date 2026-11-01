@@ -2,7 +2,8 @@
 tables and the reference predictions the packaged runtime must reproduce.
 
   levels      every (state, v, J <= 203) level of the final potentials, each on the fit engine's grid for its own v
-              (box + 0.6 A, refined X tiers, the curves' joins), quasi-bound levels kept by the engine's barrier rule
+              (box + 0.6 A, refined X tiers, the curves' joins), quasi-bound levels kept by the engine's barrier rule;
+              a level a short tier puts at or above the limit is solved on the long tier (fit.levels)
   hyperfine   the constants per level beyond the core: B v' 44-80 (hyperfine_beyond: anchored background +
               second-order sums) and X v'' 18-108 (x_hyperfine), each level found on the hyperfine model's own grid by
               its energy (so no box or quasi-bound state can be mislabeled)
@@ -26,6 +27,7 @@ from ..hyperfine import level_structure, line_components
 from ..observations import Line, component_rank
 from . import b1g_resonance as rz, continuation, hyperfine_beyond as hb, second_order as so, x_hyperfine as xh
 from .continuation import SolverPotential
+from . import levels as levels_module
 from .levels import TIERS
 
 CORE_V = dict(X=17, B=43)
@@ -95,7 +97,14 @@ def _levels_task(args):
     asym = float(pot(np.array([400.]))[0])
     E = kept_levels(_W['solvers'][key], pot, grid, J, asym)
     lo = 0 if tier == 0 else _W['tiers'][state][tier-1][0]+1
-    return [(state, v, J, float(E[v])) for v in range(lo, min(limit, V_MAX[state])+1) if v < len(E)]
+    if not levels_module.ABOVE_LIMIT_ON_LONG_GRID:
+        return [(state, v, J, float(E[v])) for v in range(lo, min(limit, V_MAX[state])+1) if v < len(E)]
+    # a level a short tier puts at or above the limit is the long tier's (its barrier rule): fit.levels' rule
+    if 'mesh' in grid:
+        vs = [v for v in range(min(limit, V_MAX[state])+1) if v < len(E) and (v >= lo or E[v] >= asym)]
+    else:
+        vs = [v for v in range(lo, min(limit, V_MAX[state])+1) if v < len(E) and E[v] < asym]
+    return [(state, v, J, float(E[v])) for v in vs]
 
 
 def levels(values=None, workers=12):
@@ -135,8 +144,9 @@ def _match(E, state, v, J, E_grid):
     return i
 
 
-def hyperfine_tables(E, b, theta, constants, xmodel, xlv, blv=None, workers=12, cache=None):
-    """B v' 44-80 and X v'' 18-108 constants per level (J <= J_MAX), on the hyperfine models' own grids."""
+def hyperfine_tables(E, b, theta, constants, xmodel, xlv, blv=None, workers=12, cache=None, orders=None):
+    """B v' 44-80 and X v'' 18-108 constants per level (J <= J_MAX), on the hyperfine models' own grids (orders: the
+    B background's where they are not the core fit's)."""
     report = {}
     blv = blv or hb.Levels()
     pairs, worst, skipped = [], 0., []
@@ -152,7 +162,7 @@ def hyperfine_tables(E, b, theta, constants, xmodel, xlv, blv=None, workers=12, 
             worst = max(worst, abs(grid[i]-E[("B", v, J)]))
             pairs.append((v, J, i))
     terms = hb.fill_terms(sorted({(i, J) for _, J, i in pairs}), constants, workers=workers, cache=cache)
-    model = hb.Model(blv, terms)
+    model = hb.Model(blv, terms, orders=orders)
     rows_b = [[v, J, *map(float, model.constants(np.asarray(b), theta, i, J))] for v, J, i in pairs]
     report["B"] = dict(levels=len(rows_b), skipped=len(skipped), skipped_levels=skipped[:50],
                        index_shifted=sum(1 for v, _, i in pairs if i != v), max_energy_difference_cm=worst)

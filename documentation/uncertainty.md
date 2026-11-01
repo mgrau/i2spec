@@ -40,6 +40,7 @@ of a prediction's σ).
 | core line, otherwise | {{ unc.core_atlas }} MHz | {{ unc.core_atlas_groups }} lines held out; {{ unc.core_atlas_cal }} calibration rows |
 | B v′ ≥ 44, per level | {{ unc.b0 }} MHz × e<sup>{{ unc.b_slope }} (v′ − 44) + {{ unc.b_quad }} (v′ − 44)²</sup> × e<sup>{{ unc.b_j2 }} (J/100)²</sup> | {{ unc.b_groups }} held-out levels (J used up to {{ unc.b_clip }}); {{ unc.b_cal }} calibration rows |
 | X v″ ≥ 18, per level | {{ unc.x0 }} MHz × e<sup>{{ unc.x_j2 }} (J/100)²</sup> | {{ unc.x_groups }} held-out levels |
+| X v″ ≥ 85, added in quadrature | {{ unc.x_nd0 }} MHz × e<sup>{{ unc.x_nd_slope }} (v″ − 85)</sup> | {{ unc.x_nd_n }} held-out level constants at v″ ≥ 85 |
 
 *Table 1. The model part. A core line's value is shared equally by its two levels.*
 
@@ -71,8 +72,20 @@ perturbed by a near-resonant 1g level, it is marked as not validated.
 | *interpolated* | a level lies inside its v's J range, or between neighbors within 2 in v |
 | *extrapolated* | a level lies beyond the data in J or v: treat the value with care |
 
-Lines whose levels the model does not hold (B v′ > 80 for ¹²⁷I₂, or a level beyond its barrier rule) carry the flag
-*outside the fitted domain* and a rough bound of 1 GHz.
+**Near the top of the barrier.** A quasi-bound B level is a resonance with a tunneling width Γ, and its position is
+defined only to about Γ. Γ (the vibrational spacing over 2π times the transmission of a parabolic barrier with the
+top and curvature of the effective potential) is added in quadrature to the level's model part. It is below
+{{ unc.width_deep }} for levels more than 5 cm⁻¹ below the top and grows to tens or hundreds of MHz within
+2–3 cm⁻¹ of it. This is a rule; a larger box moves {{ unc.width_within }} of {{ unc.width_n }} sampled near-top
+levels by less than Γ (or 1 kHz), the others by up to {{ unc.width_worst }} Γ.
+
+**Beyond the tables.** The level tables also hold B v′ = 81–86 and X v″ = 109–113 (¹²⁷I₂ equivalents), outside
+the fitted domain, with rules for their uncertainty. A B level's model part is that of v′ = 80 at the same J times
+{{ unc.b_edge_growth }} per quantum, calibrated on the three levels v′ = 81–83 of Danyluk & King (1977): a rule,
+not a validated estimate. An X level's continues the near-dissociation term, capped at the root-sum-square of its
+binding energy and σ(D₀). Their lines carry the flag *outside the fitted domain*, and *level identity uncertain*
+where a level's σ exceeds half its vibrational spacing. Lines with a level beyond these, or beyond the barrier rule,
+keep a rough bound of 1 GHz.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/uncertainty_map.svg" role="img" aria-label="Map of position uncertainty over upper and lower vibrational quantum numbers"></div>
@@ -117,7 +130,10 @@ On the calibration sets, to which the uncertainty model was fitted together with
 {{ fit.locked_sets }} data sets ({{ unc.locked_rows }} measurements) were kept out of every fit and of the
 uncertainty model, and scored once. The criteria were recorded before any value was read: 95 % of the rows within
 2σ as the target, 90 % as the floor, for all rows and for each kind of row (a kind with fewer than 10 rows reported
-but not judged). Nothing was changed after scoring.
+but not judged). The test was scored once and is not scored again. The model was changed after the score was
+read: the B hyperfine structure beyond the core, and the uncertainty there and at the edges of the domain (see the
+release notes). The predictions and σ of {{ unc.locked_unchanged }} of the {{ unc.locked_rows }} locked-test rows
+are unchanged by it.
 
 | rows | n | within 1σ | within 2σ | rms z | result |
 |---|---:|---:|---:|---:|---|

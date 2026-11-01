@@ -1,9 +1,12 @@
 """Whole line lists of the released model: positions and uncertainties as table lookups.
 
-The model (release 20261030, ``ResearchModel("i2spec", isotopologue)``) covers ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I up to
+The model (release 20261031, ``ResearchModel("i2spec", isotopologue)``) covers ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I up to
 J'' = 445 and every level bound, or held behind its centrifugal barrier, to B v' = 80 and X v'' = 108. For every line
 whose levels it holds, the apps give its position, hyperfine components and uncertainty
-(``ResearchModel.uncertainty``); a line it does not hold is flagged OUTSIDE.
+(``ResearchModel.uncertainty``). The tables also hold the levels beyond those, to B v' = 86 and X v'' = 113 (the
+127I2 equivalents), with the release's rules for their uncertainty (its uncertainty.json ``edges``): their lines are
+flagged OUTSIDE, with that uncertainty and the same potentials' positions, and "level identity uncertain" where a
+level's sigma exceeds half its vibrational spacing. A line the tables do not hold is flagged OUTSIDE.
 
 Every level of the domain is solved once per isotopologue, in parallel (a few minutes on 12 cores), and kept in
 ``cache_dir()`` with its statistical vector, data status and model sigma, keyed by the release files' SHA256.
@@ -24,9 +27,14 @@ MODEL = "i2spec"
 PUBLIC = "i2spec"
 OUTSIDE = "outside the fitted domain"
 ISOTOPOLOGUES = ("127I2", "129I2", "127I129I")
-#: how a line's data status reads in the apps, from the worse of its two levels (ResearchModel.uncertainty)
-STATUS = ("measured", "interpolated", "extrapolated")
-_TABLE_VERSION = 2
+#: how a line's data status reads in the apps, from the worse of its two levels (ResearchModel.uncertainty); the
+#: last two: a level beyond the model's tables (its sigma from the release's edge rules), and one whose sigma exceeds
+#: half its vibrational spacing
+STATUS = ("measured", "interpolated", "extrapolated", "beyond the tables", "level identity uncertain")
+#: the first status code of a level beyond the fitted domain
+BEYOND = 3
+IDENTITY = "level identity uncertain"
+_TABLE_VERSION = 3
 
 
 @lru_cache(maxsize=None)
@@ -45,19 +53,37 @@ def _key(isotopologue):
     return hashlib.sha256(text.encode()).hexdigest()[:16]
 
 
+def _vmax(m, state):
+    """The last v the tables hold: the domain's, or the release's edge rules' (127I2 equivalent) beyond it."""
+    domain = m.info.domain.X_v_max if state == "X" else m.info.domain.B_v_max
+    edge = m._uncertainty_model().edge_v(state)
+    return domain, (domain if edge is None else domain+(edge-(m.info.domain.X_v_max if state == "X" else
+                                                               m.info.domain.B_v_max))+2)
+
+
 def _task(args):
-    """Energies (cm-1) and uncertainty terms (ResearchModel.level_terms) of every level of one state at one J."""
+    """Energies (cm-1) and uncertainty terms (ResearchModel.level_terms) of every level of one state at one J; a
+    level beyond the domain carries status BEYOND (or BEYOND + 1 where its sigma exceeds half the spacing to v - 1)."""
+    from .constants import MHZ_PER_CM
     isotopologue, state, J = args
     m = model(isotopologue)
-    vmax = m.info.domain.X_v_max if state == "X" else m.info.domain.B_v_max
+    domain, vmax = _vmax(m, state)
+    edge = m._uncertainty_model().edge_v(state)
     rows = []
     for v in range(vmax+1):
         try:
             E = m._levels_x.energy(state, v, J)
-        except ValueError:                           # dissociated at this J
+            if v > domain and m._equivalent(state, v, J)[0] > edge:
+                continue
+        except ValueError:                           # dissociated at this J (or its equivalent's J = 0 level)
             continue
         a, status, near, sigma, beyond = m.level_terms(state, v, J)
-        rows.append((v, E, a, STATUS.index(status), near, sigma, beyond))
+        code = STATUS.index(status)
+        if v > domain:
+            spacing = (E-m._levels_x.energy(state, v-1, J))*MHZ_PER_CM
+            total = float(np.hypot(np.linalg.norm(a), sigma[2]))
+            code = BEYOND+1 if total > spacing/2 else BEYOND
+        rows.append((v, E, a, code, near, sigma, beyond))
     return state, J, rows
 
 
@@ -83,7 +109,7 @@ def _build(isotopologue, workers):
     K = max(len(r[2]) for _, _, rows in results for r in rows)
     out = {}
     for state in ("X", "B"):
-        vmax = domain.X_v_max if state == "X" else domain.B_v_max
+        vmax = max([r[0] for s, _, rows in results if s == state for r in rows]+[0])
         Jmax = domain.J_lower_max+(1 if state == "B" else 0)
         E = np.full((vmax+1, Jmax+1), np.nan)
         A = np.zeros((vmax+1, Jmax+1, K), np.float32)
@@ -167,9 +193,11 @@ class Preferred:
         return np.where(ok, sigma, np.nan), np.where(ok, status, -1), np.where(ok, cls, -1)
 
     def covers(self, branch, J, vu, vl):
+        """Whether the model predicts this line (both levels in its domain; the edge levels are not)."""
         if J > model(self.isotopologue).info.domain.J_lower_max:
             return False
-        return bool(self._index([branch], [J], [vu], [vl])[2][0])
+        iu, il, ok = self._index([branch], [J], [vu], [vl])
+        return bool(ok[0]) and max(int(self.t["status_B"][iu][0]), int(self.t["status_X"][il][0])) < BEYOND
 
 
 @lru_cache(maxsize=None)
@@ -183,6 +211,13 @@ def basis(status, cls, isotopologue="127I2"):
     where = {0: "both levels are within 15 in J of comb or Doppler-free measurements at their v",
              1: "its levels are known from atlases and other lines (no precision data within 15 in J)",
              2: "a level lies beyond the core fit (X v″ > 17 or B v′ > 43)"}[int(cls)]
+    if int(status) >= BEYOND:
+        return ("Outside the fitted domain: a level lies beyond the model's tables (B v′ > 80 or X v″ > 108); the "
+                "position comes from the same potentials, and the uncertainty from the release's rules for those "
+                "levels (B: the v′ = 80 model sigma times 3 per quantum, calibrated on the three levels v′ 81-83 of "
+                "Danyluk & King 1977; X: the near-dissociation term continued, capped by the binding energy)"
+                + ("; the uncertainty exceeds half the vibrational spacing, so the level's v is uncertain"
+                   if int(status) > BEYOND else ""))
     data = {0: "the data constrain both levels directly",
             1: "a level is interpolated between data in J or v",
             2: "a level is extrapolated beyond the data in J or v: treat the value with care"}[int(status)]
@@ -194,6 +229,8 @@ def basis(status, cls, isotopologue="127I2"):
 
 
 def flags(status, cls):
+    if int(status) >= BEYOND:
+        return (OUTSIDE,)+((IDENTITY,) if int(status) > BEYOND else ())
     return (f"levels {STATUS[int(status)]}",)
 
 
@@ -209,5 +246,5 @@ def components(branch, J, vu, vl, isotopologue="127I2"):
     return model(isotopologue).hyperfine_components(vu, vl, J, branch)
 
 
-__all__ = ["MODEL", "PUBLIC", "OUTSIDE", "ISOTOPOLOGUES", "Preferred", "preferred", "model", "basis", "flags",
+__all__ = ["MODEL", "PUBLIC", "OUTSIDE", "IDENTITY", "BEYOND", "ISOTOPOLOGUES", "Preferred", "preferred", "model", "basis", "flags",
            "components", "sigma_component"]

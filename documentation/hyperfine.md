@@ -75,13 +75,23 @@ table of measured values:
   structure takes on contributions from the nine molecular states of that limit. Each parameter is the
   background of Eq. (3), anchored to the core fit's own values and continued smoothly, plus explicit
   second-order sums over those states, in the framework of Chen *et al.* (2005). The potential curves of
-  these states come from de Jong *et al.* (1997) and Saute & Aubert-Frécon (1982). Three choices were set by
+  these states come from de Jong *et al.* (1997) and Saute & Aubert-Frécon (1982). These choices were set by
   measurements of the out-of-core intervals and the constants of Chen *et al.* (2004):
-    - the mixing angle of the 1u states and the curvature of the eqQ continuation were fitted;
-    - the long-range scale of the 1g(¹Πg) curve was chosen by training cost.
+    - the mixing angles of the 1u and of the 1g states, the curvature of the eqQ continuation and the curvatures of
+      the C, d and δ backgrounds past the core's edge were fitted (effective parameters: they absorb errors of the
+      perturber curves);
+    - the long-range scale of the 1g(¹Πg) curve was chosen by training cost;
+    - the backgrounds of d and δ carry orders 5 and 4, anchored to the core fit's own values.
+
+    This form was chosen after the blind tests had been scored (in cross-validation it improves eight regions and
+    worsens none); no blind test of it remains. Where a second-order energy denominator nearly vanishes (B v′, J′ =
+    70, 33 and 71, 20) the sum is not valid and no measured level places the perturber, so the model gives those
+    levels' lines a position but no hyperfine components.
 - **B v′ = 77–78.** These levels lie close to a level of the 1g(¹Πg) state, which Pique *et al.* (1986)
   measured. That level is diagonalized together with B, and its weak extra components appear among the
-  line's components.
+  line's components. The coupling of that level depends on the fitted 1g mixing angle, an effective parameter: a
+  change of the form of the hyperfine beyond the core moved the spans of these lines' patterns by up to 2.6 GHz, and
+  no measurement at v′ = 77–78 tests them.
 - **X v″ = 18–108.** eqQ is continued smoothly from the formula of Bodermann *et al.* to its value for
   separated atoms (Bacis *et al.* 1980).
 

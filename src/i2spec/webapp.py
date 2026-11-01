@@ -64,7 +64,7 @@ ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c"
 FITTED_ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
 #: How the app colours each of lookup.Line.flags
 FLAG_CLASS = {"levels measured": "good", "levels interpolated": "warn", "levels extrapolated": "bad",
-              "outside the fitted domain": "warn", "quasi-bound": "warn"}
+              "outside the fitted domain": "warn", "quasi-bound": "warn", "level identity uncertain": "bad"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
                "orsay": "Gerstenkorn, Vergès & Chevillard", "borde": "Bordé", "demelo": "de Melo"}
 #: Names that the prefix alone gets wrong; the four parts of the 1982 atlas are told apart by their numbers
@@ -560,6 +560,9 @@ def _hfs_chunk(items):
             out.append(None)
             continue
         main = sorted((c for c in comps if c.label), key=lambda c: c.offset)
+        if not main:                      # the model gives this line's center only (hyperfine not predicted)
+            out.append(None)
+            continue
         total = sum(c.strength for c in main) or 1.0
         pattern = ([round(c.offset, 1) for c in main], [round(1000 * c.strength / total) for c in main],
                    weak_links(comps, main, total) or None)

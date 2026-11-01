@@ -94,7 +94,10 @@ def test_uncertainty_estimates():
     assert uncertainty(iso)[0] > value and "isotope shift" in uncertainty(iso)[1]
     hot = Line("127I2", "R", 230, 10, 2, 18000.0, 1e-20, 100.0, 300.0)       # J'' = 230: beyond the fit's J
     assert hot.flags == ("levels extrapolated",) and uncertainty(hot)[0] > 1.0
-    outside = Line("127I2", "R", 20, 81, 0, 19500.0, 1e-22, 0.0, 293.15)      # B v' = 81: not in the tables
+    edge = Line("127I2", "R", 20, 81, 0, 19500.0, 1e-22, 0.0, 293.15)         # B v' = 81: beyond the fitted domain,
+    assert 1.0 < uncertainty(edge)[0] < 1e5 and edge.flags[0] == "outside the fitted domain"   # with the edge rule
+    assert edge.source == "i2spec, outside the fitted domain" and "Danyluk" in uncertainty(edge)[1]
+    outside = Line("127I2", "R", 20, 87, 0, 19500.0, 1e-22, 0.0, 293.15)      # B v' = 87: not in the tables
     assert uncertainty(outside)[0] == 1000.0 and outside.flags == ("outside the fitted domain",)
     assert outside.source == "i2spec, outside the fitted domain"
 

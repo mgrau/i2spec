@@ -313,8 +313,9 @@ def far(line):
 
 
 class OwnHyperfine:
-    def __init__(self, constants, b, theta, xmodel, xlv=None, levels=None, intervals=None, cache=None):
-        """constants, b, theta: the B fit (hyperfine_beyond); xmodel: x_hyperfine.fit's model on xlv."""
+    def __init__(self, constants, b, theta, xmodel, xlv=None, levels=None, intervals=None, cache=None, orders=None):
+        """constants, b, theta: the B fit (hyperfine_beyond; orders: its background orders where they are not the
+        core fit's); xmodel: x_hyperfine.fit's model on xlv."""
         self.levels = levels or hb.Levels()
         self.intervals = intervals if intervals is not None else hb.load_data()[0]
         self.constants = {s: dict(c) for s, c in constants.items()}
@@ -323,9 +324,11 @@ class OwnHyperfine:
         self.xmodel = xmodel
         self.d_x, self.delta_x = hp.D_X, hp.DELTA_X          # kHz, the core's X spin-spin constants
         self.cache_dir = cache
+        self.orders = orders
 
     def model(self, levels_needed):
-        return hb.Model(self.levels, hb.fill_terms(levels_needed, self.constants, cache=self.cache_dir))
+        return hb.Model(self.levels, hb.fill_terms(levels_needed, self.constants, cache=self.cache_dir),
+                        orders=self.orders)
 
     def x_structure(self, v, J, bkt02=False):
         if v <= CORE_V['X']:

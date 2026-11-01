@@ -4,7 +4,10 @@ One B-spline basis per (isotopologue, state, grid tier) is built once. For a par
 the centrifugal term are projected onto it, and each J costs one generalized eigensolve. Derivatives are
 Hellmann-Feynman, <psi| dV/dp + J(J+1) d(rot)/dp |psi>, with the curves' own dV/dp and df/dp on the quadrature
 grid. A J goes to the smallest tier that holds its highest v; the last tiers are long boxes with graded meshes
-and keep quasi-bound levels that sit inside their centrifugal barrier (90 % of the density inside).
+and keep quasi-bound levels that sit inside their centrifugal barrier (90 % of the density inside). A level that a
+short tier puts at or above the dissociation limit is solved on the long tier instead (ABOVE_LIMIT_ON_LONG_GRID): a
+short box has no barrier rule, and above the limit it would count standing waves between the barrier and its wall
+as levels.
 """
 from __future__ import annotations
 
@@ -16,6 +19,10 @@ from scipy.linalg import eigh
 
 from ..bspline import BSplineSolver
 from ..constants import HBAR2_2U, REFERENCE_ISOTOPOLOGUE, reduced_mass
+
+#: Levels at or above the limit on a short tier go to the long tier (its barrier rule). False reproduces the engine
+#: before release 20261031, which kept every eigenvalue of a short tier (box states above the limit included).
+ABOVE_LIMIT_ON_LONG_GRID = True
 
 TIERS = {
     "X": [(17, dict(rmin=2.10, rmax=3.6, h=0.01, order=10, nlev=20)),
@@ -111,46 +118,68 @@ class Levels:
                 self._signature, self._spectra, self._assemblies = signature, {}, {}
         E = np.full(len(self.keys), np.nan)
         D = np.zeros((len(self.keys), len(names))) if jac else None
+        deferred = {}
         for key, jobs in self.jobs.items():
-            _, state, _ = key
-            bs, curve = self.bases[key], curves[state]
-            if self.cache_spectrum and key in self._assemblies:
-                V, f, Vm, Rm, asym = self._assemblies[key]
-            else:
-                V, f = curve.curves(values[state], bs.R, bs.ratio)
-                Vm, Rm = bs.project(V), bs.project(bs.c_rot*f)
-                asym = curve.asymptote(values[state])
-                if self.cache_spectrum:
-                    self._assemblies[key] = (V, f, Vm, Rm, asym)
-            columns = [i for i, (s, _) in enumerate(names) if s == state]
-            if jac:
-                dV, df = curve.derivatives(values[state], bs.R, bs.ratio, [names[i][1] for i in columns])
-                df = df*bs.c_rot[:, None]
-            for J, entries in jobs:
-                y = J*(J+1)
-                if self.cache_spectrum and (key, J) in self._spectra:
-                    ev, C = self._spectra[key, J]
-                else:
-                    ev, C = eigh(bs.T+Vm+y*Rm, bs.S, driver="gvd", check_finite=False)
-                    n = min(len(ev), bs.nlev)
-                    ev, C = ev[:n], C[:, :n].copy()
-                    if self.cache_spectrum:
-                        self._spectra[key, J] = (ev, C)
-                if jac or bs.mesh:
-                    density = bs.W[:, None]*(bs.B@C)**2
-                if bs.mesh:
-                    effective = V+y*bs.c_rot*f
-                    outer = bs.R > 4.5
-                    if effective[outer].max() > asym:
-                        barrier = bs.R[outer][np.argmax(effective[outer])]
-                        inside = density[bs.R < barrier].sum(axis=0)/density.sum(axis=0)
-                        keep = (ev < asym) | (inside >= .9)
-                    else:
-                        keep = ev < asym
-                    ev, density = ev[keep], density[:, keep]
-                for v, index in entries:
-                    if v < len(ev):
-                        E[index] = ev[v]
-                        if jac and columns:
-                            D[index, columns] = density[:, v]@(dV+y*df)
+            for J, entries in self._solve(key, jobs, curves, values, names, jac, E, D):
+                deferred.setdefault((key[0], key[1], len(self.tiers[key[1]])-1), []).append((J, entries))
+        for key, jobs in deferred.items():
+            self._solve(key, jobs, curves, values, names, jac, E, D)
         return E, D
+
+    def _basis(self, key):
+        if key not in self.bases:
+            self.bases[key] = Basis(key[0], key[1], self.tiers[key[1]][key[2]][1])
+        return self.bases[key]
+
+    def _solve(self, key, jobs, curves, values, names, jac, E, D):
+        """Fill E (and D) for the (J, [(v, index)]) jobs on one tier; returns the jobs a short tier puts at or
+        above the limit (for the long tier)."""
+        _, state, _ = key
+        bs, curve = self._basis(key), curves[state]
+        if self.cache_spectrum and key in self._assemblies:
+            V, f, Vm, Rm, asym = self._assemblies[key]
+        else:
+            V, f = curve.curves(values[state], bs.R, bs.ratio)
+            Vm, Rm = bs.project(V), bs.project(bs.c_rot*f)
+            asym = curve.asymptote(values[state])
+            if self.cache_spectrum:
+                self._assemblies[key] = (V, f, Vm, Rm, asym)
+        columns = [i for i, (s, _) in enumerate(names) if s == state]
+        if jac:
+            dV, df = curve.derivatives(values[state], bs.R, bs.ratio, [names[i][1] for i in columns])
+            df = df*bs.c_rot[:, None]
+        long_tier = key[2] == len(self.tiers[state])-1
+        deferred = []
+        for J, entries in jobs:
+            y = J*(J+1)
+            if self.cache_spectrum and (key, J) in self._spectra:
+                ev, C = self._spectra[key, J]
+            else:
+                ev, C = eigh(bs.T+Vm+y*Rm, bs.S, driver="gvd", check_finite=False)
+                n = min(len(ev), bs.nlev)
+                ev, C = ev[:n], C[:, :n].copy()
+                if self.cache_spectrum:
+                    self._spectra[key, J] = (ev, C)
+            if jac or bs.mesh:
+                density = bs.W[:, None]*(bs.B@C)**2
+            if bs.mesh:
+                effective = V+y*bs.c_rot*f
+                outer = bs.R > 4.5
+                if effective[outer].max() > asym:
+                    barrier = bs.R[outer][np.argmax(effective[outer])]
+                    inside = density[bs.R < barrier].sum(axis=0)/density.sum(axis=0)
+                    keep = (ev < asym) | (inside >= .9)
+                else:
+                    keep = ev < asym
+                ev, density = ev[keep], density[:, keep]
+            elif ABOVE_LIMIT_ON_LONG_GRID and not long_tier:
+                above = [(v, index) for v, index in entries if not (v < len(ev) and ev[v] < asym)]
+                if above:
+                    deferred.append((J, above))
+                    entries = [e for e in entries if e not in above]
+            for v, index in entries:
+                if v < len(ev):
+                    E[index] = ev[v]
+                    if jac and columns:
+                        D[index, columns] = density[:, v]@(dV+y*df)
+        return deferred

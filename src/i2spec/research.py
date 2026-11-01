@@ -5,10 +5,12 @@ The model is built in three frozen releases under ``i2spec/data/research``: the 
 X v'' <= 108 and B v' <= 80 with the uncertainty model (20261020, ``research_expanded``), and the released model
 (20261021): the same for ¹²⁹I₂ and ¹²⁷I¹²⁹I and up to J'' = 445. Release 20261029 rebuilds all three parts in their
 final form on the same training data, for the blind test of the pending sets, and release 20261030 is release 20261029
-with its uncertainty model refitted on the cross-validation and the calibrate sets together. No coefficient is
-specific to a line or level.
+with its uncertainty model refitted on the cross-validation and the calibrate sets together. Release 20261031 is the
+released form of release 20261030: the barrier rule on every grid, the B hyperfine beyond the core in its final form,
+levels whose hyperfine a near-degenerate second-order term spoils left without components, and the uncertainty model
+refitted on them and extended to the levels beyond the tables. No coefficient is specific to a line or level.
 
-Release 20261030 is the released model (version 1.0.0): the role "i2spec" resolves to it,
+Release 20261031 is the released model (version 1.0.0): the role "i2spec" resolves to it,
 ``ResearchModel("i2spec", isotopologue)``. The other roles resolve to the first release that has them (the parts of
 release 20261021, which the fit pipeline rebuilds); every model is also reached by its id.
 """
@@ -37,9 +39,9 @@ from . import named
 from .observations import component_rank
 
 _RELEASE = "20261018"
-_RELEASES = (_RELEASE, "20261020", "20261021", "20261029", "20261030")
+_RELEASES = (_RELEASE, "20261020", "20261021", "20261029", "20261030", "20261031")
 #: The released model: the role "i2spec" resolves to this release
-_RELEASED, _PUBLIC_ROLE = "20261030", "i2spec"
+_RELEASED, _PUBLIC_ROLE = "20261031", "i2spec"
 #: A candidate release (a folder with its own manifest.json) searched before the installed ones, so that its models
 #: take over their roles: for rebuilding the fit stages on a new core and continuation. Never set for users.
 _CANDIDATE = os.environ.get("I2SPEC_RESEARCH_CANDIDATE")
@@ -82,6 +84,11 @@ def _read(entry, filename):
     if hashlib.sha256(raw).hexdigest() != entry["files_sha256"][filename]:
         raise ValueError(f"frozen research artifact failed its SHA256 check: {entry['id']}/{filename}")
     return json.loads(raw)
+
+
+class HyperfineNotPredicted(ValueError):
+    """A level whose hyperfine constants the release does not predict (a near-degenerate second-order term beyond
+    the core, release 20261031): its lines have a center and no components."""
 
 
 @dataclass(frozen=True)
@@ -329,7 +336,11 @@ class ResearchModel:
         if key not in self._lines:
             upper = J+(1 if branch == "R" else -1)
             center = (self._energy("B", vu, upper)-self._energy("X", vl, J))*MHZ_PER_CM
-            components = line_components(self._structure("B", vu, upper), self._structure("X", vl, J), upper, J)
+            try:
+                components = line_components(self._structure("B", vu, upper), self._structure("X", vl, J), upper, J)
+            except HyperfineNotPredicted as error:      # the center only
+                components = ()
+                self._no_hyperfine = {**getattr(self, "_no_hyperfine", {}), key: str(error)}
             self._lines[key] = center, tuple(components)
             if len(self._lines) > _LINE_CACHE:
                 del self._lines[next(iter(self._lines))]
@@ -389,6 +400,9 @@ class ResearchModel:
             else:
                 center, components = self._line(parsed)
                 offsets = {c.label: c.offset for c in components if c.label}
+                if not offsets:
+                    raise ValueError(getattr(self, "_no_hyperfine", {}).get(
+                        (branch, int(J), int(vu), int(vl)), "the model gives no hyperfine components for this line"))
                 if canonical not in offsets:
                     raise ValueError(f"component {component!r} is unavailable for this line; choose from {', '.join(offsets)}")
                 value = center+offsets[canonical]
@@ -505,6 +519,9 @@ class _ExpandedModel(ResearchModel):
         if component is not None:
             _, components = self._line((branch, J, vu, vl))
             offsets = {c.label: c.offset for c in components if c.label}
+            if not offsets:
+                raise ValueError(getattr(self, "_no_hyperfine", {}).get(
+                    (branch, int(J), int(vu), int(vl)), "the model gives no hyperfine components for this line"))
             name = f"a{component_rank(component)}"
             if name not in offsets:
                 raise ValueError(f"component {component!r} is unavailable for this line; choose from {', '.join(offsets)}")
@@ -555,9 +572,13 @@ class _ExpandedModel(ResearchModel):
     def _level_sigma(self, unc, core, state, v, J, cls):
         """One level's model sigma (MHz): the frozen recipe at the 127I2 equivalent; with release 20261021's
         extension, grown as J(J+1) beyond the J the data reach, and for an isotopologue's B level with the isotope
-        shift's floor."""
+        shift's floor; from release 20261031 with the rules at the edges (research_expanded.model_sigma) and, for a
+        quasi-bound B level, its tunneling width."""
         ve, Je = self._equivalent(state, v, J)
-        sigma = unc.model_sigma(core, state, ve, Je, cls)
+        binding = None                      # an X level's distance below the limit, which caps the edge rule
+        if state == "X" and unc.edge_v(state) is not None and ve > self._spec["domain"]["X_v_max"]:
+            binding = (self._levels_x.asymptote["X"]-self._energy("X", v, J))*MHZ_PER_CM
+        sigma = unc.model_sigma(core, state, ve, Je, cls, binding)
         if self._extension is None:
             return sigma
         reach = unc.reach_J(state, ve)
@@ -565,6 +586,9 @@ class _ExpandedModel(ResearchModel):
             sigma *= Je*(Je+1)/(reach*(reach+1))
         if self._iso is not None and state == "B":
             sigma = math.hypot(sigma, self._shift_unc().floor)
+        factor = unc.width_factor()
+        if factor and state == "B":         # a quasi-bound level near its barrier top: its tunneling width
+            sigma = math.hypot(sigma, factor*self._levels_x.width("B", v, J)*MHZ_PER_CM)
         return sigma
 
     def _shift_unc(self):

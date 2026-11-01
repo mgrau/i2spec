@@ -241,7 +241,10 @@ class ExpandedLevels:
 
     For another isotopologue the same potentials are solved with its reduced mass (``shift``: the B-state isotope
     shift), each level on the grid of the 127I2 level of about the same energy. Above ``j_split`` every level is
-    solved on the last, long grid, whose barrier rule keeps quasi-bound levels at any J."""
+    solved on the last, long grid, whose barrier rule keeps quasi-bound levels at any J. With the structure's
+    ``above_limit`` = "long grid" (release 20261031 on) a level that its short grid puts at or above the limit is
+    solved on the long grid too: a short box has no barrier rule, and above the limit it would count standing waves
+    between the barrier and its wall as levels. Earlier releases keep every eigenvalue of a short grid."""
 
     def __init__(self, base, structure, values, isotopologue="127I2", shift=None, j_split=None):
         self.potentials = {s: _ExpandedPotential(s, base, structure, values) for s in ("X", "B")}
@@ -258,14 +261,19 @@ class ExpandedLevels:
             self.potentials = {s: _IsotopologuePotential(p, self.rho, shift if s == "B" else None)
                                for s, p in self.potentials.items()}
         self.j_split = j_split
+        self.above_limit_long = structure.get("above_limit") == "long grid"
 
     def tier(self, state, v, J=0):
+        last = len(self.grids[state])-1
         if self.j_split is not None and J > self.j_split:
-            return len(self.grids[state])-1
+            return last
+        w = v
         if self.rho != 1.:      # the 127I2 grid of about the same energy, rounded up (harmonic scaling of v + 1/2)
-            v = min(int(np.ceil((v+.5)*sqrt(self.rho)-.5)), self.grids[state][-1][0])
+            w = min(int(np.ceil((v+.5)*sqrt(self.rho)-.5)), self.grids[state][-1][0])
         for i, (limit, _) in enumerate(self.grids[state]):
-            if v <= limit:
+            if w <= limit:
+                if self.above_limit_long and i < last and v >= len(self._kept(state, i, J)):
+                    return last         # at or above the limit on this short grid: the long grid's barrier rule
                 return i
         raise ValueError(f"no grid holds {state} v={v}")
 
@@ -293,9 +301,47 @@ class ExpandedLevels:
                     E = E[(E < asym) | (frac >= .9)]
                 else:
                     E = E[E < asym]
+            elif self.above_limit_long and tier < len(self.grids[state])-1:
+                E = E[E < self.asymptote[state]]        # bound levels only; the rest are the long grid's
             self._levels[key] = E
             self._keep_density(key, solver.R, w[:, np.isin(energies, E)])
         return self._levels[key]
+
+    def barrier(self, state, J):
+        """(top cm-1, curvature cm-1/A^2, radius A) of the centrifugal barrier at J (the maximum of the effective
+        potential beyond 4.5 A, or beyond the well's minimum above the fit's J), or None where there is none above
+        the limit."""
+        key = "barrier", state, J
+        if key not in self._averages:
+            pot, asym = self.potentials[state], self.asymptote[state]
+            R = np.arange(2.1, 40., 1e-3)
+            rot = J*(J+1)*HBAR2_2U/self.mu
+            veff = pot(R)+rot/R**2*(1+pot.nonadiabatic(R))
+            outer = R > 4.5 if self.j_split is None or J <= self.j_split else R > R[int(np.argmin(veff))]
+            out = None
+            if veff[outer].max() > asym:
+                i = int(np.flatnonzero(outer)[0]+np.argmax(veff[outer]))
+                h = 2e-3
+                Rb = np.array([R[i]-h, R[i], R[i]+h])
+                vb = pot(Rb)+rot/Rb**2*(1+pot.nonadiabatic(Rb))
+                out = (float(veff[i]), float((vb[0]-2*vb[1]+vb[2])/h**2), float(R[i]))
+            self._averages[key] = out
+        return self._averages[key]
+
+    def width(self, state, v, J):
+        """Tunneling width (FWHM, cm-1) of a quasi-bound level: (spacing/2 pi) T, T the transmission of a parabolic
+        barrier of the same top and curvature at the level's energy, the spacing to v - 1 at the same J. 0 for a
+        bound level."""
+        E = self.energy(state, v, J)
+        if E < self.asymptote[state] or v == 0:
+            return 0.
+        b = self.barrier(state, J)
+        if b is None:
+            return 0.
+        top, k, _ = b
+        hw = sqrt(2*HBAR2_2U/self.mu*abs(k))
+        T = 1/(1+np.exp(min(2*np.pi*(top-E)/hw, 700.)))
+        return float((E-self.energy(state, v-1, J))/(2*np.pi)*T)
 
     def _keep_density(self, key, R, density):
         self._densities[key] = R, density
@@ -343,9 +389,16 @@ class ExpandedHyperfine:
                                        overlaps={tuple(map(int, k.split(","))): s for k, s in r["overlaps"].items()})
                           for v, r in tables["resonance"]["levels"].items()}
         self.resonance_state = tables["resonance"]
+        #: B levels whose constants the release does not predict (release 20261031: a second-order denominator
+        #: nearly vanishes there), with the reason
+        self.not_predicted = {(int(r["v"]), int(r["J"])): r["reason"] for r in tables["B"].get("not_predicted", ())}
 
     def constants(self, state, v, J, clamp=False):
         """The tabulated constants; with ``clamp``, beyond the table's last J at this v those of that J."""
+        if state == "B" and (v, J) in self.not_predicted:
+            from .research import HyperfineNotPredicted
+            raise HyperfineNotPredicted(f"the model does not predict the hyperfine of B v={v} J={J}: "
+                                        f"{self.not_predicted[(v, J)]}")
         table = self.B if state == "B" else self.X
         if (v, J) not in table and clamp:
             top = max((j for w, j in table if w == v), default=None)
@@ -637,17 +690,50 @@ class ExpandedUncertainty:
             return "beyond"
         return "precise" if self._near("precise", "B", vu, Ju) and self._near("precise", "X", vl, Jl) else "atlas"
 
-    def model_sigma(self, core, state, v, J, line_class):
+    def model_sigma(self, core, state, v, J, line_class, binding_MHz=None):
         """One level's share of sigma_model (MHz). Beyond the core, exp(a + b x + d x^2 + c (J/100)^2) with x = v - v0;
-        d (``quadratic_per_v2``) from release 20261030, 0 before."""
+        d (``quadratic_per_v2``) from release 20261030, 0 before. From release 20261031: an X term near dissociation
+        (``near_dissociation``, added in quadrature for v'' >= its v0) and the rules for the levels beyond the tables
+        (``edges``): B v' above the table's last v grows by a factor per quantum from the last v's share; X v'' above
+        it continues the near-dissociation term, capped at sqrt(binding^2 + sigma(D0)^2) when ``binding_MHz`` (the
+        level's distance below the limit) is given."""
         m = self.table["model_error"]
+        edges = self.table.get("edges") or {}
         if v <= core[state]:
             return m[f"core {'atlas' if line_class == 'beyond' else line_class}"]["sigma_MHz"]/sqrt(2.)
+        b_edge = edges.get("B above 80")
+        if state == "B" and b_edge and v > b_edge["v_table"]:
+            last = b_edge["v_table"]
+            return self.model_sigma(core, state, last, J, line_class)*b_edge["growth_per_v"]**(v-last)
         f = m[f"{state} beyond"]
+        x_edge = edges.get("X above 108") if state == "X" else None
+        top = x_edge["v_table"] if x_edge else None
+        sigma = self._formula(f, min(v, top) if top is not None else v, J)
+        nd = f.get("near_dissociation")
+        if nd and v >= nd["v0"]:
+            sigma = float(np.hypot(sigma, np.exp(nd["log_sigma_add"]+nd["slope_per_v"]*(v-nd["v0"]))))
+        if top is not None and v > top and binding_MHz is not None:
+            sigma = min(sigma, float(np.hypot(binding_MHz, x_edge["sigma_D0_MHz"])))
+        return sigma
+
+    @staticmethod
+    def _formula(f, v, J):
         J = min(J, f["J_clip"])
         x = v-f["v0"]
         return float(np.exp(f["log_sigma0"]+f["slope_per_v"]*x+f.get("quadratic_per_v2", 0.)*x*x
                             + f["J2_coefficient"]*(J/100)**2))
+
+    def edge_v(self, state):
+        """The last v of the rules for levels beyond the tables (B v' 86, X v'' 113 from release 20261031), or
+        None."""
+        e = (self.table.get("edges") or {}).get("B above 80" if state == "B" else "X above 108")
+        return e["v_max"] if e else None
+
+    def width_factor(self):
+        """sigma of a quasi-bound level's position per unit of its tunneling width (release 20261031: 1, the
+        FWHM), or None."""
+        w = (self.table.get("edges") or {}).get("B quasi-bound width")
+        return w["sigma_per_width"] if w else None
 
     def kappa(self, core, state, v):
         """Fractional error of the hyperfine pattern's scale from one state's levels (held beyond the validated v)."""
@@ -711,6 +797,25 @@ def structure(model, state, v, J):
     couplings = lambda j: model._couplings(state, v, j)                 # noqa: E731
     rot = lambda j: (model._energy(state, v, j)-energy)*MHZ_PER_CM      # noqa: E731
     dJ = 2
+    if state == "B" and model._hf.not_predicted:
+        # a level whose hyperfine the release does not predict raises; a neighbor whose J +- 2 partner is such a
+        # level is left without the J +- 2 coupling
+        from .research import HyperfineNotPredicted
+        if model._iso is None:
+            if (v, J) in model._hf.not_predicted:
+                model._hf.constants(state, v, J)
+            if any((v, j) in model._hf.not_predicted for j in (J-2, J+2)):
+                dJ = 0
+        else:                                   # interpolated from 127I2 levels: ask the constants themselves
+            couplings(J)
+            for j in (J-2, J+2):
+                try:
+                    if j >= 0:
+                        couplings(j)
+                except HyperfineNotPredicted:
+                    dJ = 0
+                except (ValueError, IndexError):
+                    pass
     if model._levels_x.j_split is not None and J > model._levels_x.j_split:
         for j in (J-2, J+2):                    # above the fit's J a partner may lie beyond the barrier
             try:

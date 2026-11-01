@@ -32,9 +32,19 @@ def test_the_table_is_the_research_model(table):
 
 
 def test_lines_outside_the_domain_are_not_held(table):
-    sigma, status, _ = table.uncertainties(["R", "R", "R", "P"], [446, 60, 20, 0], [32, 80, 81, 32], [0, 0, 0, 0])
-    assert list(status) == [-1, -1, -1, -1] and np.isnan(sigma).all()      # J > 445, dissociated, v' > 80, P(0)
-    assert np.isnan(table.positions(["R"], [20], [32], [109])[0])
+    sigma, status, _ = table.uncertainties(["R", "R", "R", "P"], [446, 60, 20, 0], [32, 80, 87, 32], [0, 0, 0, 0])
+    assert list(status) == [-1, -1, -1, -1] and np.isnan(sigma).all()      # J > 445, dissociated, v' > 86, P(0)
+    assert np.isnan(table.positions(["R"], [20], [32], [114])[0])
+
+
+def test_levels_beyond_the_domain_carry_the_edge_rules(table):
+    """B v' 81-86 and X v'' 109-113: held with the release's rules for their sigma, flagged outside the domain, not
+    predicted as the model's lines (no components)."""
+    sigma, status, cls = table.uncertainties(["R", "R", "R"], [20, 20, 10], [80, 81, 32], [0, 0, 110])
+    assert status[0] < pf.BEYOND and status[1] >= pf.BEYOND and status[2] >= pf.BEYOND and list(cls[1:]) == [2, 2]
+    assert sigma[1] > sigma[0] and np.isfinite(sigma).all()
+    assert not table.covers("R", 20, 81, 0) and table.covers("R", 20, 80, 0)
+    assert pf.flags(pf.BEYOND, 2) == (pf.OUTSIDE,) and pf.flags(pf.BEYOND+1, 2) == (pf.OUTSIDE, pf.IDENTITY)
 
 
 def test_lines_above_the_fit_J_are_held_and_extrapolated(table):
@@ -54,7 +64,7 @@ def test_lookup_takes_the_preferred_line_and_says_so(table):
     assert other.source == "i2spec" and other.flags == ("levels extrapolated",)
     hot = Line("127I2", "R", 230, 10, 2, 0.0, 0.0, 0.0, 300.0)         # and every J the line lists reach
     assert hot.source == "i2spec" and hot.flags == ("levels extrapolated",)
-    far = Line("127I2", "R", 20, 81, 0, 0.0, 0.0, 0.0, 300.0)          # beyond B v' = 80: not the model's
+    far = Line("127I2", "R", 20, 87, 0, 0.0, 0.0, 0.0, 300.0)          # beyond B v' = 86: not the model's
     assert far.source == "i2spec, outside the fitted domain" and far.flags[-1] == "outside the fitted domain"
     for shown in (line, other, hot, far):
         text = " ".join([shown.source, *shown.flags, uncertainty(shown)[1]]).lower()
@@ -63,11 +73,11 @@ def test_lookup_takes_the_preferred_line_and_says_so(table):
 
 def test_master_lists_take_the_preferred_positions(table):
     nu = np.array([18788.0, 18788.0, 18000.0])
-    master = MasterLineList(nu=nu, strength0=np.ones(3), v_upper=np.array([32, 81, 10]), v_lower=np.array([0, 0, 2]),
+    master = MasterLineList(nu=nu, strength0=np.ones(3), v_upper=np.array([32, 87, 10]), v_lower=np.array([0, 0, 2]),
                             J_lower=np.array([56, 20, 230]), branch=np.array([1, 1, 1]), E_lower=np.zeros(3),
                             x_levels=np.zeros((2, 2)), upper_cut=np.full(2, np.nan), isotopologue="127I2")
     out = preferred_positions(master)
-    assert out.nu[0] == table.positions(["R"], [56], [32], [0])[0] and out.nu[1] == 18788.0    # v' 81: kept
+    assert out.nu[0] == table.positions(["R"], [56], [32], [0])[0] and out.nu[1] == 18788.0    # v' 87: kept
     assert out.nu[2] == table.positions(["R"], [230], [10], [2])[0]
     assert preferred_positions(out) is out
 

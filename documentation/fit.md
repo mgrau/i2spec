@@ -10,7 +10,7 @@ the choice of each functional form) are described in the paper.
 |---|---|---|---|
 | [core fit](#the-core-fit) | {{ fit.n_potential }} potential, {{ fit.n_hf_core }} B hyperfine and {{ fit.n_shift }} isotope-shift coefficients; {{ fit.core_calibration }} atlas calibrations | {{ fit.core_rows }} rows: precision lines, two atlases, level constants; {{ fit.hf_core_trained }} hyperfine intervals; {{ fit.n_iso_centers }} isotopologue lines | X v″ ≤ 17, B v′ ≤ 43, J ≤ 200 |
 | [continuation](#beyond-the-core) | {{ fit.n_tails }} terms of the potentials; 1 atlas offset | {{ fit.continuation_rows }} rows: the core's, and every row beyond it | X v″ ≤ 108, B v′ ≤ 80 |
-| [hyperfine beyond the core](#hyperfine-beyond-the-core) | {{ fit.n_hf_beyond }}: three for B (1u mixing, eqQ curvature, 1g scale), three for X | {{ fit.hf_beyond_rows }} intervals, {{ fit.hf_chen }} + {{ fit.hf_pique }} B constants, X eqQ near the limit | B v′ ≥ 44, X v″ ≥ 18 |
+| [hyperfine beyond the core](#hyperfine-beyond-the-core) | {{ fit.n_hf_beyond }}: seven for B (1u and 1g mixing, curvatures of eqQ, C, d and δ, 1g scale), three for X | {{ fit.hf_beyond_rows }} intervals, {{ fit.hf_chen }} + {{ fit.hf_pique }} B constants, X eqQ near the limit | B v′ ≥ 44, X v″ ≥ 18 |
 | [uncertainty model](#the-uncertainty-model) | σ<sub>model</sub> and σ<sub>HF</sub> | cross-validation; {{ fit.calibrate_rows }} rows of {{ fit.calibrate_sets }} calibration sets | all |
 
 *Table 1. The stages of the fit, in order. Each stage keeps the coefficients of the stages before it.*
@@ -84,10 +84,13 @@ levels (v″ ≥ 90) to about 0.7 GHz. These held-out errors set the model part 
 
 - **B v′ = 44–80.** Each parameter is a background continued from the core fit's functions plus second-order sums
   over the nine molecular states of the I(²P3/2) + I(²P1/2) limit, whose curves and couplings are inherited from the
-  literature. Fitted here: the mixing angle of the two 1u states and the curvature of the eqQ continuation, to the
-  {{ fit.hf_beyond_rows }} measured hyperfine intervals beyond the core and to the effective B constants of Chen
-  *et al.* (2004, {{ fit.hf_chen }} values) and Pique *et al.* (1986, {{ fit.hf_pique }}); the long-range scale of the
-  1g(¹Πg) curve was chosen by training cost. The near-resonant 1g level at v′ = 77–78 is inherited from Pique *et al.*
+  literature. Fitted here: the mixing angles of the two 1u and the two 1g states, the curvature of the eqQ
+  continuation and those of the C, d and δ backgrounds, to the {{ fit.hf_beyond_rows }} measured hyperfine intervals
+  beyond the core and to the effective B constants of Chen *et al.* (2004, {{ fit.hf_chen }} values) and Pique
+  *et al.* (1986, {{ fit.hf_pique }}); the long-range scale of the 1g(¹Πg) curve was chosen by training cost. The
+  backgrounds of d and δ have orders 5 and 4, fitted to the core fit's own values. This form was selected after the
+  blind tests had been scored (in cross-validation it improves eight regions and worsens none), so no blind test of
+  it remains. The near-resonant 1g level at v′ = 77–78 is inherited from Pique *et al.*
 - **X v″ ≥ 18.** eqQ continues from the formula of the core to its separated-atom value along a curve with two
   coefficients fitted to the eqQ of Bacis *et al.* (1980); a slope of C rests on one value and is not validated.
 - **X v″ ≤ 17.** The formulae of Bodermann, Knöckel & Tiemann (2002), inherited unchanged (eleven constants).

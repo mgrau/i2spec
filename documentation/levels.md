@@ -84,7 +84,9 @@ each curve is continued to its dissociation limit, keeping every coefficient of 
 Equation (1) is solved variationally in a basis of B-splines of order 10 on uniform knots (0.01 Å; 0.005 Å for
 X v″ ≥ 25), with a knot of reduced continuity at every join of the potential, in a radial box for each range of v
 (up to 40.6 Å, graded, near the limits). Above the asymptote a level is kept as quasi-bound when at least 90 % of
-its density lies inside the centrifugal barrier. Halving the knot spacing moves no training line by more than
+its density lies inside the centrifugal barrier; a level that a shorter box would put at or above the asymptote is
+solved in the long box, so that standing waves between the barrier and a box wall are never counted as levels.
+Halving the knot spacing moves no training line by more than
 10 kHz, except one quasi-bound level whose index changes. Since every level comes from the two potentials, its
 uncertainty is computed, not looked up (see [Uncertainty estimates](uncertainty.md)).
 

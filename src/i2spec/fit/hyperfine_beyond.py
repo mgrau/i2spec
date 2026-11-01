@@ -222,16 +222,20 @@ class Levels:
 # ---------------------------------------------------------------------------------------------------------------
 # the model: constants = M b + S0 + T w(theta) at each (v, J)
 
-TRIG = ('u cc', 'u ss', 'u 2cs', 'g cc', 'g ss', 'g 2cs', 'eqQ gamma')
+TRIG = ('u cc', 'u ss', 'u 2cs', 'g cc', 'g ss', 'g 2cs', 'eqQ gamma', 'C curvature', 'd curvature',
+        'delta curvature')
+CURVATURE = ('kC', 'kd', 'kdelta')
 
 
 def trig(theta):
-    """w: (cos^2, sin^2, 2 sin cos) of theta['u'], then of theta['g'] (degrees), then theta.get('gamma', 0)."""
+    """w: (cos^2, sin^2, 2 sin cos) of theta['u'], then of theta['g'] (degrees), then theta.get('gamma', 0), then
+    the curvatures of the C, d and delta backgrounds past the knot (kC, kd, kdelta; 0 in release 20261030 and
+    before)."""
     out = []
     for p in 'ug':
         c, s = np.cos(np.radians(theta[p])), np.sin(np.radians(theta[p]))
         out += [c*c, s*s, 2*c*s]
-    return np.array(out+[theta.get('gamma', 0.)])
+    return np.array(out+[theta.get('gamma', 0.)]+[theta.get(k, 0.) for k in CURVATURE])
 
 
 class Model:
@@ -239,14 +243,20 @@ class Model:
     states' S2, T the mixed pairs' S2 per trigonometric weight (a state cos|1'> + sin|1''> and its partner
     -sin|1'> + cos|1''> give c^2 (A1 + B2) + s^2 (B1 + A2) + 2cs (X1 - X2))."""
 
-    def __init__(self, levels, terms, use_s2=True, asymptotes=ASYMPTOTES):
+    def __init__(self, levels, terms, use_s2=True, asymptotes=ASYMPTOTES, orders=None):
         self.levels, self.terms, self.use_s2, self.asymptotes = levels, terms, use_s2, dict(asymptotes)
-        self.names = [f'{p}:{k}' for p in PARAMS for k in range(ORDERS[p])]
+        #: background orders: the core fit's (ORDERS), or higher (release 20261031: d 5, delta 4), the added
+        #: coefficients starting at 0 and anchored, as the others, to the core fit's own predictions
+        self.orders = dict(ORDERS, **(orders or {}))
+        if max(self.orders.values()) > levels.n:
+            raise ValueError("a background order exceeds the moments the levels keep")
+        self.names = [f'{p}:{k}' for p in PARAMS for k in range(self.orders[p])]
         self.nb = len(self.names)
         self._parts = {}
 
     def start(self):
-        return np.concatenate([self.levels.core[p][:ORDERS[p]] for p in PARAMS])
+        return np.concatenate([np.pad(np.asarray(self.levels.core[p][:self.orders[p]], float),
+                                      (0, max(0, self.orders[p]-len(self.levels.core[p])))) for p in PARAMS])
 
     def parts(self, v, J):
         if (v, J) not in self._parts:
@@ -256,13 +266,15 @@ class Model:
             S0, T = np.zeros(4), np.zeros((4, len(TRIG)))
             i = 0
             for k, p in enumerate(PARAMS):
+                n = self.orders[p]
                 if p in self.asymptotes:
-                    M[k, i:i+ORDERS[p]] = ml[:ORDERS[p]]
+                    M[k, i:i+n] = ml[:n]
                     S0[k] += self.asymptotes[p]*wl
                     T[k, 6] = wg
                 else:
-                    M[k, i:i+ORDERS[p]] = m[:ORDERS[p]]
-                i += ORDERS[p]
+                    M[k, i:i+n] = m[:n]
+                    T[k, 6+k] = wg          # the curvature past the knot, of eqQ's gamma shape (kC, kd, kdelta)
+                i += n
             if self.use_s2:
                 for state, t in self.terms.items():
                     if 's' in t[(v, J)]:
@@ -541,9 +553,74 @@ def parse_overrides(items):
     return out
 
 
-#: the release's fitted out-of-core terms and curve overrides (second-order fit "scan2_g0.65_u0")
+#: release 20261030's (and earlier) fitted out-of-core terms and curve overrides (second-order fit "scan2_g0.65_u0")
 FIT_KEYS = ("u", "gamma")
 FIT_OVERRIDES = {"1g(1Pig)": dict(C5=-155350.0), "(3)0u-": dict(C5=0.)}
+#: release 20261031's form (theta_g + curvature + background orders; chosen after the blind scores were read):
+#: theta_g free, curvatures of the C, d and delta backgrounds past the knot, background orders d 5 and delta 4,
+#: the 1g(1Pig) C5 scale chosen by the training cost (FORM_SCALES, as the release's nested protocol), several starts
+FORM_20261031 = dict(keys=("u", "g", "gamma", "kC", "kd", "kdelta"), orders=dict(d=5, delta=4),
+                     starts=(dict(u=41.83, g=30., gamma=11.95), dict(u=8., g=75., gamma=78.), dict(u=42., g=75.)))
+FORM_SCALES = (0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9)
+BOUNDS = dict(gamma=(-300., 300.), kC=(-2e4, 2e4), kd=(-2e4, 2e4), kdelta=(-2e4, 2e4))
+
+
+def overrides_at(scale):
+    """The curve overrides with the 1g(1Pig) C5 at `scale` times the theory value (the (3)0u- C5 at 0)."""
+    saute = so.perturber_constants()["1g(1Pig)"]["C5"]
+    return dict(FIT_OVERRIDES, **{"1g(1Pig)": dict(C5=round(scale*saute, 6))})
+
+
+def fit_starts(model, rows, params, keys, starts, holdout=(), drop=(), max_outer=8):
+    """(b, theta, record): the out-of-core terms `keys` from each start (a dict of initial values; the others at
+    their defaults), the background solved with them, the linearization renewed until the offsets stop moving; the
+    best exact iterate (lowest out-of-core cost) of all starts is kept. Rows whose source is in `drop`, or whose v'
+    is in a held-out block, leave the training."""
+    def held(v):
+        return any(lo <= v <= hi for lo, hi in holdout)
+
+    core_rows = anchored([r for r in rows if r['inside'] and not r['future']], model.levels)
+    out_rows = [r for r in rows if not r['inside'] and not held(r['line'].v_upper) and r['source'] not in drop]
+    out_params = [r for r in params if not held(r['v']) and r['source'] not in drop]
+    lines = sorted({r['line'] for r in core_rows+out_rows}, key=str)
+    best = None
+    for start in starts:
+        theta = dict(dict(u=30., g=30., gamma=0., **{k: 0. for k in CURVATURE}), **start)
+        b = model.start()
+        last, change, kept = None, np.inf, None
+        for outer in range(max_outer+1):
+            fn = lambda v, J: model.constants(b, theta, v, J)        # noqa: E731
+            linear = {line: linearize(model.levels, line, fn) for line in lines}
+            core = System(model, linear, core_rows, [], 0.)
+            out = System(model, linear, out_rows, out_params, OUT_FLOOR, RELATIVE_FLOOR, EQQ_FLOOR)
+            core.robust = False
+            w = trig(theta)
+            if outer:      # the linearization is exact at the current point: keep the best exact iterate
+                rec = dict(b=np.asarray(b), theta=dict(theta), core_cost=float(0.5*np.sum(core.residuals(b, w)**2)),
+                           out_cost=float(0.5*np.sum(out.residuals(b, w)**2)), n_out=len(out.scale),
+                           converged=bool(change < 1e-4), change_kHz=float(change*1e3), start=dict(start),
+                           outer=outer)
+                if kept is None or rec['out_cost'] < kept['out_cost']:
+                    kept = rec
+                if change < 1e-4 or outer == max_outer:
+                    break
+            if keys and outer:      # outer 0 only solves the background at the start, whose cost outer 1 records
+                def outer_res(t):
+                    w = trig(dict(theta, **dict(zip(keys, t))))
+                    return out.residuals(solve_background(core, w, b), w)
+                x0 = np.array([theta[k] for k in keys])
+                lo = np.array([BOUNDS[k][0] if k not in ('u', 'g') else x0[i]-90. for i, k in enumerate(keys)])
+                hi = np.array([BOUNDS[k][1] if k not in ('u', 'g') else x0[i]+90. for i, k in enumerate(keys)])
+                t = least_squares(outer_res, np.clip(x0, lo+1e-9, hi-1e-9), bounds=(lo, hi), diff_step=1e-3).x
+                theta = dict(theta, **{k: float(x) for k, x in zip(keys, t)})
+            b = solve_background(core, trig(theta), b)
+            offsets = np.concatenate([linearize_offsets(model, linear, line, b, theta) for line in lines])
+            change = np.inf if last is None else np.max(np.abs(offsets-last))
+            last = offsets
+        if best is None or kept['out_cost'] < best['out_cost']:
+            best = kept
+    model.training = dict(core_cost=best['core_cost'], out_cost=best['out_cost'], n_out=best['n_out'])
+    return best['b'], best['theta'], best
 
 
 def potential():

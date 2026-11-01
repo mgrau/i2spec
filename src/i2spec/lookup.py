@@ -144,8 +144,9 @@ class Line:
     @property
     def source(self):
         """How the apps name the model behind this line's position."""
-        from .preferred import OUTSIDE, PUBLIC
-        return PUBLIC if _held(self) is not None else f"{PUBLIC}, {OUTSIDE}"
+        from .preferred import BEYOND, OUTSIDE, PUBLIC
+        p = _held(self)
+        return PUBLIC if p is not None and p[1] < BEYOND else f"{PUBLIC}, {OUTSIDE}"
 
     @property
     def flags(self):
@@ -158,7 +159,8 @@ class Line:
 
 
 def _held(line):
-    """(sigma_center MHz, status code, class code) where the model's level tables hold this line, else None."""
+    """(sigma_center MHz, status code, class code) where the model's level tables hold this line, else None. A status
+    code of preferred.BEYOND or more: a level lies beyond the fitted domain, its sigma from the release's edge rules."""
     from .preferred import preferred
     sigma, status, cls = preferred(line.isotopologue).uncertainties([line.branch], [line.J_lower], [line.v_upper],
                                                                     [line.v_lower])
@@ -197,7 +199,7 @@ def uncertainty(line: Line):
                                    "limit, held by the centrifugal barrier (quasi-bound); the model treats it as bound, "
                                    "with no tunneling lifetime or broadening, and the uncertainty is a rough bound")
     return OUTSIDE_SIGMA_MHZ, ("Outside the fitted domain: the model's level tables do not hold a level of this line "
-                               "(beyond its centrifugal-barrier rule, B v′ > 80, or J″ > 445); the position comes from "
+                               "(beyond its centrifugal-barrier rule, B v′ > 86, X v″ > 113, or J″ > 445); the position comes from "
                                "the same potentials, and the uncertainty is a rough bound")
 
 
@@ -320,7 +322,8 @@ class Catalog:
         model's, always with the J ± 2 couplings and each component's 1σ; elsewhere the published formulae's, with
         ``dJ``."""
         p = _held(line)
-        if p is not None:
+        from .preferred import BEYOND
+        if p is not None and p[1] < BEYOND:
             from .preferred import components, sigma_component
             nu0, comps = components(line.branch, line.J_lower, line.v_upper, line.v_lower, line.isotopologue)
             sigma = lambda c: sigma_component(p[0], line.branch, line.J_lower, line.v_upper, line.v_lower,  # noqa: E731

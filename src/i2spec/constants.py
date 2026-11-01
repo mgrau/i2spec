@@ -36,8 +36,8 @@ def reduced_mass(isotopologue: str) -> float:
     return ma * mb / (ma + mb)
 
 
-#: The released model (i2spec/data/research/20261030): the potentials every calculation uses unless told otherwise.
-DEFAULT_PARAMETERS = "research-20261030-i2spec"
+#: The released model (i2spec/data/research/20261031): the potentials every calculation uses unless told otherwise.
+DEFAULT_PARAMETERS = "research-20261031-i2spec"
 #: The published model (Salumbides et al. 2008, unchanged), kept for comparison.
 PUBLISHED_PARAMETERS = "hannover2008"
 

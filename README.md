@@ -14,7 +14,9 @@ error of predicting levels and hyperfine intervals held out of the fit, calibrat
 It predicts held-out comb data to 0.18 MHz (absolute components) and 0.05 MHz (hyperfine intervals). Scored once
 on 17 locked-test data sets that no fit or calibration used, 88 % of 164 measurements lie within 2σ: 98 % of the
 absolute frequencies and every measurement of the other isotopologues, but only 78 % of the hyperfine intervals,
-most of the shortfall from one data set ([release notes](src/i2spec/data/research/20261030/README.md)).
+most of the shortfall from one data set ([locked test](src/i2spec/data/research/20261030/README.md)). The
+released version then changed the B hyperfine structure beyond the core and the uncertainty at the edges of the
+domain; 150 of the 164 locked-test rows are unaffected ([release notes](src/i2spec/data/research/20261031/README.md)).
 
 ¹²⁹I₂ and ¹²⁷I¹²⁹I use the same potentials at their own reduced mass, with a Born–Oppenheimer correction of two
 coefficients fitted to the CIPM isotope shifts (each line predicted from the others to 0.08 MHz) and the
@@ -111,7 +113,7 @@ uv run i2spec model verify           # replay its frozen reference predictions
 |---|---|
 | `src/i2spec/` | the package: the model, radial solvers, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
 | `src/i2spec/data/` | the published 2008 potentials, for comparison |
-| [`src/i2spec/data/research/`](src/i2spec/data/research/20261030/README.md) | the model's frozen releases: coefficients, hyperfine tables, uncertainty model, audits, reference predictions and the blind tests |
+| [`src/i2spec/data/research/`](src/i2spec/data/research/20261031/README.md) | the model's frozen releases: coefficients, hyperfine tables, uncertainty model, audits, reference predictions and the blind tests |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
 | `data/catalog/` | the literature catalog: every data source found, with DOIs |

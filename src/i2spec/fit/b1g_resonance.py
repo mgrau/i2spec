@@ -46,9 +46,11 @@ def _phase(psi):
 
 
 class Resonance:
-    def __init__(self, constants, b, theta, levels=None, cache=None):
-        """constants: the perturbers' curve constants; b, theta: the hyperfine_beyond fit."""
+    def __init__(self, constants, b, theta, levels=None, cache=None, orders=None):
+        """constants: the perturbers' curve constants; b, theta: the hyperfine_beyond fit (orders: its background
+        orders where they are not the core fit's)."""
         self.constants, self.b, self.theta, self.cache = constants, np.asarray(b, float), dict(theta), cache
+        self.orders = orders
         curves, values = hb.potential()
         bpot = SolverPotential(curves['B'], values['B'])
         limit = float(bpot(np.array([300.]))[0])
@@ -59,7 +61,8 @@ class Resonance:
         self._g = {}
 
     def prepare(self, vJ):
-        self.model = hb.Model(self.levels, hb.fill_terms(sorted(vJ), self.constants, cache=self.cache))
+        self.model = hb.Model(self.levels, hb.fill_terms(sorted(vJ), self.constants, cache=self.cache),
+                              orders=self.orders)
 
     def g_levels(self, Jp):
         """(energies cm-1, wavefunction coefficients) of the 1g(1Pig) model curve's levels at rotation J'."""

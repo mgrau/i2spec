@@ -5,8 +5,9 @@
   sigma_interval = sigma_HF of the interval              (two components of one line share the center)
 
   sigma_stat   linearized covariance at the final continuation fit, propagated per line: g^T Cov g, g = d(line)/
-               d(parameter). The parameters are the 38 free tail terms (B:dDe = X:dDe), the 47 core potential
-               coefficients (frozen in the fit, refitted jointly in the linearization, so their covariance and cross
+               d(parameter). The parameters are the free tail terms (B:dDe = X:dDe; 37 from release 20261029), the
+               core potential coefficients (46 with the B limit tied; frozen in the fit, refitted jointly in the
+               linearization, so their covariance and cross
                terms come from the same rows), the 7 inherited dispersion coefficients (as log factors, prior 0.1),
                the Orsay IV offset and the 4 atlas calibration terms (priors: their own fits). Cov is the sandwich of
                the weighted estimator actually used, each data category scaled by its Birge ratio (at least 1).
@@ -372,7 +373,7 @@ def hf_heldout(cv, levels=None, workers=12, cache=None):
         if g not in models:
             constants = hb.state_constants(False, hb.parse_overrides(run["override"]))
             terms = hb.fill_terms(hb.needed_levels(rows, params), constants, workers, cache=cache)
-            models[g] = hb.Model(levels, terms, use_s2=True, asymptotes=hb.ASYMPTOTES)
+            models[g] = hb.Model(levels, terms, use_s2=True, asymptotes=hb.ASYMPTOTES, orders=run.get("orders"))
         model, b, theta = models[g], np.array(r["b"]), r["theta"]
         held = [(lo, hi) for lo, hi in r["holdout"]]
         offsets = {}
@@ -688,8 +689,8 @@ def coverage_tables(rows):
 RECIPE = (
     "sigma_center = sqrt(sigma_stat^2 + sigma_model^2); a hyperfine component adds sigma_HF = sqrt(a^2 + (kappa o)^2) "
     "(o its offset from the center); an intraline interval Delta has sqrt(2 a^2 + (kappa Delta)^2) alone. sigma_stat: "
-    "the sandwich covariance of the weighted Gauss-Newton estimator at the final fit over the 38 free tail terms "
-    "(B:dDe = X:dDe), the 47 frozen core potential coefficients, 7 inherited dispersion log factors (prior 0.1) and 5 "
+    "the sandwich covariance of the weighted Gauss-Newton estimator at the final fit over the {tails} free tail terms "
+    "(B:dDe = X:dDe), the {core} frozen core potential coefficients, 7 inherited dispersion log factors (prior 0.1) and 5 "
     "calibrations (priors: their own fits), each data category scaled by its Birge ratio (at least 1), from the SVD "
     "of the weighted Jacobian (directions below 1e-8 of the largest singular value dropped); propagated through "
     "Hellmann-Feynman level derivatives. sigma_model: fitted by marginal likelihood to held-out center residuals (the "
@@ -701,6 +702,14 @@ RECIPE = (
     "1986 eqQ converted through |eqQ' - eqQ''|) and, for X beyond, the emission components' within-line scatter; "
     "kappa held at its last validated v beyond. Status of a level: measured (training rows within 15 in J at its v), "
     "interpolated (inside its v's J range, or between neighbors within 2 in v), else extrapolated.")
+
+
+def recipe(names):
+    """RECIPE with the counts of the covariance's parameters: tail terms (dDe among them) and core coefficients."""
+    tails = {f"{st}:{n}" for st, c in continuation.build_curves().items() for n in c.tail_names}-{"B:dDe"}
+    rest = [n for n in names if not n.startswith("calibration") and ":logC" not in n]
+    n_tail = sum(1 for n in rest if n in tails)
+    return RECIPE.format(tails=n_tail, core=len(rest)-n_tail)
 
 
 def build(cv=None, cache=None, workers=12):
@@ -724,7 +733,7 @@ def build(cv=None, cache=None, workers=12):
     record = dict(
         schema_version=1, model="research-20261020-balanced-expanded",
         created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
-        recipe=RECIPE, pending_outcomes_used=False,
+        recipe=recipe(cov.names), pending_outcomes_used=False,
         statistical=dict(parameters=cov.names, factor=cov.L.tolist(), fd_step=FD_STEP, rcond=RCOND,
                          dropped_directions=cov.info["dropped"], birge=cov.ratios,
                          priors={cov.names[j]: s for j, s in cov.prior.items()}),
