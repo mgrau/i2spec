@@ -7,9 +7,6 @@ __pycache__/
 build/
 dist/
 
-# Generated prototype outputs
-prototypes/out/
-
 # Generated web data: rebuild with `uv run i2spec web export`
 web/data/
 
@@ -25,12 +22,3 @@ site/
 # Tool caches
 .ruff_cache/
 .claude/
-
-# The manuscript draft: not published yet
-paper/
-
-# Local research notes, scripts and handoff (retained on disk, not published)
-/AGENTS.md
-/docs/
-/prototypes/
-/handoff/

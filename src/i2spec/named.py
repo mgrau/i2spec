@@ -1,4 +1,4 @@
-"""The model's named parameters (decision 9): Be(X), Be(B), T0 and D0(X) stored in place of logRe(X), logRe(B), Te
+"""The model's named parameters: Be(X), Be(B), T0 and D0(X) stored in place of logRe(X), logRe(B), Te
 and logDe(X), and in a continued model D0(X) of the whole model in place of the asymptote shift dDe. An exact change
 of variables: a model file in named coordinates loads to the same coefficients, and predicts the same.
 
