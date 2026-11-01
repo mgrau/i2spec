@@ -18,7 +18,6 @@ Solved by Levenberg-Marquardt, then undamped Gauss-Newton to convergence.
 from __future__ import annotations
 
 import json
-import os
 from math import comb, factorial
 from pathlib import Path
 from types import SimpleNamespace
@@ -29,7 +28,7 @@ from numpy.polynomial.chebyshev import chebder, chebval
 from scipy.interpolate import BSpline
 
 from ..constants import MHZ_PER_CM
-from . import rows as training
+from . import base, rows as training
 from .core import FLOORS, release_spec as core_spec, weights
 from .curves import Config, Curve, long_range
 from .levels import Levels
@@ -37,14 +36,15 @@ from .optimize import gauss_newton, marquardt
 from .rows import CORE_V
 
 ROOT = Path(__file__).resolve().parents[3]
-RELEASE = Path(os.environ.get("I2SPEC_FIT_CONTINUATION") or ROOT / "src" / "i2spec" / "data" / "research" / "20261020" / "balanced_expanded")
+RELEASE = ROOT / "src" / "i2spec" / "data" / "research" / "20261020" / "balanced_expanded"
 CORE_J = dict(X=200, B=201)
 DATA_V = dict(X=108, B=80)
 OFFSETS = ("orsay4",)
 
 
 def release_spec():
-    return json.loads((RELEASE / "model.json").read_text())
+    """The continuation the later stages build on: the release's (RELEASE), or the one a rebuild names (base)."""
+    return base.spec("continuation") or json.loads((RELEASE / "model.json").read_text())
 
 
 def core_level(key):

@@ -21,14 +21,13 @@ keeps its hyperfine, with S2 inside). Out-of-core rows set theta_u and gamma, wi
 RELATIVE_FLOOR, EQQ_FLOOR). The curves are inputs; the release scales the 1g(1Pig) C5 (by 0.65, chosen by the
 training cost) and sets the (3)0u- C5 to zero (FIT_OVERRIDES).
 
-S2 terms are computed in parallel processes and cached by state and curve constants (CACHE).
+S2 terms are computed in parallel processes and cached by state, curve constants and the B potential (CACHE).
 """
 from __future__ import annotations
 
 from concurrent.futures import ProcessPoolExecutor
 import hashlib
 import json
-import os
 from multiprocessing import get_context
 from pathlib import Path
 import pickle
@@ -42,15 +41,14 @@ from ..constants import MHZ_PER_CM, reduced_mass
 from ..hyperfine import HyperfineParameters, level_structure, line_components
 from ..observations import component_rank
 from ..research import ResearchModel
-from . import hyperfine_rows, rows as training
+from . import base, hyperfine_rows, rows as training
 from . import second_order as so
 from .continuation import SolverPotential, build_curves
-from .core import release_spec as core_spec
+from .core import CORE_RELEASE, release_spec as core_spec
 
 CACHE = Path.home()/'.cache'/'i2spec'/'second_order'
 POTENTIAL = 'fjc_dec6'
 PARAMS = ('eqQ', 'C', 'd', 'delta')
-ORDERS = {p: len(c) for p, c in core_spec()['hyperfine']['coefficients']['B'].items()}   # the core fit's B radial functions
 KNOT = 4.45                                        # A, the B potential's outer knot (core edge)
 # Separated-atom limits of the first-order couplings (R -> infinity): eqQ_B = B(2P3/2)/2 = -573.2 MHz (Bacis et
 # al. 1980 Table I; their extrapolation -574 +- 3). Outside the knot a coupling with a limit continues as
@@ -67,6 +65,11 @@ PAIRS = dict(u=("1u(3Sigmau+)", "C1u"), g=("1g(1Pig)", "1g(3Sigmag-)"))
 # ---------------------------------------------------------------------------------------------------------------
 # S2 cache: per state, per curve (its constants), per (v, J): the projected constants of each coupling variant
 
+def core_orders():
+    """The orders of the core fit's B radial functions (of the core the stages build on)."""
+    return {p: len(c) for p, c in core_spec()['hyperfine']['coefficients']['B'].items()}
+
+
 def state_constants(experimental=False, overrides=None):
     """{state: dict of the curve constants actually used} (perturber_curves' rules)."""
     out = {}
@@ -78,9 +81,11 @@ def state_constants(experimental=False, overrides=None):
     return out
 
 
-def _key(state, constants):
+def _key(state, constants, b_potential):
+    """The cache key of a state's S2 terms: its curve constants and the B potential they are computed on (its
+    parameters; the perturber curves hang from its limit)."""
     text = json.dumps(dict(potential=POTENTIAL, state=state, constants=constants, grid=so.GRID, join=7.,
-                           width=.5), sort_keys=True)
+                           width=.5, b=b_potential), sort_keys=True)
     return hashlib.sha1(text.encode()).hexdigest()[:16]
 
 
@@ -113,8 +118,9 @@ def level_terms(radial, state, v, J):
 _WORKER = {}
 
 
-def _init(states_constants):
-    curves, values = potential()
+def _init(states_constants, frozen, bases):
+    base.use(**bases)
+    curves, values = potential(frozen)
     b = SolverPotential(curves['B'], values['B'])
     limit = float(b(np.array([300.]))[0])
     _WORKER['radial'] = so.Radial(b, curves['B'].joins, perturber_curves(limit, states_constants))
@@ -133,34 +139,43 @@ def _task(args):
 
 
 def fill_terms(levels, constants, workers=16, cache=None):
-    """Cache S2 terms for every (v, J) in `levels` and every state with the given curve constants."""
+    """Cache S2 terms for every (v, J) in `levels` and every state with the given curve constants, each on the B
+    potential the bases name for it (potential; base.s2_frozen); the bases' fixed terms (base.s2_fixed) replace the
+    computed ones of their levels."""
     cache = Path(cache or CACHE)
     cache.mkdir(parents=True, exist_ok=True)
-    todo, stored = [], {}
-    for state, c in constants.items():
-        path = cache/f'{_key(state, c)}.pkl'
-        have = stored[state] = pickle.loads(path.read_bytes()) if path.exists() else {}
+    frozen = {state: base.s2_frozen(state, c) for state, c in constants.items()}
+    keys = {f: potential_key(f) for f in set(frozen.values())}
+    paths = {state: cache/f'{_key(state, c, keys[frozen[state]])}.pkl' for state, c in constants.items()}
+    todo, stored = {}, {}
+    for state in constants:
+        have = stored[state] = pickle.loads(paths[state].read_bytes()) if paths[state].exists() else {}
         missing = sorted({lv for lv in levels if lv not in have})
         byJ = {}
         for v, J in missing:
             byJ.setdefault(J, []).append(v)
-        todo += [(state, J, vs) for J, vs in byJ.items()]
-    if todo:
+        if byJ:
+            todo.setdefault(frozen[state], []).extend((state, J, vs) for J, vs in byJ.items())
+    for f, tasks in todo.items():
         t = time.time()
         with ProcessPoolExecutor(workers, mp_context=get_context('spawn'), initializer=_init,
-                                 initargs=(constants,)) as pool:
-            results = list(pool.map(_task, todo, chunksize=4))
+                                 initargs=(constants, f, base.current())) as pool:
+            results = list(pool.map(_task, tasks, chunksize=4))
         new = {}
-        for (state, _, _), r in zip(todo, results):
+        for (state, _, _), r in zip(tasks, results):
             new.setdefault(state, {}).update(r)
         for state, r in new.items():
-            path = cache/f'{_key(state, constants[state])}.pkl'
-            have = pickle.loads(path.read_bytes()) if path.exists() else {}     # another run may have added levels
+            # another run may have added levels
+            have = pickle.loads(paths[state].read_bytes()) if paths[state].exists() else {}
             have.update(r)
-            path.write_bytes(pickle.dumps(have))
+            paths[state].write_bytes(pickle.dumps(have))
             stored[state] = have
-        print(f'S2 terms: {len(todo)} tasks in {time.time()-t:.0f} s', flush=True)
-    return {state: {lv: stored[state][lv] for lv in levels} for state in constants}
+        print(f'S2 terms: {len(tasks)} tasks in {time.time()-t:.0f} s', flush=True)
+    out = {state: {lv: stored[state][lv] for lv in levels} for state in constants}
+    for state, c in constants.items():
+        fixed = base.s2_fixed(state, c) or {}
+        out[state].update((lv, fixed[lv]) for lv in levels if lv in fixed)
+    return out
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -180,7 +195,7 @@ class Levels:
         R = self.solver.R
         z = (R**2-re**2)/(R**2+re**2)/scale
         zk = (KNOT**2-re**2)/(KNOT**2+re**2)/scale
-        n = max(ORDERS.values())
+        n = max(core_orders().values())
         inside = R <= KNOT
         dz, zinf = z-zk, 1/scale
         span = zinf-zk
@@ -241,9 +256,9 @@ class Model:
 
     def __init__(self, levels, terms, use_s2=True, asymptotes=ASYMPTOTES, orders=None):
         self.levels, self.terms, self.use_s2, self.asymptotes = levels, terms, use_s2, dict(asymptotes)
-        #: background orders: the core fit's (ORDERS), or higher (release 20261031: d 5, delta 4), the added
+        #: background orders: the core fit's (core_orders), or higher (release 20261031: d 5, delta 4), the added
         #: coefficients starting at 0 and anchored, as the others, to the core fit's own predictions
-        self.orders = dict(ORDERS, **(orders or {}))
+        self.orders = dict(core_orders(), **(orders or {}))
         if max(self.orders.values()) > levels.n:
             raise ValueError("a background order exceeds the moments the levels keep")
         self.names = [f'{p}:{k}' for p in PARAMS for k in range(self.orders[p])]
@@ -295,9 +310,15 @@ _X_CACHE = {}
 
 
 def x_structure(v, J):
+    """The X hyperfine structure of a core level, from the core model of the role "balanced" (the candidate's in a
+    rebuild)."""
+    from ..research import _entry
+    entry = _entry('balanced')
+    model = (entry['release'], entry['id'], entry['files_sha256']['model.json'])
+    if _X_CACHE.get('model') != model:
+        _X_CACHE.clear()
+        _X_CACHE.update(model=model, core=ResearchModel('balanced'))
     if (v, J) not in _X_CACHE:
-        if 'core' not in _X_CACHE:
-            _X_CACHE['core'] = ResearchModel('balanced')
         _X_CACHE[(v, J)] = _X_CACHE['core']._structure('X', v, J)
     return _X_CACHE[(v, J)]
 
@@ -537,9 +558,11 @@ def linearize_offsets(model, linear, line, b, theta):
 def core_constants(levels, continued=True):
     """(v, J) -> the core fit's B radial functions (no S2): continued past KNOT as here, or as the core
     evaluates them (the polynomial everywhere)."""
+    orders = core_orders()
+
     def fn(v, J):
         m = levels.moments(v, J) if continued else levels.plain_moments(v, J)
-        return np.array([levels.core[p][:ORDERS[p]]@m[:ORDERS[p]] for p in PARAMS])
+        return np.array([levels.core[p][:orders[p]]@m[:orders[p]] for p in PARAMS])
     return fn
 
 
@@ -622,18 +645,35 @@ def fit_starts(model, rows, params, keys, starts, holdout=(), drop=(), max_outer
     return best['b'], best['theta'], best
 
 
-def potential():
-    """(curves, values) of the B continuation the hyperfine stage was fitted on: frozen with the release, or the
-    current continuation when a rebuild names one (I2SPEC_FIT_CONTINUATION)."""
-    if os.environ.get("I2SPEC_FIT_CONTINUATION"):
-        from .continuation import release_spec
-        frozen = {f"{s}:{n}": z for s, v in release_spec()["values"].items() for n, z in v.items()}
+def potential(frozen=None):
+    """(curves, values) of the continuation the hyperfine stage is fitted on. `frozen`: the one release 20261021's
+    hyperfine stage was fitted on (hyperfine_potential.json, on the core and structure of releases 20261018 and
+    20261020, whatever the bases); else the continuation the stages build on. None: the frozen one unless a rebuild
+    names a continuation (base)."""
+    from .continuation import RELEASE, release_spec
+    if frozen is None:
+        frozen = base.spec("continuation") is None
+    if frozen:
+        tails = json.loads((training.TRAINING/training.RELEASE/"hyperfine_potential.json").read_text())["parameters"]
+        curves = build_curves(json.loads((RELEASE/"model.json").read_text())["structure"],
+                              json.loads((CORE_RELEASE/"model.json").read_text()))
     else:
-        frozen = json.loads((training.TRAINING/training.RELEASE/"hyperfine_potential.json").read_text())["parameters"]
-    curves = build_curves()
+        tails = {f"{s}:{n}": z for s, v in release_spec()["values"].items() for n, z in v.items()}
+        curves = build_curves()
     values = {s: dict(c.values) for s, c in curves.items()}
-    for name, z in frozen.items():
+    for name, z in tails.items():
         s, n = name.split(":")
         if s in values:
             values[s][n] = z
     return curves, values
+
+
+def potential_key(frozen=None):
+    """The parameters that fix potential(frozen)'s B curve: the core's form, the tails' structure and every value."""
+    from .continuation import RELEASE, release_spec
+    if frozen is None:
+        frozen = base.spec("continuation") is None
+    curves, values = potential(frozen)
+    spec = json.loads((CORE_RELEASE/"model.json").read_text()) if frozen else core_spec()
+    structure = json.loads((RELEASE/"model.json").read_text()) if frozen else release_spec()
+    return dict(config=spec['config'], structure=structure['structure'], values=values['B'])

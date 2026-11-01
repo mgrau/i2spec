@@ -1,0 +1,50 @@
+{
+ "note": "Rules for the levels beyond the hyperfine and level tables and for quasi-bound B levels, with the evidence each was set on, as release 20261031 adopted them (not fitted by the pipeline). The build adds sigma_D0_MHz to 'X above 108': the 1-sigma of D0(X) from the release's covariance (named).",
+ "edges": {
+  "B above 80": {
+   "form": "sigma_model(v', J) = sigma_model(80, J) * growth^(v' - 80) (the level's share at v' 80 and the same J); the statistical term is the level's own; 'level identity uncertain' where the level's sigma exceeds half the spacing to v' - 1",
+   "growth_per_v": 3.0,
+   "evidence": "Danyluk & King 1977 G_v (v' 81-83, blind registry v4) against the model with their reduction emulated: -0.052, -0.116, -0.236 cm-1 (1.5, 3.5, 7.1 GHz); sigma_80 about 0.51 GHz at J 8; per-point growth 3.0, 2.6, 2.4 per quantum; 3 also matches the 2026-10-19 extrapolation study; z = 1.0, 0.75, 0.5 with growth 3",
+   "v_table": 80,
+   "v_max": 86,
+   "status": "rule, calibrated on three levels of one source"
+  },
+  "X above 108": {
+   "form": "sigma(v'') = sqrt(sigma_108^2 + sigma_add(v'')^2) with the near-dissociation term continued, capped at sqrt((D - E_v)^2 + sigma_D0^2)",
+   "evidence": "none held: no measurement reaches X v'' 109-113; a rule",
+   "v_table": 108,
+   "v_max": 113,
+   "status": "rule (no measurement)"
+  },
+  "J beyond reach": {
+   "status": "untested",
+   "rule": "sigma_model x J(J+1)/(reach(reach+1)) beyond the training J reach",
+   "evidence": "no held-out 127I2 position in v3, the locked test or the cross-validation folds lies beyond its level's reach (2 CV records, growth < 1.1); R(158) 25-0 (de Melo 2024, Kondo 2025) is inside the reach (B v' 24-26 rows reach J' 188-192 + 15)"
+  },
+  "X C slope": {
+   "status": "rule",
+   "anchor": "59 +- 10 kHz at v'' 83 (one value; Koffend 1978 in v3 is the same value)",
+   "form": "sigma_C(v'') = 10 kHz x lever(v'')/lever(83), the lever the outer slope's unit response; unvalidated beyond v'' 83 (X-1g interaction)"
+  },
+  "B quasi-bound width": {
+   "sigma_per_width": 1.0,
+   "status": "rule",
+   "form": "sigma = Gamma, the tunneling width (FWHM) of a quasi-bound B level: (E_v - E_v-1)/(2 pi) T(E), T the transmission 1/(1 + exp(2 pi (V_top - E)/hbar omega_b)) of a parabolic barrier of the effective potential's top V_top and curvature at J; added in quadrature to the level's share",
+   "evidence": {
+    "n_levels": 59,
+    "sample": "the audit's 59 long-grid quasi-bound B levels (127I2, J <= 200 every 5): reference (60 A box, halved knots) - production",
+    "width_ge_change": 15,
+    "largest_change_over_width": 4.551745924557438,
+    "change_within_width_or_1kHz": 52,
+    "worst": {
+     "below_top_cm": 2.3774837462842697,
+     "v": 61,
+     "J": 125,
+     "change_MHz": 245.91324625717246,
+     "width_MHz": 54.026136417331415
+    },
+    "max_width_more_than_5_cm_below_top_MHz": 0.0011967258577228702
+   }
+  }
+ }
+}

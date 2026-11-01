@@ -16,7 +16,6 @@ Solved by damped Gauss-Newton (optimize.damped_gauss_newton) with Hellmann-Feynm
 from __future__ import annotations
 
 import json
-import os
 from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 
@@ -24,15 +23,16 @@ import numpy as np
 import scipy.sparse as sp
 
 from ..constants import ATOMIC_SPLITTING, MHZ_PER_CM
-from . import rows as training
+from . import base, rows as training
 from .curves import Config, Curve, initial
 from .levels import Levels
 from .optimize import damped_gauss_newton
 
 ROOT = Path(__file__).resolve().parents[3]
-# a rebuild of a new model form points the fit stages (and their worker processes) at its own core and floor
-CORE_RELEASE = Path(os.environ.get("I2SPEC_FIT_CORE") or ROOT / "src" / "i2spec" / "data" / "research" / "20261018" / "balanced")
-FLOORS = dict(comb=float(os.environ.get("I2SPEC_FIT_COMB_FLOOR", .5)), doppler=.5, emission=20., atlas_sr=0., atlas_apo=0., orsay1=0., orsay4=0., martin=0.,
+# a rebuild of a later release points the fit stages (and their worker processes) at its own core and floor (base)
+CORE_RELEASE = ROOT / "src" / "i2spec" / "data" / "research" / "20261018" / "balanced"
+COMB_FLOOR = .5
+FLOORS = dict(comb=COMB_FLOOR, doppler=.5, emission=20., atlas_sr=0., atlas_apo=0., orsay1=0., orsay4=0., martin=0.,
               martin_dissoc=0., isotopologue=.1)
 DE_X_CENTER = 12547.340         # cm-1, the published De(X) the prior is centered on
 ATOMIC_GAP_SIGMA = .0065        # cm-1, the atomic splitting's uncertainty
@@ -63,7 +63,8 @@ def weights(rows, floors=FLOORS, category_cap=1000.):
 
 
 def release_spec():
-    return json.loads((CORE_RELEASE / "model.json").read_text())
+    """The core the later stages build on: the release's (CORE_RELEASE), or the one a rebuild names (base)."""
+    return base.spec("core") or json.loads((CORE_RELEASE / "model.json").read_text())
 
 
 def shape_nodes():

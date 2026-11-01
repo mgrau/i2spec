@@ -93,8 +93,14 @@ def stage_package(cont, hf, workers=12, cache=None):
                 references=references)
 
 
-def rebuild(workers=12, cache=None):
-    """Every stage from the frozen inputs: {stage: record}. About five minutes with a warm second-order cache."""
+def rebuild(workers=12, cache=None, release="20261021", folder=None):
+    """Every stage from the frozen inputs: {stage: record}. About five minutes with a warm second-order cache.
+    Release 20261031 (the released model) has its own stages: final.rebuild, its candidate release in `folder`."""
+    if release == "20261031":
+        from . import final
+        return final.rebuild(folder, workers, cache)
+    if release != "20261021":
+        raise ValueError(f"no rebuild of release {release}: 20261021 and 20261031 are rebuilt")
     out = dict(core=stage_core())
     out["continuation"] = stage_continuation()
     out["hyperfine"] = hf = stage_hyperfine(workers, cache)

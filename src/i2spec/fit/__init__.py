@@ -17,5 +17,7 @@ Stages, in order (each reads the previous stage's output; release.rebuild runs t
 
 The release's own inputs (training rows, hyperfine records, cross-validation outputs) are frozen in
 data/training/<release>/; from them every stage returns the released numbers (tests/test_fit*.py; the full refits
-run with pytest --slow).
+run with pytest --slow). release.rebuild rebuilds release 20261021; final.rebuild the released model (20261031), its
+stages in their final form (base: the core and continuation they build on; calibrate: the uncertainty model refitted
+on the calibrate sets).
 """

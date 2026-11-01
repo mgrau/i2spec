@@ -24,7 +24,7 @@ from ..bspline import BSplineSolver
 from ..constants import HBAR2_2U, MHZ_PER_CM, reduced_mass
 from ..hyperfine import level_structure, line_components
 from ..observations import Line, component_rank
-from . import b1g_resonance as rz, continuation, hyperfine_beyond as hb, x_hyperfine as xh
+from . import b1g_resonance as rz, base, continuation, hyperfine_beyond as hb, x_hyperfine as xh
 from .continuation import SolverPotential
 from . import levels as levels_module
 from .levels import TIERS
@@ -43,7 +43,8 @@ def tiers(joins):
 _W = {}
 
 
-def _init_levels(values=None):
+def _init_levels(values=None, bases=None):
+    base.use(**(bases or {}))
     curves = continuation.build_curves()
     values = values or continuation.release_spec()['values']
     vals = {s: dict(c.values, **values[s]) for s, c in curves.items()}
@@ -102,7 +103,7 @@ def levels(values=None, workers=12):
             if (0 if t == 0 else grids[t-1][0]+1) <= V_MAX[s] for J in range(J_MAX+1)]
     jobs.sort(key=lambda j: -(j[1] if j[0] == 'X' else j[1]-1))     # the slow long-box tiers first
     with ProcessPoolExecutor(workers, mp_context=get_context('spawn'), initializer=_init_levels,
-                             initargs=(values,)) as pool:
+                             initargs=(values, base.current())) as pool:
         rows = [r for part in pool.map(_levels_task, jobs, chunksize=2) for r in part]
     return {(s, v, J): E for s, v, J, E in sorted(rows)}
 
@@ -298,6 +299,35 @@ def references(E, tables, resonance, own, res, base, core_references):
                        predicted_MHz=offsets[rank(ref["component"])]-offsets[rank(ref["ref_component"])])
         out.append(row)
     return out
+
+
+#: the spike rule's floors (eqQ MHz; C, d, delta kHz) and its threshold on the ratio
+SPIKE_FLOOR = dict(eqQ=5., C=50., d=50., delta=50.)
+SPIKE_RATIO = 5.
+
+
+def spike_levels(rows, resonance=None):
+    """B levels (v, J > 0) whose table entry departs from the median of its J +- 1..3 neighbors at the same v (within
+    4 in J, at least 3 of them) by more than SPIKE_RATIO x max(10 MAD, 5 % of the median, SPIKE_FLOOR) in any constant:
+    a second-order denominator that nearly vanishes there (release 20261031: their hyperfine is not predicted). The
+    levels of B v' 77, 78 that the resonance replaces (J up to its last J - 2) are left out."""
+    replaced = {int(v): max(d["J"])-2 for v, d in (resonance or {}).get("levels", {}).items()}
+    table = {(int(r[0]), int(r[1])): np.asarray(r[2:6], float) for r in rows}
+    found = set()
+    for v in sorted({v for v, _ in table}):
+        Js = sorted(J for w, J in table if w == v)
+        values = np.array([table[v, J] for J in Js])
+        for i, J in enumerate(Js):
+            near = [k for k in range(i-3, i+4) if k != i and 0 <= k < len(Js) and abs(Js[k]-J) <= 4]
+            if len(near) < 3 or J == 0 or (v in replaced and J <= replaced[v]):
+                continue
+            for p, name in enumerate(hb.PARAMS):
+                ref = values[near, p]
+                median = np.median(ref)
+                threshold = max(10*np.median(np.abs(ref-median)), .05*abs(median), SPIKE_FLOOR[name])
+                if abs(values[i, p]-median) > SPIKE_RATIO*threshold:
+                    found.add((v, J))
+    return sorted(found)
 
 
 def rounded(rows, digits=7):

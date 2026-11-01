@@ -44,8 +44,8 @@ _RELEASES = (_RELEASE, "20261020", "20261021", "20261029", "20261030", "20261031
 #: The released model: the role "i2spec" resolves to this release
 _RELEASED, _PUBLIC_ROLE = "20261031", "i2spec"
 #: A candidate release (a folder with its own manifest.json) searched before the installed ones, so that its models
-#: take over their roles: for rebuilding the fit stages on a new core and continuation. Never set for users.
-_CANDIDATE = os.environ.get("I2SPEC_RESEARCH_CANDIDATE")
+#: take over their ids and roles: for rebuilding the fit stages of a release (fit.base.based_on). Never set for users.
+_CANDIDATE = None
 #: Lines whose components a model keeps, the oldest dropped first. One is quick to compute again from its two
 #: levels, which stay cached; the components of a whole line list would take several GB (a 127I129I line
 #: has about a thousand).
@@ -63,6 +63,19 @@ def _data(release=_RELEASE):
 @lru_cache(maxsize=None)
 def _manifest(release=_RELEASE):
     return json.loads(_data(release).joinpath("manifest.json").read_text())
+
+
+def candidate():
+    """The candidate release folder in use (None: the installed releases only)."""
+    return _CANDIDATE
+
+
+def use_candidate(folder):
+    """Search the release in `folder` before the installed ones (None: stop); call again after its files change."""
+    global _CANDIDATE
+    _CANDIDATE = str(folder) if folder is not None else None
+    _manifest.cache_clear()
+    _reference_model.cache_clear()
 
 
 def _entries():

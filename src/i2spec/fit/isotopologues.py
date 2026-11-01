@@ -211,14 +211,16 @@ def intraline(rows, which="offset"):
     return out
 
 
-def fit_shift(rows=None):
+def fit_shift(rows=None, s06_parameters=None):
     """The isotope shift: every form p of POWERS fitted, the one with the lowest leave-one-line-out rms kept; and
-    the hyperfine floor of the isotopologue components. Compared with the 2008 model's formulae on the same rows."""
+    the hyperfine floor of the isotopologue components. Compared with the 2008 model's formulae on the same rows (on
+    the potentials of `s06_parameters`, by default the released model's)."""
+    from ..constants import DEFAULT_PARAMETERS
     from ..model import RovibronicModel
     base = ResearchModel("balanced_expanded")
     rows = rows if rows is not None else cipm_rows()
     models = {iso: IsoModel(base, iso) for iso in ISOS}
-    evaluate(models, rows, {iso: RovibronicModel(iso) for iso in ISOS})
+    evaluate(models, rows, {iso: RovibronicModel(iso, s06_parameters or DEFAULT_PARAMETERS) for iso in ISOS})
     ok = [r for r in rows if r["own"] <= 1.]
     re_b = float(np.exp(base._base._spec["values"]["B"]["logRe"]))
     lines = {}
