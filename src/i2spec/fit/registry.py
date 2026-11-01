@@ -40,6 +40,7 @@ import numpy as np
 
 from ..constants import MHZ_PER_CM
 from ..observations import COLUMNS, DATA_DIR, UNITS, Line, _ends, _graph, _observation, _path, load_dataset
+from .rows import EXCLUSION
 
 ROOT = Path(__file__).resolve().parents[3]
 PACKAGE = ROOT / "src" / "i2spec"
@@ -50,7 +51,6 @@ HF_QUANTITIES = ("eqQ", "C", "d", "delta")
 #: printed names of the four constants (yokozeki1980's meta.toml: C1 = C, C3 = d, C4 = delta); other printed
 #: quantities (octupole, the fit's B, sigma) are not the model's and get no target
 X_ALIASES = {"C1": "C", "C3": "d", "C4": "delta"}
-EXCLUSION = "127I2 P(13) 43-0"
 THRESHOLDS_MHZ = (.01, .03, .1, .3, 1., 3.)
 FILES = ("protocol.json", "targets.json", "forecasts.json", "snapshot.json")
 IDENTITY = ("line", "component", "kind", "ref_line", "ref_component", "group")
@@ -257,7 +257,8 @@ def x_hyperfine_targets(sets, root):
     trained = _x_training_levels(root)
     out = []
     for s in sets:
-        tied = {v: (other, spec["relation"]) for other, spec in _meta(root, s).get("overlaps", {}).items()
+        meta = _meta(root, s)
+        tied = {v: (other, spec["relation"]) for other, spec in meta.get("overlaps", {}).items()
                 for v in spec.get("v", ())}
         for path in sorted((Path(root) / s).glob("*.csv")):
             head = _header(path)
@@ -280,7 +281,7 @@ def x_hyperfine_targets(sets, root):
                 if kind == "x_interval":
                     fields.update(I_from=int(r.get("eps_from") or r["eps"]), F_from=int(r["F_from"]),
                                   I_to=int(r.get("eps_to") or r["eps"]), F_to=int(r["F_to"]),
-                                  magnitude=_meta(root, s).get("interval_sign") == "magnitude")
+                                  magnitude=meta.get("interval_sign") == "magnitude")
                 elif v in tied:
                     fields.update(status="seen", overlap_set=tied[v][0], overlap_relation=tied[v][1])
                 fields["line_in_training"] = kind == "x_constant" and any((o, v) in trained for o, _ in tied.values())
@@ -354,9 +355,9 @@ def level_targets(tables, root, trained=frozenset()):
                 for column, (q, scale, origin) in spec["columns"].items():
                     if column not in head:
                         continue
-                    unc = next((u for u in (f"{column}_unc",) if u in head), None)
+                    unc = f"{column}_unc"
                     add(k, column, "level", quantity=q, state=state, v=v, isotopologue=iso, scale=scale,
-                        uncertainty_column=unc, origin=origin, status="derived",
+                        uncertainty_column=unc if unc in head else None, origin=origin, status="derived",
                         offset_group=f"{folder}/{s}:{file}:{state}:{iso}:G" if origin == "offset" else None)
         elif spec["form"] == "band":
             for k, r in enumerate(_identity_rows(path, ("isotopologue", "v_upper", "v_lower"))):
@@ -471,8 +472,12 @@ class Forecaster:
 
     def alternatives(self, t):
         """An X interval's forecast with each I the second sublevel may have ({I: MHz}): a source may print the
-        second level's I only in its note (borde2002), which is read when the registry is scored."""
-        levels = _labeled(self.model("127I2").hyperfine_levels("X", t["v"], t["J"]), t["J"])
+        second level's I only in its note (borde2002), which is read when the registry is scored. Empty outside the
+        model's domain, where predict has no forecast either."""
+        try:
+            levels = _labeled(self.model("127I2").hyperfine_levels("X", t["v"], t["J"]), t["J"])
+        except (ValueError, KeyError, IndexError):
+            return {}
         if (t["I_from"], t["F_from"]) not in levels:
             return {}
         return {str(I): levels[(t["I_from"], t["F_from"])] - e for (I, F), e in sorted(levels.items())
@@ -580,9 +585,9 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
         if bad := [s for s in again if s not in pending]:
             raise ValueError(f"a rescored set must still be pending: {bad}")
         targets += [dict(t, status="read_before") for t in build_targets(again, prior, root)]
+    croot = Path(constants_root) if constants_root is not None else DATA_DIR.parent
     other = {}
     if constants:
-        croot = Path(constants_root) if constants_root is not None else DATA_DIR.parent
         other = {f: pending_sets(croot / f) for f in (HYPERFINE, X_HYPERFINE)}
         if constants is not True:
             named = set(constants)
@@ -591,18 +596,17 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
             other = {f: [s for s in ss if s in named] for f, ss in other.items()}
         targets += hyperfine_targets(other[HYPERFINE], croot / HYPERFINE)
         targets += x_hyperfine_targets(other[X_HYPERFINE], croot / X_HYPERFINE)
-    lroot = Path(constants_root) if constants_root is not None else DATA_DIR.parent
     if levels:
-        if bad := [e for e in levels if tuple(e) not in LEVEL_TABLES or e[1] not in pending_sets(lroot / e[0])]:
+        held_out = {f: pending_sets(croot / f) for f in {e[0] for e in levels}}
+        if bad := [e for e in levels if tuple(e) not in LEVEL_TABLES or e[1] not in held_out[e[0]]]:
             raise ValueError(f"only pending sets of LEVEL_TABLES can be registered: {bad}")
         from .data import fit_datasets
         trained = frozenset(str(o.line) for d in fit_datasets() for o in d.observations)
-        targets += level_targets([tuple(e) for e in levels], lroot, trained)
+        targets += level_targets([tuple(e) for e in levels], croot, trained)
         for f, s_, _ in levels:
             other.setdefault(f, [])
             if s_ not in other[f]:
                 other[f].append(s_)
-        croot = lroot
     built, rows = forecasts(targets, models)
     primary = models[0]
     releases = sorted({r for f in built.values() for r in f.releases})
@@ -649,9 +653,8 @@ def freeze_registry(destination, sets=None, *, after=(), models=("i2spec",), roo
                                                 for f, ss in other.items() for s in ss}
         snapshot["data_other_root"] = _relative(croot)
     if held:
-        hroot = Path(constants_root) if constants_root is not None else DATA_DIR.parent
         snapshot["held_informational"] = {f"{f}/{s_}": {q.name: _sha(q) for q in sorted(
-            (hroot / f / s_).glob("*") if (hroot / f / s_).is_dir() else (hroot / f).glob(f"{s_}*"))
+            (croot / f / s_).glob("*") if (croot / f / s_).is_dir() else (croot / f).glob(f"{s_}*"))
             if q.is_file()} for f, s_, _ in held}
     destination.mkdir(parents=True)
     for name, value in zip(FILES, (protocol, targets, rows, snapshot)):
@@ -700,13 +703,18 @@ def _number(text):
     return float(text) if text not in (None, "") else None
 
 
-def _observed_constant(t, other):
+def _observed_constant(t, other, files=None):
     """(observed MHz, sigma MHz, the second sublevel's I) of a target of data/hyperfine_parameters or
     data/x_hyperfine, read from its file under ``other`` (the data folder); (None, None, None) when the source
-    did not print that quantity. A printed label "a,b -> c,d" in an X interval's note names the second I (c)."""
+    did not print that quantity. A printed label "a,b -> c,d" in an X interval's note names the second I (c).
+    ``files``: a dict that keeps each file's rows once read (one scoring pass)."""
     import re
-    with open(other / t["folder"] / t["set"] / t["file"], newline="", encoding="utf-8") as f:
-        row = list(csv.DictReader(f))[t["row"]]
+    files = {} if files is None else files
+    path = other / t["folder"] / t["set"] / t["file"]
+    if path not in files:
+        with open(path, newline="", encoding="utf-8") as f:
+            files[path] = list(csv.DictReader(f))
+    row = files[path][t["row"]]
     if t["kind"] in LEVEL_KINDS:             # cm-1, scaled as printed
         value = _number(row[t["column"]])
         sigma = _number(row[t["uncertainty_column"]]) if t["uncertainty_column"] in row else None
@@ -776,10 +784,10 @@ def score_registry(folder, out=None, *, root=DATA_DIR, strict=True):
     alternatives = {(f["model"], f["target"]): f["alternatives_MHz"] for f in rows if "alternatives_MHz" in f}
     sig = {f["target"]: f.get("sigma_model_MHz") for f in rows if f["model"] == primary}
     other = ROOT / snapshot["data_other_root"] if "data_other_root" in snapshot else None
-    scored, not_printed = [], []
+    scored, not_printed, files = [], [], {}
     for t in targets:
         if "folder" in t:                       # a hyperfine constant, an X interval or a level or line table
-            value, sigma, I_to = _observed_constant(t, other)
+            value, sigma, I_to = _observed_constant(t, other, files)
             if value is None:
                 not_printed.append(t["id"])
                 continue
@@ -815,7 +823,8 @@ def score_registry(folder, out=None, *, root=DATA_DIR, strict=True):
                     else None
         if all(r["offset_MHz"][primary] is None for r in rs):
             single += [r["id"] for r in rs]
-    headline = [r for r in scored if not r["diagnostic_exclusion"] and r["id"] not in set(single)]
+    unscored = set(single)
+    headline = [r for r in scored if not r["diagnostic_exclusion"] and r["id"] not in unscored]
 
     def scores(subset, names):
         common = [r for r in subset if all(r["residual_MHz"][m] is not None for m in names)]

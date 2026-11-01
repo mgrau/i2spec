@@ -15,10 +15,10 @@ from functools import lru_cache
 
 import numpy as np
 
-from .constants import ATOMIC_MASS, ISOTOPOLOGUES, MHZ_PER_CM
+from .constants import ISOTOPOLOGUES, MHZ_PER_CM
 from .intensity import C2, NEAR_FROM, intensity_model, master_line_list, with_dissociation_lines
 from .model import RovibronicModel
-from .spectrum import air_to_vacuum, doppler_fwhm, vacuum_to_air
+from .spectrum import air_to_vacuum, doppler_fwhm, molecular_mass, vacuum_to_air
 
 #: Units accepted for a search range: vacuum nm, standard-air nm, wavenumber, frequency.
 UNITS = ("nm", "nm-air", "cm-1", "MHz", "GHz", "THz")
@@ -134,8 +134,7 @@ class Line:
 
     @property
     def doppler_fwhm_MHz(self):
-        a, b = ISOTOPOLOGUES[self.isotopologue]
-        return float(doppler_fwhm(self.nu, self.temperature, ATOMIC_MASS[a] + ATOMIC_MASS[b])) * MHZ_PER_CM
+        return float(doppler_fwhm(self.nu, self.temperature, molecular_mass(self.isotopologue))) * MHZ_PER_CM
 
     @property
     def uncertainty_MHz(self):
@@ -155,7 +154,7 @@ class Line:
             from .preferred import OUTSIDE
             return (OUTSIDE, QUASI_BOUND) if quasi_bound(self) else (OUTSIDE,)
         from .preferred import flags
-        return flags(p[1], p[2])+((QUASI_BOUND,) if quasi_bound(self) else ())
+        return flags(p[1])+((QUASI_BOUND,) if quasi_bound(self) else ())
 
 
 def _held(line):
@@ -178,8 +177,8 @@ QUASI_NOTE = ("; the upper level lies above the rotationless B dissociation limi
 @lru_cache(maxsize=None)
 def b_limit(isotopologue):
     """The B dissociation limit above X(0, 0) (cm-1) of the released model."""
-    from .research import ResearchModel
-    levels = ResearchModel("i2spec", isotopologue)._levels_x
+    from .preferred import model
+    levels = model(isotopologue)._levels_x
     return float(levels.asymptote["B"]-levels.energy("X", 0, 0))
 
 
@@ -259,6 +258,8 @@ class Catalog:
         self._models = dict(models or {})
         #: isotopologues whose list reaches the B limit; an injected list counts as complete
         self._extended = set(self._masters)
+        #: isotopologue -> (master list, the same with the tables' positions), so a search does not redo the lookup
+        self._positioned = {}
 
     def master(self, isotopologue="127I2", near_dissociation=False):
         """The master line list; with ``near_dissociation``, extended to the B limit (a further build, once)."""
@@ -269,7 +270,10 @@ class Catalog:
             self._masters[isotopologue] = with_dissociation_lines(self._masters[isotopologue], S_min=self.s_min,
                                                                   nu_max=self.nu_range[1])
             self._extended.add(isotopologue)
-        return preferred_positions(self._masters[isotopologue])
+        master = self._masters[isotopologue]
+        if self._positioned.get(isotopologue, (None,))[0] is not master:
+            self._positioned[isotopologue] = master, preferred_positions(master)
+        return self._positioned[isotopologue][1]
 
     def model(self, isotopologue="127I2"):
         """The B-spline model of the lines the level tables do not hold: their positions, lower-level energies and
@@ -297,11 +301,11 @@ class Catalog:
         """The line named "R(56) 32-0", found in the list by its assignment."""
         branch, J, v_upper, v_lower = parse_label(label)
         T = float(temperature if temperature is not None else self.temperature)
-        nu = self.transition(isotopologue, branch, J, v_upper, v_lower)
         master = self.master(isotopologue, near_dissociation=v_upper > 60)
         sel = ((master.v_upper == v_upper) & (master.v_lower == v_lower) & (master.J_lower == J)
                & (master.branch == (1 if branch == "R" else -1)))
         if not sel.any():
+            nu = self.transition(isotopologue, branch, J, v_upper, v_lower)
             raise LookupError(f"{label} of {isotopologue} is not in the line list "
                               f"(it would lie at {1e7 / nu:.4f} nm)")
         k = int(np.flatnonzero(sel)[0])
@@ -336,6 +340,28 @@ class Catalog:
                          c.upper_level, c.lower_level, sigma(c))
                for c in comps if c.label or not main_only]
         return sorted(out, key=lambda c: c.offset_MHz)
+
+
+    def center_only(self, line: Line, comps=None):
+        """Why the model gives this line's center only, or None. The model does not predict the hyperfine of a few
+        B levels (where a second-order energy denominator nearly vanishes), nor of a line whose J ± 2 coupling
+        partner is dissociated; their lines have a center and no components, and the model says why. ``comps``:
+        the line's components, when already computed."""
+        if comps is None:
+            try:
+                comps = self.components(line, main_only=True)
+            except ValueError as error:               # e.g. a coupling partner beyond the dissociation limit
+                return str(error)
+        if any(c.label for c in comps):
+            return None
+        from .preferred import model
+        try:
+            model(line.isotopologue).predict(line.label, "a1")
+        except ValueError as error:                   # the model's own reason
+            return str(error)
+        except Exception:                             # no reason to give: the plain statement below
+            pass
+        return "the model gives no hyperfine components for this line"
 
 
 def preferred_positions(master):

@@ -66,7 +66,7 @@ def test_worked_strength_is_the_line_lists(numbers):
 
     w = numbers.worked_example()
     line = Catalog().line("R(56) 32-0", temperature=numbers.TEMPERATURE)
-    assert line.strength == pytest.approx(w["S"], rel=1e-9)
+    assert line.strength == pytest.approx(w["S"], rel=1e-9, abs=0)      # ~1e-18: the default abs would pass anything
     assert line.E_lower == pytest.approx(w["E_strength"], abs=1e-9)
     assert line.doppler_fwhm_MHz == pytest.approx(w["doppler_MHz"], rel=1e-12)
 

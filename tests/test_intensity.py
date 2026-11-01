@@ -14,7 +14,7 @@ def model():
 
 
 def test_strength_constant_matches_tellinghuisen():
-    assert S_UNIT == pytest.approx(108.862 * 3.8235e-21, rel=2e-4)  # eq. (3) times ln10·1000/N_A
+    assert S_UNIT == pytest.approx(108.862 * 3.8235e-21, rel=2e-4, abs=0)  # eq. (3) times ln10·1000/N_A
 
 
 @pytest.mark.parametrize("iso, even, odd", [("127I2", 15, 21), ("129I2", 28, 36), ("127I129I", 48, 48)])
@@ -49,10 +49,8 @@ def test_doppler_width_and_vapor_pressure():
 def test_line_list_and_cross_section_near_532_nm(model):
     lines = line_list(model, 295.0, 18787.0, 18790.0, S_min=1e-24)
     strongest = int(np.argmax(lines.S))
-    assert lines.label(strongest) in {"R(56) 32-0", "P(53) 32-0", "R(57) 32-0", "P(54) 32-0"} or lines.v_lower[strongest] == 0
-    grid = np.arange(18787.0, 18790.0, 0.0005)
+    assert lines.v_lower[strongest] == 0                                  # a band from v'' = 0, not a hot band
+    grid = np.arange(18786.9, 18790.1, 0.0005)                            # holds every line's whole profile
     sigma = cross_section(grid, lines, 295.0)
-    # integrating the cross section recovers the summed line strengths of lines well inside the window
-    inside = (lines.nu > 18787.2) & (lines.nu < 18789.8)
-    window = (grid > 18787.1) & (grid < 18789.9)
-    assert np.trapezoid(sigma[window], grid[window]) == pytest.approx(lines.S[inside].sum(), rel=0.05)
+    # integrating the cross section recovers the summed line strengths (abs=0: they are ~1e-18 cm/molecule)
+    assert np.trapezoid(sigma, grid) == pytest.approx(lines.S.sum(), rel=1e-9, abs=0)

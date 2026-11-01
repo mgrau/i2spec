@@ -18,6 +18,8 @@ import hashlib
 import json
 import math
 import os
+import warnings
+import zipfile
 
 import numpy as np
 
@@ -88,22 +90,15 @@ def _task(args):
 
 
 def _build(isotopologue, workers):
-    import multiprocessing as mp
-    from .intensity import _THREAD_VARS
+    from .intensity import _spawn_pool
     domain = model(isotopologue).info.domain
     tasks = [(isotopologue, "X", J) for J in range(domain.J_lower_max+1)]
     tasks += [(isotopologue, "B", J) for J in range(domain.J_lower_max+2)]
     n = workers or max(1, min(len(tasks), (os.cpu_count() or 2)-1))
-    main = __import__("__main__")
-    if n > 1 and getattr(main, "__file__", None):
-        saved = {k: os.environ.get(k) for k in _THREAD_VARS}
-        os.environ.update({k: "1" for k in _THREAD_VARS})
-        try:
-            with mp.get_context("spawn").Pool(n) as pool:
-                results = pool.map(_task, tasks, chunksize=2)
-        finally:
-            for k, v in saved.items():
-                os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+    pool = _spawn_pool(n)
+    if pool is not None:
+        with pool:
+            results = pool.map(_task, tasks, chunksize=2)
     else:
         results = [_task(t) for t in tasks]
     K = max(len(r[2]) for _, _, rows in results for r in rows)
@@ -131,19 +126,24 @@ class Preferred:
     """Whole-list positions and uncertainties of the model for one isotopologue, from its cached level table."""
 
     def __init__(self, isotopologue="127I2", workers=None, cache=True):
-        from .intensity import cache_dir, mark_used
+        from .intensity import cache_dir, mark_used, save_npz
         path = cache_dir()/f"preferred_{MODEL}_{isotopologue}_{_key(isotopologue)}.npz"
+        table = None
         if cache and path.exists():
-            mark_used(path)
-            z = np.load(path)
-            table = {k: z[k] for k in z.files}
-        else:
+            try:
+                mark_used(path)
+                with np.load(path) as z:
+                    table = {k: z[k] for k in z.files}
+            except (zipfile.BadZipFile, ValueError, OSError, KeyError, EOFError) as e:  # damaged: build it again
+                warnings.warn(f"rebuilding the unreadable cached level table {path} ({e})")
+                path.unlink(missing_ok=True)
+        if table is None:
             print(f"Solving every {isotopologue} level of the model once (a few minutes on 12 cores; cached in "
                   f"{path.parent}) ...", flush=True)
             table = _build(isotopologue, workers)
             if cache:
                 path.parent.mkdir(parents=True, exist_ok=True)
-                np.savez_compressed(path, **table)
+                save_npz(path, table, compressed=True)
         self.t = table
         self.isotopologue = isotopologue
 
@@ -166,13 +166,6 @@ class Preferred:
         """Wavenumbers (cm-1) of the lines, NaN where the model has no line."""
         iu, il, ok = self._index(branch, J, vu, vl)
         return np.where(ok, self.t["E_B"][iu]-self.t["E_X"][il], np.nan)
-
-    def lower_energies(self, J, vl):
-        """Lower-level term values above X(0, 0) (cm-1), NaN where the table has no level."""
-        J, vl = np.asarray(J), np.asarray(vl)
-        EX = self.t["E_X"]
-        ok = (vl >= 0) & (vl < EX.shape[0]) & (J >= 0) & (J < EX.shape[1])
-        return np.where(ok, EX[np.where(ok, vl, 0), np.where(ok, J, 0)]-EX[0, 0], np.nan)
 
     def uncertainties(self, branch, J, vu, vl, chunk=200_000):
         """(sigma_center MHz, status index 0/1/2, class index 0 precise/1 atlas/2 beyond), NaN/-1 where not held."""
@@ -228,7 +221,8 @@ def basis(status, cls, isotopologue="127I2"):
             f"of predicting a level from the data around it fitted to held-out measurements; {where}; {data}{iso}")
 
 
-def flags(status, cls):
+def flags(status):
+    """The flags the apps show for a line of this status code (Preferred.uncertainties)."""
     if int(status) >= BEYOND:
         return (OUTSIDE,)+((IDENTITY,) if int(status) > BEYOND else ())
     return (f"levels {STATUS[int(status)]}",)

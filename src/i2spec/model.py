@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from collections import OrderedDict
+
 import numpy as np
 
 from . import hfs_params
@@ -23,6 +25,10 @@ DEFAULT_GRIDS = {
             "B": dict(rmin=2.35, rmax=8.0, step=0.005, nlev=60)},
 }
 SOLVERS = {"bspline": BSplineSolver, "dvr": RadialSolver}
+#: Hyperfine level structures a model keeps, the least recently used dropped first. A pass over a line list a window
+#: of J at a time (webapp.hyperfine_patterns) uses a level again within about 500 others; keeping every level of
+#: a 127I129I list took about 1 GB.
+_HFS_LEVELS = 1024
 
 #: Smallest B-spline box that reproduces the full-box levels to under 1 kHz, per highest v needed.
 #: Solving every J on a box large enough for the most extreme level we ever use is wasteful: the
@@ -47,7 +53,7 @@ ADAPTIVE_GRIDS = {
           # level bound by more than 0.3 cm-1
           # Above the asymptote the box also holds continuum states outside the centrifugal barrier; nlev is
           # large enough that the resonances behind it (v' <= 77 at J' <= 96) survive the cut, and _far_levels
-          # keeps only the states localised inside the barrier.
+          # keeps only the states localized inside the barrier.
           (90, dict(rmin=2.35, rmax=40.0, h=0.01, order=10, nlev=260, mesh=((5.0, 0.02), (8.0, 0.05), (15.0, 0.1))))],
 }
 
@@ -55,7 +61,7 @@ ADAPTIVE_GRIDS = {
 def resonance_ladder(solver, potential, J, mu, mass_ratio, inside=0.9):
     """The levels of ``solver`` at J with the box states of the continuum removed: every state below the
     asymptote, and above it those with at least ``inside`` of their probability inside the centrifugal
-    barrier (quasi-bound resonances; their tunnelling widths are < 1e-8 MHz for the levels the Orsay atlas
+    barrier (quasi-bound resonances; their tunneling widths are < 1e-8 MHz for the levels the Orsay atlas
     Partie IV measured). v then counts physical levels, whatever the box puts between them."""
     E, psi = solver.wavefunctions(J)
     E = np.asarray(E, dtype=float)
@@ -100,7 +106,11 @@ class RovibronicModel:
         self.parameters = parameters
         self.solver = solver
         if parameters.startswith("research-"):
-            from .research import ResearchModel
+            from .research import ResearchModel, _entries, _entry
+            if _entry(parameters).get("kind") != "expanded":       # a core fit's potentials hold only its domain
+                whole = ", ".join(e["id"] for e in _entries() if e.get("kind") == "expanded")
+                raise ValueError(f"{parameters!r} is a core fit, whose potentials hold only its fitted domain; "
+                                 f"RovibronicModel needs potentials over the whole range: choose from {whole}")
             base = ResearchModel(parameters, isotopologue)._levels_x.potentials
         else:
             base = load_potentials(parameters)
@@ -111,7 +121,7 @@ class RovibronicModel:
         self.grids = {**DEFAULT_GRIDS[solver], **(grids or {})}
         self.states = {s: SOLVERS[solver](self.potentials[s], mu, mass_ratio=ratio, **self.grids[s]) for s in ("X", "B")}
         self._reference = None
-        self._hfs_levels: dict[tuple, list] = {}
+        self._hfs_levels: OrderedDict[tuple, list] = OrderedDict()
 
     def levels(self, state: str, J: int) -> np.ndarray:
         """Term values (cm⁻¹) of v = 0, 1, ... at J on the default grid."""
@@ -184,14 +194,19 @@ class RovibronicModel:
 
     def _hyperfine_levels(self, state, v, J, params, symmetry, spins):
         """hyperfine.level_structure of (state, v, J), kept for the other lines that share the level (the P
-        and R lines of a band, and every band from or to it). The key holds the parameters themselves, so
-        a level is reused only where it would come out the same."""
+        and R lines of a band, and every band from or to it; the last _HFS_LEVELS of them). The key holds the
+        parameters themselves, so a level is reused only where it would come out the same."""
         key = (state, v, J, symmetry, tuple(sorted(spins.items())),
                tuple(params(Jn) for Jn in range(J - spins["dJ"], J + spins["dJ"] + 1, 2) if Jn >= 0))
-        if key not in self._hfs_levels:
+        levels = self._hfs_levels.get(key)
+        if levels is None:
             energy = lambda Jn: self.energy(state, v, Jn) * MHZ_PER_CM          # noqa: E731
-            self._hfs_levels[key] = level_structure(J, params, energy, symmetry=symmetry, **spins)
-        return self._hfs_levels[key]
+            levels = self._hfs_levels[key] = level_structure(J, params, energy, symmetry=symmetry, **spins)
+            if len(self._hfs_levels) > _HFS_LEVELS:
+                self._hfs_levels.popitem(last=False)
+        else:
+            self._hfs_levels.move_to_end(key)
+        return levels
 
 
 def _upper_J(J_lower: int, branch: str) -> int:

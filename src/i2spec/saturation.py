@@ -34,8 +34,8 @@ from math import log, sqrt
 
 import numpy as np
 
-from .constants import ATOMIC_MASS, ISOTOPOLOGUES, MHZ_PER_CM
-from .spectrum import doppler_fwhm
+from .constants import MHZ_PER_CM
+from .spectrum import _KB, _U, doppler_fwhm, molecular_mass
 
 #: Crossovers are dropped beyond this multiple of the Doppler FWHM, where the velocity class the
 #: crossover needs holds exp(-ln2 · reach²) of the molecules: 3 leaves 2e-4 of the peak density.
@@ -104,12 +104,11 @@ def resonances(components, doppler_width, *, exponent=2.0, lambda_weight=1.0, re
 
 def doppler_width(isotopologue, nu0, T):
     """Doppler FWHM in MHz at line frequency nu0 (MHz) and temperature T (K)."""
-    a, b = ISOTOPOLOGUES[isotopologue]
-    return float(doppler_fwhm(nu0 / MHZ_PER_CM, T, ATOMIC_MASS[a] + ATOMIC_MASS[b]) * MHZ_PER_CM)
+    return float(doppler_fwhm(nu0 / MHZ_PER_CM, T, molecular_mass(isotopologue)) * MHZ_PER_CM)
 
 
 def line_resonances(model, v_upper, v_lower, J_lower, branch, T, *, dJ=2, **options):
-    """(nu0, resonances) of one B-X line at temperature T (K); nu0 is the line centre in MHz."""
+    """(nu0, resonances) of one B-X line at temperature T (K); nu0 is the line center in MHz."""
     nu0, components = model.hyperfine_components(v_upper, v_lower, J_lower, branch, dJ=dJ)
     return nu0, resonances(components, doppler_width(model.isotopologue, nu0, T), **options)
 
@@ -128,7 +127,7 @@ def lineshape(x, fwhm, *, harmonic=0, modulation=0.0, points=256):
 
     For m ≪ FWHM this tends to the n-th derivative of the Lorentzian. The BIPM mise en pratique
     defines the recommended iodine frequencies for third-harmonic detection (n = 3) with about
-    1 MHz peak-to-peak modulation; the 3f signal crosses zero at the centre of each resonance,
+    1 MHz peak-to-peak modulation; the 3f signal crosses zero at the center of each resonance,
     which is what a laser locks to.
     """
     x = np.asarray(x, dtype=float)
@@ -172,9 +171,8 @@ def transit_time_width(diameter_mm, T, isotopologue="127I2"):
     """Transit-time broadening FWHM in MHz for a beam of the given diameter (Demtröder §3.4).
 
     Γ_tt = 2 √(2 ln2) · v̄ / (π d) for a Gaussian beam of 1/e² diameter d; it is the floor on the
-    width of a Doppler-free resonance in a cell, a few tens of kHz for a millimetre beam.
+    width of a Doppler-free resonance in a cell, a few tens of kHz for a millimeter beam.
     """
-    a, b = ISOTOPOLOGUES[isotopologue]
-    mass = (ATOMIC_MASS[a] + ATOMIC_MASS[b]) * 1.66053906892e-27
-    speed = sqrt(8 * 1.380649e-23 * T / (np.pi * mass))
+    mass = molecular_mass(isotopologue) * _U
+    speed = sqrt(8 * _KB * T / (np.pi * mass))
     return 2 * sqrt(2 * log(2)) * speed / (np.pi * diameter_mm * 1e-3) * 1e-6

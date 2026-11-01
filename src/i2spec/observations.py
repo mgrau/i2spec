@@ -63,7 +63,7 @@ def component_rank(label):
 @dataclass(frozen=True)
 class Observation:
     """kind "frequency": f(line, component). kind "interval": f(line, component) − f(ref_line, ref_component),
-    where ref_line defaults to line. A missing component means the hyperfine-free line centre."""
+    where ref_line defaults to line. A missing component means the hyperfine-free line center."""
 
     line: Line
     component: str | None
@@ -281,8 +281,8 @@ def _overlaps(datasets):
                 if relation != "superseded":
                     # every row of the source on each step, so a quantity it measured twice is cited twice
                     ends = {frozenset(_ends(by_id[sid].observations[j])) for j in path}
-                    for j, o in enumerate(by_id[sid].observations):
-                        if frozenset(_ends(o)) in ends:
+                    for j, other in enumerate(by_id[sid].observations):
+                        if frozenset(_ends(other)) in ends:
                             cited[(sid, j)].add(d.id)
                             if (d.id, k) in merged:
                                 into.setdefault((d.id, k), set()).add((sid, j))

@@ -117,8 +117,7 @@ def _init(states_constants):
     curves, values = potential()
     b = SolverPotential(curves['B'], values['B'])
     limit = float(b(np.array([300.]))[0])
-    overrides = {s: c for s, c in states_constants.items()}
-    _WORKER['radial'] = so.Radial(b, curves['B'].joins, perturber_curves(limit, overrides))
+    _WORKER['radial'] = so.Radial(b, curves['B'].joins, perturber_curves(limit, states_constants))
 
 
 def perturber_curves(limit, constants):
@@ -137,10 +136,10 @@ def fill_terms(levels, constants, workers=16, cache=None):
     """Cache S2 terms for every (v, J) in `levels` and every state with the given curve constants."""
     cache = Path(cache or CACHE)
     cache.mkdir(parents=True, exist_ok=True)
-    todo = []
+    todo, stored = [], {}
     for state, c in constants.items():
         path = cache/f'{_key(state, c)}.pkl'
-        have = pickle.loads(path.read_bytes()) if path.exists() else {}
+        have = stored[state] = pickle.loads(path.read_bytes()) if path.exists() else {}
         missing = sorted({lv for lv in levels if lv not in have})
         byJ = {}
         for v, J in missing:
@@ -156,15 +155,12 @@ def fill_terms(levels, constants, workers=16, cache=None):
             new.setdefault(state, {}).update(r)
         for state, r in new.items():
             path = cache/f'{_key(state, constants[state])}.pkl'
-            have = pickle.loads(path.read_bytes()) if path.exists() else {}
+            have = pickle.loads(path.read_bytes()) if path.exists() else {}     # another run may have added levels
             have.update(r)
             path.write_bytes(pickle.dumps(have))
+            stored[state] = have
         print(f'S2 terms: {len(todo)} tasks in {time.time()-t:.0f} s', flush=True)
-    out = {}
-    for state, c in constants.items():
-        have = pickle.loads((cache/f'{_key(state, c)}.pkl').read_bytes())
-        out[state] = {lv: have[lv] for lv in levels}
-    return out
+    return {state: {lv: stored[state][lv] for lv in levels} for state in constants}
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -264,17 +260,17 @@ class Model:
             ml, wl, wg = self.levels.moments(v, J, limit=True)
             M = np.zeros((4, self.nb))
             S0, T = np.zeros(4), np.zeros((4, len(TRIG)))
-            i = 0
+            col = 0                         # the first column of parameter p's background coefficients
             for k, p in enumerate(PARAMS):
                 n = self.orders[p]
                 if p in self.asymptotes:
-                    M[k, i:i+n] = ml[:n]
+                    M[k, col:col+n] = ml[:n]
                     S0[k] += self.asymptotes[p]*wl
                     T[k, 6] = wg
                 else:
-                    M[k, i:i+n] = m[:n]
+                    M[k, col:col+n] = m[:n]
                     T[k, 6+k] = wg          # the curvature past the knot, of eqQ's gamma shape (kC, kd, kdelta)
-                i += n
+                col += n
             if self.use_s2:
                 for state, t in self.terms.items():
                     if 's' in t[(v, J)]:
@@ -326,6 +322,11 @@ def line_offsets(levels, line, constants_by_J):
     s = level_structure(Jup, params, lambda j: (levels.energy(v, j)-E0)*MHZ_PER_CM, symmetry='u', dJ=2)
     comps = line_components(s, x_structure(line.v_lower, line.J_lower), Jup, line.J_lower)
     return {component_rank(c.label): c.offset for c in comps if c.label}
+
+
+def exact_offsets(levels, line, constants_fn):
+    """{rank: offset MHz} of a line with its B constants from constants_fn(v, J) at J' and J' +- 2."""
+    return line_offsets(levels, line, {j: constants_fn(line.v_upper, j) for j in neighbours(upper_J(line))})
 
 
 def linearize(levels, line, constants_fn):
@@ -420,8 +421,7 @@ def score(rows, params, constants_fn, levels):
     for r in rows:
         line = r['line']
         if line not in cache:
-            cache[line] = line_offsets(levels, line, {j: constants_fn(line.v_upper, j)
-                                                      for j in neighbours(upper_J(line))})
+            cache[line] = exact_offsets(levels, line, constants_fn)
         o = cache[line]
         key = (f"core {'future' if r['future'] else 'training'}" if r['inside'] else f"intervals v'{r['line'].v_upper}")
         table.setdefault(key, []).append(o[r['rank']]-o[r['ref_rank']]-r['observed'])
@@ -469,7 +469,7 @@ def anchored(rows, levels):
     for r in rows:
         line = r['line']
         if line not in cache:
-            cache[line] = line_offsets(levels, line, {j: fn(line.v_upper, j) for j in neighbours(upper_J(line))})
+            cache[line] = exact_offsets(levels, line, fn)
         o = cache[line]
         out.append(dict(r, observed=o[r['rank']]-o[r['ref_rank']], sigma=.001))
     return out
@@ -530,8 +530,7 @@ def fit(model, rows, params, theta, fit_theta, holdout=(), max_outer=5, anchor=T
 
 def linearize_offsets(model, linear, line, b, theta):
     """Exact offsets of a line at (b, theta), for the convergence test of the linearization."""
-    Js = linear[line][0]
-    o = line_offsets(model.levels, line, {j: model.constants(b, theta, line.v_upper, j) for j in Js})
+    o = exact_offsets(model.levels, line, lambda v, j: model.constants(b, theta, v, j))
     return np.array([o[r] for r in linear[line][2]])
 
 

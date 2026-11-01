@@ -11,7 +11,7 @@ hyperfine model's error) and a hyperfine-removal floor (5 kHz; 20 kHz at X v'' >
 
 Atlases: Salami & Ross 2005 and the APO cell, lines with sigma <= 20 MHz and depth >= 0.15, each on a scale
 calibrated against the precision rows of the same lines (atlas - precision = a + b (nu - 17000 cm-1)/1000, a
-3-sigma-clipped weighted fit; refitted on the training rows alone in `core_stage`). Orsay part I (+23.85 ppb) and
+3-sigma-clipped weighted fit; refitted on the core training rows alone in `stages`). Orsay part I (+23.85 ppb) and
 Partie IV (+200.8 ppb, unblended lines), sigma = hypot(printed precision, 20 / 45 MHz). Martin et al. 1986 X levels
 at J = 0, 20, ... (to 120 for v'' <= 85, 60 to 96, 20 above; sigma 0.005-0.02 cm-1), and Martin et al. 1983's
 v'' 93, 97, 102, 103, 106 on the 1986 origin (`martin1983_rows`).
@@ -32,10 +32,11 @@ from .. import hfs_params as hp
 from ..constants import MHZ_PER_CM
 from ..hyperfine import HyperfineParameters, level_structure, line_components
 from ..observations import Line, component_rank
-from . import core_hyperfine, hyperfine_beyond as hb, x_hyperfine as xh
+from . import core_hyperfine, hyperfine_beyond as hb, hyperfine_rows, x_hyperfine as xh
+from .continuation import DATA_V
 from . import rows as training
 from .data import fit_datasets
-from .rows import Rows, line_levels, merge
+from .rows import CORE_V, EXCLUSION, Rows, line_levels, merge
 
 ATLAS = training.ROOT / "data" / "atlas_lines"
 EMISSION_SETS = ("matyugin2012", "nesterenko2019")
@@ -47,8 +48,6 @@ ORSAY_FLOOR = {"orsay1": 20., "orsay4": 45.}
 MARTIN_DISSOC_V = 90
 MARTIN1983_ORIGIN = .0056          # cm-1, Martin 1986 - 1983 at their 11 common levels
 MARTIN1983_LEVELS = (93, 97, 102, 103, 106)
-CORE_V = dict(X=17, B=43)
-EXCLUSION = "127I2 P(13) 43-0"
 IDENTITY = ("source", "kind", "isotopologue", "branch", "J_lower", "v_upper", "v_lower",
             "isotopologue2", "branch2", "J_lower2", "v_upper2", "v_lower2", "state", "v", "J")
 
@@ -105,13 +104,14 @@ def precision_rows(offset, center, datasets=None, raw=None):
 
 def atlas_raw(name):
     rows = []
-    for r in csv.DictReader(open(ATLAS/f"{name}.csv", newline="", encoding="utf-8")):
-        sigma = float(r["uncertainty"])*MHZ_PER_CM
-        depth = float(r["note"].split()[1].rstrip(";"))
-        if sigma > ATLAS_MAX_SIGMA or depth < ATLAS_MIN_DEPTH:
-            continue
-        ln = Line.parse(r["line"])
-        rows.append((ln.branch, ln.J_lower, ln.v_upper, ln.v_lower, float(r["value"])*MHZ_PER_CM, sigma))
+    with open(ATLAS/f"{name}.csv", newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            sigma = float(r["uncertainty"])*MHZ_PER_CM
+            depth = float(r["note"].split()[1].rstrip(";"))
+            if sigma > ATLAS_MAX_SIGMA or depth < ATLAS_MIN_DEPTH:
+                continue
+            ln = Line.parse(r["line"])
+            rows.append((ln.branch, ln.J_lower, ln.v_upper, ln.v_lower, float(r["value"])*MHZ_PER_CM, sigma))
     return rows
 
 
@@ -128,7 +128,7 @@ def calibrate(atlas, precision):
             w = 1/vals[:, 1]**2
             d.append(val-np.sum(w*vals[:, 0])/np.sum(w))
             s.append(np.hypot(sig, 1/np.sqrt(np.sum(w))))
-            nu.append(val/29979.2458)
+            nu.append(val/MHZ_PER_CM)
     d, s, nu = map(np.array, (d, s, nu))
     w = 1/s
     x = (nu-17000)/1000
@@ -148,7 +148,7 @@ def calibrate(atlas, precision):
 
 
 def calibrated(val, cal):
-    x = (val/29979.2458-17000)/1000
+    x = (val/MHZ_PER_CM-17000)/1000
     return val-cal["offset_MHz"]-cal["slope_MHz_per_1000cm"]*x
 
 
@@ -162,28 +162,30 @@ def orsay_rows(name):
     fname = {"orsay1": "orsay1982_part1_assigned.csv", "orsay4": "orsay1983_part4_assigned.csv"}[name]
     scale = 1+ORSAY_SCALE_PPB[name]*1e-9
     out = []
-    for r in csv.DictReader(open(ATLAS/fname, newline="", encoding="utf-8")):
-        if r.get("n_assignments", "1") != "1":
-            continue
-        eps = float(r["eps_mk"])*1e-3*MHZ_PER_CM if r["eps_mk"] else 150.
-        out.append((r["branch"], int(r["J_lower"]), int(r["v_upper"]), int(r["v_lower"]),
-                    float(r["sigma_cm1"])*scale*MHZ_PER_CM, float(np.hypot(eps, ORSAY_FLOOR[name])), eps))
+    with open(ATLAS/fname, newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if r.get("n_assignments", "1") != "1":
+                continue
+            eps = float(r["eps_mk"])*1e-3*MHZ_PER_CM if r["eps_mk"] else 150.
+            out.append((r["branch"], int(r["J_lower"]), int(r["v_upper"]), int(r["v_lower"]),
+                        float(r["sigma_cm1"])*scale*MHZ_PER_CM, float(np.hypot(eps, ORSAY_FLOOR[name])), eps))
     return out
 
 
 def martin1986_rows():
     out = []
-    for r in csv.DictReader(open(training.ROOT/"data/x_levels/martin1986/data.csv")):
-        f = lambda k, s=1.: float(r[k])*s if r.get(k) else 0.      # noqa: E731
-        v = int(r["v"])
-        G, B, D, H, L, M = (f("G"), f("B_x10", .1), f("D_x1e8", 1e-8), -f("negH_x1e14", 1e-14),
-                            -f("negL_x1e20", 1e-20), -f("negM_x1e23", 1e-23))
-        Jmax = 120 if v <= 85 else 60 if v <= 96 else 20
-        for J in range(0, Jmax+1, 20):
-            x = J*(J+1.)
-            E = G+B*x-D*x**2+H*x**3+L*x**4+M*x**5
-            s = .005 if J <= 80 else .01 if J <= 100 else .02
-            out.append((v, J, E*MHZ_PER_CM, s*MHZ_PER_CM))
+    with open(training.ROOT/"data/x_levels/martin1986/data.csv") as handle:
+        for r in csv.DictReader(handle):
+            f = lambda k, s=1.: float(r[k])*s if r.get(k) else 0.      # noqa: E731
+            v = int(r["v"])
+            G, B, D, H, L, M = (f("G"), f("B_x10", .1), f("D_x1e8", 1e-8), -f("negH_x1e14", 1e-14),
+                                -f("negL_x1e20", 1e-20), -f("negM_x1e23", 1e-23))
+            Jmax = 120 if v <= 85 else 60 if v <= 96 else 20
+            for J in range(0, Jmax+1, 20):
+                x = J*(J+1.)
+                E = G+B*x-D*x**2+H*x**3+L*x**4+M*x**5
+                s = .005 if J <= 80 else .01 if J <= 100 else .02
+                out.append((v, J, E*MHZ_PER_CM, s*MHZ_PER_CM))
     return out
 
 
@@ -210,12 +212,12 @@ def build(offset, center, datasets=None, raw=None):
         for b, J, vu, vl, val, sig in raw_rows:
             v = calibrated(val, cal)
             recs.append(dict(blank, source=name, kind="abs", category=cat, branch=b, J_lower=J, v_upper=vu, v_lower=vl,
-                             value=v, sigma=sig, sigma_stated=sig, nu=v/29979.2458,
+                             value=v, sigma=sig, sigma_stated=sig, nu=v/MHZ_PER_CM,
                              levels=merge(line_levels("127I2", b, J, vu, vl))))
     for cat, name in (("orsay1", "orsay1982_part1"), ("orsay4", "orsay1983_part4")):
         for b, J, vu, vl, val, sig, eps in orsay_rows(cat):
             recs.append(dict(blank, source=name, kind="abs", category=cat, branch=b, J_lower=J, v_upper=vu, v_lower=vl,
-                             value=val, sigma=sig, sigma_stated=eps, nu=val/29979.2458,
+                             value=val, sigma=sig, sigma_stated=eps, nu=val/MHZ_PER_CM,
                              levels=merge(line_levels("127I2", b, J, vu, vl))))
     for v, J, E, s in martin1986_rows():
         recs.append(dict(blank, source="martin1986", kind="level",
@@ -230,18 +232,20 @@ def martin1983_rows(rows):
     0 and 20; sigma 0.005 cm-1, or the printed 1-sigma T if larger), on the 1986 origin."""
     template = rows.record(int(np.flatnonzero(rows.source == "martin1986")[0]))
     out = []
-    for r in csv.DictReader(open(training.ROOT/"data/x_levels/martin1983/data.csv")):
-        v = int(r["v"])
-        if v not in MARTIN1983_LEVELS:
-            continue
-        T, B = float(r["T"])+MARTIN1983_ORIGIN, float(r["B"])
-        D, H = float(r["D_x1e7"] or 0)*1e-7, float(r["H_x1e12"] or 0)*1e-12
-        s = max(.005, float(r["T_unc"] or 0)/2)*MHZ_PER_CM
-        for J in range(0, (60 if v <= 96 else 20)+1, 20):
-            x = J*(J+1.)
-            out.append(dict(template, id=f"martin1983:{len(out):05d}", source="martin1983", category="martin_dissoc",
-                            v=v, J=J, value=(T+B*x-D*x*x+H*x**3)*MHZ_PER_CM, sigma=s, sigma_stated=s, new=False,
-                            levels=merge([(("127I2", "X", v, J), 1.), (("127I2", "X", 0, 0), -1.)])))
+    with open(training.ROOT/"data/x_levels/martin1983/data.csv") as f:
+        for r in csv.DictReader(f):
+            v = int(r["v"])
+            if v not in MARTIN1983_LEVELS:
+                continue
+            T, B = float(r["T"])+MARTIN1983_ORIGIN, float(r["B"])
+            D, H = float(r["D_x1e7"] or 0)*1e-7, float(r["H_x1e12"] or 0)*1e-12
+            s = max(.005, float(r["T_unc"] or 0)/2)*MHZ_PER_CM
+            for J in range(0, (60 if v <= 96 else 20)+1, 20):
+                x = J*(J+1.)
+                out.append(dict(template, id=f"martin1983:{len(out):05d}", source="martin1983",
+                                category="martin_dissoc", v=v, J=J, value=(T+B*x-D*x*x+H*x**3)*MHZ_PER_CM, sigma=s,
+                                sigma_stated=s, new=False,
+                                levels=merge([(("127I2", "X", v, J), 1.), (("127I2", "X", 0, 0), -1.)])))
     cols = {k: np.concatenate([a, np.array([o[k] for o in out], dtype=a.dtype)]) for k, a in rows.cols.items()}
     return Rows(cols, list(rows.levels)+[o["levels"] for o in out])
 
@@ -283,7 +287,7 @@ def stages(rows, calibration):
     precision = [rows.record(i) for i in np.flatnonzero(core & train_mask & np.isin(rows.category, training.PRECISION))]
     rows, cal = recalibrate(rows, calibration, precision)
     cont = martin1983_rows(rows)
-    top = np.array([all(k[2] <= dict(X=108, B=80)[k[1]] for k, _ in lv) for lv in cont.levels])
+    top = np.array([all(k[2] <= DATA_V[k[1]] for k, _ in lv) for lv in cont.levels])
     return (rows[core & train_mask], rows[core & ~train_mask], cont[top & ~cont.new.astype(bool)],
             cont[cont.new.astype(bool)], cal)
 
@@ -357,7 +361,8 @@ class OwnHyperfine:
 
 def per_line_fit(own, model, line, rows):
     """B constants of `line` (array per J of J', J'+-2) fitted to its own intervals: one shift of the four
-    constants shared by the three J values, by linearized least squares (twice)."""
+    constants shared by the three J values, by linearized least squares (repeated until the step is below 1e-4,
+    at most three times)."""
     fn = lambda v, J: model.constants(own.b, own.theta, v, J)       # noqa: E731
     shift = np.zeros(4)
     for _ in range(3):
@@ -440,9 +445,14 @@ def beyond_offsets(own, lines):
             continue
         e = max(spread.values())                  # conservative: the largest component shift
         if ln.v_upper > CORE_V["B"]:
-            near = [d for k, err in model_error.items() if abs(k.v_upper-ln.v_upper) <= 3 for d in err]
-            e = float(np.hypot(e, np.sqrt(np.mean(np.square(near)))))
-            report[str(ln)]["b_model_rms_MHz"] = float(np.sqrt(np.mean(np.square(near))))
+            # the per-line fits of B v' within 3; with none there, those of the nearest v' that has any
+            if not model_error:
+                raise ValueError(f"{ln}: no per-line fit sets the B model's error")
+            gap = max(3, min(abs(k.v_upper-ln.v_upper) for k in model_error))
+            near = [d for k, err in model_error.items() if abs(k.v_upper-ln.v_upper) <= gap for d in err]
+            rms = float(np.sqrt(np.mean(np.square(near))))
+            e = float(np.hypot(e, rms))
+            report[str(ln)]["b_model_rms_MHz"] = rms
         extra[ln] = e
     return table, extra, report
 
@@ -465,16 +475,11 @@ def core_offsets(lines, spec=None, theta=None):
     curves = {s: Curve(s, config, spec["values"][s]) for s in ("X", "B")}
     inside = sorted({ln for ln in lines if ln.isotopologue == "127I2" and ln.v_upper <= CORE_V["B"]
                      and ln.v_lower <= CORE_V["X"]}, key=str)
-    records = [r for r in hyperfine_rows_release() if r["inside"]]
+    records = [r for r in hyperfine_rows.release()[0] if r["inside"]]
     energies, means = core_hyperfine.moments(curves, spec["values"], [r["line"] for r in records]+inside)
     problem = core_hyperfine.Problem(energies, means, records, extra_lines=inside)
     theta = core_hyperfine.release_coefficients(spec, problem.names) if theta is None else theta
     return problem.evaluate(np.asarray(theta, float))[2]
-
-
-def hyperfine_rows_release():
-    from . import hyperfine_rows
-    return hyperfine_rows.release()[0]
 
 
 def release_offsets(lines, beyond=True, cache=None):

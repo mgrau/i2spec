@@ -29,7 +29,7 @@ def test_frozen_references_replay(models, iso):
     assert models[iso].verify()["passed"]
 
 
-def test_the_isotope_shift_reproduces_the_cipm_lines():
+def test_the_isotope_shift_reproduces_the_cipm_lines(models):
     ext = _read(_entry("i2spec"), "isotopologues.json")
     shift = ext["isotope_shift"]
     assert shift["power"] == 5 and len(shift["coefficients"]) == 2
@@ -37,7 +37,7 @@ def test_the_isotope_shift_reproduces_the_cipm_lines():
     assert shift["selection"][str(shift["power"])]["loo_rms_MHz"] == min(f["loo_rms_MHz"] for f in shift["selection"].values())
     assert shift["floor_MHz"] < 0.1
     # the 633 nm isotope shift: 129I2 P(54) 8-4 a28 is 42.99(4) MHz below 127I2 R(127) 11-5 a16 (bipm2003a)
-    i127, i129 = ResearchModel("i2spec"), ResearchModel("i2spec", "129I2")
+    i127, i129 = models["127I2"], models["129I2"]
     d = i129.frequency("P(54) 8-4", "a28")-i127.frequency("R(127) 11-5", "a16")
     sigma = np.hypot(i129.uncertainty("P(54) 8-4", "a28").sigma_MHz, i127.uncertainty("R(127) 11-5", "a16").sigma_MHz)
     assert abs(d-(-42.99)) < 3*sigma

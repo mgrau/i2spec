@@ -1,13 +1,10 @@
 """The fit's hyperfine beyond the core: the second-order engine's physics, and the release's tables."""
-import json
-
 import numpy as np
 import pytest
 
 from i2spec.constants import HBAR2_2U, MHZ_PER_CM, reduced_mass
 from i2spec.fit import hyperfine_beyond as hb, hyperfine_rows, second_order as so, x_hyperfine as xh
 from i2spec.hyperfine import _coefficient_terms, allowed_spins
-from i2spec.research import _entry, _read
 
 RESULT = dict(u=42.32383417447296, g=30., gamma=59.59378708522672)      # the release's out-of-core terms
 
@@ -54,11 +51,6 @@ def test_projection_equals_the_closed_forms(name):
 def test_frozen_hyperfine_rows_match_the_builders_counts():
     intervals, constants = hyperfine_rows.release()
     assert (len(intervals), sum(r["inside"] for r in intervals), len(constants)) == (1426, 1151, 280)
-
-
-@pytest.fixture(scope="module")
-def table():
-    return _read(_entry("balanced_expanded"), "hyperfine.json")
 
 
 def test_b_constants_at_three_levels_are_the_release_table(table):

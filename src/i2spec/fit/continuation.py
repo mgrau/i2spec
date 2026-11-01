@@ -34,10 +34,10 @@ from .core import FLOORS, release_spec as core_spec, weights
 from .curves import Config, Curve, long_range
 from .levels import Levels
 from .optimize import gauss_newton, marquardt
+from .rows import CORE_V
 
 ROOT = Path(__file__).resolve().parents[3]
 RELEASE = Path(os.environ.get("I2SPEC_FIT_CONTINUATION") or ROOT / "src" / "i2spec" / "data" / "research" / "20261020" / "balanced_expanded")
-CORE_V = dict(X=17, B=43)
 CORE_J = dict(X=200, B=201)
 DATA_V = dict(X=108, B=80)
 OFFSETS = ("orsay4",)

@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 
-from i2spec.fit import continuation, uncertainty
+from i2spec.fit import continuation, levels, uncertainty
 from i2spec.research import _entry, _read
 
 
@@ -34,7 +34,9 @@ def test_coverage_tables(release, covariance):
 
 
 @pytest.mark.slow
-def test_model_error_and_hyperfine_sigma(release):
+def test_model_error_and_hyperfine_sigma(release, monkeypatch):
+    # the release this reproduces predates the barrier rule on short grids
+    monkeypatch.setattr(levels, "ABOVE_LIMIT_ON_LONG_GRID", False)
     record, _ = uncertainty.build()
     for key, ref in release["model_error"].items():
         for k, z in ref.items():

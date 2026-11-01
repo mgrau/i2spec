@@ -233,7 +233,7 @@ def _rows(path):
 def perturber_constants():
     """{name: dict(C5, C6 (cm-1 A^5, A^6), De (cm-1), re (A), we (cm-1), and the experimental De, re, we where
     de Jong et al. print them)} from data/theory/saute1982 and dejong1997."""
-    saute ={r["chen2005"]: r for r in _rows(DATA/"theory/saute1982/data.csv") if r["chen2005"]}
+    saute = {r["chen2005"]: r for r in _rows(DATA/"theory/saute1982/data.csv") if r["chen2005"]}
     dejong = {(r["state"], r["parentage"]): r for r in _rows(DATA/"theory/dejong1997/data.csv")
               if r["limit"] == "P3/2+P1/2"}
     ev = 8065.54393734921       # cm-1 per eV (CODATA 2018)
@@ -344,6 +344,7 @@ class Radial:
         x = solve_banded((self.order-1, self.order-1), self._banded(A), b)
         g = b.T@x/MHZ_PER_CM
         return {(k, kk): g[min(k, 1), min(kk, 1)] for k in (0, 1, 2) for kk in (0, 1, 2)}
+
 
 def f_factor(k, omega, eps, dJ, value):
     """C05 eqs 5 and 9 without the vibrational overlap: (-1)^W' C_k<V^k> / 3j, times the Omega-doubling factor."""

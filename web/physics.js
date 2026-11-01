@@ -79,12 +79,12 @@ export const strengthAt = (line, qT, T) => line.s0 * Math.exp(-C2 * line.el / T)
 export const dopplerFWHM = (nu, T, iso) =>
   nu * Math.sqrt(8 * KB * T * Math.LN2 / (MASS[iso] * U * C_LIGHT ** 2));
 
-/** I₂ vapour pressure over the solid, in Pa (Tellinghuisen 2011 eq. 8). */
-export const vapourPressure = T =>
+/** I₂ vapor pressure over the solid, in Pa (Tellinghuisen 2011 eq. 8). */
+export const vaporPressure = T =>
   Math.pow(10, 12.1891 - 0.001301 * T - 0.3523 * Math.log10(T) - 3410.71 / T) * TORR;
 
 /** I₂ molecules per cm³ in a cell whose pressure is set by its cold finger. */
-export const numberDensity = (Tcold, Tcell) => vapourPressure(Tcold) / (KB * Tcell) * 1e-6;
+export const numberDensity = (Tcold, Tcell) => vaporPressure(Tcold) / (KB * Tcell) * 1e-6;
 
 // --- lasers and their harmonics -------------------------------------------------------------------
 

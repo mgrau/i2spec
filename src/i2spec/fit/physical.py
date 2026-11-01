@@ -25,7 +25,7 @@ import numpy as np
 from numpy.polynomial import Chebyshev, Polynomial
 
 from ..constants import HBAR2_2U, reduced_mass
-from .curves import Curve
+from .curves import Curve, long_range
 
 NATIVE = ("logRe", "c0", "c1", "c2")
 PHYSICAL = ("Be", "omega_e", "alpha_e", "omega_e_x_e")
@@ -122,9 +122,8 @@ def expansion(curve: Curve, values, order=6):
     if cfg.mapped_x and s == "X":
         z = (z-.2)/.6
     yp = (R**p-re**p)/(R**p+re**p)
-    from .curves import long_range
     C = long_range(s, values)
-    u = sum((R**n).__rtruediv__(c) for n, c in C.items())
+    u = sum((R**n).__rtruediv__(c) for n, c in C.items())       # c is a numpy scalar: keep numpy out of the jets
     ue = float(sum(c/re**n for n, c in C.items()))
     exponent = _chebval(z, [values[f"c{i}"] for i in range(cfg.order(s))])
     beta = y*float(np.log(2*de/ue))+(1-y)*exponent
@@ -167,7 +166,7 @@ def to_physical(curve, values):
 
 def from_physical(curve, physical, start, tol=1e-14, iterations=30):
     """Native values whose mechanical constants are `physical`'s (Newton from `start`, the native values to begin
-    with; columns by central differences), to `tol` relative.""" 
+    with; columns by central differences), to `tol` relative."""
     x = np.array([start[k] for k in NATIVE], float)
     target = np.array([physical[k] for k in PHYSICAL])
     base = {k: z for k, z in physical.items() if k not in PHYSICAL}

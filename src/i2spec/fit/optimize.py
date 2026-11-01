@@ -28,7 +28,7 @@ def damped_gauss_newton(prob, x, lower, upper, max_nfev=1000, ftol=1e-10, gtol=1
             break
         U, s, Vt = np.linalg.svd(J[:, free]/norms[free], full_matrices=False)
         ub = U.T@r
-        old, improved, backtracking = c, False, False
+        old, improved = c, False
         while nfev < max_nfev and lam < 1e12:
             step = np.zeros_like(x)
             step[free] = -(Vt.T@(s/(s*s+lam)*ub))/norms[free]
@@ -48,7 +48,6 @@ def damped_gauss_newton(prob, x, lower, upper, max_nfev=1000, ftol=1e-10, gtol=1
                     if cn >= c:
                         rejected += 1
                         lam *= 10
-                        backtracking = True
                         continue
                 predicted = float(-(gradient@(trial-x))*2-np.linalg.norm(J@(trial-x))**2)
                 rho = (c-cn)/predicted if predicted > 0 else 0.
@@ -59,7 +58,6 @@ def damped_gauss_newton(prob, x, lower, upper, max_nfev=1000, ftol=1e-10, gtol=1
                 break
             rejected += 1
             lam *= 10
-            backtracking = True
         if not improved:
             status, message = 3, "No improving damped step found"
             break

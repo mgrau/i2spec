@@ -36,7 +36,7 @@ def test_crossovers_from_indices_match_the_eigenstates(model, vu, vl, J, branch)
     total = sum(c.strength for c in main)
     weak = webapp.weak_links(comps, main, total)
     assert weak, "a low-J line has weak components above the threshold"
-    # the same components with their own eigenstate labels, normalised as the export is
+    # the same components with their own eigenstate labels, normalized as the export is
     chosen = [c for c in comps if not c.label and c.strength >= webapp.WEAK_FRACTION * total]
     assert len(chosen) == len(weak)
     true = [comp(c.offset, c.strength / total, c.upper_level, c.lower_level) for c in main + chosen]

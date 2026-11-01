@@ -59,9 +59,9 @@ def test_crossovers_sit_at_midpoints_of_level_sharing_pairs(line):
 def test_main_components_never_produce_crossovers(line):
     """Main (ΔF = ΔJ) components take one upper and one lower level each, so no pair shares one."""
     _, components, width = line
-    labelled = [r for r in resonances(components, width, threshold=0.0)
-                if r.kind == "crossover" and r.labels[0] and r.labels[1]]
-    assert labelled == []
+    labeled = [r for r in resonances(components, width, threshold=0.0)
+               if r.kind == "crossover" and r.labels[0] and r.labels[1]]
+    assert labeled == []
 
 
 def test_crossovers_need_a_populated_velocity_class(line):
@@ -101,7 +101,7 @@ def test_lineshape_is_a_lorentzian_without_modulation():
     assert lineshape(x, 1.0) == pytest.approx([1.0, 0.5, 0.5, 1 / 101])
 
 
-def test_third_harmonic_is_odd_and_crosses_zero_at_the_centre():
+def test_third_harmonic_is_odd_and_crosses_zero_at_the_center():
     x = np.linspace(-6, 6, 241)
     s = lineshape(x, 1.0, harmonic=3, modulation=1.0)
     assert abs(s[x == 0][0]) < 1e-12 * np.abs(s).max()

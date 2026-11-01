@@ -102,8 +102,8 @@ class BSplineSolver:
     def wavefunctions(self, J: int):
         """(E, psi) for rotational level J: energies in cm⁻¹ and psi on the quadrature grid.
 
-        psi has shape (len(self.R), nlev) and is normalised so that sum(W psi²) = 1, which is what
-        the Hellmann–Feynman derivative ∂E/∂p = <psi|∂V/∂p|psi> expects (see i2spec.fitting).
+        psi has shape (len(self.R), nlev) and is normalized so that sum(W psi²) = 1, which is what
+        the Hellmann–Feynman derivative ∂E/∂p = <psi|∂V/∂p|psi> expects (see i2spec.research_expanded).
         """
         H = self._T + self._V + J * (J + 1) * self._rot
         # divide and conquer, again for every eigenpair: 13.3 ms against 22.6 for the subset driver,

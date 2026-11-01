@@ -57,12 +57,13 @@ PER_SHARD_HFS = 80
 ATLASES = ("salami_ross_2005", "apo_nist_2009", "debus_2023", "pyodine_song_65c", "pyodine_fischer_2022",
            "kitt_peak_1993", "gerstenkorn1977", "gerstenkorn1978", "gerstenkorn1978b",
            "orsay1982_part1", "orsay1982_part2", "orsay1982_part3", "orsay1982_part4", "orsay1983_part4")
-#: Line lists held but not shown: lines of the A-X system, which the model does not hold (nolleke_2018), a reprint of the 1978 atlas's values (gerstenkorn1979),
-#: sample pages without v (gerstenkorn1980b), and spectra shared privately (the Rodriguez Fernandez scans).
+# Line lists held but not shown: lines of the A-X system, which the model does not hold (nolleke_2018), a reprint of
+# the 1978 atlas's values (gerstenkorn1979), sample pages without v (gerstenkorn1980b), and spectra shared privately
+# (the Rodriguez Fernandez scans).
 #: The atlases the model is fitted to: the core's two, Orsay part I (X v'' 18-25) and Partie IV (B v' 51-80). The
 #: others are shown for comparison, marked as not used in the fit.
 FITTED_ATLASES = ("salami_ross_2005", "apo_nist_2009", "orsay1982_part1", "orsay1983_part4")
-#: How the app colours each of lookup.Line.flags
+#: How the app colors each of lookup.Line.flags
 FLAG_CLASS = {"levels measured": "good", "levels interpolated": "warn", "levels extrapolated": "bad",
               "outside the fitted domain": "warn", "quasi-bound": "warn", "level identity uncertain": "bad"}
 SHORT_NAMES = {"bipm": "BIPM", "salami_ross": "Salami & Ross", "apo_nist": "NIST FTS (APO cell)",
@@ -149,6 +150,7 @@ def _records():
     shown = [p.name for p in OBSERVATIONS_DIR.iterdir() if (p / "meta.toml").exists()
              and _shown(p.name, tomllib.loads((p / "meta.toml").read_text(encoding="utf-8")))]
     return load_all(OBSERVATIONS_DIR, record=True, include=shown)
+
 
 def _short(source_id):
     """"velchev1998a" -> "Velchev 1998", "salami_ross_2005" -> "Salami & Ross 2005"."""
@@ -263,11 +265,12 @@ def _level_constants(path):
     out = []
     for name in head:
         m = _CONSTANT.match(name)
-        scaled = name.endswith("_s") and name[:-2].lstrip("neg") in ("D", "H") and f"{name[:-2].lstrip('neg')}_exp" in head
+        q = name[:-2].removeprefix("neg")
+        scaled = name.endswith("_s") and q in ("D", "H") and f"{q}_exp" in head
         if not m and not scaled:
             continue
         if scaled:
-            q, neg = name[:-2].lstrip("neg"), name.startswith("neg")
+            neg = name.startswith("neg")
             factor = lambda r, q=q: 10.0 ** -float(r[f"{q}_exp"]) if r.get(f"{q}_exp") else None   # noqa: E731
         else:
             neg, q, x = bool(m.group(1)), m.group(2), m.group(3)
@@ -357,9 +360,8 @@ def level_data():
     # level constants of X and B by v, as printed; for X the model's term value (from the set's own origin: v = 0
     # or the potential minimum, whichever its lowest level matches) and B(v) = (E(v, 2) - E(v, 0))/6
     from . import preferred
-    tables = [(folder, state, sid, meta, f) for folder, state in (("x_levels", "X"), ("b_levels", "B"))
-              for sid, meta in _level_sets(folder) for f in ("data.csv",)
-              if (ROOT / "data" / folder / sid / f).exists()]
+    tables = [(folder, state, sid, meta, "data.csv") for folder, state in (("x_levels", "X"), ("b_levels", "B"))
+              for sid, meta in _level_sets(folder) if (ROOT / "data" / folder / sid / "data.csv").exists()]
     tables += [(folder, "X", sid, meta, f) for folder in ("x_levels", "b_levels") for sid, meta in _level_sets(folder)
                for f in LEVEL_TABLES_X if (ROOT / "data" / folder / sid / f).exists()]
     for folder, state, sid, meta, file in tables:
@@ -447,19 +449,19 @@ def line_key(branch, J, v_upper, v_lower):
     return f"{v_upper}-{v_lower}{branch}{J}"
 
 
-def measurements(model_frequency):
+def measurements(model_frequency, refs=None):
     """Every measurement of every line, grouped by isotopologue and line.
 
     ``model_frequency(iso, branch, J, v', v'', component)`` gives the model's value in MHz (component None
-    for the hyperfine-free line centre, else a rank) or None when it cannot, so each measurement carries
+    for the hyperfine-free line center, else a rank) or None when it cannot, so each measurement carries
     its residual. Returns {iso: {key: [{"s": source index, "f": [[component, value, u, obs - model], ...],
     "i": number of hyperfine intervals, "c": [indices of the compilations that also print them], present
     only when there are some}, ...]}}: one entry per measurement, under the source that first reported it
-    (observations.load_all with record).
+    (observations.load_all with record). ``refs`` is sources(), when the caller has it already.
     """
     from .observations import UNITS, component_rank
 
-    index = {s["id"]: k for k, s in enumerate(sources())}
+    index = {s["id"]: k for k, s in enumerate(sources() if refs is None else refs)}
     out: dict[str, dict[str, dict[int, dict]]] = {}
 
     def entry(line_iso, key, source, cited=()):
@@ -630,8 +632,7 @@ def hyperfine_patterns(iso, lines, workers=None, cache=True):
 
 def _compute_hyperfine_patterns(iso, lines, workers=None):
     """hyperfine_patterns without its cache."""
-    import multiprocessing as mp
-    from .intensity import _THREAD_VARS, _n_workers
+    from .intensity import _n_workers, _spawn_pool
 
     n = _n_workers() if workers is None else max(1, workers)
     # Nearly all the work is the radial solutions at each level's J (and J ± 2, for the couplings), solved
@@ -644,16 +645,10 @@ def _compute_hyperfine_patterns(iso, lines, workers=None):
     order = sorted(range(len(lines)), key=lambda k: (lines[k][1] // width, lines[k][2], lines[k][3], lines[k][1]))
     chunks = [[lines[k] for k in window]
               for _, window in itertools.groupby(order, key=lambda k: lines[k][1] // width)]
-    main = __import__("__main__")
-    if n > 1 and getattr(main, "__file__", None):
-        saved = {k: os.environ.get(k) for k in _THREAD_VARS}
-        os.environ.update({k: "1" for k in _THREAD_VARS})
-        try:
-            with mp.get_context("spawn").Pool(n, initializer=_hfs_init, initargs=(iso,)) as pool:
-                results = pool.map(_hfs_chunk, chunks, chunksize=1)
-        finally:
-            for k, v in saved.items():
-                os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+    pool = _spawn_pool(n, _hfs_init, (iso,))
+    if pool is not None:
+        with pool:
+            results = pool.map(_hfs_chunk, chunks, chunksize=1)
     else:
         _hfs_init(iso)
         results = [_hfs_chunk(c) for c in chunks]
@@ -761,7 +756,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     A line weaker than ``s_min`` (cm, at 300 K) is left out unless it has been measured: every measured
     line the model has is exported, so the app can show all of them.
     """
-    from .intensity import C2, intensity_model, master_line_list, nuclear_spin_weight, with_dissociation_lines
+    from .intensity import C2, intensity_model, master_line_list, with_dissociation_lines
     from .lookup import Catalog, Line
     from . import __version__
 
@@ -780,9 +775,9 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
         masters["127I2"] = with_dissociation_lines(masters["127I2"], S_min=1e-27)
     from .lookup import preferred_positions
     masters = {iso: preferred_positions(master) for iso, master in masters.items()}
-    centres = {}
+    centers = {}
     for iso, master in masters.items():
-        centres[iso] = {line_key("R" if b > 0 else "P", int(j), int(u), int(v)): float(nu) * MHZ_PER_CM
+        centers[iso] = {line_key("R" if b > 0 else "P", int(j), int(u), int(v)): float(nu) * MHZ_PER_CM
                         for b, j, u, v, nu in zip(master.branch, master.J_lower, master.v_upper, master.v_lower,
                                                   master.nu)}
 
@@ -796,16 +791,16 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
             if rank is not None:
                 return components(iso, branch, J, vu, vl).get(rank)
             key = line_key(branch, J, vu, vl)
-            if key in centres.get(iso, {}):
-                return centres[iso][key]
+            if key in centers.get(iso, {}):
+                return centers[iso][key]
             return catalog.transition(iso, branch, J, vu, vl) * MHZ_PER_CM
         except Exception:            # a level beyond every validated grid
             return None
 
     print("  measurements and their residuals ...", flush=True)
-    measured = measurements(model_frequency)
     refs = sources()
-    missing = {iso: sorted(set(lines) - set(centres.get(iso, {}))) for iso, lines in measured.items()}
+    measured = measurements(model_frequency, refs)
+    missing = {iso: sorted(set(lines) - set(centers.get(iso, {}))) for iso, lines in measured.items()}
     (out / "references.json").write_text(json.dumps(
         {"generated": date.today().isoformat(), "sources": refs,
          "outside_absorption_list": {iso: len(keys) for iso, keys in missing.items()}}, separators=(",", ":")))
@@ -824,8 +819,8 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
                            "a model change.")},
         "constants": {"c2": C2, "mhz_per_cm": MHZ_PER_CM},
         "cutoff_cm_at_300K": s_min,
-        "inputs": inputs,
-        "levels": "levels.json",                       # level_data: the data held by level or by line                              # export_inputs: `i2spec web build` exports again on a change
+        "inputs": inputs,                              # export_inputs: `i2spec web build` exports again on a change
+        "levels": "levels.json",                       # level_data: the data held by level or by line
         "references": "references.json",
         "isotopologues": {},
     }
@@ -833,7 +828,7 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
     for iso in isotopologues:
         manifest["isotopologues"][iso] = _export_isotopologue(
             out, iso, masters[iso], s_min, n_shards, n_hfs, measured.get(iso, {}), catalog, reasons,
-            C2, nuclear_spin_weight, Line, [s["kind"] for s in refs])
+            [s["kind"] for s in refs])
     # each line's `w` indexes this list: why its uncertainty is what it is, and the flags that go with it
     manifest["reasons"] = [{"why": why, "flags": [[f, FLAG_CLASS.get(f, "none")] for f in flags]}
                            for why, flags in reasons]
@@ -846,9 +841,9 @@ def export(out=DATA, s_min=1e-24, n_shards=64, n_hfs=1500, isotopologues=("127I2
                   f"e.g. {', '.join(keys[:4])}")
 
 
-def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, catalog, reasons, C2, nuclear_spin_weight,
-                         Line, source_kinds):
-    from .lookup import QUASI_BOUND, QUASI_NOTE, b_limit, uncertainty
+def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, catalog, reasons, source_kinds):
+    from .intensity import C2, nuclear_spin_weight
+    from .lookup import QUASI_BOUND, QUASI_NOTE, Line, b_limit, uncertainty
 
     lines = master.at(300.0, S_min=0.0)              # every line, in the master's order
     keys = np.array([line_key("R" if b > 0 else "P", int(j), int(u), int(v))
@@ -898,7 +893,7 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
     qb = el+nu > b_limit(iso)                       # quasi-bound upper level (lookup.quasi_bound)
     for st, c, q in set(zip(status[held].tolist(), cls[held].tolist(), qb[held].tolist())):
         w = reasons.setdefault((pf.basis(st, c, iso)+(QUASI_NOTE if q else ""),
-                                pf.flags(st, c)+((QUASI_BOUND,) if q else ())), len(reasons))
+                                pf.flags(st)+((QUASI_BOUND,) if q else ())), len(reasons))
         w_line[held & (status == st) & (cls == c) & (qb == q)] = w
     for k in np.flatnonzero(~held):
         line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]), 0.0, float(el[k]),
@@ -976,16 +971,18 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
         per_shard.extend(sel[np.argsort(S[sel])[::-1][:PER_SHARD_HFS]])
     resolved = [i for i in np.flatnonzero(is_measured)
                 if any(src["i"] or any(f[0] for f in src["f"]) for src in measured[keys[i]])]
-    wanted = list(strongest) + per_shard + resolved
+    wanted = list(dict.fromkeys(int(i) for i in [*strongest, *per_shard, *resolved]))
     hfs, t0 = {}, time.time()
-    for n, k in enumerate(dict.fromkeys(int(i) for i in wanted)):
+    for n, k in enumerate(wanted):
         line = Line(iso, "R" if br[k] > 0 else "P", int(jl[k]), int(vu[k]), int(vl[k]), float(nu[k]),
                     float(S[k]), float(el[k]), 300.0)
         try:
             comps = catalog.components(line, main_only=False)
         except Exception:
             continue
-        # Keep every labelled (main, ΔF = ΔJ) component and any other that reaches 2% of the strongest.
+        if not any(c.label for c in comps):  # the center only: noted with the others below
+            continue
+        # Keep every labeled (main, ΔF = ΔJ) component and any other that reaches 2% of the strongest.
         # No ΔF ≠ ΔJ component does in practice, so this drops two thirds of the file for nothing visible.
         peak = max(c.strength for c in comps)
         kept = [c for c in comps if c.label or c.strength >= 0.02 * peak]
@@ -1002,11 +999,21 @@ def _export_isotopologue(out, iso, master, s_min, n_shards, n_hfs, measured, cat
             hfs[keys[k]]["x"] = [[o, round(f * total, 7), iu, il] for o, f, iu, il in weak]
         if n % 200 == 0:
             print(f"    {iso} hyperfine {n}/{len(wanted)} ({time.time() - t0:.0f} s)", flush=True)
+    # The lines the model gives the center of only (a B level whose hyperfine it does not predict, or a J ± 2
+    # coupling partner beyond the dissociation limit), among those without a ΔJ = 0 pattern: no components, and the
+    # model's reason ("n"), for the explorer to show
+    for g in (g for g, p in enumerate(patterns) if p is None):
+        line = Line(iso, "R" if br[g] > 0 else "P", int(jl[g]), int(vu[g]), int(vl[g]), float(nu[g]), float(S[g]),
+                    float(el[g]), 300.0)
+        why = catalog.center_only(line)
+        if why:
+            hfs[keys[g]] = {"o": [], "s": [], "l": [], "n": why}
     (out / f"hfs_{iso}.json").write_text(json.dumps(hfs, separators=(",", ":")))
     pf.model(iso).cache_clear()      # the levels of those lines: no other isotopologue needs them
 
     print(f"  {iso}: {len(nu):,} lines ({int(is_measured.sum()):,} measured) in {len(shards)} shards, "
-          f"{len(hfs)} hyperfine patterns")
+          f"{sum(1 for h in hfs.values() if h['o'])} hyperfine patterns, {sum(1 for h in hfs.values() if 'n' in h)} "
+          f"lines with the center only")
     return {"label": LABELS[iso], "n_lines": int(len(nu)), "n_measured": int(is_measured.sum()),
             "nu_min": _floor4(nu.min()), "nu_max": _ceil4(nu.max()), "shards": shards,
             "order": "wavelength",           # rows and shards run from short to long wavelength

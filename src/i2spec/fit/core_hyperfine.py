@@ -18,37 +18,23 @@ from scipy.optimize import least_squares
 from .. import hfs_params as hp
 from ..constants import ISOTOPOLOGUES, MHZ_PER_CM, NUCLEAR_SPIN
 from ..hyperfine import HyperfineLevel, HyperfineLevels, _block_coefficients, line_components
-from .data import fit_datasets
-from ..observations import Line, component_rank
-from . import rows as training
+from ..observations import component_rank
+from . import hyperfine_rows
 from .levels import Levels
+from .rows import EXCLUSION
 
 PARAMETERS = ("C", "delta", "eqQ", "d")          # the order of the angular coefficient matrices
 RADIAL_SCALE = {"X": .15, "B": .35}
 ORDERS = {"X": {}, "B": dict(eqQ=5, C=5, d=3, delta=1)}
 FLOOR = .025                                     # MHz
 DEGREE = 8                                       # radial moments computed per level
-CORE_V = dict(X=17, B=43)
 
 
-def records(exclusion=("127I2 P(13) 43-0",), datasets=None):
-    """The core's intra-line intervals between two labelled components: one dict per measurement."""
-    excluded = {Line.parse(z) for z in exclusion}
-    out = []
-    for ds in datasets if datasets is not None else fit_datasets():
-        scale = MHZ_PER_CM if ds.unit == "cm-1" else 1.
-        for index, obs in enumerate(ds.observations):
-            line = obs.line
-            if line.v_upper > CORE_V["B"] or line.v_lower > CORE_V["X"] or line.isotopologue != "127I2":
-                continue
-            if obs.kind != "interval" or (obs.ref_line or line) != line or not obs.component or not obs.ref_component:
-                continue
-            if line in excluded:
-                continue
-            out.append(dict(id=f"{ds.id}:{index}", source=ds.id, line=line, rank=component_rank(obs.component),
-                            ref_rank=component_rank(obs.ref_component), observed=obs.value*scale,
-                            sigma=obs.uncertainty*scale, future=ds.id in training.NEW_SETS))
-    return out
+def records(exclusion=(EXCLUSION,), datasets=None):
+    """The core's intra-line intervals between two labelled components: one dict per measurement (the core's rows
+    of hyperfine_rows.intervals, without `inside`)."""
+    return [{k: z for k, z in r.items() if k != "inside"} for r in hyperfine_rows.intervals(datasets, exclusion)
+            if r["inside"]]
 
 
 def line_levels(line):

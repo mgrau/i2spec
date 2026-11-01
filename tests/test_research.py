@@ -54,6 +54,12 @@ def test_unknown_model_and_wrong_isotope_do_not_fall_back():
     assert ResearchModel("balanced").info.id == "research-20261018-balanced"
 
 
+def test_rovibronic_model_rejects_a_core_fit():
+    from i2spec.model import RovibronicModel
+    with pytest.raises(ValueError, match="core fit.*research-20261031-i2spec"):
+        RovibronicModel("127I2", "research-20261030-core")
+
+
 @pytest.mark.parametrize("line", ["P(0) 32-0", "R(201) 32-0", "R(20) 44-0", "R(20) 32-18",
                                   ("R", 2.5, 32, 0), ("R", True, 32, 0), ("Q", 20, 32, 0)])
 def test_outside_domain_is_rejected_before_radial_work(line, monkeypatch):

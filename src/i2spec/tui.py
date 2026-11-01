@@ -8,6 +8,7 @@ import numpy as np
 from textual.app import App, ComposeResult
 from textual.containers import Horizontal
 from textual.widgets import DataTable, Footer, Header, Input, Select, Static
+from textual.worker import get_current_worker
 
 from . import saturation
 from .constants import ISOTOPOLOGUES
@@ -71,7 +72,7 @@ class LineBrowser(App):
                 ("a", "toggle_components", "All components"), ("p", "cycle_plot", "Line plot"), ("r", "search", "Refresh"),
                 ("plus,equals_sign", "zoom(0.5)", "Zoom in"), ("minus", "zoom(2)", "Zoom out"),
                 ("left_square_bracket", "pan(-0.25)", "◀"), ("right_square_bracket", "pan(0.25)", "▶"),
-                ("l", "toggle_log", "Log"), ("c", "center", "Centre on line")]
+                ("l", "toggle_log", "Log"), ("c", "center", "Center on line")]
 
     def __init__(self, catalog=None, isotopologue="127I2", temperature=293.15, low=None, high=None, unit="nm",
                  limit=200):
@@ -91,7 +92,7 @@ class LineBrowser(App):
         self.raw = []  # i2spec.hyperfine.Component, which carry the nuclear spins the crossovers need
         self.window = None  # (nu_lo, nu_hi) of the last search, cm-1
         self.view = None    # (nu_lo, nu_hi) the spectrum panel shows
-        self.spectrum = None  # (grid, sigma) for self.view
+        self.spectrum = None  # (grid, sigma, number of lines) for self.view
         self.log_scale = False
         self.range_text = f"{low}-{high}" if low and high else "532.2-532.3 nm"
 
@@ -140,7 +141,9 @@ class LineBrowser(App):
         except Exception as e:  # surfaced in the status line rather than crashing the app
             self.call_from_thread(self.set_status, f"[red]{e}[/red]")
             return
-        self.call_from_thread(self.show_results, result)
+        # a thread worker runs on when a newer search cancels it: its result must not replace the newer one's
+        if not get_current_worker().is_cancelled:
+            self.call_from_thread(self.show_results, result)
 
     def show_results(self, result):
         self.lines = list(result)
@@ -192,7 +195,11 @@ class LineBrowser(App):
         except Exception as e:
             self.call_from_thread(self.set_status, f"[red]hyperfine: {e}[/red]")
             return
-        self.call_from_thread(self.show_components, nu0, raw)
+        note = self.catalog.center_only(line, raw)     # a line the model gives the center of only, and why
+        if not get_current_worker().is_cancelled:     # not the components of a line the cursor has left
+            self.call_from_thread(self.show_components, nu0, raw)
+            if note:
+                self.call_from_thread(self.set_status, f"no hyperfine components: {note}")
 
     def show_components(self, nu0, raw):
         self.raw = sorted(raw, key=lambda c: c.offset)
@@ -251,19 +258,19 @@ class LineBrowser(App):
                  f"({hi - lo:.3f} cm⁻¹) · {n} lines · {scale}")
         mid = 0.5 * (lo + hi)
         axis = f"{1e7 / lo:<.4f} nm"
-        centre = f"{1e7 / mid:.4f}"
+        center = f"{1e7 / mid:.4f}"
         right = f"{1e7 / hi:.4f} nm"
-        gap = max(1, width - len(axis) - len(centre) - len(right))
-        axis = axis + " " * (gap // 2) + centre + " " * (gap - gap // 2) + right
+        gap = max(1, width - len(axis) - len(center) - len(right))
+        axis = axis + " " * (gap // 2) + center + " " * (gap - gap // 2) + right
         pane.update("\n".join([title[:width], *braille_plot(y, width, height), "".join(marker), axis[:width]]))
 
     def action_zoom(self, factor):
         if self.view is None:
             return
         lo, hi = self.view
-        centre = self.current.nu if self.current is not None and lo <= self.current.nu <= hi else 0.5 * (lo + hi)
+        center = self.current.nu if self.current is not None and lo <= self.current.nu <= hi else 0.5 * (lo + hi)
         half = max(0.5 * (hi - lo) * float(factor), 0.002)
-        self.view = (centre - half, centre + half)
+        self.view = (center - half, center + half)
         self.refresh_spectrum()
 
     def action_pan(self, fraction):

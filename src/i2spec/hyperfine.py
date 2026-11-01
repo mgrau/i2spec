@@ -176,7 +176,7 @@ class HyperfineLevel:
 
 
 def level_structure(J, params, rot_energy, *, i1=2.5, i2=2.5, symmetry="g", eqQ_ratio=1.0, C_ratio=1.0, dJ=2):
-    """Hyperfine levels of rotational level J, with rotational neighbours J ± 2, ..., J ± dJ in the basis.
+    """Hyperfine levels of rotational level J, with rotational neighbors J ± 2, ..., J ± dJ in the basis.
 
     rot_energy(J) is in MHz; only differences to rot_energy(J) matter.
     """
@@ -202,13 +202,13 @@ class HyperfineLevels(list):
     """The hyperfine levels of one rotational level, by energy (a list), keeping the matrix of their
     eigenvectors that line_components uses, so that the lines sharing a level build it once."""
 
-    _embedding = None
+    _embedded = None    # what _embedding returns for these levels, once computed
 
 
 def _embedding(levels):
     """(blocks, U): the F blocks of ``levels`` as ((F, basis), ...) and the eigenvectors as the columns of U,
     each in the rows of its own block, so that every amplitude of a line is one matrix product."""
-    cached = getattr(levels, "_embedding", None)
+    cached = getattr(levels, "_embedded", None)
     if cached is not None:
         return cached
     order, start = {}, 0
@@ -222,11 +222,13 @@ def _embedding(levels):
         U[a:a + len(level.basis), k] = level.vector
     result = (tuple((F, basis) for F, (_, basis) in order.items()), U)
     if isinstance(levels, HyperfineLevels):
-        levels._embedding = result
+        levels._embedded = result
     return result
 
 
-@lru_cache(maxsize=16384)
+# A line list uses an operator again within a few lines (a window of J at a time), and one costs ~0.03 ms to
+# assemble from its cached blocks, but 150 kB to keep (127I129I with J +- 2): a few hundred are enough.
+@lru_cache(maxsize=256)
 def _dipole_operator(blocks_upper, blocks_lower):
     """dipole_reduced between every basis state of the upper and of the lower blocks (as from _embedding)."""
     sizes = lambda blocks: np.cumsum([0] + [len(b) for _, b in blocks])   # noqa: E731

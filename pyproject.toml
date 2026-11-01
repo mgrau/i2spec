@@ -35,3 +35,4 @@ packages = ["src/i2spec"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["tests"]

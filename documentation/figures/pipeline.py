@@ -3,30 +3,22 @@ from the model, and what each step takes in.
 
     uv run --group research python documentation/figures/pipeline.py
 
-Writes documentation/figures/pipeline.svg with the same placeholder colors as make_figures.py, so it follows
-the site's light and dark themes.
+Writes documentation/figures/pipeline.svg with the placeholder colors of figure_style.py (as make_figures.py
+does), so it follows the site's light and dark themes.
 """
-import sys
-from pathlib import Path
-
 import matplotlib
 matplotlib.use("svg")
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+from i2spec import preferred
+from i2spec.lookup import Catalog
+from i2spec.spectrum import cross_section, number_density, transmission
 
-from i2spec import preferred  # noqa: E402
-from i2spec.lookup import Catalog  # noqa: E402
-from i2spec.spectrum import cross_section, number_density, transmission  # noqa: E402
+import figure_style
+from figure_style import C
 
-# the helpers and color tokens of make_figures.py, without running it
-C = dict(ink="#010101", ink2="#020202", ink3="#030303", rule="#040404", trace="#050505", pick="#060606",
-         mark="#070707", surface="#080808")
-TOKENS = {C["ink"]: "var(--ink)", C["ink2"]: "var(--ink-2)", C["ink3"]: "var(--ink-3)", C["rule"]: "var(--rule)",
-          C["trace"]: "var(--trace)", C["pick"]: "var(--pick)", C["mark"]: "var(--mark)", C["surface"]: "var(--surface)"}
 plt.rcParams.update({
     "svg.fonttype": "none", "font.family": "sans-serif", "font.size": 9,
     "axes.edgecolor": C["rule"], "axes.labelcolor": C["ink3"], "xtick.color": C["ink3"], "ytick.color": C["ink3"],
@@ -37,19 +29,7 @@ plt.rcParams.update({
 
 
 def save(fig, name):
-    import re
-    path = HERE / f"{name}.svg"
-    fig.savefig(path, pad_inches=0.02)
-    plt.close(fig)
-    svg = path.read_text()
-    for hexcode, var in TOKENS.items():
-        svg = svg.replace(hexcode, var)
-    svg = re.sub(r"font-family:[^;\"]*", "font-family:var(--body)", svg)
-    svg = re.sub(r"font: ([\d.]+)px '[^']*'", r"font-size:\1px;font-family:var(--body)", svg)
-    svg = re.sub(r'<svg([^>]*?) width="[^"]*" height="[^"]*"', r'<svg\1', svg, count=1)
-    svg = re.sub(r"<metadata>.*?</metadata>", "", svg, flags=re.S)
-    path.write_text(svg)
-    print(f"{path.name}: {len(svg) / 1e3:.0f} kB")
+    figure_style.save(fig, name, pad_inches=0.02)
 
 
 def turning(V, R, E):

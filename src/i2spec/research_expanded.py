@@ -250,6 +250,8 @@ class ExpandedLevels:
         self.potentials = {s: _ExpandedPotential(s, base, structure, values) for s in ("X", "B")}
         self.grids = structure["grids"]
         self.joins = structure["joins"]
+        # kept for the whole run: a few entries per (state, grid, J), a whole model to J = 445 in about 10 MB,
+        # and each would cost an eigensolve again
         self._solvers, self._levels, self._averages = {}, {}, {}
         #: the probability densities of the last few (state, grid, J) solved, which averages() and the uncertainty's
         #: level derivatives read right after the levels: one eigensolve serves all three
@@ -671,7 +673,7 @@ class ExpandedUncertainty:
 
     def status(self, state, v, J):
         """measured: training rows within 15 in J at this v; interpolated: inside this v's J range, or between
-        neighbours within 2 in v whose ranges (+-15) hold J; else extrapolated."""
+        neighbors within 2 in v whose ranges (+-15) hold J; else extrapolated."""
         if self._near("all", state, v, J):
             return "measured"
         margin, reach = self.table["coverage"]["margin_J"], self.table["coverage"]["neighbor_v"]

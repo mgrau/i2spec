@@ -4,10 +4,10 @@ shows, written {{ key }} in its source, is computed from the released model at b
 import html
 import importlib.util
 import re
+import sys
 from pathlib import Path
 
 MARKER = "<!-- sources -->"
-ISO = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I¹²⁹I"}
 
 
 def _nm(r):
@@ -35,16 +35,17 @@ def _source(s, extra=""):
 
 
 def _rows(s):
+    iso = model_numbers().ISO
     n_int = s["n_intervals"]
     parts = [f'{s["n_absolute"]} absolute' if s["n_absolute"] else "",
              f'{n_int} interval{"" if n_int == 1 else "s"}' if n_int else ""]
     also = s.get("n_also", 0)
     if not s["n_rows"]:              # every row printed first elsewhere: cited under the paper that reported it
-        return (" ".join(ISO.get(i, i) for i in s["isotopologues"])
+        return (" ".join(iso.get(i, i) for i in s["isotopologues"])
                 + f' · prints again {also} measurement{"" if also == 1 else "s"} listed under the paper'
                   f'{"" if also == 1 else "s"} that first reported {"it" if also == 1 else "them"}')
     return (f'{s["n_rows"]} row{"" if s["n_rows"] == 1 else "s"} ({", ".join(p for p in parts if p)}) · '
-            + " ".join(ISO.get(i, i) for i in s["isotopologues"])
+            + " ".join(iso.get(i, i) for i in s["isotopologues"])
             + (f' · also prints {also} measurement{"" if also == 1 else "s"} listed under the papers that '
                f'report{"s" if also == 1 else ""} {"it" if also == 1 else "them"}' if also else ""))
 
@@ -98,18 +99,24 @@ def _tables():
 
 
 PLACEHOLDER = re.compile(r"\{\{\s*([A-Za-z0-9_.]+)\s*\}\}")
-_MODULE = None
+_NUMBERS = "i2spec_docs_model_numbers"
 
 
 def model_numbers():
-    """documentation/model_numbers.py, loaded once by path (the documentation folder is not a package)."""
-    global _MODULE
-    if _MODULE is None:
-        spec = importlib.util.spec_from_file_location("i2spec_docs_model_numbers",
-                                                      Path(__file__).with_name("model_numbers.py"))
-        _MODULE = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(_MODULE)
-    return _MODULE
+    """documentation/model_numbers.py, loaded by path (the documentation folder is not a package) and kept in
+    sys.modules until the file changes. MkDocs loads this file afresh for every build (each rebuild of
+    ``mkdocs serve``; the site build of tests/test_webapp.py after tests/test_docs.py), and the numbers take tens of
+    seconds: this way they are computed once per process, not once per build."""
+    path = Path(__file__).with_name("model_numbers.py")
+    mtime = path.stat().st_mtime_ns
+    module = sys.modules.get(_NUMBERS)
+    if module is None or getattr(module, "_mtime", None) != mtime:
+        spec = importlib.util.spec_from_file_location(_NUMBERS, path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        module._mtime = mtime
+        sys.modules[_NUMBERS] = module
+    return module
 
 
 def fill(markdown, where="page"):

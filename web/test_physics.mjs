@@ -42,9 +42,9 @@ for (const unit of P.UNITS) {
   }
 }
 
-console.log("\nvapour pressure and number density");
+console.log("\nvapor pressure and number density");
 for (const [T, p, n] of ref.vapor) {
-  close(`p(${T} K)`, P.vapourPressure(T), p, 1e-12);
+  close(`p(${T} K)`, P.vaporPressure(T), p, 1e-12);
   close(`N(${T} K cold, 293.15 K cell)`, P.numberDensity(T, 293.15), n, 1e-12);
 }
 
@@ -171,7 +171,7 @@ for (const [iso, info] of Object.entries(manifest.isotopologues)) {
   check(`${iso}: shard counts sum to n_lines`, total === info.n_lines, `${total} = ${info.n_lines}`);
   // stored in increasing wavelength: shards, and the rows within each, run to lower wavenumber. The export
   // rounds each shard's bounds outward to 1e-4 cm-1 (so they hold every line at its stored precision), so
-  // neighbours may overlap by up to that much at their shared edge
+  // neighbors may overlap by up to that much at their shared edge
   check(`${iso}: shards are contiguous and in wavelength order`,
     info.shards.every((s, i) => s.nu0 < s.nu1 && (i === 0 ||
       (s.nu0 < info.shards[i - 1].nu0 && s.nu1 <= info.shards[i - 1].nu0 + 1e-4 + 1e-9))));
@@ -186,8 +186,12 @@ for (const [iso, info] of Object.entries(manifest.isotopologues)) {
   const hfs = read("data/" + info.hfs);
   const bad = Object.entries(hfs).filter(([, c]) => c.o.length !== c.s.length || c.o.length !== c.l.length);
   check(`${iso}: ${Object.keys(hfs).length} hyperfine patterns have matching arrays`, bad.length === 0);
+  // a line the model gives the center of only (its B level's hyperfine is not predicted) has no components and
+  // the model's reason
+  const centerOnly = Object.values(hfs).filter(c => !c.o.length && typeof c.n === "string" && c.n.length > 20).length;
   const named = Object.values(hfs).filter(c => c.l.some(Boolean)).length;
-  check(`${iso}: every pattern has labelled main components`, named === Object.keys(hfs).length);
+  check(`${iso}: every pattern has labeled main components, or none and the reason (${centerOnly} center only)`,
+    named + centerOnly === Object.keys(hfs).length);
 }
 
 console.log(failures ? `\n${failures} FAILED` : "\nall checks passed");

@@ -108,12 +108,13 @@ class Radial:
 
 def bacis_rows():
     out = []
-    for r in csv.DictReader(open(training.ROOT/'data/x_hyperfine/bacis1980/data.csv')):
-        v = int(r['v'])
-        if v <= CORE_V['X'] or v >= 89 or not r['eqQ_unc']:
-            continue
-        q = float(r['eqQ'])+(EQQB_SHIFT_TABLE_IV if r['table'] == 'IV' else 0.)
-        out.append(dict(v=v, J=14, eqQ=q, sigma=float(r['eqQ_unc']), table=r['table'], source=r['source']))
+    with open(training.ROOT/'data/x_hyperfine/bacis1980/data.csv') as f:
+        for r in csv.DictReader(f):
+            v = int(r['v'])
+            if v <= CORE_V['X'] or v >= 89 or not r['eqQ_unc']:
+                continue
+            q = float(r['eqQ'])+(EQQB_SHIFT_TABLE_IV if r['table'] == 'IV' else 0.)
+            out.append(dict(v=v, J=14, eqQ=q, sigma=float(r['eqQ_unc']), table=r['table'], source=r['source']))
     return out
 
 

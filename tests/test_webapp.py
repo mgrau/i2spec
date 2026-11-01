@@ -129,8 +129,6 @@ def test_reference_generator_is_safe_to_import_in_spawned_workers(monkeypatch, c
 
 
 def test_web_commands_need_a_checkout_and_say_so_at_once(monkeypatch, tmp_path, capsys):
-    import pytest
-
     from i2spec import cli
 
     webapp.check_checkout()                          # this is a checkout
@@ -263,8 +261,9 @@ def test_level_constants_are_read_with_their_printed_scales(tmp_path):
     got = {q: (v, value, u) for v, q, value, u in webapp._level_constants(path)}
     assert got["G(v)"] == (4, 945.5916, 0.0041)
     assert got["B(v)"][1] == pytest.approx(0.03628259) and got["B(v)"][2] == pytest.approx(1.7e-6)
-    assert got["D(v)"][1] == pytest.approx(0.45304e-8) and got["D(v)"][2] == pytest.approx(0.0067e-8)
-    assert got["H(v)"][1] == pytest.approx(-0.593e-14) and got["H(v)"][2] is None
+    # abs=0: the default absolute tolerance, 1e-12, would accept any H (6e-15) and loosen D's checks to 1e-4-1e-2
+    assert got["D(v)"][1] == pytest.approx(0.45304e-8, abs=0) and got["D(v)"][2] == pytest.approx(0.0067e-8, abs=0)
+    assert got["H(v)"][1] == pytest.approx(-0.593e-14, abs=0) and got["H(v)"][2] is None
 
 
 def test_level_data_keep_pending_sets_unseen_and_compare_constants_with_the_model():
@@ -282,3 +281,53 @@ def test_level_data_keep_pending_sets_unseen_and_compare_constants_with_the_mode
     assert eqq and abs(eqq[0]["v"] - eqq[0]["m"]) < 1.0                  # MHz: the model's B constants of the level
     g20 = [e for e in data["isotopologues"]["127I2"]["levels"]["X:20"] if e["q"] == "G(v)"]
     assert g20 and abs(g20[0]["v"] - g20[0]["m"]) < 0.01                 # cm-1, on the set's own origin
+
+
+def test_center_only_lines_have_no_components_and_the_reason(tmp_path, monkeypatch, capsys):
+    """A line whose B level's hyperfine the model does not predict (B v' 70 J' 33) has a center and no components:
+    the export writes no pattern for it but the model's reason, as do the CLI and the TUI's status line."""
+    import numpy as np
+    from i2spec import cli
+    from i2spec.intensity import MasterLineList
+    from i2spec.lookup import Catalog
+    catalog = Catalog()
+    labels = ("R(32) 70-0", "R(31) 70-0", "R(56) 32-0")          # center only, its neighbor, the worked line
+    lines = [catalog.line(label) for label in labels]
+    only = catalog.center_only(lines[0])
+    assert "B v=70 J=33" in only and "center only" in only
+    assert catalog.center_only(lines[1]) is None and catalog.center_only(lines[2]) is None
+
+    assert cli.main(["line", labels[0], "--json"]) == 0
+    got = json.loads(capsys.readouterr().out)
+    assert got["components"] == [] and got["center_only"] == only
+    assert cli.main(["line", labels[0]]) == 0
+    assert f"no hyperfine components: {only}" in capsys.readouterr().out
+
+    # the export: every line among the selected hyperfine lines (n_hfs), the center-only one with no ΔJ = 0
+    # pattern (as _hfs_chunk gives it); its entry is no components and the reason, the others' their pattern
+    n = len(lines)
+    master = MasterLineList(nu=np.array([line.nu for line in lines]), strength0=np.full(n, 1e-20),
+                            v_upper=np.array([line.v_upper for line in lines]), v_lower=np.zeros(n, int),
+                            J_lower=np.array([line.J_lower for line in lines]), branch=np.ones(n, int),
+                            E_lower=np.array([line.E_lower for line in lines]), x_levels=np.zeros((5, 3)),
+                            upper_cut=np.full(6, np.nan), isotopologue="127I2")
+    monkeypatch.setattr(webapp, "hyperfine_patterns", lambda iso, todo: [
+        None if (b, j, u, v) == ("R", 32, 70, 0) else ("[0.0]", "[1000]", "null") for b, j, u, v in todo])
+    info = webapp._export_isotopologue(tmp_path, "127I2", master, 0.0, 1, n, {}, catalog, {}, [])
+    hfs = json.loads((tmp_path / info["hfs"]).read_text())
+    assert hfs["70-0R32"] == {"o": [], "s": [], "l": [], "n": only}
+    for key in ("70-0R31", "32-0R56"):
+        assert len(hfs[key]["o"]) == len(hfs[key]["l"]) >= 15 and all(hfs[key]["l"]) and "n" not in hfs[key]
+
+
+def test_a_line_whose_coupling_partner_is_dissociated_gives_its_center_and_the_reason(capsys):
+    """R(78) 69-0: its upper level (B v' 69 J' 79) is bound, but the J + 2 level the hyperfine couples it to is
+    dissociated. The line has a center and no components, and the model's reason, not an error."""
+    from i2spec import cli
+    from i2spec.lookup import Catalog
+    catalog = Catalog()
+    why = catalog.center_only(catalog.line("R(78) 69-0"))
+    assert why and "dissociated" in why
+    assert cli.main(["line", "R(78) 69-0", "--json"]) == 0
+    got = json.loads(capsys.readouterr().out)
+    assert got["components"] == [] and got["center_only"] == why and got["wavenumber_cm1"] > 0

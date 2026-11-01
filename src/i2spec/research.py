@@ -16,6 +16,7 @@ release 20261021, which the fit pipeline rebuilds); every model is also reached 
 """
 from __future__ import annotations
 
+import copy
 from dataclasses import asdict, dataclass, replace
 from functools import lru_cache
 import hashlib
@@ -49,6 +50,8 @@ _CANDIDATE = os.environ.get("I2SPEC_RESEARCH_CANDIDATE")
 #: levels, which stay cached; the components of a whole line list would take several GB (a 127I129I line
 #: has about a thousand).
 _LINE_CACHE = 256
+#: A level's data status, best first: a line's is the worse of its two levels'
+_STATUS = ("measured", "interpolated", "extrapolated")
 
 
 def _data(release=_RELEASE):
@@ -156,6 +159,20 @@ def _reference_model(model_id):
     return ResearchModel(model_id, "127I2")
 
 
+#: Core specs in native coordinates, by the SHA256 of their model.json: converting a file in named coordinates
+#: solves the levels v = 0 about ten times, so it is done once per process (the file is still read and checked)
+_NATIVE: dict[str, dict] = {}
+
+
+def _native_spec(entry):
+    """A core model's model.json in native coordinates (a copy; named.to_native)."""
+    spec = _read(entry, "model.json")
+    sha = entry["files_sha256"]["model.json"]
+    if sha not in _NATIVE:
+        _NATIVE[sha] = named.to_native(spec)
+    return copy.deepcopy(_NATIVE[sha])
+
+
 @dataclass(frozen=True)
 class ResearchPrediction:
     model: str
@@ -255,7 +272,7 @@ class ResearchModel:
             raise ValueError("research models support only 127I2")
         self._entry = _entry(model)
         self.info = _info(self._entry)
-        self._spec = named.to_native(_read(self._entry, "model.json"))     # a file in named coordinates loads natively
+        self._spec = _native_spec(self._entry)     # a file in named coordinates loads natively
         self._validate()
         self.isotopologue = isotopologue
         self.parameters = self.info.id
@@ -420,20 +437,26 @@ class ResearchModel:
         Checks numerical reproduction, not predictive accuracy. Coefficients,
         source assets and installed package files are never modified.
         """
+        return self._replay(_read(self._entry, "reference_predictions.json"), self._spec["reference_counts"],
+                            ("absolute", "intraline"), tolerance_Hz)
+
+    def _replay(self, rows, expected, kinds, tolerance_Hz):
+        """Replay frozen reference rows: a component's frequency ("absolute"), a center's ("center") or the interval
+        to a ref_component ("intraline"); passed if the counts by kind are ``expected`` and every row is within
+        ``tolerance_Hz``."""
         if not math.isfinite(tolerance_Hz) or tolerance_Hz <= 0:
             raise ValueError("verification tolerance must be finite and positive")
-        rows = _read(self._entry, "reference_predictions.json")
-        counts, maximum = dict(absolute=0, intraline=0), dict(absolute=0., intraline=0.)
+        counts, maximum = dict.fromkeys(kinds, 0), dict.fromkeys(kinds, 0.)
         for row in rows:
             value = self.frequency(row["line"], row["component"])
-            kind = "absolute"
-            if "ref_component" in row:
+            kind = "absolute" if row["component"] else "center"
+            if row.get("ref_component"):
                 value -= self.frequency(row["line"], row["ref_component"])
                 kind = "intraline"
             counts[kind] += 1
             maximum[kind] = max(maximum[kind], abs(value-row["predicted_MHz"])*1e6)
         result = dict(model=self.info.id, counts=counts, maximum_difference_Hz=maximum,
-            tolerance_Hz=tolerance_Hz, passed=counts == self._spec["reference_counts"]
+            tolerance_Hz=tolerance_Hz, passed=counts == expected
             and all(error <= tolerance_Hz for error in maximum.values()),
             scope="Numerical reproduction of frozen predictions; not independent predictive accuracy")
         if not result["passed"]:
@@ -495,8 +518,7 @@ class _ExpandedModel(ResearchModel):
     def _uncertainty_terms(self, line, component):
         """(statistical factor, {level: (sign, model sigma)}, class, (upper, lower) status, hyperfine sigma and status)
         of one line or component."""
-        parsed = parse_label(line) if isinstance(line, str) else tuple(line)
-        branch, J, vu, vl = parsed
+        branch, J, vu, vl = _canonical(line)
         self.info.domain.validate(branch, J, vu, vl)
         unc, core = self._uncertainty_model(), self._spec["core"]
         Ju = J+(1 if branch == "R" else -1)
@@ -512,9 +534,8 @@ class _ExpandedModel(ResearchModel):
                   ("X", vl, J): (-1., self._level_sigma(unc, core, "X", vl, J, cls))}
         status = unc.status("B", vu_e, Ju_e), unc.status("X", vl_e, Jl_e)
         if self._iso is not None:
-            order = ["measured", "interpolated", "extrapolated"]
             shifted = self._shift_unc().status(self._iso.map.v_ref("B", vu))
-            status = max(status[0], shifted, key=order.index), status[1]
+            status = max(status[0], shifted, key=_STATUS.index), status[1]
         hf, hf_status, name, offset = 0., None, None, 0.
         if component is not None:
             _, components = self._line((branch, J, vu, vl))
@@ -525,9 +546,7 @@ class _ExpandedModel(ResearchModel):
             name = f"a{component_rank(component)}"
             if name not in offsets:
                 raise ValueError(f"component {component!r} is unavailable for this line; choose from {', '.join(offsets)}")
-            a_hf, kappa = unc.hyperfine_terms(core, vu_e, vl_e)
-            if self._iso is not None:
-                a_hf = math.hypot(a_hf, self._extension["hyperfine"]["floor_MHz"])
+            a_hf, kappa = self._hyperfine_floor(unc, core, vu_e, vl_e)
             offset = offsets[name]
             hf = math.hypot(a_hf, kappa*offset)
             order = ["core", "validated", "interpolated", "resonance", "extrapolated"]
@@ -550,19 +569,29 @@ class _ExpandedModel(ResearchModel):
             shift = self._shift_unc()
             a = shift.level_vector(state, a, v, J)
             if state == "B":
-                order = ["measured", "interpolated", "extrapolated"]
-                status = max(status, shift.status(self._iso.map.v_ref("B", v)), key=order.index)
+                status = max(status, shift.status(self._iso.map.v_ref("B", v)), key=_STATUS.index)
         sigma = [self._level_sigma(unc, core, state, v, J, cls) for cls in ("precise", "atlas", "beyond")]
         return a, status, unc._near("precise", state, ve, Je), sigma, ve > core[state]
 
     def hyperfine_terms(self, vu, Ju, vl, J):
         """(floor a MHz, scale error kappa) of a line's components: the frozen recipe at the 127I2 equivalents,
         with the isotopologue floor."""
-        unc, core = self._uncertainty_model(), self._spec["core"]
-        a, kappa = unc.hyperfine_terms(core, self._equivalent("B", vu, Ju)[0], self._equivalent("X", vl, J)[0])
+        return self._hyperfine_floor(self._uncertainty_model(), self._spec["core"], self._equivalent("B", vu, Ju)[0],
+                                     self._equivalent("X", vl, J)[0])
+
+    def _hyperfine_floor(self, unc, core, vu, vl):
+        """(floor a MHz, scale error kappa) of the components of band vu-vl (the 127I2 equivalents): the frozen
+        recipe, with the isotopologue floor."""
+        a, kappa = unc.hyperfine_terms(core, vu, vl)
         if self._iso is not None:
             a = math.hypot(a, self._extension["hyperfine"]["floor_MHz"])
         return a, kappa
+
+    def _interval_hyperfine(self, one, two):
+        """Hyperfine sigma (MHz) of the interval between two components of one band (_uncertainty_terms): the floor
+        of each, and the scale error of their separation."""
+        a, kappa = self._hyperfine_floor(*one["kappa_floor"])
+        return math.sqrt(2*a**2+(kappa*(one["offset"]-two["offset"]))**2)
 
     def _equivalent(self, state, v, J):
         """The 127I2 level the frozen uncertainty tables are read at: the level itself, or an isotopologue's
@@ -613,16 +642,11 @@ class _ExpandedModel(ResearchModel):
             ref_line = None                           # an interval within one line
         with self._lock:
             one = self._uncertainty_terms(line, component)
-            order = ["measured", "interpolated", "extrapolated"]
             statuses = list(one["status"])
             if ref_line is None and ref_component is not None:        # intraline: hyperfine only
                 two = self._uncertainty_terms(line, ref_component)
-                unc, core, vu, vl = one["kappa_floor"]
-                a_hf, kappa = unc.hyperfine_terms(core, vu, vl)
-                if self._iso is not None:
-                    a_hf = math.hypot(a_hf, self._extension["hyperfine"]["floor_MHz"])
                 stat = model = 0.
-                hf = math.sqrt(2*a_hf**2+(kappa*(one["offset"]-two["offset"]))**2)
+                hf = self._interval_hyperfine(one, two)
                 ref_name = two["component"]
             elif ref_line is not None:                                 # one line against another
                 two = self._uncertainty_terms(ref_line, ref_component)
@@ -635,11 +659,7 @@ class _ExpandedModel(ResearchModel):
                 model = math.sqrt(sum((c*sigma)**2 for c, sigma in net.values()))
                 if one["component"] and two["component"] and one["kappa_floor"][2:] == two["kappa_floor"][2:]:
                     # one band: the pattern-scale error is common to both lines' components
-                    unc, core, vu, vl = one["kappa_floor"]
-                    a_hf, kappa = unc.hyperfine_terms(core, vu, vl)
-                    if self._iso is not None:
-                        a_hf = math.hypot(a_hf, self._extension["hyperfine"]["floor_MHz"])
-                    hf = math.sqrt(2*a_hf**2+(kappa*(one["offset"]-two["offset"]))**2)
+                    hf = self._interval_hyperfine(one, two)
                 else:
                     hf = math.hypot(one["hf"], two["hf"])
                 statuses += list(two["status"])
@@ -651,7 +671,7 @@ class _ExpandedModel(ResearchModel):
         label = one["label"] if ref_line is None else f"{one['label']} - {two['label']}"
         return PredictionUncertainty(
             self.info.id, label, one["component"], ref_name, math.sqrt(stat**2+model**2+hf**2), stat, model, hf,
-            max(statuses, key=order.index), one["status"][0], one["status"][1], one["cls"], one["hf_status"])
+            max(statuses, key=_STATUS.index), one["status"][0], one["status"][1], one["cls"], one["hf_status"])
 
     def _validate(self):
         spec, inventory = self._spec, self.info.inventory
@@ -698,24 +718,7 @@ class _ExpandedModel(ResearchModel):
 
     def verify(self, tolerance_Hz=100.):
         """Read-only replay of the frozen centers, components and intraline intervals (see ResearchModel.verify)."""
-        if not math.isfinite(tolerance_Hz) or tolerance_Hz <= 0:
-            raise ValueError("verification tolerance must be finite and positive")
         rows = _read(self._entry, "reference_predictions.json")
         rows = [row for row in rows if row.get("isotopologue", "127I2") == self.isotopologue]
         expected = self._entry["reference_counts"][self.isotopologue] if self._extension else self._spec["reference_counts"]
-        counts, maximum = dict(center=0, absolute=0, intraline=0), dict(center=0., absolute=0., intraline=0.)
-        for row in rows:
-            value = self.frequency(row["line"], row["component"])
-            kind = "absolute" if row["component"] else "center"
-            if row.get("ref_component"):
-                value -= self.frequency(row["line"], row["ref_component"])
-                kind = "intraline"
-            counts[kind] += 1
-            maximum[kind] = max(maximum[kind], abs(value-row["predicted_MHz"])*1e6)
-        result = dict(model=self.info.id, counts=counts, maximum_difference_Hz=maximum,
-            tolerance_Hz=tolerance_Hz, passed=counts == expected
-            and all(error <= tolerance_Hz for error in maximum.values()),
-            scope="Numerical reproduction of frozen predictions; not independent predictive accuracy")
-        if not result["passed"]:
-            raise ValueError("frozen research prediction replay failed: "+json.dumps(result))
-        return result
+        return self._replay(rows, expected, ("center", "absolute", "intraline"), tolerance_Hz)

@@ -36,7 +36,6 @@ FLOORS = dict(comb=float(os.environ.get("I2SPEC_FIT_COMB_FLOOR", .5)), doppler=.
               martin_dissoc=0., isotopologue=.1)
 DE_X_CENTER = 12547.340         # cm-1, the published De(X) the prior is centered on
 ATOMIC_GAP_SIGMA = .0065        # cm-1, the atomic splitting's uncertainty
-EXCLUSION = "127I2 P(13) 43-0"
 
 
 @dataclass

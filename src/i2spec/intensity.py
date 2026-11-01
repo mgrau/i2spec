@@ -211,14 +211,7 @@ class MasterLineList:
 
     def save(self, path):
         """Write to ``path`` through a temporary file beside it, so an interrupted save never leaves half a file."""
-        path = Path(path)
-        tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
-        try:
-            with open(tmp, "wb") as out:    # a file object, so np.savez adds no ".npz" to the name
-                np.savez(out, **{f.name: getattr(self, f.name) for f in fields(self)})
-            os.replace(tmp, path)
-        finally:
-            tmp.unlink(missing_ok=True)
+        save_npz(path, {f.name: getattr(self, f.name) for f in fields(self)})
 
     @classmethod
     def load(cls, path):
@@ -230,6 +223,19 @@ class MasterLineList:
 def cache_dir() -> Path:
     """Directory for cached line lists: $I2SPEC_CACHE or ~/.cache/i2spec."""
     return Path(os.environ.get("I2SPEC_CACHE", Path.home() / ".cache" / "i2spec"))
+
+
+def save_npz(path, arrays, compressed=False):
+    """np.savez (or np.savez_compressed) of ``arrays`` to exactly ``path``, through a temporary file beside it and
+    os.replace, so an interrupted save, or another process reading the cache, never sees half a file."""
+    path = Path(path)
+    tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    try:
+        with open(tmp, "wb") as out:    # a file object, so np.savez adds no ".npz" to the name
+            (np.savez_compressed if compressed else np.savez)(out, **arrays)
+        os.replace(tmp, path)
+    finally:
+        tmp.unlink(missing_ok=True)
 
 
 def mark_used(path):
@@ -343,6 +349,24 @@ _WORKER: "_Build | None" = None
 _THREAD_VARS = ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "MKL_NUM_THREADS")
 
 
+def _spawn_pool(n, initializer=None, initargs=()):
+    """A pool of ``n`` spawned worker processes with one BLAS thread each, or None for n <= 1 or where spawning is
+    impossible: spawned workers re-import __main__, and from stdin or a REPL there is none."""
+    if n <= 1 or not getattr(__import__("__main__"), "__file__", None):
+        return None
+    import multiprocessing as mp
+    saved = {k: os.environ.get(k) for k in _THREAD_VARS}
+    os.environ.update({k: "1" for k in _THREAD_VARS})     # read by the workers as they start
+    try:
+        return mp.get_context("spawn").Pool(n, initializer=initializer, initargs=initargs)
+    finally:
+        for k, v in saved.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+
+
 def _worker_init(args):
     global _WORKER
     _WORKER = _Build(*args)
@@ -392,25 +416,12 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
     temps = np.unique([float(T_range[0]), float(np.sqrt(T_range[0] * T_range[1])), float(T_range[1])])
     args = (model.isotopologue, model.parameters, model.grids, model.solver, nu_min, nu_max, temps, S_min, mu)
     n = _n_workers() if workers is None else max(1, int(workers))
-    pool = None
-    main = __import__("__main__")
-    if n > 1 and not getattr(main, "__file__", None):
-        n = 1          # spawned workers re-import __main__; from stdin or a REPL there is none, so stay in-process
-    if n > 1:
-        import multiprocessing as mp
-        saved = {k: os.environ.get(k) for k in _THREAD_VARS}
-        os.environ.update({k: "1" for k in _THREAD_VARS})     # each worker one BLAS thread; set before spawning
-        try:
-            pool = mp.get_context("spawn").Pool(n, initializer=_worker_init, initargs=(args,))
-        finally:
-            for k, v in saved.items():
-                if v is None:
-                    os.environ.pop(k, None)
-                else:
-                    os.environ[k] = v
+    pool = _spawn_pool(n, _worker_init, (args,))
+    if pool is not None:
         run_x = lambda blocks: [r for part in pool.map(_worker_x, blocks) for r in part]      # noqa: E731
         run_lines = lambda jobs: pool.map(_worker_lines, jobs)                                # noqa: E731
     else:
+        n = 1
         _worker_init(args)
         run_x = lambda blocks: [r for b in blocks for r in _worker_x(b)]                     # noqa: E731
         run_lines = lambda jobs: [_worker_lines(j) for j in jobs]                             # noqa: E731
@@ -419,7 +430,7 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
         levels, x_matched, Q, J, done = [], [], np.zeros_like(temps), 0, False
         block = 8
         while not done:
-            for Jr, e, ok in run_x([list(range(J + k * block, J + (k + 1) * block)) for k in range(max(n, 1))]):
+            for Jr, e, ok in run_x([list(range(J + k * block, J + (k + 1) * block)) for k in range(n)]):
                 if done:
                     break
                 term = nuclear_spin_weight(Jr, model.isotopologue) * (2 * Jr + 1) * np.exp(-C2 * e[None, :] / temps[:, None]).sum(axis=1)
@@ -428,7 +439,7 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
                 Q += term
                 if Jr > 10 and term[-1] < 1e-9 * Q[-1]:
                     done = True
-            J += max(n, 1) * block
+            J += n * block
         nJ = len(levels)
         size = max(4, -(-nJ // (4 * n)))
         blocks = [list(range(a, min(a + size, nJ))) for a in range(0, nJ, size)]
@@ -451,7 +462,7 @@ def master_line_list(model, nu_min=11000.0, nu_max=20100.0, T_range=(200.0, 600.
         unmatched += u
     if unmatched > 100:
         raise RuntimeError(f"{unmatched} lines use a DVR level with no B-spline level within {MATCH_TOLERANCE} cm⁻¹; "
-                           "widen POSITION_GRIDS['nlev'] or check the grids")
+                           "raise the nlev of POSITION_GRIDS or check the grids")
     if unmatched:
         warnings.warn(f"{unmatched} lines at the B asymptote dropped: no position-model level within {MATCH_TOLERANCE} cm⁻¹")
     arrays = {k: np.concatenate(v) for k, v in cols.items()}

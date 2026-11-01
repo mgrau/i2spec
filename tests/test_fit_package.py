@@ -4,13 +4,8 @@ import json
 import numpy as np
 import pytest
 
-from i2spec.fit import b1g_resonance as rz, hyperfine_beyond as hb
+from i2spec.fit import b1g_resonance as rz
 from i2spec.research import _entry, _read
-
-
-@pytest.fixture(scope="module")
-def table():
-    return _read(_entry("balanced_expanded"), "hyperfine.json")
 
 
 def test_resonance_overlaps_carry_one_phase_convention(table):
@@ -25,6 +20,13 @@ def test_resonance_overlaps_carry_one_phase_convention(table):
         s = [res.overlap(n, Jg, v, jb) for jb in range(max(0, Jg-4), Jg+5)]
         assert len(set(np.sign(s))) == 1
         assert np.allclose(np.abs(s), [abs(released[f"{Jg},{jb}"]) for jb in range(max(0, Jg-4), Jg+5)], rtol=1e-8)
+
+
+def test_a_level_without_neighbours_at_its_J_is_not_matched():
+    from i2spec.fit import package
+    E = {("B", 50, 10): 100., ("B", 51, 10): 110.}
+    assert package._match(E, "B", 50, 10, [99.9, 109.8]) == 0
+    assert package._match({("B", 50, 10): 100.}, "B", 50, 10, [99.9]) is None
 
 
 @pytest.mark.slow

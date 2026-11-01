@@ -23,6 +23,7 @@ Boltzmann population of X. Nuclear-spin weights average out.
 from __future__ import annotations
 
 import hashlib
+import os
 import warnings
 import zipfile
 from dataclasses import dataclass
@@ -33,7 +34,8 @@ from numpy.polynomial import polynomial as P
 from scipy.optimize import brentq, minimize_scalar
 
 from .constants import HBAR2_2U, ISOTOPOLOGUES, PUBLISHED_PARAMETERS, REFERENCE_ISOTOPOLOGUE, reduced_mass
-from .intensity import C2, S_UNIT, _parameter_files_digest, cache_dir, mark_used, mu_tellinghuisen2011
+from .intensity import (C2, S_UNIT, _parameter_files_digest, cache_dir, mark_used, mu_tellinghuisen2011,
+                        save_npz)
 from .potentials import load_potentials
 from .solver import RadialSolver
 
@@ -156,7 +158,7 @@ def _overlaps(V, h, E, c, stride, n_x, window, weighted):
 class Continuum:
     """Temperature-independent continuum data; σ(ν, T) from cross_section()."""
 
-    J: np.ndarray  # rotational quantum numbers of the samples (bin centres, spacing dJ)
+    J: np.ndarray  # rotational quantum numbers of the samples (bin centers, spacing dJ)
     dJ: float
     e_lower: np.ndarray  # (nJ, nv) X term values above X(0, 0)
     energies: dict  # state -> upper-state energy grid, cm⁻¹ above X(0, 0)
@@ -190,10 +192,12 @@ class Continuum:
         return lambda nu: self.cross_section(nu, T)
 
     def save(self, path):
+        """Write to ``path`` (".npz" added if missing, as np.savez does) through a temporary file beside it."""
         arrays = dict(J=self.J, dJ=self.dJ, e_lower=self.e_lower, cut=self.cut, isotopologue=self.isotopologue)
         for s in self.m2:
             arrays[f"E_{s}"], arrays[f"m2_{s}"] = self.energies[s], self.m2[s]
-        np.savez(path, **arrays)
+        path = os.fspath(path)
+        save_npz(path if path.endswith(".npz") else path+".npz", arrays)
 
     @classmethod
     def load(cls, path):

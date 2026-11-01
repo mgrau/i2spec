@@ -1,12 +1,12 @@
 /* Shared by the explorer, the documentation and the references page.
 
    Iceland: glacial meltwater and black basalt in daylight, basalt and the aurora at night. The
-   trace and the selected line carry the only information colour encodes; measured lines are marked
+   trace and the selected line carry the only information color encodes; measured lines are marked
    in neutral ink, so they read as a third thing without a third hue. */
 :root {
   /* Iceland, in daylight: glacial meltwater, black basalt, a glacier-blue trace and volcanic rust
-     for the selected line. The two mark colours are validated for colour-vision deficiency
-     (protan dE 18.8) and every text colour clears 4.5:1 on both surfaces. */
+     for the selected line. The two mark colors are validated for color-vision deficiency
+     (protan dE 18.8) and every text color clears 4.5:1 on both surfaces. */
   --ground: #e9eff3; --surface: #ffffff; --surface-2: #f4f8fa;
   --ink: #0e1f28; --ink-2: #3c525d; --ink-3: #5c7480;
   --rule: #cfdde4; --rule-2: #e3ecf0;
@@ -14,7 +14,7 @@
   --trace: #0070a0; --trace-fill: rgba(0, 112, 160, 0.13); --pick: #c0306a; --mark: #2b3f49;
   /* the three kinds of line: measured to sub-Doppler precision, measured in an FTS atlas, model only.
      The two measured hues and the selection pass the CVD check (worst ΔE 10, protan); the model-only
-     lines are grey on purpose, the unmeasured background the measurements stand out from. */
+     lines are gray on purpose, the unmeasured background the measurements stand out from. */
   --cls-precision: #b87400; --cls-atlas: #0070a0; --cls-model: #8a9ba5;
   /* a highlighted band: a deep red for the P branch, a light one for R (clear of the crimson selection) */
   --band-p: #9e1b1b; --band-r: #e8706a;

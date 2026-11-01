@@ -61,11 +61,17 @@ def cmd_line(args):
     catalog = _catalog(args)
     line = catalog.line(args.label, args.isotopologue)
     value, basis = uncertainty(line)
-    comps = catalog.components(line, dJ=args.dJ, main_only=not args.all)
+    try:
+        comps = catalog.components(line, dJ=args.dJ, main_only=not args.all)
+    except ValueError as error:                       # the model's reason it gives the center only
+        comps, note = [], str(error)
+    else:
+        note = catalog.center_only(line, comps)
     if args.json:
         print(json.dumps(dict(_as_dict(line), components=[
             dict(label=c.label, offset_MHz=c.offset_MHz, frequency_MHz=c.frequency_MHz, strength=c.strength,
-                 F_upper=c.F_upper, F_lower=c.F_lower, uncertainty_MHz=c.uncertainty_MHz) for c in comps]), indent=1))
+                 F_upper=c.F_upper, F_lower=c.F_lower, uncertainty_MHz=c.uncertainty_MHz) for c in comps],
+            **({"center_only": note} if note else {})), indent=1))
         return
     print(f"{line.isotopologue} {line.label}   {line.position('nm'):.5f} nm vacuum   {line.nu:.5f} cm⁻¹   "
           f"{line.position('MHz'):,.3f} MHz")
@@ -75,6 +81,9 @@ def cmd_line(args):
     print(f"  position uncertainty ≈ {format_mhz(value)} MHz (1σ): {basis}")
     if line.flags:
         print(f"  flags: {', '.join(line.flags)}")
+    if note:
+        print(f"\n  no hyperfine components: {note}")
+        return
     with_u = any(c.uncertainty_MHz is not None for c in comps)
     print(f"\n  {'component':<12}{'offset (MHz)':>14}{'frequency (MHz)':>20}{'u (MHz)':>10}{'strength':>10}" if with_u
           else f"\n  {'component':<12}{'offset (MHz)':>14}{'frequency (MHz)':>20}{'strength':>10}")

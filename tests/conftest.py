@@ -26,3 +26,11 @@ def hand_made(monkeypatch):
     from i2spec import lookup
     monkeypatch.setattr(lookup, "preferred_positions", lambda master: master)
     monkeypatch.setattr(lookup, "_held", lambda line: None)
+
+
+@pytest.fixture(scope="module")
+def table():
+    """The continued model's hyperfine.json (tests/test_fit_hyperfine.py, tests/test_fit_package.py; a module's own
+    `table` fixture takes precedence)."""
+    from i2spec.research import _entry, _read
+    return _read(_entry("balanced_expanded"), "hyperfine.json")

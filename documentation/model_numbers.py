@@ -34,6 +34,8 @@ TEMPERATURE = 293.15
 COMPONENT = "a10"
 
 NNBSP = "\u202f"          # narrow no-break space: the thousands separator of every grouped number
+#: the isotopologues as the pages write them (documentation/hooks.py uses it too)
+ISO = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I¹²⁹I"}
 
 
 # ------------------------------------------------------------------------------------------------- formatting
@@ -82,8 +84,8 @@ def _strength(nu):
 
     Catalog().line gives the same from the cached line list of every line (minutes to build the first time); this
     builds only the X levels of the partition function (with the line list's convergence rule) and the line's own
-    two levels, a few seconds, so the site builds quickly from an empty cache. tests/test_docs.py compares it with
-    Catalog().line."""
+    two levels (about 450 X eigensolves, some 20 s), so the site builds quickly from an empty cache.
+    tests/test_docs.py compares it with Catalog().line."""
     from i2spec.intensity import C2, _Build, intensity_model, mu_tellinghuisen2011, nuclear_spin_weight
 
     model = intensity_model()
@@ -147,7 +149,7 @@ def _training_rows():
         train_atlas=int((this & train & ~precision).sum()),
         held_out_precision=int((this & ~train & precision).sum()),
         held_out_sources=sorted(set(c["source"][this & ~train & precision])),
-        hf_trained=sum(r["future"] == "0" for r in hf), hf_held_out=sum(r["future"] == "1" for r in hf),
+        hf_held_out=sum(r["future"] == "1" for r in hf),
         b_precision=int((on["B"] & train & precision).sum()), b_all=int((on["B"] & train).sum()),
         b_precision_held_out=int((on["B"] & ~train & precision).sum()),
         x_precision=int((on["X"] & train & precision).sum()), x_all=int((on["X"] & train).sum()))
@@ -183,7 +185,7 @@ def worked_example():
     # line position
     nu = m.transition(V_UPPER, V_LOWER, J_LOWER, BRANCH)
     out.update(nu=nu, nu_MHz=nu * MHZ_PER_CM, nm=1e7 / nu, nm_air=from_wavenumber(nu, "nm-air"),
-               origin=eb0 - ex0, below_origin=(eb0 - ex0) - nu, nu_levels=eb - ex)
+               origin=eb0 - ex0, below_origin=(eb0 - ex0) - nu)
 
     # hyperfine
     hb, hx = m.level_hyperfine("B", V_UPPER, J_UPPER), m.level_hyperfine("X", V_LOWER, J_LOWER)
@@ -193,10 +195,9 @@ def worked_example():
         energies = [h.energy for h in m.hyperfine_levels(state, v, J)]
         return max(energies) - min(energies)
     out.update(x_spread=spread("X", V_LOWER, J_LOWER), b_spread=spread("B", V_UPPER, J_UPPER))
-    center, components = m.hyperfine_components(V_UPPER, V_LOWER, J_LOWER, BRANCH)
+    _, components = m.hyperfine_components(V_UPPER, V_LOWER, J_LOWER, BRANCH)
     main = {c.label: c for c in components if c.label}
-    out.update(center=center, n_main=len(main), n_components=len(components),
-               main_strength=sum(c.strength for c in main.values()),
+    out.update(n_main=len(main), main_strength=sum(c.strength for c in main.values()),
                offsets={k: c.offset for k, c in main.items()}, comp_strength=main[COMPONENT].strength,
                comp_MHz=m.frequency(LINE, COMPONENT), span=main["a15"].offset - main["a1"].offset)
 
@@ -214,7 +215,7 @@ def worked_example():
     out.update(sigma=center_u.sigma_MHz, sigma_stat=center_u.statistical_MHz, sigma_model=center_u.model_MHz,
                sigma_level=center_u.model_MHz / math.sqrt(2), sigma_comp=comp_u.sigma_MHz,
                sigma_hf=comp_u.hyperfine_MHz, sigma_interval=interval_u.sigma_MHz, hf_a=a, hf_kappa=kappa,
-               status=center_u.status, line_class=center_u.line_class, hf_status=comp_u.hyperfine_status)
+               status=center_u.status)
 
     # the measurement and the fit
     value, u, set_id, short = _measured()
@@ -227,8 +228,7 @@ def worked_example():
 def _we_strings(w):
     o = w["offsets"]
     return {
-        "we.model_id": w["model_id"],
-        "we.line": "R(56) 32–0", "we.component": COMPONENT, "we.T": f"{TEMPERATURE:.2f}",
+        "we.T": f"{TEMPERATURE:.2f}",
         # potentials and levels
         "we.x_re": f"{w['x_re']:.5f}", "we.x_de": group(w["x_de"], 2), "we.b_re": f"{w['b_re']:.5f}",
         "we.b_te": group(w["b_te"], 3), "we.b_de": group(w["b_de"], 2),
@@ -248,10 +248,10 @@ def _we_strings(w):
         "we.x_d": f"{w['x_d']:.3f}", "we.x_delta": f"{w['x_delta']:.3f}",
         "we.x_spread": group(w["x_spread"], 0), "we.b_spread": group(w["b_spread"], 0),
         "we.eqq_ratio": f"{w['x_eqq'] / w['b_eqq']:.1f}",
-        "we.n_main": str(w["n_main"]), "we.n_components": str(w["n_components"]),
+        "we.n_main": str(w["n_main"]),
         "we.main_strength": f"{100 * w['main_strength']:.2f} %",
         "we.a1": group(o["a1"], 3), "we.a15": signed(o["a15"], 3), "we.a10": signed(o[COMPONENT], 3),
-        "we.span": group(w["span"], 3), "we.center_MHz": group(w["center"], 3),
+        "we.span": group(w["span"], 3),
         "we.comp_MHz": group(w["comp_MHz"], 3), "we.comp_MHz_raw": f"{w['comp_MHz']:.3f}",
         "we.comp_strength": f"{w['comp_strength']:.4f}",
         "we.offsets_table": "\n".join(
@@ -265,13 +265,13 @@ def _we_strings(w):
         "we.sigma_model": f"{w['sigma_model']:.3f}", "we.sigma_level": f"{w['sigma_level']:.3f}",
         "we.sigma_comp": f"{w['sigma_comp']:.3f}", "we.sigma_raw": f"{w['sigma']:.3f}", "we.sigma_hf": f"{w['sigma_hf']:.3f}",
         "we.sigma_interval": f"{w['sigma_interval']:.3f}", "we.hf_a": f"{1e3 * w['hf_a']:.0f}",
-        "we.hf_kappa": sci(w["hf_kappa"], 1), "we.status": w["status"], "we.hf_status": w["hf_status"],
+        "we.hf_kappa": sci(w["hf_kappa"], 1), "we.status": w["status"],
         # the measurement and the fit
         "we.measured": group(w["measured"], 4), "we.measured_sigma": f"{1e3 * w['measured_sigma']:.1f}",
         "we.measured_short": w["measured_short"], "we.residual": signed(w["residual"], 3),
         "we.z": signed(w["z"], 2),
         "we.train_atlas": str(w["train_atlas"]), "we.held_out_precision": str(w["held_out_precision"]),
-        "we.hf_held_out": str(w["hf_held_out"]), "we.hf_trained": str(w["hf_trained"]),
+        "we.hf_held_out": str(w["hf_held_out"]),
         "we.b_precision": count(w["b_precision"]), "we.b_all": count(w["b_all"]),
         "we.b_precision_held_out": count(w["b_precision_held_out"]),
         "we.x_precision": count(w["x_precision"]), "we.x_all": count(w["x_all"]),
@@ -296,11 +296,10 @@ def _release():
 def fit_counts():
     """What each stage of the fit adjusts and how many rows of which data it was fitted to."""
     from i2spec.fit import rows as R
-    from i2spec.fit.data import ROLES, fit_datasets
+    from i2spec.fit.data import ROLES
 
     entry, expanded, core, read = _release()
     core_model, ex_model = read(core, "model.json"), read(expanded, "model.json")
-    iso = read(entry, "isotopologues.json")
     potential = [p for p in core_model["optimizer_parameters"]["potential"] if not p["name"].startswith("iso")]
     shift = [p for p in core_model["optimizer_parameters"]["potential"] if p["name"].startswith("iso")]
     per_state = {s: Counter("c" if p["name"].startswith("c") else "alpha" if p["name"].startswith("alpha") else "other"
@@ -320,28 +319,25 @@ def fit_counts():
         hf = list(csv.DictReader(f))
     intervals = [r for r in hf if r["kind"] == "interval"]
     constants = Counter(r["source"] for r in hf if r["kind"] == "constant")
-    cv = json.loads(gzip.open(TRAINING / R.RELEASE / "cross_validation.json.gz", "rt", encoding="utf-8").read())
+    with gzip.open(TRAINING / R.RELEASE / "cross_validation.json.gz", "rt", encoding="utf-8") as f:
+        cv = json.load(f)
     future = Counter(r["kind"] for r in cv["core_folds"] if r["fold"] == "future")
     core_folds = sorted({r["fold"] for r in cv["core_folds"]})
-    centers = json.loads((TRAINING / "20261029" / "isotopologue_centers.json").read_text())["data"]
+    centers = read(entry, "isotopologues.json")["isotope_shift"]["data"]      # the CIPM centers of the core fit
 
     roles = json.loads((TRAINING / ROLES / "roles.json").read_text())["sets"]
     outcome = json.loads((TRAINING / ROLES / "outcome.json").read_text())["final_roles"]
     final = Counter(outcome.get(s["set"], s["role"]) for s in roles)
-    datasets = fit_datasets()
 
     return dict(
         inventory=entry["inventory"], core_inventory=core["inventory"],
         n_potential=len(potential), n_shift=len(shift), n_hf_core=sum(hf_core.values()), hf_core=dict(hf_core),
         x_c=per_state["X"]["c"], x_alpha=per_state["X"]["alpha"], b_c=per_state["B"]["c"], b_alpha=per_state["B"]["alpha"],
-        x_other=per_state["X"]["other"], b_other=per_state["B"]["other"],
         n_tails=detail["potential_tails"]["fitted"],
         tails=dict(x_outer=sum(t.startswith("X:to") for t in tails), x_inner=sum(t.startswith("X:ti") for t in tails),
                    x_rot=sum(t.startswith("X:ro") for t in tails), x_splines=sum(t.startswith("X:w") for t in tails),
-                   b_outer=sum(t.startswith("B:to") for t in tails), b_rot=sum(t.startswith("B:ro") for t in tails),
-                   dc6=sum(t == "X:dC6" for t in tails), dde=sum(t == "X:dDe" for t in tails)),
-        hf_beyond=detail["hyperfine_fitted"]["names"], hf_derived=detail["hyperfine_derived"],
-        inherited_detail=detail["inherited_new"],
+                   b_outer=sum(t.startswith("B:to") for t in tails), b_rot=sum(t.startswith("B:ro") for t in tails)),
+        hf_beyond=detail["hyperfine_fitted"]["names"],
         core_rows=int(core_train.sum()), core_by_category=dict(by_cat), core_sources=sources,
         core_kinds=dict(Counter(c["kind"][core_train & np.isin(c["category"], ["comb", "doppler"])])),
         benchmark_rows=int(benchmark.sum()), benchmark_sets=len(R.NEW_SETS),
@@ -352,7 +348,6 @@ def fit_counts():
         continuation_folds=len(cv["continuation_folds"]),
         hyperfine_folds=max(len(v["folds"]) for v in cv["hyperfine_folds"].values()),
         hf_core_trained=sum(r["inside"] == "1" and r["future"] == "0" for r in intervals),
-        hf_core_held_out=sum(r["inside"] == "1" and r["future"] == "1" for r in intervals),
         hf_beyond_rows=sum(r["inside"] == "0" for r in intervals), hf_constants=dict(constants),
         hf_core_sources=len({r["source"] for r in intervals if r["inside"] == "1" and r["future"] == "0"}),
         calibration={k: core_model["calibration"][k] for k in ("atlas_sr", "atlas_apo")},
@@ -360,7 +355,7 @@ def fit_counts():
         isotopologue_centers=[(d["line"], d["sigma_MHz"]) for d in centers],
         continuation_rows=int(cont_train.sum()), continuation_by_category=dict(Counter(c["category"][cont_train])),
         continuation_regions={k: (v["n"], v["rms_MHz"]) for k, v in ex_model["fit"]["training"].items()},
-        roles=dict(final), n_datasets=len(datasets), n_observations=sum(len(d.observations) for d in datasets),
+        roles=dict(final),
         exclusion=entry["exclusion"], orsay1_core_v=(int(c["v_lower"][core_train & (c["category"] == "orsay1")].min()),
                                                      int(c["v_lower"][core_train & (c["category"] == "orsay1")].max())),
         martin_core_v=(int(c["v"][core_train & (c["category"] == "martin")].min()),
@@ -399,13 +394,13 @@ def _fit_strings(f):
     sr, apo = f["calibration"]["atlas_sr"], f["calibration"]["atlas_apo"]
     return {
         "fit.fitted": str(inv["fitted_molecular"]), "fit.inherited": str(inv["inherited_molecular"]),
-        "fit.calibration": str(inv["fitted_calibration"]), "fit.core_fitted": str(core_inv["fitted_molecular"]),
+        "fit.calibration": str(inv["fitted_calibration"]),
         "fit.core_calibration": str(core_inv["fitted_calibration"]),
         "fit.n_potential": str(f["n_potential"]), "fit.n_shift": str(f["n_shift"]), "fit.n_hf_core": str(f["n_hf_core"]),
         "fit.hf_eqq": str(f["hf_core"]["eqQ"]), "fit.hf_c": str(f["hf_core"]["C"]), "fit.hf_d": str(f["hf_core"]["d"]),
         "fit.hf_delta": str(f["hf_core"]["delta"]),
         "fit.x_c": str(f["x_c"]), "fit.x_alpha": str(f["x_alpha"]), "fit.b_c": str(f["b_c"]),
-        "fit.b_alpha": str(f["b_alpha"]), "fit.x_other": str(f["x_other"]), "fit.b_other": str(f["b_other"]),
+        "fit.b_alpha": str(f["b_alpha"]),
         "fit.n_tails": str(f["n_tails"]), "fit.x_outer": str(t["x_outer"]), "fit.x_inner": str(t["x_inner"]),
         "fit.x_rot": str(t["x_rot"]), "fit.x_splines": str(t["x_splines"]), "fit.b_outer": str(t["b_outer"]),
         "fit.b_rot": str(t["b_rot"]), "fit.n_hf_beyond": str(len(f["hf_beyond"])),
@@ -423,7 +418,7 @@ def _fit_strings(f):
         "fit.core_folds": str(f["core_folds"]), "fit.core_level_folds": str(f["core_level_folds"]),
         "fit.core_source_folds": str(f["core_source_folds"]), "fit.continuation_folds": str(f["continuation_folds"]),
         "fit.hyperfine_folds": str(f["hyperfine_folds"]),
-        "fit.hf_core_trained": count(f["hf_core_trained"]), "fit.hf_core_held_out": count(f["hf_core_held_out"]),
+        "fit.hf_core_trained": count(f["hf_core_trained"]),
         "fit.hf_core_sources": str(f["hf_core_sources"]), "fit.hf_beyond_rows": count(f["hf_beyond_rows"]),
         "fit.hf_chen": str(f["hf_constants"].get("chen2004a", 0)), "fit.hf_pique": str(f["hf_constants"].get("pique1986", 0)),
         "fit.sr_offset": signed(sr["offset_MHz"], 1), "fit.sr_slope": signed(sr["slope_MHz_per_1000cm"], 1),
@@ -431,8 +426,8 @@ def _fit_strings(f):
         "fit.sr_shared": str(sr["n_used"]), "fit.apo_shared": str(apo["n_used"]),
         "fit.orsay4_offset": f"{f['orsay4_offset']:.1f}",
         "fit.n_iso_centers": str(len(f["isotopologue_centers"])),
-        "fit.iso_centers": ", ".join(f"{line.split()[0].replace('127I129I', '¹²⁷I¹²⁹I').replace('129I2', '¹²⁹I₂')} "
-                                     f"{' '.join(line.split()[1:])}" for line, _ in f["isotopologue_centers"]),
+        "fit.iso_centers": ", ".join(f"{ISO[iso]} {name}" for iso, name in
+                                     (line.split(" ", 1) for line, _ in f["isotopologue_centers"])),
         "fit.continuation_rows": count(f["continuation_rows"]),
         "fit.cont_orsay1": count(f["continuation_by_category"]["orsay1"]),
         "fit.cont_orsay4": count(f["continuation_by_category"]["orsay4"]),
@@ -442,7 +437,6 @@ def _fit_strings(f):
         "fit.region_table": region_table,
         "fit.calibrate_sets": str(f["roles"].get("calibrate", 0)), "fit.locked_sets": str(f["roles"].get("locked test", 0)),
         "fit.record_sets": str(f["roles"].get("record", 0)),
-        "fit.n_datasets": str(f["n_datasets"]), "fit.n_observations": count(f["n_observations"]),
         "fit.exclusion": f["exclusion"].split(" ", 1)[1].replace("-", "–"),
         "fit.orsay1_core_v": "–".join(map(str, f["orsay1_core_v"])), "fit.martin_core_v": "–".join(map(str, f["martin_core_v"])),
         "fit.calibrate_rows": count(uncertainty_numbers()["u"]["checks"]["step4"]["calibrate_coverage"]["total all | refit"]["n"]),
@@ -465,7 +459,7 @@ def uncertainty_numbers():
     locked = json.loads((folder / "locked_test_results.json").read_text())
     # the rows whose prediction and sigma the released version leaves as scored (its manifest's record)
     changed = json.loads((root / entry["id"].split("-")[1] / "manifest.json").read_text()).get("locked_test", {})
-    return dict(u=u, locked=locked, locked_release=folder.parent.name,
+    return dict(u=u, locked=locked,
                 locked_unchanged=changed.get("rows_unchanged", locked["summary"]["all"][locked["primary"]]["n"]))
 
 
@@ -505,8 +499,7 @@ def _unc_strings(n):
         "unc.x_groups": str(x["n_groups"]),
         "unc.lab_offset": f"{me['lab offset (core absolute, not in predictions)']['sigma_MHz']:.2f}",
         "unc.hf_a": f"{1e3 * hf['core']['a_MHz']:.0f}", "unc.hf_kappa": sci(hf["core"]["kappa"], 1),
-        "unc.hf_growth": f"{hb['a_growth_per_v']:.2f}", "unc.hf_cal": count(hb["n_calibrate_intervals"]),
-        "unc.hf_core_cal": count(hf["core"]["n_calibrate"]),
+        "unc.hf_growth": f"{hb['a_growth_per_v']:.2f}",
         "unc.x_kappa51": f"{hf['X beyond']['kappa_51']:.3f}",
         "unc.cal_rows": count(total["n"]), "unc.cal_1": percent(total["within_1"]), "unc.cal_2": percent(total["within_2"]),
         "unc.cal_core_rows": count(core["n"]), "unc.cal_core_1": percent(core["within_1"]),
@@ -518,7 +511,6 @@ def _unc_strings(n):
         "unc.cal_hf_b_1": f"{min(100 * c['refit'][1] for c in late):.0f}–{max(100 * c['refit'][1] for c in late):.0f} %",
         "unc.cal_hf_b_2": f"{min(100 * c['refit'][2] for c in late):.0f}–{max(100 * c['refit'][2] for c in late):.0f} %",
         "unc.locked_rows": str(every["n"]), "unc.locked_2": percent(every["within_2sigma"]),
-        "unc.locked_release": n["locked_release"],
         "unc.locked_unchanged": str(n["locked_unchanged"]),
         "unc.locked_abs_2": percent(strata["absolute"]["within_2sigma"]),
         "unc.locked_hf_2": percent(strata["intraline"]["within_2sigma"]),
@@ -534,11 +526,10 @@ TYPICAL = [("127I2", "R(56) 32-0", "532 nm", ("a15", "a1")), ("127I2", "R(150) 2
            ("129I2", "P(54) 8-4", "633 nm", ("a2", "a1")), ("129I2", "R(20) 15-1", "", ("a2", "a1")),
            ("129I2", "R(56) 32-0", "532 nm", ("a2", "a1")), ("129I2", "R(41) 51-0", "", ("a2", "a1")),
            ("127I129I", "P(33) 6-3", "633 nm", ("a2", "a1")), ("127I129I", "R(56) 32-0", "", ("a2", "a1"))]
-ISO = {"127I2": "¹²⁷I₂", "129I2": "¹²⁹I₂", "127I129I": "¹²⁷I¹²⁹I"}
 
 
 def mhz(x):
-    """A 1σ as the pages give it: two significant digits below 10 MHz, whole MHz above."""
+    """A 1σ as the pages give it: two decimals below 1 MHz, one below 10 MHz, whole MHz above."""
     return f"{x:.2f}" if x < 1 else f"{x:.1f}" if x < 10 else f"{x:.0f}"
 
 
@@ -580,11 +571,16 @@ def _edge_strings(u):
             "unc.width_worst": f"{w['largest_change_over_width']:.1f}"}
 
 
-def _hf_beyond_strings(hb):
-    a = lambda v: hb["a_MHz"] * math.exp(hb["a_growth_per_v"] * (v - 44))  # noqa: E731
-    kappa = lambda v: math.exp(hb["log_kappa0"]) * (1 + (v - hb["v_ref"]) / hb["v_scale"]) ** hb["power"]  # noqa: E731
+def _hf_beyond_strings():
+    """The B hyperfine floor a and pattern-scale error κ beyond the core at a few v′, from the model's own
+    uncertainty (a of a line to X v″ = 0, whose floor is B's; κ of the B level alone)."""
+    from i2spec.preferred import model
+
+    m = model("127I2")
+    unc, core = m._uncertainty_model(), m._spec["core"]
+    a = lambda v: unc.hyperfine_terms(core, v, 0)[0]  # noqa: E731
     return {"unc.hf_a_beyond": ", ".join(f"{mhz(a(v))} MHz at v′ = {v}" for v in (50, 60, 70)),
-            "unc.hf_kappa_beyond": ", ".join(f"{sci(kappa(v), 1)} at v′ = {v}" for v in (44, 55, 70))}
+            "unc.hf_kappa_beyond": ", ".join(f"{sci(unc.kappa(core, 'B', v), 1)} at v′ = {v}" for v in (44, 55, 70))}
 
 
 @lru_cache(maxsize=None)
@@ -593,4 +589,4 @@ def numbers():
     unc = uncertainty_numbers()
     return {**_we_strings(worked_example()), **_fit_strings(fit_counts()), **_unc_strings(unc),
             **_edge_strings(unc["u"]),
-            **_hf_beyond_strings(unc["u"]["hyperfine"]["B beyond"]), **_typical_strings(typical())}
+            **_hf_beyond_strings(), **_typical_strings(typical())}

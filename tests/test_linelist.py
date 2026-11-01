@@ -127,7 +127,7 @@ def test_apparent_cross_section_stays_finite_when_saturated(master):
 def test_doppler_width_follows_the_isotopologue_mass():
     nu0, one = 18790.0, np.ones(1)
     lines = LineList(nu0 * one, 1e-18 * one, 30 * one, 0 * one, 50 * one, one, 0 * one, 300.0)
-    nu = np.linspace(nu0 - 0.05, nu0 + 0.05, 2001)       # the profile's peak sits on the centre point
+    nu = np.linspace(nu0 - 0.05, nu0 + 0.05, 2001)       # the profile's peak sits on the center point
     peak = {iso: cross_section(nu, lines, 300.0, isotopologue=iso)[1000] for iso in ("127I2", "129I2", "127I129I")}
     np.testing.assert_array_equal(cross_section(nu, lines, 300.0),
                                   cross_section(nu, lines, 300.0, isotopologue="127I2"))

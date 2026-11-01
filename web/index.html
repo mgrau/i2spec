@@ -61,7 +61,7 @@ button:hover { border-color: var(--accent); }
 #presets { display: flex; gap: 5px; flex-wrap: wrap; }
 #presets button { padding: 5px 9px; font-size: 12.5px; color: var(--ink-2); }
 /* every control in the panel the same height: text boxes, menus, buttons and the segmented groups (whose
-   buttons fill them); the text centres itself, so only the side padding is kept */
+   buttons fill them); the text centers itself, so only the side padding is kept */
 .controls { --ctl-h: 32px; }
 .controls input, .controls select, .controls button, .controls .seg { box-sizing: border-box; height: var(--ctl-h); }
 .controls input, .controls select, .controls button { padding-top: 0; padding-bottom: 0; }
@@ -183,11 +183,10 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
   body { height: 100dvh; }
   header { padding: 8px 12px; gap: 4px 10px; align-items: center; }
-  h1 { font-size: 18px; }
   #prov { display: none; }
   .site-nav a { font-size: 12px; padding: 4px 6px; }
-  /* first row: title, theme, options; second: pages; third: what is on screen */
-  /* one row: title, References, options, theme; the documentation and source links are in the options panel */
+  /* one row: title, References, options, theme (the documentation and source links are in the options panel);
+     under it, what is on screen */
   h1 { order: 0; font-size: 16px; } .site-nav { order: 1; } #optbtn { order: 2; margin-left: auto; } #theme { order: 3; }
   .site-nav a[href="docs/index.html"], #repo { display: none; }
   .controls .phone-only { display: grid; grid-column: 1 / -1; }
@@ -216,7 +215,6 @@ td.src a, table.meas a { color: var(--accent); text-decoration-thickness: 1px; t
   #statusbar.fresh { display: block; position: fixed; left: 10px; right: 10px; z-index: 7; pointer-events: none;
     bottom: calc(60px + env(safe-area-inset-bottom, 0px)); padding: 6px 10px; border-radius: 6px; font-size: 12px;
     background: var(--surface); box-shadow: 0 2px 10px rgb(0 0 0 / .18); }
-  #statusbar.fresh #hint { display: none; }
   /* the wavenumber and frequency columns repeat the wavelength; the detail pane has them */
   #head th:nth-child(3), #head th:nth-child(4), #rows td:nth-child(3), #rows td:nth-child(4) { display: none; }
   #hint { display: none; }

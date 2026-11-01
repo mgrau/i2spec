@@ -3,6 +3,7 @@ import numpy as np
 import pytest
 
 from i2spec import ResearchModel
+from i2spec.lookup import parse_label
 from i2spec.research import _entry, _info, _read
 from i2spec.research_expanded import _ExpandedPotential
 
@@ -63,20 +64,14 @@ def test_dissociated_levels_and_missing_hyperfine_do_not_fall_back(model):
 def test_core_lines_keep_balanced_hyperfine(model):
     balanced = ResearchModel("balanced")
     for label in ("R(56) 32-0", "P(53) 32-0"):
-        _, mine = model.hyperfine_components(*_tuple(label))
-        _, theirs = balanced.hyperfine_components(*_tuple(label))
+        branch, J, vu, vl = parse_label(label)
+        _, mine = model.hyperfine_components(vu, vl, J, branch)
+        _, theirs = balanced.hyperfine_components(vu, vl, J, branch)
         offsets = {c.label: c.offset for c in mine if c.label}
         for c in theirs:
             if c.label:
                 assert abs(offsets[c.label]-c.offset) < 1e-6                   # MHz
         assert abs(model.frequency(label)-balanced.frequency(label)) < 1.     # MHz: the tails barely reach v'32
-
-
-def _tuple(label):
-    branch, rest = label[0], label[2:]
-    J, bands = rest.split(") ")
-    vu, vl = bands.split("-")
-    return int(vu), int(vl), int(J), branch
 
 
 @pytest.mark.parametrize("kind", ["core", "B beyond", "X beyond", "resonance"])
@@ -144,12 +139,3 @@ def test_uncertainty_model_is_frozen_without_pending_outcomes(model):
     entry["files_sha256"] = dict(entry["files_sha256"], **{"uncertainty.json": "0"*64})
     with pytest.raises(ValueError, match="SHA256"):
         _read(entry, "uncertainty.json")
-
-
-def test_tampered_tables_are_rejected(tmp_path, monkeypatch):
-    import i2spec.research as research
-    entry = dict(_entry("balanced_expanded"))
-    entry["files_sha256"] = dict(entry["files_sha256"], **{"hyperfine.json": "0"*64})
-    with pytest.raises(ValueError, match="SHA256"):
-        _read(entry, "hyperfine.json")
-    assert research.ResearchModel("balanced").info.id == "research-20261018-balanced"

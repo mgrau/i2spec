@@ -145,7 +145,9 @@ class Resonance:
                     H[nb+a, nb+bb] += c[2]*eqq+c[0]*G_C/(Jg*(Jg+1))*1e3
                 H[nb+a, nb+a] += Eg
                 for i, (jb, ib) in enumerate(basis):
-                    S = info['overlaps'].setdefault((Jg, jb), self.overlap(n, Jg, v, jb))
+                    if (Jg, jb) not in info['overlaps']:
+                        info['overlaps'][Jg, jb] = self.overlap(n, Jg, v, jb)
+                    S = info['overlaps'][Jg, jb]
                     x = sum(so.element(k, Jg, Ig, jb, ib, F, omega, parity, eps, values[k]) for k in (1, 2))*S
                     H[i, nb+a] = H[nb+a, i] = x
             w, U = np.linalg.eigh(H)

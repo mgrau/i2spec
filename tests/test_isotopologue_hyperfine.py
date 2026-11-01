@@ -10,10 +10,9 @@ import pytest
 from scipy.signal import find_peaks
 
 from i2spec import RovibronicModel, hfs_params
-from i2spec.hyperfine import K_Q, K_T, HyperfineParameters, build_blocks, level_structure
-from test_hyperfine import dot, dot2, rank2, rotation_ops, spin_ops
+from i2spec.hyperfine import K_Q, K_T, build_blocks, level_structure
+from hyperfine_helpers import P, dot, dot2, product_space, rank2
 
-P = HyperfineParameters(eqQ=-600.0, C=5000.0, d=-3000.0, delta=2000.0)  # exaggerated magnetic terms
 EQQ_RATIO, C_RATIO = 0.701213, 0.6655
 
 # (Lorentzian FWHM, peak intervals from the first peak), MHz.
@@ -27,16 +26,6 @@ FIG5_127I129I_R37_11_3 = (12.2, [0.00, 21.99, 44.59, 136.44, 170.54, 196.05, 236
 @pytest.fixture(scope="module")
 def models():
     return {iso: RovibronicModel(iso, "hannover2008") for iso in ("127I2", "129I2", "127I129I")}
-
-
-def product_space(J_values, i1, i2):
-    labels, J_ops, C2 = rotation_ops(J_values)
-    one_r, one_1, one_2 = np.eye(len(labels)), np.eye(round(2 * i1 + 1)), np.eye(round(2 * i2 + 1))
-    J = [np.kron(op, np.kron(one_1, one_2)) for op in J_ops]
-    I1 = [np.kron(one_r, np.kron(op, one_2)) for op in spin_ops(i1)]
-    I2 = [np.kron(one_r, np.kron(one_1, op)) for op in spin_ops(i2)]
-    C = {q: np.kron(op, np.kron(one_1, one_2)) for q, op in C2.items()}
-    return labels, J, I1, I2, C
 
 
 @pytest.mark.parametrize("i1, i2", [(2.5, 3.5), (3.5, 2.5)])

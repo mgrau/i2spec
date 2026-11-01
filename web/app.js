@@ -113,16 +113,20 @@ const hyperfineShown = () => state.mode === "sub" ? state.hi - state.lo <= SUB_D
 
 const source = k => (state.refs && state.refs.sources[k]) || {short: `source ${k}`, link: null};
 const escapeHTML = t => String(t).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
-/** A source's short name, linked to its DOI (or its document when it has none). */
+/** A source's short name, linked to its DOI (or its document when it has none), its citation on hovering. */
+const citedName = s => {
+  const name = escapeHTML(s.short), title = escapeHTML(s.citation || "");
+  return s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${title}">${name}</a>`
+    : `<span title="${title}">${name}</span>`;
+};
+/** A measurement source's linked name (citedName), marked when no fit uses it. */
 function sourceLink(k) {
   const s = source(k);
-  const name = escapeHTML(s.short);
   // a source no fit uses: held out for the blind tests, set aside, or shown for comparison; why, on hovering
   const why = s.why ? sentence(s.why) : s.kind === "atlas" ? "Shown for comparison; the model is not fitted to it." :
     "Held out of every fit.";
   const blind = s.fit !== false ? "" : ` <span class="n" title="${escapeHTML(why)}">(not fitted)</span>`;
-  return (s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${escapeHTML(s.citation || "")}">${name}</a>`
-    : `<span title="${escapeHTML(s.citation || "")}">${name}</span>`) + blind;
+  return citedName(s) + blind;
 }
 /** "precision", "atlas" or "model": how a line is known. A line in both kinds of source counts as precision. */
 function kindOf(l) {
@@ -324,12 +328,6 @@ function addGaussian(bins, lo, dnu, c, sig, S) {
   }
 }
 
-/**
- * The cross section on the pixel grid, one array per kind of line, and the hyperfine components drawn as
- * sticks when the view is narrow enough. A line narrower than a pixel is widened to one pixel in
- * quadrature before it is binned: the pixel-scale smoothing that stops lines a few pixels wide from
- * flickering as the view moves. Wider lines are unaffected (a 10-pixel line gains 0.5% in width).
- */
 /** A line's strength at T, kept on the line until T changes (the exponential is the costly part). */
 function strengthOf(line, q, T) {
   if (line._T !== T) { line._S = P.strengthAt(line, q, T); line._T = T; }
@@ -435,13 +433,19 @@ function addHistograms(parts, slices, lo, dnu, T, iso) {
   }
 }
 
-/** slices: which rows of which shard the lines are (linesIn), so each shard can be drawn from its histogram. */
+/**
+ * The cross section on the pixel grid, one array per kind of line, and the hyperfine components drawn as
+ * sticks when the view is narrow enough. A line narrower than a pixel is widened to one pixel in
+ * quadrature before it is binned: the pixel-scale smoothing that stops lines a few pixels wide from
+ * flickering as the view moves. Wider lines are unaffected (a 10-pixel line gains 0.5% in width).
+ * slices: which rows of which shard the lines are (linesIn), so each shard can be drawn from its histogram.
+ */
 function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || []) {
   const dnu = (hi - lo) / nbins;
   const parts = KINDS.map(() => new Float64Array(nbins));
   const sticks = [];
   // each shard decides for itself: the last 127I2 shard, stretched to take in the emission rows, has bins
-  // about 12 times wider than the rest, too coarse for pixels its neighbours' histograms already suit
+  // about 12 times wider than the rest, too coarse for pixels its neighbors' histograms already suit
   const fromHist = slices.filter(({s}) => drawnFromHist(s, dnu, withHfs));
   if (fromHist.length) {
     addHistograms(parts, fromHist, lo, dnu, T, iso);
@@ -475,9 +479,9 @@ function binned(lines, lo, hi, nbins, T, iso, withHfs, slices = lines.slices || 
  * strong dips too shallow (the plot says so).
  */
 function transmissionOnPixels(sigma, lines, lo, hi, nb, T, iso, withHfs, N) {
-  const dopplerSigma = P.dopplerFWHM(lo, T, iso) / 2.35482;
-  const os = withHfs ? Math.max(1, Math.min(Math.ceil(3 * (hi - lo) / nb / dopplerSigma), Math.floor(4e5 / nb))) : 1;
   if (!withHfs) return Array.from(sigma, s => Math.exp(-s * N));
+  const dopplerSigma = P.dopplerFWHM(lo, T, iso) / 2.35482;
+  const os = Math.max(1, Math.min(Math.ceil(3 * (hi - lo) / nb / dopplerSigma), Math.floor(4e5 / nb)));
   const parts = binned(lines, lo, hi, nb * os, T, iso, true, (state.plotLines || state.lines).slices).parts;
   const y = new Array(nb).fill(0);
   const optical = new Float64Array(nb * os);
@@ -521,6 +525,11 @@ function bandBins(lo, hi, nbins, T, iso, withHfs) {
 
 /** The key of a line in the full hyperfine patterns (hfs_<iso>.json). */
 const hfsKey = l => `${l.vu}-${l.vl}${l.branch}${l.J}`;
+/** A line's full hyperfine pattern {o, s, l, u?, x?}, once hfs_<iso>.json has loaded and if it holds the line. */
+const fullPattern = l => (state.hfs.get(l.iso) || {})[hfsKey(l)];
+/** Why the model gives a line's center only (its B level's hyperfine is not predicted), once the full patterns have
+ * loaded: their entry for it has no components and this note; else null. */
+const centerOnly = l => { const full = fullPattern(l); return full && !full.o.length && full.n ? full.n : null; };
 
 /**
  * Components with the level identities physics.resonances() compares: main component k joins upper and
@@ -536,13 +545,14 @@ function withLevels(o, s, x, scale = 1) {
 
 /**
  * A line's hyperfine components as {offset (MHz), strength, upper, lower}: the full calculation when the
- * detail pane has loaded it, else the ΔJ = 0 pattern of its shard, else the line alone. Each carries the
+ * detail pane has loaded it, else the ΔJ = 0 pattern of its shard, else the line alone (as for a line the model
+ * gives the center of only: its full entry has no components, centerOnly). Each carries the
  * weak ΔF ≠ ΔJ components that share a level with a main one (10⁻² to 10⁻⁴ of the line), so
  * physics.resonances() finds the crossovers as well as the Lamb dips.
  */
 function componentsOf(line) {
-  const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
-  if (full) return withLevels(full.o, full.s, full.x);
+  const full = fullPattern(line);
+  if (full && full.o.length) return withLevels(full.o, full.s, full.x);
   const h = hfsOf(line);
   if (h) return withLevels(h.o, h.s, h.x, 1 / 1000);
   return [{offset: 0, strength: 1}];
@@ -551,8 +561,8 @@ function componentsOf(line) {
 /** A line's main hyperfine components as [label, offset (MHz)]: the full calculation once it has loaded, else
  * the ΔJ = 0 pattern of its shard; null when neither is here. */
 function mainComponents(line) {
-  const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
-  if (full) return full.l.map((l, k) => [l, full.o[k]]).filter(([l]) => l);
+  const full = fullPattern(line);
+  if (full && full.o.length) return full.l.map((l, k) => [l, full.o[k]]).filter(([l]) => l);
   const h = hfsOf(line);
   return h ? h.o.map((o, k) => [`a${k + 1}`, o]) : null;
 }
@@ -659,7 +669,7 @@ function viewSummary() {
     return (summaryCache = {lines, show: state.filter, counts, nMarked: marked.length, marked});
   }
   let nMarked = 0;
-  const slices = lines.slices || [];
+  const slices = lines.slices;
   for (const {d, a, b} of slices) {
     const t = shardTotals(d);
     KINDS.forEach((k, p) => { counts[k] += t.cum[p][b] - t.cum[p][a]; });
@@ -699,7 +709,7 @@ const secondUnit = unit => unit === "cm-1" ? "nm" : "cm-1";
 
 /**
  * Both horizontal axes: the chosen unit below the plot, and wavenumber (or wavelength) above it, each
- * with round tick values placed where they fall. Labels that would overlap a neighbour are left out.
+ * with round tick values placed where they fall. Labels that would overlap a neighbor are left out.
  */
 function drawXLabels(g, lo, hi, m, pw, H, narrow, flip) {
   const unit = $("#unit").value;
@@ -736,7 +746,6 @@ function drawXLabels(g, lo, hi, m, pw, H, narrow, flip) {
  * the axis labels drawn fresh. Returns false when there is nothing to stretch.
  */
 let lastFrame = null;
-function keepFrame(canvas, meta) { lastFrame = meta; }
 //: Whether the next picture fades in over the last: set when arriving lines are about to fill in the view.
 let fadeNext = false;
 function drawPreview(lo, hi) {
@@ -771,7 +780,7 @@ const RESIDUAL_GAP = 18;
 /** A measured component's model 1σ (MHz): the full hyperfine patterns' once loaded, else its line's. */
 function sigmaOf(line, comp) {
   if (comp) {
-    const full = (state.hfs.get(line.iso) || {})[hfsKey(line)];
+    const full = fullPattern(line);
     const k = full && full.u ? full.l.indexOf(comp) : -1;
     if (k >= 0) return full.u[k];
   }
@@ -824,7 +833,7 @@ const signedTo = (v, u) => (v >= 0 ? "+" : "−") + mhzTo(Math.abs(v), u);
 
 /**
  * On the spectrum, where the scale shows them (zoomed in enough that the model's 1σ, the measurement's
- * uncertainty or their difference spans a pixel or more): the model's ±1σ as a grey band around its
+ * uncertainty or their difference spans a pixel or more): the model's ±1σ as a gray band around its
  * position, and each measurement as a dot with its ±u bar, a row per source at the top of the plot,
  * dropped to the baseline by a dashed line once it stands apart from the model. Returns the dots.
  */
@@ -872,7 +881,7 @@ function dot(g, x, y, p, kindInk) {
 /**
  * The strip of measured − model (MHz) under the spectrum, from y0 to y1: each measurement at its
  * component's model position (side by side when several measured the same one), with its own
- * uncertainty as a bar, over the model's ±1σ as a grey box. The scale covers nine points in ten (all of
+ * uncertainty as a bar, over the model's ±1σ as a gray box. The scale covers nine points in ten (all of
  * them when there are few), counting only the precision measurements when there are any: an atlas line's
  * residual, tens of MHz, already shows at true scale on the spectrum. The others sit at the edge as
  * arrows. The frame and labels go on the axes layer ga, the points on the trace layer gt. Returns the
@@ -994,7 +1003,7 @@ function drawPlot() {
   let H = wrap.clientHeight;
   if (W < 40 || H < 40) return;
   const narrow = W < 700;
-  // on a phone the vertical axis is labelled inside the plot, so the spectrum gets the full width
+  // on a phone the vertical axis is labeled inside the plot, so the spectrum gets the full width
   // the top margin holds the legend (with the cursor readout beside it, #readout) and the top axis
   const m = {l: narrow ? 8 : 78, r: narrow ? 8 : 18, t: narrow ? 56 : 42, b: 50};
   // zoomed in on measured lines: a strip of measured − model under the spectrum. It takes its height from the
@@ -1144,7 +1153,6 @@ function drawPlot() {
     for (const [v, text] of ticks) g.fillText(text, m.l - 10, yPix(v));
   }
   g.textAlign = "center"; g.textBaseline = "alphabetic";
-  const unit = $("#unit").value, digits = P.DIGITS[unit];
   drawXLabels(g, lo, hi, m, pw, H, narrow, flip);
   if (!narrow) { g.save(); g.translate(15, m.t + phs / 2); g.rotate(-Math.PI / 2); g.fillText(ylabel, 0, 0); g.restore(); }
 
@@ -1334,15 +1342,12 @@ function drawPlot() {
   }
   // lines whose strength was not computed (emission lines, X v'' >= 48) draw nothing; when they are all the
   // view holds, a note says why the plot is empty (the measured-line diamonds below still mark them)
-  const silent = lines.filter(l => !(l.s0 > 0));
-  if (silent.length) {
-    if (silent.length === lines.length) {
-      const text = "no thermal absorption here: emission lines (X v″ ≥ 48), marked below the plot";
-      g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = "left"; g.textBaseline = "top";
-      g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
-      g.strokeText(text, m.l + 8, m.t + 24); g.fillStyle = ink("--ink-2"); g.fillText(text, m.l + 8, m.t + 24);
-      g.textBaseline = "alphabetic";
-    }
+  if (lines.length && lines.every(l => !(l.s0 > 0))) {
+    const text = "no thermal absorption here: emission lines (X v″ ≥ 48), marked below the plot";
+    g.font = '11px "IBM Plex Sans", system-ui, sans-serif'; g.textAlign = "left"; g.textBaseline = "top";
+    g.strokeStyle = ink("--surface"); g.lineWidth = 4; g.lineJoin = "round";
+    g.strokeText(text, m.l + 8, m.t + 24); g.fillStyle = ink("--ink-2"); g.fillText(text, m.l + 8, m.t + 24);
+    g.textBaseline = "alphabetic";
   }
   if (state.mode === "trans" && !withHfs) {
     const note = `transmission of the averaged cross section: zoom below ${HFS_SPAN_NM} nm for resolved dips`;
@@ -1362,7 +1367,7 @@ function drawPlot() {
   }
   // the view as drawn: the pointer maps onto it, not state's; and where the measurement dots are
   state.geom = {m, pw, ph, y, flip, lo, hi, hits, xPix, readoutRow};
-  keepFrame(canvas, {lo, hi, iso, m, pw, ph, W, H, dpr, flip, narrow});
+  lastFrame = {lo, hi, iso, m, pw, ph, W, H, dpr, flip, narrow};
 }
 
 // --- the results table ---------------------------------------------------------------------------
@@ -1529,8 +1534,8 @@ async function tablePan(towardLonger, {select: pick = false} = {}) {
   const head = wrap.querySelector("thead").getBoundingClientRect().height;
   const rows = [...$("#rows").children].filter(tr => tr.line);
   const down = towardLonger === state.sort.dir;             // continuing below the list, not above it
-  const inView = rows.filter(tr => { const r = tr.getBoundingClientRect(); return r.bottom > box.top + head && r.top < box.bottom; });
-  const anchorRow = down ? inView[inView.length - 1] : inView[0];
+  const onScreen = rows.filter(tr => { const r = tr.getBoundingClientRect(); return r.bottom > box.top + head && r.top < box.bottom; });
+  const anchorRow = down ? onScreen[onScreen.length - 1] : onScreen[0];
   const span = state.hi - state.lo, margin = span * 0.01;
   let lo, hi;
   if (towardLonger > 0) {             // to lower wavenumber
@@ -1678,7 +1683,7 @@ function drawHyperfine(canvas, comps, line) {
 function componentHTML(line, comps, i) {
   const o = comps.o[i], f = line.nu * P.MHZ_PER_CM + o, nu = f / P.MHZ_PER_CM, lam = 1e7 / nu;
   const u = comps.u ? comps.u[i] : null;
-  return `<h3>Component ${comps.l[i]}</h3><dl>
+  return `<h3>Component ${escapeHTML(comps.l[i])}</h3><dl>
     <dt>λ vac</dt><dd>${lam.toFixed(7)} nm</dd>
     <dt>λ air</dt><dd>${P.vacToAir(lam).toFixed(7)} nm</dd>
     <dt>ν</dt><dd>${nu.toFixed(7)} cm⁻¹</dd>
@@ -1687,6 +1692,15 @@ function componentHTML(line, comps, i) {
     ${u !== null ? `<dt>u (1σ)</dt><dd>± ${fmtU(u)} MHz</dd>` : ""}
     <dt>rel. strength</dt><dd>${comps.s[i].toFixed(4)}</dd>
   </dl>`;
+}
+
+/** The components the detail pane shows, as {comps: {o, s, l, u?, x?}, approx}: the full calculation, else
+ * (approx) the ΔJ = 0 pattern of its shard, strengths per mille made fractions; null when neither has loaded. */
+function detailComponents(line) {
+  const full = fullPattern(line);
+  if (full && full.o.length) return {comps: full, approx: false};
+  const h = hfsOf(line);
+  return h ? {comps: {o: h.o, s: h.s.map(v => v / 1000), l: h.o.map((_, i) => `a${i + 1}`), x: h.x}, approx: true} : null;
 }
 
 /** Select a line, and with comp ("a10") one of its main hyperfine components. */
@@ -1701,8 +1715,8 @@ async function select(line, comp = null) {
   const lam = 1e7 / line.nu;
   const isoLabel = state.manifest.isotopologues[line.iso].label;
   $("#detail").innerHTML = `
-    <h2>${isoLabel} ${label(line)}${comp ? " " + comp : ""}</h2>
-    <div class="chips">${flags.map(([t, c]) => `<span class="chip ${c}">${t}</span>`).join("")}
+    <h2>${escapeHTML(isoLabel)} ${label(line)}${comp ? " " + escapeHTML(comp) : ""}</h2>
+    <div class="chips">${flags.map(([t, c]) => `<span class="chip ${escapeHTML(c)}">${escapeHTML(t)}</span>`).join("")}
       <span class="chip kind k-${kindOf(line)}">${line.measured ? "measured: " + KIND_LABEL[kindOf(line)] : "model only"}</span></div>
     <dl>
       <dt>λ vac</dt><dd>${lam.toFixed(6)} nm</dd>
@@ -1714,7 +1728,7 @@ async function select(line, comp = null) {
       <dt>E″</dt><dd>${line.el.toFixed(2)} cm⁻¹</dd>
       <dt>Doppler</dt><dd>${(P.dopplerFWHM(line.nu, state.T, line.iso) * P.MHZ_PER_CM).toFixed(1)} MHz FWHM</dd>
     </dl>
-    <p class="note">${sentence(why)}</p>
+    <p class="note">${escapeHTML(sentence(why))}</p>
     <div id="compbox"></div>
     <p class="bandrow"><button id="bandbtn" type="button"></button></p>
     ${measurementsHTML(line, comp)}
@@ -1723,19 +1737,27 @@ async function select(line, comp = null) {
   bandButton(line);
   fillLevelData(line);
 
-  let patterns = {};
-  try { patterns = await getJSON(state.manifest.isotopologues[line.iso].hfs, state.hfs, line.iso); }
+  try { await getJSON(state.manifest.isotopologues[line.iso].hfs, state.hfs, line.iso); }
   catch { /* the full patterns did not load: the ΔJ = 0 one below, if there is one */ }
   if (state.selected !== line) return;                       // the user moved on while we fetched
-  let comps = patterns[`${line.vu}-${line.vl}${line.branch}${line.J}`], approx = false;
-  if (!comps && line.hfsFile) {
+  if (!fullPattern(line) && line.hfsFile) {
     // not among the lines with the full calculation: use its ΔJ = 0 pattern from the shard file
     try { await getJSON(line.hfsFile, state.hfsShards); } catch {}
     if (state.selected !== line) return;
-    const h = hfsOf(line);
-    if (h) { comps = {o: h.o, s: h.s.map(v => v / 1000), l: h.o.map((_, i) => `a${i + 1}`), x: h.x}; approx = true; }
   }
+  const {comps, approx} = detailComponents(line) || {};
   const box = $("#hfsbox");
+  const only = centerOnly(line);
+  if (only) {
+    if (comp) {                                                // a link naming a component it does not have
+      state.selectedComp = null;
+      $("#detail h2").textContent = `${isoLabel} ${label(line)}`;
+      drawPlot(); pushURL();
+    }
+    box.innerHTML = `<h3>Hyperfine structure</h3><p class="note">None: the model gives this line's center only, the
+      position above. ${escapeHTML(sentence(only))}</p>`;
+    return;
+  }
   if (!comps) {
     box.innerHTML = `<h3>Hyperfine structure</h3><p class="note">Precomputed for the strongest
       lines of each isotopologue, for the strongest of every part of the spectrum, and for every
@@ -1756,7 +1778,7 @@ async function select(line, comp = null) {
   $("#hfstable").onclick = e => { const tr = e.target.closest("tr[data-comp]"); if (tr) select(line, tr.dataset.comp); };
   $("#hfstable").innerHTML =
     `<table class="sub pick"><thead><tr><th>comp</th><th>offset (MHz)</th><th>f (MHz)</th>${withU ? "<th>u (MHz)</th>" : ""}<th>rel. strength</th></tr></thead><tbody>` +
-    main.map(([l, o, s, u]) => `<tr data-comp="${l}"${l === comp ? ' class="picked"' : ""}><td>${l}</td><td>${o.toFixed(3)}</td><td>${fmt(f0 + o, 1)}</td>${withU ? `<td>${fmtU(u)}</td>` : ""}<td>${s.toFixed(4)}</td></tr>`).join("") +
+    main.map(([l, o, s, u]) => `<tr data-comp="${escapeHTML(l)}"${l === comp ? ' class="picked"' : ""}><td>${escapeHTML(l)}</td><td>${o.toFixed(3)}</td><td>${fmt(f0 + o, 1)}</td>${withU ? `<td>${fmtU(u)}</td>` : ""}<td>${s.toFixed(4)}</td></tr>`).join("") +
     `</tbody></table><p class="note">${main.length} main components (ΔF = ΔJ)${
       comps.o.length > main.length ? `, plus ${comps.o.length - main.length} weaker ones drawn faint above` : ""}.
      ${approx ? "Computed without the J ± 2 couplings (ΔJ = 0), which changes the offsets by less than 1 MHz; " +
@@ -1789,9 +1811,7 @@ function levelTable(title, entries, sources) {
   if (!entries.length) return "";
   const rows = entries.map(e => {
     const s = sources[e.s] || {short: "?"};
-    const name = escapeHTML(s.short);
-    const link = s.link ? `<a href="${escapeHTML(s.link)}" target="_blank" rel="noopener" title="${escapeHTML(s.citation || "")}">${name}</a>`
-      : `<span title="${escapeHTML(s.citation || "")}">${name}</span>`;
+    const link = citedName(s);
     const mark = s.why ? ` <span class="n" title="${escapeHTML(sentence(s.why))}">(not fitted)</span>` : "";
     const model = e.m === undefined || e.m === null ? "–" : levelNumber(e.m, e.u);
     return `<tr><td>${escapeHTML(e.q)}</td><td>${levelNumber(e.v, e.u)}</td><td>${e.u ? levelNumber(e.u, e.u) : "–"}</td>
@@ -1832,7 +1852,7 @@ function measurementsHTML(line, comp = null) {
       ` <span class="n">· ${e.i} hyperfine interval${e.i === 1 ? "" : "s"}</span>` : ""}${e.c ?
       ` <span class="n">· also in ${e.c.map(sourceLink).join(", ")}</span>` : ""}</td></tr>`);
     for (const [c, value, u, res] of e.f) {
-      rows.push(`<tr${comp && c === comp ? ' class="picked"' : ""}><td>${c || "center"}</td><td>${fmt(value, u < 0.1 ? 4 : u < 10 ? 2 : 1)}</td>
+      rows.push(`<tr${comp && c === comp ? ' class="picked"' : ""}><td>${escapeHTML(c || "center")}</td><td>${fmt(value, u < 0.1 ? 4 : u < 10 ? 2 : 1)}</td>
         <td>${u < 0.1 ? u.toFixed(4) : u.toFixed(u < 10 ? 2 : 1)}</td><td>${signed(res)}</td></tr>`);
     }
   }
@@ -2195,7 +2215,7 @@ function wire() {
     $(id).addEventListener("keydown", e => { if (e.key === "Enter") e.target.blur(); });
     $(id).addEventListener("change", refresh);
   }
-  $("#unit").onchange = () => { syncInputs(); state.unitFlips = $("#unit").value.startsWith("nm"); drawPlot(); };
+  $("#unit").onchange = () => { syncInputs(); state.unitFlips = $("#unit").value.startsWith("nm"); drawPlot(); pushURL(); };
   $("#iso").onchange = () => { prefetchOverview(); show(state.lo, state.hi); };
   $("#temp").onchange = async () => {
     await show(state.lo, state.hi);
@@ -2494,13 +2514,8 @@ function setMode(mode) {
 function redrawAll() {
   drawPlot();
   const c = $("#hfs");
-  if (c && state.selected) {
-    let comps = (state.hfs.get(state.selected.iso) || {})[
-      `${state.selected.vu}-${state.selected.vl}${state.selected.branch}${state.selected.J}`];
-    const h = !comps && hfsOf(state.selected);
-    if (h) comps = {o: h.o, s: h.s.map(v => v / 1000), l: h.o.map((_, i) => `a${i + 1}`), x: h.x};
-    if (comps) drawHyperfine(c, comps, state.selected);
-  }
+  const shown = c && state.selected && detailComponents(state.selected);
+  if (shown) drawHyperfine(c, shown.comps, state.selected);
 }
 
 async function start() {
@@ -2515,8 +2530,8 @@ async function start() {
   }));
   $("#iso").value = "127I2";
   $("#prov").innerHTML =
-    `${m.model.package} ${m.model.version}${m.model.git ? " · " + m.model.git : ""}` +
-    `<br>exported ${m.generated} · lines above ${m.cutoff_cm_at_300K.toExponential(0)} cm at 300 K`;
+    escapeHTML(`${m.model.package} ${m.model.version}${m.model.git ? " · " + m.model.git : ""}`) +
+    `<br>exported ${escapeHTML(m.generated)} · lines above ${m.cutoff_cm_at_300K.toExponential(0)} cm at 300 K`;
   $("#prov").title = m.model.note;
   $("#detail").innerHTML = EMPTY_DETAIL;
   wire();

@@ -15,7 +15,6 @@ tables and the reference predictions the packaged runtime must reproduce.
 """
 from __future__ import annotations
 
-import copy
 from concurrent.futures import ProcessPoolExecutor
 from multiprocessing import get_context
 
@@ -25,31 +24,20 @@ from ..bspline import BSplineSolver
 from ..constants import HBAR2_2U, MHZ_PER_CM, reduced_mass
 from ..hyperfine import level_structure, line_components
 from ..observations import Line, component_rank
-from . import b1g_resonance as rz, continuation, hyperfine_beyond as hb, second_order as so, x_hyperfine as xh
+from . import b1g_resonance as rz, continuation, hyperfine_beyond as hb, x_hyperfine as xh
 from .continuation import SolverPotential
 from . import levels as levels_module
 from .levels import TIERS
-
-CORE_V = dict(X=17, B=43)
+from .rows import CORE_V, EXCLUSION
 
 J_MAX = 203                     # upper J <= 201 and the J + 2 neighbours of hyperfine mixing
 V_MAX = dict(X=108, B=80)
 BOX_PADDING = .6                # A: the continuation Problem's box padding
-REFINE_FROM = 33                # X tiers whose limit is >= this run at half spacing (levels.tiers refine_x)
 
 
 def tiers(joins):
     """The fit engine's tiers as the final fit used them: box + 0.6 A, X tiers >= 33 halved, the curves' joins."""
-    out = copy.deepcopy(TIERS)
-    for state, grids in out.items():
-        for limit, grid in grids:
-            grid['rmax'] += BOX_PADDING
-            if state == 'X' and limit >= REFINE_FROM:
-                grid['h'] *= .5
-                if 'mesh' in grid:
-                    grid['mesh'] = tuple((r, hh*.5) for r, hh in grid['mesh'])
-            grid['joins'] = tuple(joins[state])
-    return out
+    return levels_module.tiers({s: tuple(j) for s, j in joins.items()}, BOX_PADDING, refine_x=True)
 
 
 _W = {}
@@ -133,9 +121,13 @@ def structure_spec(parameters, structure=None):
 
 def _match(E, state, v, J, E_grid):
     """Index of the hyperfine grid's level that is the model's (state, v, J) level: the nearest in energy, within a
-    quarter of the local vibrational spacing (the hyperfine grids are coarser: up to 0.05 cm-1 off at high v)."""
+    quarter of the local vibrational spacing (the hyperfine grids are coarser: up to 0.05 cm-1 off at high v). None
+    when no level matches, or when neither v - 1 nor v + 1 exists at J (no spacing to judge the match by)."""
     e = E[(state, v, J)]
-    spacing = min(abs(E[(state, w, J)]-e) for w in (v-1, v+1) if (state, w, J) in E)
+    gaps = [abs(E[(state, w, J)]-e) for w in (v-1, v+1) if (state, w, J) in E]
+    if not gaps:
+        return None
+    spacing = min(gaps)
     d = np.abs(np.asarray(E_grid)-e)
     i = int(np.argmin(d))
     others = np.delete(d, i)
@@ -247,6 +239,17 @@ def references(E, tables, resonance, own, res, base, core_references):
         return level_structure(j0, lambda j: base._couplings(state, v, j), lambda j: (E[(state, v, j)]-e0)*MHZ_PER_CM,
                                symmetry="g" if state == "X" else "u", dJ=2)
 
+    core_cache = {}
+
+    def core_offsets(branch, J, vu, vl):
+        """{label: MHz} of a core line from the core fit's constants (once per line)."""
+        key = branch, J, vu, vl
+        if key not in core_cache:
+            Ju = upper(branch, J)
+            comps = line_components(core_structure("B", vu, Ju), core_structure("X", vl, J), Ju, J)
+            core_cache[key] = {c.label: c.offset for c in comps if c.label}
+        return core_cache[key]
+
     lines = {tuple(ref["line"]) for ref in core_references}
     for spec in REFERENCE_LINES.values():
         for vu in spec["vu"]:
@@ -270,8 +273,7 @@ def references(E, tables, resonance, own, res, base, core_references):
             comps = line_components(s_up, own.x_structure(vl, J), Ju, J)
             offsets = {c.label: c.offset for c in comps if c.label}
         elif vu <= CORE_V["B"] and vl <= CORE_V["X"]:
-            comps = line_components(core_structure("B", vu, Ju), core_structure("X", vl, J), Ju, J)
-            offsets = {c.label: c.offset for c in comps if c.label}
+            offsets = core_offsets(branch, J, vu, vl)
         else:
             if vu <= CORE_V["B"]:
                 cb = {j: np.array([getattr(base._couplings("B", vu, j), p) for p in hb.PARAMS])
@@ -285,15 +287,12 @@ def references(E, tables, resonance, own, res, base, core_references):
             out.append(dict(line=[branch, J, vu, vl], component=c, predicted_MHz=center+offsets[c]))
         out.append(dict(line=[branch, J, vu, vl], component=labels[-1], ref_component=labels[0],
                         predicted_MHz=offsets[labels[-1]]-offsets[labels[0]]))
+    centers = {tuple(r["line"]): r["predicted_MHz"] for r in out if r["component"] is None}
+    rank = lambda c: f"a{component_rank(c)}"          # noqa: E731
     for ref in core_references:
-        branch, J, vu, vl = ref["line"]
-        o = [r for r in out if r["line"] == ref["line"] and r["component"] is None][0]
-        Ju = upper(branch, J)
-        comps = line_components(core_structure("B", vu, Ju), core_structure("X", vl, J), Ju, J)
-        offsets = {c.label: c.offset for c in comps if c.label}
-        rank = lambda c: f"a{component_rank(c)}"      # noqa: E731
-        row = dict(line=ref["line"], component=ref["component"], predicted_MHz=o["predicted_MHz"]+offsets[rank(ref["component"])],
-                   source_id=ref["id"])
+        offsets = core_offsets(*ref["line"])
+        row = dict(line=ref["line"], component=ref["component"],
+                   predicted_MHz=centers[tuple(ref["line"])]+offsets[rank(ref["component"])], source_id=ref["id"])
         if "ref_component" in ref:
             row.update(ref_component=ref["ref_component"],
                        predicted_MHz=offsets[rank(ref["component"])]-offsets[rank(ref["ref_component"])])
@@ -356,7 +355,7 @@ def model_record(structure, values, orsay4_offset, fit, curve_constants, counts,
                 hyperfine=dict(core=f"{base_entry['id']}: B radial functions and fixed X constants",
                                beyond="hyperfine.json: B v'44-80 and X v''18-108 per level; B v'77, 78 with the "
                                       "1g(1Pig) level diagonalized", dJ=2),
-                fit=fit, exclusion="127I2 P(13) 43-0", training_fold="future", reference_counts=counts)
+                fit=fit, exclusion=EXCLUSION, training_fold="future", reference_counts=counts)
 
 
 def hyperfine_record(tables, resonance, b_model, x_model, spin_spin):

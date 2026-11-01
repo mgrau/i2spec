@@ -142,11 +142,6 @@ class IsoModel:
         center = (self.energy("B", vu, Ju)-self.energy("X", vl, J))*MHZ_PER_CM
         return center, line_components(self.structure("B", vu, Ju), self.structure("X", vl, J), Ju, J)
 
-    def mean_y(self, v, J, re):
-        """<(R - Re)/(R + Re)> of a B level (its first-order sensitivity to the shift's slope)."""
-        R, density, _ = self.levels.densities("B", v, J)
-        return float(density[:, v]@((R-re)/(R+re)))
-
 
 # --- the CIPM isotopologue rows -----------------------------------------------------------------------
 
@@ -275,7 +270,7 @@ def fit_shift(rows=None):
               status="127I2 functions scaled per nucleus, tested on the CIPM 129I2 and 127I129I patterns (v' 6-14)")
     out = dict(data=data, forms={str(k): v for k, v in forms.items()}, chosen=best["power"],
                alternatives=[o["power"] for o in others], re_B=re_b, hyperfine=hf,
-               rho={iso: reduced_mass("127I2")/reduced_mass(iso) for iso in ALL})
+               rho={iso: ratio(iso) for iso in ALL})
     return out
 
 
@@ -344,7 +339,7 @@ def extension_record(fitted, model_id="research-20261021-i2spec", base_id="resea
         schema_version=1, model=model_id, extends=base_id, isotopologues=list(ALL),
         rotation="q(R) of each state scaled by rho (Le Roy; as the 2008 model's alpha)",
         isotope_shift=shift,
-        nuclear_ratios=dict(eqQ={"127": 1.0, "129": 0.701213}, g={"127": 1.0, "129": 0.6655},
+        nuclear_ratios=dict(eqQ={str(a): z for a, z in GAMMA_Q.items()}, g={str(a): z for a, z in GAMMA_MU.items()},
                             source="Salumbides et al., Mol. Phys. 104, 2641 (2006), Table 1"),
         hyperfine=dict(fitted["hyperfine"], rule=(
             "per nucleus: eqQ x Q ratio, C x g ratio, d and delta x g_1 g_2; B in the core: the core fit's radial "
@@ -367,11 +362,10 @@ def condition(ext, models):
     the joint precision of the whitened fit parameters (prior identity) and the two shift coefficients (flat).
     ext: the extension record (updated in place and returned); models: {iso: the research model with that extension}."""
     from .. import research
-    ms = models
     shift = rx.IsotopeShift(ext["isotope_shift"])
     A, Bm, w = [], [], []
     for x in ext["isotope_shift"]["data"]:
-        m = ms[x["isotopologue"]]
+        m = models[x["isotopologue"]]
         unc = m._uncertainty_model()
         branch, J, vu, vl = research.parse_label(x["line"].split(" ", 1)[1])
         Ju = J+(1 if branch == "R" else -1)

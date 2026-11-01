@@ -26,7 +26,7 @@ def molecular_mass(isotopologue="127I2"):
 
 
 def vapor_pressure(T):
-    """I₂ vapour pressure over the solid in Pa (Tellinghuisen 2011 eq. 8, T in K)."""
+    """I₂ vapor pressure over the solid in Pa (Tellinghuisen 2011 eq. 8, T in K)."""
     return 10 ** (12.1891 - 0.001301 * T - 0.3523 * np.log10(T) - 3410.71 / T) * _TORR
 
 
@@ -67,7 +67,7 @@ def hyperfine_patterns(model, lines, dJ=0, j_step=None):
             J = J_ref + 1 if (J_ref - J) % 2 else J_ref
         key = (int(lines.v_upper[k]), int(lines.v_lower[k]), J, "R" if lines.branch[k] > 0 else "P")
         if key not in cache:
-            _, comps = model.hyperfine_components(*key, dJ=dJ, position=False)   # the line list has the centre
+            _, comps = model.hyperfine_components(*key, dJ=dJ, position=False)   # the line list has the center
             cache[key] = (np.array([c.offset for c in comps]) / MHZ_PER_CM, np.array([c.strength for c in comps]))
         return cache[key]
 

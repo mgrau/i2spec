@@ -100,8 +100,7 @@ def to_native(spec):
         fb = miss(b)
     else:
         raise ValueError("D0(X) did not invert")
-    miss(b)
-    ex = ground(out, "X")
+    ex = ground(out, "X")                     # logDe(X) is already log(b): miss(b) was the last call
     # Te: T0 = E_B(0,0)(Te, De(B)(Te)) - E_X(0,0); E_B(0,0) - Te depends on Te only through De(B), weakly
     v["B"]["Te"] = keep["B"]["T0"]+ex
     for _ in range(50):

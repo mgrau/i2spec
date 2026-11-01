@@ -36,7 +36,10 @@ NEW_SETS = ("huang2013a", "hong2009a", "ye1999a", "holzwarth2001a", "jones2002a"
             "huang2018a", "manzoor2024a", "fan2014a", "kobayashi2015a", "hauden2024a", "grieser1994a", "badr2006a",
             "hong2001b", "sakagami2020a", "yoshii2019a", "tanabe2022a", "arie1993a", "arie1994a", "cheng2001a",
             "zhang2001a", "hong2001a", "hong2002a", "hong2000a", "hong2004a", "hong2004b", "hong2002b", "fang2006a")
-CATEGORIES = ("comb", "doppler", "emission", "atlas_sr", "atlas_apo", "orsay1", "orsay4", "martin", "martin_dissoc")
+#: the core: X v'' <= 17, B v' <= 43
+CORE_V = dict(X=17, B=43)
+#: the line left out of every fit and headline score (a diagnostic target only)
+EXCLUSION = "127I2 P(13) 43-0"
 PRECISION = ("comb", "doppler")
 COLUMNS = ("id", "source", "kind", "category", "isotopologue", "branch", "J_lower", "v_upper", "v_lower",
            "isotopologue2", "branch2", "J_lower2", "v_upper2", "v_lower2", "state", "v", "J",

@@ -44,7 +44,7 @@ def test_levels_beyond_the_domain_carry_the_edge_rules(table):
     assert status[0] < pf.BEYOND and status[1] >= pf.BEYOND and status[2] >= pf.BEYOND and list(cls[1:]) == [2, 2]
     assert sigma[1] > sigma[0] and np.isfinite(sigma).all()
     assert not table.covers("R", 20, 81, 0) and table.covers("R", 20, 80, 0)
-    assert pf.flags(pf.BEYOND, 2) == (pf.OUTSIDE,) and pf.flags(pf.BEYOND+1, 2) == (pf.OUTSIDE, pf.IDENTITY)
+    assert pf.flags(pf.BEYOND) == (pf.OUTSIDE,) and pf.flags(pf.BEYOND+1) == (pf.OUTSIDE, pf.IDENTITY)
 
 
 def test_lines_above_the_fit_J_are_held_and_extrapolated(table):

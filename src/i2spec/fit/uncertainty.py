@@ -18,7 +18,7 @@
                held-out intraline intervals (core folds, nested hyperfine cross-validation).
 
 The cross-validation outputs the release used are frozen in data/training/<release>/cross_validation.json.gz
-(`cross_validation`); `continuation_fold` and `hyperfine_fold` refit a fold with the ported fits.
+(`cross_validation`); `continuation.fold` and `hyperfine_fold` refit a fold with the ported fits.
 """
 from __future__ import annotations
 
@@ -36,6 +36,7 @@ from . import continuation, hyperfine_beyond as hb, hyperfine_rows, rows as trai
 from .core import release_spec as core_spec
 from .levels import Levels
 from .reduction import EMISSION_SETS
+from .rows import CORE_V
 
 DISPERSION_PRIOR = .1        # relative 1-sigma of each inherited dispersion coefficient (no source quotes one)
 FD_STEP = 1e-5               # relative central-difference step for the frozen coefficients
@@ -44,7 +45,6 @@ J_MARGIN = 15                # a level is measured if a row reaches its v within
 CALIBRATED = ("atlas_sr", "atlas_apo")
 PRECISE = ("comb", "doppler", "emission")
 NOISE_FROM_BIRGE = ("atlas_sr", "atlas_apo", "orsay1", "orsay4", "martin", "martin_dissoc")
-CORE_V = dict(X=17, B=43)
 V0 = dict(X=18, B=44)        # first level beyond the core
 EQQ_X = -2452.2916           # MHz, X v''=0 eqQ (the core's fixed X constants): eqQ' - eqQ'' sets the pattern's scale
 HF_SCALES = (.6, .65, .7, .75, .8, .85, .9)
@@ -241,16 +241,19 @@ def sandwich(G, w, category, ratios, prior_sigma, mask=None, rcond=None, constra
 def dissociation_constraints(names, spec, settings=None):
     """The core fit's two dissociation priors as rows over the parameters: De(X) = its center +- dissociation_prior,
     and Te + De(B) - De(X) = the atomic splitting +- 0.0065 cm-1 (core.Settings). The release's covariance left them
-    out, so its two limits could move apart although the fit held their difference."""
+    out, so its two limits could move apart although the fit held their difference. A core with the asymptote tied
+    has no B:logDe and no second row (De(B) follows from the identity, as in core.Problem)."""
     from .core import ATOMIC_GAP_SIGMA, Settings
     settings = settings or Settings()
-    dx, db = np.exp(spec["values"]["X"]["logDe"]), np.exp(spec["values"]["B"]["logDe"])
-    ix, ib, it = (names.index(n) for n in ("X:logDe", "B:logDe", "B:Te"))
     rows = []
     if settings.dissociation_prior:
+        dx, ix = np.exp(spec["values"]["X"]["logDe"]), names.index("X:logDe")
         r = np.zeros(len(names))
         r[ix] = dx/settings.dissociation_prior
         rows.append(r)
+        if spec.get("asymptote") == "tied":
+            return rows
+        db, ib, it = np.exp(spec["values"]["B"]["logDe"]), names.index("B:logDe"), names.index("B:Te")
         r = np.zeros(len(names))
         r[ix], r[ib], r[it] = -dx/ATOMIC_GAP_SIGMA, db/ATOMIC_GAP_SIGMA, 1/ATOMIC_GAP_SIGMA
         rows.append(r)
@@ -292,10 +295,11 @@ def _row_levels(rows, i):
     return [(k[1], k[2], k[3], float(s)) for k, s in rows.levels[i]]
 
 
-def heldout(cov, cv, benchmark_rows):
+def heldout(cov, cv, benchmark_rows, sigma=None):
     """Every held-out center residual with its measurement sigma and its own fold's sigma_stat: the continuation's
     v folds (vmod:4:i), the final fit's benchmark rows (future), and the core fit's folds (component frequencies;
-    the precision rows of that level or source removed from the covariance as from the fit)."""
+    the precision rows of that level or source removed from the covariance as from the fit). sigma: the stated
+    sigmas by raw id (_stated_sigmas; read when not given)."""
     jac = cov.jac
     rows = jac.rows
     ids = {k: i for i, k in enumerate(rows.id)}
@@ -321,30 +325,34 @@ def heldout(cov, cv, benchmark_rows):
         out.append(dict(fold="future", id=k, source=str(benchmark_rows.source[j]),
                         category=str(benchmark_rows.category[j]), kind="center", residual=float(r),
                         sigma_meas=float(sm), sigma_stat=cov.level_sigma(cov.L, lv), levels=lv))
-    sigma = _stated_sigmas()
+    sigma = sigma if sigma is not None else _stated_sigmas()
     precise = np.isin(jac.category, PRECISE)
     touched = [{(k[1], k[2]) for k, _ in lv} for lv in rows.levels]
+    factors = {}                # fold -> its factor L: one masked SVD per fold, not per row
     for r in cv["core_folds"]:
         if r["kind"] != "absolute" or not r["fold"].startswith("physical"):
             continue
         line = Line.parse(r["line"])
         Ju = line.J_lower+(1 if line.branch == "R" else -1)
         lv = [("B", line.v_upper, Ju, 1.), ("X", line.v_lower, line.J_lower, -1.)]
-        what = r["fold"].split(":", 1)[1]
-        if r["fold"].startswith("physical_level"):
-            st, v = what.split(":")
-            drop = precise & np.array([(st, int(v)) in t for t in touched])
-        else:
-            drop = precise & (jac.rows.source == what)
+        if r["fold"] not in factors:
+            what = r["fold"].split(":", 1)[1]
+            if r["fold"].startswith("physical_level"):
+                st, v = what.split(":")
+                drop = precise & np.array([(st, int(v)) in t for t in touched])
+            else:
+                drop = precise & (rows.source == what)
+            factors[r["fold"]] = cov.masked(~drop)
         out.append(dict(fold=r["fold"], id=r["raw_ids"], source=r["sources"], category="comb", kind="component",
                         residual=float(r["error_MHz"]),
                         sigma_meas=float(np.median([sigma[i] for i in r["raw_ids"].split(";")])),
-                        sigma_stat=cov.level_sigma(cov.masked(~drop), lv), levels=lv,
+                        sigma_stat=cov.level_sigma(factors[r["fold"]], lv), levels=lv,
                         line=r["line"].replace("127I2 ", ""), component=json.loads(r["identity"])[1]))
     return out
 
 
 def _stated_sigmas():
+    """{raw id "set:index": stated sigma MHz} of every observation."""
     sigma = {}
     for ds in load_all():
         scale = MHZ_PER_CM if ds.unit == "cm-1" else 1.
@@ -358,10 +366,11 @@ def chosen_scale(cv, i):
     return min(HF_SCALES, key=lambda g: cv["hyperfine_folds"][str(g)]["folds"][i]["training"]["out_cost"])
 
 
-def hf_heldout(cv, levels=None, workers=12, cache=None):
+def hf_heldout(cv, levels=None, workers=12, cache=None, sigma=None):
     """Per-interval residuals of the nested hyperfine cross-validation (B v' > 43): in each v' block the C5 scale
     with the lowest training cost, its fitted b and angles, every held-out interval recomputed exactly; and the core
-    folds' intraline residuals, with each component's offset from the line center under the core fit."""
+    folds' intraline residuals, with each component's offset from the line center under the core fit (sigma: as
+    in `heldout`)."""
     from ..research import ResearchModel
     rows, params = hb.load_data()
     levels = levels or hb.Levels()
@@ -382,14 +391,13 @@ def hf_heldout(cv, levels=None, workers=12, cache=None):
             if row["inside"] or not any(lo <= line.v_upper <= hi for lo, hi in held):
                 continue
             if line not in offsets:
-                offsets[line] = hb.line_offsets(levels, line, {j: model.constants(b, theta, line.v_upper, j)
-                                                               for j in hb.neighbours(hb.upper_J(line))})
+                offsets[line] = hb.exact_offsets(levels, line, lambda v, j: model.constants(b, theta, v, j))
             o = offsets[line]
             out.append(dict(region="B beyond", fold=f"hf:{held[0][0]}-{held[0][1]}", source=row["source"],
                             line=str(line), v=line.v_upper, J=hb.upper_J(line), observed=row["observed"],
                             sigma=row["sigma"], predicted=o[row["rank"]]-o[row["ref_rank"]],
                             offset=o[row["rank"]], ref_offset=o[row["ref_rank"]]))
-    sigma = _stated_sigmas()
+    sigma = sigma if sigma is not None else _stated_sigmas()
     core = ResearchModel("balanced")
     offsets = {}
     for r in cv["core_folds"]:
@@ -455,7 +463,14 @@ def fit_hyperfine(hf_rows, cv):
     eq = np.array(eq)
     chen = {(int(row["v"]), int(row["J"])): row["observed"] for row in hyperfine_rows.release()[1]
             if row["parameter"] == "eqQ"}
-    dq = np.array([abs(EQQ_X-np.mean([q for (v, _), q in chen.items() if v == int(x)])) for x in eq[:, 0]])
+    by_v = {}
+    for (v, _), q in chen.items():
+        by_v.setdefault(v, []).append(q)
+    # the held-out eqQ rows are these constants: a v' without one means the folds and the rows disagree
+    missing = sorted({int(x) for x in eq[:, 0]}-set(by_v))
+    if missing:
+        raise ValueError(f"held-out eqQ rows at B v' {missing} have no eqQ constant in the hyperfine rows")
+    dq = np.array([abs(EQQ_X-np.mean(by_v[int(x)])) for x in eq[:, 0]])
 
     def nll_b(t):
         a, k0, p = t
@@ -608,10 +623,10 @@ def fit_model(held, hf, ratios, rows):
     return result
 
 
-def sigma_m(model, state, v, J, line_class="atlas"):
-    """sigma_model share of one level (MHz)."""
+def sigma_m(model, state, v, J, core_class="atlas"):
+    """sigma_model share of one level (MHz); core_class: the line's class in the core (line_class)."""
     if v <= CORE_V[state]:
-        return model[f"core {line_class}"]["sigma_MHz"]/np.sqrt(2)
+        return model[f"core {core_class}"]["sigma_MHz"]/np.sqrt(2)
     m = model[f"{state} beyond"]
     J = min(J, m["J_clip"])
     x = v-m["v0"]
@@ -725,8 +740,9 @@ def build(cv=None, cache=None, workers=12):
             extra |= {("127I2", "B", line.v_upper, Ju), ("127I2", "X", line.v_lower, line.J_lower)}
     jac = Jacobian(extra_keys=extra)
     cov = Covariance(jac)
-    held = heldout(cov, cv, bench)
-    hf_rows = hf_heldout(cv, workers=workers, cache=cache)
+    sigma = _stated_sigmas()
+    held = heldout(cov, cv, bench, sigma)
+    hf_rows = hf_heldout(cv, workers=workers, cache=cache, sigma=sigma)
     hf = fit_hyperfine(hf_rows, cv)
     fits = dict(hyperfine=hf, model=fit_model(held, hf, cov.ratios, jac.rows))
     every, precise = coverage_tables(jac.rows)

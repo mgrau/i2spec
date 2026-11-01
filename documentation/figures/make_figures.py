@@ -7,9 +7,6 @@ preferred model, i2spec.preferred), but the choice of what to draw is for explan
 then replaced by CSS variables (documentation/stylesheets/extra.css), and the pages inline them, so
 they follow the light and dark themes like the rest of the page.
 """
-import re
-from pathlib import Path
-
 import matplotlib
 matplotlib.use("svg")
 import matplotlib.pyplot as plt
@@ -19,18 +16,15 @@ from matplotlib.path import Path as MPath
 
 from i2spec import preferred
 from i2spec.constants import reduced_mass
+from i2spec.hyperfine import line_components
 from i2spec.intensity import mu_tellinghuisen2011
 from i2spec.lookup import Catalog
 from i2spec.potentials import load_potentials
 from i2spec.solver import RadialSolver
 from i2spec.spectrum import cross_section, number_density, transmission
 
-OUT = Path(__file__).resolve().parent
-# placeholder colors -> the site's tokens (web/site.css)
-C = dict(ink="#010101", ink2="#020202", ink3="#030303", rule="#040404", trace="#050505", pick="#060606",
-         mark="#070707", surface="#080808", u1="#0a0a01", u2="#0a0a02", u3="#0a0a03", u4="#0a0a04", u5="#0a0a05")
-TOKENS = {**{C[f"u{k}"]: f"var(--unc-{k})" for k in range(1, 6)},C["ink"]: "var(--ink)", C["ink2"]: "var(--ink-2)", C["ink3"]: "var(--ink-3)", C["rule"]: "var(--rule)",
-          C["trace"]: "var(--trace)", C["pick"]: "var(--pick)", C["mark"]: "var(--mark)", C["surface"]: "var(--surface)"}
+import figure_style
+from figure_style import C
 
 plt.rcParams.update({
     "svg.fonttype": "none", "font.family": "sans-serif", "font.size": 10.5,
@@ -42,18 +36,7 @@ plt.rcParams.update({
 
 
 def save(fig, name):
-    path = OUT / f"{name}.svg"
-    fig.savefig(path, bbox_inches="tight", pad_inches=0.05)
-    plt.close(fig)
-    svg = path.read_text()
-    for hexcode, var in TOKENS.items():
-        svg = svg.replace(hexcode, var)
-    svg = re.sub(r"font-family:[^;\"]*", "font-family:var(--body)", svg)
-    svg = re.sub(r"font: ([\d.]+)px '[^']*'", r"font-size:\1px;font-family:var(--body)", svg)
-    svg = re.sub(r'<svg([^>]*?) width="[^"]*" height="[^"]*"', r'<svg\1', svg, count=1)
-    svg = re.sub(r"<metadata>.*?</metadata>", "", svg, flags=re.S)
-    path.write_text(svg)
-    print(f"{path.name}: {len(svg) / 1e3:.0f} kB")
+    figure_style.save(fig, name, bbox_inches="tight", pad_inches=0.05)
 
 
 def turning_points(V, R, E):
@@ -90,9 +73,11 @@ for s, color in (("X", C["trace"]), ("B", C["pick"])):
         if s == "B" and v <= fitted and v % 2:
             continue
         E = energy(s, v, 0)
-        if not np.isfinite(E) or turning_points(V, R, E)[1] >= R[-2]:
+        if not np.isfinite(E):
             continue
         a, b = turning_points(V, R, E)
+        if b >= R[-2]:
+            continue
         ax.plot([a, b], [E, E], color=color, lw=0.7, alpha=0.9 if v <= fitted else 0.35)
     E = energy(s, fitted, 0)
     a, b = turning_points(V, R, E)
@@ -281,8 +266,6 @@ save(fig, "uncertainty_map")
 
 
 # --- 8. hyperfine levels of R(56) 32-0 and the 15 main transitions -----------------------------------
-from i2spec.hyperfine import line_components
-
 vu, vl, Jl = 32, 0, 56
 Ju = Jl + 1
 lower, upper = model._structure("X", vl, Jl), model._structure("B", vu, Ju)
@@ -304,7 +287,6 @@ for l in lower:
 ordered = sorted(comps, key=lambda c: c.offset)
 xs = np.linspace(X0 + 0.03, X1 - 0.03, len(ordered))
 for x, c in zip(xs, ordered):
-    # the pair of levels this component joins: same F and I, energy difference equal to its offset
     # the pair of levels joined: right F on each side and an energy difference equal to the offset (I is
     # only approximately good at high J, so it is not used to match)
     u, l = next((u, l) for u in upper for l in lower
