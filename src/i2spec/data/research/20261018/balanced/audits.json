@@ -499,7 +499,7 @@
       }
     },
     "radial_audit": {
-      "cache": "/Users/mgrau/projects/i2spec/prototypes/out/explore/physical_search/p13_finalization_atlas_exact_v1_x14_b20_fixed_x_0_0_5_5_3_1__exact_J_future_exact_screen_s0_consistent_i1_potential/hyperfine_radial_moments_05e64fee1d33f80e.npz",
+      "cache": "research_outputs/explore/physical_search/p13_finalization_atlas_exact_v1_x14_b20_fixed_x_0_0_5_5_3_1__exact_J_future_exact_screen_s0_consistent_i1_potential/hyperfine_radial_moments_05e64fee1d33f80e.npz",
       "reused": false,
       "n_levels": 362,
       "maximum_normalization_error": 3.219646771412954e-15

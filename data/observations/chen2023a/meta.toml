@@ -1,5 +1,5 @@
 id = "chen2023a"
-source = "https://arxiv.org/abs/2309.05932 (arXiv v1, 12 Sep 2023). The journal version (doi:10.1016/j.cjph.2023.12.007) is paywalled and was not seen; its numbers could differ from the preprint."
+source = "https://arxiv.org/abs/2309.05932 (arXiv v1, 12 Sep 2023). The journal version (doi:10.1016/j.cjph.2023.12.007) was not seen; its numbers could differ from the preprint."
 retrieved = "2026-09-29"
 unit = "MHz"
 exclude = "All nine printed frequencies disagree with the model and the APO/NIST atlas by 30-840 MHz; the residuals fall on a comb-ambiguity pattern (printed - true = +35 or -105 MHz modulo 250 MHz; see transcription) that cannot be undone from the published information. The EFTF 2024 companion (doi:10.1109/eftf61992.2024.10722760) repeats only the R(146) 25-0 a15 value unchanged and does not resolve it."

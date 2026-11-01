@@ -69,7 +69,7 @@ def test_second_order_terms_of_the_release():
 
 
 def test_calibrate_rows_are_the_release_count():
-    """The calibrate rows of step 4 (2,432 of them line rows with a model sigma: the slow test)."""
+    """The calibrate rows of the calibration refit (2,432 of them line rows with a model sigma: the slow test)."""
     rows, left_out = calibrate.calibrate_rows()
     assert len(rows) == 2711
     assert left_out["printed again in a later set"] == 359 and left_out["inside a training CIPM mean"] == 115

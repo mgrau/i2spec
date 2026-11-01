@@ -15,7 +15,7 @@
     "files_sha256": {
      "model.json": "5c4057d3639abcc5eaec232597f4518c12778b9c4f91bae8616954340e821336",
      "hyperfine.json": "08098d71eb27041f77c4454ef3196fc4545ffa43fe7e7996eb7b8d10e446bb4a",
-     "uncertainty.json": "b5618c43cd16936d1ffef568079210c96b3cd2e1e3a3e4ee66f663325485640f"
+     "uncertainty.json": "7bb05cef4432586bedb4cb672de887c400ffe02658da617b340ec41329667545"
     }
    },
    "architecture": "core fit + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 3 rotation), X dC6, X cubic splines 4.2-6.6 A, shared dDe; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78; 129I2 and 127I129I: q(R) x rho, B isotope shift (1 - y)^5 (a0 + a1 y), hyperfine scaled per nucleus; levels to J'' = 445",

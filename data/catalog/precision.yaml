@@ -1,4 +1,4 @@
-# i2spec Stage 2b catalog: sub-Doppler, hyperfine-resolved and absolute-frequency
+# i2spec catalog (precision.yaml): sub-Doppler, hyperfine-resolved and absolute-frequency
 # measurements of molecular iodine (B-X system unless noted).
 # Compiled 2026-09-14.
 # Conventions:
@@ -6,8 +6,8 @@
 #   - likely_in_knockel2004: true if the source is cited by / used in Knoeckel, Bodermann,
 #     Tiemann, EPJD 28, 199 (2004); false if published after mid-2003 or clearly not used;
 #     "unknown" otherwise.
-#   - verified: true only where the citation was confirmed via DOI resolver, Crossref,
-#     OpenAlex, Semantic Scholar, or the primary document itself.
+#   - verified: true only where the citation was confirmed via the DOI resolver, a DOI
+#     registration or bibliographic database record, or the primary document itself.
 #   - Numbers quoted in notes are copied from the source (abstract, BIPM MeP document, or
 #     full text); anything inferred by the compiler is marked "(inferred)".
 #   - status: "held" (the publication or its data is in hand), "unobtainable: <why>" or "not useful: <why>".
@@ -261,10 +261,10 @@
   verified: true
   status: "held"
   transcription: "not needed: its values are held in data/observations/bipm2003a, bipm2003b, bipm2003c, bipm2003d, bipm2003e, bipm2005a, bipm2012a (BIPM MeP tables with the 129I2 and 127I129I lines replace this compilation, per its notes)"
-  notes: "Knoeckel 2004 ref. [10]: source of the CIPM lines and the isotopologue lines used in the fit. The current BIPM PDFs (entries bipm20xx) replace these tables; use those. Merged 2026-10-28 from the broadband entry quinn2003a (same publication): absolute hyperfine component frequencies; Knöckel et al. 2004 (citing Quinn 2003) include P(33) 6-3 of 129I127I and P(33) 6-3, P(54) and R(69) 8-4, P(110) 10-2, P(69) 12-6 and R(113) 14-4 of 129I2: six 129I2 lines and one mixed-isotopologue line in total. The MeP table lists R(60) 8-4, not R(69), so 'R(69)' in Knöckel 2004 is probably a typo (unresolved). n_items = 180 counts table rows (some components appear in two tables). Values were read from the BIPM MeP PDFs; the Metrologia PDF itself could not be downloaded (bot-blocked). Primary sources include BIPM reports (Chartier 1982, 1993), Knox & Pao 1971, Tesic & Pao 1975, Magyar & Brown 1980, Schweitzer et al. 1973, Ciddor & Brown 1980 and Gläser et al. 1981."
+  notes: "Knoeckel 2004 ref. [10]: source of the CIPM lines and the isotopologue lines used in the fit. The current BIPM PDFs (entries bipm20xx) replace these tables; use those. Merged 2026-10-28 from the broadband entry quinn2003a (same publication): absolute hyperfine component frequencies; Knöckel et al. 2004 (citing Quinn 2003) include P(33) 6-3 of 129I127I and P(33) 6-3, P(54) and R(69) 8-4, P(110) 10-2, P(69) 12-6 and R(113) 14-4 of 129I2: six 129I2 lines and one mixed-isotopologue line in total. The MeP table lists R(60) 8-4, not R(69), so 'R(69)' in Knöckel 2004 is probably a typo (unresolved). n_items = 180 counts table rows (some components appear in two tables). Values were read from the BIPM MeP PDFs; the Metrologia article itself was not seen. Primary sources include BIPM reports (Chartier 1982, 1993), Knox & Pao 1971, Tesic & Pao 1975, Magyar & Brown 1980, Schweitzer et al. 1973, Ciddor & Brown 1980 and Gläser et al. 1981."
 
 # ---------------------------------------------------------------------------------------
-# B. Baseline model and pre-2003 precision data (mostly used in Knoeckel 2004)
+# B. Reference model (Knoeckel 2004) and pre-2003 precision data (mostly used in Knoeckel 2004)
 # ---------------------------------------------------------------------------------------
 - id: knockel2004a
   citation: "H. Knoeckel, B. Bodermann, E. Tiemann, High precision description of the rovibronic structure of the I2 B-X spectrum, Eur. Phys. J. D 28, 199-209 (2004)"
@@ -284,14 +284,14 @@
   uncertainty_MHz: 3.0
   absolute: true
   hyperfine_resolved: false
-  data_availability: "assigned data set in electronic supplementary table ('Online material'; footnote p.199 points to www.edpsciences.org); Springer page requires login, ESM not retrieved here"
+  data_availability: "assigned data set in electronic supplementary table ('Online material'; footnote p.199 points to www.edpsciences.org); ESM not held"
   machine_readable: false
   likely_in_knockel2004: true
   priority: high
   verified: true
   status: "held"
-  transcription: "not possible: the line data are in an electronic supplement that could not be obtained (data collection ended 2026-10-28)"
-  notes: "Baseline to beat. Read from full text: data 'mostly' from refs [2-23,30-33,36]; Gerstenkorn-Luc atlas recalibrated (Tables 2-3) to fill 667-776 nm and 514-526 nm; ~400 lines from the Kato Doppler-free atlas (a1/a10/a15, 526-667 nm, 3 MHz floor); P(42) and R(45) 39-2 near 532 nm from H. Schnatz (PTB, private communication 2001). Stated gaps: no direct precise link between v'' 0-7 and v'' 12-17; systematic negative residuals up to 5 MHz for moderate J in bands 33-0, 34-0, 35-0; BOC poorly determined because only six 129I2 lines and one 127I129I line were available; more isotopologue data requested. Implemented in IodineSpec (TOPTICA). Merged 2026-10-28 from the broadband entry knockel2004a (same publication): line positions; This is the Hannover fit data set and the direct baseline for our global fit. Composition (from the PDF): Hannover near-IR absolute and difference frequencies (778–815 nm); 1 MHz grids of Velchev 1998 and Xu 2000 (571–655 nm); 532 nm and 514 nm measurements; about 400 averaged frequencies from Kato's Doppler-free atlas (a1, a10 and a15 components, 526–560 nm); Rakowsky 1989; Rong et al. and Grieser et al.; recalibrated Gerstenkorn atlas lines (514–526 and 667–776 nm); and CIPM lines (Quinn 2003) including isotopologues. The text says 'about 1500'; the χ² discussion quotes 1513 observations (χ² ≈ 830). Range: the abstract says 514–815 nm, while Fig. 5 is labelled 833–515 nm. The PDF reports systematic −5 MHz residuals at moderate J″ in the 33-0, 34-0 and 35-0 bands near 19 000 cm⁻¹. If the table cannot be recovered, it can be rebuilt approximately from the cited sources, since each subset is catalogued here or by the sub-Doppler agent. Merged 2026-10-28 from the broadband entry knockel2004a (same publication): other; Rules: I.1 nu_corr = nu_atlas; I.2–4 nu_corr = nu_atlas − 2.5e-3 cm⁻¹; II, III nu_corr = nu_atlas(1 + 1.7e-7) − 8.1e-3 cm⁻¹. Table 3 adds odd-J″ shifts between the line maximum and the pure rovibronic frequency of −6.3 to −8.2e-4 cm⁻¹ (even J″: zero), plus cell temperatures and instrument widths per atlas part. My arithmetic: the II/III rule gives −5.7e-3 cm⁻¹ at 14 000 cm⁻¹, −5.2e-3 at 17 000 and −4.7e-3 at 20 000, bracketing the original −5.6e-3 cm⁻¹. These rules are the current best recipe for putting atlas lines on the absolute scale."
+  transcription: "not possible: the line data are in an electronic supplement that is not held (as of 2026-10-28)"
+  notes: "Read from full text: data 'mostly' from refs [2-23,30-33,36]; Gerstenkorn-Luc atlas recalibrated (Tables 2-3) to fill 667-776 nm and 514-526 nm; ~400 lines from the Kato Doppler-free atlas (a1/a10/a15, 526-667 nm, 3 MHz floor); P(42) and R(45) 39-2 near 532 nm from H. Schnatz (PTB, private communication 2001). Stated gaps: no direct precise link between v'' 0-7 and v'' 12-17; systematic negative residuals up to 5 MHz for moderate J in bands 33-0, 34-0, 35-0; BOC poorly determined because only six 129I2 lines and one 127I129I line were available; more isotopologue data requested. Implemented in IodineSpec (TOPTICA). Merged 2026-10-28 from the broadband entry knockel2004a (same publication): line positions; This is the Hannover fit data set and the direct reference for a new global fit. Composition (from the PDF): Hannover near-IR absolute and difference frequencies (778–815 nm); 1 MHz grids of Velchev 1998 and Xu 2000 (571–655 nm); 532 nm and 514 nm measurements; about 400 averaged frequencies from Kato's Doppler-free atlas (a1, a10 and a15 components, 526–560 nm); Rakowsky 1989; Rong et al. and Grieser et al.; recalibrated Gerstenkorn atlas lines (514–526 and 667–776 nm); and CIPM lines (Quinn 2003) including isotopologues. The text says 'about 1500'; the χ² discussion quotes 1513 observations (χ² ≈ 830). Range: the abstract says 514–815 nm, while Fig. 5 is labelled 833–515 nm. The PDF reports systematic −5 MHz residuals at moderate J″ in the 33-0, 34-0 and 35-0 bands near 19 000 cm⁻¹. Without the table, it can be rebuilt approximately from the cited sources, since each subset has its own catalog entry. Merged 2026-10-28 from the broadband entry knockel2004a (same publication): other; Rules: I.1 nu_corr = nu_atlas; I.2–4 nu_corr = nu_atlas − 2.5e-3 cm⁻¹; II, III nu_corr = nu_atlas(1 + 1.7e-7) − 8.1e-3 cm⁻¹. Table 3 adds odd-J″ shifts between the line maximum and the pure rovibronic frequency of −6.3 to −8.2e-4 cm⁻¹ (even J″: zero), plus cell temperatures and instrument widths per atlas part. Computed: the II/III rule gives −5.7e-3 cm⁻¹ at 14 000 cm⁻¹, −5.2e-3 at 17 000 and −4.7e-3 at 20 000, bracketing the original −5.6e-3 cm⁻¹. These rules are the current best recipe for putting atlas lines on the absolute scale."
 
 - id: bodermann2002a
   citation: "B. Bodermann, H. Knoeckel, E. Tiemann, Widely usable interpolation formulae for hyperfine splittings in the 127I2 spectrum, Eur. Phys. J. D 19, 31-44 (2002)"
@@ -318,7 +318,7 @@
   verified: true
   status: "held"
   transcription: "not needed: fitted interpolation formulae for hyperfine constants with no new numbers, superseded by the salumbides2006a refit"
-  notes: "Used to strip hyperfine shifts from all measured components in Knoeckel 2004. The stated validity range is taken from Stage 1 context and still needs checking against the paper. Later work reports failures: Yoshiki 2023 (EPJD 77) at v'=44 near 514 nm (up to ~800 kHz, as reported to me by the theory agent; not yet verified against the Yoshiki full text); near-dissociation data (Chen 2004) lie outside its fitted v' range. A new global hyperfine model is needed."
+  notes: "Used to strip hyperfine shifts from all measured components in Knoeckel 2004. The stated validity range is from a secondary source and was not checked against the paper. Later work reports failures: Yoshiki 2023 (EPJD 77) at v'=44 near 514 nm (up to ~800 kHz, from a secondary summary; not verified against the Yoshiki full text); near-dissociation data (Chen 2004) lie outside its fitted v' range. A new global hyperfine model is needed."
 
 - id: sansonetti1997a
   citation: "C. J. Sansonetti, Precise measurements of hyperfine components in the spectrum of molecular iodine, J. Opt. Soc. Am. B 14, 1913-1920 (1997)"
@@ -696,7 +696,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Enters the BIPM 532 nm hyperfine tables. Merged 2026-10-28 from the broadband entry eickhoff1995a (same publication): pressure broadening/shift; 148 kHz/Pa = about 19.7 MHz/Torr (my conversion). Width convention (HWHM or FWHM, resonance or homogeneous) not checked."
+  notes: "Enters the BIPM 532 nm hyperfine tables. Merged 2026-10-28 from the broadband entry eickhoff1995a (same publication): pressure broadening/shift; 148 kHz/Pa = about 19.7 MHz/Torr (converted). Width convention (HWHM or FWHM, resonance or homogeneous) not checked."
 
 - id: macfarlane1999a
   citation: "G. M. Macfarlane, G. P. Barwood, W. R. C. Rowley and P. Gill, \"Interferometric frequency measurement of iodine stabilized Nd:YAG lasers\", IEEE Trans. Instrum. Meas. 48, 600-603 (1999)"
@@ -1047,7 +1047,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Knoeckel 2004 ref. [4]. No abstract available through the APIs; contents not checked."
+  notes: "Knoeckel 2004 ref. [4]. No abstract available; contents not checked."
 
 - id: cornish2000a
   citation: "S. L. Cornish, Y.-W. Liu, I. C. Lane, P. E. G. Baird, G. P. Barwood, P. Taylor and W. R. C. Rowley, \"Interferometric measurements of ¹²⁷I₂ reference frequencies for 1S-2S spectroscopy in muonium, hydrogen, and deuterium\", J. Opt. Soc. Am. B 17, 6-10 (2000)"
@@ -1235,8 +1235,8 @@
   priority: low
   verified: true
   status: "held"
-  transcription: "not needed: low priority, and the iodine content was never checked (probably one reference line near 548 nm)"
-  notes: "Knoeckel 2004 refs [8,9] (the 1986 paper is doi:10.1103/physreva.33.3023). I did not check the iodine content; the wavelength is probably near 548 nm (inferred from the Li+ transition)."
+  transcription: "not needed: the iodine content was never checked (probably one reference line near 548 nm)"
+  notes: "Knoeckel 2004 refs [8,9] (the 1986 paper is doi:10.1103/physreva.33.3023). The iodine content was not checked; the wavelength is probably near 548 nm (inferred from the Li+ transition)."
 
 - id: acef1993a
   citation: "O. Acef, J. J. Zondy, M. Abed, D. G. Rovera, A. H. Gérard, A. Clairon, Ph. Laurent, Y. Millerioux and P. Juncar, \"A CO2 to visible optical frequency synthesis chain: accurate measurement of the 473 THz HeNe/I2 laser\", Opt. Commun. 97, 29-34 (1993)"
@@ -1478,7 +1478,7 @@
   priority: low
   verified: true
   status: "held"
-  transcription: "not needed: pressure and modulation shift coefficients for a 532 nm intercomparison, not line data; low priority"
+  transcription: "not needed: pressure and modulation shift coefficients for a 532 nm intercomparison, not line data"
   notes: "Systematics: pressure- and modulation-induced shifts of 532 nm standards."
 
 - id: cheng2001a
@@ -1553,14 +1553,14 @@
   uncertainty_MHz: 3.0
   absolute: true
   hyperfine_resolved: true
-  data_availability: "printed atlas (4 vols) + 4 computer discs (JSPS 2000); no DOI; OpenAlex W199898518"
+  data_availability: "printed atlas (4 vols) + 4 computer discs (JSPS 2000); no DOI"
   machine_readable: false
   likely_in_knockel2004: true
   priority: high
   verified: true
   status: "unobtainable: printed atlas and CD-ROMs not found in any library or online"
   transcription: "n/a: not held"
-  notes: "Knoeckel 2004 ref. [24]; its ~400 lines provide the 3 MHz coverage of 526-667 nm. Knoeckel suspects Kato-derived data near 19000 cm-1 cause the J/v-correlated residuals in bands 33-0 to 35-0. Getting the digital atlas (CD-ROM) would let us re-extract many more lines with a modern hyperfine model: high value. Exact technique and calibration still to be checked."
+  notes: "Knoeckel 2004 ref. [24]; its ~400 lines provide the 3 MHz coverage of 526-667 nm. Knoeckel suspects Kato-derived data near 19000 cm-1 cause the J/v-correlated residuals in bands 33-0 to 35-0. The digital atlas (CD-ROM) would allow many more lines to be re-extracted with a modern hyperfine model. Exact technique and calibration not checked."
 
 - id: broyer1978a
   citation: "M. Broyer, J. Vigue, J.-C. Lehmann, Effective hyperfine Hamiltonian in homonuclear diatomic molecules. Application to the B state of molecular iodine, J. Phys. (Paris) 39, 591-609 (1978)"
@@ -1671,7 +1671,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "The key dataset for B-state hyperfine near the dissociation limit (v' up to 70), well outside the v' range where Bodermann 2002 was fitted. It gives hyperfine structure only, no absolute anchors, but it is essential for reducing near-dissociation line positions and for testing a new hyperfine model. Lisheng Chen's PhD thesis (JILA, c. 2005, 'High-precision spectroscopy of molecular iodine: from optical frequency standards to global descriptions of hyperfine interactions', listed in Semantic Scholar) probably holds the full tables; I have not checked it."
+  notes: "The key dataset for B-state hyperfine near the dissociation limit (v' up to 70), well outside the v' range where Bodermann 2002 was fitted. It gives hyperfine structure only, no absolute anchors, but it is essential for reducing near-dissociation line positions and for testing a new hyperfine model. Lisheng Chen's PhD thesis (JILA, c. 2005, 'High-precision spectroscopy of molecular iodine: from optical frequency standards to global descriptions of hyperfine interactions') probably holds the full tables (not checked)."
 
 - id: chen2005a
   citation: "L. Chen, W. A. de Jong, J. Ye, Characterization of the molecular iodine electronic wave functions and potential energy curves through hyperfine interactions in the B0u+(3Pi_u) state, J. Opt. Soc. Am. B 22, 951 (2005)"
@@ -1806,7 +1806,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "The only sub-kHz absolute anchor with v' = 62, close to the dissociation limit. Highest priority for the near-dissociation region, where Knoeckel 2004 has essentially no precision data (Gerstenkorn-Luc only, ~30 MHz). Merged 2026-10-28 from the broadband entry goncharov2007a (same publication): pressure broadening/shift; Narrow resonance near dissociation, useful for separating collisional from natural/predissociation width. The wording leaves the sign convention of the bound ambiguous."
+  notes: "The only sub-kHz absolute anchor with v' = 62, close to the dissociation limit. The key anchor for the near-dissociation region, where Knoeckel 2004 has essentially no precision data (Gerstenkorn-Luc only, ~30 MHz). Merged 2026-10-28 from the broadband entry goncharov2007a (same publication): pressure broadening/shift; Narrow resonance near dissociation, useful for separating collisional from natural/predissociation width. The wording leaves the sign convention of the bound ambiguous."
 
 - id: ikeda2020a
   citation: "K. Ikeda, S. Okubo, M. Wada, K. Kashiwagi, K. Yoshii, H. Inaba and F.-L. Hong, \"Iodine-stabilized laser at telecom wavelength using dual-pitch periodically poled lithium niobate waveguide\", Opt. Express 28, 2166-2178 (2020)"
@@ -1995,7 +1995,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "OpenAlex lists 2019 (online); journal issue 2020. Not independent of sakagami2020a (same apparatus and budget)."
+  notes: "Published online 2019; journal issue 2020. Not independent of sakagami2020a (same apparatus and budget)."
 
 - id: kobayashi2015a
   citation: "T. Kobayashi, D. Akamatsu, K. Hosaka, H. Inaba, S. Okubo, T. Tanabe, M. Yasuda, A. Onae, F.-L. Hong, \"Compact iodine-stabilized laser operating at 531 nm with stability at the 10^-12 level and using a coin-sized laser module\", Opt. Express 23, 20749-20759 (2015)"
@@ -2075,7 +2075,7 @@
   priority: low
   verified: true
   status: "held"
-  transcription: "not needed: spectra and stabilization only, no numeric hyperfine data; low priority"
+  transcription: "not needed: spectra and stabilization only, no numeric hyperfine data"
   notes: "Mainly technical. Includes a 594 nm line, P(69)12-1, the only 594 nm item found in this survey. Linewidth caveat of Yoshii 2021 applies."
 
 - id: cheng2019a
@@ -2156,7 +2156,7 @@
   priority: low
   verified: true
   status: "held"
-  transcription: "not needed: linewidths at 514.7 nm that depend on the cell, no absolute frequencies; low priority"
+  transcription: "not needed: linewidths at 514.7 nm that depend on the cell, no absolute frequencies"
   notes: "Linewidth data at 514.7 nm (predissociation/pressure broadening). No absolute frequencies."
 
 - id: philippe2016a
@@ -2210,7 +2210,7 @@
   priority: low
   verified: true
   status: "held"
-  transcription: "not needed: Zeeman systematics, no line values; low priority"
+  transcription: "not needed: Zeeman systematics, no line values"
   notes: "Systematics: the magnetic sensitivity of hyperfine components; relevant to unshielded cells."
 
 # ---------------------------------------------------------------------------------------
@@ -2267,8 +2267,8 @@
   priority: low
   verified: true
   status: "held"
-  transcription: "not needed: lead only, no frequency given; low priority"
-  notes: "Lead only; no absolute frequency in abstract."
+  transcription: "not needed: no frequency given"
+  notes: "No absolute frequency in the abstract."
 
 - id: chen2023a
   citation: "Y. T. Chen, N. C. Xin, H. R. Qin, S. N. Miao, Y. Zheng, J. W. Zhang, L. J. Wang, \"Absolute frequency measurement of molecular iodine hyperfine transitions at 554 nm and its application to stabilize a 369 nm laser for Yb+ ions cooling\", Chin. J. Phys. 88, 485-492 (2024)"
@@ -2288,14 +2288,14 @@
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: true
-  data_availability: "tables in paper/arXiv (to be checked)"
+  data_availability: "tables in paper/arXiv (not checked)"
   machine_readable: false
   likely_in_knockel2004: false
   priority: high
   verified: true
   status: "held"
   transcription: null
-  notes: "Many lines, including very high J (up to 160) and v''=1 hot-band lines. EFTF 2024 companion: doi:10.1109/eftf61992.2024.10722760. Journal volume year 2024, online Dec 2023. Merged 2026-10-28 from the broadband entry chen2023a (same publication): pressure broadening/shift; Same paper as precision.yaml chen2023a (data/observations/chen2023a, excluded: its printed frequencies are 30-840 MHz off). About ten times larger than other I2 self-shift coefficients (-1 to -8 kHz/Pa). My inference: lock-point, modulation or impurity effects are possible, so treat as an outlier. The paper uses its own vapor-pressure formula (log P = -3512.830/T - 2.013 log T + 18.37971)."
+  notes: "Many lines, including very high J (up to 160) and v''=1 hot-band lines. EFTF 2024 companion: doi:10.1109/eftf61992.2024.10722760. Journal volume year 2024, online Dec 2023. Merged 2026-10-28 from the broadband entry chen2023a (same publication): pressure broadening/shift; Same paper as precision.yaml chen2023a (data/observations/chen2023a, excluded: its printed frequencies are 30-840 MHz off). About ten times larger than other I2 self-shift coefficients (-1 to -8 kHz/Pa). Inferred: lock-point, modulation or impurity effects are possible, so treat as an outlier. The paper uses its own vapor-pressure formula (log P = -3512.830/T - 2.013 log T + 18.37971)."
 
 - id: tanabe2022a
   citation: "Y. Tanabe, Y. Sakamoto, T. Kohno, D. Akamatsu, F.-L. Hong, \"Frequency references based on molecular iodine for the study of Yb atoms using the 1S0-3P1 intercombination transition at 556 nm\", Opt. Express 30, 46487-46500 (2022)"
@@ -2349,7 +2349,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Independent check of Tanabe 2022 P(49)24-1 values. OpenAlex year 2024; journal 2025."
+  notes: "Independent check of Tanabe 2022 P(49)24-1 values. Published online 2024; journal 2025."
 
 - id: demelo2024a
   citation: "Á. M. G. de Melo, H. Letellier, A. Apoorva, A. Glicenstein and R. Kaiser, \"Laser frequency stabilization by modulation transfer spectroscopy and balanced detection of molecular iodine for laser cooling of 174Yb\", Opt. Express 32, 6204 (2024)"
@@ -2430,7 +2430,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "No abstract available through the APIs; the P(58)22-1 assignment comes from the companion paper yang2011b. Online 2011, issue 2012."
+  notes: "No abstract available; the P(58)22-1 assignment comes from the companion paper yang2011b. Online 2011, issue 2012."
 
 - id: yang2011b
   citation: "T. Yang, Y. Li, Y. Zhao, P. Yu, J. Cao, Z. Fang, C. Gao, E. Zang, Modulation transfer spectroscopy of 127I2 hyperfine structure at 561 nm, IEEE Trans. Instrum. Meas. 60, 2517-2521 (2011)"
@@ -2473,7 +2473,7 @@
   range_cm1: null
   transitions: "lines at 565, 576 and 585 nm for the Li+ Ives-Stilwell experiment at the TSR; per Salumbides 2008 these include P(80)21-1 (564 nm) and P(10)14-1 (585 nm); full list not checked"
   n_items: null
-  uncertainty: "not verified (a search-engine snippet mentions < 70 kHz; unconfirmed)"
+  uncertainty: "not verified (a secondary summary mentions < 70 kHz; unconfirmed)"
   uncertainty_MHz: null
   absolute: true
   hyperfine_resolved: true
@@ -2484,7 +2484,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "No abstract available through the APIs; ScienceDirect blocked. Cites Knoeckel 2004 and Bodermann 2002 and probably compares with them. Re-measures the 585 nm standard of Grieser 1994 and the 576 nm MeP region."
+  notes: "No abstract available. Cites Knoeckel 2004 and Bodermann 2002 and probably compares with them. Re-measures the 585 nm standard of Grieser 1994 and the 576 nm MeP region."
 
 - id: hong2009a
   citation: "F.-L. Hong, H. Inaba, K. Hosaka, M. Yasuda and A. Onae, \"Doppler-free spectroscopy of molecular iodine using a frequency-stable light source at 578 nm\", Opt. Express 17, 1652-1659 (2009)"
@@ -2649,7 +2649,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Reference for the Li D lines. v''=6 hot band at 671 nm, inside the poorly constrained 667-776 nm region of Knoeckel 2004: high value."
+  notes: "Reference for the Li D lines. v''=6 hot band at 671 nm, inside the poorly constrained 667-776 nm region of Knoeckel 2004."
 
 - id: fang2006b
   citation: "H.-M. Fang, S.-C. Wang, J.-T. Shy, Frequency stabilization of an external cavity diode laser to molecular iodine at 657.483 nm, Appl. Opt. 45, 3173 (2006)"
@@ -2730,7 +2730,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Foreign-gas broadening and shifts (relevant to cell impurities); Doppler-limited. Belongs partly to the Stage 2a line-shape catalog. Merged 2026-10-28 from the broadband entry wolf2009a (same publication): pressure broadening/shift; The most complete foreign-gas broadening and shift dataset found for I2 B-X: He, Ne, Ar, Kr, Xe, H2, D2, N2, CO2, N2O, air and H2O at 292 K; temperature dependence for Ar (292, 348, 388 K) and for He and CO2 (292, 388 K). The printed low-J range is probably a typo for 14 846.17-14 850.29 cm-1 (my inference), and range_cm1 uses that reading. Precursor: eng2004."
+  notes: "Foreign-gas broadening and shifts (relevant to cell impurities); Doppler-limited. Belongs partly with the line-shape entries of broadband.yaml. Merged 2026-10-28 from the broadband entry wolf2009a (same publication): pressure broadening/shift; The most complete foreign-gas broadening and shift dataset found for I2 B-X: He, Ne, Ar, Kr, Xe, H2, D2, N2, CO2, N2O, air and H2O at 292 K; temperature dependence for Ar (292, 348, 388 K) and for He and CO2 (292, 388 K). The printed low-J range is probably a typo for 14 846.17-14 850.29 cm-1 (inferred), and range_cm1 uses that reading. Precursor: eng2004."
 
 - id: hong2004a
   citation: "F.-L. Hong, S. Diddams, R. Guo, Z.-Y. Bi, A. Onae, H. Inaba, J. Ishikawa, K. Okumura, D. Katsuragi, J. Hirata, T. Shimizu, T. Kurosu, Y. Koga and H. Matsumoto, \"Frequency measurements and hyperfine structure of the R(85)33-0 transition of molecular iodine with a femtosecond optical comb\", J. Opt. Soc. Am. B 21, 88-95 (2004)"
@@ -2784,7 +2784,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Systematics reference (pressure, power, modulation). No abstract via APIs. R(56) 32-0 a10 absolute 563 260 223 507.897(58) kHz (-10 C) plus pressure, power and modulation-phase slopes."
+  notes: "Systematics reference (pressure, power, modulation). No abstract available. R(56) 32-0 a10 absolute 563 260 223 507.897(58) kHz (-10 C) plus pressure, power and modulation-phase slopes."
 
 - id: picard2003a
   citation: "S. Picard, L. Robertsson, L.-S. Ma, K. Nyholm, M. Merimaa, T. E. Ahola, P. Balling, P. Křen and J.-P. Wallerand, \"Comparison of 127I2-stabilized frequency-doubled Nd:YAG lasers at the Bureau International des Poids et Mesures\", Appl. Opt. 42, 1019-1028 (2003)"
@@ -2865,7 +2865,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "I set uncertainty_MHz to the 5 kHz MeP level because the 20 Hz figure appears to be statistical only."
+  notes: "uncertainty_MHz is set to the 5 kHz MeP level because the 20 Hz figure appears to be statistical only."
 
 - id: balling2007a
   citation: "P. Balling and P. Křen, \"Absolute frequency measurements of wavelength standards 532 nm, 543 nm, 633 nm and 1540 nm\", Eur. Phys. J. D 48, 3-10 (2008)"
@@ -2892,7 +2892,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Possibly the only comb measurement of the 543 nm standard besides the BIPM report. No abstract via APIs."
+  notes: "Possibly the only comb measurement of the 543 nm standard besides the BIPM report. No abstract available."
 
 - id: merimaa2008a
   citation: "M. Merimaa, V. Ahtee and K. Nyholm, \"Absolute frequency measurement of an iodine-stabilized 543-nm He-Ne laser with modulation-synchronized phase-locked loop for improved frequency counting\", Conference on Precision Electromagnetic Measurements (CPEM 2008), Digest, pp. 286-287 (2008)"
@@ -3327,7 +3327,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "X-state v''=53-54, close to the ground-state dissociation limit. Complements Matyugin 2012. Merged 2026-10-28 from the broadband entry nesterenko2019a (same publication): absolute hyperfine component frequencies; Abstract from Semantic Scholar. This is the highest-v'' sub-MHz anchor found for the X state. It was found through the forward citation search from Martin 1986 and Knöckel 2004. uncertainty_MHz is 8e-10 × ~283 THz. Coordinator note: these emission measurements are in this category's scope because they give high-v'' X term values."
+  notes: "X-state v''=53-54, close to the ground-state dissociation limit. Complements Matyugin 2012. Merged 2026-10-28 from the broadband entry nesterenko2019a (same publication): absolute hyperfine component frequencies; From the abstract. This is the highest-v'' sub-MHz anchor found for the X state. It cites Martin 1986 and Knöckel 2004. uncertainty_MHz is 8e-10 × ~283 THz. These emission measurements are listed here because they give high-v'' X term values."
 
 - id: nolleke2018a
   citation: "C. Nölleke, C. Raab, R. Neuhaus, S. Falke, Absolute frequency atlas from 915 nm to 985 nm based on laser absorption spectroscopy of iodine, J. Mol. Spectrosc. 346, 19-22 (2018), doi:10.1016/j.jms.2017.12.013. Data: C. Nölleke et al., Laser absorption spectroscopy of iodine between 915 and 985 nm, Mendeley Data, V1 (2017)"
@@ -3354,7 +3354,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Not sub-Doppler; listed here because it is the only dense NIR atlas beyond 900 nm and constrains high-v'' levels. Primary home is the Stage 2a catalog. Merged 2026-10-28 from the broadband entry nolleke2018a (same publication): line positions; The only modern, absolutely calibrated broadband data found below 11 000 cm⁻¹, beyond the red end of the Gerstenkorn–Vergès–Chevillard atlas. About 6000 lines are new relative to the earlier reference list. The paper compares 3769 reference lines from its ref. [1], which it cites as the Gerstenkorn–Luc 14 800–20 000 cm⁻¹ atlas; that volume cannot cover 915–985 nm, so the comparison list must come from another (unidentified) source. Clarify with the authors. My count of the CSV: 10 162 rows, 3664 with a reference wavelength. Water lines were identified and flagged. The cell was provided by H. Knöckel (acknowledgements)."
+  notes: "Not sub-Doppler; listed here because it is the only dense NIR atlas beyond 900 nm and constrains high-v'' levels. It belongs mainly with the broadband catalog (broadband.yaml). Merged 2026-10-28 from the broadband entry nolleke2018a (same publication): line positions; The only modern, absolutely calibrated broadband data found below 11 000 cm⁻¹, beyond the red end of the Gerstenkorn–Vergès–Chevillard atlas. About 6000 lines are new relative to the earlier reference list. The paper compares 3769 reference lines from its ref. [1], which it cites as the Gerstenkorn–Luc 14 800–20 000 cm⁻¹ atlas; that volume cannot cover 915–985 nm, so the comparison list must come from another (unidentified) source. Count of the CSV: 10 162 rows, 3664 with a reference wavelength. Water lines were identified and flagged. The cell was provided by H. Knöckel (acknowledgements)."
 
 # ---------------------------------------------------------------------------------------
 # E2. Isotopologues (129I2, 127I129I)
@@ -3383,8 +3383,8 @@
   priority: high
   verified: true
   status: "held"
-  transcription: "not possible: the line data are in an electronic supplement that could not be obtained (data collection ended 2026-10-28)"
-  notes: "Refits the Hannover hyperfine formulas (update of Bodermann 2002): valid for 0 <= v'' <= 17 and 0 <= v' <= 53, with two extra B-state spin-spin parameters and corrected formulas (12)-(13) of the 2002 paper. It also points out an apparent fitting artefact in Hong 2002 (R(121)35-0 a8/a12). n_items is a lower bound (inferred: 120+200+170). The corrected hyperfine model is in effect the Hannover baseline after 2006. Merged 2026-10-28 from the broadband entry salumbides2006a (same publication): hyperfine constants; Gives isotopically scaled hyperfine models (eqQ, C; spin-spin fixed by scaling) valid for v''<=17 and v'<=53 and predicting HFS for all three isotopologues. n_items left null because the paper gives only lower bounds. machine_readable=false because the supplement format was not checked. Companion to salumbides2008a."
+  transcription: "not possible: the line data are in an electronic supplement that is not held (as of 2026-10-28)"
+  notes: "Refits the Hannover hyperfine formulas (update of Bodermann 2002): valid for 0 <= v'' <= 17 and 0 <= v' <= 53, with two extra B-state spin-spin parameters and corrected formulas (12)-(13) of the 2002 paper. It also points out an apparent fitting artefact in Hong 2002 (R(121)35-0 a8/a12). n_items is a lower bound (inferred: 120+200+170). The corrected hyperfine model is in effect the standard Hannover model after 2006. Merged 2026-10-28 from the broadband entry salumbides2006a (same publication): hyperfine constants; Gives isotopically scaled hyperfine models (eqQ, C; spin-spin fixed by scaling) valid for v''<=17 and v'<=53 and predicting HFS for all three isotopologues. n_items left null because the paper gives only lower bounds. machine_readable=false because the supplement format was not checked. Companion to salumbides2008a."
 
 - id: salumbides2008a
   citation: "E. J. Salumbides, K. S. E. Eikema, W. Ubachs, U. Hollenstein, H. Knoeckel, E. Tiemann, Improved potentials and Born-Oppenheimer corrections by new measurements of transitions of 129I2 and 127I129I in the B3Pi(0u+)-X1Sigma(g+) band system, Eur. Phys. J. D 47, 171-179 (2008)"
@@ -3410,8 +3410,8 @@
   priority: high
   verified: true
   status: "held"
-  transcription: "not possible: the line data are in an electronic supplement that could not be obtained (data collection ended 2026-10-28)"
-  notes: "The post-2004 successor of Knoeckel 2004: new B and X potentials and effective BOC valid for all three isotopologues. Added absolute 127I2 data: Badr 2006 (P(62)4-5, 661 nm), Reinhardt 2006 (P(80)21-1 at 564 nm, P(10)14-1 at 585 nm), Reinhardt 2007 (P(42)1-14 and R(114)2-11, quoted at 735 nm), high-J (0-15) lines measured with a comb in Amsterdam (unpublished) and Liao et al. (then unpublished, = liao2010a). Hyperfine shifts removed with the Salumbides 2006 model (< 60 kHz error). The ESM data set should be retrieved: it is the best available starting point for our global fit. Merged 2026-10-28 from the broadband entry salumbides2008a (same publication): line positions; The key post-2004 isotopologue dataset: it takes the isotopologue data from 7 lines (Knöckel 2004) to more than 380 difference frequencies (n_items is that lower bound). Te(127I2) - Te(129I2) = 94(11) MHz; no perturbations seen in the covered range. The combined fit used about 1900 frequencies or differences including 127I2 data. The ESM was not downloaded, so machine_readable is not confirmed."
+  transcription: "not possible: the line data are in an electronic supplement that is not held (as of 2026-10-28)"
+  notes: "The post-2004 successor of Knoeckel 2004: new B and X potentials and effective BOC valid for all three isotopologues. Added absolute 127I2 data: Badr 2006 (P(62)4-5, 661 nm), Reinhardt 2006 (P(80)21-1 at 564 nm, P(10)14-1 at 585 nm), Reinhardt 2007 (P(42)1-14 and R(114)2-11, quoted at 735 nm), high-J (0-15) lines measured with a comb in Amsterdam (unpublished) and Liao et al. (then unpublished, = liao2010a). Hyperfine shifts removed with the Salumbides 2006 model (< 60 kHz error). The ESM data set (not held) is the best available starting point for a global fit. Merged 2026-10-28 from the broadband entry salumbides2008a (same publication): line positions; The key post-2004 isotopologue dataset: it takes the isotopologue data from 7 lines (Knöckel 2004) to more than 380 difference frequencies (n_items is that lower bound). Te(127I2) - Te(129I2) = 94(11) MHz; no perturbations seen in the covered range. The combined fit used about 1900 frequencies or differences including 127I2 data. The ESM was not seen, so machine_readable is not confirmed."
 
 # ---------------------------------------------------------------------------------------
 # E3. Systematics: cell purity, pressure/power broadening, other technical effects
@@ -3495,7 +3495,7 @@
   verified: true
   status: "held"
   transcription: "not needed: cell-purity linewidths and pressure data; the notes say not worth transcribing"
-  notes: "Proposes the zero-pressure zero-power HWHM of a10 as a cell-purity metric: the dirty cell is about 3 times broader than the clean one, and the Pyrex cells are narrower than the clean fused-silica cell and unchanged after one year (within 15 kHz). The extrapolated width still contains transit-time (~30 kHz for a 1 mm beam), recoil (~6 kHz) and laser (~1 kHz) contributions; the width vs pressure is nonlinear at low pressure (weak elastic collisions). A fixed-fill cell (T_sat = -15 C) varies by only ~7 kHz (sd) in width from 13 to 33 C. Table labels R1dirty/R2clean are swapped relative to the text (first reference cell K = 1.33 Pa is the clean one) and to the SPIE version, but the widths go with the right cells. Conference version: hrabina2014c (SPIE 9441, same tables). Companion at 514.7 nm: hrabina2014b. Also catalogued in broadband.yaml as hrabina2014 (same paper; that record should be removed). The widths are cell- and setup-specific purity indicators, not natural linewidths; not worth transcribing."
+  notes: "Proposes the zero-pressure zero-power HWHM of a10 as a cell-purity metric: the dirty cell is about 3 times broader than the clean one, and the Pyrex cells are narrower than the clean fused-silica cell and unchanged after one year (within 15 kHz). The extrapolated width still contains transit-time (~30 kHz for a 1 mm beam), recoil (~6 kHz) and laser (~1 kHz) contributions; the width vs pressure is nonlinear at low pressure (weak elastic collisions). A fixed-fill cell (T_sat = -15 C) varies by only ~7 kHz (sd) in width from 13 to 33 C. Table labels R1dirty/R2clean are swapped relative to the text (first reference cell K = 1.33 Pa is the clean one) and to the SPIE version, but the widths go with the right cells. Conference version: hrabina2014c (SPIE 9441, same tables). Companion at 514.7 nm: hrabina2014b. A duplicate broadband.yaml record of the same paper (hrabina2014) was removed. The widths are cell- and setup-specific purity indicators, not natural linewidths; not worth transcribing."
 
 - id: hrabina2017a
   citation: "J. Hrabina, M. Zucco, C. Philippe, T. Pham Minh, M. Hola, O. Acef, J. Lazar and O. Cip, \"Iodine absorption cells purity testing\", Sensors 17, 102 (2017)"
@@ -3522,7 +3522,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Review of cell-technology trends and purity tests. Merged 2026-10-28 from the broadband entry hrabina2017a (same publication): pressure broadening/shift; Values come from a WebFetch summary of the PMC full text. The -3.4 kHz/Pa may be quoted from earlier ISI work rather than newly measured (not checked). Shows that foreign-gas contamination dominates residual widths in real cells."
+  notes: "Review of cell-technology trends and purity tests. Merged 2026-10-28 from the broadband entry hrabina2017a (same publication): pressure broadening/shift; Values come from a secondary summary of the full text (PMC), not a full reading. The -3.4 kHz/Pa may be quoted from earlier ISI work rather than newly measured (not checked). Shows that foreign-gas contamination dominates residual widths in real cells."
 
 - id: zucco2013a
   citation: "M. Zucco, L. Robertsson, J.-P. Wallerand, Laser-induced fluorescence as a tool to verify the reproducibility of iodine-based laser standards: a study of 96 iodine cells, Metrologia 50, 402-408 (2013)"
@@ -3576,7 +3576,7 @@
   verified: true
   status: "held"
   transcription: null
-  notes: "Self-broadening coefficient of a sub-Doppler component (value not extracted). Merged 2026-10-28 from the broadband entry fang2005a (same publication): pressure broadening/shift; Dedicated self-broadening study of the most-used I2 component. Online 2005 (OpenAlex year 2005), issue 2006."
+  notes: "Self-broadening coefficient of a sub-Doppler component (value not extracted). Merged 2026-10-28 from the broadband entry fang2005a (same publication): pressure broadening/shift; Dedicated self-broadening study of the most-used I2 component. Online 2005, issue 2006."
 
 - id: fang2006a
   citation: "H.-M. Fang, S. C. Wang, L.-C. Liu, W.-Y. Cheng, K.-Y. Wu, J.-T. Shy, \"Measurement of hyperfine splitting of molecular iodine at 532 nm by double-passed acousto optic modulator frequency shifter\", Jpn. J. Appl. Phys. 45, 2776-2779 (2006)"
@@ -3628,7 +3628,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  status: "not useful: tier 3 (interaction-length and linewidth modeling; no line data)"
+  status: "not useful: interaction-length and linewidth modeling; no line data"
   transcription: "n/a: not held"
   notes: "Line-shape modeling of saturated absorption (transit-time broadening etc.)."
 
@@ -3739,7 +3739,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  status: "not useful: tier 3 (in-flight dual-comb measurement; no line data)"
+  status: "not useful: in-flight dual-comb measurement; no line data"
   transcription: "n/a: not held"
   notes: "In-flight optical frequency measurement against a comb; not a spectroscopic dataset."
 
@@ -3793,7 +3793,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  status: "not useful: tier 3 (short-term stability of a 532 nm lock; no line data)"
+  status: "not useful: short-term stability of a 532 nm lock; no line data"
   transcription: "n/a: not held"
   notes: "Chinese space-GW iodine program; see also Zhang et al. RSI 95 (2024), doi:10.1063/5.0210784 (unsaturated cell, 1.7e-15 at 1e4 s)."
 
@@ -3847,7 +3847,7 @@
   likely_in_knockel2004: false
   priority: low
   verified: true
-  status: "not useful: tier 3 (CIPM list procedures; no iodine data)"
+  status: "not useful: CIPM list procedures; no iodine data"
   transcription: "n/a: not held"
   notes: "Explains how MeP values and uncertainties (often deliberately enlarged) are set; relevant when weighting MeP entries."
 
@@ -4478,7 +4478,7 @@
   verified: true
   status: "held"
   transcription: "not needed: digest of picard1996a (data/observations/picard1996a) that prints no coefficients"
-  notes: "Different paper from picard1996a (Picard, Razet, Edwards, Rodriguez-Llorente, Metrologia 33, 569 (1996), R(39)7-4 at 637 nm, transcribed in data/observations). This digest only announces the empirical formulas; it prints no coefficients. The underlying tabulation is ref. [7], A. Razet, S. Picard, A tabulation of calculations of the hyperfine structure in 127I2, then accepted in Metrologia (published as Metrologia 33, 19 (1996), inferred), and the 129I2 tabulation is BIPM report 95/13 (ref. [12]); neither is in the catalog and the former is worth fetching as a compilation of fitted hyperfine constants. Nothing to transcribe from the digest itself."
+  notes: "Different paper from picard1996a (Picard, Razet, Edwards, Rodriguez-Llorente, Metrologia 33, 569 (1996), R(39)7-4 at 637 nm, transcribed in data/observations). This digest only announces the empirical formulas; it prints no coefficients. The underlying tabulation is ref. [7], A. Razet, S. Picard, A tabulation of calculations of the hyperfine structure in 127I2, then accepted in Metrologia (published as Metrologia 33, 19 (1996), inferred), and the 129I2 tabulation is BIPM report 95/13 (ref. [12]); neither is in the catalog; the former is a compilation of fitted hyperfine constants. Nothing to transcribe from the digest itself."
 
 - id: borde2002a
   citation: "C. J. Borde, F. du Burck and A. N. Goncharov, \"A new accurate fit of the hyperfine structure of molecular iodine\", in Frequency Standards and Metrology: Proceedings of the Sixth Symposium, ed. P. Gill (World Scientific, Singapore, 2002), pp. 524-526"
@@ -4667,7 +4667,7 @@
   verified: true
   status: "held"
   transcription: "not needed: conference version of cheng2001a (data/observations/cheng2001a)"
-  notes: "Crossref lists the first author as 'Wang-Yau Chang'; the digest itself reads Wang-Yau Cheng (the id keeps the registry form). Conference version of cheng2001a (JOSA B 18, 363 (2001)): the eight constants are identical to cheng2001a Table 2 'This Work' (checked), and the 22 intervals behind them are cheng2001a Table 1, already transcribed. Also reports Allan deviation 3.1e-13 at 1 s, 6.2e-14 at 30 s, reproducibility 7 kHz and resettability < 2 kHz on b10. Nothing new; do not transcribe (cite as a duplicate of cheng2001a if a record is wanted)."
+  notes: "The DOI record lists the first author as 'Wang-Yau Chang'; the digest itself reads Wang-Yau Cheng (the id keeps the registry form). Conference version of cheng2001a (JOSA B 18, 363 (2001)): the eight constants are identical to cheng2001a Table 2 'This Work' (checked), and the 22 intervals behind them are cheng2001a Table 1, already transcribed. Also reports Allan deviation 3.1e-13 at 1 s, 6.2e-14 at 30 s, reproducibility 7 kHz and resettability < 2 kHz on b10. Nothing new; do not transcribe (cite as a duplicate of cheng2001a if a record is wanted)."
 
 - id: jones2002b
   citation: "R. J. Jones, W.-Y. Cheng, L. Chen, K. W. Holman, J. L. Hall, J. Ye, Absolute frequencies, linewidths, and hyperfine structures of iodine transitions near the dissociation limit (523 to 498 nm), CPEM 2002 Conference Digest, 420-421 (2002)"
@@ -4802,7 +4802,7 @@
   verified: true
   status: "held"
   transcription: "not needed: conference precursor of kobayashi2016a (data/observations/kobayashi2016a)"
-  notes: "Pages 1-2 per Crossref and IEEE Xplore (CPEM 2016 digest uses per-paper pagination; the PDF itself carries no page numbers). Conference precursor of kobayashi2016a (JOSA B 33, 725), which gives the absolute frequencies and hyperfine constants of the same 81 components of the same four transitions. Nothing to transcribe."
+  notes: "Pages 1-2 per the DOI record and IEEE Xplore (CPEM 2016 digest uses per-paper pagination; the PDF itself carries no page numbers). Conference precursor of kobayashi2016a (JOSA B 33, 725), which gives the absolute frequencies and hyperfine constants of the same 81 components of the same four transitions. Nothing to transcribe."
 
 # ---------------------------------------------------------------------------------------
 # E. Added 2026-10-28: laser-standard systematics (cell purity, pressure, power and modulation shifts)
@@ -4833,7 +4833,7 @@
   priority: medium
   verified: true
   status: "held"
-  transcription: "not needed: pressure-shift and width coefficients, figure-only detail; low value"
+  transcription: "not needed: pressure-shift and width coefficients, figure-only detail"
   notes: "Hot cell wall raises the X v''=5 J''=127 population and the peak contrast tenfold (C = 2.5e-3 at 18.6 Pa, room temperature), allowing operation down to 5.3 Pa. New here: the self-pressure shift of component e is linear above 6.6 Pa and appears to flatten below about 6.65 Pa (attributed tentatively to velocity-changing collisions); |d(dv)/dp| decreases with wall temperature. From Fig. 5a the 293 K slope is roughly -6 kHz/Pa and Fig. 5b gives T^(1/2)|d(dv)/dp| ~ 0.12 MHz Pa^-1 K^(1/2), i.e. about 7 kHz/Pa at 293 K (both inferred, read from the figures). Also reports a line asymmetry at low pressure and low saturation that causes the large modulation shift (Fig. 6). Same group as cerez1980a (612 nm). Overlaps the 633 nm MeP conditions (bipm2003a) and the -1.0 MHz/Torr shift of Cerez et al. 1974 quoted by van Oorschot. Not worth transcribing as line data; the 0.14 MHz/Pa broadening and the shift slope could go into a systematics note."
 
 - id: vanoorschot1977a

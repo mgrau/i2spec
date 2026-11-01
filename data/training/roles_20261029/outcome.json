@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "created": "2026-10-30",
- "decision": "Decision 2, step 3b (2026-10-30): the train-role sets were added to the fits block by block and each block judged by the paired rule; a block not added goes to calibrate. Rules for the fit: a measurement printed in two places enters once, from the more current printing; a primary is superior to a mean that combines it (the primary enters, the mean's row leaves); separate measurements both enter.",
+ "decision": "Decision, 2026-10-30: the train-role sets were added to the fits block by block and each block judged by the paired rule; a block not added goes to calibrate. Rules for the fit: a measurement printed in two places enters once, from the more current printing; a primary is superior to a mean that combines it (the primary enters, the mean's row leaves); separate measurements both enter.",
  "paired_rule": "a block is added only if some region's held-out error improves by more than 2 SE and none worsens by more than 2 SE; held-out errors are grouped one value per held-out level (or level group)",
  "roles_json_sha256": "61cbb828a636dc85435f24e034ea8711f46dd26fabbaee29f96c8fccc2cf838f",
  "blocks": [
@@ -51,7 +51,7 @@
      }
     },
     {
-     "variant": "B C5, C6 fitted (decision 8's alternative)",
+     "variant": "B C5, C6 fitted (instead of their inherited values)",
      "flagged": {
       "B v73-77": {
        "flag": "worse",

@@ -89,7 +89,7 @@
     "model.json": "8f6fa0c704bc5839972acaa05cb5b3a9b5c969522fd983846f1c8441866adcc1",
     "hyperfine.json": "aa4b33db6e4fbdbcea593622ba258c8f529ef2ffa72f8c6238d8103db4247dbf",
     "reference_predictions.json": "89c9c9d1511800546cd2f5e8a84020b5b7a9d6ce378810875805f041e10a052a",
-    "uncertainty.json": "a5b84402e756a4b4b9c0304e7ea327ab49767cb15b31eafc1b5982b515a29e20"
+    "uncertainty.json": "a4708fc704f3dfc97891f9e3e1ba571f9d77bcc0e217614ef2a4e759c53eef97"
    }
   },
   {
@@ -103,7 +103,7 @@
     "files_sha256": {
      "model.json": "8f6fa0c704bc5839972acaa05cb5b3a9b5c969522fd983846f1c8441866adcc1",
      "hyperfine.json": "aa4b33db6e4fbdbcea593622ba258c8f529ef2ffa72f8c6238d8103db4247dbf",
-     "uncertainty.json": "a5b84402e756a4b4b9c0304e7ea327ab49767cb15b31eafc1b5982b515a29e20"
+     "uncertainty.json": "a4708fc704f3dfc97891f9e3e1ba571f9d77bcc0e217614ef2a4e759c53eef97"
     }
    },
    "architecture": "core fit + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 2 rotation), X dC6, X cubic splines 4.2-6.6 A, one shared dissociation energy; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78; 129I2 and 127I129I: q(R) x rho, B isotope shift (1 - y)^5 (a0 + a1 y), hyperfine scaled per nucleus; levels to J'' = 445",

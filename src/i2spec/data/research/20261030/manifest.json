@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "release": "20261030",
- "selection_scope": "release 20261029 (the final form on the release 20261021 training data) with its uncertainty model refitted on the cross-validation and the calibrate sets (decision 2, step 4); reachable by id (release 20261021 stays the default)",
+ "selection_scope": "release 20261029 (the final form on the release 20261021 training data) with its uncertainty model refitted on the cross-validation and the calibrate sets; reachable by id (release 20261021 stays the default)",
  "models": [
   {
    "id": "research-20261030-core",
@@ -89,7 +89,7 @@
     "model.json": "871e8b41ea1b41113e10c1fe76f36d7e756466662a2fedf8f20c9f479f239357",
     "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
     "reference_predictions.json": "a9d31cbb8428a5337eeeddf036b1339535e6e22ca984d3c5411559bab1b7f855",
-    "uncertainty.json": "d75398ea71f4f0e262484a8b63b41556a542616913bb7b606c123d4f5869cdde"
+    "uncertainty.json": "99deb67d5f21a4690627ee0ecf4f5c2e29fb50770337a34d50c344e0d704987d"
    }
   },
   {
@@ -103,7 +103,7 @@
     "files_sha256": {
      "model.json": "871e8b41ea1b41113e10c1fe76f36d7e756466662a2fedf8f20c9f479f239357",
      "hyperfine.json": "a45f7ff116e424b4e03db755fc0b0bbcd132aaa12e4139da1752cd1f8e530943",
-     "uncertainty.json": "d75398ea71f4f0e262484a8b63b41556a542616913bb7b606c123d4f5869cdde"
+     "uncertainty.json": "99deb67d5f21a4690627ee0ecf4f5c2e29fb50770337a34d50c344e0d704987d"
     }
    },
    "architecture": "core fit + MLR tails (X 12 outer, 1 inner, 1 rotation; B 10 outer, 2 rotation), X dC6, X cubic splines 4.2-6.6 A, one shared dissociation energy; second-order B hyperfine, X eqQ to separated atoms, B~1g(1Pig) at v'77-78; 129I2 and 127I129I: q(R) x rho, B isotope shift (1 - y)^5 (a0 + a1 y), hyperfine scaled per nucleus; levels to J'' = 445",

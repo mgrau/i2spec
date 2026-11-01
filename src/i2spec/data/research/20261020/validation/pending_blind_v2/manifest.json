@@ -1,9 +1,9 @@
 {
  "created_utc": "2026-10-21T13:28:23.978348+00:00",
  "files_sha256": {
-  "protocol.json": "3c2a9e5c50c3b5bd449786ee1721dd5b3e3c89a4068666395932c001eb8abc51",
+  "protocol.json": "511cb48ec8baaa0b94cb5c3dc29375a8f62f01c1c8a87a7c4a4b20eba3865c1e",
   "targets.json": "ca1e7639b4654ce740fef9881bb816df2f8c2ab5683de73d5f7c8f941521615b",
   "forecasts.json": "35b75b5b74bc9b70a63450c8643e204a1584b5b7a0414dfc4cc0102f43392d0e",
-  "snapshot.json": "af211b5c815e2ed31abd6851f2b8ef1be4b22f72baaf5fa1c24b82868f5685bc"
+  "snapshot.json": "3769353d158251f8035e4313f28845a6ba08434c21b56a470f2b2de63428535f"
  }
 }

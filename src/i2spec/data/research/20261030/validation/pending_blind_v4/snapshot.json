@@ -14,9 +14,9 @@
   "src/i2spec/constants.py": "c1b3a86c85aca0f7b09f648f467058ab1eedc733095aa5bf33fdd9e43412d981",
   "src/i2spec/observations.py": "0c59a48c69aa590a490695cc37aa7910619cee5357f8fd99e58e0d1314d18cc7",
   "src/i2spec/fit/registry.py": "1777d6385c072b8acd19cd823df9b8d972bc4e72e2e9ed0989eea7dd9af722af",
-  "src/i2spec/data/research/20261020/manifest.json": "356640b39c4d5a7f7b392f477e06f92904a01f300b874ae3a2e44a9245641889",
-  "src/i2spec/data/research/20261021/manifest.json": "e2e80fc3b490f4840257aa6feec09eaffc683c35c5608134f4796077a873a675",
-  "src/i2spec/data/research/20261030/manifest.json": "1fd029d72d31d51872be4d7f6df9b99c85c4778adf02ed09e32bd825976a5655"
+  "src/i2spec/data/research/20261020/manifest.json": "c0e8068f69b93ff60ea2bd0baaa3530fa77594198d4609ed4af8f0c9e3a351be",
+  "src/i2spec/data/research/20261021/manifest.json": "69da44bb6b3a3be76337701a9395bc75ba11621ce986d1e93333e12b1f7b8bf5",
+  "src/i2spec/data/research/20261030/manifest.json": "fc53b595e3bcc984617a27ef45b0c91707a5ea961363d78a3546a10967aa65ba"
  },
  "data_other": {
   "b_levels/barrow1973": {

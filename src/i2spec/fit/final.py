@@ -14,10 +14,10 @@ release's own build did.
   5  uncertainty   uncertainty.build on release 20261029's cross-validation with this form's nested hyperfine folds
                    (data/training/20261031/hyperfine_folds.json.gz), and the named parameters' covariance
   6  isotopologues the isotope shift (isotopologues.fit_shift) and its record
-  7  calibrate     step 4 (calibrate.refit, release 20261030's forms) on the candidate with the build's table; the X
-                   term near dissociation (calibrate.near_dissociation) on release 20261030's table, which it was
-                   fitted to; the rules beyond the tables (data/training/20261031/edges.json); then the isotopologue
-                   record conditioned on the CIPM lines and the references of every isotopologue
+  7  calibrate     the calibration refit (calibrate.refit, release 20261030's forms) on the candidate with the
+                   build's table; the X term near dissociation (calibrate.near_dissociation) on release 20261030's
+                   table, which it was fitted to; the rules beyond the tables (data/training/20261031/edges.json);
+                   then the isotopologue record conditioned on the CIPM lines and the references of every isotopologue
 
 The refits start from the release's own coefficients (a refit returns them: tests/test_fit_final.py), and, as in
 release.rebuild, the stages after the core build on the released core: the core refit moves no coefficient by more
@@ -73,8 +73,8 @@ RESONANCE_NOTE = ("release 20261030's hyperfine fit (its 1g mixing angle 30 deg,
                   "the core take this release's form")
 B_MODEL_NOTE = ("the release's hyperfine fit (form of release 20261031: theta_g, curvatures of C, d, delta, background "
                 "orders d 5, delta 4)")
-STEP4_RECIPE = (
-    " Release 20261030 (decision 2, step 4): sigma_model and sigma_HF refitted on the cross-validation residuals "
+CALIBRATION_RECIPE = (
+    " Release 20261030 (the calibration refit): sigma_model and sigma_HF refitted on the cross-validation residuals "
     "above and the calibrate sets' residuals together (the final form's residuals on rows it never trained on: "
     "2,432 rows, without compilation rows a held set also gives, lines the training holds inside a CIPM mean, record "
     "rows, diagnostic exclusions and values printed again in a later set). In the calibrate rows each level is a "
@@ -85,7 +85,7 @@ STEP4_RECIPE = (
     "term (quadratic_per_v2: the likelihood is flat in it, so it is chosen by an explicit profile) and does not fall "
     "below the core's per-level share at v' 44. The isotopologue floors are the release's.")
 RECIPE_20261031 = (
-    " Release 20261031: the same refit (step 4) on the release's hyperfine beyond the core (theta_g, curvatures, "
+    " Release 20261031: the same calibration refit on the release's hyperfine beyond the core (theta_g, curvatures, "
     "background orders; its nested cross-validation) with the calibrate residuals recomputed with it. Added: X "
     "v'' >= 85 a per-level term exp(a + c (v - 85)) in quadrature (near_dissociation, fitted by maximum likelihood "
     "to the cross-validation records at v'' >= 85); the rules for the levels beyond the tables (edges: B v' 81-86 "
@@ -410,8 +410,8 @@ def stage_isotopologues(core_spec, cont_spec, candidate):
 
 
 def stage_calibrate(core_spec, cont_spec, record, parts, cv, extension, candidate):
-    """Step 4 on the candidate (its uncertainty the build's record) and the X term near dissociation: the
-    release's uncertainty.json."""
+    """The calibration refit on the candidate (its uncertainty the build's record) and the X term near
+    dissociation: the release's uncertainty.json."""
     table = json.loads(NEAR_DISSOCIATION_TABLE.read_text())
     near = calibrate.near_dissociation(calibrate.near_dissociation_records(parts, table))
     with _bases(core_spec, cont_spec, candidate):
@@ -419,7 +419,7 @@ def stage_calibrate(core_spec, cont_spec, record, parts, cv, extension, candidat
         step4 = calibrate.refit(IDS["i2spec"], parts, cv, theta)
     fits, check = step4["fits"], step4["check"]
     unc = dict(record)
-    unc["recipe"] = record["recipe"]+STEP4_RECIPE+RECIPE_20261031
+    unc["recipe"] = record["recipe"]+CALIBRATION_RECIPE+RECIPE_20261031
     unc["model_error"] = copy.deepcopy(fits["model_error"])
     unc["model_error"]["X beyond"]["near_dissociation"] = near
     unc["hyperfine"] = dict(record["hyperfine"], **{k: fits["hyperfine"][k] for k in ("core", "B beyond", "X beyond")})

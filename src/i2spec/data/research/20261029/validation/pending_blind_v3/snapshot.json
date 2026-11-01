@@ -589,8 +589,8 @@
   "zhao1985a"
  ],
  "earlier_manifests_sha256": {
-  "src/i2spec/data/research/20261020/validation/pending_blind_v1": "dc3d28f4296a4f0103e7638060346ddf78ac07a97a7920c486eab44466a38d16",
-  "src/i2spec/data/research/20261020/validation/pending_blind_v2": "5cc34b57b3bc3965abc1faab177fd7e8d39ff7024e0bf2d24d8edeb4134e8ed3"
+  "src/i2spec/data/research/20261020/validation/pending_blind_v1": "01f4c70ae0ca6f7373643c5ed478423c0347b6bff952831c1cb629d3afc3ca99",
+  "src/i2spec/data/research/20261020/validation/pending_blind_v2": "c60ddc9353fa665215dac0c25bc382af156b422f30957c1b1250995b3bf51732"
  },
  "code": {
   "src/i2spec/research.py": "bd4191bd06310cbd23384bd0699d1de48bb1e3b5581e381502f97526ba30a730",
@@ -602,8 +602,8 @@
   "src/i2spec/constants.py": "12da1efb0e02a160d391c1210ebf480b17fcc08fa1ec00b01d6246d7a167320e",
   "src/i2spec/observations.py": "63369bf693d8a8d38605cd9f67f622634d88ba5c82aaa88e041ba5dd06912cda",
   "src/i2spec/fit/registry.py": "19d91af244eee7da557386b45f51de8f95c566469397995982c34e49b6b1daa6",
-  "src/i2spec/data/research/20261020/manifest.json": "356640b39c4d5a7f7b392f477e06f92904a01f300b874ae3a2e44a9245641889",
-  "src/i2spec/data/research/20261021/manifest.json": "e2e80fc3b490f4840257aa6feec09eaffc683c35c5608134f4796077a873a675",
+  "src/i2spec/data/research/20261020/manifest.json": "c0e8068f69b93ff60ea2bd0baaa3530fa77594198d4609ed4af8f0c9e3a351be",
+  "src/i2spec/data/research/20261021/manifest.json": "69da44bb6b3a3be76337701a9395bc75ba11621ce986d1e93333e12b1f7b8bf5",
   "src/i2spec/data/research/20261029/manifest.json": "a88d712328f471d0f9d5b5f28cbcdf3ea936473c187eace11b34f42023fd2353"
  },
  "data_other": {

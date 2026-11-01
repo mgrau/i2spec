@@ -1,12 +1,11 @@
 # External datasets (third-party; do not redistribute without checking terms)
 
-These are raw data files downloaded for the global fit (stage 5). Catalog entries are in
+These are raw data files downloaded for the global fit. Catalog entries are in
 `data/catalog/broadband.yaml` and `data/catalog/precision.yaml`, and SHA-256 checksums are in
 `SHA256SUMS`.
 
 **These files belong to their authors or publishers.** Keep them out of any public repository or
-package until the terms have been checked. Add `data/external/*/` to `.gitignore` when the repo is
-initialized. The package should download them, or ask for them, not ship them.
+package until the terms have been checked; `data/external/*/` is in `.gitignore`. The package should download them, or ask for them, not ship them.
 
 ## `salami_ross_2005/salami_ross_2005_mmc1.txt`
 
@@ -76,7 +75,7 @@ initialized. The package should download them, or ask for them, not ship them.
 - **Terms:**
   - The live site states no licence. It asks users to cite Keller-Rudek et al. 2013.
   - The ESSD article is CC BY 3.0.
-  - A frozen 2013 snapshot of the atlas is on Zenodo under **CC BY 4.0** (doi:10.5281/zenodo.6951). Zenodo refused the download with HTTP 403 ("unusual traffic"), so I have **not** checked that these files match the snapshot.
+  - A frozen 2013 snapshot of the atlas is on Zenodo under **CC BY 4.0** (doi:10.5281/zenodo.6951). Zenodo refused the download with HTTP 403 ("unusual traffic"), so these files are **not** checked against the snapshot.
   - The underlying data remain the work of their original authors. The Saiz-Lopez and Spietz files, for example, come from CC BY-NC-SA 2.5 articles.
 
 ## Not obtained (see catalogs for details)
@@ -89,7 +88,7 @@ initialized. The package should download them, or ask for them, not ship them.
 
 ## `heeren_pyodine_atlas/` — two FTS iodine-cell atlases from the `pyodine` RV code
 
-- **Source:** the `iodine_atlas/` directory of the pyodine repository, https://gitlab.com/Heeren/pyodine (branch `master`), fetched 2026-09-20 through the GitLab API. Paper: P. Heeren, R. J. Tronsgaard, F. Grundahl, S. Reffert, A. Quirrenbach, T. Marquart, "Pyodine: an open, flexible reduction software for iodine-calibrated precise radial velocities", *Astron. Astrophys.* **674**, A164 (2023), doi:10.1051/0004-6361/202244441. The repository's README asks that this paper be cited by anyone using the software.
+- **Source:** the `iodine_atlas/` directory of the pyodine repository, https://gitlab.com/Heeren/pyodine (branch `master`), fetched 2026-09-20. Paper: P. Heeren, R. J. Tronsgaard, F. Grundahl, S. Reffert, A. Quirrenbach, T. Marquart, "Pyodine: an open, flexible reduction software for iodine-calibrated precise radial velocities", *Astron. Astrophys.* **674**, A164 (2023), doi:10.1051/0004-6361/202244441. The repository's README asks that this paper be cited by anyone using the software.
 - **`song_iodine_cell_01_65C.h5`:** the SONG (Tenerife) iodine cell at 65 °C, FTS transmission. Datasets `wavelength` (vacuum, Å), `wavelength_air`, `wavenumber` (cm⁻¹), `flux`, `flux_normalized`. 4990.0–6500.0 Å vacuum = 15 384.6–20 040.1 cm⁻¹, 618 003 points, 0.00244 Å ≈ 0.0075 cm⁻¹ per point.
 - **`Fischer_Cell_May2022_downsampled3.h5`:** D. Fischer's cell (Lick/Yale), scanned May 2022, downsampled ×3. Same datasets. 4980.0–6250.0 Å = 16 000.0–20 080.3 cm⁻¹, 1 551 029 points, 0.00082 Å ≈ 0.0026 cm⁻¹ per point.
 - **Calibration:** both carry a ≈ −2×10⁻⁷ relative scale offset against Salami & Ross 2005, i.e. they were resampled/shifted for RV use; fit the scale out before using positions.
@@ -100,7 +99,7 @@ initialized. The package should download them, or ask for them, not ship them.
 - **Source:** the `iodine_atlas/` directory of https://github.com/jaklusmeyer/APO_pyodine (branch `main`, Git LFS), fetched 2026-09-20. The repository README describes it as "module for apo song pyodine — small changes from pyodine"; it builds on Heeren et al. 2023 (above), which should be cited for the software. **No licence file is present in that repository**, so the h5 files are used here for research only and are not redistributed.
 - **`APO_I2_from_FITS_cleaned_newscan_vnorm.h5`:** a cleaned, normalised copy of an FTS scan that keeps its Xgremlin/NSO header as HDF5 attributes: `ORIGIN = NIST 2m IR-vis-UV FT`, `DATE = Jul 21, 2009`, `SAMPLE = I2, AS-17`, `RESOLUTN = 0.018 cm⁻¹`, `AIRCORR = No`, band 14 200–21 300 cm⁻¹. Datasets `wavelength_air` (Å, 4980.0–6500.0) and `flux_normalized`; 2 492 660 points. The FTS scale is HeNe-referenced: against Salami & Ross the line minima agree to ≲ 5×10⁻⁸, so this is an independent absolute position source once converted from air to vacuum (the header says `AIRCORR = No`, but the dataset name says air; the calibration check above was done with an air→vacuum conversion and is consistent).
 - **`APO_I2_cleaned_normalized_shifted.h5`:** the same cell, cleaned, normalised and **shifted** for RV use: `wavelength_vac`, `wavelength_air`, `flux_raw`, `flux_normalized`; 346 647 points. Not a position reference.
-- **Attribution for the scan itself:** NIST 2-m Fourier transform spectrometer (Gaithersburg), scan of 21 July 2009, sample AS-17. If positions from it are published, acknowledge NIST and the APO_pyodine repository; the scan has no paper of its own that we have found.
+- **Attribution for the scan itself:** NIST 2-m Fourier transform spectrometer (Gaithersburg), scan of 21 July 2009, sample AS-17. If positions from it are published, acknowledge NIST and the APO_pyodine repository; no paper of its own is known for the scan.
 
 ## `simmons_hougen_1977/jresv81An1p25.pdf`
 
@@ -122,7 +121,7 @@ Fetched 2026-09-20 from the HAL open archive (`https://hal.science/<id>/document
 
 ## `orsay_19700_20035/photos/` — Orsay atlas, Partie IV (19 700–20 035 cm⁻¹)
 
-- **Source:** S. Gerstenkorn, P. Luc, *Atlas du spectre d'absorption de la molécule d'iode, Partie IV: 19 700–20 035 cm⁻¹* (Laboratoire Aimé Cotton, CNRS II, Orsay, 1983). Printed volume, library copy (QC462.I1 G47).
+- **Source:** S. Gerstenkorn, P. Luc, *Atlas du spectre d'absorption de la molécule d'iode, Partie IV: 19 700–20 035 cm⁻¹* (Laboratoire Aimé Cotton, CNRS II, Orsay, 1983). Printed volume (call number QC462.I1 G47).
 - **Photographed:** 2026-09-29, 159 phone photographs (`PXL_20260929_*.jpg`); the order of the file names is the order of the pages.
 - **Contents:** introduction (pp. I–VII: 50 cm cell, p ≈ 0.25 torr; the scale is set by R(26) 62-0 at 19 926.0009(10) cm⁻¹ from Pique *et al.* 1981; estimated absolute accuracy 0.002 cm⁻¹; the wavenumbers are 0.0095(10) cm⁻¹ below those of Partie III), 33 plates with line tables (N, σ, ε, I; 3 613 lines with S/N > 1.5), and a classification table (N, σ_mes, I, J, branch, (v′, v″), σ_cal, σ_mes − σ_cal in mK).
 - **Terms:** copyrighted print; photographs kept for transcription only, not redistributed.
@@ -148,7 +147,7 @@ repository until the source's terms allow.
 ## `tellinghuisen_2011_supplement/`
 
 - **Source:** J. Tellinghuisen, "Least-squares analysis of overlapped bound-free absorption spectra and predissociation data in diatomics: the C(¹Πᵤ) state of I₂", *J. Chem. Phys.* **135**, 054301 (2011), doi:10.1063/1.3614403. Supplementary material from the AIP article page, `054301_1_supplements.zip`, which holds one file, `JT-Supplement-JCP-I2.pdf` (8 pages).
-- **Obtained:** 2026-09-30, by the project's author, with institutional access. `JT-Supplement-JCP-I2.txt` is its `pdftotext -layout` text.
+- **Obtained:** 2026-09-30. `JT-Supplement-JCP-I2.txt` is its `pdftotext -layout` text.
 - **Contents:**
   - Table IS: the measured molar absorptivity ε and its smoothed σ (l mol⁻¹ cm⁻¹) at 35.4 and 64.0 °C, 400–500 and 600–850 nm, every 2 nm.
   - Table IIS: the fitted contributions of the A←X, B←X (bound–free) and C←X transitions and their total, at 0 and 35 °C, with LS standard errors at 35 °C, every 5 nm from 400 nm. The table notes that at 500–650 nm the results are limited by the pseudocontinuum treatment.
@@ -159,7 +158,7 @@ repository until the source's terms allow.
 
 - **Source:** the NSO Digital Library archive of the McMath-Pierce 1-m FTS at Kitt Peak, https://nispdata.nso.edu/ftp/FTS_cdrom/, which serves full-resolution transformed spectra as FITS files named `yymmddR0.nnn`.
 - **Contents:** 17 March 1993, volume `FTS33`, `930317R0.001`–`.013`: iodine cells of the Lick (backup), McDonald #1/#2, Keck (50, 60 and 70 °C), ESO (50 and 70 °C) and 1A–4A radial-velocity programmes, plus one bromine cell. Every file covers 14 952–20 552 cm⁻¹ (5 000–6 300 Å), with a DZE lamp as source. Also `930505R0.015` (Xe lamp, empty cell + I₂ cell, 3 550–6 500 Å).
-- **How found:** by reading the FITS headers of every full-resolution file in volumes FTS32–FTS35 (September 1992 – July 1994). The archive has no text index, and the query tool its README describes is gone. The server refused further requests (HTTP 403) after about 1 500 header reads. Retrieval continued more slowly (one file a minute, one header every 4 s, a 30-minute pause after any refusal), and headers of the other volumes are being read the same way.
+- **How found:** by reading the FITS headers of every full-resolution file in volumes FTS32–FTS35 (September 1992 – July 1994). The archive has no text index, and the query tool its README describes is gone.
 - **Terms:** NSO/NOAO archive data; public, licence not stated.
 
 ## `rodriguez_fernandez_marcassa/`
@@ -173,11 +172,11 @@ repository until the source's terms allow.
 - **`rodriguez_fernandez_2023.csv`, `.toml`:** our line centers fitted to these spectra: 825 lines, offset +113.0 ± 2.0 MHz, robust spread 18 MHz. Kept here, not in `data/atlas_lines/`, until the authors agree to their release.
 - **Terms:** shared by the authors for this work; not for redistribution.
 
-## `debus2023/` (on the lab workstation only)
+## `debus2023/` (not in every copy of `data/external/`)
 
 - **Source:** M. Debus, S. Schäfer, A. Reiners, "Toward 10 cm s⁻¹ radial velocity accuracy on the Sun using a Fourier transform spectrometer", *J. Astron. Telesc. Instrum. Syst.* **9**, 045003 (2023), doi:10.1117/1.JATIS.9.4.045003. Replication data on GRO.data: "Replication Data for: Towards 10 cm/s radial velocity accuracy using a Fourier transform spectrometer", doi:10.25625/PONFBL, released 2023-08-11.
 - **Downloaded:** 2026-10-19, all 22 files (11.5 GB). Each matched the repository's MD5, kept in `MD5SUMS`.
-- **Location:** this copy is only on the lab workstation, in the same folder of its i2spec checkout; it was not copied to the laptop.
+- **Location:** because of its size, not every copy of `data/external/` holds it; the files are public at doi:10.25625/PONFBL.
 - **Contents:**
   - `RVs/FP_iodine_spectra.7z.001`–`.005`: the split archive.
   - `spectra/FTS_Spectra/`: the extracted archive, 222 Bruker OPUS files of 70 MB each. The file names run `20230120T173502_Debus_0.02_40kHz_10scans_0000001.0_0_IodineCell_Halogen_FP_LED.0` to `…0000222…`.

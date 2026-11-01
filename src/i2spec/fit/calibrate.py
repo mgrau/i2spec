@@ -1,5 +1,5 @@
-"""The uncertainty model refitted on the cross-validation and the calibrate sets together (step 4 of the training
-protocol, from release 20261030), and the X term near dissociation (release 20261031).
+"""The uncertainty model refitted on the cross-validation and the calibrate sets together (the calibration refit,
+from release 20261030), and the X term near dissociation (release 20261031).
 
 The calibrate residuals are a release's on rows it never trained on: the line targets of the third blind registry
 (src/i2spec/data/research/20261029/validation/pending_blind_v3, scored) of the sets whose role is calibrate
@@ -640,9 +640,9 @@ def check(rows, cv, base, fits):
 
 
 def refit(model_id, parts, cv, base, results=V3, folder=ROLES, forms=FORMS):
-    """Step 4 on the release `model_id` (its uncertainty table the build's, `base`): the calibrate rows and their
-    features, the hyperfine, model-error and isotopologue fits, and the coverage check. `parts`: uncertainty.build's
-    intermediate products on the cross-validation `cv`."""
+    """The calibration refit on the release `model_id` (its uncertainty table the build's, `base`): the calibrate
+    rows and their features, the hyperfine, model-error and isotopologue fits, and the coverage check. `parts`:
+    uncertainty.build's intermediate products on the cross-validation `cv`."""
     kept, left_out = calibrate_rows(results, folder)
     rows, skipped = features(model_id, kept, roles(folder)[0])
     data = prepare(parts, cv)

@@ -2,7 +2,7 @@
 
 Everything measured that the model is fitted to, tested against or compared with. Each data set sits in
 its own folder or file pair, next to a `meta.toml` or `.toml` that gives its source, how it was read or
-derived, its uncertainty and its terms. The catalog of every iodine measurement we know of, held here or
+derived, its uncertainty and its terms. The catalog of every known iodine measurement, held here or
 not, is in `catalog/`.
 
 ## What is here

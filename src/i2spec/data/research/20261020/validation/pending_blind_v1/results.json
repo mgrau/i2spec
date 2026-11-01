@@ -3,7 +3,7 @@
  "registry_manifest": {
   "created_utc": "2026-10-20T20:24:59.059624+00:00",
   "files_sha256": {
-   "protocol.json": "1ae9b0008bfb4bb1410325f59490a4790a865903acf39afc637b50afa1d795aa",
+   "protocol.json": "6b803def3037d25538caebb8e4638d9a0f56bf118d18f2fb367fc2f9d01a01ea",
    "targets.json": "ca246a681a34bab28b7be116b351b13a7e114b178dd41b746e6fcdd392b9c37c",
    "forecasts.json": "9e6a03a9cc31bcb466fd6be7e6db4e7a10632842daca365b8675e687565d8974",
    "snapshot.json": "20eca17247e0f04411a8d2c2beb335950d1ca2fb392b7ab90b8985bd5a8f2099"
