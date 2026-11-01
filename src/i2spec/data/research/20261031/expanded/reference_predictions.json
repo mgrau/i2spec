@@ -39134,7 +39134,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600729256.1203119
+  "predicted_MHz": 600729580.1800685
  },
  {
   "line": [
@@ -39144,7 +39144,7 @@
    0
   ],
   "component": "a2",
-  "predicted_MHz": 600729360.4446132
+  "predicted_MHz": 600729679.8822756
  },
  {
   "line": [
@@ -39154,7 +39154,7 @@
    0
   ],
   "component": "a3",
-  "predicted_MHz": 600729588.9932017
+  "predicted_MHz": 600729715.3934493
  },
  {
   "line": [
@@ -39165,7 +39165,7 @@
   ],
   "component": "a3",
   "ref_component": "a1",
-  "predicted_MHz": 332.87288990420194
+  "predicted_MHz": 135.21338084720497
  },
  {
   "line": [
@@ -39185,7 +39185,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600721558.7739679
+  "predicted_MHz": 600721672.1678048
  },
  {
   "line": [
@@ -39195,7 +39195,7 @@
    0
   ],
   "component": "a4",
-  "predicted_MHz": 600727356.0889853
+  "predicted_MHz": 600727332.5572109
  },
  {
   "line": [
@@ -39205,7 +39205,7 @@
    0
   ],
   "component": "a7",
-  "predicted_MHz": 600731344.8069955
+  "predicted_MHz": 600731161.0515313
  },
  {
   "line": [
@@ -39216,7 +39216,7 @@
   ],
   "component": "a7",
   "ref_component": "a1",
-  "predicted_MHz": 9786.033027676858
+  "predicted_MHz": 9488.883726532293
  },
  {
   "line": [
@@ -39236,7 +39236,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600727156.9948905
+  "predicted_MHz": 600727454.9549692
  },
  {
   "line": [
@@ -39246,7 +39246,7 @@
    0
   ],
   "component": "a5",
-  "predicted_MHz": 600727851.1701317
+  "predicted_MHz": 600727980.9997149
  },
  {
   "line": [
@@ -39256,7 +39256,7 @@
    0
   ],
   "component": "a9",
-  "predicted_MHz": 600729067.4514687
+  "predicted_MHz": 600728617.0358332
  },
  {
   "line": [
@@ -39267,7 +39267,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 1910.4565782976397
+  "predicted_MHz": 1162.0808641482074
  },
  {
   "line": [
@@ -39287,7 +39287,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600721271.4389067
+  "predicted_MHz": 600722543.584339
  },
  {
   "line": [
@@ -39297,7 +39297,7 @@
    0
   ],
   "component": "a5",
-  "predicted_MHz": 600722861.3373096
+  "predicted_MHz": 600723198.5617175
  },
  {
   "line": [
@@ -39307,7 +39307,7 @@
    0
   ],
   "component": "a9",
-  "predicted_MHz": 600724880.0680919
+  "predicted_MHz": 600724857.6639051
  },
  {
   "line": [
@@ -39318,7 +39318,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 3608.6291851993037
+  "predicted_MHz": 2314.0795662345063
  },
  {
   "line": [
@@ -39338,7 +39338,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600723324.1185207
+  "predicted_MHz": 600723803.4209002
  },
  {
   "line": [
@@ -39348,7 +39348,7 @@
    0
   ],
   "component": "a6",
-  "predicted_MHz": 600723913.6250135
+  "predicted_MHz": 600724304.0400639
  },
  {
   "line": [
@@ -39358,7 +39358,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 600724398.4906465
+  "predicted_MHz": 600724570.8036356
  },
  {
   "line": [
@@ -39369,7 +39369,7 @@
   ],
   "component": "a11",
   "ref_component": "a1",
-  "predicted_MHz": 1074.3721256541635
+  "predicted_MHz": 767.3827353501758
  },
  {
   "line": [
@@ -39389,7 +39389,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600697485.3873179
+  "predicted_MHz": 600697805.0252198
  },
  {
   "line": [
@@ -39399,7 +39399,7 @@
    0
   ],
   "component": "a10",
-  "predicted_MHz": 600698141.112948
+  "predicted_MHz": 600698362.7280793
  },
  {
   "line": [
@@ -39409,7 +39409,7 @@
    0
   ],
   "component": "a19",
-  "predicted_MHz": 600698745.5045545
+  "predicted_MHz": 600698768.8957869
  },
  {
   "line": [
@@ -39420,7 +39420,7 @@
   ],
   "component": "a19",
   "ref_component": "a1",
-  "predicted_MHz": 1260.117236675333
+  "predicted_MHz": 963.8705670930322
  },
  {
   "line": [
@@ -39440,7 +39440,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600700262.8531814
+  "predicted_MHz": 600700246.0643408
  },
  {
   "line": [
@@ -39450,7 +39450,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 600700886.5668259
+  "predicted_MHz": 600701021.7029124
  },
  {
   "line": [
@@ -39460,7 +39460,7 @@
    0
   ],
   "component": "a21",
-  "predicted_MHz": 600701532.3394178
+  "predicted_MHz": 600701551.4213579
  },
  {
   "line": [
@@ -39471,7 +39471,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 1269.4862364249277
+  "predicted_MHz": 1305.3570170271405
  },
  {
   "line": [
@@ -39491,7 +39491,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600616776.6764071
+  "predicted_MHz": 600617133.2889972
  },
  {
   "line": [
@@ -39501,7 +39501,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600617419.2363964
+  "predicted_MHz": 600617692.3739771
  },
  {
   "line": [
@@ -39511,7 +39511,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600617745.631155
+  "predicted_MHz": 600617989.0809264
  },
  {
   "line": [
@@ -39522,7 +39522,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 968.9547479927928
+  "predicted_MHz": 855.791929274762
  },
  {
   "line": [
@@ -39542,7 +39542,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600621965.1321425
+  "predicted_MHz": 600622266.2577997
  },
  {
   "line": [
@@ -39552,7 +39552,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600622579.3729795
+  "predicted_MHz": 600622915.7360528
  },
  {
   "line": [
@@ -39562,7 +39562,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600622931.4534255
+  "predicted_MHz": 600623226.6483451
  },
  {
   "line": [
@@ -39573,7 +39573,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 966.3212829852766
+  "predicted_MHz": 960.3905453460131
  },
  {
   "line": [
@@ -39593,7 +39593,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600021660.0994219
+  "predicted_MHz": 600021869.2216552
  },
  {
   "line": [
@@ -39603,7 +39603,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600022731.5189435
+  "predicted_MHz": 600022762.2387774
  },
  {
   "line": [
@@ -39613,7 +39613,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600023455.53278
+  "predicted_MHz": 600023258.4095061
  },
  {
   "line": [
@@ -39624,7 +39624,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 1795.4333580853026
+  "predicted_MHz": 1389.187850854195
  },
  {
   "line": [
@@ -39644,7 +39644,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600033785.6684225
+  "predicted_MHz": 600033902.7718214
  },
  {
   "line": [
@@ -39654,7 +39654,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600034875.5691359
+  "predicted_MHz": 600034841.86651
  },
  {
   "line": [
@@ -39664,7 +39664,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600035621.0941193
+  "predicted_MHz": 600035386.676597
  },
  {
   "line": [
@@ -39675,7 +39675,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 1835.4256968454981
+  "predicted_MHz": 1483.9047756121292
  },
  {
   "line": [
@@ -39695,7 +39695,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 599967100.6779526
+  "predicted_MHz": 599966916.4098582
  },
  {
   "line": [
@@ -39705,7 +39705,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 599968292.1999364
+  "predicted_MHz": 599968355.5641173
  },
  {
   "line": [
@@ -39715,7 +39715,7 @@
    0
   ],
   "component": "a21",
-  "predicted_MHz": 599969086.4762641
+  "predicted_MHz": 599968875.0538951
  },
  {
   "line": [
@@ -39726,7 +39726,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 1985.7983114670635
+  "predicted_MHz": 1958.644036860448
  },
  {
   "line": [
@@ -39746,7 +39746,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 599979487.3543776
+  "predicted_MHz": 599979268.4861636
  },
  {
   "line": [
@@ -39756,7 +39756,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 599980795.5336504
+  "predicted_MHz": 599980797.6252241
  },
  {
   "line": [
@@ -39766,7 +39766,7 @@
    0
   ],
   "component": "a21",
-  "predicted_MHz": 599981439.969156
+  "predicted_MHz": 599981357.2637969
  },
  {
   "line": [
@@ -39777,7 +39777,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 1952.6147784104728
+  "predicted_MHz": 2088.777633386428
  },
  {
   "line": [
@@ -39797,7 +39797,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594334665.9357926
+  "predicted_MHz": 594334989.7899315
  },
  {
   "line": [
@@ -39807,7 +39807,7 @@
    1
   ],
   "component": "a2",
-  "predicted_MHz": 594334770.0544763
+  "predicted_MHz": 594335089.6977563
  },
  {
   "line": [
@@ -39817,7 +39817,7 @@
    1
   ],
   "component": "a3",
-  "predicted_MHz": 594334998.4571872
+  "predicted_MHz": 594335124.8574346
  },
  {
   "line": [
@@ -39828,7 +39828,7 @@
   ],
   "component": "a3",
   "ref_component": "a1",
-  "predicted_MHz": 332.52139456888085
+  "predicted_MHz": 135.0675031210875
  },
  {
   "line": [
@@ -39848,7 +39848,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594326974.9727783
+  "predicted_MHz": 594327088.3666153
  },
  {
   "line": [
@@ -39858,7 +39858,7 @@
    1
   ],
   "component": "a4",
-  "predicted_MHz": 594332772.3979079
+  "predicted_MHz": 594332748.8661336
  },
  {
   "line": [
@@ -39868,7 +39868,7 @@
    1
   ],
   "component": "a7",
-  "predicted_MHz": 594336761.2625239
+  "predicted_MHz": 594336577.5070597
  },
  {
   "line": [
@@ -39879,7 +39879,7 @@
   ],
   "component": "a7",
   "ref_component": "a1",
-  "predicted_MHz": 9786.289745490089
+  "predicted_MHz": 9489.140444345521
  },
  {
   "line": [
@@ -39899,7 +39899,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594332573.2159711
+  "predicted_MHz": 594332871.1537796
  },
  {
   "line": [
@@ -39909,7 +39909,7 @@
    1
   ],
   "component": "a5",
-  "predicted_MHz": 594333267.4940994
+  "predicted_MHz": 594333397.2444253
  },
  {
   "line": [
@@ -39919,7 +39919,7 @@
    1
   ],
   "component": "a9",
-  "predicted_MHz": 594334483.8767043
+  "predicted_MHz": 594334033.5422019
  },
  {
   "line": [
@@ -39930,7 +39930,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 1910.6607331695816
+  "predicted_MHz": 1162.3884222396964
  },
  {
   "line": [
@@ -39950,7 +39950,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594326701.311579
+  "predicted_MHz": 594327973.4570113
  },
  {
   "line": [
@@ -39960,7 +39960,7 @@
    1
   ],
   "component": "a5",
-  "predicted_MHz": 594328291.2952585
+  "predicted_MHz": 594328628.5742798
  },
  {
   "line": [
@@ -39970,7 +39970,7 @@
    1
   ],
   "component": "a9",
-  "predicted_MHz": 594330310.063583
+  "predicted_MHz": 594330287.528835
  },
  {
   "line": [
@@ -39981,7 +39981,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 3608.752004019212
+  "predicted_MHz": 2314.071823713736
  },
  {
   "line": [
@@ -40001,7 +40001,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594328753.991193
+  "predicted_MHz": 594329233.2935725
  },
  {
   "line": [
@@ -40011,7 +40011,7 @@
    1
   ],
   "component": "a6",
-  "predicted_MHz": 594329343.4899433
+  "predicted_MHz": 594329734.035555
  },
  {
   "line": [
@@ -40021,7 +40021,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 594329828.565676
+  "predicted_MHz": 594330000.8786651
  },
  {
   "line": [
@@ -40032,7 +40032,7 @@
   ],
   "component": "a11",
   "ref_component": "a1",
-  "predicted_MHz": 1074.5744828773518
+  "predicted_MHz": 767.5850925733641
  },
  {
   "line": [
@@ -40052,7 +40052,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594302997.6197982
+  "predicted_MHz": 594303317.2378877
  },
  {
   "line": [
@@ -40062,7 +40062,7 @@
    1
   ],
   "component": "a10",
-  "predicted_MHz": 594303653.3626345
+  "predicted_MHz": 594303875.0587387
  },
  {
   "line": [
@@ -40072,7 +40072,7 @@
    1
   ],
   "component": "a19",
-  "predicted_MHz": 594304257.9128121
+  "predicted_MHz": 594304281.3040445
  },
  {
   "line": [
@@ -40083,7 +40083,7 @@
   ],
   "component": "a19",
   "ref_component": "a1",
-  "predicted_MHz": 1260.2930139854654
+  "predicted_MHz": 964.0661568545545
  },
  {
   "line": [
@@ -40103,7 +40103,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594305775.0856616
+  "predicted_MHz": 594305758.2472054
  },
  {
   "line": [
@@ -40113,7 +40113,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 594306398.8825406
+  "predicted_MHz": 594306534.0154809
  },
  {
   "line": [
@@ -40123,7 +40123,7 @@
    1
   ],
   "component": "a21",
-  "predicted_MHz": 594307044.7680261
+  "predicted_MHz": 594307063.8499662
  },
  {
   "line": [
@@ -40134,7 +40134,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 1269.68236445646
+  "predicted_MHz": 1305.6027607882174
  },
  {
   "line": [
@@ -40154,7 +40154,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594222563.4991639
+  "predicted_MHz": 594222920.1507332
  },
  {
   "line": [
@@ -40164,7 +40164,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 594223206.189417
+  "predicted_MHz": 594223479.3367602
  },
  {
   "line": [
@@ -40174,7 +40174,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 594223532.6409023
+  "predicted_MHz": 594223776.0906736
  },
  {
   "line": [
@@ -40185,7 +40185,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 969.1417383643518
+  "predicted_MHz": 855.9399404310525
  },
  {
   "line": [
@@ -40205,7 +40205,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594227751.9938786
+  "predicted_MHz": 594228053.1195358
  },
  {
   "line": [
@@ -40215,7 +40215,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 594228366.3260001
+  "predicted_MHz": 594228702.6432704
  },
  {
   "line": [
@@ -40225,7 +40225,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 594228718.4631728
+  "predicted_MHz": 594229013.6580924
  },
  {
   "line": [
@@ -40236,7 +40236,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 966.4692941415672
+  "predicted_MHz": 960.5385565023035
  },
  {
   "line": [
@@ -40256,7 +40256,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593629479.238923
+  "predicted_MHz": 593629688.4214833
  },
  {
   "line": [
@@ -40266,7 +40266,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 593630550.7568424
+  "predicted_MHz": 593630581.5398875
  },
  {
   "line": [
@@ -40276,7 +40276,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 593631274.8465765
+  "predicted_MHz": 593631077.7233026
  },
  {
   "line": [
@@ -40287,7 +40287,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 1795.6076534986232
+  "predicted_MHz": 1389.3018193228172
  },
  {
   "line": [
@@ -40307,7 +40307,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593641604.8079236
+  "predicted_MHz": 593641721.9716494
  },
  {
   "line": [
@@ -40317,7 +40317,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 593642694.8070347
+  "predicted_MHz": 593642661.1676201
  },
  {
   "line": [
@@ -40327,7 +40327,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 593643440.4079158
+  "predicted_MHz": 593643205.9903935
  },
  {
   "line": [
@@ -40338,7 +40338,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 1835.5999922588187
+  "predicted_MHz": 1484.0187440807513
  },
  {
   "line": [
@@ -40358,7 +40358,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593575105.2173187
+  "predicted_MHz": 593574920.9492242
  },
  {
   "line": [
@@ -40368,7 +40368,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 593576296.8439914
+  "predicted_MHz": 593576360.2429786
  },
  {
   "line": [
@@ -40378,7 +40378,7 @@
    1
   ],
   "component": "a21",
-  "predicted_MHz": 593577091.2277594
+  "predicted_MHz": 593576879.7503637
  },
  {
   "line": [
@@ -40389,7 +40389,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 1986.0104407064412
+  "predicted_MHz": 1958.8011394058756
  },
  {
   "line": [
@@ -40409,7 +40409,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593587491.8937436
+  "predicted_MHz": 593587273.0255296
  },
  {
   "line": [
@@ -40419,7 +40419,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 593588800.239377
+  "predicted_MHz": 593588802.3040854
  },
  {
   "line": [
@@ -40429,7 +40429,7 @@
    1
   ],
   "component": "a21",
-  "predicted_MHz": 593589444.6966095
+  "predicted_MHz": 593589361.9602655
  },
  {
   "line": [
@@ -40440,7 +40440,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 1952.8028658685055
+  "predicted_MHz": 2088.9347359318554
  },
  {
   "line": [
@@ -40460,7 +40460,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600771200.1653211
+  "predicted_MHz": 600772256.5858265
  },
  {
   "line": [
@@ -40470,7 +40470,7 @@
    0
   ],
   "component": "a2",
-  "predicted_MHz": 600771503.8593962
+  "predicted_MHz": 600772322.8808125
  },
  {
   "line": [
@@ -40480,7 +40480,7 @@
    0
   ],
   "component": "a3",
-  "predicted_MHz": 600772014.3017956
+  "predicted_MHz": 600772491.6863927
  },
  {
   "line": [
@@ -40491,7 +40491,7 @@
   ],
   "component": "a3",
   "ref_component": "a1",
-  "predicted_MHz": 814.1364744702287
+  "predicted_MHz": 235.10056613302692
  },
  {
   "line": [
@@ -40511,7 +40511,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600765571.0646973
+  "predicted_MHz": 600767602.0997399
  },
  {
   "line": [
@@ -40521,7 +40521,7 @@
    0
   ],
   "component": "a4",
-  "predicted_MHz": 600770364.1642832
+  "predicted_MHz": 600770441.2378608
  },
  {
   "line": [
@@ -40531,7 +40531,7 @@
    0
   ],
   "component": "a7",
-  "predicted_MHz": 600771819.0811695
+  "predicted_MHz": 600771947.8852715
  },
  {
   "line": [
@@ -40542,7 +40542,7 @@
   ],
   "component": "a7",
   "ref_component": "a1",
-  "predicted_MHz": 6248.016472216591
+  "predicted_MHz": 4345.785531567546
  },
  {
   "line": [
@@ -40562,7 +40562,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600769134.8147053
+  "predicted_MHz": 600770435.9735765
  },
  {
   "line": [
@@ -40572,7 +40572,7 @@
    0
   ],
   "component": "a5",
-  "predicted_MHz": 600770741.5341668
+  "predicted_MHz": 600771004.0331992
  },
  {
   "line": [
@@ -40582,7 +40582,7 @@
    0
   ],
   "component": "a9",
-  "predicted_MHz": 600772904.4580482
+  "predicted_MHz": 600771896.0083199
  },
  {
   "line": [
@@ -40593,7 +40593,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 3769.6433429778385
+  "predicted_MHz": 1460.0347432047542
  },
  {
   "line": [
@@ -40613,7 +40613,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600763513.2466619
+  "predicted_MHz": 600764846.6709741
  },
  {
   "line": [
@@ -40623,7 +40623,7 @@
    0
   ],
   "component": "a5",
-  "predicted_MHz": 600765146.4440633
+  "predicted_MHz": 600766131.6694016
  },
  {
   "line": [
@@ -40633,7 +40633,7 @@
    0
   ],
   "component": "a9",
-  "predicted_MHz": 600767546.3174709
+  "predicted_MHz": 600766319.0889909
  },
  {
   "line": [
@@ -40644,7 +40644,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 4033.070809078614
+  "predicted_MHz": 1472.418016862228
  },
  {
   "line": [
@@ -40664,7 +40664,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600765829.1874924
+  "predicted_MHz": 600766754.3768859
  },
  {
   "line": [
@@ -40674,7 +40674,7 @@
    0
   ],
   "component": "a6",
-  "predicted_MHz": 600766533.4037956
+  "predicted_MHz": 600767078.8783427
  },
  {
   "line": [
@@ -40684,7 +40684,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 600769025.4661871
+  "predicted_MHz": 600767589.9835136
  },
  {
   "line": [
@@ -40695,7 +40695,7 @@
   ],
   "component": "a11",
   "ref_component": "a1",
-  "predicted_MHz": 3196.278694818204
+  "predicted_MHz": 835.6066277369727
  },
  {
   "line": [
@@ -40715,7 +40715,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600739496.2069604
+  "predicted_MHz": 600740480.1639708
  },
  {
   "line": [
@@ -40725,7 +40725,7 @@
    0
   ],
   "component": "a10",
-  "predicted_MHz": 600741031.1099188
+  "predicted_MHz": 600741197.5747908
  },
  {
   "line": [
@@ -40735,7 +40735,7 @@
    0
   ],
   "component": "a19",
-  "predicted_MHz": 600742469.9248592
+  "predicted_MHz": 600741571.6099151
  },
  {
   "line": [
@@ -40746,7 +40746,7 @@
   ],
   "component": "a19",
   "ref_component": "a1",
-  "predicted_MHz": 2973.7178986397494
+  "predicted_MHz": 1091.4459443321405
  },
  {
   "line": [
@@ -40766,7 +40766,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600741889.2406931
+  "predicted_MHz": 600742725.387891
  },
  {
   "line": [
@@ -40776,7 +40776,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 600743195.5661168
+  "predicted_MHz": 600743455.8535223
  },
  {
   "line": [
@@ -40786,7 +40786,7 @@
    0
   ],
   "component": "a21",
-  "predicted_MHz": 600744852.5744761
+  "predicted_MHz": 600744056.1628667
  },
  {
   "line": [
@@ -40797,7 +40797,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 2963.33378301673
+  "predicted_MHz": 1330.774975715194
  },
  {
   "line": [
@@ -40817,7 +40817,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600657479.1047097
+  "predicted_MHz": 600658612.1155759
  },
  {
   "line": [
@@ -40827,7 +40827,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600659152.8340791
+  "predicted_MHz": 600659550.6664755
  },
  {
   "line": [
@@ -40837,7 +40837,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600660504.9670076
+  "predicted_MHz": 600659940.2966977
  },
  {
   "line": [
@@ -40848,7 +40848,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 3025.862297912127
+  "predicted_MHz": 1328.181121749183
  },
  {
   "line": [
@@ -40868,7 +40868,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600662079.6634362
+  "predicted_MHz": 600663544.9506584
  },
  {
   "line": [
@@ -40878,7 +40878,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600664105.9672482
+  "predicted_MHz": 600664255.0831196
  },
  {
   "line": [
@@ -40888,7 +40888,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600665274.9313792
+  "predicted_MHz": 600664541.6597242
  },
  {
   "line": [
@@ -40899,7 +40899,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 3195.267943114486
+  "predicted_MHz": 996.709065743745
  },
  {
   "line": [
@@ -40919,7 +40919,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600055268.3889741
+  "predicted_MHz": 600055251.205627
  },
  {
   "line": [
@@ -40929,7 +40929,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600056690.1282756
+  "predicted_MHz": 600056568.7162082
  },
  {
   "line": [
@@ -40939,7 +40939,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600057240.7140888
+  "predicted_MHz": 600056870.2538217
  },
  {
   "line": [
@@ -40950,7 +40950,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 1972.3251147866704
+  "predicted_MHz": 1619.0481948628938
  },
  {
   "line": [
@@ -40970,7 +40970,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600065645.3679959
+  "predicted_MHz": 600065580.6809978
  },
  {
   "line": [
@@ -40980,7 +40980,7 @@
    0
   ],
   "component": "a8",
-  "predicted_MHz": 600067213.9103011
+  "predicted_MHz": 600066993.2997004
  },
  {
   "line": [
@@ -40990,7 +40990,7 @@
    0
   ],
   "component": "a15",
-  "predicted_MHz": 600067845.6646397
+  "predicted_MHz": 600067374.5155058
  },
  {
   "line": [
@@ -41001,7 +41001,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 2200.296643914019
+  "predicted_MHz": 1793.8345078817354
  },
  {
   "line": [
@@ -41021,7 +41021,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 599999592.7674783
+  "predicted_MHz": 599999427.612721
  },
  {
   "line": [
@@ -41031,7 +41031,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 600001365.9075933
+  "predicted_MHz": 600001352.2238915
  },
  {
   "line": [
@@ -41041,7 +41041,7 @@
    0
   ],
   "component": "a21",
-  "predicted_MHz": 600002073.26187
+  "predicted_MHz": 600001695.4043322
  },
  {
   "line": [
@@ -41052,7 +41052,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 2480.4943916067846
+  "predicted_MHz": 2267.791611200845
  },
  {
   "line": [
@@ -41072,7 +41072,7 @@
    0
   ],
   "component": "a1",
-  "predicted_MHz": 600010137.5450994
+  "predicted_MHz": 600009957.9604869
  },
  {
   "line": [
@@ -41082,7 +41082,7 @@
    0
   ],
   "component": "a11",
-  "predicted_MHz": 600012146.2452066
+  "predicted_MHz": 600012111.7768296
  },
  {
   "line": [
@@ -41092,7 +41092,7 @@
    0
   ],
   "component": "a21",
-  "predicted_MHz": 600012986.6211131
+  "predicted_MHz": 600012435.4995455
  },
  {
   "line": [
@@ -41103,7 +41103,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 2849.076013737622
+  "predicted_MHz": 2477.5390585840623
  },
  {
   "line": [
@@ -41123,7 +41123,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594376609.980802
+  "predicted_MHz": 594377666.4013073
  },
  {
   "line": [
@@ -41133,7 +41133,7 @@
    1
   ],
   "component": "a2",
-  "predicted_MHz": 594376913.4692594
+  "predicted_MHz": 594377732.4906757
  },
  {
   "line": [
@@ -41143,7 +41143,7 @@
    1
   ],
   "component": "a3",
-  "predicted_MHz": 594377423.7657812
+  "predicted_MHz": 594377901.1503781
  },
  {
   "line": [
@@ -41154,7 +41154,7 @@
   ],
   "component": "a3",
   "ref_component": "a1",
-  "predicted_MHz": 813.7849791349078
+  "predicted_MHz": 234.74907079770583
  },
  {
   "line": [
@@ -41174,7 +41174,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594370987.285778
+  "predicted_MHz": 594373018.2985506
  },
  {
   "line": [
@@ -41184,7 +41184,7 @@
    1
   ],
   "component": "a4",
-  "predicted_MHz": 594375780.4732058
+  "predicted_MHz": 594375857.4825714
  },
  {
   "line": [
@@ -41194,7 +41194,7 @@
    1
   ],
   "component": "a7",
-  "predicted_MHz": 594377235.32588
+  "predicted_MHz": 594377364.1063523
  },
  {
   "line": [
@@ -41205,7 +41205,7 @@
   ],
   "component": "a7",
   "ref_component": "a1",
-  "predicted_MHz": 6248.040102011191
+  "predicted_MHz": 4345.807801744897
  },
  {
   "line": [
@@ -41225,7 +41225,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594374551.0796878
+  "predicted_MHz": 594375852.1723871
  },
  {
   "line": [
@@ -41235,7 +41235,7 @@
    1
   ],
   "component": "a5",
-  "predicted_MHz": 594376157.8430893
+  "predicted_MHz": 594376420.3421218
  },
  {
   "line": [
@@ -41245,7 +41245,7 @@
    1
   ],
   "component": "a9",
-  "predicted_MHz": 594378320.679129
+  "predicted_MHz": 594377312.5146884
  },
  {
   "line": [
@@ -41256,7 +41256,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 3769.599441114001
+  "predicted_MHz": 1460.342301296243
  },
  {
   "line": [
@@ -41276,7 +41276,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594368943.1612121
+  "predicted_MHz": 594370276.5436465
  },
  {
   "line": [
@@ -41286,7 +41286,7 @@
    1
   ],
   "component": "a5",
-  "predicted_MHz": 594370576.423623
+  "predicted_MHz": 594371561.6273506
  },
  {
   "line": [
@@ -41296,7 +41296,7 @@
    1
   ],
   "component": "a9",
-  "predicted_MHz": 594372976.1901432
+  "predicted_MHz": 594371748.9539207
  },
  {
   "line": [
@@ -41307,7 +41307,7 @@
   ],
   "component": "a9",
   "ref_component": "a1",
-  "predicted_MHz": 4033.028931193158
+  "predicted_MHz": 1472.410274341458
  },
  {
   "line": [
@@ -41327,7 +41327,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594371259.1020426
+  "predicted_MHz": 594372184.2914361
  },
  {
   "line": [
@@ -41337,7 +41337,7 @@
    1
   ],
   "component": "a6",
-  "predicted_MHz": 594371963.3617445
+  "predicted_MHz": 594372508.8579024
  },
  {
   "line": [
@@ -41347,7 +41347,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 594374455.3388594
+  "predicted_MHz": 594373019.6098384
  },
  {
   "line": [
@@ -41358,7 +41358,7 @@
   ],
   "component": "a11",
   "ref_component": "a1",
-  "predicted_MHz": 3196.2368169327474
+  "predicted_MHz": 835.3184022886171
  },
  {
   "line": [
@@ -41378,7 +41378,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594345008.4394408
+  "predicted_MHz": 594345992.3964511
  },
  {
   "line": [
@@ -41388,7 +41388,7 @@
    1
   ],
   "component": "a10",
-  "predicted_MHz": 594346543.479473
+  "predicted_MHz": 594346709.9076674
  },
  {
   "line": [
@@ -41398,7 +41398,7 @@
    1
   ],
   "component": "a19",
-  "predicted_MHz": 594347982.2448273
+  "predicted_MHz": 594347084.0181727
  },
  {
   "line": [
@@ -41409,7 +41409,7 @@
   ],
   "component": "a19",
   "ref_component": "a1",
-  "predicted_MHz": 2973.805386463543
+  "predicted_MHz": 1091.6217216422729
  },
  {
   "line": [
@@ -41429,7 +41429,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594347401.4731734
+  "predicted_MHz": 594348237.5540137
  },
  {
   "line": [
@@ -41439,7 +41439,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 594348707.7787848
+  "predicted_MHz": 594348968.1660907
  },
  {
   "line": [
@@ -41449,7 +41449,7 @@
    1
   ],
   "component": "a21",
-  "predicted_MHz": 594350364.8608825
+  "predicted_MHz": 594349568.5914751
  },
  {
   "line": [
@@ -41460,7 +41460,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 2963.387709077827
+  "predicted_MHz": 1331.037461410583
  },
  {
   "line": [
@@ -41480,7 +41480,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594263265.9274665
+  "predicted_MHz": 594264398.9383327
  },
  {
   "line": [
@@ -41490,7 +41490,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 594264939.8438263
+  "predicted_MHz": 594265337.6091202
  },
  {
   "line": [
@@ -41500,7 +41500,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 594266291.8671024
+  "predicted_MHz": 594265727.3128141
  },
  {
   "line": [
@@ -41511,7 +41511,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 3025.939635974107
+  "predicted_MHz": 1328.3744814395327
  },
  {
   "line": [
@@ -41531,7 +41531,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 594267866.4861928
+  "predicted_MHz": 594269331.8123945
  },
  {
   "line": [
@@ -41541,7 +41541,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 594269892.964575
+  "predicted_MHz": 594270041.9903371
  },
  {
   "line": [
@@ -41551,7 +41551,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 594271061.8843997
+  "predicted_MHz": 594270328.6694714
  },
  {
   "line": [
@@ -41562,7 +41562,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 3195.3982068306586
+  "predicted_MHz": 996.8570769000354
  },
  {
   "line": [
@@ -41582,7 +41582,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593663087.5888021
+  "predicted_MHz": 593663070.405455
  },
  {
   "line": [
@@ -41592,7 +41592,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 593664509.339534
+  "predicted_MHz": 593664388.0551823
  },
  {
   "line": [
@@ -41602,7 +41602,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 593665059.8535899
+  "predicted_MHz": 593664689.5001967
  },
  {
   "line": [
@@ -41613,7 +41613,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 1972.2647878419723
+  "predicted_MHz": 1619.0947417736702
  },
  {
   "line": [
@@ -41633,7 +41633,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593673464.5678239
+  "predicted_MHz": 593673399.8808259
  },
  {
   "line": [
@@ -41643,7 +41643,7 @@
    1
   ],
   "component": "a8",
-  "predicted_MHz": 593675033.1215595
+  "predicted_MHz": 593674812.4392015
  },
  {
   "line": [
@@ -41653,7 +41653,7 @@
    1
   ],
   "component": "a15",
-  "predicted_MHz": 593675664.8041408
+  "predicted_MHz": 593675193.7618806
  },
  {
   "line": [
@@ -41664,7 +41664,7 @@
   ],
   "component": "a15",
   "ref_component": "a1",
-  "predicted_MHz": 2200.2363169693203
+  "predicted_MHz": 1793.8810547925113
  },
  {
   "line": [
@@ -41684,7 +41684,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593607597.3068444
+  "predicted_MHz": 593607432.152087
  },
  {
   "line": [
@@ -41694,7 +41694,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 593609370.4589689
+  "predicted_MHz": 593609356.9027528
  },
  {
   "line": [
@@ -41704,7 +41704,7 @@
    1
   ],
   "component": "a21",
-  "predicted_MHz": 593610077.8075207
+  "predicted_MHz": 593609700.1317856
  },
  {
   "line": [
@@ -41715,7 +41715,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 2480.5006763816323
+  "predicted_MHz": 2267.979698658878
  },
  {
   "line": [
@@ -41735,7 +41735,7 @@
    1
   ],
   "component": "a1",
-  "predicted_MHz": 593618142.0844655
+  "predicted_MHz": 593617962.499853
  },
  {
   "line": [
@@ -41745,7 +41745,7 @@
    1
   ],
   "component": "a11",
-  "predicted_MHz": 593620150.7965823
+  "predicted_MHz": 593620116.3224806
  },
  {
   "line": [
@@ -41755,7 +41755,7 @@
    1
   ],
   "component": "a21",
-  "predicted_MHz": 593620991.166764
+  "predicted_MHz": 593620440.1495103
  },
  {
   "line": [
@@ -41766,7 +41766,7 @@
   ],
   "component": "a21",
   "ref_component": "a1",
-  "predicted_MHz": 2849.0822985124696
+  "predicted_MHz": 2477.649657258091
  },
  {
   "line": [

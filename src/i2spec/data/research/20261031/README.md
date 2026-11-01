@@ -36,8 +36,14 @@ Release 20261030 stays as it was: the third and fourth blind tests and the locke
     scale 0.65 it would worsen one). The potentials of that study are this release's, so its verdict stands.
   - The angles and curvatures are effective parameters: they move with the curve scale and absorb errors of the
     inherited perturber curves. Held-out misses remain at the MHz level beyond v′ 55.
-  - At B v′ 77–78 the fitted θ_g also enters the coupling of the resonant 1g(¹Πg) level: the spans of those lines'
-    patterns differ from release 20261030's by up to 2.6 GHz. No measurement at v′ 77–78 decides between them.
+  - **The B~1g(¹Πg) resonance (B v′ 77–78) keeps the 1g coupling of release 20261030** (`resonance`, its
+    `form`): that release's hyperfine fit (1g mixing angle 30°, the separated-atom value; 1g(¹Πg) C5 scale 0.65;
+    its backgrounds and θ_u), on this release's levels. The resonance block is release 20261030's (constants to
+    10⁻¹³ MHz, overlaps, resonant level and coupling identical), so these levels take a different hyperfine form
+    from the other levels beyond the core. The new form's θ_g is an effective parameter fitted away from the
+    resonance; in the coupling of the resonant level it would move the spans of these lines' patterns by up to
+    2.6 GHz, and no measurement at v′ 77–78 tests either. Above the resonance's last J′ (35 at v′ 77, 31 at v′ 78)
+    the ordinary tables apply, as before.
 - **Levels whose hyperfine is not predicted.** Where a second-order energy denominator nearly vanishes, a level of
   an inherited perturber curve lies within a few GHz and the sum is not valid. With the new form two B levels show
   it, (v′, J′) = (70, 33) and (71, 20) (eqQ −9.5 GHz and d −0.45 GHz at the latter); the nine of release 20261030
@@ -87,7 +93,7 @@ Every model's references are replayed by `ResearchModel(id).verify()`: the core'
 fit-engine references (4 847 rows) to 2.4 Hz; the isotopologues' (762) exactly. Against release 20261030 the
 references move only beyond the core in B: no center, no core or X line, and in the isotopologues' list only the
 components of B v′ 45–70 lines (up to 6.9 MHz) and, in the continued model's, of B v′ ≥ 44 (median 0.05 MHz at
-v′ 44, 50 MHz at v′ 74; GHz at the v′ 77–78 resonance). Fifteen reference rows of release 20261030 (R(30) 70-0/1/2)
+v′ 44, 50 MHz at v′ 74); the v′ 77–78 lines are release 20261030's (to 10 µHz). Fifteen reference rows of release 20261030 (R(30) 70-0/1/2)
 are left out: an upper level's J ± 2 partner is not predicted.
 
 ## Locked test

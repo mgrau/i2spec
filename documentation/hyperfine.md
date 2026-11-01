@@ -89,9 +89,9 @@ table of measured values:
     levels' lines a position but no hyperfine components.
 - **B v′ = 77–78.** These levels lie close to a level of the 1g(¹Πg) state, which Pique *et al.* (1986)
   measured. That level is diagonalized together with B, and its weak extra components appear among the
-  line's components. The coupling of that level depends on the fitted 1g mixing angle, an effective parameter: a
-  change of the form of the hyperfine beyond the core moved the spans of these lines' patterns by up to 2.6 GHz, and
-  no measurement at v′ = 77–78 tests them.
+  line's components. Here the model keeps the hyperfine of its earlier fit (the 1g mixing angle at its
+  separated-atom value), a different form from that of the other levels beyond the core: the fitted 1g angle is an
+  effective parameter, and no measurement at v′ = 77–78 tests the coupling it would give the resonant level.
 - **X v″ = 18–108.** eqQ is continued smoothly from the formula of Bodermann *et al.* to its value for
   separated atoms (Bacis *et al.* 1980).
 

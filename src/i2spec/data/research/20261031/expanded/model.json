@@ -430,7 +430,7 @@
  },
  "hyperfine": {
   "core": "research-final-core: B radial functions and fixed X constants",
-  "beyond": "hyperfine.json: B v'44-80 and X v''18-108 per level; B v'77, 78 with the 1g(1Pig) level diagonalized; levels where a second-order denominator nearly vanishes are not predicted (center only, B not_predicted)",
+  "beyond": "hyperfine.json: B v'44-80 and X v''18-108 per level; B v'77, 78 with the 1g(1Pig) level diagonalized (with the 1g coupling of release 20261030's hyperfine fit, resonance.form); levels where a second-order denominator nearly vanishes are not predicted (center only, B not_predicted)",
   "dJ": 2
  },
  "fit": {

@@ -14,10 +14,11 @@ Per state, four coefficients of the core curves are exchanged for mechanical con
 from_physical inverts to machine precision and the levels do not move (tests/test_fit_physical.py). The other
 coefficients (c3..., the rotational alpha_i, De, Te) stay as they are.
 
-What the data determine: Be to 3e-7 relative, but not the curvature at the very bottom of the well. In the core's
-14- and 20-term exponents, omega_e, omega_e x_e and alpha_e at Re move along directions the levels barely see to first
-order (the levels' own Dunham constants are fixed to 2e-5, 7e-6 and 1e-9 cm-1), so their linear sigma is large and
-not meaningful; Re trades with q(R).
+What the data determine: Be to 3e-7 relative, and since release 20261030 omega_e, omega_e x_e and alpha_e at Re about
+as well as the levels' own Dunham constants (2e-5, 7e-6 and 1e-9 cm-1): profile refits of the core raise chi^2 by one
+within the linear sigma, and Dunham's series from the potentials reproduces the levels' Y_ij within it. (With
+earlier covariances these constants moved along near-null directions the levels see only to second order.) The
+potential's own Re still trades with q(R); Dunham's Re from Be is determined.
 """
 from __future__ import annotations
 

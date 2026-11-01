@@ -79,16 +79,16 @@
     "maximum_difference_Hz": {
      "center": 2.384185791015625,
      "absolute": 2.384185791015625,
-     "intraline": 0.18853461369872093
+     "intraline": 0.1641571998334257
     },
     "tolerance_Hz": 100.0,
     "passed": true,
     "scope": "Numerical reproduction of frozen predictions; not independent predictive accuracy"
    },
    "files_sha256": {
-    "model.json": "f111161b12646f267a16da7e6cb6838f756fc0c63db59e2607177c717e2d88c0",
-    "hyperfine.json": "b45eb89f02131c5551b495bd7b1e615b69f93f8624ff7fea5d618e9251818cd1",
-    "reference_predictions.json": "bcca2084d1368fd5d317f6b55e2db9eb01778af0dbd165e1a15a16cdf3a8042b",
+    "model.json": "8f6fa0c704bc5839972acaa05cb5b3a9b5c969522fd983846f1c8441866adcc1",
+    "hyperfine.json": "aa4b33db6e4fbdbcea593622ba258c8f529ef2ffa72f8c6238d8103db4247dbf",
+    "reference_predictions.json": "89c9c9d1511800546cd2f5e8a84020b5b7a9d6ce378810875805f041e10a052a",
     "uncertainty.json": "a5b84402e756a4b4b9c0304e7ea327ab49767cb15b31eafc1b5982b515a29e20"
    }
   },
@@ -101,8 +101,8 @@
    "extends": {
     "id": "research-20261031-expanded",
     "files_sha256": {
-     "model.json": "f111161b12646f267a16da7e6cb6838f756fc0c63db59e2607177c717e2d88c0",
-     "hyperfine.json": "b45eb89f02131c5551b495bd7b1e615b69f93f8624ff7fea5d618e9251818cd1",
+     "model.json": "8f6fa0c704bc5839972acaa05cb5b3a9b5c969522fd983846f1c8441866adcc1",
+     "hyperfine.json": "aa4b33db6e4fbdbcea593622ba258c8f529ef2ffa72f8c6238d8103db4247dbf",
      "uncertainty.json": "a5b84402e756a4b4b9c0304e7ea327ab49767cb15b31eafc1b5982b515a29e20"
     }
    },

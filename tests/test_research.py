@@ -199,3 +199,19 @@ def test_release_20261031_core_patterns_unchanged():
         a = [c.offset for c in old.hyperfine_components(vu, vl, J, branch)[1]]
         b = [c.offset for c in new.hyperfine_components(vu, vl, J, branch)[1]]
         assert b == pytest.approx(a, abs=1e-6)
+
+
+def test_release_20261031_resonance_keeps_the_earlier_coupling():
+    """At B v' 77/78 (the B~1g(1Pig) resonance) release 20261031 keeps release 20261030's 1g coupling: the same
+    resonance tables, and the same components (to 1 Hz)."""
+    old, new = ResearchModel("research-20261030-i2spec"), ResearchModel("research-20261031-i2spec")
+    assert new._hf.resonance.keys() == old._hf.resonance.keys() == {77, 78}
+    for v in (77, 78):
+        a, b = old._hf.resonance[v], new._hf.resonance[v]
+        assert (b["coupling"], b["model_level"], b["J"], b["overlaps"]) == \
+            (a["coupling"], a["model_level"], a["J"], a["overlaps"])
+    for vu, vl, J, branch in ((77, 0, 10, "R"), (78, 1, 26, "P"), (77, 1, 1, "P")):
+        a = [c.offset for c in old.hyperfine_components(vu, vl, J, branch)[1]]
+        b = [c.offset for c in new.hyperfine_components(vu, vl, J, branch)[1]]
+        assert len(a) == len(b) > 15
+        assert b == pytest.approx(a, abs=1e-6)

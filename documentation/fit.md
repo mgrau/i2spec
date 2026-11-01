@@ -90,7 +90,9 @@ levels (v″ ≥ 90) to about 0.7 GHz. These held-out errors set the model part 
   *et al.* (1986, {{ fit.hf_pique }}); the long-range scale of the 1g(¹Πg) curve was chosen by training cost. The
   backgrounds of d and δ have orders 5 and 4, fitted to the core fit's own values. This form was selected after the
   blind tests had been scored (in cross-validation it improves eight regions and worsens none), so no blind test of
-  it remains. The near-resonant 1g level at v′ = 77–78 is inherited from Pique *et al.*
+  it remains. The near-resonant 1g level at v′ = 77–78 is inherited from Pique *et al.*; there, where it is
+  diagonalized with B, the earlier form is kept (the 1u angle fitted alone, the 1g angle at its separated-atom
+  value 30°, a 1g(¹Πg) scale of 0.65), since no measurement at v′ = 77–78 tests the coupling the new 1g angle gives.
 - **X v″ ≥ 18.** eqQ continues from the formula of the core to its separated-atom value along a curve with two
   coefficients fitted to the eqQ of Bacis *et al.* (1980); a slope of C rests on one value and is not validated.
 - **X v″ ≤ 17.** The formulae of Bodermann, Knöckel & Tiemann (2002), inherited unchanged (eleven constants).
