@@ -1,9 +1,9 @@
 # Rovibrational levels
 
 i2spec computes the levels of ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I from one potential-energy curve and one rotational function
-per electronic state, with no correction to any individual level. The other isotopologues see the same curves at
-their own reduced mass (see [Isotopologues](#isotopologues)). Which data fix which coefficients is described on
-[The fit](fit.md); the derivations are in the paper.
+per electronic state. The other isotopologues use the same curves at their own reduced mass (see
+[Isotopologues](#isotopologues)). [The fit](fit.md) describes which data determine which coefficients; the
+derivations are in the paper.
 
 ## Radial Hamiltonian
 
@@ -22,8 +22,8 @@ q(R) = \frac{2R_e}{R+R_e}\sum_{i} \alpha_i\,T_i\!\left(\frac{y-0.3}{0.4}\right),
 $$
 
 with T<sub>i</sub> the Chebyshev polynomials; the fixed shift 0.3 and scale 0.4 are part of the definition. q(R) has
-{{ fit.x_alpha }} coefficients for X and {{ fit.b_alpha }} for B. ¹²⁷I₂ is the reference isotopologue and has no
-adiabatic correction. Energies are measured from the minimum of the X potential.
+{{ fit.x_alpha }} coefficients for X and {{ fit.b_alpha }} for B. ¹²⁷I₂ is the reference isotopologue for the
+adiabatic correction of the others. Energies are measured from the minimum of the X potential.
 
 ## Potential-energy curves
 
@@ -43,10 +43,10 @@ z = \begin{cases} [y_q^\text{ref}(R)-0.2]/0.6 & \text{X,} \\ y_q^\text{ref}(R) &
 \end{aligned} \tag{3}
 $$
 
-where y<sup>e</sup> uses r = R<sub>e</sub> and y<sup>ref</sup> uses r = R<sub>ref</sub>. Whatever the fitted c<sub>i</sub>,
-V(R<sub>e</sub>) = T<sub>e</sub> and V(R) → T<sub>e</sub> + D<sub>e</sub> − u(R) at long range, so the long-range
-behavior is the inherited dispersion series. The B potential has no free dissociation energy: its limit is that of
-X plus the atomic fine-structure splitting, 7 602.9762 cm⁻¹, exactly.
+where y<sup>e</sup> uses r = R<sub>e</sub> and y<sup>ref</sup> uses r = R<sub>ref</sub>. For any c<sub>i</sub>,
+V(R<sub>e</sub>) = T<sub>e</sub> and V(R) → T<sub>e</sub> + D<sub>e</sub> − u(R) at long range: the long-range
+behavior is the inherited dispersion series. The dissociation limit of B is that of X plus the atomic
+fine-structure splitting, 7 602.9762 cm⁻¹.
 
 | | X ¹Σg⁺ | B ³Π(0u⁺) |
 |---|---|---|
@@ -84,11 +84,10 @@ each curve is continued to its dissociation limit, keeping every coefficient of 
 Equation (1) is solved variationally in a basis of B-splines of order 10 on uniform knots (0.01 Å; 0.005 Å for
 X v″ ≥ 25), with a knot of reduced continuity at every join of the potential, in a radial box for each range of v
 (up to 40.6 Å, graded, near the limits). Above the asymptote a level is kept as quasi-bound when at least 90 % of
-its density lies inside the centrifugal barrier; a level that a shorter box would put at or above the asymptote is
-solved in the long box, so that standing waves between the barrier and a box wall are never counted as levels.
-Halving the knot spacing moves no training line by more than
-10 kHz, except one quasi-bound level whose index changes. Since every level comes from the two potentials, its
-uncertainty is computed, not looked up (see [Uncertainty estimates](uncertainty.md)).
+its density lies inside the centrifugal barrier. A level that a shorter box would put at or above the asymptote is
+solved in the long box, which keeps standing waves between the barrier and a box wall out of the level list.
+Halving the knot spacing moves the training lines by less than 10 kHz (one quasi-bound level changes its index).
+The uncertainty of each level is computed from the potentials (see [Uncertainty estimates](uncertainty.md)).
 
 ## Isotopologues
 
@@ -104,7 +103,7 @@ with p = 5, R<sub>e</sub> that of B, a₀ = {{ we.iso_a0 }} cm⁻¹ and a₁ = {
 {{ fit.n_iso_centers }} measured isotopologue line centers (see [The fit](fit.md#isotopologues)); 1 − ρ is 0.015 52
 for ¹²⁹I₂ and 0.007 76 for ¹²⁷I¹²⁹I. Mass scaling alone would put the ¹²⁹I₂ lines 73–76 MHz above their measured
 positions; Eq. (4) predicts each line from the others to 0.08 MHz rms. Equally good forms (p = 3 and 8) differ from
-it by up to 25 MHz near the B limit, and that spread is part of each isotopologue line's uncertainty. The
+it by up to 25 MHz near the B limit. That spread is part of each isotopologue line's uncertainty. The
 fluorescence term values of Cerny, Bacis & Vergès (1986), v″ = 4–108, agree with the model within their
 uncertainties for ¹²⁹I₂; for ¹²⁷I¹²⁹I they lie 0.1–0.4 GHz above it.
 

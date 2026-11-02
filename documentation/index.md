@@ -1,20 +1,16 @@
 # i2spec
 
-i2spec is an open model of the B³Π(0u⁺) ← X¹Σg⁺ absorption spectrum of molecular iodine. It gives
+i2spec is an open model of the B³Π(0u⁺) ← X¹Σg⁺ absorption spectrum of molecular iodine. It provides
 the position, strength and hyperfine structure of every rovibronic line of ¹²⁷I₂, ¹²⁹I₂ and
-¹²⁷I¹²⁹I between the B-state dissociation limit (499 nm) and the near infrared, and an uncertainty for
-each position.
+¹²⁷I¹²⁹I from the B-state dissociation limit (499 nm) into the near infrared.
 
 All quantities are computed from a Hamiltonian:
 
-- level energies from the radial Schrödinger equation with potential-energy curves for X and B;
-- hyperfine components from an effective nuclear-spin Hamiltonian;
-- line strengths from an electronic transition-moment function and the vibrational wavefunctions.
+- the energy levels of the X and B potential-energy curves, calculated from the radial Schrödinger equation;
+- the hyperfine components, from an effective nuclear-spin Hamiltonian;
+- the line strengths, from an electronic transition-moment function and the vibrational wavefunctions.
 
 [Open the line explorer :material-arrow-right:](../index.html){ .md-button .md-button--primary }
-
-Measured line positions are used in two ways only: as the data to which the potentials and hyperfine
-functions are fitted, and to test and calibrate the uncertainty of each predicted position.
 
 <div class="grid cards" markdown>
 
@@ -39,24 +35,27 @@ functions are fitted, and to test and calibrate the uncertainty of each predicte
 
 ## The model
 
-- One Morse/long-range potential for each of X and B, with a fitted rotational function, and radial functions for
-  the B-state hyperfine parameters. They are fitted together, in the **core fit**, to every precision measurement of
-  ¹²⁷I₂ with X v″ ≤ 17 and B v′ ≤ 43, two Fourier-transform atlases and {{ fit.n_iso_centers }} line centers of the
-  other isotopologues. There is no correction to any individual level or line.
-- A **continuation** of both curves to their dissociation limits (X v″ ≤ 108, B v′ ≤ 80), and second-order
-  hyperfine sums near the B limit, with terms that act only beyond the core.
-- ¹²⁹I₂ and ¹²⁷I¹²⁹I on the same potentials at their own reduced mass, with a fitted isotope shift and the
-  hyperfine functions scaled by the moments of each nucleus.
-- An **uncertainty model**: the covariance of the fit, and the errors of predictions of data the fit did not see.
+- The X and B states are each represented by a Morse/long-range potential with a rotational function, and the B
+  state also by radial functions for its hyperfine parameters. These are fitted together to the precision
+  measurements of ¹²⁷I₂ with X v″ ≤ 17 and B v′ ≤ 43, two Fourier-transform atlases and
+  {{ fit.n_iso_centers }} line centers of the other isotopologues, and make up the **core fit**. No term is specific
+  to an individual level or line.
+- The **continuation** extends both curves to their dissociation limits (X v″ ≤ 108, B v′ ≤ 80) with terms that act
+  only beyond the core. Near the B limit, second-order sums over the neighboring electronic states enter the
+  hyperfine parameters.
+- ¹²⁹I₂ and ¹²⁷I¹²⁹I use the same potentials at their own reduced mass, with a fitted isotope shift. Their
+  hyperfine functions are scaled by the moments of each nucleus.
+- The **uncertainty model** combines the covariance of the fit with the errors of predicting data the fit did not
+  see.
 
-[The fit](fit.md) lists which data fix which parameters. Line strengths use the transition moment of
+[The fit](fit.md) lists which data determine which parameters. Line strengths use the transition moment of
 Tellinghuisen (2011) with the model's own vibrational wavefunctions (see [Line intensities and spectra](spectra.md)).
 
-The core fit predicts the {{ fit.benchmark_absolute }} absolute component frequencies of the newest data sets, held
-out of it, to {{ fit.benchmark_absolute_rms }} MHz rms and {{ fit.benchmark_intraline }} hyperfine intervals to
-{{ fit.benchmark_intraline_rms }} MHz. On {{ fit.locked_sets }} data sets kept out of the fit and of the uncertainty
-model, and scored once against criteria recorded beforehand, {{ unc.locked_2 }} of {{ unc.locked_rows }}
-measurements lie within 2σ: {{ unc.locked_abs_2 }} of the absolute frequencies and every isotopologue measurement,
-but only {{ unc.locked_hf_2 }} of the hyperfine intervals within a line, a known limitation (see
+The core fit predicts the {{ fit.benchmark_absolute }} absolute component frequencies of the newest data sets, which
+were held out of it, to {{ fit.benchmark_absolute_rms }} MHz rms, and {{ fit.benchmark_intraline }} hyperfine
+intervals to {{ fit.benchmark_intraline_rms }} MHz. A locked test of {{ fit.locked_sets }} data sets, kept out of the
+fit and of the uncertainty model and scored once against criteria recorded beforehand, found {{ unc.locked_2 }} of
+{{ unc.locked_rows }} measurements within 2σ. The absolute frequencies ({{ unc.locked_abs_2 }}) and the isotopologue
+measurements met the target; the hyperfine intervals within a line ({{ unc.locked_hf_2 }}) did not (see
 [Uncertainty estimates](uncertainty.md#the-locked-test)). The [worked example](calculation.md#worked-example)
 follows the 532 nm line R(56) 32–0 through every step of the model.

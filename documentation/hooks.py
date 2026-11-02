@@ -61,22 +61,22 @@ def _tables():
                    key=lambda s: (year(s), s["short"]))
     atlas = [s for s in src if s["kind"] == "atlas"]
     n = lambda kind: sum(s["n_lines"] for s in src if s["kind"] == kind)  # noqa: E731
-    out = [f'{len(precision)} precision data sets in the fit, {len(blind)} more in no fit (held out for the '
-           f'blind tests, or set aside), covering {n("precision"):,} lines together, and {len(atlas)} atlases with '
-           f'{n("atlas"):,} assigned lines.', "",
+    out = [f'{len(precision)} precision data sets are in the fit and {len(blind)} are outside it (held out for the '
+           f'blind tests, or set aside). Together they cover {n("precision"):,} lines. The {len(atlas)} atlases '
+           f'hold {n("atlas"):,} assigned lines.', "",
            '## <span class="kind precision"></span>Sub-Doppler and frequency-comb measurements', "",
            "Absolute frequencies of hyperfine components or line centers, and hyperfine intervals, with "
            "uncertainties between 0.25 kHz and a few MHz. They determine the potentials and the hyperfine "
-           "functions of the model. Under each citation: the "
-           "number of absolute frequencies and hyperfine intervals, and the isotopologues.", "",
+           "functions of the model. Each citation lists the "
+           "number of absolute frequencies and hyperfine intervals and the isotopologues.", "",
            "| source | lines | range (nm) | median u |",
            "|---|--:|--:|--:|"]
     for s in precision:
         out.append(f'| {_source(s, _rows(s))} | {s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
     if blind:
-        out += ["", '## <span class="kind precision"></span>In no fit', "",
-                "Most were transcribed after the fit and held out of it for the blind tests: the model's predictions "
-                "of them, and their uncertainties, were frozen before their values were read, then scored once "
+        out += ["", '## <span class="kind precision"></span>Outside the fit', "",
+                "Most were transcribed after the fit and held out of it for the blind tests. The model's predictions "
+                "of them, with their uncertainties, were frozen before their values were read and then scored once "
                 "(results on the [uncertainty page](uncertainty.md)). The others were set aside, each for the "
                 "reason given under it. The explorer shows them all, marked “not fitted”.", "",
                 "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
@@ -87,12 +87,11 @@ def _tables():
     out += ["", '## <span class="kind atlas"></span>Fourier-transform atlases', "",
             "Doppler-limited line centers, assigned in this work by comparison with the model. The Salami & Ross "
             "and APO atlases are in the core fit; Orsay part I and Partie IV determine the levels beyond it "
-            "(X v″ = 18–25, B v′ = 51–80). The others are shown for comparison and used in no fit (the 1977 and "
-            "1978 atlases calibrate the uncertainties of atlas-class lines). The "
-            "calibration of each atlas is given with it.", "",
+            "(X v″ = 18–25, B v′ = 51–80). The others are shown for comparison; the 1977 and 1978 atlases also "
+            "calibrate the uncertainties of atlas-class lines. The calibration of each atlas is given with it.", "",
             "| source | lines | range (nm) | median u |", "|---|--:|--:|--:|"]
     for s in atlas:
-        fitted = "" if s.get("fit", True) else " Not used in the fit."
+        fitted = "" if s.get("fit", True) else " Outside the fit."
         out.append(f'| {_source(s)}<br><span class="cite">Calibration: {html.escape(s["uncertainty"])}{fitted}</span> | '
                    f'{s["n_lines"]:,} | {_nm(s["nu"])} | {_u(s["u_MHz"])} |')
     return "\n".join(out)

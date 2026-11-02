@@ -12,22 +12,15 @@ uv run i2spec tui
 uv run i2spec web
 ```
 
-The first query for an isotopologue solves the model's levels and computes its line list, and caches both
-in `~/.cache/i2spec` (230 MB for all three isotopologues). The first `i2spec web` also exports the data of
-the line explorer to `web/data/` (590 MB): the line lists of all three isotopologues and the hyperfine
-pattern of every line, which are cached as well (150 MB). After that, every query takes under a second. The
-exported data record a digest of what they were made from (`uv run i2spec web inputs`): `i2spec web build`
-exports again when the model or the data it uses change, and `i2spec web` says so and serves the older data.
-With an empty cache:
+The first query for an isotopologue solves the model's levels, computes its line list and caches both in
+`~/.cache/i2spec` (230 MB for all three isotopologues). The first `i2spec web` also exports the line explorer's
+data to `web/data/` (590 MB): the line lists of all three isotopologues and the hyperfine pattern of every line.
+Later queries take under a second. When the model or its data change, `i2spec web build` exports again.
 
-| first run | Apple M5 Max (18 cores, 128 GB) |
+| first run, empty cache | Apple M5 Max (18 cores, 128 GB) |
 |---|--:|
 | `i2spec lines` (¹²⁷I₂) | 2 min 45 s |
 | `i2spec web`, with the export | 16 min 30 s |
-
-About half of the export is solving the levels of the three isotopologues. It needs about 5 GB in its main
-process and 1-2 GB in each worker process: with three workers (a 4-core machine, or `I2SPEC_WORKERS=3`), it
-peaks at 10 GB.
 
 ## Command line
 
@@ -47,8 +40,8 @@ Ranges can be given in `nm` (vacuum wavelength), `nm-air`, `cm-1`, `THz` or `MHz
 are integrated cross sections in cm per molecule at the chosen temperature (option `-T`, default
 293.15 K).
 
-Every position and every hyperfine component comes with its 1σ, and `i2spec line` lists both. The model can
-also be used directly from Python, with the uncertainty of any prediction:
+`i2spec line` lists the 1σ uncertainty of the line position and of every hyperfine component. The same
+predictions and uncertainties are available from Python:
 
 ```python
 from i2spec.preferred import model
@@ -111,12 +104,16 @@ a10 = next(c for c in comps if c.label == "a10")
 print(nu0 + a10.offset)
 ```
 
-`RovibronicModel` gives the same levels and positions (`energy`, `transition`) for any isotopologue, but its
-`hyperfine_components` use the published hyperfine formulae, not the model's. The
-[worked example](calculation.md#worked-example) follows this line through every step of the model.
+`RovibronicModel` provides the same levels and positions (`energy`, `transition`) for any isotopologue. Its
+`hyperfine_components` use the published hyperfine formulae of Bodermann *et al.* (2002) and Salumbides *et al.*
+(2006) rather than the model's radial functions. The [worked example](calculation.md#worked-example) follows this
+line through every step of the model.
 
-`i2spec.lookup.Catalog` returns line lists at any temperature, `i2spec.spectrum` computes cross
-sections and cell transmission, and `i2spec.continuum` computes the bound–free absorption.
+Other modules:
+
+- `i2spec.lookup.Catalog`: line lists at any temperature;
+- `i2spec.spectrum`: cross sections and cell transmission;
+- `i2spec.continuum`: the bound–free absorption.
 
 ## Tests
 

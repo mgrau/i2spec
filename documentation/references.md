@@ -1,8 +1,8 @@
 # References
 
-This page lists all data sets of measured I₂ line positions that are used to fit or to test the
-model, including those no fit uses: the data sets of the blind tests, and a few set aside. In the [line explorer](../index.html),
-measured lines are marked in the spectrum and linked to these sources.
+This page lists every data set of measured I₂ line positions used to fit or test the model, including the data
+sets of the blind tests and a few set aside. In the [line explorer](../index.html), measured lines are marked in the
+spectrum and linked to these sources.
 
 <!-- sources -->
 

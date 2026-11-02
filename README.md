@@ -1,31 +1,38 @@
 # i2spec
 
-An open, physics-based model of the molecular iodine (I₂) B–X spectrum, with an uncertainty on every
-line. It computes level energies from potential-energy curves, line positions, hyperfine components
-from an effective nuclear-spin Hamiltonian, line strengths, absorption spectra and cell transmission,
-for ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I from the dissociation limit near 499 nm into the near infrared.
+An open, physics-based model of the B–X absorption spectrum of molecular iodine (I₂). It provides the position,
+strength and hyperfine structure of every rovibronic line of ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I from the B-state
+dissociation limit (499 nm) into the near infrared. Every position has a 1σ uncertainty. From the line list the
+package computes absorption spectra and the transmission of an iodine cell.
 
-The model has one Morse/long-range potential per state, with a fitted rotational function, and radial
-B-state hyperfine functions. These are fitted in one problem to every precision measurement of ¹²⁷I₂ and two
-Fourier-transform atlases with X v″ ≤ 17 and B v′ ≤ 43, then continued to both dissociation limits
-(X v″ ≤ 108, B v′ ≤ 80) by terms that act only beyond that core. It has no correction to any individual level
-or line. Every prediction comes with a 1σ from a frozen uncertainty model: the fit's covariance, plus the
-error of predicting levels and hyperfine intervals held out of the fit, calibrated on data sets kept out of it.
-It predicts held-out comb data to 0.18 MHz (absolute components) and 0.05 MHz (hyperfine intervals). Scored once
-on 17 locked-test data sets that no fit or calibration used, 88 % of 164 measurements lie within 2σ: 98 % of the
-absolute frequencies and every measurement of the other isotopologues, but only 78 % of the hyperfine intervals,
-most of the shortfall from one data set ([locked test](src/i2spec/data/research/20261030/README.md)). The
-released version then changed the B hyperfine structure beyond the core and the uncertainty at the edges of the
-domain; 150 of the 164 locked-test rows are unaffected ([release notes](src/i2spec/data/research/20261031/README.md)).
+The X and B states are each represented by a Morse/long-range potential with a rotational function, and the B state
+also by radial functions for its hyperfine parameters. These are fitted together to every precision measurement of
+¹²⁷I₂ with X v″ ≤ 17 and B v′ ≤ 43 and to two Fourier-transform atlases. They make up the core fit. Further terms
+that act only beyond the core continue the model to both dissociation limits (X v″ ≤ 108, B v′ ≤ 80). No term is
+specific to an individual level or line.
 
-¹²⁹I₂ and ¹²⁷I¹²⁹I use the same potentials at their own reduced mass, with a Born–Oppenheimer correction of two
-coefficients fitted to the CIPM isotope shifts (each line predicted from the others to 0.08 MHz) and the
-hyperfine functions scaled by the moments of each nucleus. Line strengths use the transition moment of
-Tellinghuisen (2011) with the model's own wavefunctions.
+¹²⁹I₂ and ¹²⁷I¹²⁹I use the same potentials at their own reduced mass. A Born–Oppenheimer correction of two
+coefficients is fitted to the CIPM isotope shifts and predicts each line from the others to 0.08 MHz. The hyperfine
+functions are scaled by the moments of each nucleus. Line strengths use the transition moment of Tellinghuisen
+(2011) with the model's own wavefunctions.
+
+The uncertainty of each prediction comes from a frozen uncertainty model. It combines the covariance of the fit with
+the error of predicting levels and hyperfine intervals held out of the fit. Data sets outside the fit calibrate it.
+The core fit predicts held-out comb data to 0.18 MHz for absolute components and to 0.05 MHz for hyperfine
+intervals.
+
+A locked test of 17 data sets, used in no fit or calibration and scored once, found 88 % of 164 measurements within
+2σ. The absolute frequencies (98 %) and the measurements of the other isotopologues met the target. The hyperfine
+intervals within a line (78 %) did not; most of the shortfall comes from one data set
+([locked test](https://github.com/mgrau/i2spec/blob/main/src/i2spec/data/research/20261030/README.md)). The released
+version then changed the B hyperfine structure beyond the core and the uncertainty at the edges of the domain. These
+changes leave 150 of the 164 locked-test rows as they were
+([release notes](https://github.com/mgrau/i2spec/blob/main/src/i2spec/data/research/20261031/README.md)).
 
 ## Quick start
 
-Everything runs through [uv](https://docs.astral.sh/uv/); the first command creates the environment.
+Everything runs through [uv](https://docs.astral.sh/uv/) from a clone of this repository; the first command creates
+the environment.
 
 ```sh
 uv run i2spec tui                                # the terminal browser (also plain `uv run i2spec`)
@@ -34,8 +41,8 @@ uv run i2spec lines 532.2 532.3                  # every line in a range, with u
 uv run i2spec line "R(56) 32-0"                  # one line with its hyperfine components
 ```
 
-The first search for an isotopologue builds its line list (a few minutes, in parallel) and caches it
-in `~/.cache/i2spec`. The first `i2spec web` also exports the model for the app (`web/data/`).
+The first search for an isotopologue builds its line list in a few minutes. The line list is stored in
+`~/.cache/i2spec` for later searches. The first `i2spec web` also exports the model for the app to `web/data/`.
 
 ## Line lookup
 
@@ -44,25 +51,34 @@ uv run i2spec lines 18788 18789 --unit cm-1 --sort strength --limit 10
 uv run i2spec lines 632.9 633.0 -i 129I2 --json  # any isotopologue; JSON for scripting
 ```
 
-In the terminal browser the top panel is the absorption spectrum of the whole search range: `+`/`-`
-zoom, `[`/`]` pan, `c` centers on the selected line, `l` toggles a log scale, and `p` switches the
-lower plot between the selected line's Doppler profile and its sub-Doppler trace (Lamb dips and
-crossovers). `s` sorts by strength, `a` shows the weak ΔF ≠ ΔJ components, `/` returns to the search box.
+In the terminal browser the top panel shows the absorption spectrum of the whole search range. The keys:
 
-Positions carry a 1σ uncertainty and the reason for it: 0.2–1 MHz in the core, 1–40 MHz for most levels
-beyond it (to B v′ 70 and X v″ 80), and 0.1–0.4 GHz for the last B and X levels; lines whose levels lie beyond the data are flagged
-*extrapolated*. `i2spec line` also gives each hyperfine component's 1σ. Every measurement of a line is listed
-beside the model, with its own uncertainty.
+| key | action |
+|---|---|
+| `+` / `-` | zoom |
+| `[` / `]` | pan |
+| `c` | center on the selected line |
+| `l` | toggle a log scale |
+| `p` | switch the lower plot between the Doppler profile and the sub-Doppler trace (Lamb dips and crossovers) |
+| `s` | sort by strength |
+| `a` | show the weak ΔF ≠ ΔJ components |
+| `/` | return to the search box |
+
+Each position has a 1σ uncertainty, listed with its reason. It is 0.2–1 MHz in the core and 1–40 MHz for most
+levels beyond it (to B v′ 70 and X v″ 80). For the last B and X levels it reaches 0.1–0.4 GHz. Lines whose levels
+lie beyond the data are flagged *extrapolated*. `i2spec line` lists the 1σ of each hyperfine component and every
+measurement of the line with its own uncertainty.
 
 ## Web app
 
-The site has two parts: the **explorer** in `web/` (a range search in vacuum or air
-wavelength, wavenumber, THz or MHz; the spectrum or the transmission of a cell you specify; a sortable
-table with each line's strength, uncertainty and — for measured lines — its sources, linked to their
-DOIs; the hyperfine components and every measurement of the selected line), and the **documentation**
-in `documentation/`, built with MkDocs Material: getting started, how the calculation works, and
-every measurement source. Nothing is solved in
-the browser: `i2spec web export` writes the model out as JSON and the app reads it.
+The site has two parts:
+
+- the **explorer** in `web/`. It searches a range in vacuum or air wavelength, wavenumber, THz or MHz, and plots
+  the cross section or the transmission of a cell. A sortable table lists each line's strength and uncertainty,
+  and the sources of measured lines with links to their DOIs. The detail panel shows the hyperfine components and
+  every measurement of the selected line. `i2spec web export` writes the model as JSON for the app.
+- the **documentation** in `documentation/`, built with MkDocs Material: installation and usage, the calculation,
+  and every measurement source.
 
 ```sh
 uv run i2spec web                    # build the site (explorer + docs) and serve it locally
@@ -113,7 +129,7 @@ uv run i2spec model verify           # replay its frozen reference predictions
 |---|---|
 | `src/i2spec/` | the package: the model, radial solvers, hyperfine, intensities, spectra, lookup, CLI, TUI, web export |
 | `src/i2spec/data/` | the published 2008 potentials, for comparison |
-| [`src/i2spec/data/research/`](src/i2spec/data/research/20261031/README.md) | the model's frozen releases: coefficients, hyperfine tables, uncertainty model, audits, reference predictions and the blind tests |
+| [`src/i2spec/data/research/`](https://github.com/mgrau/i2spec/blob/main/src/i2spec/data/research/20261031/README.md) | the model's frozen releases: coefficients, hyperfine tables, uncertainty model, audits, reference predictions and the blind tests |
 | `data/observations/` | the measured line positions and hyperfine intervals, one directory per source |
 | `data/atlas_lines/` | assigned FTS-atlas line positions (Salami & Ross, NIST/APO, Orsay) |
 | `data/catalog/` | the literature catalog: every data source found, with DOIs |
@@ -124,10 +140,15 @@ uv run i2spec model verify           # replay its frozen reference predictions
 
 ## Walkthrough
 
-[`notebooks/walkthrough.ipynb`](notebooks/walkthrough.ipynb) steps through one calculation: potential curves, vibrational
-and rotational levels, line positions, hyperfine structure against the BIPM tables, intensities, a
-spectrum against the Salami & Ross atlas, the continuum, and the absolute cross section. It is saved
-with its outputs. To run it yourself:
+[`notebooks/walkthrough.ipynb`](https://github.com/mgrau/i2spec/blob/main/notebooks/walkthrough.ipynb) steps
+through one calculation:
+
+- potential curves, vibrational and rotational levels, and line positions;
+- the hyperfine structure, compared with the BIPM tables;
+- intensities, and a spectrum compared with the Salami & Ross atlas;
+- the continuum and the absolute cross section.
+
+It is saved with its outputs. To run it yourself:
 
 ```sh
 uv run --group notebook jupyter lab notebooks/walkthrough.ipynb
@@ -154,4 +175,4 @@ uv run pytest                         # the test suite (about two minutes; build
 
 ## License
 
-MIT, copyright "i2spec contributors"; see [`LICENSE`](LICENSE).
+MIT, copyright "i2spec contributors"; see [`LICENSE`](https://github.com/mgrau/i2spec/blob/main/LICENSE).

@@ -20,29 +20,31 @@ transition moment is that of Tellinghuisen (2011),
 |μₑ(R)|² = 21.5 exp[−1.18 (R − 3.65)²] / R² D², with R in Å.
 
 The matrix element in Eq. (1) is computed with the J-dependent vibrational wavefunctions of both
-states, so the variation of the intensity with J within a band (Herman–Wallis effect) is included. The
-wavefunctions are the model's, solved on a uniform grid (a sinc discrete-variable representation, 0.005 Å) that
-the transition moment is evaluated on; the line positions and E″ come from the model's levels.
+states. This includes the variation of the intensity with J within a band (Herman–Wallis effect). The
+wavefunctions are the model's, solved on a uniform grid (a sinc discrete-variable representation, 0.005 Å) on
+which the transition moment is also evaluated. The line positions and E″ come from the model's levels.
 
-Bands whose upper level lies near a node of the overlap with the lower level depend sharply on where each
-potential sits in R, which the line positions alone do not fix (the shape of a potential trades against its
-rotational function). Measured intensities test it. In three Fourier-transform cell spectra (Debus 2023 and
-the two pyodine cells, 28 000–33 000 unblended lines each), the line strength implied by each line's integrated
-absorbance, relative to its spectral window's column density, scatters about the model by 1.7 %, 3.3 % and
-4.5 % (robust standard deviations of the logarithm about its median). The 2008 potentials' wavefunctions give
-2.3 %, 4.1 % and 4.7 %. The v″ = 1 bands near the overlap's node show the difference best: 41-1 lies 7–9 % below
-the 2008 potentials' strengths in all three spectra and within 2 % of the model's, and 40-1 does the same in the
-SONG spectrum (−10 % against +1 %), though not in the Fischer spectrum (+4 % against +16 %).
-Only f depends on temperature. The line list therefore stores the temperature-independent quantity
-S₀ = S Q(T) exp(c₂E″/T), from which S is obtained for any T.
+The strengths of bands whose upper level lies near a node of the overlap with the lower level depend sharply on
+where each potential lies in R. Line positions alone leave this partly open, because the shape of a potential
+trades against its rotational function; measured intensities test it. Three Fourier-transform cell spectra were
+compared: Debus 2023 and the two pyodine cells, with 28 000–33 000 unblended lines each. The line strength implied
+by each line's integrated absorbance, relative to its spectral window's column density, scatters about the model by
+1.7 %, 3.3 % and 4.5 % (robust standard deviations of the logarithm about its median). With the wavefunctions of
+the 2008 potentials the scatter is 2.3 %, 4.1 % and 4.7 %. The v″ = 1 bands near the overlap's node show the
+difference best. 41-1 lies 7–9 % below the 2008 potentials' strengths in all three spectra and within 2 % of the
+model's. 40-1 shows the same in the SONG spectrum (−10 % against +1 %) but not in the Fischer spectrum (+4 %
+against +16 %).
+
+Of the factors in Eq. (1), only f depends on temperature. The line list therefore stores
+S₀ = S Q(T) exp(c₂E″/T), from which S follows for any T.
 
 <figure class="fig" markdown="span">
 <div class="svg" data-svg="figures/wavefunctions.svg" role="img" aria-label="Vibrational wavefunctions in the X and B potentials and the transition moment"></div>
 <figcaption markdown="span">**Figure 1.** Vibrational wavefunctions of X v″ = 0 and of B v′ = 5 and v′ = 32, drawn at their energies, and the transition moment μₑ(R) (lower panel). The band strength is proportional to the square of the overlap ⟨v′|μₑ|v″⟩. The v″ = 0 wavefunction is localized near R = 2.67 Å (shaded). The overlap is largest for upper levels whose inner turning point lies in this region, where the upper wavefunction has its largest amplitude; for v″ = 0 this is the case near v′ = 30, at 500–540 nm.</figcaption>
 </figure>
 
-Upper levels are included up to the last bound level of each J′. Absorption to the continuum above the
-B-state dissociation limit is computed separately by the Python package (`i2spec.continuum`).
+Upper levels are included up to the last bound level of each J′. The Python package computes the absorption to the
+continuum above the B-state dissociation limit separately (`i2spec.continuum`).
 
 ## Absorption spectrum
 
@@ -58,8 +60,8 @@ $$
 \sigma(\nu) = \sum_i S_i\,g(\nu-\nu_i), \tag{4}
 $$
 
-with g a normalized Gaussian (a Voigt profile, including pressure broadening, in the Python
-package). A cell of length L transmits
+with g a normalized Gaussian; in the Python package g is a Voigt profile that includes pressure broadening.
+A cell of length L transmits
 
 $$
 \mathcal T(\nu) = \exp\left[-\sigma(\nu)\,N\,L\right], \tag{5}

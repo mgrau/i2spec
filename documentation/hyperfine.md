@@ -32,10 +32,10 @@ $$
 
 The quadrupole and tensor spin–spin operators are second-rank tensors with respect to the molecular
 axis. They therefore also have matrix elements between J and J ± 2 (and between I and I ± 2). These
-matrix elements shift the components by up to a few tens of kHz at high J and are included; the
-energies of the neighboring rotational levels are taken from the level model. All matrix elements are
-evaluated with Wigner 3j, 6j and 9j symbols. For ¹²⁷I¹²⁹I the two nuclei have different eQq and C,
-which gives additional matrix elements with ΔI = ±1.
+matrix elements are included; at high J they shift the components by up to a few tens of kHz. The
+energies of the neighboring rotational levels come from the level model. All matrix elements are
+evaluated with Wigner 3j, 6j and 9j symbols. In ¹²⁷I¹²⁹I the two nuclei have different eQq and C,
+which adds matrix elements with ΔI = ±1.
 
 ## Nuclear-spin statistics
 
@@ -54,8 +54,7 @@ main components and a line with odd J″ has 21.
 
 ### ¹²⁷I₂
 
-The model computes the parameters of every level from functions shared by all levels, not from a
-table of measured values:
+The model computes the parameters of every level from functions shared by all levels:
 
 - **B v′ ≤ 43.** Each parameter p of the B state (eqQ, C, d, δ) is the average, over the level's own
   wavefunction, of a smooth function of R:
@@ -65,57 +64,51 @@ table of measured values:
     $$
 
     with 6, 5, 3 and 1 coefficients for eqQ, C, d and δ. These 15 coefficients were fitted together with the
-    potentials (see [Rovibrational levels](levels.md)), to the measured hyperfine intervals and the absolute
-    frequencies of individual components. A level with no hyperfine data of its own gets its parameters from
-    its wavefunction.
+    potentials (see [Rovibrational levels](levels.md)) to the measured hyperfine intervals and the absolute
+    frequencies of individual components. Every level, measured or not, takes its parameters from its own
+    wavefunction.
 - **X v″ ≤ 17.** These parameters are the interpolation formulae of Bodermann, Knöckel & Tiemann (2002):
   eqQ = q₀ + q₁u + q₂u² + q₃x + q₄ux and C = c₀ + c₁u + c₂/(E<sub>v</sub> − c₃), with u = v + ½ and x = J(J + 1),
   and fixed d = 1.524 kHz and δ = 3.705 kHz (eleven inherited constants).
-- **B v′ = 44–80.** Above v′ = 43 the B state approaches the I(²P3/2) + I(²P1/2) limit, and its hyperfine
-  structure takes on contributions from the nine molecular states of that limit. Each parameter is the
-  background of Eq. (3), anchored to the core fit's own values and continued smoothly, plus explicit
-  second-order sums over those states, in the framework of Chen *et al.* (2005). The potential curves of
-  these states come from de Jong *et al.* (1997) and Saute & Aubert-Frécon (1982). These choices were set by
-  measurements of the out-of-core intervals and the constants of Chen *et al.* (2004):
-    - the mixing angles of the 1u and of the 1g states, the curvature of the eqQ continuation and the curvatures of
-      the C, d and δ backgrounds past the core's edge were fitted (effective parameters: they absorb errors of the
-      perturber curves);
-    - the long-range scale of the 1g(¹Πg) curve was chosen by training cost;
-    - the backgrounds of d and δ carry orders 5 and 4, anchored to the core fit's own values.
-
-    This form was chosen after the blind tests had been scored (in cross-validation it improves eight regions and
-    worsens none); no blind test of it remains. Where a second-order energy denominator nearly vanishes (B v′, J′ =
-    70, 33 and 71, 20) the sum is not valid and no measured level places the perturber, so the model gives those
-    levels' lines a position but no hyperfine components.
-- **B v′ = 77–78.** These levels lie close to a level of the 1g(¹Πg) state, which Pique *et al.* (1986)
-  measured. That level is diagonalized together with B, and its weak extra components appear among the
-  line's components. Here the model keeps the hyperfine of its earlier fit (the 1g mixing angle at its
-  separated-atom value), a different form from that of the other levels beyond the core: the fitted 1g angle is an
-  effective parameter, and no measurement at v′ = 77–78 tests the coupling it would give the resonant level.
+- **B v′ = 44–80.** Above v′ = 43 the B state approaches the I(²P3/2) + I(²P1/2) limit, and the nine molecular
+  states of that limit contribute to its hyperfine structure. Each parameter is the background of Eq. (3),
+  continued smoothly from the core, plus second-order sums over those states in the framework of Chen *et al.*
+  (2005). The potential curves of these states come from de Jong *et al.* (1997) and Saute & Aubert-Frécon (1982).
+  The mixing angles of the 1u and 1g states and the curvatures of the backgrounds beyond the core are fitted to the
+  measured intervals there and to the constants of Chen *et al.* (2004). They are effective parameters, which also
+  absorb errors of the perturber curves ([The fit](fit.md#hyperfine-beyond-the-core) has the details). Where a
+  second-order energy denominator nearly vanishes (B v′, J′ = 70, 33 and 71, 20), the sum breaks down and no
+  measurement places the perturber. The lines of those two levels have a position but no hyperfine components.
+- **B v′ = 77–78.** These levels lie close to a level of the 1g(¹Πg) state measured by Pique *et al.* (1986).
+  That level is diagonalized together with B, and its weak components appear among the line's components. At these
+  two levels the second-order sums use parameters fitted with the 1g mixing angle held at its separated-atom value
+  ([The fit](fit.md#hyperfine-beyond-the-core) lists them), because no measurement at v′ = 77–78 tests the
+  coupling that the fitted angle would give.
 - **X v″ = 18–108.** eqQ is continued smoothly from the formula of Bodermann *et al.* to its value for
   separated atoms (Bacis *et al.* 1980).
 
 The out-of-core parameters are tabulated for every level the potentials hold, up to J = 203; above it each
-level keeps the constants of J = 203 at its v. Below v′ = 44 and v″ = 18 the functions above give every J. A
+level keeps the constants of J = 203 at its v. Below v′ = 44 and v″ = 18 the functions above provide every J. A
 quasi-bound level above the asymptote below J = 203 has a position but no hyperfine components.
 
 ### ¹²⁹I₂ and ¹²⁷I¹²⁹I
 
 The parameters are properties of each nucleus and of the electronic wavefunction, so the other isotopologues
-take them from the same functions:
+use the same functions:
 
 - **Per nucleus.** eqQ scales with the nuclear quadrupole moment, C with the nuclear g-factor, and d and δ with
   the product of the two g-factors. The ratios for ¹²⁹I against ¹²⁷I are 0.701 213 (Q) and 0.6655 (g), from
   Salumbides *et al.* (2006). In ¹²⁷I¹²⁹I the two nuclei carry different eqQ and C.
 - **At the same energy.** In the core, a B level's parameters are the radial functions of Eq. (3) averaged over
   its own wavefunction. An X level's come from the formulae of Bodermann *et al.* at the ¹²⁷I₂ vibrational
-  quantum number of the same J = 0 energy (not an integer) and at ρ J(J + 1), ρ = μ(¹²⁷I₂)/μ: the same
+  quantum number of the same J = 0 energy (a non-integer) and at ρ J(J + 1), ρ = μ(¹²⁷I₂)/μ, which gives the same
   rotational stretching. Beyond the core, the tabulated ¹²⁷I₂ constants are interpolated at that equivalent level.
-  The near-resonant 1g level at ¹²⁷I₂ B v′ = 77–78 is not carried over.
+  The near-resonant 1g level at ¹²⁷I₂ B v′ = 77–78 applies to ¹²⁷I₂ alone.
 
-No parameter is fitted to the other isotopologues. Against the 108 hyperfine intervals of the CIPM compilation in
-four ¹²⁹I₂ and ¹²⁷I¹²⁹I lines, whose median stated uncertainty is 0.10 MHz, the scaled functions leave
-0.19 MHz rms; the formulae of Salumbides *et al.* (2006), which were fitted to these data, leave 0.17 MHz.
+The scaled functions predict the other isotopologues without any parameter fitted to them. Against the 108
+hyperfine intervals of the CIPM compilation in four ¹²⁹I₂ and ¹²⁷I¹²⁹I lines (median stated uncertainty 0.10 MHz),
+they leave 0.19 MHz rms. The formulae of Salumbides *et al.* (2006), which were fitted to these data, leave
+0.17 MHz.
 
 ## Components and their intensities
 
@@ -133,11 +126,11 @@ increasing frequency, as in the BIPM tables.
 !!! note "Accuracy of the hyperfine offsets"
     Every component carries its own 1σ (see [Uncertainty estimates](uncertainty.md#hyperfine-part)). The
     widest interval within a ¹²⁷I₂ line, a15 − a1 of R(20), is good to about 0.2 MHz up to v′ = 44, 0.6 MHz at
-    v′ = 50, 1.6 MHz at v′ = 55 and 4 MHz at v′ = 60; beyond that the uncertainty grows to 20 MHz at v′ = 70
+    v′ = 50, 1.6 MHz at v′ = 55 and 4 MHz at v′ = 60. Beyond that the uncertainty grows to 20 MHz at v′ = 70
     and 60 MHz at v′ = 75. These values were fitted to intervals and constants held out of the fit. On the
-    locked test the intervals within a line were covered less well than these values claim (see
-    [Uncertainty estimates](uncertainty.md#the-locked-test)). For ¹²⁹I₂ and ¹²⁷I¹²⁹I a floor of 0.10 MHz per
-    component is added, the excess of the CIPM intervals over their stated uncertainties.
+    locked test the intervals within a line fell outside these uncertainties more often than expected (see
+    [Uncertainty estimates](uncertainty.md#the-locked-test)). For ¹²⁹I₂ and ¹²⁷I¹²⁹I each component carries an
+    added floor of 0.10 MHz: the excess scatter of the CIPM intervals over their stated uncertainties.
 
 ## Worked example
 

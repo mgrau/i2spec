@@ -23,10 +23,10 @@ hyperfine-free position is the center of gravity of the hyperfine components (se
 
 ## The fitted domain
 
-The model gives every line of ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I whose levels it holds: X v″ ≤ 108, B v′ ≤ 80 (109 and
-81 for ¹²⁹I₂) and J″ ≤ 445, each level bound or held behind its centrifugal barrier. This includes every line of
-the line lists but a few hot lines whose upper level the model places beyond its barrier; those keep the
-position from the line list's own grid and carry the flag *outside the fitted domain*.
+The model provides every line of ¹²⁷I₂, ¹²⁹I₂ and ¹²⁷I¹²⁹I whose levels it holds: X v″ ≤ 108, B v′ ≤ 80 (109 and
+81 for ¹²⁹I₂) and J″ ≤ 445, each level bound or held behind its centrifugal barrier. That covers the line lists
+except a few hot lines whose upper level the model places beyond its barrier. Those lines keep the position from
+the line list's own grid and carry the flag *outside the fitted domain*.
 
 ## Units
 

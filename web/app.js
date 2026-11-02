@@ -1862,13 +1862,13 @@ function measurementsHTML(line, comp = null) {
     <tbody>${shown.join("")}</tbody></table></div>
     <p class="note">${rows.length > shown.length ? `First ${shown.length} of ${rows.length} rows. ` : ""}Each measurement
     is listed once, under the paper that reported it, followed by the compilations (such as the CIPM's) that print
-    it again; a compilation's own recommended values and means are listed under it. Each source links to
-    its DOI; the <a href="docs/references.html">references</a> page lists them all. Frequencies are as published
-    (atlas lines are hyperfine-free centers, with the scale fitted to each atlas divided out: its calibration is on the references page);
-    Sources marked “not fitted” are in no fit: held out for the blind tests, set aside, or shown for comparison
-    (hover over the mark for the reason).
-    “− model” is the measured value minus this model's center or component (MHz), ${fmt(f0, 1)} MHz for the center
-    (compare the difference with u above and the measurement's own u).</p>`;
+    it again. A compilation's own recommended values and means are listed under the compilation. Each source links
+    to its DOI; the <a href="docs/references.html">references</a> page lists them all. Frequencies are as published.
+    Atlas lines are hyperfine-free centers with each atlas's fitted scale divided out; the references page gives
+    each calibration. Sources marked “not fitted” are outside the fit: held out for the blind tests, set aside, or
+    shown for comparison (hover over the mark for the reason).
+    “− model” is the measured value minus this model's center or component, in MHz; the model's center is at
+    ${fmt(f0, 1)} MHz. Compare the difference with u above and with the measurement's own u.</p>`;
 }
 
 // --- CSV export ------------------------------------------------------------------------------------
